@@ -1,0 +1,129 @@
+---
+export const prerender = false;
+
+import Base from "../../layouts/Base.astro";
+import { getPublishedWeeklyIssues } from "../../lib/db";
+
+const db = Astro.locals.runtime.env.DB;
+let issues: Awaited<ReturnType<typeof getPublishedWeeklyIssues>> = [];
+
+try {
+  issues = await getPublishedWeeklyIssues(db);
+} catch {
+  // D1 unavailable
+}
+---
+
+<Base title="Weekly Picks" description="Every week, we pick the startups worth your attention.">
+  <div class="container weekly-list">
+    <h1>Weekly Picks</h1>
+    <p class="subtitle">Every week, we pick the startups worth your attention.</p>
+
+    {issues.length > 0 ? (
+      <ul class="issues">
+        {issues.map((issue) => (
+          <li>
+            <a href={`/weekly/${issue.issue_number}`} class="issue-link">
+              <span class="issue-number">#{issue.issue_number}</span>
+              <span class="issue-title">{issue.title}</span>
+              {issue.published_at && (
+                <time class="issue-date">
+                  {new Date(issue.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
+                </time>
+              )}
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <div class="empty-state">
+        <h2>First issue coming soon.</h2>
+        <p>Subscribe to get notified when we publish our first weekly picks.</p>
+        <a href="/subscribe" class="cta-button">Get notified</a>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .weekly-list {
+    max-width: 700px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .weekly-list h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
+  .issues {
+    list-style: none;
+  }
+
+  .issues li {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .issue-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.15s;
+  }
+
+  .issue-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .issue-number {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    min-width: 40px;
+  }
+
+  .issue-title {
+    flex: 1;
+    font-weight: 500;
+  }
+
+  .issue-date {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-16) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+</style>

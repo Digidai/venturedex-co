@@ -1,0 +1,100 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Subscribe" description="Get the best startups delivered to your inbox every week.">
+  <div class="container subscribe-page">
+    <h1>Stay in the loop.</h1>
+    <p class="subtitle">
+      Every week, we pick 5-7 startups worth your attention. With editorial commentary.
+      No spam, no fluff, just the good stuff.
+    </p>
+
+    <form class="subscribe-form" action="/api/subscribe" method="POST">
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@example.com"
+        class="email-input"
+        autocomplete="email"
+      />
+      <button type="submit" class="submit-button">Subscribe</button>
+    </form>
+
+    <p class="note">Unsubscribe anytime. We respect your inbox.</p>
+  </div>
+</Base>
+
+<style>
+  .subscribe-page {
+    max-width: 500px;
+    padding: var(--space-16) var(--space-6);
+    text-align: center;
+  }
+
+  .subscribe-page h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+
+  .subscribe-form {
+    display: flex;
+    gap: var(--space-2);
+    max-width: 400px;
+    margin: 0 auto var(--space-4);
+  }
+
+  .email-input {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    background: var(--color-bg-card);
+    color: var(--color-text);
+  }
+
+  .email-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+    border-color: transparent;
+  }
+
+  .submit-button {
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-text);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .submit-button:hover {
+    opacity: 0.85;
+  }
+
+  .note {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .subscribe-form {
+      flex-direction: column;
+    }
+  }
+</style>

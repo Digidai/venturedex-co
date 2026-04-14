@@ -1,0 +1,314 @@
+---
+export const prerender = false;
+
+import Base from "../../layouts/Base.astro";
+import SiteCard from "../../components/SiteCard.astro";
+import { getSiteBySlug, getRelatedSites } from "../../lib/db";
+
+const { slug } = Astro.params;
+const db = Astro.locals.runtime.env.DB;
+
+const site = await getSiteBySlug(db, slug!);
+if (!site) return Astro.redirect("/404");
+
+const related = await getRelatedSites(db, site);
+const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+---
+
+<Base
+  title={site.product_name}
+  description={site.summary ?? `${site.product_name} on VentureDex`}
+>
+  <article class="site-detail container">
+    <div class="detail-hero">
+      {screenshotUrl ? (
+        <img src={screenshotUrl} alt={`${site.product_name} screenshot`} class="detail-screenshot" />
+      ) : (
+        <div class="detail-placeholder">
+          <span>{site.product_name.charAt(0)}</span>
+        </div>
+      )}
+    </div>
+
+    <header class="detail-header">
+      <div class="header-top">
+        <div>
+          <h1>{site.product_name}</h1>
+          <p class="detail-domain">{site.domain}</p>
+        </div>
+        <a
+          href={site.canonical_url ?? `https://${site.domain}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="visit-button"
+        >
+          Visit Site &rarr;
+        </a>
+      </div>
+      {site.summary && <p class="detail-summary">{site.summary}</p>}
+    </header>
+
+    {site.editor_note && (
+      <section class="editor-note" aria-label="Editor's note">
+        <p class="note-text">{site.editor_note}</p>
+        <p class="note-meta">
+          Curated by {site.curator}
+          {site.published_at && ` on ${new Date(site.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`}
+        </p>
+      </section>
+    )}
+
+    {site.founder_quote && (
+      <section class="founder-quote" aria-label="Founder's words">
+        <blockquote>
+          <p>"{site.founder_quote}"</p>
+          {site.founder_name && <cite>— {site.founder_name}</cite>}
+        </blockquote>
+      </section>
+    )}
+
+    <section class="detail-meta">
+      <div class="meta-grid">
+        {site.product_type && (
+          <div class="meta-item">
+            <dt>Type</dt>
+            <dd>{site.product_type}</dd>
+          </div>
+        )}
+        {site.funding_stage && (
+          <div class="meta-item">
+            <dt>Stage</dt>
+            <dd>{site.funding_stage}{site.funding_display ? ` (${site.funding_display})` : ""}</dd>
+          </div>
+        )}
+        {site.region && (
+          <div class="meta-item">
+            <dt>Region</dt>
+            <dd>{site.region}</dd>
+          </div>
+        )}
+        {site.founded_year && (
+          <div class="meta-item">
+            <dt>Founded</dt>
+            <dd>{site.founded_year}</dd>
+          </div>
+        )}
+        {site.team_size && (
+          <div class="meta-item">
+            <dt>Team</dt>
+            <dd>{site.team_size}</dd>
+          </div>
+        )}
+        {site.framework && (
+          <div class="meta-item">
+            <dt>Built with</dt>
+            <dd>{site.framework}</dd>
+          </div>
+        )}
+        {site.why_featured && (
+          <div class="meta-item">
+            <dt>Why featured</dt>
+            <dd class="why-badge">{site.why_featured}</dd>
+          </div>
+        )}
+      </div>
+    </section>
+
+    {related.length > 0 && (
+      <section class="related">
+        <h2>Related startups</h2>
+        <div class="related-grid">
+          {related.map((r) => (
+            <SiteCard site={r} />
+          ))}
+        </div>
+      </section>
+    )}
+  </article>
+</Base>
+
+<style>
+  .site-detail {
+    padding: var(--space-8) var(--space-6) var(--space-16);
+    max-width: 900px;
+  }
+
+  .detail-hero {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    margin-bottom: var(--space-8);
+  }
+
+  .detail-screenshot {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+
+  .detail-placeholder {
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-badge-bg);
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    color: var(--color-text-secondary);
+  }
+
+  .detail-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .detail-header h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .detail-domain {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+
+  .visit-button {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 0.15s;
+  }
+
+  .visit-button:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .detail-summary {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .editor-note {
+    border-left: 3px solid var(--color-editor-line);
+    padding: var(--space-4) var(--space-6);
+    margin-bottom: var(--space-8);
+    background: color-mix(in srgb, var(--color-accent) 3%, var(--color-bg-card));
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .note-text {
+    font-size: 1.05rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: var(--space-2);
+  }
+
+  .note-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  .founder-quote {
+    margin-bottom: var(--space-8);
+  }
+
+  .founder-quote blockquote {
+    border-left: 2px solid var(--color-border);
+    padding-left: var(--space-4);
+  }
+
+  .founder-quote p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  .founder-quote cite {
+    font-size: 0.85rem;
+    font-style: normal;
+    color: var(--color-text-secondary);
+    display: block;
+    margin-top: var(--space-2);
+  }
+
+  .detail-meta {
+    margin-bottom: var(--space-8);
+  }
+
+  .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .meta-item dt {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  .meta-item dd {
+    font-size: 0.9rem;
+  }
+
+  .why-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--color-accent);
+    font-size: 0.8rem;
+  }
+
+  .related {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-8);
+  }
+
+  .related h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+  }
+
+  @media (max-width: 640px) {
+    .header-top {
+      flex-direction: column;
+    }
+
+    .detail-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .meta-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

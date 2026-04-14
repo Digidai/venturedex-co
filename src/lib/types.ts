@@ -1,0 +1,92 @@
+export interface Site {
+  id: string;
+  slug: string;
+  domain: string;
+  canonical_url: string | null;
+  product_name: string;
+  title: string | null;
+  summary: string | null;
+  long_description: string | null;
+  editor_note: string | null;
+  editor_rating: number | null;
+  why_featured: string | null;
+  curator: string;
+  product_type: string | null;
+  funding_stage: string | null;
+  funding_display: string | null;
+  founded_year: number | null;
+  team_size: string | null;
+  hq_location: string | null;
+  region: string | null;
+  framework: string | null;
+  runtime_status: "live" | "redirect" | "parked" | "dead";
+  workflow_status: "draft" | "published" | "archived";
+  codex_stage: string;
+  screenshot_r2_key: string | null;
+  screenshot_status: "pending" | "ready" | "failed";
+  og_image_r2_key: string | null;
+  founder_name: string | null;
+  founder_quote: string | null;
+  founder_responded_at: string | null;
+  first_seen_at: string;
+  last_checked_at: string | null;
+  published_at: string | null;
+  is_featured: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WeeklyIssue {
+  id: string;
+  issue_number: number;
+  title: string;
+  editorial_intro: string | null;
+  anti_pick_name: string | null;
+  anti_pick_url: string | null;
+  anti_pick_reason: string | null;
+  og_image_r2_key: string | null;
+  published_at: string | null;
+  status: "draft" | "published" | "archived";
+}
+
+export interface Collection {
+  id: string;
+  slug: string;
+  title: string;
+  description: string | null;
+  type: "auto" | "editorial";
+  published: number;
+}
+
+export type ProductType =
+  | "AI / ML"
+  | "SaaS"
+  | "DevTools"
+  | "Fintech"
+  | "HealthTech"
+  | "EdTech"
+  | "E-commerce"
+  | "Marketplace"
+  | "Creator Tools"
+  | "Climate / Sustainability"
+  | "Other";
+
+export type FundingStage =
+  | "Pre-seed"
+  | "Seed"
+  | "Series A"
+  | "Series B"
+  | "Series C+"
+  | "Bootstrapped"
+  | "Unknown";
+
+export const PRODUCT_TYPES: ProductType[] = [
+  "AI / ML", "SaaS", "DevTools", "Fintech", "HealthTech",
+  "EdTech", "E-commerce", "Marketplace", "Creator Tools",
+  "Climate / Sustainability", "Other",
+];
+
+export const FUNDING_STAGES: FundingStage[] = [
+  "Pre-seed", "Seed", "Series A", "Series B", "Series C+",
+  "Bootstrapped", "Unknown",
+];

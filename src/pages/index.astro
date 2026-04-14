@@ -1,0 +1,145 @@
+---
+export const prerender = false;
+
+import Base from "../layouts/Base.astro";
+import SiteCard from "../components/SiteCard.astro";
+import { getPublishedSites, getSiteCount } from "../lib/db";
+
+const db = Astro.locals.runtime.env.DB;
+
+const productType = Astro.url.searchParams.get("type") ?? undefined;
+const fundingStage = Astro.url.searchParams.get("stage") ?? undefined;
+const region = Astro.url.searchParams.get("region") ?? undefined;
+
+let sites = [];
+let siteCount = 0;
+
+try {
+  [sites, siteCount] = await Promise.all([
+    getPublishedSites(db, { productType, fundingStage, region, limit: 50 }),
+    getSiteCount(db),
+  ]);
+} catch {
+  // D1 unavailable, show empty state
+}
+
+const hasFilters = !!(productType || fundingStage || region);
+---
+
+<Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
+  <section class="hero">
+    <div class="container">
+      <h1>A curated gallery of startups<br />worth watching.</h1>
+      <p class="hero-sub">
+        Hand-picked projects with editorial commentary.
+        Not a database. A point of view.
+        {siteCount > 0 && <span class="hero-count">{siteCount} startups curated.</span>}
+      </p>
+    </div>
+  </section>
+
+  <section class="explore">
+    <div class="container">
+      {sites.length > 0 ? (
+        <div class="card-grid">
+          {sites.map((site) => (
+            <SiteCard site={site} />
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state">
+          <h2>Coming soon.</h2>
+          <p>We're curating the first batch of startups. Subscribe to get notified when we launch.</p>
+          <a href="/subscribe" class="cta-button">Get notified</a>
+        </div>
+      )}
+
+      {hasFilters && sites.length === 0 && (
+        <div class="empty-state">
+          <h2>No matches.</h2>
+          <p>Try adjusting your filters, or <a href="/">view all startups</a>.</p>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: var(--space-16) 0 var(--space-12);
+    text-align: left;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    max-width: 700px;
+    margin-bottom: var(--space-4);
+  }
+
+  .hero-sub {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    max-width: 500px;
+    line-height: 1.5;
+  }
+
+  .hero-count {
+    display: block;
+    margin-top: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-accent);
+  }
+
+  .explore {
+    padding-bottom: var(--space-16);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-16) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-text);
+    color: var(--color-bg);
+    border-radius: var(--radius);
+    font-weight: 500;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .cta-button:hover {
+    opacity: 0.85;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: var(--space-12) 0 var(--space-8);
+    }
+
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

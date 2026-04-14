@@ -1,0 +1,14 @@
+name = "venturedex"
+compatibility_date = "2026-04-13"
+
+[vars]
+SITE_URL = "https://venturedex.co"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "venturedex-db"
+database_id = "placeholder-create-with-wrangler"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "venturedex-assets"

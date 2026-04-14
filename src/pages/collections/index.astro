@@ -1,0 +1,101 @@
+---
+export const prerender = false;
+
+import Base from "../../layouts/Base.astro";
+import { getPublishedCollections } from "../../lib/db";
+
+const db = Astro.locals.runtime.env.DB;
+let collections: Awaited<ReturnType<typeof getPublishedCollections>> = [];
+
+try {
+  collections = await getPublishedCollections(db);
+} catch {
+  // D1 unavailable
+}
+---
+
+<Base title="Collections" description="Curated collections of startups by category, stage, and region.">
+  <div class="container collections-page">
+    <h1>Collections</h1>
+    <p class="subtitle">Curated groupings by type, stage, and region.</p>
+
+    {collections.length > 0 ? (
+      <div class="collections-grid">
+        {collections.map((c) => (
+          <a href={`/collections/${c.slug}`} class="collection-card">
+            <h2>{c.title}</h2>
+            {c.description && <p>{c.description}</p>}
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>Collections coming soon.</h2>
+        <p>We're building curated groupings of the best startups by category.</p>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .collections-page {
+    max-width: 900px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .collections-page > h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-8);
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .collection-card {
+    display: block;
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s;
+  }
+
+  .collection-card:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .collection-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .collection-card p {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-16) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+  }
+</style>

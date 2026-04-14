@@ -1,0 +1,35 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Not Found" description="This page doesn't exist.">
+  <div class="container not-found">
+    <h1>404</h1>
+    <p>This page doesn't exist. Maybe we haven't curated it yet.</p>
+    <a href="/" class="back-link">Back to explore</a>
+  </div>
+</Base>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: var(--space-16) var(--space-6);
+  }
+
+  .not-found h1 {
+    font-size: 4rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .not-found p {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .back-link {
+    font-weight: 500;
+  }
+</style>

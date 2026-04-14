@@ -1,0 +1,141 @@
+---
+export const prerender = false;
+
+import Base from "../../layouts/Base.astro";
+import SiteCard from "../../components/SiteCard.astro";
+import { getWeeklyIssueByNumber } from "../../lib/db";
+
+const issueNum = Number(Astro.params.issue);
+if (isNaN(issueNum)) return Astro.redirect("/weekly");
+
+const db = Astro.locals.runtime.env.DB;
+const data = await getWeeklyIssueByNumber(db, issueNum);
+if (!data) return Astro.redirect("/404");
+
+const { issue, sites } = data;
+---
+
+<Base title={issue.title} description={issue.editorial_intro ?? `VentureDex Weekly #${issue.issue_number}`}>
+  <div class="container weekly-detail">
+    <header class="issue-header">
+      <a href="/weekly" class="back-link">&larr; All issues</a>
+      <p class="issue-label">Weekly #{issue.issue_number}</p>
+      <h1>{issue.title}</h1>
+      {issue.published_at && (
+        <time class="issue-date">
+          {new Date(issue.published_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
+        </time>
+      )}
+    </header>
+
+    {issue.editorial_intro && (
+      <div class="editorial-intro">
+        <p>{issue.editorial_intro}</p>
+      </div>
+    )}
+
+    <section class="picks">
+      <h2>This week's picks</h2>
+      <div class="picks-grid">
+        {sites.map((site) => (
+          <SiteCard site={site} />
+        ))}
+      </div>
+    </section>
+
+    {issue.anti_pick_name && (
+      <section class="anti-pick">
+        <h2>The Anti-Pick</h2>
+        <div class="anti-pick-card">
+          <p class="anti-pick-name">
+            {issue.anti_pick_url ? (
+              <a href={issue.anti_pick_url} target="_blank" rel="noopener noreferrer">
+                {issue.anti_pick_name}
+              </a>
+            ) : issue.anti_pick_name}
+          </p>
+          {issue.anti_pick_reason && <p class="anti-pick-reason">{issue.anti_pick_reason}</p>}
+        </div>
+      </section>
+    )}
+  </div>
+</Base>
+
+<style>
+  .weekly-detail {
+    max-width: 900px;
+    padding: var(--space-8) var(--space-6) var(--space-16);
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    display: inline-block;
+    margin-bottom: var(--space-4);
+  }
+
+  .issue-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .issue-header h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .issue-date {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+  }
+
+  .editorial-intro {
+    margin: var(--space-8) 0;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 650px;
+  }
+
+  .picks h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .picks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .anti-pick {
+    margin-top: var(--space-12);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-8);
+  }
+
+  .anti-pick h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .anti-pick-card {
+    border: 1px solid var(--color-border);
+    border-left: 3px solid #DC2626;
+    padding: var(--space-4) var(--space-6);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .anti-pick-name {
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+
+  .anti-pick-reason {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+</style>

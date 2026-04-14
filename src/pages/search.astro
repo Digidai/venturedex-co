@@ -1,0 +1,113 @@
+---
+export const prerender = false;
+
+import Base from "../layouts/Base.astro";
+import SiteCard from "../components/SiteCard.astro";
+import { searchSites } from "../lib/db";
+
+const query = Astro.url.searchParams.get("q") ?? "";
+const db = Astro.locals.runtime.env.DB;
+
+let results: Awaited<ReturnType<typeof searchSites>> = [];
+if (query.trim()) {
+  try {
+    results = await searchSites(db, query);
+  } catch {
+    // D1 unavailable
+  }
+}
+---
+
+<Base title={query ? `Search: ${query}` : "Search"} description="Search the VentureDex directory.">
+  <div class="container search-page">
+    <h1>Search</h1>
+
+    <form class="search-form" action="/search" method="GET">
+      <input
+        type="search"
+        name="q"
+        value={query}
+        placeholder="Search startups by name, domain, or tag..."
+        class="search-input"
+        autofocus
+      />
+    </form>
+
+    {query && results.length > 0 && (
+      <p class="result-count">{results.length} result{results.length !== 1 ? "s" : ""}</p>
+    )}
+
+    {results.length > 0 ? (
+      <div class="card-grid">
+        {results.map((site) => (
+          <SiteCard site={site} />
+        ))}
+      </div>
+    ) : query ? (
+      <div class="empty-state">
+        <h2>No results for "{query}"</h2>
+        <p>This startup might not be in our directory yet.</p>
+      </div>
+    ) : null}
+  </div>
+</Base>
+
+<style>
+  .search-page {
+    max-width: 1200px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .search-page h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .search-form {
+    margin-bottom: var(--space-8);
+  }
+
+  .search-input {
+    width: 100%;
+    max-width: 600px;
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background: var(--color-bg-card);
+    color: var(--color-text);
+  }
+
+  .search-input:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+    border-color: transparent;
+  }
+
+  .result-count {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-6);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-12) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+  }
+</style>

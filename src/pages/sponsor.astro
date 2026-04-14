@@ -1,0 +1,101 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="Sponsor" description="Reach founders, investors, and builders through VentureDex.">
+  <div class="container sponsor-page">
+    <h1>Sponsor VentureDex</h1>
+    <p class="subtitle">
+      Reach founders, investors, and builders who care about quality.
+      Our audience doesn't scroll past ads. They read every pick.
+    </p>
+
+    <section class="placements">
+      <h2>Available placements</h2>
+      <div class="placement-grid">
+        <div class="placement-card">
+          <h3>Featured Listing</h3>
+          <p>Your product pinned to the top of the Explore page for one week. Includes editor's note.</p>
+        </div>
+        <div class="placement-card">
+          <h3>Weekly Sponsor</h3>
+          <p>A dedicated spot in our weekly email. One sponsor per issue. Your product, our voice.</p>
+        </div>
+        <div class="placement-card">
+          <h3>Collection Sponsor</h3>
+          <p>Own a collection page (AI, DevTools, etc.). Your brand at the top, relevant audience guaranteed.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Interested?</h2>
+      <p>Email us at <a href="mailto:sponsor@venturedex.co">sponsor@venturedex.co</a></p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .sponsor-page {
+    max-width: 700px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .sponsor-page > h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-12);
+  }
+
+  .placements h2 {
+    font-size: 1.25rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .placement-grid {
+    display: grid;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .placement-card {
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .placement-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+  }
+
+  .placement-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .cta-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .cta-section a {
+    font-weight: 500;
+  }
+</style>
