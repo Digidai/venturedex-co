@@ -25,12 +25,76 @@ run_sql_file() {
   npx wrangler d1 execute "$DB_NAME" "$target" --file "$1" 2>/dev/null
 }
 
+fetch_meta() {
+  local url="$1"
+  echo "Fetching metadata from $url..." >&2
+  local response
+  response=$(curl -s -X POST "https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/scrape" \
+    -H "Authorization: Bearer $CF_TOKEN" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"url\": \"$url\",
+      \"elements\": [
+        {\"selector\": \"title\"},
+        {\"selector\": \"meta[name=description]\", \"attributes\": [\"content\"]},
+        {\"selector\": \"meta[property=\\\"og:title\\\"]\", \"attributes\": [\"content\"]},
+        {\"selector\": \"meta[property=\\\"og:description\\\"]\", \"attributes\": [\"content\"]}
+      ]
+    }" 2>/dev/null)
+
+  python3 -c "
+import json, sys
+data = json.loads('''$response''')
+r = data.get('result', [])
+title = ''
+desc = ''
+for item in r:
+    sel = item.get('selector','')
+    results = item.get('results', [])
+    if not results: continue
+    if sel == 'title':
+        title = results[0].get('text','')
+    elif 'og:title' in sel and not title:
+        for a in results[0].get('attributes',[]):
+            if a['name']=='content': title = a['value']
+    elif 'og:description' in sel:
+        for a in results[0].get('attributes',[]):
+            if a['name']=='content': desc = a['value']
+    elif 'description' in sel and not desc:
+        for a in results[0].get('attributes',[]):
+            if a['name']=='content': desc = a['value']
+print(title + '|||' + desc)
+" 2>/dev/null
+}
+
 cmd_add() {
   echo "=== Add New Startup ==="
   read -p "URL (e.g. https://example.com): " url
-  read -p "Product name: " name
-  read -p "Slug (lowercase, hyphens): " slug
-  read -p "One-line summary: " summary
+
+  local meta_raw auto_title auto_summary
+  meta_raw=$(fetch_meta "$url")
+  auto_title=$(echo "$meta_raw" | cut -d'|' -f1)
+  auto_summary=$(echo "$meta_raw" | cut -d'|' -f4-)
+
+  if [ -n "$auto_title" ]; then
+    echo ""
+    echo "  Auto-detected:"
+    echo "    Title:   $auto_title"
+    echo "    Summary: $auto_summary"
+    echo ""
+  fi
+
+  read -p "Product name [$auto_title]: " name
+  name="${name:-$auto_title}"
+
+  local auto_slug
+  auto_slug=$(echo "$name" | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9]/-/g' | sed 's/--*/-/g' | sed 's/^-//;s/-$//')
+  read -p "Slug [$auto_slug]: " slug
+  slug="${slug:-$auto_slug}"
+
+  read -p "One-line summary [$auto_summary]: " summary
+  summary="${summary:-$auto_summary}"
+
   read -p "Editor note (why it matters): " note
   read -p "Editor rating (1-5): " rating
   read -p "Why featured (short tag, e.g. 'YC S26'): " why
