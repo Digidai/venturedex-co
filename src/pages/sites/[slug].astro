@@ -4,6 +4,7 @@ export const prerender = false;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getSiteBySlug, getRelatedSites } from "../../lib/db";
+import type { SiteLinks } from "../../lib/types";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
@@ -13,6 +14,33 @@ if (!site) return Astro.redirect("/404");
 
 const related = await getRelatedSites(db, site);
 const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+
+const investors = site.investors
+  ? site.investors.split(",").map((s) => s.trim()).filter(Boolean)
+  : [];
+
+const tags = site.tags
+  ? site.tags.split(",").map((s) => s.trim()).filter(Boolean)
+  : [];
+
+let links: SiteLinks = {};
+try {
+  if (site.links_json) {
+    links = JSON.parse(site.links_json) as SiteLinks;
+  }
+} catch {
+  // invalid JSON, ignore
+}
+
+const hasTeamInfo = !!(site.founder_name || site.team_size || site.hq_location);
+
+const externalLinks = [
+  { label: "Website", url: site.canonical_url ?? `https://${site.domain}`, icon: "globe" },
+  links.github ? { label: "GitHub", url: links.github, icon: "github" } : null,
+  links.twitter ? { label: "X / Twitter", url: links.twitter, icon: "twitter" } : null,
+  links.linkedin ? { label: "LinkedIn", url: links.linkedin, icon: "linkedin" } : null,
+  links.producthunt ? { label: "Product Hunt", url: links.producthunt, icon: "producthunt" } : null,
+].filter(Boolean) as { label: string; url: string; icon: string }[];
 ---
 
 <Base
@@ -113,6 +141,72 @@ const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r
         )}
       </div>
     </section>
+
+    {hasTeamInfo && (
+      <section class="team-section" aria-label="Team">
+        <h2>Team</h2>
+        <div class="team-grid">
+          {site.founder_name && (
+            <div class="team-item">
+              <dt>Founder</dt>
+              <dd>{site.founder_name}</dd>
+            </div>
+          )}
+          {site.team_size && (
+            <div class="team-item">
+              <dt>Team Size</dt>
+              <dd>{site.team_size}</dd>
+            </div>
+          )}
+          {site.hq_location && (
+            <div class="team-item">
+              <dt>Headquarters</dt>
+              <dd>{site.hq_location}</dd>
+            </div>
+          )}
+        </div>
+      </section>
+    )}
+
+    {investors.length > 0 && (
+      <section class="investors-section" aria-label="Investors">
+        <h2>Investors</h2>
+        <div class="pill-list">
+          {investors.map((investor) => (
+            <span class="pill">{investor}</span>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {externalLinks.length > 1 && (
+      <section class="links-section" aria-label="External links">
+        <h2>Links</h2>
+        <div class="links-row">
+          {externalLinks.map((link) => (
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="ext-link"
+            >
+              {link.label} &nearr;
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {tags.length > 0 && (
+      <section class="tags-section" aria-label="Tags">
+        <h2>Tags</h2>
+        <div class="tag-list">
+          {tags.map((tag) => (
+            <a href={`/?type=${encodeURIComponent(tag)}`} class="tag-badge">{tag}</a>
+          ))}
+        </div>
+      </section>
+    )}
 
     {related.length > 0 && (
       <section class="related">
@@ -280,6 +374,131 @@ const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r
     background: color-mix(in srgb, var(--color-accent) 10%, transparent);
     color: var(--color-accent);
     font-size: 0.8rem;
+  }
+
+  /* Team section */
+  .team-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .team-section h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-4);
+  }
+
+  .team-item dt {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  .team-item dd {
+    font-size: 0.9rem;
+  }
+
+  /* Investors section */
+  .investors-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .investors-section h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .pill {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+    background: var(--color-bg-card);
+  }
+
+  /* External links */
+  .links-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .links-section h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .ext-link {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.15s;
+  }
+
+  .ext-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  /* Tags section */
+  .tags-section {
+    margin-bottom: var(--space-8);
+  }
+
+  .tags-section h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .tag-badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 99px;
+    background: var(--color-badge-bg);
+    color: var(--color-badge-text);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .tag-badge:hover {
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+    text-decoration: none;
   }
 
   .related {

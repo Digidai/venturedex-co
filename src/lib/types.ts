@@ -31,9 +31,19 @@ export interface Site {
   first_seen_at: string;
   last_checked_at: string | null;
   published_at: string | null;
+  investors: string | null;
+  links_json: string | null;
+  tags: string | null;
   is_featured: number;
   created_at: string;
   updated_at: string;
+}
+
+export interface SiteLinks {
+  github?: string;
+  twitter?: string;
+  linkedin?: string;
+  producthunt?: string;
 }
 
 export interface WeeklyIssue {

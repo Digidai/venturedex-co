@@ -1,0 +1,203 @@
+---
+import type { Site } from "../lib/types";
+
+interface Props {
+  sites: Site[];
+}
+
+const { sites } = Astro.props;
+
+function relativeTime(dateStr: string | null): string {
+  if (!dateStr) return "";
+  const now = Date.now();
+  const then = new Date(dateStr).getTime();
+  const diffMs = now - then;
+  const diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 60) return `${diffMin}m ago`;
+  const diffHr = Math.floor(diffMin / 60);
+  if (diffHr < 24) return `${diffHr}h ago`;
+  const diffDay = Math.floor(diffHr / 24);
+  if (diffDay < 30) return `${diffDay}d ago`;
+  const diffMo = Math.floor(diffDay / 30);
+  return `${diffMo}mo ago`;
+}
+
+function isNew(site: Site): boolean {
+  if (!site.published_at) return false;
+  const diffMs = Date.now() - new Date(site.published_at).getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  return diffDays <= 7;
+}
+
+function isUpdated(site: Site): boolean {
+  if (!site.updated_at || !site.published_at) return false;
+  return new Date(site.updated_at).getTime() > new Date(site.published_at).getTime();
+}
+---
+
+{sites.length > 0 && (
+  <section class="activity-strip" aria-label="Recent activity">
+    <div class="container">
+      <h2 class="strip-heading">Recently Added</h2>
+      <div class="strip-scroll">
+        {sites.map((site) => {
+          const thumb = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+          const badge = isNew(site) ? "New" : isUpdated(site) ? "Updated" : null;
+          const time = relativeTime(site.published_at);
+          return (
+            <a href={`/sites/${site.slug}`} class="strip-item">
+              <div class="strip-thumb">
+                {thumb ? (
+                  <img src={thumb} alt="" loading="lazy" />
+                ) : (
+                  <span class="strip-initial">{site.product_name.charAt(0)}</span>
+                )}
+              </div>
+              <div class="strip-info">
+                <span class="strip-name">{site.product_name}</span>
+                <span class="strip-meta">
+                  {badge && (
+                    <span class={`strip-badge ${badge === "New" ? "strip-badge--new" : "strip-badge--updated"}`}>
+                      {badge}
+                    </span>
+                  )}
+                  {time && <span class="strip-time">{time}</span>}
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .activity-strip {
+    padding: var(--space-6) 0 var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .strip-heading {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+    font-family: var(--font-body);
+  }
+
+  .strip-scroll {
+    display: flex;
+    gap: var(--space-4);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: var(--space-2);
+  }
+
+  .strip-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .strip-item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    text-decoration: none;
+    color: inherit;
+    scroll-snap-align: start;
+    min-width: 200px;
+    max-width: 240px;
+    transition: border-color 0.15s;
+  }
+
+  .strip-item:hover {
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .strip-thumb {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--color-badge-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .strip-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .strip-initial {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+  }
+
+  .strip-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .strip-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .strip-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .strip-badge {
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 99px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .strip-badge--new {
+    background: color-mix(in srgb, var(--color-accent) 12%, transparent);
+    color: var(--color-accent);
+  }
+
+  .strip-badge--updated {
+    background: color-mix(in srgb, #16a34a 12%, transparent);
+    color: #16a34a;
+  }
+
+  .strip-time {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .strip-item {
+      min-width: 180px;
+      max-width: 200px;
+    }
+  }
+</style>

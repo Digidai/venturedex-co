@@ -3,21 +3,28 @@ export const prerender = false;
 
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
-import { getPublishedSites, getSiteCount } from "../lib/db";
+import FilterBar from "../components/FilterBar.astro";
+import ActivityStrip from "../components/ActivityStrip.astro";
+import { getPublishedSites, getSiteCount, getRecentActivity } from "../lib/db";
+import type { SortOption } from "../lib/db";
 
 const db = Astro.locals.runtime.env.DB;
 
 const productType = Astro.url.searchParams.get("type") ?? undefined;
 const fundingStage = Astro.url.searchParams.get("stage") ?? undefined;
 const region = Astro.url.searchParams.get("region") ?? undefined;
+const sortRaw = Astro.url.searchParams.get("sort") ?? "featured";
+const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "featured") as SortOption;
 
 let sites = [];
 let siteCount = 0;
+let recentActivity: import("../lib/types").Site[] = [];
 
 try {
-  [sites, siteCount] = await Promise.all([
-    getPublishedSites(db, { productType, fundingStage, region, limit: 50 }),
+  [sites, siteCount, recentActivity] = await Promise.all([
+    getPublishedSites(db, { productType, fundingStage, region, sort, limit: 50 }),
     getSiteCount(db),
+    getRecentActivity(db, 10),
   ]);
 } catch {
   // D1 unavailable, show empty state
@@ -38,8 +45,17 @@ const hasFilters = !!(productType || fundingStage || region);
     </div>
   </section>
 
+  <ActivityStrip sites={recentActivity} />
+
   <section class="explore">
     <div class="container">
+      <FilterBar
+        currentType={productType}
+        currentStage={fundingStage}
+        currentRegion={region}
+        currentSort={sort}
+      />
+
       {sites.length > 0 ? (
         <div class="card-grid">
           {sites.map((site) => (

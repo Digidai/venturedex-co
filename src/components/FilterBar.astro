@@ -1,0 +1,293 @@
+---
+import { PRODUCT_TYPES, FUNDING_STAGES } from "../lib/types";
+import type { SortOption } from "../lib/db";
+
+interface Props {
+  currentType?: string;
+  currentStage?: string;
+  currentRegion?: string;
+  currentSort?: string;
+}
+
+const { currentType, currentStage, currentRegion, currentSort } = Astro.props;
+
+const REGIONS = [
+  "US",
+  "Europe",
+  "China / Asia",
+  "Latin America",
+  "Africa",
+  "Global / Remote",
+];
+
+const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "featured", label: "Featured" },
+  { value: "newest", label: "Newest" },
+  { value: "name-az", label: "Name A\u2013Z" },
+];
+
+const activeCount = [currentType, currentStage, currentRegion].filter(Boolean).length;
+const hasFilters = activeCount > 0 || (currentSort && currentSort !== "featured");
+---
+
+<div class="filter-bar">
+  <button
+    class="filter-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="filter-panel"
+  >
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M1 3h14M3 8h10M5 13h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <span>Filters</span>
+    {activeCount > 0 && <span class="filter-count">{activeCount}</span>}
+    <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+  <div class="filter-panel" id="filter-panel" hidden>
+    <form method="GET" action="/" class="filter-form">
+      <div class="filter-fields">
+        <div class="filter-group">
+          <label for="filter-type">Product Type</label>
+          <select id="filter-type" name="type">
+            <option value="">All types</option>
+            {PRODUCT_TYPES.map((t) => (
+              <option value={t} selected={currentType === t}>{t}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-stage">Funding Stage</label>
+          <select id="filter-stage" name="stage">
+            <option value="">All stages</option>
+            {FUNDING_STAGES.map((s) => (
+              <option value={s} selected={currentStage === s}>{s}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-region">Region</label>
+          <select id="filter-region" name="region">
+            <option value="">All regions</option>
+            {REGIONS.map((r) => (
+              <option value={r} selected={currentRegion === r}>{r}</option>
+            ))}
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-sort">Sort by</label>
+          <select id="filter-sort" name="sort">
+            {SORT_OPTIONS.map((o) => (
+              <option value={o.value} selected={currentSort === o.value}>{o.label}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-actions">
+        <button type="submit" class="filter-apply">Apply</button>
+        {hasFilters && (
+          <a href="/" class="filter-clear">Clear filters</a>
+        )}
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  const toggle = document.querySelector('.filter-toggle') as HTMLButtonElement;
+  const panel = document.getElementById('filter-panel') as HTMLElement;
+
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+    });
+
+    // Auto-expand if filters are active
+    const params = new URLSearchParams(window.location.search);
+    const hasActive = params.get('type') || params.get('stage') || params.get('region')
+      || (params.get('sort') && params.get('sort') !== 'featured');
+    if (hasActive) {
+      toggle.setAttribute('aria-expanded', 'true');
+      panel.hidden = false;
+    }
+  }
+
+  // Strip empty params before submit so URLs stay clean
+  const form = document.querySelector('.filter-form') as HTMLFormElement;
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const params = new URLSearchParams();
+      for (const [key, value] of data.entries()) {
+        const v = String(value).trim();
+        if (v && !(key === 'sort' && v === 'featured')) {
+          params.set(key, v);
+        }
+      }
+      const qs = params.toString();
+      window.location.href = '/' + (qs ? '?' + qs : '');
+    });
+  }
+</script>
+
+<style>
+  .filter-bar {
+    margin-bottom: var(--space-6);
+  }
+
+  .filter-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-3);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .filter-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-secondary);
+  }
+
+  .filter-toggle[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .chevron {
+    transition: transform 0.2s;
+  }
+
+  .filter-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    background: var(--color-accent);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 9px;
+    line-height: 1;
+  }
+
+  .filter-panel {
+    margin-top: var(--space-3);
+    padding: var(--space-4);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .filter-fields {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .filter-group label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .filter-group select {
+    appearance: none;
+    padding: var(--space-2) var(--space-3);
+    padding-right: var(--space-8);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    transition: border-color 0.15s;
+  }
+
+  .filter-group select:hover {
+    border-color: var(--color-text-secondary);
+  }
+
+  .filter-group select:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -1px;
+  }
+
+  .filter-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+  }
+
+  .filter-apply {
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-text);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  .filter-apply:hover {
+    opacity: 0.85;
+  }
+
+  .filter-clear {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .filter-clear:hover {
+    color: var(--color-text);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 640px) {
+    .filter-fields {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+  }
+
+  @media (min-width: 641px) and (max-width: 900px) {
+    .filter-fields {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>

@@ -1,5 +1,7 @@
 import type { Site, WeeklyIssue, Collection } from "./types";
 
+export type SortOption = "featured" | "newest" | "name-az";
+
 export async function getPublishedSites(
   db: D1Database,
   opts?: {
@@ -9,6 +11,7 @@ export async function getPublishedSites(
     limit?: number;
     offset?: number;
     featured?: boolean;
+    sort?: SortOption;
   }
 ): Promise<Site[]> {
   const conditions = ["workflow_status = 'published'"];
@@ -34,9 +37,23 @@ export async function getPublishedSites(
   const offset = opts?.offset ?? 0;
   const where = conditions.join(" AND ");
 
+  let orderBy: string;
+  switch (opts?.sort) {
+    case "newest":
+      orderBy = "published_at DESC";
+      break;
+    case "name-az":
+      orderBy = "product_name ASC";
+      break;
+    case "featured":
+    default:
+      orderBy = "is_featured DESC, published_at DESC";
+      break;
+  }
+
   const result = await db
     .prepare(
-      `SELECT * FROM sites WHERE ${where} ORDER BY is_featured DESC, published_at DESC LIMIT ? OFFSET ?`
+      `SELECT * FROM sites WHERE ${where} ORDER BY ${orderBy} LIMIT ? OFFSET ?`
     )
     .bind(...params, limit, offset)
     .all<Site>();
@@ -165,6 +182,23 @@ export async function searchSites(
        LIMIT ?`
     )
     .bind(`${normalized}%`, limit)
+    .all<Site>();
+
+  return result.results;
+}
+
+export async function getRecentActivity(
+  db: D1Database,
+  limit = 10
+): Promise<Site[]> {
+  const result = await db
+    .prepare(
+      `SELECT * FROM sites
+       WHERE workflow_status = 'published'
+       ORDER BY published_at DESC
+       LIMIT ?`
+    )
+    .bind(limit)
     .all<Site>();
 
   return result.results;
