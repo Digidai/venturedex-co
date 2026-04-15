@@ -19,6 +19,9 @@ jobs:
 
       - run: npx astro build
 
+      - name: Prepare assets for Wrangler
+        run: printf '_worker.js\n_routes.json\n' > dist/.assetsignore
+
       - uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
