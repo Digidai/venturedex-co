@@ -34,9 +34,10 @@
     --color-bg-card: #141414;
     --color-text: #FAFAF9;
     --color-text-secondary: #A3A3A3;
-    --color-border: #262626;
+    --color-border: #2A2A2A;
     --color-badge-bg: #1C1C1C;
     --color-badge-text: #D4D4D4;
+    --color-editor-line: #60A5FA;
   }
 }
 
@@ -45,9 +46,10 @@
   --color-bg-card: #141414;
   --color-text: #FAFAF9;
   --color-text-secondary: #A3A3A3;
-  --color-border: #262626;
+  --color-border: #2A2A2A;
   --color-badge-bg: #1C1C1C;
   --color-badge-text: #D4D4D4;
+  --color-editor-line: #60A5FA;
 }
 
 *,
