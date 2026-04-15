@@ -3,13 +3,18 @@ import type { Site } from "../lib/types";
 
 interface Props {
   site: Site;
+  size?: "default" | "large";
 }
 
-const { site } = Astro.props;
+const { site, size = "default" } = Astro.props;
 const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+
+const metaLine = [site.product_type, site.funding_stage, site.region]
+  .filter(Boolean)
+  .join(" · ");
 ---
 
-<article class="site-card">
+<article class:list={["site-card", size === "large" && "site-card--large"]}>
   <a href={`/sites/${site.slug}`} class="card-link">
     <div class="card-screenshot">
       {screenshotUrl ? (
@@ -19,35 +24,33 @@ const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r
           <span>{site.product_name.charAt(0)}</span>
         </div>
       )}
+      {site.why_featured && (
+        <span class="card-featured-tag">{site.why_featured}</span>
+      )}
     </div>
     <div class="card-body">
-      <h3 class="card-name">{site.product_name}</h3>
-      <p class="card-domain">{site.domain}</p>
-      {site.summary && <p class="card-summary">{site.summary}</p>}
-      <div class="card-meta">
-        {site.why_featured && (
-          <span class="badge badge-featured">{site.why_featured}</span>
-        )}
-        {site.product_type && (
-          <span class="badge">{site.product_type}</span>
-        )}
+      <div class="card-header">
+        <h3 class="card-name">{site.product_name}</h3>
+        <span class="card-domain">{site.domain}</span>
       </div>
+      {site.summary && <p class="card-summary">{site.summary}</p>}
+      {metaLine && <p class="card-meta-line">{metaLine}</p>}
     </div>
   </a>
 </article>
 
 <style>
   .site-card {
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
+    border-radius: 8px;
     overflow: hidden;
     background: var(--color-bg-card);
-    transition: border-color 0.15s;
-    max-width: 420px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 1px solid var(--color-border);
   }
 
   .site-card:hover {
-    border-color: var(--color-accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
 
   .card-link {
@@ -56,16 +59,31 @@ const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r
     color: inherit;
   }
 
+  .card-link:hover {
+    text-decoration: none;
+  }
+
   .card-screenshot {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-badge-bg);
+    position: relative;
+  }
+
+  .site-card--large .card-screenshot {
+    aspect-ratio: 16 / 10;
   }
 
   .card-screenshot img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
+    transition: transform 0.3s;
+  }
+
+  .site-card:hover .card-screenshot img {
+    transform: scale(1.02);
   }
 
   .card-placeholder {
@@ -75,56 +93,77 @@ const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r
     align-items: center;
     justify-content: center;
     font-family: var(--font-heading);
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: var(--color-text-secondary);
+    background: linear-gradient(135deg, var(--color-badge-bg) 0%, var(--color-border) 100%);
+  }
+
+  .card-featured-tag {
+    position: absolute;
+    bottom: var(--space-2);
+    left: var(--space-2);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    backdrop-filter: blur(4px);
+    letter-spacing: 0.01em;
   }
 
   .card-body {
-    padding: var(--space-4);
+    padding: var(--space-3) var(--space-4) var(--space-4);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+    margin-bottom: var(--space-1);
   }
 
   .card-name {
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    margin-bottom: var(--space-1);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card-domain {
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: var(--color-text-secondary);
-    margin-bottom: var(--space-2);
+    white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .card-summary {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .card-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-  }
-
-  .badge {
+  .card-meta-line {
     font-size: 0.7rem;
-    font-weight: 500;
-    padding: 2px 8px;
-    border-radius: 99px;
-    background: var(--color-badge-bg);
-    color: var(--color-badge-text);
+    color: var(--color-text-secondary);
+    letter-spacing: 0.01em;
   }
 
-  .badge-featured {
-    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
-    color: var(--color-accent);
+  @media (prefers-color-scheme: dark) {
+    .site-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-placeholder {
+      background: linear-gradient(135deg, #1c1c1c 0%, #262626 100%);
+    }
   }
 </style>

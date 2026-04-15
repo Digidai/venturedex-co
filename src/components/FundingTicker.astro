@@ -1,0 +1,112 @@
+---
+import type { Site } from "../lib/types";
+
+interface Props {
+  sites: Site[];
+}
+
+const { sites } = Astro.props;
+
+const items = sites
+  .filter((s) => s.funding_display || s.funding_stage)
+  .map((s) => ({
+    name: s.product_name,
+    slug: s.slug,
+    amount: s.funding_display,
+    stage: s.funding_stage,
+    date: s.published_at
+      ? new Date(s.published_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })
+      : null,
+  }));
+
+const doubled = [...items, ...items];
+---
+
+{items.length > 0 && (
+  <div class="ticker-wrapper" aria-label="Recent funding news">
+    <div class="ticker-track">
+      {doubled.map((item) => (
+        <a href={`/sites/${item.slug}`} class="ticker-item">
+          <span class="ticker-dot" />
+          <span class="ticker-name">{item.name}</span>
+          {item.amount && <span class="ticker-amount">{item.amount}</span>}
+          {item.stage && <span class="ticker-stage">{item.stage}</span>}
+          {item.date && <span class="ticker-date">{item.date}</span>}
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .ticker-wrapper {
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+  }
+
+  .ticker-track {
+    display: flex;
+    gap: var(--space-6);
+    padding: var(--space-3) 0;
+    animation: ticker-scroll 40s linear infinite;
+    width: max-content;
+  }
+
+  .ticker-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes ticker-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .ticker-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 0.75rem;
+    transition: color 0.15s;
+  }
+
+  .ticker-item:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .ticker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+  }
+
+  .ticker-name {
+    font-weight: 600;
+  }
+
+  .ticker-amount {
+    color: var(--color-accent);
+    font-weight: 500;
+  }
+
+  .ticker-stage {
+    color: var(--color-text-secondary);
+  }
+
+  .ticker-date {
+    color: var(--color-text-secondary);
+    font-size: 0.7rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .ticker-dot {
+      background: #4ade80;
+    }
+  }
+</style>

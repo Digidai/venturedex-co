@@ -4,8 +4,8 @@ export const prerender = false;
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
-import ActivityStrip from "../components/ActivityStrip.astro";
-import { getPublishedSites, getSiteCount, getRecentActivity } from "../lib/db";
+import FundingTicker from "../components/FundingTicker.astro";
+import { getPublishedSites, getSiteCount } from "../lib/db";
 import type { SortOption } from "../lib/db";
 
 const db = Astro.locals.runtime.env.DB;
@@ -16,36 +16,39 @@ const region = Astro.url.searchParams.get("region") ?? undefined;
 const sortRaw = Astro.url.searchParams.get("sort") ?? "featured";
 const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "featured") as SortOption;
 
-let sites = [];
+let sites: import("../lib/types").Site[] = [];
+let allSites: import("../lib/types").Site[] = [];
 let siteCount = 0;
-let recentActivity: import("../lib/types").Site[] = [];
 
 try {
-  [sites, siteCount, recentActivity] = await Promise.all([
+  [sites, siteCount, allSites] = await Promise.all([
     getPublishedSites(db, { productType, fundingStage, region, sort, limit: 50 }),
     getSiteCount(db),
-    getRecentActivity(db, 10),
+    getPublishedSites(db, { limit: 50 }),
   ]);
 } catch {
-  // D1 unavailable, show empty state
+  // D1 unavailable
 }
 
 const hasFilters = !!(productType || fundingStage || region);
+const featured = sites.filter((s) => s.is_featured);
+const rest = sites.filter((s) => !s.is_featured);
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
+  <FundingTicker sites={allSites} />
+
   <section class="hero">
-    <div class="container">
-      <h1>A curated gallery of startups<br />worth watching.</h1>
-      <p class="hero-sub">
-        Hand-picked projects with editorial commentary.
-        Not a database. A point of view.
-        {siteCount > 0 && <span class="hero-count">{siteCount} startups curated.</span>}
-      </p>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Discover today's top startups</h1>
+        <p class="hero-sub">
+          A thoughtful gallery of {siteCount > 0 ? siteCount : ''} outstanding early-stage companies.
+          Curated with editorial commentary.
+        </p>
+      </div>
     </div>
   </section>
-
-  <ActivityStrip sites={recentActivity} />
 
   <section class="explore">
     <div class="container">
@@ -57,23 +60,30 @@ const hasFilters = !!(productType || fundingStage || region);
       />
 
       {sites.length > 0 ? (
-        <div class="card-grid">
-          {sites.map((site) => (
-            <SiteCard site={site} />
-          ))}
+        <>
+          {featured.length > 0 && !hasFilters && (
+            <div class="featured-grid">
+              {featured.slice(0, 3).map((site) => (
+                <SiteCard site={site} size="large" />
+              ))}
+            </div>
+          )}
+          <div class="card-grid">
+            {(hasFilters ? sites : rest.length > 0 ? rest : featured.slice(3)).map((site) => (
+              <SiteCard site={site} />
+            ))}
+          </div>
+        </>
+      ) : hasFilters ? (
+        <div class="empty-state">
+          <h2>No matches.</h2>
+          <p>Try adjusting your filters, or <a href="/">view all startups</a>.</p>
         </div>
       ) : (
         <div class="empty-state">
           <h2>Coming soon.</h2>
-          <p>We're curating the first batch of startups. Subscribe to get notified when we launch.</p>
+          <p>We're curating the first batch of startups. Subscribe to get notified.</p>
           <a href="/subscribe" class="cta-button">Get notified</a>
-        </div>
-      )}
-
-      {hasFilters && sites.length === 0 && (
-        <div class="empty-state">
-          <h2>No matches.</h2>
-          <p>Try adjusting your filters, or <a href="/">view all startups</a>.</p>
         </div>
       )}
     </div>
@@ -82,46 +92,39 @@ const hasFilters = !!(productType || fundingStage || region);
 
 <style>
   .hero {
-    padding: var(--space-16) 0 var(--space-12);
-    text-align: left;
+    padding: var(--space-8) 0;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
   }
 
   .hero h1 {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    max-width: 700px;
-    margin-bottom: var(--space-4);
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: var(--space-2);
   }
 
   .hero-sub {
     color: var(--color-text-secondary);
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     max-width: 500px;
+    margin: 0 auto;
     line-height: 1.5;
   }
 
-  .hero-count {
-    display: block;
-    margin-top: var(--space-2);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    font-weight: 500;
+  .explore {
+    padding: var(--space-8) 0 var(--space-16);
   }
 
-  .explore {
-    padding-bottom: var(--space-16);
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
   }
 
   .card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
-  }
-
-  @media (max-width: 900px) {
-    .card-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
   }
 
   .empty-state {
@@ -156,17 +159,26 @@ const hasFilters = !!(productType || fundingStage || region);
     text-decoration: none;
   }
 
+  @media (max-width: 900px) {
+    .featured-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
   @media (max-width: 640px) {
     .hero {
-      padding: var(--space-12) 0 var(--space-8);
+      padding: var(--space-6) 0;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
     }
 
     .card-grid {
       grid-template-columns: 1fr;
-    }
-
-    .hero h1 {
-      font-size: 1.75rem;
     }
   }
 </style>

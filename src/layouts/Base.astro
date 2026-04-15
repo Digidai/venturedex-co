@@ -33,13 +33,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
       <div class="container header-inner">
         <a href="/" class="logo">VentureDex</a>
         <nav aria-label="Main navigation">
-          <ul class="nav-links">
-            <li><a href="/">Explore</a></li>
-            <li><a href="/collections">Collections</a></li>
-            <li><a href="/weekly">Weekly</a></li>
-            <li><a href="/subscribe">Subscribe</a></li>
-          </ul>
+          <div class="nav-tabs">
+            <a href="/" class="nav-tab">Explore</a>
+            <a href="/collections" class="nav-tab">Collections</a>
+            <a href="/weekly" class="nav-tab">Weekly</a>
+          </div>
         </nav>
+        <a href="/subscribe" class="header-cta">Subscribe</a>
       </div>
     </header>
 
@@ -79,22 +79,47 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
         text-decoration: none;
       }
 
-      .nav-links {
+      .nav-tabs {
         display: flex;
-        gap: var(--space-6);
-        list-style: none;
+        gap: 0;
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        overflow: hidden;
       }
 
-      .nav-links a {
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
+      .nav-tab {
+        padding: var(--space-2) var(--space-4);
+        font-size: 0.8rem;
         font-weight: 500;
+        color: var(--color-text-secondary);
         text-decoration: none;
-        transition: color 0.15s;
+        transition: background 0.15s, color 0.15s;
+        border-right: 1px solid var(--color-border);
       }
 
-      .nav-links a:hover {
+      .nav-tab:last-child {
+        border-right: none;
+      }
+
+      .nav-tab:hover {
+        background: var(--color-badge-bg);
         color: var(--color-text);
+        text-decoration: none;
+      }
+
+      .header-cta {
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: var(--space-2) var(--space-4);
+        background: var(--color-text);
+        color: var(--color-bg);
+        border-radius: 6px;
+        text-decoration: none;
+        transition: opacity 0.15s;
+      }
+
+      .header-cta:hover {
+        opacity: 0.85;
         text-decoration: none;
       }
 
@@ -138,14 +163,20 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
           gap: var(--space-3);
         }
 
-        .nav-links {
-          gap: var(--space-4);
+        .nav-tabs {
+          order: 3;
           width: 100%;
-          justify-content: flex-start;
+          justify-content: center;
         }
 
-        .nav-links a {
-          font-size: 0.8rem;
+        .nav-tab {
+          flex: 1;
+          text-align: center;
+          font-size: 0.75rem;
+        }
+
+        .header-cta {
+          font-size: 0.75rem;
         }
       }
     </style>
