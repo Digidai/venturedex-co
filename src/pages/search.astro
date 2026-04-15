@@ -29,7 +29,6 @@ if (query.trim()) {
         value={query}
         placeholder="Search startups by name, domain, or tag..."
         class="search-input"
-        autofocus
       />
     </form>
 
@@ -48,7 +47,18 @@ if (query.trim()) {
         <h2>No results for "{query}"</h2>
         <p>This startup might not be in our directory yet.</p>
       </div>
-    ) : null}
+    ) : (
+      <div class="search-hints">
+        <p>Try searching for:</p>
+        <div class="hint-tags">
+          <a href="/search?q=ai" class="hint-tag">AI</a>
+          <a href="/search?q=devtools" class="hint-tag">DevTools</a>
+          <a href="/search?q=linear" class="hint-tag">Linear</a>
+          <a href="/search?q=cursor" class="hint-tag">Cursor</a>
+          <a href="/search?q=supabase" class="hint-tag">Supabase</a>
+        </div>
+      </div>
+    )}
   </div>
 </Base>
 
@@ -115,5 +125,39 @@ if (query.trim()) {
 
   .empty-state p {
     color: var(--color-text-secondary);
+  }
+
+  .search-hints {
+    padding: var(--space-4) 0;
+  }
+
+  .search-hints p {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-3);
+  }
+
+  .hint-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .hint-tag {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .hint-tag:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
   }
 </style>
