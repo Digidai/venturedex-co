@@ -25,6 +25,7 @@ try {
           <a href={`/collections/${c.slug}`} class="collection-card">
             <h2>{c.title}</h2>
             {c.description && <p>{c.description}</p>}
+            <span class="collection-count">{c.site_count} startup{c.site_count !== 1 ? 's' : ''}</span>
           </a>
         ))}
       </div>
@@ -83,6 +84,14 @@ try {
     font-size: 0.85rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
+  }
+
+  .collection-count {
+    display: block;
+    margin-top: var(--space-3);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
   }
 
   .empty-state {

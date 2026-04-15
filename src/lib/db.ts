@@ -133,10 +133,17 @@ export async function getWeeklyIssueByNumber(
 
 export async function getPublishedCollections(
   db: D1Database
-): Promise<Collection[]> {
+): Promise<(Collection & { site_count: number })[]> {
   const result = await db
-    .prepare("SELECT * FROM collections WHERE published = 1 ORDER BY title")
-    .all<Collection>();
+    .prepare(
+      `SELECT c.*, COUNT(cs.site_id) as site_count
+       FROM collections c
+       LEFT JOIN collection_sites cs ON c.id = cs.collection_id
+       WHERE c.published = 1
+       GROUP BY c.id
+       ORDER BY c.title`
+    )
+    .all<Collection & { site_count: number }>();
 
   return result.results;
 }
