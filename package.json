@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && echo '_worker.js\n_routes.json' > dist/.assetsignore",
     "preview": "astro preview",
     "astro": "astro",
     "db:migrate": "wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
