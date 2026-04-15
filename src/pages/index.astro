@@ -62,11 +62,15 @@ const rest = sites.filter((s) => !s.is_featured);
       {sites.length > 0 ? (
         <>
           {featured.length > 0 && !hasFilters && (
-            <div class="featured-grid">
-              {featured.slice(0, 3).map((site) => (
-                <SiteCard site={site} size="large" />
-              ))}
-            </div>
+            <>
+              <div class="section-label">Featured</div>
+              <div class="featured-grid">
+                {featured.slice(0, 3).map((site) => (
+                  <SiteCard site={site} size="large" />
+                ))}
+              </div>
+              {rest.length > 0 && <div class="section-label">All startups</div>}
+            </>
           )}
           <div class="card-grid">
             {(hasFilters ? sites : rest.length > 0 ? rest : featured.slice(3)).map((site) => (
@@ -112,6 +116,15 @@ const rest = sites.filter((s) => !s.is_featured);
 
   .explore {
     padding: var(--space-8) 0 var(--space-16);
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
   }
 
   .featured-grid {

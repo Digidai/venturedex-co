@@ -39,7 +39,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
             <a href="/weekly" class="nav-tab">Weekly</a>
           </div>
         </nav>
-        <a href="/subscribe" class="header-cta">Subscribe</a>
+        <div class="header-actions">
+          <a href="/search" class="header-search" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </a>
+          <a href="/subscribe" class="header-cta">Subscribe</a>
+        </div>
       </div>
     </header>
 
@@ -105,6 +110,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
         background: var(--color-badge-bg);
         color: var(--color-text);
         text-decoration: none;
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .header-search {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        color: var(--color-text-secondary);
+        transition: color 0.15s, background 0.15s;
+      }
+
+      .header-search:hover {
+        color: var(--color-text);
+        background: var(--color-badge-bg);
       }
 
       .header-cta {
