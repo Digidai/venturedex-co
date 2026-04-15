@@ -106,8 +106,14 @@ const { issue, sites } = data;
 
   .picks-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--space-6);
+  }
+
+  @media (max-width: 640px) {
+    .picks-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   .anti-pick {

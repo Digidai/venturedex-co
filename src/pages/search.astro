@@ -77,12 +77,18 @@ if (query.trim()) {
     font-size: 1rem;
     background: var(--color-bg-card);
     color: var(--color-text);
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .search-input:focus {
     outline: 2px solid var(--color-accent);
     outline-offset: -1px;
     border-color: transparent;
+  }
+
+  .search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
   }
 
   .result-count {
