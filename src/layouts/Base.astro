@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
 interface Props {
   title: string;
@@ -26,6 +27,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
+    <script is:inline>
+      (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
+    </script>
   </head>
   <body>
     <a href="#main" class="visually-hidden">Skip to main content</a>
@@ -43,6 +47,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
           <a href="/search" class="header-search" aria-label="Search">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
           </a>
+          <ThemeToggle />
           <a href="/subscribe" class="header-cta">Subscribe</a>
         </div>
       </div>

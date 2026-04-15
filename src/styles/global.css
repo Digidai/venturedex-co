@@ -29,7 +29,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-bg: #0A0A0A;
     --color-bg-card: #141414;
     --color-text: #FAFAF9;
@@ -38,6 +38,16 @@
     --color-badge-bg: #1C1C1C;
     --color-badge-text: #D4D4D4;
   }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #0A0A0A;
+  --color-bg-card: #141414;
+  --color-text: #FAFAF9;
+  --color-text-secondary: #A3A3A3;
+  --color-border: #262626;
+  --color-badge-bg: #1C1C1C;
+  --color-badge-text: #D4D4D4;
 }
 
 *,
