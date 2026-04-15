@@ -133,8 +133,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
       }
 
       @media (max-width: 640px) {
+        .header-inner {
+          flex-wrap: wrap;
+          gap: var(--space-3);
+        }
+
         .nav-links {
           gap: var(--space-4);
+          width: 100%;
+          justify-content: flex-start;
         }
 
         .nav-links a {

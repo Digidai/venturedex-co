@@ -114,8 +114,14 @@ const hasFilters = !!(productType || fundingStage || region);
 
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+  }
+
+  @media (max-width: 900px) {
+    .card-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   .empty-state {
@@ -157,6 +163,10 @@ const hasFilters = !!(productType || fundingStage || region);
 
     .card-grid {
       grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem;
     }
   }
 </style>
