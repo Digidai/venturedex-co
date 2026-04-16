@@ -2,7 +2,13 @@
 export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
+import BrandLogo from "../../components/BrandLogo.astro";
 import SiteCard from "../../components/SiteCard.astro";
+import {
+  getCompanyBrandAsset,
+  getInvestorBrandAsset,
+  resolveInvestorByName,
+} from "../../lib/brand-assets";
 import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
 import type { StartupLinks } from "../../lib/types";
 
@@ -14,6 +20,7 @@ if (!startup) return Astro.redirect("/404");
 
 const related = await getRelatedStartups(db, startup);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+const companyBrand = getCompanyBrandAsset(startup.slug);
 
 const investors = startup.investors
   ? startup.investors.split(",").map((s) => s.trim()).filter(Boolean)
@@ -22,6 +29,15 @@ const investors = startup.investors
 const tags = startup.tags
   ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
+
+const investorEntries = investors.map((name) => {
+  const investor = resolveInvestorByName(name);
+  return {
+    name,
+    slug: investor?.slug ?? null,
+    logo: investor ? getInvestorBrandAsset(investor.slug) : null,
+  };
+});
 
 let links: StartupLinks = {};
 try {
@@ -60,9 +76,12 @@ const externalLinks = [
 
     <header class="detail-header">
       <div class="header-top">
-        <div>
+        <div class="detail-title-wrap">
+          <BrandLogo asset={companyBrand} name={startup.product_name} size={36} class="detail-logo" />
+          <div>
           <h1>{startup.product_name}</h1>
           <p class="detail-domain">{startup.domain}</p>
+          </div>
         </div>
         <a
           href={startup.canonical_url ?? `https://${startup.domain}`}
@@ -166,8 +185,18 @@ const externalLinks = [
       <section class="investors-section" aria-label="Investors">
         <h2>Investors</h2>
         <div class="pill-list">
-          {investors.map((investor) => (
-            <span class="pill">{investor}</span>
+          {investorEntries.map((investor) => (
+            investor.slug ? (
+              <a href={`/investors/${investor.slug}`} class="pill pill-link">
+                <BrandLogo asset={investor.logo} name={investor.name} size={18} />
+                <span>{investor.name}</span>
+              </a>
+            ) : (
+              <span class="pill">
+                <BrandLogo asset={investor.logo} name={investor.name} size={18} />
+                <span>{investor.name}</span>
+              </span>
+            )
           ))}
         </div>
       </section>
@@ -196,7 +225,7 @@ const externalLinks = [
         <h2>Tags</h2>
         <div class="tag-list">
           {tags.map((tag) => (
-            <a href={`/?type=${encodeURIComponent(tag)}`} class="tag-badge">{tag}</a>
+            <a href={`/search?q=${encodeURIComponent(tag)}`} class="tag-badge">{tag}</a>
           ))}
         </div>
       </section>
@@ -257,6 +286,13 @@ const externalLinks = [
     align-items: flex-start;
     gap: var(--space-4);
     margin-bottom: var(--space-3);
+  }
+
+  .detail-title-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-4);
+    min-width: 0;
   }
 
   .detail-header h1 {
@@ -422,7 +458,9 @@ const externalLinks = [
   }
 
   .pill {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
     padding: var(--space-1) var(--space-3);
     border: 1px solid var(--color-border);
     border-radius: 99px;
@@ -430,6 +468,13 @@ const externalLinks = [
     font-weight: 500;
     color: var(--color-text);
     background: var(--color-bg-card);
+    text-decoration: none;
+  }
+
+  .pill-link:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
   }
 
   /* External links */
@@ -524,6 +569,10 @@ const externalLinks = [
   @media (max-width: 640px) {
     .header-top {
       flex-direction: column;
+    }
+
+    .detail-title-wrap {
+      align-items: center;
     }
 
     .detail-header h1 {

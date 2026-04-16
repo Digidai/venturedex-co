@@ -104,13 +104,10 @@ export type ProductType =
   | "Other";
 
 export type FundingStage =
-  | "Pre-seed"
   | "Seed"
   | "Series A"
   | "Series B"
-  | "Series C+"
-  | "Bootstrapped"
-  | "Unknown";
+  | "Series C";
 
 export const PRODUCT_TYPES: ProductType[] = [
   "AI / ML", "SaaS", "DevTools", "Fintech", "HealthTech",
@@ -119,6 +116,5 @@ export const PRODUCT_TYPES: ProductType[] = [
 ];
 
 export const FUNDING_STAGES: FundingStage[] = [
-  "Pre-seed", "Seed", "Series A", "Series B", "Series C+",
-  "Bootstrapped", "Unknown",
+  "Seed", "Series A", "Series B", "Series C",
 ];

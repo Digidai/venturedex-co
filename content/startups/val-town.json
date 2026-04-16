@@ -4,7 +4,7 @@
   "url": "https://val.town",
   "product_name": "Val Town",
   "summary": "Social website and API for writing and running code.",
-  "editor_note": "Val Town is the most interesting thing happening in developer tools right now. A social network where the content is running code. Every val is a URL. Every function is deployable. It feels like what GitHub Gists should have become.",
+  "editor_note": "Putting running code inside a social feed sounds gimmicky until you try it. Every val is a URL, every function is deployable, and the product turns tiny scripts into shareable building blocks. That is a real bet against repo-first developer tooling. It feels closer to what Gists wanted to be than another serverless dashboard.",
   "editor_rating": 4,
   "why_featured": "Code as social media",
   "product_type": "DevTools",

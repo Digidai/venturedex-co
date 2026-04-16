@@ -26,6 +26,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
     <meta property="og:url" content={canonicalURL} />
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
@@ -41,7 +42,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
             <a href="/" class="nav-tab">Explore</a>
             <a href="/collections" class="nav-tab">Collections</a>
             <a href="/weekly" class="nav-tab">Weekly</a>
-            <a href="/funding" class="nav-tab">Funding</a>
+            <a href="/news" class="nav-tab">News</a>
           </div>
         </nav>
         <div class="header-actions">

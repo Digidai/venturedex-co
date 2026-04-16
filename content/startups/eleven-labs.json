@@ -4,7 +4,7 @@
   "url": "https://elevenlabs.io",
   "product_name": "ElevenLabs",
   "summary": "AI voice generation and speech synthesis platform.",
-  "editor_note": "ElevenLabs makes voice cloning feel like magic. Upload 30 seconds of audio, get a voice that sounds real. The ethical implications are enormous and they know it. What is interesting is the business: audiobooks, dubbing, accessibility tools. Not a toy. A platform.",
+  "editor_note": "The surprising thing is not that voice cloning works. It is that 30 seconds of audio can already get you something commercially usable. ElevenLabs is betting this becomes infrastructure for dubbing, audiobooks, and accessibility, not just a viral demo. That is a narrower and more durable business than AI voice as spectacle.",
   "editor_rating": 4,
   "why_featured": "Voice AI that actually sounds human",
   "product_type": "AI / ML",

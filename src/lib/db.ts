@@ -223,6 +223,32 @@ export async function getFundingRounds(
   return result.results;
 }
 
+export const NEWS_ROUNDS_LIMIT = 100;
+
+export async function getNewsFundingRounds(
+  db: D1Database,
+  limit = NEWS_ROUNDS_LIMIT
+): Promise<FundingRound[]> {
+  const result = await db
+    .prepare(
+      `SELECT f.*
+       FROM funding_rounds f
+       INNER JOIN startups s ON s.slug = f.company_slug
+       WHERE s.workflow_status = 'published'
+         AND f.company_slug IS NOT NULL
+         AND f.source_url IS NOT NULL
+         AND TRIM(f.source_url) != ''
+         AND f.source_name IS NOT NULL
+         AND TRIM(f.source_name) != ''
+       ORDER BY f.date DESC, f.created_at DESC
+       LIMIT ?`
+    )
+    .bind(limit)
+    .all<FundingRound>();
+
+  return result.results;
+}
+
 export async function getInvestors(db: D1Database): Promise<Investor[]> {
   const result = await db
     .prepare("SELECT * FROM investors ORDER BY name")
@@ -233,7 +259,7 @@ export async function getInvestors(db: D1Database): Promise<Investor[]> {
 export async function getInvestorBySlug(
   db: D1Database,
   slug: string
-): Promise<{ investor: Investor; rounds: (FundingRound & { screenshot_r2_key: string | null })[] } | null> {
+): Promise<{ investor: Investor; rounds: FundingRound[] } | null> {
   const investor = await db
     .prepare("SELECT * FROM investors WHERE slug = ?")
     .bind(slug)
@@ -247,15 +273,22 @@ export async function getInvestorBySlug(
 
   const rounds = await db
     .prepare(
-      `SELECT f.*, s.screenshot_r2_key
+      `SELECT f.*
        FROM funding_rounds f
-       LEFT JOIN startups s ON f.company_slug = s.slug
-       WHERE LOWER(f.lead_investor) LIKE LOWER(?)
+       INNER JOIN startups s ON f.company_slug = s.slug
+       WHERE (
+             LOWER(f.lead_investor) LIKE LOWER(?)
           OR LOWER(f.lead_investor) LIKE LOWER(?)
+       )
+         AND s.workflow_status = 'published'
+         AND f.source_url IS NOT NULL
+         AND TRIM(f.source_url) != ''
+         AND f.source_name IS NOT NULL
+         AND TRIM(f.source_name) != ''
        ORDER BY f.date DESC`
     )
     .bind(namePattern, shortPattern)
-    .all<FundingRound & { screenshot_r2_key: string | null }>();
+    .all<FundingRound>();
 
   return { investor, rounds: rounds.results };
 }

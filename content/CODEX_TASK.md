@@ -198,7 +198,22 @@ N6: 去掉产品名，这段话本身值得读吗？
 
 总分 < 2 不收录。
 
-**4.4 截图**
+**4.4 品牌素材**
+
+在截图前，先补齐品牌素材：
+
+- 公司 Logo: `public/logos/companies/{slug}.{png|svg|ico|jpg}`
+- 投资机构 Logo: `public/logos/investors/{slug}.{png|svg|ico|jpg}`
+- 素材清单: `content/brand-assets.json`
+
+要求：
+
+- 只能使用**官网直接暴露**的 icon / apple-touch-icon / 官方 header SVG / 官方静态资源
+- `content/brand-assets.json` 必须记录 `source_page` 和 `source_url`
+- 不允许使用 Google favicon、第三方 logo API、聚合站图标
+- 已有公司和已有投资机构也要补齐，不能只补新增条目
+
+**4.5 截图**
 
 ```bash
 ./scripts/screenshot.sh {slug} {url}
@@ -214,7 +229,7 @@ N6: 去掉产品名，这段话本身值得读吗？
 # 如果报错，修复后重试
 
 # 提交（每个项目单独 commit）
-git add content/startups/{slug}.json public/screenshots/{slug}.webp content/rejected.jsonl
+git add content/startups/{slug}.json content/brand-assets.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
 git commit -m "content: add {Product Name}
 
 Funding: {amount} {stage} from {lead} ({source_name})
@@ -254,9 +269,10 @@ git push
 3. 不收录自己没试用过的产品
 4. 不用禁用词列表里的任何词
 5. 每次最多收录 5 个
-6. 不修改 src/、scripts/、d1/、.github/ 下的文件
+6. 只允许内容资产范围内的修改：`content/`、`content/brand-assets.json`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
 8. 已在 rejected.jsonl 中的不再评估（除非有新融资轮次）
+9. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
 
 ## 文件操作范围
 

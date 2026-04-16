@@ -4,7 +4,7 @@
   "url": "https://supabase.com",
   "product_name": "Supabase",
   "summary": "The open source Firebase alternative.",
-  "editor_note": "Supabase proved that Postgres is the answer to most backend questions. Auth, storage, realtime, edge functions... all built on Postgres. The developer experience is what makes it special: instant APIs, a dashboard that does not suck, and documentation that reads like a tutorial.",
+  "editor_note": "The clever part is not calling itself an open-source Firebase alternative. The clever part is turning Postgres into the center of an entire developer stack: auth, storage, realtime, and edge functions. Where most backend platforms hide the database behind abstractions, Supabase leans into it. That makes the product more opinionated and easier to reason about than a generic backend cloud.",
   "editor_rating": 4,
   "why_featured": "Postgres as a platform",
   "product_type": "DevTools",

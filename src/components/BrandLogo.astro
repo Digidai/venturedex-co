@@ -1,0 +1,90 @@
+---
+import {
+  getBrandInitials,
+  type BrandAsset,
+} from "../lib/brand-assets";
+
+interface Props {
+  asset?: BrandAsset | null;
+  name: string;
+  size?: number;
+  class?: string;
+  loading?: "eager" | "lazy";
+}
+
+const {
+  asset = null,
+  name,
+  size = 20,
+  class: className = "",
+  loading = "lazy",
+} = Astro.props;
+
+const shape = asset?.shape ?? "icon";
+const initials = getBrandInitials(name);
+const style = `--brand-size:${size}px;`;
+---
+
+{asset ? (
+  <img
+    src={asset.local_path}
+    alt=""
+    aria-hidden="true"
+    loading={loading}
+    decoding="async"
+    class:list={["brand-logo", `brand-logo--${shape}`, className]}
+    style={style}
+  />
+) : (
+  <span
+    class:list={["brand-fallback", `brand-fallback--${shape}`, className]}
+    style={style}
+    aria-hidden="true"
+  >
+    {initials}
+  </span>
+)}
+
+<style>
+  .brand-logo,
+  .brand-fallback {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brand-logo {
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .brand-logo--icon,
+  .brand-fallback--icon {
+    width: var(--brand-size);
+    height: var(--brand-size);
+    border-radius: 6px;
+  }
+
+  .brand-logo--wordmark {
+    height: calc(var(--brand-size) * 0.9);
+    width: auto;
+    max-width: calc(var(--brand-size) * 5.2);
+  }
+
+  .brand-fallback {
+    border: 1px solid var(--color-border);
+    background: var(--color-badge-bg);
+    color: var(--color-text-secondary);
+    font-size: calc(var(--brand-size) * 0.48);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .brand-fallback--wordmark {
+    min-width: calc(var(--brand-size) * 2.6);
+    height: calc(var(--brand-size) * 0.9);
+    border-radius: 6px;
+    padding: 0 calc(var(--brand-size) * 0.32);
+  }
+</style>

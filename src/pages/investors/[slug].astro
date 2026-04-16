@@ -2,6 +2,11 @@
 export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
+import BrandLogo from "../../components/BrandLogo.astro";
+import {
+  getCompanyBrandAsset,
+  getInvestorBrandAsset,
+} from "../../lib/brand-assets";
 import { getInvestorBySlug } from "../../lib/db";
 
 const { slug } = Astro.params;
@@ -11,22 +16,16 @@ const data = await getInvestorBySlug(db, slug!);
 if (!data) return Astro.redirect("/404");
 
 const { investor, rounds } = data;
-const faviconUrl = investor.website
-  ? `https://www.google.com/s2/favicons?domain=${new URL(investor.website).hostname}&sz=64`
-  : "";
+const investorBrand = getInvestorBrandAsset(investor.slug);
 ---
 
 <Base title={investor.name} description={investor.description ?? `${investor.name} portfolio on VentureDex`}>
   <div class="container investor-page">
-    <a href="/funding" class="back-link">&larr; Back to funding</a>
+    <a href="/news" class="back-link">&larr; Back to news</a>
 
     <header class="investor-header">
       <div class="investor-identity">
-        {faviconUrl ? (
-          <img src={faviconUrl} alt="" class="investor-logo" width="48" height="48" />
-        ) : (
-          <span class="investor-initial">{(investor.short_name || investor.name).slice(0, 2)}</span>
-        )}
+        <BrandLogo asset={investorBrand} name={investor.name} size={40} class="investor-logo" />
         <div>
           <h1>{investor.name}</h1>
           {investor.website && (
@@ -54,40 +53,37 @@ const faviconUrl = investor.website
               </tr>
             </thead>
             <tbody>
-              {rounds.map((r) => (
-                <tr>
-                  <td class="cell-company">
-                    <div class="company-info">
-                      {r.screenshot_r2_key ? (
-                        <img src={`/screenshots/${r.screenshot_r2_key}`} alt="" class="company-thumb" loading="lazy" />
-                      ) : (
-                        <span class="company-initial">{r.company_name.charAt(0)}</span>
-                      )}
-                      <div>
-                        {r.company_slug ? (
-                          <a href={`/startups/${r.company_slug}`} class="company-link">{r.company_name}</a>
-                        ) : (
-                          <span>{r.company_name}</span>
-                        )}
+              {rounds.map((r) => {
+                const companyBrand = getCompanyBrandAsset(r.company_slug);
+                return (
+                  <tr>
+                    <td class="cell-company">
+                      <div class="company-info">
+                        <BrandLogo asset={companyBrand} name={r.company_name} size={24} class="company-logo" />
+                        <div>
+                          {r.company_slug ? (
+                            <a href={`/startups/${r.company_slug}`} class="company-link">{r.company_name}</a>
+                          ) : (
+                            <span>{r.company_name}</span>
+                          )}
+                        </div>
                       </div>
-                    </div>
-                  </td>
-                  <td class="cell-round">
-                    {r.amount && <span class="round-amount">{r.amount}</span>}
-                    <span class="round-stage">· {r.stage}</span>
-                  </td>
-                  <td class="cell-date">
-                    {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                  </td>
-                  <td class="cell-source">
-                    {r.source_url && (
-                      <a href={r.source_url} target="_blank" rel="noopener noreferrer" class="source-link">
-                        {r.source_name || "Source"} ↗
+                    </td>
+                    <td class="cell-round">
+                      {r.amount && <span class="round-amount">{r.amount}</span>}
+                      <span class="round-stage">· {r.stage}</span>
+                    </td>
+                    <td class="cell-date">
+                      {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                    </td>
+                    <td class="cell-source">
+                      <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
+                        {r.source_name || "Press"} ↗
                       </a>
-                    )}
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
@@ -129,27 +125,6 @@ const faviconUrl = investor.website
     align-items: center;
     gap: var(--space-4);
     margin-bottom: var(--space-3);
-  }
-
-  .investor-logo {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-  }
-
-  .investor-initial {
-    width: 48px;
-    height: 48px;
-    border-radius: 8px;
-    background: var(--color-badge-bg);
-    border: 1px solid var(--color-border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--color-text-secondary);
   }
 
   .investor-header h1 {
@@ -227,27 +202,6 @@ const faviconUrl = investor.website
     display: flex;
     align-items: center;
     gap: var(--space-3);
-  }
-
-  .company-thumb {
-    width: 32px;
-    height: 20px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 3px;
-    border: 1px solid var(--color-border);
-  }
-
-  .company-initial {
-    width: 32px;
-    height: 20px;
-    border-radius: 3px;
-    background: var(--color-badge-bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.6rem;
-    color: var(--color-text-secondary);
   }
 
   .company-link {

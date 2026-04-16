@@ -1,0 +1,141 @@
+{
+  "verified_at": "2026-04-16",
+  "companies": {
+    "cal-com": {
+      "name": "Cal.com",
+      "shape": "icon",
+      "local_path": "/logos/companies/cal-com.png",
+      "source_page": "https://cal.com",
+      "source_url": "https://framerusercontent.com/images/63tSo3fa0ylcjt88Er8WTEPS6Dw.png"
+    },
+    "cursor": {
+      "name": "Cursor",
+      "shape": "icon",
+      "local_path": "/logos/companies/cursor.png",
+      "source_page": "https://cursor.com",
+      "source_url": "https://cursor.com/marketing-static/icon-192x192.png"
+    },
+    "eleven-labs": {
+      "name": "ElevenLabs",
+      "shape": "icon",
+      "local_path": "/logos/companies/eleven-labs.svg",
+      "source_page": "https://elevenlabs.io",
+      "source_url": "https://elevenlabs.io/icon.svg?c23f5371fdd26632"
+    },
+    "linear": {
+      "name": "Linear",
+      "shape": "icon",
+      "local_path": "/logos/companies/linear.svg",
+      "source_page": "https://linear.app",
+      "source_url": "https://linear.app/static/favicon.svg"
+    },
+    "perplexity": {
+      "name": "Perplexity",
+      "shape": "icon",
+      "local_path": "/logos/companies/perplexity.svg",
+      "source_page": "https://www.perplexity.ai",
+      "source_url": "https://www.perplexity.ai/favicon.svg"
+    },
+    "resend": {
+      "name": "Resend",
+      "shape": "icon",
+      "local_path": "/logos/companies/resend.png",
+      "source_page": "https://resend.com",
+      "source_url": "https://resend.com/static/favicons/favicon-marketing@180x180.png?v=1"
+    },
+    "supabase": {
+      "name": "Supabase",
+      "shape": "icon",
+      "local_path": "/logos/companies/supabase.png",
+      "source_page": "https://supabase.com",
+      "source_url": "https://supabase.com/favicon/favicon-180x180.png"
+    },
+    "val-town": {
+      "name": "Val Town",
+      "shape": "icon",
+      "local_path": "/logos/companies/val-town.svg",
+      "source_page": "https://www.val.town",
+      "source_url": "https://www.val.town/favicon.svg?dot=false"
+    }
+  },
+  "investors": {
+    "a16z": {
+      "name": "Andreessen Horowitz",
+      "shape": "icon",
+      "local_path": "/logos/investors/a16z.png",
+      "source_page": "https://a16z.com",
+      "source_url": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2025/06/Favicon-%E2%80%94-180x180px.png"
+    },
+    "sequoia": {
+      "name": "Sequoia Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/sequoia.png",
+      "source_page": "https://www.sequoiacap.com",
+      "source_url": "https://sequoiacap.com/wp-content/uploads/sites/6/2021/11/cropped-cropped-android-chrome-512x512-1.png?w=180"
+    },
+    "yc": {
+      "name": "Y Combinator",
+      "shape": "icon",
+      "local_path": "/logos/investors/yc.ico",
+      "source_page": "https://www.ycombinator.com",
+      "source_url": "https://bookface-static.ycombinator.com/assets/ycdc/favicon-c8a914eeeba9fe6f7a863b35608b55aeedd7c1ff409c97b9ecb96b7a6c278d70.ico"
+    },
+    "accel": {
+      "name": "Accel",
+      "shape": "icon",
+      "local_path": "/logos/investors/accel.png",
+      "source_page": "https://www.accel.com",
+      "source_url": "https://cdn.prod.website-files.com/6643a08d305ab77f8c7566b6/67095848704c3bf1f0f4ee81_favicon.png"
+    },
+    "ivp": {
+      "name": "IVP",
+      "shape": "icon",
+      "local_path": "/logos/investors/ivp.png",
+      "source_page": "https://www.ivp.com",
+      "source_url": "https://www.ivp.com/favicons/apple-touch-icon.png"
+    },
+    "spark": {
+      "name": "Spark Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/spark.png",
+      "source_page": "https://www.sparkcapital.com",
+      "source_url": "https://cdn.prod.website-files.com/5f6113b98d41b1cec6bbba44/5f6113b98d41b15bf6bbbb2f_favicon_opt.png"
+    },
+    "felicis": {
+      "name": "Felicis Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/felicis.png",
+      "source_page": "https://www.felicis.com",
+      "source_url": "https://www.felicis.com/favicon.png"
+    },
+    "lightspeed": {
+      "name": "Lightspeed Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/lightspeed.svg",
+      "source_page": "https://lsvp.com",
+      "source_url": "https://lsvp.com",
+      "note": "Extracted from the official inline header SVG in a browser session because direct asset fetches are challenge-gated."
+    },
+    "general-catalyst": {
+      "name": "General Catalyst",
+      "shape": "icon",
+      "local_path": "/logos/investors/general-catalyst.jpg",
+      "source_page": "https://www.generalcatalyst.com",
+      "source_url": "https://cdn.prod.website-files.com/66636e6bdd12f4f3d0617065/670e8ce0a1879d0ded466b88_General%20Catalyst%20Favicon%20256x256.jpg"
+    },
+    "776": {
+      "name": "Seven Seven Six",
+      "shape": "icon",
+      "local_path": "/logos/investors/776.svg",
+      "source_page": "https://sevensevensix.com",
+      "source_url": "https://sevensevensix.com/logo.svg"
+    },
+    "thrive": {
+      "name": "Thrive Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/thrive.png",
+      "source_page": "https://www.thrivecap.com",
+      "source_url": "https://framerusercontent.com/images/TGqjrXnShLAzStgfXNW5NQKF0xI.png"
+    }
+  }
+}

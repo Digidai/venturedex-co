@@ -1,4 +1,6 @@
 ---
+import BrandLogo from "./BrandLogo.astro";
+import { getCompanyBrandAsset } from "../lib/brand-assets";
 import type { Startup } from "../lib/types";
 
 interface Props {
@@ -8,6 +10,7 @@ interface Props {
 
 const { startup, size = "default" } = Astro.props;
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+const companyBrand = getCompanyBrandAsset(startup.slug);
 
 const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .filter(Boolean)
@@ -27,8 +30,11 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
     </div>
     <div class="card-body">
       <div class="card-header">
-        <h3 class="card-name">{startup.product_name}</h3>
-        <span class="card-domain">{startup.domain}</span>
+        <BrandLogo asset={companyBrand} name={startup.product_name} size={20} class="card-logo" />
+        <div class="card-title-group">
+          <h3 class="card-name">{startup.product_name}</h3>
+          <span class="card-domain">{startup.domain}</span>
+        </div>
       </div>
       {startup.summary && <p class="card-summary">{startup.summary}</p>}
       <div class="card-footer">
@@ -104,26 +110,32 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
 
   .card-header {
     display: flex;
-    align-items: baseline;
-    gap: var(--space-2);
-    margin-bottom: var(--space-1);
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-2);
+    min-width: 0;
+  }
+
+  .card-title-group {
+    min-width: 0;
   }
 
   .card-name {
     font-family: var(--font-heading);
     font-size: 0.95rem;
     font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.2;
+    margin-bottom: 2px;
   }
 
   .card-domain {
     font-family: var(--font-mono);
     font-size: 0.7rem;
     color: var(--color-text-secondary);
+    display: block;
     white-space: nowrap;
-    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card-summary {

@@ -5,7 +5,12 @@ import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
-import { getPublishedStartups, getStartupCount } from "../lib/db";
+import {
+  NEWS_ROUNDS_LIMIT,
+  getNewsFundingRounds,
+  getPublishedStartups,
+  getStartupCount,
+} from "../lib/db";
 import type { SortOption } from "../lib/db";
 
 const db = Astro.locals.runtime.env.DB;
@@ -17,14 +22,14 @@ const sortRaw = Astro.url.searchParams.get("sort") ?? "featured";
 const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "featured") as SortOption;
 
 let startups: import("../lib/types").Startup[] = [];
-let allStartups: import("../lib/types").Startup[] = [];
+let rounds: import("../lib/types").FundingRound[] = [];
 let startupCount = 0;
 
 try {
-  [startups, startupCount, allStartups] = await Promise.all([
+  [startups, startupCount, rounds] = await Promise.all([
     getPublishedStartups(db, { productType, fundingStage, region, sort, limit: 50 }),
     getStartupCount(db),
-    getPublishedStartups(db, { limit: 50 }),
+    getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
   ]);
 } catch {
   // D1 unavailable
@@ -36,7 +41,7 @@ const rest = startups.filter((s) => !s.is_featured);
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
-  <FundingTicker startups={allStartups} />
+  <FundingTicker rounds={rounds} />
 
   <section class="hero">
     <div class="container hero-inner">

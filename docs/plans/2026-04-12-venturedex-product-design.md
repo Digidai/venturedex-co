@@ -1626,6 +1626,41 @@ Accepted
 - 全部用 Cloudflare Cron 直接抓取：灵活性不足，复杂研究链路较弱
 - 外部第三方自动化平台：约束更大，成本更高
 
+## ADR-004：Phase 1 内容运营允许本地 Codex 自动 commit/push 到 main
+
+### Status
+
+Accepted
+
+### Context
+
+用户随后明确要求：内容自动更新应通过本地 Codex automation 完成，并在本地验证通过后自动 commit / push，让站点持续更新。现有 ADR-003 中“Codex 不直接执行 publish / unpublish / archive”过于宽泛，会与当前 Phase 1 内容运营模式冲突。
+
+### Decision
+
+在 Phase 1 的 VentureDex 内容运营中，本地 Codex automation 可以在严格本地门禁通过后，直接把内容源文件 commit 并 push 到 `main`。真正的部署执行仍由 GitHub Actions 和 Cloudflare 完成，因此：
+
+- Codex 负责内容发现、评估、写入、验证、commit、push
+- GitHub Actions 负责二次验证、D1 同步与部署
+- push to `main` 视为已批准的发布动作，只适用于这条受控的内容自动化链路
+
+这条决策收窄并覆盖 ADR-003 最后一条表述，只对当前内容发布自动化生效，不自动扩展到 unpublish、archive 或任意后台写操作。
+
+### Positive
+
+- 与当前用户要求和 automation 行为一致
+- 文档、自动化和部署链路保持一致
+- 把 publish 风险收敛到本地 gate + CI gate 的双层门禁
+
+### Negative
+
+- `main` 分支成为自动化直接写入面，需要更强的 review 和日志纪律
+- push 成功不等于部署成功，仍需要记录 CI 结果
+
+### Alternatives Considered
+
+- 保持 ADR-003 原样，把 automation 限制为只生成 publish request：不满足当前自动更新要求
+
 ---
 
 ## 17. 开放问题

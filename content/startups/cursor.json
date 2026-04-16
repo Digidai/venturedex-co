@@ -4,7 +4,7 @@
   "url": "https://cursor.com",
   "product_name": "Cursor",
   "summary": "The AI-first code editor.",
-  "editor_note": "Cursor bet that the future of coding is not copilot-inside-VSCode but a ground-up rethinking of the editor. They were right. Tab completion that reads your mind, inline diffs that make sense, and a cmd-K that actually works. The VSCode fork approach was the right call: familiar enough to switch, different enough to stay.",
+  "editor_note": "The right bet was not copilot-inside-VSCode, but an editor rebuilt around the model. Tab completion, inline diffs, and cmd-K feel native rather than bolted on. By forking VS Code instead of starting from scratch, Cursor kept the muscle memory and changed the center of gravity. That is why it feels sticky instead of merely novel.",
   "editor_rating": 5,
   "why_featured": "Changed how developers write code",
   "product_type": "AI / ML",

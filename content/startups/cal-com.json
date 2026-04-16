@@ -4,7 +4,7 @@
   "url": "https://cal.com",
   "product_name": "Cal.com",
   "summary": "Open source scheduling infrastructure.",
-  "editor_note": "The open-source Calendly. What makes Cal.com interesting is not that it is open source, but that they proved open-source scheduling can be a real business. The self-hosted option is a wedge. The hosted version is the product.",
+  "editor_note": "The interesting move was not cloning Calendly in public. It was treating scheduling as infrastructure: a self-hosted option, API hooks, and a hosted product for teams that do not want to run it themselves. That is a sharper bet than generic booking software. Cal.com is selling control, not just calendar pages.",
   "editor_rating": 4,
   "why_featured": "Open source done right",
   "product_type": "SaaS",

@@ -4,7 +4,7 @@
   "url": "https://resend.com",
   "product_name": "Resend",
   "summary": "Email API for developers. Beautiful, simple, reliable.",
-  "editor_note": "Resend took the most annoying part of building a product (transactional email) and made it pleasant. The DX is absurdly good. React Email as a companion project shows they understand that email is a design problem, not just an infrastructure one.",
+  "editor_note": "Transactional email used to feel like plumbing you tolerated, not a product you enjoyed. Resend changed that with a cleaner API surface and React Email as a companion project. That pairing reveals the bet: email delivery and email design should live in the same developer workflow. It feels closer to Stripe-grade DX than legacy SMTP tooling.",
   "editor_rating": 4,
   "why_featured": "DX that makes you jealous",
   "product_type": "DevTools",

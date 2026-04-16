@@ -1,22 +1,26 @@
 ---
-import type { Startup } from "../lib/types";
+import BrandLogo from "./BrandLogo.astro";
+import { getCompanyBrandAsset } from "../lib/brand-assets";
+import type { FundingRound } from "../lib/types";
 
 interface Props {
-  startups: Startup[];
+  rounds: FundingRound[];
 }
 
-const { startups } = Astro.props;
+const { rounds } = Astro.props;
 
-const items = startups
-  .filter((s) => s.funding_display || s.funding_stage)
-  .map((s) => ({
-    name: s.product_name,
-    slug: s.slug,
-    amount: s.funding_display,
-    stage: s.funding_stage,
-    date: s.published_at
-      ? new Date(s.published_at).toLocaleDateString("en-US", { month: "short", day: "numeric" })
-      : null,
+const items = rounds
+  .filter((round) => round.company_slug && (round.amount || round.stage))
+  .map((round) => ({
+    name: round.company_name,
+    slug: round.company_slug!,
+    logo: getCompanyBrandAsset(round.company_slug),
+    amount: round.amount,
+    stage: round.stage,
+    date: new Date(`${round.date}T00:00:00`).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    }),
   }));
 
 const doubled = [...items, ...items];
@@ -27,11 +31,11 @@ const doubled = [...items, ...items];
     <div class="ticker-track">
       {doubled.map((item) => (
         <a href={`/startups/${item.slug}`} class="ticker-item">
-          <span class="ticker-dot" />
+          <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
           <span class="ticker-name">{item.name}</span>
           {item.amount && <span class="ticker-amount">{item.amount}</span>}
           {item.stage && <span class="ticker-stage">{item.stage}</span>}
-          {item.date && <span class="ticker-date">{item.date}</span>}
+          <span class="ticker-date">{item.date}</span>
         </a>
       ))}
     </div>
@@ -78,12 +82,8 @@ const doubled = [...items, ...items];
     text-decoration: none;
   }
 
-  .ticker-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #22c55e;
-    flex-shrink: 0;
+  .ticker-logo {
+    opacity: 0.95;
   }
 
   .ticker-name {
@@ -95,18 +95,12 @@ const doubled = [...items, ...items];
     font-weight: 500;
   }
 
-  .ticker-stage {
+  .ticker-stage,
+  .ticker-date {
     color: var(--color-text-secondary);
   }
 
   .ticker-date {
-    color: var(--color-text-secondary);
     font-size: 0.7rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .ticker-dot {
-      background: #4ade80;
-    }
   }
 </style>
