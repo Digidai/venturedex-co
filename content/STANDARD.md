@@ -220,7 +220,64 @@ CHECK 6: 包含至少一个比较或对比（"比...更"、"不像...而是"、"
 
 ---
 
-## 六、数据准确性规则
+## 六、融资数据标准（Funding）
+
+### 铁律：没有来源 = 不存在
+
+每条融资数据 **必须** 有一个可访问的新闻来源 URL。没有来源的条目不允许进入系统。验证器 (`scripts/validate-funding.sh`) 会自动拦截。
+
+### 必填字段（全部必填，缺一不可）
+
+| 字段 | 规则 | 示例 |
+|------|------|------|
+| `company_name` | 公司全名 | "Pillar" |
+| `company_url` | 必须 HTTP 200 可达 | "https://pillar.fi" |
+| `amount` | 格式 `$NM` 或 `$NB` | "$20M" |
+| `stage` | 限定值: Pre-seed / Seed / Series A / B / C / Venture / Growth | "Seed" |
+| `lead_investor` | Lead investor 名称 | "a16z" |
+| `date` | 格式 YYYY-MM-DD | "2026-04-14" |
+| `source_url` | 新闻链接，必须 HTTP 200 可达 | "https://techcrunch.com/..." |
+| `source_name` | 来源媒体名 | "TechCrunch" |
+
+### 验证链（自动执行，7 步全通过才入库）
+
+```
+Step 1: JSON 格式合法
+Step 2: 全部 8 个必填字段都存在
+Step 3: 日期格式 YYYY-MM-DD
+Step 4: 金额格式 $NM/$NB
+Step 5: 阶段是合法值
+Step 6: source_url HTTP 200 可达
+Step 7: company_url HTTP 200 可达
+```
+
+任何一步失败 → BUILD BLOCKED → 不部署。
+
+### 可接受的来源
+
+- TechCrunch
+- The Information
+- Bloomberg
+- Reuters
+- 公司官方新闻稿/博客
+- Crunchbase News
+
+### 不可接受的来源
+
+- Twitter/X 帖子（不可靠）
+- 个人博客
+- 二手转载（不是原始来源）
+- 自己编造的 URL
+
+### 文件命名
+
+`content/funding/{YYYY-MM-DD}-{company-slug}.json`
+
+日期必须和 JSON 里的 `date` 字段一致。验证器会检查。
+
+---
+
+## 七、数据准确性规则
 
 ### 必须可验证的字段
 以下字段如果填写，必须有公开来源可查：
