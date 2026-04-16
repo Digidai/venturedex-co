@@ -109,6 +109,14 @@ INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VA
 INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VALUES ('c-002', 's-val-town', 1, 0);
 INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VALUES ('c-002', 's-vercel', 1, 0);
 
+-- Weekly issues
+INSERT OR REPLACE INTO weekly_issues (id, issue_number, title, editorial_intro, published_at, status) VALUES ('w-1', 1, 'The tools that changed how we build', 'For our first issue, we picked the tools that fundamentally changed developer workflows in the last three years. Not incremental improvements. Not features wrapped in startups. Products that made you think differently about how software gets built.', datetime('now'), 'published');
+INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('w-1', 's-cursor', 1);
+INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('w-1', 's-linear', 2);
+INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('w-1', 's-perplexity', 3);
+INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('w-1', 's-anthropic-claude', 4);
+INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('w-1', 's-resend', 5);
+
 -- Funding rounds
 INSERT OR REPLACE INTO funding_rounds (id, company_name, company_slug, company_url, amount, stage, lead_investor, date, source_url, source_name) VALUES ('f-eaabc517a7', 'Noon', '', 'https://noon.ai', '$44M', 'Seed', 'Chemistry', '2026-04-01', 'https://techcrunch.com/2026/04/01/noon', 'TechCrunch');
 INSERT OR REPLACE INTO funding_rounds (id, company_name, company_slug, company_url, amount, stage, lead_investor, date, source_url, source_name) VALUES ('f-4530b2da53', 'Yuzu', '', 'https://yuzu.dev', '$35M', 'Series A', 'General Catalyst', '2026-04-07', 'https://techcrunch.com/2026/04/07/yuzu', 'TechCrunch');

@@ -1,0 +1,6 @@
+{
+  "issue_number": 1,
+  "title": "The tools that changed how we build",
+  "editorial_intro": "For our first issue, we picked the tools that fundamentally changed developer workflows in the last three years. Not incremental improvements. Not features wrapped in startups. Products that made you think differently about how software gets built.",
+  "picks": ["cursor", "linear", "perplexity", "anthropic-claude", "resend"]
+}

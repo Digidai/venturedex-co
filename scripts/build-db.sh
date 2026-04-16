@@ -111,6 +111,28 @@ if featured:
 " >> "$OUTPUT"
 done
 
+# Build weekly issues from content/weekly/*.json
+WEEKLY_DIR="content/weekly"
+echo "" >> "$OUTPUT"
+echo "-- Weekly issues" >> "$OUTPUT"
+for f in "$WEEKLY_DIR"/*.json; do
+  [ -f "$f" ] || continue
+  python3 -c "
+import json
+with open('$f') as fh:
+    d = json.load(fh)
+num = d['issue_number']
+title = d['title'].replace(\"'\", \"''\")
+intro = (d.get('editorial_intro') or '').replace(\"'\", \"''\")
+picks = d.get('picks', [])
+wid = f'w-{num}'
+print(f\"INSERT OR REPLACE INTO weekly_issues (id, issue_number, title, editorial_intro, published_at, status) VALUES ('{wid}', {num}, '{title}', '{intro}', datetime('now'), 'published');\")
+for i, slug in enumerate(picks):
+    sid = f's-{slug}'
+    print(f\"INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('{wid}', '{sid}', {i+1});\")
+" >> "$OUTPUT"
+done
+
 # Build funding rounds from content/funding/*.json
 FUNDING_DIR="content/funding"
 echo "" >> "$OUTPUT"
