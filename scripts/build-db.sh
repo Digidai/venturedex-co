@@ -46,7 +46,7 @@ screenshot = f\"{slug}.webp\"
 print(f\"INSERT OR REPLACE INTO sites (id, slug, domain, canonical_url, product_name, summary, editor_note, editor_rating, why_featured, product_type, funding_stage, funding_display, founded_year, team_size, hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, screenshot_status, workflow_status, codex_stage, first_seen_at, published_at) VALUES ('s-{slug}', '{slug}', '{domain}', '{url}', '{name}', '{summary}', '{note}', {rating}, '{why}', '{ptype}', '{fstage}', '{fdisplay}', {fyear}, '{tsize}', '{hq}', '{region}', '{tags}', '{investors}', '{links.replace(chr(39), chr(39)+chr(39))}', {featured}, '{screenshot}', 'ready', 'published', 'manual', datetime('now'), datetime('now'));\")
 " >> "$OUTPUT"
 
-  ((count++))
+  count=$((count + 1))
 done
 
 # Build search index from the same data
