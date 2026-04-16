@@ -11,7 +11,7 @@ const db = Astro.locals.runtime.env.DB;
 const data = await getCollectionBySlug(db, slug!);
 if (!data) return Astro.redirect("/404");
 
-const { collection, sites } = data;
+const { collection, startups } = data;
 ---
 
 <Base title={collection.title} description={collection.description ?? `${collection.title} on VentureDex`}>
@@ -22,10 +22,10 @@ const { collection, sites } = data;
       {collection.description && <p class="description">{collection.description}</p>}
     </header>
 
-    {sites.length > 0 ? (
+    {startups.length > 0 ? (
       <div class="card-grid">
-        {sites.map((site) => (
-          <SiteCard site={site} />
+        {startups.map((startup) => (
+          <SiteCard startup={startup} />
         ))}
       </div>
     ) : (

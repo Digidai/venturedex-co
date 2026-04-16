@@ -1,39 +1,39 @@
 ---
-import type { Site } from "../lib/types";
+import type { Startup } from "../lib/types";
 
 interface Props {
-  site: Site;
+  startup: Startup;
   size?: "default" | "large";
 }
 
-const { site, size = "default" } = Astro.props;
-const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+const { startup, size = "default" } = Astro.props;
+const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 
-const metaLine = [site.product_type, site.funding_stage, site.region]
+const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .filter(Boolean)
   .join(" · ");
 ---
 
 <article class:list={["site-card", size === "large" && "site-card--large"]}>
-  <a href={`/sites/${site.slug}`} class="card-link">
+  <a href={`/startups/${startup.slug}`} class="card-link">
     <div class="card-screenshot">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${site.product_name} screenshot`} loading="lazy" />
+        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} loading="lazy" />
       ) : (
         <div class="card-placeholder">
-          <span>{site.product_name.charAt(0)}</span>
+          <span>{startup.product_name.charAt(0)}</span>
         </div>
       )}
     </div>
     <div class="card-body">
       <div class="card-header">
-        <h3 class="card-name">{site.product_name}</h3>
-        <span class="card-domain">{site.domain}</span>
+        <h3 class="card-name">{startup.product_name}</h3>
+        <span class="card-domain">{startup.domain}</span>
       </div>
-      {site.summary && <p class="card-summary">{site.summary}</p>}
+      {startup.summary && <p class="card-summary">{startup.summary}</p>}
       <div class="card-footer">
         {metaLine && <span class="card-meta-line">{metaLine}</span>}
-        {site.why_featured && <span class="card-featured-label">— {site.why_featured}</span>}
+        {startup.why_featured && <span class="card-featured-label">— {startup.why_featured}</span>}
       </div>
     </div>
   </a>

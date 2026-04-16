@@ -1,11 +1,11 @@
 ---
-import type { Site } from "../lib/types";
+import type { Startup } from "../lib/types";
 
 interface Props {
-  sites: Site[];
+  startups: Startup[];
 }
 
-const { sites } = Astro.props;
+const { startups } = Astro.props;
 
 function relativeTime(dateStr: string | null): string {
   if (!dateStr) return "";
@@ -22,39 +22,39 @@ function relativeTime(dateStr: string | null): string {
   return `${diffMo}mo ago`;
 }
 
-function isNew(site: Site): boolean {
-  if (!site.published_at) return false;
-  const diffMs = Date.now() - new Date(site.published_at).getTime();
+function isNew(startup: Startup): boolean {
+  if (!startup.published_at) return false;
+  const diffMs = Date.now() - new Date(startup.published_at).getTime();
   const diffDays = diffMs / (1000 * 60 * 60 * 24);
   return diffDays <= 7;
 }
 
-function isUpdated(site: Site): boolean {
-  if (!site.updated_at || !site.published_at) return false;
-  return new Date(site.updated_at).getTime() > new Date(site.published_at).getTime();
+function isUpdated(startup: Startup): boolean {
+  if (!startup.updated_at || !startup.published_at) return false;
+  return new Date(startup.updated_at).getTime() > new Date(startup.published_at).getTime();
 }
 ---
 
-{sites.length > 0 && (
+{startups.length > 0 && (
   <section class="activity-strip" aria-label="Recent activity">
     <div class="container">
       <h2 class="strip-heading">Recently Added</h2>
       <div class="strip-scroll">
-        {sites.map((site) => {
-          const thumb = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
-          const badge = isNew(site) ? "New" : isUpdated(site) ? "Updated" : null;
-          const time = relativeTime(site.published_at);
+        {startups.map((startup) => {
+          const thumb = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+          const badge = isNew(startup) ? "New" : isUpdated(startup) ? "Updated" : null;
+          const time = relativeTime(startup.published_at);
           return (
-            <a href={`/sites/${site.slug}`} class="strip-item">
+            <a href={`/startups/${startup.slug}`} class="strip-item">
               <div class="strip-thumb">
                 {thumb ? (
                   <img src={thumb} alt="" loading="lazy" />
                 ) : (
-                  <span class="strip-initial">{site.product_name.charAt(0)}</span>
+                  <span class="strip-initial">{startup.product_name.charAt(0)}</span>
                 )}
               </div>
               <div class="strip-info">
-                <span class="strip-name">{site.product_name}</span>
+                <span class="strip-name">{startup.product_name}</span>
                 <span class="strip-meta">
                   {badge && (
                     <span class={`strip-badge ${badge === "New" ? "strip-badge--new" : "strip-badge--updated"}`}>

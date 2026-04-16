@@ -1,20 +1,20 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-import { getPublishedSites } from "../lib/db";
+import { getPublishedStartups } from "../lib/db";
 
 export const GET: APIRoute = async ({ locals }) => {
   const db = locals.runtime.env.DB;
-  const sites = await getPublishedSites(db, { limit: 20 });
+  const startups = await getPublishedStartups(db, { limit: 20 });
 
-  const items = sites
+  const items = startups
     .map(
-      (site) => `    <item>
-      <title>${escapeXml(site.product_name)}</title>
-      <link>https://venturedex.co/sites/${site.slug}</link>
-      <description>${escapeXml(site.summary ?? site.product_name)}</description>
-      <pubDate>${new Date(site.published_at ?? site.created_at).toUTCString()}</pubDate>
-      <guid>https://venturedex.co/sites/${site.slug}</guid>
+      (startup) => `    <item>
+      <title>${escapeXml(startup.product_name)}</title>
+      <link>https://venturedex.co/startups/${startup.slug}</link>
+      <description>${escapeXml(startup.summary ?? startup.product_name)}</description>
+      <pubDate>${new Date(startup.published_at ?? startup.created_at).toUTCString()}</pubDate>
+      <guid>https://venturedex.co/startups/${startup.slug}</guid>
     </item>`
     )
     .join("\n");

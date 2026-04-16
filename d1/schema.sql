@@ -2,7 +2,7 @@
 -- workflow_status: draft / published / archived (3-state, per CEO Review)
 -- codex_stage: internal pipeline tracking (per Eng Review)
 
-CREATE TABLE IF NOT EXISTS sites (
+CREATE TABLE IF NOT EXISTS startups (
   id TEXT PRIMARY KEY,
   slug TEXT UNIQUE NOT NULL,
   domain TEXT NOT NULL,
@@ -44,13 +44,13 @@ CREATE TABLE IF NOT EXISTS sites (
   updated_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE INDEX IF NOT EXISTS idx_sites_published ON sites(workflow_status, published_at DESC);
-CREATE INDEX IF NOT EXISTS idx_sites_type ON sites(product_type) WHERE workflow_status = 'published';
-CREATE INDEX IF NOT EXISTS idx_sites_slug ON sites(slug);
+CREATE INDEX IF NOT EXISTS idx_startups_published ON startups(workflow_status, published_at DESC);
+CREATE INDEX IF NOT EXISTS idx_startups_type ON startups(product_type) WHERE workflow_status = 'published';
+CREATE INDEX IF NOT EXISTS idx_startups_slug ON startups(slug);
 
-CREATE TABLE IF NOT EXISTS site_evidence (
+CREATE TABLE IF NOT EXISTS startup_evidence (
   id TEXT PRIMARY KEY,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   signal_type TEXT NOT NULL,
   raw_value TEXT,
   weight INTEGER DEFAULT 50,
@@ -58,11 +58,11 @@ CREATE TABLE IF NOT EXISTS site_evidence (
   detected_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE INDEX IF NOT EXISTS idx_evidence_site ON site_evidence(site_id);
+CREATE INDEX IF NOT EXISTS idx_evidence_startup ON startup_evidence(startup_id);
 
-CREATE TABLE IF NOT EXISTS site_aliases (
+CREATE TABLE IF NOT EXISTS startup_aliases (
   id TEXT PRIMARY KEY,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   alias_hostname TEXT NOT NULL,
   alias_url TEXT,
   alias_type TEXT DEFAULT 'canonical',
@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS site_aliases (
   last_seen_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE TABLE IF NOT EXISTS site_snapshots (
+CREATE TABLE IF NOT EXISTS startup_snapshots (
   id TEXT PRIMARY KEY,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   canonical_url TEXT,
   title TEXT,
   description TEXT,
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS site_snapshots (
   created_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE INDEX IF NOT EXISTS idx_snapshots_site ON site_snapshots(site_id, created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_snapshots_startup ON startup_snapshots(startup_id, created_at DESC);
 
 CREATE TABLE IF NOT EXISTS weekly_issues (
   id TEXT PRIMARY KEY,
@@ -102,12 +102,12 @@ CREATE TABLE IF NOT EXISTS weekly_issues (
   created_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE TABLE IF NOT EXISTS weekly_issue_sites (
+CREATE TABLE IF NOT EXISTS weekly_issue_startups (
   issue_id TEXT NOT NULL REFERENCES weekly_issues(id) ON DELETE CASCADE,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   display_order INTEGER NOT NULL DEFAULT 0,
   issue_note TEXT,
-  PRIMARY KEY (issue_id, site_id)
+  PRIMARY KEY (issue_id, startup_id)
 );
 
 CREATE TABLE IF NOT EXISTS collections (
@@ -122,12 +122,12 @@ CREATE TABLE IF NOT EXISTS collections (
   created_at TEXT DEFAULT (datetime('now'))
 );
 
-CREATE TABLE IF NOT EXISTS collection_sites (
+CREATE TABLE IF NOT EXISTS collection_startups (
   collection_id TEXT NOT NULL REFERENCES collections(id) ON DELETE CASCADE,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   rank INTEGER DEFAULT 0,
   pinned INTEGER DEFAULT 0,
-  PRIMARY KEY (collection_id, site_id)
+  PRIMARY KEY (collection_id, startup_id)
 );
 
 CREATE TABLE IF NOT EXISTS research_posts (
@@ -159,17 +159,17 @@ CREATE TABLE IF NOT EXISTS submission_queue (
   lease_owner TEXT,
   lease_expires_at TEXT,
   processed_at TEXT,
-  linked_site_id TEXT,
+  linked_startup_id TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
 
 CREATE TABLE IF NOT EXISTS search_index_terms (
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   normalized_term TEXT NOT NULL,
   term_type TEXT NOT NULL,
   weight INTEGER DEFAULT 1,
   created_at TEXT DEFAULT (datetime('now')),
-  PRIMARY KEY (site_id, normalized_term, term_type)
+  PRIMARY KEY (startup_id, normalized_term, term_type)
 );
 
 CREATE INDEX IF NOT EXISTS idx_search_term ON search_index_terms(normalized_term);
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS sponsor_leads (
 
 CREATE TABLE IF NOT EXISTS screenshot_jobs (
   id TEXT PRIMARY KEY,
-  site_id TEXT NOT NULL REFERENCES sites(id) ON DELETE CASCADE,
+  startup_id TEXT NOT NULL REFERENCES startups(id) ON DELETE CASCADE,
   url TEXT NOT NULL,
   mode TEXT DEFAULT 'detail' CHECK (mode IN ('detail','refresh','manual')),
   idempotency_key TEXT UNIQUE NOT NULL,

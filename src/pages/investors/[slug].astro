@@ -18,7 +18,7 @@ const faviconUrl = investor.website
 
 <Base title={investor.name} description={investor.description ?? `${investor.name} portfolio on VentureDex`}>
   <div class="container investor-page">
-    <a href="/news" class="back-link">&larr; Back to funding</a>
+    <a href="/funding" class="back-link">&larr; Back to funding</a>
 
     <header class="investor-header">
       <div class="investor-identity">
@@ -65,7 +65,7 @@ const faviconUrl = investor.website
                       )}
                       <div>
                         {r.company_slug ? (
-                          <a href={`/sites/${r.company_slug}`} class="company-link">{r.company_name}</a>
+                          <a href={`/startups/${r.company_slug}`} class="company-link">{r.company_name}</a>
                         ) : (
                           <span>{r.company_name}</span>
                         )}

@@ -3,39 +3,39 @@ export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getSiteBySlug, getRelatedSites } from "../../lib/db";
-import type { SiteLinks } from "../../lib/types";
+import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import type { StartupLinks } from "../../lib/types";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
 
-const site = await getSiteBySlug(db, slug!);
-if (!site) return Astro.redirect("/404");
+const startup = await getStartupBySlug(db, slug!);
+if (!startup) return Astro.redirect("/404");
 
-const related = await getRelatedSites(db, site);
-const screenshotUrl = site.screenshot_r2_key ? `/screenshots/${site.screenshot_r2_key}` : null;
+const related = await getRelatedStartups(db, startup);
+const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 
-const investors = site.investors
-  ? site.investors.split(",").map((s) => s.trim()).filter(Boolean)
+const investors = startup.investors
+  ? startup.investors.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
 
-const tags = site.tags
-  ? site.tags.split(",").map((s) => s.trim()).filter(Boolean)
+const tags = startup.tags
+  ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
 
-let links: SiteLinks = {};
+let links: StartupLinks = {};
 try {
-  if (site.links_json) {
-    links = JSON.parse(site.links_json) as SiteLinks;
+  if (startup.links_json) {
+    links = JSON.parse(startup.links_json) as StartupLinks;
   }
 } catch {
   // invalid JSON, ignore
 }
 
-const hasTeamInfo = !!(site.founder_name || site.team_size || site.hq_location);
+const hasTeamInfo = !!(startup.founder_name || startup.team_size || startup.hq_location);
 
 const externalLinks = [
-  { label: "Website", url: site.canonical_url ?? `https://${site.domain}`, icon: "globe" },
+  { label: "Website", url: startup.canonical_url ?? `https://${startup.domain}`, icon: "globe" },
   links.github ? { label: "GitHub", url: links.github, icon: "github" } : null,
   links.twitter ? { label: "X / Twitter", url: links.twitter, icon: "twitter" } : null,
   links.linkedin ? { label: "LinkedIn", url: links.linkedin, icon: "linkedin" } : null,
@@ -44,16 +44,16 @@ const externalLinks = [
 ---
 
 <Base
-  title={site.product_name}
-  description={site.summary ?? `${site.product_name} on VentureDex`}
+  title={startup.product_name}
+  description={startup.summary ?? `${startup.product_name} on VentureDex`}
 >
   <article class="site-detail container">
     <div class="detail-hero">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${site.product_name} screenshot`} class="detail-screenshot" />
+        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} class="detail-screenshot" />
       ) : (
         <div class="detail-placeholder">
-          <span>{site.product_name.charAt(0)}</span>
+          <span>{startup.product_name.charAt(0)}</span>
         </div>
       )}
     </div>
@@ -61,11 +61,11 @@ const externalLinks = [
     <header class="detail-header">
       <div class="header-top">
         <div>
-          <h1>{site.product_name}</h1>
-          <p class="detail-domain">{site.domain}</p>
+          <h1>{startup.product_name}</h1>
+          <p class="detail-domain">{startup.domain}</p>
         </div>
         <a
-          href={site.canonical_url ?? `https://${site.domain}`}
+          href={startup.canonical_url ?? `https://${startup.domain}`}
           target="_blank"
           rel="noopener noreferrer"
           class="visit-button"
@@ -73,64 +73,64 @@ const externalLinks = [
           Visit Site &rarr;
         </a>
       </div>
-      {site.summary && <p class="detail-summary">{site.summary}</p>}
+      {startup.summary && <p class="detail-summary">{startup.summary}</p>}
     </header>
 
-    {site.editor_note && (
+    {startup.editor_note && (
       <section class="editor-note" aria-label="Editor's note">
-        <p class="note-text">{site.editor_note}</p>
+        <p class="note-text">{startup.editor_note}</p>
         <p class="note-meta">
-          Curated by {site.curator}
-          {site.published_at && ` on ${new Date(site.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`}
+          Curated by {startup.curator}
+          {startup.published_at && ` on ${new Date(startup.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}`}
         </p>
       </section>
     )}
 
-    {site.founder_quote && (
+    {startup.founder_quote && (
       <section class="founder-quote" aria-label="Founder's words">
         <blockquote>
-          <p>"{site.founder_quote}"</p>
-          {site.founder_name && <cite>— {site.founder_name}</cite>}
+          <p>"{startup.founder_quote}"</p>
+          {startup.founder_name && <cite>— {startup.founder_name}</cite>}
         </blockquote>
       </section>
     )}
 
     <section class="detail-meta">
       <div class="meta-grid">
-        {site.product_type && (
+        {startup.product_type && (
           <div class="meta-item">
             <dt>Type</dt>
-            <dd>{site.product_type}</dd>
+            <dd>{startup.product_type}</dd>
           </div>
         )}
-        {site.funding_stage && (
+        {startup.funding_stage && (
           <div class="meta-item">
             <dt>Stage</dt>
-            <dd>{site.funding_stage}{site.funding_display ? ` (${site.funding_display})` : ""}</dd>
+            <dd>{startup.funding_stage}{startup.funding_display ? ` (${startup.funding_display})` : ""}</dd>
           </div>
         )}
-        {site.region && (
+        {startup.region && (
           <div class="meta-item">
             <dt>Region</dt>
-            <dd>{site.region}</dd>
+            <dd>{startup.region}</dd>
           </div>
         )}
-        {site.founded_year && (
+        {startup.founded_year && (
           <div class="meta-item">
             <dt>Founded</dt>
-            <dd>{site.founded_year}</dd>
+            <dd>{startup.founded_year}</dd>
           </div>
         )}
-        {site.framework && (
+        {startup.framework && (
           <div class="meta-item">
             <dt>Built with</dt>
-            <dd>{site.framework}</dd>
+            <dd>{startup.framework}</dd>
           </div>
         )}
-        {site.why_featured && (
+        {startup.why_featured && (
           <div class="meta-item">
             <dt>Why featured</dt>
-            <dd class="why-badge">{site.why_featured}</dd>
+            <dd class="why-badge">{startup.why_featured}</dd>
           </div>
         )}
       </div>
@@ -140,22 +140,22 @@ const externalLinks = [
       <section class="team-section" aria-label="Team">
         <h2>Team</h2>
         <div class="team-grid">
-          {site.founder_name && (
+          {startup.founder_name && (
             <div class="team-item">
               <dt>Founder</dt>
-              <dd>{site.founder_name}</dd>
+              <dd>{startup.founder_name}</dd>
             </div>
           )}
-          {site.team_size && (
+          {startup.team_size && (
             <div class="team-item">
               <dt>Team Size</dt>
-              <dd>{site.team_size}</dd>
+              <dd>{startup.team_size}</dd>
             </div>
           )}
-          {site.hq_location && (
+          {startup.hq_location && (
             <div class="team-item">
               <dt>Headquarters</dt>
-              <dd>{site.hq_location}</dd>
+              <dd>{startup.hq_location}</dd>
             </div>
           )}
         </div>
@@ -207,7 +207,7 @@ const externalLinks = [
         <h2>Related startups</h2>
         <div class="related-grid">
           {related.map((r) => (
-            <SiteCard site={r} />
+            <SiteCard startup={r} />
           ))}
         </div>
       </section>

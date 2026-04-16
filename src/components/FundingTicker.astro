@@ -1,13 +1,13 @@
 ---
-import type { Site } from "../lib/types";
+import type { Startup } from "../lib/types";
 
 interface Props {
-  sites: Site[];
+  startups: Startup[];
 }
 
-const { sites } = Astro.props;
+const { startups } = Astro.props;
 
-const items = sites
+const items = startups
   .filter((s) => s.funding_display || s.funding_stage)
   .map((s) => ({
     name: s.product_name,
@@ -26,7 +26,7 @@ const doubled = [...items, ...items];
   <div class="ticker-wrapper" aria-label="Recent funding news">
     <div class="ticker-track">
       {doubled.map((item) => (
-        <a href={`/sites/${item.slug}`} class="ticker-item">
+        <a href={`/startups/${item.slug}`} class="ticker-item">
           <span class="ticker-dot" />
           <span class="ticker-name">{item.name}</span>
           {item.amount && <span class="ticker-amount">{item.amount}</span>}

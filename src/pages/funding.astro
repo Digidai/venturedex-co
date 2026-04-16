@@ -45,7 +45,7 @@ function findInvestor(name: string): { slug: string; website: string } | null {
 }
 ---
 
-<Base title="News" description="Track the latest startup funding rounds. Updated regularly.">
+<Base title="Funding" description="Track the latest startup funding rounds. Updated regularly.">
   <div class="container news-page">
     <header class="news-header">
       <h1>Track the latest funding</h1>
@@ -78,7 +78,7 @@ function findInvestor(name: string): { slug: string; website: string } | null {
                         <span class="company-initial">{getInitials(r.company_name)}</span>
                       )}
                       {r.company_slug ? (
-                        <a href={`/sites/${r.company_slug}`} class="company-link">
+                        <a href={`/startups/${r.company_slug}`} class="company-link">
                           {r.company_name}
                         </a>
                       ) : (

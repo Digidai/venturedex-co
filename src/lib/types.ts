@@ -1,4 +1,4 @@
-export interface Site {
+export interface Startup {
   id: string;
   slug: string;
   domain: string;
@@ -39,7 +39,7 @@ export interface Site {
   updated_at: string;
 }
 
-export interface SiteLinks {
+export interface StartupLinks {
   github?: string;
   twitter?: string;
   linkedin?: string;

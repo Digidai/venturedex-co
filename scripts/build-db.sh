@@ -53,7 +53,7 @@ if funding:
     fstage = latest.get('stage', '')
     fdisplay = latest.get('amount', '')
 
-print(f\"INSERT OR REPLACE INTO sites (id, slug, domain, canonical_url, product_name, summary, editor_note, editor_rating, why_featured, product_type, funding_stage, funding_display, founded_year, team_size, hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, screenshot_status, workflow_status, codex_stage, first_seen_at, published_at) VALUES ('s-{slug}', '{slug}', '{domain}', '{url}', '{name}', '{summary}', '{note}', {rating}, '{why}', '{ptype}', '{fstage}', '{fdisplay}', {fyear}, '{tsize}', '{hq}', '{region}', '{tags}', '{investors}', '{links.replace(chr(39), chr(39)+chr(39))}', {featured}, '{screenshot}', 'ready', 'published', 'manual', datetime('now'), datetime('now'));\")
+print(f\"INSERT OR REPLACE INTO startups (id, slug, domain, canonical_url, product_name, summary, editor_note, editor_rating, why_featured, product_type, funding_stage, funding_display, founded_year, team_size, hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, screenshot_status, workflow_status, codex_stage, first_seen_at, published_at) VALUES ('startup-{slug}', '{slug}', '{domain}', '{url}', '{name}', '{summary}', '{note}', {rating}, '{why}', '{ptype}', '{fstage}', '{fdisplay}', {fyear}, '{tsize}', '{hq}', '{region}', '{tags}', '{investors}', '{links.replace(chr(39), chr(39)+chr(39))}', {featured}, '{screenshot}', 'ready', 'published', 'manual', datetime('now'), datetime('now'));\")
 
 # Generate funding_rounds from the funding array
 for rnd in funding:
@@ -103,7 +103,7 @@ import json
 with open('$f') as fh:
     d = json.load(fh)
 slug = d['slug']
-sid = f's-{slug}'
+sid = f'startup-{slug}'
 terms = []
 terms.append((d['product_name'].lower(), 'name', 100))
 terms.append((d['domain'].lower(), 'domain', 80))
@@ -115,7 +115,7 @@ for tag in (d.get('tags') or '').split(','):
         terms.append((tag, 'tag', 50))
 for t, typ, w in terms:
     t = t.replace(\"'\", \"''\")
-    print(f\"INSERT OR IGNORE INTO search_index_terms (site_id, normalized_term, term_type, weight) VALUES ('{sid}', '{t}', '{typ}', {w});\")
+    print(f\"INSERT OR IGNORE INTO search_index_terms (startup_id, normalized_term, term_type, weight) VALUES ('{sid}', '{t}', '{typ}', {w});\")
 " >> "$OUTPUT"
 done
 
@@ -128,7 +128,7 @@ INSERT OR IGNORE INTO collections (id, slug, title, description, type, published
 ('c-002', 'devtools', 'Developer Tools', 'Tools that make developers more productive.', 'editorial', 1),
 ('c-003', 'editors-picks', 'Editor''s Picks', 'The ones we think about most.', 'editorial', 1);
 
-DELETE FROM collection_sites;
+DELETE FROM collection_startups;
 SQL
 
 for f in "$CONTENT_DIR"/*.json; do
@@ -138,18 +138,18 @@ import json
 with open('$f') as fh:
     d = json.load(fh)
 slug = d['slug']
-sid = f's-{slug}'
+sid = f'startup-{slug}'
 ptype = d.get('product_type', '')
 featured = d.get('is_featured', False)
 rank = 0
 if 'AI' in ptype:
     rank += 1
-    print(f\"INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VALUES ('c-001', '{sid}', {rank}, {1 if featured else 0});\")
+    print(f\"INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ('c-001', '{sid}', {rank}, {1 if featured else 0});\")
 if ptype in ('DevTools', 'SaaS'):
     rank += 1
-    print(f\"INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VALUES ('c-002', '{sid}', {rank}, 0);\")
+    print(f\"INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ('c-002', '{sid}', {rank}, 0);\")
 if featured:
-    print(f\"INSERT OR IGNORE INTO collection_sites (collection_id, site_id, rank, pinned) VALUES ('c-003', '{sid}', {rank}, 1);\")
+    print(f\"INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ('c-003', '{sid}', {rank}, 1);\")
 " >> "$OUTPUT"
 done
 
@@ -169,8 +169,8 @@ picks = d.get('picks', [])
 wid = f'w-{num}'
 print(f\"INSERT OR REPLACE INTO weekly_issues (id, issue_number, title, editorial_intro, published_at, status) VALUES ('{wid}', {num}, '{title}', '{intro}', datetime('now'), 'published');\")
 for i, slug in enumerate(picks):
-    sid = f's-{slug}'
-    print(f\"INSERT OR IGNORE INTO weekly_issue_sites (issue_id, site_id, display_order) VALUES ('{wid}', '{sid}', {i+1});\")
+    sid = f'startup-{slug}'
+    print(f\"INSERT OR IGNORE INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('{wid}', '{sid}', {i+1});\")
 " >> "$OUTPUT"
 done
 

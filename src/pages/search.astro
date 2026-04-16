@@ -3,15 +3,15 @@ export const prerender = false;
 
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
-import { searchSites } from "../lib/db";
+import { searchStartups } from "../lib/db";
 
 const query = Astro.url.searchParams.get("q") ?? "";
 const db = Astro.locals.runtime.env.DB;
 
-let results: Awaited<ReturnType<typeof searchSites>> = [];
+let results: Awaited<ReturnType<typeof searchStartups>> = [];
 if (query.trim()) {
   try {
-    results = await searchSites(db, query);
+    results = await searchStartups(db, query);
   } catch {
     // D1 unavailable
   }
@@ -38,8 +38,8 @@ if (query.trim()) {
 
     {results.length > 0 ? (
       <div class="card-grid">
-        {results.map((site) => (
-          <SiteCard site={site} />
+        {results.map((startup) => (
+          <SiteCard startup={startup} />
         ))}
       </div>
     ) : query ? (

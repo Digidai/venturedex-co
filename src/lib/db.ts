@@ -1,8 +1,8 @@
-import type { Site, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
+import type { Startup, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
 
 export type SortOption = "featured" | "newest" | "name-az";
 
-export async function getPublishedSites(
+export async function getPublishedStartups(
   db: D1Database,
   opts?: {
     productType?: string;
@@ -13,7 +13,7 @@ export async function getPublishedSites(
     featured?: boolean;
     sort?: SortOption;
   }
-): Promise<Site[]> {
+): Promise<Startup[]> {
   const conditions = ["workflow_status = 'published'"];
   const params: unknown[] = [];
 
@@ -53,42 +53,42 @@ export async function getPublishedSites(
 
   const result = await db
     .prepare(
-      `SELECT * FROM sites WHERE ${where} ORDER BY ${orderBy} LIMIT ? OFFSET ?`
+      `SELECT * FROM startups WHERE ${where} ORDER BY ${orderBy} LIMIT ? OFFSET ?`
     )
     .bind(...params, limit, offset)
-    .all<Site>();
+    .all<Startup>();
 
   return result.results;
 }
 
-export async function getSiteBySlug(
+export async function getStartupBySlug(
   db: D1Database,
   slug: string
-): Promise<Site | null> {
+): Promise<Startup | null> {
   const result = await db
-    .prepare("SELECT * FROM sites WHERE slug = ? AND workflow_status = 'published'")
+    .prepare("SELECT * FROM startups WHERE slug = ? AND workflow_status = 'published'")
     .bind(slug)
-    .first<Site>();
+    .first<Startup>();
 
   return result;
 }
 
-export async function getRelatedSites(
+export async function getRelatedStartups(
   db: D1Database,
-  site: Site,
+  startup: Startup,
   limit = 4
-): Promise<Site[]> {
+): Promise<Startup[]> {
   const result = await db
     .prepare(
-      `SELECT * FROM sites
+      `SELECT * FROM startups
        WHERE workflow_status = 'published'
          AND id != ?
          AND (product_type = ? OR region = ?)
        ORDER BY published_at DESC
        LIMIT ?`
     )
-    .bind(site.id, site.product_type, site.region, limit)
-    .all<Site>();
+    .bind(startup.id, startup.product_type, startup.region, limit)
+    .all<Startup>();
 
   return result.results;
 }
@@ -110,7 +110,7 @@ export async function getPublishedWeeklyIssues(
 export async function getWeeklyIssueByNumber(
   db: D1Database,
   issueNumber: number
-): Promise<{ issue: WeeklyIssue; sites: Site[] } | null> {
+): Promise<{ issue: WeeklyIssue; startups: Startup[] } | null> {
   const issue = await db
     .prepare("SELECT * FROM weekly_issues WHERE issue_number = ? AND status = 'published'")
     .bind(issueNumber)
@@ -118,32 +118,32 @@ export async function getWeeklyIssueByNumber(
 
   if (!issue) return null;
 
-  const sites = await db
+  const startups = await db
     .prepare(
-      `SELECT s.* FROM sites s
-       JOIN weekly_issue_sites wis ON s.id = wis.site_id
+      `SELECT s.* FROM startups s
+       JOIN weekly_issue_startups wis ON s.id = wis.startup_id
        WHERE wis.issue_id = ? AND s.workflow_status = 'published'
        ORDER BY wis.display_order`
     )
     .bind(issue.id)
-    .all<Site>();
+    .all<Startup>();
 
-  return { issue, sites: sites.results };
+  return { issue, startups: startups.results };
 }
 
 export async function getPublishedCollections(
   db: D1Database
-): Promise<(Collection & { site_count: number })[]> {
+): Promise<(Collection & { startup_count: number })[]> {
   const result = await db
     .prepare(
-      `SELECT c.*, COUNT(cs.site_id) as site_count
+      `SELECT c.*, COUNT(cs.startup_id) as startup_count
        FROM collections c
-       LEFT JOIN collection_sites cs ON c.id = cs.collection_id
+       LEFT JOIN collection_startups cs ON c.id = cs.collection_id
        WHERE c.published = 1
        GROUP BY c.id
        ORDER BY c.title`
     )
-    .all<Collection & { site_count: number }>();
+    .all<Collection & { startup_count: number }>();
 
   return result.results;
 }
@@ -151,7 +151,7 @@ export async function getPublishedCollections(
 export async function getCollectionBySlug(
   db: D1Database,
   slug: string
-): Promise<{ collection: Collection; sites: Site[] } | null> {
+): Promise<{ collection: Collection; startups: Startup[] } | null> {
   const collection = await db
     .prepare("SELECT * FROM collections WHERE slug = ? AND published = 1")
     .bind(slug)
@@ -159,54 +159,54 @@ export async function getCollectionBySlug(
 
   if (!collection) return null;
 
-  const sites = await db
+  const startups = await db
     .prepare(
-      `SELECT s.* FROM sites s
-       JOIN collection_sites cs ON s.id = cs.site_id
+      `SELECT s.* FROM startups s
+       JOIN collection_startups cs ON s.id = cs.startup_id
        WHERE cs.collection_id = ? AND s.workflow_status = 'published'
        ORDER BY cs.pinned DESC, cs.rank`
     )
     .bind(collection.id)
-    .all<Site>();
+    .all<Startup>();
 
-  return { collection, sites: sites.results };
+  return { collection, startups: startups.results };
 }
 
-export async function searchSites(
+export async function searchStartups(
   db: D1Database,
   query: string,
   limit = 20
-): Promise<Site[]> {
+): Promise<Startup[]> {
   const normalized = query.toLowerCase().trim().slice(0, 200);
   if (!normalized) return [];
 
   const result = await db
     .prepare(
-      `SELECT DISTINCT s.* FROM sites s
-       JOIN search_index_terms sit ON s.id = sit.site_id
+      `SELECT DISTINCT s.* FROM startups s
+       JOIN search_index_terms sit ON s.id = sit.startup_id
        WHERE sit.normalized_term LIKE ? AND s.workflow_status = 'published'
        ORDER BY sit.weight DESC
        LIMIT ?`
     )
     .bind(`${normalized}%`, limit)
-    .all<Site>();
+    .all<Startup>();
 
   return result.results;
 }
 
-export async function getRecentActivity(
+export async function getRecentStartups(
   db: D1Database,
   limit = 10
-): Promise<Site[]> {
+): Promise<Startup[]> {
   const result = await db
     .prepare(
-      `SELECT * FROM sites
+      `SELECT * FROM startups
        WHERE workflow_status = 'published'
        ORDER BY published_at DESC
        LIMIT ?`
     )
     .bind(limit)
-    .all<Site>();
+    .all<Startup>();
 
   return result.results;
 }
@@ -249,7 +249,7 @@ export async function getInvestorBySlug(
     .prepare(
       `SELECT f.*, s.screenshot_r2_key
        FROM funding_rounds f
-       LEFT JOIN sites s ON f.company_slug = s.slug
+       LEFT JOIN startups s ON f.company_slug = s.slug
        WHERE LOWER(f.lead_investor) LIKE LOWER(?)
           OR LOWER(f.lead_investor) LIKE LOWER(?)
        ORDER BY f.date DESC`
@@ -260,9 +260,9 @@ export async function getInvestorBySlug(
   return { investor, rounds: rounds.results };
 }
 
-export async function getSiteCount(db: D1Database): Promise<number> {
+export async function getStartupCount(db: D1Database): Promise<number> {
   const result = await db
-    .prepare("SELECT COUNT(*) as count FROM sites WHERE workflow_status = 'published'")
+    .prepare("SELECT COUNT(*) as count FROM startups WHERE workflow_status = 'published'")
     .first<{ count: number }>();
 
   return result?.count ?? 0;

@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
-import { getPublishedSites, getSiteCount } from "../lib/db";
+import { getPublishedStartups, getStartupCount } from "../lib/db";
 import type { SortOption } from "../lib/db";
 
 const db = Astro.locals.runtime.env.DB;
@@ -16,34 +16,34 @@ const region = Astro.url.searchParams.get("region") ?? undefined;
 const sortRaw = Astro.url.searchParams.get("sort") ?? "featured";
 const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "featured") as SortOption;
 
-let sites: import("../lib/types").Site[] = [];
-let allSites: import("../lib/types").Site[] = [];
-let siteCount = 0;
+let startups: import("../lib/types").Startup[] = [];
+let allStartups: import("../lib/types").Startup[] = [];
+let startupCount = 0;
 
 try {
-  [sites, siteCount, allSites] = await Promise.all([
-    getPublishedSites(db, { productType, fundingStage, region, sort, limit: 50 }),
-    getSiteCount(db),
-    getPublishedSites(db, { limit: 50 }),
+  [startups, startupCount, allStartups] = await Promise.all([
+    getPublishedStartups(db, { productType, fundingStage, region, sort, limit: 50 }),
+    getStartupCount(db),
+    getPublishedStartups(db, { limit: 50 }),
   ]);
 } catch {
   // D1 unavailable
 }
 
 const hasFilters = !!(productType || fundingStage || region);
-const featured = sites.filter((s) => s.is_featured);
-const rest = sites.filter((s) => !s.is_featured);
+const featured = startups.filter((s) => s.is_featured);
+const rest = startups.filter((s) => !s.is_featured);
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
-  <FundingTicker sites={allSites} />
+  <FundingTicker startups={allStartups} />
 
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-text">
         <h1>Discover today's top startups</h1>
         <p class="hero-sub">
-          A thoughtful gallery of {siteCount > 0 ? siteCount : ''} outstanding early-stage companies.
+          A thoughtful gallery of {startupCount > 0 ? startupCount : ''} outstanding early-stage companies.
           Curated with editorial commentary.
         </p>
       </div>
@@ -59,22 +59,22 @@ const rest = sites.filter((s) => !s.is_featured);
         currentSort={sort}
       />
 
-      {sites.length > 0 ? (
+      {startups.length > 0 ? (
         <>
           {featured.length > 0 && !hasFilters && (
             <>
               <div class="section-label">Featured</div>
               <div class="featured-grid">
-                {featured.slice(0, 3).map((site) => (
-                  <SiteCard site={site} size="large" />
+                {featured.slice(0, 3).map((startup) => (
+                  <SiteCard startup={startup} size="large" />
                 ))}
               </div>
               {rest.length > 0 && <div class="section-label">All startups</div>}
             </>
           )}
           <div class="card-grid">
-            {(hasFilters ? sites : rest.length > 0 ? rest : featured.slice(3)).map((site) => (
-              <SiteCard site={site} />
+            {(hasFilters ? startups : rest.length > 0 ? rest : featured.slice(3)).map((startup) => (
+              <SiteCard startup={startup} />
             ))}
           </div>
         </>
