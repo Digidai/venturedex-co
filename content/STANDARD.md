@@ -1,5 +1,68 @@
 # VentureDex 内容标准
 
+## 零、编辑世界观（Editorial Thesis）
+
+VentureDex 不是数据库。不是排行榜。不是融资新闻聚合。
+
+VentureDex 是一个有观点的策展人，用一个一致的视角去看所有创业项目，然后告诉读者："这些项目值得你花时间，而且我告诉你为什么。"
+
+### 我们相信什么
+
+1. **最好的产品是有主见的产品。** 它们做了一个明确的取舍，放弃了一些东西来换取另一些东西做到极致。Linear 放弃了 Jira 的灵活性，换来了速度。Cursor 放弃了独立代码库，用 VSCode fork 换来了零切换成本。收录一个产品时，首先要找到它的"赌注"是什么。
+
+2. **工艺和品味是信号。** 如果一个产品的 landing page 字体间距都不对，按钮颜色是默认蓝，文案写着 "Empowering teams to..."，那大概率产品本身也粗糙。反过来，产品体验的每个细节都考究的公司，通常也在思考正确的问题。
+
+3. **解决真实问题 > 追赶风口。** "又一个 AI wrapper" 不值得收录。"用 AI 解决了一个过去需要 3 个工程师手动处理的特定问题" 值得。差异不是技术（大家都用同一个 API），而是对问题的理解深度。
+
+4. **小而锐利 > 大而平庸。** 一个 10 人团队做出的极致单一功能产品，比一个 200 人公司做的"一站式平台"更值得关注。
+
+5. **创始人的洞察是最有价值的信息。** 不是"他们做了什么"，而是"他们看到了什么别人没看到的"。
+
+### 这意味着
+
+- **我们不收录"正确但无趣"的产品。** 一个各方面 80 分但没有任何突出点的 SaaS，不如一个某方面 95 分但其他方面 60 分的尖锐产品。
+- **我们偏爱 underdog。** 在巨头和名校毕业生之间，我们更愿意花时间看那个没有光环但产品让人眼前一亮的创始人。
+- **我们不怕说"这不够好"。** rejected.jsonl 应该比 content/startups/ 多得多。高拒绝率是品味的证据。
+- **我们写的不是产品说明书，而是读后感。** editor_note 的价值不是信息，而是判断。读者能从 Crunchbase 查到所有事实。他们来 VentureDex 是来看"一个有品味的人怎么看这个产品"。
+
+### VentureDex 的品味透镜
+
+写 editor_note 时，用以下 5 个透镜审视产品。不需要每条都覆盖全部透镜，但至少用 2 个：
+
+**透镜 1: 赌注（The Bet）**
+这个产品做了什么取舍？他们放弃了什么来换取什么？这个赌注是否合理？
+- "Linear bet on speed over flexibility. Every competitor chose to be configurable. Linear chose to be opinionated."
+
+**透镜 2: 细节（The Detail）**
+有没有一个具体的交互、设计决策、或功能实现让你觉得"这个人在意"？
+- "The keyboard shortcut system alone tells you someone at Cursor actually uses their own product 8 hours a day."
+
+**透镜 3: 洞察（The Insight）**
+创始人看到了什么别人没看到的？这个产品的存在暗示了一个什么样的世界观？
+- "Resend exists because email is a design problem, not an infrastructure problem. React Email proved they understand this."
+
+**透镜 4: 张力（The Tension）**
+这个产品面临什么未解决的张力或风险？成功和失败的分界线在哪？
+- "Whether Perplexity replaces Google search or becomes a power-user tool is the billion dollar question."
+
+**透镜 5: 比较（The Unexpected Comparison）**
+这个产品让你想到了什么意想不到的东西？不是直接竞品，而是一个跨领域的类比。
+- "Val Town is what GitHub Gists should have become — a social network where the content is running code."
+
+### 品味的量化验证
+
+每次内容生成后，用以下 3 个问题自检：
+
+```
+T1: 如果去掉产品名和域名，读者能从 editor_note 的语气和视角识别出"这是 VentureDex 写的"吗？
+T2: editor_note 里是否有一个读者在其他地方读不到的判断？
+T3: 这条内容发到 Twitter，会不会有人想转发（不是因为产品本身，而是因为这段评论写得好）？
+```
+
+3 个都是"是"才通过。如果 T1 是"否"，说明写得太通用，没有 VentureDex 的声音。如果 T2 是"否"，说明只是在复述公开信息。如果 T3 是"否"，说明写得不够锐利。
+
+---
+
 ## 一、收录门槛（Gate）
 
 候选项目必须通过以下 **全部 7 道门槛** 才能收录。任何一道不通过即淘汰。
