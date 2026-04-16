@@ -1,331 +1,368 @@
-# VentureDex 内容标准
+# VentureDex 内容标准与策展流程
 
-## 零、编辑世界观（Editorial Thesis）
-
-VentureDex 不是数据库。不是排行榜。不是融资新闻聚合。
-
-VentureDex 是一个有观点的策展人，用一个一致的视角去看所有创业项目，然后告诉读者："这些项目值得你花时间，而且我告诉你为什么。"
-
-### 我们相信什么
-
-1. **最好的产品是有主见的产品。** 它们做了一个明确的取舍，放弃了一些东西来换取另一些东西做到极致。Linear 放弃了 Jira 的灵活性，换来了速度。Cursor 放弃了独立代码库，用 VSCode fork 换来了零切换成本。收录一个产品时，首先要找到它的"赌注"是什么。
-
-2. **工艺和品味是信号。** 如果一个产品的 landing page 字体间距都不对，按钮颜色是默认蓝，文案写着 "Empowering teams to..."，那大概率产品本身也粗糙。反过来，产品体验的每个细节都考究的公司，通常也在思考正确的问题。
-
-3. **解决真实问题 > 追赶风口。** "又一个 AI wrapper" 不值得收录。"用 AI 解决了一个过去需要 3 个工程师手动处理的特定问题" 值得。差异不是技术（大家都用同一个 API），而是对问题的理解深度。
-
-4. **小而锐利 > 大而平庸。** 一个 10 人团队做出的极致单一功能产品，比一个 200 人公司做的"一站式平台"更值得关注。
-
-5. **创始人的洞察是最有价值的信息。** 不是"他们做了什么"，而是"他们看到了什么别人没看到的"。
-
-### 这意味着
-
-- **我们不收录"正确但无趣"的产品。** 一个各方面 80 分但没有任何突出点的 SaaS，不如一个某方面 95 分但其他方面 60 分的尖锐产品。
-- **我们偏爱 underdog。** 在巨头和名校毕业生之间，我们更愿意花时间看那个没有光环但产品让人眼前一亮的创始人。
-- **我们不怕说"这不够好"。** rejected.jsonl 应该比 content/startups/ 多得多。高拒绝率是品味的证据。
-- **我们写的不是产品说明书，而是读后感。** editor_note 的价值不是信息，而是判断。读者能从 Crunchbase 查到所有事实。他们来 VentureDex 是来看"一个有品味的人怎么看这个产品"。
-
-### VentureDex 的品味透镜
-
-写 editor_note 时，用以下 5 个透镜审视产品。不需要每条都覆盖全部透镜，但至少用 2 个：
-
-**透镜 1: 赌注（The Bet）**
-这个产品做了什么取舍？他们放弃了什么来换取什么？这个赌注是否合理？
-- "Linear bet on speed over flexibility. Every competitor chose to be configurable. Linear chose to be opinionated."
-
-**透镜 2: 细节（The Detail）**
-有没有一个具体的交互、设计决策、或功能实现让你觉得"这个人在意"？
-- "The keyboard shortcut system alone tells you someone at Cursor actually uses their own product 8 hours a day."
-
-**透镜 3: 洞察（The Insight）**
-创始人看到了什么别人没看到的？这个产品的存在暗示了一个什么样的世界观？
-- "Resend exists because email is a design problem, not an infrastructure problem. React Email proved they understand this."
-
-**透镜 4: 张力（The Tension）**
-这个产品面临什么未解决的张力或风险？成功和失败的分界线在哪？
-- "Whether Perplexity replaces Google search or becomes a power-user tool is the billion dollar question."
-
-**透镜 5: 比较（The Unexpected Comparison）**
-这个产品让你想到了什么意想不到的东西？不是直接竞品，而是一个跨领域的类比。
-- "Val Town is what GitHub Gists should have become — a social network where the content is running code."
-
-### 品味的量化验证
-
-每次内容生成后，用以下 3 个问题自检：
-
-```
-T1: 如果去掉产品名和域名，读者能从 editor_note 的语气和视角识别出"这是 VentureDex 写的"吗？
-T2: editor_note 里是否有一个读者在其他地方读不到的判断？
-T3: 这条内容发到 Twitter，会不会有人想转发（不是因为产品本身，而是因为这段评论写得好）？
-```
-
-3 个都是"是"才通过。如果 T1 是"否"，说明写得太通用，没有 VentureDex 的声音。如果 T2 是"否"，说明只是在复述公开信息。如果 T3 是"否"，说明写得不够锐利。
+> 这是 VentureDex 唯一的内容规范文档。所有策展决策以此为准。
 
 ---
 
-## 一、收录门槛（Gate）
+## 第一章：我们是谁
 
-候选项目必须通过以下 **全部 7 道门槛** 才能收录。任何一道不通过即淘汰。
+VentureDex 是一个有观点的创业项目目录。我们不追求全面，追求准确。不追求速度，追求深度。不追求中立，追求诚实。
 
-### Gate 1: 产品可用性
-- 网站可访问（HTTP 200），不是 coming soon、waitlist、或 404
-- 有可使用的产品（可注册/试用/下载），不是纯概念页
-- **验证方式**: 访问 URL，确认首页有产品功能入口（Sign up / Try / Download / Docs）
+我们的读者是创业者和投资人。他们不需要又一个融资新闻聚合器。他们需要一个值得信赖的声音告诉他们："在噪音中，这几个值得你花 5 分钟了解。"
 
-### Gate 2: 独立实体
-- 是独立公司或独立开源项目
-- **排除**: 大公司子产品（Google Cloud 的某个功能）、内部工具外部化、白标产品
-- **边界案例**: 从大公司 spin-off 的独立公司可以收录（如 Vercel 脱离 ZEIT）
+### 编辑信条
 
-### Gate 3: 阶段限制
-- Pre-seed 到 Series C 之间，或 Bootstrapped
-- **排除**: Series D+、已上市公司、估值超过 $10B 的公司
-- **验证方式**: 查 Crunchbase 或融资新闻确认阶段
+**我们只收录让我们觉得"这个产品有意思"的公司。** 不是"这个公司融资了所以应该收录"。融资是发现信号，不是收录理由。发现之后，我们要做的是判断：这个产品是否值得一个有品味的人推荐给朋友？
 
-### Gate 4: 差异化
-- 有独立的产品思路，不是现有产品的 UI 换皮
-- 至少在一个维度上做到了品类内最好：体验、性能、价格、开放性
-- **验证方式**: 能用一句话说出"它比 [竞品] 好在哪里"
+这个判断基于三个维度：
 
-### Gate 5: 牵引力证据（至少满足一项）
-- 已获得机构融资（天使轮以上，有公开新闻来源）
-- 被 YC / Techstars / 500 Global 等加速器录取
-- GitHub 星标 > 1,000（开源项目）
-- Product Hunt 日榜前 5
-- Hacker News 首页帖子且评论 > 50
-- 公开披露的用户/收入数据（MAU > 10,000 或 ARR > $100K）
-- **验证方式**: 提供具体的来源链接
+1. **这个产品做了一个有意思的赌注。** 它放弃了什么来换取什么？如果你找不到它的赌注，它要么没有主见，要么在做所有人都在做的事。
+2. **这个产品有工艺感。** 打开网站的前 10 秒你能感受到。字体、间距、文案、交互。粗糙的 landing page 背后几乎不会有精致的产品。
+3. **这个产品解决了一个真实的、具体的问题。** 不是"让团队更高效"。是"让开发者在 issue tracker 里不再等 3 秒刷新"。越具体越好。
 
-### Gate 6: 内容排除清单
-以下类型一律不收录，无例外：
-- 加密货币/NFT/Web3/DeFi 核心业务（区块链基础设施工具除外）
-- 赌博、成人内容、烟草
-- 武器、监控软件
-- SEO 工具、link building 工具
-- 模板市场、WordPress 主题商店
-- VPN 评测/比价类聚合站
-- 已关闭/无法访问的项目
-
-### Gate 7: 查重
-- `ls content/startups/` 确认 slug 未被占用
-- 确认同一公司没有以其他名称/域名已被收录
-- 确认同一产品的不同版本没有重复收录（如 app.example.com 和 example.com）
+如果三个维度一个都不满足，不收录。即使它融了 $100M。
 
 ---
 
-## 二、发现流程（Discovery）
+## 第二章：策展流程
 
-### 数据源及抓取规则
+每个收录从一条融资新闻开始，经过 5 个阶段到达发布。每个阶段都可能淘汰候选。
 
-| 来源 | 抓取方式 | 频率 | 候选数/次 |
-|------|---------|------|-----------|
-| HN Show HN | 搜索 Algolia API `search_by_date?tags=show_hn&numericFilters=points>50` | 每次运行 | 最多 10 |
-| YC Batch | 访问 ycombinator.com/companies，按最新 batch 筛选 | 每季度 | 最多 20 |
-| Product Hunt | 访问首页，筛选近 7 天 upvotes > 200 的产品 | 每次运行 | 最多 5 |
-| 融资新闻 | 搜索 "startup raised" site:techcrunch.com 近 30 天 | 每次运行 | 最多 5 |
-| GitHub Trending | 访问 github.com/trending，筛选近 1 周新增星标最多的项目 | 每次运行 | 最多 5 |
+```
+Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──→ Stage 4: 内容创作 ──→ Stage 5: 验证发布
+   │                  │                    │                     │                    │
+   │                  ↓                    ↓                     ↓                    ↓
+   │              rejected.jsonl       rejected.jsonl         重写直到通过          自动验证
+   │              (记录原因)           (记录原因)                                  build-db.sh
+   ↓
+ 融资新闻
+ TechCrunch
+ Bloomberg
+ The Information
+```
 
-### 候选评估流程
+### Stage 1: 发现
 
-对每个候选项目，按顺序执行 Gate 1-7。**一旦某道 Gate 不通过，立即停止，记录淘汰原因到 `content/rejected.jsonl`**：
+**输入**: 近 30 天的创业融资新闻。
 
+**搜索方式**:
+```
+"raises" "seed" OR "series" site:techcrunch.com
+"funding" "startup" site:bloomberg.com
+```
+
+**产出**: 10-20 个候选 URL。
+
+**这个阶段不做判断**，只做收集。
+
+### Stage 2: 初筛（60 秒/项目）
+
+对每个候选，快速检查 4 个硬性条件。**任何一条不满足，立即淘汰并记录。**
+
+| # | 条件 | 怎么检查 | 淘汰标准 |
+|---|------|---------|---------|
+| F1 | 产品可访问 | 打开 URL | 404、coming soon、waitlist-only、纯概念页 |
+| F2 | 独立公司 | 查公司背景 | 大公司子产品、内部工具、白标 |
+| F3 | 早期阶段 | 看融资轮次 | Series D 及以上、估值 > $10B、已上市 |
+| F4 | 非排除品类 | 看产品内容 | 加密货币/NFT、赌博、成人、SEO 工具、模板商店、VPN 评测 |
+
+淘汰时记录到 `content/rejected.jsonl`：
 ```jsonl
-{"slug":"example","url":"https://example.com","rejected_at":"2026-04-16","gate":"3","reason":"Series E, valued at $15B"}
+{"slug":"bad-example","url":"https://bad.com","date":"2026-04-16","stage":"F2","reason":"Google subsidiary, not independent"}
 ```
 
-只有全部 7 道 Gate 通过的项目才进入内容生成阶段。
+通过初筛的候选进入 Stage 3。预期：10-20 个候选中，约 5-8 个通过初筛。
 
----
+### Stage 3: 深度评估（5-10 分钟/项目）
 
-## 三、评分标准（Rating）
+这是品味发挥作用的阶段。初筛只检查"这个公司有没有资格"，深度评估要回答"这个产品是否值得推荐"。
 
-### editor_rating 量化标准
+**步骤 3.1: 使用产品**
 
-每个维度 0 或 1 分，总分即为 rating：
+实际打开产品网站，花 3-5 分钟体验。不是看 landing page，是试用产品。如果需要注册，注册。如果有 demo，看 demo。如果是开源项目，看 README 和 demo 站。
 
-| 维度 | 1 分条件 | 0 分条件 |
+记录你的第一印象：
+- 前 5 秒你看到了什么？
+- 最让你惊讶的一个细节是什么？
+- 最让你失望的一个点是什么？
+
+**步骤 3.2: 品味三问**
+
+| 问题 | 通过标准 | 淘汰标准 |
 |------|---------|---------|
-| **产品完成度** | 核心功能完整可用，非 beta 标签遍地 | 明显半成品，功能缺失 |
-| **市场验证** | 有付费用户/融资/$1M+ ARR/大量活跃用户 | 只有 landing page 和 waitlist |
-| **差异化强度** | 品类内明显领先的某个维度 | 和竞品没有明显区别 |
-| **技术品味** | 产品体验精致，细节考究 | 粗糙，明显是快速拼凑 |
-| **趋势势能** | 正在被讨论/增长/融资/被大量引用 | 无明显增长势头 |
+| **这个产品做了什么赌注？** | 你能用一句话说出"它选择了 X 放弃了 Y" | 你找不到它的取舍，它在做所有人都在做的事 |
+| **它有工艺感吗？** | 打开网站前 10 秒感觉"这个人在意" | 默认字体、默认颜色、"Empowering teams to..." |
+| **它解决的问题具体吗？** | 你能说出一个人的名字（或角色）和他的痛点 | "帮助企业提升效率" — 无具体性 |
 
-**总分 = 5 个维度得分之和（1-5）。**
+三问中至少 2 个通过才继续。0-1 个通过 → 淘汰。
 
-- 1 分: 有一个维度突出
-- 2 分: 有两个维度突出
-- 3 分: 三个维度突出，推荐收录
-- 4 分: 四个维度突出，强烈推荐
-- 5 分: 五个维度全部满足，必看
-
-**is_featured 规则**: 只有 rating >= 4 才能设为 `true`。
-
----
-
-## 四、编辑短评标准（editor_note）
-
-### 结构要求
-
-3-5 句话，按以下结构：
-
-1. **Hook（第 1 句）**: 一个有态度的判断。不是"这是什么"，而是"为什么它不一样"。
-2. **Evidence（第 2-3 句）**: 用具体事实支撑判断。数据、技术选型、产品决策。
-3. **Insight（第 4-5 句）**: 你的洞察。风险、机会、或一个大多数人没注意到的角度。
-
-### 必须包含
-- 至少 1 个可验证的具体事实（融资金额/用户数/技术决策/竞品对比）
-- 至少 1 个有争议的观点（不是所有人都会同意的判断）
-
-### 必须避免
-- 第一句以产品名开头（"Linear is..."，应该用描述性开头）
-- 营销词汇：革命性、颠覆、赋能、一站式、全方位、下一代
-- 空洞形容词：创新的、强大的、高效的、出色的
-- 模板句式："致力于..."、"旨在..."、"提供了..."
-
-### 自动检测规则（Codex 必须自查）
-
-生成 editor_note 后，检查以下条件。任何一条不通过必须重写：
-
-```
-CHECK 1: 字数在 150-500 字符之间
-CHECK 2: 不包含以下词汇：革命, 颠覆, 赋能, 一站式, 下一代, innovative, revolutionary, comprehensive, robust, cutting-edge, game-changing, best-in-class
-CHECK 3: 包含至少一个数字（融资金额、用户数、年份、百分比）
-CHECK 4: 第一句不以产品名开头
-CHECK 5: 不与 summary 字段有 > 50% 的词汇重叠
-CHECK 6: 包含至少一个比较或对比（"比...更"、"不像...而是"、"而...选择了"）
+淘汰时记录：
+```jsonl
+{"slug":"boring-saas","url":"https://boring.com","date":"2026-04-16","stage":"taste","reason":"No discernible bet. Generic SaaS dashboard, no craft signal. Solves 'team collaboration' with no specificity."}
 ```
 
----
+**步骤 3.3: 交叉验证融资信息**
 
-## 五、why_featured 标签标准
+从融资新闻文章中提取以下信息，每一条都必须在原文中有明确出处：
 
-- 最多 40 个字符（英文）或 20 个字符（中文）
-- 一个短语，不是句子
-- 必须具体，不能泛泛
+| 字段 | 来源要求 | 如果找不到 |
+|------|---------|-----------|
+| 融资金额 | 原文明确提到的数字 | 不填 amount，标注 "undisclosed" |
+| 融资轮次 | 原文明确标注 (Seed/Series A 等) | 必须有，否则不收录 |
+| Lead investor | 原文提到的 lead 或第一个提及的投资方 | 不填，写 "undisclosed" |
+| 日期 | 文章发布日期 | 必须有 |
+| 来源 URL | 文章 URL | 必须有，没有来源不收录 |
 
-### 通过标准
+**绝对规则：不编造。不确定的留空。来源不存在的不收录。**
 
-✅ "YC S26 batch"
-✅ "Bootstrapped to $1M ARR"
-✅ "$400M Series B at age 2"
-✅ "10K GitHub stars in 6 months"
+通过 Stage 3 的项目进入 Stage 4。预期：5-8 个候选中，约 2-4 个通过。
 
-### 不通过标准
+### Stage 4: 内容创作
 
-❌ "Great product" — 太笼统
-❌ "AI startup" — 只是分类，不是理由
-❌ "Worth watching" — 废话
-❌ "Innovative approach" — 营销语言
+#### 4.1 JSON 文件结构
 
----
+创建 `content/startups/{slug}.json`：
 
-## 六、融资数据标准（Funding）
+```json
+{
+  "slug": "example",
+  "domain": "example.com",
+  "url": "https://example.com",
+  "product_name": "Example",
+  "summary": "不超过 100 字符。说它做什么，不说为什么好。",
+  "editor_note": "见下方详细标准",
+  "editor_rating": 4,
+  "why_featured": "不超过 40 字符。具体的理由，不是形容词。",
+  "product_type": "DevTools",
+  "founded_year": 2023,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "developer tools,api,open source",
+  "investors": "只填有来源可查的。逗号分隔。",
+  "links": {
+    "github": "只填官方组织页",
+    "twitter": "只填产品官方账号",
+    "linkedin": "只填公司页",
+    "producthunt": "只填产品页"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Sequoia Capital",
+      "date": "2026-04-01",
+      "source_url": "https://techcrunch.com/2026/...",
+      "source_name": "TechCrunch"
+    }
+  ]
+}
+```
 
-### 铁律：没有来源 = 不存在
+#### 4.2 editor_note 撰写标准
 
-每条融资数据 **必须** 有一个可访问的新闻来源 URL。没有来源的条目不允许进入系统。验证器 (`scripts/validate-funding.sh`) 会自动拦截。
+editor_note 是 VentureDex 的核心价值。每一条都应该让读者觉得"这个评论本身就值得读"。
 
-### 必填字段（全部必填，缺一不可）
-
-| 字段 | 规则 | 示例 |
-|------|------|------|
-| `company_name` | 公司全名 | "Pillar" |
-| `company_url` | 必须 HTTP 200 可达 | "https://pillar.fi" |
-| `amount` | 格式 `$NM` 或 `$NB` | "$20M" |
-| `stage` | 限定值: Pre-seed / Seed / Series A / B / C / Venture / Growth | "Seed" |
-| `lead_investor` | Lead investor 名称 | "a16z" |
-| `date` | 格式 YYYY-MM-DD | "2026-04-14" |
-| `source_url` | 新闻链接，必须 HTTP 200 可达 | "https://techcrunch.com/..." |
-| `source_name` | 来源媒体名 | "TechCrunch" |
-
-### 验证链（自动执行，7 步全通过才入库）
+**结构（3-5 句）:**
 
 ```
-Step 1: JSON 格式合法
-Step 2: 全部 8 个必填字段都存在
-Step 3: 日期格式 YYYY-MM-DD
-Step 4: 金额格式 $NM/$NB
-Step 5: 阶段是合法值
-Step 6: source_url HTTP 200 可达
-Step 7: company_url HTTP 200 可达
+第 1 句: 判断。不是描述。
+         不要: "This is a project management tool."
+         要:   "Someone finally built project management for people who hate project management."
+
+第 2 句: 证据。支撑你判断的具体事实。
+         不要: "It's growing fast."
+         要:   "Tab completion that reads your mind, inline diffs that make sense — shipped by a 50-person team in 18 months."
+
+第 3 句: 赌注或洞察。这个产品做了什么取舍？创始人看到了什么？
+         不要: "It has great potential."
+         要:   "The VSCode fork approach was the right call: familiar enough to switch, different enough to stay."
+
+第 4-5 句（可选）: 张力或风险。诚实地指出不确定性。
+         不要: "It will be interesting to watch."
+         要:   "Whether this replaces Google search or becomes a power-user tool is the billion dollar question."
 ```
 
-任何一步失败 → BUILD BLOCKED → 不部署。
+**通过标准（全部满足才通过）:**
 
-### 可接受的来源
+| # | 规则 | 为什么 |
+|---|------|--------|
+| N1 | 150-500 字符 | 太短没深度，太长失焦 |
+| N2 | 第一句不以产品名开头 | 逼自己用判断开头而不是描述 |
+| N3 | 包含至少 1 个具体事实（数字、技术名词、产品特性） | 区分观点和空谈 |
+| N4 | 包含至少 1 个比较或对比 | 说清楚"不是什么"才能说清楚"是什么" |
+| N5 | 不包含任何禁用词（见下方） | 避免 AI 腔和营销腔 |
+| N6 | 如果去掉产品名，读者仍然觉得这段话有价值 | 品味测试：评论本身要有独立价值 |
 
-- TechCrunch
-- The Information
-- Bloomberg
-- Reuters
-- 公司官方新闻稿/博客
-- Crunchbase News
+**禁用词列表:**
+```
+中文: 革命性、颠覆性、赋能、一站式、全方位、下一代、生态、矩阵、抓手、触达
+英文: revolutionary, comprehensive, robust, cutting-edge, game-changing, best-in-class, 
+      innovative, powerful, seamless, empower, leverage, synergy, next-generation
+```
 
-### 不可接受的来源
+**正面案例:**
 
-- Twitter/X 帖子（不可靠）
-- 个人博客
-- 二手转载（不是原始来源）
-- 自己编造的 URL
+> When someone with taste builds project management, every interaction feels considered. The keyboard shortcuts alone are worth the switch. In a market drowning in feature-bloated tools, Linear chose speed and focus. That bet paid off.
 
-### 文件命名
+分析：判断开头 → 具体细节(keyboard shortcuts) → 赌注(speed over features) → 简短结论
 
-`content/funding/{YYYY-MM-DD}-{company-slug}.json`
+> Perplexity did what Google should have done five years ago: just answer the question. The product is deceptively simple. You ask, it answers with sources. No ten blue links, no ads above the fold. Whether this replaces Google search or becomes a power-user tool is the billion dollar question.
 
-日期必须和 JSON 里的 `date` 字段一致。验证器会检查。
+分析：比较(vs Google) → 具体描述 → 诚实的张力(billion dollar question)
 
----
+**反面案例:**
 
-## 七、数据准确性规则
+> ❌ "This is an innovative AI-powered platform that leverages cutting-edge technology to empower developers with comprehensive tools for building next-generation applications."
 
-### 必须可验证的字段
-以下字段如果填写，必须有公开来源可查：
-- `funding_stage` + `funding_display`: 来源为 Crunchbase、TechCrunch 或官方公告
-- `investors`: 来源为融资新闻或公司官网
-- `founded_year`: 来源为 Crunchbase 或 LinkedIn 公司页
-- `team_size`: 来源为 LinkedIn 公司页（取范围值）
+每个词都是禁用词。没有具体性。没有判断。没有品味。
 
-### 不确定就不填
-以下字段在无法确认时必须留空（空字符串或不填），**绝对不能猜测**：
-- `funding_display` — 宁可只写 stage 不写金额
-- `investors` — 宁可不填不能瞎编
-- `links.github` / `links.twitter` — 只填官方账号，不填个人账号
+> ❌ "The company raised $20M from a16z, showing strong investor confidence in their vision."
 
-### links 验证规则
-每个 link 必须是该公司/产品的官方页面：
-- `github`: 组织页（github.com/linear），不是创始人个人页
-- `twitter`: 产品官方账号（@linear），不是创始人个人账号
-- `linkedin`: 公司页（linkedin.com/company/linear）
-- `producthunt`: 产品页（producthunt.com/products/linear）
+这是融资新闻摘要，不是编辑短评。融资不是产品。
 
----
+#### 4.3 editor_rating 评分
 
-## 七、提交前检查清单（Codex 必须逐项确认）
+每个维度 0 或 1 分，总分 1-5：
 
-每个新条目提交前，Codex 必须在 commit message 中附带以下检查结果：
+| 维度 | 1 分 = 是 | 0 分 = 否 | 判断依据 |
+|------|----------|----------|---------|
+| 产品完成度 | 核心功能可用，不是 beta 满天飞 | 明显半成品 | 试用 3 分钟 |
+| 市场验证 | 有付费用户或可观的免费用户 | 只有 landing page | 看定价页/用户数 |
+| 差异化 | 品类内某个维度明显最好 | 和竞品无明显区别 | 和前 3 竞品对比 |
+| 工艺品味 | 前 10 秒感觉"这个人在意" | 粗糙或模板化 | 看字体/间距/文案/交互 |
+| 势能 | 近期被讨论/增长/融资 | 无明显动态 | 看 HN/Twitter/新闻 |
+
+**is_featured 规则**: 总分 ≥ 4 且工艺品味 = 1。
+
+#### 4.4 why_featured 标准
+
+| 通过 | 不通过 | 为什么 |
+|------|--------|--------|
+| "$60M Series A at 18 months" | "Great startup" | 具体 vs 空洞 |
+| "10K GitHub stars in 3 months" | "Popular project" | 有数据 vs 无数据 |
+| "Replaced Jira at 500 teams" | "Better than Jira" | 有证据 vs 无证据 |
+| "YC S26, solo founder" | "YC company" | 有细节 vs 无细节 |
+
+#### 4.5 截图
+
+```bash
+./scripts/screenshot.sh {slug} {url}
+```
+
+截图上传到 R2，同时保存 `public/screenshots/{slug}.webp` 到 git。
+
+### Stage 5: 验证与发布
+
+**5.1 自动验证**
+
+```bash
+./scripts/validate.sh    # 结构和格式检查
+./scripts/build-db.sh    # 生成 SQL，确认无语法错误
+```
+
+**5.2 提交**
+
+每个项目单独 commit：
 
 ```
 content: add {Product Name}
 
-Gate check:
-- [x] G1 产品可用: URL 返回 200，有注册/试用入口
-- [x] G2 独立实体: 独立公司
-- [x] G3 阶段合格: {Series A}
-- [x] G4 差异化: {比 X 好在 Y}
-- [x] G5 牵引力: {具体证据，如 "YC S26" 或 "GitHub 5K stars"}
-- [x] G6 非排除类: 不在排除清单中
-- [x] G7 未重复: slug 不存在
-
-Quality check:
-- [x] Q1 editor_note 150-500 字符
-- [x] Q2 无营销词汇
-- [x] Q3 包含具体数字
-- [x] Q4 首句不以产品名开头
-- [x] Q5 与 summary 不重复
-- [x] Q6 包含比较/对比
-- [x] Q7 截图成功
-- [x] Q8 build-db.sh 通过
-
-Rating: {N}/5 ({通过的维度列表})
+Funding: {amount} {stage} from {lead} ({source_name})
+Rating: {N}/5 (dims: {list})
+Bet: {一句话描述这个产品的赌注}
 ```
+
+commit message 保持简洁。Gate check 清单不需要放在 commit 里（验证器已经做了）。重要的是把赌注写出来 — 如果你不能用一句话说出它的赌注，你还没有理解它。
+
+**5.3 推送**
+
+```bash
+git push
+```
+
+GitHub Actions 自动执行验证 → D1 同步 → 部署。
+一个文件同时更新首页卡片和 News 表格。
+
+---
+
+## 第三章：周刊
+
+每周从已收录的项目中选 5-7 个组成 Weekly Picks。
+
+### 选题标准
+
+- rating ≥ 3
+- 优先选最近新收录的
+- 有一个主题线索把本期串起来（不是随机拼凑）
+- 周刊标题是一个观点，不是一个分类名
+
+| 好标题 | 坏标题 |
+|--------|--------|
+| "The tools that changed how we build" | "This week's picks" |
+| "AI that solves boring problems" | "AI startups" |
+| "Five bets against conventional wisdom" | "Featured companies" |
+
+### 文件格式
+
+```json
+// content/weekly/{N}.json
+{
+  "issue_number": 2,
+  "title": "一个观点，不是一个分类",
+  "editorial_intro": "2-3 句。为什么选这些项目？它们之间的共同点是什么？",
+  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
+}
+```
+
+---
+
+## 第四章：红线
+
+这些是绝对不做的事情。没有例外。
+
+1. **不编造数据。** 融资金额、用户数、投资人不确定就不填。
+2. **不收录没有来源的融资。** source_url 必须指向一个可访问的新闻页面。
+3. **不收录自己没试用过的产品。** 不能只看 landing page 就写 editor_note。
+4. **不用营销语言。** 禁用词列表里的词一个都不能出现。
+5. **不批量收录。** 每次运行最多收录 5 个。宁缺毋滥。
+6. **不修改代码。** 只操作 content/ 目录和 public/screenshots/。
+7. **不重复收录。** 先查 content/startups/ 和 rejected.jsonl。
+8. **不收录被淘汰的项目。** rejected.jsonl 中的条目不再评估（除非有新一轮融资）。
+
+---
+
+## 第五章：品味的本质
+
+品味不是一个检查清单。但它可以被训练和校准。
+
+### 品味 = 你注意到了什么
+
+当你打开一个产品网站时，普通人看到的是功能。有品味的人看到的是选择。
+
+- "他们选择了衬线字体而不是 Inter" — 这是一个关于定位的选择
+- "他们的首页只有一个按钮" — 这是一个关于信心的选择
+- "他们的定价页没有 enterprise tier" — 这是一个关于用户的选择
+
+每一个选择都是一个信号。VentureDex 的 editor_note 应该让读者看到这些选择。
+
+### 品味 = 你拒绝了什么
+
+VentureDex 的品味不体现在收录了什么。体现在拒绝了什么。
+
+如果 rejected.jsonl 的条目数少于 content/startups/ 的条目数，说明标准不够高。
+
+目标比例：**每收录 1 个项目，至少拒绝 3 个。**
+
+### 品味 = 你怎么说
+
+同一个产品，可以写出截然不同的 editor_note：
+
+**没品味的写法:**
+> Cursor is an AI-powered code editor that helps developers write code faster. It was founded in 2022 and has raised $60M from a16z.
+
+**有品味的写法:**
+> Cursor bet that the future of coding is not copilot-inside-VSCode but a ground-up rethinking of the editor. They were right. Tab completion that reads your mind, inline diffs that make sense, and a cmd-K that actually works. The VSCode fork approach was the right call: familiar enough to switch, different enough to stay.
+
+区别不是文采。是你看到了什么。第一种看到了功能和数据。第二种看到了赌注、细节、和选择。

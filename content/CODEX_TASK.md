@@ -1,231 +1,43 @@
-# VentureDex Codex 自动化任务
+# VentureDex Codex 任务
 
-## 角色
+**所有标准和流程见 `content/STANDARD.md`。**
 
-你是 VentureDex 的策展人。不是数据录入员，不是新闻编辑，而是一个有品味的人在挑选值得展示的东西。
+本文件仅作为入口指引。STANDARD.md 是唯一的规范文档。
 
-你的审美标准：偏爱有主见的产品，偏爱工艺精致的产品，偏爱 underdog，偏爱解决真实问题的产品。你对"正确但无趣"的产品没有兴趣。
-
-你的工作不是"尽可能多地收录"，而是"只收录你真的想推荐给朋友的"。rejected.jsonl 应该比 content/startups/ 多得多。高拒绝率是品味的证据。
-
-## 前置要求
-
-每次运行前，必须先完整阅读 `content/STANDARD.md`。特别是"第零章：编辑世界观"。那不是参考资料，是你的操作系统。
-
-## Step 1: 发现候选项目
-
-**核心原则：融资 = 发现信号。** 拿到融资的公司同时出现在首页和 News 页。一个文件，两个出口。
-
-### 主数据源：融资新闻
-
-搜索近 30 天的融资新闻，找到刚拿到融资的创业公司：
-
-```
-搜索: "raises" "series" OR "seed" site:techcrunch.com
-搜索: "funding" "startup" site:bloomberg.com
-搜索: "raises" site:theinformation.com
-```
-
-每条融资新闻包含了你需要的一切：公司名、金额、轮次、lead investor、日期、来源链接。
-
-### 辅助数据源（补充发现）
-
-- HN Show HN: `points > 50`，近 7 天
-- YC 最新 batch
-- Product Hunt: `upvotes > 200`，近 7 天
-- GitHub Trending: 近 7 天
-
-辅助数据源发现的项目也必须有可验证的融资记录。没有融资记录 = 不收录。
-
-## Step 2: 逐项过 Gate（严格执行）
-
-对每个候选项目，**按顺序执行 STANDARD.md 中的 7 道 Gate**。
-
-执行规则:
-- 一道不过就停止，记录到 `content/rejected.jsonl`
-- 不能跳过任何一道 Gate
-- 不能"差不多算过"，要么明确通过要么不通过
-- 存疑时淘汰，不存疑时收录
-
-### rejected.jsonl 格式
-
-对每个被淘汰的项目，追加一行到 `content/rejected.jsonl`：
-
-```jsonl
-{"slug":"example","url":"https://example.com","rejected_at":"2026-04-16","gate":"5","reason":"No funding, no public traction data, GitHub <100 stars"}
-```
-
-这个文件的作用:
-1. 避免重复评估同一个项目
-2. 留下决策记录
-3. 可以定期 review 被拒绝的项目是否有了新进展
-
-## Step 3: 评分
-
-对通过全部 7 道 Gate 的项目，按 STANDARD.md 中的 5 个维度打分：
-
-```
-产品完成度:  0 或 1
-市场验证:    0 或 1
-差异化强度:  0 或 1
-技术品味:    0 或 1
-趋势势能:    0 或 1
-总分:        1-5
-```
-
-总分即为 `editor_rating`。如果总分 < 2，不收录（通过了 Gate 但质量不够好）。
-
-## Step 4: 内容生成
-
-### 4.1 抓取元数据
-
-运行截图和抓取脚本获取产品信息:
+## 快速启动
 
 ```bash
-# 抓取 title/description (利用 CF Browser Rendering /scrape API)
-# screenshot.sh 里已经有这个能力
+# 1. 读标准（必须先读完再操作）
+cat content/STANDARD.md
+
+# 2. 搜索融资新闻
+# 搜索近 30 天: "raises" "series" OR "seed" site:techcrunch.com
+
+# 3. 对每个候选执行 STANDARD.md 第二章的 5 个 Stage
+
+# 4. 创建/更新 content/startups/{slug}.json（含 funding 数组）
+
+# 5. 截图
 ./scripts/screenshot.sh {slug} {url}
-```
 
-### 4.2 创建 JSON 文件
-
-创建 `content/startups/{slug}.json`，参考 `content/startups/linear.json` 的格式。
-
-**字段填写规则:**
-
-| 字段 | 来源 | 必填 | 规则 |
-|------|------|------|------|
-| slug | 手动 | 是 | 小写+连字符，如 "val-town" |
-| domain | URL 提取 | 是 | 不含协议和路径 |
-| url | 候选 URL | 是 | 完整 URL |
-| product_name | 网站 title | 是 | 去掉后缀（"— Build faster"） |
-| summary | meta description | 是 | 不超过 100 字符 |
-| editor_note | 生成 | 是 | 遵循 STANDARD.md 六项自查 |
-| editor_rating | 评分 | 是 | Step 3 算出的总分 |
-| why_featured | 生成 | 是 | 不超过 40 字符，具体不笼统 |
-| product_type | 判断 | 是 | 必须是限定列表中的值 |
-| funding_stage | 查证 | 否 | 不确定就写 "Unknown" |
-| funding_display | 查证 | 否 | 不确定就留空 |
-| founded_year | 查证 | 否 | 不确定就不填 |
-| team_size | LinkedIn | 否 | 范围值如 "10-30" |
-| hq_location | 查证 | 否 | 城市名 |
-| region | 判断 | 是 | 限定列表中的值 |
-| tags | 生成 | 是 | 3-6 个逗号分隔 |
-| investors | 查证 | 否 | 只填可确认的，不猜 |
-| links | 查证 | 否 | 只填官方链接 |
-| is_featured | 规则 | 是 | rating >= 4 才为 true |
-
-### 4.3 编辑短评撰写流程
-
-editor_note 是 VentureDex 的核心价值。不是附带的描述，是读者来这里的原因。
-
-**第一步: 选择透镜**
-
-从 STANDARD.md 的 5 个品味透镜中选至少 2 个来审视这个产品:
-- 赌注（The Bet）: 它做了什么取舍？
-- 细节（The Detail）: 哪个具体的设计/功能让你觉得"这个人在意"？
-- 洞察（The Insight）: 创始人看到了什么别人没看到的？
-- 张力（The Tension）: 成功和失败的分界线在哪？
-- 比较（The Unexpected Comparison）: 它让你想到了什么意想不到的类比？
-
-**第二步: 写初稿**
-
-按 Hook → Evidence → Insight 结构写 3-5 句。
-
-**第三步: 格式自查**
-
-```
-CHECK 1: 字数 150-500 字符? ___
-CHECK 2: 不含营销词汇? ___
-CHECK 3: 包含至少 1 个数字? ___
-CHECK 4: 首句不以产品名开头? ___
-CHECK 5: 与 summary 无 >50% 词汇重叠? ___
-CHECK 6: 包含至少 1 个比较/对比? ___
-```
-
-**第四步: 品味自查**
-
-```
-T1: 去掉产品名，读者能识别出"这是 VentureDex 写的"吗? ___
-T2: 这里有读者在其他地方读不到的判断吗? ___
-T3: 这段话发到 Twitter，有人会因为评论本身而转发吗? ___
-```
-
-格式自查 6 项 + 品味自查 3 项，全部通过才提交。任何一项不通过，重写。**不允许跳过。**
-
-## Step 5: 验证
-
-```bash
-# 验证 JSON 格式
+# 6. 验证
+./scripts/validate.sh
 ./scripts/build-db.sh
 
-# 如果报错，修复 JSON 文件后重试
-```
-
-## Step 6: 提交
-
-每个新 startup 单独一个 commit，commit message 必须包含 Gate check 和 Quality check:
-
-```bash
+# 7. 提交
 git add content/startups/{slug}.json public/screenshots/{slug}.webp content/rejected.jsonl
-git commit -m "content: add {Product Name}
+git commit -m "content: add {Name}
 
-Gate check:
-- [x] G1 产品可用: {URL} 返回 200
-- [x] G2 独立实体: 独立公司
-- [x] G3 阶段合格: {Stage}
-- [x] G4 差异化: {比 X 好在 Y}
-- [x] G5 牵引力: {证据}
-- [x] G6 非排除类: 通过
-- [x] G7 未重复: slug 不存在
-
-Quality check:
-- [x] Q1 editor_note 字符数: {N}
-- [x] Q2 无营销词汇
-- [x] Q3 包含数字: {哪个}
-- [x] Q4 首句非产品名开头
-- [x] Q5 与 summary 不重复
-- [x] Q6 包含比较/对比
-- [x] Q7 截图成功
-- [x] Q8 build-db.sh 通过
-
-Rating: {N}/5 ({维度列表})
-Taste lens: {使用的透镜名称}
-Taste check: T1={Y/N} T2={Y/N} T3={Y/N}"
-```
-
-多个 startup 分开 commit。最后统一 push:
-
-```bash
+Funding: {amount} {stage} from {lead} ({source})
+Rating: {N}/5
+Bet: {一句话赌注}"
 git push
 ```
 
-## Step 7: 周刊（每周一次）
+## 关键规则（详见 STANDARD.md 第四章）
 
-从已收录的 rating >= 3 的项目中选 5-7 个组成周刊:
-
-```json
-// content/weekly/{N}.json
-{
-  "issue_number": 2,
-  "title": "标题——用一句话概括本期主题",
-  "editorial_intro": "2-3 句编辑导语，说明本期为什么选了这些项目",
-  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
-}
-```
-
-提交:
-```bash
-git add content/weekly/
-git commit -m "content: weekly #N — {title}"
-git push
-```
-
-## 禁止操作
-
-1. **不修改 src/、scripts/、d1/、.github/ 下的任何文件**
-2. **不编造融资金额、投资人、用户数据**
-3. **不跳过 Gate 检查**
-4. **不跳过 editor_note 自查**
-5. **不批量收录低质量项目来凑数**
-6. **不收录已在 rejected.jsonl 中的项目**（除非有新的重大进展并在 commit message 中说明）
+- 没有来源的融资不收录
+- 没试用过的产品不写 editor_note
+- 禁用营销词汇
+- 每次最多收录 5 个
+- rejected:accepted 比例至少 3:1
