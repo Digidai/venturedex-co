@@ -24,9 +24,6 @@ const metaLine = [site.product_type, site.funding_stage, site.region]
           <span>{site.product_name.charAt(0)}</span>
         </div>
       )}
-      {site.why_featured && (
-        <span class="card-featured-tag">{site.why_featured}</span>
-      )}
     </div>
     <div class="card-body">
       <div class="card-header">
@@ -34,7 +31,10 @@ const metaLine = [site.product_type, site.funding_stage, site.region]
         <span class="card-domain">{site.domain}</span>
       </div>
       {site.summary && <p class="card-summary">{site.summary}</p>}
-      {metaLine && <p class="card-meta-line">{metaLine}</p>}
+      <div class="card-footer">
+        {metaLine && <span class="card-meta-line">{metaLine}</span>}
+        {site.why_featured && <span class="card-featured-label">— {site.why_featured}</span>}
+      </div>
     </div>
   </a>
 </article>
@@ -67,7 +67,6 @@ const metaLine = [site.product_type, site.funding_stage, site.region]
     aspect-ratio: 16 / 9;
     overflow: hidden;
     background: var(--color-badge-bg);
-    position: relative;
   }
 
   .site-card--large .card-screenshot {
@@ -97,20 +96,6 @@ const metaLine = [site.product_type, site.funding_stage, site.region]
     font-size: 2.5rem;
     color: var(--color-text-secondary);
     background: linear-gradient(135deg, var(--color-badge-bg) 0%, var(--color-border) 100%);
-  }
-
-  .card-featured-tag {
-    position: absolute;
-    bottom: var(--space-2);
-    left: var(--space-2);
-    font-size: 0.65rem;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: 4px;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    backdrop-filter: blur(4px);
-    letter-spacing: 0.01em;
   }
 
   .card-body {
@@ -152,10 +137,23 @@ const metaLine = [site.product_type, site.funding_stage, site.region]
     overflow: hidden;
   }
 
+  .card-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-1);
+  }
+
   .card-meta-line {
     font-size: 0.7rem;
     color: var(--color-text-secondary);
     letter-spacing: 0.01em;
+  }
+
+  .card-featured-label {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--color-accent);
   }
 
   @media (prefers-color-scheme: dark) {
