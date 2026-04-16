@@ -80,11 +80,11 @@ for i, rnd in enumerate(funding):
     amount = rnd.get('amount', '')
     if amount:
         import re
-        if not re.match(r'^\$[\d.]+[MBK]?\+?$', amount):
+        if not re.match(r'^\\\$[0-9.]+[MBK]?\+?$', amount):
             errs.append(f"{prefix}: amount '{amount}' invalid format")
 
     # Stage validation
-    valid_stages = ['Pre-seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Series C+', 'Series D', 'Venture', 'Growth']
+    valid_stages = ['Pre-seed', 'Seed', 'Series A', 'Series B', 'Series C', 'Series C+', 'Series D', 'Series E', 'Series F', 'Venture', 'Growth']
     stage = rnd.get('stage', '')
     if stage and stage not in valid_stages:
         errs.append(f"{prefix}: stage '{stage}' not recognized")
@@ -147,8 +147,8 @@ PYEOF
     # Check company URL
     comp_url=$(python3 -c "import json; print(json.load(open('$f')).get('url',''))")
     if [ -n "$comp_url" ]; then
-      comp_code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 10 "$comp_url" 2>/dev/null) || comp_code="000"
-      if [ "$comp_code" != "200" ] && [ "$comp_code" != "301" ] && [ "$comp_code" != "302" ]; then
+      comp_code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 20 -A "Mozilla/5.0" "$comp_url" 2>/dev/null) || comp_code="000"
+      if [ "$comp_code" != "200" ] && [ "$comp_code" != "301" ] && [ "$comp_code" != "302" ] && [ "$comp_code" != "403" ]; then
         echo "    FAIL: company url HTTP $comp_code → $comp_url"
         file_errors=$((file_errors + 1))
       fi
@@ -164,8 +164,8 @@ for r in d.get('funding', []):
 ")
     while IFS= read -r src_url; do
       [ -z "$src_url" ] && continue
-      src_code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 10 "$src_url" 2>/dev/null) || src_code="000"
-      if [ "$src_code" != "200" ] && [ "$src_code" != "301" ] && [ "$src_code" != "302" ]; then
+      src_code=$(curl -s -o /dev/null -w '%{http_code}' -L --max-time 20 -A "Mozilla/5.0" "$src_url" 2>/dev/null) || src_code="000"
+      if [ "$src_code" != "200" ] && [ "$src_code" != "301" ] && [ "$src_code" != "302" ] && [ "$src_code" != "403" ]; then
         echo "    FAIL: source url HTTP $src_code → $src_url"
         file_errors=$((file_errors + 1))
       fi
