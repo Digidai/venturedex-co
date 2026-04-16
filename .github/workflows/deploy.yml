@@ -36,9 +36,6 @@ jobs:
 
       - run: npx astro build
 
-      - name: Prepare assets for Wrangler
-        run: printf '_worker.js\n_routes.json\n' > dist/.assetsignore
-
       - name: Deploy Worker
         uses: cloudflare/wrangler-action@v3
         with:

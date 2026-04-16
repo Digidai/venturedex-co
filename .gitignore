@@ -5,4 +5,3 @@ dist/
 .dev.vars
 .env
 .gstack/
-public/screenshots/
