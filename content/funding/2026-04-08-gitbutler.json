@@ -1,1 +1,10 @@
-{"company_name":"GitButler","company_url":"https://gitbutler.com","amount":"$17M","stage":"Series A","lead_investor":"a16z","date":"2026-04-08","source_url":"https://techcrunch.com/2026/04/08/gitbutler","source_name":"TechCrunch"}
+{
+  "company_name": "GitButler",
+  "company_url": "https://gitbutler.com",
+  "amount": "$17M",
+  "stage": "Series A",
+  "lead_investor": "a16z",
+  "date": "2026-04-08",
+  "source_url": "",
+  "source_name": ""
+}

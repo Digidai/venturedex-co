@@ -1,1 +1,10 @@
-{"company_name":"Applied Compute","company_url":"https://appliedcompute.com","amount":"$80M","stage":"Venture","lead_investor":"Kleiner Perkins","date":"2026-04-09","source_url":"https://techcrunch.com/2026/04/09/applied-compute","source_name":"TechCrunch"}
+{
+  "company_name": "Applied Compute",
+  "company_url": "https://appliedcompute.com",
+  "amount": "$80M",
+  "stage": "Venture",
+  "lead_investor": "Kleiner Perkins",
+  "date": "2026-04-09",
+  "source_url": "",
+  "source_name": ""
+}

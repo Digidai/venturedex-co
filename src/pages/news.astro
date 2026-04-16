@@ -12,13 +12,22 @@ try {
 } catch {
   // D1 unavailable
 }
+
+function getDomain(url: string | null): string {
+  if (!url) return "";
+  try { return new URL(url).hostname; } catch { return ""; }
+}
+
+function getInitials(name: string): string {
+  return name.split(/\s+/).map(w => w[0]).join("").toUpperCase().slice(0, 2);
+}
 ---
 
 <Base title="News" description="Track the latest startup funding rounds. Updated regularly.">
   <div class="container news-page">
     <header class="news-header">
       <h1>Track the latest funding</h1>
-      <p class="subtitle">Find newly funded early-stage startups backed by top investors.</p>
+      <p class="subtitle">Find newly funded early-stage startups backed by top investors. Updated regularly.</p>
     </header>
 
     {rounds.length > 0 ? (
@@ -30,38 +39,56 @@ try {
               <th>Round</th>
               <th>Date</th>
               <th>Lead Investor</th>
-              <th>Source</th>
+              {rounds.some(r => r.source_url) && <th>Press</th>}
             </tr>
           </thead>
           <tbody>
-            {rounds.map((r) => (
-              <tr>
-                <td class="cell-company">
-                  {r.company_url ? (
-                    <a href={r.company_url} target="_blank" rel="noopener noreferrer" class="company-link">
-                      {r.company_name}
-                    </a>
-                  ) : (
-                    <span>{r.company_name}</span>
+            {rounds.map((r) => {
+              const domain = getDomain(r.company_url);
+              const faviconUrl = domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=32` : "";
+              return (
+                <tr>
+                  <td class="cell-company">
+                    <div class="company-info">
+                      {faviconUrl ? (
+                        <img src={faviconUrl} alt="" class="company-favicon" width="20" height="20" loading="lazy" />
+                      ) : (
+                        <span class="company-initial">{getInitials(r.company_name)}</span>
+                      )}
+                      {r.company_url ? (
+                        <a href={r.company_url} target="_blank" rel="noopener noreferrer" class="company-link">
+                          {r.company_name}
+                        </a>
+                      ) : (
+                        <span>{r.company_name}</span>
+                      )}
+                    </div>
+                  </td>
+                  <td class="cell-round">
+                    {r.amount && <span class="round-amount">{r.amount}</span>}
+                    <span class="round-stage">· {r.stage}</span>
+                  </td>
+                  <td class="cell-date">
+                    {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </td>
+                  <td class="cell-investor">
+                    <div class="investor-info">
+                      <span class="investor-badge">{getInitials(r.lead_investor || "")}</span>
+                      <span>{r.lead_investor || "—"}</span>
+                    </div>
+                  </td>
+                  {rounds.some(x => x.source_url) && (
+                    <td class="cell-source">
+                      {r.source_url ? (
+                        <a href={r.source_url} target="_blank" rel="noopener noreferrer" class="source-link">
+                          Source ↗
+                        </a>
+                      ) : ""}
+                    </td>
                   )}
-                </td>
-                <td class="cell-round">
-                  {r.amount && <span class="round-amount">{r.amount}</span>}
-                  <span class="round-stage">{r.stage}</span>
-                </td>
-                <td class="cell-date">
-                  {new Date(r.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
-                </td>
-                <td class="cell-investor">{r.lead_investor || "—"}</td>
-                <td class="cell-source">
-                  {r.source_url ? (
-                    <a href={r.source_url} target="_blank" rel="noopener noreferrer" class="source-link">
-                      Source ↗
-                    </a>
-                  ) : "—"}
-                </td>
-              </tr>
-            ))}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
@@ -135,6 +162,33 @@ try {
     white-space: nowrap;
   }
 
+  .company-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .company-favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
+  .company-initial {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: var(--color-badge-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+  }
+
   .company-link {
     color: var(--color-text);
     text-decoration: none;
@@ -142,6 +196,7 @@ try {
 
   .company-link:hover {
     color: var(--color-accent);
+    text-decoration: none;
   }
 
   .cell-round {
@@ -151,11 +206,11 @@ try {
   .round-amount {
     color: var(--color-accent);
     font-weight: 600;
-    margin-right: var(--space-2);
   }
 
   .round-stage {
     color: var(--color-text-secondary);
+    margin-left: var(--space-1);
   }
 
   .cell-date {
@@ -165,6 +220,27 @@ try {
 
   .cell-investor {
     white-space: nowrap;
+  }
+
+  .investor-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .investor-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-badge-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
   }
 
   .cell-source {
@@ -201,6 +277,10 @@ try {
     .funding-table th {
       padding: var(--space-3) var(--space-2);
       font-size: 0.8rem;
+    }
+
+    .investor-badge {
+      display: none;
     }
   }
 </style>

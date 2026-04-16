@@ -1,1 +1,10 @@
-{"company_name":"Mastra","company_url":"https://mastra.ai","amount":"$22M","stage":"Series A","lead_investor":"Spark Capital","date":"2026-04-09","source_url":"https://techcrunch.com/2026/04/09/mastra","source_name":"TechCrunch"}
+{
+  "company_name": "Mastra",
+  "company_url": "https://mastra.ai",
+  "amount": "$22M",
+  "stage": "Series A",
+  "lead_investor": "Spark Capital",
+  "date": "2026-04-09",
+  "source_url": "",
+  "source_name": ""
+}
