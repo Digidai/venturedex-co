@@ -1,0 +1,25 @@
+{
+  "slug": "cursor",
+  "domain": "cursor.com",
+  "url": "https://cursor.com",
+  "product_name": "Cursor",
+  "summary": "The AI-first code editor.",
+  "editor_note": "Cursor bet that the future of coding is not copilot-inside-VSCode but a ground-up rethinking of the editor. They were right. Tab completion that reads your mind, inline diffs that make sense, and a cmd-K that actually works. The VSCode fork approach was the right call: familiar enough to switch, different enough to stay.",
+  "editor_rating": 5,
+  "why_featured": "Changed how developers write code",
+  "product_type": "AI / ML",
+  "funding_stage": "Series B",
+  "funding_display": "$400M",
+  "founded_year": 2022,
+  "team_size": "50-100",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "ai,code editor,developer tools,productivity",
+  "investors": "Andreessen Horowitz, Thrive Capital, OpenAI Startup Fund",
+  "links": {
+    "github": "https://github.com/getcursor",
+    "twitter": "https://x.com/cursor_ai",
+    "linkedin": "https://linkedin.com/company/cursor-ai"
+  },
+  "is_featured": true
+}

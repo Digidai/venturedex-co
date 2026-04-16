@@ -1,0 +1,25 @@
+{
+  "slug": "eleven-labs",
+  "domain": "elevenlabs.io",
+  "url": "https://elevenlabs.io",
+  "product_name": "ElevenLabs",
+  "summary": "AI voice generation and speech synthesis platform.",
+  "editor_note": "ElevenLabs makes voice cloning feel like magic. Upload 30 seconds of audio, get a voice that sounds real. The ethical implications are enormous and they know it. What is interesting is the business: audiobooks, dubbing, accessibility tools. Not a toy. A platform.",
+  "editor_rating": 4,
+  "why_featured": "Voice AI that actually sounds human",
+  "product_type": "AI / ML",
+  "funding_stage": "Series B",
+  "funding_display": "$80M",
+  "founded_year": 2022,
+  "team_size": "50-100",
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "voice ai,speech synthesis,text to speech,artificial intelligence",
+  "investors": "Andreessen Horowitz, Nat Friedman, Daniel Gross",
+  "links": {
+    "github": "https://github.com/elevenlabs",
+    "twitter": "https://x.com/elevenlabsio",
+    "linkedin": "https://linkedin.com/company/elevenlabs"
+  },
+  "is_featured": false
+}

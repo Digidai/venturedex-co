@@ -17,12 +17,30 @@ jobs:
 
       - run: npm ci
 
+      - name: Generate D1 seed from content files
+        run: bash scripts/build-db.sh
+
+      - name: Sync content to remote D1
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute venturedex-db --remote --file=d1/schema.sql
+
+      - name: Seed remote D1 with content
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: d1 execute venturedex-db --remote --file=d1/generated-seed.sql
+
       - run: npx astro build
 
       - name: Prepare assets for Wrangler
         run: printf '_worker.js\n_routes.json\n' > dist/.assetsignore
 
-      - uses: cloudflare/wrangler-action@v3
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

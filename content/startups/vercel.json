@@ -1,0 +1,25 @@
+{
+  "slug": "vercel",
+  "domain": "vercel.com",
+  "url": "https://vercel.com",
+  "product_name": "Vercel",
+  "summary": "Frontend cloud platform for deploying web applications.",
+  "editor_note": "Vercel made deployment a non-event. Push code, get a URL. That simplicity is their moat. The Next.js connection gives them an unfair advantage: they build the framework AND the best place to deploy it. Love it or question the vendor lock-in, the DX is undeniably best-in-class.",
+  "editor_rating": 4,
+  "why_featured": "Made deployment boring (compliment)",
+  "product_type": "DevTools",
+  "funding_stage": "Series C+",
+  "funding_display": "$250M",
+  "founded_year": 2015,
+  "team_size": "300+",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "deployment,frontend,cloud platform,next.js,developer tools",
+  "investors": "Accel, GV (Google Ventures), Bedrock Capital, Greenoaks",
+  "links": {
+    "github": "https://github.com/vercel",
+    "twitter": "https://x.com/vercel",
+    "linkedin": "https://linkedin.com/company/vercel"
+  },
+  "is_featured": false
+}

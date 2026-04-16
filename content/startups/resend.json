@@ -1,0 +1,25 @@
+{
+  "slug": "resend",
+  "domain": "resend.com",
+  "url": "https://resend.com",
+  "product_name": "Resend",
+  "summary": "Email API for developers. Beautiful, simple, reliable.",
+  "editor_note": "Resend took the most annoying part of building a product (transactional email) and made it pleasant. The DX is absurdly good. React Email as a companion project shows they understand that email is a design problem, not just an infrastructure one.",
+  "editor_rating": 4,
+  "why_featured": "DX that makes you jealous",
+  "product_type": "DevTools",
+  "funding_stage": "Series A",
+  "funding_display": "$3.5M",
+  "founded_year": 2022,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "email,api,developer tools,transactional email",
+  "investors": "Y Combinator, SV Angel, Dylan Field",
+  "links": {
+    "github": "https://github.com/resend",
+    "twitter": "https://x.com/resabordar",
+    "linkedin": "https://linkedin.com/company/resend"
+  },
+  "is_featured": true
+}

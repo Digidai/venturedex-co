@@ -1,0 +1,25 @@
+{
+  "slug": "linear",
+  "domain": "linear.app",
+  "url": "https://linear.app",
+  "product_name": "Linear",
+  "summary": "Issue tracking built for modern software teams.",
+  "editor_note": "Linear is what happens when someone with taste builds project management. Every interaction feels considered. The keyboard shortcuts alone are worth the switch. In a market drowning in feature-bloated tools, Linear chose speed and focus. That bet paid off.",
+  "editor_rating": 5,
+  "why_featured": "Defined a new standard for dev tools",
+  "product_type": "DevTools",
+  "funding_stage": "Series B",
+  "funding_display": "$35M",
+  "founded_year": 2019,
+  "team_size": "50-100",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "project management,issue tracking,developer tools,productivity",
+  "investors": "Sequoia Capital, 01 Advisors, SV Angel",
+  "links": {
+    "github": "https://github.com/linear",
+    "twitter": "https://x.com/linear",
+    "linkedin": "https://linkedin.com/company/linear"
+  },
+  "is_featured": true
+}

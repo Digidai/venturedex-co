@@ -1,0 +1,25 @@
+{
+  "slug": "cal-com",
+  "domain": "cal.com",
+  "url": "https://cal.com",
+  "product_name": "Cal.com",
+  "summary": "Open source scheduling infrastructure.",
+  "editor_note": "The open-source Calendly. What makes Cal.com interesting is not that it is open source, but that they proved open-source scheduling can be a real business. The self-hosted option is a wedge. The hosted version is the product.",
+  "editor_rating": 4,
+  "why_featured": "Open source done right",
+  "product_type": "SaaS",
+  "funding_stage": "Series A",
+  "funding_display": "$25M",
+  "founded_year": 2021,
+  "team_size": "30-50",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "scheduling,open source,calendar,productivity",
+  "investors": "Dick Costolo, Joseph Jacks (OSS Capital), Peer Richelsen",
+  "links": {
+    "github": "https://github.com/calcom/cal.com",
+    "twitter": "https://x.com/calabordar",
+    "linkedin": "https://linkedin.com/company/cal-com"
+  },
+  "is_featured": false
+}

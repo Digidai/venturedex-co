@@ -1,0 +1,24 @@
+{
+  "slug": "perplexity",
+  "domain": "perplexity.ai",
+  "url": "https://perplexity.ai",
+  "product_name": "Perplexity",
+  "summary": "AI-powered answer engine that searches the web.",
+  "editor_note": "Perplexity did what Google should have done five years ago: just answer the question. The product is deceptively simple. You ask, it answers with sources. No ten blue links, no ads above the fold. Whether this replaces Google search or becomes a power-user tool is the billion dollar question.",
+  "editor_rating": 5,
+  "why_featured": "The Google killer that might actually be",
+  "product_type": "AI / ML",
+  "funding_stage": "Series B",
+  "funding_display": "$73.6M",
+  "founded_year": 2022,
+  "team_size": "100-200",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "ai search,answer engine,web search,artificial intelligence",
+  "investors": "IVP, NEA, Databricks Ventures, Jeff Bezos",
+  "links": {
+    "twitter": "https://x.com/perabordar",
+    "linkedin": "https://linkedin.com/company/perplexity-ai"
+  },
+  "is_featured": true
+}

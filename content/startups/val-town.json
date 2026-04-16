@@ -1,0 +1,25 @@
+{
+  "slug": "val-town",
+  "domain": "val.town",
+  "url": "https://val.town",
+  "product_name": "Val Town",
+  "summary": "Social website and API for writing and running code.",
+  "editor_note": "Val Town is the most interesting thing happening in developer tools right now. A social network where the content is running code. Every val is a URL. Every function is deployable. It feels like what GitHub Gists should have become.",
+  "editor_rating": 4,
+  "why_featured": "Code as social media",
+  "product_type": "DevTools",
+  "funding_stage": "Seed",
+  "funding_display": "$5.5M",
+  "founded_year": 2022,
+  "team_size": "5-10",
+  "hq_location": "Brooklyn",
+  "region": "US",
+  "tags": "social coding,serverless,developer tools,code sharing",
+  "investors": "Sequoia Capital Scout, Craft Ventures, Tom Preston-Werner",
+  "links": {
+    "github": "https://github.com/val-town",
+    "twitter": "https://x.com/valabordar",
+    "linkedin": "https://linkedin.com/company/val-town"
+  },
+  "is_featured": false
+}
