@@ -8,8 +8,6 @@
   "editor_rating": 5,
   "why_featured": "Changed how developers write code",
   "product_type": "AI / ML",
-  "funding_stage": "Series B",
-  "funding_display": "$400M",
   "founded_year": 2022,
   "team_size": "50-100",
   "hq_location": "San Francisco",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/cursor_ai",
     "linkedin": "https://linkedin.com/company/cursor-ai"
   },
-  "is_featured": true
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2024-08-09",
+      "source_url": "https://techcrunch.com/2024/08/09/anysphere-a-github-copilot-rival-has-raised-60m-series-a-at-400m-valuation-from-a16z-thrive-sources-say/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

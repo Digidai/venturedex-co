@@ -8,8 +8,6 @@
   "editor_rating": 4,
   "why_featured": "Voice AI that actually sounds human",
   "product_type": "AI / ML",
-  "funding_stage": "Series B",
-  "funding_display": "$80M",
   "founded_year": 2022,
   "team_size": "50-100",
   "hq_location": "New York",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/elevenlabsio",
     "linkedin": "https://linkedin.com/company/elevenlabs"
   },
-  "is_featured": false
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$80M",
+      "stage": "Series B",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2024-01-22",
+      "source_url": "https://techcrunch.com/2024/01/22/voice-cloning-startup-elevenlabs-lands-80m-achieves-unicorn-status/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

@@ -8,8 +8,6 @@
   "editor_rating": 5,
   "why_featured": "Defined a new standard for dev tools",
   "product_type": "DevTools",
-  "funding_stage": "Series B",
-  "funding_display": "$35M",
   "founded_year": 2019,
   "team_size": "50-100",
   "hq_location": "San Francisco",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/linear",
     "linkedin": "https://linkedin.com/company/linear"
   },
-  "is_featured": true
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$35M",
+      "stage": "Series B",
+      "lead_investor": "Sequoia Capital",
+      "date": "2021-06-24",
+      "source_url": "https://techcrunch.com/2021/06/24/linear-raises-35m-series-b-to-build-the-future-of-project-management/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

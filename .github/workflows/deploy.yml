@@ -17,8 +17,8 @@ jobs:
 
       - run: npm ci
 
-      - name: Validate funding data
-        run: bash scripts/validate-funding.sh
+      - name: Validate all content
+        run: bash scripts/validate.sh
 
       - name: Generate D1 seed from content files
         run: bash scripts/build-db.sh

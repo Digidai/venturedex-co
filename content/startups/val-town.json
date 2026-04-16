@@ -8,8 +8,6 @@
   "editor_rating": 4,
   "why_featured": "Code as social media",
   "product_type": "DevTools",
-  "funding_stage": "Seed",
-  "funding_display": "$5.5M",
   "founded_year": 2022,
   "team_size": "5-10",
   "hq_location": "Brooklyn",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/valabordar",
     "linkedin": "https://linkedin.com/company/val-town"
   },
-  "is_featured": false
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$5.5M",
+      "stage": "Seed",
+      "lead_investor": "Accel",
+      "date": "2024-04-01",
+      "source_url": "https://blog.val.town/blog/seed/",
+      "source_name": "Val Town Blog"
+    }
+  ]
 }

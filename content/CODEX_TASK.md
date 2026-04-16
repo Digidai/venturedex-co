@@ -14,34 +14,28 @@
 
 ## Step 1: 发现候选项目
 
-按以下顺序从数据源发现候选项目。每次运行总共发现 10-20 个候选，最终收录 2-5 个。
+**核心原则：融资 = 发现信号。** 拿到融资的公司同时出现在首页和 News 页。一个文件，两个出口。
 
-### 1.1 Hacker News Show HN
+### 主数据源：融资新闻
 
-搜索条件: 近 7 天，points > 50 的 Show HN 帖子。
+搜索近 30 天的融资新闻，找到刚拿到融资的创业公司：
 
 ```
-搜索: "show hn" site:news.ycombinator.com
-或使用 Algolia API: https://hn.algolia.com/api/v1/search_by_date?tags=show_hn&numericFilters=points>50
+搜索: "raises" "series" OR "seed" site:techcrunch.com
+搜索: "funding" "startup" site:bloomberg.com
+搜索: "raises" site:theinformation.com
 ```
 
-提取: 标题中的产品名 + URL。
+每条融资新闻包含了你需要的一切：公司名、金额、轮次、lead investor、日期、来源链接。
 
-### 1.2 YC 最新 Batch
+### 辅助数据源（补充发现）
 
-访问 https://www.ycombinator.com/companies 按最新 batch 筛选。
+- HN Show HN: `points > 50`，近 7 天
+- YC 最新 batch
+- Product Hunt: `upvotes > 200`，近 7 天
+- GitHub Trending: 近 7 天
 
-### 1.3 融资新闻
-
-搜索: `startup raised funding` 近 30 天，来源限定 TechCrunch / The Information / Bloomberg。
-
-### 1.4 Product Hunt
-
-访问 producthunt.com 首页，看近 7 天 upvotes > 200 的产品。
-
-### 1.5 GitHub Trending
-
-访问 github.com/trending，看近 7 天星标增长最快的项目。
+辅助数据源发现的项目也必须有可验证的融资记录。没有融资记录 = 不收录。
 
 ## Step 2: 逐项过 Gate（严格执行）
 
@@ -224,40 +218,6 @@ git push
 ```bash
 git add content/weekly/
 git commit -m "content: weekly #N — {title}"
-git push
-```
-
-## Step 8: 融资新闻（每次运行）
-
-从 TechCrunch、The Information 等来源发现最新的创业融资新闻。
-
-每条融资创建一个 JSON 文件 `content/funding/{date}-{slug}.json`：
-
-```json
-{
-  "company_name": "GitButler",
-  "company_url": "https://gitbutler.com",
-  "amount": "$17M",
-  "stage": "Series A",
-  "lead_investor": "a16z",
-  "date": "2026-04-08",
-  "source_url": "https://techcrunch.com/2026/04/08/gitbutler",
-  "source_name": "TechCrunch"
-}
-```
-
-规则：
-- `date` 格式必须是 YYYY-MM-DD
-- `amount` 必须有 $ 符号（如 "$17M"）
-- `lead_investor` 只填 lead investor，不填全部参与方
-- `source_url` 必须是可访问的新闻链接
-- 只收录 Pre-seed 到 Series C 的轮次
-- 文件名格式: `{date}-{company-slug}.json`
-
-提交：
-```bash
-git add content/funding/
-git commit -m "content: funding — {Company1}, {Company2}, ..."
 git push
 ```
 

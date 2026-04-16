@@ -1,11 +1,12 @@
 #!/bin/bash
-# Build D1 seed SQL from content/startups/*.json files
-# Run during deploy: generates d1/generated-seed.sql from JSON content files
-# This is the bridge between "content as code" and D1 database
+# Build D1 seed SQL from content/startups/*.json
+# Single source of truth: startup JSON contains funding rounds.
+# Generates: sites, search_index, collections, funding_rounds, weekly_issues
 
 set -euo pipefail
 
 CONTENT_DIR="content/startups"
+WEEKLY_DIR="content/weekly"
 OUTPUT="d1/generated-seed.sql"
 
 echo "-- AUTO-GENERATED from content/startups/*.json" > "$OUTPUT"
@@ -13,26 +14,26 @@ echo "-- Do not edit manually. Modify the JSON files instead." >> "$OUTPUT"
 echo "" >> "$OUTPUT"
 
 count=0
+funding_count=0
+
 for f in "$CONTENT_DIR"/*.json; do
   [ -f "$f" ] || continue
 
   python3 -c "
-import json, sys
+import json, sys, hashlib
 
 with open('$f') as fh:
     d = json.load(fh)
 
 slug = d['slug']
 domain = d['domain']
-url = d.get('url', f\"https://{domain}\")
+url = d.get('url', f'https://{domain}')
 name = d['product_name'].replace(\"'\", \"''\")
 summary = (d.get('summary') or '').replace(\"'\", \"''\")
 note = (d.get('editor_note') or '').replace(\"'\", \"''\")
 rating = d.get('editor_rating', 'NULL')
 why = (d.get('why_featured') or '').replace(\"'\", \"''\")
 ptype = d.get('product_type', '')
-fstage = d.get('funding_stage', '')
-fdisplay = d.get('funding_display', '')
 fyear = d.get('founded_year', 'NULL')
 tsize = d.get('team_size', '')
 hq = d.get('hq_location', '')
@@ -41,20 +42,43 @@ tags = d.get('tags', '')
 investors = d.get('investors', '')
 links = json.dumps(d.get('links', {})) if d.get('links') else ''
 featured = 1 if d.get('is_featured') else 0
-screenshot = f\"{slug}.webp\"
+screenshot = f'{slug}.webp'
+
+# Derive funding_stage and funding_display from latest funding round
+funding = d.get('funding', [])
+fstage = ''
+fdisplay = ''
+if funding:
+    latest = sorted(funding, key=lambda r: r.get('date',''), reverse=True)[0]
+    fstage = latest.get('stage', '')
+    fdisplay = latest.get('amount', '')
 
 print(f\"INSERT OR REPLACE INTO sites (id, slug, domain, canonical_url, product_name, summary, editor_note, editor_rating, why_featured, product_type, funding_stage, funding_display, founded_year, team_size, hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, screenshot_status, workflow_status, codex_stage, first_seen_at, published_at) VALUES ('s-{slug}', '{slug}', '{domain}', '{url}', '{name}', '{summary}', '{note}', {rating}, '{why}', '{ptype}', '{fstage}', '{fdisplay}', {fyear}, '{tsize}', '{hq}', '{region}', '{tags}', '{investors}', '{links.replace(chr(39), chr(39)+chr(39))}', {featured}, '{screenshot}', 'ready', 'published', 'manual', datetime('now'), datetime('now'));\")
+
+# Generate funding_rounds from the funding array
+for rnd in funding:
+    rname = name
+    ramount = rnd.get('amount', '')
+    rstage = rnd.get('stage', '')
+    rlead = rnd.get('lead_investor', '').replace(\"'\", \"''\")
+    rdate = rnd.get('date', '')
+    rsrc = rnd.get('source_url', '')
+    rsrc_name = rnd.get('source_name', '')
+    rid = 'f-' + hashlib.md5(f'{slug}{rdate}{rstage}'.encode()).hexdigest()[:10]
+    print(f\"INSERT OR REPLACE INTO funding_rounds (id, company_name, company_slug, company_url, amount, stage, lead_investor, date, source_url, source_name) VALUES ('{rid}', '{rname}', '{slug}', '{url}', '{ramount}', '{rstage}', '{rlead}', '{rdate}', '{rsrc}', '{rsrc_name}');\")
 " >> "$OUTPUT"
 
+  # Count funding rounds
+  fc=$(python3 -c "import json; print(len(json.load(open('$f')).get('funding',[])))")
+  funding_count=$((funding_count + fc))
   count=$((count + 1))
 done
 
-# Build search index from the same data
+# Search index
 echo "" >> "$OUTPUT"
 echo "-- Search index" >> "$OUTPUT"
 for f in "$CONTENT_DIR"/*.json; do
   [ -f "$f" ] || continue
-
   python3 -c "
 import json
 with open('$f') as fh:
@@ -76,7 +100,7 @@ for t, typ, w in terms:
 " >> "$OUTPUT"
 done
 
-# Build collection links
+# Collections
 echo "" >> "$OUTPUT"
 echo "-- Collections" >> "$OUTPUT"
 cat >> "$OUTPUT" << 'SQL'
@@ -88,7 +112,6 @@ INSERT OR IGNORE INTO collections (id, slug, title, description, type, published
 DELETE FROM collection_sites;
 SQL
 
-# Auto-assign to collections based on product_type and is_featured
 for f in "$CONTENT_DIR"/*.json; do
   [ -f "$f" ] || continue
   python3 -c "
@@ -111,8 +134,7 @@ if featured:
 " >> "$OUTPUT"
 done
 
-# Build weekly issues from content/weekly/*.json
-WEEKLY_DIR="content/weekly"
+# Weekly issues
 echo "" >> "$OUTPUT"
 echo "-- Weekly issues" >> "$OUTPUT"
 for f in "$WEEKLY_DIR"/*.json; do
@@ -133,31 +155,5 @@ for i, slug in enumerate(picks):
 " >> "$OUTPUT"
 done
 
-# Build funding rounds from content/funding/*.json
-FUNDING_DIR="content/funding"
-echo "" >> "$OUTPUT"
-echo "-- Funding rounds" >> "$OUTPUT"
-funding_count=0
-for f in "$FUNDING_DIR"/*.json; do
-  [ -f "$f" ] || continue
-  python3 -c "
-import json, hashlib
-with open('$f') as fh:
-    d = json.load(fh)
-name = d['company_name'].replace(\"'\", \"''\")
-url = d.get('company_url', '')
-slug = d.get('company_slug', '')
-amount = d.get('amount', '')
-stage = d.get('stage', '')
-lead = d.get('lead_investor', '').replace(\"'\", \"''\")
-date = d.get('date', '')
-src_url = d.get('source_url', '')
-src_name = d.get('source_name', 'TechCrunch')
-rid = 'f-' + hashlib.md5(f'{name}{date}{stage}'.encode()).hexdigest()[:10]
-print(f\"INSERT OR REPLACE INTO funding_rounds (id, company_name, company_slug, company_url, amount, stage, lead_investor, date, source_url, source_name) VALUES ('{rid}', '{name}', '{slug}', '{url}', '{amount}', '{stage}', '{lead}', '{date}', '{src_url}', '{src_name}');\")
-" >> "$OUTPUT"
-  funding_count=$((funding_count + 1))
-done
-
 echo ""
-echo "Generated $OUTPUT with $count startups + $funding_count funding rounds"
+echo "Generated $OUTPUT with $count startups, $funding_count funding rounds"

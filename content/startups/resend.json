@@ -8,8 +8,6 @@
   "editor_rating": 4,
   "why_featured": "DX that makes you jealous",
   "product_type": "DevTools",
-  "funding_stage": "Series A",
-  "funding_display": "$3.5M",
   "founded_year": 2022,
   "team_size": "10-30",
   "hq_location": "San Francisco",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/resabordar",
     "linkedin": "https://linkedin.com/company/resend"
   },
-  "is_featured": true
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3M",
+      "stage": "Seed",
+      "lead_investor": "Y Combinator",
+      "date": "2023-07-18",
+      "source_url": "https://techcrunch.com/2023/07/18/developer-focused-email-platform-resend-raises-3m/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

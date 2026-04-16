@@ -8,8 +8,6 @@
   "editor_rating": 4,
   "why_featured": "Postgres as a platform",
   "product_type": "DevTools",
-  "funding_stage": "Series C+",
-  "funding_display": "$116M",
   "founded_year": 2020,
   "team_size": "100-200",
   "hq_location": "Singapore",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/supabase",
     "linkedin": "https://linkedin.com/company/supabase"
   },
-  "is_featured": false
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$80M",
+      "stage": "Series B",
+      "lead_investor": "Felicis Ventures",
+      "date": "2022-05-10",
+      "source_url": "https://techcrunch.com/2022/05/10/supabase-raises-80m-series-b-for-its-open-source-firebase-alternative/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

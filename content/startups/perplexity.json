@@ -8,8 +8,6 @@
   "editor_rating": 5,
   "why_featured": "The Google killer that might actually be",
   "product_type": "AI / ML",
-  "funding_stage": "Series B",
-  "funding_display": "$73.6M",
   "founded_year": 2022,
   "team_size": "100-200",
   "hq_location": "San Francisco",
@@ -20,5 +18,15 @@
     "twitter": "https://x.com/perabordar",
     "linkedin": "https://linkedin.com/company/perplexity-ai"
   },
-  "is_featured": true
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$73.6M",
+      "stage": "Series B",
+      "lead_investor": "IVP",
+      "date": "2024-01-04",
+      "source_url": "https://techcrunch.com/2024/01/04/ai-powered-search-engine-perplexity-ai-now-valued-at-520m-raises-70m/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

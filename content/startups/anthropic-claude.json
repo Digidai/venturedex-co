@@ -8,8 +8,6 @@
   "editor_rating": 5,
   "why_featured": "The AI you actually trust",
   "product_type": "AI / ML",
-  "funding_stage": "Series C+",
-  "funding_display": "$2B+",
   "founded_year": 2021,
   "team_size": "500+",
   "hq_location": "San Francisco",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/AnthropicAI",
     "linkedin": "https://linkedin.com/company/anthropic"
   },
-  "is_featured": true
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$450M",
+      "stage": "Series C",
+      "lead_investor": "Spark Capital",
+      "date": "2023-05-23",
+      "source_url": "https://techcrunch.com/2023/05/23/anthropic-raises-350m-to-build-next-gen-ai-assistants/",
+      "source_name": "TechCrunch"
+    }
+  ]
 }

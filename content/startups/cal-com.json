@@ -8,8 +8,6 @@
   "editor_rating": 4,
   "why_featured": "Open source done right",
   "product_type": "SaaS",
-  "funding_stage": "Series A",
-  "funding_display": "$25M",
   "founded_year": 2021,
   "team_size": "30-50",
   "hq_location": "San Francisco",
@@ -21,5 +19,15 @@
     "twitter": "https://x.com/calabordar",
     "linkedin": "https://linkedin.com/company/cal-com"
   },
-  "is_featured": false
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Seven Seven Six",
+      "date": "2022-04-18",
+      "source_url": "https://venturebeat.com/business/open-source-calendly-rival-cal-com-raises-25m",
+      "source_name": "VentureBeat"
+    }
+  ]
 }
