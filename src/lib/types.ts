@@ -68,6 +68,19 @@ export interface Collection {
   published: number;
 }
 
+export interface FundingRound {
+  id: string;
+  company_name: string;
+  company_slug: string | null;
+  company_url: string | null;
+  amount: string | null;
+  stage: string;
+  lead_investor: string | null;
+  date: string;
+  source_url: string | null;
+  source_name: string | null;
+}
+
 export type ProductType =
   | "AI / ML"
   | "SaaS"

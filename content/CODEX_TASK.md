@@ -227,6 +227,40 @@ git commit -m "content: weekly #N — {title}"
 git push
 ```
 
+## Step 8: 融资新闻（每次运行）
+
+从 TechCrunch、The Information 等来源发现最新的创业融资新闻。
+
+每条融资创建一个 JSON 文件 `content/funding/{date}-{slug}.json`：
+
+```json
+{
+  "company_name": "GitButler",
+  "company_url": "https://gitbutler.com",
+  "amount": "$17M",
+  "stage": "Series A",
+  "lead_investor": "a16z",
+  "date": "2026-04-08",
+  "source_url": "https://techcrunch.com/2026/04/08/gitbutler",
+  "source_name": "TechCrunch"
+}
+```
+
+规则：
+- `date` 格式必须是 YYYY-MM-DD
+- `amount` 必须有 $ 符号（如 "$17M"）
+- `lead_investor` 只填 lead investor，不填全部参与方
+- `source_url` 必须是可访问的新闻链接
+- 只收录 Pre-seed 到 Series C 的轮次
+- 文件名格式: `{date}-{company-slug}.json`
+
+提交：
+```bash
+git add content/funding/
+git commit -m "content: funding — {Company1}, {Company2}, ..."
+git push
+```
+
 ## 禁止操作
 
 1. **不修改 src/、scripts/、d1/、.github/ 下的任何文件**

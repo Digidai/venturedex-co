@@ -1,4 +1,4 @@
-import type { Site, WeeklyIssue, Collection } from "./types";
+import type { Site, WeeklyIssue, Collection, FundingRound } from "./types";
 
 export type SortOption = "featured" | "newest" | "name-az";
 
@@ -207,6 +207,18 @@ export async function getRecentActivity(
     )
     .bind(limit)
     .all<Site>();
+
+  return result.results;
+}
+
+export async function getFundingRounds(
+  db: D1Database,
+  limit = 50
+): Promise<FundingRound[]> {
+  const result = await db
+    .prepare("SELECT * FROM funding_rounds ORDER BY date DESC, created_at DESC LIMIT ?")
+    .bind(limit)
+    .all<FundingRound>();
 
   return result.results;
 }

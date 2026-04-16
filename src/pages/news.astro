@@ -1,0 +1,206 @@
+---
+export const prerender = false;
+
+import Base from "../layouts/Base.astro";
+import { getFundingRounds } from "../lib/db";
+
+const db = Astro.locals.runtime.env.DB;
+let rounds: Awaited<ReturnType<typeof getFundingRounds>> = [];
+
+try {
+  rounds = await getFundingRounds(db, 100);
+} catch {
+  // D1 unavailable
+}
+---
+
+<Base title="News" description="Track the latest startup funding rounds. Updated regularly.">
+  <div class="container news-page">
+    <header class="news-header">
+      <h1>Track the latest funding</h1>
+      <p class="subtitle">Find newly funded early-stage startups backed by top investors.</p>
+    </header>
+
+    {rounds.length > 0 ? (
+      <div class="table-wrap">
+        <table class="funding-table">
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Round</th>
+              <th>Date</th>
+              <th>Lead Investor</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rounds.map((r) => (
+              <tr>
+                <td class="cell-company">
+                  {r.company_url ? (
+                    <a href={r.company_url} target="_blank" rel="noopener noreferrer" class="company-link">
+                      {r.company_name}
+                    </a>
+                  ) : (
+                    <span>{r.company_name}</span>
+                  )}
+                </td>
+                <td class="cell-round">
+                  {r.amount && <span class="round-amount">{r.amount}</span>}
+                  <span class="round-stage">{r.stage}</span>
+                </td>
+                <td class="cell-date">
+                  {new Date(r.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                </td>
+                <td class="cell-investor">{r.lead_investor || "—"}</td>
+                <td class="cell-source">
+                  {r.source_url ? (
+                    <a href={r.source_url} target="_blank" rel="noopener noreferrer" class="source-link">
+                      Source ↗
+                    </a>
+                  ) : "—"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>No funding data yet.</h2>
+        <p>We're tracking the latest rounds. Check back soon.</p>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .news-page {
+    max-width: 1000px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .news-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .news-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: var(--space-2);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .funding-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .funding-table thead th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .funding-table tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.1s;
+  }
+
+  .funding-table tbody tr:hover {
+    background: var(--color-badge-bg);
+  }
+
+  .funding-table td {
+    padding: var(--space-4);
+    font-size: 0.85rem;
+    vertical-align: middle;
+  }
+
+  .cell-company {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .company-link {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .company-link:hover {
+    color: var(--color-accent);
+  }
+
+  .cell-round {
+    white-space: nowrap;
+  }
+
+  .round-amount {
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-right: var(--space-2);
+  }
+
+  .round-stage {
+    color: var(--color-text-secondary);
+  }
+
+  .cell-date {
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  .cell-investor {
+    white-space: nowrap;
+  }
+
+  .cell-source {
+    white-space: nowrap;
+  }
+
+  .source-link {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .source-link:hover {
+    color: var(--color-accent);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-16) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .funding-table td,
+    .funding-table th {
+      padding: var(--space-3) var(--space-2);
+      font-size: 0.8rem;
+    }
+  }
+</style>

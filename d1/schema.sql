@@ -36,6 +36,9 @@ CREATE TABLE IF NOT EXISTS sites (
   first_seen_at TEXT NOT NULL DEFAULT (datetime('now')),
   last_checked_at TEXT,
   published_at TEXT,
+  investors TEXT,
+  links_json TEXT,
+  tags TEXT,
   is_featured INTEGER DEFAULT 0,
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now'))
@@ -205,6 +208,22 @@ CREATE TABLE IF NOT EXISTS screenshot_jobs (
   created_at TEXT DEFAULT (datetime('now')),
   finished_at TEXT
 );
+
+CREATE TABLE IF NOT EXISTS funding_rounds (
+  id TEXT PRIMARY KEY,
+  company_name TEXT NOT NULL,
+  company_slug TEXT,
+  company_url TEXT,
+  amount TEXT,
+  stage TEXT NOT NULL,
+  lead_investor TEXT,
+  date TEXT NOT NULL,
+  source_url TEXT,
+  source_name TEXT DEFAULT 'TechCrunch',
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_funding_date ON funding_rounds(date DESC);
 
 CREATE TABLE IF NOT EXISTS automation_runs (
   id TEXT PRIMARY KEY,

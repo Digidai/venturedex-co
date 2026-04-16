@@ -111,5 +111,31 @@ if featured:
 " >> "$OUTPUT"
 done
 
+# Build funding rounds from content/funding/*.json
+FUNDING_DIR="content/funding"
+echo "" >> "$OUTPUT"
+echo "-- Funding rounds" >> "$OUTPUT"
+funding_count=0
+for f in "$FUNDING_DIR"/*.json; do
+  [ -f "$f" ] || continue
+  python3 -c "
+import json, hashlib
+with open('$f') as fh:
+    d = json.load(fh)
+name = d['company_name'].replace(\"'\", \"''\")
+url = d.get('company_url', '')
+slug = d.get('company_slug', '')
+amount = d.get('amount', '')
+stage = d.get('stage', '')
+lead = d.get('lead_investor', '').replace(\"'\", \"''\")
+date = d.get('date', '')
+src_url = d.get('source_url', '')
+src_name = d.get('source_name', 'TechCrunch')
+rid = 'f-' + hashlib.md5(f'{name}{date}{stage}'.encode()).hexdigest()[:10]
+print(f\"INSERT OR REPLACE INTO funding_rounds (id, company_name, company_slug, company_url, amount, stage, lead_investor, date, source_url, source_name) VALUES ('{rid}', '{name}', '{slug}', '{url}', '{amount}', '{stage}', '{lead}', '{date}', '{src_url}', '{src_name}');\")
+" >> "$OUTPUT"
+  funding_count=$((funding_count + 1))
+done
+
 echo ""
-echo "Generated $OUTPUT with $count startups"
+echo "Generated $OUTPUT with $count startups + $funding_count funding rounds"
