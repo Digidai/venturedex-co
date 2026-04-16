@@ -77,8 +77,8 @@ function findInvestor(name: string): { slug: string; website: string } | null {
                       ) : (
                         <span class="company-initial">{getInitials(r.company_name)}</span>
                       )}
-                      {r.company_url ? (
-                        <a href={r.company_url} target="_blank" rel="noopener noreferrer" class="company-link">
+                      {r.company_slug ? (
+                        <a href={`/sites/${r.company_slug}`} class="company-link">
                           {r.company_name}
                         </a>
                       ) : (
