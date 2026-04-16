@@ -68,6 +68,15 @@ export interface Collection {
   published: number;
 }
 
+export interface Investor {
+  id: string;
+  slug: string;
+  name: string;
+  short_name: string | null;
+  website: string | null;
+  description: string | null;
+}
+
 export interface FundingRound {
   id: string;
   company_name: string;

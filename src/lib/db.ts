@@ -1,4 +1,4 @@
-import type { Site, WeeklyIssue, Collection, FundingRound } from "./types";
+import type { Site, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
 
 export type SortOption = "featured" | "newest" | "name-az";
 
@@ -221,6 +221,43 @@ export async function getFundingRounds(
     .all<FundingRound>();
 
   return result.results;
+}
+
+export async function getInvestors(db: D1Database): Promise<Investor[]> {
+  const result = await db
+    .prepare("SELECT * FROM investors ORDER BY name")
+    .all<Investor>();
+  return result.results;
+}
+
+export async function getInvestorBySlug(
+  db: D1Database,
+  slug: string
+): Promise<{ investor: Investor; rounds: (FundingRound & { screenshot_r2_key: string | null })[] } | null> {
+  const investor = await db
+    .prepare("SELECT * FROM investors WHERE slug = ?")
+    .bind(slug)
+    .first<Investor>();
+
+  if (!investor) return null;
+
+  // Match by both name and short_name
+  const namePattern = `%${investor.name}%`;
+  const shortPattern = investor.short_name ? `%${investor.short_name}%` : namePattern;
+
+  const rounds = await db
+    .prepare(
+      `SELECT f.*, s.screenshot_r2_key
+       FROM funding_rounds f
+       LEFT JOIN sites s ON f.company_slug = s.slug
+       WHERE LOWER(f.lead_investor) LIKE LOWER(?)
+          OR LOWER(f.lead_investor) LIKE LOWER(?)
+       ORDER BY f.date DESC`
+    )
+    .bind(namePattern, shortPattern)
+    .all<FundingRound & { screenshot_r2_key: string | null }>();
+
+  return { investor, rounds: rounds.results };
 }
 
 export async function getSiteCount(db: D1Database): Promise<number> {

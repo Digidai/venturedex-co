@@ -2,13 +2,17 @@
 export const prerender = false;
 
 import Base from "../layouts/Base.astro";
-import { getFundingRounds } from "../lib/db";
+import { getFundingRounds, getInvestors } from "../lib/db";
 
 const db = Astro.locals.runtime.env.DB;
 let rounds: Awaited<ReturnType<typeof getFundingRounds>> = [];
+let investors: Awaited<ReturnType<typeof getInvestors>> = [];
 
 try {
-  rounds = await getFundingRounds(db, 100);
+  [rounds, investors] = await Promise.all([
+    getFundingRounds(db, 100),
+    getInvestors(db),
+  ]);
 } catch {
   // D1 unavailable
 }
@@ -20,6 +24,24 @@ function getDomain(url: string | null): string {
 
 function getInitials(name: string): string {
   return name.split(/\s+/).map(w => w[0]).join("").toUpperCase().slice(0, 2);
+}
+
+// Build investor lookup: investor name → { slug, website }
+const investorMap = new Map<string, { slug: string; website: string }>();
+for (const inv of investors) {
+  investorMap.set(inv.name.toLowerCase(), { slug: inv.slug, website: inv.website ?? "" });
+  if (inv.short_name) {
+    investorMap.set(inv.short_name.toLowerCase(), { slug: inv.slug, website: inv.website ?? "" });
+  }
+}
+
+function findInvestor(name: string): { slug: string; website: string } | null {
+  const lower = name.toLowerCase();
+  if (investorMap.has(lower)) return investorMap.get(lower)!;
+  for (const [key, val] of investorMap) {
+    if (lower.includes(key) || key.includes(lower)) return val;
+  }
+  return null;
 }
 ---
 
@@ -72,10 +94,24 @@ function getInitials(name: string): string {
                     {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                   </td>
                   <td class="cell-investor">
-                    <div class="investor-info">
-                      <span class="investor-badge">{getInitials(r.lead_investor || "")}</span>
-                      <span>{r.lead_investor || "—"}</span>
-                    </div>
+                    {(() => {
+                      const inv = r.lead_investor ? findInvestor(r.lead_investor) : null;
+                      const faviconDomain = inv?.website ? getDomain(inv.website) : "";
+                      return (
+                        <div class="investor-info">
+                          {faviconDomain ? (
+                            <img src={`https://www.google.com/s2/favicons?domain=${faviconDomain}&sz=32`} alt="" class="investor-favicon" width="20" height="20" loading="lazy" />
+                          ) : (
+                            <span class="investor-badge">{getInitials(r.lead_investor || "")}</span>
+                          )}
+                          {inv ? (
+                            <a href={`/investors/${inv.slug}`} class="investor-link">{r.lead_investor}</a>
+                          ) : (
+                            <span>{r.lead_investor || "—"}</span>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </td>
                   {rounds.some(x => x.source_url) && (
                     <td class="cell-source">
@@ -228,19 +264,37 @@ function getInitials(name: string): string {
     gap: var(--space-2);
   }
 
+  .investor-favicon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+
   .investor-badge {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
     background: var(--color-badge-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.55rem;
+    font-size: 0.5rem;
     font-weight: 700;
     color: var(--color-text-secondary);
     flex-shrink: 0;
     border: 1px solid var(--color-border);
+  }
+
+  .investor-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  .investor-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
   }
 
   .cell-source {

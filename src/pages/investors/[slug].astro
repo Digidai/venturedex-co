@@ -1,0 +1,290 @@
+---
+export const prerender = false;
+
+import Base from "../../layouts/Base.astro";
+import { getInvestorBySlug } from "../../lib/db";
+
+const { slug } = Astro.params;
+const db = Astro.locals.runtime.env.DB;
+
+const data = await getInvestorBySlug(db, slug!);
+if (!data) return Astro.redirect("/404");
+
+const { investor, rounds } = data;
+const faviconUrl = investor.website
+  ? `https://www.google.com/s2/favicons?domain=${new URL(investor.website).hostname}&sz=64`
+  : "";
+---
+
+<Base title={investor.name} description={investor.description ?? `${investor.name} portfolio on VentureDex`}>
+  <div class="container investor-page">
+    <a href="/news" class="back-link">&larr; Back to funding</a>
+
+    <header class="investor-header">
+      <div class="investor-identity">
+        {faviconUrl ? (
+          <img src={faviconUrl} alt="" class="investor-logo" width="48" height="48" />
+        ) : (
+          <span class="investor-initial">{(investor.short_name || investor.name).slice(0, 2)}</span>
+        )}
+        <div>
+          <h1>{investor.name}</h1>
+          {investor.website && (
+            <a href={investor.website} target="_blank" rel="noopener noreferrer" class="investor-url">
+              {new URL(investor.website).hostname} ↗
+            </a>
+          )}
+        </div>
+      </div>
+      {investor.description && <p class="investor-desc">{investor.description}</p>}
+    </header>
+
+    <section class="portfolio">
+      <h2>Portfolio on VentureDex <span class="count">({rounds.length})</span></h2>
+
+      {rounds.length > 0 ? (
+        <div class="portfolio-table-wrap">
+          <table class="portfolio-table">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Round</th>
+                <th>Date</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rounds.map((r) => (
+                <tr>
+                  <td class="cell-company">
+                    <div class="company-info">
+                      {r.screenshot_r2_key ? (
+                        <img src={`/screenshots/${r.screenshot_r2_key}`} alt="" class="company-thumb" loading="lazy" />
+                      ) : (
+                        <span class="company-initial">{r.company_name.charAt(0)}</span>
+                      )}
+                      <div>
+                        {r.company_slug ? (
+                          <a href={`/sites/${r.company_slug}`} class="company-link">{r.company_name}</a>
+                        ) : (
+                          <span>{r.company_name}</span>
+                        )}
+                      </div>
+                    </div>
+                  </td>
+                  <td class="cell-round">
+                    {r.amount && <span class="round-amount">{r.amount}</span>}
+                    <span class="round-stage">· {r.stage}</span>
+                  </td>
+                  <td class="cell-date">
+                    {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                  </td>
+                  <td class="cell-source">
+                    {r.source_url && (
+                      <a href={r.source_url} target="_blank" rel="noopener noreferrer" class="source-link">
+                        {r.source_name || "Source"} ↗
+                      </a>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p class="empty">No investments tracked yet.</p>
+      )}
+    </section>
+  </div>
+</Base>
+
+<style>
+  .investor-page {
+    max-width: 900px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .back-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    display: inline-block;
+    margin-bottom: var(--space-6);
+    transition: color 0.15s;
+  }
+
+  .back-link:hover {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .investor-header {
+    margin-bottom: var(--space-8);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .investor-identity {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    margin-bottom: var(--space-3);
+  }
+
+  .investor-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .investor-initial {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: var(--color-badge-bg);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+  }
+
+  .investor-header h1 {
+    font-size: 1.75rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .investor-url {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+
+  .investor-url:hover {
+    color: var(--color-accent);
+  }
+
+  .investor-desc {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .portfolio h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-6);
+  }
+
+  .count {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+
+  .portfolio-table-wrap {
+    overflow-x: auto;
+  }
+
+  .portfolio-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .portfolio-table thead th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .portfolio-table tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.1s;
+  }
+
+  .portfolio-table tbody tr:hover {
+    background: var(--color-badge-bg);
+  }
+
+  .portfolio-table td {
+    padding: var(--space-4);
+    font-size: 0.85rem;
+    vertical-align: middle;
+  }
+
+  .cell-company {
+    font-weight: 600;
+  }
+
+  .company-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .company-thumb {
+    width: 32px;
+    height: 20px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 3px;
+    border: 1px solid var(--color-border);
+  }
+
+  .company-initial {
+    width: 32px;
+    height: 20px;
+    border-radius: 3px;
+    background: var(--color-badge-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--color-text-secondary);
+  }
+
+  .company-link {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .company-link:hover {
+    color: var(--color-accent);
+  }
+
+  .round-amount {
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .round-stage {
+    color: var(--color-text-secondary);
+  }
+
+  .cell-date {
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+  }
+
+  .source-link {
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+
+  .source-link:hover {
+    color: var(--color-accent);
+  }
+
+  .empty {
+    color: var(--color-text-secondary);
+    padding: var(--space-8) 0;
+  }
+</style>

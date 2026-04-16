@@ -74,6 +74,25 @@ for rnd in funding:
   count=$((count + 1))
 done
 
+# Investors
+INVESTORS_FILE="content/investors.json"
+if [ -f "$INVESTORS_FILE" ]; then
+  echo "" >> "$OUTPUT"
+  echo "-- Investors" >> "$OUTPUT"
+  python3 -c "
+import json
+with open('$INVESTORS_FILE') as f:
+    data = json.load(f)
+for key, inv in data.items():
+    slug = inv['slug']
+    name = inv['name'].replace(\"'\", \"''\")
+    short = (inv.get('short_name') or '').replace(\"'\", \"''\")
+    website = inv.get('website', '')
+    desc = (inv.get('description') or '').replace(\"'\", \"''\")
+    print(f\"INSERT OR REPLACE INTO investors (id, slug, name, short_name, website, description) VALUES ('inv-{slug}', '{slug}', '{name}', '{short}', '{website}', '{desc}');\")
+" >> "$OUTPUT"
+fi
+
 # Search index
 echo "" >> "$OUTPUT"
 echo "-- Search index" >> "$OUTPUT"

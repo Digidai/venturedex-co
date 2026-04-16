@@ -1,0 +1,79 @@
+{
+  "a16z": {
+    "name": "Andreessen Horowitz",
+    "slug": "a16z",
+    "short_name": "a16z",
+    "website": "https://a16z.com",
+    "description": "Venture capital firm founded by Marc Andreessen and Ben Horowitz. Backs bold founders building category-defining technology companies."
+  },
+  "sequoia": {
+    "name": "Sequoia Capital",
+    "slug": "sequoia",
+    "short_name": "Sequoia",
+    "website": "https://www.sequoiacap.com",
+    "description": "Helps daring founders build legendary companies from idea to IPO and beyond."
+  },
+  "yc": {
+    "name": "Y Combinator",
+    "slug": "yc",
+    "short_name": "YC",
+    "website": "https://www.ycombinator.com",
+    "description": "Seed-stage accelerator. Twice a year, invests in a large number of startups."
+  },
+  "accel": {
+    "name": "Accel",
+    "slug": "accel",
+    "short_name": "Accel",
+    "website": "https://www.accel.com",
+    "description": "Global venture capital firm that partners with exceptional founders from seed through growth."
+  },
+  "ivp": {
+    "name": "IVP",
+    "slug": "ivp",
+    "short_name": "IVP",
+    "website": "https://www.ivp.com",
+    "description": "Late-stage venture capital and growth equity firm."
+  },
+  "spark": {
+    "name": "Spark Capital",
+    "slug": "spark",
+    "short_name": "Spark",
+    "website": "https://www.sparkcapital.com",
+    "description": "Early and growth-stage venture fund based in San Francisco and Boston."
+  },
+  "felicis": {
+    "name": "Felicis Ventures",
+    "slug": "felicis",
+    "short_name": "Felicis",
+    "website": "https://www.felicis.com",
+    "description": "Venture capital firm investing in iconic companies reinventing core markets."
+  },
+  "lightspeed": {
+    "name": "Lightspeed Venture Partners",
+    "slug": "lightspeed",
+    "short_name": "Lightspeed",
+    "website": "https://lsvp.com",
+    "description": "Global venture capital firm focused on enterprise, consumer, and health technology."
+  },
+  "general-catalyst": {
+    "name": "General Catalyst",
+    "slug": "general-catalyst",
+    "short_name": "GC",
+    "website": "https://www.generalcatalyst.com",
+    "description": "Venture capital firm that invests in powerful, positive change."
+  },
+  "776": {
+    "name": "Seven Seven Six",
+    "slug": "776",
+    "short_name": "776",
+    "website": "https://sevensevensix.com",
+    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
+  },
+  "thrive": {
+    "name": "Thrive Capital",
+    "slug": "thrive",
+    "short_name": "Thrive",
+    "website": "https://www.thrivecap.com",
+    "description": "Investment firm built to support the best technology companies at every stage."
+  }
+}

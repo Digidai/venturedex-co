@@ -209,6 +209,16 @@ CREATE TABLE IF NOT EXISTS screenshot_jobs (
   finished_at TEXT
 );
 
+CREATE TABLE IF NOT EXISTS investors (
+  id TEXT PRIMARY KEY,
+  slug TEXT UNIQUE NOT NULL,
+  name TEXT NOT NULL,
+  short_name TEXT,
+  website TEXT,
+  description TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
 CREATE TABLE IF NOT EXISTS funding_rounds (
   id TEXT PRIMARY KEY,
   company_name TEXT NOT NULL,
