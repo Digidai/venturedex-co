@@ -10,7 +10,18 @@
 
 set -euo pipefail
 
-CF_TOKEN="${CLOUDFLARE_API_TOKEN:-cfut_JzzH8Ps7lDl6Yl8dhkpzEQWMzK1VUE73CPla4tf07f1a102f}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
+# Load repo-local secrets without committing them.
+if [ -f "$REPO_ROOT/.env" ]; then
+  set -a
+  # shellcheck disable=SC1091
+  . "$REPO_ROOT/.env"
+  set +a
+fi
+
+CF_TOKEN="${CLOUDFLARE_API_TOKEN:-}"
 ACCOUNT_ID="48d9ccaf5ee7914c803b5d0656462848"
 SCREENSHOT_API="https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/browser-rendering/screenshot"
 DB_NAME="venturedex-db"
