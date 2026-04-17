@@ -58,3 +58,30 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - automation prompt moved out of the automation config into repo docs
   - immutable guards and adaptive heuristics are now separated
   - learning history has a stable append-only location
+
+### 2026-04-17 21:52 Asia/Shanghai
+
+- candidate_count: 10
+- accepted: 0
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 0410586
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [build_app_fail, screenshot_env]
+- reward: 0
+- dominant_failure_mode: screenshot_env
+- proposed_change: add a preflight screenshot-credential check before spending time on publishable finalists
+- decision: deferred
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - discovered 10 recent funding candidates and recorded 7 explicit rejects for Sycamore, Xoople, Rebellions, SiFive, Slash, Cloaked, and Arc
+  - Parasail, Factory, and Lucid Bots were the only shortlist survivors, but CLOUDFLARE_API_TOKEN was missing so a compliant screenshot-backed addition could not be completed
+  - npm run build initially failed because astro was unavailable in the worktree; npm ci restored dependencies and the build passed on retry
