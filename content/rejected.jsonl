@@ -1,2 +1,9 @@
 {"slug":"anthropic-claude","url":"https://claude.ai","date":"2026-04-16","stage":"F2","reason":"Anthropic product, not an independent company"}
 {"slug":"vercel","url":"https://vercel.com","date":"2026-04-16","stage":"F3","reason":"Series E funding is outside the Seed-Series C window"}
+{"slug":"sycamore","url":"https://sycamore.so/","date":"2026-04-17","stage":"F1","reason":"Pure enterprise landing page with contact-only CTA and no usable product flow to trial."}
+{"slug":"xoople","url":"https://www.xoople.com/","date":"2026-04-17","stage":"F1","reason":"Private-preview Earth data platform with contact-only access, not a product a reader can actually use today."}
+{"slug":"rebellions","url":"https://rebellions.ai/","date":"2026-04-17","stage":"F3","reason":"TechCrunch coverage is a pre-IPO additional raise after Series C, outside the Seed-Series C window."}
+{"slug":"sifive","url":"https://www.sifive.com/","date":"2026-04-17","stage":"F3","reason":"Current $400M fundraise is for a mature RISC-V company already beyond the Seed-Series C stage band."}
+{"slug":"slash","url":"https://www.slash.com/","date":"2026-04-17","stage":"taste","reason":"The homepage bundles banking, cards, crypto, treasury, capital, invoicing, and agents into one pitch. The bet is blurry and the product reads like a finance stack sale, not a sharp recommendation."}
+{"slug":"cloaked","url":"https://www.cloaked.com/","date":"2026-04-17","stage":"taste","reason":"The problem is real, but aliases, broker removal, insurance, VPN, payments beta, AI, and family sharing all land at once. The privacy wedge is diluted by bundle sprawl."}
+{"slug":"arc","url":"https://arcboats.com/","date":"2026-04-17","stage":"taste","reason":"The company is ambitious, but the first-run product story splits between sport boats, center consoles, commercial craft, and defense. The category spread muddies the core bet."}
