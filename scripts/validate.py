@@ -132,7 +132,7 @@ def main() -> int:
     results: list[FileResult] = []
     startup_slugs: set[str] = set()
     startup_domains: dict[str, Path] = {}
-    startup_index: dict[str, dict[str, str]] = {}
+    startup_index: dict[str, dict[str, object]] = {}
 
     for path in startup_files:
         result = validate_startup(path, url_cache)
@@ -150,10 +150,7 @@ def main() -> int:
                 if slug in startup_slugs:
                     result.errors.append(f"duplicate slug across startup files: {slug}")
                 startup_slugs.add(slug)
-                startup_index[slug] = {
-                    "name": data.get("product_name", ""),
-                    "url": data.get("url", ""),
-                }
+                startup_index[slug] = data
             if domain:
                 prev = startup_domains.get(domain)
                 if prev and prev != path:
@@ -270,6 +267,7 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         "why_featured",
         "product_type",
         "region",
+        "investors",
         "funding",
     ]
     for field_name in required_fields:
@@ -502,7 +500,7 @@ def validate_rejected_file(startup_slugs: set[str]) -> tuple[int, list[str], lis
 
 
 def validate_brand_assets(
-    startup_index: dict[str, dict[str, str]],
+    startup_index: dict[str, dict[str, object]],
     url_cache: dict[str, str],
 ) -> tuple[list[str], list[str]]:
     errors: list[str] = []
@@ -543,8 +541,8 @@ def validate_brand_assets(
             validate_brand_asset_record(
                 prefix=prefix,
                 asset=asset,
-                expected_name=startup["name"],
-                expected_page=startup["url"],
+                expected_name=str(startup.get("product_name", "")),
+                expected_page=str(startup.get("url", "")),
                 expected_prefix="/logos/companies/",
                 url_cache=url_cache,
             )
@@ -555,6 +553,77 @@ def validate_brand_assets(
 
     if not isinstance(investors, dict):
         return ["content/investors.json must be an object"], warnings
+
+    investor_lookup = build_investor_lookup(investors)
+
+    for startup_slug, startup in startup_index.items():
+        for investor_name in referenced_lead_investor_names(startup):
+            investor_slug = resolve_investor_slug(investor_name, investor_lookup)
+            if not investor_slug:
+                errors.append(
+                    f"startup {startup_slug} lead investor '{investor_name}' missing from content/investors.json"
+                )
+                continue
+
+            investor = investors.get(investor_slug)
+            if not isinstance(investor, dict):
+                errors.append(
+                    f"startup {startup_slug} lead investor '{investor_name}' resolves to invalid directory entry '{investor_slug}'"
+                )
+                continue
+
+            asset = investor_assets.get(investor_slug)
+            prefix = f"brand-assets investors.{investor_slug}"
+            if not isinstance(asset, dict):
+                errors.append(
+                    f"{prefix} missing for startup {startup_slug} lead investor '{investor_name}'"
+                )
+                continue
+
+            errors.extend(
+                validate_brand_asset_record(
+                    prefix=prefix,
+                    asset=asset,
+                    expected_name=str(investor.get("name", "")),
+                    expected_page=str(investor.get("website", "")),
+                    expected_prefix="/logos/investors/",
+                    url_cache=url_cache,
+                )
+            )
+
+        for investor_name in referenced_listed_investor_names(startup):
+            investor_slug = resolve_investor_slug(investor_name, investor_lookup)
+            if not investor_slug:
+                warnings.append(
+                    f"startup {startup_slug} investor '{investor_name}' has no directory entry; text fallback will be used"
+                )
+                continue
+
+            investor = investors.get(investor_slug)
+            if not isinstance(investor, dict):
+                errors.append(
+                    f"startup {startup_slug} investor '{investor_name}' resolves to invalid directory entry '{investor_slug}'"
+                )
+                continue
+
+            asset = investor_assets.get(investor_slug)
+            prefix = f"brand-assets investors.{investor_slug}"
+            if not isinstance(asset, dict):
+                errors.append(
+                    f"{prefix} missing for startup {startup_slug} investor '{investor_name}'"
+                )
+                continue
+
+            errors.extend(
+                validate_brand_asset_record(
+                    prefix=prefix,
+                    asset=asset,
+                    expected_name=str(investor.get("name", "")),
+                    expected_page=str(investor.get("website", "")),
+                    expected_prefix="/logos/investors/",
+                    url_cache=url_cache,
+                )
+            )
 
     for slug, investor in investors.items():
         asset = investor_assets.get(slug)
@@ -578,6 +647,69 @@ def validate_brand_assets(
         warnings.append(f"brand-assets investors.{slug} exists but no investor directory entry uses it")
 
     return errors, warnings
+
+
+def normalize_brand_text(value: str) -> str:
+    return " ".join(
+        "".join(ch if ch.isalnum() else " " for ch in value.lower().replace("&", " and ")).split()
+    )
+
+
+def build_investor_lookup(investors: dict[str, dict[str, object]]) -> dict[str, str]:
+    lookup: dict[str, str] = {}
+    for slug, investor in investors.items():
+        candidates = [slug, investor.get("slug"), investor.get("name"), investor.get("short_name")]
+        for candidate in candidates:
+            if not candidate:
+                continue
+            lookup.setdefault(normalize_brand_text(str(candidate)), slug)
+    return lookup
+
+
+def resolve_investor_slug(name: str, investor_lookup: dict[str, str]) -> str | None:
+    normalized = normalize_brand_text(name)
+    if not normalized:
+        return None
+
+    if normalized in investor_lookup:
+        return investor_lookup[normalized]
+
+    for candidate, slug in investor_lookup.items():
+        if normalized in candidate or candidate in normalized:
+            return slug
+    return None
+
+
+def dedupe_investor_names(values: list[str]) -> list[str]:
+    names: list[str] = []
+    seen: set[str] = set()
+
+    for value in values:
+        if not value:
+            continue
+        normalized = value.strip()
+        if not normalized or normalized.lower() == "undisclosed":
+            continue
+        key = normalized.casefold()
+        if key in seen:
+            continue
+        seen.add(key)
+        names.append(normalized)
+
+    return names
+
+
+def referenced_listed_investor_names(startup: dict[str, object]) -> list[str]:
+    return dedupe_investor_names(str(startup.get("investors", "")).split(","))
+
+
+def referenced_lead_investor_names(startup: dict[str, object]) -> list[str]:
+    values: list[str] = []
+    for round_data in startup.get("funding") or []:
+        if isinstance(round_data, dict):
+            values.append(str(round_data.get("lead_investor", "")))
+
+    return dedupe_investor_names(values)
 
 
 def validate_brand_asset_record(

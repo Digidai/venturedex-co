@@ -1,19 +1,16 @@
 #!/bin/bash
 # VentureDex content management CLI aligned to the JSON-first workflow.
-# Usage:
-#   ./scripts/manage.sh add         — Scaffold a new startup JSON + company brand asset
-#   ./scripts/manage.sh screenshot  — Capture screenshot for an existing startup JSON
-#   ./scripts/manage.sh list        — List startups from content/startups/*.json
-#   ./scripts/manage.sh validate    — Run validate + build-db + app build
-#   ./scripts/manage.sh sync        — Apply d1/generated-seed.sql to remote D1
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 CONTENT_DIR="$REPO_ROOT/content/startups"
+INVESTORS_FILE="$REPO_ROOT/content/investors.json"
 BRAND_ASSETS_FILE="$REPO_ROOT/content/brand-assets.json"
 COMPANY_LOGO_DIR="$REPO_ROOT/public/logos/companies"
+INVESTOR_LOGO_DIR="$REPO_ROOT/public/logos/investors"
+SCREENSHOT_DIR="$REPO_ROOT/public/screenshots"
 DB_NAME="venturedex-db"
 
 # Load repo-local secrets without committing them.
@@ -33,7 +30,10 @@ Usage:
   ./scripts/manage.sh screenshot <slug> [url]          Capture screenshot via CF API
   ./scripts/manage.sh list                             List startups from content/startups
   ./scripts/manage.sh validate                         Run validate + build-db + app build
-  ./scripts/manage.sh sync                             Push d1/generated-seed.sql to remote D1
+  ./scripts/manage.sh sync [--skip-build]              Push d1/generated-seed.sql to remote D1
+  ./scripts/manage.sh deploy                           Deploy the current worker
+  ./scripts/manage.sh smoke <url>                      Smoke-check a deployed URL against remote D1
+  ./scripts/manage.sh release                          Run validate -> sync -> deploy -> smoke
 EOF
 }
 
@@ -184,33 +184,270 @@ print(suffix if suffix in allowed else ".png")
 PY
 }
 
-update_company_brand_asset() {
-  local slug="$1"
-  local name="$2"
-  local local_path="$3"
-  local source_page="$4"
-  local source_url="$5"
+update_brand_asset() {
+  local section="$1"
+  local slug="$2"
+  local name="$3"
+  local local_path="$4"
+  local source_page="$5"
+  local source_url="$6"
+  local shape="${7:-icon}"
   local verified_at
   verified_at="$(date '+%Y-%m-%d')"
 
-  python3 - "$BRAND_ASSETS_FILE" "$slug" "$name" "$local_path" "$source_page" "$source_url" "$verified_at" <<'PY'
+  python3 - "$BRAND_ASSETS_FILE" "$section" "$slug" "$name" "$local_path" "$source_page" "$source_url" "$shape" "$verified_at" <<'PY'
 import json
 import sys
 from pathlib import Path
 
-manifest_path, slug, name, local_path, source_page, source_url, verified_at = sys.argv[1:]
+manifest_path, section, slug, name, local_path, source_page, source_url, shape, verified_at = sys.argv[1:]
 path = Path(manifest_path)
 data = json.loads(path.read_text())
 data["verified_at"] = verified_at
-data.setdefault("companies", {})[slug] = {
+data.setdefault(section, {})[slug] = {
     "name": name,
-    "shape": "icon",
+    "shape": shape,
     "local_path": local_path,
     "source_page": source_page,
     "source_url": source_url,
 }
 path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
 PY
+}
+
+update_company_brand_asset() {
+  update_brand_asset "companies" "$@"
+}
+
+update_investor_brand_asset() {
+  update_brand_asset "investors" "$@"
+}
+
+brand_asset_field() {
+  local section="$1"
+  local slug="$2"
+  local field="$3"
+  python3 - "$BRAND_ASSETS_FILE" "$section" "$slug" "$field" <<'PY'
+import json
+import sys
+
+path, section, slug, field = sys.argv[1:]
+with open(path) as f:
+    data = json.load(f)
+value = data.get(section, {}).get(slug, {}).get(field)
+print("" if value is None else value)
+PY
+}
+
+resolve_investor_slug() {
+  local query="$1"
+  python3 - "$INVESTORS_FILE" "$query" <<'PY'
+import json
+import sys
+
+path, query = sys.argv[1:]
+with open(path) as f:
+    investors = json.load(f)
+
+def normalize(value: str) -> str:
+    return " ".join(
+        "".join(ch if ch.isalnum() else " " for ch in value.lower().replace("&", " and ")).split()
+    )
+
+needle = normalize(query)
+if not needle:
+    print("")
+    raise SystemExit
+
+exact_match = None
+fuzzy_match = None
+
+for slug, entry in investors.items():
+    candidates = [slug, entry.get("slug", ""), entry.get("name", ""), entry.get("short_name", "")]
+    normalized_candidates = [normalize(candidate) for candidate in candidates if candidate]
+
+    if needle in normalized_candidates:
+        exact_match = slug
+        break
+
+    if not fuzzy_match and any(
+        needle in candidate or candidate in needle for candidate in normalized_candidates if candidate
+    ):
+        fuzzy_match = slug
+
+print(exact_match or fuzzy_match or "")
+PY
+}
+
+get_investor_field() {
+  local slug="$1"
+  local field="$2"
+  python3 - "$INVESTORS_FILE" "$slug" "$field" <<'PY'
+import json
+import sys
+
+path, slug, field = sys.argv[1:]
+with open(path) as f:
+    investors = json.load(f)
+value = investors.get(slug, {}).get(field)
+print("" if value is None else value)
+PY
+}
+
+upsert_investor_directory_entry() {
+  local slug="$1"
+  local name="$2"
+  local short_name="$3"
+  local website="$4"
+  local description="$5"
+
+  python3 - "$INVESTORS_FILE" "$slug" "$name" "$short_name" "$website" "$description" <<'PY'
+import json
+import sys
+from pathlib import Path
+
+path, slug, name, short_name, website, description = sys.argv[1:]
+investors_path = Path(path)
+data = json.loads(investors_path.read_text())
+data[slug] = {
+    "name": name,
+    "slug": slug,
+    "short_name": short_name or None,
+    "website": website,
+    "description": description,
+}
+investors_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n")
+PY
+}
+
+collect_referenced_investors() {
+  local investors_csv="$1"
+  local lead_investor="$2"
+  python3 - "$investors_csv" "$lead_investor" <<'PY'
+import sys
+
+investors_csv, lead_investor = sys.argv[1:]
+seen = set()
+names = []
+
+def add(value: str) -> None:
+    normalized = value.strip()
+    if not normalized:
+        return
+    if normalized.lower() == "undisclosed":
+        return
+    key = normalized.casefold()
+    if key in seen:
+        return
+    seen.add(key)
+    names.append(normalized)
+
+for chunk in investors_csv.split(","):
+    add(chunk)
+add(lead_investor)
+print("\n".join(names))
+PY
+}
+
+extract_wranger_json() {
+  python3 -c '
+import json
+import sys
+
+text = sys.stdin.read()
+start = text.find("[")
+if start == -1:
+    raise SystemExit("Unable to parse Wrangler JSON output.")
+json.loads(text[start:])
+print(text[start:])
+'
+}
+
+legacy_schema_needs_repair() {
+  local output parsed
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command "
+SELECT name FROM sqlite_master
+WHERE type='table'
+  AND name IN ('sites','weekly_issue_sites','site_aliases','site_evidence','site_snapshots','collection_sites');
+PRAGMA table_info(search_index_terms);
+" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+legacy_tables = bool(payload[0]["results"])
+columns = {row["name"] for row in payload[1]["results"]}
+needs_repair = legacy_tables or ("site_id" in columns) or ("startup_id" not in columns)
+print("true" if needs_repair else "false")
+' <<<"$parsed"
+}
+
+repair_legacy_remote_schema() {
+  (
+    cd "$REPO_ROOT"
+    echo "Repairing legacy remote schema..."
+    npx wrangler d1 execute "$DB_NAME" --remote --command "
+DROP TABLE IF EXISTS search_index_terms;
+DROP TABLE IF EXISTS collection_sites;
+DROP TABLE IF EXISTS weekly_issue_sites;
+DROP TABLE IF EXISTS site_aliases;
+DROP TABLE IF EXISTS site_evidence;
+DROP TABLE IF EXISTS site_snapshots;
+DROP TABLE IF EXISTS sites;
+" >/dev/null
+    npx wrangler d1 execute "$DB_NAME" --remote --file=d1/schema.sql >/dev/null
+  )
+}
+
+remote_startup_count() {
+  local output parsed
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+      "SELECT COUNT(*) AS startup_count FROM startups WHERE workflow_status = 'published';" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+print(payload[0]["results"][0]["startup_count"])
+' <<<"$parsed"
+}
+
+extract_first_url() {
+  python3 -c '
+import re
+import sys
+
+text = sys.stdin.read()
+matches = [match.rstrip(")\"'\''.,") for match in re.findall(r"https://[^\s]+", text)]
+workers_matches = [match for match in matches if "workers.dev" in match]
+if workers_matches:
+    print(workers_matches[0])
+elif matches:
+    print(matches[0])
+else:
+    print("")
+'
+}
+
+deploy_worker() {
+  (
+    cd "$REPO_ROOT"
+    npx wrangler deploy 2>&1
+  )
 }
 
 write_startup_json() {
@@ -260,55 +497,152 @@ cmd_validate() {
 }
 
 cmd_sync() {
+  local skip_build="${1:-}"
   require_token
   (
     cd "$REPO_ROOT"
-    ./scripts/build-db.sh
-    echo "Repairing legacy remote schema if needed..."
-    npx wrangler d1 execute "$DB_NAME" --remote --command "
-DROP TABLE IF EXISTS search_index_terms;
-DROP TABLE IF EXISTS collection_sites;
-DROP TABLE IF EXISTS weekly_issue_sites;
-DROP TABLE IF EXISTS site_aliases;
-DROP TABLE IF EXISTS site_evidence;
-DROP TABLE IF EXISTS site_snapshots;
-DROP TABLE IF EXISTS sites;
-" >/dev/null
-    npx wrangler d1 execute "$DB_NAME" --remote --file=d1/schema.sql >/dev/null
+    if [ "$skip_build" != "--skip-build" ]; then
+      ./scripts/build-db.sh
+    fi
+    if [ "$(legacy_schema_needs_repair)" = "true" ]; then
+      repair_legacy_remote_schema
+    else
+      echo "Remote schema already matches the current startup-first model."
+    fi
     echo "Applying d1/generated-seed.sql to remote D1..."
-    local output
-    if ! output="$(npx wrangler d1 execute "$DB_NAME" --remote --file=d1/generated-seed.sql 2>&1)"; then
-      printf '%s\n' "$output"
-      cat <<'EOF' >&2
+    local output attempt=1 max_attempts=3
+    while true; do
+      if output="$(npx wrangler d1 execute "$DB_NAME" --remote --file=d1/generated-seed.sql 2>&1)"; then
+        break
+      fi
 
-ERROR: Remote D1 sync failed.
-This command needs a Cloudflare API token that can edit the D1 database.
+      printf '%s\n' "$output"
+
+      if printf '%s' "$output" | rg -qi "timed out|network connectivity issues|slow network speeds"; then
+        if [ "$attempt" -lt "$max_attempts" ]; then
+          echo "Remote D1 sync timed out. Retrying ($attempt/$max_attempts)..." >&2
+          attempt=$((attempt + 1))
+          sleep 2
+          continue
+        fi
+        cat <<'EOF' >&2
+
+ERROR: Remote D1 sync failed after repeated timeout retries.
+Cloudflare accepted the request path, but the upload/execute step timed out.
+Retry once network conditions stabilize.
+EOF
+        exit 1
+      fi
+
+      if printf '%s' "$output" | rg -qi "10000|Authentication error|not authorized|permissions"; then
+        cat <<'EOF' >&2
+
+ERROR: Remote D1 sync failed due to Cloudflare permissions.
 Recommended minimum scope in Cloudflare:
   Account -> D1 -> Edit
+  User -> User Details -> Read
+  User -> Memberships -> Read
+EOF
+        exit 1
+      fi
+
+      cat <<'EOF' >&2
+
+ERROR: Remote D1 sync failed for a non-auth, non-timeout reason.
+Inspect the Wrangler output above before retrying.
 EOF
       exit 1
-    fi
+    done
     printf '%s\n' "$output"
   )
 }
 
+cmd_deploy() {
+  require_token
+  local output url
+  if ! output="$(deploy_worker)"; then
+    printf '%s\n' "$output"
+    exit 1
+  fi
+  printf '%s\n' "$output"
+  url="$(printf '%s\n' "$output" | extract_first_url)"
+  if [ -n "$url" ]; then
+    echo "Deployment URL: $url"
+  else
+    echo "WARN: Could not detect deployment URL from Wrangler output." >&2
+  fi
+}
+
+cmd_smoke() {
+  local url="${1:?Usage: manage.sh smoke <url>}"
+  local startup_count html
+
+  require_token
+  startup_count="$(remote_startup_count)"
+  html="$(curl -fsSL "$url")"
+
+  if ! printf '%s' "$html" | rg -q "VentureDex"; then
+    echo "ERROR: Smoke check failed. '$url' does not look like a VentureDex page." >&2
+    exit 1
+  fi
+
+  if [ "$startup_count" -gt 0 ] && printf '%s' "$html" | rg -q "Coming soon"; then
+    echo "ERROR: Smoke check failed. Remote D1 has published startups but the page still shows 'Coming soon'." >&2
+    exit 1
+  fi
+
+  if [ "$startup_count" -gt 0 ] && ! printf '%s' "$html" | rg -q "/startups/"; then
+    echo "ERROR: Smoke check failed. Remote D1 has published startups but the page has no startup links." >&2
+    exit 1
+  fi
+
+  echo "Smoke check passed for $url (published startups: $startup_count)."
+}
+
+cmd_release() {
+  local deploy_output deploy_url
+
+  require_token
+  cmd_validate
+  cmd_sync --skip-build
+
+  if ! deploy_output="$(deploy_worker)"; then
+    printf '%s\n' "$deploy_output"
+    exit 1
+  fi
+  printf '%s\n' "$deploy_output"
+
+  deploy_url="$(printf '%s\n' "$deploy_output" | extract_first_url)"
+  if [ -z "$deploy_url" ]; then
+    echo "ERROR: Could not determine deployment URL from Wrangler output." >&2
+    exit 1
+  fi
+
+  cmd_smoke "$deploy_url"
+}
+
 cmd_add() {
-  mkdir -p "$COMPANY_LOGO_DIR"
+  mkdir -p "$COMPANY_LOGO_DIR" "$INVESTOR_LOGO_DIR"
 
   echo "=== Add New Startup ==="
-  echo "This writes a new content/startups/<slug>.json entry and updates company brand assets."
+  echo "This writes a new content/startups/<slug>.json entry and updates company + investor brand assets."
   echo
 
   local url product_name slug summary note rating why_featured product_type founded_year
   local team_size hq_location region tags investors github twitter linkedin producthunt
   local is_featured funding_amount funding_stage lead_investor funding_date source_url source_name
   local company_logo_asset_url company_logo_source_page company_logo_ext company_logo_path startup_file
-  local domain payload_json
+  local domain payload_json canonical_investors canonical_lead_investor screenshot_path
+  local investor_name investor_slug investor_short_name investor_website investor_description
+  local investor_logo_asset_url investor_logo_source_page investor_logo_ext investor_logo_path
+  local investor_asset_present
+  local -a investor_list canonical_investor_list
 
   url="$(prompt_required "Product URL (official site)")"
   product_name="$(prompt_required "Product name")"
   slug="$(prompt_required "Slug" "$(slugify "$product_name")")"
   startup_file="$CONTENT_DIR/$slug.json"
+  screenshot_path="$SCREENSHOT_DIR/$slug.webp"
   if [ -e "$startup_file" ]; then
     echo "ERROR: $startup_file already exists." >&2
     exit 1
@@ -343,6 +677,76 @@ cmd_add() {
   source_url="$(prompt_required "Source article URL")"
   source_name="$(prompt_required "Source name" "TechCrunch")"
 
+  mapfile -t investor_list < <(collect_referenced_investors "$investors" "$lead_investor")
+  if [ "${#investor_list[@]}" -eq 0 ]; then
+    echo "ERROR: At least one investor must be provided for a publishable startup." >&2
+    exit 1
+  fi
+
+  echo
+  echo "Investor directory and brand assets:"
+  for investor_name in "${investor_list[@]}"; do
+    investor_slug="$(resolve_investor_slug "$investor_name")"
+    if [ -n "$investor_slug" ]; then
+      echo "  Reusing investor '$investor_name' as slug '$investor_slug'."
+    else
+      echo
+      echo "Create investor directory entry for '$investor_name':"
+      investor_name="$(prompt_required "Investor name" "$investor_name")"
+      investor_slug="$(prompt_required "Investor slug" "$(slugify "$investor_name")")"
+      if [ -n "$(get_investor_field "$investor_slug" "slug")" ]; then
+        echo "ERROR: Investor slug '$investor_slug' already exists. Re-run and use the canonical name/slug." >&2
+        exit 1
+      fi
+      investor_short_name="$(prompt "Investor short name")"
+      investor_website="$(prompt_required "Investor website (official)")"
+      investor_description="$(prompt_required "Investor description")"
+      upsert_investor_directory_entry \
+        "$investor_slug" \
+        "$investor_name" \
+        "$investor_short_name" \
+        "$investor_website" \
+        "$investor_description"
+    fi
+
+    investor_name="$(get_investor_field "$investor_slug" "name")"
+    investor_asset_present="$(brand_asset_field "investors" "$investor_slug" "local_path")"
+
+    if [ -z "$investor_asset_present" ]; then
+      echo "  Investor brand asset missing for '$investor_name'. Add official source metadata:"
+      investor_logo_asset_url="$(prompt_required "Investor logo asset URL")"
+      investor_logo_source_page="$(prompt_required "Investor logo source page" "$(get_investor_field "$investor_slug" "website")")"
+      investor_logo_ext="$(infer_extension "$investor_logo_asset_url")"
+      investor_logo_path="$INVESTOR_LOGO_DIR/$investor_slug$investor_logo_ext"
+      if [ -e "$investor_logo_path" ]; then
+        echo "ERROR: Expected investor logo path already exists: $investor_logo_path" >&2
+        exit 1
+      fi
+      curl -fsSL "$investor_logo_asset_url" -o "$investor_logo_path"
+      update_investor_brand_asset \
+        "$investor_slug" \
+        "$investor_name" \
+        "/logos/investors/$investor_slug$investor_logo_ext" \
+        "$investor_logo_source_page" \
+        "$investor_logo_asset_url"
+    fi
+  done
+
+  canonical_investor_list=()
+  for investor_name in "${investor_list[@]}"; do
+    investor_slug="$(resolve_investor_slug "$investor_name")"
+    canonical_investor_list+=("$(get_investor_field "$investor_slug" "name")")
+  done
+  canonical_investors=""
+  for investor_name in "${canonical_investor_list[@]}"; do
+    if [ -n "$canonical_investors" ]; then
+      canonical_investors+=", "
+    fi
+    canonical_investors+="$investor_name"
+  done
+  canonical_lead_investor="$(get_investor_field "$(resolve_investor_slug "$lead_investor")" "name")"
+  canonical_lead_investor="${canonical_lead_investor:-$lead_investor}"
+
   echo
   echo "Company brand asset (official source only):"
   company_logo_asset_url="$(prompt_required "Logo asset URL")"
@@ -358,7 +762,12 @@ PY
   company_logo_ext="$(infer_extension "$company_logo_asset_url")"
   company_logo_path="$COMPANY_LOGO_DIR/$slug$company_logo_ext"
   curl -fsSL "$company_logo_asset_url" -o "$company_logo_path"
-  update_company_brand_asset "$slug" "$product_name" "/logos/companies/$slug$company_logo_ext" "$company_logo_source_page" "$company_logo_asset_url"
+  update_company_brand_asset \
+    "$slug" \
+    "$product_name" \
+    "/logos/companies/$slug$company_logo_ext" \
+    "$company_logo_source_page" \
+    "$company_logo_asset_url"
 
   export VENTUREDEX_SLUG="$slug"
   export VENTUREDEX_DOMAIN="$domain"
@@ -374,11 +783,11 @@ PY
   export VENTUREDEX_HQ_LOCATION="$hq_location"
   export VENTUREDEX_REGION="$region"
   export VENTUREDEX_TAGS="$tags"
-  export VENTUREDEX_INVESTORS="$investors"
+  export VENTUREDEX_INVESTORS="$canonical_investors"
   export VENTUREDEX_IS_FEATURED="$is_featured"
   export VENTUREDEX_FUNDING_AMOUNT="$funding_amount"
   export VENTUREDEX_FUNDING_STAGE="$funding_stage"
-  export VENTUREDEX_LEAD_INVESTOR="$lead_investor"
+  export VENTUREDEX_LEAD_INVESTOR="$canonical_lead_investor"
   export VENTUREDEX_FUNDING_DATE="$funding_date"
   export VENTUREDEX_SOURCE_URL="$source_url"
   export VENTUREDEX_SOURCE_NAME="$source_name"
@@ -439,6 +848,7 @@ PY
   echo
   echo "Created $startup_file"
   echo "Company logo saved to $company_logo_path"
+  echo "Screenshot saved to $screenshot_path"
   echo "Validation/build passed. Review the diff, then commit + push."
 }
 
@@ -447,6 +857,9 @@ case "${1:-help}" in
   screenshot) shift; cmd_screenshot "$@" ;;
   list) cmd_list ;;
   validate) cmd_validate ;;
-  sync) cmd_sync ;;
+  sync) shift; cmd_sync "$@" ;;
+  deploy) cmd_deploy ;;
+  smoke) shift; cmd_smoke "$@" ;;
+  release) cmd_release ;;
   *) usage ;;
 esac
