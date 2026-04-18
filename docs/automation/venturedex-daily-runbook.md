@@ -179,5 +179,6 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Treat a justified no-op run as better than a weak addition.
 - Prefer a precise rejection reason over a vague acceptance.
 - Preflight local build dependencies before deep discovery work; if `npm run build` cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
+- Check for `CLOUDFLARE_API_TOKEN` or a repo-local `.env` before promoting finalists into brand-asset and screenshot work; if credentials are absent, stop at rejected-only or no-op after documenting any viable survivors.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->

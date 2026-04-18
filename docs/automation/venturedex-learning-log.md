@@ -112,3 +112,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - discovered 10 current candidates, skipped Sarvam AI and OpenRouter because the visible reporting still described unclosed financing discussions, and recorded 8 explicit rejects for Swish, Gimlet Labs, Wonderful, Adept, Starcloud, Waymo, Glean, and Anthropic
   - the strongest self-serve failure was Gimlet Labs, whose landing-page sign-up currently points to an app route that resolves to a 404 instead of a usable onboarding flow
   - npm run build failed at first because astro was unavailable in the detached automation worktree; restoring node_modules with npm ci cleared the gate, matching the same build_app_fail pattern seen on 2026-04-17
+
+### 2026-04-19 00:52 CST
+
+- candidate_count: 10
+- accepted: 0
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 047a7ac
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [build_app_fail, screenshot_env]
+- reward: 0
+- dominant_failure_mode: screenshot_env
+- proposed_change: add a screenshot-credential preflight heuristic before promoting finalists into asset and screenshot work
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - discovered 10 current candidates: Granola, Parasail, Loop, Arinna, Lucid Bots, Littlebird, Conntour, Zyphra, Sierra, and Safe Superintelligence
+  - recorded 7 explicit rejects for Loop, Arinna, Lucid Bots, Littlebird, Conntour, Sierra, and Safe Superintelligence; Granola and Parasail were the only viable self-serve survivors, while Zyphra remained non-publishable because the visible financing report still described its round as in talks
+  - npm run build failed at first because astro was unavailable in the detached worktree; restoring dependencies with `npm ci` cleared the local build gate on retry
+  - screenshot credentials are still absent because `.env` is missing and `CLOUDFLARE_API_TOKEN` is unset, so compliant screenshot-backed acceptance work could not proceed for surviving finalists
