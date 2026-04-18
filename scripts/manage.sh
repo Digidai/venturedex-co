@@ -264,6 +264,17 @@ cmd_sync() {
   (
     cd "$REPO_ROOT"
     ./scripts/build-db.sh
+    echo "Repairing legacy remote schema if needed..."
+    npx wrangler d1 execute "$DB_NAME" --remote --command "
+DROP TABLE IF EXISTS search_index_terms;
+DROP TABLE IF EXISTS collection_sites;
+DROP TABLE IF EXISTS weekly_issue_sites;
+DROP TABLE IF EXISTS site_aliases;
+DROP TABLE IF EXISTS site_evidence;
+DROP TABLE IF EXISTS site_snapshots;
+DROP TABLE IF EXISTS sites;
+" >/dev/null
+    npx wrangler d1 execute "$DB_NAME" --remote --file=d1/schema.sql >/dev/null
     echo "Applying d1/generated-seed.sql to remote D1..."
     local output
     if ! output="$(npx wrangler d1 execute "$DB_NAME" --remote --file=d1/generated-seed.sql 2>&1)"; then
