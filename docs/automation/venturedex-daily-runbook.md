@@ -178,5 +178,6 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 
 - Treat a justified no-op run as better than a weak addition.
 - Prefer a precise rejection reason over a vague acceptance.
+- Preflight local build dependencies before deep discovery work; if `npm run build` cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->
