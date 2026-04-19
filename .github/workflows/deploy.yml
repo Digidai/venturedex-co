@@ -6,18 +6,61 @@ on:
     paths-ignore:
       - 'docs/**'
 
+permissions:
+  contents: read
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
 
       - run: npm ci
+
+      - name: Verify Cloudflare auth and D1 access
+        run: |
+          set -euo pipefail
+
+          test -n "${CLOUDFLARE_API_TOKEN}"
+          test -n "${CLOUDFLARE_ACCOUNT_ID}"
+
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+
+          token = os.environ["CLOUDFLARE_API_TOKEN"]
+          account_id = os.environ["CLOUDFLARE_ACCOUNT_ID"]
+
+          def fetch(url: str):
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      "Authorization": f"Bearer {token}",
+                      "Content-Type": "application/json",
+                  },
+              )
+              with urllib.request.urlopen(req) as resp:
+                  return json.load(resp)
+
+          verify = fetch("https://api.cloudflare.com/client/v4/user/tokens/verify")
+          if not verify.get("success") or verify.get("result", {}).get("status") != "active":
+              raise SystemExit(f"Cloudflare token verify failed: {verify}")
+
+          account = fetch(f"https://api.cloudflare.com/client/v4/accounts/{account_id}")
+          if not account.get("success"):
+              raise SystemExit(f"Cloudflare account lookup failed: {account}")
+          PY
+
+          npx wrangler d1 info venturedex-db --json --config wrangler.toml >/dev/null
 
       - name: Validate all content
         run: bash scripts/validate.sh
@@ -26,27 +69,12 @@ jobs:
         run: bash scripts/build-db.sh
 
       - name: Sync content to remote D1
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 execute venturedex-db --remote --file=d1/schema.sql
+        run: npx wrangler d1 execute venturedex-db --remote --file=d1/schema.sql
 
       - name: Seed remote D1 with content
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: d1 execute venturedex-db --remote --file=d1/generated-seed.sql
+        run: npx wrangler d1 execute venturedex-db --remote --file=d1/generated-seed.sql
 
-      - run: npx astro build
-
-      - name: Prepare assets for Wrangler
-        run: printf '_worker.js\n' > dist/.assetsignore
+      - run: npm run build
 
       - name: Deploy Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy
+        run: npx wrangler deploy
