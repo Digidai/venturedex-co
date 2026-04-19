@@ -167,3 +167,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - discovered 10 fresh candidates from recent TechCrunch funding coverage and roundup reporting: Positron, Skyryse, Bedrock Robotics, Fundamental, Goodfire, Simile, humans&, Outtake, Decagon, and OpenEvidence
   - recorded 8 F1 rejects where the public site stayed behind contact, demo, reserve, or early-access gates, and 2 F3 rejects where TechCrunch's current financing reference was already Series D
   - restored local build dependencies with `npm ci` during preflight, then passed `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build` before pushing `78dd26b` to `main`
+
+### 2026-04-19 14:35 CST
+
+- candidate_count: 10
+- accepted: 0
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 5bc6580
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [build_app_fail, screenshot_env]
+- reward: 0
+- dominant_failure_mode: screenshot_env
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - reviewed 10 current funding candidates from recent TechCrunch coverage: Parasail, Hermeus, Nomadic, Glimpse, Doss, Sandbar, Armadin, Eridu, Zeno, and Nominal
+  - recorded 9 explicit F1 rejects for Armadin, Glimpse, Nomadic, Doss, Sandbar, Hermeus, Eridu, Zeno, and Nominal because the public site stopped at demo, contact, preorder, reserve, or program pages instead of a trialable product flow
+  - Parasail was the only viable self-serve survivor, but `.env` was missing and `CLOUDFLARE_API_TOKEN` was unset, so the run stopped at rejected-only before brand-asset and screenshot work
+  - `npm run build` initially failed because `astro` was unavailable in the detached worktree; `npm ci` restored dependencies and all three local gates passed before pushing `5bc6580` to `main`
