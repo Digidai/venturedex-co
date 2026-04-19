@@ -140,3 +140,30 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded 7 explicit rejects for Loop, Arinna, Lucid Bots, Littlebird, Conntour, Sierra, and Safe Superintelligence; Granola and Parasail were the only viable self-serve survivors, while Zyphra remained non-publishable because the visible financing report still described its round as in talks
   - npm run build failed at first because astro was unavailable in the detached worktree; restoring dependencies with `npm ci` cleared the local build gate on retry
   - screenshot credentials are still absent because `.env` is missing and `CLOUDFLARE_API_TOKEN` is unset, so compliant screenshot-backed acceptance work could not proceed for surviving finalists
+
+### 2026-04-19 13:52 CST
+
+- candidate_count: 10
+- accepted: 0
+- rejected: 10
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 78dd26b
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [none]
+- reward: 2
+- dominant_failure_mode: none
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - discovered 10 fresh candidates from recent TechCrunch funding coverage and roundup reporting: Positron, Skyryse, Bedrock Robotics, Fundamental, Goodfire, Simile, humans&, Outtake, Decagon, and OpenEvidence
+  - recorded 8 F1 rejects where the public site stayed behind contact, demo, reserve, or early-access gates, and 2 F3 rejects where TechCrunch's current financing reference was already Series D
+  - restored local build dependencies with `npm ci` during preflight, then passed `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build` before pushing `78dd26b` to `main`
