@@ -149,7 +149,10 @@ const externalLinks = [
         {startup.why_featured && (
           <div class="meta-item">
             <dt>Why featured</dt>
-            <dd class="why-badge">{startup.why_featured}</dd>
+            <dd class="why-badge">
+              <span class="why-badge-dot" aria-hidden="true"></span>
+              <span>{startup.why_featured}</span>
+            </dd>
           </div>
         )}
       </div>
@@ -402,12 +405,29 @@ const externalLinks = [
   }
 
   .why-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 99px;
-    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    display: inline-grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: 8px;
+    max-width: min(100%, 30rem);
+    padding: 7px 12px;
+    border-radius: 6px;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 18%, var(--color-border));
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--color-accent) 12%, transparent) 0%, color-mix(in srgb, var(--color-bg-card) 92%, transparent) 100%);
     color: var(--color-accent);
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.35;
+    box-shadow: 0 1px 0 color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+
+  .why-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 16%, transparent);
   }
 
   /* Team section */
