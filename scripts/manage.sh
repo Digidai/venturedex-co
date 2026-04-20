@@ -381,6 +381,15 @@ else:
 '
 }
 
+html_contains() {
+  local pattern="$1"
+  if command -v rg >/dev/null 2>&1; then
+    rg -q "$pattern"
+  else
+    grep -E -q "$pattern"
+  fi
+}
+
 default_site_url() {
   if [ -n "${VENTUREDEX_SMOKE_URL:-}" ]; then
     printf '%s\n' "$VENTUREDEX_SMOKE_URL"
@@ -543,17 +552,17 @@ cmd_smoke() {
   startup_count="$(remote_startup_count)"
   html="$(curl -fsSL "$url")"
 
-  if ! printf '%s' "$html" | rg -q "VentureDex"; then
+  if ! printf '%s' "$html" | html_contains "VentureDex"; then
     echo "ERROR: Smoke check failed. '$url' does not look like a VentureDex page." >&2
     exit 1
   fi
 
-  if [ "$startup_count" -gt 0 ] && printf '%s' "$html" | rg -q "Coming soon"; then
+  if [ "$startup_count" -gt 0 ] && printf '%s' "$html" | html_contains "Coming soon"; then
     echo "ERROR: Smoke check failed. Remote D1 has published startups but the page still shows 'Coming soon'." >&2
     exit 1
   fi
 
-  if [ "$startup_count" -gt 0 ] && ! printf '%s' "$html" | rg -q "/startups/"; then
+  if [ "$startup_count" -gt 0 ] && ! printf '%s' "$html" | html_contains "/startups/"; then
     echo "ERROR: Smoke check failed. Remote D1 has published startups but the page has no startup links." >&2
     exit 1
   fi
