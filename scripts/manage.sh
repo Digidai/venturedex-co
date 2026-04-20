@@ -381,6 +381,27 @@ else:
 '
 }
 
+default_site_url() {
+  if [ -n "${VENTUREDEX_SMOKE_URL:-}" ]; then
+    printf '%s\n' "$VENTUREDEX_SMOKE_URL"
+    return 0
+  fi
+
+  python3 - "$REPO_ROOT/wrangler.toml" <<'PY'
+import sys
+from pathlib import Path
+
+try:
+    import tomllib
+except ModuleNotFoundError:  # pragma: no cover
+    import tomli as tomllib
+
+config_path = Path(sys.argv[1])
+data = tomllib.loads(config_path.read_text())
+print(data.get("vars", {}).get("SITE_URL", ""))
+PY
+}
+
 deploy_worker() {
   (
     cd "$REPO_ROOT"
@@ -504,10 +525,13 @@ cmd_deploy() {
   fi
   printf '%s\n' "$output"
   url="$(printf '%s\n' "$output" | extract_first_url)"
+  if [ -z "$url" ]; then
+    url="$(default_site_url)"
+  fi
   if [ -n "$url" ]; then
     echo "Deployment URL: $url"
   else
-    echo "WARN: Could not detect deployment URL from Wrangler output." >&2
+    echo "WARN: Could not detect deployment URL from Wrangler output or wrangler.toml." >&2
   fi
 }
 
@@ -552,7 +576,10 @@ cmd_release() {
 
   deploy_url="$(printf '%s\n' "$deploy_output" | extract_first_url)"
   if [ -z "$deploy_url" ]; then
-    echo "ERROR: Could not determine deployment URL from Wrangler output." >&2
+    deploy_url="$(default_site_url)"
+  fi
+  if [ -z "$deploy_url" ]; then
+    echo "ERROR: Could not determine deployment URL from Wrangler output or wrangler.toml." >&2
     exit 1
   fi
 

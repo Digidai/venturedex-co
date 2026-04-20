@@ -62,19 +62,5 @@ jobs:
 
           npx wrangler d1 info venturedex-db --json --config wrangler.toml >/dev/null
 
-      - name: Validate all content
-        run: bash scripts/validate.sh
-
-      - name: Generate D1 seed from content files
-        run: bash scripts/build-db.sh
-
-      - name: Sync content to remote D1
-        run: npx wrangler d1 execute venturedex-db --remote --file=d1/schema.sql
-
-      - name: Seed remote D1 with content
-        run: npx wrangler d1 execute venturedex-db --remote --file=d1/generated-seed.sql
-
-      - run: npm run build
-
-      - name: Deploy Worker
-        run: npx wrangler deploy
+      - name: Run unified release flow
+        run: bash scripts/manage.sh release
