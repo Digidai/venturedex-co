@@ -195,3 +195,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded 9 explicit F1 rejects for Armadin, Glimpse, Nomadic, Doss, Sandbar, Hermeus, Eridu, Zeno, and Nominal because the public site stopped at demo, contact, preorder, reserve, or program pages instead of a trialable product flow
   - Parasail was the only viable self-serve survivor, but `.env` was missing and `CLOUDFLARE_API_TOKEN` was unset, so the run stopped at rejected-only before brand-asset and screenshot work
   - `npm run build` initially failed because `astro` was unavailable in the detached worktree; `npm ci` restored dependencies and all three local gates passed before pushing `5bc6580` to `main`
+
+### 2026-04-20 13:53 Asia/Shanghai
+
+- candidate_count: 14
+- accepted: 0
+- rejected: 3
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: b6244a4
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [build_app_fail, screenshot_env]
+- reward: 0
+- dominant_failure_mode: screenshot_env
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - discovered 14 recent funding candidates from TechCrunch archive windows on March 23, March 26, March 30, and April 7, then deduplicated away nine names already present in `content/rejected.jsonl`
+  - recorded three fresh rejects for Zipline, Shield AI, and Giggles because the current financing was outside the Seed-Series C window or the product fell into VentureDex's excluded crypto and gambling-adjacent categories
+  - Qodo and ScaleOps were the two viable self-serve survivors, with live product entry points at `app.qodo.ai` and `try.scaleops.com`, but `.env` and `CLOUDFLARE_API_TOKEN` were absent so the run stopped before brand-asset and screenshot work
+  - `npm run build` initially failed because `astro` was unavailable in this detached worktree; `npm ci` restored dependencies, all three local gates passed, commit `b6244a4` was pushed to `main`, and GitHub Actions deploy run `24650709214` completed successfully
