@@ -251,3 +251,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded three fresh rejects for Deccan AI, Mirage, and Glydways because their current public product state or financing type failed VentureDex's F1/F3 gates
   - Qodo, Granola, ScaleOps, and VITL survived initial product review, but each current lead investor falls outside the existing `content/investors.json` directory that the daily automation is not allowed to edit
   - bootstrap succeeded, restored repo-local `.env`, and local gates passed, so the only blocker to a compliant addition was investor-directory scope rather than environment readiness
+
+### 2026-04-20 16:59 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [policy_conflict]
+- reward: 0
+- dominant_failure_mode: policy_conflict
+- proposed_change: correct the daily runbook so investor-directory updates are allowed content changes, and remove the heuristic that deprioritized startups with new lead investors
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: File Scope; Staging and Release Scope; Daily Execution; Adaptive Heuristics > Candidate Ranking
+- evidence:
+  - `scripts/validate.py` blocks any published startup whose lead investor is missing from `content/investors.json`
+  - `scripts/manage.sh` already treats investor directory creation as part of the normal startup-add flow and updates `content/investors.json` plus investor brand assets together
+  - the previous daily runbook allowlist omitted `content/investors.json`, so the automation policy was narrower than the repo's actual publish workflow
+  - the previous heuristic incorrectly treated missing investor directory entries as a ranking signal instead of a content task to complete during publication

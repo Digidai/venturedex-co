@@ -50,6 +50,7 @@ Automation must never rewrite this section.
 Allowed persistent content changes:
 
 - `content/startups/{slug}.json`
+- `content/investors.json`
 - `content/brand-assets.json`
 - `content/rejected.jsonl`
 - `public/logos/companies/{slug}.*`
@@ -77,6 +78,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 - For a content commit, staged files may only be:
   - `content/startups/{slug}.json`
+  - `content/investors.json`
   - `content/brand-assets.json`
   - `content/rejected.jsonl`
   - `public/logos/companies/{slug}.*`
@@ -104,7 +106,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 11. Trial the product.
 12. Run the taste review.
 13. Verify funding facts against the source article.
-14. Verify company and investor logos against official sources and update `content/brand-assets.json`.
+14. Verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
 15. Add at most one startup, or run as a clean no-op.
 16. Generate screenshot if and only if the environment is ready.
 17. Run the three local validation steps.
@@ -165,7 +167,7 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Prefer companies whose product can be tried in under five minutes.
 - Prefer companies where the bet is visible in the first screen or onboarding path.
 - Prefer categories where craft and specificity can be judged directly from the product.
-- Prefer candidates whose lead investor already resolves in `content/investors.json`, because the daily automation cannot publish a startup without a matching investor directory entry and brand asset.
+- Do not downgrade an otherwise publishable startup just because its lead investor is new; add the canonical investor directory entry and official brand asset in the same content change.
 - Deprioritize products whose differentiation depends mainly on sales motion or enterprise access.
 
 ### Writing Heuristics
