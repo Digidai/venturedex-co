@@ -12,14 +12,10 @@ COMPANY_LOGO_DIR="$REPO_ROOT/public/logos/companies"
 INVESTOR_LOGO_DIR="$REPO_ROOT/public/logos/investors"
 SCREENSHOT_DIR="$REPO_ROOT/public/screenshots"
 DB_NAME="venturedex-db"
+export REPO_ROOT
 
-# Load repo-local secrets without committing them.
-if [ -f "$REPO_ROOT/.env" ]; then
-  set -a
-  # shellcheck disable=SC1091
-  . "$REPO_ROOT/.env"
-  set +a
-fi
+# shellcheck disable=SC1091
+. "$SCRIPT_DIR/load-local-env.sh"
 
 usage() {
   cat <<'EOF'
