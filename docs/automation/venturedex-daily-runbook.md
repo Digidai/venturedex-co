@@ -33,7 +33,7 @@ Automation must never rewrite this section.
 
 ### Content Safety
 
-- Search recent funding news and collect 10-20 candidates when evidence exists.
+- Search recent funding news broadly and collect 15-30 candidates when evidence exists.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
 - Never fabricate amount, stage, date, investor, or source URL.
@@ -43,7 +43,7 @@ Automation must never rewrite this section.
 - Company and investor logos must come from official sources only and be recorded in `content/brand-assets.json`.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
 - Rejected companies stay rejected unless there is a later funding round.
-- Max 1 new startup per daily run.
+- Accept every startup that clears the bar in this run, up to the global standard limit of 5 additions.
 - Rejections in a run must be at least 3x accepted additions.
 - A clean no-op run is valid.
 
@@ -102,14 +102,14 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 5. Read `docs/automation/venturedex-learning-log.md`.
 6. Sync `main` with `origin/main`.
 7. Check for a clean worktree.
-8. Discover 10-20 recent funding candidates.
+8. Discover 15-30 recent funding candidates.
 9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`.
 10. Run F1-F4 screening.
 11. Trial the product.
 12. Run the taste review.
 13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
-15. Add at most one startup, or run as a clean no-op.
+15. Add every startup that clears the bar in this run, up to 5 additions, or run as a clean no-op.
 16. Generate screenshot if and only if the environment is ready.
 17. Run the three local validation steps.
 18. Perform the five review passes.
