@@ -72,6 +72,7 @@ Use stable tags in the learning log so repeated issues can be detected without g
 - `push_rejected`
 - `ci_fail`
 - `policy_conflict`
+- `investor_identity_ambiguous`
 - `other`
 
 ## Reward Model

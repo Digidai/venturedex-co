@@ -38,6 +38,8 @@ Automation must never rewrite this section.
 - Respect the taste standard in `content/STANDARD.md`.
 - Never fabricate amount, stage, date, investor, or source URL.
 - `stage`, `date`, and `source_url` must come from the original article or the company is not eligible.
+- Lead-investor identity must be cross-validated against the source article, the canonical directory entry in `content/investors.json`, and the official investor website before publish.
+- If the source article naming, resolved directory slug, and official website branding do not converge on the same investor, stop the startup addition instead of guessing.
 - Company and investor logos must come from official sources only and be recorded in `content/brand-assets.json`.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
 - Rejected companies stay rejected unless there is a later funding round.
@@ -105,8 +107,8 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 10. Run F1-F4 screening.
 11. Trial the product.
 12. Run the taste review.
-13. Verify funding facts against the source article.
-14. Verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
+13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
+14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
 15. Add at most one startup, or run as a clean no-op.
 16. Generate screenshot if and only if the environment is ready.
 17. Run the three local validation steps.
@@ -118,9 +120,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 ## Five Review Passes
 
-1. Facts: source, amount, stage, date, investor, source URL
+1. Facts: source, amount, stage, date, investor, source URL, and lead-investor naming from the article
 2. Dedup: prior acceptance, prior rejection, later-round exception
-3. Brand: company logo, investor logo, official source trace, local asset presence
+3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Taste: bet, craft, specificity, rating, banned-language scan
 5. Scope and release: changed files, schema, screenshot completeness, validation, build, commit, push, final git status
 
@@ -168,6 +170,9 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Prefer companies where the bet is visible in the first screen or onboarding path.
 - Prefer categories where craft and specificity can be judged directly from the product.
 - Do not downgrade an otherwise publishable startup just because its lead investor is new; add the canonical investor directory entry and official brand asset in the same content change.
+- Reuse an existing investor slug when the source-article name, current directory entry, and official investor website clearly refer to the same firm.
+- Mint a new investor slug only after cross-checking the canonical name on the investor's official website; default to a normalized canonical name unless the repo already uses a durable short brand such as `a16z`, `yc`, or `776`.
+- If investor naming is materially ambiguous after those checks, defer the startup instead of inventing an alias.
 - Deprioritize products whose differentiation depends mainly on sales motion or enterprise access.
 
 ### Writing Heuristics

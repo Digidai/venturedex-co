@@ -279,3 +279,30 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `scripts/manage.sh` already treats investor directory creation as part of the normal startup-add flow and updates `content/investors.json` plus investor brand assets together
   - the previous daily runbook allowlist omitted `content/investors.json`, so the automation policy was narrower than the repo's actual publish workflow
   - the previous heuristic incorrectly treated missing investor directory entries as a ranking signal instead of a content task to complete during publication
+
+### 2026-04-20 17:28 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [none]
+- reward: 0
+- dominant_failure_mode: none
+- proposed_change: add explicit investor cross-validation rules so new investor entries are created only when source article naming, official website branding, and directory resolution agree
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md; docs/automation/venturedex-feedback-loop.md
+- affected_section: Content Safety; Daily Execution; Five Review Passes; Adaptive Heuristics > Candidate Ranking; Failure Tag Vocabulary
+- evidence:
+  - `scripts/validate.py` requires lead investors to resolve through `content/investors.json` and rejects missing or mismatched investor brand assets
+  - `scripts/manage.sh` already reuses or creates investor entries during startup publication, but the runbook did not yet spell out how to cross-check a reused versus newly minted investor slug
+  - `content/brand-assets.json` shows that investor assets sometimes come from direct icons and sometimes from official inline assets, so the policy needs an explicit "stop on ambiguity, proceed on verified official branding" rule
