@@ -63,6 +63,20 @@
       "local_path": "/logos/companies/qodo.png",
       "source_page": "https://www.qodo.ai",
       "source_url": "https://www.qodo.ai/wp-content/uploads/2025/03/qodo-fav-300x300.png"
+    },
+    "granola": {
+      "name": "Granola",
+      "shape": "icon",
+      "local_path": "/logos/companies/granola.png",
+      "source_page": "https://www.granola.ai",
+      "source_url": "https://www.granola.ai/favicon/apple-touch-icon.png"
+    },
+    "gizmo": {
+      "name": "Gizmo",
+      "shape": "icon",
+      "local_path": "/logos/companies/gizmo.png",
+      "source_page": "https://gizmo.ai",
+      "source_url": "https://gizmo.ai/apple-touch-icon.png"
     }
   },
   "investors": {
@@ -100,6 +114,13 @@
       "local_path": "/logos/investors/ivp.png",
       "source_page": "https://www.ivp.com",
       "source_url": "https://www.ivp.com/favicons/apple-touch-icon.png"
+    },
+    "index-ventures": {
+      "name": "Index Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/index-ventures.png",
+      "source_page": "https://www.indexventures.com",
+      "source_url": "https://www.indexventures.com/static/images/apple-touch-icon.334e2c0ca650.png"
     },
     "spark": {
       "name": "Spark Capital",
@@ -150,6 +171,13 @@
       "local_path": "/logos/investors/qumra-capital.jpg",
       "source_page": "https://qumracapital.com",
       "source_url": "https://qumracapital.com/wp-content/uploads/2018/02/cropped-qumra-fav-180x180.jpg"
+    },
+    "shine-capital": {
+      "name": "Shine Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/shine-capital.ico",
+      "source_page": "https://shine.vc",
+      "source_url": "https://shine.vc/favicon.ico"
     }
   }
 }

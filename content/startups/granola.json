@@ -1,0 +1,29 @@
+{
+  "slug": "granola",
+  "domain": "www.granola.ai",
+  "url": "https://www.granola.ai",
+  "product_name": "Granola",
+  "summary": "AI meeting notes that turn transcripts into searchable team context.",
+  "editor_note": "Meeting notes only looked saturated until someone removed the bot and treated meetings as company memory instead. Granola's local transcription, MCP server, and new personal plus enterprise APIs make it feel closer to context infrastructure than another transcript widget. Where most note-takers sell recall, this is betting that shared context matters more than summaries. The risk is that the product loses elegance as it stretches from a sharp Mac app into enterprise workflow plumbing.",
+  "editor_rating": 5,
+  "why_featured": "Bot-free meeting context layer",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "meeting notes,productivity,knowledge management,ai assistant",
+  "investors": "Index Ventures, Kleiner Perkins, Lightspeed Venture Partners, Spark Capital, NFDG",
+  "links": {
+    "twitter": "https://x.com/meetgranola",
+    "linkedin": "https://www.linkedin.com/company/meetgranola"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$125M",
+      "stage": "Series C",
+      "lead_investor": "Index Ventures",
+      "date": "2026-03-25",
+      "source_url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

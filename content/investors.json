@@ -34,6 +34,13 @@
     "website": "https://www.ivp.com",
     "description": "Late-stage venture capital and growth equity firm."
   },
+  "index-ventures": {
+    "name": "Index Ventures",
+    "slug": "index-ventures",
+    "short_name": "Index",
+    "website": "https://www.indexventures.com",
+    "description": "Global venture capital firm partnering with founders from seed through growth."
+  },
   "spark": {
     "name": "Spark Capital",
     "slug": "spark",
@@ -82,5 +89,12 @@
     "short_name": "Qumra",
     "website": "https://qumracapital.com",
     "description": "Israeli growth-stage venture capital firm focused on exceptional technology companies scaling to global leadership."
+  },
+  "shine-capital": {
+    "name": "Shine Capital",
+    "slug": "shine-capital",
+    "short_name": "Shine",
+    "website": "https://shine.vc",
+    "description": "Early-stage venture capital firm backing creative, convincing, and relentless entrepreneurs."
   }
 }
