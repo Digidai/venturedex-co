@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-04-16",
+  "verified_at": "2026-04-20",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -56,6 +56,13 @@
       "local_path": "/logos/companies/val-town.svg",
       "source_page": "https://www.val.town",
       "source_url": "https://www.val.town/favicon.svg?dot=false"
+    },
+    "qodo": {
+      "name": "Qodo",
+      "shape": "icon",
+      "local_path": "/logos/companies/qodo.png",
+      "source_page": "https://www.qodo.ai",
+      "source_url": "https://www.qodo.ai/wp-content/uploads/2025/03/qodo-fav-300x300.png"
     }
   },
   "investors": {
@@ -136,6 +143,13 @@
       "local_path": "/logos/investors/thrive.png",
       "source_page": "https://www.thrivecap.com",
       "source_url": "https://framerusercontent.com/images/TGqjrXnShLAzStgfXNW5NQKF0xI.png"
+    },
+    "qumra-capital": {
+      "name": "Qumra Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/qumra-capital.jpg",
+      "source_page": "https://qumracapital.com",
+      "source_url": "https://qumracapital.com/wp-content/uploads/2018/02/cropped-qumra-fav-180x180.jpg"
     }
   }
 }

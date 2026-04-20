@@ -75,5 +75,12 @@
     "short_name": "Thrive",
     "website": "https://www.thrivecap.com",
     "description": "Investment firm built to support the best technology companies at every stage."
+  },
+  "qumra-capital": {
+    "name": "Qumra Capital",
+    "slug": "qumra-capital",
+    "short_name": "Qumra",
+    "website": "https://qumracapital.com",
+    "description": "Israeli growth-stage venture capital firm focused on exceptional technology companies scaling to global leadership."
   }
 }

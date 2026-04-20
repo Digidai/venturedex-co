@@ -1,0 +1,32 @@
+{
+  "slug": "qodo",
+  "domain": "www.qodo.ai",
+  "url": "https://www.qodo.ai",
+  "product_name": "Qodo",
+  "summary": "AI code review, testing, and governance for engineering teams.",
+  "editor_note": "Most AI coding products still want to be copilots; the cleaner bet is fixing the review bottleneck instead. Qodo leads with 856.5K VS Code installs, 625K JetBrains installs, and a workflow spanning IDE, PR, CLI, and rules. That review-first posture feels more durable than one more generator wrapper, because teams adopting AI fastest mostly need help trusting what already got written. The risk is that model vendors eventually bundle enough verification to squeeze the middle layer.",
+  "editor_rating": 5,
+  "why_featured": "Review-first AI coding workflow",
+  "product_type": "DevTools",
+  "founded_year": 2022,
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "developer tools,code review,ai coding,software quality",
+  "investors": "Qumra Capital, Maor Ventures, Phoenix Venture Partners, S Ventures, Square Peg, Susa Ventures, TLV Partners, Vine Ventures",
+  "links": {
+    "github": "https://github.com/Codium-ai",
+    "twitter": "https://x.com/QodoAI",
+    "linkedin": "https://www.linkedin.com/company/qodoai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$70M",
+      "stage": "Series B",
+      "lead_investor": "Qumra Capital",
+      "date": "2026-03-30",
+      "source_url": "https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}
