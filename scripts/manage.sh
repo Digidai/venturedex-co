@@ -237,42 +237,7 @@ PY
 
 resolve_investor_slug() {
   local query="$1"
-  python3 - "$INVESTORS_FILE" "$query" <<'PY'
-import json
-import sys
-
-path, query = sys.argv[1:]
-with open(path) as f:
-    investors = json.load(f)
-
-def normalize(value: str) -> str:
-    return " ".join(
-        "".join(ch if ch.isalnum() else " " for ch in value.lower().replace("&", " and ")).split()
-    )
-
-needle = normalize(query)
-if not needle:
-    print("")
-    raise SystemExit
-
-exact_match = None
-fuzzy_match = None
-
-for slug, entry in investors.items():
-    candidates = [slug, entry.get("slug", ""), entry.get("name", ""), entry.get("short_name", "")]
-    normalized_candidates = [normalize(candidate) for candidate in candidates if candidate]
-
-    if needle in normalized_candidates:
-        exact_match = slug
-        break
-
-    if not fuzzy_match and any(
-        needle in candidate or candidate in needle for candidate in normalized_candidates if candidate
-    ):
-        fuzzy_match = slug
-
-print(exact_match or fuzzy_match or "")
-PY
+  python3 "$SCRIPT_DIR/investor_utils.py" resolve "$INVESTORS_FILE" "$query"
 }
 
 get_investor_field() {
@@ -319,30 +284,7 @@ PY
 collect_referenced_investors() {
   local investors_csv="$1"
   local lead_investor="$2"
-  python3 - "$investors_csv" "$lead_investor" <<'PY'
-import sys
-
-investors_csv, lead_investor = sys.argv[1:]
-seen = set()
-names = []
-
-def add(value: str) -> None:
-    normalized = value.strip()
-    if not normalized:
-        return
-    if normalized.lower() == "undisclosed":
-        return
-    key = normalized.casefold()
-    if key in seen:
-        return
-    seen.add(key)
-    names.append(normalized)
-
-for chunk in investors_csv.split(","):
-    add(chunk)
-add(lead_investor)
-print("\n".join(names))
-PY
+  python3 "$SCRIPT_DIR/investor_utils.py" collect "$investors_csv" "$lead_investor"
 }
 
 extract_wranger_json() {

@@ -10,6 +10,13 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
 
+from investor_utils import (
+    build_investor_lookup,
+    dedupe_investor_names,
+    normalize_brand_text,
+    resolve_investor_slug,
+)
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STARTUPS_DIR = REPO_ROOT / "content" / "startups"
@@ -647,57 +654,6 @@ def validate_brand_assets(
         warnings.append(f"brand-assets investors.{slug} exists but no investor directory entry uses it")
 
     return errors, warnings
-
-
-def normalize_brand_text(value: str) -> str:
-    return " ".join(
-        "".join(ch if ch.isalnum() else " " for ch in value.lower().replace("&", " and ")).split()
-    )
-
-
-def build_investor_lookup(investors: dict[str, dict[str, object]]) -> dict[str, str]:
-    lookup: dict[str, str] = {}
-    for slug, investor in investors.items():
-        candidates = [slug, investor.get("slug"), investor.get("name"), investor.get("short_name")]
-        for candidate in candidates:
-            if not candidate:
-                continue
-            lookup.setdefault(normalize_brand_text(str(candidate)), slug)
-    return lookup
-
-
-def resolve_investor_slug(name: str, investor_lookup: dict[str, str]) -> str | None:
-    normalized = normalize_brand_text(name)
-    if not normalized:
-        return None
-
-    if normalized in investor_lookup:
-        return investor_lookup[normalized]
-
-    for candidate, slug in investor_lookup.items():
-        if normalized in candidate or candidate in normalized:
-            return slug
-    return None
-
-
-def dedupe_investor_names(values: list[str]) -> list[str]:
-    names: list[str] = []
-    seen: set[str] = set()
-
-    for value in values:
-        if not value:
-            continue
-        normalized = value.strip()
-        if not normalized or normalized.lower() == "undisclosed":
-            continue
-        key = normalized.casefold()
-        if key in seen:
-            continue
-        seen.add(key)
-        names.append(normalized)
-
-    return names
-
 
 def referenced_listed_investor_names(startup: dict[str, object]) -> list[str]:
     return dedupe_investor_names(str(startup.get("investors", "")).split(","))
