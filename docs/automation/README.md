@@ -28,6 +28,8 @@ If two files conflict, the higher-priority file wins.
 
 Humans may edit any file in this directory.
 
+An explicit user-requested Codex session counts as a human editor for automation-governance work. That path may update policy text outside auto-edit regions when the user is intentionally changing the control plane, not when the scheduled automation is self-tuning.
+
 The automation may:
 
 - always append a new entry to `venturedex-learning-log.md`
@@ -54,6 +56,13 @@ The automation may commit and push:
 - content changes that pass all local checks
 - automation-doc changes only when they are high-confidence, narrowly scoped, justified in the current learning-log entry, and limited to files it is allowed to mutate
 
+Human-directed Codex governance changes may commit and push automation-doc updates outside auto-edit regions when all of the following are true:
+
+- the user explicitly asked for an automation-policy or workflow change
+- the resulting docs still respect higher-priority content rules
+- every affected automation doc is updated in the same pass
+- the current learning-log entry explains the reason, scope, and resulting policy
+
 When both content and automation-doc changes exist, prefer separate commits:
 
 1. content commit
@@ -69,3 +78,8 @@ The automation must treat these docs as a control plane, not as scratch space.
 - Any docs mutation must be limited to a marked auto-edit region.
 - Governance files are human-edited by default; automation only tunes heuristics, not policy.
 - If a needed change falls outside an auto-edit region, record it as `deferred` and stop short of rewriting policy text.
+
+For human-directed governance changes:
+
+- update the smallest coherent set of files needed to keep the control plane internally consistent
+- when changing intake capacity or commit behavior, review the runbook, feedback loop, and commit policy together instead of editing one file in isolation

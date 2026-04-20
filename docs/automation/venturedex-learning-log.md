@@ -335,3 +335,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded four fresh rejects for Pillar, Slate Auto, Factory, and InsightFinder, meeting the 3:1 rejection bar for one accepted startup
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; screenshot generation succeeded locally after one transient 422 before succeeding on retry
   - pushed content commit `873adc5` to `main`; GitHub Actions deploy run `24660169059` imported D1 data and deployed Worker version `3477d8ce-9512-4a14-82cc-f8f3075fe982`, but the workflow failed at smoke check because `rg` was unavailable on the runner
+
+### 2026-04-20 18:36 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [governance_trace_missing, capacity_budget_mismatch]
+- reward: 0
+- dominant_failure_mode: governance_trace_missing
+- proposed_change: formalize human-directed governance changes, support multi-addition daily runs up to the global cap, and align discovery plus commit rules with the higher intake target
+- decision: applied
+- affected_file: docs/automation/README.md; docs/automation/venturedex-feedback-loop.md; docs/automation/venturedex-daily-runbook.md
+- affected_section: Edit Policy; Commit Policy; Mutation Discipline; Immutable Guards note; Failure Tag Vocabulary; Reward Model; Human-Directed Governance Changes; Review for Human-Directed Governance Changes; Content Safety; Daily Execution; Commit Rules; Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - reviewed commit `91b7c80` and found that the docs change widened daily intake but did not leave a matching learning-log trail or explain how human-requested governance edits differ from scheduled automation self-edits
+  - `docs/automation/README.md` and `docs/automation/venturedex-feedback-loop.md` previously described automation-only mutation boundaries, but did not document the supported path for explicit human-requested Codex governance changes
+  - the previous candidate-discovery target of 15-30 was too tight for a five-addition ceiling paired with the standing `rejections >= 3x accepted` rule, so the runbook now raises discovery to 20-40 and treats the cap as a ceiling rather than a quota
+  - the previous commit rules described only the one-startup case, so the runbook now includes a multi-startup content commit format and a distinct subject for human-requested automation-policy changes

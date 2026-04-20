@@ -17,6 +17,8 @@ That framing is deliberate. It keeps the system interpretable and auditable.
 
 Automation must never rewrite this section.
 
+These limits apply to scheduled automation self-edits. They do not block explicit human-directed governance changes that are reviewed and committed on purpose.
+
 - Never auto-edit `content/STANDARD.md` or `content/CODEX_TASK.md`.
 - Never auto-edit any `Immutable Guards` section.
 - Never relax factual verification rules automatically.
@@ -73,6 +75,8 @@ Use stable tags in the learning log so repeated issues can be detected without g
 - `ci_fail`
 - `policy_conflict`
 - `investor_identity_ambiguous`
+- `capacity_budget_mismatch`
+- `governance_trace_missing`
 - `other`
 
 ## Reward Model
@@ -80,6 +84,7 @@ Use stable tags in the learning log so repeated issues can be detected without g
 Score each run with a simple additive reward:
 
 - `+3` one accepted startup, all five reviews pass, all local checks pass, push succeeds, no cleanup needed
+- `+4` two to five accepted startups, all five reviews pass, all local checks pass, push succeeds, and every addition independently clears the bar
 - `+2` no accepted startup, but candidate search and rejection set are specific, justified, and meet the 3:1 bar
 - `+1` clean no-op run with clear reasons and no process drift
 - `0` neutral run with no major learning and no regressions
@@ -102,6 +107,18 @@ Automation may update `Adaptive Heuristics` sections only when all of the follow
 6. the five review passes still succeed after the doc update
 
 If any condition fails, record the proposal in the learning log as `deferred` or `rejected`, but do not rewrite the docs.
+
+## Human-Directed Governance Changes
+
+When a human explicitly asks Codex to change automation policy, Codex may edit automation docs outside auto-edit regions if all of the following are true:
+
+1. the request is clearly governance-directed rather than a normal daily run
+2. the change does not conflict with `content/STANDARD.md` or `content/CODEX_TASK.md`
+3. every affected automation doc is updated in the same pass so the control plane stays internally consistent
+4. the current learning-log entry records the reason, changed files, and resulting policy
+5. the review covers throughput math, commit behavior, and mutation boundaries when any intake-cap or scope rule changes
+
+If those conditions are not met, stop and leave the proposed governance change uncommitted.
 
 ## Learning-Log Protocol
 
@@ -135,3 +152,15 @@ If a heuristic change is being applied, run these checks in addition to the norm
 5. Would a human reviewer understand why this change happened from the learning-log entry alone?
 
 If any answer is no, do not apply the heuristic change.
+
+## Review for Human-Directed Governance Changes
+
+If a human-directed governance change is being applied, run these checks:
+
+1. Does the new wording distinguish human overrides from automation self-edits?
+2. If intake capacity changed, do candidate-discovery targets still comfortably satisfy the rejection bar?
+3. Do commit rules still describe both single-addition and multi-addition runs?
+4. Is the learning-log trail sufficient for a future automation run to understand why the policy changed?
+5. Is the resulting policy stricter or clearer about quality, even if throughput increased?
+
+If any answer is no, revise the docs before committing.
