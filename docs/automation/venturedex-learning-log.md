@@ -391,3 +391,30 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - the runbook contained scattered retry guidance for build dependencies and screenshots, but lacked a single cross-cutting error loop for validation failures, policy conflicts, and unexpected runtime issues
   - the feedback loop already tracked failures and repeated root causes, so the missing piece was an explicit investigation-and-rerun protocol the automation could follow before concluding that a run was blocked
   - the repo docs now define an auditable error-investigation sequence and the local automation config has been updated to mirror that behavior
+
+### 2026-04-20 18:52 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [none]
+- reward: 0
+- dominant_failure_mode: none
+- proposed_change: make `bb-browser` the default browser workflow for product trials, page verification, and browser-side failure investigation
+- decision: applied
+- affected_file: docs/automation/README.md; docs/automation/venturedex-feedback-loop.md; docs/automation/venturedex-daily-runbook.md
+- affected_section: Automation Config Alignment; Error Research and Iteration Loop; Error Investigation Loop; Daily Execution
+- evidence:
+  - the local `bb-browser` skill explicitly says this environment should use Comet and not Chrome, so the automation should not encode direct Chrome usage as a default path
+  - the runbook already requires live product trials and browser-side verification for some candidates, so browser-tool choice needs to be part of the documented control plane rather than an execution-time guess
+  - the local automation config now names `bb-browser` as the default browser workflow, and the repo docs mirror that expectation for both normal product trials and failure triage

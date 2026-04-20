@@ -82,6 +82,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 - If any required step fails, pause forward progress and investigate before deciding to stop, defer, or downgrade the run.
 - Capture the exact failing command, file, output, and stage of the run.
 - Read the most relevant local script, validator, config, runbook clause, and recent learning-log entries before changing anything.
+- If browser interaction is required for product trials, page verification, or failure triage, use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
 - Use official or other primary external sources only when the failure depends on current behavior outside the repo.
 - State a concrete root cause or blocker class before making the next attempt.
 - Make the smallest allowed fix or process adjustment supported by that evidence.
@@ -118,7 +119,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 8. Discover 20-40 recent funding candidates.
 9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`.
 10. Run F1-F4 screening.
-11. Trial the product.
+11. Trial the product, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
 12. Run the taste review.
 13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.

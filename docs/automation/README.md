@@ -90,3 +90,4 @@ The local automation prompt under `$CODEX_HOME/automations/venturedex-daily-cura
 
 - Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
+- For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
