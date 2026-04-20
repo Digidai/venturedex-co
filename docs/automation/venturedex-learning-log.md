@@ -306,3 +306,32 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `scripts/validate.py` requires lead investors to resolve through `content/investors.json` and rejects missing or mismatched investor brand assets
   - `scripts/manage.sh` already reuses or creates investor entries during startup publication, but the runbook did not yet spell out how to cross-check a reused versus newly minted investor slug
   - `content/brand-assets.json` shows that investor assets sometimes come from direct icons and sometimes from official inline assets, so the policy needs an explicit "stop on ambiguity, proceed on verified official branding" rule
+
+### 2026-04-20 17:58 CST
+
+- candidate_count: 10
+- accepted: 1
+- rejected: 4
+- rejection_bar_met: yes
+- outcome: accepted
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass
+- commit_push: pass
+- commit_sha: 873adc5
+- pushed_branch: main
+- ci_deploy: fail
+- failure_tags: [ci_fail]
+- reward: 0
+- dominant_failure_mode: ci_fail
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - discovered 10 recent funding candidates from TechCrunch coverage and survivor review: Qodo, ScaleOps, Factory, InsightFinder, Gizmo, Gitar, Antioch, Pillar, Slate Auto, and Parasail
+  - accepted Qodo after verifying its $70M Series B led by Qumra Capital from TechCrunch, cross-validating the investor against `content/investors.json` plus `https://qumracapital.com`, and capturing official Qodo and Qumra logo assets
+  - recorded four fresh rejects for Pillar, Slate Auto, Factory, and InsightFinder, meeting the 3:1 rejection bar for one accepted startup
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; screenshot generation succeeded locally after one transient 422 before succeeding on retry
+  - pushed content commit `873adc5` to `main`; GitHub Actions deploy run `24660169059` imported D1 data and deployed Worker version `3477d8ce-9512-4a14-82cc-f8f3075fe982`, but the workflow failed at smoke check because `rg` was unavailable on the runner
