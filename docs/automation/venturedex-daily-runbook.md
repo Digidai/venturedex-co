@@ -165,6 +165,7 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Prefer companies whose product can be tried in under five minutes.
 - Prefer companies where the bet is visible in the first screen or onboarding path.
 - Prefer categories where craft and specificity can be judged directly from the product.
+- Prefer candidates whose lead investor already resolves in `content/investors.json`, because the daily automation cannot publish a startup without a matching investor directory entry and brand asset.
 - Deprioritize products whose differentiation depends mainly on sales motion or enterprise access.
 
 ### Writing Heuristics

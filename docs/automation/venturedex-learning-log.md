@@ -223,3 +223,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded three fresh rejects for Zipline, Shield AI, and Giggles because the current financing was outside the Seed-Series C window or the product fell into VentureDex's excluded crypto and gambling-adjacent categories
   - Qodo and ScaleOps were the two viable self-serve survivors, with live product entry points at `app.qodo.ai` and `try.scaleops.com`, but `.env` and `CLOUDFLARE_API_TOKEN` were absent so the run stopped before brand-asset and screenshot work
   - `npm run build` initially failed because `astro` was unavailable in this detached worktree; `npm ci` restored dependencies, all three local gates passed, commit `b6244a4` was pushed to `main`, and GitHub Actions deploy run `24650709214` completed successfully
+
+### 2026-04-20 16:51 CST
+
+- candidate_count: 12
+- accepted: 0
+- rejected: 3
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: not_checked
+- failure_tags: [policy_conflict]
+- reward: 2
+- dominant_failure_mode: policy_conflict
+- proposed_change: prefer candidates whose lead investor already resolves in `content/investors.json` before deep evaluation
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: Adaptive Heuristics > Candidate Ranking
+- evidence:
+  - discovered 12 recent funding candidates from TechCrunch coverage between March 24 and April 16, then deduplicated away names already present in `content/rejected.jsonl`
+  - recorded three fresh rejects for Deccan AI, Mirage, and Glydways because their current public product state or financing type failed VentureDex's F1/F3 gates
+  - Qodo, Granola, ScaleOps, and VITL survived initial product review, but each current lead investor falls outside the existing `content/investors.json` directory that the daily automation is not allowed to edit
+  - bootstrap succeeded, restored repo-local `.env`, and local gates passed, so the only blocker to a compliant addition was investor-directory scope rather than environment readiness
