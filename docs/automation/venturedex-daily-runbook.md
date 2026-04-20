@@ -77,6 +77,18 @@ Before commit and push, all must pass:
 
 If screenshot generation fails, do not keep a half-complete startup addition.
 
+### Error Investigation Loop
+
+- If any required step fails, pause forward progress and investigate before deciding to stop, defer, or downgrade the run.
+- Capture the exact failing command, file, output, and stage of the run.
+- Read the most relevant local script, validator, config, runbook clause, and recent learning-log entries before changing anything.
+- Use official or other primary external sources only when the failure depends on current behavior outside the repo.
+- State a concrete root cause or blocker class before making the next attempt.
+- Make the smallest allowed fix or process adjustment supported by that evidence.
+- Rerun the failed step and every downstream gate that depends on it.
+- Do not blind-retry; each iteration must add new evidence, a narrower hypothesis, or a concrete fix.
+- If the blocker survives evidence-backed iterations, record the root cause, attempts, and deferred next step in the learning log and inbox item.
+
 ### Staging and Release Scope
 
 - For a content commit, staged files may only be:
@@ -111,13 +123,14 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
 15. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
-16. Generate screenshot if and only if the environment is ready.
-17. Run the three local validation steps.
-18. Perform the five review passes.
-19. Update the learning log.
-20. Apply a heuristic update only if the feedback-loop gate permits it.
-21. Commit and push only if the final staged files are allowed and local gates pass.
-22. Open an inbox item summarizing the full run.
+16. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
+17. Generate screenshot if and only if the environment is ready.
+18. Run the three local validation steps.
+19. Perform the five review passes.
+20. Update the learning log.
+21. Apply a heuristic update only if the feedback-loop gate permits it.
+22. Commit and push only if the final staged files are allowed and local gates pass.
+23. Open an inbox item summarizing the full run.
 
 ## Five Review Passes
 
@@ -204,5 +217,6 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - When the run's addition cap is above one, widen discovery enough to satisfy the rejection bar without lowering the acceptance threshold.
 - Preflight local build dependencies before deep discovery work; if `npm run build` cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
 - Check for `CLOUDFLARE_API_TOKEN` or a repo-local `.env` before promoting finalists into brand-asset and screenshot work; if credentials are absent, stop at rejected-only or no-op after documenting any viable survivors.
+- When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->

@@ -83,3 +83,10 @@ For human-directed governance changes:
 
 - update the smallest coherent set of files needed to keep the control plane internally consistent
 - when changing intake capacity or commit behavior, review the runbook, feedback loop, and commit policy together instead of editing one file in isolation
+
+## Automation Config Alignment
+
+The local automation prompt under `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` should stay aligned with this control plane.
+
+- Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
+- If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.

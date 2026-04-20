@@ -363,3 +363,31 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `docs/automation/README.md` and `docs/automation/venturedex-feedback-loop.md` previously described automation-only mutation boundaries, but did not document the supported path for explicit human-requested Codex governance changes
   - the previous candidate-discovery target of 15-30 was too tight for a five-addition ceiling paired with the standing `rejections >= 3x accepted` rule, so the runbook now raises discovery to 20-40 and treats the cap as a ceiling rather than a quota
   - the previous commit rules described only the one-startup case, so the runbook now includes a multi-startup content commit format and a distinct subject for human-requested automation-policy changes
+
+### 2026-04-20 18:43 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [none]
+- reward: 0
+- dominant_failure_mode: none
+- proposed_change: add a formal deep-research and iteration loop for automation errors, and keep the local automation prompt aligned with the repo control plane
+- decision: applied
+- affected_file: docs/automation/README.md; docs/automation/venturedex-feedback-loop.md; docs/automation/venturedex-daily-runbook.md
+- affected_section: Automation Config Alignment; Allowed automatic actions; Error Research and Iteration Loop; Validation and Publish Gates > Error Investigation Loop; Daily Execution; Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - the local automation prompt in `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` previously said to stop or defer cleanly, but did not explicitly require deep root-cause research and iterative reruns when errors occurred
+  - the runbook contained scattered retry guidance for build dependencies and screenshots, but lacked a single cross-cutting error loop for validation failures, policy conflicts, and unexpected runtime issues
+  - the feedback loop already tracked failures and repeated root causes, so the missing piece was an explicit investigation-and-rerun protocol the automation could follow before concluding that a run was blocked
+  - the repo docs now define an auditable error-investigation sequence and the local automation config has been updated to mirror that behavior

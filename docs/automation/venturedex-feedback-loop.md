@@ -44,6 +44,7 @@ Allowed automatic actions:
 - tighten or clarify ranking heuristics
 - tighten or clarify rejection wording guidance
 - tighten or clarify `editor_note` writing heuristics
+- tighten or clarify failure-investigation order and rerun sequencing
 - tighten screenshot retry rules
 - tighten commit criteria or review wording
 
@@ -119,6 +120,20 @@ When a human explicitly asks Codex to change automation policy, Codex may edit a
 5. the review covers throughput math, commit behavior, and mutation boundaries when any intake-cap or scope rule changes
 
 If those conditions are not met, stop and leave the proposed governance change uncommitted.
+
+## Error Research and Iteration Loop
+
+When a run hits an operational or policy error, the automation should:
+
+1. capture the exact failing step, command, artifact, and observed error
+2. inspect the local script, validator, config, and recent learning-log evidence most likely tied to that failure
+3. consult official or other primary external sources only when the failure depends on current external behavior or a referenced system outside the repo
+4. classify the blocker as content, environment, policy, external dependency, or unknown
+5. apply the smallest allowed fix or heuristic adjustment supported by evidence
+6. rerun the failed step and any downstream gates that depend on it
+7. repeat only when the previous iteration produced new evidence; do not blind-retry
+
+If the blocker remains after evidence-backed iterations, record the root cause, attempted fixes, stable `failure_tags`, and any deferred policy change instead of summarizing it as a generic error.
 
 ## Learning-Log Protocol
 
