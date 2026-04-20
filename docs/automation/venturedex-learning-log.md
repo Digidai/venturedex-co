@@ -418,3 +418,32 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - the local `bb-browser` skill explicitly says this environment should use Comet and not Chrome, so the automation should not encode direct Chrome usage as a default path
   - the runbook already requires live product trials and browser-side verification for some candidates, so browser-tool choice needs to be part of the documented control plane rather than an execution-time guess
   - the local automation config now names `bb-browser` as the default browser workflow, and the repo docs mirror that expectation for both normal product trials and failure triage
+
+### 2026-04-20 19:02 CST
+
+- candidate_count: 20
+- accepted: 2
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: accepted
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass
+- commit_push: pass
+- commit_sha: 79d4cec
+- pushed_branch: main
+- ci_deploy: in_progress
+- failure_tags: [push_rejected, other]
+- reward: 3
+- dominant_failure_mode: remote main advanced during the run and required a rebase before push
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - discovered 20 current funding candidates across TechCrunch fundraising coverage and The Information briefings, then deduplicated away names already present in `content/startups/` and `content/rejected.jsonl`
+  - accepted Granola and Gizmo after both cleared F1-F4, passed taste review, verified their funding facts against TechCrunch, and resolved lead investors `Index Ventures` and `Shine Capital` against official investor sites plus official brand assets
+  - recorded seven fresh rejects for OpenAI, Whoop, Rain, Story Protocol, Harness, Cerebras, and Reflection AI, so the run finished above the 3:1 rejection bar for two accepted startups
+  - all local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; Gizmo screenshot returned one transient HTTP 429 before succeeding on the allowed retry
+  - content commit rebased cleanly over new `origin/main` commit `639ff96` and then pushed as `79d4cec`; GitHub Actions deploy run `24662936201` is currently in progress
