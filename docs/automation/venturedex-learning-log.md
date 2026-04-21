@@ -156,9 +156,9 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - commit_sha: 78dd26b
 - pushed_branch: main
 - ci_deploy: not_checked
-- failure_tags: [none]
-- reward: 2
-- dominant_failure_mode: none
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: automation memory path environment variable was unset in the shell
 - proposed_change: none
 - decision: none
 - affected_file: n/a
@@ -476,3 +476,4 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded nine fresh rejects for ScaleOps, Poke, VITL, Moonbounce, Cognichip, Ayr Energy, Daydream, Artemis, and Eigen because product access, excluded category, or mandatory round-stage sourcing failed the runbook gates
   - `bb-browser` was used for product/page verification of ScaleOps, Poke, VITL, and Moonbounce; Moonbounce's playground was accessible, but its funding sources did not provide a Seed/Series A/B/C stage
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; content commit `9fff418` was pushed to `main`, and GitHub Actions deploy run `24706628350` completed successfully
+  - post-run memory write initially failed because `CODEX_HOME` was not exported in the shell and expanded to `/automations/...`; reran with the explicit Codex home path `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md` and wrote the memory successfully
