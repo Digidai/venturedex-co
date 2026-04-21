@@ -447,3 +447,32 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded seven fresh rejects for OpenAI, Whoop, Rain, Story Protocol, Harness, Cerebras, and Reflection AI, so the run finished above the 3:1 rejection bar for two accepted startups
   - all local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; Gizmo screenshot returned one transient HTTP 429 before succeeding on the allowed retry
   - content commit rebased cleanly over new `origin/main` commit `639ff96` and then pushed as `79d4cec`; GitHub Actions deploy run `24662936201` is currently in progress
+
+### 2026-04-21 13:59 CST
+
+- candidate_count: 24
+- accepted: 0
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 9fff418
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [none]
+- reward: 2
+- dominant_failure_mode: none
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored the repo-local `.env`, verified the Cloudflare token as active, and restored `node_modules`; R2 access remained unavailable but screenshot work was not needed
+  - discovered 24 recent financing/source candidates from TechCrunch startup and venture coverage plus primary or business-news sources, then deduplicated previously accepted or rejected names before deep review
+  - recorded nine fresh rejects for ScaleOps, Poke, VITL, Moonbounce, Cognichip, Ayr Energy, Daydream, Artemis, and Eigen because product access, excluded category, or mandatory round-stage sourcing failed the runbook gates
+  - `bb-browser` was used for product/page verification of ScaleOps, Poke, VITL, and Moonbounce; Moonbounce's playground was accessible, but its funding sources did not provide a Seed/Series A/B/C stage
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; content commit `9fff418` was pushed to `main`, and GitHub Actions deploy run `24706628350` completed successfully
