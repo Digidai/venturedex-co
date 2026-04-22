@@ -96,5 +96,19 @@
     "short_name": "Shine",
     "website": "https://shine.vc",
     "description": "Early-stage venture capital firm backing creative, convincing, and relentless entrepreneurs."
+  },
+  "khosla-ventures": {
+    "name": "Khosla Ventures",
+    "slug": "khosla-ventures",
+    "short_name": "Khosla",
+    "website": "https://www.khoslaventures.com",
+    "description": "Venture capital firm backing founders building bold technology companies from early stages through growth."
+  },
+  "inovo-vc": {
+    "name": "Inovo VC",
+    "slug": "inovo-vc",
+    "short_name": "Inovo",
+    "website": "https://inovo.vc",
+    "description": "Early-stage venture capital firm backing Central and Eastern European technology startups with global ambition."
   }
 }

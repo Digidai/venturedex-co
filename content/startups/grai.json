@@ -1,0 +1,28 @@
+{
+  "slug": "grai",
+  "domain": "www.grai.fm",
+  "url": "https://www.grai.fm",
+  "product_name": "GRAI",
+  "summary": "Social AI music app for remixing songs with friends while keeping artist control in the loop.",
+  "editor_note": "Most AI music tools treat listeners like failed producers; the better consumer bet is participation without pretending everyone wants a DAW. GRAI is live as an iPhone app and raised a $9M seed round, letting people react to friends' tracks and flip songs into new moods. Unlike Suno or Udio, it starts from existing music and artist opt-in rather than blank-page generation. The hard part is whether labels give enough catalog access for the social loop to matter.",
+  "editor_rating": 4,
+  "why_featured": "Social remix, not song gen",
+  "product_type": "Creator Tools",
+  "region": "Europe",
+  "tags": "music,ai,remix,social apps,creator tools",
+  "investors": "Khosla Ventures, Inovo VC",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/grai-fm/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9M",
+      "stage": "Seed",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-04-21",
+      "source_url": "https://techcrunch.com/2026/04/21/grai-believes-ai-can-make-music-more-social-not-replace-artists/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}
