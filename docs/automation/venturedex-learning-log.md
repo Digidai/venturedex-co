@@ -73,7 +73,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - commit_push: pass
 - commit_sha: 0410586
 - pushed_branch: main
-- ci_deploy: in_progress
+- ci_deploy: pass
 - failure_tags: [build_app_fail, screenshot_env]
 - reward: 0
 - dominant_failure_mode: screenshot_env
