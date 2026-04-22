@@ -477,3 +477,33 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `bb-browser` was used for product/page verification of ScaleOps, Poke, VITL, and Moonbounce; Moonbounce's playground was accessible, but its funding sources did not provide a Seed/Series A/B/C stage
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; content commit `9fff418` was pushed to `main`, and GitHub Actions deploy run `24706628350` completed successfully
   - post-run memory write initially failed because `CODEX_HOME` was not exported in the shell and expanded to `/automations/...`; reran with the explicit Codex home path `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md` and wrote the memory successfully
+
+### 2026-04-22 16:24 CST
+
+- candidate_count: 35
+- accepted: 1
+- rejected: 4
+- rejection_bar_met: yes
+- outcome: accepted
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass
+- commit_push: pass
+- commit_sha: f847e3a
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [none]
+- reward: 3
+- dominant_failure_mode: none
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access remained unavailable but screenshot generation degraded cleanly to local storage
+  - discovered 35 recent TechCrunch startup/source candidates across the current startup archive pages, then deduplicated prior accepted and rejected names before promoting finalists
+  - accepted GRAI after verifying its $9M Seed round from TechCrunch, resolving lead investor Khosla Ventures against its official website, adding official Khosla Ventures and Inovo VC favicon assets, and capturing an official GRAI site screenshot
+  - recorded four fresh rejects for Extra, NeoCognition, Latitude/Voyage, and SaySo; rejection count remained above the 3:1 bar for one accepted startup
+  - `bb-browser` was used for browser-side verification of Extra and GRAI pages; Extra stopped at a waitlist/invite-code gate, while GRAI exposed public product surfaces for iOS and Android through its official site and source article
+  - five review passes completed: funding facts, dedup, official brand assets, taste/rating language, and staged file scope; local gates passed with only pre-existing investor fallback warnings
