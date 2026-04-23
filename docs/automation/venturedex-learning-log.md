@@ -100,7 +100,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - commit_push: pass
 - commit_sha: 42313e6
 - pushed_branch: main
-- ci_deploy: not_checked
+- ci_deploy: pass
 - failure_tags: [build_app_fail]
 - reward: 0
 - dominant_failure_mode: build_app_fail
@@ -537,3 +537,4 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `bb-browser` was used for page/product verification of Lucra, 10x Science, Noon, Coral, Logicc, and ViewsML; no candidate exposed a compliant self-serve product flow worth advancing to brand assets or screenshots
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored/removed as verification output
   - content commit `3a8280b` records the rejected candidates and is paired with this separate learning-log commit to keep content and automation-doc scopes isolated
+  - GitHub Actions deploy run `24819322745` completed successfully for pushed learning-log commit `109e5b5`
