@@ -507,3 +507,33 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - recorded four fresh rejects for Extra, NeoCognition, Latitude/Voyage, and SaySo; rejection count remained above the 3:1 bar for one accepted startup
   - `bb-browser` was used for browser-side verification of Extra and GRAI pages; Extra stopped at a waitlist/invite-code gate, while GRAI exposed public product surfaces for iOS and Android through its official site and source article
   - five review passes completed: funding facts, dedup, official brand assets, taste/rating language, and staged file scope; local gates passed with only pre-existing investor fallback warnings
+
+### 2026-04-23 13:50 CST
+
+- candidate_count: 30
+- accepted: 0
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 3a8280b
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [none]
+- reward: 2
+- dominant_failure_mode: none
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access remained unavailable but screenshot work was not needed
+  - discovered 30 current source candidates from TechCrunch startup pages and recent funding roundups, then deduplicated existing VentureDex acceptances and prior rejections before promoting new names
+  - recorded six fresh rejects for Lucra, 10x Science, Noon, Coral, Logicc, and ViewsML because gambling-adjacent mechanics, early-access gates, demo-only sales paths, or non-trialable public sites failed F1/F4 gates
+  - `bb-browser` was used for page/product verification of Lucra, 10x Science, Noon, Coral, Logicc, and ViewsML; no candidate exposed a compliant self-serve product flow worth advancing to brand assets or screenshots
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored/removed as verification output
+  - content commit `3a8280b` records the rejected candidates and is paired with this separate learning-log commit to keep content and automation-doc scopes isolated
