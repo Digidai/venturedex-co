@@ -1,0 +1,30 @@
+{
+  "slug": "krea",
+  "domain": "www.krea.ai",
+  "url": "https://www.krea.ai",
+  "product_name": "Krea",
+  "summary": "AI creative suite for generating, editing, and controlling images, video, and 3D assets.",
+  "editor_note": "Creative AI gets interesting when it treats models as material instead of magic boxes. Krea puts Krea 1, video, enhancer, realtime, editing, LoRA training, and style transfer into one workspace; the app exposes prompt, model, ratio, and resolution controls before it asks for a sales call. Unlike prompt-only wrappers, the bet is that visual creators want handles they can keep adjusting. The risk is that bundling every medium can blur the point if the controls stop feeling precise.",
+  "editor_rating": 5,
+  "why_featured": "Krea 1 plus visual control handles",
+  "product_type": "Creator Tools",
+  "region": "US",
+  "tags": "ai creative tools,image generation,video generation,design tools",
+  "investors": "Bain Capital Ventures, Andreessen Horowitz, Abstract Ventures",
+  "links": {
+    "github": "https://github.com/krea-ai",
+    "twitter": "https://x.com/krea_ai",
+    "linkedin": "https://www.linkedin.com/company/krea-ai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$47M",
+      "stage": "Series B",
+      "lead_investor": "Bain Capital Ventures",
+      "date": "2025-04-07",
+      "source_url": "https://techcrunch.com/2025/04/07/kreas-founders-snubbed-postgrad-grants-from-the-king-of-spain-to-build-their-ai-startup-now-its-valued-at-500m/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

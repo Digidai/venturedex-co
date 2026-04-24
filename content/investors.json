@@ -110,5 +110,12 @@
     "short_name": "Inovo",
     "website": "https://inovo.vc",
     "description": "Early-stage venture capital firm backing Central and Eastern European technology startups with global ambition."
+  },
+  "bain-capital-ventures": {
+    "name": "Bain Capital Ventures",
+    "slug": "bain-capital-ventures",
+    "short_name": "BCV",
+    "website": "https://baincapitalventures.com",
+    "description": "Multi-stage venture capital firm backing founders across AI applications, infrastructure, commerce, fintech, healthcare, and industrial software."
   }
 }

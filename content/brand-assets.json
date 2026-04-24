@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-04-22",
+  "verified_at": "2026-04-24",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -84,6 +84,13 @@
       "local_path": "/logos/companies/grai.png",
       "source_page": "https://www.grai.fm",
       "source_url": "https://framerusercontent.com/images/hxZlhCa1JkGcjVDemKy83LLbgE.png"
+    },
+    "krea": {
+      "name": "Krea",
+      "shape": "icon",
+      "local_path": "/logos/companies/krea.png",
+      "source_page": "https://www.krea.ai",
+      "source_url": "https://www.krea.ai/favicon/favicon-192.png"
     }
   },
   "investors": {
@@ -199,6 +206,13 @@
       "local_path": "/logos/investors/inovo-vc.png",
       "source_page": "https://inovo.vc",
       "source_url": "https://assets.super.so/05fd6ea3-ff13-4d1f-b094-fa06347dd694/uploads/favicon/9e5c345d-1cfc-484a-94b4-cc0ebb7739dc.png"
+    },
+    "bain-capital-ventures": {
+      "name": "Bain Capital Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/bain-capital-ventures.png",
+      "source_page": "https://baincapitalventures.com",
+      "source_url": "https://baincapitalventures.com/apple-touch-icon.png"
     }
   }
 }
