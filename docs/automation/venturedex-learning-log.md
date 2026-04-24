@@ -538,3 +538,34 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored/removed as verification output
   - content commit `3a8280b` records the rejected candidates and is paired with this separate learning-log commit to keep content and automation-doc scopes isolated
   - GitHub Actions deploy run `24819322745` completed successfully for pushed learning-log commit `109e5b5`
+
+### 2026-04-24 13:57 CST
+
+- candidate_count: 40
+- accepted: 0
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: a86a437
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: minor discovery command-shaping errors were corrected before content decisions
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered current TechCrunch startup/funding source candidates from the April 2026 archive and WordPress API; 48 title-matched funding/source items and 128 startup-category items were narrowed to a 40-candidate review window after deduping prior accepted and rejected slugs
+  - recorded seven fresh rejects for Era, Shade, Salmon, Blue Energy, Noscroll, Hiro, and Portal Space Systems because the public product was untrialable, the source lacked a mandatory Seed/Series A/B/C stage, or the company was acquired and shutting down
+  - `bb-browser` was used for browser-side product/page verification of Era, Shade, Salmon, Blue Energy, Noscroll, and Portal Space Systems; all tabs opened by the run were closed afterward
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored/removed as verification output
+  - content commit `a86a437` was pushed to `main`; no GitHub Actions run was visible for that commit when checked with `gh run list --commit a86a437`
+  - minor command issues during discovery were root-caused and corrected: one jq filter had shell-quote breakage, one TechCrunch API query exceeded valid pages, and two `bb-browser` helper commands were adjusted after command-format or tab-state feedback
