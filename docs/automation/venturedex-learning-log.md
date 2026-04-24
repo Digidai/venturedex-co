@@ -569,3 +569,35 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored/removed as verification output
   - content commit `a86a437` was pushed to `main`; no GitHub Actions run was visible for that commit when checked with `gh run list --commit a86a437`
   - minor command issues during discovery were root-caused and corrected: one jq filter had shell-quote breakage, one TechCrunch API query exceeded valid pages, and two `bb-browser` helper commands were adjusted after command-format or tab-state feedback
+
+### 2026-04-25 00:20 CST
+
+- candidate_count: 50
+- accepted: 1
+- rejected: 4
+- rejection_bar_met: yes
+- outcome: accepted
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass
+- commit_push: pass
+- commit_sha: 5607939
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [other]
+- reward: 2
+- dominant_failure_mode: stale `bb-browser` daemon CDP connection and non-trialable Forbes watchlist candidates were corrected or deferred before content decisions
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and confirmed `node_modules`; R2 access still lacks permission, so screenshot upload degraded to local storage
+  - treated Forbes AI50 as a discovery source only, deduped it against existing VentureDex startups/rejections, and promoted individual companies through the normal funding-source, product-trial, taste, brand-asset, screenshot, and gate flow instead of recreating a static market map
+  - accepted Krea after verifying TechCrunch's April 7, 2025 report of a $47M Series B led by Bain Capital Ventures, cross-checking Bain Capital Ventures against its official website, adding official Krea and BCV icon assets, and capturing a local screenshot
+  - `bb-browser` product review reached Krea's `image/k1` workspace with Krea 1, LoRA, style transfer, prompt, ratio, and resolution controls; generation required sign-in state, but the actual product surface was accessible and not a pure landing page
+  - recorded four fresh F3 rejects from the Forbes list: Baseten's official $300M Series E, fal's official $140M Series D, Databricks' reported Series L at $134B, and Skild AI's official Series C valuation above $14B
+  - deferred rather than forced other watchlist names: Gamma's site stayed behind a Cloudflare interstitial in `bb-browser`, Lovable rendered a blank dashboard surface in the browser session, and Listen Labs' public trial path required email/signup before the product could be used
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `5607939` was pushed to `main`; `gh run list --commit 5607939` returned no visible GitHub Actions runs when checked
