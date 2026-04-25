@@ -601,3 +601,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - deferred rather than forced other watchlist names: Gamma's site stayed behind a Cloudflare interstitial in `bb-browser`, Lovable rendered a blank dashboard surface in the browser session, and Listen Labs' public trial path required email/signup before the product could be used
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `5607939` was pushed to `main`; `gh run list --commit 5607939` returned no visible GitHub Actions runs when checked
+
+### 2026-04-25 13:58 CST
+
+- candidate_count: 40
+- accepted: 0
+- rejected: 11
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 9563fbb
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: stale `bb-browser` daemon process required an evidence-backed cleanup before browser product review
+- proposed_change: preflight and clear stale `bb-browser` daemon processes before browser-based product trials
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - bootstrap succeeded, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered 40 current TechCrunch startup/funding source candidates from the recent API/archive window, deduped prior accepted and rejected slugs, and promoted 11 fresh names into screening
+  - recorded fresh rejects for Series, ComfyUI, Pronto, X-energy, Aleph Alpha, Fragment, Mantis Biotech, AuX Labs, Aetherflux, Radify Metals, and Halter because product access, independence, stage, IPO status, or mandatory stage sourcing failed F1-F3
+  - `bb-browser open` initially failed because Comet CDP was reachable but `bb-browser status` reported no daemon while an orphaned `bb-browser/dist/daemon.js --cdp-port 19825` process was still running; terminating only that stale daemon restored browser review without restarting Comet
+  - `bb-browser` product/page checks were completed for ComfyUI, Series, Mantis Biotech, AuX Labs, Aetherflux, Radify Metals, Pronto, and Halter, and all opened tabs were closed afterward
+  - a source-audit helper command had a shell quoting error; the corrected query pulled TechCrunch WordPress API snippets and confirmed the rejection reasons before commit
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `9563fbb` was pushed to `main`; `gh run list --commit 9563fbb` returned no visible GitHub Actions runs when checked
+  - the heuristic update is limited to the marked runbook auto-edit region and tightens the repeated stale-daemon recovery path observed in this run and the previous curation run
