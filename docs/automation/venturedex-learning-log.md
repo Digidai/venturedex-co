@@ -634,3 +634,34 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `9563fbb` was pushed to `main`; `gh run list --commit 9563fbb` returned no visible GitHub Actions runs when checked
   - the heuristic update is limited to the marked runbook auto-edit region and tightens the repeated stale-daemon recovery path observed in this run and the previous curation run
+
+### 2026-04-26 13:57 CST
+
+- candidate_count: 40
+- accepted: 0
+- rejected: 5
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 5e2cca9
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: minor command-shaping errors during source parsing and bb-browser tab cleanup were corrected before content decisions
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered a 40-candidate current TechCrunch source window across recent funding, valuation, IPO, acquisition, and source items, then deduped prior published and rejected slugs before promoting unresolved names
+  - recorded fresh rejects for Snabbit, Parasail, Gitar, Upscale AI, and Fluidstack because current sources lacked a closed Seed-Series C round, product access stopped at login/install gates, no product was released, or valuation exceeded the guardrail
+  - `bb-browser` was used for Parasail and Gitar product verification; Parasail redirected trial access to Auth0 without rendering a usable workspace, while Gitar's signup route rendered only a blank app shell and required connecting a GitHub or GitLab repository
+  - a TechCrunch API jq filter initially failed because shell quoting was broken by an apostrophe replacement, and an attempted `bb-browser tab close --id` cleanup used long CDP ids instead of short tab indices; both were root-caused and corrected without changing content decisions
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `5e2cca9` was pushed to `main`; `gh run list --commit 5e2cca9` returned no visible GitHub Actions runs when checked
