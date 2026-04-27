@@ -680,7 +680,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - commit_push: pass
 - commit_sha: 3d81538
 - pushed_branch: main
-- ci_deploy: not_checked
+- ci_deploy: not_visible
 - failure_tags: [other]
 - reward: 1
 - dominant_failure_mode: minor command-shaping issues during discovery and browser-tab reuse were corrected before content decisions
@@ -695,4 +695,4 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `bb-browser` was used for browser-side product verification of Antioch, Oolka, Bachatt, and STCH, and the tabs opened by this run were closed afterward
   - a TechCrunch API jq helper initially failed due to shell quoting around an apostrophe replacement, and one `bb-browser open --tab current` attempt used an option form that this daemon rejected; both were root-caused and corrected without changing content decisions
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
-  - content commit `3d81538` was pushed to `main`; CI/deploy visibility was not checked before this learning-log entry
+  - content commit `3d81538` and learning-log commit `8c1ec7b` were pushed to `main`; `gh run list` returned no visible GitHub Actions runs for either commit when checked
