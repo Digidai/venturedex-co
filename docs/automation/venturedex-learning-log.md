@@ -665,3 +665,34 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - a TechCrunch API jq filter initially failed because shell quoting was broken by an apostrophe replacement, and an attempted `bb-browser tab close --id` cleanup used long CDP ids instead of short tab indices; both were root-caused and corrected without changing content decisions
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `5e2cca9` was pushed to `main`; `gh run list --commit 5e2cca9` returned no visible GitHub Actions runs when checked
+
+### 2026-04-27 13:58 CST
+
+- candidate_count: 43
+- accepted: 0
+- rejected: 4
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 3d81538
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: minor command-shaping issues during discovery and browser-tab reuse were corrected before content decisions
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered a 40-item current TechCrunch funding/source window and added three credible broad-source candidates from current Moneycontrol, YourStory, official release, and ET coverage before dedupe and F1 screening
+  - recorded fresh F1 rejects for Antioch, Oolka, Bachatt, and STCH because each current public path stopped at login, sensitive financial/KYC intake, app-only onboarding, contact-led enterprise flow, or a non-functional assistant-style surface
+  - `bb-browser` was used for browser-side product verification of Antioch, Oolka, Bachatt, and STCH, and the tabs opened by this run were closed afterward
+  - a TechCrunch API jq helper initially failed due to shell quoting around an apostrophe replacement, and one `bb-browser open --tab current` attempt used an option form that this daemon rejected; both were root-caused and corrected without changing content decisions
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `3d81538` was pushed to `main`; CI/deploy visibility was not checked before this learning-log entry
