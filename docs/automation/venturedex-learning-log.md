@@ -127,7 +127,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - commit_push: pass
 - commit_sha: 047a7ac
 - pushed_branch: main
-- ci_deploy: not_checked
+- ci_deploy: not_visible
 - failure_tags: [build_app_fail, screenshot_env]
 - reward: 0
 - dominant_failure_mode: screenshot_env
@@ -696,3 +696,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - a TechCrunch API jq helper initially failed due to shell quoting around an apostrophe replacement, and one `bb-browser open --tab current` attempt used an option form that this daemon rejected; both were root-caused and corrected without changing content decisions
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `3d81538` and learning-log commit `8c1ec7b` were pushed to `main`; `gh run list` returned no visible GitHub Actions runs for either commit when checked
+
+### 2026-04-29 16:16 CST
+
+- candidate_count: 40
+- accepted: 0
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass after one duplicate-slug fix
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 133257c
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [validate_fail, other]
+- reward: -1
+- dominant_failure_mode: duplicate rejected slug for a later-round recheck plus recurring command-shaping and bb-browser tab-management friction
+- proposed_change: tighten TechCrunch API parsing and bb-browser tab-cleanup heuristics
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: Adaptive Heuristics > Operational Heuristics
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered a 40-candidate recent funding/source window from TechCrunch API/search plus current primary or business-news sources, then deduped prior accepted and rejected companies before promoting fresh unresolved names
+  - recorded six net-new rejected entries for Cloudsmith, Orkes, Patlytics, Bluefish, Skye/Signull Labs, and Neurable; Snabbit was rechecked under the later-funding exception and its existing rejection was updated to the current $56M Series D ineligibility
+  - `bb-browser` was used for product/page verification of Cloudsmith, Orkes, Patlytics, Bluefish, Skye, Neurable, and House of Chikankari; all run-opened tabs were closed after review
+  - `bb-browser open` first failed because `daemon status` reported no daemon while a stale `bb-browser/dist/daemon.js` process was present; terminating only that process and confirming CDP restored the browser workflow
+  - the first TechCrunch API helper failed from shell quoting around apostrophe entity normalization; the corrected helper extracted only simple fields, matching the new parsing heuristic
+  - first `./scripts/validate.sh` failed with `rejected.jsonl:117 duplicate slug: snabbit`; inspecting `scripts/validate.py` showed rejected slugs must be unique, so the later-round evidence was merged into the existing Snabbit line and validation then passed
+  - local gates passed after the fix: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `133257c` was pushed to `main`; `gh run list --commit 133257c` returned no visible GitHub Actions runs, and this separate automation-doc commit records the learning log and the allowed heuristic update

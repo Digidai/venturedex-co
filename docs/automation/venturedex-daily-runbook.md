@@ -220,5 +220,7 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Check for `CLOUDFLARE_API_TOKEN` or a repo-local `.env` before promoting finalists into brand-asset and screenshot work; if credentials are absent, stop at rejected-only or no-op after documenting any viable survivors.
 - When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.
 - Before browser-based product trials, preflight `bb-browser daemon status`; if it reports no running daemon while `ps` still shows a `bb-browser/dist/daemon.js --cdp-port 19825` process, terminate only that stale daemon process, confirm CDP still responds, and rerun the failed `bb-browser` step once.
+- For TechCrunch WordPress API parsing, first extract date, title, excerpt, and link with simple `jq` fields; avoid shell-embedded entity rewrites for apostrophes or smart quotes unless a separate safe normalization step is required.
+- For `bb-browser` tab cleanup, list tabs first and close automation-opened tabs by visible short index in descending order; avoid `--tab current` and full CDP tab IDs unless the installed CLI has just accepted that form.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->
