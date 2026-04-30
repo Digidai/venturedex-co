@@ -729,3 +729,34 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - first `./scripts/validate.sh` failed with `rejected.jsonl:117 duplicate slug: snabbit`; inspecting `scripts/validate.py` showed rejected slugs must be unique, so the later-round evidence was merged into the existing Snabbit line and validation then passed
   - local gates passed after the fix: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `133257c` was pushed to `main`; `gh run list --commit 133257c` returned no visible GitHub Actions runs, and this separate automation-doc commit records the learning log and the allowed heuristic update
+
+### 2026-04-30 13:59 CST
+
+- candidate_count: 40
+- accepted: 0
+- rejected: 8
+- rejection_bar_met: yes
+- outcome: rejected-only
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: 755d48d
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [other]
+- reward: 1
+- dominant_failure_mode: minor discovery and bb-browser interaction command-shaping errors were corrected before content decisions
+- proposed_change: none
+- decision: none
+- affected_file: n/a
+- affected_section: n/a
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, but screenshot work was not needed
+  - discovered a 40-candidate current funding/source window from TechCrunch API/search plus TechStartups funding roundups, then deduped prior accepted and rejected slugs before promoting fresh names
+  - recorded eight fresh F1 rejects for Parallel Web Systems, Pursuit, General Analysis, Actively AI, Firestorm Labs, Scout AI, Axoft, and SPREAD AI because public product access stopped at login, demo/contact, hardware/medical-device information, blank render, or non-trialable enterprise/defense surfaces
+  - `bb-browser` was used for product/page verification of Parallel Web Systems, Pursuit, General Analysis, Actively AI, Firestorm Labs, Scout AI, Axoft, and SPREAD AI; all tabs opened by this run were closed afterward
+  - one TechCrunch API helper command failed from an unmatched shell quote, and Parallel trial interaction hit stale or wrong `bb-browser` refs before a fresh snapshot clarified the current refs; both were root-caused and corrected without changing content decisions
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `755d48d` was pushed to `main`; `gh run list --commit 755d48d` returned no visible GitHub Actions runs when checked
