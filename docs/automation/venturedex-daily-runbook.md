@@ -36,13 +36,15 @@ Automation must never rewrite this section.
 - Search recent funding news broadly and collect 20-40 candidates when evidence exists.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
+- Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
+- Treat Seed-Series C as the default stage preference, not an absolute ceiling; independent private breakout companies may continue through review at Series D+, >$10B valuation, or unusually large financing when product evidence, taste, and reader relevance are strong.
 - Never fabricate amount, stage, date, investor, or source URL.
 - `stage`, `date`, and `source_url` must come from the original article or the company is not eligible.
 - Lead-investor identity must be cross-validated against the source article, the canonical directory entry in `content/investors.json`, and the official investor website before publish.
 - If the source article naming, resolved directory slug, and official website branding do not converge on the same investor, stop the startup addition instead of guessing.
 - Company and investor logos must come from official sources only and be recorded in `content/brand-assets.json`.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
-- Rejected companies stay rejected unless there is a later funding round.
+- Rejected companies stay rejected unless there is a later funding round, new product evidence, or an explicit human-governance change makes the original rejection reason obsolete.
 - Accept every startup that clears the bar in this run, up to 5 additions.
 - Rejections in a run must be at least 3x accepted additions.
 - Treat the 5-addition cap as a ceiling, not a quota.
@@ -119,7 +121,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 8. Discover 20-40 recent funding candidates.
 9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`.
 10. Run F1-F4 screening.
-11. Trial the product, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
+11. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
 12. Run the taste review.
 13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
@@ -135,10 +137,10 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 ## Five Review Passes
 
-1. Facts: source, amount, stage, date, investor, source URL, and lead-investor naming from the article
+1. Facts: source, amount, stage, date, investor, source URL, lead-investor naming from the article, and any breakout-stage exception
 2. Dedup: prior acceptance, prior rejection, later-round exception
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
-4. Taste: bet, craft, specificity, rating, banned-language scan
+4. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
 5. Scope and release: changed files, schema, screenshot completeness, validation, build, commit, push, final git status
 
 ## Commit Rules

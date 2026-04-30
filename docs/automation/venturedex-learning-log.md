@@ -760,3 +760,32 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - one TechCrunch API helper command failed from an unmatched shell quote, and Parallel trial interaction hit stale or wrong `bb-browser` refs before a fresh snapshot clarified the current refs; both were root-caused and corrected without changing content decisions
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `755d48d` was pushed to `main`; `gh run list --commit 755d48d` returned no visible GitHub Actions runs when checked
+
+### 2026-04-30 14:07 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: stopped
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: n/a
+- pushed_branch: main
+- ci_deploy: not_checked
+- failure_tags: [none]
+- reward: 0
+- dominant_failure_mode: none
+- proposed_change: relax F1 and F3 so gated ToB/API/infrastructure products and high-signal private breakout companies can be evaluated when public product evidence is strong
+- decision: applied
+- affected_file: content/STANDARD.md; content/CODEX_TASK.md; docs/automation/venturedex-daily-runbook.md
+- affected_section: Stage 2 screening; Stage 3 product evaluation; red lines; Content Safety; Daily Execution; Five Review Passes
+- evidence:
+  - user explicitly directed a governance change after the 2026-04-30 curation run rejected several high-signal companies for login, demo, or enterprise-access gates
+  - `content/STANDARD.md` now defines F1 as product evaluability rather than mandatory no-login self-serve trial, and accepts public docs, API references, SDKs, demos, real UI, benchmarks, pricing/usage pages, app-store pages, and customer workflows as evidence
+  - `content/STANDARD.md` and `content/CODEX_TASK.md` now treat Seed-Series C as the default preference rather than an absolute ceiling, allowing independent private breakout companies at Series D+, >$10B valuation, or unusually large financing when product evidence and reader relevance are strong
+  - rejected candidates may be reconsidered when a later funding round, new product evidence, or explicit human-governance change makes the original rejection reason obsolete
+  - local gates passed after the governance edits: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
