@@ -1,0 +1,32 @@
+{
+  "slug": "parasail",
+  "domain": "parasail.io",
+  "url": "https://parasail.io",
+  "product_name": "Parasail",
+  "summary": "Serverless and dedicated GPU inference for AI teams.",
+  "editor_note": "The practical bet is inference without the cloud procurement tax. Parasail leads with no quotas, no long contracts, up to 30x lower pricing, and docs for Serverless, Dedicated endpoints, Batch, Responses API, and billing APIs. Compared to renting raw GPU boxes, it sells a model-running surface that can scale from free credits to 500B+ daily tokens. The open question is whether this stays cheaper once the largest clouds copy the packaging.",
+  "editor_rating": 4,
+  "why_featured": "500B+ tokens served daily",
+  "product_type": "DevTools",
+  "founded_year": 2023,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "gpu cloud,inference,ai infrastructure,developer tools",
+  "investors": "Touring Capital, Kindred Ventures, Basis Set, Samsung Next",
+  "links": {
+    "twitter": "https://x.com/parasail_io",
+    "linkedin": "https://www.linkedin.com/company/parasail-io/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$32M",
+      "stage": "Series A",
+      "lead_investor": "Touring Capital",
+      "date": "2026-04-15",
+      "source_url": "https://techcrunch.com/2026/04/15/parasail-raises-32m-to-feed-tokenmaxxing-ai-developers/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

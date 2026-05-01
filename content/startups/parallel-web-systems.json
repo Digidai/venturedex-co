@@ -1,0 +1,33 @@
+{
+  "slug": "parallel-web-systems",
+  "domain": "parallel.ai",
+  "url": "https://parallel.ai",
+  "product_name": "Parallel Web Systems",
+  "summary": "Web search, extraction, monitoring, and research APIs for AI agents.",
+  "editor_note": "The sharper bet is that AI agents need web infrastructure, not another consumer search box. Parallel exposes Search, Extract, Task, FindAll, Chat, and Monitor APIs, plus OpenAPI, Python, and TypeScript SDKs. Unlike browser wrappers that pretend pages are stable, this treats the web as a programmatic substrate with benchmarks and case studies attached. The risk is that model providers pull the same interfaces into their own platforms.",
+  "editor_rating": 5,
+  "why_featured": "Web APIs for AI agents",
+  "product_type": "DevTools",
+  "founded_year": 2023,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "ai agents,web search,api,developer tools",
+  "investors": "Sequoia Capital, Index Ventures, Khosla Ventures",
+  "links": {
+    "github": "https://github.com/parallel-web",
+    "twitter": "https://x.com/p0",
+    "linkedin": "https://www.linkedin.com/company/parallel-web/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$100M",
+      "stage": "Series B",
+      "lead_investor": "Sequoia Capital",
+      "date": "2026-04-29",
+      "source_url": "https://techcrunch.com/2026/04/29/parallel-web-systems-hits-2b-valuation-five-months-after-its-last-big-raise/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

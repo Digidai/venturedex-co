@@ -117,5 +117,12 @@
     "short_name": "BCV",
     "website": "https://baincapitalventures.com",
     "description": "Multi-stage venture capital firm backing founders across AI applications, infrastructure, commerce, fintech, healthcare, and industrial software."
+  },
+  "touring-capital": {
+    "name": "Touring Capital",
+    "slug": "touring-capital",
+    "short_name": "Touring",
+    "website": "https://touringcapital.com",
+    "description": "Venture capital firm backing AI-first software and infrastructure companies from early stages through growth."
   }
 }

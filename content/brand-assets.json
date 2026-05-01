@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-04-24",
+  "verified_at": "2026-05-01",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -91,6 +91,27 @@
       "local_path": "/logos/companies/krea.png",
       "source_page": "https://www.krea.ai",
       "source_url": "https://www.krea.ai/favicon/favicon-192.png"
+    },
+    "parallel-web-systems": {
+      "name": "Parallel Web Systems",
+      "shape": "icon",
+      "local_path": "/logos/companies/parallel-web-systems.svg",
+      "source_page": "https://parallel.ai",
+      "source_url": "https://parallel.ai/icon.svg?icon.db1045ae.svg"
+    },
+    "shapes": {
+      "name": "Shapes",
+      "shape": "icon",
+      "local_path": "/logos/companies/shapes.png",
+      "source_page": "https://talk.shapes.inc",
+      "source_url": "https://talk.shapes.inc/images/shapes-inc-logo.png"
+    },
+    "parasail": {
+      "name": "Parasail",
+      "shape": "icon",
+      "local_path": "/logos/companies/parasail.png",
+      "source_page": "https://parasail.io",
+      "source_url": "https://cdn.prod.website-files.com/68cf3600091b1cd80002a2ce/68dc9e8af32e24ec0b3fd02c_webclip.png"
     }
   },
   "investors": {
@@ -213,6 +234,13 @@
       "local_path": "/logos/investors/bain-capital-ventures.png",
       "source_page": "https://baincapitalventures.com",
       "source_url": "https://baincapitalventures.com/apple-touch-icon.png"
+    },
+    "touring-capital": {
+      "name": "Touring Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/touring-capital.png",
+      "source_page": "https://touringcapital.com",
+      "source_url": "https://touringcapital.com/wp-content/uploads/2023/08/tc-icon-lightpurple.png"
     }
   }
 }

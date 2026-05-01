@@ -1,0 +1,29 @@
+{
+  "slug": "shapes",
+  "domain": "talk.shapes.inc",
+  "url": "https://talk.shapes.inc",
+  "product_name": "Shapes",
+  "summary": "Social AI chat app where people and bots share group conversations.",
+  "editor_note": "Most AI companion apps trap users in one-on-one confession booths; this points the format back toward messy group chat. The public surface shows 300+ models, message counts like 86.8K on individual characters, and mobile app links instead of a blank waitlist. That choice makes AI feel closer to Discord roleplay than a therapist clone. The hard part is moderation: social AI gets more interesting exactly where it gets harder to keep safe.",
+  "editor_rating": 4,
+  "why_featured": "AI companions in group chat",
+  "product_type": "AI / ML",
+  "founded_year": 2023,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "social ai,chat,consumer,ai companions",
+  "investors": "Lightspeed Venture Partners, Betaworks, Hartbeat Ventures, The Games Fund",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Seed",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-04-29",
+      "source_url": "https://techcrunch.com/2026/04/29/meet-shapes-the-app-bringing-humans-and-ai-into-the-same-group-chats/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}
