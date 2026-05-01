@@ -789,3 +789,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `content/STANDARD.md` and `content/CODEX_TASK.md` now treat Seed-Series C as the default preference rather than an absolute ceiling, allowing independent private breakout companies at Series D+, >$10B valuation, or unusually large financing when product evidence and reader relevance are strong
   - rejected candidates may be reconsidered when a later funding round, new product evidence, or explicit human-governance change makes the original rejection reason obsolete
   - local gates passed after the governance edits: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+
+### 2026-05-01 14:05 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Parallel homepage required Cloudflare fallback after Playwright overlay false-positive, Shapes and Parasail passed popup-safe capture; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 4ab5546
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [screenshot_env, policy_conflict, other]
+- reward: 3
+- dominant_failure_mode: screenshot overlay classifier false-positive on Parallel fixed negative-z-index background, plus one repeated shell-quoting mistake during TechCrunch API source verification
+- proposed_change: defer code-level alignment for screenshot overlay detection and Series D+ validator policy; no automation-doc heuristic edit because the shell-quoting issue is already covered by the simple-field TechCrunch heuristic
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/validate.py
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted Parallel Web Systems, Shapes, and Parasail after the 2026-04-30 F1 governance change made public docs, APIs, app surfaces, and pricing/product pages sufficient for gated API, infra, and consumer products
+  - Parallel Web Systems was reclassified from the prior F1 reject because `bb-browser` verified the homepage, API links, pricing, benchmarks, and official docs with API Playground, OpenAPI, Python SDK, TypeScript SDK, and agent/tool integrations
+  - Shapes was accepted because the public app exposes sign-up, search, 300+ AI models, group-chat surfaces, public character cards, visible message counts, and mobile app links rather than only a waitlist
+  - Parasail was accepted because the homepage and docs expose serverless and dedicated inference products, pricing, free credits, API reference, batch, rate limits, billing, compliance, and concrete usage claims including 500B+ daily tokens
+  - removed obsolete rejected entries for Parallel Web Systems and Parasail, updated Gitar and Antioch under the new F1 rule, and added seven fresh rejected/deferred decisions for Legora, Ineffable Intelligence, Rocket AI, Avec, Divine, Skio, and Drizzle
+  - Legora exposed a policy mismatch: current governance allows exceptional Series D+ breakouts, but `scripts/validate.py` still blocks stages outside Seed-Series C, so the candidate was deferred rather than forcing an unsupported stage
+  - `./scripts/screenshot.sh parallel-web-systems https://parallel.ai` failed because the Playwright overlay heuristic scored a `position: fixed; z-index: -10` visual background as a popup; after manual bb-browser/Playwright confirmation that the page was usable, the built-in Cloudflare fallback created the local screenshot
+  - one TechCrunch API `jq` helper failed from shell quoting around apostrophe entity replacement; the command was corrected to simple title/date/excerpt fields without affecting content decisions
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `4ab5546` was pushed to `main`; `gh run list --commit 4ab5546` returned no visible GitHub Actions runs when checked
