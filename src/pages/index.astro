@@ -38,6 +38,8 @@ try {
 const hasFilters = !!(productType || fundingStage || region);
 const featured = startups.filter((s) => s.is_featured);
 const rest = startups.filter((s) => !s.is_featured);
+const featuredPreview = !hasFilters ? featured.slice(0, 3) : [];
+const visibleStartups = hasFilters ? startups : [...featured.slice(3), ...rest];
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
@@ -66,19 +68,19 @@ const rest = startups.filter((s) => !s.is_featured);
 
       {startups.length > 0 ? (
         <>
-          {featured.length > 0 && !hasFilters && (
+          {featuredPreview.length > 0 && (
             <>
               <div class="section-label">Featured</div>
               <div class="featured-grid">
-                {featured.slice(0, 3).map((startup) => (
+                {featuredPreview.map((startup) => (
                   <SiteCard startup={startup} size="large" />
                 ))}
               </div>
-              {rest.length > 0 && <div class="section-label">All startups</div>}
+              {visibleStartups.length > 0 && <div class="section-label">All startups</div>}
             </>
           )}
           <div class="card-grid">
-            {(hasFilters ? startups : rest.length > 0 ? rest : featured.slice(3)).map((startup) => (
+            {visibleStartups.map((startup) => (
               <SiteCard startup={startup} />
             ))}
           </div>
