@@ -295,9 +295,33 @@ export async function getInvestorBySlug(
   return { investor, rounds: rounds.results };
 }
 
-export async function getStartupCount(db: D1Database): Promise<number> {
+export async function getStartupCount(
+  db: D1Database,
+  opts?: {
+    productType?: string;
+    fundingStage?: string;
+    region?: string;
+  }
+): Promise<number> {
+  const conditions = ["workflow_status = 'published'"];
+  const params: unknown[] = [];
+
+  if (opts?.productType) {
+    conditions.push("product_type = ?");
+    params.push(opts.productType);
+  }
+  if (opts?.fundingStage) {
+    conditions.push("funding_stage = ?");
+    params.push(opts.fundingStage);
+  }
+  if (opts?.region) {
+    conditions.push("region = ?");
+    params.push(opts.region);
+  }
+
   const result = await db
-    .prepare("SELECT COUNT(*) as count FROM startups WHERE workflow_status = 'published'")
+    .prepare(`SELECT COUNT(*) as count FROM startups WHERE ${conditions.join(" AND ")}`)
+    .bind(...params)
     .first<{ count: number }>();
 
   return result?.count ?? 0;

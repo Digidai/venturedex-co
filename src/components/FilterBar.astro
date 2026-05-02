@@ -26,8 +26,13 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "name-az", label: "Name A\u2013Z" },
 ];
 
-const activeCount = [currentType, currentStage, currentRegion].filter(Boolean).length;
-const hasFilters = activeCount > 0 || (currentSort && currentSort !== "featured");
+const activeCount = [
+  currentType,
+  currentStage,
+  currentRegion,
+  currentSort && currentSort !== "featured" ? currentSort : null,
+].filter(Boolean).length;
+const hasFilters = activeCount > 0;
 ---
 
 <div class="filter-bar">

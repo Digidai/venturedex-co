@@ -24,18 +24,21 @@ const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "f
 let startups: import("../lib/types").Startup[] = [];
 let rounds: import("../lib/types").FundingRound[] = [];
 let startupCount = 0;
+let matchingStartupCount = 0;
 
 try {
-  [startups, startupCount, rounds] = await Promise.all([
+  [startups, startupCount, matchingStartupCount, rounds] = await Promise.all([
     getPublishedStartups(db, { productType, fundingStage, region, sort, limit: 50 }),
     getStartupCount(db),
+    getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
   ]);
 } catch {
   // D1 unavailable
 }
 
-const hasActiveControls = !!(productType || fundingStage || region || sort !== "featured");
+const hasFacetFilters = !!(productType || fundingStage || region);
+const hasActiveControls = hasFacetFilters || sort !== "featured";
 const featured = startups.filter((s) => s.is_featured);
 const rest = startups.filter((s) => !s.is_featured);
 const featuredPreview = !hasActiveControls ? featured.slice(0, 3) : [];
@@ -50,7 +53,9 @@ const visibleStartups = hasActiveControls ? startups : [...featured.slice(3), ..
       <div class="hero-text">
         <h1>Discover today's top startups</h1>
         <p class="hero-sub">
-          A thoughtful gallery of {startupCount > 0 ? startupCount : ''} outstanding early-stage companies.
+          {hasFacetFilters
+            ? `Showing ${matchingStartupCount} of ${startupCount} outstanding early-stage companies.`
+            : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`}
           Curated with editorial commentary.
         </p>
       </div>
