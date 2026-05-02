@@ -70,4 +70,6 @@ else
   echo "node_modules ready"
 fi
 
+"$SCRIPT_DIR/check-github-actions.sh"
+
 echo "bootstrap: complete"

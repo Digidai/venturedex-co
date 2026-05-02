@@ -13,6 +13,7 @@ import {
 } from "../lib/db";
 import type { SortOption } from "../lib/db";
 
+const STARTUP_LIST_LIMIT = 500;
 const db = Astro.locals.runtime.env.DB;
 
 const productType = Astro.url.searchParams.get("type") ?? undefined;
@@ -28,7 +29,7 @@ let matchingStartupCount = 0;
 
 try {
   [startups, startupCount, matchingStartupCount, rounds] = await Promise.all([
-    getPublishedStartups(db, { productType, fundingStage, region, sort, limit: 50 }),
+    getPublishedStartups(db, { productType, fundingStage, region, sort, limit: STARTUP_LIST_LIMIT }),
     getStartupCount(db),
     getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
@@ -43,6 +44,15 @@ const featured = startups.filter((s) => s.is_featured);
 const rest = startups.filter((s) => !s.is_featured);
 const featuredPreview = !hasActiveControls ? featured.slice(0, 3) : [];
 const visibleStartups = hasActiveControls ? startups : [...featured.slice(3), ...rest];
+const targetStartupCount = hasFacetFilters ? matchingStartupCount : startupCount;
+const isTruncated = targetStartupCount > startups.length;
+const heroCountText = hasFacetFilters
+  ? isTruncated
+    ? `Showing first ${startups.length} of ${targetStartupCount} matching early-stage companies.`
+    : `Showing ${matchingStartupCount} of ${startupCount} outstanding early-stage companies.`
+  : isTruncated
+    ? `Showing first ${startups.length} of ${startupCount} outstanding early-stage companies.`
+    : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`;
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
@@ -53,9 +63,7 @@ const visibleStartups = hasActiveControls ? startups : [...featured.slice(3), ..
       <div class="hero-text">
         <h1>Discover today's top startups</h1>
         <p class="hero-sub">
-          {hasFacetFilters
-            ? `Showing ${matchingStartupCount} of ${startupCount} outstanding early-stage companies.`
-            : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`}
+          {heroCountText}
           Curated with editorial commentary.
         </p>
       </div>

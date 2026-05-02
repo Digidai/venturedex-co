@@ -1,0 +1,34 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Validate content
+        run: ./scripts/validate.sh
+
+      - name: Build generated database seed
+        run: ./scripts/build-db.sh
+
+      - name: Build app
+        run: npm run build
+
+      - name: Check whitespace
+        run: git diff --check

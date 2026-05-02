@@ -364,6 +364,32 @@ print(payload[0]["results"][0]["startup_count"])
 ' <<<"$parsed"
 }
 
+assert_generated_seed_fresh() {
+  python3 - "$REPO_ROOT" <<'PY'
+from pathlib import Path
+import sys
+
+repo_root = Path(sys.argv[1])
+content_count = len(list((repo_root / "content" / "startups").glob("*.json")))
+seed_path = repo_root / "d1" / "generated-seed.sql"
+
+if not seed_path.exists():
+    raise SystemExit("ERROR: d1/generated-seed.sql is missing; run ./scripts/build-db.sh first")
+
+seed_text = seed_path.read_text()
+seed_startups = seed_text.count("INSERT INTO startups (")
+
+if seed_startups != content_count:
+    raise SystemExit(
+        "ERROR: d1/generated-seed.sql is stale: "
+        f"{seed_startups} startup inserts for {content_count} content files. "
+        "Run ./scripts/build-db.sh before syncing remote D1."
+    )
+
+print(f"generated_seed: fresh ({seed_startups} startups)")
+PY
+}
+
 extract_first_url() {
   python3 -c '
 import re
@@ -472,6 +498,7 @@ cmd_sync() {
     if [ "$skip_build" != "--skip-build" ]; then
       ./scripts/build-db.sh
     fi
+    assert_generated_seed_fresh
     if [ "$(legacy_schema_needs_repair)" = "true" ]; then
       repair_legacy_remote_schema
     else
@@ -546,32 +573,15 @@ cmd_deploy() {
 
 cmd_smoke() {
   local url="${1:?Usage: manage.sh smoke <url>}"
-  local startup_count html
+  local startup_count
 
   require_token
   startup_count="$(remote_startup_count)"
-  html="$(curl -fsSL "$url")"
-
-  if ! printf '%s' "$html" | html_contains "VentureDex"; then
-    echo "ERROR: Smoke check failed. '$url' does not look like a VentureDex page." >&2
-    exit 1
-  fi
-
-  if [ "$startup_count" -gt 0 ] && printf '%s' "$html" | html_contains "Coming soon"; then
-    echo "ERROR: Smoke check failed. Remote D1 has published startups but the page still shows 'Coming soon'." >&2
-    exit 1
-  fi
-
-  if [ "$startup_count" -gt 0 ] && ! printf '%s' "$html" | html_contains "/startups/"; then
-    echo "ERROR: Smoke check failed. Remote D1 has published startups but the page has no startup links." >&2
-    exit 1
-  fi
-
-  echo "Smoke check passed for $url (published startups: $startup_count)."
+  python3 "$SCRIPT_DIR/smoke-live.py" "$url" --expected-startups "$startup_count"
 }
 
 cmd_release() {
-  local deploy_output deploy_url
+  local deploy_output deploy_url site_url
 
   require_token
   cmd_validate
@@ -593,6 +603,10 @@ cmd_release() {
   fi
 
   cmd_smoke "$deploy_url"
+  site_url="$(default_site_url)"
+  if [ -n "$site_url" ] && [ "$site_url" != "$deploy_url" ]; then
+    cmd_smoke "$site_url"
+  fi
 }
 
 cmd_add() {
