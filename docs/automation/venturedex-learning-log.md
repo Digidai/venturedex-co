@@ -824,3 +824,37 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - one TechCrunch API `jq` helper failed from shell quoting around apostrophe entity replacement; the command was corrected to simple title/date/excerpt fields without affecting content decisions
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `4ab5546` was pushed to `main`; `gh run list --commit 4ab5546` returned no visible GitHub Actions runs when checked
+
+### 2026-05-02 14:06 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Alcatraz required Cloudflare fallback after a HubSpot overlay false-positive, Synera and Monk passed popup-safe capture; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: f409aa8
+- pushed_branch: main
+- ci_deploy: not_visible
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot overlay classifier false-positive on Alcatraz HubSpot full-viewport anchor
+- proposed_change: defer code-level screenshot overlay classifier alignment; no automation-doc heuristic update because the retry path is already covered by the current screenshot fallback heuristic
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window plus official funding pages and accepted Synera, Monk, and Alcatraz after product, funding, investor, logo, and screenshot verification
+  - Synera was accepted because its public product pages and official Series B release show an active agentic engineering platform with CAD, FEA, meshing, reporting, Python/custom-node automation, customer stories, and a $40M Series B led by Revaia
+  - Monk was accepted because its public product pages and official Series A release show an active accounts-receivable automation platform for invoices, collections, cash application, portal uploads, PO mismatch handling, and disputes, with a $25M Series A led by Footwork
+  - Alcatraz was accepted because its public product pages and official Series B release show an active Rock X facial access authentication product with edge authentication, 3D liveness, tailgating detection, opt-in enrollment, privacy posture, and a $50M Series B led by BlackPeak Capital
+  - recorded nine rejected/deferred decisions for Musely, Assured Robot Intelligence, Bolto, Luminai, Earth AI, Sniffies, Zap Energy, Coefficient Bio, and TBPN, meeting the 3:1 rejection bar
+  - `bb-browser` was used for product and browser-side verification, including Synera, Monk, Bolto, Luminai, and Alcatraz; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh alcatraz https://www.alcatraz.ai` first failed on popup detection; bb-browser inspection showed the page was usable and the fixed full-viewport HubSpot anchor was the false-positive, so the built-in Cloudflare fallback created the local screenshot
+  - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `f409aa8` was pushed to `main`; `gh run list --commit f409aa8` returned no visible GitHub Actions runs when checked
