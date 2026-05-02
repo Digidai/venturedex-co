@@ -71,6 +71,7 @@ Allowed persistent automation-doc changes, but only under feedback-loop gates:
 
 Before commit and push, all must pass:
 
+- `./scripts/check-github-actions.sh .github/workflows/deploy.yml`
 - `./scripts/validate.sh`
 - `./scripts/build-db.sh`
 - `npm run build`
@@ -107,7 +108,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
   - `docs/automation/venturedex-learning-log.md`
 - Never mix content files and automation-doc files in the same commit.
 - Check the staged allowlist with `git diff --cached --name-only` before every commit.
-- After push, record the commit SHA. If CI or deploy status can be observed, record it in the inbox item and learning log. Do not auto-revert `main`.
+- After push, record the commit SHA, confirm the deploy workflow is still enabled, wait for the deploy run when it is observable, and require post-deploy live smoke to pass before marking the run as shipped. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
 
 ## Daily Execution
 
@@ -128,12 +129,13 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 15. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
 16. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
 17. Generate screenshot if and only if the environment is ready.
-18. Run the three local validation steps.
+18. Run the GitHub Actions preflight and the three local validation steps.
 19. Perform the five review passes.
 20. Update the learning log.
 21. Apply a heuristic update only if the feedback-loop gate permits it.
 22. Commit and push only if the final staged files are allowed and local gates pass.
-23. Open an inbox item summarizing the full run.
+23. Wait for deploy when observable and verify live smoke against the deployed site.
+24. Open an inbox item summarizing the full run.
 
 ## Five Review Passes
 
@@ -141,7 +143,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 2. Dedup: prior acceptance, prior rejection, later-round exception
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
-5. Scope and release: changed files, schema, screenshot completeness, validation, build, commit, push, final git status
+5. Scope and release: changed files, schema, screenshot completeness, GitHub Actions availability, validation, build, commit, push, deploy status, live smoke, final git status
 
 ## Commit Rules
 

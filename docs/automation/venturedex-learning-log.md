@@ -858,3 +858,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `./scripts/screenshot.sh alcatraz https://www.alcatraz.ai` first failed on popup detection; bb-browser inspection showed the page was usable and the fixed full-viewport HubSpot anchor was the false-positive, so the built-in Cloudflare fallback created the local screenshot
   - local gates passed: `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `f409aa8` was pushed to `main`; `gh run list --commit f409aa8` returned no visible GitHub Actions runs when checked
+
+### 2026-05-02 18:27 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: process-hardened
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: n/a
+- commit_push: pass
+- commit_sha: b572563
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [validate_fail, deploy_fail, other]
+- reward: 0
+- dominant_failure_mode: release and automation gates were too weak to detect disabled GitHub Actions, stale generated seed files, live listing count drift, and legacy site-model SQL
+- proposed_change: add GitHub Actions preflight, strong live smoke, generated-seed freshness checks, CI validation, legacy SQL guard, and explicit post-push deploy/live-smoke requirements
+- decision: applied
+- affected_file: scripts/check-github-actions.sh; scripts/smoke-live.py; scripts/manage.sh; scripts/bootstrap-automation.sh; scripts/validate.sh; .github/workflows/ci.yml; src/pages/index.astro; src/pages/collections/index.astro; docs/automation/venturedex-daily-runbook.md
+- affected_section: human-directed process hardening outside daily auto-edit scope
+- evidence:
+  - user explicitly requested an Agent Team project and process diagnosis plus comprehensive fixes after homepage and News/listing drift was observed
+  - UI/data audit confirmed current live pages are consistent but identified future homepage truncation risk, inaccurate Collections copy, and legacy executable SQL files using the old `sites` model
+  - release/process audit identified stale tracked `d1/generated-seed.sql` risk for `sync --skip-build`, weak release smoke, lack of dual-domain smoke, lack of a non-deploy CI workflow, and missing automation preflight for disabled GitHub Actions
+  - automation-guard audit identified missing runbook requirements for GitHub Actions enabled state, deploy observability, and post-deploy live smoke; it also surfaced a transient `IncompleteRead` risk in live smoke fetches
+  - implemented a strong live smoke that checks homepage count/card invariants, sort/filter views, News rows, Collections index/detail counts, and Search result counts
+  - implemented GitHub Actions preflight in bootstrap and a generated-seed freshness check before remote D1 sync, and deleted legacy executable SQL files tied to the old site-model schema
+  - added a lightweight `Validate` GitHub Actions workflow for push and pull_request so validation/build failures are visible independently of deploy
+  - code/process commit `b572563` was pushed to `main`; GitHub Actions runs passed for Validate `25249897902` and Deploy `25249897911`
+  - local and live verification passed: script syntax checks, YAML parsing, GitHub Actions preflight, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, `./scripts/manage.sh smoke https://venturedex.co`, and `git diff --check`
