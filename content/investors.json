@@ -124,5 +124,26 @@
     "short_name": "Touring",
     "website": "https://touringcapital.com",
     "description": "Venture capital firm backing AI-first software and infrastructure companies from early stages through growth."
+  },
+  "revaia": {
+    "name": "Revaia",
+    "slug": "revaia",
+    "short_name": "Revaia",
+    "website": "https://www.revaia.com",
+    "description": "Growth equity investment fund backing European technology companies from growth stage to IPO or buyout."
+  },
+  "footwork": {
+    "name": "Footwork",
+    "slug": "footwork",
+    "short_name": "Footwork",
+    "website": "https://www.footwork.vc",
+    "description": "Early-stage venture capital firm focused on Seed and Series A consumer and enterprise technology companies."
+  },
+  "blackpeak-capital": {
+    "name": "BlackPeak Capital",
+    "slug": "blackpeak-capital",
+    "short_name": "BlackPeak",
+    "website": "https://www.blackpeak-capital.com",
+    "description": "Growth equity investor focused on Southeast and Central European companies with global potential."
   }
 }

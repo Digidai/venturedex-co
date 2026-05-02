@@ -1,0 +1,26 @@
+{
+  "slug": "monk",
+  "domain": "monk.com",
+  "url": "https://monk.com",
+  "product_name": "Monk",
+  "summary": "AI accounts receivable platform for invoices, collections, cash application, and disputes.",
+  "editor_note": "The smart move is treating accounts receivable as customer infrastructure, not back-office nagging. Monk handles contract-to-cash work like invoice creation, collections, cash application, portal uploads, PO mismatches, and disputes, with reported 40% lower DSO. Unlike generic finance automation, the product is built around the ugly exceptions that actually delay cash. The risk is that services-heavy onboarding hides how much of the product is software.",
+  "editor_rating": 5,
+  "why_featured": "AR edge cases, not reminders",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "accounts receivable,finance automation,ai agents,b2b",
+  "investors": "Footwork",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Footwork",
+      "date": "2026-04-21",
+      "source_url": "https://monk.com/blog/monk-raises-25m",
+      "source_name": "Monk"
+    }
+  ]
+}

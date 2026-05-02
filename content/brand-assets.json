@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-01",
+  "verified_at": "2026-05-02",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -112,6 +112,27 @@
       "local_path": "/logos/companies/parasail.png",
       "source_page": "https://parasail.io",
       "source_url": "https://cdn.prod.website-files.com/68cf3600091b1cd80002a2ce/68dc9e8af32e24ec0b3fd02c_webclip.png"
+    },
+    "synera": {
+      "name": "Synera",
+      "shape": "icon",
+      "local_path": "/logos/companies/synera.png",
+      "source_page": "https://www.synera.io",
+      "source_url": "https://cdn.prod.website-files.com/638a24dbb55ba059598360b0/638a24dbb55ba0da938360e7_webclip.png"
+    },
+    "monk": {
+      "name": "Monk",
+      "shape": "icon",
+      "local_path": "/logos/companies/monk.png",
+      "source_page": "https://monk.com",
+      "source_url": "https://cdn.prod.website-files.com/68a6e69b06e4b0e24e9ba829/68e397b3dcad39fb697fc3d1_sign_new(2).png"
+    },
+    "alcatraz": {
+      "name": "Alcatraz",
+      "shape": "icon",
+      "local_path": "/logos/companies/alcatraz.png",
+      "source_page": "https://www.alcatraz.ai",
+      "source_url": "https://cdn.prod.website-files.com/67e2614c2319766b465b0ce2/67e26186d2762cb7a077f206_Frame%20369.png"
     }
   },
   "investors": {
@@ -241,6 +262,27 @@
       "local_path": "/logos/investors/touring-capital.png",
       "source_page": "https://touringcapital.com",
       "source_url": "https://touringcapital.com/wp-content/uploads/2023/08/tc-icon-lightpurple.png"
+    },
+    "revaia": {
+      "name": "Revaia",
+      "shape": "icon",
+      "local_path": "/logos/investors/revaia.png",
+      "source_page": "https://www.revaia.com",
+      "source_url": "https://www.revaia.com/apple-icon-180x180.png"
+    },
+    "footwork": {
+      "name": "Footwork",
+      "shape": "icon",
+      "local_path": "/logos/investors/footwork.png",
+      "source_page": "https://www.footwork.vc",
+      "source_url": "https://cdn.prod.website-files.com/602c4c04494b42a3cb1d3353/6048dc12eb6b25e267ad1573_favicon2.png"
+    },
+    "blackpeak-capital": {
+      "name": "BlackPeak Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/blackpeak-capital.png",
+      "source_page": "https://www.blackpeak-capital.com",
+      "source_url": "https://www.blackpeak-capital.com/images/favicons/apple-icon-180x180.png"
     }
   }
 }

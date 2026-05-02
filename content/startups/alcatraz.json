@@ -1,0 +1,26 @@
+{
+  "slug": "alcatraz",
+  "domain": "www.alcatraz.ai",
+  "url": "https://www.alcatraz.ai",
+  "product_name": "Alcatraz",
+  "summary": "Privacy-focused facial authentication for physical access control and tailgating detection.",
+  "editor_note": "The clever bet is that AI data centers need a better lock, not another badge reader. Alcatraz turns Face ID into building access with Rock X, edge authentication, 3D liveness, tailgating detection, and opt-in enrollment; it says 5M employees are protected. Unlike surveillance-first facial recognition, the pitch is authentication that forgets the face after the door opens. The risk is whether buyers trust the privacy distinction once regulators get involved.",
+  "editor_rating": 5,
+  "why_featured": "Face ID for secure buildings",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "physical security,biometrics,ai infrastructure,access control",
+  "investors": "BlackPeak Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series B",
+      "lead_investor": "BlackPeak Capital",
+      "date": "2026-04-02",
+      "source_url": "https://www.alcatraz.ai/press-release/alcatraz-raises-50-million-series-b",
+      "source_name": "Alcatraz"
+    }
+  ]
+}

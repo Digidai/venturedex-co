@@ -1,0 +1,26 @@
+{
+  "slug": "synera",
+  "domain": "www.synera.io",
+  "url": "https://www.synera.io",
+  "product_name": "Synera",
+  "summary": "Agent platform for engineering workflows across CAD, FEA, costing, and reporting tools.",
+  "editor_note": "The interesting bet is that engineers do not need another copilot; they need a workbench where agents can operate CAD, FEA, cost, and reporting tools. Synera connects 80+ hardware-engineering systems with a node-based editor, 3D viewer, custom nodes, Python scripts, and token licensing. Unlike generic AI-for-manufacturing pitches, this starts from the messy CAx toolchain. The risk is that enterprise deployment turns the agents into services work.",
+  "editor_rating": 5,
+  "why_featured": "Agents across 80+ engineering tools",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "engineering,ai agents,cad,industrial software",
+  "investors": "Revaia",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series B",
+      "lead_investor": "Revaia",
+      "date": "2026-04-14",
+      "source_url": "https://www.synera.io/press/synera-raises-40m-series-b-to-scale-agentic-ai-engineering-for-global-manufacturers",
+      "source_name": "Synera"
+    }
+  ]
+}
