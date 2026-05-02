@@ -35,11 +35,11 @@ try {
   // D1 unavailable
 }
 
-const hasFilters = !!(productType || fundingStage || region);
+const hasActiveControls = !!(productType || fundingStage || region || sort !== "featured");
 const featured = startups.filter((s) => s.is_featured);
 const rest = startups.filter((s) => !s.is_featured);
-const featuredPreview = !hasFilters ? featured.slice(0, 3) : [];
-const visibleStartups = hasFilters ? startups : [...featured.slice(3), ...rest];
+const featuredPreview = !hasActiveControls ? featured.slice(0, 3) : [];
+const visibleStartups = hasActiveControls ? startups : [...featured.slice(3), ...rest];
 ---
 
 <Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
@@ -85,7 +85,7 @@ const visibleStartups = hasFilters ? startups : [...featured.slice(3), ...rest];
             ))}
           </div>
         </>
-      ) : hasFilters ? (
+      ) : hasActiveControls ? (
         <div class="empty-state">
           <h2>No matches.</h2>
           <p>Try adjusting your filters, or <a href="/">view all startups</a>.</p>

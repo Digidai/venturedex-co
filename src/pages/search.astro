@@ -5,7 +5,7 @@ import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import { searchStartups } from "../lib/db";
 
-const query = Astro.url.searchParams.get("q") ?? "";
+const query = (Astro.url.searchParams.get("q") ?? "").trim();
 const db = Astro.locals.runtime.env.DB;
 
 let results: Awaited<ReturnType<typeof searchStartups>> = [];

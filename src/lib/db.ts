@@ -136,9 +136,11 @@ export async function getPublishedCollections(
 ): Promise<(Collection & { startup_count: number })[]> {
   const result = await db
     .prepare(
-      `SELECT c.*, COUNT(cs.startup_id) as startup_count
+      `SELECT c.*, COUNT(s.id) as startup_count
        FROM collections c
        LEFT JOIN collection_startups cs ON c.id = cs.collection_id
+       LEFT JOIN startups s ON s.id = cs.startup_id
+        AND s.workflow_status = 'published'
        WHERE c.published = 1
        GROUP BY c.id
        ORDER BY c.title`
