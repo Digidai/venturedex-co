@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-02",
+  "verified_at": "2026-05-03",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -133,6 +133,27 @@
       "local_path": "/logos/companies/alcatraz.png",
       "source_page": "https://www.alcatraz.ai",
       "source_url": "https://cdn.prod.website-files.com/67e2614c2319766b465b0ce2/67e26186d2762cb7a077f206_Frame%20369.png"
+    },
+    "featherless": {
+      "name": "Featherless",
+      "shape": "icon",
+      "local_path": "/logos/companies/featherless.png",
+      "source_page": "https://featherless.ai",
+      "source_url": "https://cdn.prod.website-files.com/6979c6c70c21b50639123793/699d5e1583ded3bc406b6cca_Frame%202147256584.png"
+    },
+    "liquid-instruments": {
+      "name": "Liquid Instruments",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/liquid-instruments.svg",
+      "source_page": "https://www.liquidinstruments.com",
+      "source_url": "https://liquidinstruments.com/wp-content/uploads/2022/01/liquid-instruments-logo.svg"
+    },
+    "balerion": {
+      "name": "Balerion",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/balerion.svg",
+      "source_page": "https://balerion.ai",
+      "source_url": "https://framerusercontent.com/images/JfoHxWPOIXY78wF9LeTgpEWs.svg?width=116&height=24"
     }
   },
   "investors": {
@@ -283,6 +304,27 @@
       "local_path": "/logos/investors/blackpeak-capital.png",
       "source_page": "https://www.blackpeak-capital.com",
       "source_url": "https://www.blackpeak-capital.com/images/favicons/apple-icon-180x180.png"
+    },
+    "amd-ventures": {
+      "name": "AMD Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/amd-ventures.png",
+      "source_page": "https://www.amd.com/en/corporate/amd-ventures",
+      "source_url": "https://www.amd.com/content/dam/amd/en/images/logos/corporate/3923200-ventures-logo.png"
+    },
+    "keysight-technologies": {
+      "name": "Keysight Technologies",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/keysight-technologies.svg",
+      "source_page": "https://www.keysight.com",
+      "source_url": "https://www.keysight.com/content/dam/keysight/en/img/gnav/keysight-logo.svg"
+    },
+    "kleiner-perkins": {
+      "name": "Kleiner Perkins",
+      "shape": "icon",
+      "local_path": "/logos/investors/kleiner-perkins.png",
+      "source_page": "https://www.kleinerperkins.com",
+      "source_url": "https://www.kleinerperkins.com/wp-content/themes/kp-handstand-theme/apple-touch-icon.png"
     }
   }
 }

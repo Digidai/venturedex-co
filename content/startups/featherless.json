@@ -1,0 +1,26 @@
+{
+  "slug": "featherless",
+  "domain": "featherless.ai",
+  "url": "https://featherless.ai",
+  "product_name": "Featherless",
+  "summary": "Serverless API access to 30,000+ open-weight AI models.",
+  "editor_note": "The bet is open-model inference without renting a GPU box or accepting a closed API. Featherless exposes 30,000+ models through one API, docs for chat completions, embeddings, tool calling, vision, and a live model library with usage counts. Unlike raw GPU clouds, it sells model choice and predictable pricing as the product. The hard part is keeping that promise when every niche model wants different hardware.",
+  "editor_rating": 5,
+  "why_featured": "$20M Series A for 30K models",
+  "product_type": "DevTools",
+  "region": "Global / Remote",
+  "tags": "ai infrastructure,inference,open models,developer tools",
+  "investors": "AMD Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "AMD Ventures",
+      "date": "2026-04-30",
+      "source_url": "https://featherless.ai/blog/series-a",
+      "source_name": "Featherless"
+    }
+  ]
+}

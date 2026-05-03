@@ -1,0 +1,26 @@
+{
+  "slug": "liquid-instruments",
+  "domain": "www.liquidinstruments.com",
+  "url": "https://www.liquidinstruments.com",
+  "product_name": "Liquid Instruments",
+  "summary": "Software-defined test instruments for engineering labs.",
+  "editor_note": "This is what test equipment looks like when software wins over the bench rack. Liquid Instruments turns Moku hardware into 15+ instruments, switches setups in seconds, and lets teams build custom measurement systems with FPGA-backed processing. Unlike another oscilloscope vendor, it treats instrumentation as a reconfigurable platform. The question is whether AI customization becomes a workflow, not just a lab upgrade.",
+  "editor_rating": 5,
+  "why_featured": "15+ instruments in one Moku",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "test equipment,instrumentation,fpga,engineering tools",
+  "investors": "Keysight Technologies",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series C",
+      "lead_investor": "Keysight Technologies",
+      "date": "2026-04-28",
+      "source_url": "https://liquidinstruments.com/news-updates/series-c/",
+      "source_name": "Liquid Instruments"
+    }
+  ]
+}

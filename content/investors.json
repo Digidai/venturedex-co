@@ -145,5 +145,26 @@
     "short_name": "BlackPeak",
     "website": "https://www.blackpeak-capital.com",
     "description": "Growth equity investor focused on Southeast and Central European companies with global potential."
+  },
+  "amd-ventures": {
+    "name": "AMD Ventures",
+    "slug": "amd-ventures",
+    "short_name": "AMD Ventures",
+    "website": "https://www.amd.com/en/corporate/amd-ventures",
+    "description": "Corporate venture capital arm of AMD investing across the AI ecosystem from hardware to software."
+  },
+  "keysight-technologies": {
+    "name": "Keysight Technologies",
+    "slug": "keysight-technologies",
+    "short_name": "Keysight",
+    "website": "https://www.keysight.com",
+    "description": "Design, emulation, and test technology company that invests strategically in engineering platforms."
+  },
+  "kleiner-perkins": {
+    "name": "Kleiner Perkins",
+    "slug": "kleiner-perkins",
+    "short_name": "KP",
+    "website": "https://www.kleinerperkins.com",
+    "description": "Venture capital firm backing technology companies from seed through growth."
   }
 }

@@ -1,0 +1,29 @@
+{
+  "slug": "balerion",
+  "domain": "balerion.ai",
+  "url": "https://balerion.ai",
+  "product_name": "Balerion",
+  "summary": "AI loan-intelligence platform for mortgage origination.",
+  "editor_note": "The smart move is starting where mortgage files actually break: income math, missing documents, NSF flags, and Fannie/Freddie overlays. Balerion Loan Intelligence is already used by FM Home Loans, a lender managing $2B+ in loan volume, and embeds into existing origination workflows. Unlike point AI tools, it wants to reason across the whole loan file. The risk is enterprise pilots turning into custom services.",
+  "editor_rating": 4,
+  "why_featured": "$2B lender using Loan Intelligence",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "mortgage,ai agents,fintech,loan origination",
+  "investors": "Kleiner Perkins",
+  "links": {
+    "twitter": "https://x.com/BalerionAI",
+    "linkedin": "https://www.linkedin.com/company/balerion-ai/"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$6M",
+      "stage": "Seed",
+      "lead_investor": "Kleiner Perkins",
+      "date": "2026-04-16",
+      "source_url": "https://finance.yahoo.com/sectors/technology/articles/balerion-ai-raises-6m-close-140000576.html",
+      "source_name": "Business Wire"
+    }
+  ]
+}
