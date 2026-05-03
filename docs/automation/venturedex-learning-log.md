@@ -891,3 +891,39 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - added a lightweight `Validate` GitHub Actions workflow for push and pull_request so validation/build failures are visible independently of deploy
   - code/process commit `b572563` was pushed to `main`; GitHub Actions runs passed for Validate `25249897902` and Deploy `25249897911`
   - local and live verification passed: script syntax checks, YAML parsing, GitHub Actions preflight, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, `./scripts/manage.sh smoke https://venturedex.co`, and `git diff --check`
+
+### 2026-05-03 14:29 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Featherless required manual Playwright-wrapper capture after the popup-safe script left a cookie dialog, Liquid Instruments required manual wrapper cleanup after visual review found a Cookiebot panel despite script success, and Balerion passed the standard script; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 8e4db31
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot consent and overlay handling remains site-specific, especially Featherless cookie consent and Liquid Instruments Cookiebot/HubSpot anchors
+- proposed_change: defer code-level screenshot cleanup alignment; no automation-doc heuristic edit because the current screenshot retry and failure-investigation heuristics already covered this path
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted Featherless, Liquid Instruments, and Balerion after product, funding, investor, logo, screenshot, and taste verification
+  - Featherless was accepted because its official Series A post verifies a $20M Series A co-led by AMD Ventures and Airbus Ventures, while the live product and docs expose 30,000+ open models, API docs, chat completions, embeddings, tool calling, vision, agents, pricing, and model-library usage signals
+  - Liquid Instruments was accepted because its official Series C post verifies a $50M Series C co-led by Keysight Technologies and NRFC, while product pages expose the Moku platform, 15+ instruments, FPGA-backed processing, custom measurement workflows, and live product CTAs
+  - Balerion was accepted because its official press page and Business Wire/Yahoo source verify a $6M Seed led by Kleiner Perkins, while the product pages expose loan-file intelligence for income analysis, document fraud, NSF review, compliance overlays, VOIAE monitoring, and mortgage workflow evidence
+  - recorded nine rejected/deferred decisions for Chord, Fun, Lumian, Chance AI, TextQL, Botify, Macrodata Labs, Alta Ares, and Dashverse, meeting the 3:1 rejection bar
+  - `bb-browser` was used for product and browser-side verification of Featherless, Balerion, Chord, Liquid Instruments, Fun, Lumian, and official logo sources; the installed CLI still rejects `--tab current`, so the existing runbook cleanup heuristic was followed
+  - `./scripts/screenshot.sh featherless https://featherless.ai` failed with `popup_detected` on a fixed nav and cookie dialog; Cloudflare fallback produced a screenshot with the cookie dialog, so a Playwright-wrapper capture dismissed consent before replacing the local WebP
+  - the standard Liquid Instruments screenshot command exited OK but visual review showed a Cookiebot panel; `bb-browser` and Playwright inspection traced the obstruction to hidden Cookiebot consent assets plus `hs-web-interactives-*` fixed anchors, so a wrapper capture removed those overlays before replacing the local WebP
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `8e4db31` was pushed to `main`; GitHub Actions passed for Validate `25271953010` and Deploy `25271952997`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 22 published startups
