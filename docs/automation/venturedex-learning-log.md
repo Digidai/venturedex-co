@@ -927,3 +927,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `8e4db31` was pushed to `main`; GitHub Actions passed for Validate `25271953010` and Deploy `25271952997`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 22 published startups
+
+### 2026-05-04 14:20 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; JuliaHub required manual Playwright-wrapper consent dismissal after the popup-safe script could not clear an `OKAY` cookie banner, and All3 required a product-page capture after the homepage rendered blank in headless mode; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 4394d11
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, policy_conflict, other]
+- reward: 2
+- dominant_failure_mode: screenshot consent/overlay handling remains site-specific, and the current validator cannot represent known non-USD funding amounts without schema work
+- proposed_change: defer code-level screenshot cleanup and non-USD funding amount schema alignment; no automation-doc heuristic edit because current retry/failure-investigation rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/validate.py
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot work degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted JuliaHub and All3 after product, funding, investor, logo, screenshot, and taste verification
+  - JuliaHub was accepted because its official Apr 30, 2026 post verifies a $65M Series B led by Dorilton Ventures, while the live product and docs expose Dyad 3.0, SciML, case studies, cloud simulation, documentation, pricing links, and industrial customer proof from ASML, Boeing, NASA, and Williams Racing
+  - All3 was accepted because TNW verifies an Apr 29, 2026 $25M Seed led by RTP Global, while the live product pages expose AI-generated architecture, real-time fabrication software, timber components, Mantis on-site robots, 100+ in-house engineers, and a cost-your-project flow
+  - recorded six rejected/deferred decisions for Pmtbox, QuoIntelligence, Atech, Schematik, Spacebackend, and Zynt, meeting the 3:1 rejection bar for two acceptances
+  - `bb-browser` was used for product and browser-side verification of JuliaHub, Pmtbox, QuoIntelligence, and All3; QuoIntelligence's `.com` URL failed SSL, but the correct `.eu` domain loaded and exposed Mercury product evidence
+  - QuoIntelligence was deferred rather than accepted because current sources state the Series A as EUR 7.3M and `scripts/validate.py` only accepts USD-style funding amounts; the run did not convert currencies or hide a known amount as `undisclosed`
+  - the first TechCrunch API extraction failed from shell-embedded apostrophe entity rewrites in `jq`, then succeeded with the runbook's simple-field extraction pattern; a separate `curl | python3 - <<'PY'` parser failed because the here-doc consumed stdin, then succeeded with `python3 -c`
+  - `./scripts/screenshot.sh juliahub https://juliahub.com` failed because the site exposes an `OKAY` consent banner; the first manual wrapper attempt used an invalid long Playwright session name, then a short-session wrapper clicked consent and captured a visually reviewed local WebP
+  - `./scripts/screenshot.sh all3 https://www.all3.com` failed on a full-viewport relative `z-index: 100` element; the first manual homepage screenshot was visually blank, so the final local WebP was captured from `https://www.all3.com/integrated-technology` after the product heading loaded
+  - the first `./scripts/validate.sh` rerun failed because `content/startups/all3.json` used `domain: all3.com` with URL host `www.all3.com`; fixing the domain and adding an explicit `Unlike` comparison made validation pass on the next run
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `4394d11` was pushed to `main`; GitHub Actions passed for Validate `25304135908` and Deploy `25304135907`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 24 published startups
