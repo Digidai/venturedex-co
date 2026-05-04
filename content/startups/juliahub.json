@@ -1,0 +1,26 @@
+{
+  "slug": "juliahub",
+  "domain": "juliahub.com",
+  "url": "https://juliahub.com",
+  "product_name": "JuliaHub",
+  "summary": "Agentic simulation and digital-twin tooling for hardware engineering teams.",
+  "editor_note": "Someone finally treated engineering simulation like a software workflow, not a CAD afterthought. Dyad 3.0 turns Julia models, SciML, case studies, and cloud runs into an AI-native workspace for physical systems, with public proof from ASML, Boeing, NASA, and Williams Racing. The bet is that hardware teams want agents constrained by equations rather than chatbots guessing at parts. The risk is whether that craft reaches engineers outside the Julia faithful.",
+  "editor_rating": 5,
+  "why_featured": "$65M Series B for Dyad 3.0",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "scientific ai,simulation,digital twins,hardware engineering",
+  "investors": "Dorilton Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$65M",
+      "stage": "Series B",
+      "lead_investor": "Dorilton Ventures",
+      "date": "2026-04-30",
+      "source_url": "https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0",
+      "source_name": "JuliaHub"
+    }
+  ]
+}

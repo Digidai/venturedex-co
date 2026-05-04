@@ -166,5 +166,19 @@
     "short_name": "KP",
     "website": "https://www.kleinerperkins.com",
     "description": "Venture capital firm backing technology companies from seed through growth."
+  },
+  "dorilton-ventures": {
+    "name": "Dorilton Ventures",
+    "slug": "dorilton-ventures",
+    "short_name": "Dorilton",
+    "website": "https://doriltongroup.com/ventures/",
+    "description": "Venture investment arm of Dorilton Capital backing technology companies across industrial, AI, and infrastructure markets."
+  },
+  "rtp-global": {
+    "name": "RTP Global",
+    "slug": "rtp-global",
+    "short_name": "RTP",
+    "website": "https://rtp.vc",
+    "description": "Global early-stage venture capital firm backing technology founders from Seed through early growth."
   }
 }

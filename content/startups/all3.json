@@ -1,0 +1,28 @@
+{
+  "slug": "all3",
+  "domain": "www.all3.com",
+  "url": "https://www.all3.com",
+  "product_name": "All3",
+  "summary": "AI design, robotic fabrication, and on-site assembly for buildings.",
+  "editor_note": "Construction robotics usually breaks between design software and the job site. Unlike prefab software, All3 is trying the harder route: AI-generated architecture, real-time fabrication software, timber components, and Mantis robots that install, fasten, finish, and inspect on site. The public pages claim 100+ in-house engineers and a cost-your-project flow, while TNW reports 100,000+ square meters processed for Germany. The risk is whether vertical integration survives permits and messy sites.",
+  "editor_rating": 4,
+  "why_featured": "$25M Seed for construction robots",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "construction robotics,physical ai,robotic manufacturing,housing",
+  "investors": "RTP Global",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/all3"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Seed",
+      "lead_investor": "RTP Global",
+      "date": "2026-04-29",
+      "source_url": "https://thenextweb.com/news/all3-25m-seed-construction-robots-ai-housing",
+      "source_name": "TNW"
+    }
+  ]
+}
