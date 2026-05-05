@@ -1,0 +1,28 @@
+{
+  "slug": "manifest-os",
+  "domain": "manifestos.com",
+  "url": "https://manifestos.com",
+  "product_name": "Manifest OS",
+  "summary": "AI-native legal-services platform for fixed-fee immigration firms.",
+  "editor_note": "Someone finally attacked legal AI from the business model, not the Word add-in. Manifest OS powers immigration firms with fixed-fee pricing, a client portal, AI Drafter, AI Case Evaluation, and 3,000+ handled engagements. Unlike Harvey-style copilot tools, the bet is to operate the service stack and reinvest firm profits into R&D. The risk is bar-by-bar regulation slowing the model outside Arizona.",
+  "editor_rating": 5,
+  "why_featured": "$60M Series A, 3,000+ engagements",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "legal tech,ai agents,immigration,services",
+  "investors": "Menlo Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/manifest-os/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series A",
+      "lead_investor": "Menlo Ventures",
+      "date": "2026-04-28",
+      "source_url": "https://natlawreview.com/press-releases/manifest-os-raises-60m-scale-worlds-first-ai-native-law-firm-model",
+      "source_name": "Business Wire"
+    }
+  ]
+}

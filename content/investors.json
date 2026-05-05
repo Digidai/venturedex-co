@@ -180,5 +180,19 @@
     "short_name": "RTP",
     "website": "https://rtp.vc",
     "description": "Global early-stage venture capital firm backing technology founders from Seed through early growth."
+  },
+  "menlo-ventures": {
+    "name": "Menlo Ventures",
+    "slug": "menlo-ventures",
+    "short_name": "Menlo",
+    "website": "https://menlovc.com",
+    "description": "Venture capital firm investing from early stage through growth across AI, consumer, enterprise, and healthcare technology."
+  },
+  "silverton-partners": {
+    "name": "Silverton Partners",
+    "slug": "silverton-partners",
+    "short_name": "Silverton",
+    "website": "https://www.silvertonpartners.com",
+    "description": "Austin-based early-stage venture capital firm partnering with technology founders from seed through early growth."
   }
 }

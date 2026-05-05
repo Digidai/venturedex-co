@@ -168,6 +168,20 @@
       "local_path": "/logos/companies/all3.png",
       "source_page": "https://www.all3.com",
       "source_url": "https://www.all3.com/favicon.ico?114050f0aed2217f"
+    },
+    "manifest-os": {
+      "name": "Manifest OS",
+      "shape": "icon",
+      "local_path": "/logos/companies/manifest-os.png",
+      "source_page": "https://manifestos.com",
+      "source_url": "https://framerusercontent.com/images/dMttrTsxf64sq8BbZ0OjCPfgIFA.png"
+    },
+    "lakefusion": {
+      "name": "LakeFusion",
+      "shape": "icon",
+      "local_path": "/logos/companies/lakefusion.png",
+      "source_page": "https://www.lakefusion.ai",
+      "source_url": "https://cdn.prod.website-files.com/67573f750198e1fa11a98d35/676a9f0c90bd8f5fc4d0367b_lf_favicon.png"
     }
   },
   "investors": {
@@ -353,6 +367,20 @@
       "local_path": "/logos/investors/rtp-global.svg",
       "source_page": "https://rtp.vc",
       "source_url": "https://rtp.vc/wp-content/uploads/2023/03/rtp_logo_blackRGB-01.svg"
+    },
+    "menlo-ventures": {
+      "name": "Menlo Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/menlo-ventures.png",
+      "source_page": "https://menlovc.com",
+      "source_url": "https://menlovc.com/wp-content/uploads/2022/11/FAVICON-32.png"
+    },
+    "silverton-partners": {
+      "name": "Silverton Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/silverton-partners.png",
+      "source_page": "https://www.silvertonpartners.com",
+      "source_url": "https://www.silvertonpartners.com/wp-content/uploads/cropped-Silverton_Partners-Icon-transparentbg-180x180.png"
     }
   }
 }

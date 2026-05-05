@@ -1,0 +1,28 @@
+{
+  "slug": "lakefusion",
+  "domain": "www.lakefusion.ai",
+  "url": "https://www.lakefusion.ai",
+  "product_name": "LakeFusion",
+  "summary": "Databricks-native master data management for golden records.",
+  "editor_note": "The interesting move is refusing to be another MDM system outside the warehouse. LakeFusion installs through AWS or Azure Marketplace, runs inside Databricks, and uses LLM plus vector matching to create governed golden records under Unity Catalog. Unlike legacy match-rule projects, the bet is zero data egress, real-time sync back to source systems, and weeks-to-value. The risk is Databricks-native being a moat only if buyers already live there.",
+  "editor_rating": 4,
+  "why_featured": "$7.5M Seed for Databricks MDM",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "data management,databricks,mdm,ai",
+  "investors": "Silverton Partners",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/lakefusion-ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7.5M",
+      "stage": "Seed",
+      "lead_investor": "Silverton Partners",
+      "date": "2026-05-03",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/04/3286394/0/en/LakeFusion-Raises-7-5M-Seed-Financing-to-Redefine-Master-Data-Management-MDM-Natively-on-Databricks.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}
