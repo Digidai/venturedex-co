@@ -965,3 +965,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `4394d11` was pushed to `main`; GitHub Actions passed for Validate `25304135908` and Deploy `25304135907`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 24 published startups
+
+### 2026-05-05 14:43 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Manifest OS required manual Playwright-wrapper cleanup after the standard screenshot command exited OK with a Framer cookie banner still visible, and LakeFusion passed the standard screenshot command; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 56cdbb5
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, validate_fail, source_incomplete, other]
+- reward: 1
+- dominant_failure_mode: screenshot consent handling still needs visual review, and local curl validation can fail when system DNS resolves an existing brand host to reserved `198.18.x.x` addresses
+- proposed_change: defer code-level screenshot cleanup and validator/network-environment handling; no automation-doc heuristic edit because current visual-review, failure-investigation, and rerun rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/validate.py
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted Manifest OS and LakeFusion after product, funding, investor, logo, screenshot, and taste verification
+  - Manifest OS was accepted because a Business Wire/National Law Review source verifies an Apr 28, 2026 $60M Series A led by Menlo Ventures at a $750M valuation, while the official product pages expose an AI-native legal-services platform, fixed-fee immigration workflows, a client portal, AI Drafter, AI Case Evaluation, and 3,000+ engagements
+  - LakeFusion was accepted because GlobeNewswire verifies a $7.5M Seed led by Silverton Partners, while the public site and source show Databricks-native MDM, LLM plus vector matching, Unity Catalog governance, AWS/Azure marketplace availability, zero data egress, and real-time sync to source systems
+  - recorded six rejected or rechecked decisions for Sierra, Cerebras, Fervo Energy, Barocal, Acorn/Blacksky, and Standard Intelligence, meeting the 3:1 rejection bar for two acceptances
+  - `bb-browser` was used for product and browser-side verification of LakeFusion, Manifest OS, Barocal, Sierra, and Standard Intelligence; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh manifest-os https://manifestos.com` first failed, then exited OK on rerun, but visual review showed a Framer cookie panel; Playwright inspection confirmed a fixed `--framer-cookie-banner` element, and a wrapper capture with explicit consent removal replaced the local WebP
+  - the first `./scripts/validate.sh` rerun failed because the original Morningstar/Business Wire mirror returned HTTP 202, the newly appended Cerebras rejection duplicated an existing slug, and the existing Perplexity brand asset was unreachable via local system DNS; switching Manifest OS to the accessible Business Wire/National Law Review source, updating the existing Cerebras rejection, and rerunning validation with a temporary `CURL_HOME` that resolved Perplexity to public Cloudflare IPs made validation pass
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `CURL_HOME=/tmp/venturedex-curl-home ./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `56cdbb5` was pushed to `main`; GitHub Actions passed for Validate `25361712504` and Deploy `25361712516`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 26 published startups
