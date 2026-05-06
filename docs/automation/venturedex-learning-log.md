@@ -1000,3 +1000,39 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `CURL_HOME=/tmp/venturedex-curl-home ./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `56cdbb5` was pushed to `main`; GitHub Actions passed for Validate `25361712504` and Deploy `25361712516`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 26 published startups
+
+### 2026-05-06 14:29 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; CopilotKit and QuantWare passed the standard screenshot command, while Moment Energy required a manual Playwright-wrapper capture after visual review found a cookie banner still visible; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: a67178e
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot consent handling still depends on visual review and site-specific manual cleanup, and one bb-browser page text extraction needed a guarded retry after `document.body` was briefly null
+- proposed_change: defer code-level screenshot consent cleanup; no automation-doc heuristic edit because current visual-review and failure-investigation rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted CopilotKit, Moment Energy, and QuantWare after product, funding, investor, logo, screenshot, and taste verification
+  - CopilotKit was accepted because its official May 5, 2026 announcement verifies a $27M Series A led by Glilot Capital, NFX, and SignalFire, while the live site and docs expose React/Angular SDKs, AG-UI, MCP Apps, GitHub docs, examples, and self-serve developer entry points
+  - Moment Energy was accepted because PRNewswire and TechCrunch verify a May 5, 2026 $40M+ Series B led by Evok Innovations, while the live product pages expose Luna BESS, UL 1974 and UL 9540A certifications, commercial BESS use cases, and second-life EV battery infrastructure evidence
+  - QuantWare was accepted because its official announcement verifies a May 5, 2026 $178M Series B and Bloomberg verifies Intel Capital led the round alongside FORWARD.one, while the live site exposes A-Line, D-Line, peripherals, foundry services, packaging services, VIO, and 50+ customers across 20 countries
+  - recorded nine rejected decisions for Prior Labs, Corvera, Dandelion Health, Series AI, Traza, PeakMetrics, SCATR, Sygaldry, and Netomi, meeting the 3:1 rejection bar for three acceptances
+  - `bb-browser` was used for product and browser-side verification of CopilotKit, Moment Energy, Corvera, Dandelion Health, QuantWare, PeakMetrics, SCATR, Sygaldry, and Netomi; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh moment-energy https://www.momentenergy.com` exited OK, but visual review showed a cookie banner; a Playwright-wrapper session clicked consent and produced a clean 1440x900 WebP before validation and build
+  - a PeakMetrics `bb-browser eval` call briefly failed because `document.body` was null during page load; checking URL/title/errors and rerunning with a `document.body && ...` guard completed the product-evidence review without changing content criteria
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `a67178e` was pushed to `main`; GitHub Actions passed for Validate `25419997511` and Deploy `25419997513`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 29 published startups
