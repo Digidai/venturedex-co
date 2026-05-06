@@ -24,6 +24,7 @@ VentureDex Content Manager
 Usage:
   ./scripts/manage.sh add                              Scaffold a new startup entry
   ./scripts/manage.sh screenshot <slug> [url]          Capture screenshot via CF API
+  ./scripts/manage.sh cover <slug> [url] [gallery_url] Generate a curated WebP cover
   ./scripts/manage.sh list                             List startups from content/startups
   ./scripts/manage.sh validate                         Run validate + build-db + app build
   ./scripts/manage.sh sync [--skip-build]              Push d1/generated-seed.sql to remote D1
@@ -481,6 +482,36 @@ cmd_screenshot() {
   "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"
 }
 
+cmd_cover() {
+  local slug="${1:?Usage: manage.sh cover <slug> [url] [gallery_url]}"
+  local startup_file="$CONTENT_DIR/$slug.json"
+  local url="${2:-}"
+  local gallery_url="${3:-}"
+
+  if [ -z "$url" ]; then
+    require_file "$startup_file"
+    url="$(json_get "$startup_file" "url")"
+  fi
+
+  if [ -z "$url" ]; then
+    echo "ERROR: Could not determine URL for '$slug'." >&2
+    exit 1
+  fi
+
+  local args=(
+    "--slug" "$slug"
+    "--site-url" "$url"
+    "--output" "$SCREENSHOT_DIR/$slug.webp"
+  )
+
+  if [ -n "$gallery_url" ]; then
+    args+=("--gallery-url" "$gallery_url")
+  fi
+
+  python3 "$SCRIPT_DIR/generate_cover.py" "${args[@]}"
+  echo "Cover saved to $SCREENSHOT_DIR/$slug.webp"
+}
+
 cmd_validate() {
   (
     cd "$REPO_ROOT"
@@ -843,6 +874,7 @@ PY
 case "${1:-help}" in
   add) cmd_add ;;
   screenshot) shift; cmd_screenshot "$@" ;;
+  cover) shift; cmd_cover "$@" ;;
   list) cmd_list ;;
   validate) cmd_validate ;;
   sync) shift; cmd_sync "$@" ;;

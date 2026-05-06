@@ -34,8 +34,8 @@ try {
     getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
   ]);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load homepage data", error);
 }
 
 const hasFacetFilters = !!(productType || fundingStage || region);

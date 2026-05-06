@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import subprocess
 import sys
@@ -116,6 +117,11 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HTTP_OK = {"200", "301", "302", "307", "308", "403"}
 HTTP_FALLBACK = {"000", "405"}
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
+VALIDATE_URLS = os.environ.get("VENTUREDEX_VALIDATE_URLS", "").lower() in {
+    "1",
+    "true",
+    "yes",
+}
 
 
 @dataclass
@@ -134,6 +140,11 @@ def main() -> int:
         return 0
 
     print("=== VentureDex Content Validator ===\n")
+    if not VALIDATE_URLS:
+        print(
+            "URL reachability checks skipped. "
+            "Set VENTUREDEX_VALIDATE_URLS=1 to enable strict remote validation.\n"
+        )
 
     url_cache: dict[str, str] = {}
     results: list[FileResult] = []
@@ -366,14 +377,14 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
             result.errors.append(f"{prefix}: date '{date}' is not YYYY-MM-DD")
 
         source_url = round_data.get("source_url", "")
-        if source_url:
+        if source_url and VALIDATE_URLS:
             source_status = check_url(source_url, cache=url_cache)
             if source_status not in HTTP_OK:
                 result.errors.append(
                     f"{prefix}: source url check failed with HTTP {source_status} -> {source_url}"
                 )
 
-    if url:
+    if url and VALIDATE_URLS:
         company_status = check_url(url, cache=url_cache)
         if company_status not in HTTP_OK:
             result.warnings.append(f"company url check failed with HTTP {company_status} -> {url}")
@@ -707,12 +718,12 @@ def validate_brand_asset_record(
             f"{prefix} source_page host '{normalize_host(source_page)}' "
             f"does not match expected host '{normalize_host(expected_page)}'"
         )
-    elif check_url(source_page, cache=url_cache) not in HTTP_OK:
+    elif VALIDATE_URLS and check_url(source_page, cache=url_cache) not in HTTP_OK:
         errors.append(f"{prefix} source_page is not reachable: {source_page}")
 
     if not source_url:
         errors.append(f"{prefix} missing source_url")
-    elif check_url(source_url, cache=url_cache) not in HTTP_OK:
+    elif VALIDATE_URLS and check_url(source_url, cache=url_cache) not in HTTP_OK:
         errors.append(f"{prefix} source_url is not reachable: {source_url}")
 
     return errors

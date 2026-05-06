@@ -12,8 +12,8 @@ let results: Awaited<ReturnType<typeof searchStartups>> = [];
 if (query.trim()) {
   try {
     results = await searchStartups(db, query);
-  } catch {
-    // D1 unavailable
+  } catch (error) {
+    console.error("Failed to search startups", error);
   }
 }
 ---

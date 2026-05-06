@@ -9,8 +9,8 @@ let collections: Awaited<ReturnType<typeof getPublishedCollections>> = [];
 
 try {
   collections = await getPublishedCollections(db);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load collections", error);
 }
 ---
 

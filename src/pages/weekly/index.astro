@@ -9,8 +9,8 @@ let issues: Awaited<ReturnType<typeof getPublishedWeeklyIssues>> = [];
 
 try {
   issues = await getPublishedWeeklyIssues(db);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load weekly issues", error);
 }
 ---
 

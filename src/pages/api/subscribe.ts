@@ -35,7 +35,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       )
       .bind(id, normalized)
       .run();
-  } catch {
+  } catch (error) {
+    console.error("Failed to subscribe email", error);
     return new Response(JSON.stringify({ error: "Something went wrong." }), {
       status: 500,
       headers: { "Content-Type": "application/json" },

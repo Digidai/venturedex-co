@@ -18,8 +18,8 @@ let rounds: Awaited<ReturnType<typeof getNewsFundingRounds>> = [];
 
 try {
   rounds = await getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load funding news", error);
 }
 ---
 

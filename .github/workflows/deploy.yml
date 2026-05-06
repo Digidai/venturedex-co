@@ -26,6 +26,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify generated D1 locally
+        run: npm run db:verify:local
+
       - name: Verify Cloudflare auth and D1 access
         run: |
           set -euo pipefail

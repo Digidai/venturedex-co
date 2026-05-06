@@ -1,7 +1,11 @@
 node_modules/
 dist/
+output/
+__pycache__/
+*.py[cod]
 .astro/
 .wrangler/
 .dev.vars
 .env
+.env.local
 .gstack/

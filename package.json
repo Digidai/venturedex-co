@@ -8,7 +8,18 @@
     "build": "astro build && printf '_worker.js\n' > dist/.assetsignore",
     "preview": "astro preview",
     "astro": "astro",
-    "db:migrate": "wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
+    "check": "npm run content:validate && npm run db:verify:local && npm run build",
+    "content:validate": "./scripts/validate.sh",
+    "content:validate:urls": "VENTUREDEX_VALIDATE_URLS=1 ./scripts/validate.sh",
+    "content:seed": "./scripts/build-db.sh",
+    "content:manage": "./scripts/manage.sh",
+    "cover": "python3 scripts/generate_cover.py",
+    "db:schema:local": "wrangler d1 execute venturedex-db --local --file=d1/schema.sql",
+    "db:seed:local": "./scripts/d1-local.sh seed",
+    "db:verify:local": "./scripts/d1-local.sh verify",
+    "db:schema:remote": "wrangler d1 execute venturedex-db --remote --file=d1/schema.sql",
+    "db:seed:remote": "wrangler d1 execute venturedex-db --remote --file=d1/generated-seed.sql",
+    "db:migrate": "npm run db:schema:local"
   },
   "dependencies": {
     "astro": "^5.7.0",
