@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-04",
+  "verified_at": "2026-05-06",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -182,6 +182,27 @@
       "local_path": "/logos/companies/lakefusion.png",
       "source_page": "https://www.lakefusion.ai",
       "source_url": "https://cdn.prod.website-files.com/67573f750198e1fa11a98d35/676a9f0c90bd8f5fc4d0367b_lf_favicon.png"
+    },
+    "copilotkit": {
+      "name": "CopilotKit",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/copilotkit.svg",
+      "source_page": "https://www.copilotkit.ai",
+      "source_url": "https://www.copilotkit.ai/icons/copilot-kit-logo.svg"
+    },
+    "moment-energy": {
+      "name": "Moment Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/moment-energy.png",
+      "source_page": "https://www.momentenergy.com",
+      "source_url": "https://cdn.prod.website-files.com/689cf864045769deaae340c0/68fa6933c9524f606f2f800d_webclip-moment.png"
+    },
+    "quantware": {
+      "name": "QuantWare",
+      "shape": "icon",
+      "local_path": "/logos/companies/quantware.png",
+      "source_page": "https://quantware.com",
+      "source_url": "https://cdn.prod.website-files.com/68ef71c634061d6e61fc1629/6913922530c423fbf96aad46_256x256.png"
     }
   },
   "investors": {
@@ -381,6 +402,27 @@
       "local_path": "/logos/investors/silverton-partners.png",
       "source_page": "https://www.silvertonpartners.com",
       "source_url": "https://www.silvertonpartners.com/wp-content/uploads/cropped-Silverton_Partners-Icon-transparentbg-180x180.png"
+    },
+    "glilot-capital": {
+      "name": "Glilot Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/glilot-capital.svg",
+      "source_page": "https://www.glilotcapital.com",
+      "source_url": "https://glilotcapital.com/wp-content/uploads/2025/08/Logo.svg"
+    },
+    "evok-innovations": {
+      "name": "Evok Innovations",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/evok-innovations.jpg",
+      "source_page": "https://www.evokinnovations.com",
+      "source_url": "https://static.wixstatic.com/media/ae0ff3_d0f2ac34bc6940059909328c3fc665d8~mv2.jpg/v1/fill/w_480,h_120,al_c,q_80,usm_0.66_1.00_0.01/evok_logo_hi_res.jpg"
+    },
+    "intel-capital": {
+      "name": "Intel Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/intel-capital.svg",
+      "source_page": "https://www.intelcapital.com",
+      "source_url": "https://www.intelcapital.com/wp-content/themes/intel-capital/dist/images/logo-color.svg"
     }
   }
 }

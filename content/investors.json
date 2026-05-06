@@ -194,5 +194,26 @@
     "short_name": "Silverton",
     "website": "https://www.silvertonpartners.com",
     "description": "Austin-based early-stage venture capital firm partnering with technology founders from seed through early growth."
+  },
+  "glilot-capital": {
+    "name": "Glilot Capital",
+    "slug": "glilot-capital",
+    "short_name": "Glilot",
+    "website": "https://www.glilotcapital.com",
+    "description": "Venture capital firm backing enterprise software, cybersecurity, and AI infrastructure companies from early stage through growth."
+  },
+  "evok-innovations": {
+    "name": "Evok Innovations",
+    "slug": "evok-innovations",
+    "short_name": "Evok",
+    "website": "https://www.evokinnovations.com",
+    "description": "Industrial decarbonization investor backing companies across energy, critical minerals, industrial optimization, and climate adaptation."
+  },
+  "intel-capital": {
+    "name": "Intel Capital",
+    "slug": "intel-capital",
+    "short_name": "Intel Capital",
+    "website": "https://www.intelcapital.com",
+    "description": "Corporate venture capital arm of Intel investing in silicon, frontier compute, devices, cloud, AI, and deep technology companies."
   }
 }
