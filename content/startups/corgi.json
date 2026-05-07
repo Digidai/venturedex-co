@@ -1,0 +1,29 @@
+{
+  "slug": "corgi",
+  "domain": "www.corgi.insure",
+  "url": "https://www.corgi.insure",
+  "product_name": "Corgi",
+  "summary": "Instant startup insurance quotes and modular coverage.",
+  "editor_note": "Startup insurance usually feels like paperwork wearing a broker's suit; this is closer to checkout. Corgi exposes instant quotes, 4 stage-based coverage paths, D&O, Cyber, Tech E&O, and customer proof from Deel, Bland, Intryc, and other startups. Unlike Vouch or Embroker, the bet is that founders want insurance to feel as fast as buying compute. The risk is that underwriting speed has to survive messier companies than YC-style software teams.",
+  "editor_rating": 5,
+  "why_featured": "$160M Series B for instant insurance",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "insurance,fintech,startups,founder tools",
+  "investors": "TCV, Kindred Ventures, Leblon Capital, First Order Fund",
+  "links": {
+    "twitter": "https://x.com/UseCorgi",
+    "linkedin": "https://www.linkedin.com/company/corgi-insurance"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$160M",
+      "stage": "Series B",
+      "lead_investor": "TCV",
+      "date": "2026-05-06",
+      "source_url": "https://techcrunch.com/2026/05/06/insurance-startup-corgi-hits-1-3b-valuation-4-months-after-its-series-a/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

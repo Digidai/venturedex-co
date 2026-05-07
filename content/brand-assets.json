@@ -203,6 +203,20 @@
       "local_path": "/logos/companies/quantware.png",
       "source_page": "https://quantware.com",
       "source_url": "https://cdn.prod.website-files.com/68ef71c634061d6e61fc1629/6913922530c423fbf96aad46_256x256.png"
+    },
+    "corgi": {
+      "name": "Corgi",
+      "shape": "icon",
+      "local_path": "/logos/companies/corgi.ico",
+      "source_page": "https://www.corgi.insure",
+      "source_url": "https://www.corgi.insure/favicon.ico"
+    },
+    "ethos": {
+      "name": "Ethos",
+      "shape": "icon",
+      "local_path": "/logos/companies/ethos.png",
+      "source_page": "https://agent.askethos.com",
+      "source_url": "https://agent.askethos.com/favicon.png"
     }
   },
   "investors": {
@@ -423,6 +437,13 @@
       "local_path": "/logos/investors/intel-capital.svg",
       "source_page": "https://www.intelcapital.com",
       "source_url": "https://www.intelcapital.com/wp-content/themes/intel-capital/dist/images/logo-color.svg"
+    },
+    "tcv": {
+      "name": "TCV",
+      "shape": "icon",
+      "local_path": "/logos/investors/tcv.png",
+      "source_page": "https://www.tcv.com",
+      "source_url": "https://www.tcv.com/favicon.png"
     }
   }
 }

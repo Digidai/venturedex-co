@@ -215,5 +215,12 @@
     "short_name": "Intel Capital",
     "website": "https://www.intelcapital.com",
     "description": "Corporate venture capital arm of Intel investing in silicon, frontier compute, devices, cloud, AI, and deep technology companies."
+  },
+  "tcv": {
+    "name": "TCV",
+    "slug": "tcv",
+    "short_name": "TCV",
+    "website": "https://www.tcv.com",
+    "description": "Growth equity firm partnering with technology companies from expansion stage through category leadership."
   }
 }
