@@ -1036,3 +1036,39 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `a67178e` was pushed to `main`; GitHub Actions passed for Validate `25419997511` and Deploy `25419997513`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 29 published startups
+
+### 2026-05-07 14:25 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Ethos passed the standard screenshot command, while Corgi required a manual Playwright-wrapper capture after the popup-safe script false-positive failed on fixed quote/partner widgets and an initial manual attempt captured the wrong page; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 44c80c5
+- pushed_branch: main
+- ci_deploy: fail in GitHub Actions; local deploy pass and live smoke pass
+- failure_tags: [screenshot_env, ci_fail, other]
+- reward: 2
+- dominant_failure_mode: Cloudflare Wrangler deploy in GitHub Actions failed at Worker version creation with `Completion token has already been consumed [code: 100312]` after D1 sync and static asset upload had already succeeded; screenshot overlay classification still has site-specific false positives and manual-capture risks
+- proposed_change: defer code-level screenshot classifier cleanup and deploy retry/hardening for Cloudflare `100312`; no automation-doc heuristic edit because current failure-investigation and downstream-rerun rules covered this path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/manage.sh; .github/workflows/deploy.yml
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted Corgi and Ethos after product, funding, investor, logo, screenshot, and taste verification
+  - Corgi was accepted because TechCrunch verifies a May 6, 2026 $160M Series B led by TCV, while the live product page exposes instant startup insurance quoting, stage-based coverage paths, D&O, Cyber, Tech E&O, CGL, and customer proof from Deel, Bland, and Intryc
+  - Ethos was accepted because TechCrunch verifies a May 6, 2026 $22.75M Series A led by Andreessen Horowitz, while the correct live product at `https://agent.askethos.com/` exposes paid expert opportunities, expert/client modes, voice onboarding, AI matching, and featured opportunity cards
+  - recorded seven rejected or rechecked decisions for Pronto, Altara, QuTwo, DeepSeek, Genesis AI, MochaTrade, and OpenTrade, meeting the 3:1 rejection bar for two acceptances
+  - `bb-browser` was used for product and browser-side verification of Corgi, Ethos, Altara, and Pronto; the incorrect `ethos.network` result was rejected in favor of the verified `askethos.com`/`agent.askethos.com` product
+  - `./scripts/screenshot.sh corgi https://www.corgi.insure` failed with `popup_detected`; script review and visual checks showed fixed quote/Archetype widgets were classified as a popup, so a Playwright-wrapper capture removed those widgets and replaced the local WebP
+  - the first manual Corgi screenshot attempt used an incorrect browser state and captured Ethos; visual review caught the mismatch before validation, and a second wrapper capture produced the correct Corgi 1440x900 WebP
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, `scripts/__pycache__/`, and temporary screenshot files were restored or removed as verification output
+  - content commit `44c80c5` was pushed to `main`; GitHub Actions Validate `25479444429` passed, but Deploy `25479444482` failed in `bash scripts/manage.sh release` at Cloudflare API `/workers/scripts/venturedex/versions` with code `100312` after D1 sync reported 31 startups and asset upload completed for five new files
+  - a targeted downstream rerun with `./scripts/manage.sh deploy` succeeded locally using Wrangler 4.82.2 and produced Worker version `04f1e668-ff6f-4505-8048-5c6416f9374a`, supporting classification as a transient Cloudflare/API or CI deploy-state failure rather than a content/configuration failure
+  - post-deploy live smoke passed for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`, each reporting 31 published startups
