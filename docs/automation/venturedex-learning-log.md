@@ -1072,3 +1072,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - content commit `44c80c5` was pushed to `main`; GitHub Actions Validate `25479444429` passed, but Deploy `25479444482` failed in `bash scripts/manage.sh release` at Cloudflare API `/workers/scripts/venturedex/versions` with code `100312` after D1 sync reported 31 startups and asset upload completed for five new files
   - a targeted downstream rerun with `./scripts/manage.sh deploy` succeeded locally using Wrangler 4.82.2 and produced Worker version `04f1e668-ff6f-4505-8048-5c6416f9374a`, supporting classification as a transient Cloudflare/API or CI deploy-state failure rather than a content/configuration failure
   - post-deploy live smoke passed for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`, each reporting 31 published startups
+
+### 2026-05-08 14:33 CST
+
+- candidate_count: 36
+- accepted: 3
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; the standard screenshot command produced all three local WebPs, but Pit required a manual Playwright-wrapper recapture after visual review showed Cookiebot still visible; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 3de6951
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot consent handling still depends on visual review for Cookiebot-style banners, and command-shaping mistakes around shell quoting or missing curl timeouts can create avoidable investigation noise
+- proposed_change: defer code-level screenshot cleanup to add an explicit `Deny` dismissal path and avoid `bb-browser screenshot` ref overlays; no automation-doc heuristic edit because current visual-review, failure-investigation, and rerun rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered 36 source candidates from the TechCrunch WordPress API/current startup coverage and the TechStartups May 6 funding roundup, then deduplicated prior accepted and rejected slugs before promoting fresh names
+  - accepted Pit because TechCrunch verifies a May 7, 2026 $16M Seed led by Andreessen Horowitz, while `bb-browser` product review confirmed Pit Studio/Pit Cloud, workflow mapping, governance, audit trails, SSO, tenant isolation, customer evidence, and clear positioning against SaaS/no-code/in-house builds
+  - accepted RadixArk because its official May 5, 2026 blog verifies a $100M Seed led by Accel and co-led by Spark Capital, while product review confirmed SGLang, Miles, OpenAI-compatible serving, disaggregated prefill/decode, speculative decoding, managed infrastructure, and hardware/platform support across NVIDIA, AMD, TPU, Ascend, XPU, and CPU
+  - accepted Scout Space because PR Newswire verifies a May 6, 2026 Series A of up to $18M led by Washington Harbour Partners, while the public site and source expose Owl sensors, mission autonomy software, edge processing, data platforms, government/commercial contracts, and a 2,600-square-foot Virginia production facility
+  - recorded 12 rejected or deferred decisions for Ramp, Kodiak AI, Gusto, Lovable, Kalshi, Skyroot, Moonshot AI, Braintrust, Aurora, Blitzy, Astrocade, and LiveEO, meeting the 3:1 rejection bar for three acceptances
+  - District was reviewed and deferred outside `content/rejected.jsonl`: product and funding evidence cleared, but `district.net` returned HTTP 429 to the validator for official site/logo reachability, and the rejected-stage taxonomy has no accurate asset-blocker category
+  - `bb-browser` was used for product and browser-side verification of Pit, District, RadixArk/SGLang, Astrocade, Blitzy, and Scout Space; when the daemon reported CDP disconnected, `bb-browser daemon stop` followed by a fresh `bb-browser open` restored operation
+  - a Washington Harbour logo probe initially hung because the curl command omitted `--max-time`; the specific curl pipeline processes were killed, then the probe was rerun with a timeout and found official favicon and logo sources
+  - one funding-source status command failed because an unquoted URL containing `?` triggered zsh glob parsing, and the initial TechCrunch jq helper failed due shell quoting; both were command-shaping issues corrected without changing content decisions
+  - the first post-edit validation had passed, but after adding a numeric Scout Space fact the next validation failed because `editor_note` reached 510 characters; shortening it to 464 characters fixed the error and validation then passed
+  - local gates passed after final edits: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `3de6951` was pushed to `main`; GitHub Actions passed for Validate `25540799659` and Deploy `25540799646`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 34 published startups, and a direct homepage check showed Pit, Scout Space, and RadixArk in the live ticker
