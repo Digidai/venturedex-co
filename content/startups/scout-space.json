@@ -1,0 +1,28 @@
+{
+  "slug": "scout-space",
+  "domain": "www.scout.space",
+  "url": "https://www.scout.space",
+  "product_name": "Scout Space",
+  "summary": "In-space sensors and autonomy software for orbital awareness.",
+  "editor_note": "The sharp part is that space awareness needs distributed eyes in orbit, not only bigger ground systems. Scout Space sells Owl sensors, mission autonomy software, edge processing, and data tools for operators, and this round funds a 2,600-square-foot Virginia facility. Compared with a pure satellite builder, it is trying to become the sensing layer other spacecraft can carry. The risk is that government demand may hide how repeatable the commercial workflow is.",
+  "editor_rating": 4,
+  "why_featured": "$18M Series A for orbital sensors",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "space,orbital awareness,sensors,autonomy",
+  "investors": "Washington Harbour Partners, Virginia Innovation Partnership Corporation, Noblis Ventures, Decisive Point, Fusion Fund",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/scoutdotspace"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$18M",
+      "stage": "Series A",
+      "lead_investor": "Washington Harbour Partners",
+      "date": "2026-05-06",
+      "source_url": "https://www.prnewswire.com/news-releases/scout-space-raises-18m-series-a-to-scale-space-domain-awareness-capabilities-and-expand-manufacturing-in-northern-virginia-302760326.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

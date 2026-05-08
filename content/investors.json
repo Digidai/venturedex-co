@@ -222,5 +222,12 @@
     "short_name": "TCV",
     "website": "https://www.tcv.com",
     "description": "Growth equity firm partnering with technology companies from expansion stage through category leadership."
+  },
+  "washington-harbour": {
+    "name": "Washington Harbour Partners",
+    "slug": "washington-harbour",
+    "short_name": "Washington Harbour",
+    "website": "https://washingtonharbour.com",
+    "description": "Private investment firm partnering with businesses across cybersecurity, government, and enterprise technology."
   }
 }

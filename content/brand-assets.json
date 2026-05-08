@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-06",
+  "verified_at": "2026-05-08",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -217,6 +217,27 @@
       "local_path": "/logos/companies/ethos.png",
       "source_page": "https://agent.askethos.com",
       "source_url": "https://agent.askethos.com/favicon.png"
+    },
+    "pit": {
+      "name": "Pit",
+      "shape": "icon",
+      "local_path": "/logos/companies/pit.svg",
+      "source_page": "https://pit.com",
+      "source_url": "https://pit.com/favicon.svg"
+    },
+    "radixark": {
+      "name": "RadixArk",
+      "shape": "icon",
+      "local_path": "/logos/companies/radixark.png",
+      "source_page": "https://www.radixark.com",
+      "source_url": "https://www.radixark.com/images/radixark-favicon.png"
+    },
+    "scout-space": {
+      "name": "Scout Space",
+      "shape": "icon",
+      "local_path": "/logos/companies/scout-space.png",
+      "source_page": "https://www.scout.space",
+      "source_url": "https://cdn.prod.website-files.com/67b234facbe620c976bfe28b/67e00e0b06a4f0bcad5ba387_favicon.png"
     }
   },
   "investors": {
@@ -444,6 +465,13 @@
       "local_path": "/logos/investors/tcv.png",
       "source_page": "https://www.tcv.com",
       "source_url": "https://www.tcv.com/favicon.png"
+    },
+    "washington-harbour": {
+      "name": "Washington Harbour Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/washington-harbour.png",
+      "source_page": "https://washingtonharbour.com",
+      "source_url": "https://washingtonharbour.com/wp-content/uploads/2021/02/favicon.png"
     }
   }
 }

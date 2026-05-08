@@ -1,0 +1,28 @@
+{
+  "slug": "radixark",
+  "domain": "www.radixark.com",
+  "url": "https://www.radixark.com",
+  "product_name": "RadixArk",
+  "summary": "Open inference and training infrastructure for frontier AI.",
+  "editor_note": "The useful bet is that AI infra should be shared infrastructure, not private lab plumbing. RadixArk starts from SGLang for inference and Miles for post-training, with SGLang already powering trillions of tokens daily across teams like Google, NVIDIA, Oracle, AMD, LinkedIn, and xAI. Compared with another closed model platform, this is a tools-and-runtime company. The risk is turning open-source gravity into a managed product without slowing the community.",
+  "editor_rating": 5,
+  "why_featured": "$100M seed for SGLang infra",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,inference,open source,developer tools",
+  "investors": "Accel, Spark Capital, NVentures, Salience Capital, A&E Investment, HOF Capital, Walden Catalyst, AMD, LDVP, WTT Fubon Family, MediaTek, Databricks",
+  "links": {
+    "github": "https://github.com/radixark"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$100M",
+      "stage": "Seed",
+      "lead_investor": "Accel",
+      "date": "2026-05-05",
+      "source_url": "https://www.radixark.com/blog/radixark-launches-100m-seed",
+      "source_name": "RadixArk"
+    }
+  ]
+}
