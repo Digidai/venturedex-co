@@ -229,5 +229,12 @@
     "short_name": "Washington Harbour",
     "website": "https://washingtonharbour.com",
     "description": "Private investment firm partnering with businesses across cybersecurity, government, and enterprise technology."
+  },
+  "bessemer-venture-partners": {
+    "name": "Bessemer Venture Partners",
+    "slug": "bessemer-venture-partners",
+    "short_name": "Bessemer",
+    "website": "https://www.bvp.com",
+    "description": "Venture capital firm partnering with technology founders from seed through growth across enterprise, consumer, healthcare, and frontier technology."
   }
 }

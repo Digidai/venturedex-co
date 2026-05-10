@@ -1,0 +1,26 @@
+{
+  "slug": "hilbert",
+  "domain": "hilberts.ai",
+  "url": "https://hilberts.ai",
+  "product_name": "Hilbert",
+  "summary": "AI growth infrastructure for B2C revenue decisions.",
+  "editor_note": "Growth analytics usually stops at dashboards; this is trying to become the decision layer after the chart. Hilbert shows anomaly detection, root-cause analysis, counterfactuals, pLTV targeting, and agent-driven growth tasks in one product surface. Unlike BI tools or in-house ML projects, the bet is that B2C teams want actions tied to cohorts and unit economics, not another report. The risk is proving those actions move revenue outside the demo data.",
+  "editor_rating": 4,
+  "why_featured": "$28M Series A for growth infra",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "growth analytics,b2c ai,decision intelligence,marketing",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$28M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-04-15",
+      "source_url": "https://www.gunder.com/en/news-insights/client-news/hilbert-announces-28-million-usd-series-a",
+      "source_name": "Gunderson Dettmer"
+    }
+  ]
+}

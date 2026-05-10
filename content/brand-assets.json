@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-08",
+  "verified_at": "2026-05-10",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -238,6 +238,20 @@
       "local_path": "/logos/companies/scout-space.png",
       "source_page": "https://www.scout.space",
       "source_url": "https://cdn.prod.website-files.com/67b234facbe620c976bfe28b/67e00e0b06a4f0bcad5ba387_favicon.png"
+    },
+    "amperos": {
+      "name": "Amperos",
+      "shape": "icon",
+      "local_path": "/logos/companies/amperos.ico",
+      "source_page": "https://www.amperos.com",
+      "source_url": "https://www.amperos.com/favicon.ico?favicon.0jcy448jdqu5..ico"
+    },
+    "hilbert": {
+      "name": "Hilbert",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hilbert.svg",
+      "source_page": "https://hilberts.ai",
+      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
     }
   },
   "investors": {
@@ -472,6 +486,13 @@
       "local_path": "/logos/investors/washington-harbour.png",
       "source_page": "https://washingtonharbour.com",
       "source_url": "https://washingtonharbour.com/wp-content/uploads/2021/02/favicon.png"
+    },
+    "bessemer-venture-partners": {
+      "name": "Bessemer Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/bessemer-venture-partners.svg",
+      "source_page": "https://www.bvp.com",
+      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg"
     }
   }
 }
