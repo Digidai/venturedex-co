@@ -1110,3 +1110,42 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed after final edits: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `3de6951` was pushed to `main`; GitHub Actions passed for Validate `25540799659` and Deploy `25540799646`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 34 published startups, and a direct homepage check showed Pit, Scout Space, and RadixArk in the live ticker
+
+### 2026-05-10 14:13 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Amperos passed the standard screenshot command, while Hilbert required a manual Playwright-wrapper recapture after `scripts/screenshot.sh` flagged an empty `DIV` false-positive overlay; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 34f31f4
+- pushed_branch: main
+- ci_deploy: pass after targeted Validate rerun; Deploy passed on the original run
+- failure_tags: [screenshot_env, ci_fail, other]
+- reward: 2
+- dominant_failure_mode: screenshot overlay classification still false-positives on decorative/empty absolute page layers, and GitHub Actions validation can transiently fail old third-party brand-source reachability even when the same validator passes locally
+- proposed_change: defer code-level screenshot classifier cleanup for empty decorative overlays and validator hardening for transient CI-only old-asset reachability; no automation-doc heuristic edit because current failure-investigation and targeted-rerun rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/validate.py
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - the user-supplied run metadata said the last run was 2026-05-09, but repo-local learning log and automation memory both last recorded a completed persistent run on 2026-05-08; dedupe was therefore based on the current repo content, rejected ledger, and memory state
+  - initial TechCrunch WordPress API discovery hit a curl TLS/HTTP2 error, but `curl -Iv` confirmed the host and API were reachable; rerunning the same official API with `--http1.1` and timeouts completed without changing source criteria
+  - accepted Amperos because PR Newswire verifies an Apr 22, 2026 $16M Series A led by Bessemer Venture Partners, while `bb-browser` product review confirmed AI-native insurance collections, denial management, payor workflows, corrected claims, appeals, RCM specialist escalation, integrations, customer proof, and quantified operating claims
+  - accepted Hilbert because Gunderson Dettmer verifies an Apr 15, 2026 $28M Series A led by Andreessen Horowitz, while `bb-browser` product review confirmed AI-native B2C growth infrastructure, anomaly detection, root-cause analysis, counterfactuals, forecasting, pLTV targeting, and agent-driven growth tasks; the original Axios link was not used because local curl received a Cloudflare 403
+  - recorded six rejected decisions for Kanvas Biosciences, Willog, Wispr Flow, Parker, Lime, and Hightouch, meeting the 3:1 rejection bar for two acceptances
+  - Kanvas was rejected under F1 because the public site exposes biotech platform/pipeline/services copy but no inspectable product workflow, demo, docs, pricing, clinical access, customer workflow, or user-facing product surface
+  - Willog was rejected under F3 because the source says Series B-2, which the current startup schema cannot represent without normalizing beyond the source
+  - Wispr Flow, Parker, Lime, and Hightouch were rejected under F3 because the current sources were respectively a product/profile story, bankruptcy filing, IPO filing, and ARR milestone rather than fresh closed Seed-Series C financing events
+  - `bb-browser` was used for product and browser-side verification of Amperos, Hilbert, and Kanvas; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh hilbert https://hilberts.ai` failed with `popup_detected` hidden inside the command substitution; `bash -x` showed the payload was one empty `DIV`, and a clean manual Playwright-wrapper capture produced the final 1440x900 WebP after visual review
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `34f31f4` was pushed to `main`; GitHub Actions Deploy `25621494940` passed on the original run, while Validate `25621494948` initially failed only on pre-existing Blackpeak and Touring investor brand-source reachability
+  - local targeted curl checks returned HTTP 200 for the failing Blackpeak and Touring source URLs using the same validator curl shape, and a targeted rerun of the failed GitHub Validate job passed as job `75209017358`, supporting classification as transient CI-side reachability rather than a content regression
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 36 published startups, and a direct homepage check showed Amperos and Hilbert in the live ticker
