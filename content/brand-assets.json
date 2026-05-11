@@ -252,6 +252,20 @@
       "local_path": "/logos/companies/hilbert.svg",
       "source_page": "https://hilberts.ai",
       "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
+    },
+    "basata": {
+      "name": "Basata",
+      "shape": "icon",
+      "local_path": "/logos/companies/basata.png",
+      "source_page": "https://www.basata.ai",
+      "source_url": "https://cdn.prod.website-files.com/67e26595de77ed632a136c2f/67e3da1bdbc27bafac51a752_favicon.png"
+    },
+    "enzo-health": {
+      "name": "Enzo Health",
+      "shape": "icon",
+      "local_path": "/logos/companies/enzo-health.svg",
+      "source_page": "https://www.enzo.health",
+      "source_url": "https://www.enzo.health/icon.svg?icon.2035bf47.svg"
     }
   },
   "investors": {
@@ -493,6 +507,20 @@
       "local_path": "/logos/investors/bessemer-venture-partners.svg",
       "source_page": "https://www.bvp.com",
       "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg"
+    },
+    "basis-set-ventures": {
+      "name": "Basis Set Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/basis-set-ventures.svg",
+      "source_page": "https://www.basisset.com",
+      "source_url": "https://cdn.prod.website-files.com/681ad1f2c3ad523e8b456421/681ad1f2c3ad523e8b456602_Favicon%2032.svg"
+    },
+    "n47": {
+      "name": "N47",
+      "shape": "icon",
+      "local_path": "/logos/investors/n47.png",
+      "source_page": "https://www.n47.com",
+      "source_url": "https://cdn.prod.website-files.com/6846bf604cd20cc47e2b90b5/6846d470ca5601b29765392b_FavIcon.png"
     }
   }
 }

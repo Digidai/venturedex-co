@@ -236,5 +236,19 @@
     "short_name": "Bessemer",
     "website": "https://www.bvp.com",
     "description": "Venture capital firm partnering with technology founders from seed through growth across enterprise, consumer, healthcare, and frontier technology."
+  },
+  "basis-set-ventures": {
+    "name": "Basis Set Ventures",
+    "slug": "basis-set-ventures",
+    "short_name": "Basis Set",
+    "website": "https://www.basisset.com",
+    "description": "Early-stage venture capital firm backing AI companies that improve business workflows and productivity."
+  },
+  "n47": {
+    "name": "N47",
+    "slug": "n47",
+    "short_name": "N47",
+    "website": "https://www.n47.com",
+    "description": "Product-first venture firm investing in early technology companies before broad market consensus."
   }
 }
