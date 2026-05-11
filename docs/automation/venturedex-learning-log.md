@@ -1149,3 +1149,39 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - content commit `34f31f4` was pushed to `main`; GitHub Actions Deploy `25621494940` passed on the original run, while Validate `25621494948` initially failed only on pre-existing Blackpeak and Touring investor brand-source reachability
   - local targeted curl checks returned HTTP 200 for the failing Blackpeak and Touring source URLs using the same validator curl shape, and a targeted rerun of the failed GitHub Validate job passed as job `75209017358`, supporting classification as transient CI-side reachability rather than a content regression
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 36 published startups, and a direct homepage check showed Amperos and Hilbert in the live ticker
+
+### 2026-05-11 14:06 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Basata required manual Playwright-wrapper recapture after visual review showed a HubSpot chat prompt despite a successful retry, and Enzo Health required manual startup-layer cleanup after `scripts/screenshot.sh` flagged an empty fixed `DIV`; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 809fe81
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25653252570` and Deploy `25653252559` passed
+- failure_tags: [screenshot_env]
+- reward: 3
+- dominant_failure_mode: screenshot cleanup still depends on visual review and site-specific handling for empty fixed startup layers and chat widgets that are not real modal blockers
+- proposed_change: defer code-level screenshot cleanup alignment for empty fixed startup layers and HubSpot chat prompts; no automation-doc heuristic edit because the current failure-investigation, visual-review, and manual-recapture path covered the issue
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window plus official PR/news sources, deduped prior accepted/rejected names, and promoted Basata and Enzo Health after funding, product, investor, logo, screenshot, and taste verification
+  - accepted Basata because TechCrunch verifies a May 7, 2026 $21M Series A led by Basis Set Ventures, while `bb-browser` product review confirmed referral/fax processing, EHR chart creation, AI voice agents, quantified referral volume, same-day document handling, and specialty-practice workflow evidence
+  - accepted Enzo Health because PR Newswire verifies a May 4, 2026 $20M Series A led by N47, while `bb-browser` product review confirmed Intake, Scribe, QA, OASIS validation, referral checks, secure messaging, 5-minute intake-to-admission claims, and customer workflow evidence
+  - recorded six rejected decisions for ReFiBuy, Tessera Labs, Jetty, ROBOTERA, Boost Security, and Panthalassa, exactly meeting the 3:1 rejection bar for two acceptances
+  - ReFiBuy was rejected under F4 because its agentic commerce optimization product is effectively SEO/GEO for AI shopping discovery, while Tessera Labs, Jetty, ROBOTERA, Boost Security, and Panthalassa were rejected or deferred under F3 for missing schema-compliant stage evidence, pre-seed stage, unlabeled financing, acquisition-linked funding, or ambiguous lead-investor identity
+  - `bb-browser` was used for browser-side product and screenshot-failure verification of Basata, ReFiBuy, and Enzo Health; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh basata https://www.basata.ai` first failed, then `bash -x` showed the standard Playwright path could complete; visual review still found a HubSpot chat prompt, so a wrapper capture removed `#hubspot-messages-iframe-container` and produced a clean 1440x900 WebP
+  - `./scripts/screenshot.sh enzo-health https://www.enzo.health` failed with `popup_detected`; `bash -x` showed one empty `DIV`, and `bb-browser` inspection traced it to fixed empty startup layers `_1be2dfv0` and `_1ln3ruo0`, so a wrapper capture removed those layers, restored `.text-intro` opacity/transform, and produced a visually reviewed 1440x900 WebP
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `809fe81` was pushed to `main`; GitHub Actions passed for Validate `25653252570` and Deploy `25653252559`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 38 published startups, and a direct homepage check showed Basata and Enzo Health in the live ticker
