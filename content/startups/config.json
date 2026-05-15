@@ -1,0 +1,24 @@
+{
+  "slug": "config",
+  "domain": "config.inc",
+  "url": "https://config.inc/product",
+  "product_name": "Config",
+  "summary": "Robot training-data platform for robotics foundation models.",
+  "editor_note": "The strongest bet is that robot data should be fabricated like semiconductors, not collected one lab at a time. Config's platform walks from gripper design to data strategy, acquisition, labeling, action estimation, model training, and evaluation; CFG-1 claims 100K in-house human-data hours, 2B parameters, and sub-50ms RTX 5090 latency. Compared with robot builders chasing hardware, this sells the data foundry. The risk is that customers still need proof on their own factory tasks.",
+  "editor_rating": 4,
+  "why_featured": "100K hours of robot data",
+  "product_type": "AI / ML",
+  "region": "China / Asia",
+  "tags": "robotics,training data,foundation models,physical ai",
+  "investors": "Samsung Venture Investment",
+  "funding": [
+    {
+      "amount": "$27M",
+      "stage": "Seed",
+      "lead_investor": "Samsung Venture Investment",
+      "date": "2026-05-11",
+      "source_url": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-10",
+  "verified_at": "2026-05-15",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -266,6 +266,27 @@
       "local_path": "/logos/companies/enzo-health.svg",
       "source_page": "https://www.enzo.health",
       "source_url": "https://www.enzo.health/icon.svg?icon.2035bf47.svg"
+    },
+    "vapi": {
+      "name": "Vapi",
+      "shape": "icon",
+      "local_path": "/logos/companies/vapi.svg",
+      "source_page": "https://vapi.ai",
+      "source_url": "https://vapi.ai/icon.svg?icon.0v9qf5isrq6gm.svg"
+    },
+    "origin-lab": {
+      "name": "Origin Lab",
+      "shape": "icon",
+      "local_path": "/logos/companies/origin-lab.png",
+      "source_page": "https://originlab.ai",
+      "source_url": "https://originlab.ai/favicon.png"
+    },
+    "config": {
+      "name": "Config",
+      "shape": "icon",
+      "local_path": "/logos/companies/config.png",
+      "source_page": "https://config.inc",
+      "source_url": "https://framerusercontent.com/images/72XEhp30W7ZEnjKIHkcysK5XD8M.png"
     }
   },
   "investors": {
@@ -521,6 +542,20 @@
       "local_path": "/logos/investors/n47.png",
       "source_page": "https://www.n47.com",
       "source_url": "https://cdn.prod.website-files.com/6846bf604cd20cc47e2b90b5/6846d470ca5601b29765392b_FavIcon.png"
+    },
+    "peak-xv-partners": {
+      "name": "Peak XV Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/peak-xv-partners.png",
+      "source_page": "https://www.peakxv.com",
+      "source_url": "https://www.peakxv.com/wp-content/uploads/sites/2/2023/06/cropped-favicon-2-1-2.png?w=192"
+    },
+    "samsung-venture-investment": {
+      "name": "Samsung Venture Investment",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/samsung-venture-investment.svg",
+      "source_page": "https://www.samsungventures.com/en/main.do",
+      "source_url": "https://www.samsungventures.com/assets/images/logo.svg"
     }
   }
 }

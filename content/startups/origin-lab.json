@@ -1,0 +1,24 @@
+{
+  "slug": "origin-lab",
+  "domain": "originlab.ai",
+  "url": "https://originlab.ai",
+  "product_name": "Origin Lab",
+  "summary": "Licensed game-engine data for AI world models and robotics simulation.",
+  "editor_note": "The interesting bet is that world models need game-engine state, not scraped video. Origin Lab captures HUD-free gameplay with depth, action, camera, scene metadata, 20+ categories, 50+ licensed titles, and same-day API access for evals. Compared with web video datasets, this has rights provenance and physics-adjacent telemetry. The hard part is whether game worlds transfer to messy real-world robotics.",
+  "editor_rating": 4,
+  "why_featured": "Game-engine data for world models",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "world models,training data,video games,synthetic data",
+  "investors": "Lightspeed Venture Partners",
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Seed",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-05-13",
+      "source_url": "https://techcrunch.com/2026/05/13/origin-lab-raises-8m-to-help-video-game-companies-sell-data-to-world-model-builders/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

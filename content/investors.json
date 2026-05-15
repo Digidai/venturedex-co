@@ -250,5 +250,19 @@
     "short_name": "N47",
     "website": "https://www.n47.com",
     "description": "Product-first venture firm investing in early technology companies before broad market consensus."
+  },
+  "peak-xv-partners": {
+    "name": "Peak XV Partners",
+    "slug": "peak-xv-partners",
+    "short_name": "Peak XV",
+    "website": "https://www.peakxv.com",
+    "description": "Venture and growth investment firm backing startups across India and Southeast Asia from early stage through growth."
+  },
+  "samsung-venture-investment": {
+    "name": "Samsung Venture Investment",
+    "slug": "samsung-venture-investment",
+    "short_name": "Samsung Ventures",
+    "website": "https://www.samsungventures.com/en/main.do",
+    "description": "Corporate venture capital firm of Samsung investing in AI, robotics, device solutions, bio and health, and frontier technology."
   }
 }
