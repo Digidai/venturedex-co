@@ -1185,3 +1185,42 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `809fe81` was pushed to `main`; GitHub Actions passed for Validate `25653252570` and Deploy `25653252559`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 38 published startups, and a direct homepage check showed Basata and Enzo Health in the live ticker
+
+### 2026-05-15 14:26 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Origin Lab and Config used the standard screenshot path first, Origin Lab was manually recaptured after visual review showed a cookie banner, and Vapi required manual Playwright-wrapper capture after `scripts/screenshot.sh` false-positive `popup_detected` on decorative `pointer-events-none` hero layers; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 5e5ab74
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25903762702` and Deploy `25903762669` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 41 published startups
+- failure_tags: [screenshot_env, source_incomplete, investor_identity_ambiguous, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from environment and browser-capture edges: the first bootstrap stalled in `sharp` install probing until rerun with `SHARP_IGNORE_GLOBAL_LIBVIPS=1`, GitHub GraphQL preflight hit a transient TLS handshake timeout, and screenshot cleanup still misclassifies decorative absolute layers or misses consent banners without visual review
+- proposed_change: apply a narrow screenshot retry clarification for decorative `pointer-events-none`/empty fixed layers and consent/chat widgets; defer bootstrap-level `sharp` environment hardening because that would touch script behavior outside automation-doc heuristic text
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md; scripts/bootstrap-automation.sh
+- affected_section: `Adaptive Heuristics` / `Operational Heuristics`; bootstrap hardening deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and did run before discovery; the first attempt restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, then stalled during `npm ci` in `node_modules/sharp/install/check.js`
+  - root cause for the bootstrap stall was environment-specific `sharp` global-libvips probing: `node node_modules/sharp/install/check.js` timed out locally, while `SHARP_IGNORE_GLOBAL_LIBVIPS=1 node node_modules/sharp/install/check.js` exited cleanly; after killing the stuck bootstrap/npm/sharp processes, the full bootstrap rerun with that env completed
+  - the original bootstrap also hit `Post "https://api.github.com/graphql": net/http: TLS handshake timeout`; `gh auth status` and a targeted `./scripts/check-github-actions.sh .github/workflows/deploy.yml` rerun passed, so this was classified as a transient external GitHub/API reachability issue rather than auth or workflow drift
+  - discovered a 40-candidate current TechCrunch API window, deduped existing startups and rejected slugs, and promoted Vapi, Origin Lab, and Config after funding, product, investor, logo, screenshot, and taste checks
+  - accepted Vapi because TechCrunch verifies a May 12, 2026 $50M Series B led by Peak XV Partners, while `bb-browser` product review confirmed voice-agent workflows, tool integrations, enterprise controls, Ring customer proof, 1B calls, 2.5M+ agents, 750K developers, and sub-500ms latency claims
+  - accepted Origin Lab because TechCrunch verifies a May 13, 2026 $8M seed led by Lightspeed Venture Partners, while `bb-browser` product review confirmed licensed game-engine data, HUD-free video, depth/action/camera/scene metadata, 20+ metadata categories, 50+ titles, same-day API access, and rights/audit-trail positioning
+  - accepted Config because TechCrunch verifies a May 11, 2026 $27M seed led by Samsung Venture Investment, while `bb-browser` product review confirmed the Config Data Platform, 9-stage robot-data workflow, CFG-1, 100K in-house human-data hours, 2B parameters, and sub-50ms RTX 5090 latency
+  - recorded nine rejected decisions for Wirestock, Dessn, Exaforce, Synthetic, Mind Robotics, Cowboy Space, Anduril, Helsing, and Redwood Materials, meeting the 3:1 rejection bar for three acceptances
+  - Wirestock was rejected under F3 because the Nava Ventures lead identity could not be cross-validated against an official investor website or existing directory entry; Dessn, Exaforce, Mind Robotics, Anduril, Helsing, and Redwood Materials were rejected for source/schema completeness issues; Synthetic and Cowboy Space were rejected under F1 for insufficient current product evaluability
+  - `bb-browser` was used for product and browser-side verification of Vapi, Wirestock, Config, Origin Lab, Synthetic, Mind Robotics, Cowboy Space, and Exaforce; automation-opened tabs were closed after verification
+  - `./scripts/screenshot.sh vapi https://vapi.ai` failed with `popup_detected`; `bb-browser` overlay scoring showed decorative `pointer-events-none absolute inset-* z-20/z-30` hero layers, not a modal blocker, and a clean 1440x900 Playwright-wrapper recapture was visually reviewed before writing `public/screenshots/vapi.webp`
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `5e5ab74` was pushed to `main`; GitHub Actions passed for Validate `25903762702` and Deploy `25903762669`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 41 published startups
