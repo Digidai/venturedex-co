@@ -1224,3 +1224,42 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `5e5ab74` was pushed to `main`; GitHub Actions passed for Validate `25903762702` and Deploy `25903762669`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 41 published startups
+
+### 2026-05-16 23:56 CST
+
+- candidate_count: 40
+- accepted: 4
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Outmarket and Secludy used the standard screenshot path, BranchLab required manual Playwright-wrapper recapture after `scripts/screenshot.sh` flagged an empty `pointer-events:none` fixed layer, and Vector required manual recapture after the script misclassified legitimate fixed/sticky navigation as a popup; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 8b6bca7
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25966340977` and Deploy `25966340996` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 45 published startups, and a direct homepage check showed Outmarket, BranchLab, Secludy, and Vector
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from stale local browser and screenshot tooling edges: an old bootstrap/npm process had been running for hours before discovery, `bb-browser daemon status` missed a stale daemon process until it was killed and restarted, and the screenshot classifier still needs help distinguishing non-product overlays from legitimate product navigation
+- proposed_change: defer code-level screenshot classifier hardening for fixed/sticky product navigation and Playwright wrapper session-path handling; no automation-doc heuristic edit because the current failure-investigation, overlay-inspection, visual-review, and manual-recapture path covered the run
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/bootstrap-automation.sh; Playwright wrapper invocation
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - the visible bootstrap process had been stuck in `npm ci` for more than four hours from an earlier run state; process inspection showed the stale bootstrap/npm chain, and terminating it let the bootstrap finish cleanly before any candidate discovery began
+  - `bb-browser daemon start` initially failed with `Daemon did not start in time`; `bb-browser daemon status` said no daemon was running while `ps` showed a day-old `bb-browser/dist/daemon.js --cdp-port 19825` process, so only that stale daemon was killed, CDP was confirmed reachable on `127.0.0.1:19825`, and daemon restart succeeded
+  - discovered a 40-candidate current-source window from TechCrunch, PRNewswire, GlobeNewswire, official company announcements, and related current funding searches, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Outmarket because PR Newswire verifies a May 13, 2026 $17M Series A led by Permanent Capital Ventures, while `bb-browser` product review confirmed quote comparison, coverage gap analysis, ACORD forms, AMS360/Applied Epic integrations, 250+ agencies, 12-15 hours saved per person weekly, and source-cited policy workflows
+  - accepted BranchLab because PR Newswire verifies a May 13, 2026 $26M Series A led by McKesson Ventures, while product review confirmed Pathwai, non-PHI outcome prediction, de-identified health-signal cohorts, media activation, independent measurement, 2,000 additional patients reached in three weeks, and 90% lower cost-per-patient claims
+  - accepted Secludy because GlobeNewswire verifies a May 13, 2026 $4M Seed led by Impression Ventures, while product review confirmed differential-privacy presets, text and table anonymization examples, canary PII leakage tests, VPC/on-prem deployment, Snowflake/Databricks integrations, and an under-1-hour deployment claim
+  - accepted Vector because its official May 13, 2026 announcement verifies a $10M Series A led by SignalFire and HubSpot Ventures, while product review confirmed contact-level audiences, visitor feeds, named buyer examples, LinkedIn/Google/Reddit sync, 7.8% LinkedIn CTR, 17x ROI, and Vector MCP for campaign questions in Claude or ChatGPT
+  - recorded twelve rejected decisions for Rapido, Optura, Hacktron, Osaurus, Sadi Thermal Machines, Poppy, Adaption, Indigo, Meridian Ventures, RJ Scaringe, Runway, and Clawdmeter, meeting the 3:1 rejection bar for four acceptances
+  - Optura was rejected under F1 because the public surface remained request-demo ROAI methodology with no inspectable UI, docs, pricing, workflow screens, or customer case detail beyond high-level marketing metrics; Rapido and Hacktron failed the stage gate, and the remaining rejected TechCrunch items were fund, founder-profile, product-launch, or product-profile stories rather than fresh closed Seed-Series C financing sources
+  - `bb-browser` was used for browser-side product and failure verification of Outmarket, BranchLab, Secludy, Vector, Optura, Permanent Capital Ventures, and McKesson Ventures; automation-opened tabs were closed after verification
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `8b6bca7` was pushed to `main`; GitHub Actions passed for Validate `25966340977` and Deploy `25966340996`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 45 published startups
