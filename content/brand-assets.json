@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-15",
+  "verified_at": "2026-05-16",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -287,6 +287,34 @@
       "local_path": "/logos/companies/config.png",
       "source_page": "https://config.inc",
       "source_url": "https://framerusercontent.com/images/72XEhp30W7ZEnjKIHkcysK5XD8M.png"
+    },
+    "outmarket": {
+      "name": "Outmarket",
+      "shape": "icon",
+      "local_path": "/logos/companies/outmarket.png",
+      "source_page": "https://outmarket.ai",
+      "source_url": "https://framerusercontent.com/images/UkNgnQMW7vCTPLIwiGRJBNV6Y.png"
+    },
+    "branchlab": {
+      "name": "BranchLab",
+      "shape": "icon",
+      "local_path": "/logos/companies/branchlab.png",
+      "source_page": "https://branchlab.com/pathwai",
+      "source_url": "https://framerusercontent.com/images/sHQoJouLlGaivC4s9eyWnf83g.png"
+    },
+    "secludy": {
+      "name": "Secludy",
+      "shape": "icon",
+      "local_path": "/logos/companies/secludy.png",
+      "source_page": "https://secludy.com",
+      "source_url": "https://framerusercontent.com/images/dFjnmoShjCuEXd4CPwQMuInYEc.png"
+    },
+    "vector": {
+      "name": "Vector",
+      "shape": "icon",
+      "local_path": "/logos/companies/vector.png",
+      "source_page": "https://www.vector.co",
+      "source_url": "https://cdn.prod.website-files.com/666c800c0d49f944831ac2e5/668db41c234788db151db9ea_ico.png"
     }
   },
   "investors": {
@@ -556,6 +584,41 @@
       "local_path": "/logos/investors/samsung-venture-investment.svg",
       "source_page": "https://www.samsungventures.com/en/main.do",
       "source_url": "https://www.samsungventures.com/assets/images/logo.svg"
+    },
+    "permanent-capital-ventures": {
+      "name": "Permanent Capital Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/permanent-capital-ventures.png",
+      "source_page": "https://www.permanent-capital.vc",
+      "source_url": "http://static1.squarespace.com/static/670fedb8b4c6186f464907e6/t/6734ffae46d40b51c75cd4b9/1731526574874/Perm-Cap-Ventures-small-white.png?format=1500w"
+    },
+    "mckesson-ventures": {
+      "name": "McKesson Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/mckesson-ventures.png",
+      "source_page": "https://ventures.mckesson.com",
+      "source_url": "https://ventures.mckesson.com/wp-content/uploads/2015/05/McKVentures-Logo-200-White.png"
+    },
+    "impression-ventures": {
+      "name": "Impression Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/impression-ventures.png",
+      "source_page": "https://impression.ventures",
+      "source_url": "https://cdn.prod.website-files.com/6459414cfc6390e6bc38c4dc/6489ea85084e87220d8eebff_Large.png"
+    },
+    "signalfire": {
+      "name": "SignalFire",
+      "shape": "icon",
+      "local_path": "/logos/investors/signalfire.png",
+      "source_page": "https://www.signalfire.com",
+      "source_url": "https://cdn.prod.website-files.com/65160db0f3c4d7c9e2748fdb/6537339fa9c3dcddc44f9c22_webclip-signal.png"
+    },
+    "hubspot-ventures": {
+      "name": "HubSpot Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/hubspot-ventures.png",
+      "source_page": "https://www.hubspot.com/ventures",
+      "source_url": "https://hubspotventures.com/hubfs/Favicon.png"
     }
   }
 }

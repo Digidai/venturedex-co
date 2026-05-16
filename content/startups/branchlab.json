@@ -1,0 +1,26 @@
+{
+  "slug": "branchlab",
+  "domain": "branchlab.com",
+  "url": "https://branchlab.com/pathwai",
+  "product_name": "BranchLab",
+  "summary": "AI audience platform for pharma commercialization.",
+  "editor_note": "The sharper idea is removing PHI from pharma targeting instead of pretending healthcare marketing is ordinary ads. Pathwai learns from de-identified health signals, clusters patient journeys, and cites outcomes like 2,000 extra patients reached in three weeks and 90% lower cost per patient. Compared with static audience files, it sells a learning system for commercial teams. The risk is whether better targeting feels like better healthcare to anyone outside pharma.",
+  "editor_rating": 5,
+  "why_featured": "2,000 patients in 3 weeks",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "pharma,healthcare ai,audience targeting,commercialization",
+  "investors": "McKesson Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$26M",
+      "stage": "Series A",
+      "lead_investor": "McKesson Ventures",
+      "date": "2026-05-13",
+      "source_url": "https://www.prnewswire.com/news-releases/branchlab-raises-26m-series-a-led-by-mckesson-ventures-to-bring-ai-to-pharma-commercialization-302770272.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "secludy",
+  "domain": "secludy.com",
+  "url": "https://secludy.com",
+  "product_name": "Secludy",
+  "summary": "Privacy-safe synthetic data for regulated AI training.",
+  "editor_note": "The bet is that regulated AI teams need usable fake data, not another masking rulebook. Secludy shows differential-privacy presets, text and table anonymization examples, canary PII leakage tests, self-hosted VPC/on-prem deployment, and a claimed under-1-hour setup. Unlike legacy masking, it tries to preserve model utility while moving sensitive records out of scope. The risk is that privacy budgets become another specialist bottleneck.",
+  "editor_rating": 4,
+  "why_featured": "$4M seed for DP synthetic data",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "synthetic data,privacy,ai training,regulated data",
+  "investors": "Impression Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4M",
+      "stage": "Seed",
+      "lead_investor": "Impression Ventures",
+      "date": "2026-05-13",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/13/3294051/0/en/secludy-raises-4m-to-safely-unlock-proprietary-data-for-genai.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

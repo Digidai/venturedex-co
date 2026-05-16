@@ -264,5 +264,40 @@
     "short_name": "Samsung Ventures",
     "website": "https://www.samsungventures.com/en/main.do",
     "description": "Corporate venture capital firm of Samsung investing in AI, robotics, device solutions, bio and health, and frontier technology."
+  },
+  "permanent-capital-ventures": {
+    "name": "Permanent Capital Ventures",
+    "slug": "permanent-capital-ventures",
+    "short_name": "Permanent Capital",
+    "website": "https://www.permanent-capital.vc",
+    "description": "Venture capital firm backing durable, founder-led companies across software, services, and vertical technology markets."
+  },
+  "mckesson-ventures": {
+    "name": "McKesson Ventures",
+    "slug": "mckesson-ventures",
+    "short_name": "McKesson Ventures",
+    "website": "https://ventures.mckesson.com",
+    "description": "Healthcare and pharma-focused venture firm investing in software and services companies from venture through growth stages."
+  },
+  "impression-ventures": {
+    "name": "Impression Ventures",
+    "slug": "impression-ventures",
+    "short_name": "Impression",
+    "website": "https://impression.ventures",
+    "description": "Early-stage venture capital firm investing in applied AI, fintech, and data infrastructure companies."
+  },
+  "signalfire": {
+    "name": "SignalFire",
+    "slug": "signalfire",
+    "short_name": "SignalFire",
+    "website": "https://www.signalfire.com",
+    "description": "Venture capital firm combining startup investing with data and AI systems for recruiting, growth, and market intelligence."
+  },
+  "hubspot-ventures": {
+    "name": "HubSpot Ventures",
+    "slug": "hubspot-ventures",
+    "short_name": "HubSpot Ventures",
+    "website": "https://www.hubspot.com/ventures",
+    "description": "Corporate venture capital arm of HubSpot investing in software companies that help businesses grow."
   }
 }
