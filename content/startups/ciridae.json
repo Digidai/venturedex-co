@@ -1,0 +1,26 @@
+{
+  "slug": "ciridae",
+  "domain": "www.ciridae.com",
+  "url": "https://www.ciridae.com",
+  "product_name": "Ciridae",
+  "summary": "AI operating systems for real-economy businesses.",
+  "editor_note": "The sharper bet is that mid-market operators need rebuilt workflows, not another AI sidebar. Ciridae shows AP invoices, CRM, reporting, project management, and Knight case metrics like $5M revenue uplift and 100% of A/P invoices processed. Unlike horizontal copilots, it embeds into how restoration or logistics companies already run. The risk is whether services work scales without becoming consulting.",
+  "editor_rating": 5,
+  "why_featured": "100% AP invoices processed",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai operations,industrial services,private equity,workflow automation",
+  "investors": "Accel, Andreessen Horowitz, General Catalyst",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Seed",
+      "lead_investor": "Accel",
+      "date": "2026-05-11",
+      "source_url": "https://markets.financialcontent.com/worldnow/article/bizwire-2026-5-11-ciridae-raises-20-million-led-by-accel-to-bring-ai-transformation-to-real-economy-businesses",
+      "source_name": "Business Wire"
+    }
+  ]
+}

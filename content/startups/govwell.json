@@ -1,0 +1,26 @@
+{
+  "slug": "govwell",
+  "domain": "www.govwell.com",
+  "url": "https://www.govwell.com",
+  "product_name": "GovWell",
+  "summary": "AI permitting and licensing platform for local governments.",
+  "editor_note": "This is civic software with a painfully concrete wedge: permits, inspections, licenses, and code enforcement instead of vague government change. GovWell shows AI AutoCheck, 5,000+ processes, 100+ agencies, 35+ states, and processing that can move from 10 days to under an hour. Unlike legacy municipal systems, the product sells speed without making staff change departments. Procurement pace is the obvious drag.",
+  "editor_rating": 5,
+  "why_featured": "100+ agencies, $25M Series A",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "civic software,permitting,licensing,local government",
+  "investors": "Insight Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Insight Partners",
+      "date": "2026-05-14",
+      "source_url": "https://www.prnewswire.com/news-releases/govwell-raises-25m-series-a-led-by-insight-partners-to-build-the-ai-operating-system-for-modern-government-302770627.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

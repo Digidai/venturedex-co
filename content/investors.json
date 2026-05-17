@@ -1,4 +1,11 @@
 {
+  "776": {
+    "name": "Seven Seven Six",
+    "slug": "776",
+    "short_name": "776",
+    "website": "https://sevensevensix.com",
+    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
+  },
   "a16z": {
     "name": "Andreessen Horowitz",
     "slug": "a16z",
@@ -68,13 +75,6 @@
     "short_name": "GC",
     "website": "https://www.generalcatalyst.com",
     "description": "Venture capital firm that invests in powerful, positive change."
-  },
-  "776": {
-    "name": "Seven Seven Six",
-    "slug": "776",
-    "short_name": "776",
-    "website": "https://sevensevensix.com",
-    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
   },
   "thrive": {
     "name": "Thrive Capital",
@@ -299,5 +299,26 @@
     "short_name": "HubSpot Ventures",
     "website": "https://www.hubspot.com/ventures",
     "description": "Corporate venture capital arm of HubSpot investing in software companies that help businesses grow."
+  },
+  "insight-partners": {
+    "name": "Insight Partners",
+    "slug": "insight-partners",
+    "short_name": "Insight",
+    "website": "https://www.insightpartners.com",
+    "description": "Global software investor partnering with high-growth technology companies from startup through ScaleUp."
+  },
+  "f-prime-capital": {
+    "name": "F-Prime Capital",
+    "slug": "f-prime-capital",
+    "short_name": "F-Prime",
+    "website": "https://fprimecapital.com",
+    "description": "Venture capital firm investing in healthcare, life sciences, and technology companies from early stage through growth."
+  },
+  "aulis-capital": {
+    "name": "Aulis Capital",
+    "slug": "aulis-capital",
+    "short_name": "Aulis",
+    "website": "https://auliscapital.com",
+    "description": "Venture firm with offices in Palo Alto, Shanghai, and Hong Kong investing in healthcare and frontier technology."
   }
 }

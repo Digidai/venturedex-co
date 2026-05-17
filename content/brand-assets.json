@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-16",
+  "verified_at": "2026-05-17",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -315,9 +315,51 @@
       "local_path": "/logos/companies/vector.png",
       "source_page": "https://www.vector.co",
       "source_url": "https://cdn.prod.website-files.com/666c800c0d49f944831ac2e5/668db41c234788db151db9ea_ico.png"
+    },
+    "ciridae": {
+      "name": "Ciridae",
+      "shape": "icon",
+      "local_path": "/logos/companies/ciridae.png",
+      "source_page": "https://www.ciridae.com",
+      "source_url": "https://cdn.prod.website-files.com/68532a35829494931a29b25b/68769aa2073c215abcf11e86_Favicon.png"
+    },
+    "govwell": {
+      "name": "GovWell",
+      "shape": "icon",
+      "local_path": "/logos/companies/govwell.png",
+      "source_page": "https://www.govwell.com",
+      "source_url": "https://cdn.prod.website-files.com/697732d0a9e7ed6e5a43811f/698f56cdef10bc5513ab554a_Webclip.png"
+    },
+    "fazeshift": {
+      "name": "Fazeshift",
+      "shape": "icon",
+      "local_path": "/logos/companies/fazeshift.png",
+      "source_page": "https://www.fazeshift.com",
+      "source_url": "https://cdn.prod.website-files.com/68cc460eb1ba24e13c40c3fc/68ecfebf1aadb827f77894a2_webclip.png"
+    },
+    "stitch": {
+      "name": "Stitch",
+      "shape": "icon",
+      "local_path": "/logos/companies/stitch.png",
+      "source_page": "https://www.stitch.co",
+      "source_url": "https://cdn.prod.website-files.com/6823036cd77b3093eaf9154d/6827148ce5879b8551517c5e_Frame%2093.png"
+    },
+    "shyld-ai": {
+      "name": "Shyld AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/shyld-ai.ico",
+      "source_page": "https://www.shyld.ai",
+      "source_url": "https://www.shyld.ai/favicon.ico"
     }
   },
   "investors": {
+    "776": {
+      "name": "Seven Seven Six",
+      "shape": "icon",
+      "local_path": "/logos/investors/776.svg",
+      "source_page": "https://sevensevensix.com",
+      "source_url": "https://sevensevensix.com/logo.svg"
+    },
     "a16z": {
       "name": "Andreessen Horowitz",
       "shape": "icon",
@@ -388,13 +430,6 @@
       "local_path": "/logos/investors/general-catalyst.jpg",
       "source_page": "https://www.generalcatalyst.com",
       "source_url": "https://cdn.prod.website-files.com/66636e6bdd12f4f3d0617065/670e8ce0a1879d0ded466b88_General%20Catalyst%20Favicon%20256x256.jpg"
-    },
-    "776": {
-      "name": "Seven Seven Six",
-      "shape": "icon",
-      "local_path": "/logos/investors/776.svg",
-      "source_page": "https://sevensevensix.com",
-      "source_url": "https://sevensevensix.com/logo.svg"
     },
     "thrive": {
       "name": "Thrive Capital",
@@ -619,6 +654,27 @@
       "local_path": "/logos/investors/hubspot-ventures.png",
       "source_page": "https://www.hubspot.com/ventures",
       "source_url": "https://hubspotventures.com/hubfs/Favicon.png"
+    },
+    "insight-partners": {
+      "name": "Insight Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/insight-partners.png",
+      "source_page": "https://www.insightpartners.com",
+      "source_url": "https://www.insightpartners.com/wp-content/themes/insight/images/cropped-IP-icon-orange-grey-rgb-192x192.png"
+    },
+    "f-prime-capital": {
+      "name": "F-Prime Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/f-prime-capital.png",
+      "source_page": "https://fprimecapital.com",
+      "source_url": "https://fprimecapital.com/wp-content/themes/fprime/img/apple-touch-icon.png"
+    },
+    "aulis-capital": {
+      "name": "Aulis Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/aulis-capital.png",
+      "source_page": "https://auliscapital.com",
+      "source_url": "https://auliscapital.com/wp-content/uploads/2025/11/cropped-Aulisfavicon-180x180.png"
     }
   }
 }

@@ -1,0 +1,26 @@
+{
+  "slug": "stitch",
+  "domain": "www.stitch.co",
+  "url": "https://www.stitch.co",
+  "product_name": "Stitch",
+  "summary": "Financial infrastructure OS for banks and fintechs.",
+  "editor_note": "The interesting move is treating bank modernization as a system-of-record problem, not a prettier payments API. Stitch exposes lending, cards, deposits, ledgers, applications, and live loan UI states, with $5B transacted in six months. Unlike point fintech rails, the bet is one stack that can be adopted module by module. The hard part is selling core infrastructure without inheriting every legacy edge case.",
+  "editor_rating": 5,
+  "why_featured": "$5B transacted in six months",
+  "product_type": "Fintech",
+  "region": "Global / Remote",
+  "tags": "financial infrastructure,core banking,ledgers,cards,lending",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-05-14",
+      "source_url": "https://finance.yahoo.com/markets/stocks/articles/stitch-raises-25m-series-led-070000714.html",
+      "source_name": "Business Wire"
+    }
+  ]
+}
