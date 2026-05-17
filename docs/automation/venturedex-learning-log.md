@@ -1263,3 +1263,43 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `8b6bca7` was pushed to `main`; GitHub Actions passed for Validate `25966340977` and Deploy `25966340996`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 45 published startups
+
+### 2026-05-17 14:19 CST
+
+- candidate_count: 36
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Fazeshift, Stitch, and Shyld AI used the standard screenshot path, GovWell required manual Playwright-wrapper recapture after visual review showed a OneTrust consent banner, and Ciridae required manual scrolled recapture after the automated first viewport rendered as a black animation surface; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: ef3a7fd
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25983293791` and Deploy `25983293798` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 50 published startups, and a direct homepage check showed Ciridae, GovWell, Fazeshift, Stitch, and Shyld AI
+- failure_tags: [screenshot_env, source_incomplete, investor_identity_ambiguous, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from screenshot and source-normalization edges: some valid product pages need visual recapture beyond the literal first viewport, consent banners still need manual cleanup, Playwright wrapper session names can exceed macOS socket path limits, and many current funding stories failed the allowed stage, USD amount, or lead-investor completeness gates
+- proposed_change: defer code-level screenshot selection for blank first viewports and consent auto-dismiss, plus a Playwright wrapper short-session-name guard; no automation-doc heuristic edit because the existing failure-loop, browser verification, visual-review, and manual-recapture rules covered the run
+- decision: deferred
+- affected_file: scripts/screenshot.sh; Playwright wrapper invocation; funding source/schema handling
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - discovered a 36-candidate current-source window from PR Newswire, Business Wire/Yahoo/FinancialContent mirrors, GlobeNewswire, TechCrunch-adjacent searches, and company/product sites, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Ciridae because Business Wire verifies a May 11, 2026 $20M Seed led by Accel, while `bb-browser` product review confirmed real-economy operating-system workflows, AP invoices, CRM, reporting, project management, and Knight case metrics including $5M revenue uplift and 100% A/P invoice processing
+  - accepted GovWell because PR Newswire verifies a May 14, 2026 $25M Series A led by Insight Partners, while product review confirmed permitting, licensing, planning, code enforcement, AI AutoCheck, 100+ agencies, 35+ states, and workflow speed claims from 10 days to under an hour
+  - accepted Fazeshift because Business Wire/Yahoo verifies a May 16, 2026 $22M Series A led by F-Prime Capital, while product review confirmed AI AR agents for cash application, collections, contract review, billing, payment portal, SOC 1/2 posture, and 90% less AR time / 50% DSO reduction claims
+  - accepted Stitch because Business Wire/Yahoo verifies a May 14, 2026 $25M Series A led by Andreessen Horowitz, while product review confirmed lending, cards, deposits, ledgers, applications, compliance, treasury, and $5B transacted over six months
+  - accepted Shyld AI because GlobeNewswire verifies a May 14, 2026 $13.4M Seed led by Aulis Capital, while product review confirmed 3D LiDAR, radar, infrared sensing, edge GPU alerts, UV-C integration, OR workflow timelines, dashboard evidence, and contamination-reduction claims
+  - recorded fifteen rejected decisions for Coworked, Charms, M2 Foundry, eyeo, Dodai, Saile, Driive, FrostByte, Mindtail, Rogue Snacks, Sedivention, Ouinex, idea-L, NORI, and Elastics, meeting the 3:1 rejection bar for five acceptances
+  - Coworked, M2 Foundry, Saile, Driive, FrostByte, Mindtail, Rogue Snacks, idea-L, NORI, and Elastics were rejected for stage/schema gaps; Charms and Ouinex were rejected under the crypto exclusion; eyeo was rejected because the schema currently requires USD funding amounts; Dodai lacked a clear lead investor; Sedivention lacked an inspectable deployed product surface
+  - `bb-browser` was used for browser-side product verification and screenshot triage of Ciridae, GovWell, Fazeshift, Stitch, and Shyld AI; the initially opened wrong Stitch `.money` tab was closed and the correct `stitch.co` product site was verified
+  - `scripts/screenshot.sh` produced local screenshots for all five accepted startups, but visual review caught the Ciridae black first viewport and the GovWell cookie banner; Ciridae was recaptured at a scrolled product explanation section, and GovWell was recaptured after rejecting/removing the consent layer
+  - a manual Playwright-wrapper recapture using session `vdxmanual-ciridae2` failed with `listen EINVAL` because the generated UNIX socket path exceeded macOS limits; rerunning with short session `vc2` completed the same 1440x900 capture without changing project code
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `ef3a7fd` was pushed to `main`; GitHub Actions passed for Validate `25983293791` and Deploy `25983293798`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 50 published startups, and a direct homepage check showed all five new names
