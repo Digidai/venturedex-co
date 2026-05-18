@@ -1,0 +1,26 @@
+{
+  "slug": "crew-carbon",
+  "domain": "crewcarbon.com",
+  "url": "https://crewcarbon.com",
+  "product_name": "CREW Carbon",
+  "summary": "Wastewater process optimization that also delivers measured carbon removal.",
+  "editor_note": "This is climate tech with an operator's wedge: make sewage plants cheaper before selling carbon removal. CREW uses calcium carbonate dosing, closed-system measurement, and projects at nearly 10 facilities; one utility may defer a $350M upgrade. Unlike credits-first carbon removal, the buyer also gets better pH, settleability, and chemical spend. That dual value is why it feels less fragile than most climate markets.",
+  "editor_rating": 5,
+  "why_featured": "$350M plant upgrade deferred",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "water tech,carbon removal,wastewater,climate",
+  "investors": "Burnt Island Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Burnt Island Ventures",
+      "date": "2026-05-14",
+      "source_url": "https://www.prnewswire.com/news-releases/crew-raises-25m-of-funding-to-scale-wastewater-treatment-optimization-technology-as-climate-solution-302772585.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

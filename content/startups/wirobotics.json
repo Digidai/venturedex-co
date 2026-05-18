@@ -1,0 +1,26 @@
+{
+  "slug": "wirobotics",
+  "domain": "corp.wirobotics.com",
+  "url": "https://corp.wirobotics.com/en/product/allex",
+  "product_name": "WIRobotics",
+  "summary": "Wearable and humanoid robots built from human movement data.",
+  "editor_note": "The real bet is that humanoids should learn from exoskeletons, not lab demos. WIRobotics has 3,000 WIM units sold, three CES awards, gait datasets from wearable robots, and ALLEX specs like 15-DoF hands, 0.5 mm repeatability, and 30 kg hook grip. Compared with blank-slate humanoid hype, this starts from human movement in the field. The risk is whether research platforms become durable products.",
+  "editor_rating": 5,
+  "why_featured": "3,000 WIM units, $68M Series B",
+  "product_type": "Other",
+  "region": "China / Asia",
+  "tags": "robotics,wearables,humanoids,physical ai",
+  "investors": "JB Investment",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$68M",
+      "stage": "Series B",
+      "lead_investor": "JB Investment",
+      "date": "2026-05-14",
+      "source_url": "https://www.prnewswire.com/news-releases/wirobotics-secures-approximately-krw-100-billion-usd-68-million-series-b-funding-302772164.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

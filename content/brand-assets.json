@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-17",
+  "verified_at": "2026-05-18",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -350,6 +350,41 @@
       "local_path": "/logos/companies/shyld-ai.ico",
       "source_page": "https://www.shyld.ai",
       "source_url": "https://www.shyld.ai/favicon.ico"
+    },
+    "nectar-social": {
+      "name": "Nectar Social",
+      "shape": "icon",
+      "local_path": "/logos/companies/nectar-social.png",
+      "source_page": "https://www.nectarsocial.com",
+      "source_url": "https://www.nectarsocial.com/favicon.png"
+    },
+    "wirobotics": {
+      "name": "WIRobotics",
+      "shape": "icon",
+      "local_path": "/logos/companies/wirobotics.ico",
+      "source_page": "https://corp.wirobotics.com/en",
+      "source_url": "https://corp.wirobotics.com/favicon.ico?favicon.613e004a.ico"
+    },
+    "arkeus": {
+      "name": "Arkeus",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/arkeus.svg",
+      "source_page": "https://arkeus.com",
+      "source_url": "https://cdn.prod.website-files.com/69f1c586ef0a7e04e8f51df7/69f33d36e2a9c887b69f7cff_arekeus%20logo.svg"
+    },
+    "crew-carbon": {
+      "name": "CREW Carbon",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/crew-carbon.png",
+      "source_page": "https://crewcarbon.com",
+      "source_url": "https://crewcarbon.com/wp-content/uploads/2026/03/RGB_Crew_Full-Logo_Salmon-Deep-Ocean.png"
+    },
+    "equipifi": {
+      "name": "equipifi",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/equipifi.png",
+      "source_page": "https://www.equipifi.com",
+      "source_url": "https://www.equipifi.com/hs-fs/hubfs/equipifi-logos/equipifi-logo-black-2.png?width=1920&height=454&name=equipifi-logo-black-2.png"
     }
   },
   "investors": {
@@ -675,6 +710,34 @@
       "local_path": "/logos/investors/aulis-capital.png",
       "source_page": "https://auliscapital.com",
       "source_url": "https://auliscapital.com/wp-content/uploads/2025/11/cropped-Aulisfavicon-180x180.png"
+    },
+    "jb-investment": {
+      "name": "JB Investment",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/jb-investment.png",
+      "source_page": "https://www.jbinvest.co.kr",
+      "source_url": "https://www.jbinvest.co.kr/wp-content/uploads/2022/07/logo_h48.png"
+    },
+    "qic-ventures": {
+      "name": "QIC Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/qic-ventures.svg",
+      "source_page": "https://www.qic.com/Investment-Capabilities/Private-Equity/QIC-Ventures",
+      "source_url": "https://edge.sitecorecloud.io/giclimited1-qiccom-prod-94af/media/Project/QIC/QIC/Logos/QIC-logo-red.svg?iar=0"
+    },
+    "burnt-island-ventures": {
+      "name": "Burnt Island Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/burnt-island-ventures.png",
+      "source_page": "https://www.burntislandventures.com",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5f45884c04871671385c415a/a034ffae-63a2-4033-bfae-1ef540eb9a55/BIV+Logo+White+on+Blue.jpg"
+    },
+    "left-lane-capital": {
+      "name": "Left Lane Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/left-lane-capital.png",
+      "source_page": "https://www.leftlane.com",
+      "source_url": "https://cdn.prod.website-files.com/60f1a7dcfadff39642c48e55/6105aa88d302826a7ecce93a_Favicon.png"
     }
   }
 }

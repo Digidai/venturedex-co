@@ -1,0 +1,26 @@
+{
+  "slug": "equipifi",
+  "domain": "www.equipifi.com",
+  "url": "https://www.equipifi.com",
+  "product_name": "equipifi",
+  "summary": "White-label BNPL and installment-lending platform for banks and credit unions.",
+  "editor_note": "The better BNPL bet is hiding inside the bank app, not at checkout. equipifi gives credit unions and banks pre-approved pay-over-time offers, debit-card installment loans, eligibility controls, reporting, and launch paths that need about 10 team hours. Unlike consumer BNPL brands, it sells the rails to institutions that already hold the relationship. The product is more useful than beautiful, which keeps the rating grounded.",
+  "editor_rating": 3,
+  "why_featured": "Bank-native BNPL rails",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,bnpl,credit unions,banking",
+  "investors": "Left Lane Capital",
+  "links": {},
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$34M",
+      "stage": "Series B",
+      "lead_investor": "Left Lane Capital",
+      "date": "2026-05-14",
+      "source_url": "https://www.prnewswire.com/news-releases/equipifi-secures-34-million-series-b-to-accelerate-buy-now-pay-later-across-us-financial-institutions-302771649.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

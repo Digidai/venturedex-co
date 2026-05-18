@@ -1,0 +1,28 @@
+{
+  "slug": "nectar-social",
+  "domain": "www.nectarsocial.com",
+  "url": "https://www.nectarsocial.com",
+  "product_name": "Nectar Social",
+  "summary": "AI social operating system for community management, listening, and attribution.",
+  "editor_note": "Someone finally treated social replies as checkout infrastructure instead of brand theater. Nectar shows AI agents for DMs, comments, creator workflows, Reddit/Meta data, 95% untagged conversations, and revenue attribution in one workspace. Unlike Hootsuite-style schedulers, it bets that the community manager's inbox is where demand is created. The hard part is keeping brand voice from turning into customer-service mush.",
+  "editor_rating": 4,
+  "why_featured": "95% untagged social coverage",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "social commerce,ai agents,community management,marketing analytics",
+  "investors": "Menlo Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/nectar-ai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Menlo Ventures",
+      "date": "2026-05-16",
+      "source_url": "https://techcrunch.com/2026/05/16/marketing-operating-system-nectar-social-raises-30m-series-a-in-round-led-by-menlo/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

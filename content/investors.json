@@ -320,5 +320,33 @@
     "short_name": "Aulis",
     "website": "https://auliscapital.com",
     "description": "Venture firm with offices in Palo Alto, Shanghai, and Hong Kong investing in healthcare and frontier technology."
+  },
+  "jb-investment": {
+    "name": "JB Investment",
+    "slug": "jb-investment",
+    "short_name": "JB Investment",
+    "website": "https://www.jbinvest.co.kr",
+    "description": "Seoul-based venture capital firm under JB Financial Group investing across Korean startups and growth companies."
+  },
+  "qic-ventures": {
+    "name": "QIC Ventures",
+    "slug": "qic-ventures",
+    "short_name": "QIC Ventures",
+    "website": "https://www.qic.com/Investment-Capabilities/Private-Equity/QIC-Ventures",
+    "description": "Queensland-based venture investor within QIC Private Equity backing companies from pre-seed through Series C and later."
+  },
+  "burnt-island-ventures": {
+    "name": "Burnt Island Ventures",
+    "slug": "burnt-island-ventures",
+    "short_name": "Burnt Island",
+    "website": "https://www.burntislandventures.com",
+    "description": "Water-focused venture capital firm investing in founders building infrastructure and climate resilience technologies."
+  },
+  "left-lane-capital": {
+    "name": "Left Lane Capital",
+    "slug": "left-lane-capital",
+    "short_name": "Left Lane",
+    "website": "https://www.leftlane.com",
+    "description": "Venture and growth equity firm investing in high-growth consumer and technology companies."
   }
 }
