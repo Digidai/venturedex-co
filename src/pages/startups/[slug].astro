@@ -10,6 +10,7 @@ import {
   resolveInvestorByName,
 } from "../../lib/brand-assets";
 import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import { startupJsonLd, truncateText } from "../../lib/seo";
 import type { StartupLinks } from "../../lib/types";
 
 const { slug } = Astro.params;
@@ -21,6 +22,8 @@ if (!startup) return Astro.redirect("/404");
 const related = await getRelatedStartups(db, startup);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
+const description = truncateText(startup.summary ?? startup.editor_note ?? `${startup.product_name} on VentureDex`);
+const schema = startupJsonLd(startup, Astro.site?.toString());
 
 const investors = startup.investors
   ? startup.investors.split(",").map((s) => s.trim()).filter(Boolean)
@@ -61,7 +64,11 @@ const externalLinks = [
 
 <Base
   title={startup.product_name}
-  description={startup.summary ?? `${startup.product_name} on VentureDex`}
+  description={description}
+  ogImage={screenshotUrl ?? undefined}
+  publishedTime={startup.published_at}
+  modifiedTime={startup.updated_at}
+  schema={schema}
 >
   <article class="site-detail container">
     <div class="detail-hero">

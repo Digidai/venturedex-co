@@ -143,17 +143,18 @@
     },
     "liquid-instruments": {
       "name": "Liquid Instruments",
-      "shape": "wordmark",
-      "local_path": "/logos/companies/liquid-instruments.svg",
+      "shape": "icon",
+      "local_path": "/logos/companies/liquid-instruments.png",
       "source_page": "https://www.liquidinstruments.com",
-      "source_url": "https://liquidinstruments.com/wp-content/uploads/2022/01/liquid-instruments-logo.svg"
+      "source_url": "https://liquidinstruments.com/wp-content/uploads/2022/11/cropped-li-logo-icon-512x512-1-300x300.png"
     },
     "balerion": {
       "name": "Balerion",
-      "shape": "wordmark",
+      "shape": "icon",
       "local_path": "/logos/companies/balerion.svg",
       "source_page": "https://balerion.ai",
-      "source_url": "https://framerusercontent.com/images/JfoHxWPOIXY78wF9LeTgpEWs.svg?width=116&height=24"
+      "source_url": "https://framerusercontent.com/images/JfoHxWPOIXY78wF9LeTgpEWs.svg?width=116&height=24",
+      "note": "Derived compact dark mark from the official white wordmark for card UI readability."
     },
     "juliahub": {
       "name": "JuliaHub",
@@ -243,11 +244,10 @@
     },
     "lightspeed": {
       "name": "Lightspeed Venture Partners",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/lightspeed.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/lightspeed.png",
       "source_page": "https://lsvp.com",
-      "source_url": "https://lsvp.com",
-      "note": "Extracted from the official inline header SVG in a browser session because direct asset fetches are challenge-gated."
+      "source_url": "https://lsvp.com/wp-content/uploads/2023/04/mstile-310x310-1.png"
     },
     "general-catalyst": {
       "name": "General Catalyst",
@@ -356,10 +356,10 @@
     },
     "dorilton-ventures": {
       "name": "Dorilton Ventures",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/dorilton-ventures.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/dorilton-ventures.png",
       "source_page": "https://doriltongroup.com/ventures/",
-      "source_url": "https://doriltongroup.com/wp-content/uploads/2024/07/dorilton-ventures.svg"
+      "source_url": "https://doriltongroup.com/wp-content/uploads/2026/05/android-chrome-512x512-1-300x300.png"
     },
     "rtp-global": {
       "name": "RTP Global",

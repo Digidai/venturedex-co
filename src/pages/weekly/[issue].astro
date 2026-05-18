@@ -4,6 +4,7 @@ export const prerender = false;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getWeeklyIssueByNumber } from "../../lib/db";
+import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
 
 const issueNum = Number(Astro.params.issue);
 if (isNaN(issueNum)) return Astro.redirect("/weekly");
@@ -13,9 +14,17 @@ const data = await getWeeklyIssueByNumber(db, issueNum);
 if (!data) return Astro.redirect("/404");
 
 const { issue, startups } = data;
+const description = truncateText(issue.editorial_intro ?? `VentureDex Weekly #${issue.issue_number}`);
+const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
 ---
 
-<Base title={issue.title} description={issue.editorial_intro ?? `VentureDex Weekly #${issue.issue_number}`}>
+<Base
+  title={issue.title}
+  description={description}
+  ogType="article"
+  publishedTime={issue.published_at}
+  schema={schema}
+>
   <div class="container weekly-detail">
     <header class="issue-header">
       <a href="/weekly" class="back-link">&larr; All issues</a>

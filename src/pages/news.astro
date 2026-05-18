@@ -12,6 +12,7 @@ import {
   NEWS_ROUNDS_LIMIT,
   getNewsFundingRounds,
 } from "../lib/db";
+import { newsJsonLd } from "../lib/seo";
 
 const db = Astro.locals.runtime.env.DB;
 let rounds: Awaited<ReturnType<typeof getNewsFundingRounds>> = [];
@@ -21,9 +22,12 @@ try {
 } catch (error) {
   console.error("Failed to load funding news", error);
 }
+
+const description = "Recent funding rounds with verified press sources and official company and investor logos.";
+const schema = newsJsonLd(rounds, Astro.site?.toString());
 ---
 
-<Base title="News" description="Recent funding rounds with verified press sources and official company and investor logos.">
+<Base title="News" description={description} schema={schema}>
   <div class="container news-page">
     <header class="news-header">
       <h1>Latest funding news</h1>

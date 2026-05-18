@@ -8,6 +8,7 @@ import {
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
 import { getInvestorBySlug } from "../../lib/db";
+import { investorJsonLd, truncateText } from "../../lib/seo";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
@@ -17,9 +18,11 @@ if (!data) return Astro.redirect("/404");
 
 const { investor, rounds } = data;
 const investorBrand = getInvestorBrandAsset(investor.slug);
+const description = truncateText(investor.description ?? `${investor.name} portfolio on VentureDex`);
+const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
 ---
 
-<Base title={investor.name} description={investor.description ?? `${investor.name} portfolio on VentureDex`}>
+<Base title={investor.name} description={description} schema={schema}>
   <div class="container investor-page">
     <a href="/news" class="back-link">&larr; Back to news</a>
 

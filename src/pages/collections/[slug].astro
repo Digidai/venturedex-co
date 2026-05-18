@@ -4,6 +4,7 @@ export const prerender = false;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getCollectionBySlug } from "../../lib/db";
+import { collectionJsonLd, truncateText } from "../../lib/seo";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
@@ -12,9 +13,11 @@ const data = await getCollectionBySlug(db, slug!);
 if (!data) return Astro.redirect("/404");
 
 const { collection, startups } = data;
+const description = truncateText(collection.description ?? `${collection.title} on VentureDex`);
+const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
 ---
 
-<Base title={collection.title} description={collection.description ?? `${collection.title} on VentureDex`}>
+<Base title={collection.title} description={description} schema={schema}>
   <div class="container collection-detail">
     <header>
       <a href="/collections" class="back-link">&larr; All collections</a>

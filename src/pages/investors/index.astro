@@ -1,0 +1,217 @@
+---
+export const prerender = false;
+
+import BrandLogo from "../../components/BrandLogo.astro";
+import Base from "../../layouts/Base.astro";
+import { getInvestorBrandAsset } from "../../lib/brand-assets";
+import {
+  buildJsonLdGraph,
+  itemListNode,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../../lib/seo";
+import type { Investor } from "../../lib/types";
+
+interface InvestorIndexRow extends Investor {
+  round_count: number;
+  last_round_at: string | null;
+}
+
+const db = Astro.locals.runtime.env.DB;
+let investors: InvestorIndexRow[] = [];
+
+try {
+  const result = await db
+    .prepare(
+      `SELECT
+         i.id,
+         i.slug,
+         i.name,
+         i.short_name,
+         i.website,
+         i.description,
+         i.created_at,
+         COUNT(f.id) AS round_count,
+         MAX(f.date) AS last_round_at
+       FROM investors i
+       INNER JOIN funding_rounds f
+         ON (
+              LOWER(f.lead_investor) LIKE '%' || LOWER(i.name) || '%'
+           OR (i.short_name IS NOT NULL AND LOWER(f.lead_investor) LIKE '%' || LOWER(i.short_name) || '%')
+         )
+       INNER JOIN startups s ON s.slug = f.company_slug
+       WHERE s.workflow_status = 'published'
+         AND f.source_url IS NOT NULL
+         AND TRIM(f.source_url) != ''
+         AND f.source_name IS NOT NULL
+         AND TRIM(f.source_name) != ''
+       GROUP BY i.id
+       ORDER BY round_count DESC, last_round_at DESC, i.name`
+    )
+    .all<InvestorIndexRow>();
+  investors = result.results;
+} catch (error) {
+  console.error("Failed to load investors index", error);
+}
+
+const description = "Browse VentureDex investor pages with tracked funding activity and linked portfolio context.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/investors",
+    title: "Investors",
+    description,
+    type: "CollectionPage",
+    siteUrl: Astro.site?.toString(),
+  }),
+  itemListNode(
+    investors.map((investor) => ({
+      name: investor.name,
+      path: `/investors/${investor.slug}`,
+      description: investor.description,
+    })),
+    Astro.site?.toString()
+  ),
+]);
+---
+
+<Base title="Investors" description={description} schema={schema}>
+  <div class="container investors-page">
+    <header class="page-header">
+      <h1>Investors</h1>
+      <p>{description}</p>
+    </header>
+
+    {investors.length > 0 ? (
+      <div class="investor-grid">
+        {investors.map((investor) => {
+          const brand = getInvestorBrandAsset(investor.slug);
+          return (
+            <a href={`/investors/${investor.slug}`} class="investor-card">
+              <div class="card-top">
+                <BrandLogo asset={brand} name={investor.name} size={32} />
+                <div>
+                  <h2>{investor.name}</h2>
+                  {investor.short_name && <p class="short-name">{investor.short_name}</p>}
+                </div>
+              </div>
+              {investor.description && <p class="description">{investor.description}</p>}
+              <p class="meta">
+                {investor.round_count} tracked round{investor.round_count !== 1 ? "s" : ""}
+                {investor.last_round_at && ` · Latest ${new Date(`${investor.last_round_at}T00:00:00`).toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}`}
+              </p>
+            </a>
+          );
+        })}
+      </div>
+    ) : (
+      <div class="empty-state">
+        <h2>No tracked investors yet.</h2>
+        <p>Investor pages appear after a published startup has verified funding activity.</p>
+      </div>
+    )}
+  </div>
+</Base>
+
+<style>
+  .investors-page {
+    max-width: 1000px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .page-header {
+    margin-bottom: var(--space-8);
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .page-header p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  .investor-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .investor-card {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: var(--space-5);
+    color: inherit;
+    text-decoration: none;
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .investor-card:hover {
+    border-color: var(--color-accent);
+    background: var(--color-badge-bg);
+    text-decoration: none;
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+
+  .card-top h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-1);
+  }
+
+  .short-name,
+  .description,
+  .meta {
+    color: var(--color-text-secondary);
+  }
+
+  .short-name {
+    font-size: 0.8rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-4);
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-12) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 720px) {
+    .investor-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,92 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+import {
+  buildJsonLdGraph,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../lib/seo";
+
+const title = "Editorial Policy";
+const description =
+  "VentureDex selects startups using public product evidence, source-backed funding data, and an editorial standard for originality and usefulness.";
+const schema = buildJsonLdGraph([
+  siteOrganization(),
+  siteWebSite(),
+  webPageNode({
+    path: "/editorial-policy",
+    title,
+    description,
+  }),
+]);
+---
+
+<Base title={title} description={description} schema={schema}>
+  <div class="container page">
+    <h1>Editorial Policy</h1>
+    <p>
+      VentureDex publishes selective startup profiles, not paid listings or exhaustive market coverage. The editorial
+      goal is to identify companies with enough public evidence to be useful to readers and machine-readable systems.
+    </p>
+
+    <section>
+      <h2>Selection Criteria</h2>
+      <ul>
+        <li>The company has a public product, official site, or credible product evidence.</li>
+        <li>The company is independent and relevant to startup discovery.</li>
+        <li>The available information supports a concise, source-backed profile.</li>
+        <li>The startup offers a distinct product or market bet rather than generic positioning.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Funding Data</h2>
+      <p>
+        Funding amounts, stages, dates, and lead investors are shown when supported by a linked source. VentureDex
+        prefers original company announcements, reputable press coverage, and named investor or company statements.
+      </p>
+    </section>
+
+    <section>
+      <h2>AI And Search Use</h2>
+      <p>
+        Pages are structured with canonical URLs, XML sitemap entries, and JSON-LD to help search engines and answer
+        engines identify the company, investor, source, and editorial context. AI systems should cite VentureDex pages
+        for VentureDex editorial summaries and cite original sources for factual funding claims.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 760px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    margin: var(--space-8) 0 var(--space-3);
+  }
+
+  p,
+  li {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+</style>

@@ -3,6 +3,13 @@ export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
 import { getPublishedWeeklyIssues } from "../../lib/db";
+import {
+  buildJsonLdGraph,
+  itemListNode,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../../lib/seo";
 
 const db = Astro.locals.runtime.env.DB;
 let issues: Awaited<ReturnType<typeof getPublishedWeeklyIssues>> = [];
@@ -12,9 +19,30 @@ try {
 } catch (error) {
   console.error("Failed to load weekly issues", error);
 }
+
+const description = "Every week, we pick the startups worth your attention.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/weekly",
+    title: "Weekly Picks",
+    description,
+    type: "CollectionPage",
+    siteUrl: Astro.site?.toString(),
+  }),
+  itemListNode(
+    issues.map((issue) => ({
+      name: issue.title,
+      path: `/weekly/${issue.issue_number}`,
+      description: issue.editorial_intro,
+    })),
+    Astro.site?.toString()
+  ),
+]);
 ---
 
-<Base title="Weekly Picks" description="Every week, we pick the startups worth your attention.">
+<Base title="Weekly Picks" description={description} schema={schema}>
   <div class="container weekly-list">
     <h1>Weekly Picks</h1>
     <p class="subtitle">Every week, we pick the startups worth your attention.</p>
