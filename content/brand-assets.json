@@ -186,10 +186,10 @@
     },
     "copilotkit": {
       "name": "CopilotKit",
-      "shape": "wordmark",
-      "local_path": "/logos/companies/copilotkit.svg",
+      "shape": "icon",
+      "local_path": "/logos/companies/copilotkit-icon.png",
       "source_page": "https://www.copilotkit.ai",
-      "source_url": "https://www.copilotkit.ai/icons/copilot-kit-logo.svg"
+      "source_url": "https://www.copilotkit.ai/favicon.ico"
     },
     "moment-energy": {
       "name": "Moment Energy",
@@ -249,7 +249,7 @@
     },
     "hilbert": {
       "name": "Hilbert",
-      "shape": "wordmark",
+      "shape": "icon",
       "local_path": "/logos/companies/hilbert.svg",
       "source_page": "https://hilberts.ai",
       "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
@@ -503,17 +503,18 @@
     },
     "amd-ventures": {
       "name": "AMD Ventures",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/amd-ventures.png",
+      "shape": "icon",
+      "local_path": "/logos/investors/amd-ventures-icon.png",
       "source_page": "https://www.amd.com/en/corporate/amd-ventures",
-      "source_url": "https://www.amd.com/content/dam/amd/en/images/logos/corporate/3923200-ventures-logo.png"
+      "source_url": "https://www.amd.com/content/dam/amd/en/images/logos/corporate/3923200-ventures-logo.png",
+      "note": "Derived compact backed mark from the official AMD Ventures logo for small UI readability."
     },
     "keysight-technologies": {
       "name": "Keysight Technologies",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/keysight-technologies.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/keysight-technologies-icon.png",
       "source_page": "https://www.keysight.com",
-      "source_url": "https://www.keysight.com/content/dam/keysight/en/img/gnav/keysight-logo.svg"
+      "source_url": "https://www.keysight.com/favicon.ico"
     },
     "kleiner-perkins": {
       "name": "Kleiner Perkins",
@@ -531,10 +532,10 @@
     },
     "rtp-global": {
       "name": "RTP Global",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/rtp-global.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/rtp-global-icon.png",
       "source_page": "https://rtp.vc",
-      "source_url": "https://rtp.vc/wp-content/uploads/2023/03/rtp_logo_blackRGB-01.svg"
+      "source_url": "https://rtp.vc/wp-content/uploads/2023/03/favi_rtp-300x300.png"
     },
     "menlo-ventures": {
       "name": "Menlo Ventures",
@@ -552,24 +553,24 @@
     },
     "glilot-capital": {
       "name": "Glilot Capital",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/glilot-capital.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/glilot-capital-icon.png",
       "source_page": "https://www.glilotcapital.com",
-      "source_url": "https://glilotcapital.com/wp-content/uploads/2025/08/Logo.svg"
+      "source_url": "https://glilotcapital.com/wp-content/uploads/2025/08/Logo-Dynamic-1.svg"
     },
     "evok-innovations": {
       "name": "Evok Innovations",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/evok-innovations.jpg",
+      "shape": "icon",
+      "local_path": "/logos/investors/evok-innovations-icon.png",
       "source_page": "https://www.evokinnovations.com",
-      "source_url": "https://static.wixstatic.com/media/ae0ff3_d0f2ac34bc6940059909328c3fc665d8~mv2.jpg/v1/fill/w_480,h_120,al_c,q_80,usm_0.66_1.00_0.01/evok_logo_hi_res.jpg"
+      "source_url": "https://static.wixstatic.com/media/33bfab_2ff35e849d1f43c59e978f24d95e0314%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/33bfab_2ff35e849d1f43c59e978f24d95e0314%7Emv2.png"
     },
     "intel-capital": {
       "name": "Intel Capital",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/intel-capital.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/intel-capital-icon.png",
       "source_page": "https://www.intelcapital.com",
-      "source_url": "https://www.intelcapital.com/wp-content/themes/intel-capital/dist/images/logo-color.svg"
+      "source_url": "https://www.intel.com/etc.clientlibs/settings/wcm/designs/intel/default/resources/favicon-32x32.png"
     },
     "tcv": {
       "name": "TCV",
@@ -587,10 +588,10 @@
     },
     "bessemer-venture-partners": {
       "name": "Bessemer Venture Partners",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/bessemer-venture-partners.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/bessemer-venture-partners-icon.png",
       "source_page": "https://www.bvp.com",
-      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg"
+      "source_url": "https://www.bvp.com/favicon.ico"
     },
     "basis-set-ventures": {
       "name": "Basis Set Ventures",
@@ -615,10 +616,10 @@
     },
     "samsung-venture-investment": {
       "name": "Samsung Venture Investment",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/samsung-venture-investment.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/samsung-venture-investment-icon.png",
       "source_page": "https://www.samsungventures.com/en/main.do",
-      "source_url": "https://www.samsungventures.com/assets/images/logo.svg"
+      "source_url": "https://www.samsungventures.com/assets/favicon/favicon.ico"
     },
     "permanent-capital-ventures": {
       "name": "Permanent Capital Ventures",

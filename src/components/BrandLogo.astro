@@ -25,66 +25,111 @@ const initials = getBrandInitials(name);
 const style = `--brand-size:${size}px;`;
 ---
 
-{asset ? (
-  <img
-    src={asset.local_path}
-    alt=""
-    aria-hidden="true"
-    loading={loading}
-    decoding="async"
-    class:list={["brand-logo", `brand-logo--${shape}`, className]}
-    style={style}
-  />
-) : (
-  <span
-    class:list={["brand-fallback", `brand-fallback--${shape}`, className]}
-    style={style}
-    aria-hidden="true"
-  >
-    {initials}
-  </span>
-)}
+<span
+  class:list={[
+    "brand-mark",
+    `brand-mark--${shape}`,
+    asset ? "brand-mark--asset" : "brand-mark--fallback",
+    className,
+  ]}
+  style={style}
+  aria-hidden="true"
+>
+  {asset ? (
+    <img
+      src={asset.local_path}
+      alt=""
+      loading={loading}
+      decoding="async"
+      class="brand-logo"
+    />
+  ) : (
+    <span class="brand-fallback">{initials}</span>
+  )}
+</span>
 
 <style>
-  .brand-logo,
-  .brand-fallback {
+  .brand-mark {
+    --brand-tile-bg: linear-gradient(135deg, #ffffff 0%, #f1f1ee 100%);
+    --brand-tile-border: rgba(0, 0, 0, 0.1);
+    --brand-logo-filter:
+      drop-shadow(0 0 0.7px rgba(0, 0, 0, 0.8))
+      drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.18));
     flex-shrink: 0;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    width: var(--brand-size);
+    height: var(--brand-size);
+    border: 1px solid var(--brand-tile-border);
+    border-radius: max(6px, calc(var(--brand-size) * 0.18));
+    background: var(--brand-tile-bg);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      0 1px 2px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+    vertical-align: middle;
   }
 
   .brand-logo {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 76%;
+    max-height: 76%;
     object-fit: contain;
     object-position: center;
+    filter: var(--brand-logo-filter);
   }
 
-  .brand-logo--icon,
-  .brand-fallback--icon {
-    width: var(--brand-size);
-    height: var(--brand-size);
-    border-radius: 6px;
-  }
-
-  .brand-logo--wordmark {
-    height: calc(var(--brand-size) * 0.9);
-    width: auto;
-    max-width: calc(var(--brand-size) * 5.2);
+  .brand-mark--wordmark .brand-logo {
+    max-width: 86%;
+    max-height: 54%;
   }
 
   .brand-fallback {
-    border: 1px solid var(--color-border);
-    background: var(--color-badge-bg);
-    color: var(--color-text-secondary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--color-badge-text);
     font-size: calc(var(--brand-size) * 0.48);
     font-weight: 700;
     line-height: 1;
   }
 
-  .brand-fallback--wordmark {
-    min-width: calc(var(--brand-size) * 2.6);
-    height: calc(var(--brand-size) * 0.9);
-    border-radius: 6px;
-    padding: 0 calc(var(--brand-size) * 0.32);
+  .brand-mark--fallback {
+    --brand-tile-bg: var(--color-badge-bg);
+    --brand-tile-border: var(--color-border);
+    box-shadow: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .brand-mark {
+      --brand-tile-bg: linear-gradient(135deg, #ffffff 0%, #e8e8e3 100%);
+      --brand-tile-border: rgba(255, 255, 255, 0.14);
+      --brand-logo-filter:
+        drop-shadow(0 0 0.8px rgba(0, 0, 0, 0.9))
+        drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.24));
+    }
+
+    :root:not([data-theme="light"]) .brand-mark--fallback {
+      --brand-tile-bg: var(--color-badge-bg);
+      --brand-tile-border: var(--color-border);
+    }
+  }
+
+  :root[data-theme="dark"] .brand-mark {
+    --brand-tile-bg: linear-gradient(135deg, #ffffff 0%, #e8e8e3 100%);
+    --brand-tile-border: rgba(255, 255, 255, 0.14);
+    --brand-logo-filter:
+      drop-shadow(0 0 0.8px rgba(0, 0, 0, 0.9))
+      drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.24));
+  }
+
+  :root[data-theme="dark"] .brand-mark--fallback {
+    --brand-tile-bg: var(--color-badge-bg);
+    --brand-tile-border: var(--color-border);
   }
 </style>
