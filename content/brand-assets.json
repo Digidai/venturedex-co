@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-04",
+  "verified_at": "2026-05-17",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -183,9 +183,184 @@
       "local_path": "/logos/companies/lakefusion.png",
       "source_page": "https://www.lakefusion.ai",
       "source_url": "https://cdn.prod.website-files.com/67573f750198e1fa11a98d35/676a9f0c90bd8f5fc4d0367b_lf_favicon.png"
+    },
+    "copilotkit": {
+      "name": "CopilotKit",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/copilotkit.svg",
+      "source_page": "https://www.copilotkit.ai",
+      "source_url": "https://www.copilotkit.ai/icons/copilot-kit-logo.svg"
+    },
+    "moment-energy": {
+      "name": "Moment Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/moment-energy.png",
+      "source_page": "https://www.momentenergy.com",
+      "source_url": "https://cdn.prod.website-files.com/689cf864045769deaae340c0/68fa6933c9524f606f2f800d_webclip-moment.png"
+    },
+    "quantware": {
+      "name": "QuantWare",
+      "shape": "icon",
+      "local_path": "/logos/companies/quantware.png",
+      "source_page": "https://quantware.com",
+      "source_url": "https://cdn.prod.website-files.com/68ef71c634061d6e61fc1629/6913922530c423fbf96aad46_256x256.png"
+    },
+    "corgi": {
+      "name": "Corgi",
+      "shape": "icon",
+      "local_path": "/logos/companies/corgi.ico",
+      "source_page": "https://www.corgi.insure",
+      "source_url": "https://www.corgi.insure/favicon.ico"
+    },
+    "ethos": {
+      "name": "Ethos",
+      "shape": "icon",
+      "local_path": "/logos/companies/ethos.png",
+      "source_page": "https://agent.askethos.com",
+      "source_url": "https://agent.askethos.com/favicon.png"
+    },
+    "pit": {
+      "name": "Pit",
+      "shape": "icon",
+      "local_path": "/logos/companies/pit.svg",
+      "source_page": "https://pit.com",
+      "source_url": "https://pit.com/favicon.svg"
+    },
+    "radixark": {
+      "name": "RadixArk",
+      "shape": "icon",
+      "local_path": "/logos/companies/radixark.png",
+      "source_page": "https://www.radixark.com",
+      "source_url": "https://www.radixark.com/images/radixark-favicon.png"
+    },
+    "scout-space": {
+      "name": "Scout Space",
+      "shape": "icon",
+      "local_path": "/logos/companies/scout-space.png",
+      "source_page": "https://www.scout.space",
+      "source_url": "https://cdn.prod.website-files.com/67b234facbe620c976bfe28b/67e00e0b06a4f0bcad5ba387_favicon.png"
+    },
+    "amperos": {
+      "name": "Amperos",
+      "shape": "icon",
+      "local_path": "/logos/companies/amperos.ico",
+      "source_page": "https://www.amperos.com",
+      "source_url": "https://www.amperos.com/favicon.ico?favicon.0jcy448jdqu5..ico"
+    },
+    "hilbert": {
+      "name": "Hilbert",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hilbert.svg",
+      "source_page": "https://hilberts.ai",
+      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
+    },
+    "basata": {
+      "name": "Basata",
+      "shape": "icon",
+      "local_path": "/logos/companies/basata.png",
+      "source_page": "https://www.basata.ai",
+      "source_url": "https://cdn.prod.website-files.com/67e26595de77ed632a136c2f/67e3da1bdbc27bafac51a752_favicon.png"
+    },
+    "enzo-health": {
+      "name": "Enzo Health",
+      "shape": "icon",
+      "local_path": "/logos/companies/enzo-health.svg",
+      "source_page": "https://www.enzo.health",
+      "source_url": "https://www.enzo.health/icon.svg?icon.2035bf47.svg"
+    },
+    "vapi": {
+      "name": "Vapi",
+      "shape": "icon",
+      "local_path": "/logos/companies/vapi.svg",
+      "source_page": "https://vapi.ai",
+      "source_url": "https://vapi.ai/icon.svg?icon.0v9qf5isrq6gm.svg"
+    },
+    "origin-lab": {
+      "name": "Origin Lab",
+      "shape": "icon",
+      "local_path": "/logos/companies/origin-lab.png",
+      "source_page": "https://originlab.ai",
+      "source_url": "https://originlab.ai/favicon.png"
+    },
+    "config": {
+      "name": "Config",
+      "shape": "icon",
+      "local_path": "/logos/companies/config.png",
+      "source_page": "https://config.inc",
+      "source_url": "https://framerusercontent.com/images/72XEhp30W7ZEnjKIHkcysK5XD8M.png"
+    },
+    "outmarket": {
+      "name": "Outmarket",
+      "shape": "icon",
+      "local_path": "/logos/companies/outmarket.png",
+      "source_page": "https://outmarket.ai",
+      "source_url": "https://framerusercontent.com/images/UkNgnQMW7vCTPLIwiGRJBNV6Y.png"
+    },
+    "branchlab": {
+      "name": "BranchLab",
+      "shape": "icon",
+      "local_path": "/logos/companies/branchlab.png",
+      "source_page": "https://branchlab.com/pathwai",
+      "source_url": "https://framerusercontent.com/images/sHQoJouLlGaivC4s9eyWnf83g.png"
+    },
+    "secludy": {
+      "name": "Secludy",
+      "shape": "icon",
+      "local_path": "/logos/companies/secludy.png",
+      "source_page": "https://secludy.com",
+      "source_url": "https://framerusercontent.com/images/dFjnmoShjCuEXd4CPwQMuInYEc.png"
+    },
+    "vector": {
+      "name": "Vector",
+      "shape": "icon",
+      "local_path": "/logos/companies/vector.png",
+      "source_page": "https://www.vector.co",
+      "source_url": "https://cdn.prod.website-files.com/666c800c0d49f944831ac2e5/668db41c234788db151db9ea_ico.png"
+    },
+    "ciridae": {
+      "name": "Ciridae",
+      "shape": "icon",
+      "local_path": "/logos/companies/ciridae.png",
+      "source_page": "https://www.ciridae.com",
+      "source_url": "https://cdn.prod.website-files.com/68532a35829494931a29b25b/68769aa2073c215abcf11e86_Favicon.png"
+    },
+    "govwell": {
+      "name": "GovWell",
+      "shape": "icon",
+      "local_path": "/logos/companies/govwell.png",
+      "source_page": "https://www.govwell.com",
+      "source_url": "https://cdn.prod.website-files.com/697732d0a9e7ed6e5a43811f/698f56cdef10bc5513ab554a_Webclip.png"
+    },
+    "fazeshift": {
+      "name": "Fazeshift",
+      "shape": "icon",
+      "local_path": "/logos/companies/fazeshift.png",
+      "source_page": "https://www.fazeshift.com",
+      "source_url": "https://cdn.prod.website-files.com/68cc460eb1ba24e13c40c3fc/68ecfebf1aadb827f77894a2_webclip.png"
+    },
+    "stitch": {
+      "name": "Stitch",
+      "shape": "icon",
+      "local_path": "/logos/companies/stitch.png",
+      "source_page": "https://www.stitch.co",
+      "source_url": "https://cdn.prod.website-files.com/6823036cd77b3093eaf9154d/6827148ce5879b8551517c5e_Frame%2093.png"
+    },
+    "shyld-ai": {
+      "name": "Shyld AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/shyld-ai.ico",
+      "source_page": "https://www.shyld.ai",
+      "source_url": "https://www.shyld.ai/favicon.ico"
     }
   },
   "investors": {
+    "776": {
+      "name": "Seven Seven Six",
+      "shape": "icon",
+      "local_path": "/logos/investors/776.svg",
+      "source_page": "https://sevensevensix.com",
+      "source_url": "https://sevensevensix.com/logo.svg"
+    },
     "a16z": {
       "name": "Andreessen Horowitz",
       "shape": "icon",
@@ -255,13 +430,6 @@
       "local_path": "/logos/investors/general-catalyst.jpg",
       "source_page": "https://www.generalcatalyst.com",
       "source_url": "https://cdn.prod.website-files.com/66636e6bdd12f4f3d0617065/670e8ce0a1879d0ded466b88_General%20Catalyst%20Favicon%20256x256.jpg"
-    },
-    "776": {
-      "name": "Seven Seven Six",
-      "shape": "icon",
-      "local_path": "/logos/investors/776.svg",
-      "source_page": "https://sevensevensix.com",
-      "source_url": "https://sevensevensix.com/logo.svg"
     },
     "thrive": {
       "name": "Thrive Capital",
@@ -381,6 +549,132 @@
       "local_path": "/logos/investors/silverton-partners.png",
       "source_page": "https://www.silvertonpartners.com",
       "source_url": "https://www.silvertonpartners.com/wp-content/uploads/cropped-Silverton_Partners-Icon-transparentbg-180x180.png"
+    },
+    "glilot-capital": {
+      "name": "Glilot Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/glilot-capital.svg",
+      "source_page": "https://www.glilotcapital.com",
+      "source_url": "https://glilotcapital.com/wp-content/uploads/2025/08/Logo.svg"
+    },
+    "evok-innovations": {
+      "name": "Evok Innovations",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/evok-innovations.jpg",
+      "source_page": "https://www.evokinnovations.com",
+      "source_url": "https://static.wixstatic.com/media/ae0ff3_d0f2ac34bc6940059909328c3fc665d8~mv2.jpg/v1/fill/w_480,h_120,al_c,q_80,usm_0.66_1.00_0.01/evok_logo_hi_res.jpg"
+    },
+    "intel-capital": {
+      "name": "Intel Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/intel-capital.svg",
+      "source_page": "https://www.intelcapital.com",
+      "source_url": "https://www.intelcapital.com/wp-content/themes/intel-capital/dist/images/logo-color.svg"
+    },
+    "tcv": {
+      "name": "TCV",
+      "shape": "icon",
+      "local_path": "/logos/investors/tcv.png",
+      "source_page": "https://www.tcv.com",
+      "source_url": "https://www.tcv.com/favicon.png"
+    },
+    "washington-harbour": {
+      "name": "Washington Harbour Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/washington-harbour.png",
+      "source_page": "https://washingtonharbour.com",
+      "source_url": "https://washingtonharbour.com/wp-content/uploads/2021/02/favicon.png"
+    },
+    "bessemer-venture-partners": {
+      "name": "Bessemer Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/bessemer-venture-partners.svg",
+      "source_page": "https://www.bvp.com",
+      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg"
+    },
+    "basis-set-ventures": {
+      "name": "Basis Set Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/basis-set-ventures.svg",
+      "source_page": "https://www.basisset.com",
+      "source_url": "https://cdn.prod.website-files.com/681ad1f2c3ad523e8b456421/681ad1f2c3ad523e8b456602_Favicon%2032.svg"
+    },
+    "n47": {
+      "name": "N47",
+      "shape": "icon",
+      "local_path": "/logos/investors/n47.png",
+      "source_page": "https://www.n47.com",
+      "source_url": "https://cdn.prod.website-files.com/6846bf604cd20cc47e2b90b5/6846d470ca5601b29765392b_FavIcon.png"
+    },
+    "peak-xv-partners": {
+      "name": "Peak XV Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/peak-xv-partners.png",
+      "source_page": "https://www.peakxv.com",
+      "source_url": "https://www.peakxv.com/wp-content/uploads/sites/2/2023/06/cropped-favicon-2-1-2.png?w=192"
+    },
+    "samsung-venture-investment": {
+      "name": "Samsung Venture Investment",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/samsung-venture-investment.svg",
+      "source_page": "https://www.samsungventures.com/en/main.do",
+      "source_url": "https://www.samsungventures.com/assets/images/logo.svg"
+    },
+    "permanent-capital-ventures": {
+      "name": "Permanent Capital Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/permanent-capital-ventures.png",
+      "source_page": "https://www.permanent-capital.vc",
+      "source_url": "http://static1.squarespace.com/static/670fedb8b4c6186f464907e6/t/6734ffae46d40b51c75cd4b9/1731526574874/Perm-Cap-Ventures-small-white.png?format=1500w"
+    },
+    "mckesson-ventures": {
+      "name": "McKesson Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/mckesson-ventures.png",
+      "source_page": "https://ventures.mckesson.com",
+      "source_url": "https://ventures.mckesson.com/wp-content/uploads/2015/05/McKVentures-Logo-200-White.png"
+    },
+    "impression-ventures": {
+      "name": "Impression Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/impression-ventures.png",
+      "source_page": "https://impression.ventures",
+      "source_url": "https://cdn.prod.website-files.com/6459414cfc6390e6bc38c4dc/6489ea85084e87220d8eebff_Large.png"
+    },
+    "signalfire": {
+      "name": "SignalFire",
+      "shape": "icon",
+      "local_path": "/logos/investors/signalfire.png",
+      "source_page": "https://www.signalfire.com",
+      "source_url": "https://cdn.prod.website-files.com/65160db0f3c4d7c9e2748fdb/6537339fa9c3dcddc44f9c22_webclip-signal.png"
+    },
+    "hubspot-ventures": {
+      "name": "HubSpot Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/hubspot-ventures.png",
+      "source_page": "https://www.hubspot.com/ventures",
+      "source_url": "https://hubspotventures.com/hubfs/Favicon.png"
+    },
+    "insight-partners": {
+      "name": "Insight Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/insight-partners.png",
+      "source_page": "https://www.insightpartners.com",
+      "source_url": "https://www.insightpartners.com/wp-content/themes/insight/images/cropped-IP-icon-orange-grey-rgb-192x192.png"
+    },
+    "f-prime-capital": {
+      "name": "F-Prime Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/f-prime-capital.png",
+      "source_page": "https://fprimecapital.com",
+      "source_url": "https://fprimecapital.com/wp-content/themes/fprime/img/apple-touch-icon.png"
+    },
+    "aulis-capital": {
+      "name": "Aulis Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/aulis-capital.png",
+      "source_page": "https://auliscapital.com",
+      "source_url": "https://auliscapital.com/wp-content/uploads/2025/11/cropped-Aulisfavicon-180x180.png"
     }
   }
 }

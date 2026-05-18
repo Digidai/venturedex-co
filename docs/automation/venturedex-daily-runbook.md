@@ -227,4 +227,5 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - For TechCrunch WordPress API parsing, first extract date, title, excerpt, and link with simple `jq` fields; avoid shell-embedded entity rewrites for apostrophes or smart quotes unless a separate safe normalization step is required.
 - For `bb-browser` tab cleanup, list tabs first and close automation-opened tabs by visible short index in descending order; avoid `--tab current` and full CDP tab IDs unless the installed CLI has just accepted that form.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
+- When `scripts/screenshot.sh` fails with `popup_detected`, inspect the overlay candidates before recapturing; if the candidates are decorative `pointer-events-none`/empty fixed layers or consent/chat widgets rather than real modal blockers, dismiss or remove only that non-product layer, capture a clean 1440x900 WebP, and visually review it before continuing.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->

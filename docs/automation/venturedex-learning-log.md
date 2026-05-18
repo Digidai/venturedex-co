@@ -1000,3 +1000,306 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `CURL_HOME=/tmp/venturedex-curl-home ./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `56cdbb5` was pushed to `main`; GitHub Actions passed for Validate `25361712504` and Deploy `25361712516`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 26 published startups
+
+### 2026-05-06 14:29 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; CopilotKit and QuantWare passed the standard screenshot command, while Moment Energy required a manual Playwright-wrapper capture after visual review found a cookie banner still visible; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: a67178e
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot consent handling still depends on visual review and site-specific manual cleanup, and one bb-browser page text extraction needed a guarded retry after `document.body` was briefly null
+- proposed_change: defer code-level screenshot consent cleanup; no automation-doc heuristic edit because current visual-review and failure-investigation rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted CopilotKit, Moment Energy, and QuantWare after product, funding, investor, logo, screenshot, and taste verification
+  - CopilotKit was accepted because its official May 5, 2026 announcement verifies a $27M Series A led by Glilot Capital, NFX, and SignalFire, while the live site and docs expose React/Angular SDKs, AG-UI, MCP Apps, GitHub docs, examples, and self-serve developer entry points
+  - Moment Energy was accepted because PRNewswire and TechCrunch verify a May 5, 2026 $40M+ Series B led by Evok Innovations, while the live product pages expose Luna BESS, UL 1974 and UL 9540A certifications, commercial BESS use cases, and second-life EV battery infrastructure evidence
+  - QuantWare was accepted because its official announcement verifies a May 5, 2026 $178M Series B and Bloomberg verifies Intel Capital led the round alongside FORWARD.one, while the live site exposes A-Line, D-Line, peripherals, foundry services, packaging services, VIO, and 50+ customers across 20 countries
+  - recorded nine rejected decisions for Prior Labs, Corvera, Dandelion Health, Series AI, Traza, PeakMetrics, SCATR, Sygaldry, and Netomi, meeting the 3:1 rejection bar for three acceptances
+  - `bb-browser` was used for product and browser-side verification of CopilotKit, Moment Energy, Corvera, Dandelion Health, QuantWare, PeakMetrics, SCATR, Sygaldry, and Netomi; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh moment-energy https://www.momentenergy.com` exited OK, but visual review showed a cookie banner; a Playwright-wrapper session clicked consent and produced a clean 1440x900 WebP before validation and build
+  - a PeakMetrics `bb-browser eval` call briefly failed because `document.body` was null during page load; checking URL/title/errors and rerunning with a `document.body && ...` guard completed the product-evidence review without changing content criteria
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `a67178e` was pushed to `main`; GitHub Actions passed for Validate `25419997511` and Deploy `25419997513`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 29 published startups
+
+### 2026-05-07 14:25 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Ethos passed the standard screenshot command, while Corgi required a manual Playwright-wrapper capture after the popup-safe script false-positive failed on fixed quote/partner widgets and an initial manual attempt captured the wrong page; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 44c80c5
+- pushed_branch: main
+- ci_deploy: fail in GitHub Actions; local deploy pass and live smoke pass
+- failure_tags: [screenshot_env, ci_fail, other]
+- reward: 2
+- dominant_failure_mode: Cloudflare Wrangler deploy in GitHub Actions failed at Worker version creation with `Completion token has already been consumed [code: 100312]` after D1 sync and static asset upload had already succeeded; screenshot overlay classification still has site-specific false positives and manual-capture risks
+- proposed_change: defer code-level screenshot classifier cleanup and deploy retry/hardening for Cloudflare `100312`; no automation-doc heuristic edit because current failure-investigation and downstream-rerun rules covered this path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/manage.sh; .github/workflows/deploy.yml
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window and accepted Corgi and Ethos after product, funding, investor, logo, screenshot, and taste verification
+  - Corgi was accepted because TechCrunch verifies a May 6, 2026 $160M Series B led by TCV, while the live product page exposes instant startup insurance quoting, stage-based coverage paths, D&O, Cyber, Tech E&O, CGL, and customer proof from Deel, Bland, and Intryc
+  - Ethos was accepted because TechCrunch verifies a May 6, 2026 $22.75M Series A led by Andreessen Horowitz, while the correct live product at `https://agent.askethos.com/` exposes paid expert opportunities, expert/client modes, voice onboarding, AI matching, and featured opportunity cards
+  - recorded seven rejected or rechecked decisions for Pronto, Altara, QuTwo, DeepSeek, Genesis AI, MochaTrade, and OpenTrade, meeting the 3:1 rejection bar for two acceptances
+  - `bb-browser` was used for product and browser-side verification of Corgi, Ethos, Altara, and Pronto; the incorrect `ethos.network` result was rejected in favor of the verified `askethos.com`/`agent.askethos.com` product
+  - `./scripts/screenshot.sh corgi https://www.corgi.insure` failed with `popup_detected`; script review and visual checks showed fixed quote/Archetype widgets were classified as a popup, so a Playwright-wrapper capture removed those widgets and replaced the local WebP
+  - the first manual Corgi screenshot attempt used an incorrect browser state and captured Ethos; visual review caught the mismatch before validation, and a second wrapper capture produced the correct Corgi 1440x900 WebP
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, `scripts/__pycache__/`, and temporary screenshot files were restored or removed as verification output
+  - content commit `44c80c5` was pushed to `main`; GitHub Actions Validate `25479444429` passed, but Deploy `25479444482` failed in `bash scripts/manage.sh release` at Cloudflare API `/workers/scripts/venturedex/versions` with code `100312` after D1 sync reported 31 startups and asset upload completed for five new files
+  - a targeted downstream rerun with `./scripts/manage.sh deploy` succeeded locally using Wrangler 4.82.2 and produced Worker version `04f1e668-ff6f-4505-8048-5c6416f9374a`, supporting classification as a transient Cloudflare/API or CI deploy-state failure rather than a content/configuration failure
+  - post-deploy live smoke passed for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`, each reporting 31 published startups
+
+### 2026-05-08 14:33 CST
+
+- candidate_count: 36
+- accepted: 3
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; the standard screenshot command produced all three local WebPs, but Pit required a manual Playwright-wrapper recapture after visual review showed Cookiebot still visible; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 3de6951
+- pushed_branch: main
+- ci_deploy: pass
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot consent handling still depends on visual review for Cookiebot-style banners, and command-shaping mistakes around shell quoting or missing curl timeouts can create avoidable investigation noise
+- proposed_change: defer code-level screenshot cleanup to add an explicit `Deny` dismissal path and avoid `bb-browser screenshot` ref overlays; no automation-doc heuristic edit because current visual-review, failure-investigation, and rerun rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered 36 source candidates from the TechCrunch WordPress API/current startup coverage and the TechStartups May 6 funding roundup, then deduplicated prior accepted and rejected slugs before promoting fresh names
+  - accepted Pit because TechCrunch verifies a May 7, 2026 $16M Seed led by Andreessen Horowitz, while `bb-browser` product review confirmed Pit Studio/Pit Cloud, workflow mapping, governance, audit trails, SSO, tenant isolation, customer evidence, and clear positioning against SaaS/no-code/in-house builds
+  - accepted RadixArk because its official May 5, 2026 blog verifies a $100M Seed led by Accel and co-led by Spark Capital, while product review confirmed SGLang, Miles, OpenAI-compatible serving, disaggregated prefill/decode, speculative decoding, managed infrastructure, and hardware/platform support across NVIDIA, AMD, TPU, Ascend, XPU, and CPU
+  - accepted Scout Space because PR Newswire verifies a May 6, 2026 Series A of up to $18M led by Washington Harbour Partners, while the public site and source expose Owl sensors, mission autonomy software, edge processing, data platforms, government/commercial contracts, and a 2,600-square-foot Virginia production facility
+  - recorded 12 rejected or deferred decisions for Ramp, Kodiak AI, Gusto, Lovable, Kalshi, Skyroot, Moonshot AI, Braintrust, Aurora, Blitzy, Astrocade, and LiveEO, meeting the 3:1 rejection bar for three acceptances
+  - District was reviewed and deferred outside `content/rejected.jsonl`: product and funding evidence cleared, but `district.net` returned HTTP 429 to the validator for official site/logo reachability, and the rejected-stage taxonomy has no accurate asset-blocker category
+  - `bb-browser` was used for product and browser-side verification of Pit, District, RadixArk/SGLang, Astrocade, Blitzy, and Scout Space; when the daemon reported CDP disconnected, `bb-browser daemon stop` followed by a fresh `bb-browser open` restored operation
+  - a Washington Harbour logo probe initially hung because the curl command omitted `--max-time`; the specific curl pipeline processes were killed, then the probe was rerun with a timeout and found official favicon and logo sources
+  - one funding-source status command failed because an unquoted URL containing `?` triggered zsh glob parsing, and the initial TechCrunch jq helper failed due shell quoting; both were command-shaping issues corrected without changing content decisions
+  - the first post-edit validation had passed, but after adding a numeric Scout Space fact the next validation failed because `editor_note` reached 510 characters; shortening it to 464 characters fixed the error and validation then passed
+  - local gates passed after final edits: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `3de6951` was pushed to `main`; GitHub Actions passed for Validate `25540799659` and Deploy `25540799646`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 34 published startups, and a direct homepage check showed Pit, Scout Space, and RadixArk in the live ticker
+
+### 2026-05-10 14:13 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Amperos passed the standard screenshot command, while Hilbert required a manual Playwright-wrapper recapture after `scripts/screenshot.sh` flagged an empty `DIV` false-positive overlay; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 34f31f4
+- pushed_branch: main
+- ci_deploy: pass after targeted Validate rerun; Deploy passed on the original run
+- failure_tags: [screenshot_env, ci_fail, other]
+- reward: 2
+- dominant_failure_mode: screenshot overlay classification still false-positives on decorative/empty absolute page layers, and GitHub Actions validation can transiently fail old third-party brand-source reachability even when the same validator passes locally
+- proposed_change: defer code-level screenshot classifier cleanup for empty decorative overlays and validator hardening for transient CI-only old-asset reachability; no automation-doc heuristic edit because current failure-investigation and targeted-rerun rules covered the path
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/validate.py
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - the user-supplied run metadata said the last run was 2026-05-09, but repo-local learning log and automation memory both last recorded a completed persistent run on 2026-05-08; dedupe was therefore based on the current repo content, rejected ledger, and memory state
+  - initial TechCrunch WordPress API discovery hit a curl TLS/HTTP2 error, but `curl -Iv` confirmed the host and API were reachable; rerunning the same official API with `--http1.1` and timeouts completed without changing source criteria
+  - accepted Amperos because PR Newswire verifies an Apr 22, 2026 $16M Series A led by Bessemer Venture Partners, while `bb-browser` product review confirmed AI-native insurance collections, denial management, payor workflows, corrected claims, appeals, RCM specialist escalation, integrations, customer proof, and quantified operating claims
+  - accepted Hilbert because Gunderson Dettmer verifies an Apr 15, 2026 $28M Series A led by Andreessen Horowitz, while `bb-browser` product review confirmed AI-native B2C growth infrastructure, anomaly detection, root-cause analysis, counterfactuals, forecasting, pLTV targeting, and agent-driven growth tasks; the original Axios link was not used because local curl received a Cloudflare 403
+  - recorded six rejected decisions for Kanvas Biosciences, Willog, Wispr Flow, Parker, Lime, and Hightouch, meeting the 3:1 rejection bar for two acceptances
+  - Kanvas was rejected under F1 because the public site exposes biotech platform/pipeline/services copy but no inspectable product workflow, demo, docs, pricing, clinical access, customer workflow, or user-facing product surface
+  - Willog was rejected under F3 because the source says Series B-2, which the current startup schema cannot represent without normalizing beyond the source
+  - Wispr Flow, Parker, Lime, and Hightouch were rejected under F3 because the current sources were respectively a product/profile story, bankruptcy filing, IPO filing, and ARR milestone rather than fresh closed Seed-Series C financing events
+  - `bb-browser` was used for product and browser-side verification of Amperos, Hilbert, and Kanvas; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh hilbert https://hilberts.ai` failed with `popup_detected` hidden inside the command substitution; `bash -x` showed the payload was one empty `DIV`, and a clean manual Playwright-wrapper capture produced the final 1440x900 WebP after visual review
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `34f31f4` was pushed to `main`; GitHub Actions Deploy `25621494940` passed on the original run, while Validate `25621494948` initially failed only on pre-existing Blackpeak and Touring investor brand-source reachability
+  - local targeted curl checks returned HTTP 200 for the failing Blackpeak and Touring source URLs using the same validator curl shape, and a targeted rerun of the failed GitHub Validate job passed as job `75209017358`, supporting classification as transient CI-side reachability rather than a content regression
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 36 published startups, and a direct homepage check showed Amperos and Hilbert in the live ticker
+
+### 2026-05-11 14:06 CST
+
+- candidate_count: 40
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Basata required manual Playwright-wrapper recapture after visual review showed a HubSpot chat prompt despite a successful retry, and Enzo Health required manual startup-layer cleanup after `scripts/screenshot.sh` flagged an empty fixed `DIV`; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 809fe81
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25653252570` and Deploy `25653252559` passed
+- failure_tags: [screenshot_env]
+- reward: 3
+- dominant_failure_mode: screenshot cleanup still depends on visual review and site-specific handling for empty fixed startup layers and chat widgets that are not real modal blockers
+- proposed_change: defer code-level screenshot cleanup alignment for empty fixed startup layers and HubSpot chat prompts; no automation-doc heuristic edit because the current failure-investigation, visual-review, and manual-recapture path covered the issue
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap succeeded for `venturedex-daily-curator`, restored repo-local `.env`, verified an active Cloudflare token, and restored `node_modules`; R2 access still lacks permission, so screenshot uploads degraded to local files
+  - discovered a 40-candidate TechCrunch/current-source window plus official PR/news sources, deduped prior accepted/rejected names, and promoted Basata and Enzo Health after funding, product, investor, logo, screenshot, and taste verification
+  - accepted Basata because TechCrunch verifies a May 7, 2026 $21M Series A led by Basis Set Ventures, while `bb-browser` product review confirmed referral/fax processing, EHR chart creation, AI voice agents, quantified referral volume, same-day document handling, and specialty-practice workflow evidence
+  - accepted Enzo Health because PR Newswire verifies a May 4, 2026 $20M Series A led by N47, while `bb-browser` product review confirmed Intake, Scribe, QA, OASIS validation, referral checks, secure messaging, 5-minute intake-to-admission claims, and customer workflow evidence
+  - recorded six rejected decisions for ReFiBuy, Tessera Labs, Jetty, ROBOTERA, Boost Security, and Panthalassa, exactly meeting the 3:1 rejection bar for two acceptances
+  - ReFiBuy was rejected under F4 because its agentic commerce optimization product is effectively SEO/GEO for AI shopping discovery, while Tessera Labs, Jetty, ROBOTERA, Boost Security, and Panthalassa were rejected or deferred under F3 for missing schema-compliant stage evidence, pre-seed stage, unlabeled financing, acquisition-linked funding, or ambiguous lead-investor identity
+  - `bb-browser` was used for browser-side product and screenshot-failure verification of Basata, ReFiBuy, and Enzo Health; tabs opened by this run were closed afterward
+  - `./scripts/screenshot.sh basata https://www.basata.ai` first failed, then `bash -x` showed the standard Playwright path could complete; visual review still found a HubSpot chat prompt, so a wrapper capture removed `#hubspot-messages-iframe-container` and produced a clean 1440x900 WebP
+  - `./scripts/screenshot.sh enzo-health https://www.enzo.health` failed with `popup_detected`; `bash -x` showed one empty `DIV`, and `bb-browser` inspection traced it to fixed empty startup layers `_1be2dfv0` and `_1ln3ruo0`, so a wrapper capture removed those layers, restored `.text-intro` opacity/transform, and produced a visually reviewed 1440x900 WebP
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `809fe81` was pushed to `main`; GitHub Actions passed for Validate `25653252570` and Deploy `25653252559`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 38 published startups, and a direct homepage check showed Basata and Enzo Health in the live ticker
+
+### 2026-05-15 14:26 CST
+
+- candidate_count: 40
+- accepted: 3
+- rejected: 9
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Origin Lab and Config used the standard screenshot path first, Origin Lab was manually recaptured after visual review showed a cookie banner, and Vapi required manual Playwright-wrapper capture after `scripts/screenshot.sh` false-positive `popup_detected` on decorative `pointer-events-none` hero layers; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 5e5ab74
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25903762702` and Deploy `25903762669` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 41 published startups
+- failure_tags: [screenshot_env, source_incomplete, investor_identity_ambiguous, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from environment and browser-capture edges: the first bootstrap stalled in `sharp` install probing until rerun with `SHARP_IGNORE_GLOBAL_LIBVIPS=1`, GitHub GraphQL preflight hit a transient TLS handshake timeout, and screenshot cleanup still misclassifies decorative absolute layers or misses consent banners without visual review
+- proposed_change: apply a narrow screenshot retry clarification for decorative `pointer-events-none`/empty fixed layers and consent/chat widgets; defer bootstrap-level `sharp` environment hardening because that would touch script behavior outside automation-doc heuristic text
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md; scripts/bootstrap-automation.sh
+- affected_section: `Adaptive Heuristics` / `Operational Heuristics`; bootstrap hardening deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and did run before discovery; the first attempt restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, then stalled during `npm ci` in `node_modules/sharp/install/check.js`
+  - root cause for the bootstrap stall was environment-specific `sharp` global-libvips probing: `node node_modules/sharp/install/check.js` timed out locally, while `SHARP_IGNORE_GLOBAL_LIBVIPS=1 node node_modules/sharp/install/check.js` exited cleanly; after killing the stuck bootstrap/npm/sharp processes, the full bootstrap rerun with that env completed
+  - the original bootstrap also hit `Post "https://api.github.com/graphql": net/http: TLS handshake timeout`; `gh auth status` and a targeted `./scripts/check-github-actions.sh .github/workflows/deploy.yml` rerun passed, so this was classified as a transient external GitHub/API reachability issue rather than auth or workflow drift
+  - discovered a 40-candidate current TechCrunch API window, deduped existing startups and rejected slugs, and promoted Vapi, Origin Lab, and Config after funding, product, investor, logo, screenshot, and taste checks
+  - accepted Vapi because TechCrunch verifies a May 12, 2026 $50M Series B led by Peak XV Partners, while `bb-browser` product review confirmed voice-agent workflows, tool integrations, enterprise controls, Ring customer proof, 1B calls, 2.5M+ agents, 750K developers, and sub-500ms latency claims
+  - accepted Origin Lab because TechCrunch verifies a May 13, 2026 $8M seed led by Lightspeed Venture Partners, while `bb-browser` product review confirmed licensed game-engine data, HUD-free video, depth/action/camera/scene metadata, 20+ metadata categories, 50+ titles, same-day API access, and rights/audit-trail positioning
+  - accepted Config because TechCrunch verifies a May 11, 2026 $27M seed led by Samsung Venture Investment, while `bb-browser` product review confirmed the Config Data Platform, 9-stage robot-data workflow, CFG-1, 100K in-house human-data hours, 2B parameters, and sub-50ms RTX 5090 latency
+  - recorded nine rejected decisions for Wirestock, Dessn, Exaforce, Synthetic, Mind Robotics, Cowboy Space, Anduril, Helsing, and Redwood Materials, meeting the 3:1 rejection bar for three acceptances
+  - Wirestock was rejected under F3 because the Nava Ventures lead identity could not be cross-validated against an official investor website or existing directory entry; Dessn, Exaforce, Mind Robotics, Anduril, Helsing, and Redwood Materials were rejected for source/schema completeness issues; Synthetic and Cowboy Space were rejected under F1 for insufficient current product evaluability
+  - `bb-browser` was used for product and browser-side verification of Vapi, Wirestock, Config, Origin Lab, Synthetic, Mind Robotics, Cowboy Space, and Exaforce; automation-opened tabs were closed after verification
+  - `./scripts/screenshot.sh vapi https://vapi.ai` failed with `popup_detected`; `bb-browser` overlay scoring showed decorative `pointer-events-none absolute inset-* z-20/z-30` hero layers, not a modal blocker, and a clean 1440x900 Playwright-wrapper recapture was visually reviewed before writing `public/screenshots/vapi.webp`
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `5e5ab74` was pushed to `main`; GitHub Actions passed for Validate `25903762702` and Deploy `25903762669`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 41 published startups
+
+### 2026-05-16 23:56 CST
+
+- candidate_count: 40
+- accepted: 4
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Outmarket and Secludy used the standard screenshot path, BranchLab required manual Playwright-wrapper recapture after `scripts/screenshot.sh` flagged an empty `pointer-events:none` fixed layer, and Vector required manual recapture after the script misclassified legitimate fixed/sticky navigation as a popup; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 8b6bca7
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25966340977` and Deploy `25966340996` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 45 published startups, and a direct homepage check showed Outmarket, BranchLab, Secludy, and Vector
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from stale local browser and screenshot tooling edges: an old bootstrap/npm process had been running for hours before discovery, `bb-browser daemon status` missed a stale daemon process until it was killed and restarted, and the screenshot classifier still needs help distinguishing non-product overlays from legitimate product navigation
+- proposed_change: defer code-level screenshot classifier hardening for fixed/sticky product navigation and Playwright wrapper session-path handling; no automation-doc heuristic edit because the current failure-investigation, overlay-inspection, visual-review, and manual-recapture path covered the run
+- decision: deferred
+- affected_file: scripts/screenshot.sh; scripts/bootstrap-automation.sh; Playwright wrapper invocation
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - the visible bootstrap process had been stuck in `npm ci` for more than four hours from an earlier run state; process inspection showed the stale bootstrap/npm chain, and terminating it let the bootstrap finish cleanly before any candidate discovery began
+  - `bb-browser daemon start` initially failed with `Daemon did not start in time`; `bb-browser daemon status` said no daemon was running while `ps` showed a day-old `bb-browser/dist/daemon.js --cdp-port 19825` process, so only that stale daemon was killed, CDP was confirmed reachable on `127.0.0.1:19825`, and daemon restart succeeded
+  - discovered a 40-candidate current-source window from TechCrunch, PRNewswire, GlobeNewswire, official company announcements, and related current funding searches, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Outmarket because PR Newswire verifies a May 13, 2026 $17M Series A led by Permanent Capital Ventures, while `bb-browser` product review confirmed quote comparison, coverage gap analysis, ACORD forms, AMS360/Applied Epic integrations, 250+ agencies, 12-15 hours saved per person weekly, and source-cited policy workflows
+  - accepted BranchLab because PR Newswire verifies a May 13, 2026 $26M Series A led by McKesson Ventures, while product review confirmed Pathwai, non-PHI outcome prediction, de-identified health-signal cohorts, media activation, independent measurement, 2,000 additional patients reached in three weeks, and 90% lower cost-per-patient claims
+  - accepted Secludy because GlobeNewswire verifies a May 13, 2026 $4M Seed led by Impression Ventures, while product review confirmed differential-privacy presets, text and table anonymization examples, canary PII leakage tests, VPC/on-prem deployment, Snowflake/Databricks integrations, and an under-1-hour deployment claim
+  - accepted Vector because its official May 13, 2026 announcement verifies a $10M Series A led by SignalFire and HubSpot Ventures, while product review confirmed contact-level audiences, visitor feeds, named buyer examples, LinkedIn/Google/Reddit sync, 7.8% LinkedIn CTR, 17x ROI, and Vector MCP for campaign questions in Claude or ChatGPT
+  - recorded twelve rejected decisions for Rapido, Optura, Hacktron, Osaurus, Sadi Thermal Machines, Poppy, Adaption, Indigo, Meridian Ventures, RJ Scaringe, Runway, and Clawdmeter, meeting the 3:1 rejection bar for four acceptances
+  - Optura was rejected under F1 because the public surface remained request-demo ROAI methodology with no inspectable UI, docs, pricing, workflow screens, or customer case detail beyond high-level marketing metrics; Rapido and Hacktron failed the stage gate, and the remaining rejected TechCrunch items were fund, founder-profile, product-launch, or product-profile stories rather than fresh closed Seed-Series C financing sources
+  - `bb-browser` was used for browser-side product and failure verification of Outmarket, BranchLab, Secludy, Vector, Optura, Permanent Capital Ventures, and McKesson Ventures; automation-opened tabs were closed after verification
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `8b6bca7` was pushed to `main`; GitHub Actions passed for Validate `25966340977` and Deploy `25966340996`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 45 published startups
+
+### 2026-05-17 14:19 CST
+
+- candidate_count: 36
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Fazeshift, Stitch, and Shyld AI used the standard screenshot path, GovWell required manual Playwright-wrapper recapture after visual review showed a OneTrust consent banner, and Ciridae required manual scrolled recapture after the automated first viewport rendered as a black animation surface; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: ef3a7fd
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `25983293791` and Deploy `25983293798` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 50 published startups, and a direct homepage check showed Ciridae, GovWell, Fazeshift, Stitch, and Shyld AI
+- failure_tags: [screenshot_env, source_incomplete, investor_identity_ambiguous, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from screenshot and source-normalization edges: some valid product pages need visual recapture beyond the literal first viewport, consent banners still need manual cleanup, Playwright wrapper session names can exceed macOS socket path limits, and many current funding stories failed the allowed stage, USD amount, or lead-investor completeness gates
+- proposed_change: defer code-level screenshot selection for blank first viewports and consent auto-dismiss, plus a Playwright wrapper short-session-name guard; no automation-doc heuristic edit because the existing failure-loop, browser verification, visual-review, and manual-recapture rules covered the run
+- decision: deferred
+- affected_file: scripts/screenshot.sh; Playwright wrapper invocation; funding source/schema handling
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - discovered a 36-candidate current-source window from PR Newswire, Business Wire/Yahoo/FinancialContent mirrors, GlobeNewswire, TechCrunch-adjacent searches, and company/product sites, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Ciridae because Business Wire verifies a May 11, 2026 $20M Seed led by Accel, while `bb-browser` product review confirmed real-economy operating-system workflows, AP invoices, CRM, reporting, project management, and Knight case metrics including $5M revenue uplift and 100% A/P invoice processing
+  - accepted GovWell because PR Newswire verifies a May 14, 2026 $25M Series A led by Insight Partners, while product review confirmed permitting, licensing, planning, code enforcement, AI AutoCheck, 100+ agencies, 35+ states, and workflow speed claims from 10 days to under an hour
+  - accepted Fazeshift because Business Wire/Yahoo verifies a May 16, 2026 $22M Series A led by F-Prime Capital, while product review confirmed AI AR agents for cash application, collections, contract review, billing, payment portal, SOC 1/2 posture, and 90% less AR time / 50% DSO reduction claims
+  - accepted Stitch because Business Wire/Yahoo verifies a May 14, 2026 $25M Series A led by Andreessen Horowitz, while product review confirmed lending, cards, deposits, ledgers, applications, compliance, treasury, and $5B transacted over six months
+  - accepted Shyld AI because GlobeNewswire verifies a May 14, 2026 $13.4M Seed led by Aulis Capital, while product review confirmed 3D LiDAR, radar, infrared sensing, edge GPU alerts, UV-C integration, OR workflow timelines, dashboard evidence, and contamination-reduction claims
+  - recorded fifteen rejected decisions for Coworked, Charms, M2 Foundry, eyeo, Dodai, Saile, Driive, FrostByte, Mindtail, Rogue Snacks, Sedivention, Ouinex, idea-L, NORI, and Elastics, meeting the 3:1 rejection bar for five acceptances
+  - Coworked, M2 Foundry, Saile, Driive, FrostByte, Mindtail, Rogue Snacks, idea-L, NORI, and Elastics were rejected for stage/schema gaps; Charms and Ouinex were rejected under the crypto exclusion; eyeo was rejected because the schema currently requires USD funding amounts; Dodai lacked a clear lead investor; Sedivention lacked an inspectable deployed product surface
+  - `bb-browser` was used for browser-side product verification and screenshot triage of Ciridae, GovWell, Fazeshift, Stitch, and Shyld AI; the initially opened wrong Stitch `.money` tab was closed and the correct `stitch.co` product site was verified
+  - `scripts/screenshot.sh` produced local screenshots for all five accepted startups, but visual review caught the Ciridae black first viewport and the GovWell cookie banner; Ciridae was recaptured at a scrolled product explanation section, and GovWell was recaptured after rejecting/removing the consent layer
+  - a manual Playwright-wrapper recapture using session `vdxmanual-ciridae2` failed with `listen EINVAL` because the generated UNIX socket path exceeded macOS limits; rerunning with short session `vc2` completed the same 1440x900 capture without changing project code
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `ef3a7fd` was pushed to `main`; GitHub Actions passed for Validate `25983293791` and Deploy `25983293798`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 50 published startups, and a direct homepage check showed all five new names

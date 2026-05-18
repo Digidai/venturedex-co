@@ -1,0 +1,26 @@
+{
+  "slug": "ethos",
+  "domain": "agent.askethos.com",
+  "url": "https://agent.askethos.com",
+  "product_name": "Ethos",
+  "summary": "AI-matched expert network with voice-based onboarding.",
+  "editor_note": "The sharper idea is that expert networks should know what people can do, not just what titles they held. Ethos uses voice onboarding, public-source enrichment, paid opportunity cards, and 35,000 weekly expert joins to build a deeper matching layer. Unlike LinkedIn search or GLG-style forms, the bet is that interviews create a better skill graph than resumes. The risk is quality control once the network scales faster than its eight-person team.",
+  "editor_rating": 5,
+  "why_featured": "35K experts joining each week",
+  "product_type": "Marketplace",
+  "region": "Europe",
+  "tags": "expert network,ai matching,voice onboarding,marketplace",
+  "investors": "Andreessen Horowitz, General Catalyst, XTX Markets, Evantic Capital, Common Magic",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22.75M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-05-06",
+      "source_url": "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

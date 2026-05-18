@@ -1,0 +1,26 @@
+{
+  "slug": "outmarket",
+  "domain": "outmarket.ai",
+  "url": "https://outmarket.ai",
+  "product_name": "Outmarket",
+  "summary": "AI workflow platform for insurance brokerages.",
+  "editor_note": "The smart move is treating insurance brokerage as document ops, not generic CRM automation. Outmarket shows quote comparison, gap analysis, ACORD forms, AMS360/Applied Epic integrations, 250+ agencies, and 12-15 hours saved per person each week. Unlike broad AI copilots, the bet is that brokers will trust software embedded in policy workflows. The risk is whether specialty lines keep needing human edge cases.",
+  "editor_rating": 5,
+  "why_featured": "250+ agencies, $17M Series A",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "insurance,ai workflows,brokerages,document automation",
+  "investors": "Permanent Capital Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$17M",
+      "stage": "Series A",
+      "lead_investor": "Permanent Capital Ventures",
+      "date": "2026-05-13",
+      "source_url": "https://www.prnewswire.com/news-releases/outmarket-ai-raises-17m-series-a-to-power-the-intelligence-era-of-insurance-302770379.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

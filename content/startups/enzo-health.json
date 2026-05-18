@@ -1,0 +1,26 @@
+{
+  "slug": "enzo-health",
+  "domain": "www.enzo.health",
+  "url": "https://www.enzo.health",
+  "product_name": "Enzo Health",
+  "summary": "Home health intake, scribe, and QA workflows with AI.",
+  "editor_note": "Home health software often treats the nurse as the data-entry layer; this pushes the paperwork into the visit itself. Enzo shows Intake, Scribe, and QA modules with OASIS validation, referral checks, secure messaging, and 5-minute intake-to-admission claims. Unlike generic medical scribes, the bet is one thread from bedside note to reimbursement. The risk is integrating deeply enough with fragmented agency systems.",
+  "editor_rating": 4,
+  "why_featured": "$20M Series A for home health AI",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "home health,clinical documentation,intake,quality assurance",
+  "investors": "N47, Gradient, Tandem Ventures, Rigby Watts",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "N47",
+      "date": "2026-05-04",
+      "source_url": "https://www.prnewswire.com/news-releases/enzo-health-raises-26m-to-deploy-ai-across-home-health-to-meet-unprecedented-nationwide-demand-for-post-acute-care-302760538.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

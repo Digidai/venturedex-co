@@ -1,0 +1,29 @@
+{
+  "slug": "moment-energy",
+  "domain": "www.momentenergy.com",
+  "url": "https://www.momentenergy.com",
+  "product_name": "Moment Energy",
+  "summary": "Second-life EV battery storage systems for commercial sites.",
+  "editor_note": "The better climate bet is not another new battery chemistry; it is making retired EV packs insurable infrastructure. Moment Energy leads with Luna BESS, UL 1974 and UL 9540A certifications, supply ties to Mercedes-Benz and Nissan, and an Austin factory plan. Unlike generic grid-storage pitches, the product choice is narrow: own the battery management layer so old packs can safely serve data centers and industrial sites.",
+  "editor_rating": 5,
+  "why_featured": "Certified second-life BESS",
+  "product_type": "Climate / Sustainability",
+  "region": "Global / Remote",
+  "tags": "battery storage,climate,energy infrastructure,ev batteries",
+  "investors": "Evok Innovations, Liberty Mutual Investments, W23 Global Fund, Acario",
+  "links": {
+    "twitter": "https://twitter.com/moment_energy",
+    "linkedin": "https://ca.linkedin.com/company/momentenergy"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M+",
+      "stage": "Series B",
+      "lead_investor": "Evok Innovations",
+      "date": "2026-05-05",
+      "source_url": "https://www.prnewswire.com/news-releases/moment-energy-raises-us40m-series-b-to-build-the-worlds-largest-second-life-battery-factory-302762579.html",
+      "source_name": "PRNewswire"
+    }
+  ]
+}

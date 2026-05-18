@@ -1,0 +1,26 @@
+{
+  "slug": "vector",
+  "domain": "www.vector.co",
+  "url": "https://www.vector.co",
+  "product_name": "Vector",
+  "summary": "Contact-level ad audiences and MCP analytics for B2B marketers.",
+  "editor_note": "The interesting choice is putting names back into ad targeting instead of hiding inside account segments. Vector shows visitor feeds, named buyer audiences, LinkedIn/Google/Reddit sync, 7.8% LinkedIn CTR, 17x ROI, and an MCP for asking campaign questions in Claude or ChatGPT. Unlike retargeting, it filters for exact ICP contacts already moving. The risk is that contact-level precision invites privacy pushback as fast as pipeline.",
+  "editor_rating": 4,
+  "why_featured": "$10M Series A for Vector MCP",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "b2b marketing,advertising,mcp,marketing analytics",
+  "investors": "SignalFire, HubSpot Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "SignalFire",
+      "date": "2026-05-13",
+      "source_url": "https://www.vector.co/blog/we-just-raised-10m-to-build-the-ai-platform-that-makes-marketers-superhuman",
+      "source_name": "Vector"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "fazeshift",
+  "domain": "www.fazeshift.com",
+  "url": "https://www.fazeshift.com",
+  "product_name": "Fazeshift",
+  "summary": "AI accounts receivable agents for finance teams.",
+  "editor_note": "The bet is boring on purpose: automate the cash cycle inside the systems finance teams already trust, not replace them. Fazeshift shows cash application, collections, contract review, Stripe/NetSuite/Sage Intacct billing, SOC 1/2, and customer claims like 50% DSO reduction. Unlike generic finance copilots, each agent maps to a stubborn AR job. The test is whether invoice edge cases stay tractable at scale.",
+  "editor_rating": 5,
+  "why_featured": "$22M Series A for AR agents",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "accounts receivable,finance ops,ai agents,billing automation",
+  "investors": "F-Prime Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22M",
+      "stage": "Series A",
+      "lead_investor": "F-Prime Capital",
+      "date": "2026-05-16",
+      "source_url": "https://finance.yahoo.com/sectors/technology/articles/fazeshift-raises-22m-power-future-142000822.html",
+      "source_name": "Business Wire"
+    }
+  ]
+}

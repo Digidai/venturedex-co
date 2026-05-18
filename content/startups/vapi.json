@@ -1,0 +1,24 @@
+{
+  "slug": "vapi",
+  "domain": "vapi.ai",
+  "url": "https://vapi.ai",
+  "product_name": "Vapi",
+  "summary": "Voice AI infrastructure for building, deploying, and managing phone agents.",
+  "editor_note": "The smart bet is that voice agents need latency infrastructure, not another bot builder. Vapi exposes call workflows, tool integrations, guardrails, SOC 2/HIPAA/PCI posture, and claims 1B calls, 2.5M+ agents, 750K developers, and sub-500ms latency. Compared with Twilio wrappers or contact-center suites, it sells the voice runtime beneath Ring-scale support. The risk is that voice AI becomes a commodity inside every CX platform.",
+  "editor_rating": 5,
+  "why_featured": "1B calls on voice-agent platform",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "voice ai,ai agents,developer tools,customer support",
+  "investors": "Peak XV Partners",
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series B",
+      "lead_investor": "Peak XV Partners",
+      "date": "2026-05-12",
+      "source_url": "https://techcrunch.com/2026/05/12/vapi-hits-500m-valuation-as-amazon-ring-chose-its-ai-platform-over-40-rivals/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

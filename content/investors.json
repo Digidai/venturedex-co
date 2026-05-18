@@ -1,4 +1,11 @@
 {
+  "776": {
+    "name": "Seven Seven Six",
+    "slug": "776",
+    "short_name": "776",
+    "website": "https://sevensevensix.com",
+    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
+  },
   "a16z": {
     "name": "Andreessen Horowitz",
     "slug": "a16z",
@@ -68,13 +75,6 @@
     "short_name": "GC",
     "website": "https://www.generalcatalyst.com",
     "description": "Venture capital firm that invests in powerful, positive change."
-  },
-  "776": {
-    "name": "Seven Seven Six",
-    "slug": "776",
-    "short_name": "776",
-    "website": "https://sevensevensix.com",
-    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
   },
   "thrive": {
     "name": "Thrive Capital",
@@ -194,5 +194,131 @@
     "short_name": "Silverton",
     "website": "https://www.silvertonpartners.com",
     "description": "Austin-based early-stage venture capital firm partnering with technology founders from seed through early growth."
+  },
+  "glilot-capital": {
+    "name": "Glilot Capital",
+    "slug": "glilot-capital",
+    "short_name": "Glilot",
+    "website": "https://www.glilotcapital.com",
+    "description": "Venture capital firm backing enterprise software, cybersecurity, and AI infrastructure companies from early stage through growth."
+  },
+  "evok-innovations": {
+    "name": "Evok Innovations",
+    "slug": "evok-innovations",
+    "short_name": "Evok",
+    "website": "https://www.evokinnovations.com",
+    "description": "Industrial decarbonization investor backing companies across energy, critical minerals, industrial optimization, and climate adaptation."
+  },
+  "intel-capital": {
+    "name": "Intel Capital",
+    "slug": "intel-capital",
+    "short_name": "Intel Capital",
+    "website": "https://www.intelcapital.com",
+    "description": "Corporate venture capital arm of Intel investing in silicon, frontier compute, devices, cloud, AI, and deep technology companies."
+  },
+  "tcv": {
+    "name": "TCV",
+    "slug": "tcv",
+    "short_name": "TCV",
+    "website": "https://www.tcv.com",
+    "description": "Growth equity firm partnering with technology companies from expansion stage through category leadership."
+  },
+  "washington-harbour": {
+    "name": "Washington Harbour Partners",
+    "slug": "washington-harbour",
+    "short_name": "Washington Harbour",
+    "website": "https://washingtonharbour.com",
+    "description": "Private investment firm partnering with businesses across cybersecurity, government, and enterprise technology."
+  },
+  "bessemer-venture-partners": {
+    "name": "Bessemer Venture Partners",
+    "slug": "bessemer-venture-partners",
+    "short_name": "Bessemer",
+    "website": "https://www.bvp.com",
+    "description": "Venture capital firm partnering with technology founders from seed through growth across enterprise, consumer, healthcare, and frontier technology."
+  },
+  "basis-set-ventures": {
+    "name": "Basis Set Ventures",
+    "slug": "basis-set-ventures",
+    "short_name": "Basis Set",
+    "website": "https://www.basisset.com",
+    "description": "Early-stage venture capital firm backing AI companies that improve business workflows and productivity."
+  },
+  "n47": {
+    "name": "N47",
+    "slug": "n47",
+    "short_name": "N47",
+    "website": "https://www.n47.com",
+    "description": "Product-first venture firm investing in early technology companies before broad market consensus."
+  },
+  "peak-xv-partners": {
+    "name": "Peak XV Partners",
+    "slug": "peak-xv-partners",
+    "short_name": "Peak XV",
+    "website": "https://www.peakxv.com",
+    "description": "Venture and growth investment firm backing startups across India and Southeast Asia from early stage through growth."
+  },
+  "samsung-venture-investment": {
+    "name": "Samsung Venture Investment",
+    "slug": "samsung-venture-investment",
+    "short_name": "Samsung Ventures",
+    "website": "https://www.samsungventures.com/en/main.do",
+    "description": "Corporate venture capital firm of Samsung investing in AI, robotics, device solutions, bio and health, and frontier technology."
+  },
+  "permanent-capital-ventures": {
+    "name": "Permanent Capital Ventures",
+    "slug": "permanent-capital-ventures",
+    "short_name": "Permanent Capital",
+    "website": "https://www.permanent-capital.vc",
+    "description": "Venture capital firm backing durable, founder-led companies across software, services, and vertical technology markets."
+  },
+  "mckesson-ventures": {
+    "name": "McKesson Ventures",
+    "slug": "mckesson-ventures",
+    "short_name": "McKesson Ventures",
+    "website": "https://ventures.mckesson.com",
+    "description": "Healthcare and pharma-focused venture firm investing in software and services companies from venture through growth stages."
+  },
+  "impression-ventures": {
+    "name": "Impression Ventures",
+    "slug": "impression-ventures",
+    "short_name": "Impression",
+    "website": "https://impression.ventures",
+    "description": "Early-stage venture capital firm investing in applied AI, fintech, and data infrastructure companies."
+  },
+  "signalfire": {
+    "name": "SignalFire",
+    "slug": "signalfire",
+    "short_name": "SignalFire",
+    "website": "https://www.signalfire.com",
+    "description": "Venture capital firm combining startup investing with data and AI systems for recruiting, growth, and market intelligence."
+  },
+  "hubspot-ventures": {
+    "name": "HubSpot Ventures",
+    "slug": "hubspot-ventures",
+    "short_name": "HubSpot Ventures",
+    "website": "https://www.hubspot.com/ventures",
+    "description": "Corporate venture capital arm of HubSpot investing in software companies that help businesses grow."
+  },
+  "insight-partners": {
+    "name": "Insight Partners",
+    "slug": "insight-partners",
+    "short_name": "Insight",
+    "website": "https://www.insightpartners.com",
+    "description": "Global software investor partnering with high-growth technology companies from startup through ScaleUp."
+  },
+  "f-prime-capital": {
+    "name": "F-Prime Capital",
+    "slug": "f-prime-capital",
+    "short_name": "F-Prime",
+    "website": "https://fprimecapital.com",
+    "description": "Venture capital firm investing in healthcare, life sciences, and technology companies from early stage through growth."
+  },
+  "aulis-capital": {
+    "name": "Aulis Capital",
+    "slug": "aulis-capital",
+    "short_name": "Aulis",
+    "website": "https://auliscapital.com",
+    "description": "Venture firm with offices in Palo Alto, Shanghai, and Hong Kong investing in healthcare and frontier technology."
   }
 }

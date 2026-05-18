@@ -1,0 +1,28 @@
+{
+  "slug": "amperos",
+  "domain": "www.amperos.com",
+  "url": "https://www.amperos.com",
+  "product_name": "Amperos",
+  "summary": "AI denial management and insurance collections for providers.",
+  "editor_note": "Denial management usually dies in workqueues; this tries to make it an owned operating system. Amperos works claims from submission to payment, with AI agents handling payor portals, calls, corrected claims, records, and appeals while RCM specialists cover hard cases. Unlike tools that only draft letters or make calls, the bet is full workflow ownership, visible in 500,000+ claims and 3,000 clinical locations. The risk is healthcare edge cases pulling humans back into the loop.",
+  "editor_rating": 4,
+  "why_featured": "$16M Series A for AI denials",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "healthcare ai,denial management,revenue cycle,claims",
+  "investors": "Bessemer Venture Partners, Uncork Capital, Neo",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/amperos-health"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$16M",
+      "stage": "Series A",
+      "lead_investor": "Bessemer Venture Partners",
+      "date": "2026-04-22",
+      "source_url": "https://www.prnewswire.com/news-releases/amperos-health-secures-16m-investment-as-it-launches-industrys-first-ai-native-denial-management-and-revenue-recovery-platform-302749446.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "shyld-ai",
+  "domain": "www.shyld.ai",
+  "url": "https://www.shyld.ai",
+  "product_name": "Shyld AI",
+  "summary": "Physical AI agents for hospital operations and disinfection.",
+  "editor_note": "The real bet is that hospital AI should act in the room, not sit in the chart. Shyld AI shows 3D LiDAR, radar, infrared sensing, edge GPUs, UV-C cycles, and a Stanford-linked 93% contamination reduction claim. Unlike ambient scribes, this is physical AI that changes OR turnover and infection-control workflows. The risk is whether hospital deployment speed matches the clinical evidence.",
+  "editor_rating": 4,
+  "why_featured": "93% contamination reduction",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "hospital operations,physical ai,infection control,edge ai",
+  "investors": "Aulis Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$13.4M",
+      "stage": "Seed",
+      "lead_investor": "Aulis Capital",
+      "date": "2026-05-14",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/14/3295222/0/en/shyld-ai-raises-13-4m-to-expand-active-ai-across-u-s-hospitals.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

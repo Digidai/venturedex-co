@@ -1,0 +1,30 @@
+{
+  "slug": "copilotkit",
+  "domain": "www.copilotkit.ai",
+  "url": "https://www.copilotkit.ai",
+  "product_name": "CopilotKit",
+  "summary": "Open-source framework for app-native AI agents and generative UI.",
+  "editor_note": "Most agent products still end at a chat box; the sharper bet is giving agents a front end. CopilotKit exposes React and Angular SDKs, AG-UI, MCP Apps, threads, GitHub-backed docs, and a one-command npx path. Unlike Vercel's AI SDK or ChatGPT Apps, it is trying to be the neutral UI layer enterprises can self-host. The risk is that protocol gravity is hard to keep once platform vendors bundle the same primitives.",
+  "editor_rating": 5,
+  "why_featured": "AG-UI for app-native agents",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,generative ui,developer tools,open source",
+  "investors": "Glilot Capital, NFX, SignalFire",
+  "links": {
+    "github": "https://github.com/CopilotKit/CopilotKit",
+    "twitter": "https://x.com/CopilotKit",
+    "linkedin": "https://www.linkedin.com/company/copilotkit/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$27M",
+      "stage": "Series A",
+      "lead_investor": "Glilot Capital",
+      "date": "2026-05-05",
+      "source_url": "https://www.copilotkit.ai/blog/series-a",
+      "source_name": "CopilotKit"
+    }
+  ]
+}
