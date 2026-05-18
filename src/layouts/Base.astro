@@ -21,6 +21,7 @@ interface Props {
   publishedTime?: string | null;
   modifiedTime?: string | null;
   schema?: JsonLdNode | JsonLdNode[];
+  alternateMarkdownPath?: string;
 }
 
 const {
@@ -33,6 +34,7 @@ const {
   publishedTime,
   modifiedTime,
   schema,
+  alternateMarkdownPath,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
@@ -40,10 +42,24 @@ const normalizedPath = normalizeCanonicalPath(canonicalPath ?? Astro.url.pathnam
 const canonicalURL = absoluteUrl(normalizedPath, siteUrl);
 const metaDescription = truncateText(description);
 const pageTitle = `${title} | ${SITE_NAME}`;
-const ogImageUrl = ogImage ? absoluteUrl(ogImage, siteUrl) : undefined;
+const usesDefaultOgImage = !ogImage;
+const ogImageUrl = absoluteUrl(ogImage ?? "/og-image.png", siteUrl);
+const ogImageAlt = `${title} on ${SITE_NAME}`;
 const publishedIso = toIsoDateTime(publishedTime);
 const modifiedIso = toIsoDateTime(modifiedTime);
 const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+const pathname = normalizeCanonicalPath(Astro.url.pathname);
+const navItems = [
+  { href: "/", label: "Explore" },
+  { href: "/startups", label: "Startups" },
+  { href: "/investors", label: "Investors" },
+  { href: "/news", label: "News" },
+  { href: "/collections", label: "Collections" },
+  { href: "/weekly", label: "Weekly" },
+].map((item) => ({
+  ...item,
+  isActive: item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`),
+}));
 ---
 
 <!doctype html>
@@ -57,7 +73,13 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="application-name" content={SITE_NAME} />
     <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0F0F0E" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@400&display=swap" />
     <link rel="canonical" href={canonicalURL} />
+    {alternateMarkdownPath && (
+      <link rel="alternate" type="text/markdown" title={`${title} Markdown`} href={absoluteUrl(alternateMarkdownPath, siteUrl)} />
+    )}
     <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={metaDescription} />
@@ -66,11 +88,15 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta property="og:locale" content="en_US" />
     {publishedIso && <meta property="article:published_time" content={publishedIso} />}
     {modifiedIso && <meta property="article:modified_time" content={modifiedIso} />}
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    <meta property="og:image" content={ogImageUrl} />
+    {usesDefaultOgImage && <meta property="og:image:width" content="1200" />}
+    {usesDefaultOgImage && <meta property="og:image:height" content="630" />}
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={metaDescription} />
-    {ogImageUrl && <meta name="twitter:image" content={ogImageUrl} />}
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
     {schemaItems.map((item) => (
@@ -87,10 +113,15 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         <a href="/" class="logo">VentureDex</a>
         <nav aria-label="Main navigation">
           <div class="nav-tabs">
-            <a href="/" class="nav-tab">Explore</a>
-            <a href="/collections" class="nav-tab">Collections</a>
-            <a href="/weekly" class="nav-tab">Weekly</a>
-            <a href="/news" class="nav-tab">News</a>
+            {navItems.map((item) => (
+              <a
+                href={item.href}
+                class:list={["nav-tab", item.isActive && "nav-tab--active"]}
+                aria-current={item.isActive ? "page" : undefined}
+              >
+                {item.label}
+              </a>
+            ))}
           </div>
         </nav>
         <div class="header-actions">
@@ -148,7 +179,12 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         gap: 0;
         border: 1px solid var(--color-border);
         border-radius: 8px;
-        overflow: hidden;
+        overflow: auto;
+        scrollbar-width: none;
+      }
+
+      .nav-tabs::-webkit-scrollbar {
+        display: none;
       }
 
       .nav-tab {
@@ -159,13 +195,15 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         text-decoration: none;
         transition: background 0.15s, color 0.15s;
         border-right: 1px solid var(--color-border);
+        white-space: nowrap;
       }
 
       .nav-tab:last-child {
         border-right: none;
       }
 
-      .nav-tab:hover {
+      .nav-tab:hover,
+      .nav-tab--active {
         background: var(--color-badge-bg);
         color: var(--color-text);
         text-decoration: none;
@@ -252,11 +290,9 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         .nav-tabs {
           order: 3;
           width: 100%;
-          justify-content: center;
         }
 
         .nav-tab {
-          flex: 1;
           text-align: center;
           font-size: 0.75rem;
         }

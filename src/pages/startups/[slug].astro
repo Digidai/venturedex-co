@@ -69,11 +69,21 @@ const externalLinks = [
   publishedTime={startup.published_at}
   modifiedTime={startup.updated_at}
   schema={schema}
+  alternateMarkdownPath={`/startups/${startup.slug}.md`}
 >
   <article class="site-detail container">
     <div class="detail-hero">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} class="detail-screenshot" />
+        <img
+          src={screenshotUrl}
+          alt={`${startup.product_name} screenshot`}
+          class="detail-screenshot"
+          width="1200"
+          height="675"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
       ) : (
         <div class="detail-placeholder">
           <span>{startup.product_name.charAt(0)}</span>
@@ -84,10 +94,10 @@ const externalLinks = [
     <header class="detail-header">
       <div class="header-top">
         <div class="detail-title-wrap">
-          <BrandLogo asset={companyBrand} name={startup.product_name} size={36} class="detail-logo" />
+          <BrandLogo asset={companyBrand} name={startup.product_name} size={36} loading="eager" class="detail-logo" />
           <div>
-          <h1>{startup.product_name}</h1>
-          <p class="detail-domain">{startup.domain}</p>
+            <h1>{startup.product_name}</h1>
+            <p class="detail-domain">{startup.domain}</p>
           </div>
         </div>
         <a
@@ -122,7 +132,7 @@ const externalLinks = [
     )}
 
     <section class="detail-meta">
-      <div class="meta-grid">
+      <dl class="meta-grid">
         {startup.product_type && (
           <div class="meta-item">
             <dt>Type</dt>
@@ -162,13 +172,13 @@ const externalLinks = [
             </dd>
           </div>
         )}
-      </div>
+      </dl>
     </section>
 
     {hasTeamInfo && (
       <section class="team-section" aria-label="Team">
         <h2>Team</h2>
-        <div class="team-grid">
+        <dl class="team-grid">
           {startup.founder_name && (
             <div class="team-item">
               <dt>Founder</dt>
@@ -187,7 +197,7 @@ const externalLinks = [
               <dd>{startup.hq_location}</dd>
             </div>
           )}
-        </div>
+        </dl>
       </section>
     )}
 

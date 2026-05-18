@@ -29,15 +29,23 @@ const doubled = [...items, ...items];
 {items.length > 0 && (
   <div class="ticker-wrapper" aria-label="Recent funding news">
     <div class="ticker-track">
-      {doubled.map((item) => (
-        <a href={`/startups/${item.slug}`} class="ticker-item">
-          <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
-          <span class="ticker-name">{item.name}</span>
-          {item.amount && <span class="ticker-amount">{item.amount}</span>}
-          {item.stage && <span class="ticker-stage">{item.stage}</span>}
-          <span class="ticker-date">{item.date}</span>
-        </a>
-      ))}
+      {doubled.map((item, index) => {
+        const isDuplicate = index >= items.length;
+        return (
+          <a
+            href={`/startups/${item.slug}`}
+            class="ticker-item"
+            aria-hidden={isDuplicate ? "true" : undefined}
+            tabindex={isDuplicate ? -1 : undefined}
+          >
+            <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
+            <span class="ticker-name">{item.name}</span>
+            {item.amount && <span class="ticker-amount">{item.amount}</span>}
+            {item.stage && <span class="ticker-stage">{item.stage}</span>}
+            <span class="ticker-date">{item.date}</span>
+          </a>
+        );
+      })}
     </div>
   </div>
 )}
@@ -59,6 +67,16 @@ const doubled = [...items, ...items];
 
   .ticker-track:hover {
     animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: auto;
+      gap: var(--space-3);
+      padding: var(--space-3) var(--space-6);
+    }
   }
 
   @keyframes ticker-scroll {

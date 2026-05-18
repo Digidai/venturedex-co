@@ -27,7 +27,9 @@ if (query.trim()) {
     <h1>Search</h1>
 
     <form class="search-form" action="/search" method="GET">
+      <label for="search-query" class="visually-hidden">Search startups</label>
       <input
+        id="search-query"
         type="search"
         name="q"
         value={query}

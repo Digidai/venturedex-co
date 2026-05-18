@@ -22,18 +22,23 @@ const description = truncateText(investor.description ?? `${investor.name} portf
 const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
 ---
 
-<Base title={investor.name} description={description} schema={schema}>
+<Base
+  title={investor.name}
+  description={description}
+  schema={schema}
+  alternateMarkdownPath={`/investors/${investor.slug}.md`}
+>
   <div class="container investor-page">
-    <a href="/news" class="back-link">&larr; Back to news</a>
+    <a href="/investors" class="back-link">&larr; Back to investors</a>
 
     <header class="investor-header">
       <div class="investor-identity">
-        <BrandLogo asset={investorBrand} name={investor.name} size={40} class="investor-logo" />
+        <BrandLogo asset={investorBrand} name={investor.name} size={40} loading="eager" class="investor-logo" />
         <div>
           <h1>{investor.name}</h1>
           {investor.website && (
             <a href={investor.website} target="_blank" rel="noopener noreferrer" class="investor-url">
-              {new URL(investor.website).hostname} ↗
+              {new URL(investor.website).hostname} &nearr;
             </a>
           )}
         </div>
@@ -81,7 +86,7 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
                     </td>
                     <td class="cell-source">
                       <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
-                        {r.source_name || "Press"} ↗
+                        {r.source_name || "Press"} &nearr;
                       </a>
                     </td>
                   </tr>

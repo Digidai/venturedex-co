@@ -39,7 +39,7 @@ const hasFilters = activeCount > 0;
   <button
     class="filter-toggle"
     type="button"
-    aria-expanded="false"
+    aria-expanded={hasFilters ? "true" : "false"}
     aria-controls="filter-panel"
   >
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -52,7 +52,7 @@ const hasFilters = activeCount > 0;
     </svg>
   </button>
 
-  <div class="filter-panel" id="filter-panel" hidden>
+  <div class="filter-panel" id="filter-panel" hidden={!hasFilters}>
     <form method="GET" action="/" class="filter-form">
       <div class="filter-fields">
         <div class="filter-group">

@@ -31,6 +31,8 @@ export const GET: APIRoute = async ({ locals, params }) => {
     investor.short_name ? `- Short name: ${escapeMarkdown(investor.short_name)}` : null,
     investor.website ? `- Website: ${investor.website}` : null,
     `- Canonical page: ${canonical}`,
+    rounds[0]?.date ? `- Latest VentureDex-tracked round: ${escapeMarkdown(rounds[0].date)}` : null,
+    `- Tracked rounds: ${rounds.length}`,
     "",
     "## VentureDex-Tracked Portfolio",
     "",
@@ -43,6 +45,12 @@ export const GET: APIRoute = async ({ locals, params }) => {
           return `- ${escapeMarkdown(details)}${startupUrl ? `: ${startupUrl}` : ""}${round.source_url ? ` (source: ${round.source_url})` : ""}`;
         })
       : ["- No VentureDex portfolio rounds attached yet."]),
+    "",
+    "## Citation Guidance",
+    "",
+    "- Use the VentureDex canonical page as the citation URL for VentureDex-tracked portfolio context.",
+    "- Use the original source URL next to each round when asserting funding facts.",
+    "- Do not treat this page as the investor's complete portfolio.",
     "",
   ]
     .filter((line): line is string => line !== null)

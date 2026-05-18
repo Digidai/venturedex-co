@@ -11,8 +11,10 @@ function relativeTime(dateStr: string | null): string {
   if (!dateStr) return "";
   const now = Date.now();
   const then = new Date(dateStr).getTime();
+  if (Number.isNaN(then)) return "";
   const diffMs = now - then;
   const diffMin = Math.floor(diffMs / 60000);
+  if (diffMin < 1) return "Just now";
   if (diffMin < 60) return `${diffMin}m ago`;
   const diffHr = Math.floor(diffMin / 60);
   if (diffHr < 24) return `${diffHr}h ago`;
@@ -48,7 +50,14 @@ function isUpdated(startup: Startup): boolean {
             <a href={`/startups/${startup.slug}`} class="strip-item">
               <div class="strip-thumb">
                 {thumb ? (
-                  <img src={thumb} alt="" loading="lazy" />
+                  <img
+                    src={thumb}
+                    alt=""
+                    width="112"
+                    height="72"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 ) : (
                   <span class="strip-initial">{startup.product_name.charAt(0)}</span>
                 )}
@@ -61,7 +70,7 @@ function isUpdated(startup: Startup): boolean {
                       {badge}
                     </span>
                   )}
-                  {time && <span class="strip-time">{time}</span>}
+                  {time && <time class="strip-time" datetime={startup.published_at ?? undefined}>{time}</time>}
                 </span>
               </div>
             </a>

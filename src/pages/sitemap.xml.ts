@@ -7,10 +7,20 @@ interface SitemapUrl {
   loc: string;
   lastmod?: string | null;
   priority?: string;
+  images?: SitemapImage[];
+}
+
+interface SitemapImage {
+  loc: string;
+  title?: string | null;
+  caption?: string | null;
 }
 
 interface StartupSitemapRow {
   slug: string;
+  product_name: string;
+  summary: string | null;
+  screenshot_r2_key: string | null;
   updated_at: string | null;
   published_at: string | null;
   is_featured: number;
@@ -52,7 +62,7 @@ export const GET: APIRoute = async ({ locals }) => {
     const [startups, investors, collections, issues] = await Promise.all([
       db
         .prepare(
-          `SELECT slug, updated_at, published_at, is_featured
+          `SELECT slug, product_name, summary, screenshot_r2_key, updated_at, published_at, is_featured
            FROM startups
            WHERE workflow_status = 'published'
            ORDER BY is_featured DESC, published_at DESC`
@@ -100,6 +110,15 @@ export const GET: APIRoute = async ({ locals }) => {
         loc: `/startups/${startup.slug}`,
         lastmod: startup.updated_at ?? startup.published_at,
         priority: startup.is_featured ? "0.9" : "0.8",
+        images: startup.screenshot_r2_key
+          ? [
+              {
+                loc: `/screenshots/${startup.screenshot_r2_key}`,
+                title: `${startup.product_name} screenshot`,
+                caption: startup.summary,
+              },
+            ]
+          : undefined,
       })),
       investors.results.map((investor) => ({
         loc: `/investors/${investor.slug}`,
@@ -129,7 +148,7 @@ export const GET: APIRoute = async ({ locals }) => {
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls.map((url) => renderUrl(url, siteUrl)).join("\n")}
 </urlset>`;
 
@@ -143,10 +162,27 @@ ${urls.map((url) => renderUrl(url, siteUrl)).join("\n")}
 
 function renderUrl(url: SitemapUrl, siteUrl: string): string {
   const lastmod = formatLastmod(url.lastmod);
+  const images = renderImages(url.images, siteUrl);
 
   return `  <url>
     <loc>${escapeXml(absoluteUrl(url.loc, siteUrl))}</loc>
-${lastmod ? `    <lastmod>${escapeXml(lastmod)}</lastmod>\n` : ""}${url.priority ? `    <priority>${url.priority}</priority>\n` : ""}  </url>`;
+${lastmod ? `    <lastmod>${escapeXml(lastmod)}</lastmod>\n` : ""}${url.priority ? `    <priority>${url.priority}</priority>\n` : ""}${images}  </url>`;
+}
+
+function renderImages(images: SitemapImage[] | undefined, siteUrl: string): string {
+  if (!images?.length) return "";
+
+  return images
+    .map((image) => {
+      const title = image.title ? `      <image:title>${escapeXml(image.title)}</image:title>\n` : "";
+      const caption = image.caption ? `      <image:caption>${escapeXml(image.caption)}</image:caption>\n` : "";
+
+      return `    <image:image>
+      <image:loc>${escapeXml(absoluteUrl(image.loc, siteUrl))}</image:loc>
+${title}${caption}    </image:image>
+`;
+    })
+    .join("");
 }
 
 function formatLastmod(value?: string | null): string | null {

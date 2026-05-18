@@ -9,6 +9,7 @@ import type {
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
 export const SITE_NAME = "VentureDex";
+export const DEFAULT_SOCIAL_IMAGE = "/og-image.png";
 export const SITE_DESCRIPTION =
   "A curated directory of startups worth watching, with editorial notes, funding signals, and investor context.";
 
@@ -105,7 +106,13 @@ export function siteOrganization(siteUrl = DEFAULT_SITE_URL): JsonLdNode {
     "@id": `${url}/#organization`,
     name: SITE_NAME,
     url,
-    logo: absoluteUrl("/favicon.svg", url),
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/favicon.svg", url),
+      width: 64,
+      height: 64,
+    },
+    image: absoluteUrl(DEFAULT_SOCIAL_IMAGE, url),
     description: SITE_DESCRIPTION,
   };
 }
@@ -118,6 +125,7 @@ export function siteWebSite(siteUrl = DEFAULT_SITE_URL): JsonLdNode {
     name: SITE_NAME,
     url,
     description: SITE_DESCRIPTION,
+    inLanguage: "en",
     publisher: { "@id": `${url}/#organization` },
     potentialAction: {
       "@type": "SearchAction",
@@ -128,8 +136,11 @@ export function siteWebSite(siteUrl = DEFAULT_SITE_URL): JsonLdNode {
 }
 
 export function breadcrumbList(items: { name: string; path: string }[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+  const url = absoluteUrl(items[items.length - 1]?.path ?? "/", siteUrl);
+
   return {
     "@type": "BreadcrumbList",
+    "@id": `${url}#breadcrumb`,
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -158,9 +169,12 @@ export function webPageNode(input: {
     url,
     name: input.title,
     description: input.description,
+    inLanguage: "en",
     isPartOf: { "@id": `${siteUrl}/#website` },
     about: input.mainEntityId ? { "@id": input.mainEntityId } : undefined,
+    mainEntity: input.mainEntityId ? { "@id": input.mainEntityId } : undefined,
     primaryImageOfPage: input.image ? { "@type": "ImageObject", url: absoluteUrl(input.image, siteUrl) } : undefined,
+    publisher: { "@id": `${siteUrl}/#organization` },
     datePublished: toIsoDateTime(input.datePublished),
     dateModified: toIsoDateTime(input.dateModified),
   };
@@ -174,6 +188,7 @@ export function itemListNode(
 ): JsonLdNode {
   return {
     "@type": "ItemList",
+    numberOfItems: items.length,
     itemListElement: items.map((item, index) =>
       stripUndefined({
         "@type": "ListItem",
@@ -224,11 +239,14 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
       name: startup.product_name,
       url: startup.canonical_url ?? `https://${startup.domain}`,
       description,
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
       foundingDate: startup.founded_year ? String(startup.founded_year) : undefined,
       location: startup.hq_location ? { "@type": "Place", name: startup.hq_location } : undefined,
       image: screenshotUrl ? absoluteUrl(screenshotUrl, siteUrl) : undefined,
+      founder: startup.founder_name ? { "@type": "Person", name: startup.founder_name } : undefined,
       sameAs: sameAs.length > 0 ? sameAs : undefined,
       keywords: tags.length > 0 ? tags.join(", ") : undefined,
+      knowsAbout: tags.length > 0 ? tags : undefined,
       funder: investors.length > 0 ? investors.map((name) => ({ "@type": "Organization", name })) : undefined,
     }),
   ]);
@@ -269,18 +287,16 @@ export function investorJsonLd(
       alternateName: investor.short_name ?? undefined,
       url: investor.website ?? pageUrl,
       description,
-      makesOffer:
-        rounds.length > 0
-          ? rounds.slice(0, 20).map((round) =>
-              stripUndefined({
-                "@type": "Offer",
-                name: `${round.company_name} ${round.stage}`,
-                url: round.company_slug ? absoluteUrl(`/startups/${round.company_slug}`, siteUrl) : round.company_url ?? undefined,
-                price: round.amount ?? undefined,
-              })
-            )
-          : undefined,
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
     }),
+    itemListNode(
+      rounds.slice(0, 50).map((round) => ({
+        name: round.company_name,
+        path: round.company_slug ? `/startups/${round.company_slug}` : pagePath,
+        description: [round.amount, round.stage, round.date, round.source_name].filter(Boolean).join(" - "),
+      })),
+      siteUrl
+    ),
   ]);
 }
 
@@ -377,7 +393,7 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
     webPageNode({
       path: "/",
       title: "Explore",
-      description: "A curated gallery of startups worth watching. Hand-picked with editorial commentary.",
+      description: "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.",
       type: "CollectionPage",
       siteUrl,
     }),

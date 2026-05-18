@@ -5,10 +5,12 @@ import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
+import ActivityStrip from "../components/ActivityStrip.astro";
 import {
   NEWS_ROUNDS_LIMIT,
   getNewsFundingRounds,
   getPublishedStartups,
+  getRecentStartups,
   getStartupCount,
 } from "../lib/db";
 import { homeJsonLd } from "../lib/seo";
@@ -25,15 +27,17 @@ const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "f
 
 let startups: import("../lib/types").Startup[] = [];
 let rounds: import("../lib/types").FundingRound[] = [];
+let recentStartups: import("../lib/types").Startup[] = [];
 let startupCount = 0;
 let matchingStartupCount = 0;
 
 try {
-  [startups, startupCount, matchingStartupCount, rounds] = await Promise.all([
+  [startups, startupCount, matchingStartupCount, rounds, recentStartups] = await Promise.all([
     getPublishedStartups(db, { productType, fundingStage, region, sort, limit: STARTUP_LIST_LIMIT }),
     getStartupCount(db),
     getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
+    getRecentStartups(db, 12),
   ]);
 } catch (error) {
   console.error("Failed to load homepage data", error);
@@ -54,7 +58,10 @@ const heroCountText = hasFacetFilters
   : isTruncated
     ? `Showing first ${startups.length} of ${startupCount} outstanding early-stage companies.`
     : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`;
-const description = "A curated gallery of startups worth watching. Hand-picked with editorial commentary.";
+const resultSummary = hasFacetFilters
+  ? `Showing ${startups.length} matching startup${startups.length === 1 ? "" : "s"}`
+  : `Showing ${startups.length} startup profile${startups.length === 1 ? "" : "s"}`;
+const description = "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
 const schema = homeJsonLd(startups, Astro.site?.toString());
 ---
 
@@ -64,14 +71,15 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-text">
-        <h1>Discover today's top startups</h1>
+        <h1>Discover startups worth tracking</h1>
         <p class="hero-sub">
           {heroCountText}
-          Curated with editorial commentary.
+          Profiles include product context, funding signals, investor links, and source-backed notes.
         </p>
       </div>
     </div>
   </section>
+  <ActivityStrip startups={recentStartups} />
 
   <section class="explore">
     <div class="container">
@@ -81,6 +89,9 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
         currentRegion={region}
         currentSort={sort}
       />
+      <p class="result-summary" aria-live="polite">
+        {resultSummary}{isTruncated ? ` out of ${targetStartupCount}` : ""}
+      </p>
 
       {startups.length > 0 ? (
         <>
@@ -138,7 +149,13 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
   }
 
   .explore {
-    padding: var(--space-8) 0 var(--space-16);
+    padding: var(--space-6) 0 var(--space-16);
+  }
+
+  .result-summary {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin: calc(-1 * var(--space-2)) 0 var(--space-6);
   }
 
   .section-label {

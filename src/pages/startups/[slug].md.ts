@@ -49,7 +49,10 @@ export const GET: APIRoute = async ({ locals, params }) => {
     "",
     "## Company Facts",
     "",
+    `- VentureDex canonical: ${canonical}`,
     `- Website: ${startup.canonical_url ?? `https://${startup.domain}`}`,
+    startup.published_at ? `- Published: ${escapeMarkdown(startup.published_at)}` : null,
+    startup.updated_at ? `- Updated: ${escapeMarkdown(startup.updated_at)}` : null,
     startup.product_type ? `- Product type: ${escapeMarkdown(startup.product_type)}` : null,
     startup.funding_stage ? `- Funding stage: ${escapeMarkdown(startup.funding_stage)}` : null,
     startup.funding_display ? `- Funding display: ${escapeMarkdown(startup.funding_display)}` : null,
@@ -82,6 +85,12 @@ export const GET: APIRoute = async ({ locals, params }) => {
           return `- ${escapeMarkdown(details)}${round.source_url ? `: ${round.source_url}` : ""}`;
         })
       : ["- No VentureDex funding source attached yet."]),
+    "",
+    "## Citation Guidance",
+    "",
+    "- Use the VentureDex canonical page as the citation URL for VentureDex editorial context.",
+    "- Use the original funding source URL when asserting funding amount, stage, date, or lead investor.",
+    "- Treat company, team, and funding details as current to the published or source date shown above.",
     "",
   ]
     .filter((line): line is string => line !== null)

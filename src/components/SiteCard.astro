@@ -11,6 +11,8 @@ interface Props {
 const { startup, size = "default" } = Astro.props;
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
+const screenshotWidth = 640;
+const screenshotHeight = size === "large" ? 400 : 360;
 
 const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .filter(Boolean)
@@ -21,7 +23,15 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   <a href={`/startups/${startup.slug}`} class="card-link">
     <div class="card-screenshot">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} loading="lazy" />
+        <img
+          src={screenshotUrl}
+          alt={`${startup.product_name} screenshot`}
+          width={screenshotWidth}
+          height={screenshotHeight}
+          loading="lazy"
+          decoding="async"
+          sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
+        />
       ) : (
         <div class="card-placeholder">
           <span>{startup.product_name.charAt(0)}</span>
@@ -72,7 +82,8 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .card-screenshot {
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: var(--color-badge-bg);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--color-bg-card) 88%, var(--color-badge-bg)) 0%, var(--color-badge-bg) 100%);
   }
 
   .site-card--large .card-screenshot {
@@ -144,9 +155,10 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
     line-height: 1.4;
     margin-bottom: var(--space-2);
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: 2.24em;
   }
 
   .card-footer {
