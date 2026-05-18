@@ -1303,3 +1303,46 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `ef3a7fd` was pushed to `main`; GitHub Actions passed for Validate `25983293791` and Deploy `25983293798`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 50 published startups, and a direct homepage check showed all five new names
+
+### 2026-05-18 14:35 CST
+
+- candidate_count: 40
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Nectar Social used the standard screenshot path, Arkeus required a product-page recapture after visual review caught a blank successful output, WIRobotics required a scrolled product-section recapture after the first fold rendered mostly empty, CREW Carbon required manual Playwright-wrapper capture after the script treated the real `scroll-smoother-wrapper` as an overlay, and equipifi required consent-layer dismissal before recapture; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: dfdfb6a
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `26017351354` and Deploy `26017351355` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 55 published startups
+- failure_tags: [screenshot_env, source_incomplete, investor_identity_ambiguous, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from screenshot-quality false positives and source-normalization edges: the screenshot script can pass while the image is blank or sparse, can miss a consent banner, and can misclassify a legitimate fixed product wrapper as an overlay; several current funding stories also failed because stage, amount, financing type, or lead-investor facts could not be normalized without guessing
+- proposed_change: clarify that screenshot success remains provisional until visual review, and allow a product-visible 1440x900 recapture after `bb-browser` verification when the generated image is blank, sparse, stuck on loading animation, or still covered by consent
+- decision: applied
+- affected_file: docs/automation/venturedex-daily-runbook.md
+- affected_section: `Adaptive Heuristics`
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - discovered a 40-candidate current-source window from TechCrunch, PR Newswire, GlobeNewswire, official company pages, and related current funding searches, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Nectar Social because TechCrunch verifies a May 16, 2026 $30M Series A led by Menlo Ventures, while `bb-browser` product review confirmed AI social OS workflows for community management, listening, Reddit/Meta data, attribution, 95% untagged social conversations, and customer proof from brands including Figma and e.l.f.
+  - accepted WIRobotics because PR Newswire verifies an approximately $68M Series B led by JB Investment, while product review confirmed ALLEX humanoid specs, WIM wearable robot traction, 3,000 WIM units sold, CES awards, 15-DoF hands, 0.5 mm repeatability, and 30 kg hook-grip claims
+  - accepted Arkeus because PR Newswire verifies a May 15, 2026 $18M Series A led by QIC Ventures, while product review confirmed WARDEN, HSOR, S-HSOR, OTG, hyperspectral ISR positioning, degraded-condition claims, and source-reported target detection up to 8x farther
+  - accepted CREW Carbon because PR Newswire verifies a May 14, 2026 $25M Series A led by Burnt Island Ventures, while product review confirmed wastewater alkalinity enhancement, calcium carbonate dosing, closed-loop measurement, HRSD project evidence, nearly 10 deployments, and potential $350M capital upgrade deferral
+  - accepted equipifi because PR Newswire verifies a May 14, 2026 $34M Series B led by Left Lane Capital, while product review confirmed bank-native flexible payments, eligibility controls, reporting, 10-team-hour launch claims, and customer logos across credit unions and financial institutions
+  - recorded fifteen rejected decisions for Exponent, Sprouts.ai, Onramp, AI Presence, A2Z Cust2Mate, Publicis/LiveRamp, AlphaPepe, funinexchange, VVC Exploration, GoPro Defense, arXiv AI ban, Clio milestone, AI legal services, SwitchBot Lock Vision, and Hyperscale Data, meeting the 3:1 rejection bar for five acceptances
+  - Exponent was rejected because the source combined $7.5M Series A equity with more than $30M in credit facilities under a $40M headline and ambiguous anchor/co-lead roles; Sprouts.ai failed the allowed-stage gate, Onramp and AlphaPepe hit the crypto exclusion, and the remaining rejected items were acquisitions, public-company updates, product launches, tender offers, policy stories, or market overviews rather than fresh private Seed-Series C financings
+  - `bb-browser` was used for browser-side product verification and screenshot triage of Nectar Social, WIRobotics, Arkeus, CREW Carbon, equipifi, and investor/source checks where browser state mattered; automation-opened tabs were closed after verification
+  - `./scripts/screenshot.sh wirobotics https://corp.wirobotics.com/en` timed out during overlay cleanup, and the product URL was narrowed to `/en/product/allex`; the standard product-page capture then succeeded but visual review showed a mostly empty first fold, so a clean 1440x900 product-section recapture was created
+  - `./scripts/screenshot.sh arkeus https://arkeus.com/products` produced a successful but black image; switching to the concrete WARDEN product page produced a valid product screenshot and the startup URL was updated accordingly
+  - `./scripts/screenshot.sh crew-carbon https://crewcarbon.com/` and `/approach/` failed because the overlay heuristic treated the real full-viewport `scroll-smoother-wrapper` as removable chrome; `bb-browser` inspection confirmed product content underneath, and a manual Playwright-wrapper capture removed only the stuck `.curtain` loader
+  - `./scripts/screenshot.sh equipifi https://www.equipifi.com/` succeeded but visual review showed a cookie banner; the page was recaptured after dismissing the non-product consent layer
+  - a manual Playwright-wrapper attempt using a longer session name failed with `listen EINVAL` on the local UNIX socket path; rerunning with short session names completed the same captures without code changes
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `dfdfb6a` was pushed to `main`; GitHub Actions passed for Validate `26017351354` and Deploy `26017351355`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 55 published startups

@@ -228,4 +228,5 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - For `bb-browser` tab cleanup, list tabs first and close automation-opened tabs by visible short index in descending order; avoid `--tab current` and full CDP tab IDs unless the installed CLI has just accepted that form.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
 - When `scripts/screenshot.sh` fails with `popup_detected`, inspect the overlay candidates before recapturing; if the candidates are decorative `pointer-events-none`/empty fixed layers or consent/chat widgets rather than real modal blockers, dismiss or remove only that non-product layer, capture a clean 1440x900 WebP, and visually review it before continuing.
+- Treat screenshot success as provisional until visual review: if the generated image is blank, mostly empty, stuck on an animation/loading surface, or still contains a consent layer over product content, verify the product page with `bb-browser`, then recapture a clean 1440x900 WebP from the nearest product-visible section without removing real product wrappers.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->
