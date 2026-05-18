@@ -622,17 +622,17 @@
     },
     "permanent-capital-ventures": {
       "name": "Permanent Capital Ventures",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/permanent-capital-ventures.png",
+      "shape": "icon",
+      "local_path": "/logos/investors/permanent-capital-ventures-icon.png",
       "source_page": "https://www.permanent-capital.vc",
-      "source_url": "http://static1.squarespace.com/static/670fedb8b4c6186f464907e6/t/6734ffae46d40b51c75cd4b9/1731526574874/Perm-Cap-Ventures-small-white.png?format=1500w"
+      "source_url": "https://images.squarespace-cdn.com/content/v1/670fedb8b4c6186f464907e6/5fdcd884-2a77-4412-9421-a64f042f96d8/favicon.ico?format=100w"
     },
     "mckesson-ventures": {
       "name": "McKesson Ventures",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/mckesson-ventures.png",
+      "shape": "icon",
+      "local_path": "/logos/investors/mckesson-ventures.jpg",
       "source_page": "https://ventures.mckesson.com",
-      "source_url": "https://ventures.mckesson.com/wp-content/uploads/2015/05/McKVentures-Logo-200-White.png"
+      "source_url": "https://ventures.mckesson.com/wp-content/uploads/2016/06/McKesson-Ventures-Logo.jpg"
     },
     "impression-ventures": {
       "name": "Impression Ventures",
