@@ -183,7 +183,7 @@ const isSubscribeActive = pathname === "/subscribe";
 
       .header-inner {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         gap: var(--space-4);
         min-width: 0;
@@ -202,18 +202,19 @@ const isSubscribeActive = pathname === "/subscribe";
       }
 
       .main-nav {
-        flex: 1 1 auto;
+        flex: 0 1 auto;
         min-width: 0;
       }
 
       .nav-tabs {
-        display: flex;
+        display: inline-flex;
         gap: 0;
         border: 1px solid var(--color-border);
         border-radius: 8px;
         overflow: auto;
         overscroll-behavior-inline: contain;
         scrollbar-width: none;
+        width: max-content;
         max-width: 100%;
       }
 
@@ -251,6 +252,7 @@ const isSubscribeActive = pathname === "/subscribe";
         align-items: center;
         gap: var(--space-3);
         flex: 0 0 auto;
+        margin-left: auto;
       }
 
       .header-search {
@@ -398,6 +400,7 @@ const isSubscribeActive = pathname === "/subscribe";
         .header-actions {
           width: 100%;
           justify-content: space-between;
+          margin-left: 0;
         }
       }
     </style>
