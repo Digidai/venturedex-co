@@ -21,14 +21,24 @@ const {
 } = Astro.props;
 
 const shape = asset?.shape === "wordmark" ? "wordmark" : "icon";
+const tone = asset?.tone === "dark" || asset?.tone === "light" ? asset.tone : "auto";
 const initials = getBrandInitials(name);
-const style = `--brand-size:${size}px;`;
+const tileBg = asset?.tile_bg;
+const logoScale = typeof asset?.logo_scale === "number" && asset.logo_scale > 0
+  ? Math.min(Math.max(asset.logo_scale, 0.55), 1.12)
+  : null;
+const style = [
+  `--brand-size:${size}px`,
+  tileBg ? `--brand-tile-bg:${tileBg}` : null,
+  logoScale ? `--brand-logo-scale:${logoScale}` : null,
+].filter(Boolean).join(";") + ";";
 ---
 
 <span
   class:list={[
     "brand-mark",
     `brand-mark--${shape}`,
+    `brand-mark--tone-${tone}`,
     asset ? "brand-mark--asset" : "brand-mark--fallback",
     className,
   ]}
@@ -54,6 +64,7 @@ const style = `--brand-size:${size}px;`;
   .brand-mark {
     --brand-tile-bg: linear-gradient(135deg, #ffffff 0%, #f1f1ee 100%);
     --brand-tile-border: rgba(0, 0, 0, 0.1);
+    --brand-logo-scale: 0.8;
     --brand-logo-filter:
       drop-shadow(0 0 0.7px rgba(0, 0, 0, 0.8))
       drop-shadow(0 0.5px 1px rgba(0, 0, 0, 0.18));
@@ -78,8 +89,8 @@ const style = `--brand-size:${size}px;`;
   .brand-logo {
     flex: 0 0 auto;
     display: block;
-    width: 80%;
-    height: 80%;
+    width: calc(var(--brand-logo-scale) * 100%);
+    height: calc(var(--brand-logo-scale) * 100%);
     object-fit: contain;
     object-position: center;
     filter: var(--brand-logo-filter);
@@ -89,6 +100,17 @@ const style = `--brand-size:${size}px;`;
   .brand-mark--wordmark .brand-logo {
     width: 88%;
     height: 54%;
+  }
+
+  .brand-mark--tone-dark {
+    --brand-tile-bg: #111111;
+    --brand-tile-border: rgba(255, 255, 255, 0.16);
+    --brand-logo-filter: none;
+  }
+
+  .brand-mark--tone-light {
+    --brand-tile-bg: #ffffff;
+    --brand-logo-filter: none;
   }
 
   .brand-fallback {

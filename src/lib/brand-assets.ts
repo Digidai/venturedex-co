@@ -2,6 +2,7 @@ import brandAssetsJson from "../../content/brand-assets.json";
 import investorsJson from "../../content/investors.json";
 
 export type BrandShape = "icon" | "wordmark";
+export type BrandTone = "auto" | "dark" | "light";
 
 export interface BrandAsset {
   name: string;
@@ -10,6 +11,9 @@ export interface BrandAsset {
   source_page: string;
   source_url: string;
   note?: string;
+  tone?: BrandTone;
+  tile_bg?: string;
+  logo_scale?: number;
 }
 
 interface BrandAssetManifest {

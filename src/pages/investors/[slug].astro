@@ -14,7 +14,12 @@ const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
 
 const data = await getInvestorBySlug(db, slug!);
-if (!data) return Astro.redirect("/404");
+if (!data) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
 
 const { investor, rounds } = data;
 const investorBrand = getInvestorBrandAsset(investor.slug);
@@ -35,6 +40,7 @@ function displayHostname(value: string): string {
 <Base
   title={investor.name}
   description={description}
+  robots={rounds.length > 0 ? undefined : "noindex,follow"}
   schema={schema}
   alternateMarkdownPath={`/investors/${investor.slug}.md`}
 >
@@ -133,7 +139,7 @@ function displayHostname(value: string): string {
 <style>
   .investor-page {
     max-width: 900px;
-    padding: var(--space-12) var(--space-6) var(--space-16);
+    padding-block: var(--space-12) var(--space-16);
   }
 
   .back-link {

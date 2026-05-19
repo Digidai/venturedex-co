@@ -8,12 +8,15 @@
   --color-text: #1A1A1A;
   --color-text-secondary: #737373;
   --color-accent: #2563EB;
+  --color-danger: #DC2626;
   --color-border: #E5E5E5;
   --color-badge-bg: #F3F4F6;
   --color-badge-text: #374151;
   --color-editor-line: #2563EB;
 
   --radius: 4px;
+  --radius-md: 8px;
+  --radius-pill: 999px;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -33,6 +36,7 @@
     --color-bg-card: #141414;
     --color-text: #FAFAF9;
     --color-text-secondary: #A3A3A3;
+    --color-danger: #F87171;
     --color-border: #2A2A2A;
     --color-badge-bg: #1C1C1C;
     --color-badge-text: #D4D4D4;
@@ -45,6 +49,7 @@
   --color-bg-card: #141414;
   --color-text: #FAFAF9;
   --color-text-secondary: #A3A3A3;
+  --color-danger: #F87171;
   --color-border: #2A2A2A;
   --color-badge-bg: #1C1C1C;
   --color-badge-text: #D4D4D4;

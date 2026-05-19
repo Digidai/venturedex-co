@@ -4,18 +4,33 @@ export const prerender = false;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getWeeklyIssueByNumber } from "../../lib/db";
-import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
+import { normalizeExternalUrl, truncateText, weeklyIssueJsonLd } from "../../lib/seo";
 
-const issueNum = Number(Astro.params.issue);
-if (isNaN(issueNum)) return Astro.redirect("/weekly");
+const rawIssue = Astro.params.issue ?? "";
+if (!/^[1-9]\d*$/.test(rawIssue)) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
+const issueNum = Number(rawIssue);
 
 const db = Astro.locals.runtime.env.DB;
 const data = await getWeeklyIssueByNumber(db, issueNum);
-if (!data) return Astro.redirect("/404");
+if (!data) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
 
 const { issue, startups } = data;
+if (rawIssue !== String(issue.issue_number)) {
+  return Astro.redirect(`/weekly/${issue.issue_number}`, 301);
+}
 const description = truncateText(issue.editorial_intro ?? `VentureDex Weekly #${issue.issue_number}`);
 const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
+const antiPickUrl = normalizeExternalUrl(issue.anti_pick_url);
 ---
 
 <Base
@@ -62,8 +77,8 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
         <h2>The Anti-Pick</h2>
         <div class="anti-pick-card">
           <p class="anti-pick-name">
-            {issue.anti_pick_url ? (
-              <a href={issue.anti_pick_url} target="_blank" rel="noopener noreferrer">
+            {antiPickUrl ? (
+              <a href={antiPickUrl} target="_blank" rel="noopener noreferrer">
                 {issue.anti_pick_name}
               </a>
             ) : issue.anti_pick_name}
@@ -78,7 +93,7 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
 <style>
   .weekly-detail {
     max-width: 900px;
-    padding: var(--space-8) var(--space-6) var(--space-16);
+    padding-block: var(--space-8) var(--space-16);
   }
 
   .back-link {
@@ -149,7 +164,7 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
 
   .anti-pick-card {
     border: 1px solid var(--color-border);
-    border-left: 3px solid #DC2626;
+    border-left: 3px solid var(--color-danger);
     padding: var(--space-4) var(--space-6);
     border-radius: 0 var(--radius) var(--radius) 0;
     overflow-wrap: anywhere;

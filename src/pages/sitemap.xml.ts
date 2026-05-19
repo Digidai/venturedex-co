@@ -138,13 +138,6 @@ export const GET: APIRoute = async ({ locals }) => {
     );
   } catch (error) {
     console.error("Failed to build sitemap from D1", error);
-    return new Response("Failed to build sitemap from live content.", {
-      status: 500,
-      headers: {
-        "Content-Type": "text/plain; charset=utf-8",
-        "Cache-Control": "no-store",
-      },
-    });
   }
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>

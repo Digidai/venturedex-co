@@ -10,6 +10,15 @@ interface Props {
 
 const { startup, size = "default" } = Astro.props;
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+const screenshotBase = startup.screenshot_r2_key?.replace(/\.webp$/i, "");
+const screenshotSrcset = screenshotBase
+  ? [
+      `/screenshots/responsive/${screenshotBase}-360.webp 360w`,
+      `/screenshots/responsive/${screenshotBase}-640.webp 640w`,
+      `/screenshots/responsive/${screenshotBase}-960.webp 960w`,
+      `${screenshotUrl} 1440w`,
+    ].join(", ")
+  : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
 const screenshotWidth = 640;
 const screenshotHeight = size === "large" ? 400 : 360;
@@ -30,6 +39,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
           height={screenshotHeight}
           loading="lazy"
           decoding="async"
+          srcset={screenshotSrcset ?? undefined}
           sizes="(min-width: 960px) 33vw, (min-width: 640px) 50vw, 100vw"
         />
       ) : (
@@ -59,7 +69,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .site-card {
     display: flex;
     height: 100%;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--color-bg-card);
     transition: transform 0.15s, box-shadow 0.15s;
@@ -91,7 +101,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
 
   .card-link:focus-visible {
     outline-offset: -3px;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
   }
 
   .card-screenshot {
@@ -157,7 +167,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
     font-size: 0.95rem;
     font-weight: 600;
     line-height: 1.2;
-    margin-bottom: 2px;
+    margin-bottom: var(--space-1);
   }
 
   .card-domain {
@@ -184,7 +194,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
 
   .card-footer {
     display: grid;
-    gap: 2px;
+    gap: var(--space-1);
     min-width: 0;
     min-height: calc(2 * 1.25em);
     margin-top: auto;

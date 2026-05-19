@@ -6,6 +6,7 @@ import type {
   StartupLinks,
   WeeklyIssue,
 } from "./types";
+import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
 export const SITE_NAME = "VentureDex";
@@ -231,6 +232,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
   const tags = splitCsv(startup.tags);
   const investors = splitCsv(startup.investors);
   const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+  const logoUrl = getCompanyBrandAsset(startup.slug)?.local_path ?? null;
   const officialUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
   const organizationId = `${pageUrl}#organization`;
 
@@ -265,6 +267,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
       foundingDate: startup.founded_year ? String(startup.founded_year) : undefined,
       location: startup.hq_location ? { "@type": "Place", name: startup.hq_location } : undefined,
       image: screenshotUrl ? absoluteUrl(screenshotUrl, siteUrl) : undefined,
+      logo: logoUrl ? { "@type": "ImageObject", url: absoluteUrl(logoUrl, siteUrl) } : undefined,
       founder: startup.founder_name ? { "@type": "Person", name: startup.founder_name } : undefined,
       sameAs: sameAs.length > 0 ? sameAs : undefined,
       keywords: tags.length > 0 ? tags.join(", ") : undefined,
@@ -284,6 +287,7 @@ export function investorJsonLd(
   const description = truncateText(investor.description ?? `${investor.name} portfolio companies tracked by ${SITE_NAME}.`);
   const websiteUrl = normalizeExternalUrl(investor.website);
   const organizationId = `${pageUrl}#organization`;
+  const logo = getInvestorBrandAsset(investor.slug);
 
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
@@ -311,6 +315,20 @@ export function investorJsonLd(
       url: websiteUrl ?? pageUrl,
       description,
       mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      logo: logo ? { "@type": "ImageObject", url: absoluteUrl(logo.local_path, siteUrl) } : undefined,
+      subjectOf: rounds.length > 0 ? rounds.slice(0, 10).map((round) => ({
+        "@type": "NewsArticle",
+        headline: [
+          round.company_name,
+          round.amount,
+          round.stage,
+          investor.name,
+        ].filter(Boolean).join(" "),
+        datePublished: toIsoDateTime(round.date),
+        url: round.source_url ? absoluteUrl(round.source_url, siteUrl) : pageUrl,
+        publisher: round.source_name ? { "@type": "Organization", name: round.source_name } : undefined,
+        about: { "@type": "Organization", name: round.company_name },
+      })) : undefined,
     }),
     itemListNode(
       rounds.slice(0, 50).map((round) => ({
@@ -432,6 +450,27 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
 }
 
 export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+  const articleNodes = rounds.slice(0, 25).map((round) =>
+    stripUndefined({
+      "@type": "NewsArticle",
+      "@id": `${absoluteUrl(round.company_slug ? `/startups/${round.company_slug}` : "/news", siteUrl)}#funding-${round.id}`,
+      headline: [
+        round.company_name,
+        round.amount,
+        round.stage,
+        round.lead_investor ? `led by ${round.lead_investor}` : null,
+      ].filter(Boolean).join(" "),
+      datePublished: toIsoDateTime(round.date),
+      mainEntityOfPage: { "@id": `${absoluteUrl("/news", siteUrl)}#webpage` },
+      url: round.source_url ? absoluteUrl(round.source_url, siteUrl) : absoluteUrl("/news", siteUrl),
+      isPartOf: { "@id": `${absoluteUrl("/news", siteUrl)}#webpage` },
+      publisher: round.source_name ? { "@type": "Organization", name: round.source_name } : { "@id": `${getSiteUrl(siteUrl)}/#organization` },
+      about: { "@type": "Organization", name: round.company_name },
+      funder: round.lead_investor ? { "@type": "Organization", name: round.lead_investor } : undefined,
+      description: [round.amount, round.stage, round.lead_investor, round.source_name].filter(Boolean).join(" - "),
+    })
+  );
+
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
     siteWebSite(siteUrl),
@@ -450,6 +489,7 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): 
       })),
       siteUrl
     ),
+    ...articleNodes,
   ]);
 }
 

@@ -252,7 +252,9 @@
       "shape": "icon",
       "local_path": "/logos/companies/hilbert.svg",
       "source_page": "https://hilberts.ai",
-      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
+      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg",
+      "tone": "dark",
+      "logo_scale": 0.86
     },
     "basata": {
       "name": "Basata",
@@ -387,7 +389,8 @@
       "shape": "icon",
       "local_path": "/logos/investors/accel.png",
       "source_page": "https://www.accel.com",
-      "source_url": "https://cdn.prod.website-files.com/6643a08d305ab77f8c7566b6/67095848704c3bf1f0f4ee81_favicon.png"
+      "source_url": "https://cdn.prod.website-files.com/6643a08d305ab77f8c7566b6/67095848704c3bf1f0f4ee81_favicon.png",
+      "tone": "dark"
     },
     "ivp": {
       "name": "IVP",

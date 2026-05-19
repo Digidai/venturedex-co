@@ -75,21 +75,25 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
                     </div>
                   </td>
                   <td class="cell-round" data-label="Round">
-                    {r.amount ? (
-                      <>
-                        <span class="round-amount">{r.amount}</span>
-                        <span class="round-stage">· {r.stage}</span>
-                      </>
-                    ) : (
-                      <span class="round-stage">{r.stage}</span>
-                    )}
+                    <span class="round-info">
+                      {r.amount ? (
+                        <>
+                          <span class="round-amount">{r.amount}</span>
+                          <span class="round-stage"> · {r.stage}</span>
+                        </>
+                      ) : (
+                        <span class="round-stage">{r.stage}</span>
+                      )}
+                    </span>
                   </td>
                   <td class="cell-date" data-label="Date">
-                    {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
+                    <time datetime={r.date}>
+                      {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </time>
                   </td>
                   <td class="cell-investor" data-label="Lead">
                     <div class="investor-info">
@@ -129,12 +133,12 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
 
 <style>
   .news-page {
-    max-width: 1000px;
-    padding: var(--space-12) var(--space-6) var(--space-16);
+    max-width: 1200px;
+    padding-block: var(--space-12) var(--space-16);
   }
 
   .news-header {
-    text-align: center;
+    text-align: left;
     margin-bottom: var(--space-12);
   }
 
@@ -147,6 +151,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
+    max-width: 720px;
   }
 
   .table-wrap {
@@ -155,6 +160,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
 
   .funding-table {
     width: 100%;
+    min-width: 860px;
     border-collapse: collapse;
     table-layout: fixed;
   }
@@ -205,6 +211,16 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     vertical-align: middle;
   }
 
+  .funding-table thead th:first-child,
+  .funding-table td:first-child {
+    padding-left: 0;
+  }
+
+  .funding-table thead th:last-child,
+  .funding-table td:last-child {
+    padding-right: 0;
+  }
+
   .cell-company,
   .cell-investor {
     font-weight: 600;
@@ -234,6 +250,10 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
   .round-amount {
     color: var(--color-accent);
     font-weight: 600;
+  }
+
+  .round-info {
+    min-width: 0;
   }
 
   .round-stage,
@@ -278,9 +298,9 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 900px) {
     .news-page {
-      padding: var(--space-8) var(--space-4) var(--space-12);
+      padding-block: var(--space-8) var(--space-12);
     }
 
     .news-header {
@@ -300,6 +320,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     .funding-table td {
       display: block;
       width: 100%;
+      min-width: 0;
     }
 
     .funding-table thead {

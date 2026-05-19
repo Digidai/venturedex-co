@@ -29,44 +29,12 @@ const hasLoop = items.length > 1;
 {items.length > 0 && (
   <section class="ticker-wrapper" aria-labelledby="funding-ticker-heading" data-paused="false">
     <h2 id="funding-ticker-heading" class="visually-hidden">Recent funding news</h2>
-    {hasLoop && (
-      <button
-        class="ticker-control"
-        type="button"
-        aria-label="Pause funding ticker"
-        aria-pressed="false"
-        title="Pause funding ticker"
-        data-ticker-toggle
-      >
-        <svg class="ticker-icon ticker-icon--pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M4 3v8M10 3v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
-        </svg>
-        <svg class="ticker-icon ticker-icon--play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M5 3.5v7l5-3.5-5-3.5Z" fill="currentColor" />
-        </svg>
-      </button>
-    )}
-    <div class="ticker-viewport">
-      <div class:list={["ticker-track", !hasLoop && "ticker-track--static"]}>
-        <div class="ticker-group">
-          {items.map((item) => (
-            <a href={`/startups/${item.slug}`} class="ticker-item">
-              <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
-              <span class="ticker-name">{item.name}</span>
-              {item.amount && <span class="ticker-amount">{item.amount}</span>}
-              {item.stage && <span class="ticker-stage">{item.stage}</span>}
-              <span class="ticker-date">{item.date}</span>
-            </a>
-          ))}
-        </div>
-        {hasLoop && (
-          <div class="ticker-group ticker-group--duplicate" aria-hidden="true">
+    <div class="ticker-shell container">
+      <div class="ticker-viewport">
+        <div class:list={["ticker-track", !hasLoop && "ticker-track--static"]}>
+          <div class="ticker-group">
             {items.map((item) => (
-              <a
-                href={`/startups/${item.slug}`}
-                class="ticker-item"
-                tabindex="-1"
-              >
+              <a href={`/startups/${item.slug}`} class="ticker-item">
                 <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
                 <span class="ticker-name">{item.name}</span>
                 {item.amount && <span class="ticker-amount">{item.amount}</span>}
@@ -75,8 +43,42 @@ const hasLoop = items.length > 1;
               </a>
             ))}
           </div>
-        )}
+          {hasLoop && (
+            <div class="ticker-group ticker-group--duplicate" aria-hidden="true">
+              {items.map((item) => (
+                <a
+                  href={`/startups/${item.slug}`}
+                  class="ticker-item"
+                  tabindex="-1"
+                >
+                  <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
+                  <span class="ticker-name">{item.name}</span>
+                  {item.amount && <span class="ticker-amount">{item.amount}</span>}
+                  {item.stage && <span class="ticker-stage">{item.stage}</span>}
+                  <span class="ticker-date">{item.date}</span>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
+      {hasLoop && (
+        <button
+          class="ticker-control"
+          type="button"
+          aria-label="Pause funding ticker"
+          aria-pressed="false"
+          title="Pause funding ticker"
+          data-ticker-toggle
+        >
+          <svg class="ticker-icon ticker-icon--pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M4 3v8M10 3v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+          <svg class="ticker-icon ticker-icon--play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+            <path d="M5 3.5v7l5-3.5-5-3.5Z" fill="currentColor" />
+          </svg>
+        </button>
+      )}
     </div>
   </section>
 )}
@@ -108,9 +110,16 @@ const hasLoop = items.length > 1;
     background: var(--color-bg-card);
   }
 
+  .ticker-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
   .ticker-viewport {
+    min-width: 0;
     overflow: hidden;
-    padding-right: var(--space-16);
   }
 
   .ticker-track {
@@ -138,10 +147,6 @@ const hasLoop = items.length > 1;
   }
 
   .ticker-control {
-    position: absolute;
-    top: 50%;
-    right: var(--space-3);
-    z-index: 1;
     display: inline-flex;
     width: 44px;
     height: 44px;
@@ -152,7 +157,6 @@ const hasLoop = items.length > 1;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     cursor: pointer;
-    transform: translateY(-50%);
     transition: color 0.15s, border-color 0.15s;
   }
 
@@ -174,10 +178,6 @@ const hasLoop = items.length > 1;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .ticker-viewport {
-      padding: var(--space-3) var(--space-6);
-    }
-
     .ticker-track {
       animation: none;
       flex-wrap: wrap;

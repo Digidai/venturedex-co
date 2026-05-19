@@ -35,7 +35,7 @@ const activeCount = [
 const hasFilters = activeCount > 0;
 ---
 
-<div class="filter-bar" data-filter-bar>
+<div class="filter-bar" data-filter-bar data-enhanced="false">
   <button
     class="filter-toggle"
     type="button"
@@ -53,7 +53,7 @@ const hasFilters = activeCount > 0;
     </svg>
   </button>
 
-  <div class="filter-panel" id="filter-panel" hidden={!hasFilters}>
+  <div class="filter-panel" id="filter-panel">
     <form method="GET" action="/" class="filter-form">
       <div class="filter-fields">
         <div class="filter-group">
@@ -113,6 +113,7 @@ const hasFilters = activeCount > 0;
     const form = filterBar.querySelector('.filter-form') as HTMLFormElement | null;
 
     if (!toggle || !panel || !form) return;
+    filterBar.setAttribute('data-enhanced', 'true');
 
     const setExpanded = (expanded: boolean) => {
       toggle.setAttribute('aria-expanded', String(expanded));
@@ -130,6 +131,8 @@ const hasFilters = activeCount > 0;
       || (params.get('sort') && params.get('sort') !== 'featured');
     if (hasActive) {
       setExpanded(true);
+    } else {
+      setExpanded(false);
     }
 
     // Strip empty params before submit so URLs stay clean
@@ -196,7 +199,7 @@ const hasFilters = activeCount > 0;
     color: #fff;
     font-size: 0.7rem;
     font-weight: 700;
-    border-radius: 9px;
+    border-radius: var(--radius-pill);
     line-height: 1;
   }
 
@@ -206,6 +209,10 @@ const hasFilters = activeCount > 0;
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
+  }
+
+  .filter-bar[data-enhanced="true"] .filter-panel[hidden] {
+    display: none;
   }
 
   .filter-fields {

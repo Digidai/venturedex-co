@@ -10,7 +10,12 @@ const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
 
 const data = await getCollectionBySlug(db, slug!);
-if (!data) return Astro.redirect("/404");
+if (!data) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
 
 const { collection, startups } = data;
 const description = truncateText(collection.description ?? `${collection.title} on VentureDex`);
@@ -24,7 +29,7 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
   schema={schema}
 >
   <div class="container collection-detail">
-    <header>
+    <header class="collection-header">
       <a href="/collections" class="back-link">&larr; All collections</a>
       <h1>{collection.title}</h1>
       {collection.description && <p class="description">{collection.description}</p>}
@@ -47,7 +52,11 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
 <style>
   .collection-detail {
     max-width: 1200px;
-    padding: var(--space-12) var(--space-6) var(--space-16);
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  .collection-header {
+    max-width: 900px;
   }
 
   .back-link {

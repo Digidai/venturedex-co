@@ -15,6 +15,9 @@ interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
   canonicalPath?: string;
   robots?: string;
   ogType?: string;
@@ -28,6 +31,9 @@ const {
   title,
   description = "A curated gallery of startups worth watching.",
   ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
   canonicalPath,
   robots = "index,follow,max-image-preview:large",
   ogType = "website",
@@ -44,6 +50,8 @@ const metaDescription = truncateText(description);
 const pageTitle = `${title} | ${SITE_NAME}`;
 const usesDefaultOgImage = !ogImage;
 const ogImageUrl = absoluteUrl(ogImage ?? "/og-image.png", siteUrl);
+const resolvedOgImageWidth = ogImageWidth ?? (usesDefaultOgImage ? 1200 : undefined);
+const resolvedOgImageHeight = ogImageHeight ?? (usesDefaultOgImage ? 630 : undefined);
 const ogImageAlt = `${title} on ${SITE_NAME}`;
 const publishedIso = toIsoDateTime(publishedTime);
 const modifiedIso = toIsoDateTime(modifiedTime);
@@ -100,11 +108,12 @@ const isSubscribeActive = pathname === "/subscribe";
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:locale" content="en_US" />
-    {publishedIso && <meta property="article:published_time" content={publishedIso} />}
-    {modifiedIso && <meta property="article:modified_time" content={modifiedIso} />}
+    {ogType === "article" && publishedIso && <meta property="article:published_time" content={publishedIso} />}
+    {ogType === "article" && modifiedIso && <meta property="article:modified_time" content={modifiedIso} />}
     <meta property="og:image" content={ogImageUrl} />
-    {usesDefaultOgImage && <meta property="og:image:width" content="1200" />}
-    {usesDefaultOgImage && <meta property="og:image:height" content="630" />}
+    {resolvedOgImageWidth && <meta property="og:image:width" content={String(resolvedOgImageWidth)} />}
+    {resolvedOgImageHeight && <meta property="og:image:height" content={String(resolvedOgImageHeight)} />}
+    {ogImageType && <meta property="og:image:type" content={ogImageType} />}
     <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -210,12 +219,13 @@ const isSubscribeActive = pathname === "/subscribe";
         display: inline-flex;
         gap: 0;
         border: 1px solid var(--color-border);
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         overflow: auto;
         overscroll-behavior-inline: contain;
         scrollbar-width: none;
         width: max-content;
         max-width: 100%;
+        scroll-snap-type: inline proximity;
       }
 
       .nav-tabs::-webkit-scrollbar {
@@ -234,6 +244,7 @@ const isSubscribeActive = pathname === "/subscribe";
         transition: background 0.15s, color 0.15s;
         border-right: 1px solid var(--color-border);
         white-space: nowrap;
+        scroll-snap-align: start;
       }
 
       .nav-tab:last-child {
@@ -261,7 +272,7 @@ const isSubscribeActive = pathname === "/subscribe";
         justify-content: center;
         width: 44px;
         height: 44px;
-        border-radius: 6px;
+        border-radius: var(--radius-md);
         color: var(--color-text-secondary);
         transition: color 0.15s, background 0.15s;
       }
@@ -282,7 +293,7 @@ const isSubscribeActive = pathname === "/subscribe";
         padding: var(--space-2) var(--space-4);
         background: var(--color-text);
         color: var(--color-bg);
-        border-radius: 6px;
+        border-radius: var(--radius-md);
         text-decoration: none;
         transition: opacity 0.15s;
       }
@@ -350,7 +361,12 @@ const isSubscribeActive = pathname === "/subscribe";
         }
 
         .nav-tabs {
-          width: max-content;
+          width: 100%;
+        }
+
+        .nav-tab {
+          flex: 1 1 auto;
+          justify-content: center;
         }
       }
 
@@ -360,9 +376,25 @@ const isSubscribeActive = pathname === "/subscribe";
         }
 
         .nav-tab {
+          flex: 1 1 calc(33.333% - 1px);
+          justify-content: center;
           text-align: center;
           font-size: 0.75rem;
           padding: var(--space-2) var(--space-3);
+        }
+
+        .nav-tabs {
+          display: flex;
+          flex-wrap: wrap;
+          overflow: visible;
+        }
+
+        .nav-tab:nth-child(3n) {
+          border-right: none;
+        }
+
+        .nav-tab:nth-child(-n + 3) {
+          border-bottom: 1px solid var(--color-border);
         }
 
         .header-actions {

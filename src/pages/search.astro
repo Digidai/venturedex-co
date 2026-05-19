@@ -28,14 +28,20 @@ if (query.trim()) {
 
     <form class="search-form" action="/search" method="GET">
       <label for="search-query" class="visually-hidden">Search startups</label>
-      <input
-        id="search-query"
-        type="search"
-        name="q"
-        value={query}
-        placeholder="Search startups by name, domain, or tag..."
-        class="search-input"
-      />
+      <div class="search-control">
+        <input
+          id="search-query"
+          type="search"
+          name="q"
+          value={query}
+          placeholder="Search startups by name, domain, or tag..."
+          class="search-input"
+        />
+        {query && <a href="/search" class="search-clear" aria-label="Clear search">Clear</a>}
+        <button type="submit" class="search-submit" aria-label="Search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        </button>
+      </div>
     </form>
 
     {query && results.length > 0 && (
@@ -71,7 +77,7 @@ if (query.trim()) {
 <style>
   .search-page {
     max-width: 1200px;
-    padding: var(--space-12) var(--space-6) var(--space-16);
+    padding-block: var(--space-12) var(--space-16);
   }
 
   .search-page h1 {
@@ -83,9 +89,17 @@ if (query.trim()) {
     margin-bottom: var(--space-8);
   }
 
-  .search-input {
+  .search-control {
+    display: flex;
     width: 100%;
-    max-width: 600px;
+    max-width: 680px;
+    align-items: stretch;
+    gap: var(--space-2);
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 0;
     padding: var(--space-3) var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
@@ -103,8 +117,35 @@ if (query.trim()) {
     border-color: transparent;
   }
 
-  .search-input::-webkit-search-cancel-button {
-    -webkit-appearance: none;
+  .search-clear,
+  .search-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s;
+  }
+
+  .search-clear {
+    padding: 0 var(--space-3);
+    font-size: 0.85rem;
+  }
+
+  .search-submit {
+    width: 44px;
+    cursor: pointer;
+  }
+
+  .search-clear:hover,
+  .search-submit:hover {
+    border-color: var(--color-text-secondary);
+    color: var(--color-text);
+    text-decoration: none;
   }
 
   .result-count {
@@ -155,7 +196,7 @@ if (query.trim()) {
     min-height: 44px;
     padding: var(--space-1) var(--space-3);
     border: 1px solid var(--color-border);
-    border-radius: 99px;
+    border-radius: var(--radius-pill);
     font-size: 0.8rem;
     font-weight: 500;
     color: var(--color-text);

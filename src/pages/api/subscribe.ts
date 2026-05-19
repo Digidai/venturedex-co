@@ -17,6 +17,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
   }
 
   if (!email || !email.includes("@") || email.length > 320) {
+    if (contentType.includes("form")) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/subscribe?error=invalid" },
+      });
+    }
+
     return new Response(JSON.stringify({ error: "Valid email required." }), {
       status: 400,
       headers: { "Content-Type": "application/json" },
@@ -37,6 +44,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
       .run();
   } catch (error) {
     console.error("Failed to subscribe email", error);
+    if (contentType.includes("form")) {
+      return new Response(null, {
+        status: 303,
+        headers: { Location: "/subscribe?error=failed" },
+      });
+    }
+
     return new Response(JSON.stringify({ error: "Something went wrong." }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
@@ -46,8 +60,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
   // For form submissions, redirect to a thank-you state
   if (contentType.includes("form")) {
     return new Response(null, {
-      status: 302,
-      headers: { Location: "/subscribe#subscribed" },
+      status: 303,
+      headers: { Location: "/subscribe?status=subscribed" },
     });
   }
 
