@@ -196,23 +196,6 @@ export async function searchStartups(
   return result.results;
 }
 
-export async function getRecentStartups(
-  db: D1Database,
-  limit = 10
-): Promise<Startup[]> {
-  const result = await db
-    .prepare(
-      `SELECT * FROM startups
-       WHERE workflow_status = 'published'
-       ORDER BY published_at DESC
-       LIMIT ?`
-    )
-    .bind(limit)
-    .all<Startup>();
-
-  return result.results;
-}
-
 export async function getFundingRounds(
   db: D1Database,
   limit = 50

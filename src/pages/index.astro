@@ -5,12 +5,10 @@ import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
-import ActivityStrip from "../components/ActivityStrip.astro";
 import {
   NEWS_ROUNDS_LIMIT,
   getNewsFundingRounds,
   getPublishedStartups,
-  getRecentStartups,
   getStartupCount,
 } from "../lib/db";
 import { homeJsonLd } from "../lib/seo";
@@ -27,17 +25,15 @@ const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "f
 
 let startups: import("../lib/types").Startup[] = [];
 let rounds: import("../lib/types").FundingRound[] = [];
-let recentStartups: import("../lib/types").Startup[] = [];
 let startupCount = 0;
 let matchingStartupCount = 0;
 
 try {
-  [startups, startupCount, matchingStartupCount, rounds, recentStartups] = await Promise.all([
+  [startups, startupCount, matchingStartupCount, rounds] = await Promise.all([
     getPublishedStartups(db, { productType, fundingStage, region, sort, limit: STARTUP_LIST_LIMIT }),
     getStartupCount(db),
     getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
-    getRecentStartups(db, 12),
   ]);
 } catch (error) {
   console.error("Failed to load homepage data", error);
@@ -81,7 +77,6 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
       </div>
     </div>
   </section>
-  <ActivityStrip startups={recentStartups} />
 
   <section class="explore">
     <div class="container">
