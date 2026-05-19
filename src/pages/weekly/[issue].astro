@@ -21,6 +21,7 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
 <Base
   title={issue.title}
   description={description}
+  canonicalPath={`/weekly/${issue.issue_number}`}
   ogType="article"
   publishedTime={issue.published_at}
   schema={schema}
@@ -45,11 +46,15 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
 
     <section class="picks">
       <h2>This week's picks</h2>
-      <div class="picks-grid">
-        {startups.map((startup) => (
-          <SiteCard startup={startup} />
-        ))}
-      </div>
+      {startups.length > 0 ? (
+        <div class="picks-grid">
+          {startups.map((startup) => (
+            <SiteCard startup={startup} />
+          ))}
+        </div>
+      ) : (
+        <p class="picks-empty">No startups in this issue yet.</p>
+      )}
     </section>
 
     {issue.anti_pick_name && (
@@ -79,7 +84,9 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
   .back-link {
     font-size: 0.85rem;
     color: var(--color-text-secondary);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     margin-bottom: var(--space-4);
   }
 
@@ -119,6 +126,10 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
     gap: var(--space-6);
   }
 
+  .picks-grid > * {
+    min-width: 0;
+  }
+
   @media (max-width: 640px) {
     .picks-grid {
       grid-template-columns: 1fr;
@@ -141,6 +152,7 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
     border-left: 3px solid #DC2626;
     padding: var(--space-4) var(--space-6);
     border-radius: 0 var(--radius) var(--radius) 0;
+    overflow-wrap: anywhere;
   }
 
   .anti-pick-name {
@@ -152,5 +164,9 @@ const schema = weeklyIssueJsonLd(issue, startups, Astro.site?.toString());
     font-size: 0.9rem;
     color: var(--color-text-secondary);
     line-height: 1.6;
+  }
+
+  .picks-empty {
+    color: var(--color-text-secondary);
   }
 </style>

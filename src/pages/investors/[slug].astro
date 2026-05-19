@@ -8,7 +8,7 @@ import {
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
 import { getInvestorBySlug } from "../../lib/db";
-import { investorJsonLd, truncateText } from "../../lib/seo";
+import { investorJsonLd, normalizeExternalUrl, truncateText } from "../../lib/seo";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
@@ -20,6 +20,16 @@ const { investor, rounds } = data;
 const investorBrand = getInvestorBrandAsset(investor.slug);
 const description = truncateText(investor.description ?? `${investor.name} portfolio on VentureDex`);
 const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
+const investorWebsiteUrl = normalizeExternalUrl(investor.website);
+const investorWebsiteHost = investorWebsiteUrl ? displayHostname(investorWebsiteUrl) : null;
+
+function displayHostname(value: string): string {
+  try {
+    return new URL(value).hostname.replace(/^www\./, "");
+  } catch {
+    return value;
+  }
+}
 ---
 
 <Base
@@ -36,9 +46,9 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
         <BrandLogo asset={investorBrand} name={investor.name} size={40} loading="eager" class="investor-logo" />
         <div>
           <h1>{investor.name}</h1>
-          {investor.website && (
-            <a href={investor.website} target="_blank" rel="noopener noreferrer" class="investor-url">
-              {new URL(investor.website).hostname} &nearr;
+          {investorWebsiteUrl && investorWebsiteHost && (
+            <a href={investorWebsiteUrl} target="_blank" rel="noopener noreferrer" class="investor-url">
+              {investorWebsiteHost} &nearr;
             </a>
           )}
         </div>
@@ -63,31 +73,49 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
             <tbody>
               {rounds.map((r) => {
                 const companyBrand = getCompanyBrandAsset(r.company_slug);
+                const companyUrl = r.company_slug
+                  ? `/startups/${r.company_slug}`
+                  : normalizeExternalUrl(r.company_url);
+                const companyIsExternal = !r.company_slug && Boolean(companyUrl);
+                const sourceUrl = normalizeExternalUrl(r.source_url);
                 return (
                   <tr>
-                    <td class="cell-company">
+                    <td class="cell-company" data-label="Company">
                       <div class="company-info">
                         <BrandLogo asset={companyBrand} name={r.company_name} size={24} class="company-logo" />
                         <div>
-                          {r.company_slug ? (
-                            <a href={`/startups/${r.company_slug}`} class="company-link">{r.company_name}</a>
+                          {companyUrl ? (
+                            <a
+                              href={companyUrl}
+                              target={companyIsExternal ? "_blank" : undefined}
+                              rel={companyIsExternal ? "noopener noreferrer" : undefined}
+                              class={companyIsExternal ? "company-link company-link--external" : "company-link"}
+                            >
+                              {r.company_name}{companyIsExternal && <span class="external-mark"> &nearr;</span>}
+                            </a>
                           ) : (
                             <span>{r.company_name}</span>
                           )}
                         </div>
                       </div>
                     </td>
-                    <td class="cell-round">
-                      {r.amount && <span class="round-amount">{r.amount}</span>}
-                      <span class="round-stage">· {r.stage}</span>
+                    <td class="cell-round" data-label="Round">
+                      <span class="round-info">
+                        {r.amount && <span class="round-amount">{r.amount}</span>}
+                        <span class="round-stage">{r.amount ? " · " : ""}{r.stage}</span>
+                      </span>
                     </td>
-                    <td class="cell-date">
+                    <td class="cell-date" data-label="Date">
                       {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </td>
-                    <td class="cell-source">
-                      <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
-                        {r.source_name || "Press"} &nearr;
-                      </a>
+                    <td class="cell-source" data-label="Source">
+                      {sourceUrl ? (
+                        <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="source-link">
+                          {r.source_name || "Press"} &nearr;
+                        </a>
+                      ) : (
+                        <span class="source-link source-link--missing">{r.source_name || "Press"}</span>
+                      )}
                     </td>
                   </tr>
                 );
@@ -112,7 +140,9 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-text-secondary);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     margin-bottom: var(--space-6);
     transition: color 0.15s;
   }
@@ -130,9 +160,13 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
 
   .investor-identity {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-4);
     margin-bottom: var(--space-3);
+  }
+
+  .investor-identity > div {
+    min-width: 0;
   }
 
   .investor-header h1 {
@@ -144,6 +178,7 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
     font-size: 0.8rem;
     color: var(--color-text-secondary);
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .investor-url:hover {
@@ -174,6 +209,23 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
   .portfolio-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .portfolio-table th:nth-child(1) {
+    width: 34%;
+  }
+
+  .portfolio-table th:nth-child(2) {
+    width: 26%;
+  }
+
+  .portfolio-table th:nth-child(3) {
+    width: 18%;
+  }
+
+  .portfolio-table th:nth-child(4) {
+    width: 22%;
   }
 
   .portfolio-table thead th {
@@ -210,11 +262,17 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
     display: flex;
     align-items: center;
     gap: var(--space-3);
+    min-width: 0;
+  }
+
+  .company-info > div {
+    min-width: 0;
   }
 
   .company-link {
     color: var(--color-text);
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .company-link:hover {
@@ -239,10 +297,109 @@ const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
     font-size: 0.8rem;
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .source-link:hover {
     color: var(--color-accent);
+  }
+
+  .source-link--missing:hover {
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 640px) {
+    .investor-page {
+      padding-top: var(--space-8);
+      padding-bottom: var(--space-12);
+    }
+
+    .back-link {
+      margin-bottom: var(--space-4);
+    }
+
+    .investor-header {
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-6);
+    }
+
+    .investor-header h1 {
+      font-size: 1.45rem;
+      overflow-wrap: anywhere;
+    }
+
+    .portfolio h2 {
+      margin-bottom: var(--space-4);
+    }
+
+    .portfolio-table-wrap {
+      overflow: visible;
+    }
+
+    .portfolio-table,
+    .portfolio-table tbody,
+    .portfolio-table tr,
+    .portfolio-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .portfolio-table thead {
+      display: none;
+    }
+
+    .portfolio-table tbody {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .portfolio-table tbody tr {
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg-card);
+      overflow: hidden;
+    }
+
+    .portfolio-table tbody tr:hover {
+      background: var(--color-bg-card);
+    }
+
+    .portfolio-table td {
+      display: grid;
+      grid-template-columns: 5.25rem minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: start;
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .portfolio-table td:last-child {
+      border-bottom: none;
+    }
+
+    .portfolio-table td::before {
+      content: attr(data-label);
+      color: var(--color-text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .company-info {
+      align-items: flex-start;
+    }
+
+    .cell-date {
+      white-space: normal;
+    }
+
+    .company-link,
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
   }
 
   .empty {

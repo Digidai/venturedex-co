@@ -47,7 +47,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
   if (contentType.includes("form")) {
     return new Response(null, {
       status: 302,
-      headers: { Location: "/subscribe?subscribed=1" },
+      headers: { Location: "/subscribe#subscribed" },
     });
   }
 

@@ -42,7 +42,7 @@ const schema = buildJsonLdGraph([
 ]);
 ---
 
-<Base title="Weekly Picks" description={description} schema={schema}>
+<Base title="Weekly Picks" description={description} canonicalPath="/weekly" schema={schema}>
   <div class="container weekly-list">
     <h1>Weekly Picks</h1>
     <p class="subtitle">Every week, we pick the startups worth your attention.</p>
@@ -98,7 +98,8 @@ const schema = buildJsonLdGraph([
   }
 
   .issue-link {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
     align-items: center;
     gap: var(--space-4);
     padding: var(--space-4) 0;
@@ -120,13 +121,16 @@ const schema = buildJsonLdGraph([
   }
 
   .issue-title {
-    flex: 1;
+    min-width: 0;
     font-weight: 500;
+    overflow-wrap: anywhere;
   }
 
   .issue-date {
+    justify-self: end;
     font-size: 0.8rem;
     color: var(--color-text-secondary);
+    white-space: nowrap;
   }
 
   .empty-state {
@@ -145,7 +149,9 @@ const schema = buildJsonLdGraph([
   }
 
   .cta-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: var(--space-3) var(--space-6);
     background: var(--color-text);
     color: var(--color-bg);
@@ -153,5 +159,23 @@ const schema = buildJsonLdGraph([
     font-weight: 500;
     font-size: 0.9rem;
     text-decoration: none;
+  }
+
+  .cta-button:hover {
+    opacity: 0.85;
+    text-decoration: none;
+  }
+
+  @media (max-width: 560px) {
+    .issue-link {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: start;
+      gap: var(--space-1) var(--space-3);
+    }
+
+    .issue-date {
+      grid-column: 2;
+      justify-self: start;
+    }
   }
 </style>

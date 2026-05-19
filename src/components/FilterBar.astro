@@ -35,18 +35,19 @@ const activeCount = [
 const hasFilters = activeCount > 0;
 ---
 
-<div class="filter-bar">
+<div class="filter-bar" data-filter-bar>
   <button
     class="filter-toggle"
     type="button"
     aria-expanded={hasFilters ? "true" : "false"}
     aria-controls="filter-panel"
+    aria-label={activeCount > 0 ? `Filters, ${activeCount} active` : "Filters"}
   >
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
       <path d="M1 3h14M3 8h10M5 13h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
     <span>Filters</span>
-    {activeCount > 0 && <span class="filter-count">{activeCount}</span>}
+    {activeCount > 0 && <span class="filter-count" aria-hidden="true">{activeCount}</span>}
     <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
       <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -106,14 +107,21 @@ const hasFilters = activeCount > 0;
 </div>
 
 <script>
-  const toggle = document.querySelector('.filter-toggle') as HTMLButtonElement;
-  const panel = document.getElementById('filter-panel') as HTMLElement;
+  document.querySelectorAll('[data-filter-bar]').forEach((filterBar) => {
+    const toggle = filterBar.querySelector('.filter-toggle') as HTMLButtonElement | null;
+    const panel = filterBar.querySelector('.filter-panel') as HTMLElement | null;
+    const form = filterBar.querySelector('.filter-form') as HTMLFormElement | null;
 
-  if (toggle && panel) {
+    if (!toggle || !panel || !form) return;
+
+    const setExpanded = (expanded: boolean) => {
+      toggle.setAttribute('aria-expanded', String(expanded));
+      panel.hidden = !expanded;
+    };
+
     toggle.addEventListener('click', () => {
       const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', String(!expanded));
-      panel.hidden = expanded;
+      setExpanded(!expanded);
     });
 
     // Auto-expand if filters are active
@@ -121,14 +129,10 @@ const hasFilters = activeCount > 0;
     const hasActive = params.get('type') || params.get('stage') || params.get('region')
       || (params.get('sort') && params.get('sort') !== 'featured');
     if (hasActive) {
-      toggle.setAttribute('aria-expanded', 'true');
-      panel.hidden = false;
+      setExpanded(true);
     }
-  }
 
-  // Strip empty params before submit so URLs stay clean
-  const form = document.querySelector('.filter-form') as HTMLFormElement;
-  if (form) {
+    // Strip empty params before submit so URLs stay clean
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const data = new FormData(form);
@@ -142,7 +146,7 @@ const hasFilters = activeCount > 0;
       const qs = params.toString();
       window.location.href = '/' + (qs ? '?' + qs : '');
     });
-  }
+  });
 </script>
 
 <style>
@@ -154,6 +158,8 @@ const hasFilters = activeCount > 0;
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
+    max-width: 100%;
+    min-height: 44px;
     padding: var(--space-2) var(--space-3);
     background: var(--color-bg-card);
     border: 1px solid var(--color-border);
@@ -212,6 +218,7 @@ const hasFilters = activeCount > 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-1);
+    min-width: 0;
   }
 
   .filter-group label {
@@ -224,6 +231,9 @@ const hasFilters = activeCount > 0;
 
   .filter-group select {
     appearance: none;
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
     padding: var(--space-2) var(--space-3);
     padding-right: var(--space-8);
     background: var(--color-bg);
@@ -243,7 +253,7 @@ const hasFilters = activeCount > 0;
     border-color: var(--color-text-secondary);
   }
 
-  .filter-group select:focus {
+  .filter-group select:focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: -1px;
   }
@@ -251,11 +261,13 @@ const hasFilters = activeCount > 0;
   .filter-actions {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: var(--space-3);
     margin-top: var(--space-4);
   }
 
   .filter-apply {
+    min-height: 44px;
     padding: var(--space-2) var(--space-4);
     background: var(--color-text);
     color: var(--color-bg);
@@ -273,6 +285,9 @@ const hasFilters = activeCount > 0;
   }
 
   .filter-clear {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     font-size: 0.85rem;
     color: var(--color-text-secondary);
     text-decoration: none;

@@ -92,7 +92,7 @@ const schema = buildJsonLdGraph([
             <a href={`/investors/${investor.slug}`} class="investor-card">
               <div class="card-top">
                 <BrandLogo asset={brand} name={investor.name} size={32} />
-                <div>
+                <div class="card-copy">
                   <h2>{investor.name}</h2>
                   {investor.short_name && <p class="short-name">{investor.short_name}</p>}
                 </div>
@@ -144,13 +144,18 @@ const schema = buildJsonLdGraph([
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
+    align-items: stretch;
   }
 
   .investor-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 188px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     padding: var(--space-5);
+    background: var(--color-bg-card);
     color: inherit;
     text-decoration: none;
     transition: border-color 0.15s, background 0.15s;
@@ -164,14 +169,19 @@ const schema = buildJsonLdGraph([
 
   .card-top {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-3);
     margin-bottom: var(--space-3);
+  }
+
+  .card-copy {
+    min-width: 0;
   }
 
   .card-top h2 {
     font-size: 1rem;
     margin-bottom: var(--space-1);
+    overflow-wrap: anywhere;
   }
 
   .short-name,
@@ -188,11 +198,17 @@ const schema = buildJsonLdGraph([
     font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: var(--space-4);
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
   }
 
   .meta {
     font-family: var(--font-mono);
     font-size: 0.75rem;
+    margin-top: auto;
+    padding-top: var(--space-1);
   }
 
   .empty-state {

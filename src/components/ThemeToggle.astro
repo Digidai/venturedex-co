@@ -1,6 +1,6 @@
 ---
 ---
-<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme">
+<button class="theme-toggle" id="theme-toggle" type="button" aria-label="Auto theme. Switch to light theme." title="Auto theme">
   <svg class="icon icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
   <svg class="icon icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
   <svg class="icon icon-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18" fill="currentColor" stroke="none"/></svg>
@@ -11,14 +11,28 @@
   const STORAGE_KEY = 'venturedex-theme';
   const toggle = document.getElementById('theme-toggle');
   const modes = ['auto', 'light', 'dark'];
+  const labels = {
+    auto: 'Auto theme',
+    light: 'Light theme',
+    dark: 'Dark theme'
+  };
+
+  if (!toggle) return;
 
   function getStored() {
     try { return localStorage.getItem(STORAGE_KEY) || 'auto'; } catch { return 'auto'; }
   }
 
+  function nextMode(mode) {
+    return modes[(modes.indexOf(mode) + 1) % modes.length];
+  }
+
   function apply(mode) {
     document.documentElement.setAttribute('data-theme', mode);
     toggle.setAttribute('data-mode', mode);
+    const next = nextMode(mode);
+    toggle.setAttribute('aria-label', labels[mode] + '. Switch to ' + labels[next].toLowerCase() + '.');
+    toggle.setAttribute('title', labels[mode]);
 
     if (mode === 'light') {
       document.documentElement.style.colorScheme = 'light';
@@ -33,7 +47,7 @@
 
   toggle.addEventListener('click', function() {
     var current = getStored();
-    var next = modes[(modes.indexOf(current) + 1) % modes.length];
+    var next = nextMode(current);
     apply(next);
   });
 
@@ -46,8 +60,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     border: none;
     border-radius: 6px;
     background: transparent;

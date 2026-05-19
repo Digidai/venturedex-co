@@ -23,59 +23,177 @@ const items = rounds
     }),
   }));
 
-const doubled = [...items, ...items];
+const hasLoop = items.length > 1;
 ---
 
 {items.length > 0 && (
-  <div class="ticker-wrapper" aria-label="Recent funding news">
-    <div class="ticker-track">
-      {doubled.map((item, index) => {
-        const isDuplicate = index >= items.length;
-        return (
-          <a
-            href={`/startups/${item.slug}`}
-            class="ticker-item"
-            aria-hidden={isDuplicate ? "true" : undefined}
-            tabindex={isDuplicate ? -1 : undefined}
-          >
-            <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
-            <span class="ticker-name">{item.name}</span>
-            {item.amount && <span class="ticker-amount">{item.amount}</span>}
-            {item.stage && <span class="ticker-stage">{item.stage}</span>}
-            <span class="ticker-date">{item.date}</span>
-          </a>
-        );
-      })}
+  <section class="ticker-wrapper" aria-labelledby="funding-ticker-heading" data-paused="false">
+    <h2 id="funding-ticker-heading" class="visually-hidden">Recent funding news</h2>
+    {hasLoop && (
+      <button
+        class="ticker-control"
+        type="button"
+        aria-label="Pause funding ticker"
+        aria-pressed="false"
+        title="Pause funding ticker"
+        data-ticker-toggle
+      >
+        <svg class="ticker-icon ticker-icon--pause" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M4 3v8M10 3v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+        <svg class="ticker-icon ticker-icon--play" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M5 3.5v7l5-3.5-5-3.5Z" fill="currentColor" />
+        </svg>
+      </button>
+    )}
+    <div class="ticker-viewport">
+      <div class:list={["ticker-track", !hasLoop && "ticker-track--static"]}>
+        <div class="ticker-group">
+          {items.map((item) => (
+            <a href={`/startups/${item.slug}`} class="ticker-item">
+              <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
+              <span class="ticker-name">{item.name}</span>
+              {item.amount && <span class="ticker-amount">{item.amount}</span>}
+              {item.stage && <span class="ticker-stage">{item.stage}</span>}
+              <span class="ticker-date">{item.date}</span>
+            </a>
+          ))}
+        </div>
+        {hasLoop && (
+          <div class="ticker-group ticker-group--duplicate" aria-hidden="true">
+            {items.map((item) => (
+              <a
+                href={`/startups/${item.slug}`}
+                class="ticker-item"
+                tabindex="-1"
+              >
+                <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
+                <span class="ticker-name">{item.name}</span>
+                {item.amount && <span class="ticker-amount">{item.amount}</span>}
+                {item.stage && <span class="ticker-stage">{item.stage}</span>}
+                <span class="ticker-date">{item.date}</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
-  </div>
+  </section>
 )}
+
+<script>
+  document.querySelectorAll('[data-ticker-toggle]').forEach((control) => {
+    const button = control as HTMLButtonElement;
+    const wrapper = button.closest('.ticker-wrapper') as HTMLElement | null;
+    if (!wrapper) return;
+
+    const setPaused = (paused: boolean) => {
+      wrapper.dataset.paused = String(paused);
+      button.setAttribute('aria-pressed', String(paused));
+      button.setAttribute('aria-label', `${paused ? 'Resume' : 'Pause'} funding ticker`);
+      button.setAttribute('title', `${paused ? 'Resume' : 'Pause'} funding ticker`);
+    };
+
+    button.addEventListener('click', () => {
+      setPaused(wrapper.dataset.paused !== 'true');
+    });
+  });
+</script>
 
 <style>
   .ticker-wrapper {
+    position: relative;
     overflow: hidden;
     border-bottom: 1px solid var(--color-border);
     background: var(--color-bg-card);
   }
 
+  .ticker-viewport {
+    overflow: hidden;
+    padding-right: var(--space-16);
+  }
+
   .ticker-track {
     display: flex;
-    gap: var(--space-6);
     padding: var(--space-3) 0;
     animation: ticker-scroll 40s linear infinite;
     width: max-content;
   }
 
-  .ticker-track:hover {
+  .ticker-track--static {
+    animation: none;
+  }
+
+  .ticker-group {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    padding-right: var(--space-6);
+  }
+
+  .ticker-wrapper:hover .ticker-track,
+  .ticker-wrapper:focus-within .ticker-track,
+  .ticker-wrapper[data-paused="true"] .ticker-track {
     animation-play-state: paused;
   }
 
+  .ticker-control {
+    position: absolute;
+    top: 50%;
+    right: var(--space-3);
+    z-index: 1;
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-secondary);
+    background: color-mix(in srgb, var(--color-bg-card) 92%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .ticker-control:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-secondary);
+  }
+
+  .ticker-icon--play {
+    display: none;
+  }
+
+  .ticker-wrapper[data-paused="true"] .ticker-icon--pause {
+    display: none;
+  }
+
+  .ticker-wrapper[data-paused="true"] .ticker-icon--play {
+    display: block;
+  }
+
   @media (prefers-reduced-motion: reduce) {
+    .ticker-viewport {
+      padding: var(--space-3) var(--space-6);
+    }
+
     .ticker-track {
       animation: none;
       flex-wrap: wrap;
       width: auto;
+      padding: 0;
+    }
+
+    .ticker-group {
+      flex-wrap: wrap;
       gap: var(--space-3);
-      padding: var(--space-3) var(--space-6);
+      padding-right: 0;
+    }
+
+    .ticker-group--duplicate,
+    .ticker-control {
+      display: none;
     }
   }
 
@@ -88,6 +206,7 @@ const doubled = [...items, ...items];
     display: flex;
     align-items: center;
     gap: var(--space-2);
+    min-height: 44px;
     white-space: nowrap;
     text-decoration: none;
     color: var(--color-text);

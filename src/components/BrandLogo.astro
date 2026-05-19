@@ -20,7 +20,7 @@ const {
   loading = "lazy",
 } = Astro.props;
 
-const shape = asset?.shape ?? "icon";
+const shape = asset?.shape === "wordmark" ? "wordmark" : "icon";
 const initials = getBrandInitials(name);
 const style = `--brand-size:${size}px;`;
 ---
@@ -62,7 +62,9 @@ const style = `--brand-size:${size}px;`;
     align-items: center;
     justify-content: center;
     width: var(--brand-size);
+    min-width: var(--brand-size);
     height: var(--brand-size);
+    aspect-ratio: 1;
     border: 1px solid var(--brand-tile-border);
     border-radius: max(6px, calc(var(--brand-size) * 0.18));
     background: var(--brand-tile-bg);
@@ -74,19 +76,19 @@ const style = `--brand-size:${size}px;`;
   }
 
   .brand-logo {
+    flex: 0 0 auto;
     display: block;
-    width: auto;
-    height: auto;
-    max-width: 76%;
-    max-height: 76%;
+    width: 80%;
+    height: 80%;
     object-fit: contain;
     object-position: center;
     filter: var(--brand-logo-filter);
+    image-rendering: auto;
   }
 
   .brand-mark--wordmark .brand-logo {
-    max-width: 86%;
-    max-height: 54%;
+    width: 88%;
+    height: 54%;
   }
 
   .brand-fallback {

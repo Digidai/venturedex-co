@@ -90,6 +90,7 @@ const schema = buildJsonLdGraph([
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+    align-items: stretch;
   }
 
   .empty-state {
@@ -113,6 +114,10 @@ const schema = buildJsonLdGraph([
   }
 
   @media (max-width: 640px) {
+    .startups-page {
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
     .card-grid {
       grid-template-columns: 1fr;
     }

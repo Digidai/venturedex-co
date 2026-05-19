@@ -12,7 +12,7 @@ import {
   NEWS_ROUNDS_LIMIT,
   getNewsFundingRounds,
 } from "../lib/db";
-import { newsJsonLd } from "../lib/seo";
+import { newsJsonLd, normalizeExternalUrl } from "../lib/seo";
 
 const db = Astro.locals.runtime.env.DB;
 let rounds: Awaited<ReturnType<typeof getNewsFundingRounds>> = [];
@@ -37,6 +37,13 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     {rounds.length > 0 ? (
       <div class="table-wrap">
         <table class="funding-table">
+          <colgroup>
+            <col class="col-company" />
+            <col class="col-round" />
+            <col class="col-date" />
+            <col class="col-investor" />
+            <col class="col-source" />
+          </colgroup>
           <thead>
             <tr>
               <th>Company</th>
@@ -51,12 +58,13 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
               const companyBrand = getCompanyBrandAsset(r.company_slug);
               const investor = resolveInvestorByName(r.lead_investor);
               const investorBrand = investor ? getInvestorBrandAsset(investor.slug) : null;
+              const sourceUrl = normalizeExternalUrl(r.source_url);
 
               return (
                 <tr>
-                  <td class="cell-company">
+                  <td class="cell-company" data-label="Company">
                     <div class="company-info">
-                      <BrandLogo asset={companyBrand} name={r.company_name} size={20} />
+                      <BrandLogo asset={companyBrand} name={r.company_name} size={24} />
                       {r.company_slug ? (
                         <a href={`/startups/${r.company_slug}`} class="company-link">
                           {r.company_name}
@@ -66,20 +74,26 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
                       )}
                     </div>
                   </td>
-                  <td class="cell-round">
-                    {r.amount && <span class="round-amount">{r.amount}</span>}
-                    <span class="round-stage">· {r.stage}</span>
+                  <td class="cell-round" data-label="Round">
+                    {r.amount ? (
+                      <>
+                        <span class="round-amount">{r.amount}</span>
+                        <span class="round-stage">· {r.stage}</span>
+                      </>
+                    ) : (
+                      <span class="round-stage">{r.stage}</span>
+                    )}
                   </td>
-                  <td class="cell-date">
+                  <td class="cell-date" data-label="Date">
                     {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
                     })}
                   </td>
-                  <td class="cell-investor">
+                  <td class="cell-investor" data-label="Lead">
                     <div class="investor-info">
-                      <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={20} />
+                      <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={24} />
                       {investor ? (
                         <a href={`/investors/${investor.slug}`} class="investor-link">
                           {r.lead_investor}
@@ -89,10 +103,14 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
                       )}
                     </div>
                   </td>
-                  <td class="cell-source">
-                    <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
-                      {r.source_name || "Press"} ↗
-                    </a>
+                  <td class="cell-source" data-label="Press">
+                    {sourceUrl ? (
+                      <a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="source-link">
+                        {r.source_name || "Press"} ↗
+                      </a>
+                    ) : (
+                      <span class="source-link source-link--missing">{r.source_name || "Press"}</span>
+                    )}
                   </td>
                 </tr>
               );
@@ -138,6 +156,27 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
   .funding-table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .col-company {
+    width: 24%;
+  }
+
+  .col-round {
+    width: 15%;
+  }
+
+  .col-date {
+    width: 16%;
+  }
+
+  .col-investor {
+    width: 28%;
+  }
+
+  .col-source {
+    width: 17%;
   }
 
   .funding-table thead th {
@@ -177,12 +216,14 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     display: flex;
     align-items: center;
     gap: var(--space-3);
+    min-width: 0;
   }
 
   .company-link,
   .investor-link {
     color: var(--color-text);
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .company-link:hover,
@@ -200,6 +241,10 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
   }
 
+  .cell-round {
+    white-space: nowrap;
+  }
+
   .cell-date {
     white-space: nowrap;
   }
@@ -208,10 +253,15 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
     font-size: 0.8rem;
     text-decoration: none;
+    overflow-wrap: anywhere;
   }
 
   .source-link:hover {
     color: var(--color-accent);
+  }
+
+  .source-link--missing:hover {
+    color: var(--color-text-secondary);
   }
 
   .empty-state {
@@ -226,5 +276,96 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
 
   .empty-state p {
     color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 760px) {
+    .news-page {
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    .news-header {
+      text-align: left;
+      margin-bottom: var(--space-8);
+    }
+
+    .table-wrap {
+      overflow-x: visible;
+    }
+
+    .funding-table,
+    .funding-table colgroup,
+    .funding-table thead,
+    .funding-table tbody,
+    .funding-table tr,
+    .funding-table td {
+      display: block;
+      width: 100%;
+    }
+
+    .funding-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    .funding-table tbody {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .funding-table tbody tr {
+      display: grid;
+      gap: var(--space-3);
+      padding: var(--space-4);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      background: var(--color-bg-card);
+    }
+
+    .funding-table tbody tr:hover {
+      background: var(--color-bg-card);
+    }
+
+    .funding-table td {
+      display: grid;
+      grid-template-columns: minmax(5.5rem, 32%) minmax(0, 1fr);
+      gap: var(--space-3);
+      align-items: center;
+      padding: 0;
+      min-width: 0;
+    }
+
+    .funding-table td::before {
+      content: attr(data-label);
+      color: var(--color-text-secondary);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+
+    .cell-company,
+    .cell-investor,
+    .cell-round,
+    .cell-date {
+      white-space: normal;
+    }
+
+    .company-info,
+    .investor-info {
+      gap: var(--space-2);
+    }
+
+    .company-link,
+    .investor-link,
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
   }
 </style>

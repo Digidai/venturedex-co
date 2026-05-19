@@ -30,6 +30,25 @@ export function absoluteUrl(pathOrUrl: string | URL | null | undefined, siteUrl 
   return `${base}${value.startsWith("/") ? value : `/${value}`}`;
 }
 
+export function normalizeExternalUrl(value?: string | null): string | null {
+  const trimmed = value?.trim();
+  if (!trimmed) return null;
+
+  const candidate = /^[a-z][a-z\d+\-.]*:\/\//i.test(trimmed)
+    ? trimmed
+    : trimmed.startsWith("//")
+      ? `https:${trimmed}`
+      : `https://${trimmed}`;
+
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
+}
+
 export function canonicalPath(pathname: string): string {
   if (!pathname || pathname === "/") return "/";
   return pathname.replace(/\/+$/, "");
@@ -206,10 +225,13 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
   const pageUrl = absoluteUrl(pagePath, siteUrl);
   const description = truncateText(startup.summary ?? startup.editor_note ?? `${startup.product_name} on ${SITE_NAME}`);
   const links = parseLinks(startup.links_json);
-  const sameAs = [links.github, links.twitter, links.linkedin, links.producthunt].filter(Boolean);
+  const sameAs = [links.github, links.twitter, links.linkedin, links.producthunt]
+    .map(normalizeExternalUrl)
+    .filter((url): url is string => Boolean(url));
   const tags = splitCsv(startup.tags);
   const investors = splitCsv(startup.investors);
   const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+  const officialUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
   const organizationId = `${pageUrl}#organization`;
 
   return buildJsonLdGraph([
@@ -237,7 +259,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
       "@type": "Organization",
       "@id": organizationId,
       name: startup.product_name,
-      url: startup.canonical_url ?? `https://${startup.domain}`,
+      url: officialUrl ?? pageUrl,
       description,
       mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
       foundingDate: startup.founded_year ? String(startup.founded_year) : undefined,
@@ -260,6 +282,7 @@ export function investorJsonLd(
   const pagePath = `/investors/${investor.slug}`;
   const pageUrl = absoluteUrl(pagePath, siteUrl);
   const description = truncateText(investor.description ?? `${investor.name} portfolio companies tracked by ${SITE_NAME}.`);
+  const websiteUrl = normalizeExternalUrl(investor.website);
   const organizationId = `${pageUrl}#organization`;
 
   return buildJsonLdGraph([
@@ -285,7 +308,7 @@ export function investorJsonLd(
       "@id": organizationId,
       name: investor.name,
       alternateName: investor.short_name ?? undefined,
-      url: investor.website ?? pageUrl,
+      url: websiteUrl ?? pageUrl,
       description,
       mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
     }),

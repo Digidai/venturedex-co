@@ -8,6 +8,7 @@ import {
   cleanText,
   escapeMarkdown,
   getSiteUrl,
+  normalizeExternalUrl,
 } from "../../lib/seo";
 
 export const GET: APIRoute = async ({ locals, params }) => {
@@ -21,6 +22,7 @@ export const GET: APIRoute = async ({ locals, params }) => {
 
   const { investor, rounds } = data;
   const canonical = absoluteUrl(`/investors/${investor.slug}`, siteUrl);
+  const investorWebsiteUrl = normalizeExternalUrl(investor.website);
   const body = [
     `# ${escapeMarkdown(investor.name)}`,
     "",
@@ -29,7 +31,7 @@ export const GET: APIRoute = async ({ locals, params }) => {
     "## Investor Facts",
     "",
     investor.short_name ? `- Short name: ${escapeMarkdown(investor.short_name)}` : null,
-    investor.website ? `- Website: ${investor.website}` : null,
+    investorWebsiteUrl ? `- Website: ${investorWebsiteUrl}` : null,
     `- Canonical page: ${canonical}`,
     rounds[0]?.date ? `- Latest VentureDex-tracked round: ${escapeMarkdown(rounds[0].date)}` : null,
     `- Tracked rounds: ${rounds.length}`,
@@ -41,8 +43,11 @@ export const GET: APIRoute = async ({ locals, params }) => {
           const details = [round.company_name, round.amount, round.stage, round.date, round.source_name]
             .filter(Boolean)
             .join(" | ");
-          const startupUrl = round.company_slug ? absoluteUrl(`/startups/${round.company_slug}`, siteUrl) : round.company_url;
-          return `- ${escapeMarkdown(details)}${startupUrl ? `: ${startupUrl}` : ""}${round.source_url ? ` (source: ${round.source_url})` : ""}`;
+          const companyUrl = round.company_slug
+            ? absoluteUrl(`/startups/${round.company_slug}`, siteUrl)
+            : normalizeExternalUrl(round.company_url);
+          const sourceUrl = normalizeExternalUrl(round.source_url);
+          return `- ${escapeMarkdown(details)}${companyUrl ? `: ${companyUrl}` : ""}${sourceUrl ? ` (source: ${sourceUrl})` : ""}`;
         })
       : ["- No VentureDex portfolio rounds attached yet."]),
     "",

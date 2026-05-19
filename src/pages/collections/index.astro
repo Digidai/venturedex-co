@@ -42,7 +42,7 @@ const schema = buildJsonLdGraph([
 ]);
 ---
 
-<Base title="Collections" description={description} schema={schema}>
+<Base title="Collections" description={description} canonicalPath="/collections" schema={schema}>
   <div class="container collections-page">
     <h1>Collections</h1>
     <p class="subtitle">Curated editorial groupings of VentureDex startups.</p>
@@ -84,12 +84,15 @@ const schema = buildJsonLdGraph([
 
   .collections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: var(--space-4);
   }
 
   .collection-card {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: 100%;
     padding: var(--space-6);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
@@ -106,17 +109,20 @@ const schema = buildJsonLdGraph([
   .collection-card h2 {
     font-size: 1.1rem;
     margin-bottom: var(--space-2);
+    overflow-wrap: anywhere;
   }
 
   .collection-card p {
     font-size: 0.85rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
+    overflow-wrap: anywhere;
   }
 
   .collection-count {
     display: block;
-    margin-top: var(--space-3);
+    margin-top: auto;
+    padding-top: var(--space-3);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--color-text-secondary);

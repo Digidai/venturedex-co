@@ -64,10 +64,32 @@ html {
   background: var(--color-bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 body {
   min-height: 100dvh;
+  overflow-x: clip;
+}
+
+main {
+  min-width: 0;
+}
+
+main:focus {
+  outline: none;
+}
+
+button,
+input,
+select,
+textarea {
+  min-block-size: 44px;
+  font: inherit;
+}
+
+button {
+  min-inline-size: 44px;
 }
 
 h1, h2, h3, h4 {
@@ -101,6 +123,7 @@ img {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--space-6);
@@ -115,4 +138,40 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+.visually-hidden:focus,
+.visually-hidden:active {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: 1000;
+  width: auto;
+  height: auto;
+  padding: var(--space-2) var(--space-3);
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
 }

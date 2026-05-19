@@ -10,7 +10,7 @@ import {
   resolveInvestorByName,
 } from "../../lib/brand-assets";
 import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
-import { startupJsonLd, truncateText } from "../../lib/seo";
+import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import type { StartupLinks } from "../../lib/types";
 
 const { slug } = Astro.params;
@@ -52,14 +52,15 @@ try {
 }
 
 const hasTeamInfo = !!(startup.founder_name || startup.team_size || startup.hq_location);
+const websiteUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
 
 const externalLinks = [
-  { label: "Website", url: startup.canonical_url ?? `https://${startup.domain}`, icon: "globe" },
-  links.github ? { label: "GitHub", url: links.github, icon: "github" } : null,
-  links.twitter ? { label: "X / Twitter", url: links.twitter, icon: "twitter" } : null,
-  links.linkedin ? { label: "LinkedIn", url: links.linkedin, icon: "linkedin" } : null,
-  links.producthunt ? { label: "Product Hunt", url: links.producthunt, icon: "producthunt" } : null,
-].filter(Boolean) as { label: string; url: string; icon: string }[];
+  websiteUrl ? { label: "Website", url: websiteUrl } : null,
+  links.github ? { label: "GitHub", url: normalizeExternalUrl(links.github) } : null,
+  links.twitter ? { label: "X / Twitter", url: normalizeExternalUrl(links.twitter) } : null,
+  links.linkedin ? { label: "LinkedIn", url: normalizeExternalUrl(links.linkedin) } : null,
+  links.producthunt ? { label: "Product Hunt", url: normalizeExternalUrl(links.producthunt) } : null,
+].filter((link): link is { label: string; url: string } => Boolean(link?.url));
 ---
 
 <Base
@@ -79,7 +80,7 @@ const externalLinks = [
           alt={`${startup.product_name} screenshot`}
           class="detail-screenshot"
           width="1200"
-          height="675"
+          height="750"
           loading="eager"
           decoding="async"
           fetchpriority="high"
@@ -100,14 +101,16 @@ const externalLinks = [
             <p class="detail-domain">{startup.domain}</p>
           </div>
         </div>
-        <a
-          href={startup.canonical_url ?? `https://${startup.domain}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="visit-button"
-        >
-          Visit Site &rarr;
-        </a>
+        {websiteUrl && (
+          <a
+            href={websiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="visit-button"
+          >
+            Visit Site &rarr;
+          </a>
+        )}
       </div>
       {startup.summary && <p class="detail-summary">{startup.summary}</p>}
     </header>
@@ -222,7 +225,7 @@ const externalLinks = [
       </section>
     )}
 
-    {externalLinks.length > 1 && (
+    {externalLinks.length > 0 && (
       <section class="links-section" aria-label="External links">
         <h2>Links</h2>
         <div class="links-row">
@@ -271,15 +274,17 @@ const externalLinks = [
   }
 
   .detail-hero {
+    aspect-ratio: 16 / 10;
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--color-border);
     margin-bottom: var(--space-8);
+    background: var(--color-badge-bg);
   }
 
   .detail-screenshot {
     width: 100%;
-    max-height: 500px;
+    height: 100%;
     object-fit: cover;
     object-position: top;
     display: block;
@@ -315,20 +320,27 @@ const externalLinks = [
     min-width: 0;
   }
 
+  .detail-title-wrap > div {
+    min-width: 0;
+  }
+
   .detail-header h1 {
     font-size: 2rem;
     margin-bottom: var(--space-1);
+    overflow-wrap: anywhere;
   }
 
   .detail-domain {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .visit-button {
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     padding: var(--space-2) var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
@@ -352,7 +364,6 @@ const externalLinks = [
   }
 
   .editor-note {
-    border-left: 3px solid var(--color-editor-line);
     padding: var(--space-4) var(--space-6);
     margin-bottom: var(--space-6);
     background: color-mix(in srgb, var(--color-accent) 5%, var(--color-bg-card));
@@ -404,8 +415,13 @@ const externalLinks = [
 
   .meta-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
     gap: var(--space-4);
+    align-items: start;
+  }
+
+  .meta-item {
+    min-width: 0;
   }
 
   .meta-item dt {
@@ -419,6 +435,8 @@ const externalLinks = [
 
   .meta-item dd {
     font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-wrap: break-word;
   }
 
   .why-badge {
@@ -427,6 +445,7 @@ const externalLinks = [
     align-items: center;
     gap: 8px;
     max-width: min(100%, 30rem);
+    width: 100%;
     padding: 7px 12px;
     border-radius: 6px;
     border: 1px solid color-mix(in srgb, var(--color-accent) 18%, var(--color-border));
@@ -447,6 +466,10 @@ const externalLinks = [
     box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 16%, transparent);
   }
 
+  .why-badge span:last-child {
+    min-width: 0;
+  }
+
   /* Team section */
   .team-section {
     margin-bottom: var(--space-8);
@@ -459,8 +482,13 @@ const externalLinks = [
 
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
     gap: var(--space-4);
+    align-items: start;
+  }
+
+  .team-item {
+    min-width: 0;
   }
 
   .team-item dt {
@@ -474,6 +502,8 @@ const externalLinks = [
 
   .team-item dd {
     font-size: 0.9rem;
+    line-height: 1.4;
+    overflow-wrap: break-word;
   }
 
   /* Investors section */
@@ -498,6 +528,7 @@ const externalLinks = [
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
+    min-height: 44px;
     padding: var(--space-1) var(--space-3);
     border: 1px solid var(--color-border);
     border-radius: 99px;
@@ -535,6 +566,7 @@ const externalLinks = [
   .ext-link {
     display: inline-flex;
     align-items: center;
+    min-height: 44px;
     padding: var(--space-2) var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
@@ -570,7 +602,9 @@ const externalLinks = [
   }
 
   .tag-badge {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     padding: 2px 10px;
     border-radius: 99px;
     background: var(--color-badge-bg);
@@ -599,11 +633,15 @@ const externalLinks = [
 
   .related-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: var(--space-4);
   }
 
   @media (max-width: 640px) {
+    .site-detail {
+      padding: var(--space-6) var(--space-4) var(--space-12);
+    }
+
     .header-top {
       flex-direction: column;
     }
@@ -616,8 +654,9 @@ const externalLinks = [
       font-size: 1.5rem;
     }
 
-    .meta-grid {
-      grid-template-columns: repeat(2, 1fr);
+    .visit-button {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

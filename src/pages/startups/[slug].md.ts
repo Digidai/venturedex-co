@@ -8,6 +8,7 @@ import {
   cleanText,
   escapeMarkdown,
   getSiteUrl,
+  normalizeExternalUrl,
   parseLinks,
   splitCsv,
 } from "../../lib/seo";
@@ -37,6 +38,7 @@ export const GET: APIRoute = async ({ locals, params }) => {
   const tags = splitCsv(startup.tags);
   const investors = splitCsv(startup.investors);
   const canonical = absoluteUrl(`/startups/${startup.slug}`, siteUrl);
+  const officialUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
 
   const body = [
     `# ${escapeMarkdown(startup.product_name)}`,
@@ -50,7 +52,7 @@ export const GET: APIRoute = async ({ locals, params }) => {
     "## Company Facts",
     "",
     `- VentureDex canonical: ${canonical}`,
-    `- Website: ${startup.canonical_url ?? `https://${startup.domain}`}`,
+    officialUrl ? `- Website: ${officialUrl}` : null,
     startup.published_at ? `- Published: ${escapeMarkdown(startup.published_at)}` : null,
     startup.updated_at ? `- Updated: ${escapeMarkdown(startup.updated_at)}` : null,
     startup.product_type ? `- Product type: ${escapeMarkdown(startup.product_type)}` : null,
@@ -68,11 +70,11 @@ export const GET: APIRoute = async ({ locals, params }) => {
     "",
     ...[
       ["Canonical page", canonical],
-      ["Official website", startup.canonical_url ?? `https://${startup.domain}`],
-      ["GitHub", links.github],
-      ["X / Twitter", links.twitter],
-      ["LinkedIn", links.linkedin],
-      ["Product Hunt", links.producthunt],
+      ["Official website", officialUrl],
+      ["GitHub", normalizeExternalUrl(links.github)],
+      ["X / Twitter", normalizeExternalUrl(links.twitter)],
+      ["LinkedIn", normalizeExternalUrl(links.linkedin)],
+      ["Product Hunt", normalizeExternalUrl(links.producthunt)],
     ]
       .filter(([, url]) => Boolean(url))
       .map(([label, url]) => `- ${label}: ${url}`),
@@ -82,7 +84,8 @@ export const GET: APIRoute = async ({ locals, params }) => {
     ...(rounds.results.length > 0
       ? rounds.results.map((round) => {
           const details = [round.amount, round.stage, round.lead_investor, round.date].filter(Boolean).join(" | ");
-          return `- ${escapeMarkdown(details)}${round.source_url ? `: ${round.source_url}` : ""}`;
+          const sourceUrl = normalizeExternalUrl(round.source_url);
+          return `- ${escapeMarkdown(details)}${sourceUrl ? `: ${sourceUrl}` : ""}`;
         })
       : ["- No VentureDex funding source attached yet."]),
     "",

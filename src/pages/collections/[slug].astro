@@ -17,7 +17,12 @@ const description = truncateText(collection.description ?? `${collection.title} 
 const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
 ---
 
-<Base title={collection.title} description={description} schema={schema}>
+<Base
+  title={collection.title}
+  description={description}
+  canonicalPath={`/collections/${collection.slug}`}
+  schema={schema}
+>
   <div class="container collection-detail">
     <header>
       <a href="/collections" class="back-link">&larr; All collections</a>
@@ -49,7 +54,9 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
     font-size: 0.85rem;
     font-weight: 500;
     color: var(--color-text-secondary);
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
     margin-bottom: var(--space-4);
     transition: color 0.15s;
   }
@@ -69,6 +76,10 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-6);
+  }
+
+  .card-grid > * {
+    min-width: 0;
   }
 
   @media (max-width: 900px) {
