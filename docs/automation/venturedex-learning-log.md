@@ -1346,3 +1346,44 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `dfdfb6a` was pushed to `main`; GitHub Actions passed for Validate `26017351354` and Deploy `26017351355`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 55 published startups
+
+### 2026-05-20 15:07 CST
+
+- candidate_count: 41
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass after iteration; initial local validation exposed existing QIC, a16z, and Bessemer brand-source reachability failures before official reachable paths were narrowed
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Rely, Kin Health, Hellbender, and Ocean used the standard screenshot path, while Stilta required `bb-browser` verification and manual 1440x900 recapture after the screenshot overlay heuristic misclassified a real z-indexed hero section and decorative fixed layer as popup candidates; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 00dddab content commit plus 72d5b71 QIC brand-source CI fix
+- pushed_branch: main
+- ci_deploy: pass after iteration; first push failed GitHub Actions Validate `26146547569` and Deploy `26146547571` because the QIC media URL failed in CI, then fix commit `72d5b71` passed Validate `26147003992` and Deploy `26147003993`
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 60 published startups, and a direct homepage check showed Stilta, Rely, Kin Health, Hellbender, and Ocean
+- failure_tags: [screenshot_env, validate_fail, ci_fail, other]
+- reward: 1
+- dominant_failure_mode: operational friction came from external brand-source reachability and screenshot heuristics rather than content quality. The local environment saw QIC's old Sitecore edge asset return 404, a16z and Bessemer homepages return local curl `000`, and CI later rejected the replacement QIC media path even though local validation passed. Stilta's page also used a z-indexed hero section that resembled an overlay to the screenshot script.
+- proposed_change: defer a code-level brand-source resilience change that would distinguish official source-page reachability from volatile media-CDN reachability, and do not edit automation heuristics because the existing error-loop and screenshot false-positive rules already covered the run
+- decision: deferred
+- affected_file: scripts/validate.py; content/brand-assets.json source URL policy
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - discovered a 41-candidate current-source window from TechCrunch, Commercial Observer, CTech/Calcalist, GlobeNewswire/PR mirrors, official company announcements, and current funding searches, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Stilta because TechCrunch verifies a May 19, 2026 $10.5M Seed led by Andreessen Horowitz, while `bb-browser` product review confirmed invalidity, infringement, and FTO modules, source-cited patent/scientific/archive evidence, PTAB benchmark claims, claim charts, and attorney-auditable workflows
+  - accepted Rely because Commercial Observer verifies a May 19, 2026 $4.5M Seed led by 2048 Ventures, while product review confirmed multifamily diligence automation, lease/vendor/utilities audits, source-linked tables, Drive/Box/SharePoint deal-room intake, and under-30-minute audit claims
+  - accepted Kin Health because TechCrunch verifies a May 18, 2026 $9M Seed led by Maveron, while product review confirmed patient-owned doctor-visit recording, care-plan summaries, family sharing, free patient distribution, privacy positioning, and app-store distribution
+  - accepted Hellbender because its official May 19, 2026 announcement verifies a $12.5M Seed co-led by Magarac Venture Partners and Veredas Partners, while product review confirmed edge AI cameras, CVaaS, carrier boards, 64-camera Vine systems, on-edge perception, and visible product catalog evidence
+  - accepted Ocean because CTech verifies a May 19, 2026 $20M Series A led by Lightspeed Venture Partners, while product review confirmed Ray's coordinated email-security agents, link, identity, file, financial, quarantine, and abuse-mailbox workflows, explainable verdicts, and Microsoft 365 / Google Workspace positioning
+  - recorded fifteen rejected decisions for Status AI, Mach Industries, Paprclip, Stainless acquisition, SandboxAQ/Claude, LetinAR, Checker, SizeProp, Rasa Legal, BRAMI, Scope, Amphiform, B-SIDES, Century Health, and Google AI Search, meeting the 3:1 rejection bar for five acceptances
+  - Status AI was rejected because its TechCrunch source combines seed and Series A financing under one headline; Mach, Paprclip, SandboxAQ, LetinAR, and Google AI Search were not fresh private Seed-Series C financing sources; Stainless was an acquisition; Checker and SizeProp hit the crypto exclusion; Rasa Legal and Amphiform failed stage/window rules; BRAMI, B-SIDES, and Century Health ranked below the product-workflow bar; Scope lacked source convergence
+  - `bb-browser` was used for browser-side product verification of all accepted startups and for Stilta screenshot failure investigation; automation-opened tabs were closed or left only when preexisting browser state was not owned by the run
+  - `./scripts/screenshot.sh stilta https://www.stilta.com` failed with generic popup/screenshot failure; `bb-browser` inspection found a decorative `pointer-events-none` fixed layer and the real hero section scoring as overlay candidates, so a clean product-visible 1440x900 WebP was recaptured without removing product content
+  - local validation initially failed on existing brand assets: QIC's old Sitecore edge logo URL returned 404, and a16z/Bessemer official homepages returned local curl `000`; the run narrowed those to official reachable traces, then revalidated
+  - the first pushed content commit `00dddab` failed CI because the QIC replacement media URL still failed from GitHub Actions; the follow-up content fix `72d5b71` pointed QIC's brand source to the official QIC Ventures page that CI could reach
+  - local gates passed after iteration: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - final GitHub Actions passed for Validate `26147003992` and Deploy `26147003993`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 60 published startups, and the live homepage included the five new startup names
