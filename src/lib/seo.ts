@@ -4,7 +4,6 @@ import type {
   Investor,
   Startup,
   StartupLinks,
-  WeeklyIssue,
 } from "./types";
 import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
 
@@ -363,55 +362,6 @@ export function collectionJsonLd(
         { name: "Home", path: "/" },
         { name: "Collections", path: "/collections" },
         { name: collection.title, path: pagePath },
-      ],
-      siteUrl
-    ),
-    itemListNode(
-      startups.map((startup) => ({
-        name: startup.product_name,
-        path: `/startups/${startup.slug}`,
-        description: startup.summary,
-      })),
-      siteUrl
-    ),
-  ]);
-}
-
-export function weeklyIssueJsonLd(
-  issue: WeeklyIssue,
-  startups: Startup[],
-  siteUrl = DEFAULT_SITE_URL
-): JsonLdNode {
-  const pagePath = `/weekly/${issue.issue_number}`;
-  const description = truncateText(issue.editorial_intro ?? `${SITE_NAME} Weekly #${issue.issue_number}.`);
-
-  return buildJsonLdGraph([
-    siteOrganization(siteUrl),
-    siteWebSite(siteUrl),
-    stripUndefined({
-      "@type": "Article",
-      "@id": `${absoluteUrl(pagePath, siteUrl)}#article`,
-      headline: issue.title,
-      description,
-      url: absoluteUrl(pagePath, siteUrl),
-      datePublished: toIsoDateTime(issue.published_at),
-      author: { "@id": `${getSiteUrl(siteUrl)}/#organization` },
-      publisher: { "@id": `${getSiteUrl(siteUrl)}/#organization` },
-      mainEntityOfPage: { "@id": `${absoluteUrl(pagePath, siteUrl)}#webpage` },
-    }),
-    webPageNode({
-      path: pagePath,
-      title: issue.title,
-      description,
-      type: "CollectionPage",
-      datePublished: issue.published_at,
-      siteUrl,
-    }),
-    breadcrumbList(
-      [
-        { name: "Home", path: "/" },
-        { name: "Weekly", path: "/weekly" },
-        { name: `Issue ${issue.issue_number}`, path: pagePath },
       ],
       siteUrl
     ),

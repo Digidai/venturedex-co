@@ -78,7 +78,6 @@ export const GET: APIRoute = async ({ locals }) => {
     `- [Investors](${absoluteUrl("/investors", siteUrl)}): investors with VentureDex-tracked funding activity.`,
     `- [Funding News](${absoluteUrl("/news", siteUrl)}): verified funding rounds with source links.`,
     `- [Collections](${absoluteUrl("/collections", siteUrl)}): editorial groupings of startups by theme.`,
-    `- [Weekly Picks](${absoluteUrl("/weekly", siteUrl)}): periodic curated startup selections.`,
     `- [About](${absoluteUrl("/about", siteUrl)}): site identity and scope.`,
     `- [Editorial Policy](${absoluteUrl("/editorial-policy", siteUrl)}): selection and sourcing standards.`,
     `- [XML Sitemap](${absoluteUrl("/sitemap.xml", siteUrl)}): complete crawlable URL set.`,

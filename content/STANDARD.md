@@ -316,37 +316,6 @@ GitHub Actions 自动执行验证 → D1 同步 → 部署。
 
 ---
 
-## 第三章：周刊
-
-每周从已收录的项目中选 5-7 个组成 Weekly Picks。
-
-### 选题标准
-
-- rating ≥ 3
-- 优先选最近新收录的
-- 有一个主题线索把本期串起来（不是随机拼凑）
-- 周刊标题是一个观点，不是一个分类名
-
-| 好标题 | 坏标题 |
-|--------|--------|
-| "The tools that changed how we build" | "This week's picks" |
-| "AI that solves boring problems" | "AI startups" |
-| "Five bets against conventional wisdom" | "Featured companies" |
-
-### 文件格式
-
-```json
-// content/weekly/{N}.json
-{
-  "issue_number": 2,
-  "title": "一个观点，不是一个分类",
-  "editorial_intro": "2-3 句。为什么选这些项目？它们之间的共同点是什么？",
-  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
-}
-```
-
----
-
 ## 第四章：红线
 
 这些是绝对不做的事情。没有例外。

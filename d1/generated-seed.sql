@@ -7,7 +7,7 @@ DELETE FROM investors;
 DELETE FROM search_index_terms;
 DELETE FROM collection_startups;
 DELETE FROM weekly_issue_startups;
-DELETE FROM weekly_issues WHERE issue_number NOT IN (1);
+DELETE FROM weekly_issues;
 DELETE FROM startups WHERE workflow_status = 'published' AND codex_stage = 'manual' AND slug NOT IN ('alcatraz', 'all3', 'amperos', 'balerion', 'basata', 'branchlab', 'cal-com', 'ciridae', 'config', 'copilotkit', 'corgi', 'cursor', 'eleven-labs', 'enzo-health', 'ethos', 'fazeshift', 'featherless', 'gizmo', 'govwell', 'grai', 'granola', 'hilbert', 'juliahub', 'krea', 'lakefusion', 'linear', 'liquid-instruments', 'manifest-os', 'moment-energy', 'monk', 'origin-lab', 'outmarket', 'parallel-web-systems', 'parasail', 'perplexity', 'pit', 'qodo', 'quantware', 'radixark', 'resend', 'scout-space', 'secludy', 'shapes', 'shyld-ai', 'stitch', 'supabase', 'synera', 'val-town', 'vapi', 'vector');
 
 -- Startups
@@ -595,9 +595,3 @@ INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinn
 INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ('c-003', 'startup-vector', 1, 1);
 
 -- Weekly issues
-INSERT INTO weekly_issues (id, issue_number, title, editorial_intro, published_at, status) VALUES ('w-1', 1, 'The tools that changed how we build', 'For our first issue, we picked the tools that fundamentally changed developer workflows in the last three years. Not incremental improvements. Not features wrapped in startups. Products that made you think differently about how software gets built.', datetime('now'), 'published') ON CONFLICT(issue_number) DO UPDATE SET id = excluded.id, title = excluded.title, editorial_intro = excluded.editorial_intro, status = excluded.status, published_at = COALESCE(weekly_issues.published_at, excluded.published_at);
-INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('w-1', 'startup-cursor', 1);
-INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('w-1', 'startup-linear', 2);
-INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('w-1', 'startup-perplexity', 3);
-INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('w-1', 'startup-supabase', 4);
-INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ('w-1', 'startup-resend', 5);

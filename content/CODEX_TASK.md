@@ -244,28 +244,6 @@ Bet: {一句话：这个产品做了什么赌注}"
 git push
 ```
 
-### Step 6: 周刊（每周一次）
-
-从 rating ≥ 3 的已收录项目中选 5-7 个，用一个主题串起来。
-
-```json
-// content/weekly/{N}.json
-{
-  "issue_number": 2,
-  "title": "一个观点，不是分类名",
-  "editorial_intro": "2-3 句，为什么选这些，它们的共同点",
-  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
-}
-```
-
-```bash
-git add content/weekly/
-git commit -m "content: weekly #N — {title}"
-git push
-```
-
----
-
 ## 红线（绝对不做）
 
 1. 不编造数据（融资金额/投资人/用户数不确定就不填）
@@ -283,7 +261,6 @@ git push
 ```
 可以创建/修改:
   content/startups/*.json
-  content/weekly/*.json
   content/rejected.jsonl
   public/screenshots/*.webp
 

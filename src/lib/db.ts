@@ -1,4 +1,4 @@
-import type { Startup, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
+import type { Startup, Collection, FundingRound, Investor } from "./types";
 
 export type SortOption = "featured" | "newest" | "name-az";
 
@@ -91,44 +91,6 @@ export async function getRelatedStartups(
     .all<Startup>();
 
   return result.results;
-}
-
-export async function getPublishedWeeklyIssues(
-  db: D1Database,
-  limit = 20
-): Promise<WeeklyIssue[]> {
-  const result = await db
-    .prepare(
-      "SELECT * FROM weekly_issues WHERE status = 'published' ORDER BY issue_number DESC LIMIT ?"
-    )
-    .bind(limit)
-    .all<WeeklyIssue>();
-
-  return result.results;
-}
-
-export async function getWeeklyIssueByNumber(
-  db: D1Database,
-  issueNumber: number
-): Promise<{ issue: WeeklyIssue; startups: Startup[] } | null> {
-  const issue = await db
-    .prepare("SELECT * FROM weekly_issues WHERE issue_number = ? AND status = 'published'")
-    .bind(issueNumber)
-    .first<WeeklyIssue>();
-
-  if (!issue) return null;
-
-  const startups = await db
-    .prepare(
-      `SELECT s.* FROM startups s
-       JOIN weekly_issue_startups wis ON s.id = wis.startup_id
-       WHERE wis.issue_id = ? AND s.workflow_status = 'published'
-       ORDER BY wis.display_order`
-    )
-    .bind(issue.id)
-    .all<Startup>();
-
-  return { issue, startups: startups.results };
 }
 
 export async function getPublishedCollections(

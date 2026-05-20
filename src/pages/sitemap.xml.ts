@@ -36,11 +36,6 @@ interface CollectionSitemapRow {
   created_at: string | null;
 }
 
-interface WeeklySitemapRow {
-  issue_number: number;
-  published_at: string | null;
-}
-
 export const GET: APIRoute = async ({ locals }) => {
   const siteUrl = getSiteUrl(locals.runtime.env.SITE_URL ?? DEFAULT_SITE_URL);
   const db = locals.runtime.env.DB;
@@ -50,7 +45,6 @@ export const GET: APIRoute = async ({ locals }) => {
     { loc: "/investors", priority: "0.8" },
     { loc: "/news", priority: "0.8" },
     { loc: "/collections", priority: "0.7" },
-    { loc: "/weekly", priority: "0.7" },
     { loc: "/about", priority: "0.6" },
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },
@@ -58,7 +52,7 @@ export const GET: APIRoute = async ({ locals }) => {
   ];
 
   try {
-    const [startups, investors, collections, issues] = await Promise.all([
+    const [startups, investors, collections] = await Promise.all([
       db
         .prepare(
           `SELECT slug, product_name, summary, screenshot_r2_key, updated_at, published_at, is_featured
@@ -94,14 +88,6 @@ export const GET: APIRoute = async ({ locals }) => {
            ORDER BY slug`
         )
         .all<CollectionSitemapRow>(),
-      db
-        .prepare(
-          `SELECT issue_number, published_at
-           FROM weekly_issues
-           WHERE status = 'published'
-           ORDER BY issue_number DESC`
-        )
-        .all<WeeklySitemapRow>(),
     ]);
 
     urls = urls.concat(
@@ -128,11 +114,6 @@ export const GET: APIRoute = async ({ locals }) => {
         loc: `/collections/${collection.slug}`,
         lastmod: collection.created_at,
         priority: "0.7",
-      })),
-      issues.results.map((issue) => ({
-        loc: `/weekly/${issue.issue_number}`,
-        lastmod: issue.published_at,
-        priority: "0.6",
       }))
     );
   } catch (error) {

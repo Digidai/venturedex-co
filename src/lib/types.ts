@@ -46,19 +46,6 @@ export interface StartupLinks {
   producthunt?: string;
 }
 
-export interface WeeklyIssue {
-  id: string;
-  issue_number: number;
-  title: string;
-  editorial_intro: string | null;
-  anti_pick_name: string | null;
-  anti_pick_url: string | null;
-  anti_pick_reason: string | null;
-  og_image_r2_key: string | null;
-  published_at: string | null;
-  status: "draft" | "published" | "archived";
-}
-
 export interface Collection {
   id: string;
   slug: string;
