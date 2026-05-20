@@ -1,0 +1,26 @@
+{
+  "slug": "hellbender",
+  "domain": "hellbender.com",
+  "url": "https://hellbender.com/hellbender-products/",
+  "product_name": "Hellbender",
+  "summary": "Edge AI camera systems and carrier boards for robotics and physical AI teams.",
+  "editor_note": "The useful bet is putting more physical AI on the camera instead of in a remote demo stack. Hellbender sells stereo AI cameras, 64-camera Vine systems, carrier boards, and CVaaS for teams that would rather test robots than wire processors. Unlike many defense-adjacent AI pitches, the product catalog is visible and shippable. Manufacturing discipline may matter more here than model cleverness.",
+  "editor_rating": 4,
+  "why_featured": "Stereo cameras for edge AI",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "edge ai,robotics,computer vision,hardware",
+  "investors": "Magarac Venture Partners, Veredas Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12.5M",
+      "stage": "Seed",
+      "lead_investor": "Magarac Venture Partners and Veredas Partners",
+      "date": "2026-05-19",
+      "source_url": "https://hellbender.com/hellbender-secures-12-5m-seed-round-to-accelerate-domestic-manufacturing-of-physical-ai-and-launch-its-on-edge-camera-line/",
+      "source_name": "Hellbender"
+    }
+  ]
+}

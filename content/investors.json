@@ -10,7 +10,7 @@
     "name": "Andreessen Horowitz",
     "slug": "a16z",
     "short_name": "a16z",
-    "website": "https://a16z.com",
+    "website": "https://portfolio.a16z.com",
     "description": "Venture capital firm founded by Marc Andreessen and Ben Horowitz. Backs bold founders building category-defining technology companies."
   },
   "sequoia": {
@@ -348,5 +348,33 @@
     "short_name": "Left Lane",
     "website": "https://www.leftlane.com",
     "description": "Venture and growth equity firm investing in high-growth consumer and technology companies."
+  },
+  "2048-ventures": {
+    "name": "2048 Ventures",
+    "slug": "2048-ventures",
+    "short_name": "2048",
+    "website": "https://www.2048.vc",
+    "description": "Pre-seed and seed venture firm backing founders in vertical AI, deep technology, healthcare, and bio."
+  },
+  "maveron": {
+    "name": "Maveron",
+    "slug": "maveron",
+    "short_name": "Maveron",
+    "website": "https://www.maveron.com",
+    "description": "Consumer-centric venture capital firm backing founders building technology-enabled companies around changing behavior."
+  },
+  "magarac-venture-partners": {
+    "name": "Magarac Venture Partners",
+    "slug": "magarac-venture-partners",
+    "short_name": "Magarac",
+    "website": "https://www.magarac.vc",
+    "description": "Pittsburgh-based early-stage venture firm investing in technology companies across the Midwest."
+  },
+  "veredas-partners": {
+    "name": "Veredas Partners",
+    "slug": "veredas-partners",
+    "short_name": "Veredas",
+    "website": "https://veredaspartners.com",
+    "description": "Early-stage venture investment firm backing technology companies in physical AI, industrial systems, and deep technology."
   }
 }

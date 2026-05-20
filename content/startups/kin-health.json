@@ -1,0 +1,26 @@
+{
+  "slug": "kin-health",
+  "domain": "www.meetkin.com",
+  "url": "https://www.meetkin.com",
+  "product_name": "Kin Health",
+  "summary": "Patient app that records doctor visits and turns them into clear next steps.",
+  "editor_note": "The bet is that the missing layer in care is memory, not another portal. Kin records doctor visits, extracts next steps, and lets a patient share the summary with family before the next appointment. Unlike clinician scribes, it starts with the person who forgets 80% of instructions by the parking lot. Free patient distribution is elegant; consent norms in exam rooms are the hard part.",
+  "editor_rating": 4,
+  "why_featured": "Patient-owned visit memory",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "healthtech,patient notes,care coordination,ai scribe",
+  "investors": "Maveron",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9M",
+      "stage": "Seed",
+      "lead_investor": "Maveron",
+      "date": "2026-05-18",
+      "source_url": "https://techcrunch.com/2026/05/18/kin-health-raises-9m-to-build-an-ai-notetaker-for-patients/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

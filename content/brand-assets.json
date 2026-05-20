@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-18",
+  "verified_at": "2026-05-20",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -385,6 +385,41 @@
       "local_path": "/logos/companies/equipifi.png",
       "source_page": "https://www.equipifi.com",
       "source_url": "https://www.equipifi.com/hs-fs/hubfs/equipifi-logos/equipifi-logo-black-2.png?width=1920&height=454&name=equipifi-logo-black-2.png"
+    },
+    "stilta": {
+      "name": "Stilta",
+      "shape": "icon",
+      "local_path": "/logos/companies/stilta.png",
+      "source_page": "https://www.stilta.com",
+      "source_url": "https://www.stilta.com/_assets/v11/f0c5578d61c204a8e9647b07da24d4e50d8da2a7.png"
+    },
+    "rely": {
+      "name": "Rely",
+      "shape": "icon",
+      "local_path": "/logos/companies/rely.png",
+      "source_page": "https://tryrely.ai",
+      "source_url": "https://framerusercontent.com/images/10XEUmzMuA8ropqsexrcJp88Si4.png"
+    },
+    "kin-health": {
+      "name": "Kin Health",
+      "shape": "icon",
+      "local_path": "/logos/companies/kin-health.png",
+      "source_page": "https://www.meetkin.com",
+      "source_url": "https://assets.meetkin.com/brand/favicon.png"
+    },
+    "hellbender": {
+      "name": "Hellbender",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hellbender.svg",
+      "source_page": "https://hellbender.com/hellbender-products/",
+      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/HB_Logo.svg"
+    },
+    "ocean": {
+      "name": "Ocean",
+      "shape": "icon",
+      "local_path": "/logos/companies/ocean.png",
+      "source_page": "https://ocean.security/platform",
+      "source_url": "https://framerusercontent.com/images/Urq1t3rfnGs74JTdrcqsiDPKk.png"
     }
   },
   "investors": {
@@ -399,7 +434,7 @@
       "name": "Andreessen Horowitz",
       "shape": "icon",
       "local_path": "/logos/investors/a16z.png",
-      "source_page": "https://a16z.com",
+      "source_page": "https://portfolio.a16z.com",
       "source_url": "https://d1lamhf6l6yk6d.cloudfront.net/uploads/2025/06/Favicon-%E2%80%94-180x180px.png"
     },
     "sequoia": {
@@ -624,8 +659,8 @@
       "name": "Bessemer Venture Partners",
       "shape": "wordmark",
       "local_path": "/logos/investors/bessemer-venture-partners.svg",
-      "source_page": "https://www.bvp.com",
-      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg"
+      "source_page": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg?raw=1",
+      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg?raw=1"
     },
     "basis-set-ventures": {
       "name": "Basis Set Ventures",
@@ -723,7 +758,7 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/qic-ventures.svg",
       "source_page": "https://www.qic.com/Investment-Capabilities/Private-Equity/QIC-Ventures",
-      "source_url": "https://edge.sitecorecloud.io/giclimited1-qiccom-prod-94af/media/Project/QIC/QIC/Logos/QIC-logo-red.svg?iar=0"
+      "source_url": "https://www.qic.com/-/media/Project/QIC/QIC/Logos/QIC-logo-red.svg"
     },
     "burnt-island-ventures": {
       "name": "Burnt Island Ventures",
@@ -738,6 +773,34 @@
       "local_path": "/logos/investors/left-lane-capital.png",
       "source_page": "https://www.leftlane.com",
       "source_url": "https://cdn.prod.website-files.com/60f1a7dcfadff39642c48e55/6105aa88d302826a7ecce93a_Favicon.png"
+    },
+    "2048-ventures": {
+      "name": "2048 Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/2048-ventures.svg",
+      "source_page": "https://www.2048.vc",
+      "source_url": "https://cdn.prod.website-files.com/6195437cec00d52284613d97/61e6255ebcd55fd4c7768176_2048-ventures-logo-dark.svg"
+    },
+    "maveron": {
+      "name": "Maveron",
+      "shape": "icon",
+      "local_path": "/logos/investors/maveron.png",
+      "source_page": "https://www.maveron.com",
+      "source_url": "https://cdn.prod.website-files.com/6344606fd6d2326b0bb8e09f/643d1dbdfc050828bdc88562_maveron%20favicon%202-01.png"
+    },
+    "magarac-venture-partners": {
+      "name": "Magarac Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/magarac-venture-partners.png",
+      "source_page": "https://www.magarac.vc",
+      "source_url": "https://cdn.prod.website-files.com/60620f0eb6ceda0b7b8dd435/6063dcdc2b27e2f7d6f97dd0_MVP_gold%20black%20256x.png"
+    },
+    "veredas-partners": {
+      "name": "Veredas Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/veredas-partners.png",
+      "source_page": "https://veredaspartners.com",
+      "source_url": "https://veredaspartners.com/veredas-logo-2.png"
     }
   }
 }

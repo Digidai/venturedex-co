@@ -1,0 +1,26 @@
+{
+  "slug": "ocean",
+  "domain": "ocean.security",
+  "url": "https://ocean.security/platform",
+  "product_name": "Ocean",
+  "summary": "Agentic email security that investigates messages before they reach the inbox.",
+  "editor_note": "The sharp idea is moving phishing triage before the inbox instead of polishing the abuse queue. Ocean's Ray engine coordinates link, identity, file, financial, and quarantine agents, then returns an explainable verdict to employees across Microsoft 365 and Google Workspace. Unlike SEG filters that score and shrug, it tries to investigate every email as a live case. The buyer risk is trusting an agent between fraud and false positive.",
+  "editor_rating": 4,
+  "why_featured": "Agent swarm before inbox",
+  "product_type": "AI / ML",
+  "region": "Global / Remote",
+  "tags": "cybersecurity,email security,ai agents,phishing",
+  "investors": "Lightspeed Venture Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-05-19",
+      "source_url": "https://www.calcalistech.com/ctechnews/article/sj59xf5jml",
+      "source_name": "CTech"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "stilta",
+  "domain": "www.stilta.com",
+  "url": "https://www.stilta.com",
+  "product_name": "Stilta",
+  "summary": "AI agents for patent invalidity, infringement, and freedom-to-operate analysis.",
+  "editor_note": "The smart move is treating patent analysis as evidence mapping, not legal chat. Stilta breaks work into infringement, invalidity, and FTO modules, then maps claim elements to patents, scientific literature, and archived web sources. Unlike generic legal copilots, it narrows the agent to questions attorneys already know how to audit. The risk is whether benchmark recall survives hostile expert review.",
+  "editor_rating": 4,
+  "why_featured": "Patent claim evidence maps",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "legal tech,patents,ai agents,litigation",
+  "investors": "Andreessen Horowitz, Y Combinator",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10.5M",
+      "stage": "Seed",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-05-19",
+      "source_url": "https://techcrunch.com/2026/05/19/legal-tech-announced-stilta-announces-10m-seed-backed-by-yc-and-a16z-months-after-launch/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

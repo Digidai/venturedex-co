@@ -1,0 +1,26 @@
+{
+  "slug": "rely",
+  "domain": "tryrely.ai",
+  "url": "https://tryrely.ai",
+  "product_name": "Rely",
+  "summary": "AI diligence automation for multifamily lease, vendor, utility, and financial audits.",
+  "editor_note": "This is deal-room software with the spreadsheet pain left in view. Rely ingests multifamily leases, vendor contracts, utilities, and financial files, then exports source-linked audit tables in under 30 minutes for most reviews. Unlike generic document AI, it bets on one messy asset class and one due-diligence workflow. The open question is whether lenders and operators trust the model when a single bad cell changes a deal.",
+  "editor_rating": 4,
+  "why_featured": "Under-30-minute audits",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "proptech,due diligence,document ai,multifamily",
+  "investors": "2048 Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.5M",
+      "stage": "Seed",
+      "lead_investor": "2048 Ventures",
+      "date": "2026-05-19",
+      "source_url": "https://commercialobserver.com/2026/05/multifamily-deal-diligence-rely-fundraise/",
+      "source_name": "Commercial Observer"
+    }
+  ]
+}
