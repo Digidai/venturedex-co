@@ -251,8 +251,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
     }),
     breadcrumbList(
       [
-        { name: "Home", path: "/" },
-        { name: "Startups", path: "/startups" },
+        { name: "Explore", path: "/" },
         { name: startup.product_name, path: pagePath },
       ],
       siteUrl

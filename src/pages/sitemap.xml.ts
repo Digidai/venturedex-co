@@ -47,7 +47,6 @@ export const GET: APIRoute = async ({ locals }) => {
 
   let urls: SitemapUrl[] = [
     { loc: "/", priority: "1.0" },
-    { loc: "/startups", priority: "0.8" },
     { loc: "/investors", priority: "0.8" },
     { loc: "/news", priority: "0.8" },
     { loc: "/collections", priority: "0.7" },

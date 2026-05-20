@@ -57,19 +57,19 @@ const publishedIso = toIsoDateTime(publishedTime);
 const modifiedIso = toIsoDateTime(modifiedTime);
 const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 const pathname = normalizeCanonicalPath(Astro.url.pathname);
+const isExplorePath = pathname === "/" || pathname.startsWith("/startups/");
 const navItems = [
   { href: "/", label: "Explore" },
-  { href: "/startups", label: "Startups" },
   { href: "/investors", label: "Investors" },
   { href: "/news", label: "News" },
   { href: "/collections", label: "Collections" },
   { href: "/weekly", label: "Weekly" },
 ].map((item) => ({
   ...item,
-  isActive: item.href === "/" ? pathname === "/" : pathname === item.href || pathname.startsWith(`${item.href}/`),
+  isActive: item.href === "/" ? isExplorePath : pathname === item.href || pathname.startsWith(`${item.href}/`),
 }));
 const footerItems = [
-  { href: "/startups", label: "Startups" },
+  { href: "/", label: "Explore" },
   { href: "/investors", label: "Investors" },
   { href: "/about", label: "About" },
   { href: "/editorial-policy", label: "Editorial Policy" },
@@ -78,7 +78,7 @@ const footerItems = [
   { href: "/feed.xml", label: "RSS" },
 ].map((item) => ({
   ...item,
-  isActive: item.href !== "/feed.xml" && pathname === item.href,
+  isActive: item.href === "/" ? isExplorePath : item.href !== "/feed.xml" && pathname === item.href,
 }));
 const isSearchActive = pathname === "/search";
 const isSubscribeActive = pathname === "/subscribe";
@@ -392,17 +392,34 @@ const isSubscribeActive = pathname === "/subscribe";
         }
 
         .nav-tabs {
-          display: flex;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: repeat(6, minmax(0, 1fr));
           overflow: visible;
         }
 
-        .nav-tab:nth-child(3n) {
-          border-right: none;
+        .nav-tab {
+          flex: initial;
+          min-width: 0;
+          white-space: normal;
+          overflow-wrap: anywhere;
         }
 
         .nav-tab:nth-child(-n + 3) {
+          grid-column: span 2;
           border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-tab:nth-child(3) {
+          border-right: none;
+        }
+
+        .nav-tab:nth-child(4) {
+          grid-column: 2 / span 2;
+        }
+
+        .nav-tab:nth-child(5) {
+          grid-column: 4 / span 2;
+          border-right: none;
         }
 
         .header-actions {
