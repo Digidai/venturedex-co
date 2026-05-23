@@ -2,6 +2,7 @@ import brandAssetsJson from "../../content/brand-assets.json";
 import investorsJson from "../../content/investors.json";
 
 export type BrandShape = "icon" | "wordmark";
+export type BrandTileBackground = "light" | "dark";
 
 export interface BrandAsset {
   name: string;
@@ -9,6 +10,7 @@ export interface BrandAsset {
   local_path: string;
   source_page: string;
   source_url: string;
+  tile_background?: BrandTileBackground;
   note?: string;
 }
 

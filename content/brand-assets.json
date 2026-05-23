@@ -153,7 +153,8 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/balerion.svg",
       "source_page": "https://balerion.ai",
-      "source_url": "https://framerusercontent.com/images/JfoHxWPOIXY78wF9LeTgpEWs.svg?width=116&height=24"
+      "source_url": "https://framerusercontent.com/images/JfoHxWPOIXY78wF9LeTgpEWs.svg?width=116&height=24",
+      "tile_background": "dark"
     },
     "juliahub": {
       "name": "JuliaHub",
@@ -251,7 +252,8 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/hilbert.svg",
       "source_page": "https://hilberts.ai",
-      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg"
+      "source_url": "https://cdn.prod.website-files.com/69241c9125ae02b952e6e87e/693ac8377a4b126cdcef1cbd_ffaca7ee6394dc1ea152ebe0ef8bbc3d_Dark.svg",
+      "tile_background": "dark"
     },
     "basata": {
       "name": "Basata",
@@ -370,7 +372,8 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/arkeus.svg",
       "source_page": "https://arkeus.com",
-      "source_url": "https://cdn.prod.website-files.com/69f1c586ef0a7e04e8f51df7/69f33d36e2a9c887b69f7cff_arekeus%20logo.svg"
+      "source_url": "https://cdn.prod.website-files.com/69f1c586ef0a7e04e8f51df7/69f33d36e2a9c887b69f7cff_arekeus%20logo.svg",
+      "tile_background": "dark"
     },
     "crew-carbon": {
       "name": "CREW Carbon",
@@ -412,7 +415,8 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/hellbender.svg",
       "source_page": "https://hellbender.com/hellbender-products/",
-      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/HB_Logo.svg"
+      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/HB_Logo.svg",
+      "tile_background": "dark"
     },
     "ocean": {
       "name": "Ocean",
@@ -856,7 +860,8 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/volo-earth-ventures.svg",
       "source_page": "https://www.voloearthventures.com",
-      "source_url": "https://cdn.prod.website-files.com/63d6d80dd28640747ba9c234/64347323f48a8228bc4f5f79_Earth%20logo%20text.svg"
+      "source_url": "https://cdn.prod.website-files.com/63d6d80dd28640747ba9c234/64347323f48a8228bc4f5f79_Earth%20logo%20text.svg",
+      "tile_background": "dark"
     },
     "equal-ventures": {
       "name": "Equal Ventures",
