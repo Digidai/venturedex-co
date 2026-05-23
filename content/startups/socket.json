@@ -1,0 +1,26 @@
+{
+  "slug": "socket",
+  "domain": "socket.dev",
+  "url": "https://socket.dev",
+  "product_name": "Socket",
+  "summary": "Supply-chain security that blocks malicious open-source packages before install.",
+  "editor_note": "The interesting bet is moving supply-chain defense into the package-install path instead of another alert queue. Socket ships a GitHub app, CLI firewall, and reachability analysis that can block malicious npm packages before they land. Unlike SCA tools that mostly rank CVEs, it treats package behavior as the product surface. The risk is whether security teams trust a blocker in every developer workflow.",
+  "editor_rating": 4,
+  "why_featured": "Install-time package firewall",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "cybersecurity,developer tools,supply chain,open source",
+  "investors": "Thrive Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series C",
+      "lead_investor": "Thrive Capital",
+      "date": "2026-05-20",
+      "source_url": "https://www.cooley.com/news/coverage/2026/2026-05-20-socket-raises-%2460-million-series-c-at-%241-billion-valuation",
+      "source_name": "Cooley"
+    }
+  ]
+}

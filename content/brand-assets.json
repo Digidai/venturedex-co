@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-20",
+  "verified_at": "2026-05-23",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -420,6 +420,41 @@
       "local_path": "/logos/companies/ocean.png",
       "source_page": "https://ocean.security/platform",
       "source_url": "https://framerusercontent.com/images/Urq1t3rfnGs74JTdrcqsiDPKk.png"
+    },
+    "socket": {
+      "name": "Socket",
+      "shape": "icon",
+      "local_path": "/logos/companies/socket.png",
+      "source_page": "https://socket.dev",
+      "source_url": "https://socket.dev/apple-touch-icon.png"
+    },
+    "moment": {
+      "name": "Moment",
+      "shape": "icon",
+      "local_path": "/logos/companies/moment.svg",
+      "source_page": "https://moment.com",
+      "source_url": "https://moment.com/favicon.svg"
+    },
+    "pivot": {
+      "name": "Pivot",
+      "shape": "icon",
+      "local_path": "/logos/companies/pivot.png",
+      "source_page": "https://home.pivotapp.ai",
+      "source_url": "https://framerusercontent.com/images/JZ6kXUF3WLwMKVk2ToQEo8AFim8.png"
+    },
+    "dust": {
+      "name": "Dust",
+      "shape": "icon",
+      "local_path": "/logos/companies/dust.png",
+      "source_page": "https://dust.tt",
+      "source_url": "https://dust.tt/static/AppIcon_180.png"
+    },
+    "texture": {
+      "name": "Texture",
+      "shape": "icon",
+      "local_path": "/logos/companies/texture.png",
+      "source_page": "https://www.texturehq.com",
+      "source_url": "https://www.texturehq.com/apple-icon.png"
     }
   },
   "investors": {
@@ -801,6 +836,34 @@
       "local_path": "/logos/investors/veredas-partners.png",
       "source_page": "https://veredaspartners.com",
       "source_url": "https://veredaspartners.com/veredas-logo-2.png"
+    },
+    "forestay-capital": {
+      "name": "Forestay Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/forestay-capital.svg",
+      "source_page": "https://www.forestay.vc",
+      "source_url": "https://cdn.prod.website-files.com/69d4c58e8a3d8c4def4e9142/69d79d5c1229887196cd121e_logo_forestay.svg"
+    },
+    "notion-capital": {
+      "name": "Notion Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/notion-capital.svg",
+      "source_page": "https://www.notioncapital.com",
+      "source_url": "https://cdn.prod.website-files.com/613b85712c9672174ab125bd/613b85712c9672feefb12665_Logo%20-%20new.svg"
+    },
+    "volo-earth-ventures": {
+      "name": "VoLo Earth Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/volo-earth-ventures.svg",
+      "source_page": "https://www.voloearthventures.com",
+      "source_url": "https://cdn.prod.website-files.com/63d6d80dd28640747ba9c234/64347323f48a8228bc4f5f79_Earth%20logo%20text.svg"
+    },
+    "equal-ventures": {
+      "name": "Equal Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/equal-ventures.svg",
+      "source_page": "https://www.equal.vc",
+      "source_url": "https://cdn.prod.website-files.com/64254b49658b1d6272f841d8/646e033de3850bae5b1bc333_equal-logo.svg"
     }
   }
 }

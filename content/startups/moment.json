@@ -1,0 +1,26 @@
+{
+  "slug": "moment",
+  "domain": "moment.com",
+  "url": "https://moment.com",
+  "product_name": "Moment",
+  "summary": "AI operating system for investment managers, advisors, portfolios, and trades.",
+  "editor_note": "The sharp bet is replacing the investment stack's point tools instead of adding another advisor chatbot. Moment's memo shows agents for proposals, restrictions, cash redemption, trade ideas, execution quality, reconciliation failures, and source data. Unlike generic wealth copilots, it is built around auditable portfolio actions. The risk is whether large firms let the OS become the workflow of record.",
+  "editor_rating": 4,
+  "why_featured": "AI OS for portfolio work",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,investment management,ai agents,wealthtech",
+  "investors": "Index Ventures, Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$78M",
+      "stage": "Series C",
+      "lead_investor": "Index Ventures",
+      "date": "2026-05-19",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/19/3297569/0/en/Moment-Raises-78-Million-as-Largest-Wealth-Firms-Standardize-on-its-AI-Operating-System-for-Investment-Management.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

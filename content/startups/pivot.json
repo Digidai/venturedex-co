@@ -1,0 +1,26 @@
+{
+  "slug": "pivot",
+  "domain": "home.pivotapp.ai",
+  "url": "https://home.pivotapp.ai",
+  "product_name": "Pivot",
+  "summary": "AI procurement OS for intake, committed spend, workflows, and negotiation.",
+  "editor_note": "The bet is turning procurement into a governed operating layer instead of a nicer intake form. Pivot exposes request workflows, committed-spend visibility, AI Studio, ERP connections, and source-to-pay automation for buyers like DoorDash and Lemonade. Unlike point tools that stop at approvals, it tries to keep finance discipline attached to every request. The risk is whether legacy procurement data is clean enough for agents to act.",
+  "editor_rating": 4,
+  "why_featured": "Procurement agents with controls",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "procurement,ai agents,erp,spend management",
+  "investors": "Forestay Capital, Notion Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series B",
+      "lead_investor": "Forestay Capital and Notion Capital",
+      "date": "2026-05-21",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/21/3299278/0/en/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

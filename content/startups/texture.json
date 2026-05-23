@@ -1,0 +1,26 @@
+{
+  "slug": "texture",
+  "domain": "www.texturehq.com",
+  "url": "https://www.texturehq.com",
+  "product_name": "Texture",
+  "summary": "Grid operating system for DER visibility, dispatch, telemetry, and settlements.",
+  "editor_note": "The smart bet is making grid operations a live data system instead of another utility dashboard. Texture models source AMI and SCADA data across devices, meters, transformers, and feeders, then runs dispatch, telemetry, notifications, and settlement workflows. Unlike generic climate SaaS, the product is tied to utility operations and VPP fleets. The risk is integration drag across every local grid stack.",
+  "editor_rating": 4,
+  "why_featured": "Live grid operations OS",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "energy,grid operations,climate,utility software",
+  "investors": "VoLo Earth Ventures, Equal Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12.5M",
+      "stage": "Series A",
+      "lead_investor": "VoLo Earth and Equal Ventures",
+      "date": "2026-05-20",
+      "source_url": "https://www.texturehq.com/blog/texture-series-a",
+      "source_name": "Texture"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "slug": "dust",
+  "domain": "dust.tt",
+  "url": "https://dust.tt",
+  "product_name": "Dust",
+  "summary": "Multiplayer AI workspace where teams build and run shared workplace agents.",
+  "editor_note": "The useful bet is making enterprise AI collaborative instead of a private chat window. Dust gives teams shared agents, Slack/GitHub/Drive connectors, model choice, RBAC, audit logs, and a semantic layer that improves from use. Unlike one-off copilots, the workspace makes agent behavior visible to teammates. The risk is whether agent sprawl becomes the new collaboration tax.",
+  "editor_rating": 4,
+  "why_featured": "Shared agents for teams",
+  "product_type": "AI / ML",
+  "region": "Global / Remote",
+  "tags": "ai agents,enterprise ai,collaboration,knowledge management",
+  "investors": "Sequoia Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series B",
+      "lead_investor": "undisclosed",
+      "date": "2026-05-18",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/18/3296726/0/en/Dust-raises-40M-to-make-AI-multiplayer-inside-the-enterprise.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

@@ -376,5 +376,33 @@
     "short_name": "Veredas",
     "website": "https://veredaspartners.com",
     "description": "Early-stage venture investment firm backing technology companies in physical AI, industrial systems, and deep technology."
+  },
+  "forestay-capital": {
+    "name": "Forestay Capital",
+    "slug": "forestay-capital",
+    "short_name": "Forestay",
+    "website": "https://www.forestay.vc",
+    "description": "Early-growth technology investment firm based in London and Geneva backing enterprise AI and software companies."
+  },
+  "notion-capital": {
+    "name": "Notion Capital",
+    "slug": "notion-capital",
+    "short_name": "Notion",
+    "website": "https://www.notioncapital.com",
+    "description": "European venture capital firm backing business software and cloud companies from early stage through growth."
+  },
+  "volo-earth-ventures": {
+    "name": "VoLo Earth Ventures",
+    "slug": "volo-earth-ventures",
+    "short_name": "VoLo Earth",
+    "website": "https://www.voloearthventures.com",
+    "description": "Climate technology venture firm backing founders building products for the global energy transition."
+  },
+  "equal-ventures": {
+    "name": "Equal Ventures",
+    "slug": "equal-ventures",
+    "short_name": "Equal",
+    "website": "https://www.equal.vc",
+    "description": "Thesis-driven venture capital firm backing early-stage founders across climate, insurance, retail, and software markets."
   }
 }
