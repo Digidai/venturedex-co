@@ -1387,3 +1387,42 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed after iteration: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - final GitHub Actions passed for Validate `26147003992` and Deploy `26147003993`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 60 published startups, and the live homepage included the five new startup names
+
+### 2026-05-23 14:22 CST
+
+- candidate_count: 25
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; Socket and Moment used the standard screenshot path, Dust required manual Playwright-wrapper recapture after `bb-browser` inspection found a cookie banner plus fixed webinar card, Pivot required visual-review recapture after the standard screenshot kept a consent layer, and Texture required a second manual recapture after the first manual attempt saved the product map before it had loaded; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 305ec12
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `26325596967` and Deploy `26325597019` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 65 published startups, and live detail checks returned HTTP 200 for Socket, Moment, Pivot, Dust, and Texture
+- failure_tags: [screenshot_env, source_incomplete, taste_reject, other]
+- reward: 3
+- dominant_failure_mode: operational friction stayed in screenshot and source-normalization edges: Dust had removable non-product fixed layers, Pivot's consent card escaped the standard screenshot path, Texture needed a longer wait for product imagery, and several otherwise current funding stories failed stage, currency, crypto, or product-surface rules
+- proposed_change: defer code-level screenshot auto-dismiss and visual-readiness improvements; the current `bb-browser` inspection, manual recapture, and visual-review rules were sufficient for this run
+- decision: deferred
+- affected_file: scripts/screenshot.sh; docs/automation/venturedex-daily-runbook.md
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - discovered a 25-candidate current-source window from TechCrunch, Cooley, GlobeNewswire, PR Newswire, Fortune, The Block, Data Center Dynamics, BioSpace, and official company announcements, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted Socket because Cooley verifies a May 20, 2026 $60M Series C led by Thrive Capital, while `bb-browser` product review confirmed the GitHub app, CLI firewall, npm package blocking, reachability analysis, dependency search, and software supply-chain attack positioning
+  - accepted Moment because GlobeNewswire verifies a May 19, 2026 $78M Series C led by Index Ventures, while product review confirmed investment-management agents for proposals, restrictions, cash redemption, trade ideas, execution quality, reconciliation failures, and audit-oriented portfolio workflows
+  - accepted Pivot because GlobeNewswire verifies a May 21, 2026 $40M Series B led by Forestay Capital and Notion Capital, while product review confirmed procurement intake, committed-spend visibility, AI Studio, MCP-native architecture, ERP orchestration, benchmarking agents, and DoorDash/Lemonade customer proof
+  - accepted Dust because GlobeNewswire verifies a May 18, 2026 $40M Series B with Abstract and Sequoia and no explicit lead, while product review confirmed multiplayer agents, Slack/GitHub/Drive connectors, model choice, RBAC, audit logs, semantic layer, SOC 2, and enterprise collaboration workflows; `lead_investor` was recorded as `undisclosed`
+  - accepted Texture because its official May 20, 2026 announcement verifies a $12.5M Series A led by VoLo Earth and Equal Ventures, while product review confirmed grid visibility, dispatch, telemetry, AMI/SCADA integrations, VPP workflows, settlement reporting, and utility/OEM customer evidence
+  - added official company logo assets for Socket, Moment, Pivot, Dust, and Texture, plus new official investor directory and logo entries for Forestay Capital, Notion Capital, VoLo Earth Ventures, and Equal Ventures
+  - recorded fifteen rejected decisions for Hark, Patina, Maka Kids, Fresha, Scapia, Imperagen, The Path, Clouted, RemotePass, ClearOps, 20n Bio, Cycles, Variational, Catena Labs, and Armada, meeting the 3:1 rejection bar for five acceptances
+  - Hark was rejected because the product is unreleased; Patina, Maka Kids, Fresha, Scapia, ClearOps, and 20n Bio failed stage, financing-type, or currency-normalization rules; Cycles, Variational, and Catena Labs hit the crypto exclusion; The Path, Clouted, RemotePass, Imperagen, and Armada ranked below the inspectable product-workflow bar
+  - `bb-browser` was used for browser-side product verification of Socket, Moment, Pivot, Dust, Texture, Tribal, RemotePass, and Clouted, and for Dust screenshot failure investigation; automation-opened tabs were closed afterward
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `305ec12` was pushed to `main`; GitHub Actions passed for Validate `26325596967` and Deploy `26325597019`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 65 published startups, and live detail pages for the five additions returned HTTP 200
