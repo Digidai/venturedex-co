@@ -369,11 +369,10 @@
     },
     "arkeus": {
       "name": "Arkeus",
-      "shape": "wordmark",
-      "local_path": "/logos/companies/arkeus.svg",
+      "shape": "icon",
+      "local_path": "/logos/companies/arkeus.png",
       "source_page": "https://arkeus.com",
-      "source_url": "https://cdn.prod.website-files.com/69f1c586ef0a7e04e8f51df7/69f33d36e2a9c887b69f7cff_arekeus%20logo.svg",
-      "tile_background": "dark"
+      "source_url": "https://cdn.prod.website-files.com/69f1c586ef0a7e04e8f51df7/69f2d7d67d0379e6f6bd4b29_Webclip.png"
     },
     "crew-carbon": {
       "name": "CREW Carbon",
@@ -412,11 +411,10 @@
     },
     "hellbender": {
       "name": "Hellbender",
-      "shape": "wordmark",
-      "local_path": "/logos/companies/hellbender.svg",
+      "shape": "icon",
+      "local_path": "/logos/companies/hellbender.png",
       "source_page": "https://hellbender.com/hellbender-products/",
-      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/HB_Logo.svg",
-      "tile_background": "dark"
+      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/cropped-favicon-192x192.png"
     },
     "ocean": {
       "name": "Ocean",
@@ -857,11 +855,10 @@
     },
     "volo-earth-ventures": {
       "name": "VoLo Earth Ventures",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/volo-earth-ventures.svg",
+      "shape": "icon",
+      "local_path": "/logos/investors/volo-earth-ventures.png",
       "source_page": "https://www.voloearthventures.com",
-      "source_url": "https://cdn.prod.website-files.com/63d6d80dd28640747ba9c234/64347323f48a8228bc4f5f79_Earth%20logo%20text.svg",
-      "tile_background": "dark"
+      "source_url": "https://cdn.prod.website-files.com/63d6d80dd28640747ba9c234/648c9d2b400e18de235e8185_webclip%20icon.png"
     },
     "equal-ventures": {
       "name": "Equal Ventures",
