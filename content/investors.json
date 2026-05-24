@@ -404,5 +404,33 @@
     "short_name": "Equal",
     "website": "https://www.equal.vc",
     "description": "Thesis-driven venture capital firm backing early-stage founders across climate, insurance, retail, and software markets."
+  },
+  "valley-capital-partners": {
+    "name": "Valley Capital Partners",
+    "slug": "valley-capital-partners",
+    "short_name": "VCP",
+    "website": "https://valleycapital.vc",
+    "description": "Early-stage venture capital firm making high-conviction investments in technology founders."
+  },
+  "first-round-capital": {
+    "name": "First Round Capital",
+    "slug": "first-round-capital",
+    "short_name": "First Round",
+    "website": "https://www.firstround.com",
+    "description": "Seed-stage venture capital firm focused on supporting founders from the earliest company-building stages."
+  },
+  "quiet-capital": {
+    "name": "Quiet Capital",
+    "slug": "quiet-capital",
+    "short_name": "Quiet",
+    "website": "https://quiet.com",
+    "description": "Early-stage venture capital firm backing founders building consequential technology companies."
+  },
+  "team8": {
+    "name": "Team8",
+    "slug": "team8",
+    "short_name": "Team8",
+    "website": "https://team8.vc",
+    "description": "Venture-creation and venture-capital firm investing across cybersecurity, software infrastructure, fintech, and digital health."
   }
 }

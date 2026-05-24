@@ -1,0 +1,26 @@
+{
+  "slug": "tribal",
+  "domain": "www.gotribal.ai",
+  "url": "https://www.gotribal.ai/",
+  "product_name": "Tribal",
+  "summary": "Metadata-native AI agents for governed enterprise app changes inside systems of record.",
+  "editor_note": "The sharp bet is that enterprise AI builders need system context before code generation. Tribal maps metadata, permissions, dependencies, and business rules, then wraps changes with approval flows, audit, impact analysis, and 10x backlog claims. Unlike vibe-coding tools, it treats governance as part of the build surface. The risk is whether every customer's metadata graph becomes a bespoke services project.",
+  "editor_rating": 4,
+  "why_featured": "10x faster backlog work",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "enterprise ai,metadata,salesforce,governance",
+  "investors": "Team8",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "Team8",
+      "date": "2026-05-20",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

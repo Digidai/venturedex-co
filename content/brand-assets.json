@@ -457,6 +457,27 @@
       "local_path": "/logos/companies/texture.png",
       "source_page": "https://www.texturehq.com",
       "source_url": "https://www.texturehq.com/apple-icon.png"
+    },
+    "nanoclaw": {
+      "name": "NanoClaw",
+      "shape": "icon",
+      "local_path": "/logos/companies/nanoclaw.png",
+      "source_page": "https://nanoclaw.dev/",
+      "source_url": "https://nanoclaw.dev/apple-touch-icon.png"
+    },
+    "quartermaster": {
+      "name": "Quartermaster",
+      "shape": "icon",
+      "local_path": "/logos/companies/quartermaster.png",
+      "source_page": "https://www.quartermaster.us/",
+      "source_url": "https://cdn.prod.website-files.com/6819c8edf10133dd7a73b8a8/6825fdfe41447dc2b2180a3f_QM_Webclip.png"
+    },
+    "tribal": {
+      "name": "Tribal",
+      "shape": "icon",
+      "local_path": "/logos/companies/tribal.png",
+      "source_page": "https://www.gotribal.ai/",
+      "source_url": "https://cdn.prod.website-files.com/69de37c807a0a81a055b13f2/6a0766f0750eb854b31c0d02_fav.png"
     }
   },
   "investors": {
@@ -866,6 +887,34 @@
       "local_path": "/logos/investors/equal-ventures.svg",
       "source_page": "https://www.equal.vc",
       "source_url": "https://cdn.prod.website-files.com/64254b49658b1d6272f841d8/646e033de3850bae5b1bc333_equal-logo.svg"
+    },
+    "valley-capital-partners": {
+      "name": "Valley Capital Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/valley-capital-partners.png",
+      "source_page": "https://valleycapital.vc",
+      "source_url": "https://cdn.prod.website-files.com/69a417c664217df826f095c2/69a5474c5876bbcdfea8d57b_Valley%20Capital%20Partners%20-%20webclip.png"
+    },
+    "first-round-capital": {
+      "name": "First Round Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/first-round-capital.png",
+      "source_page": "https://www.firstround.com",
+      "source_url": "https://www.firstround.com/images/favicon.png"
+    },
+    "quiet-capital": {
+      "name": "Quiet Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/quiet-capital.jpg",
+      "source_page": "https://quiet.com",
+      "source_url": "https://i0.wp.com/quiet.com/wp-content/uploads/2023/05/cropped-Quiet_Fav.jpg?fit=192%2C192&ssl=1"
+    },
+    "team8": {
+      "name": "Team8",
+      "shape": "icon",
+      "local_path": "/logos/investors/team8.png",
+      "source_page": "https://team8.vc",
+      "source_url": "https://team8.vc/wp-content/uploads/2025/09/favicon.png"
     }
   }
 }

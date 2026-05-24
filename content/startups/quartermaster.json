@@ -1,0 +1,26 @@
+{
+  "slug": "quartermaster",
+  "domain": "www.quartermaster.us",
+  "url": "https://www.quartermaster.us/",
+  "product_name": "Quartermaster",
+  "summary": "SmartMast sensors and AI turn commercial vessels into a maritime awareness network.",
+  "editor_note": "The useful bet is turning ordinary ships into a sensing network instead of selling another fleet dashboard. Quartermaster puts SmartMast cameras, radios, geolocation, and AI on 600+ vessels, then shows verified HD video, alerts, and real-time tracking. Compared with AIS pings, the product captures what ships actually see. The risk is whether network coverage scales faster than hardware installation drag.",
+  "editor_rating": 5,
+  "why_featured": "600+ ships sensing oceans",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "maritime,sensors,ai,transportation",
+  "investors": "First Round Capital, Quiet Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$43M",
+      "stage": "Series A",
+      "lead_investor": "First Round Capital and Quiet Capital",
+      "date": "2026-05-20",
+      "source_url": "https://techcrunch.com/2026/05/20/this-startup-raised-43m-to-build-a-hive-mind-for-ships/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

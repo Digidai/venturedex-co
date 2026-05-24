@@ -1,0 +1,29 @@
+{
+  "slug": "nanoclaw",
+  "domain": "nanoclaw.dev",
+  "url": "https://nanoclaw.dev/",
+  "product_name": "NanoClaw",
+  "summary": "Container-isolated personal AI agent with messaging channels and per-agent workspaces.",
+  "editor_note": "The smart bet is shrinking personal agents until the security model is legible. NanoClaw exposes a Node host, per-agent Docker containers, per-session SQLite files, multi-channel skills, and Agent Vault credential injection. Unlike OpenClaw-style agents that sit on the host, it makes isolation the default product surface. The risk is whether implementation services pull it away from the open-source simplicity that made it spread.",
+  "editor_rating": 5,
+  "why_featured": "Per-agent Docker isolation",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,developer tools,security,open source",
+  "investors": "Valley Capital Partners",
+  "links": {
+    "github": "https://github.com/nanocoai/nanoclaw",
+    "twitter": "https://x.com/Gavriel_Cohen"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Seed",
+      "lead_investor": "Valley Capital Partners",
+      "date": "2026-05-20",
+      "source_url": "https://techcrunch.com/2026/05/20/nanoclaw-creator-turns-down-20m-buyout-offer-raises-12m-seed-instead/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}
