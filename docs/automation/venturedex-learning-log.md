@@ -1426,3 +1426,43 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `305ec12` was pushed to `main`; GitHub Actions passed for Validate `26325596967` and Deploy `26325597019`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 65 published startups, and live detail pages for the five additions returned HTTP 200
+
+### 2026-05-24 14:17 CST
+
+- candidate_count: 30
+- accepted: 3
+- rejected: 11
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; NanoClaw used the standard screenshot path, while Quartermaster and Tribal required manual Playwright-wrapper 1440x900 recaptures after `scripts/screenshot.sh` misclassified real high-z hero/product visual layers as popups; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 208dc93
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `26353833045` and Deploy `26353833046` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 68 published startups, and live detail pages for NanoClaw, Quartermaster, and Tribal returned HTTP 200
+- failure_tags: [screenshot_env, source_incomplete, other]
+- reward: 3
+- dominant_failure_mode: operational friction came from screenshot false positives on legitimate product visuals, plus source/schema filtering for pending, pre-seed, pre-Series A, Series D, fund, SEO/GEO, and unclear-lead financing stories.
+- proposed_change: defer code-level screenshot classifier hardening for high-z product hero images and relative/sticky page wrappers; no automation-doc heuristic edit because the current overlay inspection, manual recapture, and visual-review rules covered the run.
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before candidate discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - the detached worktree started clean at the same commit as `origin/main` after `git fetch origin main`
+  - discovered a 30-candidate current-source window from TechCrunch, PR Newswire, GlobeNewswire, Mercom, TechStartups, and current funding searches, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted NanoClaw because TechCrunch verifies a May 20, 2026 $12M Seed led by Valley Capital Partners, while `bb-browser` product review confirmed a Node host, per-agent Docker containers, per-session SQLite files, multi-channel messaging skills, Agent Vault credential injection, GitHub source, and 29.3k+ GitHub stars
+  - accepted Quartermaster because TechCrunch verifies a May 20, 2026 $43M Series A co-led by First Round Capital and Quiet Capital, while `bb-browser` product review confirmed vessel-mounted SmartMast sensing, HD video, geolocation, AI alerts, real-time tracking, verified records, 600+ vessel coverage, and maritime dashboard evidence
+  - accepted Tribal because GlobeNewswire verifies a May 20, 2026 $10M Seed led by Team8, while `bb-browser` product review confirmed metadata mapping, zero-copy security positioning, approval flows, full audit, impact analysis, Jira/Slack assignment, Salesforce-native deployment, customer proof, and 10x backlog claims
+  - added official company logo assets for NanoClaw, Quartermaster, and Tribal, plus new official investor directory and logo entries for Valley Capital Partners, First Round Capital, Quiet Capital, and Team8
+  - recorded eleven rejected decisions for SolarSquare, Deep Fission, Peec, Convective Capital, Vêtir, Havoc AI, Aboard, Shatterdome Energy, Oshi, Farther, and Mercury, exceeding the 3:1 rejection bar for three acceptances
+  - SolarSquare and Deep Fission were rejected because their current stories are pending or IPO/go-public items, Peec hit the SEO/GEO exclusion, Convective Capital is a fund, Vêtir and Havoc AI lacked clean lead-investor identity, Aboard and Shatterdome were outside the stage schema, Oshi lacked schema-compliant stage/lead facts, and Farther/Mercury were Series D rounds outside the validator's current stage vocabulary
+  - `bb-browser` was used for product verification and browser-side screenshot-failure triage of NanoClaw, Quartermaster, and Tribal; automation-opened tabs were closed afterward
+  - `./scripts/screenshot.sh quartermaster https://www.quartermaster.us/` failed because the overlay heuristic treated the legitimate high-z `home_hero_visual` product/brand image as a popup candidate; a manual 1440x900 Playwright-wrapper capture preserved the product-visible hero and passed visual review
+  - `./scripts/screenshot.sh tribal https://www.gotribal.ai/` failed because the overlay heuristic treated the site's real `hero_video-cover`/page layers as popup candidates; a manual 1440x900 Playwright-wrapper capture preserved the hero and passed visual review
+  - local gates passed before the content commit: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `208dc93` was pushed to `main`; GitHub Actions passed for Validate `26353833045` and Deploy `26353833046`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 68 published startups, and direct live checks returned HTTP 200 for `/startups/nanoclaw`, `/startups/quartermaster`, and `/startups/tribal`
