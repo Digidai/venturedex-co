@@ -1496,3 +1496,40 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - after rebasing onto latest `origin/main`, `./scripts/validate.sh` failed because the existing FinancialContent mirror in `content/startups/ciridae.json` returned HTTP 404; Fortune's May 11, 2026 article verified the same $20M Seed led by Accel, so the source was narrowed to that reachable primary reporting path
   - local gates passed: `python3 scripts/weekly.py validate`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`
   - bb-browser local smoke passed for `/weekly` and `/weekly/1` with no JavaScript errors and five rendered research picks
+
+### 2026-05-25 15:01 CST
+
+- candidate_count: 24
+- accepted: 2
+- rejected: 11
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass
+- build_db: pass
+- build_app: pass
+- screenshot: pass; CVRD Health used the standard screenshot path, while Trackk required `bb-browser` visual inspection and manual 1440x900 recapture after the standard capture landed on an empty dark hero/scroll section; R2 upload skipped because token lacks R2 permission
+- commit_push: pass
+- commit_sha: 66ae051
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `26386700998` and Deploy `26386700982` passed
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 70 published startups, and direct live checks returned HTTP 200 for `/startups/cvrd-health` and `/startups/trackk`
+- failure_tags: [screenshot_env, source_incomplete, other]
+- reward: 3
+- dominant_failure_mode: source filtering removed more current funding stories than taste review did, while screenshot friction came from Trackk's animation-heavy dark hero and delayed product mockup section rather than a broken page.
+- proposed_change: defer code-level screenshot visual-readiness and section-targeting improvements for animation-heavy product pages; the current runbook visual-review, `bb-browser` inspection, manual recapture, and standard 1440x900 asset normalization covered the run.
+- decision: deferred
+- affected_file: scripts/screenshot.sh
+- affected_section: deferred outside automation-doc auto-edit regions
+- evidence:
+  - bootstrap was required and completed before candidate discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - the detached worktree started clean at the same commit as `origin/main` after `git fetch origin main`
+  - discovered a 24-candidate current-source window from PR Newswire, Moneycontrol, Business Standard, TechCrunch/current funding searches, and related current-source pages, then deduped existing startups and rejected slugs before promoting finalists
+  - accepted CVRD Health because PR Newswire verifies a May 21, 2026 $5M Seed led by Upfront Ventures, while `bb-browser` product review confirmed GovCon/SCA/DBRA fringe-benefit workflows, H&W tracking, ICHRA support, DOL-oriented transparency, and an Aptive case study with $536,870 in annual employer savings across 151 enrolled employees
+  - accepted Trackk because Moneycontrol verifies a May 19, 2026 $3.7M Seed from Lightspeed and Info Edge Ventures, while `bb-browser` product review confirmed Trackk Nest prompt screeners, IPO verdicts, single-screen trading, Trackk Score, SEBI registration, visible pricing, and 4.7/4.6 app-store ratings
+  - added official company logo assets for CVRD Health and Trackk, plus a new official investor directory and logo entry for Upfront Ventures
+  - recorded eleven rejected decisions for Bridgewest Ventures, BAI Capital, Ixsar Capital, PteroDynamics, Squid, K25.ai, HashKey/SignalPlus, BravoTran, Engine Room, StrainX Bioworks, and Anscer Robotics, exceeding the 3:1 rejection bar for two acceptances
+  - Bridgewest Ventures, BAI Capital, and Ixsar Capital were rejected as fund/platform items; Squid and HashKey/SignalPlus hit the crypto exclusion; K25.ai hit prediction-market/pre-A exclusions; PteroDynamics, BravoTran, Engine Room, StrainX Bioworks, and Anscer Robotics lacked schema-clean amount, stage, or round-structure facts for today's policy
+  - `bb-browser` was used for product verification and screenshot-failure triage of CVRD Health and Trackk; automation-opened tabs were closed afterward
+  - local gates passed before the content commit and were rerun after the final Trackk screenshot normalization: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `66ae051` was pushed to `main`; GitHub Actions passed for Validate `26386700998` and Deploy `26386700982`
+  - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 70 published startups, and direct live checks returned HTTP 200 for `/startups/cvrd-health` and `/startups/trackk`
