@@ -1533,3 +1533,33 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed before the content commit and were rerun after the final Trackk screenshot normalization: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `66ae051` was pushed to `main`; GitHub Actions passed for Validate `26386700998` and Deploy `26386700982`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 70 published startups, and direct live checks returned HTTP 200 for `/startups/cvrd-health` and `/startups/trackk`
+
+### 2026-05-25 15:41 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: weekly-verify-only
+- validation: pass
+- weekly_validate: pass
+- build_db: pass
+- build_app: pass
+- screenshot: browser_smoke_pass
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- failure_tags: [none]
+- reward: 1
+- dominant_failure_mode: none
+- proposed_change: none
+- decision: none
+- affected_file: content/weekly/1.json
+- affected_section: n/a
+- evidence:
+  - bootstrap completed before weekly inspection; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored `node_modules`, and confirmed GitHub Actions were active
+  - `content/weekly/1.json` already covered 2026-05-18 to 2026-05-24 with `status: published`, so no draft generation or republish step was run
+  - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `python3 scripts/weekly.py validate`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`
+  - `./scripts/build-db.sh` regenerated `d1/generated-seed.sql`; the generated SQL and `scripts/__pycache__/` were restored or removed before continuing
+  - `bb-browser` local checks passed for `/weekly` and `/weekly/1`; both pages rendered the published weekly issue and reported no JavaScript errors
