@@ -51,6 +51,7 @@ jobs:
           delete-branch: true
           commit-message: "content: draft weekly issue for ${{ steps.week.outputs.week_end }}"
           title: Weekly draft for ${{ steps.week.outputs.week_start }} to ${{ steps.week.outputs.week_end }}
+          draft: true
           body: |
             Automated weekly draft scaffold.
 

@@ -328,6 +328,26 @@ def validate_weekly() -> int:
         if not issue.get("title"):
             errors.append(f"{label}: missing title")
 
+        if status == "published":
+            parsed_dates: dict[str, date] = {}
+            for field_name in ["week_start", "week_end", "published_at"]:
+                value = issue.get(field_name)
+                if not isinstance(value, str):
+                    errors.append(f"{label}: {field_name} must be YYYY-MM-DD for published issues")
+                    continue
+                try:
+                    parsed_dates[field_name] = parse_date(value)
+                except SystemExit:
+                    errors.append(f"{label}: {field_name} must be YYYY-MM-DD for published issues")
+
+            week_start = parsed_dates.get("week_start")
+            week_end = parsed_dates.get("week_end")
+            published_at = parsed_dates.get("published_at")
+            if week_start and week_end and week_start > week_end:
+                errors.append(f"{label}: week_start must be before week_end")
+            if published_at and week_end and published_at < week_end:
+                errors.append(f"{label}: published_at must be on or after week_end")
+
         if not isinstance(picks, list) or not 5 <= len(picks) <= 7:
             errors.append(f"{label}: picks must contain 5-7 items")
             continue

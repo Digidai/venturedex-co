@@ -446,8 +446,17 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
                         f"{path.relative_to(REPO_ROOT)} {field_name} must be YYYY-MM-DD for published issues"
                     )
 
-            if isinstance(week_start, str) and isinstance(week_end, str) and week_start > week_end:
-                errors.append(f"{path.relative_to(REPO_ROOT)} week_start must be before week_end")
+            valid_issue_dates = all(
+                isinstance(value, str) and DATE_RE.match(value)
+                for value in [week_start, week_end, published_at]
+            )
+            if valid_issue_dates:
+                if week_start > week_end:
+                    errors.append(f"{path.relative_to(REPO_ROOT)} week_start must be before week_end")
+                if published_at < week_end:
+                    errors.append(
+                        f"{path.relative_to(REPO_ROOT)} published_at must be on or after week_end"
+                    )
 
             if not research_summary:
                 errors.append(f"{path.relative_to(REPO_ROOT)} missing research_summary")
