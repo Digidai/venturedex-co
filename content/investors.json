@@ -432,5 +432,12 @@
     "short_name": "Team8",
     "website": "https://team8.vc",
     "description": "Venture-creation and venture-capital firm investing across cybersecurity, software infrastructure, fintech, and digital health."
+  },
+  "upfront-ventures": {
+    "name": "Upfront Ventures",
+    "slug": "upfront-ventures",
+    "short_name": "Upfront",
+    "website": "https://upfront.com",
+    "description": "Los Angeles-based venture capital firm backing early-stage technology companies across software, consumer, health, and frontier markets."
   }
 }

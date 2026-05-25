@@ -1,0 +1,26 @@
+{
+  "slug": "trackk",
+  "domain": "trackk.in",
+  "url": "https://trackk.in",
+  "product_name": "Trackk",
+  "summary": "Stock discovery and trading app for first-time Indian investors.",
+  "editor_note": "Retail investing apps usually hide complexity behind confetti; this one tries to make discovery the product. Trackk shows prompt-based Trackk Nest screeners, IPO verdicts, single-screen trading, SEBI registration, and 4.7/4.6 app-store ratings. Unlike broker clones built for power users, the bet is that first-time Indian investors need explainable search before execution. The risk is whether F&O ambition nudges beginners toward speculation.",
+  "editor_rating": 4,
+  "why_featured": "Seed for Gen Z investing app",
+  "product_type": "Fintech",
+  "region": "China / Asia",
+  "tags": "investing,wealthtech,stock discovery,fintech,india",
+  "investors": "Lightspeed",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.7M",
+      "stage": "Seed",
+      "lead_investor": "Lightspeed",
+      "date": "2026-05-19",
+      "source_url": "https://www.moneycontrol.com/news/business/funding/gen-z-investment-platform-trackk-raises-3-7-million-in-funding-from-lightspeed-info-edge-ventures-13924204.html",
+      "source_name": "Moneycontrol"
+    }
+  ]
+}

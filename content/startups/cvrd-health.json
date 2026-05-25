@@ -1,0 +1,28 @@
+{
+  "slug": "cvrd-health",
+  "domain": "www.becvrd.com",
+  "url": "https://www.becvrd.com",
+  "product_name": "CVRD Health",
+  "summary": "Fringe benefit optimization and ICHRA compliance platform for government contractors.",
+  "editor_note": "Someone finally treated fringe benefits for federal contractors as an operating system, not a broker spreadsheet. CVRD models SCA/DBRA obligations, tracks H&W dollars in real time, manages ICHRAs, and shows an Aptive case with $536,870 annual savings across 151 enrolled employees. Unlike generic benefits software, the bet is owning the narrow compliance math where margins leak. The risk is whether service-heavy advocacy scales beyond early GovCon accounts.",
+  "editor_rating": 5,
+  "why_featured": "151-enrollee GovCon case study",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "benefits,govcon,compliance,healthcare,hr tech",
+  "investors": "Upfront Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/cvrdhealth/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "Upfront Ventures",
+      "date": "2026-05-21",
+      "source_url": "https://www.prnewswire.com/news-releases/cvrd-health-announces-5m-seed-round-led-by-upfront-ventures-to-modernize-benefits-compliance-for-federal-government-contractors-302779218.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

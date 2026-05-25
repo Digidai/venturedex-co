@@ -478,6 +478,20 @@
       "local_path": "/logos/companies/tribal.png",
       "source_page": "https://www.gotribal.ai/",
       "source_url": "https://cdn.prod.website-files.com/69de37c807a0a81a055b13f2/6a0766f0750eb854b31c0d02_fav.png"
+    },
+    "cvrd-health": {
+      "name": "CVRD Health",
+      "shape": "icon",
+      "local_path": "/logos/companies/cvrd-health.png",
+      "source_page": "https://www.becvrd.com",
+      "source_url": "https://cdn.prod.website-files.com/6819b8cd902816993e971867/681ddafc2c8ff9f92b3e1608_256x256-cvrd.png"
+    },
+    "trackk": {
+      "name": "Trackk",
+      "shape": "icon",
+      "local_path": "/logos/companies/trackk.png",
+      "source_page": "https://trackk.in",
+      "source_url": "https://trackk.in/apple-touch-icon.png"
     }
   },
   "investors": {
@@ -915,6 +929,13 @@
       "local_path": "/logos/investors/team8.png",
       "source_page": "https://team8.vc",
       "source_url": "https://team8.vc/wp-content/uploads/2025/09/favicon.png"
+    },
+    "upfront-ventures": {
+      "name": "Upfront Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/upfront-ventures.ico",
+      "source_page": "https://upfront.com",
+      "source_url": "https://upfront.com/favicon.ico"
     }
   }
 }
