@@ -49,7 +49,7 @@ jobs:
         with:
           branch: automation/weekly-draft-${{ steps.week.outputs.week_end }}
           delete-branch: true
-          commit-message: content: draft weekly issue for ${{ steps.week.outputs.week_end }}
+          commit-message: "content: draft weekly issue for ${{ steps.week.outputs.week_end }}"
           title: Weekly draft for ${{ steps.week.outputs.week_start }} to ${{ steps.week.outputs.week_end }}
           body: |
             Automated weekly draft scaffold.
