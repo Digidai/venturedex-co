@@ -1,0 +1,61 @@
+name: Weekly Draft
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Compute previous week
+        id: week
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          from datetime import date, timedelta
+
+          today = date.today()
+          week_end = today - timedelta(days=today.weekday() + 1)
+          week_start = week_end - timedelta(days=6)
+
+          print(f"week_start={week_start.isoformat()}")
+          print(f"week_end={week_end.isoformat()}")
+          PY
+
+      - name: Draft weekly issue
+        run: |
+          python3 scripts/weekly.py draft \
+            --week-start "${{ steps.week.outputs.week_start }}" \
+            --week-end "${{ steps.week.outputs.week_end }}" \
+            --write
+
+      - name: Validate weekly draft
+        run: python3 scripts/weekly.py validate
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: automation/weekly-draft-${{ steps.week.outputs.week_end }}
+          delete-branch: true
+          commit-message: content: draft weekly issue for ${{ steps.week.outputs.week_end }}
+          title: Weekly draft for ${{ steps.week.outputs.week_start }} to ${{ steps.week.outputs.week_end }}
+          body: |
+            Automated weekly draft scaffold.
+
+            Before merging:
+            - replace every TODO with source-bound research
+            - set status to published
+            - set published_at
+            - run python3 scripts/weekly.py validate, ./scripts/validate.sh, ./scripts/build-db.sh, and npm run build

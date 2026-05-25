@@ -404,7 +404,15 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
         issue_number = data.get("issue_number")
         title = data.get("title")
         intro = data.get("editorial_intro")
+        status = data.get("status", "published")
+        week_start = data.get("week_start")
+        week_end = data.get("week_end")
+        published_at = data.get("published_at")
+        research_summary = data.get("research_summary")
+        evaluation_method = data.get("evaluation_method")
+        themes = data.get("themes")
         picks = data.get("picks")
+        is_published = status == "published"
 
         if not isinstance(issue_number, int):
             errors.append(f"{path.relative_to(REPO_ROOT)} issue_number must be an integer")
@@ -421,8 +429,49 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
         if not title:
             errors.append(f"{path.relative_to(REPO_ROOT)} missing title")
 
+        if status not in {"draft", "published", "archived"}:
+            errors.append(f"{path.relative_to(REPO_ROOT)} status must be draft, published, or archived")
+
         if not intro:
             errors.append(f"{path.relative_to(REPO_ROOT)} missing editorial_intro")
+
+        if is_published:
+            for field_name, value in [
+                ("week_start", week_start),
+                ("week_end", week_end),
+                ("published_at", published_at),
+            ]:
+                if not isinstance(value, str) or not DATE_RE.match(value):
+                    errors.append(
+                        f"{path.relative_to(REPO_ROOT)} {field_name} must be YYYY-MM-DD for published issues"
+                    )
+
+            if isinstance(week_start, str) and isinstance(week_end, str) and week_start > week_end:
+                errors.append(f"{path.relative_to(REPO_ROOT)} week_start must be before week_end")
+
+            if not research_summary:
+                errors.append(f"{path.relative_to(REPO_ROOT)} missing research_summary")
+
+            if not isinstance(evaluation_method, list) or len(evaluation_method) < 2:
+                errors.append(
+                    f"{path.relative_to(REPO_ROOT)} evaluation_method must contain at least 2 items"
+                )
+            elif not all(isinstance(item, str) and item.strip() for item in evaluation_method):
+                errors.append(f"{path.relative_to(REPO_ROOT)} evaluation_method items must be non-empty strings")
+
+            if not isinstance(themes, list) or len(themes) < 1:
+                errors.append(f"{path.relative_to(REPO_ROOT)} themes must contain at least 1 item")
+            else:
+                for theme_index, theme in enumerate(themes):
+                    if not isinstance(theme, dict):
+                        errors.append(
+                            f"{path.relative_to(REPO_ROOT)} themes[{theme_index}] must be an object"
+                        )
+                        continue
+                    if not theme.get("title") or not theme.get("summary"):
+                        errors.append(
+                            f"{path.relative_to(REPO_ROOT)} themes[{theme_index}] requires title and summary"
+                        )
 
         if not isinstance(picks, list):
             errors.append(f"{path.relative_to(REPO_ROOT)} picks must be an array")
@@ -433,14 +482,72 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
                 f"{path.relative_to(REPO_ROOT)} picks must contain 5-7 startups (found {len(picks)})"
             )
 
-        if len(picks) != len(set(picks)):
-            errors.append(f"{path.relative_to(REPO_ROOT)} contains duplicate picks")
+        pick_slugs: list[str] = []
 
-        for slug in picks:
+        for pick_index, pick in enumerate(picks):
+            pick_prefix = f"{path.relative_to(REPO_ROOT)} picks[{pick_index}]"
+            if isinstance(pick, str):
+                slug = pick
+                if is_published:
+                    errors.append(
+                        f"{pick_prefix} must be an object with research fields for published issues"
+                    )
+            elif isinstance(pick, dict):
+                slug = pick.get("slug", "")
+            else:
+                errors.append(f"{pick_prefix} must be a slug string or research object")
+                continue
+
+            if not isinstance(slug, str) or not slug:
+                errors.append(f"{pick_prefix} missing slug")
+                continue
+
+            pick_slugs.append(slug)
             if slug not in startup_slugs:
                 errors.append(
                     f"{path.relative_to(REPO_ROOT)} references missing startup slug '{slug}'"
                 )
+
+            if not isinstance(pick, dict) or not is_published:
+                continue
+
+            text_fields = [
+                "why_this_week",
+                "product_evaluation",
+                "verdict",
+            ]
+            for field_name in text_fields:
+                value = pick.get(field_name)
+                if not isinstance(value, str) or len(value.strip()) < 40:
+                    errors.append(f"{pick_prefix}.{field_name} must be at least 40 chars")
+                elif "TODO" in value.upper():
+                    errors.append(f"{pick_prefix}.{field_name} still contains TODO")
+
+            evidence = pick.get("evidence")
+            if not isinstance(evidence, list) or not evidence:
+                errors.append(f"{pick_prefix}.evidence must contain at least 1 item")
+            else:
+                for evidence_index, item in enumerate(evidence):
+                    evidence_prefix = f"{pick_prefix}.evidence[{evidence_index}]"
+                    if not isinstance(item, dict):
+                        errors.append(f"{evidence_prefix} must be an object")
+                        continue
+                    if not item.get("label") or not item.get("source"):
+                        errors.append(f"{evidence_prefix} requires label and source")
+                    url = item.get("url")
+                    if url:
+                        parsed = urlparse(str(url))
+                        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+                            errors.append(f"{evidence_prefix}.url is not a valid absolute URL")
+
+            risks = pick.get("risks")
+            if not isinstance(risks, list) or not risks:
+                errors.append(f"{pick_prefix}.risks must contain at least 1 item")
+            elif not all(isinstance(risk, str) and risk.strip() for risk in risks):
+                errors.append(f"{pick_prefix}.risks items must be non-empty strings")
+
+        if len(pick_slugs) != len(set(pick_slugs)):
+            errors.append(f"{path.relative_to(REPO_ROOT)} contains duplicate picks")
 
     if not weekly_files:
         warnings.append("content/weekly/ has no issues yet.")

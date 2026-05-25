@@ -3,67 +3,152 @@ export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getWeeklyIssueByNumber } from "../../lib/db";
+import { getStartupBySlug } from "../../lib/db";
+import {
+  getContentStartupBySlug,
+  getWeeklyIssueByNumberFromContent,
+} from "../../lib/weekly";
 
 const issueNum = Number(Astro.params.issue);
 if (isNaN(issueNum)) return Astro.redirect("/weekly");
 
-const db = Astro.locals.runtime.env.DB;
-const data = await getWeeklyIssueByNumber(db, issueNum);
-if (!data) return Astro.redirect("/404");
+const issue = getWeeklyIssueByNumberFromContent(issueNum);
+if (!issue) return Astro.redirect("/404");
 
-const { issue, startups } = data;
+const db = Astro.locals.runtime?.env.DB;
+const pickRows = [];
+
+for (const pick of issue.picks) {
+  let startup = getContentStartupBySlug(pick.slug);
+  if (db) {
+    try {
+      startup = (await getStartupBySlug(db, pick.slug)) ?? startup;
+    } catch {
+      // Local dev can run without a hydrated D1 database.
+    }
+  }
+  if (startup) {
+    pickRows.push({ pick, startup });
+  }
+}
+
+const formatDate = (value: string | null) =>
+  value
+    ? new Date(`${value}T00:00:00Z`).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        timeZone: "UTC",
+      })
+    : "";
+
+const dateRange = issue.week_start && issue.week_end
+  ? `${formatDate(issue.week_start)} - ${formatDate(issue.week_end)}`
+  : "";
 ---
 
-<Base title={issue.title} description={issue.editorial_intro ?? `VentureDex Weekly #${issue.issue_number}`}>
+<Base title={issue.title} description={issue.research_summary || issue.editorial_intro || `VentureDex Weekly #${issue.issue_number}`}>
   <div class="container weekly-detail">
     <header class="issue-header">
       <a href="/weekly" class="back-link">&larr; All issues</a>
       <p class="issue-label">Weekly #{issue.issue_number}</p>
       <h1>{issue.title}</h1>
-      {issue.published_at && (
-        <time class="issue-date">
-          {new Date(issue.published_at).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
-        </time>
-      )}
+      <div class="issue-meta-row">
+        {dateRange && <span>{dateRange}</span>}
+        {issue.published_at && <time>{formatDate(issue.published_at)}</time>}
+        <span>{issue.picks.length} researched picks</span>
+      </div>
     </header>
 
-    {issue.editorial_intro && (
-      <div class="editorial-intro">
+    <section class="issue-brief">
+      <div class="intro-copy">
         <p>{issue.editorial_intro}</p>
+        {issue.research_summary && <p>{issue.research_summary}</p>}
       </div>
+
+      {issue.evaluation_method.length > 0 && (
+        <div class="method-list">
+          <h2>Evaluation method</h2>
+          <ul>
+            {issue.evaluation_method.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      )}
+    </section>
+
+    {issue.themes.length > 0 && (
+      <section class="themes">
+        {issue.themes.map((theme) => (
+          <div class="theme">
+            <h2>{theme.title}</h2>
+            <p>{theme.summary}</p>
+          </div>
+        ))}
+      </section>
     )}
 
     <section class="picks">
-      <h2>This week's picks</h2>
-      <div class="picks-grid">
-        {startups.map((startup) => (
-          <SiteCard startup={startup} />
+      <h2>Company research</h2>
+      <div class="pick-list">
+        {pickRows.map(({ pick, startup }, index) => (
+          <article class="pick-analysis">
+            <div class="pick-preview">
+              <SiteCard startup={startup} />
+            </div>
+            <div class="pick-copy">
+              <p class="pick-kicker">
+                #{index + 1} {startup.product_type}{startup.funding_stage ? ` · ${startup.funding_stage}` : ""}
+              </p>
+              <h3>
+                <a href={`/startups/${startup.slug}`}>{startup.product_name}</a>
+              </h3>
+              {startup.summary && <p class="pick-summary">{startup.summary}</p>}
+
+              <div class="analysis-block">
+                <h4>Why this week</h4>
+                <p>{pick.why_this_week}</p>
+              </div>
+
+              <div class="analysis-block">
+                <h4>Product evaluation</h4>
+                <p>{pick.product_evaluation}</p>
+              </div>
+
+              <div class="evidence-grid">
+                <div class="analysis-block">
+                  <h4>Evidence used</h4>
+                  <ul>
+                    {pick.evidence.map((item) => (
+                      <li>
+                        {item.url ? (
+                          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a>
+                        ) : item.label}
+                        <span>{item.source}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div class="analysis-block">
+                  <h4>Limits and risks</h4>
+                  <ul>
+                    {pick.risks.map((risk) => <li>{risk}</li>)}
+                  </ul>
+                </div>
+              </div>
+
+              <p class="verdict">{pick.verdict}</p>
+            </div>
+          </article>
         ))}
       </div>
     </section>
-
-    {issue.anti_pick_name && (
-      <section class="anti-pick">
-        <h2>The Anti-Pick</h2>
-        <div class="anti-pick-card">
-          <p class="anti-pick-name">
-            {issue.anti_pick_url ? (
-              <a href={issue.anti_pick_url} target="_blank" rel="noopener noreferrer">
-                {issue.anti_pick_name}
-              </a>
-            ) : issue.anti_pick_name}
-          </p>
-          {issue.anti_pick_reason && <p class="anti-pick-reason">{issue.anti_pick_reason}</p>}
-        </div>
-      </section>
-    )}
   </div>
 </Base>
 
 <style>
   .weekly-detail {
-    max-width: 900px;
+    max-width: 1120px;
     padding: var(--space-8) var(--space-6) var(--space-16);
   }
 
@@ -82,66 +167,187 @@ const { issue, startups } = data;
   }
 
   .issue-header h1 {
-    font-size: 2rem;
-    margin-bottom: var(--space-2);
+    max-width: 780px;
+    font-size: clamp(2rem, 4vw, 3.75rem);
+    margin-bottom: var(--space-4);
   }
 
-  .issue-date {
+  .issue-meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
   }
 
-  .editorial-intro {
-    margin: var(--space-8) 0;
+  .issue-brief {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: var(--space-8);
+    align-items: start;
+    margin: var(--space-10, 40px) 0 var(--space-12);
+    padding: var(--space-8) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .intro-copy {
     font-size: 1.05rem;
     line-height: 1.7;
     color: var(--color-text-secondary);
-    max-width: 650px;
+  }
+
+  .intro-copy p + p {
+    margin-top: var(--space-4);
+  }
+
+  .method-list h2,
+  .themes h2,
+  .picks > h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .method-list ul {
+    list-style: none;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .method-list li {
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-border);
+  }
+
+  .themes {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-12);
+  }
+
+  .theme {
+    border-top: 2px solid var(--color-text);
+    padding-top: var(--space-3);
+  }
+
+  .theme p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
   }
 
   .picks h2 {
     font-size: 1.25rem;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
   }
 
-  .picks-grid {
+  .pick-list {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .pick-analysis {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .pick-preview {
+    align-self: start;
+  }
+
+  .pick-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+  }
+
+  .pick-copy h3 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .pick-copy h3 a {
+    color: inherit;
+  }
+
+  .pick-summary {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-5, 20px);
+  }
+
+  .analysis-block {
+    margin-top: var(--space-5, 20px);
+  }
+
+  .analysis-block h4 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-2);
+  }
+
+  .analysis-block p,
+  .analysis-block li {
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+    font-size: 0.92rem;
+  }
+
+  .analysis-block ul {
+    list-style: none;
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .analysis-block li {
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-border);
+  }
+
+  .analysis-block li span {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-6);
   }
 
-  @media (max-width: 640px) {
-    .picks-grid {
+  .verdict {
+    margin-top: var(--space-5, 20px);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 860px) {
+    .issue-brief,
+    .pick-analysis,
+    .themes,
+    .evidence-grid {
       grid-template-columns: 1fr;
     }
   }
 
-  .anti-pick {
-    margin-top: var(--space-12);
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--space-8);
-  }
+  @media (max-width: 640px) {
+    .weekly-detail {
+      padding-top: var(--space-6);
+    }
 
-  .anti-pick h2 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-4);
-  }
-
-  .anti-pick-card {
-    border: 1px solid var(--color-border);
-    border-left: 3px solid #DC2626;
-    padding: var(--space-4) var(--space-6);
-    border-radius: 0 var(--radius) var(--radius) 0;
-  }
-
-  .anti-pick-name {
-    font-weight: 600;
-    margin-bottom: var(--space-2);
-  }
-
-  .anti-pick-reason {
-    font-size: 0.9rem;
-    color: var(--color-text-secondary);
-    line-height: 1.6;
+    .pick-analysis {
+      gap: var(--space-6);
+    }
   }
 </style>

@@ -66,7 +66,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - rejected: 7
 - rejection_bar_met: yes
 - outcome: rejected-only
-- validation: pass
+- validation: pass after iteration; first rerun on latest `origin/main` exposed an existing Ciridae source mirror returning HTTP 404
 - build_db: pass
 - build_app: pass
 - screenshot: n/a
@@ -1466,3 +1466,33 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed before the content commit: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed as verification output
   - content commit `208dc93` was pushed to `main`; GitHub Actions passed for Validate `26353833045` and Deploy `26353833046`
   - post-deploy live smoke passed with `./scripts/manage.sh smoke https://venturedex.co`, reporting 68 published startups, and direct live checks returned HTTP 200 for `/startups/nanoclaw`, `/startups/quartermaster`, and `/startups/tribal`
+
+### 2026-05-25 12:44 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: human-directed weekly workflow update
+- validation: pass after iteration; first rerun on latest `origin/main` exposed an existing Ciridae source mirror returning HTTP 404
+- build_db: pass
+- build_app: pass
+- screenshot: browser_smoke_pass
+- commit_push: pending
+- commit_sha: pending
+- pushed_branch: pending
+- ci_deploy: not_checked
+- failure_tags: [none]
+- reward: 0
+- dominant_failure_mode: none
+- proposed_change: add source-bound weekly research digest workflow and scheduled draft automation
+- decision: applied
+- affected_file: content/STANDARD.md, content/CODEX_TASK.md, content/startups/ciridae.json, docs/automation/README.md, docs/automation/venturedex-weekly-runbook.md, .github/workflows/weekly-draft.yml, scripts/weekly.py
+- affected_section: weekly workflow
+- evidence:
+  - user explicitly requested weekly planning and automation for https://venturedex.co/weekly with deeper objective company and product evaluation
+  - added a rich weekly schema requiring why_this_week, product_evaluation, evidence, risks, and verdict for published issues
+  - added `scripts/weekly.py draft` for evidence-bound draft scaffolds and `scripts/weekly.py validate` for weekly-specific gates
+  - after rebasing onto latest `origin/main`, `./scripts/validate.sh` failed because the existing FinancialContent mirror in `content/startups/ciridae.json` returned HTTP 404; Fortune's May 11, 2026 article verified the same $20M Seed led by Accel, so the source was narrowed to that reachable primary reporting path
+  - local gates passed: `python3 scripts/weekly.py validate`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`
+  - bb-browser local smoke passed for `/weekly` and `/weekly/1` with no JavaScript errors and five rendered research picks

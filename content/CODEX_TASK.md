@@ -246,23 +246,68 @@ git push
 
 ### Step 6: 周刊（每周一次）
 
-从 rating ≥ 3 的已收录项目中选 5-7 个，用一个主题串起来。
+从 rating ≥ 3 的已收录项目中选 5-7 个，用一个主题串起来。周刊必须是研究稿，不是把本周新增卡片重新排列。每个公司都要写清楚本周入选理由、产品评价、证据来源、风险边界和一句结论。
 
 ```json
 // content/weekly/{N}.json
 {
   "issue_number": 2,
   "title": "一个观点，不是分类名",
+  "week_start": "YYYY-MM-DD",
+  "week_end": "YYYY-MM-DD",
+  "published_at": "YYYY-MM-DD",
+  "status": "draft|published|archived",
   "editorial_intro": "2-3 句，为什么选这些，它们的共同点",
-  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
+  "research_summary": "本期证据边界和不做的判断",
+  "evaluation_method": [
+    "只使用 VentureDex 已发布记录、官网公开产品证据和链接来源。",
+    "把可观察产品事实和编辑判断分开写。",
+    "证据缺失时明确写缺口，不用猜测补齐。"
+  ],
+  "themes": [
+    {
+      "title": "主题",
+      "summary": "共同线索"
+    }
+  ],
+  "picks": [
+    {
+      "slug": "slug1",
+      "why_this_week": "为什么属于本期主题",
+      "product_evaluation": "基于证据的产品评价",
+      "evidence": [
+        {
+          "label": "来源名",
+          "source": "具体文件、官网页面或新闻来源",
+          "url": "https://example.com/source"
+        }
+      ],
+      "risks": [
+        "证据边界或产品风险"
+      ],
+      "verdict": "一句证据可支撑的结论"
+    }
+  ]
 }
 ```
 
 ```bash
+python3 scripts/weekly.py draft --week-start YYYY-MM-DD --week-end YYYY-MM-DD --write
+python3 scripts/weekly.py validate
+./scripts/validate.sh
+./scripts/build-db.sh
+npm run build
 git add content/weekly/
 git commit -m "content: weekly #N — {title}"
 git push
 ```
+
+规则：
+
+- `status: draft` 可以保留 TODO，用于自动化草稿 PR。
+- `status: published` 不能包含 TODO，且每个 pick 必须有完整研究字段。
+- 不写未验证的用户数、收入、留存、市场份额或客户迁移判断。
+- 如果本周新增不足 5 个，可以补入已发布目录里的相关高分项目，但必须说明与本期主题的关系。
 
 ---
 
@@ -294,3 +339,5 @@ git push
   .github/**
   任何其他文件
 ```
+
+例外：如果人类明确要求修改产品实现、校验器、自动化脚本或 GitHub 工作流，可以在该请求范围内修改 `src/`、`scripts/`、`.github/` 和相关文档；这不属于日常内容运行。

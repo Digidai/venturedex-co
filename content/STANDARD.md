@@ -318,7 +318,9 @@ GitHub Actions 自动执行验证 → D1 同步 → 部署。
 
 ## 第三章：周刊
 
-每周从已收录的项目中选 5-7 个组成 Weekly Picks。
+每周从已收录的项目中选 5-7 个组成 Weekly Picks。周刊不是新增卡片列表，而是一篇研究型编辑稿：它要解释本期为什么选择这些公司、当周值得关注的产品变化是什么、每家公司可验证的证据是什么，以及哪些判断边界不能越过。
+
+周刊必须每周产出一个草稿；只有当所有 published 门槛满足时才发布。如果本周新增收录少于 5 个，可以从已发布目录中补入高质量相关项目，但必须说明它们与本期主题的关系，不能为了凑数重复泛泛推荐。
 
 ### 选题标准
 
@@ -326,6 +328,8 @@ GitHub Actions 自动执行验证 → D1 同步 → 部署。
 - 优先选最近新收录的
 - 有一个主题线索把本期串起来（不是随机拼凑）
 - 周刊标题是一个观点，不是一个分类名
+- 每个 pick 都必须有证据、评价、风险边界和一句结论
+- 不写没有来源支持的用户数、收入、留存、市场份额或客户迁移判断
 
 | 好标题 | 坏标题 |
 |--------|--------|
@@ -340,10 +344,57 @@ GitHub Actions 自动执行验证 → D1 同步 → 部署。
 {
   "issue_number": 2,
   "title": "一个观点，不是一个分类",
+  "week_start": "2026-05-18",
+  "week_end": "2026-05-24",
+  "published_at": "2026-05-25",
+  "status": "draft|published|archived",
   "editorial_intro": "2-3 句。为什么选这些项目？它们之间的共同点是什么？",
-  "picks": ["slug1", "slug2", "slug3", "slug4", "slug5"]
+  "research_summary": "本期使用了哪些来源，哪些指标没有验证，哪些判断不做。",
+  "evaluation_method": [
+    "只使用 VentureDex 已发布记录、官网公开产品证据和链接来源。",
+    "把可观察产品事实和编辑判断分开写。",
+    "证据缺失时明确写缺口，不用猜测补齐。"
+  ],
+  "themes": [
+    {
+      "title": "主题线索",
+      "summary": "这组公司共享的产品或市场变化。"
+    }
+  ],
+  "picks": [
+    {
+      "slug": "slug1",
+      "why_this_week": "为什么它属于本期，而不是泛泛值得关注。",
+      "product_evaluation": "基于证据的产品评价，不写未验证指标。",
+      "evidence": [
+        {
+          "label": "来源名",
+          "source": "具体文件、官网页面或新闻来源",
+          "url": "https://example.com/source"
+        }
+      ],
+      "risks": [
+        "证据边界、产品风险或尚未验证的关键问题。"
+      ],
+      "verdict": "一句可被证据支撑的结论。"
+    }
+  ]
 }
 ```
+
+### 自动化流程
+
+周刊自动化只负责生成证据绑定的草稿，不负责自动发布评价。默认流程：
+
+```bash
+python3 scripts/weekly.py draft --week-start YYYY-MM-DD --week-end YYYY-MM-DD --write
+python3 scripts/weekly.py validate
+./scripts/validate.sh
+./scripts/build-db.sh
+npm run build
+```
+
+`status: draft` 可以包含 TODO。`status: published` 不允许 TODO，且每个 pick 必须有 `why_this_week`、`product_evaluation`、`evidence`、`risks` 和 `verdict`。如果证据不足，保持 draft 或推迟发布，不用猜测补齐。
 
 ---
 

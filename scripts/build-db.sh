@@ -197,24 +197,40 @@ for _, investor in sorted(investors.items()):
 
 for path in weekly_files:
     data = json.loads(path.read_text())
+    status = data.get("status", "published")
+    if status != "published":
+        continue
+
     issue_number = data["issue_number"]
     issue_numbers.append(issue_number)
     issue_id = f"w-{issue_number}"
+    published_at = data.get("published_at")
+    published_at_sql = sql(published_at) if published_at else "datetime('now')"
     weekly_rows.append(
         "INSERT INTO weekly_issues (id, issue_number, title, editorial_intro, published_at, status) VALUES ("
         f"{sql(issue_id)}, {issue_number}, {sql(data['title'])}, {sql(data.get('editorial_intro'))}, "
-        "datetime('now'), 'published'"
+        f"{published_at_sql}, 'published'"
         ") ON CONFLICT(issue_number) DO UPDATE SET "
         "id = excluded.id, "
         "title = excluded.title, "
         "editorial_intro = excluded.editorial_intro, "
         "status = excluded.status, "
-        "published_at = COALESCE(weekly_issues.published_at, excluded.published_at);"
+        "published_at = excluded.published_at;"
     )
-    for index, slug in enumerate(data.get("picks", []), start=1):
+    for index, pick_data in enumerate(data.get("picks", []), start=1):
+        if isinstance(pick_data, str):
+            slug = pick_data
+            issue_note = None
+        else:
+            slug = pick_data.get("slug")
+            issue_note = pick_data.get("verdict") or pick_data.get("why_this_week")
+
+        if not slug:
+            continue
+
         weekly_pick_rows.append(
-            "INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order) VALUES ("
-            f"{sql(issue_id)}, {sql(f'startup-{slug}')}, {index}"
+            "INSERT INTO weekly_issue_startups (issue_id, startup_id, display_order, issue_note) VALUES ("
+            f"{sql(issue_id)}, {sql(f'startup-{slug}')}, {index}, {sql(issue_note)}"
             ");"
         )
 

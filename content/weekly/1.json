@@ -1,6 +1,157 @@
 {
   "issue_number": 1,
   "title": "The tools that changed how we build",
-  "editorial_intro": "For our first issue, we picked the tools that fundamentally changed developer workflows in the last three years. Not incremental improvements. Not features wrapped in startups. Products that made you think differently about how software gets built.",
-  "picks": ["cursor", "linear", "perplexity", "supabase", "resend"]
+  "week_start": "2026-05-18",
+  "week_end": "2026-05-24",
+  "published_at": "2026-05-20",
+  "status": "published",
+  "editorial_intro": "For our first issue, we picked tools that changed daily software work through product choices, not just category timing. The common thread is a sharper workflow bet: keep the user's existing context, remove one old source of friction, and make the product feel closer to the work itself.",
+  "research_summary": "This issue is based on VentureDex's published startup records, official product sites, and linked funding sources; it does not claim private revenue, user count, retention, or current operating metrics.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Interface as distribution",
+      "summary": "Cursor, Linear, and Perplexity are all bets that a familiar daily interface can be rebuilt around a sharper default behavior."
+    },
+    {
+      "title": "Developer workflow compression",
+      "summary": "Supabase and Resend reduce setup work by putting adjacent tasks in one developer-facing path, while still exposing the underlying primitives."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "cursor",
+      "why_this_week": "Cursor anchors the issue because it changes the code editor itself, not a side panel around it.",
+      "product_evaluation": "The VentureDex record points to tab completion, inline diffs, and cmd-K as native editor interactions, plus a VS Code fork that preserves existing developer muscle memory. That supports a product judgment about workflow fit and switching cost; it does not verify current usage or paid conversion.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cursor.json summary, editor_note, and funding fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Cursor homepage",
+          "url": "https://cursor.com"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch, August 9, 2024",
+          "url": "https://techcrunch.com/2024/08/09/anysphere-a-github-copilot-rival-has-raised-60m-series-a-at-400m-valuation-from-a16z-thrive-sources-say/"
+        }
+      ],
+      "risks": [
+        "The available record does not verify current user count, paid seats, or enterprise renewal data.",
+        "The product judgment depends on visible editor workflow evidence, not private operating metrics."
+      ],
+      "verdict": "Strong product-shape pick: the bet is specific and visible, while the evidence boundary is product design plus sourced financing."
+    },
+    {
+      "slug": "linear",
+      "why_this_week": "Linear represents the issue-tracker version of the same theme: rebuild the tool around speed, keyboard control, and restraint.",
+      "product_evaluation": "The VentureDex record cites keyboard shortcuts, a stripped-back issue flow, and an interface that feels closer to an editor than Jira. That makes the evaluation about interaction quality and product focus; it does not prove broader market share or team migration volume.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/linear.json summary, editor_note, and funding fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Linear homepage",
+          "url": "https://linear.app"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch, June 10, 2025",
+          "url": "https://techcrunch.com/2025/06/10/atlassian-rival-linear-raises-82m-at-1-25b-valuation/"
+        }
+      ],
+      "risks": [
+        "The directory record supports a product-quality judgment, not a quantified replacement rate for Jira or other systems.",
+        "The strength of the pick depends on whether a team values speed and restraint more than broad administrative coverage."
+      ],
+      "verdict": "High-conviction workflow pick: Linear's product choices are clear, but quantified adoption claims should remain outside the issue unless sourced."
+    },
+    {
+      "slug": "perplexity",
+      "why_this_week": "Perplexity is included because it changes the default search interaction from browsing result pages to reading sourced answers.",
+      "product_evaluation": "The VentureDex record describes a simple loop: ask a question, receive a synthesized answer, and inspect sources. The objective product evidence is the answer-first interface; the unresolved question is whether the habit extends beyond frequent research users.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/perplexity.json summary, editor_note, and funding fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Perplexity homepage",
+          "url": "https://perplexity.ai"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch, January 4, 2024",
+          "url": "https://techcrunch.com/2024/01/04/ai-powered-search-engine-perplexity-ai-now-valued-at-520m-raises-70m/"
+        }
+      ],
+      "risks": [
+        "The issue does not verify active usage, query volume, or paid conversion.",
+        "Source-backed answers reduce browsing friction, but the record does not resolve accuracy performance across all topics."
+      ],
+      "verdict": "Strong interface bet: the product change is concrete, while scale and accuracy claims need separate source-backed review."
+    },
+    {
+      "slug": "supabase",
+      "why_this_week": "Supabase belongs in the issue because it turns Postgres from a database choice into the organizing layer for a developer stack.",
+      "product_evaluation": "The VentureDex record identifies auth, storage, realtime, and edge functions as the platform pieces wrapped around Postgres. That is a clear contrast with backend platforms that hide the database behind higher-level abstractions, but it does not establish production reliability for every workload.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/supabase.json summary, editor_note, and funding fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Supabase homepage",
+          "url": "https://supabase.com"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch, May 10, 2022",
+          "url": "https://techcrunch.com/2022/05/10/supabase-raises-80m-series-b-for-its-open-source-firebase-alternative/"
+        }
+      ],
+      "risks": [
+        "The record supports the product architecture claim, not a benchmark claim against managed database or backend services.",
+        "A broad platform surface can create evaluation gaps unless each workload is checked separately."
+      ],
+      "verdict": "Clear developer-platform pick: the Postgres-centered bet is easy to verify, while workload-level claims need case-specific evidence."
+    },
+    {
+      "slug": "resend",
+      "why_this_week": "Resend closes the issue because it applies the same workflow idea to transactional email and email design.",
+      "product_evaluation": "The VentureDex record pairs Resend's cleaner API surface with React Email as a companion project. That supports an evaluation of developer experience and workflow cohesion; it does not verify deliverability performance, customer volume, or long-term reliability.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/resend.json summary, editor_note, and funding fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Resend homepage",
+          "url": "https://resend.com"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch, July 18, 2023",
+          "url": "https://techcrunch.com/2023/07/18/developer-focused-email-platform-resend-raises-3m/"
+        }
+      ],
+      "risks": [
+        "The record does not verify delivery-rate benchmarks or enterprise-scale sending performance.",
+        "The product judgment is strongest for developer workflow, not for every compliance or deliverability scenario."
+      ],
+      "verdict": "Focused workflow pick: Resend's API and React Email pairing is concrete, while delivery-scale claims should stay source-bound."
+    }
+  ]
 }

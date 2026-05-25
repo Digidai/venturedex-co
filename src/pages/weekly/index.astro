@@ -2,22 +2,35 @@
 export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
-import { getPublishedWeeklyIssues } from "../../lib/db";
+import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
-const db = Astro.locals.runtime.env.DB;
-let issues: Awaited<ReturnType<typeof getPublishedWeeklyIssues>> = [];
+const issues = getPublishedWeeklyIssuesFromContent();
 
-try {
-  issues = await getPublishedWeeklyIssues(db);
-} catch {
-  // D1 unavailable
-}
+const formatDate = (value: string | null) =>
+  value
+    ? new Date(`${value}T00:00:00Z`).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        timeZone: "UTC",
+      })
+    : "";
+
+const formatRange = (start: string | null, end: string | null) => {
+  if (!start || !end) return "";
+  return `${formatDate(start)} - ${formatDate(end)}`;
+};
 ---
 
-<Base title="Weekly Picks" description="Every week, we pick the startups worth your attention.">
+<Base title="Weekly Picks" description="Weekly research notes on the startups and products worth a closer look.">
   <div class="container weekly-list">
-    <h1>Weekly Picks</h1>
-    <p class="subtitle">Every week, we pick the startups worth your attention.</p>
+    <header class="weekly-header">
+      <p class="eyebrow">Weekly research digest</p>
+      <h1>Weekly Picks</h1>
+      <p class="subtitle">
+        A weekly read on the products in VentureDex: what changed, what is verified, and what still needs caution.
+      </p>
+    </header>
 
     {issues.length > 0 ? (
       <ul class="issues">
@@ -25,12 +38,17 @@ try {
           <li>
             <a href={`/weekly/${issue.issue_number}`} class="issue-link">
               <span class="issue-number">#{issue.issue_number}</span>
-              <span class="issue-title">{issue.title}</span>
-              {issue.published_at && (
-                <time class="issue-date">
-                  {new Date(issue.published_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" })}
-                </time>
-              )}
+              <span class="issue-main">
+                <span class="issue-title">{issue.title}</span>
+                <span class="issue-summary">{issue.research_summary || issue.editorial_intro}</span>
+              </span>
+              <span class="issue-meta">
+                {formatRange(issue.week_start, issue.week_end) && (
+                  <span>{formatRange(issue.week_start, issue.week_end)}</span>
+                )}
+                {issue.published_at && <time>{formatDate(issue.published_at)}</time>}
+                <span>{issue.picks.length} picks</span>
+              </span>
             </a>
           </li>
         ))}
@@ -47,22 +65,38 @@ try {
 
 <style>
   .weekly-list {
-    max-width: 700px;
+    max-width: 960px;
     padding: var(--space-12) var(--space-6) var(--space-16);
   }
 
-  .weekly-list h1 {
-    font-size: 2rem;
+  .weekly-header {
+    max-width: 720px;
+    margin-bottom: var(--space-10, 40px);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
     margin-bottom: var(--space-2);
+  }
+
+  .weekly-list h1 {
+    font-size: clamp(2rem, 4vw, 3.75rem);
+    margin-bottom: var(--space-3);
   }
 
   .subtitle {
     color: var(--color-text-secondary);
-    margin-bottom: var(--space-8);
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
 
   .issues {
     list-style: none;
+    border-top: 1px solid var(--color-border);
   }
 
   .issues li {
@@ -71,9 +105,9 @@ try {
 
   .issue-link {
     display: flex;
-    align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-4) 0;
+    align-items: flex-start;
+    gap: var(--space-6);
+    padding: var(--space-6) 0;
     text-decoration: none;
     color: inherit;
     transition: color 0.15s;
@@ -88,17 +122,39 @@ try {
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
-    min-width: 40px;
+    min-width: 44px;
+    padding-top: 3px;
+  }
+
+  .issue-main {
+    flex: 1;
+    min-width: 0;
   }
 
   .issue-title {
-    flex: 1;
+    display: block;
     font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: var(--space-2);
   }
 
-  .issue-date {
+  .issue-summary {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .issue-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: var(--space-1);
     font-size: 0.8rem;
     color: var(--color-text-secondary);
+    min-width: 150px;
+    text-align: right;
   }
 
   .empty-state {
@@ -125,5 +181,32 @@ try {
     font-weight: 500;
     font-size: 0.9rem;
     text-decoration: none;
+  }
+
+  @media (max-width: 720px) {
+    .issue-link {
+      gap: var(--space-4);
+    }
+
+    .issue-meta {
+      align-items: flex-start;
+      text-align: left;
+      min-width: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .issue-link {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+    }
+
+    .issue-meta {
+      grid-column: 2;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
   }
 </style>

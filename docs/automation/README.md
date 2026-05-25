@@ -1,10 +1,10 @@
 # VentureDex Automation Docs
 
-This directory keeps the daily Codex automation policy in versioned Markdown instead of burying the full logic inside the automation config.
+This directory keeps the VentureDex Codex automation policy in versioned Markdown instead of burying the full logic inside automation configs.
 
 ## Source of Truth
 
-Priority order:
+Daily curation priority order:
 
 1. `content/STANDARD.md`
 2. `content/CODEX_TASK.md`
@@ -15,10 +15,19 @@ Priority order:
 
 If two files conflict, the higher-priority file wins.
 
+Weekly research digest priority order:
+
+1. `content/STANDARD.md`
+2. `content/CODEX_TASK.md`
+3. `docs/automation/venturedex-weekly-runbook.md`
+4. `.github/workflows/weekly-draft.yml`
+
 ## File Roles
 
 - `venturedex-daily-runbook.md`
   The operational contract for each daily run. It contains immutable guards and adaptive heuristics.
+- `venturedex-weekly-runbook.md`
+  The operational contract for each weekly research digest run. It keeps weekly draft generation separate from daily curation.
 - `venturedex-feedback-loop.md`
   The reward-guided iteration rules. This is RL-style closed-loop optimization, not a full online RL system.
 - `venturedex-learning-log.md`
@@ -40,6 +49,8 @@ Today, the only auto-edit region is:
 - `docs/automation/venturedex-daily-runbook.md`
   - `<!-- BEGIN AUTO-EDIT: ADAPTIVE_HEURISTICS -->`
   - `<!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->`
+
+Weekly automation does not currently have an auto-edit region. It may generate `content/weekly/*.json` drafts, but it must not rewrite governance text automatically.
 
 The automation must never:
 
