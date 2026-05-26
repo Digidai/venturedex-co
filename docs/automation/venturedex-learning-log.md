@@ -1563,3 +1563,44 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `python3 scripts/weekly.py validate`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`
   - `./scripts/build-db.sh` regenerated `d1/generated-seed.sql`; the generated SQL and `scripts/__pycache__/` were restored or removed before continuing
   - `bb-browser` local checks passed for `/weekly` and `/weekly/1`; both pages rendered the published weekly issue and reported no JavaScript errors
+
+### 2026-05-26 16:49 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: published-with-local-release
+- validation: pass
+- weekly_validate: n/a
+- build_db: pass
+- build_app: pass
+- screenshot: pass
+- commit_push: pass
+- commit_sha: 106a527, 9c3916e
+- pushed_branch: main
+- ci_deploy: not_visible after source-url fix; initial GitHub Actions Validate `26444719890` failed, Deploy `26444719898` passed, post-fix push `9c3916e` created a GitHub PushEvent but no workflow run, and two `workflow_dispatch` attempts returned GitHub API HTTP 500
+- live_smoke: pass; local `./scripts/manage.sh release` deployed Worker version `d228f27e-006b-4641-9784-bf584b6c3d7f`, then live smoke passed for `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 75 published startups; direct live detail checks returned HTTP 200 for `/startups/flexprice`, `/startups/allo`, `/startups/lexroom`, `/startups/modal`, and `/startups/certo`
+- failure_tags: [source_url_flaky, ci_visibility]
+- reward: 2
+- dominant_failure_mode: validation depended on several flaky syndicated or CDN source URLs, and GitHub Actions observability failed after the corrective push even though GitHub recorded the PushEvent.
+- proposed_change: defer automation-code changes; current runbook already requires recording unobservable CI/deploy and live-smoke evidence, and the source URL fixes moved validation toward official company pages.
+- decision: deferred
+- affected_file: content/startups/flexprice.json, content/startups/allo.json, content/startups/lexroom.json, content/startups/modal.json, content/startups/certo.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before discovery; it restored repo-local `.env`, verified Cloudflare credentials, restored dependencies, and confirmed GitHub Actions were active
+  - selected five current-source, product-inspected startups: Flexprice, allO, Lexroom, Modal, and Certo
+  - Flexprice was accepted from ET Entrepreneur's May 26, 2026 $1.5M Seed led by Shastra VC; product review confirmed open-source usage billing, GitHub/docs, SDKs, MCP/CLI support, Stripe/Razorpay-style integrations, and 20B+ monthly event-processing claims from current source coverage
+  - allO was accepted from Tech Funding News' May 26, 2026 $14M Series A led by Zigg Capital; product review confirmed POS, reservations, inventory, scan-to-order, webshop, delivery, payments, app login, and restaurant-segment pages
+  - Lexroom was accepted from Tech Funding News' May 19, 2026 $50M Series B led by Left Lane Capital; product review confirmed source-backed legal research, document comparison, private libraries, clause drafting, pricing, product tour, and 10,000+ professional-user claims
+  - Modal was accepted from its May 21, 2026 official Series C announcement for $355M led by General Catalyst and Redpoint; `bb-browser` confirmed AI infrastructure product surfaces across docs, pricing, inference, training, sandboxes, 1000+ GPU autoscaling, and named customer proof
+  - Certo was accepted from Tech Funding News' May 26, 2026 $4M Seed led by daphni; product review confirmed compliance agents for ingredients, CAS mapping, formula checks, SDS/PIF/CPSR generation, market readiness, audit trails, daily regulatory feeds, and 70+ country coverage
+  - rejected Avrea, Hardline, Unframe, Nourish, Foundation, Roadrunner, ICEYE, Manus AI, Antler UK, the new Figure-adjacent device startup, Viktor AI, Recursive, Amca, DesignVerse, and Pathway for stage, exclusion, stale-source, or product-inspectability reasons
+  - added official startup records, logos, screenshots, investor entries, and brand assets for the five accepted companies; refreshed BlackPeak Capital's asset source to its official ESG subdomain to keep validation reachable
+  - local gates passed before the content commit and again after source-url stabilization: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`; `d1/generated-seed.sql` and `scripts/__pycache__/` were restored or removed as verification output
+  - content commit `106a527` was pushed to `main`; GitHub Actions Validate `26444719890` failed on flaky Yahoo/PRNewswire source URLs while Deploy `26444719898` passed
+  - fix commit `9c3916e` replaced failed syndicated startup sources with official company pages and replaced Flexprice/GRAI Framer asset URL checks with their official homepages; local validation then passed with 75/75 startups and zero errors
+  - GitHub recorded PushEvent head `9c3916e7e3456590f07d0084e4306a4256109d71`, but Actions API returned zero workflow runs for that SHA and `gh workflow run deploy.yml --ref main` returned GitHub API HTTP 500 twice
+  - local `./scripts/manage.sh release` passed validation, regenerated a fresh 75-startup D1 seed, applied 878 queries to remote D1, deployed Worker version `d228f27e-006b-4641-9784-bf584b6c3d7f`, and passed live smoke for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`
+  - direct live checks returned HTTP 200 for the five new detail pages: Flexprice, allO, Lexroom, Modal, and Certo
