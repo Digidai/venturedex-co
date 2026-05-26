@@ -1,0 +1,26 @@
+{
+  "slug": "modal",
+  "domain": "modal.com",
+  "url": "https://modal.com/",
+  "product_name": "Modal",
+  "summary": "Serverless compute platform for AI, GPU, sandbox, training, and data workloads.",
+  "editor_note": "The bet is that AI infrastructure should feel like importing a function, not reserving a cluster. Modal shows Python-defined cloud environments, docs, pricing, inference, training, sandboxes, 1000+ GPU autoscaling, and customer proof from Runway, Suno, and Physical Intelligence. Unlike cloud consoles built around machines, it makes the code boundary the control plane.",
+  "editor_rating": 5,
+  "why_featured": "Serverless GPU infra for AI",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,gpu,serverless,developer tools,data workloads",
+  "investors": "General Catalyst, Redpoint Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$355M",
+      "stage": "Series C",
+      "lead_investor": "General Catalyst",
+      "date": "2026-05-21",
+      "source_url": "https://modal.com/blog/modal-series-c",
+      "source_name": "Modal"
+    }
+  ]
+}

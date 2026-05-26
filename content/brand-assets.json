@@ -492,6 +492,41 @@
       "local_path": "/logos/companies/trackk.png",
       "source_page": "https://trackk.in",
       "source_url": "https://trackk.in/apple-touch-icon.png"
+    },
+    "flexprice": {
+      "name": "Flexprice",
+      "shape": "icon",
+      "local_path": "/logos/companies/flexprice.png",
+      "source_page": "https://flexprice.io/",
+      "source_url": "https://framerusercontent.com/images/brsl3iuRoj1oI9vzfcKLHv1nxqc.png"
+    },
+    "allo": {
+      "name": "allO",
+      "shape": "icon",
+      "local_path": "/logos/companies/allo.png",
+      "source_page": "https://allo.restaurant/",
+      "source_url": "https://allo.restaurant/apple-touch-icon.png"
+    },
+    "lexroom": {
+      "name": "Lexroom",
+      "shape": "icon",
+      "local_path": "/logos/companies/lexroom.png",
+      "source_page": "https://lexroom.ai/",
+      "source_url": "https://cdn.prod.website-files.com/65314337e943130bf7a6d549/693898836f9f0bbeabfc2e1e_webclip.png"
+    },
+    "modal": {
+      "name": "Modal",
+      "shape": "icon",
+      "local_path": "/logos/companies/modal.svg",
+      "source_page": "https://modal.com/",
+      "source_url": "https://modal.com/assets/favicon.svg"
+    },
+    "certo": {
+      "name": "Certo",
+      "shape": "icon",
+      "local_path": "/logos/companies/certo.ico",
+      "source_page": "https://www.askcerto.com/",
+      "source_url": "https://www.askcerto.com/favicon.ico"
     }
   },
   "investors": {
@@ -640,8 +675,8 @@
       "name": "BlackPeak Capital",
       "shape": "icon",
       "local_path": "/logos/investors/blackpeak-capital.png",
-      "source_page": "https://www.blackpeak-capital.com",
-      "source_url": "https://www.blackpeak-capital.com/images/favicons/apple-icon-180x180.png"
+      "source_page": "https://esg.blackpeak-capital.com",
+      "source_url": "https://esg.blackpeak-capital.com"
     },
     "amd-ventures": {
       "name": "AMD Ventures",
@@ -936,6 +971,34 @@
       "local_path": "/logos/investors/upfront-ventures.ico",
       "source_page": "https://upfront.com",
       "source_url": "https://upfront.com/favicon.ico"
+    },
+    "shastra-vc": {
+      "name": "Shastra VC",
+      "shape": "icon",
+      "local_path": "/logos/investors/shastra-vc.ico",
+      "source_page": "https://www.shastra.vc",
+      "source_url": "https://www.shastra.vc/favicon.ico"
+    },
+    "zigg-capital": {
+      "name": "Zigg Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/zigg-capital.png",
+      "source_page": "https://ziggcap.com",
+      "source_url": "https://ziggcap.com/favicon-32x32.png"
+    },
+    "redpoint-ventures": {
+      "name": "Redpoint Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/redpoint-ventures.png",
+      "source_page": "https://www.redpoint.com",
+      "source_url": "https://www.redpoint.com/favicon.png"
+    },
+    "daphni": {
+      "name": "daphni",
+      "shape": "icon",
+      "local_path": "/logos/investors/daphni.png",
+      "source_page": "https://www.daphni.com",
+      "source_url": "https://cdn.prod.website-files.com/688339943bfaa4f50e260af4/68c17ff041fe26f112e77b52_Favicon256x256.png"
     }
   }
 }

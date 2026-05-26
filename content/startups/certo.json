@@ -1,0 +1,26 @@
+{
+  "slug": "certo",
+  "domain": "www.askcerto.com",
+  "url": "https://www.askcerto.com/",
+  "product_name": "Certo",
+  "summary": "AI compliance agents for ingredient, formula, label, and market-entry checks.",
+  "editor_note": "The useful idea is turning compliance into product-specific checks instead of another spreadsheet of regulations. Certo shows ingredient extraction, CAS mapping, formula checks, SDS/PIF/CPSR generation, market readiness, audit trails, and daily regulatory feeds across 70+ countries. Unlike generic legal copilots, it narrows the agent to consumer-product labels and supplier documents.",
+  "editor_rating": 4,
+  "why_featured": "Consumer compliance agents",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "compliance,consumer goods,regulatory,ai agents,workflow",
+  "investors": "daphni",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4M",
+      "stage": "Seed",
+      "lead_investor": "daphni",
+      "date": "2026-05-26",
+      "source_url": "https://techfundingnews.com/certo-4m-seed-ai-compliance-cpg/",
+      "source_name": "Tech Funding News"
+    }
+  ]
+}

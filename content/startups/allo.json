@@ -1,0 +1,26 @@
+{
+  "slug": "allo",
+  "domain": "allo.restaurant",
+  "url": "https://allo.restaurant/",
+  "product_name": "allO",
+  "summary": "Restaurant operating system for POS, reservations, ordering, inventory, and payments.",
+  "editor_note": "The smart move is treating restaurant software as one floor plan instead of twenty tabs. allO shows POS, reservations, kitchen monitor, scan-to-order, webshop, delivery, inventory, payments, and an app login for German restaurants. Unlike generic POS suites, it narrows the workflow to table service, hotpot, buffets, and kitchen handoffs, with claims like 30% faster service.",
+  "editor_rating": 4,
+  "why_featured": "Restaurant OS with POS depth",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "restaurants,pos,inventory,payments,operations",
+  "investors": "Zigg Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$14M",
+      "stage": "Series A",
+      "lead_investor": "Zigg Capital",
+      "date": "2026-05-26",
+      "source_url": "https://techfundingnews.com/allo-14m-series-a-zigg-capital/",
+      "source_name": "Tech Funding News"
+    }
+  ]
+}

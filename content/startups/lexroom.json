@@ -1,0 +1,26 @@
+{
+  "slug": "lexroom",
+  "domain": "lexroom.ai",
+  "url": "https://lexroom.ai/",
+  "product_name": "Lexroom",
+  "summary": "Legal AI workspace for source-backed research, drafting, and private firm libraries.",
+  "editor_note": "Legal AI gets more credible when the source trail is the interface, not a footnote. Lexroom shows official-source research, document comparison, clause drafting, private libraries, original judgments, pricing, and more than 10,000 professional users. Unlike broad legal copilots that ask lawyers to trust a black box, it sells verifiability as the workflow.",
+  "editor_rating": 4,
+  "why_featured": "Source-backed legal AI",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "legal ai,document drafting,research,compliance,workflow",
+  "investors": "Left Lane Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series B",
+      "lead_investor": "Left Lane Capital",
+      "date": "2026-05-19",
+      "source_url": "https://techfundingnews.com/harvey-rival-lexroom-raises-50m-to-power-ai-for-europes-one-million-lawyers/",
+      "source_name": "Tech Funding News"
+    }
+  ]
+}

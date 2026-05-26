@@ -1,0 +1,28 @@
+{
+  "slug": "flexprice",
+  "domain": "flexprice.io",
+  "url": "https://flexprice.io/",
+  "product_name": "Flexprice",
+  "summary": "Open-source usage billing infrastructure for AI and API-first companies.",
+  "editor_note": "The bet is that AI pricing breaks before product-market fit does. Flexprice exposes metering, credits, hybrid plans, SDKs, MCP support, a CLI, GitHub repo, and case-study proof around 20B events/month. Unlike seat-based billing tools, it treats event streams and pricing experiments as the product surface. The risk is whether finance teams trust open-source billing when revenue recognition gets messy.",
+  "editor_rating": 5,
+  "why_featured": "AI usage billing stack",
+  "product_type": "DevTools",
+  "region": "Global / Remote",
+  "tags": "billing,usage metering,pricing,developer tools,ai infrastructure",
+  "investors": "Shastra VC",
+  "links": {
+    "github": "https://github.com/flexprice/flexprice"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$1.5M",
+      "stage": "Seed",
+      "lead_investor": "Shastra VC",
+      "date": "2026-05-26",
+      "source_url": "https://entrepreneur.economictimes.indiatimes.com/news/funding/flexprice-secures-15-million-in-seed-funding-to-revolutionize-ai-billing-solutions/131320984",
+      "source_name": "ET Entrepreneur"
+    }
+  ]
+}

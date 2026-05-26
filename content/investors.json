@@ -143,7 +143,7 @@
     "name": "BlackPeak Capital",
     "slug": "blackpeak-capital",
     "short_name": "BlackPeak",
-    "website": "https://www.blackpeak-capital.com",
+    "website": "https://esg.blackpeak-capital.com",
     "description": "Growth equity investor focused on Southeast and Central European companies with global potential."
   },
   "amd-ventures": {
@@ -439,5 +439,33 @@
     "short_name": "Upfront",
     "website": "https://upfront.com",
     "description": "Los Angeles-based venture capital firm backing early-stage technology companies across software, consumer, health, and frontier markets."
+  },
+  "shastra-vc": {
+    "name": "Shastra VC",
+    "slug": "shastra-vc",
+    "short_name": "Shastra",
+    "website": "https://www.shastra.vc",
+    "description": "India- and US-focused venture firm backing early-stage technology founders across AI, software, fintech, logistics, and consumer infrastructure."
+  },
+  "zigg-capital": {
+    "name": "Zigg Capital",
+    "slug": "zigg-capital",
+    "short_name": "Zigg",
+    "website": "https://ziggcap.com",
+    "description": "New York-based venture capital firm investing in technology companies that reshape real estate, construction, retail, and local commerce."
+  },
+  "redpoint-ventures": {
+    "name": "Redpoint Ventures",
+    "slug": "redpoint-ventures",
+    "short_name": "Redpoint",
+    "website": "https://www.redpoint.com",
+    "description": "Venture capital firm backing founders across enterprise software, consumer technology, AI infrastructure, and internet platforms."
+  },
+  "daphni": {
+    "name": "daphni",
+    "slug": "daphni",
+    "short_name": "daphni",
+    "website": "https://www.daphni.com",
+    "description": "Paris-based venture capital firm investing in European technology founders from seed through growth."
   }
 }
