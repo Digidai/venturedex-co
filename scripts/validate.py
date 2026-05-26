@@ -114,7 +114,7 @@ AMOUNT_RE = re.compile(r"^\$[0-9]+(?:\.[0-9]+)?(?:[MBK])?\+?$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 HTTP_OK = {"200", "301", "302", "307", "308", "403"}
-HTTP_FALLBACK = {"000", "405"}
+HTTP_FALLBACK = {"000", "405", "415"}
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
 
 
