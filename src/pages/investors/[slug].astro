@@ -8,18 +8,48 @@ import {
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
 import { getInvestorBySlug } from "../../lib/db";
+import { expandSeoDescription, investorJsonLd, normalizeExternalUrl } from "../../lib/seo";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
 
 const data = await getInvestorBySlug(db, slug!);
-if (!data) return Astro.redirect("/404");
+if (!data) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
 
 const { investor, rounds } = data;
 const investorBrand = getInvestorBrandAsset(investor.slug);
+const description = expandSeoDescription(
+  investor.description,
+  "Browse VentureDex-tracked startup funding activity, portfolio companies, and source-backed company context.",
+  `${investor.name} portfolio on VentureDex.`
+);
+const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
+const investorWebsiteUrl = normalizeExternalUrl(investor.website);
+const investorWebsiteHost = investorWebsiteUrl ? displayHostname(investorWebsiteUrl) : null;
+const pageTitle = investor.name.length <= 23
+  ? `${investor.name} Startup Investment Portfolio`
+  : `${investor.name} Startup Portfolio`;
+
+function displayHostname(value: string): string {
+  try {
+    return new URL(value).hostname.replace(/^www\./, "");
+  } catch {
+    return value;
+  }
+}
 ---
 
-<Base title={investor.name} description={investor.description ?? `${investor.name} portfolio on VentureDex`}>
+<Base
+  title={pageTitle}
+  description={description}
+  robots={rounds.length > 0 ? undefined : "noindex,follow"}
+  schema={schema}
+>
   <div class="container investor-page">
     <a href="/news" class="back-link">&larr; Back to news</a>
 
@@ -28,9 +58,9 @@ const investorBrand = getInvestorBrandAsset(investor.slug);
         <BrandLogo asset={investorBrand} name={investor.name} size={40} class="investor-logo" />
         <div>
           <h1>{investor.name}</h1>
-          {investor.website && (
-            <a href={investor.website} target="_blank" rel="noopener noreferrer" class="investor-url">
-              {new URL(investor.website).hostname} ↗
+          {investorWebsiteUrl && investorWebsiteHost && (
+            <a href={investorWebsiteUrl} target="_blank" rel="noopener noreferrer" class="investor-url">
+              {investorWebsiteHost} ↗
             </a>
           )}
         </div>

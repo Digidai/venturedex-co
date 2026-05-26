@@ -3,18 +3,46 @@ export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
 import { getPublishedCollections } from "../../lib/db";
+import {
+  buildJsonLdGraph,
+  itemListNode,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../../lib/seo";
 
 const db = Astro.locals.runtime.env.DB;
 let collections: Awaited<ReturnType<typeof getPublishedCollections>> = [];
 
 try {
   collections = await getPublishedCollections(db);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load collections", error);
 }
+
+const description = "Browse curated VentureDex startup collections grouped by product category, market theme, and editorial context.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/collections",
+    title: "Collections",
+    description,
+    type: "CollectionPage",
+    siteUrl: Astro.site?.toString(),
+  }),
+  itemListNode(
+    collections.map((collection) => ({
+      name: collection.title,
+      path: `/collections/${collection.slug}`,
+      description: collection.description,
+    })),
+    Astro.site?.toString()
+  ),
+]);
 ---
 
-<Base title="Collections" description="Curated editorial groupings of VentureDex startups.">
+<Base title="Startup Collections" description={description} schema={schema}>
   <div class="container collections-page">
     <h1>Collections</h1>
     <p class="subtitle">Curated editorial groupings of VentureDex startups.</p>

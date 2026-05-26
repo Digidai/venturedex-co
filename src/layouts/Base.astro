@@ -1,15 +1,59 @@
 ---
 import "../styles/global.css";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import {
+  DEFAULT_SITE_URL,
+  DEFAULT_SOCIAL_IMAGE,
+  SITE_NAME,
+  absoluteUrl,
+  canonicalPath as normalizeCanonicalPath,
+  toIsoDateTime,
+  truncateText,
+  type JsonLdNode,
+} from "../lib/seo";
 
 interface Props {
   title: string;
   description?: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
+  ogImageType?: string;
+  canonicalPath?: string;
+  robots?: string;
+  ogType?: string;
+  publishedTime?: string | null;
+  modifiedTime?: string | null;
+  schema?: JsonLdNode | JsonLdNode[];
 }
 
-const { title, description = "A curated gallery of startups worth watching.", ogImage } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://venturedex.co");
+const {
+  title,
+  description = "A curated gallery of startups worth watching.",
+  ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  ogImageType,
+  canonicalPath,
+  robots = "index,follow,max-image-preview:large",
+  ogType = "website",
+  publishedTime,
+  modifiedTime,
+  schema,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
+const canonicalURL = absoluteUrl(normalizeCanonicalPath(canonicalPath ?? Astro.url.pathname), siteUrl);
+const metaDescription = truncateText(description);
+const pageTitle = `${title} | ${SITE_NAME}`;
+const usesDefaultOgImage = !ogImage;
+const ogImageUrl = absoluteUrl(ogImage ?? DEFAULT_SOCIAL_IMAGE, siteUrl);
+const resolvedOgImageWidth = ogImageWidth ?? (usesDefaultOgImage ? 1200 : undefined);
+const resolvedOgImageHeight = ogImageHeight ?? (usesDefaultOgImage ? 630 : undefined);
+const ogImageAlt = `${title} on ${SITE_NAME}`;
+const publishedIso = toIsoDateTime(publishedTime);
+const modifiedIso = toIsoDateTime(modifiedTime);
+const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 ---
 
 <!doctype html>
@@ -17,17 +61,36 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} | VentureDex</title>
-    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={metaDescription} />
+    <meta name="robots" content={robots} />
+    <meta name="application-name" content={SITE_NAME} />
+    <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0f0e" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonicalURL} />
+    <meta property="og:site_name" content={SITE_NAME} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonicalURL} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:locale" content="en_US" />
+    {ogType === "article" && publishedIso && <meta property="article:published_time" content={publishedIso} />}
+    {ogType === "article" && modifiedIso && <meta property="article:modified_time" content={modifiedIso} />}
+    <meta property="og:image" content={ogImageUrl} />
+    {resolvedOgImageWidth && <meta property="og:image:width" content={String(resolvedOgImageWidth)} />}
+    {resolvedOgImageHeight && <meta property="og:image:height" content={String(resolvedOgImageHeight)} />}
+    {ogImageType && <meta property="og:image:type" content={ogImageType} />}
+    <meta property="og:image:alt" content={ogImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={metaDescription} />
+    <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
+    {schemaItems.map((item) => (
+      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    ))}
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
     </script>
@@ -42,6 +105,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
             <a href="/" class="nav-tab">Explore</a>
             <a href="/collections" class="nav-tab">Collections</a>
             <a href="/weekly" class="nav-tab">Weekly</a>
+            <a href="/investors" class="nav-tab">Investors</a>
             <a href="/news" class="nav-tab">News</a>
           </div>
         </nav>
@@ -64,6 +128,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
         <p class="footer-brand">VentureDex</p>
         <p class="footer-tagline">A curated gallery of startups worth watching.</p>
         <nav class="footer-links" aria-label="Footer navigation">
+          <a href="/about">About</a>
+          <a href="/editorial-policy">Editorial Policy</a>
+          <a href="/investors">Investors</a>
           <a href="/sponsor">Sponsor</a>
           <a href="/subscribe">Subscribe</a>
           <a href="/feed.xml">RSS</a>
@@ -183,6 +250,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://ventured
       .footer-links {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         gap: var(--space-6);
       }
 

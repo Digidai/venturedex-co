@@ -1,0 +1,93 @@
+---
+export const prerender = false;
+
+import Base from "../layouts/Base.astro";
+import {
+  buildJsonLdGraph,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../lib/seo";
+
+const title = "About VentureDex Startup Directory";
+const description =
+  "VentureDex is an editorial startup directory focused on notable early-stage companies, product evidence, funding context, and investor relationships.";
+const schema = buildJsonLdGraph([
+  siteOrganization(),
+  siteWebSite(),
+  webPageNode({
+    path: "/about",
+    title,
+    description,
+    type: "AboutPage",
+  }),
+]);
+---
+
+<Base title={title} description={description} schema={schema}>
+  <div class="container page">
+    <h1>About VentureDex</h1>
+    <p>
+      VentureDex is a curated directory of startups worth watching. The site focuses on public product evidence,
+      funding signals, investor context, and concise editorial notes that explain why each company is notable.
+    </p>
+    <p>
+      VentureDex is not a complete startup database. It is intentionally selective: companies are added when public
+      information is strong enough to support a useful page for founders, investors, operators, and builders.
+    </p>
+
+    <section>
+      <h2>What We Track</h2>
+      <ul>
+        <li>Company pages with product summaries, editorial notes, official links, funding stage, and investors.</li>
+        <li>Investor pages showing VentureDex-tracked portfolio activity.</li>
+        <li>Funding news with source links to original press coverage or company announcements.</li>
+        <li>Collections that group startups by editorial theme.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How To Use It</h2>
+      <p>
+        Use VentureDex as a discovery layer, then follow the official company and source links for deeper diligence.
+        Funding details should be verified against the linked source before being used in investment, hiring, or market
+        research decisions.
+      </p>
+    </section>
+  </div>
+</Base>
+
+<style>
+  .page {
+    max-width: 760px;
+    padding-block: var(--space-12) var(--space-16);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-4);
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    margin: var(--space-8) 0 var(--space-3);
+  }
+
+  p,
+  li {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  p + p {
+    margin-top: var(--space-4);
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
+
+  li + li {
+    margin-top: var(--space-2);
+  }
+</style>

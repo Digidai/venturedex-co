@@ -4,6 +4,7 @@ export const prerender = false;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getStartupBySlug } from "../../lib/db";
+import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
 import {
   getContentStartupBySlug,
   getWeeklyIssueByNumberFromContent,
@@ -45,9 +46,18 @@ const formatDate = (value: string | null) =>
 const dateRange = issue.week_start && issue.week_end
   ? `${formatDate(issue.week_start)} - ${formatDate(issue.week_end)}`
   : "";
+const description = truncateText(issue.research_summary || issue.editorial_intro || `VentureDex Weekly #${issue.issue_number}`);
+const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), Astro.site?.toString());
 ---
 
-<Base title={issue.title} description={issue.research_summary || issue.editorial_intro || `VentureDex Weekly #${issue.issue_number}`}>
+<Base
+  title={issue.title}
+  description={description}
+  ogType="article"
+  publishedTime={issue.published_at}
+  modifiedTime={issue.published_at ?? issue.week_end}
+  schema={schema}
+>
   <div class="container weekly-detail">
     <header class="issue-header">
       <a href="/weekly" class="back-link">&larr; All issues</a>

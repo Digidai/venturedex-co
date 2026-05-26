@@ -2,6 +2,7 @@
 export const prerender = false;
 
 import Base from "../../layouts/Base.astro";
+import { weeklyIndexJsonLd } from "../../lib/seo";
 import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
 const issues = getPublishedWeeklyIssuesFromContent();
@@ -20,9 +21,12 @@ const formatRange = (start: string | null, end: string | null) => {
   if (!start || !end) return "";
   return `${formatDate(start)} - ${formatDate(end)}`;
 };
+
+const description = "Weekly evidence-bound VentureDex research notes on startups, products, and funding context.";
+const schema = weeklyIndexJsonLd(issues, Astro.site?.toString());
 ---
 
-<Base title="Weekly Picks" description="Weekly research notes on the startups and products worth a closer look.">
+<Base title="Weekly Startup Research Picks" description={description} schema={schema}>
   <div class="container weekly-list">
     <header class="weekly-header">
       <p class="eyebrow">Weekly research digest</p>

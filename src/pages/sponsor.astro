@@ -2,9 +2,28 @@
 export const prerender = true;
 
 import Base from "../layouts/Base.astro";
+import {
+  buildJsonLdGraph,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../lib/seo";
+
+const title = "Sponsor VentureDex Startup Research";
+const description = "Reach founders, investors, and builders through VentureDex startup listings, weekly research, and curated collections.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/sponsor",
+    title,
+    description,
+    siteUrl: Astro.site?.toString(),
+  }),
+]);
 ---
 
-<Base title="Sponsor" description="Reach founders, investors, and builders through VentureDex.">
+<Base title={title} description={description} schema={schema}>
   <div class="container sponsor-page">
     <h1>Sponsor VentureDex</h1>
     <p class="subtitle">

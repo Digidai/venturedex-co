@@ -10,13 +10,19 @@ import {
   resolveInvestorByName,
 } from "../../lib/brand-assets";
 import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import type { StartupLinks } from "../../lib/types";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
 
 const startup = await getStartupBySlug(db, slug!);
-if (!startup) return Astro.redirect("/404");
+if (!startup) {
+  return new Response("Not found", {
+    status: 404,
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+}
 
 const related = await getRelatedStartups(db, startup);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
@@ -25,6 +31,21 @@ const companyBrand = getCompanyBrandAsset(startup.slug);
 const investors = startup.investors
   ? startup.investors.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
+const fundingContext = [
+  startup.product_type,
+  startup.funding_display ?? startup.funding_stage,
+  investors.length > 0 ? `Investors: ${investors.slice(0, 3).join(", ")}` : null,
+  startup.region,
+].filter(Boolean).join(" · ");
+const description = truncateText([
+  startup.summary ?? startup.editor_note ?? `${startup.product_name} startup profile on VentureDex`,
+  fundingContext,
+].filter(Boolean).join(" "));
+const enrichedPageTitle = `${startup.product_name} ${startup.product_type} Startup Profile`;
+const pageTitle = enrichedPageTitle.length <= 52
+  ? enrichedPageTitle
+  : `${startup.product_name} Startup Profile`;
+const schema = startupJsonLd(startup, Astro.site?.toString());
 
 const tags = startup.tags
   ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
@@ -49,19 +70,28 @@ try {
 }
 
 const hasTeamInfo = !!(startup.founder_name || startup.team_size || startup.hq_location);
+const websiteUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
 
 const externalLinks = [
-  { label: "Website", url: startup.canonical_url ?? `https://${startup.domain}`, icon: "globe" },
-  links.github ? { label: "GitHub", url: links.github, icon: "github" } : null,
-  links.twitter ? { label: "X / Twitter", url: links.twitter, icon: "twitter" } : null,
-  links.linkedin ? { label: "LinkedIn", url: links.linkedin, icon: "linkedin" } : null,
-  links.producthunt ? { label: "Product Hunt", url: links.producthunt, icon: "producthunt" } : null,
-].filter(Boolean) as { label: string; url: string; icon: string }[];
+  websiteUrl ? { label: "Website", url: websiteUrl } : null,
+  links.github ? { label: "GitHub", url: normalizeExternalUrl(links.github) } : null,
+  links.twitter ? { label: "X / Twitter", url: normalizeExternalUrl(links.twitter) } : null,
+  links.linkedin ? { label: "LinkedIn", url: normalizeExternalUrl(links.linkedin) } : null,
+  links.producthunt ? { label: "Product Hunt", url: normalizeExternalUrl(links.producthunt) } : null,
+].filter((link): link is { label: string; url: string } => Boolean(link?.url));
 ---
 
 <Base
-  title={startup.product_name}
-  description={startup.summary ?? `${startup.product_name} on VentureDex`}
+  title={pageTitle}
+  description={description}
+  ogImage={screenshotUrl ?? undefined}
+  ogType="article"
+  ogImageWidth={screenshotUrl ? 1440 : undefined}
+  ogImageHeight={screenshotUrl ? 900 : undefined}
+  ogImageType={screenshotUrl ? "image/webp" : undefined}
+  publishedTime={startup.published_at}
+  modifiedTime={startup.updated_at}
+  schema={schema}
 >
   <article class="site-detail container">
     <div class="detail-hero">
@@ -84,7 +114,7 @@ const externalLinks = [
           </div>
         </div>
         <a
-          href={startup.canonical_url ?? `https://${startup.domain}`}
+          href={websiteUrl ?? `https://${startup.domain}`}
           target="_blank"
           rel="noopener noreferrer"
           class="visit-button"

@@ -2,9 +2,28 @@
 export const prerender = true;
 
 import Base from "../layouts/Base.astro";
+import {
+  buildJsonLdGraph,
+  siteOrganization,
+  siteWebSite,
+  webPageNode,
+} from "../lib/seo";
+
+const title = "Subscribe to VentureDex Weekly Startup Picks";
+const description = "Get VentureDex startup picks, funding signals, and weekly editorial research delivered by email.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/subscribe",
+    title,
+    description,
+    siteUrl: Astro.site?.toString(),
+  }),
+]);
 ---
 
-<Base title="Subscribe" description="Get the best startups delivered to your inbox every week.">
+<Base title={title} description={description} schema={schema}>
   <div class="container subscribe-page">
     <h1>Stay in the loop.</h1>
     <p class="subtitle">

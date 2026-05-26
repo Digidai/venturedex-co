@@ -18,7 +18,11 @@ if (query.trim()) {
 }
 ---
 
-<Base title={query ? `Search: ${query}` : "Search"} description="Search the VentureDex directory.">
+<Base
+  title={query ? `Search: ${query}` : "Search"}
+  description="Search the VentureDex directory."
+  robots="noindex,follow"
+>
   <div class="container search-page">
     <h1>Search</h1>
 

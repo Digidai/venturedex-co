@@ -11,6 +11,7 @@ import {
   getPublishedStartups,
   getStartupCount,
 } from "../lib/db";
+import { homeJsonLd } from "../lib/seo";
 import type { SortOption } from "../lib/db";
 
 const STARTUP_LIST_LIMIT = 500;
@@ -34,8 +35,8 @@ try {
     getStartupCount(db, { productType, fundingStage, region }),
     getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
   ]);
-} catch {
-  // D1 unavailable
+} catch (error) {
+  console.error("Failed to load homepage data", error);
 }
 
 const hasFacetFilters = !!(productType || fundingStage || region);
@@ -53,18 +54,20 @@ const heroCountText = hasFacetFilters
   : isTruncated
     ? `Showing first ${startups.length} of ${startupCount} outstanding early-stage companies.`
     : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`;
+const description = "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
+const schema = homeJsonLd(startups, Astro.site?.toString());
 ---
 
-<Base title="Explore" description="A curated gallery of startups worth watching. Hand-picked with editorial commentary.">
+<Base title="Curated Startup Directory" description={description} schema={schema}>
   <FundingTicker rounds={rounds} />
 
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-text">
-        <h1>Discover today's top startups</h1>
+        <h1>Discover startups worth tracking</h1>
         <p class="hero-sub">
           {heroCountText}
-          Curated with editorial commentary.
+          Profiles include product context, funding signals, investor links, and source-backed notes.
         </p>
       </div>
     </div>
