@@ -26,5 +26,48 @@
       "source_url": "https://techcrunch.com/2025/04/07/kreas-founders-snubbed-postgrad-grants-from-the-king-of-spain-to-build-their-ai-startup-now-its-valued-at-500m/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.krea.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2025/04/07/kreas-founders-snubbed-postgrad-grants-from-the-king-of-spain-to-build-their-ai-startup-now-its-valued-at-500m/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Krea: AI creative suite for generating, editing, and controlling images, video, and 3D assets.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Krea puts Krea 1, video, enhancer, realtime, editing, LoRA training, and style transfer into one workspace; the app exposes prompt, model, ratio, and resolution controls before it asks for a sales call.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Creative teams and individual creators evaluating production workflows.",
+      "category": "Creator Tools",
+      "differentiation": "Krea 1 plus visual control handles",
+      "why_now": "Recent source-backed funding and public product evidence make ai creative tools, image generation, video generation worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that bundling every medium can blur the point if the controls stop feeling precise.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

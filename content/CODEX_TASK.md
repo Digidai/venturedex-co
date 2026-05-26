@@ -129,6 +129,26 @@ Q3: 它解决的问题具体吗？
   "product_name": "产品名",
   "summary": "不超过 100 字符，说它做什么",
   "editor_note": "见 4.2",
+  "research": {
+    "verified_at": "YYYY-MM-DD",
+    "sources": [
+      {"id": "official_site", "label": "Official product site", "url": "https://...", "type": "official"},
+      {"id": "funding_1", "label": "Funding source", "url": "https://...", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "具体产品证据，必须能从 source_ids 指向的来源复核。", "source_ids": ["official_site"]},
+      {"claim": "第二条具体产品/文档/定价/客户/集成/工作流证据。", "source_ids": ["official_site"]}
+    ],
+    "market_context": {
+      "primary_user": "谁会评估或使用这个产品",
+      "category": "产品类别",
+      "differentiation": "具体差异化",
+      "why_now": "为什么当前融资/产品信号值得跟踪"
+    },
+    "risks": [
+      {"claim": "可验证的风险或开放问题", "basis": "基于官方产品证据和融资来源复核的 VentureDex 编辑判断"}
+    ]
+  },
   "editor_rating": 3,
   "why_featured": "不超过 40 字符，具体理由",
   "product_type": "AI / ML | SaaS | DevTools | Fintech | HealthTech | EdTech | E-commerce | Marketplace | Creator Tools | Climate / Sustainability | Other",
@@ -320,8 +340,9 @@ git push
 5. 每次最多收录 5 个
 6. 只允许内容资产范围内的修改：`content/`、`content/brand-assets.json`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
-8. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
-9. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
+8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据
+9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
+10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
 
 ## 文件操作范围
 

@@ -123,27 +123,35 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`.
 10. Run F1-F4 screening.
 11. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
-12. Run the taste review.
-13. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
-14. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
-15. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
-16. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
-17. Generate screenshot if and only if the environment is ready.
-18. Run the GitHub Actions preflight and the three local validation steps.
-19. Perform the five review passes.
-20. Update the learning log.
-21. Apply a heuristic update only if the feedback-loop gate permits it.
-22. Commit and push only if the final staged files are allowed and local gates pass.
-23. Wait for deploy when observable and verify live smoke against the deployed site.
-24. Open an inbox item summarizing the full run.
+12. Write structured `research` for every accepted startup:
+    - `sources` must include the official product site and the funding source; add GitHub, docs, LinkedIn, Product Hunt, or other official sources only when they were checked.
+    - `product_evidence` must contain at least two concrete, source-backed claims about the product surface, workflow, docs, pricing, customers, integrations, metrics, or other visible evidence.
+    - `market_context` must identify the primary user, category, differentiation, and why the current funding/product signal makes the company worth tracking now.
+    - `risks` must state at least one falsifiable risk or open question, with a basis tied to the official product evidence and source review.
+    - Do not write private revenue, usage, customer, valuation, or hiring claims unless the exact source is cited.
+    - If a claim cannot be traced to a listed source or the existing VentureDex editorial assessment, remove it.
+13. Run the taste review.
+14. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
+15. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
+16. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
+17. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
+18. Generate screenshot if and only if the environment is ready.
+19. Run the GitHub Actions preflight and the three local validation steps.
+20. Perform the five review passes.
+21. Update the learning log.
+22. Apply a heuristic update only if the feedback-loop gate permits it.
+23. Commit and push only if the final staged files are allowed and local gates pass.
+24. Wait for deploy when observable and verify live smoke against the deployed site.
+25. Open an inbox item summarizing the full run.
 
 ## Five Review Passes
 
 1. Facts: source, amount, stage, date, investor, source URL, lead-investor naming from the article, and any breakout-stage exception
 2. Dedup: prior acceptance, prior rejection, later-round exception
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
-4. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
-5. Scope and release: changed files, schema, screenshot completeness, GitHub Actions availability, validation, build, commit, push, deploy status, live smoke, final git status
+4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
+5. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
+6. Scope and release: changed files, schema, screenshot completeness, GitHub Actions availability, validation, build, commit, push, deploy status, live smoke, final git status
 
 ## Commit Rules
 

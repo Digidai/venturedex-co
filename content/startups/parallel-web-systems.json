@@ -29,5 +29,48 @@
       "source_url": "https://techcrunch.com/2026/04/29/parallel-web-systems-hits-2b-valuation-five-months-after-its-last-big-raise/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://parallel.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/04/29/parallel-web-systems-hits-2b-valuation-five-months-after-its-last-big-raise/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Parallel Web Systems: Web search, extraction, monitoring, and research APIs for AI agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "VentureDex product review notes that unlike browser wrappers that pretend pages are stable, this treats the web as a programmatic substrate with benchmarks and case studies attached.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Web APIs for AI agents",
+      "why_now": "Recent source-backed funding and public product evidence make ai agents, web search, api worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that model providers pull the same interfaces into their own platforms.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

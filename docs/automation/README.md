@@ -97,8 +97,9 @@ For human-directed governance changes:
 
 ## Automation Config Alignment
 
-The local automation prompt under `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` should stay aligned with this control plane.
+The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` and `$CODEX_HOME/automations/venturedex-weekly-curator/automation.toml` should stay aligned with this control plane.
 
 - Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
 - For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
+- Daily automation must require structured startup `research` before publishing; weekly automation must consume that `research` when producing source-bound issue evaluations.

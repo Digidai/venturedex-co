@@ -22,5 +22,48 @@
       "source_url": "https://www.fazeshift.com/newsroom",
       "source_name": "Fazeshift"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.fazeshift.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fazeshift",
+        "url": "https://www.fazeshift.com/newsroom",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Fazeshift: AI accounts receivable agents for finance teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Fazeshift shows cash application, collections, contract review, Stripe/NetSuite/Sage Intacct billing, SOC 1/2, and customer claims like 50% DSO reduction.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "$22M Series A for AR agents",
+      "why_now": "Recent source-backed funding and public product evidence make accounts receivable, finance ops, ai agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The test is whether invoice edge cases stay tractable at scale.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

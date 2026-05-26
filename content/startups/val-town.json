@@ -29,5 +29,48 @@
       "source_url": "https://blog.val.town/blog/seed/",
       "source_name": "Val Town Blog"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://val.town",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Val Town Blog",
+        "url": "https://blog.val.town/blog/seed/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Val Town: Social website and API for writing and running code.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Every val is a URL, every function is deployable, and the product turns tiny scripts into shareable building blocks.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Code as social media",
+      "why_now": "Recent source-backed funding and public product evidence make social coding, serverless, developer tools worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

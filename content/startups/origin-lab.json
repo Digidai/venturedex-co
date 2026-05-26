@@ -20,5 +20,48 @@
       "source_url": "https://techcrunch.com/2026/05/13/origin-lab-raises-8m-to-help-video-game-companies-sell-data-to-world-model-builders/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://originlab.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/13/origin-lab-raises-8m-to-help-video-game-companies-sell-data-to-world-model-builders/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Origin Lab: Licensed game-engine data for AI world models and robotics simulation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Origin Lab captures HUD-free gameplay with depth, action, camera, scene metadata, 20+ categories, 50+ licensed titles, and same-day API access for evals.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Game-engine data for world models",
+      "why_now": "Recent source-backed funding and public product evidence make world models, training data, video games worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is whether game worlds transfer to messy real-world robotics.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

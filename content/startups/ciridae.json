@@ -22,5 +22,48 @@
       "source_url": "https://fortune.com/2026/05/11/a16z-apple-alums-20m-ai-real-businesses/",
       "source_name": "Fortune"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.ciridae.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fortune",
+        "url": "https://fortune.com/2026/05/11/a16z-apple-alums-20m-ai-real-businesses/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Ciridae: AI operating systems for real-economy businesses.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Ciridae shows AP invoices, CRM, reporting, project management, and Knight case metrics like $5M revenue uplift and 100% of A/P invoices processed.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "100% AP invoices processed",
+      "why_now": "Recent source-backed funding and public product evidence make ai operations, industrial services, private equity worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether services work scales without becoming consulting.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

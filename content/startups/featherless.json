@@ -22,5 +22,48 @@
       "source_url": "https://featherless.ai/blog/series-a",
       "source_name": "Featherless"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://featherless.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Featherless",
+        "url": "https://featherless.ai/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Featherless: Serverless API access to 30,000+ open-weight AI models.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Featherless exposes 30,000+ models through one API, docs for chat completions, embeddings, tool calling, vision, and a live model library with usage counts.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "$20M Series A for 30K models",
+      "why_now": "Recent source-backed funding and public product evidence make ai infrastructure, inference, open models worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is keeping that promise when every niche model wants different hardware.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -29,5 +29,48 @@
       "source_url": "https://techcrunch.com/2024/08/09/anysphere-a-github-copilot-rival-has-raised-60m-series-a-at-400m-valuation-from-a16z-thrive-sources-say/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://cursor.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2024/08/09/anysphere-a-github-copilot-rival-has-raised-60m-series-a-at-400m-valuation-from-a16z-thrive-sources-say/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Cursor: The AI-first code editor.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Tab completion, inline diffs, and cmd-K feel native rather than bolted on.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Changed how developers write code",
+      "why_now": "Recent source-backed funding and public product evidence make ai, code editor, developer tools worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

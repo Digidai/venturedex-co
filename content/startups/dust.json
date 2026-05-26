@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/18/3296726/0/en/Dust-raises-40M-to-make-AI-multiplayer-inside-the-enterprise.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://dust.tt",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/18/3296726/0/en/Dust-raises-40M-to-make-AI-multiplayer-inside-the-enterprise.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Dust: Multiplayer AI workspace where teams build and run shared workplace agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Dust gives teams shared agents, Slack/GitHub/Drive connectors, model choice, RBAC, audit logs, and a semantic layer that improves from use.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Shared agents for teams",
+      "why_now": "Recent source-backed funding and public product evidence make ai agents, enterprise ai, collaboration worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether agent sprawl becomes the new collaboration tax.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

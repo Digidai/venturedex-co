@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/branchlab-raises-26m-series-a-led-by-mckesson-ventures-to-bring-ai-to-pharma-commercialization-302770272.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://branchlab.com/pathwai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/branchlab-raises-26m-series-a-led-by-mckesson-ventures-to-bring-ai-to-pharma-commercialization-302770272.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes BranchLab: AI audience platform for pharma commercialization.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Pathwai learns from de-identified health signals, clusters patient journeys, and cites outcomes like 2,000 extra patients reached in three weeks and 90% lower cost per patient.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "2,000 patients in 3 weeks",
+      "why_now": "Recent source-backed funding and public product evidence make pharma, healthcare ai, audience targeting worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether better targeting feels like better healthcare to anyone outside pharma.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

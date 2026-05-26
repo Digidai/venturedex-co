@@ -29,5 +29,48 @@
       "source_url": "https://cal.com/blog",
       "source_name": "Cal.com"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://cal.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cal.com",
+        "url": "https://cal.com/blog",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Cal.com: Open source scheduling infrastructure.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "It was treating scheduling as infrastructure: a self-hosted option, API hooks, and a hosted product for teams that do not want to run it themselves.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Open source done right",
+      "why_now": "Recent source-backed funding and public product evidence make scheduling, open source, calendar worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

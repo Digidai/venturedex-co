@@ -22,5 +22,48 @@
       "source_url": "https://www.synera.io/press/synera-raises-40m-series-b-to-scale-agentic-ai-engineering-for-global-manufacturers",
       "source_name": "Synera"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.synera.io",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Synera",
+        "url": "https://www.synera.io/press/synera-raises-40m-series-b-to-scale-agentic-ai-engineering-for-global-manufacturers",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Synera: Agent platform for engineering workflows across CAD, FEA, costing, and reporting tools.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Synera connects 80+ hardware-engineering systems with a node-based editor, 3D viewer, custom nodes, Python scripts, and token licensing.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Agents across 80+ engineering tools",
+      "why_now": "Recent source-backed funding and public product evidence make engineering, ai agents, cad worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that enterprise deployment turns the agents into services work.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

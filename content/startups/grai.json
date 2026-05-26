@@ -24,5 +24,48 @@
       "source_url": "https://techcrunch.com/2026/04/21/grai-believes-ai-can-make-music-more-social-not-replace-artists/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.grai.fm",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/04/21/grai-believes-ai-can-make-music-more-social-not-replace-artists/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes GRAI: Social AI music app for remixing songs with friends while keeping artist control in the loop.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "GRAI is live as an iPhone app and raised a $9M seed round, letting people react to friends' tracks and flip songs into new moods.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Creative teams and individual creators evaluating production workflows.",
+      "category": "Creator Tools",
+      "differentiation": "Social remix, not song gen",
+      "why_now": "Recent source-backed funding and public product evidence make music, ai, remix worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is whether labels give enough catalog access for the social loop to matter.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

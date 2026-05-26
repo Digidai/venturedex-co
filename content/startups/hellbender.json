@@ -22,5 +22,48 @@
       "source_url": "https://hellbender.com/hellbender-secures-12-5m-seed-round-to-accelerate-domestic-manufacturing-of-physical-ai-and-launch-its-on-edge-camera-line/",
       "source_name": "Hellbender"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://hellbender.com/hellbender-products/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Hellbender",
+        "url": "https://hellbender.com/hellbender-secures-12-5m-seed-round-to-accelerate-domestic-manufacturing-of-physical-ai-and-launch-its-on-edge-camera-line/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Hellbender: Edge AI camera systems and carrier boards for robotics and physical AI teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Hellbender sells stereo AI cameras, 64-camera Vine systems, carrier boards, and CVaaS for teams that would rather test robots than wire processors.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Stereo cameras for edge AI",
+      "why_now": "Recent source-backed funding and public product evidence make edge ai, robotics, computer vision worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Manufacturing discipline may matter more here than model cleverness.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

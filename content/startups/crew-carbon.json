@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/crew-raises-25m-of-funding-to-scale-wastewater-treatment-optimization-technology-as-climate-solution-302772585.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://crewcarbon.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/crew-raises-25m-of-funding-to-scale-wastewater-treatment-optimization-technology-as-climate-solution-302772585.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes CREW Carbon: Wastewater process optimization that also delivers measured carbon removal.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "CREW uses calcium carbonate dosing, closed-system measurement, and projects at nearly 10 facilities; one utility may defer a $350M upgrade.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Climate, infrastructure, or operations teams evaluating measurable sustainability workflows.",
+      "category": "Climate / Sustainability",
+      "differentiation": "$350M plant upgrade deferred",
+      "why_now": "Recent source-backed funding and public product evidence make water tech, carbon removal, wastewater worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

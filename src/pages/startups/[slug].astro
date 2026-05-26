@@ -9,9 +9,9 @@ import {
   getInvestorBrandAsset,
   resolveInvestorByName,
 } from "../../lib/brand-assets";
-import { getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import { getFundingRoundsForStartup, getStartupBySlug, getRelatedStartups } from "../../lib/db";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
-import type { StartupLinks } from "../../lib/types";
+import type { StartupLinks, StartupResearch, StartupResearchSource } from "../../lib/types";
 
 const { slug } = Astro.params;
 const db = Astro.locals.runtime.env.DB;
@@ -24,7 +24,10 @@ if (!startup) {
   });
 }
 
-const related = await getRelatedStartups(db, startup);
+const [related, fundingRounds] = await Promise.all([
+  getRelatedStartups(db, startup),
+  getFundingRoundsForStartup(db, startup.slug),
+]);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
 
@@ -69,6 +72,15 @@ try {
   // invalid JSON, ignore
 }
 
+let research: StartupResearch | null = null;
+try {
+  if (startup.research_json) {
+    research = JSON.parse(startup.research_json) as StartupResearch;
+  }
+} catch {
+  // invalid JSON, ignore
+}
+
 const hasTeamInfo = !!(startup.founder_name || startup.team_size || startup.hq_location);
 const websiteUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
 
@@ -79,6 +91,48 @@ const externalLinks = [
   links.linkedin ? { label: "LinkedIn", url: normalizeExternalUrl(links.linkedin) } : null,
   links.producthunt ? { label: "Product Hunt", url: normalizeExternalUrl(links.producthunt) } : null,
 ].filter((link): link is { label: string; url: string } => Boolean(link?.url));
+
+const researchSources = research?.sources ?? [];
+const sourceById = new Map(researchSources.map((source) => [source.id, source]));
+const latestFunding = fundingRounds[0] ?? null;
+
+const sourceTrail = [
+  websiteUrl ? { id: "official_site", label: "Official site", url: websiteUrl, type: "official" } : null,
+  ...fundingRounds.map((round, index) => (
+    round.source_url
+      ? {
+          id: `funding_${index + 1}`,
+          label: round.source_name ? `${round.source_name} funding source` : "Funding source",
+          url: normalizeExternalUrl(round.source_url),
+          type: "funding",
+        }
+      : null
+  )),
+  ...researchSources.map((source) => ({
+    id: source.id,
+    label: source.label,
+    url: normalizeExternalUrl(source.url),
+    type: source.type,
+  })),
+].filter((source): source is { id: string; label: string; url: string; type: string } => Boolean(source?.url));
+
+const uniqueSourceTrail = Array.from(
+  new Map(sourceTrail.map((source) => [source.url, source])).values()
+);
+
+function formatDate(date: string | null | undefined) {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
+
+function sourceLabel(source?: StartupResearchSource) {
+  return source?.label ?? "Source";
+}
 ---
 
 <Base
@@ -125,6 +179,30 @@ const externalLinks = [
       {startup.summary && <p class="detail-summary">{startup.summary}</p>}
     </header>
 
+    <dl class="score-strip" aria-label="VentureDex summary">
+      {startup.editor_rating && (
+        <div class="score-item">
+          <dt>VentureDex rating</dt>
+          <dd>{startup.editor_rating}/5</dd>
+        </div>
+      )}
+      {latestFunding && (
+        <div class="score-item">
+          <dt>Latest funding</dt>
+          <dd>
+            {latestFunding.amount ? `${latestFunding.amount} ` : ""}{latestFunding.stage}
+            {latestFunding.lead_investor ? ` · ${latestFunding.lead_investor}` : ""}
+          </dd>
+        </div>
+      )}
+      {research?.verified_at && (
+        <div class="score-item">
+          <dt>Research checked</dt>
+          <dd>{formatDate(research.verified_at)}</dd>
+        </div>
+      )}
+    </dl>
+
     {startup.editor_note && (
       <section class="editor-note" aria-label="Editor's note">
         <p class="note-text">{startup.editor_note}</p>
@@ -143,6 +221,95 @@ const externalLinks = [
         </blockquote>
       </section>
     )}
+
+    {latestFunding && (
+      <section class="funding-section" aria-label="Funding event">
+        <div class="section-heading">
+          <h2>Funding signal</h2>
+          {latestFunding.source_url && (
+            <a href={latestFunding.source_url} target="_blank" rel="noopener noreferrer">
+              {latestFunding.source_name ?? "Source"} &nearr;
+            </a>
+          )}
+        </div>
+        <p>
+          {startup.product_name} raised {latestFunding.amount ?? "an undisclosed amount"} at {latestFunding.stage}
+          {latestFunding.lead_investor ? ` led by ${latestFunding.lead_investor}` : ""}
+          {latestFunding.date ? ` on ${formatDate(latestFunding.date)}` : ""}.
+        </p>
+      </section>
+    )}
+
+    {research?.product_evidence?.length ? (
+      <section class="evidence-section" aria-label="Product evidence">
+        <h2>Product evidence</h2>
+        <div class="evidence-list">
+          {research.product_evidence.map((item) => (
+            <article class="evidence-item">
+              <p>{item.claim}</p>
+              <div class="evidence-sources">
+                {item.source_ids.map((sourceId) => {
+                  const source = sourceById.get(sourceId);
+                  return source?.url ? (
+                    <a href={source.url} target="_blank" rel="noopener noreferrer">
+                      {sourceLabel(source)} &nearr;
+                    </a>
+                  ) : (
+                    <span>{sourceLabel(source)}</span>
+                  );
+                })}
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    ) : null}
+
+    {research?.market_context && (
+      <section class="market-section" aria-label="Market context">
+        <h2>Market context</h2>
+        <dl class="context-grid">
+          {research.market_context.primary_user && (
+            <div>
+              <dt>Primary user</dt>
+              <dd>{research.market_context.primary_user}</dd>
+            </div>
+          )}
+          {research.market_context.category && (
+            <div>
+              <dt>Category</dt>
+              <dd>{research.market_context.category}</dd>
+            </div>
+          )}
+          {research.market_context.differentiation && (
+            <div>
+              <dt>Differentiation</dt>
+              <dd>{research.market_context.differentiation}</dd>
+            </div>
+          )}
+          {research.market_context.why_now && (
+            <div>
+              <dt>Why now</dt>
+              <dd>{research.market_context.why_now}</dd>
+            </div>
+          )}
+        </dl>
+      </section>
+    )}
+
+    {research?.risks?.length ? (
+      <section class="risk-section" aria-label="Risks and open questions">
+        <h2>Risks and open questions</h2>
+        <div class="risk-list">
+          {research.risks.map((risk) => (
+            <article class="risk-item">
+              <p>{risk.claim}</p>
+              <span>{risk.basis}</span>
+            </article>
+          ))}
+        </div>
+      </section>
+    ) : null}
 
     <section class="detail-meta">
       <div class="meta-grid">
@@ -253,6 +420,20 @@ const externalLinks = [
       </section>
     )}
 
+    {uniqueSourceTrail.length > 0 && (
+      <section class="sources-section" aria-label="Sources">
+        <h2>Source trail</h2>
+        <div class="source-list">
+          {uniqueSourceTrail.map((source) => (
+            <a href={source.url} target="_blank" rel="noopener noreferrer" class="source-link">
+              <span>{source.label}</span>
+              <small>{source.type}</small>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     {tags.length > 0 && (
       <section class="tags-section" aria-label="Tags">
         <h2>Tags</h2>
@@ -280,7 +461,8 @@ const externalLinks = [
 <style>
   .site-detail {
     padding: var(--space-8) var(--space-6) var(--space-16);
-    max-width: 900px;
+    width: min(900px, 100vw);
+    max-width: 100%;
   }
 
   .detail-hero {
@@ -313,6 +495,31 @@ const externalLinks = [
     margin-bottom: var(--space-8);
   }
 
+  .score-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+    padding: var(--space-4) 0 var(--space-8);
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .score-item dt,
+  .context-grid dt {
+    font-size: 0.68rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  .score-item dd {
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
   .header-top {
     display: flex;
     justify-content: space-between;
@@ -328,6 +535,10 @@ const externalLinks = [
     min-width: 0;
   }
 
+  .detail-title-wrap > div {
+    min-width: 0;
+  }
+
   .detail-header h1 {
     font-size: 2rem;
     margin-bottom: var(--space-1);
@@ -337,6 +548,7 @@ const externalLinks = [
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
+    overflow-wrap: anywhere;
   }
 
   .visit-button {
@@ -364,6 +576,16 @@ const externalLinks = [
     line-height: 1.6;
   }
 
+  .detail-summary,
+  .note-text,
+  .funding-section p,
+  .evidence-item p,
+  .risk-item p,
+  .context-grid dd,
+  .source-link span {
+    overflow-wrap: break-word;
+  }
+
   .editor-note {
     border-left: 3px solid var(--color-editor-line);
     padding: var(--space-4) var(--space-6);
@@ -372,6 +594,118 @@ const externalLinks = [
     border-radius: 0 var(--radius) var(--radius) 0;
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-editor-line);
+  }
+
+  .funding-section,
+  .evidence-section,
+  .market-section,
+  .risk-section,
+  .sources-section {
+    padding-bottom: var(--space-8);
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    align-items: baseline;
+    margin-bottom: var(--space-3);
+  }
+
+  .funding-section h2,
+  .evidence-section h2,
+  .market-section h2,
+  .risk-section h2,
+  .sources-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .section-heading h2 {
+    margin-bottom: 0;
+  }
+
+  .section-heading a {
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .funding-section p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .evidence-list,
+  .risk-list {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .evidence-item,
+  .risk-item {
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .evidence-item p,
+  .risk-item p {
+    margin: 0 0 var(--space-2);
+    line-height: 1.55;
+  }
+
+  .evidence-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+  }
+
+  .evidence-sources a,
+  .evidence-sources span,
+  .risk-item span {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+  }
+
+  .context-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-5);
+  }
+
+  .context-grid dd {
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    font-size: 0.9rem;
+  }
+
+  .source-list {
+    display: grid;
+    gap: var(--space-2);
+  }
+
+  .source-link {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .source-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .source-link small {
+    color: var(--color-text-secondary);
+    text-transform: capitalize;
   }
 
   .note-text {
@@ -617,6 +951,10 @@ const externalLinks = [
   }
 
   @media (max-width: 640px) {
+    .site-detail {
+      padding: var(--space-6) var(--space-4) var(--space-12);
+    }
+
     .header-top {
       flex-direction: column;
     }
@@ -631,6 +969,18 @@ const externalLinks = [
 
     .meta-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .score-strip,
+    .context-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-heading,
+    .source-link {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--space-2);
     }
   }
 </style>

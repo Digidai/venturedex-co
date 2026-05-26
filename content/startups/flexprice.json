@@ -24,5 +24,48 @@
       "source_url": "https://entrepreneur.economictimes.indiatimes.com/news/funding/flexprice-secures-15-million-in-seed-funding-to-revolutionize-ai-billing-solutions/131320984",
       "source_name": "ET Entrepreneur"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://flexprice.io/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "ET Entrepreneur",
+        "url": "https://entrepreneur.economictimes.indiatimes.com/news/funding/flexprice-secures-15-million-in-seed-funding-to-revolutionize-ai-billing-solutions/131320984",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Flexprice: Open-source usage billing infrastructure for AI and API-first companies.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Flexprice exposes metering, credits, hybrid plans, SDKs, MCP support, a CLI, GitHub repo, and case-study proof around 20B events/month.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "AI usage billing stack",
+      "why_now": "Recent source-backed funding and public product evidence make billing, usage metering, pricing worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether finance teams trust open-source billing when revenue recognition gets messy.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

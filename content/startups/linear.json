@@ -29,5 +29,48 @@
       "source_url": "https://techcrunch.com/2025/06/10/atlassian-rival-linear-raises-82m-at-1-25b-valuation/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://linear.app",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2025/06/10/atlassian-rival-linear-raises-82m-at-1-25b-valuation/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Linear: Issue tracking built for modern software teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Someone finally rebuilt project management for teams that live on the keyboard.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Defined a new standard for dev tools",
+      "why_now": "Recent source-backed funding and public product evidence make project management, issue tracking, developer tools worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

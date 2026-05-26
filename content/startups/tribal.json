@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.gotribal.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Tribal: Metadata-native AI agents for governed enterprise app changes inside systems of record.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Tribal maps metadata, permissions, dependencies, and business rules, then wraps changes with approval flows, audit, impact analysis, and 10x backlog claims.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "10x faster backlog work",
+      "why_now": "Recent source-backed funding and public product evidence make enterprise ai, metadata, salesforce worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether every customer's metadata graph becomes a bespoke services project.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

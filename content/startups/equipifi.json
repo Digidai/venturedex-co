@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/equipifi-secures-34-million-series-b-to-accelerate-buy-now-pay-later-across-us-financial-institutions-302771649.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.equipifi.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/equipifi-secures-34-million-series-b-to-accelerate-buy-now-pay-later-across-us-financial-institutions-302771649.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes equipifi: White-label BNPL and installment-lending platform for banks and credit unions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "equipifi gives credit unions and banks pre-approved pay-over-time offers, debit-card installment loans, eligibility controls, reporting, and launch paths that need about 10 team hours.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "Bank-native BNPL rails",
+      "why_now": "Recent source-backed funding and public product evidence make fintech, bnpl, credit unions worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

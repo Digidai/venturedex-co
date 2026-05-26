@@ -28,5 +28,48 @@
       "source_url": "https://techcrunch.com/2024/01/04/ai-powered-search-engine-perplexity-ai-now-valued-at-520m-raises-70m/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://perplexity.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2024/01/04/ai-powered-search-engine-perplexity-ai-now-valued-at-520m-raises-70m/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Perplexity: AI-powered answer engine that searches the web.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Answer-first search should have existed years ago.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "The Google killer that might actually be",
+      "why_now": "Recent source-backed funding and public product evidence make ai search, answer engine, web search worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether that habit expands beyond power users.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

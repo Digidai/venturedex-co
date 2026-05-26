@@ -22,5 +22,48 @@
       "source_url": "https://techfundingnews.com/certo-4m-seed-ai-compliance-cpg/",
       "source_name": "Tech Funding News"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.askcerto.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tech Funding News",
+        "url": "https://techfundingnews.com/certo-4m-seed-ai-compliance-cpg/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Certo: AI compliance agents for ingredient, formula, label, and market-entry checks.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Certo shows ingredient extraction, CAS mapping, formula checks, SDS/PIF/CPSR generation, market readiness, audit trails, and daily regulatory feeds across 70+ countries.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Consumer compliance agents",
+      "why_now": "Recent source-backed funding and public product evidence make compliance, consumer goods, regulatory worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

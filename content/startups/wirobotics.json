@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/wirobotics-secures-approximately-krw-100-billion-usd-68-million-series-b-funding-302772164.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://corp.wirobotics.com/en/product/allex",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/wirobotics-secures-approximately-krw-100-billion-usd-68-million-series-b-funding-302772164.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes WIRobotics: Wearable and humanoid robots built from human movement data.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "WIRobotics has 3,000 WIM units sold, three CES awards, gait datasets from wearable robots, and ALLEX specs like 15-DoF hands, 0.5 mm repeatability, and 30 kg hook grip.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "3,000 WIM units, $68M Series B",
+      "why_now": "Recent source-backed funding and public product evidence make robotics, wearables, humanoids worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether research platforms become durable products.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

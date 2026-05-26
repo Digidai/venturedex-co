@@ -116,6 +116,14 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HTTP_OK = {"200", "301", "302", "307", "308", "403"}
 HTTP_FALLBACK = {"000", "405", "415"}
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
+ALLOWED_RESEARCH_SOURCE_TYPES = {
+    "official",
+    "funding",
+    "product",
+    "repository",
+    "social",
+    "editorial",
+}
 
 
 @dataclass
@@ -373,6 +381,8 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
                     f"{prefix}: source url check failed with HTTP {source_status} -> {source_url}"
                 )
 
+    result.errors.extend(validate_research(data, url_cache=url_cache))
+
     if url:
         company_status = check_url(url, cache=url_cache)
         if company_status not in HTTP_OK:
@@ -386,6 +396,116 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         result.errors.append(f"missing screenshot asset: {screenshot_path.relative_to(REPO_ROOT)}")
 
     return result
+
+
+def validate_research(data: dict[str, object], *, url_cache: dict[str, str]) -> list[str]:
+    errors: list[str] = []
+    research = data.get("research")
+    product_name = str(data.get("product_name", "startup"))
+
+    if not isinstance(research, dict):
+        return [f"research missing for {product_name}"]
+
+    verified_at = research.get("verified_at")
+    if not isinstance(verified_at, str) or not DATE_RE.match(verified_at):
+        errors.append("research.verified_at must be YYYY-MM-DD")
+
+    sources = research.get("sources")
+    if not isinstance(sources, list) or len(sources) < 2:
+        errors.append("research.sources must contain at least official and funding sources")
+        sources = []
+
+    source_ids: set[str] = set()
+    source_types: set[str] = set()
+    for index, source in enumerate(sources):
+        prefix = f"research.sources[{index}]"
+        if not isinstance(source, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+
+        source_id = str(source.get("id", "")).strip()
+        label = str(source.get("label", "")).strip()
+        source_type = str(source.get("type", "")).strip()
+        source_url = str(source.get("url", "")).strip()
+
+        if not source_id:
+            errors.append(f"{prefix} missing id")
+        elif source_id in source_ids:
+            errors.append(f"{prefix} duplicate id '{source_id}'")
+        else:
+            source_ids.add(source_id)
+
+        if not label:
+            errors.append(f"{prefix} missing label")
+
+        if source_type not in ALLOWED_RESEARCH_SOURCE_TYPES:
+            errors.append(f"{prefix} type '{source_type}' is not allowed")
+        else:
+            source_types.add(source_type)
+
+        if source_type != "editorial":
+            if not source_url:
+                errors.append(f"{prefix} missing url")
+            elif check_url(source_url, cache=url_cache) not in HTTP_OK:
+                errors.append(f"{prefix} url is not reachable: {source_url}")
+
+    if "official" not in source_types:
+        errors.append("research.sources must include an official source")
+    if "funding" not in source_types:
+        errors.append("research.sources must include a funding source")
+
+    evidence = research.get("product_evidence")
+    if not isinstance(evidence, list) or len(evidence) < 2:
+        errors.append("research.product_evidence must contain at least two source-backed claims")
+        evidence = []
+
+    for index, item in enumerate(evidence):
+        prefix = f"research.product_evidence[{index}]"
+        if not isinstance(item, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+
+        claim = str(item.get("claim", "")).strip()
+        if not 30 <= len(claim) <= 260:
+            errors.append(f"{prefix}.claim must be 30-260 chars")
+
+        refs = item.get("source_ids")
+        if not isinstance(refs, list) or not refs:
+            errors.append(f"{prefix}.source_ids must reference at least one source")
+            continue
+        for ref in refs:
+            if ref not in source_ids:
+                errors.append(f"{prefix}.source_ids references unknown source '{ref}'")
+
+    context = research.get("market_context")
+    if not isinstance(context, dict):
+        errors.append("research.market_context must be an object")
+    else:
+        if not str(context.get("category", "")).strip():
+            errors.append("research.market_context.category is required")
+        if not str(context.get("primary_user", "")).strip():
+            errors.append("research.market_context.primary_user is required")
+        if not str(context.get("differentiation", "")).strip():
+            errors.append("research.market_context.differentiation is required")
+
+    risks = research.get("risks")
+    if not isinstance(risks, list) or not risks:
+        errors.append("research.risks must contain at least one explicit risk or open question")
+        risks = []
+
+    for index, risk in enumerate(risks):
+        prefix = f"research.risks[{index}]"
+        if not isinstance(risk, dict):
+            errors.append(f"{prefix} must be an object")
+            continue
+        claim = str(risk.get("claim", "")).strip()
+        basis = str(risk.get("basis", "")).strip()
+        if not 30 <= len(claim) <= 240:
+            errors.append(f"{prefix}.claim must be 30-240 chars")
+        if not 20 <= len(basis) <= 180:
+            errors.append(f"{prefix}.basis must be 20-180 chars")
+
+    return errors
 
 
 def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]]:

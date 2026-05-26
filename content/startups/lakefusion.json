@@ -24,5 +24,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/04/3286394/0/en/LakeFusion-Raises-7-5M-Seed-Financing-to-Redefine-Master-Data-Management-MDM-Natively-on-Databricks.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.lakefusion.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/04/3286394/0/en/LakeFusion-Raises-7-5M-Seed-Financing-to-Redefine-Master-Data-Management-MDM-Natively-on-Databricks.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes LakeFusion: Databricks-native master data management for golden records.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "LakeFusion installs through AWS or Azure Marketplace, runs inside Databricks, and uses LLM plus vector matching to create governed golden records under Unity Catalog.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "$7.5M Seed for Databricks MDM",
+      "why_now": "Recent source-backed funding and public product evidence make data management, databricks, mdm worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is Databricks-native being a moat only if buyers already live there.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -22,5 +22,48 @@
       "source_url": "https://www.gunder.com/en/news-insights/client-news/hilbert-announces-28-million-usd-series-a",
       "source_name": "Gunderson Dettmer"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://hilberts.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Gunderson Dettmer",
+        "url": "https://www.gunder.com/en/news-insights/client-news/hilbert-announces-28-million-usd-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Hilbert: AI growth infrastructure for B2C revenue decisions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Hilbert shows anomaly detection, root-cause analysis, counterfactuals, pLTV targeting, and agent-driven growth tasks in one product surface.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "$28M Series A for growth infra",
+      "why_now": "Recent source-backed funding and public product evidence make growth analytics, b2c ai, decision intelligence worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is proving those actions move revenue outside the demo data.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

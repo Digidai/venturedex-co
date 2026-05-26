@@ -22,5 +22,48 @@
       "source_url": "https://www.vector.co/blog/we-just-raised-10m-to-build-the-ai-platform-that-makes-marketers-superhuman",
       "source_name": "Vector"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.vector.co",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Vector",
+        "url": "https://www.vector.co/blog/we-just-raised-10m-to-build-the-ai-platform-that-makes-marketers-superhuman",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Vector: Contact-level ad audiences and MCP analytics for B2B marketers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Vector shows visitor feeds, named buyer audiences, LinkedIn/Google/Reddit sync, 7.8% LinkedIn CTR, 17x ROI, and an MCP for asking campaign questions in Claude or ChatGPT.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "$10M Series A for Vector MCP",
+      "why_now": "Recent source-backed funding and public product evidence make b2b marketing, advertising, mcp worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that contact-level precision invites privacy pushback as fast as pipeline.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

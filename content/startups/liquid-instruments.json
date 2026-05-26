@@ -22,5 +22,48 @@
       "source_url": "https://liquidinstruments.com/news-updates/series-c/",
       "source_name": "Liquid Instruments"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.liquidinstruments.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Liquid Instruments",
+        "url": "https://liquidinstruments.com/news-updates/series-c/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Liquid Instruments: Software-defined test instruments for engineering labs.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Liquid Instruments turns Moku hardware into 15+ instruments, switches setups in seconds, and lets teams build custom measurement systems with FPGA-backed processing.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "15+ instruments in one Moku",
+      "why_now": "Recent source-backed funding and public product evidence make test equipment, instrumentation, fpga worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The question is whether AI customization becomes a workflow, not just a lab upgrade.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

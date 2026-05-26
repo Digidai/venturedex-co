@@ -24,5 +24,48 @@
       "source_url": "https://natlawreview.com/press-releases/manifest-os-raises-60m-scale-worlds-first-ai-native-law-firm-model",
       "source_name": "Business Wire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://manifestos.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Business Wire",
+        "url": "https://natlawreview.com/press-releases/manifest-os-raises-60m-scale-worlds-first-ai-native-law-firm-model",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Manifest OS: AI-native legal-services platform for fixed-fee immigration firms.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Manifest OS powers immigration firms with fixed-fee pricing, a client portal, AI Drafter, AI Case Evaluation, and 3,000+ handled engagements.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "$60M Series A, 3,000+ engagements",
+      "why_now": "Recent source-backed funding and public product evidence make legal tech, ai agents, immigration worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is bar-by-bar regulation slowing the model outside Arizona.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

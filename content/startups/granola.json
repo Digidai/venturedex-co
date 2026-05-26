@@ -25,5 +25,48 @@
       "source_url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.granola.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Granola: AI meeting notes that turn transcripts into searchable team context.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Meeting notes only looked saturated until someone removed the bot and treated meetings as company memory instead.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Bot-free meeting context layer",
+      "why_now": "Recent source-backed funding and public product evidence make meeting notes, productivity, knowledge management worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that the product loses elegance as it stretches from a sharp Mac app into enterprise workflow plumbing.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

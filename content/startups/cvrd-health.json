@@ -24,5 +24,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/cvrd-health-announces-5m-seed-round-led-by-upfront-ventures-to-modernize-benefits-compliance-for-federal-government-contractors-302779218.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.becvrd.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/cvrd-health-announces-5m-seed-round-led-by-upfront-ventures-to-modernize-benefits-compliance-for-federal-government-contractors-302779218.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes CVRD Health: Fringe benefit optimization and ICHRA compliance platform for government contractors.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "CVRD models SCA/DBRA obligations, tracks H&W dollars in real time, manages ICHRAs, and shows an Aptive case with $536,870 annual savings across 151 enrolled employees.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "151-enrollee GovCon case study",
+      "why_now": "Recent source-backed funding and public product evidence make benefits, govcon, compliance worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether service-heavy advocacy scales beyond early GovCon accounts.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

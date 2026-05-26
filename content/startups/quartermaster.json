@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/05/20/this-startup-raised-43m-to-build-a-hive-mind-for-ships/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.quartermaster.us/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/20/this-startup-raised-43m-to-build-a-hive-mind-for-ships/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Quartermaster: SmartMast sensors and AI turn commercial vessels into a maritime awareness network.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Quartermaster puts SmartMast cameras, radios, geolocation, and AI on 600+ vessels, then shows verified HD video, alerts, and real-time tracking.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "600+ ships sensing oceans",
+      "why_now": "Recent source-backed funding and public product evidence make maritime, sensors, ai worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether network coverage scales faster than hardware installation drag.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

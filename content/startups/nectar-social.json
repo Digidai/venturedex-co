@@ -24,5 +24,48 @@
       "source_url": "https://techcrunch.com/2026/05/16/marketing-operating-system-nectar-social-raises-30m-series-a-in-round-led-by-menlo/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.nectarsocial.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/16/marketing-operating-system-nectar-social-raises-30m-series-a-in-round-led-by-menlo/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Nectar Social: AI social operating system for community management, listening, and attribution.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Nectar shows AI agents for DMs, comments, creator workflows, Reddit/Meta data, 95% untagged conversations, and revenue attribution in one workspace.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "95% untagged social coverage",
+      "why_now": "Recent source-backed funding and public product evidence make social commerce, ai agents, community management worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is keeping brand voice from turning into customer-service mush.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

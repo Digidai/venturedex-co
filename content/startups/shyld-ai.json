@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/14/3295222/0/en/shyld-ai-raises-13-4m-to-expand-active-ai-across-u-s-hospitals.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.shyld.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/14/3295222/0/en/shyld-ai-raises-13-4m-to-expand-active-ai-across-u-s-hospitals.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Shyld AI: Physical AI agents for hospital operations and disinfection.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Shyld AI shows 3D LiDAR, radar, infrared sensing, edge GPUs, UV-C cycles, and a Stanford-linked 93% contamination reduction claim.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "93% contamination reduction",
+      "why_now": "Recent source-backed funding and public product evidence make hospital operations, physical ai, infection control worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether hospital deployment speed matches the clinical evidence.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -24,5 +24,48 @@
       "source_url": "https://www.bloomberg.com/news/articles/2026-05-05/intel-capital-backs-quantum-computing-chips-startup-quantware",
       "source_name": "Bloomberg"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://quantware.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Bloomberg",
+        "url": "https://www.bloomberg.com/news/articles/2026-05-05/intel-capital-backs-quantum-computing-chips-startup-quantware",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes QuantWare: Commercial QPUs, peripherals, and foundry services for quantum builders.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "QuantWare sells A-Line, D-Line, peripherals, foundry, and packaging services, and says it has shipped to 50+ customers across 20 countries.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "Open QPU supply chain",
+      "why_now": "Recent source-backed funding and public product evidence make quantum, hardware, qpu worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that the 10,000-qubit 2028 promise still has to survive physics and factory reality.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

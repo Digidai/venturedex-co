@@ -22,5 +22,48 @@
       "source_url": "https://www.moneycontrol.com/news/business/funding/gen-z-investment-platform-trackk-raises-3-7-million-in-funding-from-lightspeed-info-edge-ventures-13924204.html",
       "source_name": "Moneycontrol"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://trackk.in",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Moneycontrol",
+        "url": "https://www.moneycontrol.com/news/business/funding/gen-z-investment-platform-trackk-raises-3-7-million-in-funding-from-lightspeed-info-edge-ventures-13924204.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Trackk: Stock discovery and trading app for first-time Indian investors.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Trackk shows prompt-based Trackk Nest screeners, IPO verdicts, single-screen trading, SEBI registration, and 4.7/4.6 app-store ratings.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "Seed for Gen Z investing app",
+      "why_now": "Recent source-backed funding and public product evidence make investing, wealthtech, stock discovery worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether F&O ambition nudges beginners toward speculation.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

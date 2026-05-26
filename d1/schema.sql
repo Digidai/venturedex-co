@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS startups (
   summary TEXT,
   long_description TEXT,
   editor_note TEXT,
+  research_json TEXT,
   editor_rating INTEGER CHECK (editor_rating BETWEEN 1 AND 5),
   why_featured TEXT,
   curator TEXT DEFAULT 'dai',

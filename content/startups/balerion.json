@@ -25,5 +25,48 @@
       "source_url": "https://balerion.ai/press",
       "source_name": "Balerion"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://balerion.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Balerion",
+        "url": "https://balerion.ai/press",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Balerion: AI loan-intelligence platform for mortgage origination.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Balerion Loan Intelligence is already used by FM Home Loans, a lender managing $2B+ in loan volume, and embeds into existing origination workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "$2B lender using Loan Intelligence",
+      "why_now": "Recent source-backed funding and public product evidence make mortgage, ai agents, fintech worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is enterprise pilots turning into custom services.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

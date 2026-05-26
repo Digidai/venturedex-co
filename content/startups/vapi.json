@@ -20,5 +20,48 @@
       "source_url": "https://techcrunch.com/2026/05/12/vapi-hits-500m-valuation-as-amazon-ring-chose-its-ai-platform-over-40-rivals/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://vapi.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/12/vapi-hits-500m-valuation-as-amazon-ring-chose-its-ai-platform-over-40-rivals/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Vapi: Voice AI infrastructure for building, deploying, and managing phone agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Vapi exposes call workflows, tool integrations, guardrails, SOC 2/HIPAA/PCI posture, and claims 1B calls, 2.5M+ agents, 750K developers, and sub-500ms latency.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "1B calls on voice-agent platform",
+      "why_now": "Recent source-backed funding and public product evidence make voice ai, ai agents, developer tools worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that voice AI becomes a commodity inside every CX platform.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

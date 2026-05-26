@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/05/18/kin-health-raises-9m-to-build-an-ai-notetaker-for-patients/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.meetkin.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/18/kin-health-raises-9m-to-build-an-ai-notetaker-for-patients/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Kin Health: Patient app that records doctor visits and turns them into clear next steps.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "VentureDex product review notes that unlike clinician scribes, it starts with the person who forgets 80% of instructions by the parking lot.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "Patient-owned visit memory",
+      "why_now": "Recent source-backed funding and public product evidence make healthtech, patient notes, care coordination worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Free patient distribution is elegant; consent norms in exam rooms are the hard part.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

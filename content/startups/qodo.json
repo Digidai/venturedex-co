@@ -28,5 +28,48 @@
       "source_url": "https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.qodo.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/03/30/qodo-bets-on-code-verification-as-ai-coding-scales-raises-70m/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Qodo: AI code review, testing, and governance for engineering teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Qodo leads with 856.5K VS Code installs, 625K JetBrains installs, and a workflow spanning IDE, PR, CLI, and rules.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Review-first AI coding workflow",
+      "why_now": "Recent source-backed funding and public product evidence make developer tools, code review, ai coding worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that model vendors eventually bundle enough verification to squeeze the middle layer.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

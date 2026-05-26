@@ -328,6 +328,53 @@ print("true" if needs_repair else "false")
 ' <<<"$parsed"
 }
 
+ensure_current_remote_schema() {
+  local output parsed missing_startup_columns=()
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+      "PRAGMA table_info(startups);" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  while IFS= read -r column; do
+    [ -n "$column" ] && missing_startup_columns+=("$column")
+  done < <(python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+columns = {row["name"] for row in payload[0]["results"]}
+for column in ["research_json"]:
+    if column not in columns:
+        print(column)
+' <<<"$parsed")
+
+  if [ "${#missing_startup_columns[@]}" -eq 0 ]; then
+    echo "Remote schema already has current startup research columns."
+    return 0
+  fi
+
+  for column in "${missing_startup_columns[@]}"; do
+    case "$column" in
+      research_json)
+        echo "Adding remote startups.research_json column..."
+        (
+          cd "$REPO_ROOT"
+          npx wrangler d1 execute "$DB_NAME" --remote --command \
+            "ALTER TABLE startups ADD COLUMN research_json TEXT;" >/dev/null
+        )
+        ;;
+      *)
+        echo "ERROR: Unknown startup schema migration: $column" >&2
+        exit 1
+        ;;
+    esac
+  done
+}
+
 repair_legacy_remote_schema() {
   (
     cd "$REPO_ROOT"
@@ -504,6 +551,7 @@ cmd_sync() {
     else
       echo "Remote schema already matches the current startup-first model."
     fi
+    ensure_current_remote_schema
     echo "Applying d1/generated-seed.sql to remote D1..."
     local output attempt=1 max_attempts=3
     while true; do
@@ -828,6 +876,7 @@ PY
 )"
 
   write_startup_json "$startup_file" "$payload_json"
+  python3 "$SCRIPT_DIR/backfill-research.py" "$slug"
 
   require_token
   "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"

@@ -26,5 +26,48 @@
       "source_url": "https://www.copilotkit.ai/blog/series-a",
       "source_name": "CopilotKit"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.copilotkit.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "CopilotKit",
+        "url": "https://www.copilotkit.ai/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes CopilotKit: Open-source framework for app-native AI agents and generative UI.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "CopilotKit exposes React and Angular SDKs, AG-UI, MCP Apps, threads, GitHub-backed docs, and a one-command npx path.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "AG-UI for app-native agents",
+      "why_now": "Recent source-backed funding and public product evidence make ai agents, generative ui, developer tools worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that protocol gravity is hard to keep once platform vendors bundle the same primitives.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

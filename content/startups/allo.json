@@ -19,8 +19,51 @@
       "stage": "Series A",
       "lead_investor": "Zigg Capital",
       "date": "2026-05-26",
-      "source_url": "https://techfundingnews.com/allo-14m-series-a-zigg-capital/",
-      "source_name": "Tech Funding News"
+      "source_url": "https://app.dealroom.co/news/feed/allo-raises-14m-series-a-led-by-zigg-capital-to-scale-ai-native-restaurant-operating-system-across-europe",
+      "source_name": "Dealroom.co"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://allo.restaurant/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Dealroom.co",
+        "url": "https://app.dealroom.co/news/feed/allo-raises-14m-series-a-led-by-zigg-capital-to-scale-ai-native-restaurant-operating-system-across-europe",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes allO: Restaurant operating system for POS, reservations, ordering, inventory, and payments.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "allO shows POS, reservations, kitchen monitor, scan-to-order, webshop, delivery, inventory, payments, and an app login for German restaurants.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Restaurant OS with POS depth",
+      "why_now": "Recent source-backed funding and public product evidence make restaurants, pos, inventory worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

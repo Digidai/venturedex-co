@@ -22,5 +22,48 @@
       "source_url": "https://arkeus.com/news/tectonic-defense-covers-arkeus-series-a-and-the-technology-giving-autonomous-systems-a-sixth-sense",
       "source_name": "Arkeus"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://arkeus.com/products/the-warden",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Arkeus",
+        "url": "https://arkeus.com/news/tectonic-defense-covers-arkeus-series-a-and-the-technology-giving-autonomous-systems-a-sixth-sense",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Arkeus: AI hyperspectral sensing systems for autonomous defense platforms.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Arkeus exposes WARDEN, HSOR, S-HSOR, and optical terminal guidance, and says its sensors detected targets up to 8x farther in degraded conditions.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "8x range in degraded vision",
+      "why_now": "Recent source-backed funding and public product evidence make defense tech, hyperspectral sensing, autonomy worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

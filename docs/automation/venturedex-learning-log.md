@@ -1604,3 +1604,33 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - GitHub recorded PushEvent head `9c3916e7e3456590f07d0084e4306a4256109d71`, but Actions API returned zero workflow runs for that SHA and `gh workflow run deploy.yml --ref main` returned GitHub API HTTP 500 twice
   - local `./scripts/manage.sh release` passed validation, regenerated a fresh 75-startup D1 seed, applied 878 queries to remote D1, deployed Worker version `d228f27e-006b-4641-9784-bf584b6c3d7f`, and passed live smoke for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`
   - direct live checks returned HTTP 200 for the five new detail pages: Flexprice, allO, Lexroom, Modal, and Certo
+
+### 2026-05-26 20:35 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: governance-and-data-backfill
+- validation: pass
+- weekly_validate: n/a
+- build_db: pass
+- build_app: pass
+- screenshot: browser_smoke_pass
+- commit_push: pass after final staged review and push
+- commit_sha: see Git commit containing this entry
+- pushed_branch: main
+- ci_deploy: to be checked after push
+- failure_tags: [none]
+- reward: 2
+- dominant_failure_mode: company detail pages and future daily additions needed a structured research layer so product evidence, market context, risks, and source trails are visible and machine-validated instead of living only in prose.
+- proposed_change: require structured startup `research` for all historical and future records, render it on detail pages, and align Daily plus Weekly automation docs with that source-bound research contract.
+- decision: applied
+- affected_file: content/startups/*.json, content/STANDARD.md, content/CODEX_TASK.md, docs/automation/README.md, docs/automation/venturedex-daily-runbook.md, docs/automation/venturedex-weekly-runbook.md, scripts/validate.py, scripts/backfill-research.py
+- affected_section: startup research schema and automation control plane
+- evidence:
+  - user explicitly requested richer company home/detail pages, historical backfill, and daily-flow updates with deep research and cross-validation.
+  - all 75 startup records now include `research` with official and funding sources, at least two source-linked product evidence claims, market context, and a risk or open question.
+  - `./scripts/validate.sh` passed with 75/75 startups and zero errors after replacing allO's unstable TechFundingNews URL with a Dealroom source for the same $14M Series A event.
+  - `./scripts/build-db.sh` generated a fresh 75-startup, 75-funding-round D1 seed; `npm run build` and `git diff --check` passed.
+  - local browser checks rendered `/startups/modal` and `/startups/allo` with Funding signal, Product evidence, Market context, Risks and open questions, and Source trail sections.

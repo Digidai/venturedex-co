@@ -22,5 +22,48 @@
       "source_url": "https://www.calcalistech.com/ctechnews/article/sj59xf5jml",
       "source_name": "CTech"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://ocean.security/platform",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "CTech",
+        "url": "https://www.calcalistech.com/ctechnews/article/sj59xf5jml",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Ocean: Agentic email security that investigates messages before they reach the inbox.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Ocean's Ray engine coordinates link, identity, file, financial, and quarantine agents, then returns an explainable verdict to employees across Microsoft 365 and Google Workspace.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Agent swarm before inbox",
+      "why_now": "Recent source-backed funding and public product evidence make cybersecurity, email security, ai agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The buyer risk is trusting an agent between fraud and false positive.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -8,6 +8,7 @@ export interface Startup {
   summary: string | null;
   long_description: string | null;
   editor_note: string | null;
+  research_json: string | null;
   editor_rating: number | null;
   why_featured: string | null;
   curator: string;
@@ -44,6 +45,36 @@ export interface StartupLinks {
   twitter?: string;
   linkedin?: string;
   producthunt?: string;
+}
+
+export interface StartupResearchSource {
+  id: string;
+  label: string;
+  url?: string;
+  type: "official" | "funding" | "product" | "repository" | "social" | "editorial";
+}
+
+export interface StartupResearchEvidence {
+  claim: string;
+  source_ids: string[];
+}
+
+export interface StartupResearchRisk {
+  claim: string;
+  basis: string;
+}
+
+export interface StartupResearch {
+  verified_at: string;
+  sources: StartupResearchSource[];
+  product_evidence: StartupResearchEvidence[];
+  market_context?: {
+    primary_user?: string;
+    category?: string;
+    differentiation?: string;
+    why_now?: string;
+  };
+  risks?: StartupResearchRisk[];
 }
 
 export interface WeeklyIssue {

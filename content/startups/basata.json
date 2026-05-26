@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.basata.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/07/the-back-office-problem-that-explains-why-specialists-never-call-you-back/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Basata: AI referral intake and call handling for specialty practices.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Basata processes faxes, creates EHR charts, calls patients with voice agents, and claims 500,000 referrals processed with 100,000 in the last month.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "$21M Series A for referral ops",
+      "why_now": "Recent source-backed funding and public product evidence make healthcare ai, referrals, voice agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is how much specialty-specific workflow knowledge has to be rebuilt practice by practice.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -24,5 +24,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/amperos-health-secures-16m-investment-as-it-launches-industrys-first-ai-native-denial-management-and-revenue-recovery-platform-302749446.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.amperos.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/amperos-health-secures-16m-investment-as-it-launches-industrys-first-ai-native-denial-management-and-revenue-recovery-platform-302749446.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Amperos: AI denial management and insurance collections for providers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Amperos works claims from submission to payment, with AI agents handling payor portals, calls, corrected claims, records, and appeals while RCM specialists cover hard cases.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "$16M Series A for AI denials",
+      "why_now": "Recent source-backed funding and public product evidence make healthcare ai, denial management, revenue cycle worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is healthcare edge cases pulling humans back into the loop.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

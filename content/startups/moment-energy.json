@@ -25,5 +25,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/moment-energy-raises-us40m-series-b-to-build-the-worlds-largest-second-life-battery-factory-302762579.html",
       "source_name": "PRNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.momentenergy.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PRNewswire",
+        "url": "https://www.prnewswire.com/news-releases/moment-energy-raises-us40m-series-b-to-build-the-worlds-largest-second-life-battery-factory-302762579.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Moment Energy: Second-life EV battery storage systems for commercial sites.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Moment Energy leads with Luna BESS, UL 1974 and UL 9540A certifications, supply ties to Mercedes-Benz and Nissan, and an Austin factory plan.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Climate, infrastructure, or operations teams evaluating measurable sustainability workflows.",
+      "category": "Climate / Sustainability",
+      "differentiation": "Certified second-life BESS",
+      "why_now": "Recent source-backed funding and public product evidence make battery storage, climate, energy infrastructure worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

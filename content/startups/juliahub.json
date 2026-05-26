@@ -22,5 +22,48 @@
       "source_url": "https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0",
       "source_name": "JuliaHub"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://juliahub.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "JuliaHub",
+        "url": "https://juliahub.com/blog/juliahub-raises-65m-series-b-launches-dyad-3.0",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes JuliaHub: Agentic simulation and digital-twin tooling for hardware engineering teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Someone finally treated engineering simulation like a software workflow, not a CAD afterthought.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "$65M Series B for Dyad 3.0",
+      "why_now": "Recent source-backed funding and public product evidence make scientific ai, simulation, digital twins worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether that craft reaches engineers outside the Julia faithful.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

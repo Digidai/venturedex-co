@@ -24,5 +24,48 @@
       "source_url": "https://thenextweb.com/news/all3-25m-seed-construction-robots-ai-housing",
       "source_name": "TNW"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.all3.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TNW",
+        "url": "https://thenextweb.com/news/all3-25m-seed-construction-robots-ai-housing",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes All3: AI design, robotic fabrication, and on-site assembly for buildings.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "VentureDex product review notes that unlike prefab software, All3 is trying the harder route: AI-generated architecture, real-time fabrication software, timber components, and Mantis robots that install, fasten, finish, and inspect on site.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "$25M Seed for construction robots",
+      "why_now": "Recent source-backed funding and public product evidence make construction robotics, physical ai, robotic manufacturing worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether vertical integration survives permits and messy sites.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

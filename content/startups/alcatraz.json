@@ -22,5 +22,48 @@
       "source_url": "https://www.alcatraz.ai/press-release/alcatraz-raises-50-million-series-b",
       "source_name": "Alcatraz"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.alcatraz.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Alcatraz",
+        "url": "https://www.alcatraz.ai/press-release/alcatraz-raises-50-million-series-b",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Alcatraz: Privacy-focused facial authentication for physical access control and tailgating detection.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Alcatraz turns Face ID into building access with Rock X, edge authentication, 3D liveness, tailgating detection, and opt-in enrollment; it says 5M employees are protected.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operators evaluating a specialized workflow where the product surface is visible.",
+      "category": "Other",
+      "differentiation": "Face ID for secure buildings",
+      "why_now": "Recent source-backed funding and public product evidence make physical security, biometrics, ai infrastructure worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether buyers trust the privacy distinction once regulators get involved.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

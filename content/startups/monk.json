@@ -22,5 +22,48 @@
       "source_url": "https://monk.com/blog/monk-raises-25m",
       "source_name": "Monk"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://monk.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Monk",
+        "url": "https://monk.com/blog/monk-raises-25m",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Monk: AI accounts receivable platform for invoices, collections, cash application, and disputes.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The smart move is treating accounts receivable as customer infrastructure, not back-office nagging.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "AR edge cases, not reminders",
+      "why_now": "Recent source-backed funding and public product evidence make accounts receivable, finance automation, ai agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that services-heavy onboarding hides how much of the product is software.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

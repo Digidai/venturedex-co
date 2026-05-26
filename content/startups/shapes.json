@@ -25,5 +25,48 @@
       "source_url": "https://techcrunch.com/2026/04/29/meet-shapes-the-app-bringing-humans-and-ai-into-the-same-group-chats/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://talk.shapes.inc",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/04/29/meet-shapes-the-app-bringing-humans-and-ai-into-the-same-group-chats/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Shapes: Social AI chat app where people and bots share group conversations.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Most AI companion apps trap users in one-on-one confession booths; this points the format back toward messy group chat.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "AI companions in group chat",
+      "why_now": "Recent source-backed funding and public product evidence make social ai, chat, consumer worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is moderation: social AI gets more interesting exactly where it gets harder to keep safe.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -22,5 +22,48 @@
       "source_url": "https://commercialobserver.com/2026/05/multifamily-deal-diligence-rely-fundraise/",
       "source_name": "Commercial Observer"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://tryrely.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Commercial Observer",
+        "url": "https://commercialobserver.com/2026/05/multifamily-deal-diligence-rely-fundraise/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Rely: AI diligence automation for multifamily lease, vendor, utility, and financial audits.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Rely ingests multifamily leases, vendor contracts, utilities, and financial files, then exports source-linked audit tables in under 30 minutes for most reviews.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Under-30-minute audits",
+      "why_now": "Recent source-backed funding and public product evidence make proptech, due diligence, document ai worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether lenders and operators trust the model when a single bad cell changes a deal.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

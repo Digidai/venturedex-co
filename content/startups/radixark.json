@@ -24,5 +24,48 @@
       "source_url": "https://www.radixark.com/blog/radixark-launches-100m-seed",
       "source_name": "RadixArk"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.radixark.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "RadixArk",
+        "url": "https://www.radixark.com/blog/radixark-launches-100m-seed",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes RadixArk: Open inference and training infrastructure for frontier AI.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "RadixArk starts from SGLang for inference and Miles for post-training, with SGLang already powering trillions of tokens daily across teams like Google, NVIDIA, Oracle, AMD, LinkedIn, and xAI.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "$100M seed for SGLang infra",
+      "why_now": "Recent source-backed funding and public product evidence make ai infrastructure, inference, open source worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is turning open-source gravity into a managed product without slowing the community.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

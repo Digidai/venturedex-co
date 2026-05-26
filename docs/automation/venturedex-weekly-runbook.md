@@ -19,6 +19,7 @@ Automation must never rewrite this section.
 - Weekly issues use already published `content/startups/*.json` records.
 - The weekly workflow may create or update `content/weekly/*.json`; it must not add new startups.
 - Published weekly issues must not contain TODO text.
+- Published weekly issues should use the startup record's structured `research` block when available, especially `product_evidence`, `market_context`, `risks`, and `sources`.
 - Published weekly evaluations must be source-bound. Do not infer users, revenue, retention, market share, customer migrations, reliability, or benchmark claims unless a cited source states them.
 - If evidence is insufficient, keep the issue as `status: draft` or defer the claim.
 - Browser-driven source checks must use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow.
@@ -39,7 +40,7 @@ Automation must never rewrite this section.
    ```
 
 3. Review candidate picks. Prioritize startups newly added or updated in the week; if fewer than 5 qualify, add related high-rating published startups and explain the theme link.
-4. For every pick, review the VentureDex startup file, official product surface, and linked source URLs.
+4. For every pick, review the VentureDex startup file, its `research` block, official product surface, and linked source URLs.
 5. Write `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`.
 6. Remove every TODO and set:
 
@@ -70,7 +71,7 @@ Automation must never rewrite this section.
 
 ## Review Passes
 
-1. Source: every factual claim links back to a VentureDex record, official page, or cited source.
+1. Source: every factual claim links back to a VentureDex record, structured startup research entry, official page, or cited source.
 2. Scope: no new startup, logo, screenshot, schema, or deployment change is mixed into a weekly content PR unless explicitly requested by a human.
 3. Objectivity: the issue states evidence gaps instead of guessing.
 4. Theme: the 5-7 picks share a real product or market pattern.

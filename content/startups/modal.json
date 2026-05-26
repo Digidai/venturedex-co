@@ -22,5 +22,48 @@
       "source_url": "https://modal.com/blog/modal-series-c",
       "source_name": "Modal"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://modal.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Modal",
+        "url": "https://modal.com/blog/modal-series-c",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Modal: Serverless compute platform for AI, GPU, sandbox, training, and data workloads.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Modal shows Python-defined cloud environments, docs, pricing, inference, training, sandboxes, 1000+ GPU autoscaling, and customer proof from Runway, Suno, and Physical Intelligence.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Serverless GPU infra for AI",
+      "why_now": "Recent source-backed funding and public product evidence make ai infrastructure, gpu, serverless worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

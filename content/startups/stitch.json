@@ -22,5 +22,48 @@
       "source_url": "https://www.stitch.co/press/stitch-raises-25m-series-a-led-by-andreessen-horowitz",
       "source_name": "Stitch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.stitch.co",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Stitch",
+        "url": "https://www.stitch.co/press/stitch-raises-25m-series-a-led-by-andreessen-horowitz",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Stitch: Financial infrastructure OS for banks and fintechs.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Stitch exposes lending, cards, deposits, ledgers, applications, and live loan UI states, with $5B transacted in six months.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "$5B transacted in six months",
+      "why_now": "Recent source-backed funding and public product evidence make financial infrastructure, core banking, ledgers worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The hard part is selling core infrastructure without inheriting every legacy edge case.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

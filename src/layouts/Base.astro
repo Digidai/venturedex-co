@@ -263,18 +263,32 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         .header-inner {
           flex-wrap: wrap;
           gap: var(--space-3);
+          align-items: flex-start;
+        }
+
+        .header-inner > nav {
+          order: 3;
+          width: 100%;
+          min-width: 0;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+        }
+
+        .header-inner > nav::-webkit-scrollbar {
+          display: none;
         }
 
         .nav-tabs {
-          order: 3;
-          width: 100%;
-          justify-content: center;
+          display: inline-flex;
+          min-width: 100%;
         }
 
         .nav-tab {
-          flex: 1;
+          flex: 0 0 auto;
           text-align: center;
           font-size: 0.75rem;
+          padding: var(--space-2) var(--space-3);
         }
 
         .header-cta {

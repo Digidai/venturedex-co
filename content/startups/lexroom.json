@@ -22,5 +22,48 @@
       "source_url": "https://techfundingnews.com/harvey-rival-lexroom-raises-50m-to-power-ai-for-europes-one-million-lawyers/",
       "source_name": "Tech Funding News"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://lexroom.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tech Funding News",
+        "url": "https://techfundingnews.com/harvey-rival-lexroom-raises-50m-to-power-ai-for-europes-one-million-lawyers/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Lexroom: Legal AI workspace for source-backed research, drafting, and private firm libraries.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Lexroom shows official-source research, document comparison, clause drafting, private libraries, original judgments, pricing, and more than 10,000 professional users.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Source-backed legal AI",
+      "why_now": "Recent source-backed funding and public product evidence make legal ai, document drafting, research worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "Continued tracking should verify whether the public product evidence turns into durable customer adoption beyond the currently visible surface.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

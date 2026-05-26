@@ -20,5 +20,48 @@
       "source_url": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://config.inc/product",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/11/koreas-biggest-manufacturers-back-config-the-tsmc-of-robot-data/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Config: Robot training-data platform for robotics foundation models.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Config's platform walks from gripper design to data strategy, acquisition, labeling, action estimation, model training, and evaluation; CFG-1 claims 100K in-house human-data hours, 2B parameters, and sub-50ms RTX 5090 latency.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "100K hours of robot data",
+      "why_now": "Recent source-backed funding and public product evidence make robotics, training data, foundation models worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that customers still need proof on their own factory tasks.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

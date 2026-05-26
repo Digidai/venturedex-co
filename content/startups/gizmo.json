@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://gizmo.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/04/15/ai-learning-app-gizmo-levels-up-with-13m-users-and-a-22m-investment/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Gizmo: AI study app that turns notes into flashcards, quizzes, and streak-based learning loops.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Gizmo pairs AI-generated flashcards with streaks, leaderboards, limited lives, and social challenges; it reaches 13 million users in 120 countries.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Learners, educators, or training teams evaluating learning and study workflows.",
+      "category": "EdTech",
+      "differentiation": "TikTok loops for studying",
+      "why_now": "Recent source-backed funding and public product evidence make education, study tools, flashcards worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that engagement mechanics outrun learning depth once the novelty wears off.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

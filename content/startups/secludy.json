@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/13/3294051/0/en/secludy-raises-4m-to-safely-unlock-proprietary-data-for-genai.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://secludy.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/13/3294051/0/en/secludy-raises-4m-to-safely-unlock-proprietary-data-for-genai.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Secludy: Privacy-safe synthetic data for regulated AI training.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Secludy shows differential-privacy presets, text and table anonymization examples, canary PII leakage tests, self-hosted VPC/on-prem deployment, and a claimed under-1-hour setup.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "$4M seed for DP synthetic data",
+      "why_now": "Recent source-backed funding and public product evidence make synthetic data, privacy, ai training worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that privacy budgets become another specialist bottleneck.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

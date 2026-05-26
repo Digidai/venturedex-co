@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://agent.askethos.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/06/ethos-raises-22-75m-from-a16z-for-its-expert-network-with-voice-onboarding/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Ethos: AI-matched expert network with voice-based onboarding.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Ethos uses voice onboarding, public-source enrichment, paid opportunity cards, and 35,000 weekly expert joins to build a deeper matching layer.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Supply-and-demand operators evaluating marketplace coordination workflows.",
+      "category": "Marketplace",
+      "differentiation": "35K experts joining each week",
+      "why_now": "Recent source-backed funding and public product evidence make expert network, ai matching, voice onboarding worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is quality control once the network scales faster than its eight-person team.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

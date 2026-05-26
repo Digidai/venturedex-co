@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/21/3299278/0/en/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://home.pivotapp.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/21/3299278/0/en/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Pivot: AI procurement OS for intake, committed spend, workflows, and negotiation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Pivot exposes request workflows, committed-spend visibility, AI Studio, ERP connections, and source-to-pay automation for buyers like DoorDash and Lemonade.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
+      "category": "SaaS",
+      "differentiation": "Procurement agents with controls",
+      "why_now": "Recent source-backed funding and public product evidence make procurement, ai agents, erp worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether legacy procurement data is clean enough for agents to act.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -22,5 +22,48 @@
       "source_url": "https://www.texturehq.com/blog/texture-series-a",
       "source_name": "Texture"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.texturehq.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Texture",
+        "url": "https://www.texturehq.com/blog/texture-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Texture: Grid operating system for DER visibility, dispatch, telemetry, and settlements.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Texture models source AMI and SCADA data across devices, meters, transformers, and feeders, then runs dispatch, telemetry, notifications, and settlement workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Climate, infrastructure, or operations teams evaluating measurable sustainability workflows.",
+      "category": "Climate / Sustainability",
+      "differentiation": "Live grid operations OS",
+      "why_now": "Recent source-backed funding and public product evidence make energy, grid operations, climate worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is integration drag across every local grid stack.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

@@ -25,5 +25,48 @@
       "source_url": "https://techcrunch.com/2026/05/20/nanoclaw-creator-turns-down-20m-buyout-offer-raises-12m-seed-instead/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://nanoclaw.dev/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/20/nanoclaw-creator-turns-down-20m-buyout-offer-raises-12m-seed-instead/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes NanoClaw: Container-isolated personal AI agent with messaging channels and per-agent workspaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "NanoClaw exposes a Node host, per-agent Docker containers, per-session SQLite files, multi-channel skills, and Agent Vault credential injection.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and engineering teams evaluating build, deployment, or infrastructure workflows.",
+      "category": "DevTools",
+      "differentiation": "Per-agent Docker isolation",
+      "why_now": "Recent source-backed funding and public product evidence make ai agents, developer tools, security worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether implementation services pull it away from the open-source simplicity that made it spread.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

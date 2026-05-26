@@ -22,5 +22,48 @@
       "source_url": "https://www.globenewswire.com/news-release/2026/05/19/3297569/0/en/Moment-Raises-78-Million-as-Largest-Wealth-Firms-Standardize-on-its-AI-Operating-System-for-Investment-Management.html",
       "source_name": "GlobeNewswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://moment.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/19/3297569/0/en/Moment-Raises-78-Million-as-Largest-Wealth-Firms-Standardize-on-its-AI-Operating-System-for-Investment-Management.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Moment: AI operating system for investment managers, advisors, portfolios, and trades.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Moment's memo shows agents for proposals, restrictions, cash redemption, trade ideas, execution quality, reconciliation failures, and source data.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "AI OS for portfolio work",
+      "why_now": "Recent source-backed funding and public product evidence make fintech, investment management, ai agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether large firms let the OS become the workflow of record.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

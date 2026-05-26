@@ -63,13 +63,14 @@ for path in startup_files:
 
     startup_rows.append(
         "INSERT INTO startups ("
-        "id, slug, domain, canonical_url, product_name, summary, editor_note, editor_rating, "
+        "id, slug, domain, canonical_url, product_name, summary, editor_note, research_json, editor_rating, "
         "why_featured, product_type, funding_stage, funding_display, founded_year, team_size, "
         "hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, "
         "screenshot_status, workflow_status, codex_stage, first_seen_at, published_at"
         ") VALUES ("
         f"{sql(startup_id)}, {sql(slug)}, {sql(domain)}, {sql(url)}, {sql(data['product_name'])}, "
         f"{sql(data.get('summary'))}, {sql(data.get('editor_note'))}, "
+        f"{sql(json.dumps(data.get('research'), ensure_ascii=False) if data.get('research') else None)}, "
         f"{data.get('editor_rating') if data.get('editor_rating') is not None else 'NULL'}, {sql(data.get('why_featured'))}, "
         f"{sql(data.get('product_type'))}, {sql(latest_round.get('stage', ''))}, "
         f"{sql(latest_round.get('amount', ''))}, {data.get('founded_year') if data.get('founded_year') is not None else 'NULL'}, "
@@ -85,6 +86,7 @@ for path in startup_files:
         "product_name = excluded.product_name, "
         "summary = excluded.summary, "
         "editor_note = excluded.editor_note, "
+        "research_json = excluded.research_json, "
         "editor_rating = excluded.editor_rating, "
         "why_featured = excluded.why_featured, "
         "product_type = excluded.product_type, "

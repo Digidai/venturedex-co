@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/enzo-health-raises-26m-to-deploy-ai-across-home-health-to-meet-unprecedented-nationwide-demand-for-post-acute-care-302760538.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.enzo.health",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/enzo-health-raises-26m-to-deploy-ai-across-home-health-to-meet-unprecedented-nationwide-demand-for-post-acute-care-302760538.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Enzo Health: Home health intake, scribe, and QA workflows with AI.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Enzo shows Intake, Scribe, and QA modules with OASIS validation, referral checks, secure messaging, and 5-minute intake-to-admission claims.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
+      "category": "HealthTech",
+      "differentiation": "$20M Series A for home health AI",
+      "why_now": "Recent source-backed funding and public product evidence make home health, clinical documentation, intake worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is integrating deeply enough with fragmented agency systems.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

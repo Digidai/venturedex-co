@@ -73,6 +73,22 @@ export async function getStartupBySlug(
   return result;
 }
 
+export async function getFundingRoundsForStartup(
+  db: D1Database,
+  slug: string
+): Promise<FundingRound[]> {
+  const result = await db
+    .prepare(
+      `SELECT * FROM funding_rounds
+       WHERE company_slug = ?
+       ORDER BY date DESC, created_at DESC`
+    )
+    .bind(slug)
+    .all<FundingRound>();
+
+  return result.results;
+}
+
 export async function getRelatedStartups(
   db: D1Database,
   startup: Startup,

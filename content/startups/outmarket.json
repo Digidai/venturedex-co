@@ -22,5 +22,48 @@
       "source_url": "https://www.prnewswire.com/news-releases/outmarket-ai-raises-17m-series-a-to-power-the-intelligence-era-of-insurance-302770379.html",
       "source_name": "PR Newswire"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://outmarket.ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/outmarket-ai-raises-17m-series-a-to-power-the-intelligence-era-of-insurance-302770379.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Outmarket: AI workflow platform for insurance brokerages.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Outmarket shows quote comparison, gap analysis, ACORD forms, AMS360/Applied Epic integrations, 250+ agencies, and 12-15 hours saved per person each week.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, banking, or payments teams evaluating regulated transaction workflows.",
+      "category": "Fintech",
+      "differentiation": "250+ agencies, $17M Series A",
+      "why_now": "Recent source-backed funding and public product evidence make insurance, ai workflows, brokerages worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether specialty lines keep needing human edge cases.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }

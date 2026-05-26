@@ -22,5 +22,48 @@
       "source_url": "https://techcrunch.com/2026/05/19/legal-tech-announced-stilta-announces-10m-seed-backed-by-yc-and-a16z-months-after-launch/",
       "source_name": "TechCrunch"
     }
-  ]
+  ],
+  "research": {
+    "verified_at": "2026-05-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.stilta.com",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/19/legal-tech-announced-stilta-announces-10m-seed-backed-by-yc-and-a16z-months-after-launch/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official product positioning describes Stilta: AI agents for patent invalidity, infringement, and freedom-to-operate analysis.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Stilta breaks work into infringement, invalidity, and FTO modules, then maps claim elements to patents, scientific literature, and archived web sources.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "category": "AI / ML",
+      "differentiation": "Patent claim evidence maps",
+      "why_now": "Recent source-backed funding and public product evidence make legal tech, patents, ai agents worth tracking."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether benchmark recall survives hostile expert review.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
 }
