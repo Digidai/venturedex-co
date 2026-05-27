@@ -1,0 +1,82 @@
+{
+  "slug": "openrouter",
+  "domain": "openrouter.ai",
+  "url": "https://openrouter.ai/",
+  "product_name": "OpenRouter",
+  "summary": "Unified API gateway for hundreds of AI models, routing, fallbacks, SDKs, and agent tooling.",
+  "editor_note": "The bet is that model choice should be a runtime decision, not a vendor marriage. OpenRouter exposes hundreds of models through one `/api/v1/chat/completions` endpoint, SDKs, fallbacks, provider routing, model variants, and agent tooling. Unlike teams hard-coding a single lab, it turns the model layer into a market with controls for cost, latency, and availability.",
+  "editor_rating": 5,
+  "why_featured": "Multi-model API gateway",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai models,api,gateway,routing,developer tools",
+  "investors": "CapitalG",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$113M",
+      "stage": "Series B",
+      "lead_investor": "CapitalG",
+      "date": "2026-05-26",
+      "source_url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-27",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://openrouter.ai/",
+        "type": "official"
+      },
+      {
+        "id": "docs_quickstart",
+        "label": "OpenRouter quickstart docs",
+        "url": "https://openrouter.ai/docs/quickstart",
+        "type": "product"
+      },
+      {
+        "id": "models_catalog",
+        "label": "OpenRouter models catalog",
+        "url": "https://openrouter.ai/models",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/05/26/openrouter-more-than-doubles-valuation-to-1-3b-in-a-year/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Quickstart docs describe a unified API for hundreds of AI models through one endpoint with automatic fallbacks and cost-aware selection.",
+        "source_ids": [
+          "docs_quickstart"
+        ]
+      },
+      {
+        "claim": "Docs and product navigation show chat completions, Client SDKs, Agent SDK, OpenAI SDK compatibility, routing controls, and a public models catalog.",
+        "source_ids": [
+          "docs_quickstart",
+          "models_catalog"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and AI product teams routing model calls across providers.",
+      "category": "DevTools",
+      "differentiation": "Runtime model routing across hundreds of providers rather than a single-model integration.",
+      "why_now": "TechCrunch's May 26, 2026 Series B report says CapitalG led the round as inference and agent workloads push teams toward swappable model gateways."
+    },
+    "risks": [
+      {
+        "claim": "The moat depends on developers valuing neutral routing enough to resist direct provider discounts, native cloud integrations, or model-lab lock-in.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

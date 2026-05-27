@@ -467,5 +467,12 @@
     "short_name": "daphni",
     "website": "https://www.daphni.com",
     "description": "Paris-based venture capital firm investing in European technology founders from seed through growth."
+  },
+  "capitalg": {
+    "name": "CapitalG",
+    "slug": "capitalg",
+    "short_name": "CapitalG",
+    "website": "https://capitalg.com",
+    "description": "Alphabet's independent growth fund backing technology companies from growth stage through long-term scale."
   }
 }

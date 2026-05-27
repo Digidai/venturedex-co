@@ -1,0 +1,81 @@
+{
+  "slug": "exa",
+  "domain": "exa.ai",
+  "url": "https://exa.ai/",
+  "product_name": "Exa",
+  "summary": "Search API, content extraction, answer, research, and vertical indexes built for AI agents.",
+  "editor_note": "The bet is that agents need a search engine built for machines rather than a prettier SERP for humans. Exa exposes `/search`, `/contents`, `/answer`, research APIs, category indexes for companies, people, papers, and news, and latency tiers down to ~250 ms. Unlike wrappers over Google or Bing, it is building the crawler, embeddings, and vector databases itself.",
+  "editor_rating": 5,
+  "why_featured": "Agent-native search API",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai search,api,agents,retrieval,web crawling",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$250M",
+      "stage": "Series C",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-05-20",
+      "source_url": "https://exa.ai/blog/announcing-series-c",
+      "source_name": "Exa"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-27",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://exa.ai/",
+        "type": "official"
+      },
+      {
+        "id": "docs_search",
+        "label": "Exa Search API docs",
+        "url": "https://exa.ai/docs/reference/search-api-guide",
+        "type": "product"
+      },
+      {
+        "id": "docs_getting_started",
+        "label": "Exa API overview docs",
+        "url": "https://exa.ai/docs/reference/getting-started",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Exa",
+        "url": "https://exa.ai/blog/announcing-series-c",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Docs describe four core API surfaces: `/search`, `/contents`, `/answer`, and `/research` for retrieval, parsed content, answers, and cited structured research.",
+        "source_ids": [
+          "docs_getting_started"
+        ]
+      },
+      {
+        "claim": "The Search API guide lists latency-tiered search modes, token-efficient highlights, and category indexes for companies, people, research papers, and news.",
+        "source_ids": [
+          "docs_search"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers building agents, RAG workflows, research tools, and AI products that need web retrieval.",
+      "category": "DevTools",
+      "differentiation": "Own crawler and embedding models for agent search instead of wrapping Google or Bing results.",
+      "why_now": "Exa's May 20, 2026 Series C announcement says a16z led a $250M round to scale search infrastructure for AI agents."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether independent search infrastructure can keep quality, latency, and cost advantages as model labs and cloud platforms add native retrieval.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
