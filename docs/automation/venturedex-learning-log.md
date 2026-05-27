@@ -1647,11 +1647,11 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - build_db: pass
 - build_app: pass
 - screenshot: pass after iteration; standard capture flagged non-modal layout layers, then `bb-browser` and Playwright inspection confirmed OpenRouter's empty `pointer-events-none` decoration and Exa's sticky footer were false positives; clean 1440x900 WebP assets were captured locally, with R2 skipped because bootstrap reported no R2 permission
-- commit_push: pending final push
-- commit_sha: 4d14e75; docs commit contains this entry
-- pushed_branch: pending final push
-- ci_deploy: to be checked after push
-- live_smoke: to be checked after deploy
+- commit_push: pass
+- commit_sha: 4d14e75, 20b13c0
+- pushed_branch: main
+- ci_deploy: pass; GitHub Actions Validate `26494255000` and Deploy `26494254997` passed for head `20b13c0`
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 77 published startups, and direct live checks returned HTTP 200 for `/startups/openrouter` and `/startups/exa`
 - failure_tags: [screenshot_env, other]
 - reward: 3
 - dominant_failure_mode: screenshot detection is conservative around fixed or sticky layout layers, and rejected-only history disallows duplicate slugs even when a newer source changes the reason for reconsideration.
@@ -1668,3 +1668,4 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - newly rejected Human Archive, Stord, Pacifico Biolabs, Caudal Energy, SendCutSend, ReVision Implant, and Quanscient for stage, currency, lead-investor, pre-commercial, or schema-fit reasons; Scapia was reconsidered from a newer source but not appended because the validator enforces unique rejected slugs.
   - local gates passed after the duplicate-slug fix: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`.
   - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build.
+  - content commit `4d14e75` and learning-log commit `20b13c0` were pushed to `main`; GitHub Actions passed for Validate `26494255000` and Deploy `26494254997`, then live smoke and direct detail-page checks passed.
