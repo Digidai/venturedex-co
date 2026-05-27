@@ -1634,3 +1634,37 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `./scripts/validate.sh` passed with 75/75 startups and zero errors after replacing allO's unstable TechFundingNews URL with a Dealroom source for the same $14M Series A event.
   - `./scripts/build-db.sh` generated a fresh 75-startup, 75-funding-round D1 seed; `npm run build` and `git diff --check` passed.
   - local browser checks rendered `/startups/modal` and `/startups/allo` with Funding signal, Product evidence, Market context, Risks and open questions, and Source trail sections.
+
+### 2026-05-27 14:12 CST
+
+- candidate_count: 24
+- accepted: 2
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: content-updated
+- validation: pass after iteration; first run failed on a duplicate `scapia` rejection slug, so the newer Scapia reconsideration was treated as already covered and not appended
+- weekly_validate: n/a
+- build_db: pass
+- build_app: pass
+- screenshot: pass after iteration; standard capture flagged non-modal layout layers, then `bb-browser` and Playwright inspection confirmed OpenRouter's empty `pointer-events-none` decoration and Exa's sticky footer were false positives; clean 1440x900 WebP assets were captured locally, with R2 skipped because bootstrap reported no R2 permission
+- commit_push: pending final push
+- commit_sha: 4d14e75; docs commit contains this entry
+- pushed_branch: pending final push
+- ci_deploy: to be checked after push
+- live_smoke: to be checked after deploy
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot detection is conservative around fixed or sticky layout layers, and rejected-only history disallows duplicate slugs even when a newer source changes the reason for reconsideration.
+- proposed_change: none; current runbook already covers screenshot candidate inspection, manual clean recapture, and avoiding duplicate rejected slugs after validator feedback.
+- decision: none
+- affected_file: content/startups/openrouter.json, content/startups/exa.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - `bb-browser` daemon initially had stale CDP state; Comet was listening on `127.0.0.1:19825`, so the daemon was restarted and product verification continued with CDP connected.
+  - accepted OpenRouter from TechCrunch's May 26, 2026 $113M Series B led by CapitalG; official docs verified the unified `/api/v1/chat/completions` API, hundreds of models, fallbacks, SDKs, agent tooling, and OpenAI SDK compatibility.
+  - accepted Exa from its official May 20, 2026 $250M Series C announcement led by a16z; `bb-browser` and official docs verified the agent-oriented search API, content extraction, answer/research surfaces, category filters, and crawler/search positioning.
+  - added CapitalG to the investor directory and added official logo assets for OpenRouter, Exa, and CapitalG.
+  - newly rejected Human Archive, Stord, Pacifico Biolabs, Caudal Energy, SendCutSend, ReVision Implant, and Quanscient for stage, currency, lead-investor, pre-commercial, or schema-fit reasons; Scapia was reconsidered from a newer source but not appended because the validator enforces unique rejected slugs.
+  - local gates passed after the duplicate-slug fix: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`.
+  - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build.
