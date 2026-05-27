@@ -648,21 +648,21 @@ check_newsletter_release_preflight() {
     cd "$REPO_ROOT"
     dry_run_output="$(npx wrangler deploy --dry-run --outdir /tmp/venturedex-newsletter-preflight 2>&1)"
     printf '%s\n' "$dry_run_output"
-    if ! printf '%s\n' "$dry_run_output" | rg -q "env.EMAIL"; then
+    if ! printf '%s\n' "$dry_run_output" | grep -F -q "env.EMAIL"; then
       echo "ERROR: Newsletter preflight did not find Cloudflare Email binding env.EMAIL." >&2
       exit 1
     fi
-    if ! printf '%s\n' "$dry_run_output" | rg -q "env.NEWSLETTER_DELIVERY_QUEUE"; then
+    if ! printf '%s\n' "$dry_run_output" | grep -F -q "env.NEWSLETTER_DELIVERY_QUEUE"; then
       echo "ERROR: Newsletter preflight did not find Queue binding env.NEWSLETTER_DELIVERY_QUEUE." >&2
       exit 1
     fi
 
     secrets_output="$(npx wrangler secret list --format json 2>&1)"
-    if ! printf '%s\n' "$secrets_output" | rg -q '"NEWSLETTER_ADMIN_TOKEN"'; then
+    if ! printf '%s\n' "$secrets_output" | grep -F -q '"NEWSLETTER_ADMIN_TOKEN"'; then
       echo "ERROR: Missing Cloudflare secret NEWSLETTER_ADMIN_TOKEN." >&2
       exit 1
     fi
-    if ! printf '%s\n' "$secrets_output" | rg -q '"NEWSLETTER_MAILING_ADDRESS"'; then
+    if ! printf '%s\n' "$secrets_output" | grep -F -q '"NEWSLETTER_MAILING_ADDRESS"'; then
       echo "ERROR: Missing Cloudflare secret NEWSLETTER_MAILING_ADDRESS." >&2
       exit 1
     fi
@@ -742,7 +742,7 @@ cmd_sync() {
 
       printf '%s\n' "$output"
 
-      if printf '%s' "$output" | rg -qi "timed out|network connectivity issues|slow network speeds"; then
+      if printf '%s' "$output" | grep -E -qi "timed out|network connectivity issues|slow network speeds"; then
         if [ "$attempt" -lt "$max_attempts" ]; then
           echo "Remote D1 sync timed out. Retrying ($attempt/$max_attempts)..." >&2
           attempt=$((attempt + 1))
@@ -758,7 +758,7 @@ EOF
         exit 1
       fi
 
-      if printf '%s' "$output" | rg -qi "10000|Authentication error|not authorized|permissions"; then
+      if printf '%s' "$output" | grep -E -qi "10000|Authentication error|not authorized|permissions"; then
         cat <<'EOF' >&2
 
 ERROR: Remote D1 sync failed due to Cloudflare permissions.
