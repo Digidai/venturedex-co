@@ -1,0 +1,228 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import {
+  buildCloudflareEmailMessage,
+  buildDailyDigestContent,
+  buildWeeklyDigestContent,
+  normalizeEmail,
+  parseNewsletterPreferences,
+  parseNewsletterPreferencesFromForm,
+  renderNewsletterPreview,
+  validateCloudflareEmailMessage,
+} from "../src/lib/newsletter";
+import type { Startup, StartupResearch } from "../src/lib/types";
+import type { WeeklyIssueContent } from "../src/lib/weekly";
+
+const startup: Startup = {
+  id: "startup-example",
+  slug: "example-ai",
+  domain: "example.ai",
+  canonical_url: "https://example.ai",
+  product_name: "Example AI",
+  title: null,
+  summary: "Agent workspace for regulated operators.",
+  long_description: null,
+  editor_note: "Example AI turns compliance review into a daily operating workflow instead of a quarterly scramble.",
+  research_json: null,
+  editor_rating: 4,
+  why_featured: "Compliance workflow wedge",
+  curator: "dai",
+  product_type: "SaaS",
+  funding_stage: "Seed",
+  funding_display: "$4M",
+  founded_year: null,
+  team_size: null,
+  hq_location: null,
+  region: "US",
+  framework: null,
+  runtime_status: "live",
+  workflow_status: "published",
+  codex_stage: "manual",
+  screenshot_r2_key: "example-ai.webp",
+  screenshot_status: "ready",
+  og_image_r2_key: null,
+  founder_name: null,
+  founder_quote: null,
+  founder_responded_at: null,
+  first_seen_at: "2026-05-27 10:00:00",
+  last_checked_at: null,
+  published_at: "2026-05-27 10:00:00",
+  investors: "Useful Ventures",
+  links_json: null,
+  tags: "compliance,workflow",
+  is_featured: 1,
+  created_at: "2026-05-27 10:00:00",
+  updated_at: "2026-05-27 10:00:00",
+};
+
+const research: StartupResearch = {
+  verified_at: "2026-05-27",
+  sources: [{ id: "official", label: "Official site", url: "https://example.ai", type: "official" }],
+  product_evidence: [
+    {
+      claim: "The product exposes review queues, policy evidence, and approvals in one workspace.",
+      source_ids: ["official"],
+    },
+  ],
+  market_context: {
+    why_now: "Regulated teams need operational evidence before audits.",
+  },
+  risks: [
+    {
+      claim: "The open question is whether a workflow wedge expands beyond early compliance teams.",
+      basis: "Editorial assessment.",
+    },
+  ],
+};
+
+test("normalizes valid emails and rejects malformed addresses", () => {
+  assert.equal(normalizeEmail("  PERSON@Example.COM "), "person@example.com");
+  assert.equal(normalizeEmail("missing-at"), null);
+  assert.equal(normalizeEmail("a@b"), null);
+});
+
+test("defaults newsletter preferences to both products when input is empty or all false", () => {
+  assert.deepEqual(parseNewsletterPreferences({}), { daily: true, weekly: true });
+  assert.deepEqual(parseNewsletterPreferences({ daily: false, weekly: false }), { daily: true, weekly: true });
+  assert.throws(
+    () => parseNewsletterPreferences({ daily: false, weekly: false }, { rejectEmptySelection: true }),
+    /Choose at least one newsletter/
+  );
+  assert.deepEqual(parseNewsletterPreferences({ daily: "on", weekly: "off" }), { daily: true, weekly: false });
+});
+
+test("form preferences require at least one explicit newsletter choice", () => {
+  const defaultForm = new FormData();
+  assert.deepEqual(parseNewsletterPreferencesFromForm(defaultForm), { daily: true, weekly: true });
+
+  const weeklyOnlyForm = new FormData();
+  weeklyOnlyForm.set("newsletter_preferences", "1");
+  weeklyOnlyForm.set("weekly", "on");
+  assert.deepEqual(parseNewsletterPreferencesFromForm(weeklyOnlyForm), { daily: false, weekly: true });
+
+  const emptyChoiceForm = new FormData();
+  emptyChoiceForm.set("newsletter_preferences", "1");
+  assert.throws(() => parseNewsletterPreferencesFromForm(emptyChoiceForm), /Choose at least one newsletter/);
+});
+
+test("renders daily digest with site detail content and VentureDex visual language", () => {
+  const digest = buildDailyDigestContent({
+    siteUrl: "https://venturedex.co",
+    periodStart: "2026-05-27 00:00:00",
+    periodEnd: "2026-05-27 12:00:00",
+    items: [
+      {
+        startup,
+        funding: {
+          id: "f-1",
+          company_name: "Example AI",
+          company_slug: "example-ai",
+          company_url: "https://example.ai",
+          amount: "$4M",
+          stage: "Seed",
+          lead_investor: "Useful Ventures",
+          date: "2026-05-26",
+          source_url: "https://example.com/funding",
+          source_name: "Example News",
+        },
+        research,
+      },
+    ],
+  });
+
+  const rendered = renderNewsletterPreview(digest, {
+    unsubscribeUrl: "https://venturedex.co/api/newsletter/unsubscribe?token=test",
+    mailingAddress: "VentureDex, 123 Startup St, San Francisco, CA",
+  });
+
+  assert.equal(digest.subject, "VentureDex Daily: Example AI");
+  assert.match(rendered.html, /background:#FAFAF9/);
+  assert.match(rendered.html, /font-family:Georgia/);
+  assert.match(rendered.html, /Example AI/);
+  assert.match(rendered.html, /Product evidence/);
+  assert.match(rendered.html, /Official site/);
+  assert.match(rendered.html, /Read profile/);
+  assert.match(rendered.html, /Unsubscribe/);
+  assert.match(rendered.text, /Example AI/);
+  assert.match(rendered.text, /https:\/\/venturedex\.co\/startups\/example-ai/);
+});
+
+test("builds Cloudflare Email Service message with per-recipient unsubscribe headers", () => {
+  const digest = buildDailyDigestContent({
+    siteUrl: "https://venturedex.co",
+    periodStart: "2026-05-27 00:00:00",
+    periodEnd: "2026-05-27 12:00:00",
+    items: [{ startup, funding: null, research }],
+  });
+
+  const message = buildCloudflareEmailMessage({
+    digest,
+    siteUrl: "https://venturedex.co",
+    from: { email: "newsletter@venturedex.co", name: "VentureDex" },
+    mailingAddress: "VentureDex, 123 Startup St, San Francisco, CA",
+    subscription: {
+      id: "sub-1",
+      email: "reader@example.com",
+      status: "confirmed",
+      preferences_json: JSON.stringify({ daily: true, weekly: true }),
+      unsubscribe_token: "token-123",
+      created_at: null,
+      confirmed_at: null,
+      unsubscribed_at: null,
+      updated_at: null,
+    },
+  });
+
+  validateCloudflareEmailMessage(message);
+  assert.equal(message.to, "reader@example.com");
+  assert.deepEqual(message.from, { email: "newsletter@venturedex.co", name: "VentureDex" });
+  assert.equal(message.headers["List-Unsubscribe-Post"], "List-Unsubscribe=One-Click");
+  assert.match(message.headers["List-Unsubscribe"], /^<https:\/\/venturedex\.co\/api\/newsletter\/unsubscribe\?token=token-123>$/);
+  assert.match(message.html, /https:\/\/venturedex\.co\/unsubscribe\?token=token-123/);
+  assert.equal(message.headers.Precedence, "bulk");
+});
+
+test("renders weekly digest from issue copy and pick evaluation", () => {
+  const issue: WeeklyIssueContent = {
+    issue_number: 12,
+    title: "Workflow wedges worth tracking",
+    week_start: "2026-05-18",
+    week_end: "2026-05-24",
+    published_at: "2026-05-25",
+    status: "published",
+    editorial_intro: "This week favors narrow products with specific workflow pull.",
+    research_summary: "Evidence comes from VentureDex records and official sources.",
+    evaluation_method: ["Use published records only."],
+    themes: [{ title: "Workflow compression", summary: "The best products remove adjacent work." }],
+    picks: [
+      {
+        slug: "example-ai",
+        why_this_week: "The product has a focused operating wedge.",
+        product_evaluation: "The visible workflow is specific and source-bound.",
+        evidence: [{ label: "VentureDex record", source: "content/startups/example-ai.json" }],
+        risks: ["Adoption evidence is not public."],
+        verdict: "Specific product-shape pick.",
+      },
+    ],
+  };
+
+  const digest = buildWeeklyDigestContent({
+    issue,
+    startups: new Map([["example-ai", startup]]),
+    siteUrl: "https://venturedex.co",
+  });
+
+  const rendered = renderNewsletterPreview(digest, {
+    unsubscribeUrl: "https://venturedex.co/api/newsletter/unsubscribe?token=test",
+    mailingAddress: "VentureDex, 123 Startup St, San Francisco, CA",
+  });
+
+  assert.equal(digest.sendKey, "weekly:12");
+  assert.match(rendered.html, /Weekly research/);
+  assert.match(rendered.html, /Workflow wedges worth tracking/);
+  assert.match(rendered.html, /Product evaluation/);
+  assert.match(rendered.html, /Evidence used/);
+  assert.match(rendered.html, /Limits and risks/);
+  assert.match(rendered.text, /Full issue: https:\/\/venturedex\.co\/weekly\/12/);
+  assert.match(rendered.text, /Adoption evidence is not public/);
+});

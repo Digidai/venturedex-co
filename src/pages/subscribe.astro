@@ -1,5 +1,5 @@
 ---
-export const prerender = true;
+export const prerender = false;
 
 import Base from "../layouts/Base.astro";
 import {
@@ -21,6 +21,17 @@ const schema = buildJsonLdGraph([
     siteUrl: Astro.site?.toString(),
   }),
 ]);
+const subscribed = Astro.url.searchParams.get("subscribed") === "1";
+const error = Astro.url.searchParams.get("error");
+const errorMessage = error === "preferences"
+  ? "Choose at least one newsletter."
+  : error === "email"
+    ? "Enter a valid email address."
+    : error === "server"
+      ? "Something went wrong. Please try again."
+      : error === "unsubscribed"
+        ? "This address is currently opted out."
+        : "";
 ---
 
 <Base title={title} description={description} schema={schema}>
@@ -31,17 +42,40 @@ const schema = buildJsonLdGraph([
       No spam, no fluff, just the good stuff.
     </p>
 
-    <form class="subscribe-form" action="/api/subscribe" method="POST">
-      <input
-        type="email"
-        name="email"
-        required
-        placeholder="you@example.com"
-        class="email-input"
-        autocomplete="email"
-      />
-      <button type="submit" class="submit-button">Subscribe</button>
-    </form>
+    {subscribed ? (
+      <div class="success-box" role="status">
+        <h2>Request received.</h2>
+        <p>Eligible subscribed addresses will receive Daily additions and Weekly research after the editorial delay window.</p>
+      </div>
+    ) : (
+      <form class="subscribe-form" action="/api/subscribe" method="POST">
+        {errorMessage && <p class="form-error" role="alert">{errorMessage}</p>}
+        <input type="hidden" name="newsletter_preferences" value="1" />
+        <label class="honeypot" aria-hidden="true">
+          Company
+          <input type="text" name="company" tabindex="-1" autocomplete="off" />
+        </label>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="email-input"
+          autocomplete="email"
+        />
+        <fieldset class="frequency-fieldset" aria-label="Newsletter frequency">
+          <label>
+            <input type="checkbox" name="daily" checked />
+            <span>Daily additions</span>
+          </label>
+          <label>
+            <input type="checkbox" name="weekly" checked />
+            <span>Weekly research</span>
+          </label>
+        </fieldset>
+        <button type="submit" class="submit-button">Subscribe</button>
+      </form>
+    )}
 
     <p class="note">Unsubscribe anytime. We respect your inbox.</p>
   </div>
@@ -67,13 +101,36 @@ const schema = buildJsonLdGraph([
 
   .subscribe-form {
     display: flex;
+    flex-wrap: wrap;
     gap: var(--space-2);
     max-width: 400px;
     margin: 0 auto var(--space-4);
   }
 
+  .form-error {
+    flex: 1 1 100%;
+    margin: 0;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid #FCA5A5;
+    border-radius: var(--radius);
+    background: #FEF2F2;
+    color: #991B1B;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    text-align: left;
+  }
+
+  .honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .email-input {
     flex: 1;
+    min-width: 220px;
     padding: var(--space-3) var(--space-4);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
@@ -90,6 +147,7 @@ const schema = buildJsonLdGraph([
   }
 
   .submit-button {
+    flex: 0 0 auto;
     padding: var(--space-3) var(--space-6);
     background: var(--color-text);
     color: var(--color-bg);
@@ -111,9 +169,67 @@ const schema = buildJsonLdGraph([
     color: var(--color-text-secondary);
   }
 
+  .frequency-fieldset {
+    flex: 1 1 100%;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2);
+    border: 0;
+    margin: var(--space-1) 0;
+    padding: 0;
+  }
+
+  .frequency-fieldset label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    min-height: 40px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+  }
+
+  .frequency-fieldset input {
+    accent-color: var(--color-accent);
+  }
+
+  .success-box {
+    max-width: 400px;
+    margin: 0 auto var(--space-4);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    text-align: left;
+  }
+
+  .success-box h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .success-box p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
   @media (max-width: 640px) {
     .subscribe-form {
       flex-direction: column;
+    }
+
+    .email-input,
+    .submit-button {
+      width: 100%;
+    }
+
+    .frequency-fieldset {
+      grid-template-columns: 1fr;
     }
   }
 </style>

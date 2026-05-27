@@ -22,6 +22,13 @@ Weekly research digest priority order:
 3. `docs/automation/venturedex-weekly-runbook.md`
 4. `.github/workflows/weekly-draft.yml`
 
+Newsletter delivery priority order:
+
+1. `docs/newsletter.md`
+2. `wrangler.toml`
+3. `src/lib/newsletter.ts`
+4. `src/worker.ts`
+
 ## File Roles
 
 - `venturedex-daily-runbook.md`
@@ -32,6 +39,8 @@ Weekly research digest priority order:
   The reward-guided iteration rules. This is RL-style closed-loop optimization, not a full online RL system.
 - `venturedex-learning-log.md`
   Append-only run memory: outcomes, failures, reward, and accepted or rejected heuristic changes.
+- `../newsletter.md`
+  The delivery contract for Daily additions and Weekly research email sends, including delay gates, compliance configuration, module review notes, and test cases.
 
 ## Edit Policy
 
@@ -103,3 +112,5 @@ The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-cur
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
 - For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
 - Daily automation must require structured startup `research` before publishing; weekly automation must consume that `research` when producing source-bound issue evaluations.
+- Newsletter delivery must lag website publication. Daily sends use a default 6-hour delay and weekly sends use a default 24-hour delay so editors can correct live content before it reaches inboxes.
+- Newsletter sends are a production-delivery surface: do not bypass `newsletter_sends`, `newsletter_deliveries`, unsubscribe links, or dry-run checks.

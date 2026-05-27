@@ -8,14 +8,17 @@
     "build": "astro build && printf '_worker.js\n' > dist/.assetsignore",
     "preview": "astro preview",
     "astro": "astro",
-    "db:migrate": "wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
+    "test:newsletter": "tsx --test tests/newsletter.test.ts",
+    "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
   },
   "dependencies": {
-    "astro": "^5.7.0",
-    "@astrojs/cloudflare": "^12.5.0"
+    "@astrojs/cloudflare": "^12.5.0",
+    "astro": "^5.7.0"
   },
   "devDependencies": {
-    "wrangler": "^4.14.0",
-    "typescript": "^5.8.0"
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.3",
+    "typescript": "^5.8.0",
+    "wrangler": "^4.14.0"
   }
 }

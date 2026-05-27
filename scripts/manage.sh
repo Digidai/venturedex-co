@@ -329,7 +329,7 @@ print("true" if needs_repair else "false")
 }
 
 ensure_current_remote_schema() {
-  local output parsed missing_startup_columns=()
+  local output parsed missing_startup_columns=() missing_newsletter_columns=()
   if ! output="$(
     cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
       "PRAGMA table_info(startups);" 2>&1
@@ -354,24 +354,175 @@ for column in ["research_json"]:
 
   if [ "${#missing_startup_columns[@]}" -eq 0 ]; then
     echo "Remote schema already has current startup research columns."
-    return 0
+  else
+    for column in "${missing_startup_columns[@]}"; do
+      case "$column" in
+        research_json)
+          echo "Adding remote startups.research_json column..."
+          (
+            cd "$REPO_ROOT"
+            npx wrangler d1 execute "$DB_NAME" --remote --command \
+              "ALTER TABLE startups ADD COLUMN research_json TEXT;" >/dev/null
+          )
+          ;;
+        *)
+          echo "ERROR: Unknown startup schema migration: $column" >&2
+          exit 1
+          ;;
+      esac
+    done
   fi
 
-  for column in "${missing_startup_columns[@]}"; do
-    case "$column" in
-      research_json)
-        echo "Adding remote startups.research_json column..."
-        (
-          cd "$REPO_ROOT"
-          npx wrangler d1 execute "$DB_NAME" --remote --command \
-            "ALTER TABLE startups ADD COLUMN research_json TEXT;" >/dev/null
-        )
-        ;;
-      *)
-        echo "ERROR: Unknown startup schema migration: $column" >&2
-        exit 1
-        ;;
-    esac
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+      "PRAGMA table_info(newsletter_subscriptions);" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  while IFS= read -r column; do
+    [ -n "$column" ] && missing_newsletter_columns+=("$column")
+  done < <(python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+columns = {row["name"] for row in payload[0]["results"]}
+for column in ["preferences_json", "unsubscribe_token", "unsubscribed_at", "updated_at"]:
+    if column not in columns:
+        print(column)
+' <<<"$parsed")
+
+  if [ "${#missing_newsletter_columns[@]}" -eq 0 ]; then
+    echo "Remote newsletter subscriptions already have current columns."
+  else
+    for column in "${missing_newsletter_columns[@]}"; do
+      case "$column" in
+        preferences_json)
+          echo "Adding remote newsletter_subscriptions.preferences_json column..."
+          (
+            cd "$REPO_ROOT"
+            npx wrangler d1 execute "$DB_NAME" --remote --command \
+              "ALTER TABLE newsletter_subscriptions ADD COLUMN preferences_json TEXT;" >/dev/null
+          )
+          ;;
+        unsubscribe_token)
+          echo "Adding remote newsletter_subscriptions.unsubscribe_token column..."
+          (
+            cd "$REPO_ROOT"
+            npx wrangler d1 execute "$DB_NAME" --remote --command \
+              "ALTER TABLE newsletter_subscriptions ADD COLUMN unsubscribe_token TEXT;" >/dev/null
+          )
+          ;;
+        unsubscribed_at)
+          echo "Adding remote newsletter_subscriptions.unsubscribed_at column..."
+          (
+            cd "$REPO_ROOT"
+            npx wrangler d1 execute "$DB_NAME" --remote --command \
+              "ALTER TABLE newsletter_subscriptions ADD COLUMN unsubscribed_at TEXT;" >/dev/null
+          )
+          ;;
+        updated_at)
+          echo "Adding remote newsletter_subscriptions.updated_at column..."
+          (
+            cd "$REPO_ROOT"
+            npx wrangler d1 execute "$DB_NAME" --remote --command \
+              "ALTER TABLE newsletter_subscriptions ADD COLUMN updated_at TEXT;" >/dev/null
+          )
+          ;;
+        *)
+          echo "ERROR: Unknown newsletter schema migration: $column" >&2
+          exit 1
+          ;;
+      esac
+    done
+  fi
+
+  (
+    cd "$REPO_ROOT"
+    npx wrangler d1 execute "$DB_NAME" --remote --command "
+UPDATE newsletter_subscriptions
+SET preferences_json = COALESCE(preferences_json, '{\"daily\":true,\"weekly\":true}'),
+    unsubscribe_token = COALESCE(NULLIF(unsubscribe_token, ''), lower(hex(randomblob(16)))),
+    confirmed_at = COALESCE(confirmed_at, datetime('now')),
+    updated_at = COALESCE(updated_at, datetime('now'))
+WHERE status = 'confirmed';
+CREATE UNIQUE INDEX IF NOT EXISTS idx_newsletter_unsubscribe_token
+  ON newsletter_subscriptions(unsubscribe_token)
+  WHERE unsubscribe_token IS NOT NULL AND unsubscribe_token != '';
+CREATE TABLE IF NOT EXISTS newsletter_sends (
+  id TEXT PRIMARY KEY,
+  send_key TEXT UNIQUE NOT NULL,
+  newsletter_type TEXT NOT NULL CHECK (newsletter_type IN ('daily','weekly')),
+  status TEXT NOT NULL DEFAULT 'sending' CHECK (status IN ('sending','sent','skipped','failed')),
+  subject TEXT,
+  preview_text TEXT,
+  html_main TEXT,
+  text_main TEXT,
+  period_start TEXT,
+  period_end TEXT,
+  item_count INTEGER DEFAULT 0,
+  recipient_count INTEGER DEFAULT 0,
+  provider TEXT DEFAULT 'cloudflare_email_service',
+  provider_batch_ids TEXT,
+  error_log TEXT,
+  created_at TEXT DEFAULT (datetime('now')),
+  sent_at TEXT,
+  updated_at TEXT DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_newsletter_sends_type_period
+  ON newsletter_sends(newsletter_type, period_end DESC);
+CREATE INDEX IF NOT EXISTS idx_newsletter_subscriptions_status_created
+  ON newsletter_subscriptions(status, created_at);
+UPDATE newsletter_sends
+SET provider = 'cloudflare_email_service'
+WHERE provider IS NULL OR provider = 'resend';
+CREATE TABLE IF NOT EXISTS newsletter_deliveries (
+  id TEXT PRIMARY KEY,
+  send_id TEXT NOT NULL REFERENCES newsletter_sends(id) ON DELETE CASCADE,
+  subscription_id TEXT NOT NULL REFERENCES newsletter_subscriptions(id) ON DELETE CASCADE,
+  email TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'queued' CHECK (status IN ('queued','sent','skipped','failed')),
+  provider_message_id TEXT,
+  error_message TEXT,
+  created_at TEXT DEFAULT (datetime('now')),
+  sent_at TEXT,
+  updated_at TEXT DEFAULT (datetime('now')),
+  UNIQUE(send_id, subscription_id)
+);
+CREATE INDEX IF NOT EXISTS idx_newsletter_deliveries_send
+  ON newsletter_deliveries(send_id, status);
+CREATE INDEX IF NOT EXISTS idx_funding_company_slug
+  ON funding_rounds(company_slug, date DESC);
+" >/dev/null
+  )
+
+  for column in html_main text_main; do
+    if ! output="$(
+      cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+        "PRAGMA table_info(newsletter_sends);" 2>&1
+    )"; then
+      printf '%s\n' "$output" >&2
+      return 1
+    fi
+    parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+    if ! python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+column = sys.argv[1]
+columns = {row["name"] for row in payload[0]["results"]}
+raise SystemExit(0 if column in columns else 1)
+' "$column" <<<"$parsed"; then
+      (
+        cd "$REPO_ROOT"
+        npx wrangler d1 execute "$DB_NAME" --remote --command \
+          "ALTER TABLE newsletter_sends ADD COLUMN $column TEXT;" >/dev/null
+      )
+    fi
   done
 }
 
@@ -491,6 +642,33 @@ deploy_worker() {
   )
 }
 
+check_newsletter_release_preflight() {
+  local dry_run_output secrets_output
+  (
+    cd "$REPO_ROOT"
+    dry_run_output="$(npx wrangler deploy --dry-run --outdir /tmp/venturedex-newsletter-preflight 2>&1)"
+    printf '%s\n' "$dry_run_output"
+    if ! printf '%s\n' "$dry_run_output" | rg -q "env.EMAIL"; then
+      echo "ERROR: Newsletter preflight did not find Cloudflare Email binding env.EMAIL." >&2
+      exit 1
+    fi
+    if ! printf '%s\n' "$dry_run_output" | rg -q "env.NEWSLETTER_DELIVERY_QUEUE"; then
+      echo "ERROR: Newsletter preflight did not find Queue binding env.NEWSLETTER_DELIVERY_QUEUE." >&2
+      exit 1
+    fi
+
+    secrets_output="$(npx wrangler secret list --format json 2>&1)"
+    if ! printf '%s\n' "$secrets_output" | rg -q '"NEWSLETTER_ADMIN_TOKEN"'; then
+      echo "ERROR: Missing Cloudflare secret NEWSLETTER_ADMIN_TOKEN." >&2
+      exit 1
+    fi
+    if ! printf '%s\n' "$secrets_output" | rg -q '"NEWSLETTER_MAILING_ADDRESS"'; then
+      echo "ERROR: Missing Cloudflare secret NEWSLETTER_MAILING_ADDRESS." >&2
+      exit 1
+    fi
+  )
+}
+
 write_startup_json() {
   local output="$1"
   local payload_json="$2"
@@ -531,9 +709,11 @@ cmd_screenshot() {
 cmd_validate() {
   (
     cd "$REPO_ROOT"
-    ./scripts/validate.sh
-    ./scripts/build-db.sh
-    npm run build
+	./scripts/validate.sh
+	./scripts/build-db.sh
+	npm run test:newsletter
+	npx tsc --noEmit
+	npm run build
   )
 }
 
@@ -634,6 +814,7 @@ cmd_release() {
   require_token
   cmd_validate
   cmd_sync --skip-build
+  check_newsletter_release_preflight
 
   if ! deploy_output="$(deploy_worker)"; then
     printf '%s\n' "$deploy_output"

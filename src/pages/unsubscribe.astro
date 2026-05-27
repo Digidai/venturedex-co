@@ -1,0 +1,69 @@
+---
+export const prerender = false;
+
+import Base from "../layouts/Base.astro";
+import { getSubscriptionByToken } from "../lib/newsletter";
+
+const token = Astro.url.searchParams.get("token") ?? "";
+const subscription = token ? await getSubscriptionByToken(Astro.locals.runtime.env.DB, token) : null;
+const title = "Unsubscribe from VentureDex";
+const description = "Manage VentureDex newsletter delivery preferences.";
+Astro.response.headers.set("Cache-Control", "no-store");
+Astro.response.headers.set("Referrer-Policy", "no-referrer");
+
+function maskEmail(email: string) {
+  const [local, domain] = email.split("@");
+  if (!local || !domain) return "this address";
+  return `${local.slice(0, 2)}***@${domain}`;
+}
+---
+
+<Base title={title} description={description} robots="noindex,nofollow">
+  <div class="container unsubscribe-page">
+    {subscription ? (
+      <>
+        <h1>Unsubscribe?</h1>
+        <p class="subtitle">{maskEmail(subscription.email)} will stop receiving VentureDex Daily additions and Weekly research.</p>
+        <form method="POST" action="/api/newsletter/unsubscribe">
+          <input type="hidden" name="token" value={token} />
+          <button type="submit">Unsubscribe</button>
+        </form>
+      </>
+    ) : (
+      <>
+        <h1>Link not found.</h1>
+        <p class="subtitle">The unsubscribe link is incomplete or no longer valid.</p>
+      </>
+    )}
+  </div>
+</Base>
+
+<style>
+  .unsubscribe-page {
+    max-width: 520px;
+    padding: var(--space-16) var(--space-6);
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-8);
+  }
+
+  button {
+    padding: var(--space-3) var(--space-6);
+    border: 0;
+    border-radius: var(--radius);
+    background: var(--color-text);
+    color: var(--color-bg);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>

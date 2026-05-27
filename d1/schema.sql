@@ -179,11 +179,63 @@ CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
   id TEXT PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
   interests_json TEXT,
+  preferences_json TEXT,
   status TEXT DEFAULT 'pending' CHECK (status IN ('pending','confirmed','unsubscribed')),
   source TEXT DEFAULT 'website',
+  unsubscribe_token TEXT,
   created_at TEXT DEFAULT (datetime('now')),
-  confirmed_at TEXT
+  confirmed_at TEXT,
+  unsubscribed_at TEXT,
+  updated_at TEXT DEFAULT (datetime('now'))
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_newsletter_unsubscribe_token
+  ON newsletter_subscriptions(unsubscribe_token)
+  WHERE unsubscribe_token IS NOT NULL AND unsubscribe_token != '';
+
+CREATE TABLE IF NOT EXISTS newsletter_sends (
+  id TEXT PRIMARY KEY,
+  send_key TEXT UNIQUE NOT NULL,
+  newsletter_type TEXT NOT NULL CHECK (newsletter_type IN ('daily','weekly')),
+  status TEXT NOT NULL DEFAULT 'sending' CHECK (status IN ('sending','sent','skipped','failed')),
+  subject TEXT,
+  preview_text TEXT,
+  html_main TEXT,
+  text_main TEXT,
+  period_start TEXT,
+  period_end TEXT,
+  item_count INTEGER DEFAULT 0,
+  recipient_count INTEGER DEFAULT 0,
+  provider TEXT DEFAULT 'cloudflare_email_service',
+  provider_batch_ids TEXT,
+  error_log TEXT,
+  created_at TEXT DEFAULT (datetime('now')),
+  sent_at TEXT,
+  updated_at TEXT DEFAULT (datetime('now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_newsletter_sends_type_period
+  ON newsletter_sends(newsletter_type, period_end DESC);
+
+CREATE TABLE IF NOT EXISTS newsletter_deliveries (
+  id TEXT PRIMARY KEY,
+  send_id TEXT NOT NULL REFERENCES newsletter_sends(id) ON DELETE CASCADE,
+  subscription_id TEXT NOT NULL REFERENCES newsletter_subscriptions(id) ON DELETE CASCADE,
+  email TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'queued' CHECK (status IN ('queued','sent','skipped','failed')),
+  provider_message_id TEXT,
+  error_message TEXT,
+  created_at TEXT DEFAULT (datetime('now')),
+  sent_at TEXT,
+  updated_at TEXT DEFAULT (datetime('now')),
+  UNIQUE(send_id, subscription_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_newsletter_deliveries_send
+  ON newsletter_deliveries(send_id, status);
+
+CREATE INDEX IF NOT EXISTS idx_newsletter_subscriptions_status_created
+  ON newsletter_subscriptions(status, created_at);
 
 CREATE TABLE IF NOT EXISTS sponsor_leads (
   id TEXT PRIMARY KEY,
@@ -235,6 +287,7 @@ CREATE TABLE IF NOT EXISTS funding_rounds (
 );
 
 CREATE INDEX IF NOT EXISTS idx_funding_date ON funding_rounds(date DESC);
+CREATE INDEX IF NOT EXISTS idx_funding_company_slug ON funding_rounds(company_slug, date DESC);
 
 CREATE TABLE IF NOT EXISTS automation_runs (
   id TEXT PRIMARY KEY,

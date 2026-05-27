@@ -22,6 +22,7 @@ Automation must never rewrite this section.
 - Do not modify `content/weekly/`.
 - Do not modify `src/`, `scripts/`, `.github/`, config files, lock files, or deployment files.
 - Do not batch-edit old startup entries.
+- Do not manually trigger newsletter delivery. Daily newsletter delivery is handled after deploy by the delayed Cloudflare Cron flow in `docs/newsletter.md`.
 
 ### Git and Execution Safety
 
@@ -109,6 +110,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 - Never mix content files and automation-doc files in the same commit.
 - Check the staged allowlist with `git diff --cached --name-only` before every commit.
 - After push, record the commit SHA, confirm the deploy workflow is still enabled, wait for the deploy run when it is observable, and require post-deploy live smoke to pass before marking the run as shipped. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
+- Do not treat post-deploy newsletter delivery as immediate success. The Daily newsletter waits for the configured delay window and records send state in D1.
 
 ## Daily Execution
 

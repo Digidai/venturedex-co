@@ -23,12 +23,14 @@ Automation must never rewrite this section.
 - Published weekly evaluations must be source-bound. Do not infer users, revenue, retention, market share, customer migrations, reliability, or benchmark claims unless a cited source states them.
 - If evidence is insufficient, keep the issue as `status: draft` or defer the claim.
 - Browser-driven source checks must use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow.
+- Do not manually trigger Weekly newsletter delivery during the publishing run. The email send is intentionally delayed by the newsletter system so the live issue can be corrected first.
 
 ## Cadence
 
 - Create a draft every Monday for the previous Monday-Sunday window.
 - A GitHub Actions workflow runs `scripts/weekly.py draft` and opens a draft PR when there is a new issue file.
 - Publishing is a review step: replace TODO fields with source-bound research, set `status` to `published`, set `published_at`, and merge only after local gates pass.
+- Newsletter delivery is a separate post-publish step governed by `docs/newsletter.md`. The default Weekly email delay is 24 hours after the issue is published.
 
 ## Weekly Execution
 
@@ -76,3 +78,4 @@ Automation must never rewrite this section.
 3. Objectivity: the issue states evidence gaps instead of guessing.
 4. Theme: the 5-7 picks share a real product or market pattern.
 5. Release: local gates pass and browser verification confirms `/weekly` and the issue page render the research fields.
+6. Newsletter readiness: the issue has stable published copy, because the Weekly email will reuse `editorial_intro`, `research_summary`, themes, and pick evaluations.

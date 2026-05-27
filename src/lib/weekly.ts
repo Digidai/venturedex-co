@@ -178,6 +178,7 @@ export function getContentStartupBySlug(slug: string): Startup | null {
     summary: stringValue(data.summary) || null,
     long_description: null,
     editor_note: stringValue(data.editor_note) || null,
+    research_json: isRecord(data.research) ? JSON.stringify(data.research) : null,
     editor_rating: typeof data.editor_rating === "number" ? data.editor_rating : null,
     why_featured: stringValue(data.why_featured) || null,
     curator: "VentureDex",

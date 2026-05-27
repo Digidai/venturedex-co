@@ -9,6 +9,32 @@ binding = "ASSETS"
 
 [vars]
 SITE_URL = "https://venturedex.co"
+NEWSLETTER_FROM = "VentureDex <newsletter@venturedex.co>"
+NEWSLETTER_DAILY_DELAY_HOURS = "6"
+NEWSLETTER_WEEKLY_DELAY_HOURS = "24"
+NEWSLETTER_WEEKLY_MAX_AGE_DAYS = "21"
+NEWSLETTER_BOOTSTRAP_DAILY = "true"
+
+[triggers]
+crons = [
+  "30 13 * * *",
+  "0 14 * * 2"
+]
+
+[[send_email]]
+name = "EMAIL"
+allowed_sender_addresses = ["newsletter@venturedex.co"]
+
+[[queues.producers]]
+queue = "venturedex-newsletter-delivery"
+binding = "NEWSLETTER_DELIVERY_QUEUE"
+
+[[queues.consumers]]
+queue = "venturedex-newsletter-delivery"
+max_batch_size = 10
+max_batch_timeout = 30
+max_retries = 5
+dead_letter_queue = "venturedex-newsletter-delivery-dlq"
 
 [[d1_databases]]
 binding = "DB"
