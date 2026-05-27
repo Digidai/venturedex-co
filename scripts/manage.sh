@@ -709,11 +709,12 @@ cmd_screenshot() {
 cmd_validate() {
   (
     cd "$REPO_ROOT"
-	./scripts/validate.sh
-	./scripts/build-db.sh
-	npm run test:newsletter
-	npx tsc --noEmit
-	npm run build
+    ./scripts/validate.sh
+    ./scripts/build-db.sh
+    npm run test:newsletter
+    npx astro sync
+    npx tsc --noEmit
+    npm run build
   )
 }
 
