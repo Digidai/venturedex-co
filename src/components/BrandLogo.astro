@@ -22,6 +22,7 @@ const {
 
 const shape = asset?.shape ?? "icon";
 const tileBackground = asset?.tile_background === "dark" ? "dark" : "light";
+const initialLogoTone = asset?.tile_background === "dark" ? "light" : undefined;
 const initials = getBrandInitials(name);
 const style = `--brand-size:${size}px;`;
 ---
@@ -35,6 +36,8 @@ const style = `--brand-size:${size}px;`;
     className,
   ]}
   style={style}
+  data-brand-logo-auto={asset ? "true" : undefined}
+  data-logo-tone={initialLogoTone}
   aria-hidden="true"
 >
   {asset ? (
@@ -50,9 +53,194 @@ const style = `--brand-size:${size}px;`;
   )}
 </span>
 
+<script>
+  const AUTO_LOGO_SELECTOR = "[data-brand-logo-auto]";
+  const MAX_SAMPLE_EDGE = 64;
+  const BG_DISTANCE_THRESHOLD = 38;
+
+  if (!globalThis.__ventureDexBrandLogoAuto) {
+    globalThis.__ventureDexBrandLogoAuto = true;
+
+    const toLinear = (value) => {
+      const channel = value / 255;
+      return channel <= 0.03928
+        ? channel / 12.92
+        : Math.pow((channel + 0.055) / 1.055, 2.4);
+    };
+
+    const luminance = (red, green, blue) => {
+      return 0.2126 * toLinear(red) + 0.7152 * toLinear(green) + 0.0722 * toLinear(blue);
+    };
+
+    const colorDistance = (red, green, blue, color) => {
+      const redDelta = red - color[0];
+      const greenDelta = green - color[1];
+      const blueDelta = blue - color[2];
+      return Math.sqrt(redDelta * redDelta + greenDelta * greenDelta + blueDelta * blueDelta);
+    };
+
+    const sampleImage = (image) => {
+      const naturalWidth = image.naturalWidth || image.width;
+      const naturalHeight = image.naturalHeight || image.height;
+      if (!naturalWidth || !naturalHeight) return null;
+
+      const scale = Math.min(1, MAX_SAMPLE_EDGE / Math.max(naturalWidth, naturalHeight));
+      const width = Math.max(1, Math.round(naturalWidth * scale));
+      const height = Math.max(1, Math.round(naturalHeight * scale));
+      const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+
+      const context = canvas.getContext("2d", { willReadFrequently: true });
+      if (!context) return null;
+
+      context.clearRect(0, 0, width, height);
+      context.drawImage(image, 0, 0, width, height);
+
+      return {
+        data: context.getImageData(0, 0, width, height).data,
+        width,
+        height,
+      };
+    };
+
+    const estimateBackground = ({ data, width, height }) => {
+      const cornerIndexes = [
+        0,
+        (width - 1) * 4,
+        (height - 1) * width * 4,
+        ((height - 1) * width + (width - 1)) * 4,
+      ];
+      const colors = cornerIndexes
+        .map((index) => [data[index], data[index + 1], data[index + 2], data[index + 3]])
+        .filter((color) => color[3] > 240);
+
+      if (colors.length < 3) return null;
+
+      const average = colors.reduce(
+        (acc, color) => [acc[0] + color[0], acc[1] + color[1], acc[2] + color[2]],
+        [0, 0, 0]
+      ).map((value) => value / colors.length);
+
+      const maxDistance = Math.max(
+        ...colors.map((color) => colorDistance(color[0], color[1], color[2], average))
+      );
+
+      return maxDistance <= BG_DISTANCE_THRESHOLD ? average : null;
+    };
+
+    const classifyLogoTone = (image) => {
+      let sample;
+      try {
+        sample = sampleImage(image);
+      } catch {
+        return null;
+      }
+      if (!sample) return null;
+
+      const { data, width, height } = sample;
+      const background = estimateBackground(sample);
+      const luminanceValues = [];
+      let visiblePixels = 0;
+
+      for (let index = 0; index < data.length; index += 4) {
+        const alpha = data[index + 3] / 255;
+        if (alpha <= 0.08) continue;
+
+        visiblePixels += 1;
+        const red = data[index];
+        const green = data[index + 1];
+        const blue = data[index + 2];
+
+        if (
+          background &&
+          alpha > 0.85 &&
+          colorDistance(red, green, blue, background) <= BG_DISTANCE_THRESHOLD
+        ) {
+          continue;
+        }
+
+        luminanceValues.push({
+          luminance: luminance(red, green, blue),
+          weight: alpha,
+        });
+      }
+
+      if (luminanceValues.length < 8 && visiblePixels > 0) {
+        for (let index = 0; index < data.length; index += 4) {
+          const alpha = data[index + 3] / 255;
+          if (alpha <= 0.08) continue;
+          luminanceValues.push({
+            luminance: luminance(data[index], data[index + 1], data[index + 2]),
+            weight: alpha,
+          });
+        }
+      }
+
+      if (luminanceValues.length === 0) return null;
+
+      const totalWeight = luminanceValues.reduce((sum, value) => sum + value.weight, 0);
+      const weightedLuminance = luminanceValues.reduce(
+        (sum, value) => sum + value.luminance * value.weight,
+        0
+      ) / totalWeight;
+      const brightWeight = luminanceValues
+        .filter((value) => value.luminance >= 0.72)
+        .reduce((sum, value) => sum + value.weight, 0);
+      const darkWeight = luminanceValues
+        .filter((value) => value.luminance <= 0.28)
+        .reduce((sum, value) => sum + value.weight, 0);
+
+      if (brightWeight / totalWeight >= 0.46 && weightedLuminance >= 0.52) return "light";
+      if (darkWeight / totalWeight >= 0.42 && weightedLuminance <= 0.54) return "dark";
+      return weightedLuminance >= 0.58 ? "light" : "dark";
+    };
+
+    const analyzeMark = (mark) => {
+      const image = mark.querySelector("img.brand-logo");
+      if (!image || image.dataset.logoToneAnalyzed === "true") return;
+
+      const applyTone = () => {
+        image.dataset.logoToneAnalyzed = "true";
+        const tone = classifyLogoTone(image);
+        if (tone) {
+          mark.dataset.logoTone = tone;
+        }
+      };
+
+      if (image.complete && image.naturalWidth > 0) {
+        applyTone();
+        return;
+      }
+
+      image.addEventListener("load", applyTone, { once: true });
+    };
+
+    const scan = (root = document) => {
+      root.querySelectorAll(AUTO_LOGO_SELECTOR).forEach(analyzeMark);
+    };
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => scan(), { once: true });
+    } else {
+      scan();
+    }
+
+    new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        for (const node of mutation.addedNodes) {
+          if (!(node instanceof Element)) continue;
+          if (node.matches(AUTO_LOGO_SELECTOR)) analyzeMark(node);
+          scan(node);
+        }
+      }
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
+</script>
+
 <style>
   .brand-mark {
-    --brand-tile-bg: transparent;
+    --brand-tile-bg: #fff;
     --brand-tile-border: transparent;
     --brand-logo-filter: none;
     flex-shrink: 0;
@@ -76,6 +264,10 @@ const style = `--brand-size:${size}px;`;
     object-fit: contain;
     object-position: center;
     filter: var(--brand-logo-filter);
+  }
+
+  .brand-mark--asset {
+    border-width: 0;
   }
 
   .brand-mark--wordmark .brand-logo {
@@ -113,8 +305,17 @@ const style = `--brand-size:${size}px;`;
     --brand-tile-border: var(--color-border);
   }
 
-  .brand-mark.brand-mark--bg-dark,
-  :root[data-theme="dark"] .brand-mark.brand-mark--bg-dark {
+  .brand-mark.brand-mark--asset.brand-mark--bg-light,
+  .brand-mark.brand-mark--asset[data-logo-tone="dark"] {
+    --brand-tile-bg: #fff;
+    --brand-tile-border: transparent;
+    --brand-logo-filter: drop-shadow(0 0.5px 0.5px rgba(0, 0, 0, 0.12));
+  }
+
+  .brand-mark.brand-mark--asset.brand-mark--bg-dark,
+  .brand-mark.brand-mark--asset[data-logo-tone="light"],
+  :root[data-theme="dark"] .brand-mark.brand-mark--asset.brand-mark--bg-dark,
+  :root[data-theme="dark"] .brand-mark.brand-mark--asset[data-logo-tone="light"] {
     --brand-tile-bg: #181818;
     --brand-tile-border: transparent;
     --brand-logo-filter:
@@ -123,7 +324,15 @@ const style = `--brand-size:${size}px;`;
   }
 
   @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .brand-mark.brand-mark--bg-dark {
+    :root:not([data-theme="light"]) .brand-mark.brand-mark--asset.brand-mark--bg-light,
+    :root:not([data-theme="light"]) .brand-mark.brand-mark--asset[data-logo-tone="dark"] {
+      --brand-tile-bg: #fff;
+      --brand-tile-border: transparent;
+      --brand-logo-filter: drop-shadow(0 0.5px 0.5px rgba(0, 0, 0, 0.12));
+    }
+
+    :root:not([data-theme="light"]) .brand-mark.brand-mark--asset.brand-mark--bg-dark,
+    :root:not([data-theme="light"]) .brand-mark.brand-mark--asset[data-logo-tone="light"] {
       --brand-tile-bg: #181818;
       --brand-tile-border: transparent;
       --brand-logo-filter:

@@ -145,9 +145,10 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       }
 
       .header-inner {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
+        gap: var(--space-4);
       }
 
       .logo {
@@ -156,6 +157,14 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         font-weight: 700;
         color: var(--color-text);
         text-decoration: none;
+        flex: 0 0 auto;
+        justify-self: start;
+      }
+
+      .header-inner > nav {
+        min-width: 0;
+        justify-self: center;
+        max-width: 100%;
       }
 
       .nav-tabs {
@@ -190,6 +199,8 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         display: flex;
         align-items: center;
         gap: var(--space-3);
+        flex: 0 0 auto;
+        justify-self: end;
       }
 
       .header-search {
@@ -259,17 +270,20 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
         font-size: 0.875rem;
       }
 
-      @media (max-width: 640px) {
+      @media (max-width: 800px) {
         .header-inner {
-          flex-wrap: wrap;
+          grid-template-columns: 1fr auto;
           gap: var(--space-3);
-          align-items: flex-start;
+          align-items: center;
         }
 
         .header-inner > nav {
-          order: 3;
+          grid-column: 1 / -1;
+          grid-row: 2;
           width: 100%;
           min-width: 0;
+          display: flex;
+          justify-content: center;
           overflow-x: auto;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
@@ -281,7 +295,9 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
         .nav-tabs {
           display: inline-flex;
-          min-width: 100%;
+          flex: 0 0 auto;
+          width: max-content;
+          max-width: 100%;
         }
 
         .nav-tab {
@@ -293,6 +309,32 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 
         .header-cta {
           font-size: 0.75rem;
+        }
+      }
+
+      @media (max-width: 420px) {
+        .header-inner {
+          align-items: flex-start;
+        }
+
+        .header-inner > nav {
+          justify-content: flex-start;
+        }
+
+        .nav-tabs {
+          max-width: none;
+        }
+
+        .nav-tab {
+          padding-inline: var(--space-2);
+        }
+
+        .header-actions {
+          gap: var(--space-2);
+        }
+
+        .header-cta {
+          padding-inline: var(--space-3);
         }
       }
     </style>
