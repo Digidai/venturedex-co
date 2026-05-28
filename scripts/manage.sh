@@ -814,8 +814,8 @@ cmd_release() {
 
   require_token
   cmd_validate
-  cmd_sync --skip-build
   check_newsletter_release_preflight
+  cmd_sync --skip-build
 
   if ! deploy_output="$(deploy_worker)"; then
     printf '%s\n' "$deploy_output"
