@@ -31,6 +31,51 @@ def sql_list(values: list[str]) -> str:
     return ", ".join(sql(value) for value in values)
 
 
+def collection_tags(data) -> set[str]:
+    return {t.strip().lower() for t in (data.get("tags") or "").split(",") if t.strip()}
+
+
+def tag_match(tags: set[str], *needles: str) -> bool:
+    return any(needle in tag for tag in tags for needle in needles)
+
+
+# Auto-derived collections, computed from each startup's product_type and tags.
+# Each entry: (id, slug, title, description, predicate(product_type, tags)).
+# Designed so every collection holds a meaningful set (no 1-item or near-total buckets).
+COLLECTIONS = [
+    ("c-ai-agents", "ai-agents", "AI Agents",
+     "Autonomous, agentic systems that take real action — not just chat.",
+     lambda pt, tags: tag_match(tags, "ai agent", "agentic")),
+    ("c-ai-ml", "ai-ml", "AI / ML",
+     "Companies pushing the frontier of machine intelligence.",
+     lambda pt, tags: pt == "AI / ML"),
+    ("c-ai-infra", "ai-infrastructure", "AI Infrastructure",
+     "The compute, inference, and serving layer beneath modern AI.",
+     lambda pt, tags: tag_match(tags, "ai infrastructure", "inference", "edge ai")),
+    ("c-devtools", "developer-tools", "Developer Tools",
+     "Tools that make builders faster — SDKs, APIs, and workflow.",
+     lambda pt, tags: pt == "DevTools" or tag_match(tags, "developer tools")),
+    ("c-saas", "saas", "SaaS & Productivity",
+     "Software that runs the modern business.",
+     lambda pt, tags: pt == "SaaS"),
+    ("c-fintech", "fintech", "Fintech",
+     "Payments, lending, and the rebuilding of financial plumbing.",
+     lambda pt, tags: pt == "Fintech" or tag_match(tags, "fintech")),
+    ("c-physical-ai", "physical-ai", "Physical AI & Robotics",
+     "AI that moves — robotics, autonomy, and embodied systems.",
+     lambda pt, tags: tag_match(tags, "physical ai", "robotics", "autonomy")),
+    ("c-healthtech", "healthtech", "HealthTech",
+     "Technology reshaping care, diagnostics, and biology.",
+     lambda pt, tags: pt == "HealthTech" or tag_match(tags, "healthcare")),
+    ("c-open-source", "open-source", "Open Source",
+     "Companies building in the open.",
+     lambda pt, tags: tag_match(tags, "open source")),
+    ("c-climate", "climate", "Climate & Sustainability",
+     "Startups decarbonizing industry, energy, and the grid.",
+     lambda pt, tags: pt == "Climate / Sustainability" or tag_match(tags, "climate")),
+]
+
+
 startup_files = sorted(CONTENT_DIR.glob("*.json"))
 weekly_files = sorted(WEEKLY_DIR.glob("*.json"))
 investors = json.loads(INVESTORS_FILE.read_text()) if INVESTORS_FILE.exists() else {}
@@ -158,29 +203,19 @@ for path in startup_files:
             ");"
         )
 
-    rank = 0
     product_type = data.get("product_type", "")
+    coll_tags = collection_tags(data)
     is_featured = bool(data.get("is_featured"))
-    if "AI" in product_type:
-        rank += 1
-        collection_rows.append(
-            "INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ("
-            f"'c-001', {sql(startup_id)}, {rank}, {1 if is_featured else 0}"
-            ");"
-        )
-    if product_type in {"DevTools", "SaaS"}:
-        rank += 1
-        collection_rows.append(
-            "INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ("
-            f"'c-002', {sql(startup_id)}, {rank}, 0"
-            ");"
-        )
-    if is_featured:
-        collection_rows.append(
-            "INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ("
-            f"'c-003', {sql(startup_id)}, {rank}, 1"
-            ");"
-        )
+    rating = data.get("editor_rating")
+    # Lower rank sorts first (ORDER BY pinned DESC, rank ASC): better-rated lead each collection.
+    coll_rank = (5 - rating) if isinstance(rating, int) else 5
+    for collection_id, _c_slug, _c_title, _c_desc, predicate in COLLECTIONS:
+        if predicate(product_type, coll_tags):
+            collection_rows.append(
+                "INSERT OR IGNORE INTO collection_startups (collection_id, startup_id, rank, pinned) VALUES ("
+                f"{sql(collection_id)}, {sql(startup_id)}, {coll_rank}, {1 if is_featured else 0}"
+                ");"
+            )
 
 for _, investor in sorted(investors.items()):
     slug = investor["slug"]
@@ -246,6 +281,7 @@ lines = [
     "DELETE FROM investors;",
     "DELETE FROM search_index_terms;",
     "DELETE FROM collection_startups;",
+    "DELETE FROM collections;",
     "DELETE FROM weekly_issue_startups;",
 ]
 
@@ -288,9 +324,10 @@ lines.extend([
     "",
     "-- Collections",
     "INSERT OR IGNORE INTO collections (id, slug, title, description, type, published) VALUES",
-    "('c-001', 'ai', 'AI / ML', 'Startups pushing the boundaries of artificial intelligence.', 'editorial', 1),",
-    "('c-002', 'devtools', 'Developer Tools', 'Tools that make developers more productive.', 'editorial', 1),",
-    "('c-003', 'editors-picks', 'Editor''s Picks', 'The ones we think about most.', 'editorial', 1);",
+    ",\n".join(
+        f"({sql(cid)}, {sql(c_slug)}, {sql(c_title)}, {sql(c_desc)}, 'editorial', 1)"
+        for cid, c_slug, c_title, c_desc, _pred in COLLECTIONS
+    ) + ";",
     *collection_rows,
     "",
     "-- Weekly issues",
