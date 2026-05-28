@@ -44,10 +44,15 @@ const description = truncateText([
   startup.summary ?? startup.editor_note ?? `${startup.product_name} startup profile on VentureDex`,
   fundingContext,
 ].filter(Boolean).join(" "));
+// Keep the full <title> (Base appends " | VentureDex", 13 chars) under ~60 for Google.
+const TITLE_MAX = 46;
 const enrichedPageTitle = `${startup.product_name} ${startup.product_type} Startup Profile`;
-const pageTitle = enrichedPageTitle.length <= 52
+const basicPageTitle = `${startup.product_name} Startup Profile`;
+const pageTitle = enrichedPageTitle.length <= TITLE_MAX
   ? enrichedPageTitle
-  : `${startup.product_name} Startup Profile`;
+  : basicPageTitle.length <= TITLE_MAX
+    ? basicPageTitle
+    : startup.product_name;
 const schema = startupJsonLd(startup, Astro.site?.toString());
 
 const tags = startup.tags

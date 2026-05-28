@@ -31,9 +31,15 @@ const description = expandSeoDescription(
 const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
 const investorWebsiteUrl = normalizeExternalUrl(investor.website);
 const investorWebsiteHost = investorWebsiteUrl ? displayHostname(investorWebsiteUrl) : null;
-const pageTitle = investor.name.length <= 23
-  ? `${investor.name} Startup Investment Portfolio`
-  : `${investor.name} Startup Portfolio`;
+// Keep the full <title> (Base appends " | VentureDex", 13 chars) under ~60 for Google.
+const TITLE_MAX = 46;
+const fullInvestorTitle = `${investor.name} Startup Investment Portfolio`;
+const shortInvestorTitle = `${investor.name} Startup Portfolio`;
+const pageTitle = fullInvestorTitle.length <= TITLE_MAX
+  ? fullInvestorTitle
+  : shortInvestorTitle.length <= TITLE_MAX
+    ? shortInvestorTitle
+    : investor.name;
 
 function displayHostname(value: string): string {
   try {
