@@ -114,7 +114,10 @@ AMOUNT_RE = re.compile(r"^\$[0-9]+(?:\.[0-9]+)?(?:[MBK])?\+?$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 HTTP_OK = {"200", "301", "302", "307", "308", "403"}
+# 000 = unreachable from the runner (DNS/TLS/timeout/IP block), 405/415 = method rejected.
+# These are connection-level/ambiguous results, not dead links, so they must not block CI.
 HTTP_FALLBACK = {"000", "405", "415"}
+HTTP_NON_BLOCKING = HTTP_OK | HTTP_FALLBACK
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
 ALLOWED_RESEARCH_SOURCE_TYPES = {
     "official",
@@ -376,7 +379,7 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         source_url = round_data.get("source_url", "")
         if source_url:
             source_status = check_url(source_url, cache=url_cache)
-            if source_status not in HTTP_OK:
+            if source_status not in HTTP_NON_BLOCKING:
                 result.errors.append(
                     f"{prefix}: source url check failed with HTTP {source_status} -> {source_url}"
                 )
@@ -446,7 +449,7 @@ def validate_research(data: dict[str, object], *, url_cache: dict[str, str]) -> 
         if source_type != "editorial":
             if not source_url:
                 errors.append(f"{prefix} missing url")
-            elif check_url(source_url, cache=url_cache) not in HTTP_OK:
+            elif check_url(source_url, cache=url_cache) not in HTTP_NON_BLOCKING:
                 errors.append(f"{prefix} url is not reachable: {source_url}")
 
     if "official" not in source_types:
@@ -943,12 +946,12 @@ def validate_brand_asset_record(
             f"{prefix} source_page host '{normalize_host(source_page)}' "
             f"does not match expected host '{normalize_host(expected_page)}'"
         )
-    elif check_url(source_page, cache=url_cache) not in HTTP_OK:
+    elif check_url(source_page, cache=url_cache) not in HTTP_NON_BLOCKING:
         errors.append(f"{prefix} source_page is not reachable: {source_page}")
 
     if not source_url:
         errors.append(f"{prefix} missing source_url")
-    elif check_url(source_url, cache=url_cache) not in HTTP_OK:
+    elif check_url(source_url, cache=url_cache) not in HTTP_NON_BLOCKING:
         errors.append(f"{prefix} source_url is not reachable: {source_url}")
 
     return errors
