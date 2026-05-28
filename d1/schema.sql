@@ -131,6 +131,13 @@ CREATE TABLE IF NOT EXISTS collection_startups (
   PRIMARY KEY (collection_id, startup_id)
 );
 
+-- Fixed-window rate limiting (e.g. throttle newsletter confirmation sends per email/IP).
+CREATE TABLE IF NOT EXISTS rate_limits (
+  bucket TEXT PRIMARY KEY,
+  count INTEGER NOT NULL DEFAULT 0,
+  window_start TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
 CREATE TABLE IF NOT EXISTS research_posts (
   id TEXT PRIMARY KEY,
   slug TEXT UNIQUE NOT NULL,

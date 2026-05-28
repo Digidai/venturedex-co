@@ -38,6 +38,36 @@ function redirect(location: string, status = 303) {
   });
 }
 
+// Fixed-window rate limit backed by the rate_limits D1 table. Returns false when
+// the bucket is over `limit` within `windowSeconds`; resets when the window expires.
+async function rateLimitOk(
+  db: D1Database,
+  bucket: string,
+  limit: number,
+  windowSeconds: number
+): Promise<boolean> {
+  const row = await db
+    .prepare("SELECT count, window_start FROM rate_limits WHERE bucket = ?")
+    .bind(bucket)
+    .first<{ count: number; window_start: string }>();
+  if (row) {
+    const started = Date.parse(row.window_start.replace(" ", "T") + "Z");
+    if (Number.isFinite(started) && Date.now() - started < windowSeconds * 1000) {
+      if (row.count >= limit) return false;
+      await db.prepare("UPDATE rate_limits SET count = count + 1 WHERE bucket = ?").bind(bucket).run();
+      return true;
+    }
+  }
+  await db
+    .prepare(
+      "INSERT INTO rate_limits (bucket, count, window_start) VALUES (?, 1, datetime('now')) "
+        + "ON CONFLICT(bucket) DO UPDATE SET count = 1, window_start = datetime('now')"
+    )
+    .bind(bucket)
+    .run();
+  return true;
+}
+
 export const POST: APIRoute = async ({ request, locals }) => {
   const env = locals.runtime.env;
   const db = env.DB;
@@ -111,14 +141,28 @@ export const POST: APIRoute = async ({ request, locals }) => {
       : redirect("/subscribe?already=1", 302);
   }
 
-  // Pending (new or re-subscribed): send the double opt-in confirmation email.
-  const confirmation = await sendConfirmationEmail(env, subscription);
-  if (!confirmation.ok) {
-    return isJson
-      ? json({ error: "Could not send confirmation email." }, 502)
-      : redirect("/subscribe?error=server", 302);
+  // Pending (new or re-subscribed): send the double opt-in confirmation email,
+  // throttled to stop email-bombing / sender-reputation + quota abuse —
+  // 1 confirmation per email / 10 min and 8 per IP / hour. Fail open on infra errors.
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+  let maySend = true;
+  try {
+    maySend =
+      (await rateLimitOk(db, `confirm-email:${email}`, 1, 600))
+      && (await rateLimitOk(db, `confirm-ip:${ip}`, 8, 3600));
+  } catch {
+    maySend = true;
+  }
+  if (maySend) {
+    const confirmation = await sendConfirmationEmail(env, subscription);
+    if (!confirmation.ok) {
+      return isJson
+        ? json({ error: "Could not send confirmation email." }, 502)
+        : redirect("/subscribe?error=server", 302);
+    }
   }
 
+  // Always return the same pending state — never reveal whether a send was throttled.
   return isJson
     ? json({ ok: true, status: "pending" })
     : redirect("/subscribe?pending=1", 302);

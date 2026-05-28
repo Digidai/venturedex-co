@@ -54,6 +54,8 @@ const ogImageAlt = `${title} on ${SITE_NAME}`;
 const publishedIso = toIsoDateTime(publishedTime);
 const modifiedIso = toIsoDateTime(modifiedTime);
 const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+// Escape "<" so values containing "</script>" cannot break out of the ld+json block.
+const schemaJson = schemaItems.map((item) => JSON.stringify(item).split("<").join("\\u003c"));
 ---
 
 <!doctype html>
@@ -88,8 +90,8 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
     <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
-    {schemaItems.map((item) => (
-      <script type="application/ld+json" set:html={JSON.stringify(item)} />
+    {schemaJson.map((json) => (
+      <script type="application/ld+json" set:html={json} />
     ))}
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();

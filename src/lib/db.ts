@@ -198,15 +198,18 @@ export async function searchStartups(
   const normalized = query.toLowerCase().trim().slice(0, 200);
   if (!normalized) return [];
 
+  // Escape LIKE wildcards so a query of "_" or "%" can't match everything.
+  const likePattern = normalized.replace(/[\\%_]/g, "\\$&") + "%";
+
   const result = await db
     .prepare(
       `SELECT DISTINCT s.* FROM startups s
        JOIN search_index_terms sit ON s.id = sit.startup_id
-       WHERE sit.normalized_term LIKE ? AND s.workflow_status = 'published'
+       WHERE sit.normalized_term LIKE ? ESCAPE '\\' AND s.workflow_status = 'published'
        ORDER BY sit.weight DESC
        LIMIT ?`
     )
-    .bind(`${normalized}%`, limit)
+    .bind(likePattern, limit)
     .all<Startup>();
 
   return result.results;
