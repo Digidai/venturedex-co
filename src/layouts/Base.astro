@@ -135,6 +135,9 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
           <a href="/subscribe">Subscribe</a>
           <a href="/feed.xml">RSS</a>
         </nav>
+        <p class="footer-credit">
+          Crafted by <a href="https://genedai.md" target="_blank" rel="noopener noreferrer">Gene Dai</a>
+        </p>
       </div>
     </footer>
 
@@ -268,6 +271,19 @@ const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
       .footer-links a {
         color: var(--color-text-secondary);
         font-size: 0.875rem;
+      }
+
+      .footer-credit {
+        margin-top: var(--space-6);
+        font-size: 0.8125rem;
+        color: var(--color-text-secondary);
+      }
+
+      .footer-credit a {
+        color: var(--color-text);
+        font-weight: 500;
+        text-decoration: underline;
+        text-underline-offset: 2px;
       }
 
       @media (max-width: 800px) {

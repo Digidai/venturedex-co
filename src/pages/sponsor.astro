@@ -10,7 +10,7 @@ import {
 } from "../lib/seo";
 
 const title = "Sponsor VentureDex Startup Research";
-const description = "Reach founders, investors, and builders through VentureDex startup listings, weekly research, and curated collections.";
+const description = "Reach founders, investors, and builders through VentureDex. Get in touch at hi@venturedex.co to discuss sponsorship.";
 const schema = buildJsonLdGraph([
   siteOrganization(Astro.site?.toString()),
   siteWebSite(Astro.site?.toString()),
@@ -27,39 +27,25 @@ const schema = buildJsonLdGraph([
   <div class="container sponsor-page">
     <h1>Sponsor VentureDex</h1>
     <p class="subtitle">
-      Reach founders, investors, and builders who care about quality.
-      Our audience doesn't scroll past ads. They read every pick.
+      Want to reach founders, investors, and builders who read every pick?
+      We'd love to hear from you.
     </p>
 
-    <section class="placements">
-      <h2>Available placements</h2>
-      <div class="placement-grid">
-        <div class="placement-card">
-          <h3>Featured Listing</h3>
-          <p>Your product pinned to the top of the Explore page for one week. Includes editor's note.</p>
-        </div>
-        <div class="placement-card">
-          <h3>Weekly Sponsor</h3>
-          <p>A dedicated spot in our weekly email. One sponsor per issue. Your product, our voice.</p>
-        </div>
-        <div class="placement-card">
-          <h3>Collection Sponsor</h3>
-          <p>Own a collection page (AI, DevTools, etc.). Your brand at the top, relevant audience guaranteed.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section">
-      <h2>Interested?</h2>
-      <p>Email us at <a href="mailto:sponsor@venturedex.co">sponsor@venturedex.co</a></p>
-    </section>
+    <div class="contact-card">
+      <p class="contact-label">Get in touch</p>
+      <a class="contact-email" href="mailto:hi@venturedex.co">hi@venturedex.co</a>
+      <p class="contact-note">
+        Tell us about your product and what you have in mind — we'll reply with placement options.
+      </p>
+    </div>
   </div>
 </Base>
 
 <style>
   .sponsor-page {
-    max-width: 700px;
-    padding: var(--space-12) var(--space-6) var(--space-16);
+    max-width: 560px;
+    padding: var(--space-16) var(--space-6);
+    text-align: center;
   }
 
   .sponsor-page > h1 {
@@ -70,53 +56,43 @@ const schema = buildJsonLdGraph([
   .subtitle {
     color: var(--color-text-secondary);
     line-height: 1.6;
-    margin-bottom: var(--space-12);
+    margin-bottom: var(--space-8);
   }
 
-  .placements h2 {
-    font-size: 1.25rem;
-    margin-bottom: var(--space-6);
-  }
-
-  .placement-grid {
-    display: grid;
-    gap: var(--space-4);
-    padding-bottom: var(--space-12);
-    margin-bottom: var(--space-12);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .placement-card {
-    padding: var(--space-6);
+  .contact-card {
+    padding: var(--space-8) var(--space-6);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
+    background: var(--color-bg-card);
   }
 
-  .placement-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: var(--space-2);
-  }
-
-  .placement-card p {
-    font-size: 0.9rem;
+  .contact-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--color-text-secondary);
-    line-height: 1.5;
-  }
-
-  .cta-section {
-    text-align: center;
-    padding: var(--space-8) 0;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .cta-section h2 {
-    font-size: 1.5rem;
     margin-bottom: var(--space-3);
   }
 
-  .cta-section a {
-    font-weight: 500;
+  .contact-email {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 2px;
+  }
+
+  .contact-email:hover {
+    opacity: 0.8;
+  }
+
+  .contact-note {
+    margin-top: var(--space-4);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
   }
 </style>
