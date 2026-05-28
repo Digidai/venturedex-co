@@ -5,6 +5,7 @@ import {
   normalizeEmail,
   parseNewsletterPreferences,
   parseNewsletterPreferencesFromForm,
+  sendConfirmationEmail,
   subscribeToNewsletter,
   type NewsletterPreferences,
 } from "../../lib/newsletter";
@@ -38,7 +39,8 @@ function redirect(location: string, status = 303) {
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const db = locals.runtime.env.DB;
+  const env = locals.runtime.env;
+  const db = env.DB;
 
   let email: string | null;
   let preferences: NewsletterPreferences;
@@ -83,18 +85,13 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return json({ error: "Valid email required." }, 400);
   }
 
+  let subscription: Awaited<ReturnType<typeof subscribeToNewsletter>>;
   try {
-    const subscription = await subscribeToNewsletter(db, {
+    subscription = await subscribeToNewsletter(db, {
       email,
       preferences,
       source: "website",
     });
-    if (subscription.status === "unsubscribed") {
-      if (!isJson) {
-        return redirect("/subscribe?error=unsubscribed");
-      }
-      return json({ error: "This address is currently opted out." }, 409);
-    }
   } catch (error) {
     const message = error instanceof Error ? error.message : "Something went wrong.";
     if (!isJson) {
@@ -107,10 +104,22 @@ export const POST: APIRoute = async ({ request, locals }) => {
     );
   }
 
-  // For form submissions, redirect to a thank-you state
-  if (contentType.includes("form")) {
-    return redirect("/subscribe?subscribed=1", 302);
+  // Already confirmed earlier: acknowledge without resending anything.
+  if (subscription.status === "confirmed") {
+    return isJson
+      ? json({ ok: true, status: "confirmed" })
+      : redirect("/subscribe?already=1", 302);
   }
 
-  return json({ ok: true });
+  // Pending (new or re-subscribed): send the double opt-in confirmation email.
+  const confirmation = await sendConfirmationEmail(env, subscription);
+  if (!confirmation.ok) {
+    return isJson
+      ? json({ error: "Could not send confirmation email." }, 502)
+      : redirect("/subscribe?error=server", 302);
+  }
+
+  return isJson
+    ? json({ ok: true, status: "pending" })
+    : redirect("/subscribe?pending=1", 302);
 };

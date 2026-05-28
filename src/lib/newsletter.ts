@@ -147,44 +147,43 @@ export async function subscribeToNewsletter(
   }
 
   const preferences = input.preferences ?? DEFAULT_PREFERENCES;
-  const token = crypto.randomUUID();
-  const id = crypto.randomUUID();
+  const preferencesJson = JSON.stringify(preferences);
   const source = cleanSource(input.source);
   const existing = await getSubscriptionByEmail(db, email);
 
-  if (existing?.status === "unsubscribed") {
+  // Already confirmed: refresh preferences without resetting the opt-in state.
+  if (existing?.status === "confirmed") {
     await db
       .prepare(
         `UPDATE newsletter_subscriptions
-         SET preferences_json = ?,
-             source = ?,
-             updated_at = datetime('now')
+         SET preferences_json = ?, source = ?, updated_at = datetime('now')
          WHERE id = ?`
       )
-      .bind(JSON.stringify(preferences), source, existing.id)
+      .bind(preferencesJson, source, existing.id)
       .run();
-    return {
-      ...existing,
-      preferences_json: JSON.stringify(preferences),
-    };
+    return { ...existing, preferences_json: preferencesJson };
   }
 
+  // New, still-pending, or previously unsubscribed addresses (re)enter the
+  // pending state and must confirm via the emailed link before any sends.
+  const token = existing?.unsubscribe_token ?? crypto.randomUUID();
+  const id = existing?.id ?? crypto.randomUUID();
   await db
     .prepare(
       `INSERT INTO newsletter_subscriptions (
-         id, email, preferences_json, status, source, unsubscribe_token, confirmed_at, updated_at
+         id, email, preferences_json, status, source, unsubscribe_token, confirmed_at, unsubscribed_at, updated_at
        )
-       VALUES (?, ?, ?, 'confirmed', ?, ?, datetime('now'), datetime('now'))
+       VALUES (?, ?, ?, 'pending', ?, ?, NULL, NULL, datetime('now'))
        ON CONFLICT(email) DO UPDATE SET
          preferences_json = excluded.preferences_json,
-         status = 'confirmed',
+         status = 'pending',
          source = excluded.source,
          unsubscribe_token = COALESCE(newsletter_subscriptions.unsubscribe_token, excluded.unsubscribe_token),
-         confirmed_at = COALESCE(newsletter_subscriptions.confirmed_at, datetime('now')),
+         confirmed_at = NULL,
          unsubscribed_at = NULL,
          updated_at = datetime('now')`
     )
-    .bind(id, email, JSON.stringify(preferences), source, token)
+    .bind(id, email, preferencesJson, source, token)
     .run();
 
   const subscription = await getSubscriptionByEmail(db, email);
@@ -235,6 +234,34 @@ export async function getSubscriptionByToken(
     .prepare("SELECT * FROM newsletter_subscriptions WHERE unsubscribe_token = ?")
     .bind(cleanToken)
     .first<NewsletterSubscription>();
+}
+
+export async function confirmSubscription(
+  db: D1Database,
+  token: string
+): Promise<{ subscription: NewsletterSubscription; newlyConfirmed: boolean } | null> {
+  const subscription = await getSubscriptionByToken(db, token);
+  if (!subscription) return null;
+
+  // Idempotent: a second click on the link is a no-op success.
+  // A confirmation link never silently reactivates an opted-out address.
+  if (subscription.status !== "pending") {
+    return { subscription, newlyConfirmed: false };
+  }
+
+  await db
+    .prepare(
+      `UPDATE newsletter_subscriptions
+       SET status = 'confirmed',
+           confirmed_at = COALESCE(confirmed_at, datetime('now')),
+           unsubscribed_at = NULL,
+           updated_at = datetime('now')
+       WHERE id = ?`
+    )
+    .bind(subscription.id)
+    .run();
+
+  return { subscription: { ...subscription, status: "confirmed" }, newlyConfirmed: true };
 }
 
 export async function runNewsletterCycle(
@@ -843,6 +870,187 @@ function isAllowedCloudflareEmailHeader(name: string): boolean {
     "List-Id",
     "Precedence",
   ].includes(name);
+}
+
+function escapeEmailHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderTransactionalEmail(input: {
+  siteUrl: string;
+  preheader: string;
+  heading: string;
+  bodyHtml: string;
+  ctaLabel: string;
+  ctaUrl: string;
+  footerHtml: string;
+  mailingAddress: string;
+}): string {
+  return `<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#FAFAF9;color:#1A1A1A;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+  <span style="display:none;max-height:0;overflow:hidden;opacity:0;">${escapeEmailHtml(input.preheader)}</span>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#FAFAF9;">
+    <tr><td align="center" style="padding:40px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;background:#FFFFFF;border:1px solid #E7E5E4;border-radius:12px;">
+        <tr><td style="padding:32px 32px 8px;">
+          <a href="${input.siteUrl}" style="font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:22px;color:#1A1A1A;text-decoration:none;">VentureDex</a>
+          <h1 style="font-family:Georgia,'Times New Roman',serif;font-size:26px;line-height:1.25;margin:24px 0 12px;color:#1A1A1A;">${escapeEmailHtml(input.heading)}</h1>
+          <div style="font-size:15px;line-height:1.6;color:#44403C;">${input.bodyHtml}</div>
+          <table role="presentation" cellpadding="0" cellspacing="0" style="margin:28px 0 4px;"><tr><td style="border-radius:8px;background:#1A1A1A;">
+            <a href="${input.ctaUrl}" style="display:inline-block;padding:14px 28px;font-size:15px;font-weight:600;color:#FAFAF9;text-decoration:none;border-radius:8px;">${escapeEmailHtml(input.ctaLabel)}</a>
+          </td></tr></table>
+          <p style="font-size:13px;line-height:1.6;color:#78716C;margin:20px 0 0;">If the button doesn't work, paste this link into your browser:<br><a href="${input.ctaUrl}" style="color:#78716C;word-break:break-all;">${input.ctaUrl}</a></p>
+        </td></tr>
+        <tr><td style="padding:20px 32px 28px;border-top:1px solid #E7E5E4;">
+          <p style="font-size:12px;line-height:1.6;color:#A8A29E;margin:0;">${input.footerHtml}</p>
+          <p style="font-size:12px;line-height:1.6;color:#A8A29E;margin:8px 0 0;">${escapeEmailHtml(input.mailingAddress)}</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+export function buildConfirmationEmailMessage(input: {
+  email: string;
+  token: string;
+  siteUrl: string;
+  from: SenderAddress;
+  replyTo?: SenderAddress;
+  mailingAddress: string;
+}) {
+  const confirmUrl = absoluteUrl(
+    input.siteUrl,
+    `/api/newsletter/confirm?token=${encodeURIComponent(input.token)}`
+  );
+  const html = renderTransactionalEmail({
+    siteUrl: normalizeSiteUrl(input.siteUrl),
+    preheader: "Confirm your VentureDex subscription to start receiving startup picks.",
+    heading: "Confirm your subscription",
+    bodyHtml:
+      `<p style="margin:0 0 12px;">Thanks for signing up for VentureDex. Confirm this address to start receiving curated startup picks and weekly research, with editorial commentary.</p>` +
+      `<p style="margin:0;">If you didn't request this, you can safely ignore this email — nothing else will be sent.</p>`,
+    ctaLabel: "Confirm subscription",
+    ctaUrl: confirmUrl,
+    footerHtml: "You received this because this address was entered at venturedex.co. No newsletters are sent unless you confirm.",
+    mailingAddress: input.mailingAddress,
+  });
+  const text =
+    `Confirm your VentureDex subscription\n\n` +
+    `Thanks for signing up. Confirm this address to start receiving curated startup picks and weekly research:\n${confirmUrl}\n\n` +
+    `If you didn't request this, ignore this email — nothing else will be sent.\n\n${input.mailingAddress}`;
+  return {
+    from: input.from,
+    to: input.email,
+    replyTo: input.replyTo,
+    subject: "Confirm your VentureDex subscription",
+    html,
+    text,
+    headers: {
+      "X-Campaign-ID": "subscription-confirmation",
+    } as Record<string, string>,
+  };
+}
+
+export function buildWelcomeEmailMessage(input: {
+  email: string;
+  token: string;
+  siteUrl: string;
+  from: SenderAddress;
+  replyTo?: SenderAddress;
+  mailingAddress: string;
+}) {
+  const siteUrl = normalizeSiteUrl(input.siteUrl);
+  const exploreUrl = absoluteUrl(siteUrl, "/");
+  const unsubscribeUrl = absoluteUrl(siteUrl, `/unsubscribe?token=${encodeURIComponent(input.token)}`);
+  const oneClickUnsubscribeUrl = absoluteUrl(siteUrl, `/api/newsletter/unsubscribe?token=${encodeURIComponent(input.token)}`);
+  const html = renderTransactionalEmail({
+    siteUrl,
+    preheader: "You're subscribed to VentureDex.",
+    heading: "You're in.",
+    bodyHtml:
+      `<p style="margin:0 0 12px;">Your subscription is confirmed. You'll get curated startup picks plus weekly research, with editorial commentary — no spam, no fluff.</p>` +
+      `<p style="margin:0;">Your first issue arrives after the next editorial window.</p>`,
+    ctaLabel: "Explore VentureDex",
+    ctaUrl: exploreUrl,
+    footerHtml: `You're receiving this because you confirmed your subscription at venturedex.co. <a href="${unsubscribeUrl}" style="color:#A8A29E;">Unsubscribe</a>.`,
+    mailingAddress: input.mailingAddress,
+  });
+  const text =
+    `You're in.\n\n` +
+    `Your VentureDex subscription is confirmed. You'll get curated startup picks plus weekly research.\n\n` +
+    `Explore: ${exploreUrl}\nUnsubscribe: ${unsubscribeUrl}\n\n${input.mailingAddress}`;
+  return {
+    from: input.from,
+    to: input.email,
+    replyTo: input.replyTo,
+    subject: "Welcome to VentureDex",
+    html,
+    text,
+    headers: {
+      "List-Unsubscribe": `<${oneClickUnsubscribeUrl}>`,
+      "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+      "List-Id": "VentureDex Newsletter <newsletter.venturedex.co>",
+      "X-Campaign-ID": "subscription-welcome",
+    } as Record<string, string>,
+  };
+}
+
+export async function sendConfirmationEmail(
+  env: NewsletterEnv,
+  subscription: NewsletterSubscription
+): Promise<{ ok: boolean; error?: string }> {
+  const config = emailConfig(env);
+  if (!config.ok) return { ok: false, error: config.error };
+  const token = subscription.unsubscribe_token ?? "";
+  if (!token) return { ok: false, error: "Missing confirmation token." };
+  try {
+    await config.email.send(
+      buildConfirmationEmailMessage({
+        email: subscription.email,
+        token,
+        siteUrl: normalizeSiteUrl(env.SITE_URL),
+        from: config.from,
+        replyTo: config.replyTo,
+        mailingAddress: config.mailingAddress,
+      })
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, error: error instanceof Error ? error.message : String(error) };
+  }
+}
+
+export async function sendWelcomeEmail(
+  env: NewsletterEnv,
+  subscription: NewsletterSubscription
+): Promise<{ ok: boolean; error?: string }> {
+  const config = emailConfig(env);
+  if (!config.ok) return { ok: false, error: config.error };
+  const token = subscription.unsubscribe_token ?? "";
+  if (!token) return { ok: false, error: "Missing unsubscribe token." };
+  try {
+    await config.email.send(
+      buildWelcomeEmailMessage({
+        email: subscription.email,
+        token,
+        siteUrl: normalizeSiteUrl(env.SITE_URL),
+        from: config.from,
+        replyTo: config.replyTo,
+        mailingAddress: config.mailingAddress,
+      })
+    );
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, error: error instanceof Error ? error.message : String(error) };
+  }
 }
 
 async function enqueueNewsletterDeliveries(input: {

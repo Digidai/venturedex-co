@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   buildCloudflareEmailMessage,
+  buildConfirmationEmailMessage,
+  buildWelcomeEmailMessage,
   buildDailyDigestContent,
   buildWeeklyDigestContent,
   normalizeEmail,
@@ -225,4 +227,39 @@ test("renders weekly digest from issue copy and pick evaluation", () => {
   assert.match(rendered.html, /Limits and risks/);
   assert.match(rendered.text, /Full issue: https:\/\/venturedex\.co\/weekly\/12/);
   assert.match(rendered.text, /Adoption evidence is not public/);
+});
+
+test("confirmation email carries the double opt-in confirm link", () => {
+  const message = buildConfirmationEmailMessage({
+    email: "reader@example.com",
+    token: "tok-abc",
+    siteUrl: "https://venturedex.co",
+    from: { email: "newsletter@venturedex.co", name: "VentureDex" },
+    mailingAddress: "400 Concar Dr, San Mateo, CA 94402",
+  });
+
+  assert.equal(message.to, "reader@example.com");
+  assert.equal(message.subject, "Confirm your VentureDex subscription");
+  assert.match(message.html, /https:\/\/venturedex\.co\/api\/newsletter\/confirm\?token=tok-abc/);
+  assert.match(message.text, /https:\/\/venturedex\.co\/api\/newsletter\/confirm\?token=tok-abc/);
+  assert.match(message.html, /400 Concar Dr/);
+  assert.equal(message.headers["List-Unsubscribe"], undefined);
+});
+
+test("welcome email includes one-click unsubscribe headers", () => {
+  const message = buildWelcomeEmailMessage({
+    email: "reader@example.com",
+    token: "tok-xyz",
+    siteUrl: "https://venturedex.co",
+    from: { email: "newsletter@venturedex.co", name: "VentureDex" },
+    mailingAddress: "400 Concar Dr, San Mateo, CA 94402",
+  });
+
+  assert.equal(message.subject, "Welcome to VentureDex");
+  assert.match(
+    message.headers["List-Unsubscribe"],
+    /^<https:\/\/venturedex\.co\/api\/newsletter\/unsubscribe\?token=tok-xyz>$/
+  );
+  assert.equal(message.headers["List-Unsubscribe-Post"], "List-Unsubscribe=One-Click");
+  assert.match(message.html, /unsubscribe\?token=tok-xyz/);
 });

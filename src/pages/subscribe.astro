@@ -21,7 +21,10 @@ const schema = buildJsonLdGraph([
     siteUrl: Astro.site?.toString(),
   }),
 ]);
-const subscribed = Astro.url.searchParams.get("subscribed") === "1";
+const pending = Astro.url.searchParams.get("pending") === "1"
+  || Astro.url.searchParams.get("subscribed") === "1";
+const confirmed = Astro.url.searchParams.get("confirmed") === "1";
+const already = Astro.url.searchParams.get("already") === "1";
 const error = Astro.url.searchParams.get("error");
 const errorMessage = error === "preferences"
   ? "Choose at least one newsletter."
@@ -30,8 +33,10 @@ const errorMessage = error === "preferences"
     : error === "server"
       ? "Something went wrong. Please try again."
       : error === "unsubscribed"
-        ? "This address is currently opted out."
-        : "";
+        ? "This address is unsubscribed. Re-subscribe below to opt back in."
+        : error === "confirm"
+          ? "That confirmation link is invalid or expired. Subscribe again below."
+          : "";
 ---
 
 <Base title={title} description={description} schema={schema}>
@@ -42,10 +47,20 @@ const errorMessage = error === "preferences"
       No spam, no fluff, just the good stuff.
     </p>
 
-    {subscribed ? (
+    {confirmed ? (
       <div class="success-box" role="status">
-        <h2>Request received.</h2>
-        <p>Eligible subscribed addresses will receive Daily additions and Weekly research after the editorial delay window.</p>
+        <h2>You're subscribed.</h2>
+        <p>Your email is confirmed. Curated startup picks and weekly research will arrive after the next editorial window.</p>
+      </div>
+    ) : already ? (
+      <div class="success-box" role="status">
+        <h2>You're already subscribed.</h2>
+        <p>This address is already confirmed for VentureDex — nothing else to do.</p>
+      </div>
+    ) : pending ? (
+      <div class="success-box" role="status">
+        <h2>Almost there — check your inbox.</h2>
+        <p>We sent a confirmation link to your email. Click it to finish subscribing. You won't receive anything until you confirm.</p>
       </div>
     ) : (
       <form class="subscribe-form" action="/api/subscribe" method="POST">
