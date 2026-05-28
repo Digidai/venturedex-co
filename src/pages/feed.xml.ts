@@ -5,7 +5,13 @@ import { getPublishedStartups } from "../lib/db";
 
 export const GET: APIRoute = async ({ locals }) => {
   const db = locals.runtime.env.DB;
-  const startups = await getPublishedStartups(db, { limit: 20 });
+  const startups = await getPublishedStartups(db, { limit: 30, sort: "newest" });
+
+  const lastBuildDate = (
+    startups.length
+      ? new Date(startups[0].published_at ?? startups[0].created_at)
+      : new Date()
+  ).toUTCString();
 
   const items = startups
     .map(
@@ -27,6 +33,7 @@ export const GET: APIRoute = async ({ locals }) => {
     <description>A curated gallery of startups worth watching.</description>
     <language>en</language>
     <atom:link href="https://venturedex.co/feed.xml" rel="self" type="application/rss+xml"/>
+    <lastBuildDate>${lastBuildDate}</lastBuildDate>
 ${items}
   </channel>
 </rss>`;
