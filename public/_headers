@@ -1,0 +1,13 @@
+# Long-lived caching for static media (served by Cloudflare Workers Assets).
+# These rarely change; previously they revalidated on every page view (max-age=0).
+/screenshots/*
+  Cache-Control: public, max-age=604800
+
+/logos/*
+  Cache-Control: public, max-age=604800
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/og-image.png
+  Cache-Control: public, max-age=604800
