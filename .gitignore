@@ -5,3 +5,5 @@ dist/
 .dev.vars
 .env
 .gstack/
+__pycache__/
+*.pyc
