@@ -1,0 +1,311 @@
+{
+  "__doc__": "Authoritative publish/first-seen timestamps per startup slug, version-controlled so build-db.sh seeds deterministic dates and detail pages can prerender at build time. Exported from D1 on 2026-05-29. New startups without an entry fall back to seed-time now(); re-export to lock their date.",
+  "alcatraz": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "all3": {
+    "published_at": "2026-05-04 06:18:58",
+    "first_seen_at": "2026-05-04 06:18:58"
+  },
+  "allo": {
+    "published_at": "2026-05-26 09:43:21",
+    "first_seen_at": "2026-05-26 09:43:21"
+  },
+  "amperos": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "arkeus": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "balerion": {
+    "published_at": "2026-05-03 06:28:30",
+    "first_seen_at": "2026-05-03 06:28:30"
+  },
+  "basata": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "branchlab": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "cal-com": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "certo": {
+    "published_at": "2026-05-26 09:43:21",
+    "first_seen_at": "2026-05-26 09:43:21"
+  },
+  "ciridae": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "config": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "copilotkit": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "corgi": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "crew-carbon": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "cursor": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "cvrd-health": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "dust": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "eleven-labs": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "enzo-health": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "equipifi": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "ethos": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "exa": {
+    "published_at": "2026-05-27 06:15:57",
+    "first_seen_at": "2026-05-27 06:15:57"
+  },
+  "fazeshift": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "featherless": {
+    "published_at": "2026-05-03 06:28:30",
+    "first_seen_at": "2026-05-03 06:28:30"
+  },
+  "flexprice": {
+    "published_at": "2026-05-26 09:43:21",
+    "first_seen_at": "2026-05-26 09:43:21"
+  },
+  "gizmo": {
+    "published_at": "2026-04-20 11:02:55",
+    "first_seen_at": "2026-04-20 11:02:55"
+  },
+  "govwell": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "grai": {
+    "published_at": "2026-04-22 08:26:09",
+    "first_seen_at": "2026-04-22 08:26:09"
+  },
+  "granola": {
+    "published_at": "2026-04-20 11:02:55",
+    "first_seen_at": "2026-04-20 11:02:55"
+  },
+  "hellbender": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "hilbert": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "juliahub": {
+    "published_at": "2026-05-04 06:18:58",
+    "first_seen_at": "2026-05-04 06:18:58"
+  },
+  "kin-health": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "krea": {
+    "published_at": "2026-04-24 16:17:19",
+    "first_seen_at": "2026-04-24 16:17:19"
+  },
+  "lakefusion": {
+    "published_at": "2026-05-05 06:40:13",
+    "first_seen_at": "2026-05-05 06:40:13"
+  },
+  "lexroom": {
+    "published_at": "2026-05-26 09:43:21",
+    "first_seen_at": "2026-05-26 09:43:21"
+  },
+  "linear": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "liquid-instruments": {
+    "published_at": "2026-05-03 06:28:30",
+    "first_seen_at": "2026-05-03 06:28:30"
+  },
+  "manifest-os": {
+    "published_at": "2026-05-05 06:40:13",
+    "first_seen_at": "2026-05-05 06:40:13"
+  },
+  "modal": {
+    "published_at": "2026-05-26 09:43:21",
+    "first_seen_at": "2026-05-26 09:43:21"
+  },
+  "moment": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "moment-energy": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "monk": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "nanoclaw": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "nectar-social": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "ocean": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "openrouter": {
+    "published_at": "2026-05-27 06:15:57",
+    "first_seen_at": "2026-05-27 06:15:57"
+  },
+  "origin-lab": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "outmarket": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "parallel-web-systems": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "parasail": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "perplexity": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "pit": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "pivot": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "qodo": {
+    "published_at": "2026-04-20 09:56:11",
+    "first_seen_at": "2026-04-20 09:56:11"
+  },
+  "quantware": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "quartermaster": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "radixark": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "rely": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "resend": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "scout-space": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "secludy": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "shapes": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "shyld-ai": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "socket": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "stilta": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "stitch": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "supabase": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "synera": {
+    "published_at": "2026-05-02 09:59:18",
+    "first_seen_at": "2026-05-02 09:59:18"
+  },
+  "texture": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "trackk": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "tribal": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "val-town": {
+    "published_at": "2026-04-18 13:28:51",
+    "first_seen_at": "2026-04-18 13:28:51"
+  },
+  "vapi": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "vector": {
+    "published_at": "2026-05-18 03:08:31",
+    "first_seen_at": "2026-05-18 03:08:31"
+  },
+  "wirobotics": {
+    "published_at": "2026-05-25 10:27:00",
+    "first_seen_at": "2026-05-25 10:27:00"
+  }
+}

@@ -80,6 +80,19 @@ startup_files = sorted(CONTENT_DIR.glob("*.json"))
 weekly_files = sorted(WEEKLY_DIR.glob("*.json"))
 investors = json.loads(INVESTORS_FILE.read_text()) if INVESTORS_FILE.exists() else {}
 
+# Version-controlled per-slug publish/first-seen timestamps (content/timestamps.json).
+# Keeps seeded dates deterministic and lets detail pages prerender with real dates.
+# Slugs missing here fall back to seed-time now() (then can be exported back to lock them).
+TIMESTAMPS_FILE = REPO_ROOT / "content" / "timestamps.json"
+_timestamps_raw = json.loads(TIMESTAMPS_FILE.read_text()) if TIMESTAMPS_FILE.exists() else {}
+timestamps = {k: v for k, v in _timestamps_raw.items() if not k.startswith("__")}
+
+
+def timestamp_sql(slug: str, field: str) -> str:
+    entry = timestamps.get(slug) or {}
+    value = entry.get(field)
+    return sql(value) if value else "datetime('now')"
+
 startup_rows = []
 funding_rows = []
 search_rows = []
@@ -106,6 +119,20 @@ for path in startup_files:
         else {}
     )
 
+    # When the slug has a version-controlled timestamp, the repo is authoritative
+    # (sidecar value wins on re-seed). Otherwise preserve the first seed-time now().
+    in_timestamps = slug in timestamps
+    published_conflict = (
+        "published_at = excluded.published_at, "
+        if in_timestamps
+        else "published_at = COALESCE(startups.published_at, excluded.published_at), "
+    )
+    first_seen_conflict = (
+        "first_seen_at = excluded.first_seen_at, "
+        if in_timestamps
+        else "first_seen_at = COALESCE(startups.first_seen_at, excluded.first_seen_at), "
+    )
+
     startup_rows.append(
         "INSERT INTO startups ("
         "id, slug, domain, canonical_url, product_name, summary, editor_note, research_json, editor_rating, "
@@ -123,7 +150,7 @@ for path in startup_files:
         f"{sql(data.get('tags'))}, {sql(data.get('investors'))}, "
         f"{sql(json.dumps(data.get('links', {})) if data.get('links') else None)}, "
         f"{1 if data.get('is_featured') else 0}, {sql(f'{slug}.webp')}, 'ready', 'published', "
-        "'manual', datetime('now'), datetime('now')"
+        f"'manual', {timestamp_sql(slug, 'first_seen_at')}, {timestamp_sql(slug, 'published_at')}"
         ") ON CONFLICT(slug) DO UPDATE SET "
         "id = excluded.id, "
         "domain = excluded.domain, "
@@ -149,9 +176,9 @@ for path in startup_files:
         "screenshot_status = excluded.screenshot_status, "
         "workflow_status = excluded.workflow_status, "
         "codex_stage = excluded.codex_stage, "
-        "first_seen_at = COALESCE(startups.first_seen_at, excluded.first_seen_at), "
-        "published_at = COALESCE(startups.published_at, excluded.published_at), "
-        "created_at = COALESCE(startups.created_at, datetime('now')), "
+        + first_seen_conflict
+        + published_conflict
+        + "created_at = COALESCE(startups.created_at, datetime('now')), "
         "updated_at = COALESCE(startups.updated_at, datetime('now'));"
     )
 
