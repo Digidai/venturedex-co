@@ -49,7 +49,6 @@ execute "
 CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
   id TEXT PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
-  interests_json TEXT,
   preferences_json TEXT,
   status TEXT DEFAULT 'pending' CHECK (status IN ('pending','confirmed','unsubscribed')),
   source TEXT DEFAULT 'website',

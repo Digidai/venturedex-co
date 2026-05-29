@@ -1,6 +1,18 @@
 -- VentureDex D1 Schema
 -- workflow_status: draft / published / archived (3-state, per CEO Review)
 -- codex_stage: internal pipeline tracking (per Eng Review)
+--
+-- Runtime-active at present (read/written by the deployed Worker):
+--   startups, funding_rounds (newsletter digests, via src/lib/db.ts),
+--   newsletter_subscriptions/_sends/_deliveries (subscribe + delivery pipeline),
+--   rate_limits (subscribe throttling).
+-- The site's pages prerender from content/ (src/lib/content.ts), so the seeded
+-- startups/collections/etc. back the D1 copy but aren't queried for page rendering.
+--
+-- Reserved for the Codex automation roadmap, NOT yet wired to any code
+-- (kept so the model is ready; safe to drop if that roadmap is abandoned):
+--   startup_evidence, startup_aliases, startup_snapshots, submission_queue,
+--   screenshot_jobs, research_posts, sponsor_leads, automation_runs.
 
 CREATE TABLE IF NOT EXISTS startups (
   id TEXT PRIMARY KEY,
@@ -185,7 +197,6 @@ CREATE INDEX IF NOT EXISTS idx_search_term ON search_index_terms(normalized_term
 CREATE TABLE IF NOT EXISTS newsletter_subscriptions (
   id TEXT PRIMARY KEY,
   email TEXT UNIQUE NOT NULL,
-  interests_json TEXT,
   preferences_json TEXT,
   status TEXT DEFAULT 'pending' CHECK (status IN ('pending','confirmed','unsubscribed')),
   source TEXT DEFAULT 'website',

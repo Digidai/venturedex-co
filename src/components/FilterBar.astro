@@ -1,6 +1,6 @@
 ---
 import { PRODUCT_TYPES, FUNDING_STAGES } from "../lib/types";
-import type { SortOption } from "../lib/db";
+import type { SortValue } from "../lib/startup-filter";
 
 interface Props {
   currentType?: string;
@@ -20,7 +20,7 @@ const REGIONS = [
   "Global / Remote",
 ];
 
-const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+const SORT_OPTIONS: { value: SortValue; label: string }[] = [
   { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest" },
   { value: "name-az", label: "Name A\u2013Z" },
