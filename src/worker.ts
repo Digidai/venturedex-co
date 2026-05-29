@@ -13,6 +13,16 @@ import {
 const DAILY_CRON = "30 13 * * *";
 const WEEKLY_CRON = "0 14 * * 2";
 
+// Single-line JSON logs so Cloudflare Workers Logs / Logpush can parse and alert
+// on newsletter cron + queue outcomes (previously these ran silently).
+function logEvent(event: string, data: Record<string, unknown>): void {
+  try {
+    console.log(JSON.stringify({ event, ts: new Date().toISOString(), ...data }));
+  } catch {
+    console.log(`${event} (unserializable payload)`);
+  }
+}
+
 function typeForCron(cron: string): NewsletterType | null {
   if (cron === DAILY_CRON) return "daily";
   if (cron === WEEKLY_CRON) return "weekly";
@@ -77,10 +87,24 @@ export function createExports(manifest: SSRManifest) {
       async scheduled(controller: ScheduledController, env: NewsletterEnv, ctx: ExecutionContext) {
         const type = typeForCron(controller.cron);
         if (!type) return;
-        ctx.waitUntil(runNewsletterCycle(env, { type }));
+        ctx.waitUntil(
+          runNewsletterCycle(env, { type })
+            .then((result) => logEvent("newsletter_cycle", { ...result }))
+            .catch((error) =>
+              logEvent("newsletter_cycle_error", { type, error: error instanceof Error ? error.message : String(error) })
+            )
+        );
       },
       async queue(batch: MessageBatch<NewsletterQueueMessage>, env: NewsletterEnv) {
-        await processNewsletterDeliveryQueue(env, batch);
+        try {
+          await processNewsletterDeliveryQueue(env, batch);
+        } catch (error) {
+          logEvent("newsletter_queue_error", {
+            batchSize: batch.messages.length,
+            error: error instanceof Error ? error.message : String(error),
+          });
+          throw error;
+        }
       },
     },
   };

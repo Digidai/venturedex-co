@@ -56,6 +56,12 @@ const modifiedIso = toIsoDateTime(modifiedTime);
 const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
 // Escape "<" so values containing "</script>" cannot break out of the ld+json block.
 const schemaJson = schemaItems.map((item) => JSON.stringify(item).split("<").join("\\u003c"));
+
+// Cloudflare Web Analytics beacon — privacy-friendly, cookieless, deferred.
+// Baked at build time (PUBLIC_ env is inlined), so it ships on prerendered and
+// SSR pages alike. Renders nothing when unset (local dev / not configured), so
+// it never beacons during development or before a token exists.
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -98,6 +104,13 @@ const schemaJson = schemaItems.map((item) => JSON.stringify(item).split("<").joi
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
     </script>
+    {cfBeaconToken && (
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+      />
+    )}
   </head>
   <body>
     <a href="#main" class="visually-hidden">Skip to main content</a>

@@ -19,3 +19,13 @@ type Runtime = import("@astrojs/cloudflare").Runtime<{
 declare namespace App {
   interface Locals extends Runtime {}
 }
+
+// Build-time public env (inlined by Astro/Vite). Set in CI before `npm run build`.
+interface ImportMetaEnv {
+  // Cloudflare Web Analytics beacon token; when unset the beacon is not rendered.
+  readonly PUBLIC_CF_BEACON_TOKEN?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
