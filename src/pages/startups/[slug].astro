@@ -140,7 +140,15 @@ function sourceLabel(source?: StartupResearchSource) {
   <article class="site-detail container">
     <div class="detail-hero">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} class="detail-screenshot" />
+        <img
+          src={screenshotUrl}
+          alt={`${startup.product_name} screenshot`}
+          class="detail-screenshot"
+          width="1440"
+          height="900"
+          fetchpriority="high"
+          decoding="async"
+        />
       ) : (
         <div class="detail-placeholder">
           <span>{startup.product_name.charAt(0)}</span>

@@ -22,7 +22,14 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   <a href={`/startups/${startup.slug}`} class="card-link">
     <div class="card-screenshot">
       {screenshotUrl ? (
-        <img src={screenshotUrl} alt={`${startup.product_name} screenshot`} loading="lazy" />
+        <img
+          src={screenshotUrl}
+          alt={`${startup.product_name} screenshot`}
+          width="1440"
+          height="900"
+          loading="lazy"
+          decoding="async"
+        />
       ) : (
         <div class="card-placeholder">
           <span>{startup.product_name.charAt(0)}</span>
