@@ -40,6 +40,22 @@ export interface Startup {
   updated_at: string;
 }
 
+// The subset of Startup columns the list/card UI (SiteCard) actually renders.
+// List queries select only these to avoid pulling heavy columns (research_json,
+// long_description, editor_note, ...) into D1 reads for pages that never use them.
+export type StartupCard = Pick<
+  Startup,
+  | "slug"
+  | "domain"
+  | "product_name"
+  | "product_type"
+  | "summary"
+  | "why_featured"
+  | "funding_stage"
+  | "region"
+  | "screenshot_r2_key"
+>;
+
 export interface StartupLinks {
   github?: string;
   twitter?: string;

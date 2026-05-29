@@ -1,7 +1,12 @@
-import type { Startup, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
-import { resolveInvestorSlugByName } from "./brand-assets";
+import type { Startup, StartupCard, FundingRound } from "./types";
 
 export type SortOption = "featured" | "newest" | "name-az";
+
+// Columns the list/card UI (SiteCard) renders. List queries select only these so
+// heavy columns (research_json, long_description, editor_note, ...) aren't pulled
+// into D1 reads for pages that never use them. Detail pages read content.ts, not D1.
+const CARD_COLUMNS =
+  "slug, domain, product_name, product_type, summary, why_featured, funding_stage, region, screenshot_r2_key";
 
 export async function getPublishedStartups(
   db: D1Database,
@@ -14,7 +19,7 @@ export async function getPublishedStartups(
     featured?: boolean;
     sort?: SortOption;
   }
-): Promise<Startup[]> {
+): Promise<StartupCard[]> {
   const conditions = ["workflow_status = 'published'"];
   const params: unknown[] = [];
 
@@ -54,14 +59,15 @@ export async function getPublishedStartups(
 
   const result = await db
     .prepare(
-      `SELECT * FROM startups WHERE ${where} ORDER BY ${orderBy} LIMIT ? OFFSET ?`
+      `SELECT ${CARD_COLUMNS} FROM startups WHERE ${where} ORDER BY ${orderBy} LIMIT ? OFFSET ?`
     )
     .bind(...params, limit, offset)
-    .all<Startup>();
+    .all<StartupCard>();
 
   return result.results;
 }
 
+// Used at runtime by the newsletter digest builder (src/lib/newsletter.ts).
 export async function getStartupBySlug(
   db: D1Database,
   slug: string
@@ -74,6 +80,7 @@ export async function getStartupBySlug(
   return result;
 }
 
+// Used at runtime by the newsletter digest builder (src/lib/newsletter.ts).
 export async function getFundingRoundsForStartup(
   db: D1Database,
   slug: string
@@ -90,112 +97,11 @@ export async function getFundingRoundsForStartup(
   return result.results;
 }
 
-export async function getRelatedStartups(
-  db: D1Database,
-  startup: Startup,
-  limit = 4
-): Promise<Startup[]> {
-  const result = await db
-    .prepare(
-      `SELECT * FROM startups
-       WHERE workflow_status = 'published'
-         AND id != ?
-         AND (product_type = ? OR region = ?)
-       ORDER BY published_at DESC
-       LIMIT ?`
-    )
-    .bind(startup.id, startup.product_type, startup.region, limit)
-    .all<Startup>();
-
-  return result.results;
-}
-
-export async function getPublishedWeeklyIssues(
-  db: D1Database,
-  limit = 20
-): Promise<WeeklyIssue[]> {
-  const result = await db
-    .prepare(
-      "SELECT * FROM weekly_issues WHERE status = 'published' ORDER BY issue_number DESC LIMIT ?"
-    )
-    .bind(limit)
-    .all<WeeklyIssue>();
-
-  return result.results;
-}
-
-export async function getWeeklyIssueByNumber(
-  db: D1Database,
-  issueNumber: number
-): Promise<{ issue: WeeklyIssue; startups: Startup[] } | null> {
-  const issue = await db
-    .prepare("SELECT * FROM weekly_issues WHERE issue_number = ? AND status = 'published'")
-    .bind(issueNumber)
-    .first<WeeklyIssue>();
-
-  if (!issue) return null;
-
-  const startups = await db
-    .prepare(
-      `SELECT s.* FROM startups s
-       JOIN weekly_issue_startups wis ON s.id = wis.startup_id
-       WHERE wis.issue_id = ? AND s.workflow_status = 'published'
-       ORDER BY wis.display_order`
-    )
-    .bind(issue.id)
-    .all<Startup>();
-
-  return { issue, startups: startups.results };
-}
-
-export async function getPublishedCollections(
-  db: D1Database
-): Promise<(Collection & { startup_count: number })[]> {
-  const result = await db
-    .prepare(
-      `SELECT c.*, COUNT(s.id) as startup_count
-       FROM collections c
-       LEFT JOIN collection_startups cs ON c.id = cs.collection_id
-       LEFT JOIN startups s ON s.id = cs.startup_id
-        AND s.workflow_status = 'published'
-       WHERE c.published = 1
-       GROUP BY c.id
-       ORDER BY c.title`
-    )
-    .all<Collection & { startup_count: number }>();
-
-  return result.results;
-}
-
-export async function getCollectionBySlug(
-  db: D1Database,
-  slug: string
-): Promise<{ collection: Collection; startups: Startup[] } | null> {
-  const collection = await db
-    .prepare("SELECT * FROM collections WHERE slug = ? AND published = 1")
-    .bind(slug)
-    .first<Collection>();
-
-  if (!collection) return null;
-
-  const startups = await db
-    .prepare(
-      `SELECT s.* FROM startups s
-       JOIN collection_startups cs ON s.id = cs.startup_id
-       WHERE cs.collection_id = ? AND s.workflow_status = 'published'
-       ORDER BY cs.pinned DESC, cs.rank`
-    )
-    .bind(collection.id)
-    .all<Startup>();
-
-  return { collection, startups: startups.results };
-}
-
 export async function searchStartups(
   db: D1Database,
   query: string,
   limit = 20
-): Promise<Startup[]> {
+): Promise<StartupCard[]> {
   const normalized = query.toLowerCase().trim().slice(0, 200);
   if (!normalized) return [];
 
@@ -204,49 +110,24 @@ export async function searchStartups(
 
   const result = await db
     .prepare(
-      `SELECT DISTINCT s.* FROM startups s
+      `SELECT DISTINCT s.slug, s.domain, s.product_name, s.product_type, s.summary,
+              s.why_featured, s.funding_stage, s.region, s.screenshot_r2_key
+       FROM startups s
        JOIN search_index_terms sit ON s.id = sit.startup_id
        WHERE sit.normalized_term LIKE ? ESCAPE '\\' AND s.workflow_status = 'published'
        ORDER BY sit.weight DESC
        LIMIT ?`
     )
     .bind(likePattern, limit)
-    .all<Startup>();
-
-  return result.results;
-}
-
-export async function getRecentStartups(
-  db: D1Database,
-  limit = 10
-): Promise<Startup[]> {
-  const result = await db
-    .prepare(
-      `SELECT * FROM startups
-       WHERE workflow_status = 'published'
-       ORDER BY published_at DESC
-       LIMIT ?`
-    )
-    .bind(limit)
-    .all<Startup>();
-
-  return result.results;
-}
-
-export async function getFundingRounds(
-  db: D1Database,
-  limit = 50
-): Promise<FundingRound[]> {
-  const result = await db
-    .prepare("SELECT * FROM funding_rounds ORDER BY date DESC, created_at DESC LIMIT ?")
-    .bind(limit)
-    .all<FundingRound>();
+    .all<StartupCard>();
 
   return result.results;
 }
 
 export const NEWS_ROUNDS_LIMIT = 100;
 
+// Recent funding rounds with verified press sources, for the homepage ticker
+// (SSR). The prerendered /news page reads the equivalent content.ts helper.
 export async function getNewsFundingRounds(
   db: D1Database,
   limit = NEWS_ROUNDS_LIMIT
@@ -269,59 +150,6 @@ export async function getNewsFundingRounds(
     .all<FundingRound>();
 
   return result.results;
-}
-
-// All news-eligible rounds (same filters as getNewsFundingRounds, no limit).
-// Used by the investor pages/sitemap to resolve lead_investor -> investor slug
-// in JS via the canonical resolver, instead of unsafe SQL substring matching.
-export async function getNewsEligibleFundingRounds(
-  db: D1Database
-): Promise<FundingRound[]> {
-  const result = await db
-    .prepare(
-      `SELECT f.*
-       FROM funding_rounds f
-       INNER JOIN startups s ON s.slug = f.company_slug
-       WHERE s.workflow_status = 'published'
-         AND f.company_slug IS NOT NULL
-         AND f.source_url IS NOT NULL
-         AND TRIM(f.source_url) != ''
-         AND f.source_name IS NOT NULL
-         AND TRIM(f.source_name) != ''
-       ORDER BY f.date DESC, f.created_at DESC`
-    )
-    .all<FundingRound>();
-
-  return result.results;
-}
-
-export async function getInvestors(db: D1Database): Promise<Investor[]> {
-  const result = await db
-    .prepare("SELECT * FROM investors ORDER BY name")
-    .all<Investor>();
-  return result.results;
-}
-
-export async function getInvestorBySlug(
-  db: D1Database,
-  slug: string
-): Promise<{ investor: Investor; rounds: FundingRound[] } | null> {
-  const investor = await db
-    .prepare("SELECT * FROM investors WHERE slug = ?")
-    .bind(slug)
-    .first<Investor>();
-
-  if (!investor) return null;
-
-  // Resolve lead_investor -> investor slug in JS using the canonical resolver,
-  // so the rounds shown here match the investor links rendered elsewhere (and
-  // avoid the unsafe SQL substring matching this query previously used).
-  const candidates = await getNewsEligibleFundingRounds(db);
-  const rounds = candidates.filter(
-    (round) => resolveInvestorSlugByName(round.lead_investor) === investor.slug
-  );
-
-  return { investor, rounds };
 }
 
 export async function getStartupCount(

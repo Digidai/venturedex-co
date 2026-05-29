@@ -1,5 +1,7 @@
 ---
-export const prerender = false;
+// Prerendered: no querystring, content changes only on deploy. Served static,
+// off the D1 hot path (same content readers as the prerendered detail pages).
+export const prerender = true;
 
 import BrandLogo from "../components/BrandLogo.astro";
 import Base from "../layouts/Base.astro";
@@ -8,20 +10,11 @@ import {
   getInvestorBrandAsset,
   resolveInvestorByName,
 } from "../lib/brand-assets";
-import {
-  NEWS_ROUNDS_LIMIT,
-  getNewsFundingRounds,
-} from "../lib/db";
+import { NEWS_ROUNDS_LIMIT } from "../lib/db";
+import { getContentNewsEligibleFundingRounds } from "../lib/content";
 import { newsJsonLd } from "../lib/seo";
 
-const db = Astro.locals.runtime.env.DB;
-let rounds: Awaited<ReturnType<typeof getNewsFundingRounds>> = [];
-
-try {
-  rounds = await getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT);
-} catch (error) {
-  console.error("Failed to load funding news", error);
-}
+const rounds = getContentNewsEligibleFundingRounds().slice(0, NEWS_ROUNDS_LIMIT);
 
 const description = "Track recent startup funding rounds with verified press sources, company profiles, investor context, and source-backed signals.";
 const schema = newsJsonLd(rounds, Astro.site?.toString());

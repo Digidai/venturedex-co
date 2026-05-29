@@ -1,10 +1,11 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import { getCompanyBrandAsset } from "../lib/brand-assets";
-import type { Startup } from "../lib/types";
+import type { StartupCard } from "../lib/types";
 
 interface Props {
-  startup: Startup;
+  // Only the card fields are needed; full Startup objects are assignable too.
+  startup: StartupCard;
   size?: "default" | "large";
 }
 

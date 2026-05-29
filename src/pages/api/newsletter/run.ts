@@ -18,24 +18,33 @@ function asRecord(value: unknown): Record<string, unknown> {
   return value && typeof value === "object" ? value as Record<string, unknown> : {};
 }
 
-function authorized(request: Request, token?: string) {
+async function authorized(request: Request, token?: string): Promise<boolean> {
   if (!token) return false;
   const auth = request.headers.get("authorization") ?? "";
-  return timingSafeEqual(auth, `Bearer ${token}`);
+  return safeEqual(auth, `Bearer ${token}`);
 }
 
-function timingSafeEqual(left: string, right: string) {
-  const maxLength = Math.max(left.length, right.length, 128);
-  let diff = left.length ^ right.length;
-  for (let index = 0; index < maxLength; index += 1) {
-    diff |= (left.charCodeAt(index) || 0) ^ (right.charCodeAt(index) || 0);
+// Constant-time comparison via fixed-length SHA-256 digests. The Workers runtime
+// exposes crypto.subtle but not Node's crypto.timingSafeEqual; hashing both sides
+// to 32 bytes first makes the byte-wise compare length-independent.
+async function safeEqual(a: string, b: string): Promise<boolean> {
+  const encoder = new TextEncoder();
+  const [da, db] = await Promise.all([
+    crypto.subtle.digest("SHA-256", encoder.encode(a)),
+    crypto.subtle.digest("SHA-256", encoder.encode(b)),
+  ]);
+  const va = new Uint8Array(da);
+  const vb = new Uint8Array(db);
+  let diff = 0;
+  for (let index = 0; index < va.length; index += 1) {
+    diff |= va[index] ^ vb[index];
   }
   return diff === 0;
 }
 
 export const POST: APIRoute = async ({ request, locals }) => {
   const env = locals.runtime.env;
-  if (!authorized(request, env.NEWSLETTER_ADMIN_TOKEN)) {
+  if (!(await authorized(request, env.NEWSLETTER_ADMIN_TOKEN))) {
     return json({ error: "Unauthorized." }, 401);
   }
 
