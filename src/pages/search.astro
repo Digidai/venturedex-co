@@ -1,70 +1,168 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
-import { searchStartups } from "../lib/db";
+import { getContentStartups } from "../lib/content";
+import { buildSearchEntries } from "../lib/search-index";
 
-const query = (Astro.url.searchParams.get("q") ?? "").trim();
-const db = Astro.locals.runtime.env.DB;
-
-let results: Awaited<ReturnType<typeof searchStartups>> = [];
-if (query.trim()) {
-  try {
-    results = await searchStartups(db, query);
-  } catch {
-    // D1 unavailable
-  }
-}
+// Prerendered: all cards ship in the page (browseable with JS off), plus a JSON
+// search index. The client scores the index and reorders the matching cards in
+// place — no per-request D1, and weighted substring matching (stronger than the
+// old prefix-only LIKE on search_index_terms).
+const startups = getContentStartups().sort((a, b) =>
+  a.product_name.toLowerCase().localeCompare(b.product_name.toLowerCase())
+);
+const searchEntries = buildSearchEntries(startups);
+// Escape "<" so a value containing "</script>" can't break out of the JSON block.
+const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c");
 ---
 
 <Base
-  title={query ? `Search: ${query}` : "Search"}
-  description="Search the VentureDex directory."
+  title="Search"
+  description="Search the VentureDex directory of curated startups by name, domain, type, or tag."
   robots="noindex,follow"
 >
   <div class="container search-page">
     <h1>Search</h1>
 
-    <form class="search-form" action="/search" method="GET">
+    <form class="search-form" role="search" action="/search" method="GET">
       <input
         type="search"
         name="q"
-        value={query}
-        placeholder="Search startups by name, domain, or tag..."
+        placeholder="Search startups by name, domain, type, or tag..."
         class="search-input"
+        autocomplete="off"
+        aria-label="Search startups"
       />
     </form>
 
-    {query && results.length > 0 && (
-      <p class="result-count">{results.length} result{results.length !== 1 ? "s" : ""}</p>
-    )}
+    <p class="result-count" data-result-count hidden></p>
 
-    {results.length > 0 ? (
-      <div class="card-grid">
-        {results.map((startup) => (
-          <SiteCard startup={startup} />
-        ))}
+    <div class="search-hints" data-search-hints>
+      <p>Try searching for:</p>
+      <div class="hint-tags">
+        <a href="/search?q=ai" class="hint-tag">AI</a>
+        <a href="/search?q=devtools" class="hint-tag">DevTools</a>
+        <a href="/search?q=linear" class="hint-tag">Linear</a>
+        <a href="/search?q=cursor" class="hint-tag">Cursor</a>
+        <a href="/search?q=supabase" class="hint-tag">Supabase</a>
       </div>
-    ) : query ? (
-      <div class="empty-state">
-        <h2>No results for "{query}"</h2>
-        <p>This startup might not be in our directory yet.</p>
-      </div>
-    ) : (
-      <div class="search-hints">
-        <p>Try searching for:</p>
-        <div class="hint-tags">
-          <a href="/search?q=ai" class="hint-tag">AI</a>
-          <a href="/search?q=devtools" class="hint-tag">DevTools</a>
-          <a href="/search?q=linear" class="hint-tag">Linear</a>
-          <a href="/search?q=cursor" class="hint-tag">Cursor</a>
-          <a href="/search?q=supabase" class="hint-tag">Supabase</a>
-        </div>
-      </div>
-    )}
+    </div>
+
+    <div class="empty-state" data-empty-state hidden>
+      <h2 data-empty-title>No results</h2>
+      <p>This startup might not be in our directory yet.</p>
+    </div>
+
+    <div class="card-grid" data-search-grid hidden>
+      {startups.map((startup) => (
+        <SiteCard startup={startup} />
+      ))}
+    </div>
+
+    <noscript>
+      {/* With JS off the grid can't be searched, so reveal the full directory. */}
+      <style>[data-search-grid]{"{ display: grid !important; }"}</style>
+    </noscript>
+
+    <script type="application/json" data-search-index set:html={searchIndexJson} />
   </div>
 </Base>
+
+<script>
+  // Static client-side search over the prerendered cards. Ranking semantics live
+  // in src/lib/search-index.ts (unit-tested); this is the DOM adapter.
+  import { rankSearchEntries, type SearchEntry } from "../lib/search-index";
+
+  const grid = document.querySelector<HTMLElement>("[data-search-grid]");
+  const form = document.querySelector<HTMLFormElement>(".search-form");
+  const input = document.querySelector<HTMLInputElement>('input[name="q"]');
+  const indexEl = document.querySelector<HTMLElement>("[data-search-index]");
+
+  if (grid && form && input && indexEl) {
+    let entries: SearchEntry[] = [];
+    try {
+      entries = JSON.parse(indexEl.textContent || "[]");
+    } catch {
+      entries = [];
+    }
+
+    const cardBySlug = new Map<string, HTMLElement>();
+    grid.querySelectorAll<HTMLElement>("[data-slug]").forEach((el) => {
+      const slug = el.getAttribute("data-slug");
+      if (slug) cardBySlug.set(slug, el);
+    });
+
+    const hints = document.querySelector<HTMLElement>("[data-search-hints]");
+    const count = document.querySelector<HTMLElement>("[data-result-count]");
+    const empty = document.querySelector<HTMLElement>("[data-empty-state]");
+    const emptyTitle = document.querySelector<HTMLElement>("[data-empty-title]");
+
+    function render(raw: string) {
+      const q = raw.trim();
+      if (!q) {
+        grid!.hidden = true;
+        if (hints) hints.hidden = false;
+        if (count) count.hidden = true;
+        if (empty) empty.hidden = true;
+        return;
+      }
+      if (hints) hints.hidden = true;
+
+      const ranked = rankSearchEntries(entries, q);
+      const visible = new Set(ranked.map((e) => e.slug));
+      cardBySlug.forEach((el, slug) => {
+        el.hidden = !visible.has(slug);
+      });
+      for (const entry of ranked) {
+        const el = cardBySlug.get(entry.slug);
+        if (el) grid!.appendChild(el);
+      }
+
+      grid!.hidden = ranked.length === 0;
+      if (count) {
+        count.hidden = ranked.length === 0;
+        count.textContent = `${ranked.length} result${ranked.length !== 1 ? "s" : ""}`;
+      }
+      if (empty) {
+        empty.hidden = ranked.length !== 0;
+        if (emptyTitle && ranked.length === 0) emptyTitle.textContent = `No results for "${q}"`;
+      }
+    }
+
+    function syncUrl(raw: string) {
+      const q = raw.trim();
+      history.replaceState(null, "", q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+    }
+
+    input.addEventListener("input", () => {
+      render(input!.value);
+      syncUrl(input!.value);
+    });
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      render(input!.value);
+      syncUrl(input!.value);
+    });
+
+    // Hint links: fill the box and search in place instead of navigating.
+    hints?.querySelectorAll<HTMLAnchorElement>("a.hint-tag").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const q = new URL(link.href).searchParams.get("q") ?? "";
+        input!.value = q;
+        input!.focus();
+        render(q);
+        syncUrl(q);
+      });
+    });
+
+    const initial = new URLSearchParams(location.search).get("q") ?? "";
+    if (initial) input.value = initial;
+    render(input.value);
+  }
+</script>
 
 <style>
   .search-page {

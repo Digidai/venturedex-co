@@ -31,6 +31,7 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
 
 <article
   class:list={["site-card", size === "large" && "site-card--large"]}
+  data-slug={startup.slug}
   data-card={index ? "" : undefined}
   data-name={index ? index.name.toLowerCase() : undefined}
   data-type={index?.type ?? undefined}
