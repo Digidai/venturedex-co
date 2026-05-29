@@ -1,7 +1,40 @@
+/* Self-hosted fonts (latin subset, woff2) — served same-origin from /fonts and
+   cached long-lived via public/_headers. Replaces the render-blocking Google
+   Fonts <link>: no extra DNS/preconnect round-trips, no FOIT. Variable faces
+   cover every weight the UI uses (400/500/600/700) in a single file each. */
+@font-face {
+  font-family: 'Fraunces Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/fraunces-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('/fonts/dm-sans-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('/fonts/dm-sans-variable-italic.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('/fonts/jetbrains-mono-400.woff2') format('woff2');
+}
+
 :root {
-  --font-heading: 'Fraunces', Georgia, serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-heading: 'Fraunces Variable', Georgia, serif;
+  --font-body: 'DM Sans Variable', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
   --color-bg: #FAFAF9;
   --color-bg-card: #FFFFFF;
