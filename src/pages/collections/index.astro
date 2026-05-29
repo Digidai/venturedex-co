@@ -1,8 +1,8 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
-import { getPublishedCollections } from "../../lib/db";
+import { getContentCollections } from "../../lib/content";
 import {
   buildJsonLdGraph,
   itemListNode,
@@ -11,14 +11,7 @@ import {
   webPageNode,
 } from "../../lib/seo";
 
-const db = Astro.locals.runtime.env.DB;
-let collections: Awaited<ReturnType<typeof getPublishedCollections>> = [];
-
-try {
-  collections = await getPublishedCollections(db);
-} catch (error) {
-  console.error("Failed to load collections", error);
-}
+const collections = getContentCollections();
 
 const description = "Browse curated VentureDex startup collections grouped by product category, market theme, and editorial context.";
 const schema = buildJsonLdGraph([

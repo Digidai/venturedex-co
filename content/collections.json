@@ -1,0 +1,102 @@
+[
+  {
+    "id": "c-ai-agents",
+    "slug": "ai-agents",
+    "title": "AI Agents",
+    "description": "Autonomous, agentic systems that take real action — not just chat.",
+    "match": {
+      "product_types": [],
+      "tags": ["ai agent", "agentic"]
+    }
+  },
+  {
+    "id": "c-ai-ml",
+    "slug": "ai-ml",
+    "title": "AI / ML",
+    "description": "Companies pushing the frontier of machine intelligence.",
+    "match": {
+      "product_types": ["AI / ML"],
+      "tags": []
+    }
+  },
+  {
+    "id": "c-ai-infra",
+    "slug": "ai-infrastructure",
+    "title": "AI Infrastructure",
+    "description": "The compute, inference, and serving layer beneath modern AI.",
+    "match": {
+      "product_types": [],
+      "tags": ["ai infrastructure", "inference", "edge ai"]
+    }
+  },
+  {
+    "id": "c-devtools",
+    "slug": "developer-tools",
+    "title": "Developer Tools",
+    "description": "Tools that make builders faster — SDKs, APIs, and workflow.",
+    "match": {
+      "product_types": ["DevTools"],
+      "tags": ["developer tools"]
+    }
+  },
+  {
+    "id": "c-saas",
+    "slug": "saas",
+    "title": "SaaS & Productivity",
+    "description": "Software that runs the modern business.",
+    "match": {
+      "product_types": ["SaaS"],
+      "tags": []
+    }
+  },
+  {
+    "id": "c-fintech",
+    "slug": "fintech",
+    "title": "Fintech",
+    "description": "Payments, lending, and the rebuilding of financial plumbing.",
+    "match": {
+      "product_types": ["Fintech"],
+      "tags": ["fintech"]
+    }
+  },
+  {
+    "id": "c-physical-ai",
+    "slug": "physical-ai",
+    "title": "Physical AI & Robotics",
+    "description": "AI that moves — robotics, autonomy, and embodied systems.",
+    "match": {
+      "product_types": [],
+      "tags": ["physical ai", "robotics", "autonomy"]
+    }
+  },
+  {
+    "id": "c-healthtech",
+    "slug": "healthtech",
+    "title": "HealthTech",
+    "description": "Technology reshaping care, diagnostics, and biology.",
+    "match": {
+      "product_types": ["HealthTech"],
+      "tags": ["healthcare"]
+    }
+  },
+  {
+    "id": "c-open-source",
+    "slug": "open-source",
+    "title": "Open Source",
+    "description": "Companies building in the open.",
+    "match": {
+      "product_types": [],
+      "tags": ["open source"]
+    }
+  },
+  {
+    "id": "c-climate",
+    "slug": "climate",
+    "title": "Climate & Sustainability",
+    "description": "Startups decarbonizing industry, energy, and the grid.",
+    "match": {
+      "product_types": ["Climate / Sustainability"],
+      "tags": ["climate"]
+    }
+  }
+]

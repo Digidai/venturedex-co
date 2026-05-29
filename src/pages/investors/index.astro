@@ -1,10 +1,10 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import BrandLogo from "../../components/BrandLogo.astro";
 import Base from "../../layouts/Base.astro";
 import { getInvestorBrandAsset, resolveInvestorSlugByName } from "../../lib/brand-assets";
-import { getInvestors, getNewsEligibleFundingRounds } from "../../lib/db";
+import { getContentInvestors, getContentNewsEligibleFundingRounds } from "../../lib/content";
 import {
   buildJsonLdGraph,
   itemListNode,
@@ -19,49 +19,40 @@ interface InvestorIndexRow extends Investor {
   last_round_at: string | null;
 }
 
-const db = Astro.locals.runtime.env.DB;
-let investors: InvestorIndexRow[] = [];
+const allInvestors = getContentInvestors();
+const rounds = getContentNewsEligibleFundingRounds();
 
-try {
-  const [allInvestors, rounds] = await Promise.all([
-    getInvestors(db),
-    getNewsEligibleFundingRounds(db),
-  ]);
-
-  // Aggregate round counts and most-recent date per investor slug using the
-  // canonical resolver (matches the rounds shown on each investor page).
-  const stats = new Map<string, { count: number; lastRoundAt: string | null }>();
-  for (const round of rounds) {
-    const slug = resolveInvestorSlugByName(round.lead_investor);
-    if (!slug) continue;
-    const entry = stats.get(slug) ?? { count: 0, lastRoundAt: null };
-    entry.count += 1;
-    if (round.date && (!entry.lastRoundAt || round.date > entry.lastRoundAt)) {
-      entry.lastRoundAt = round.date;
-    }
-    stats.set(slug, entry);
+// Aggregate round counts and most-recent date per investor slug using the
+// canonical resolver (matches the rounds shown on each investor page).
+const stats = new Map<string, { count: number; lastRoundAt: string | null }>();
+for (const round of rounds) {
+  const slug = resolveInvestorSlugByName(round.lead_investor);
+  if (!slug) continue;
+  const entry = stats.get(slug) ?? { count: 0, lastRoundAt: null };
+  entry.count += 1;
+  if (round.date && (!entry.lastRoundAt || round.date > entry.lastRoundAt)) {
+    entry.lastRoundAt = round.date;
   }
-
-  investors = allInvestors
-    .map((investor) => {
-      const entry = stats.get(investor.slug);
-      return {
-        ...investor,
-        round_count: entry?.count ?? 0,
-        last_round_at: entry?.lastRoundAt ?? null,
-      };
-    })
-    .filter((investor) => investor.round_count > 0)
-    .sort((a, b) => {
-      if (b.round_count !== a.round_count) return b.round_count - a.round_count;
-      const aDate = a.last_round_at ?? "";
-      const bDate = b.last_round_at ?? "";
-      if (bDate !== aDate) return bDate.localeCompare(aDate);
-      return a.name.localeCompare(b.name);
-    });
-} catch (error) {
-  console.error("Failed to load investors index", error);
+  stats.set(slug, entry);
 }
+
+const investors: InvestorIndexRow[] = allInvestors
+  .map((investor) => {
+    const entry = stats.get(investor.slug);
+    return {
+      ...investor,
+      round_count: entry?.count ?? 0,
+      last_round_at: entry?.lastRoundAt ?? null,
+    };
+  })
+  .filter((investor) => investor.round_count > 0)
+  .sort((a, b) => {
+    if (b.round_count !== a.round_count) return b.round_count - a.round_count;
+    const aDate = a.last_round_at ?? "";
+    const bDate = b.last_round_at ?? "";
+    if (bDate !== aDate) return bDate.localeCompare(aDate);
+    return a.name.localeCompare(b.name);
+  });
 
 const description = "Browse startup investors with VentureDex-tracked funding activity, portfolio company links, and source-backed market context.";
 const schema = buildJsonLdGraph([

@@ -1,4 +1,7 @@
-import type { Startup } from "./types";
+// Re-export the build-time Startup reader from content.ts so weekly/[issue].astro
+// (and any other importer) keeps a single, authoritative implementation that
+// reads version-controlled timestamps. Kept here for import-path compatibility.
+export { getContentStartupBySlug } from "./content";
 
 export interface WeeklyEvidence {
   label: string;
@@ -38,7 +41,6 @@ type JsonRecord = Record<string, unknown>;
 type JsonModule = { default: unknown } | unknown;
 
 const weeklyModules = import.meta.glob("../../content/weekly/*.json", { eager: true });
-const startupModules = import.meta.glob("../../content/startups/*.json", { eager: true });
 
 function moduleValue(module: JsonModule): unknown {
   if (module && typeof module === "object" && "default" in module) {
@@ -142,71 +144,4 @@ export function getPublishedWeeklyIssuesFromContent(limit = 20): WeeklyIssueCont
 
 export function getWeeklyIssueByNumberFromContent(issueNumber: number): WeeklyIssueContent | null {
   return allWeeklyIssues().find((issue) => issue.issue_number === issueNumber && issue.status === "published") ?? null;
-}
-
-function startupDataBySlug(slug: string): JsonRecord | null {
-  for (const module of Object.values(startupModules)) {
-    const value = moduleValue(module);
-    if (isRecord(value) && value.slug === slug) {
-      return value;
-    }
-  }
-  return null;
-}
-
-function latestFundingRound(data: JsonRecord): JsonRecord {
-  const rounds = Array.isArray(data.funding) ? data.funding.filter(isRecord) : [];
-  return rounds.sort((a, b) => stringValue(b.date).localeCompare(stringValue(a.date)))[0] ?? {};
-}
-
-export function getContentStartupBySlug(slug: string): Startup | null {
-  const data = startupDataBySlug(slug);
-  if (!data) return null;
-
-  const funding = latestFundingRound(data);
-  const domain = stringValue(data.domain);
-  const url = stringValue(data.url, domain ? `https://${domain}` : "");
-  const links = isRecord(data.links) ? data.links : {};
-
-  return {
-    id: `startup-${stringValue(data.slug, slug)}`,
-    slug: stringValue(data.slug, slug),
-    domain,
-    canonical_url: url || null,
-    product_name: stringValue(data.product_name),
-    title: null,
-    summary: stringValue(data.summary) || null,
-    long_description: null,
-    editor_note: stringValue(data.editor_note) || null,
-    research_json: isRecord(data.research) ? JSON.stringify(data.research) : null,
-    editor_rating: typeof data.editor_rating === "number" ? data.editor_rating : null,
-    why_featured: stringValue(data.why_featured) || null,
-    curator: "VentureDex",
-    product_type: stringValue(data.product_type) || null,
-    funding_stage: stringValue(funding.stage) || null,
-    funding_display: stringValue(funding.amount) || null,
-    founded_year: typeof data.founded_year === "number" ? data.founded_year : null,
-    team_size: stringValue(data.team_size) || null,
-    hq_location: stringValue(data.hq_location) || null,
-    region: stringValue(data.region) || null,
-    framework: null,
-    runtime_status: "live",
-    workflow_status: "published",
-    codex_stage: "manual",
-    screenshot_r2_key: `${stringValue(data.slug, slug)}.webp`,
-    screenshot_status: "ready",
-    og_image_r2_key: null,
-    founder_name: null,
-    founder_quote: null,
-    founder_responded_at: null,
-    first_seen_at: stringValue(funding.date),
-    last_checked_at: null,
-    published_at: null,
-    investors: stringValue(data.investors) || null,
-    links_json: Object.keys(links).length ? JSON.stringify(links) : null,
-    tags: stringValue(data.tags) || null,
-    is_featured: data.is_featured ? 1 : 0,
-    created_at: "",
-    updated_at: "",
-  };
 }

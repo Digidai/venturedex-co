@@ -1,8 +1,13 @@
-export const prerender = false;
+export const prerender = true;
 
 import type { APIRoute } from "astro";
 import { resolveInvestorSlugByName } from "../lib/brand-assets";
-import { getInvestors, getNewsEligibleFundingRounds } from "../lib/db";
+import {
+  getContentCollections,
+  getContentInvestors,
+  getContentNewsEligibleFundingRounds,
+  getContentStartups,
+} from "../lib/content";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl } from "../lib/seo";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 
@@ -39,9 +44,10 @@ interface CollectionSitemapRow {
   created_at: string | null;
 }
 
-export const GET: APIRoute = async ({ locals }) => {
-  const siteUrl = getSiteUrl(locals.runtime.env.SITE_URL ?? DEFAULT_SITE_URL);
-  const db = locals.runtime.env.DB;
+export const GET: APIRoute = () => {
+  // Prerendered at build time: the site URL is fixed (astro.config `site`), so
+  // there's no runtime SITE_URL binding to read here.
+  const siteUrl = getSiteUrl(DEFAULT_SITE_URL);
   const weeklyIssues = getPublishedWeeklyIssuesFromContent(50);
 
   let urls: SitemapUrl[] = [
@@ -62,79 +68,79 @@ export const GET: APIRoute = async ({ locals }) => {
     }))
   );
 
-  try {
-    const [startups, allInvestors, rounds, collections] = await Promise.all([
-      db
-        .prepare(
-          `SELECT slug, product_name, summary, screenshot_r2_key, updated_at, published_at, is_featured
-           FROM startups
-           WHERE workflow_status = 'published'
-           ORDER BY is_featured DESC, published_at DESC`
-        )
-        .all<StartupSitemapRow>(),
-      getInvestors(db),
-      getNewsEligibleFundingRounds(db),
-      db
-        .prepare(
-          `SELECT slug, created_at
-           FROM collections
-           WHERE published = 1
-           ORDER BY slug`
-        )
-        .all<CollectionSitemapRow>(),
-    ]);
+  // Mirror the prior D1 startups query: published, ORDER BY is_featured DESC,
+  // published_at DESC.
+  const startups: StartupSitemapRow[] = getContentStartups()
+    .map((startup) => ({
+      slug: startup.slug,
+      product_name: startup.product_name,
+      summary: startup.summary,
+      screenshot_r2_key: startup.screenshot_r2_key,
+      updated_at: startup.updated_at,
+      published_at: startup.published_at,
+      is_featured: startup.is_featured,
+    }))
+    .sort((a, b) => {
+      if (b.is_featured !== a.is_featured) return b.is_featured - a.is_featured;
+      return (b.published_at ?? "").localeCompare(a.published_at ?? "");
+    });
 
-    // Aggregate the most-recent round date per investor slug via the canonical
-    // resolver, mirroring the investors index. Only investors with ≥1 tracked
-    // round get a sitemap URL (those pages are noindex when empty).
-    const investorLastmod = new Map<string, string | null>();
-    for (const round of rounds) {
-      const slug = resolveInvestorSlugByName(round.lead_investor);
-      if (!slug) continue;
-      const current = investorLastmod.get(slug) ?? null;
-      if (round.date && (!current || round.date > current)) {
-        investorLastmod.set(slug, round.date);
-      } else if (!investorLastmod.has(slug)) {
-        investorLastmod.set(slug, current);
-      }
+  const allInvestors = getContentInvestors();
+  const rounds = getContentNewsEligibleFundingRounds();
+  // Collections by slug (the prior query ordered ORDER BY slug). content has no
+  // per-collection created_at, so lastmod is omitted.
+  const collections: CollectionSitemapRow[] = getContentCollections()
+    .map((collection) => ({ slug: collection.slug, created_at: null }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+
+  // Aggregate the most-recent round date per investor slug via the canonical
+  // resolver, mirroring the investors index. Only investors with ≥1 tracked
+  // round get a sitemap URL (those pages are noindex when empty).
+  const investorLastmod = new Map<string, string | null>();
+  for (const round of rounds) {
+    const slug = resolveInvestorSlugByName(round.lead_investor);
+    if (!slug) continue;
+    const current = investorLastmod.get(slug) ?? null;
+    if (round.date && (!current || round.date > current)) {
+      investorLastmod.set(slug, round.date);
+    } else if (!investorLastmod.has(slug)) {
+      investorLastmod.set(slug, current);
     }
-    const investors: InvestorSitemapRow[] = allInvestors
-      .filter((investor) => investorLastmod.has(investor.slug))
-      .map((investor) => ({
-        slug: investor.slug,
-        lastmod: investorLastmod.get(investor.slug) ?? null,
-      }))
-      .sort((a, b) => a.slug.localeCompare(b.slug));
-
-    urls = urls.concat(
-      startups.results.map((startup) => ({
-        loc: `/startups/${startup.slug}`,
-        lastmod: startup.updated_at ?? startup.published_at,
-        priority: startup.is_featured ? "0.9" : "0.8",
-        images: startup.screenshot_r2_key
-          ? [
-              {
-                loc: `/screenshots/${startup.screenshot_r2_key}`,
-                title: `${startup.product_name} screenshot`,
-                caption: startup.summary,
-              },
-            ]
-          : undefined,
-      })),
-      investors.map((investor) => ({
-        loc: `/investors/${investor.slug}`,
-        lastmod: investor.lastmod,
-        priority: "0.7",
-      })),
-      collections.results.map((collection) => ({
-        loc: `/collections/${collection.slug}`,
-        lastmod: collection.created_at,
-        priority: "0.7",
-      }))
-    );
-  } catch (error) {
-    console.error("Failed to build sitemap from D1", error);
   }
+  const investors: InvestorSitemapRow[] = allInvestors
+    .filter((investor) => investorLastmod.has(investor.slug))
+    .map((investor) => ({
+      slug: investor.slug,
+      lastmod: investorLastmod.get(investor.slug) ?? null,
+    }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
+
+  urls = urls.concat(
+    startups.map((startup) => ({
+      loc: `/startups/${startup.slug}`,
+      lastmod: startup.updated_at ?? startup.published_at,
+      priority: startup.is_featured ? "0.9" : "0.8",
+      images: startup.screenshot_r2_key
+        ? [
+            {
+              loc: `/screenshots/${startup.screenshot_r2_key}`,
+              title: `${startup.product_name} screenshot`,
+              caption: startup.summary,
+            },
+          ]
+        : undefined,
+    })),
+    investors.map((investor) => ({
+      loc: `/investors/${investor.slug}`,
+      lastmod: investor.lastmod,
+      priority: "0.7",
+    })),
+    collections.map((collection) => ({
+      loc: `/collections/${collection.slug}`,
+      lastmod: collection.created_at,
+      priority: "0.7",
+    }))
+  );
 
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">

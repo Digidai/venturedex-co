@@ -1,23 +1,17 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getCollectionBySlug } from "../../lib/db";
+import { getContentCollectionBySlug, getContentCollections } from "../../lib/content";
 import { collectionJsonLd, expandSeoDescription } from "../../lib/seo";
 
-const { slug } = Astro.params;
-const db = Astro.locals.runtime.env.DB;
-
-const data = await getCollectionBySlug(db, slug!);
-if (!data) {
-  return new Response("Not found", {
-    status: 404,
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
-  });
+export function getStaticPaths() {
+  return getContentCollections().map((collection) => ({ params: { slug: collection.slug } }));
 }
 
-const { collection, startups } = data;
+const { slug } = Astro.params;
+const { collection, startups } = getContentCollectionBySlug(slug!)!;
 const description = expandSeoDescription(
   collection.description,
   "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.",

@@ -1,5 +1,5 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
@@ -9,26 +9,25 @@ import {
   getInvestorBrandAsset,
   resolveInvestorByName,
 } from "../../lib/brand-assets";
-import { getFundingRoundsForStartup, getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import {
+  getContentFundingRoundsForStartup,
+  getContentRelatedStartups,
+  getContentStartupBySlug,
+  getContentStartups,
+} from "../../lib/content";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import type { StartupLinks, StartupResearch, StartupResearchSource } from "../../lib/types";
 
-const { slug } = Astro.params;
-const db = Astro.locals.runtime.env.DB;
-
-const startup = await getStartupBySlug(db, slug!);
-if (!startup) {
-  return new Response("Not found", {
-    status: 404,
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
-  });
+export function getStaticPaths() {
+  return getContentStartups().map((startup) => ({ params: { slug: startup.slug } }));
 }
 
-const [related, fundingRounds] = await Promise.all([
-  getRelatedStartups(db, startup),
-  getFundingRoundsForStartup(db, startup.slug),
-]);
+const { slug } = Astro.params;
+const startup = getContentStartupBySlug(slug!)!;
+
+const related = getContentRelatedStartups(startup);
+const fundingRounds = getContentFundingRoundsForStartup(startup.slug);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
 

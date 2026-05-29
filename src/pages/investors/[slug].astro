@@ -1,5 +1,5 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
@@ -7,21 +7,15 @@ import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
-import { getInvestorBySlug } from "../../lib/db";
+import { getContentInvestorBySlug, getContentInvestors } from "../../lib/content";
 import { expandSeoDescription, investorJsonLd, normalizeExternalUrl } from "../../lib/seo";
 
-const { slug } = Astro.params;
-const db = Astro.locals.runtime.env.DB;
-
-const data = await getInvestorBySlug(db, slug!);
-if (!data) {
-  return new Response("Not found", {
-    status: 404,
-    headers: { "Content-Type": "text/plain; charset=utf-8" },
-  });
+export function getStaticPaths() {
+  return getContentInvestors().map((investor) => ({ params: { slug: investor.slug } }));
 }
 
-const { investor, rounds } = data;
+const { slug } = Astro.params;
+const { investor, rounds } = getContentInvestorBySlug(slug!)!;
 const investorBrand = getInvestorBrandAsset(investor.slug);
 const description = expandSeoDescription(
   investor.description,

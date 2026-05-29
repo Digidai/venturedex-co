@@ -18,6 +18,7 @@ REPO_ROOT = Path(os.environ["REPO_ROOT"])
 CONTENT_DIR = REPO_ROOT / "content" / "startups"
 WEEKLY_DIR = REPO_ROOT / "content" / "weekly"
 INVESTORS_FILE = REPO_ROOT / "content" / "investors.json"
+COLLECTIONS_FILE = REPO_ROOT / "content" / "collections.json"
 OUTPUT = REPO_ROOT / "d1" / "generated-seed.sql"
 
 
@@ -39,40 +40,37 @@ def tag_match(tags: set[str], *needles: str) -> bool:
     return any(needle in tag for tag in tags for needle in needles)
 
 
-# Auto-derived collections, computed from each startup's product_type and tags.
-# Each entry: (id, slug, title, description, predicate(product_type, tags)).
-# Designed so every collection holds a meaningful set (no 1-item or near-total buckets).
+# Auto-derived collections, defined declaratively in content/collections.json so
+# the taxonomy is shared with the build-time content readers (src/lib/content.ts)
+# instead of living only in this Python script. Each entry has:
+#   {id, slug, title, description, match: {product_types: [...], tags: [...]}}.
+# A startup matches a collection when its product_type is in match.product_types
+# OR any of its (normalized, lowercase) tags contains any string in match.tags
+# (substring match, mirroring tag_match above). Membership is byte-identical to
+# the previous hardcoded predicates — see the diff check in the build-db tests.
+COLLECTIONS_RAW = json.loads(COLLECTIONS_FILE.read_text())
+
+
+def collection_matches(collection, product_type: str, tags: set[str]) -> bool:
+    match = collection.get("match") or {}
+    product_types = match.get("product_types") or []
+    tag_needles = match.get("tags") or []
+    if product_type and product_type in product_types:
+        return True
+    return bool(tag_needles) and tag_match(tags, *tag_needles)
+
+
+# (id, slug, title, description, predicate) tuples, derived from the JSON config,
+# so the rest of the script keeps its original shape.
 COLLECTIONS = [
-    ("c-ai-agents", "ai-agents", "AI Agents",
-     "Autonomous, agentic systems that take real action — not just chat.",
-     lambda pt, tags: tag_match(tags, "ai agent", "agentic")),
-    ("c-ai-ml", "ai-ml", "AI / ML",
-     "Companies pushing the frontier of machine intelligence.",
-     lambda pt, tags: pt == "AI / ML"),
-    ("c-ai-infra", "ai-infrastructure", "AI Infrastructure",
-     "The compute, inference, and serving layer beneath modern AI.",
-     lambda pt, tags: tag_match(tags, "ai infrastructure", "inference", "edge ai")),
-    ("c-devtools", "developer-tools", "Developer Tools",
-     "Tools that make builders faster — SDKs, APIs, and workflow.",
-     lambda pt, tags: pt == "DevTools" or tag_match(tags, "developer tools")),
-    ("c-saas", "saas", "SaaS & Productivity",
-     "Software that runs the modern business.",
-     lambda pt, tags: pt == "SaaS"),
-    ("c-fintech", "fintech", "Fintech",
-     "Payments, lending, and the rebuilding of financial plumbing.",
-     lambda pt, tags: pt == "Fintech" or tag_match(tags, "fintech")),
-    ("c-physical-ai", "physical-ai", "Physical AI & Robotics",
-     "AI that moves — robotics, autonomy, and embodied systems.",
-     lambda pt, tags: tag_match(tags, "physical ai", "robotics", "autonomy")),
-    ("c-healthtech", "healthtech", "HealthTech",
-     "Technology reshaping care, diagnostics, and biology.",
-     lambda pt, tags: pt == "HealthTech" or tag_match(tags, "healthcare")),
-    ("c-open-source", "open-source", "Open Source",
-     "Companies building in the open.",
-     lambda pt, tags: tag_match(tags, "open source")),
-    ("c-climate", "climate", "Climate & Sustainability",
-     "Startups decarbonizing industry, energy, and the grid.",
-     lambda pt, tags: pt == "Climate / Sustainability" or tag_match(tags, "climate")),
+    (
+        collection["id"],
+        collection["slug"],
+        collection["title"],
+        collection["description"],
+        (lambda c: (lambda pt, tags: collection_matches(c, pt, tags)))(collection),
+    )
+    for collection in COLLECTIONS_RAW
 ]
 
 

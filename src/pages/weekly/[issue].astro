@@ -1,33 +1,27 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getStartupBySlug } from "../../lib/db";
+import { getContentStartupBySlug } from "../../lib/content";
 import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
 import {
-  getContentStartupBySlug,
+  getPublishedWeeklyIssuesFromContent,
   getWeeklyIssueByNumberFromContent,
 } from "../../lib/weekly";
 
+export function getStaticPaths() {
+  return getPublishedWeeklyIssuesFromContent(Infinity).map((issue) => ({
+    params: { issue: String(issue.issue_number) },
+  }));
+}
+
 const issueNum = Number(Astro.params.issue);
-if (isNaN(issueNum)) return Astro.redirect("/weekly");
+const issue = getWeeklyIssueByNumberFromContent(issueNum)!;
 
-const issue = getWeeklyIssueByNumberFromContent(issueNum);
-if (!issue) return Astro.redirect("/404");
-
-const db = Astro.locals.runtime?.env.DB;
 const pickRows = [];
-
 for (const pick of issue.picks) {
-  let startup = getContentStartupBySlug(pick.slug);
-  if (db) {
-    try {
-      startup = (await getStartupBySlug(db, pick.slug)) ?? startup;
-    } catch {
-      // Local dev can run without a hydrated D1 database.
-    }
-  }
+  const startup = getContentStartupBySlug(pick.slug);
   if (startup) {
     pickRows.push({ pick, startup });
   }

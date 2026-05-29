@@ -1,11 +1,14 @@
-export const prerender = false;
+export const prerender = true;
 
 import type { APIRoute } from "astro";
-import { getPublishedStartups } from "../lib/db";
+import { getContentStartups } from "../lib/content";
 
-export const GET: APIRoute = async ({ locals }) => {
-  const db = locals.runtime.env.DB;
-  const startups = await getPublishedStartups(db, { limit: 30, sort: "newest" });
+export const GET: APIRoute = () => {
+  // Mirror getPublishedStartups(sort: "newest", limit: 30): published startups
+  // ordered by published_at DESC.
+  const startups = getContentStartups()
+    .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? ""))
+    .slice(0, 30);
 
   const lastBuildDate = (
     startups.length
