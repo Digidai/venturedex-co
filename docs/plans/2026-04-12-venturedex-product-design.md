@@ -1,10 +1,17 @@
 # VentureDex 产品设计文档
 
 > 日期：2026-04-12  
-> 状态：Draft v1  
+> 状态：Draft v1（**已被产品转向取代，见下方更新说明**）  
 > 产品：`venturedex.co`  
 > 目标：基于 `startups.gallery` 的研究框架，设计 VentureDex 的完整产品功能、用户流程、数据流程、Cloudflare 架构与本地 Codex 自动化方案  
 > 说明：用户原始表述中的 `Cloudfare` 下文统一更正为 `Cloudflare`
+
+> **更新（2026-05-29）：产品已转向，本文档定位已过时。**
+> 本文档把 VentureDex 设计为「公开可发现的 Cloudflare 原生产品索引 + 证据信号」。
+> 但**实际上线的产品是「精选初创公司目录」**：以 `content/startups/*.json` 为单一可信源，
+> 提供编辑点评、融资信号、投资人页与每周研究简报（weekly），并不收录/验证 Cloudflare 部署信号。
+> 因此本文档第 2 节起的「产品定义/边界/Codex 证据化索引」等内容**不代表当前实现**，仅作历史设计参考。
+> 后续重写定位时，请以实际代码（`src/`、`content/`、`docs/newsletter.md`）为准。
 
 ---
 
