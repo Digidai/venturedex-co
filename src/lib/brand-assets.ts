@@ -26,6 +26,12 @@ interface InvestorDirectoryEntry {
   short_name?: string;
   website?: string;
   description?: string;
+  // Extra lead/investor strings (as they literally appear in
+  // content/startups/*.json funding[].lead_investor or investors) that should
+  // resolve to this entry under exact matching. Convention: a multi-firm lead
+  // string like "A and B" is aliased to the LEAD (first) firm; scout/program
+  // variants like "Sequoia Capital Scout" are aliased to the parent firm.
+  aliases?: string[];
 }
 
 const manifest = brandAssetsJson as BrandAssetManifest;
@@ -49,31 +55,35 @@ export function getInvestorBrandAsset(slug?: string | null): BrandAsset | null {
   return manifest.investors[slug] ?? null;
 }
 
+function entryCandidates(entry: InvestorDirectoryEntry): string[] {
+  return [entry.name, entry.short_name, ...(entry.aliases ?? [])].filter(
+    (candidate): candidate is string => Boolean(candidate)
+  );
+}
+
+// Resolve a lead/investor string to a directory entry by EXACT normalized match
+// against the entry's name, short_name, or any of its aliases[]. Matching is
+// intentionally exact (no substring/word-sequence fallback): substring matching
+// produced false positives (short names like "KP"/"GC" matching unrelated firms)
+// and order-dependent mis-attribution for multi-firm strings. This keeps the
+// resolver provably equivalent to the exact+alias Python resolver in
+// scripts/investor_utils.py. Multi-firm lead strings (e.g. "A and B") are
+// handled via an explicit alias on the lead firm in content/investors.json.
 export function resolveInvestorByName(name?: string | null): InvestorDirectoryEntry | null {
   if (!name) return null;
 
   const normalized = normalizeBrandText(name);
-  const exact = investorDirectory.find((entry) => {
-    return [entry.name, entry.short_name]
-      .filter(Boolean)
-      .some((candidate) => normalizeBrandText(candidate!) === normalized);
-  });
-
-  if (exact) return exact;
+  if (!normalized) return null;
 
   return (
-    investorDirectory.find((entry) => {
-      return [entry.name, entry.short_name]
-        .filter(Boolean)
-        .some((candidate) => {
-          const candidateNormalized = normalizeBrandText(candidate!);
-          return (
-            normalized.includes(candidateNormalized) ||
-            candidateNormalized.includes(normalized)
-          );
-        });
-    }) ?? null
+    investorDirectory.find((entry) =>
+      entryCandidates(entry).some((candidate) => normalizeBrandText(candidate) === normalized)
+    ) ?? null
   );
+}
+
+export function resolveInvestorSlugByName(name?: string | null): string | null {
+  return resolveInvestorByName(name)?.slug ?? null;
 }
 
 export function getBrandInitials(name?: string | null): string {

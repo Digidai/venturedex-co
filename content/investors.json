@@ -18,7 +18,8 @@
     "slug": "sequoia",
     "short_name": "Sequoia",
     "website": "https://www.sequoiacap.com",
-    "description": "Helps daring founders build legendary companies from idea to IPO and beyond."
+    "description": "Helps daring founders build legendary companies from idea to IPO and beyond.",
+    "aliases": ["Sequoia Capital Scout"]
   },
   "yc": {
     "name": "Y Combinator",
@@ -368,7 +369,8 @@
     "slug": "magarac-venture-partners",
     "short_name": "Magarac",
     "website": "https://www.magarac.vc",
-    "description": "Pittsburgh-based early-stage venture firm investing in technology companies across the Midwest."
+    "description": "Pittsburgh-based early-stage venture firm investing in technology companies across the Midwest.",
+    "aliases": ["Magarac Venture Partners and Veredas Partners"]
   },
   "veredas-partners": {
     "name": "Veredas Partners",
@@ -382,7 +384,8 @@
     "slug": "forestay-capital",
     "short_name": "Forestay",
     "website": "https://www.forestay.vc",
-    "description": "Early-growth technology investment firm based in London and Geneva backing enterprise AI and software companies."
+    "description": "Early-growth technology investment firm based in London and Geneva backing enterprise AI and software companies.",
+    "aliases": ["Forestay Capital and Notion Capital"]
   },
   "notion-capital": {
     "name": "Notion Capital",
@@ -396,7 +399,8 @@
     "slug": "volo-earth-ventures",
     "short_name": "VoLo Earth",
     "website": "https://www.voloearthventures.com",
-    "description": "Climate technology venture firm backing founders building products for the global energy transition."
+    "description": "Climate technology venture firm backing founders building products for the global energy transition.",
+    "aliases": ["VoLo Earth and Equal Ventures"]
   },
   "equal-ventures": {
     "name": "Equal Ventures",
@@ -417,7 +421,8 @@
     "slug": "first-round-capital",
     "short_name": "First Round",
     "website": "https://www.firstround.com",
-    "description": "Seed-stage venture capital firm focused on supporting founders from the earliest company-building stages."
+    "description": "Seed-stage venture capital firm focused on supporting founders from the earliest company-building stages.",
+    "aliases": ["First Round Capital and Quiet Capital"]
   },
   "quiet-capital": {
     "name": "Quiet Capital",

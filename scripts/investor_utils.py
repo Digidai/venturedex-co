@@ -14,9 +14,17 @@ def normalize_brand_text(value: str) -> str:
 
 
 def build_investor_lookup(investors: dict[str, dict[str, object]]) -> dict[str, str]:
+    # Maps normalized name/short_name/alias -> slug. `aliases` carries the extra
+    # lead/investor strings as they literally appear in the data (e.g. multi-firm
+    # "A and B" leads aliased to the lead firm, scout variants to the parent
+    # firm). Mirrors entryCandidates() in src/lib/brand-assets.ts so Python
+    # validation resolves the same slug as the TS runtime.
     lookup: dict[str, str] = {}
     for slug, investor in investors.items():
         candidates = [slug, investor.get("slug"), investor.get("name"), investor.get("short_name")]
+        aliases = investor.get("aliases")
+        if isinstance(aliases, list):
+            candidates.extend(aliases)
         for candidate in candidates:
             if not candidate:
                 continue
@@ -25,17 +33,15 @@ def build_investor_lookup(investors: dict[str, dict[str, object]]) -> dict[str, 
 
 
 def resolve_investor_slug(name: str, investor_lookup: dict[str, str]) -> str | None:
+    # Mirrors the TS canonical resolver (src/lib/brand-assets.ts): exact
+    # normalized match only. The unsafe substring fallback has been removed so
+    # Python validation matches the runtime exactly. (Alias entries are folded
+    # into the lookup by build_investor_lookup.)
     normalized = normalize_brand_text(name)
     if not normalized:
         return None
 
-    if normalized in investor_lookup:
-        return investor_lookup[normalized]
-
-    for candidate, slug in investor_lookup.items():
-        if normalized in candidate or candidate in normalized:
-            return slug
-    return None
+    return investor_lookup.get(normalized)
 
 
 def dedupe_investor_names(values: list[str]) -> list[str]:

@@ -3,9 +3,9 @@ import type {
   FundingRound,
   Investor,
   Startup,
-  StartupLinks,
 } from "./types";
 import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
+import { normalizeLinks, safeJsonParse } from "./json";
 import type { WeeklyIssueContent } from "./weekly";
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
@@ -110,17 +110,6 @@ export function splitCsv(value?: string | null): string[] {
     .split(",")
     .map((part) => part.trim())
     .filter(Boolean);
-}
-
-export function parseLinks(value?: string | null): StartupLinks {
-  if (!value) return {};
-
-  try {
-    const parsed = JSON.parse(value) as StartupLinks;
-    return parsed && typeof parsed === "object" ? parsed : {};
-  } catch {
-    return {};
-  }
 }
 
 export function buildJsonLdGraph(nodes: JsonLdNode[]): JsonLdNode {
@@ -236,7 +225,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
   const pagePath = `/startups/${startup.slug}`;
   const pageUrl = absoluteUrl(pagePath, siteUrl);
   const description = truncateText(startup.summary ?? startup.editor_note ?? `${startup.product_name} on ${SITE_NAME}`);
-  const links = parseLinks(startup.links_json);
+  const links = safeJsonParse(startup.links_json, normalizeLinks) ?? {};
   const sameAs = [links.github, links.twitter, links.linkedin, links.producthunt]
     .map(normalizeExternalUrl)
     .filter((url): url is string => Boolean(url));

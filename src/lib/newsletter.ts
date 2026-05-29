@@ -1,4 +1,5 @@
 import { getFundingRoundsForStartup, getStartupBySlug } from "./db";
+import { normalizeResearch, safeJsonParse } from "./json";
 import type { FundingRound, Startup, StartupResearch } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
 
@@ -236,17 +237,55 @@ export async function getSubscriptionByToken(
     .first<NewsletterSubscription>();
 }
 
+// A pending confirmation link is only honored within this window. After it, the
+// row is treated as expired and the visitor is asked to re-subscribe (so a stale
+// link can never silently opt someone in much later).
+export const CONFIRMATION_TOKEN_TTL_HOURS = 48;
+
+export interface ConfirmSubscriptionResult {
+  subscription: NewsletterSubscription;
+  newlyConfirmed: boolean;
+  expired: boolean;
+}
+
+// Parse a D1 `datetime('now')` timestamp ("YYYY-MM-DD HH:MM:SS", UTC). Returns
+// null for anything unparseable so callers can decide how to degrade.
+function parseDbTimestamp(value: string | null | undefined): Date | null {
+  if (!value) return null;
+  const normalized = value.includes("T") ? value : `${value.replace(" ", "T")}Z`;
+  const date = new Date(normalized);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function isPendingExpired(
+  subscription: NewsletterSubscription,
+  now: Date,
+  ttlHours = CONFIRMATION_TOKEN_TTL_HOURS
+): boolean {
+  // updated_at marks when the row last (re-)entered the pending state; fall back
+  // to created_at. If neither parses, fail safe and do NOT mark expired.
+  const since = parseDbTimestamp(subscription.updated_at) ?? parseDbTimestamp(subscription.created_at);
+  if (!since) return false;
+  return now.getTime() - since.getTime() > ttlHours * 60 * 60 * 1000;
+}
+
 export async function confirmSubscription(
   db: D1Database,
-  token: string
-): Promise<{ subscription: NewsletterSubscription; newlyConfirmed: boolean } | null> {
+  token: string,
+  now: Date = new Date()
+): Promise<ConfirmSubscriptionResult | null> {
   const subscription = await getSubscriptionByToken(db, token);
   if (!subscription) return null;
 
   // Idempotent: a second click on the link is a no-op success.
   // A confirmation link never silently reactivates an opted-out address.
   if (subscription.status !== "pending") {
-    return { subscription, newlyConfirmed: false };
+    return { subscription, newlyConfirmed: false, expired: false };
+  }
+
+  // A stale pending link must not confirm; the visitor re-subscribes instead.
+  if (isPendingExpired(subscription, now)) {
+    return { subscription, newlyConfirmed: false, expired: true };
   }
 
   await db
@@ -261,7 +300,7 @@ export async function confirmSubscription(
     .bind(subscription.id)
     .run();
 
-  return { subscription: { ...subscription, status: "confirmed" }, newlyConfirmed: true };
+  return { subscription: { ...subscription, status: "confirmed" }, newlyConfirmed: true, expired: false };
 }
 
 export async function runNewsletterCycle(
@@ -520,10 +559,7 @@ async function buildWeeklyDigest(
   force: boolean,
   env: NewsletterEnv
 ): Promise<DigestContent | null> {
-  const {
-    getContentStartupBySlug,
-    getPublishedWeeklyIssuesFromContent,
-  } = await import("./weekly");
+  const { getPublishedWeeklyIssuesFromContent } = await import("./weekly");
   const delayHours = parsePositiveNumber(env.NEWSLETTER_WEEKLY_DELAY_HOURS, 24);
   const maxAgeDays = parsePositiveNumber(env.NEWSLETTER_WEEKLY_MAX_AGE_DAYS, 21);
   const cutoff = addHours(now, -delayHours);
@@ -1342,7 +1378,7 @@ async function getQueuedDeliveryContext(
     .first<QueuedDeliveryContext>();
 }
 
-async function claimDelivery(
+export async function claimDelivery(
   db: D1Database,
   deliveryId: string,
   sendId: string
@@ -1389,7 +1425,7 @@ async function releaseDeliveryClaim(
     .run();
 }
 
-async function markDeliverySent(
+export async function markDeliverySent(
   db: D1Database,
   deliveryId: string,
   claimToken: string,
@@ -1696,7 +1732,7 @@ function normalizeEmailServiceError(error: unknown): { code: string; message: st
   return { code: "E_UNKNOWN", message: String(error) };
 }
 
-function isPermanentEmailServiceError(code: string): boolean {
+export function isPermanentEmailServiceError(code: string): boolean {
   return ![
     "E_RATE_LIMIT_EXCEEDED",
     "E_INTERNAL_SERVER_ERROR",
@@ -1731,12 +1767,7 @@ function parsePreferencesJson(value: string | null): NewsletterPreferences {
 }
 
 function parseResearch(value: string | null): StartupResearch | null {
-  if (!value) return null;
-  try {
-    return JSON.parse(value) as StartupResearch;
-  } catch {
-    return null;
-  }
+  return safeJsonParse(value, normalizeResearch);
 }
 
 function renderHtmlEmail(input: {

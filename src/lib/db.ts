@@ -1,4 +1,5 @@
 import type { Startup, WeeklyIssue, Collection, FundingRound, Investor } from "./types";
+import { resolveInvestorSlugByName } from "./brand-assets";
 
 export type SortOption = "featured" | "newest" | "name-az";
 
@@ -270,6 +271,30 @@ export async function getNewsFundingRounds(
   return result.results;
 }
 
+// All news-eligible rounds (same filters as getNewsFundingRounds, no limit).
+// Used by the investor pages/sitemap to resolve lead_investor -> investor slug
+// in JS via the canonical resolver, instead of unsafe SQL substring matching.
+export async function getNewsEligibleFundingRounds(
+  db: D1Database
+): Promise<FundingRound[]> {
+  const result = await db
+    .prepare(
+      `SELECT f.*
+       FROM funding_rounds f
+       INNER JOIN startups s ON s.slug = f.company_slug
+       WHERE s.workflow_status = 'published'
+         AND f.company_slug IS NOT NULL
+         AND f.source_url IS NOT NULL
+         AND TRIM(f.source_url) != ''
+         AND f.source_name IS NOT NULL
+         AND TRIM(f.source_name) != ''
+       ORDER BY f.date DESC, f.created_at DESC`
+    )
+    .all<FundingRound>();
+
+  return result.results;
+}
+
 export async function getInvestors(db: D1Database): Promise<Investor[]> {
   const result = await db
     .prepare("SELECT * FROM investors ORDER BY name")
@@ -288,30 +313,15 @@ export async function getInvestorBySlug(
 
   if (!investor) return null;
 
-  // Match by both name and short_name
-  const namePattern = `%${investor.name}%`;
-  const shortPattern = investor.short_name ? `%${investor.short_name}%` : namePattern;
+  // Resolve lead_investor -> investor slug in JS using the canonical resolver,
+  // so the rounds shown here match the investor links rendered elsewhere (and
+  // avoid the unsafe SQL substring matching this query previously used).
+  const candidates = await getNewsEligibleFundingRounds(db);
+  const rounds = candidates.filter(
+    (round) => resolveInvestorSlugByName(round.lead_investor) === investor.slug
+  );
 
-  const rounds = await db
-    .prepare(
-      `SELECT f.*
-       FROM funding_rounds f
-       INNER JOIN startups s ON f.company_slug = s.slug
-       WHERE (
-             LOWER(f.lead_investor) LIKE LOWER(?)
-          OR LOWER(f.lead_investor) LIKE LOWER(?)
-       )
-         AND s.workflow_status = 'published'
-         AND f.source_url IS NOT NULL
-         AND TRIM(f.source_url) != ''
-         AND f.source_name IS NOT NULL
-         AND TRIM(f.source_name) != ''
-       ORDER BY f.date DESC`
-    )
-    .bind(namePattern, shortPattern)
-    .all<FundingRound>();
-
-  return { investor, rounds: rounds.results };
+  return { investor, rounds };
 }
 
 export async function getStartupCount(

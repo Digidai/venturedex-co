@@ -1,6 +1,8 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { resolveInvestorSlugByName } from "../lib/brand-assets";
+import { getInvestors, getNewsEligibleFundingRounds } from "../lib/db";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl } from "../lib/seo";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 
@@ -61,7 +63,7 @@ export const GET: APIRoute = async ({ locals }) => {
   );
 
   try {
-    const [startups, investors, collections] = await Promise.all([
+    const [startups, allInvestors, rounds, collections] = await Promise.all([
       db
         .prepare(
           `SELECT slug, product_name, summary, screenshot_r2_key, updated_at, published_at, is_featured
@@ -70,25 +72,8 @@ export const GET: APIRoute = async ({ locals }) => {
            ORDER BY is_featured DESC, published_at DESC`
         )
         .all<StartupSitemapRow>(),
-      db
-        .prepare(
-          `SELECT i.slug, MAX(f.date) AS lastmod
-           FROM investors i
-           INNER JOIN funding_rounds f
-             ON (
-                  LOWER(f.lead_investor) LIKE '%' || LOWER(i.name) || '%'
-               OR (i.short_name IS NOT NULL AND LOWER(f.lead_investor) LIKE '%' || LOWER(i.short_name) || '%')
-             )
-           INNER JOIN startups s ON s.slug = f.company_slug
-           WHERE s.workflow_status = 'published'
-             AND f.source_url IS NOT NULL
-             AND TRIM(f.source_url) != ''
-             AND f.source_name IS NOT NULL
-             AND TRIM(f.source_name) != ''
-           GROUP BY i.slug
-           ORDER BY i.slug`
-        )
-        .all<InvestorSitemapRow>(),
+      getInvestors(db),
+      getNewsEligibleFundingRounds(db),
       db
         .prepare(
           `SELECT slug, created_at
@@ -98,6 +83,28 @@ export const GET: APIRoute = async ({ locals }) => {
         )
         .all<CollectionSitemapRow>(),
     ]);
+
+    // Aggregate the most-recent round date per investor slug via the canonical
+    // resolver, mirroring the investors index. Only investors with ≥1 tracked
+    // round get a sitemap URL (those pages are noindex when empty).
+    const investorLastmod = new Map<string, string | null>();
+    for (const round of rounds) {
+      const slug = resolveInvestorSlugByName(round.lead_investor);
+      if (!slug) continue;
+      const current = investorLastmod.get(slug) ?? null;
+      if (round.date && (!current || round.date > current)) {
+        investorLastmod.set(slug, round.date);
+      } else if (!investorLastmod.has(slug)) {
+        investorLastmod.set(slug, current);
+      }
+    }
+    const investors: InvestorSitemapRow[] = allInvestors
+      .filter((investor) => investorLastmod.has(investor.slug))
+      .map((investor) => ({
+        slug: investor.slug,
+        lastmod: investorLastmod.get(investor.slug) ?? null,
+      }))
+      .sort((a, b) => a.slug.localeCompare(b.slug));
 
     urls = urls.concat(
       startups.results.map((startup) => ({
@@ -114,7 +121,7 @@ export const GET: APIRoute = async ({ locals }) => {
             ]
           : undefined,
       })),
-      investors.results.map((investor) => ({
+      investors.map((investor) => ({
         loc: `/investors/${investor.slug}`,
         lastmod: investor.lastmod,
         priority: "0.7",

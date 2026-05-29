@@ -10,6 +10,7 @@ import {
   resolveInvestorByName,
 } from "../../lib/brand-assets";
 import { getFundingRoundsForStartup, getStartupBySlug, getRelatedStartups } from "../../lib/db";
+import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import type { StartupLinks, StartupResearch, StartupResearchSource } from "../../lib/types";
 
@@ -68,23 +69,8 @@ const investorEntries = investors.map((name) => {
   };
 });
 
-let links: StartupLinks = {};
-try {
-  if (startup.links_json) {
-    links = JSON.parse(startup.links_json) as StartupLinks;
-  }
-} catch {
-  // invalid JSON, ignore
-}
-
-let research: StartupResearch | null = null;
-try {
-  if (startup.research_json) {
-    research = JSON.parse(startup.research_json) as StartupResearch;
-  }
-} catch {
-  // invalid JSON, ignore
-}
+const links: StartupLinks = safeJsonParse(startup.links_json, normalizeLinks) ?? {};
+const research: StartupResearch | null = safeJsonParse(startup.research_json, normalizeResearch);
 
 const hasTeamInfo = !!(startup.founder_name || startup.team_size || startup.hq_location);
 const websiteUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);

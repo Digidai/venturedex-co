@@ -3,7 +3,8 @@ export const prerender = false;
 
 import BrandLogo from "../../components/BrandLogo.astro";
 import Base from "../../layouts/Base.astro";
-import { getInvestorBrandAsset } from "../../lib/brand-assets";
+import { getInvestorBrandAsset, resolveInvestorSlugByName } from "../../lib/brand-assets";
+import { getInvestors, getNewsEligibleFundingRounds } from "../../lib/db";
 import {
   buildJsonLdGraph,
   itemListNode,
@@ -22,35 +23,42 @@ const db = Astro.locals.runtime.env.DB;
 let investors: InvestorIndexRow[] = [];
 
 try {
-  const result = await db
-    .prepare(
-      `SELECT
-         i.id,
-         i.slug,
-         i.name,
-         i.short_name,
-         i.website,
-         i.description,
-         i.created_at,
-         COUNT(f.id) AS round_count,
-         MAX(f.date) AS last_round_at
-       FROM investors i
-       INNER JOIN funding_rounds f
-         ON (
-              LOWER(f.lead_investor) LIKE '%' || LOWER(i.name) || '%'
-           OR (i.short_name IS NOT NULL AND LOWER(f.lead_investor) LIKE '%' || LOWER(i.short_name) || '%')
-         )
-       INNER JOIN startups s ON s.slug = f.company_slug
-       WHERE s.workflow_status = 'published'
-         AND f.source_url IS NOT NULL
-         AND TRIM(f.source_url) != ''
-         AND f.source_name IS NOT NULL
-         AND TRIM(f.source_name) != ''
-       GROUP BY i.id
-       ORDER BY round_count DESC, last_round_at DESC, i.name`
-    )
-    .all<InvestorIndexRow>();
-  investors = result.results;
+  const [allInvestors, rounds] = await Promise.all([
+    getInvestors(db),
+    getNewsEligibleFundingRounds(db),
+  ]);
+
+  // Aggregate round counts and most-recent date per investor slug using the
+  // canonical resolver (matches the rounds shown on each investor page).
+  const stats = new Map<string, { count: number; lastRoundAt: string | null }>();
+  for (const round of rounds) {
+    const slug = resolveInvestorSlugByName(round.lead_investor);
+    if (!slug) continue;
+    const entry = stats.get(slug) ?? { count: 0, lastRoundAt: null };
+    entry.count += 1;
+    if (round.date && (!entry.lastRoundAt || round.date > entry.lastRoundAt)) {
+      entry.lastRoundAt = round.date;
+    }
+    stats.set(slug, entry);
+  }
+
+  investors = allInvestors
+    .map((investor) => {
+      const entry = stats.get(investor.slug);
+      return {
+        ...investor,
+        round_count: entry?.count ?? 0,
+        last_round_at: entry?.lastRoundAt ?? null,
+      };
+    })
+    .filter((investor) => investor.round_count > 0)
+    .sort((a, b) => {
+      if (b.round_count !== a.round_count) return b.round_count - a.round_count;
+      const aDate = a.last_round_at ?? "";
+      const bDate = b.last_round_at ?? "";
+      if (bDate !== aDate) return bDate.localeCompare(aDate);
+      return a.name.localeCompare(b.name);
+    });
 } catch (error) {
   console.error("Failed to load investors index", error);
 }

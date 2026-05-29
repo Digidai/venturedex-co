@@ -34,9 +34,11 @@ const errorMessage = error === "preferences"
       ? "Something went wrong. Please try again."
       : error === "unsubscribed"
         ? "This address is unsubscribed. Re-subscribe below to opt back in."
-        : error === "confirm"
-          ? "That confirmation link is invalid or expired. Subscribe again below."
-          : "";
+        : error === "expired"
+          ? "That confirmation link expired (links last 48 hours). Subscribe again below to get a fresh one."
+          : error === "confirm"
+            ? "That confirmation link is invalid or expired. Subscribe again below."
+            : "";
 ---
 
 <Base title={title} description={description} schema={schema}>
