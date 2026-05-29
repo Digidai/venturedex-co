@@ -11,6 +11,7 @@
     "build": "astro build && printf '_worker.js\n' > dist/.assetsignore",
     "preview": "astro preview",
     "astro": "astro",
+    "test": "tsx --test tests/*.test.ts",
     "test:newsletter": "tsx --test tests/*.test.ts",
     "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
   },

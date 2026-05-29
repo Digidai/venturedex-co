@@ -102,6 +102,14 @@ investor_rows = []
 startup_slugs: list[str] = []
 issue_numbers: list[int] = []
 
+# Canonical, transform-equivalent view of the seed, emitted as JSON when
+# EMIT_CANONICAL_JSON is set. Purely additive — the SQL output is unchanged.
+# tests/content-parity.test.ts diffs this against src/lib/content.ts so the two
+# transforms (this Python seed -> D1; content.ts -> prerender) can't drift.
+canonical_startups: dict = {}
+canonical_funding: dict = {}
+canonical_collection_members: dict = {cid: [] for cid, _s, _t, _d, _p in COLLECTIONS}
+
 for path in startup_files:
     data = json.loads(path.read_text())
     slug = data["slug"]
@@ -241,6 +249,39 @@ for path in startup_files:
                 f"{sql(collection_id)}, {sql(startup_id)}, {coll_rank}, {1 if is_featured else 0}"
                 ");"
             )
+            canonical_collection_members[collection_id].append(slug)
+
+    # Canonical, normalized view of the seeded row (for the parity test).
+    canonical_startups[slug] = {
+        "product_name": data["product_name"],
+        "product_type": data.get("product_type"),
+        "funding_stage": latest_round.get("stage", ""),
+        "funding_display": latest_round.get("amount", ""),
+        "region": data.get("region"),
+        "is_featured": 1 if data.get("is_featured") else 0,
+        "editor_rating": data.get("editor_rating"),
+        "founded_year": data.get("founded_year"),
+        "canonical_url": url,
+        "summary": data.get("summary"),
+        "why_featured": data.get("why_featured"),
+        "tags": data.get("tags"),
+        "investors": data.get("investors"),
+        "team_size": data.get("team_size"),
+        "hq_location": data.get("hq_location"),
+        "published_at": timestamps.get(slug, {}).get("published_at"),
+        "first_seen_at": timestamps.get(slug, {}).get("first_seen_at"),
+    }
+    canonical_funding[slug] = [
+        {
+            "amount": r.get("amount"),
+            "stage": r.get("stage"),
+            "lead_investor": r.get("lead_investor"),
+            "date": r.get("date"),
+            "source_url": r.get("source_url"),
+            "source_name": r.get("source_name"),
+        }
+        for r in funding
+    ]
 
 for _, investor in sorted(investors.items()):
     slug = investor["slug"]
@@ -362,6 +403,22 @@ lines.extend([
 ])
 
 OUTPUT.write_text("\n".join(lines))
+
+# Optional canonical JSON dump for the content<->seed parity test. Never written
+# during a normal build, so the committed seed and app build are unaffected.
+emit_json = os.environ.get("EMIT_CANONICAL_JSON")
+if emit_json:
+    canonical = {
+        "startups": canonical_startups,
+        "funding": canonical_funding,
+        "collection_members": canonical_collection_members,
+        "collections": [
+            {"id": cid, "slug": cs, "title": ct, "description": cd}
+            for cid, cs, ct, cd, _p in COLLECTIONS
+        ],
+    }
+    Path(emit_json).write_text(json.dumps(canonical, ensure_ascii=False))
+    print(f"Wrote canonical JSON to {emit_json}")
 
 print("")
 print(
