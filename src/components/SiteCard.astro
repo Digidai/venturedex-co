@@ -7,9 +7,20 @@ interface Props {
   // Only the card fields are needed; full Startup objects are assignable too.
   startup: StartupCard;
   size?: "default" | "large";
+  // When provided, emits data-* on the card root so a page-level script can
+  // filter/sort cards client-side (used by the prerendered homepage). Carries
+  // the fields not present on StartupCard (published_at, is_featured).
+  index?: {
+    name: string;
+    type: string | null;
+    stage: string | null;
+    region: string | null;
+    published: string | null;
+    featured: boolean;
+  } | null;
 }
 
-const { startup, size = "default" } = Astro.props;
+const { startup, size = "default", index = null } = Astro.props;
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
 
@@ -18,7 +29,16 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   .join(" · ");
 ---
 
-<article class:list={["site-card", size === "large" && "site-card--large"]}>
+<article
+  class:list={["site-card", size === "large" && "site-card--large"]}
+  data-card={index ? "" : undefined}
+  data-name={index ? index.name.toLowerCase() : undefined}
+  data-type={index?.type ?? undefined}
+  data-stage={index?.stage ?? undefined}
+  data-region={index?.region ?? undefined}
+  data-published={index?.published ?? undefined}
+  data-featured={index ? (index.featured ? "1" : "0") : undefined}
+>
   <a href={`/startups/${startup.slug}`} class="card-link">
     <div class="card-screenshot">
       {screenshotUrl ? (

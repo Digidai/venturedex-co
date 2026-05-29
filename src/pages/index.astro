@@ -1,60 +1,29 @@
 ---
-export const prerender = false;
+export const prerender = true;
 
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
 import {
-  NEWS_ROUNDS_LIMIT,
-  getNewsFundingRounds,
-  getPublishedStartups,
-  getStartupCount,
-} from "../lib/db";
+  getContentStartups,
+  getContentNewsEligibleFundingRounds,
+} from "../lib/content";
 import { homeJsonLd } from "../lib/seo";
-import type { SortOption } from "../lib/db";
 
-const STARTUP_LIST_LIMIT = 500;
-const db = Astro.locals.runtime.env.DB;
+// Prerendered at build time from version-controlled content (no per-request D1).
+// Default order mirrors the old D1 "featured" sort (is_featured DESC, then
+// published_at DESC); the client script re-sorts/filters in place on demand.
+const startups = getContentStartups().sort((a, b) => {
+  if (b.is_featured !== a.is_featured) return b.is_featured - a.is_featured;
+  return (b.published_at ?? "").localeCompare(a.published_at ?? "");
+});
+const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
 
-const productType = Astro.url.searchParams.get("type") ?? undefined;
-const fundingStage = Astro.url.searchParams.get("stage") ?? undefined;
-const region = Astro.url.searchParams.get("region") ?? undefined;
-const sortRaw = Astro.url.searchParams.get("sort") ?? "featured";
-const sort = (["featured", "newest", "name-az"].includes(sortRaw) ? sortRaw : "featured") as SortOption;
-
-let startups: import("../lib/types").Startup[] = [];
-let rounds: import("../lib/types").FundingRound[] = [];
-let startupCount = 0;
-let matchingStartupCount = 0;
-
-try {
-  [startups, startupCount, matchingStartupCount, rounds] = await Promise.all([
-    getPublishedStartups(db, { productType, fundingStage, region, sort, limit: STARTUP_LIST_LIMIT }),
-    getStartupCount(db),
-    getStartupCount(db, { productType, fundingStage, region }),
-    getNewsFundingRounds(db, NEWS_ROUNDS_LIMIT),
-  ]);
-} catch (error) {
-  console.error("Failed to load homepage data", error);
-}
-
-const hasFacetFilters = !!(productType || fundingStage || region);
-const hasActiveControls = hasFacetFilters || sort !== "featured";
-const featured = startups.filter((s) => s.is_featured);
-const rest = startups.filter((s) => !s.is_featured);
-const featuredPreview = !hasActiveControls ? featured.slice(0, 3) : [];
-const visibleStartups = hasActiveControls ? startups : [...featured.slice(3), ...rest];
-const targetStartupCount = hasFacetFilters ? matchingStartupCount : startupCount;
-const isTruncated = targetStartupCount > startups.length;
-const heroCountText = hasFacetFilters
-  ? isTruncated
-    ? `Showing first ${startups.length} of ${targetStartupCount} matching early-stage companies.`
-    : `Showing ${matchingStartupCount} of ${startupCount} outstanding early-stage companies.`
-  : isTruncated
-    ? `Showing first ${startups.length} of ${startupCount} outstanding early-stage companies.`
-    : `A thoughtful gallery of ${startupCount > 0 ? startupCount : ''} outstanding early-stage companies.`;
-const description = "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
+const startupCount = startups.length;
+const countLabel = startupCount === 1 ? "company" : "companies";
+const description =
+  "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
 const schema = homeJsonLd(startups, Astro.site?.toString());
 ---
 
@@ -66,7 +35,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
       <div class="hero-text">
         <h1>Discover startups worth tracking</h1>
         <p class="hero-sub">
-          {heroCountText}
+          A thoughtful gallery of {startupCount > 0 ? startupCount : ""} outstanding early-stage companies.
           Profiles include product context, funding signals, investor links, and source-backed notes.
         </p>
       </div>
@@ -75,37 +44,31 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
 
   <section class="explore">
     <div class="container">
-      <FilterBar
-        currentType={productType}
-        currentStage={fundingStage}
-        currentRegion={region}
-        currentSort={sort}
-      />
+      <FilterBar />
 
       {startups.length > 0 ? (
         <>
-          {featuredPreview.length > 0 && (
-            <>
-              <div class="section-label">Featured</div>
-              <div class="featured-grid">
-                {featuredPreview.map((startup) => (
-                  <SiteCard startup={startup} size="large" />
-                ))}
-              </div>
-              {visibleStartups.length > 0 && <div class="section-label">All startups</div>}
-            </>
-          )}
-          <div class="card-grid">
-            {visibleStartups.map((startup) => (
-              <SiteCard startup={startup} />
+          <p class="result-count" data-result-count>{startupCount} {countLabel}</p>
+          <div class="card-grid" data-card-grid>
+            {startups.map((startup) => (
+              <SiteCard
+                startup={startup}
+                index={{
+                  name: startup.product_name,
+                  type: startup.product_type,
+                  stage: startup.funding_stage,
+                  region: startup.region,
+                  published: startup.published_at,
+                  featured: startup.is_featured === 1,
+                }}
+              />
             ))}
           </div>
+          <div class="empty-state" data-empty-state hidden>
+            <h2>No matches.</h2>
+            <p>Try adjusting your filters, or <button type="button" class="link-button" data-clear-inline>view all startups</button>.</p>
+          </div>
         </>
-      ) : hasActiveControls ? (
-        <div class="empty-state">
-          <h2>No matches.</h2>
-          <p>Try adjusting your filters, or <a href="/">view all startups</a>.</p>
-        </div>
       ) : (
         <div class="empty-state">
           <h2>Coming soon.</h2>
@@ -116,6 +79,118 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     </div>
   </section>
 </Base>
+
+<script>
+  // Client-side filtering/sorting over the prerendered card grid. Progressive
+  // enhancement: with JS off, every card stays visible in the default (featured)
+  // order and the filter panel never opens (its toggle is JS-only), so the page
+  // degrades to a complete, browsable directory. The filter/sort semantics live
+  // in src/lib/startup-filter.ts (unit-tested); this is just the DOM adapter.
+  import {
+    readFilterState,
+    filterStateToQuery,
+    cardMatchesFilters,
+    orderVisibleCards,
+    activeFacetCount,
+    normalizeSort,
+    type FilterableCard,
+    type StartupFilterState,
+  } from "../lib/startup-filter";
+
+  const grid = document.querySelector<HTMLElement>("[data-card-grid]");
+  if (grid) {
+    type Entry = FilterableCard & { el: HTMLElement };
+    const entries: Entry[] = Array.from(grid.querySelectorAll<HTMLElement>("[data-card]")).map((el) => ({
+      el,
+      name: el.dataset.name ?? "",
+      type: el.dataset.type ?? null,
+      stage: el.dataset.stage ?? null,
+      region: el.dataset.region ?? null,
+      published: el.dataset.published ?? null,
+    }));
+    const total = entries.length;
+
+    const typeSel = document.querySelector<HTMLSelectElement>("#filter-type");
+    const stageSel = document.querySelector<HTMLSelectElement>("#filter-stage");
+    const regionSel = document.querySelector<HTMLSelectElement>("#filter-region");
+    const sortSel = document.querySelector<HTMLSelectElement>("#filter-sort");
+    const form = document.querySelector<HTMLFormElement>(".filter-form");
+    const clearBtn = document.querySelector<HTMLElement>(".filter-clear");
+    const countBadge = document.querySelector<HTMLElement>(".filter-count");
+    const resultCount = document.querySelector<HTMLElement>("[data-result-count]");
+    const emptyState = document.querySelector<HTMLElement>("[data-empty-state]");
+    const inlineClear = document.querySelector<HTMLElement>("[data-clear-inline]");
+
+    function readState(): StartupFilterState {
+      return {
+        type: (typeSel?.value ?? "").trim(),
+        stage: (stageSel?.value ?? "").trim(),
+        region: (regionSel?.value ?? "").trim(),
+        sort: normalizeSort(sortSel?.value),
+      };
+    }
+
+    function apply(updateUrl = true) {
+      const state = readState();
+      for (const entry of entries) entry.el.hidden = !cardMatchesFilters(entry, state);
+      const ordered = orderVisibleCards(entries, state);
+      for (const entry of ordered) grid!.appendChild(entry.el);
+
+      if (resultCount) {
+        resultCount.textContent =
+          ordered.length === total
+            ? `${total} ${total === 1 ? "company" : "companies"}`
+            : `${ordered.length} of ${total} companies`;
+      }
+      if (emptyState) emptyState.hidden = ordered.length !== 0;
+
+      const facets = activeFacetCount(state);
+      if (countBadge) {
+        countBadge.textContent = String(facets);
+        countBadge.hidden = facets === 0;
+      }
+      if (clearBtn) clearBtn.hidden = facets === 0;
+
+      if (updateUrl) {
+        const qs = filterStateToQuery(state);
+        history.replaceState(null, "", qs ? `/?${qs}` : "/");
+      }
+    }
+
+    function reset() {
+      if (typeSel) typeSel.value = "";
+      if (stageSel) stageSel.value = "";
+      if (regionSel) regionSel.value = "";
+      if (sortSel) sortSel.value = "featured";
+      apply();
+    }
+
+    function hydrateFromUrl() {
+      const state = readFilterState(new URLSearchParams(location.search));
+      if (typeSel) typeSel.value = state.type;
+      if (stageSel) stageSel.value = state.stage;
+      if (regionSel) regionSel.value = state.region;
+      if (sortSel) sortSel.value = state.sort;
+    }
+
+    [typeSel, stageSel, regionSel, sortSel].forEach((el) => el?.addEventListener("change", () => apply()));
+    form?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      apply();
+    });
+    clearBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      reset();
+    });
+    inlineClear?.addEventListener("click", (e) => {
+      e.preventDefault();
+      reset();
+    });
+
+    hydrateFromUrl();
+    apply(false);
+  }
+</script>
 
 <style>
   .hero {
@@ -141,20 +216,10 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     padding: var(--space-8) 0 var(--space-16);
   }
 
-  .section-label {
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .result-count {
+    font-size: 0.8rem;
     color: var(--color-text-secondary);
     margin-bottom: var(--space-4);
-  }
-
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-    margin-bottom: var(--space-8);
   }
 
   .card-grid {
@@ -178,6 +243,16 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     margin-bottom: var(--space-6);
   }
 
+  .link-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: var(--color-accent);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
   .cta-button {
     display: inline-block;
     padding: var(--space-3) var(--space-6);
@@ -196,9 +271,6 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
   }
 
   @media (max-width: 900px) {
-    .featured-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
     .card-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -207,10 +279,6 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
   @media (max-width: 640px) {
     .hero {
       padding: var(--space-6) 0;
-    }
-
-    .featured-grid {
-      grid-template-columns: 1fr;
     }
 
     .card-grid {

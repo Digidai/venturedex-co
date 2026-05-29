@@ -26,13 +26,14 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "name-az", label: "Name A\u2013Z" },
 ];
 
+// Initial badge count from props (the page-level script keeps it in sync as the
+// visitor filters client-side); usually 0 on first prerendered paint.
 const activeCount = [
   currentType,
   currentStage,
   currentRegion,
   currentSort && currentSort !== "featured" ? currentSort : null,
 ].filter(Boolean).length;
-const hasFilters = activeCount > 0;
 ---
 
 <div class="filter-bar">
@@ -46,7 +47,7 @@ const hasFilters = activeCount > 0;
       <path d="M1 3h14M3 8h10M5 13h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
     <span>Filters</span>
-    {activeCount > 0 && <span class="filter-count">{activeCount}</span>}
+    <span class="filter-count" hidden>{activeCount}</span>
     <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
       <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
@@ -97,9 +98,7 @@ const hasFilters = activeCount > 0;
 
       <div class="filter-actions">
         <button type="submit" class="filter-apply">Apply</button>
-        {hasFilters && (
-          <a href="/" class="filter-clear">Clear filters</a>
-        )}
+        <button type="button" class="filter-clear" hidden>Clear filters</button>
       </div>
     </form>
   </div>
@@ -116,7 +115,8 @@ const hasFilters = activeCount > 0;
       panel.hidden = expanded;
     });
 
-    // Auto-expand if filters are active
+    // Auto-expand if filters are active in the URL (e.g. a shared filtered link).
+    // The actual filtering is applied by the page-level script (index.astro).
     const params = new URLSearchParams(window.location.search);
     const hasActive = params.get('type') || params.get('stage') || params.get('region')
       || (params.get('sort') && params.get('sort') !== 'featured');
@@ -124,24 +124,6 @@ const hasFilters = activeCount > 0;
       toggle.setAttribute('aria-expanded', 'true');
       panel.hidden = false;
     }
-  }
-
-  // Strip empty params before submit so URLs stay clean
-  const form = document.querySelector('.filter-form') as HTMLFormElement;
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const data = new FormData(form);
-      const params = new URLSearchParams();
-      for (const [key, value] of data.entries()) {
-        const v = String(value).trim();
-        if (v && !(key === 'sort' && v === 'featured')) {
-          params.set(key, v);
-        }
-      }
-      const qs = params.toString();
-      window.location.href = '/' + (qs ? '?' + qs : '');
-    });
   }
 </script>
 
@@ -273,9 +255,14 @@ const hasFilters = activeCount > 0;
   }
 
   .filter-clear {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-body);
     font-size: 0.85rem;
     color: var(--color-text-secondary);
     text-decoration: none;
+    cursor: pointer;
   }
 
   .filter-clear:hover {
