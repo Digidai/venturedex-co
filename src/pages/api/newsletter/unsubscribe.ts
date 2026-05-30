@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import { getSubscriptionByToken, unsubscribeByToken } from "../../../lib/newsletter";
 
 function escapeHtml(value: string) {
@@ -52,9 +53,9 @@ async function tokenFromRequest(request: Request) {
   return formData?.get("token")?.toString() ?? "";
 }
 
-export const GET: APIRoute = async ({ request, locals }) => {
+export const GET: APIRoute = async ({ request }) => {
   const token = new URL(request.url).searchParams.get("token") ?? "";
-  const subscription = token ? await getSubscriptionByToken(locals.runtime.env.DB, token) : null;
+  const subscription = token ? await getSubscriptionByToken(env.DB, token) : null;
 
   if (!subscription) {
     return html(`
@@ -73,9 +74,9 @@ export const GET: APIRoute = async ({ request, locals }) => {
   `);
 };
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   const token = await tokenFromRequest(request);
-  const subscription = await unsubscribeByToken(locals.runtime.env.DB, token);
+  const subscription = await unsubscribeByToken(env.DB, token);
   const acceptsHtml = request.headers.get("accept")?.includes("text/html");
 
   if (!subscription) {

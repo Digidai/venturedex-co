@@ -635,10 +635,19 @@ print(data.get("vars", {}).get("SITE_URL", ""))
 PY
 }
 
+# Adapter v13 emits the deployable Worker + its wrangler config under dist/server
+# (assets live in dist/client). Deploy with that generated config rather than the
+# root wrangler.toml, whose `main` now points at the source entry for the build.
+ADAPTER_WRANGLER_CONFIG="dist/server/wrangler.json"
+
 deploy_worker() {
   (
     cd "$REPO_ROOT"
-    npx wrangler deploy 2>&1
+    if [ ! -f "$ADAPTER_WRANGLER_CONFIG" ]; then
+      echo "ERROR: $ADAPTER_WRANGLER_CONFIG missing — run 'npm run build' first." >&2
+      exit 1
+    fi
+    npx wrangler deploy -c "$ADAPTER_WRANGLER_CONFIG" 2>&1
   )
 }
 
@@ -646,7 +655,7 @@ check_newsletter_release_preflight() {
   local dry_run_output secrets_output
   (
     cd "$REPO_ROOT"
-    dry_run_output="$(npx wrangler deploy --dry-run --outdir /tmp/venturedex-newsletter-preflight 2>&1)"
+    dry_run_output="$(npx wrangler deploy -c "$ADAPTER_WRANGLER_CONFIG" --dry-run --outdir /tmp/venturedex-newsletter-preflight 2>&1)"
     printf '%s\n' "$dry_run_output"
     if ! printf '%s\n' "$dry_run_output" | grep -F -q "env.EMAIL"; then
       echo "ERROR: Newsletter preflight did not find Cloudflare Email binding env.EMAIL." >&2

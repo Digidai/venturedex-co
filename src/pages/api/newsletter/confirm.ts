@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import { confirmSubscription, getSubscriptionByToken, sendWelcomeEmail } from "../../../lib/newsletter";
 
 function escapeHtml(value: string) {
@@ -69,9 +70,9 @@ const notFoundBody = `
 // GET renders an interstitial with a POST form. This prevents email scanners and
 // link-prefetchers (which issue GET requests) from silently confirming the
 // subscription — the actual opt-in only happens on the POST below.
-export const GET: APIRoute = async ({ request, locals }) => {
+export const GET: APIRoute = async ({ request }) => {
   const token = new URL(request.url).searchParams.get("token") ?? "";
-  const subscription = token ? await getSubscriptionByToken(locals.runtime.env.DB, token) : null;
+  const subscription = token ? await getSubscriptionByToken(env.DB, token) : null;
 
   if (!subscription) {
     return html(notFoundBody, 404);
@@ -97,7 +98,6 @@ export const GET: APIRoute = async ({ request, locals }) => {
 };
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const env = locals.runtime.env;
   const token = await tokenFromRequest(request);
   const result = token ? await confirmSubscription(env.DB, token) : null;
 
@@ -111,7 +111,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     return redirect("/subscribe?error=expired");
   }
   if (result.newlyConfirmed) {
-    locals.runtime.ctx.waitUntil(sendWelcomeEmail(env, result.subscription));
+    locals.cfContext.waitUntil(sendWelcomeEmail(env, result.subscription));
   }
   return redirect("/subscribe?confirmed=1");
 };

@@ -4,11 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": ">=22.12"
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && printf '_worker.js\n' > dist/.assetsignore",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "test": "tsx --test tests/*.test.ts",
@@ -16,8 +16,8 @@
     "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.5.0",
-    "astro": "^5.7.0"
+    "@astrojs/cloudflare": "^13.6.0",
+    "astro": "^6.4.2"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",

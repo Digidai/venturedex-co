@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import {
   normalizeEmail,
   parseNewsletterPreferences,
@@ -68,8 +69,7 @@ async function rateLimitOk(
   return true;
 }
 
-export const POST: APIRoute = async ({ request, locals }) => {
-  const env = locals.runtime.env;
+export const POST: APIRoute = async ({ request }) => {
   const db = env.DB;
 
   let email: string | null;

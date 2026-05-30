@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
 import { runNewsletterCycle, type NewsletterType } from "../../../lib/newsletter";
 
 function json(payload: unknown, status = 200) {
@@ -42,8 +43,7 @@ async function safeEqual(a: string, b: string): Promise<boolean> {
   return diff === 0;
 }
 
-export const POST: APIRoute = async ({ request, locals }) => {
-  const env = locals.runtime.env;
+export const POST: APIRoute = async ({ request }) => {
   if (!(await authorized(request, env.NEWSLETTER_ADMIN_TOKEN))) {
     return json({ error: "Unauthorized." }, 401);
   }

@@ -2,10 +2,11 @@
 export const prerender = false;
 
 import Base from "../layouts/Base.astro";
+import { env } from "cloudflare:workers";
 import { getSubscriptionByToken } from "../lib/newsletter";
 
 const token = Astro.url.searchParams.get("token") ?? "";
-const subscription = token ? await getSubscriptionByToken(Astro.locals.runtime.env.DB, token) : null;
+const subscription = token ? await getSubscriptionByToken(env.DB, token) : null;
 const title = "Unsubscribe from VentureDex";
 const description = "Manage VentureDex newsletter delivery preferences.";
 Astro.response.headers.set("Cache-Control", "no-store");

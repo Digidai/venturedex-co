@@ -1,6 +1,10 @@
-import { createExports as createAstroExports } from "@astrojs/cloudflare/entrypoints/server.js";
+// Custom Cloudflare Worker entrypoint (adapter v13). `handle()` runs Astro's
+// request handling (assets + SSR routes); we wrap it to add the RFC 8058
+// one-click unsubscribe, the daily/weekly newsletter cron, and the delivery
+// queue consumer. `createExports(manifest)` was removed in v13 — the entry is now
+// a plain ExportedHandler. wrangler `main` must point at this file's build output.
+import { handle } from "@astrojs/cloudflare/handler";
 import type { ExecutionContext, MessageBatch, ScheduledController } from "@cloudflare/workers-types";
-import type { SSRManifest } from "astro";
 import {
   processNewsletterDeliveryQueue,
   runNewsletterCycle,
@@ -68,44 +72,40 @@ async function isOneClickUnsubscribePost(request: Request): Promise<boolean> {
   });
 }
 
-export function createExports(manifest: SSRManifest) {
-  const astroExports = createAstroExports(manifest);
-  const astroFetch = astroExports.default.fetch as unknown as (
-    request: Request,
-    env: NewsletterEnv,
-    ctx: ExecutionContext
-  ) => Promise<Response>;
+// env arrives as the Cloudflare bindings object (global `Env`); the newsletter
+// helpers accept the structurally-narrower NewsletterEnv.
+const asNewsletterEnv = (env: Env): NewsletterEnv => env as unknown as NewsletterEnv;
 
-  return {
-    default: {
-      ...astroExports.default,
-      async fetch(request: Request, env: NewsletterEnv, ctx: ExecutionContext) {
-        const oneClickResponse = await handleOneClickUnsubscribe(request, env);
-        if (oneClickResponse) return oneClickResponse;
-        return astroFetch(request, env, ctx);
-      },
-      async scheduled(controller: ScheduledController, env: NewsletterEnv, ctx: ExecutionContext) {
-        const type = typeForCron(controller.cron);
-        if (!type) return;
-        ctx.waitUntil(
-          runNewsletterCycle(env, { type })
-            .then((result) => logEvent("newsletter_cycle", { ...result }))
-            .catch((error) =>
-              logEvent("newsletter_cycle_error", { type, error: error instanceof Error ? error.message : String(error) })
-            )
-        );
-      },
-      async queue(batch: MessageBatch<NewsletterQueueMessage>, env: NewsletterEnv) {
-        try {
-          await processNewsletterDeliveryQueue(env, batch);
-        } catch (error) {
-          logEvent("newsletter_queue_error", {
-            batchSize: batch.messages.length,
-            error: error instanceof Error ? error.message : String(error),
-          });
-          throw error;
-        }
-      },
-    },
-  };
-}
+const worker = {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const oneClickResponse = await handleOneClickUnsubscribe(request, asNewsletterEnv(env));
+    if (oneClickResponse) return oneClickResponse;
+    return handle(request, env, ctx) as unknown as Promise<Response>;
+  },
+
+  async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
+    const type = typeForCron(controller.cron);
+    if (!type) return;
+    ctx.waitUntil(
+      runNewsletterCycle(asNewsletterEnv(env), { type })
+        .then((result) => logEvent("newsletter_cycle", { ...result }))
+        .catch((error) =>
+          logEvent("newsletter_cycle_error", { type, error: error instanceof Error ? error.message : String(error) })
+        )
+    );
+  },
+
+  async queue(batch: MessageBatch<NewsletterQueueMessage>, env: Env): Promise<void> {
+    try {
+      await processNewsletterDeliveryQueue(asNewsletterEnv(env), batch);
+    } catch (error) {
+      logEvent("newsletter_queue_error", {
+        batchSize: batch.messages.length,
+        error: error instanceof Error ? error.message : String(error),
+      });
+      throw error;
+    }
+  },
+};
+
+export default worker;
