@@ -6,6 +6,7 @@ compatibility_date = "2026-04-13"
 compatibility_flags = ["nodejs_compat"]
 
 [assets]
+html_handling = "drop-trailing-slash"
 directory = "dist"
 binding = "ASSETS"
 
