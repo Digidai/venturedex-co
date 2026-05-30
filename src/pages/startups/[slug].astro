@@ -178,10 +178,10 @@ function sourceLabel(source?: StartupResearchSource) {
     </header>
 
     <dl class="score-strip" aria-label="VentureDex summary">
-      {startup.editor_rating && (
+      {startup.why_featured && (
         <div class="score-item">
-          <dt>VentureDex rating</dt>
-          <dd>{startup.editor_rating}/5</dd>
+          <dt>Why we're watching</dt>
+          <dd>{startup.why_featured}</dd>
         </div>
       )}
       {latestFunding && (

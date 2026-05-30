@@ -119,7 +119,7 @@ test("per-startup funding rounds match the seed (as multisets)", () => {
   for (const [slug, pyRounds] of Object.entries(canonical.funding)) {
     const tsRounds = readers.getContentFundingRoundsForStartup(slug);
     assert.deepEqual(
-      tsRounds.map(roundKey).sort(),
+      tsRounds.map((r) => roundKey(r as unknown as Record<string, unknown>)).sort(),
       pyRounds.map(roundKey).sort(),
       `funding rounds for ${slug}`
     );
