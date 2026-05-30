@@ -55,12 +55,6 @@ function maskEmail(email: string) {
   return `${local.slice(0, 2)}***@${domain}`;
 }
 
-const expiredBody = `
-  <h1 style="font-family:Georgia,serif;font-size:30px;margin:32px 0 12px;">This confirmation link has expired.</h1>
-  <p style="line-height:1.6;color:#737373;">Confirmation links are valid for 48 hours. Please subscribe again to receive a fresh link.</p>
-  <p style="margin-top:24px;"><a href="/subscribe?error=expired" style="color:#2563EB;font-weight:700;">Subscribe again &rarr;</a></p>
-`;
-
 const notFoundBody = `
   <h1 style="font-family:Georgia,serif;font-size:30px;margin:32px 0 12px;">Confirmation link not found.</h1>
   <p style="line-height:1.6;color:#737373;">The link may be incomplete or already invalid.</p>

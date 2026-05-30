@@ -1,10 +1,12 @@
 /// <reference path="../.astro/types.d.ts" />
+/// <reference types="@cloudflare/workers-types" />
 
 // Cloudflare Worker bindings (wrangler.toml). In adapter v13 the runtime env is
-// no longer on `Astro.locals.runtime` — it's the global `Env`, read via
-// `import { env } from "cloudflare:workers"`. This interface types both that
-// import and the worker entrypoint's handlers (src/worker.ts).
-declare global {
+// no longer on `Astro.locals.runtime` — it's read via
+// `import { env } from "cloudflare:workers"`, which is typed as `Cloudflare.Env`.
+// We declare it there and re-expose it as the global `Env` so the worker
+// entrypoint's `ExportedHandler<Env>` / `handle(req, env, ctx)` line up too.
+declare namespace Cloudflare {
   interface Env {
     DB: D1Database;
     R2: R2Bucket;
@@ -23,6 +25,9 @@ declare global {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface Env extends Cloudflare.Env {}
+
 declare namespace App {
   // v13: only the Cloudflare ExecutionContext is exposed on locals
   // (Astro.locals.cfContext). Bindings come from `cloudflare:workers`.
@@ -40,5 +45,3 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
-
-export {};

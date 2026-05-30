@@ -11,6 +11,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "typecheck": "astro check",
     "test": "tsx --test tests/*.test.ts",
     "test:newsletter": "tsx --test tests/*.test.ts",
     "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
@@ -20,6 +21,8 @@
     "astro": "^6.4.2"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@cloudflare/workers-types": "^4.20260530.1",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.9.1",
     "better-sqlite3": "^12.10.0",

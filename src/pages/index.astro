@@ -97,10 +97,16 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     type StartupFilterState,
   } from "../lib/startup-filter";
 
-  const grid = document.querySelector<HTMLElement>("[data-card-grid]");
+  // Typed DOM lookups. `@cloudflare/workers-types` is global (for the Worker), so
+  // its DOM-lite shadows lib.dom inside client scripts; cast through `any` to get
+  // the real browser element types back.
+  const q = <T,>(sel: string, root: any = document): T | null => (root.querySelector(sel) as T) ?? null;
+  const qa = <T,>(sel: string, root: any = document): T[] => Array.from(root.querySelectorAll(sel)) as T[];
+
+  const grid = q<HTMLElement>("[data-card-grid]");
   if (grid) {
     type Entry = FilterableCard & { el: HTMLElement };
-    const entries: Entry[] = Array.from(grid.querySelectorAll<HTMLElement>("[data-card]")).map((el) => ({
+    const entries: Entry[] = qa<HTMLElement>("[data-card]", grid).map((el) => ({
       el,
       name: el.dataset.name ?? "",
       type: el.dataset.type ?? null,
@@ -110,16 +116,16 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     }));
     const total = entries.length;
 
-    const typeSel = document.querySelector<HTMLSelectElement>("#filter-type");
-    const stageSel = document.querySelector<HTMLSelectElement>("#filter-stage");
-    const regionSel = document.querySelector<HTMLSelectElement>("#filter-region");
-    const sortSel = document.querySelector<HTMLSelectElement>("#filter-sort");
-    const form = document.querySelector<HTMLFormElement>(".filter-form");
-    const clearBtn = document.querySelector<HTMLElement>(".filter-clear");
-    const countBadge = document.querySelector<HTMLElement>(".filter-count");
-    const resultCount = document.querySelector<HTMLElement>("[data-result-count]");
-    const emptyState = document.querySelector<HTMLElement>("[data-empty-state]");
-    const inlineClear = document.querySelector<HTMLElement>("[data-clear-inline]");
+    const typeSel = q<HTMLSelectElement>("#filter-type");
+    const stageSel = q<HTMLSelectElement>("#filter-stage");
+    const regionSel = q<HTMLSelectElement>("#filter-region");
+    const sortSel = q<HTMLSelectElement>("#filter-sort");
+    const form = q<HTMLFormElement>(".filter-form");
+    const clearBtn = q<HTMLElement>(".filter-clear");
+    const countBadge = q<HTMLElement>(".filter-count");
+    const resultCount = q<HTMLElement>("[data-result-count]");
+    const emptyState = q<HTMLElement>("[data-empty-state]");
+    const inlineClear = q<HTMLElement>("[data-clear-inline]");
 
     function readState(): StartupFilterState {
       return {

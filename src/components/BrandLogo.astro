@@ -58,28 +58,29 @@ const style = `--brand-size:${size}px;`;
   const MAX_SAMPLE_EDGE = 64;
   const BG_DISTANCE_THRESHOLD = 38;
 
-  if (!globalThis.__ventureDexBrandLogoAuto) {
-    globalThis.__ventureDexBrandLogoAuto = true;
+  const g = globalThis as typeof globalThis & { __ventureDexBrandLogoAuto?: boolean };
+  if (!g.__ventureDexBrandLogoAuto) {
+    g.__ventureDexBrandLogoAuto = true;
 
-    const toLinear = (value) => {
+    const toLinear = (value: number) => {
       const channel = value / 255;
       return channel <= 0.03928
         ? channel / 12.92
         : Math.pow((channel + 0.055) / 1.055, 2.4);
     };
 
-    const luminance = (red, green, blue) => {
+    const luminance = (red: number, green: number, blue: number) => {
       return 0.2126 * toLinear(red) + 0.7152 * toLinear(green) + 0.0722 * toLinear(blue);
     };
 
-    const colorDistance = (red, green, blue, color) => {
+    const colorDistance = (red: number, green: number, blue: number, color: number[]) => {
       const redDelta = red - color[0];
       const greenDelta = green - color[1];
       const blueDelta = blue - color[2];
       return Math.sqrt(redDelta * redDelta + greenDelta * greenDelta + blueDelta * blueDelta);
     };
 
-    const sampleImage = (image) => {
+    const sampleImage = (image: HTMLImageElement) => {
       const naturalWidth = image.naturalWidth || image.width;
       const naturalHeight = image.naturalHeight || image.height;
       if (!naturalWidth || !naturalHeight) return null;
@@ -104,7 +105,7 @@ const style = `--brand-size:${size}px;`;
       };
     };
 
-    const estimateBackground = ({ data, width, height }) => {
+    const estimateBackground = ({ data, width, height }: { data: Uint8ClampedArray; width: number; height: number }) => {
       const cornerIndexes = [
         0,
         (width - 1) * 4,
@@ -129,7 +130,7 @@ const style = `--brand-size:${size}px;`;
       return maxDistance <= BG_DISTANCE_THRESHOLD ? average : null;
     };
 
-    const classifyLogoTone = (image) => {
+    const classifyLogoTone = (image: HTMLImageElement) => {
       let sample;
       try {
         sample = sampleImage(image);
@@ -196,8 +197,11 @@ const style = `--brand-size:${size}px;`;
       return weightedLuminance >= 0.58 ? "light" : "dark";
     };
 
-    const analyzeMark = (mark) => {
-      const image = mark.querySelector("img.brand-logo");
+    // `any`: @cloudflare/workers-types' global DOM-lite shadows lib.dom in client
+    // scripts, so Element loses .dataset and HTMLImageElement loses .complete;
+    // this is pixel-sampling glue code where the precise DOM types don't earn their keep.
+    const analyzeMark = (mark: any) => {
+      const image = mark.querySelector("img.brand-logo") as any;
       if (!image || image.dataset.logoToneAnalyzed === "true") return;
 
       const applyTone = () => {
@@ -216,7 +220,7 @@ const style = `--brand-size:${size}px;`;
       image.addEventListener("load", applyTone, { once: true });
     };
 
-    const scan = (root = document) => {
+    const scan = (root: any = document) => {
       root.querySelectorAll(AUTO_LOGO_SELECTOR).forEach(analyzeMark);
     };
 

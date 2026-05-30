@@ -75,10 +75,15 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
   // in src/lib/search-index.ts (unit-tested); this is the DOM adapter.
   import { rankSearchEntries, type SearchEntry } from "../lib/search-index";
 
-  const grid = document.querySelector<HTMLElement>("[data-search-grid]");
-  const form = document.querySelector<HTMLFormElement>(".search-form");
-  const input = document.querySelector<HTMLInputElement>('input[name="q"]');
-  const indexEl = document.querySelector<HTMLElement>("[data-search-index]");
+  // Typed DOM lookups — see the note in index.astro: cast through `any` so the
+  // global @cloudflare/workers-types DOM-lite doesn't shadow lib.dom here.
+  const q = <T,>(sel: string, root: any = document): T | null => (root.querySelector(sel) as T) ?? null;
+  const qa = <T,>(sel: string, root: any = document): T[] => Array.from(root.querySelectorAll(sel)) as T[];
+
+  const grid = q<HTMLElement>("[data-search-grid]");
+  const form = q<HTMLFormElement>(".search-form");
+  const input = q<HTMLInputElement>('input[name="q"]');
+  const indexEl = q<HTMLElement>("[data-search-index]");
 
   if (grid && form && input && indexEl) {
     let entries: SearchEntry[] = [];
@@ -89,15 +94,15 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
     }
 
     const cardBySlug = new Map<string, HTMLElement>();
-    grid.querySelectorAll<HTMLElement>("[data-slug]").forEach((el) => {
+    qa<HTMLElement>("[data-slug]", grid).forEach((el) => {
       const slug = el.getAttribute("data-slug");
       if (slug) cardBySlug.set(slug, el);
     });
 
-    const hints = document.querySelector<HTMLElement>("[data-search-hints]");
-    const count = document.querySelector<HTMLElement>("[data-result-count]");
-    const empty = document.querySelector<HTMLElement>("[data-empty-state]");
-    const emptyTitle = document.querySelector<HTMLElement>("[data-empty-title]");
+    const hints = q<HTMLElement>("[data-search-hints]");
+    const count = q<HTMLElement>("[data-result-count]");
+    const empty = q<HTMLElement>("[data-empty-state]");
+    const emptyTitle = q<HTMLElement>("[data-empty-title]");
 
     function render(raw: string) {
       const q = raw.trim();
@@ -147,14 +152,15 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
     });
 
     // Hint links: fill the box and search in place instead of navigating.
-    hints?.querySelectorAll<HTMLAnchorElement>("a.hint-tag").forEach((link) => {
+    const hintLinks = hints ? qa<HTMLAnchorElement>("a.hint-tag", hints) : [];
+    hintLinks.forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        const q = new URL(link.href).searchParams.get("q") ?? "";
-        input!.value = q;
+        const query = new URL(link.href).searchParams.get("q") ?? "";
+        input!.value = query;
         input!.focus();
-        render(q);
-        syncUrl(q);
+        render(query);
+        syncUrl(query);
       });
     });
 

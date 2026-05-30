@@ -43,8 +43,8 @@ export const startupSchema = z
     founded_year: z.number().int().optional(),
     is_featured: z.boolean().optional(),
     funding: z.array(fundingRoundSchema).optional(),
-    research: z.record(z.unknown()).optional(),
-    links: z.record(z.unknown()).optional(),
+    research: z.record(z.string(), z.unknown()).optional(),
+    links: z.record(z.string(), z.unknown()).optional(),
   })
   .passthrough();
 
@@ -58,7 +58,7 @@ export const weeklyIssueSchema = z
     published_at: z.string().optional(),
     editorial_intro: z.string().optional(),
     research_summary: z.string().optional(),
-    picks: z.array(z.union([z.string(), z.record(z.unknown())])).optional(),
+    picks: z.array(z.union([z.string(), z.record(z.string(), z.unknown())])).optional(),
   })
   .passthrough();
 
