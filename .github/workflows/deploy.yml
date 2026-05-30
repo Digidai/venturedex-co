@@ -16,6 +16,9 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Cloudflare Web Analytics beacon token (public id, not a secret). Inlined at
+      # build time so the beacon ships on the deployed pages. See docs/observability.md.
+      PUBLIC_CF_BEACON_TOKEN: ${{ vars.PUBLIC_CF_BEACON_TOKEN }}
     steps:
       - uses: actions/checkout@v5
 
