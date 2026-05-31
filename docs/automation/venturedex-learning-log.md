@@ -1715,11 +1715,11 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
 - build_app: pass through `./scripts/manage.sh validate`
 - screenshot: pass; Canals and Saris used the standard screenshot path, while Geordie AI, Gray Swan, and Picogrid required manual Playwright-wrapper 1440x900 recaptures after conservative popup false positives; R2 upload was skipped because bootstrap reported no R2 permission
-- commit_push: pending; content commit `cebc9b3` created before this learning-log entry
-- commit_sha: cebc9b3 for content; see Git commit containing this entry for run log
-- pushed_branch: pending
-- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported both `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active
-- live_smoke: pending after push
+- commit_push: pass; content commit `cebc9b3` and learning-log commit `581e86a` were pushed to `main`
+- commit_sha: cebc9b3 for content; 581e86a for the initial run log; see Git commit containing this line for final status
+- pushed_branch: main
+- ci_deploy: pass for head `581e86a`; GitHub Actions Validate `26701452295` and Deploy `26701452269` completed successfully
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` reported 82 published startups, and direct live checks returned HTTP 200 for `/startups/canals`, `/startups/saris`, `/startups/geordie-ai`, `/startups/gray-swan`, and `/startups/picogrid`
 - failure_tags: [screenshot_env, other]
 - reward: 2
 - dominant_failure_mode: Daily curator missed three scheduled slots after the 2026-05-27 14:22 CST run, and catch-up still had to obey the current runbook's five-addition cap and duplicate-rejection rule.
@@ -1739,3 +1739,5 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - added official startup records, structured `research`, timestamps, company logos, investor directory entries and brand assets for Base10 Partners, 8VC, Balderton Capital, Wing Venture Capital, and Madrona, plus local screenshots for all five accepted startups
   - verification passed: `python3 scripts/validate.py`, `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; final `./scripts/manage.sh validate` passed with 82/82 startups, zero errors, 73 existing brand-asset warnings, 66/66 tests, generated D1 seed, and Astro build
   - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build
+  - content commit `cebc9b3` and learning-log commit `581e86a` were pushed to `main`; GitHub Actions passed for Validate `26701452295` and Deploy `26701452269`
+  - live smoke passed after deploy with 82 published startups, and all five new live detail pages returned HTTP 200
