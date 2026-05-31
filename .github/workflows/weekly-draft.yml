@@ -59,4 +59,5 @@ jobs:
             - replace every TODO with source-bound research
             - set status to published
             - set published_at
-            - run python3 scripts/weekly.py validate, ./scripts/validate.sh, ./scripts/build-db.sh, and npm run build
+            - run python3 scripts/weekly.py validate, ./scripts/manage.sh validate, and git diff --check
+            - restore d1/generated-seed.sql if validation changed it locally

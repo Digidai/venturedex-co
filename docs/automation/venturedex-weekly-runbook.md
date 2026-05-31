@@ -20,6 +20,7 @@ Automation must never rewrite this section.
 - The weekly workflow may create or update `content/weekly/*.json`; it must not add new startups.
 - Published weekly issues must not contain TODO text.
 - Published weekly issues should use the startup record's structured `research` block when available, especially `product_evidence`, `market_context`, `risks`, and `sources`.
+- The Weekly draft scaffold should carry structured startup research sources and product evidence forward, but draft TODO fields are not publication-ready copy.
 - Published weekly evaluations must be source-bound. Do not infer users, revenue, retention, market share, customer migrations, reliability, or benchmark claims unless a cited source states them.
 - If evidence is insufficient, keep the issue as `status: draft` or defer the claim.
 - Browser-driven source checks must use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow.
@@ -57,19 +58,19 @@ Automation must never rewrite this section.
 
    ```bash
    python3 scripts/weekly.py validate
-   ./scripts/validate.sh
-   ./scripts/build-db.sh
-   npm run build
+   ./scripts/manage.sh validate
+   git diff --check
    ```
 
-8. Verify `/weekly` and `/weekly/{N}` in a browser before publish.
-9. Commit with:
+8. Restore `d1/generated-seed.sql` and generated cache artifacts if validation changed them locally.
+9. Verify `/weekly` and `/weekly/{N}` in a browser before publish.
+10. Commit with:
 
    ```bash
    git commit -m "content: weekly #N - {title}"
    ```
 
-10. Push only after the worktree contains no unrelated changes and all gates pass.
+11. Push only after the worktree contains no unrelated changes and all gates pass.
 
 ## Review Passes
 
@@ -77,5 +78,5 @@ Automation must never rewrite this section.
 2. Scope: no new startup, logo, screenshot, schema, or deployment change is mixed into a weekly content PR unless explicitly requested by a human.
 3. Objectivity: the issue states evidence gaps instead of guessing.
 4. Theme: the 5-7 picks share a real product or market pattern.
-5. Release: local gates pass and browser verification confirms `/weekly` and the issue page render the research fields.
+5. Release: local gates pass, generated verification outputs are restored, and browser verification confirms `/weekly` and the issue page render the research fields.
 6. Newsletter readiness: the issue has stable published copy, because the Weekly email will reuse `editorial_intro`, `research_summary`, themes, and pick evaluations.

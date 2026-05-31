@@ -28,6 +28,7 @@ class StartupCandidate:
     latest_funding_date: str
     latest_funding_source_name: str
     latest_funding_source_url: str
+    research: dict
     path: Path
 
 
@@ -76,6 +77,7 @@ def load_startups() -> list[StartupCandidate]:
                 latest_funding_date=latest.get("date", ""),
                 latest_funding_source_name=latest.get("source_name", ""),
                 latest_funding_source_url=latest.get("source_url", ""),
+                research=data.get("research", {}) if isinstance(data.get("research"), dict) else {},
                 path=path,
             )
         )
@@ -222,38 +224,112 @@ def select_candidates(
     return selected
 
 
+def first_source_url(source_ids: object, source_by_id: dict[str, dict]) -> str | None:
+    if not isinstance(source_ids, list):
+        return None
+    for source_id in source_ids:
+        if not isinstance(source_id, str):
+            continue
+        source = source_by_id.get(source_id)
+        if not source:
+            continue
+        url = source.get("url")
+        if isinstance(url, str) and url:
+            return url
+    return None
+
+
+def add_unique_evidence(evidence: list[dict], item: dict) -> None:
+    key = (item.get("label"), item.get("source"), item.get("url"))
+    if any((row.get("label"), row.get("source"), row.get("url")) == key for row in evidence):
+        return
+    evidence.append(item)
+
+
 def draft_pick(candidate: StartupCandidate) -> dict:
+    research = candidate.research
+    research_sources = research.get("sources") if isinstance(research.get("sources"), list) else []
+    source_by_id = {
+        str(source.get("id")): source
+        for source in research_sources
+        if isinstance(source, dict) and source.get("id")
+    }
+
     evidence = [
         {
             "label": "VentureDex product record",
-            "source": f"{candidate.path.relative_to(REPO_ROOT)} summary, editor_note, and funding fields",
+            "source": f"{candidate.path.relative_to(REPO_ROOT)} summary, editor_note, funding, and research fields",
         }
     ]
+
+    for source in research_sources:
+        if not isinstance(source, dict):
+            continue
+        label = source.get("label")
+        source_id = source.get("id")
+        url = source.get("url")
+        if not isinstance(label, str) or not label:
+            continue
+        item = {
+            "label": label,
+            "source": f"{candidate.path.relative_to(REPO_ROOT)} research.sources.{source_id}",
+        }
+        if isinstance(url, str) and url:
+            item["url"] = url
+        add_unique_evidence(evidence, item)
+
+    product_evidence = (
+        research.get("product_evidence")
+        if isinstance(research.get("product_evidence"), list)
+        else []
+    )
+    for index, item in enumerate(product_evidence[:3], start=1):
+        if not isinstance(item, dict):
+            continue
+        claim = item.get("claim")
+        if not isinstance(claim, str) or not claim:
+            continue
+        evidence_item = {
+            "label": f"Structured product evidence {index}",
+            "source": claim,
+        }
+        url = first_source_url(item.get("source_ids"), source_by_id)
+        if url:
+            evidence_item["url"] = url
+        add_unique_evidence(evidence, evidence_item)
+
     if candidate.url:
-        evidence.append(
+        add_unique_evidence(
+            evidence,
             {
                 "label": "Official product site",
                 "source": f"{candidate.product_name} homepage",
                 "url": candidate.url,
-            }
+            },
         )
     if candidate.latest_funding_source_url:
-        evidence.append(
+        add_unique_evidence(
+            evidence,
             {
                 "label": "Funding source",
                 "source": candidate.latest_funding_source_name or "Linked funding source",
                 "url": candidate.latest_funding_source_url,
-            }
+            },
         )
+
+    risks = []
+    research_risks = research.get("risks") if isinstance(research.get("risks"), list) else []
+    for item in research_risks[:2]:
+        if isinstance(item, dict) and isinstance(item.get("claim"), str):
+            risks.append(f"Research risk candidate: {item['claim']}")
+    risks.append("TODO: State the most important weekly evidence gap or product risk without guessing.")
 
     return {
         "slug": candidate.slug,
-        "why_this_week": "TODO: Explain why this company belongs in this week's theme using only verified evidence below.",
-        "product_evaluation": "TODO: Write an objective product assessment. Separate observed product facts from editorial judgment, and do not add private metrics.",
+        "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+        "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
         "evidence": evidence,
-        "risks": [
-            "TODO: State the most important evidence gap or product risk without guessing."
-        ],
+        "risks": risks,
         "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
     }
 

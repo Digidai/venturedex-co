@@ -22,6 +22,19 @@ Weekly research digest priority order:
 3. `docs/automation/venturedex-weekly-runbook.md`
 4. `.github/workflows/weekly-draft.yml`
 
+Validation and release architecture priority order:
+
+1. `package.json`
+2. `scripts/manage.sh`
+3. `scripts/validate.sh`
+4. `scripts/build-db.sh`
+5. `src/lib/content-transform.ts`
+6. `tests/content-parity.test.ts`
+7. `astro.config.mjs`
+8. `wrangler.toml`
+9. `.github/workflows/ci.yml`
+10. `.github/workflows/deploy.yml`
+
 Newsletter delivery priority order:
 
 1. `docs/newsletter.md`
@@ -41,6 +54,8 @@ Newsletter delivery priority order:
   Append-only run memory: outcomes, failures, reward, and accepted or rejected heuristic changes.
 - `../newsletter.md`
   The delivery contract for Daily additions and Weekly research email sends, including delay gates, compliance configuration, module review notes, and test cases.
+- `../../content/timestamps.json`
+  The repo-managed first-seen and published timestamp sidecar. Prerendered pages and the D1 seed both read it, so new Daily additions must keep it aligned.
 
 ## Edit Policy
 
@@ -111,6 +126,9 @@ The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-cur
 - Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
 - For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
+- Current code architecture is JSON-first and mostly prerendered: `content/*.json` is transformed through `src/lib/content-transform.ts` for Astro pages, while `scripts/build-db.sh` emits the D1 seed used by the newsletter/runtime path. `tests/content-parity.test.ts` guards those two transforms from drifting.
+- Local pre-publish validation should use `./scripts/manage.sh validate` plus `git diff --check`. The individual `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run typecheck`, `npm test`, and `npm run build` commands are useful for isolating failures, but they are not the full final gate anymore.
+- Daily automation must add or confirm `content/timestamps.json` entries for newly accepted slugs before publishing so prerendered sort order, sitemap dates, RSS dates, and the D1 seed agree.
 - Daily automation must require structured startup `research` before publishing; weekly automation must consume that `research` when producing source-bound issue evaluations.
 - Newsletter delivery must lag website publication. Daily sends use a default 6-hour delay and weekly sends use a default 24-hour delay so editors can correct live content before it reaches inboxes.
 - Newsletter sends are a production-delivery surface: do not bypass `newsletter_sends`, `newsletter_deliveries`, unsubscribe links, or dry-run checks.

@@ -2,7 +2,11 @@
 
 set -euo pipefail
 
-WORKFLOW_PATH="${1:-.github/workflows/deploy.yml}"
+if [ "$#" -gt 0 ]; then
+  WORKFLOW_PATHS=("$@")
+else
+  WORKFLOW_PATHS=(".github/workflows/ci.yml" ".github/workflows/deploy.yml")
+fi
 
 if ! command -v gh >/dev/null 2>&1; then
   echo "github_actions: skipped (gh CLI unavailable)"
@@ -21,20 +25,22 @@ if [ "$permissions" != "true" ]; then
   exit 1
 fi
 
-workflow_state="$(
-  gh api "repos/$repo/actions/workflows" \
-    --jq ".workflows[] | select(.path == \"$WORKFLOW_PATH\") | .state" \
-    | head -n 1
-)"
+for WORKFLOW_PATH in "${WORKFLOW_PATHS[@]}"; do
+  workflow_state="$(
+    gh api "repos/$repo/actions/workflows" \
+      --jq ".workflows[] | select(.path == \"$WORKFLOW_PATH\") | .state" \
+      | head -n 1
+  )"
 
-if [ -z "$workflow_state" ]; then
-  echo "ERROR: github_actions workflow not found: $WORKFLOW_PATH" >&2
-  exit 1
-fi
+  if [ -z "$workflow_state" ]; then
+    echo "ERROR: github_actions workflow not found: $WORKFLOW_PATH" >&2
+    exit 1
+  fi
 
-if [ "$workflow_state" != "active" ]; then
-  echo "ERROR: github_actions workflow $WORKFLOW_PATH is $workflow_state" >&2
-  exit 1
-fi
+  if [ "$workflow_state" != "active" ]; then
+    echo "ERROR: github_actions workflow $WORKFLOW_PATH is $workflow_state" >&2
+    exit 1
+  fi
 
-echo "github_actions: active"
+  echo "github_actions: active ($WORKFLOW_PATH)"
+done

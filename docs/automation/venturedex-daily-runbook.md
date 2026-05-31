@@ -56,6 +56,7 @@ Automation must never rewrite this section.
 Allowed persistent content changes:
 
 - `content/startups/{slug}.json`
+- `content/timestamps.json`
 - `content/investors.json`
 - `content/brand-assets.json`
 - `content/rejected.jsonl`
@@ -72,12 +73,11 @@ Allowed persistent automation-doc changes, but only under feedback-loop gates:
 
 Before commit and push, all must pass:
 
-- `./scripts/check-github-actions.sh .github/workflows/deploy.yml`
-- `./scripts/validate.sh`
-- `./scripts/build-db.sh`
-- `npm run build`
+- `./scripts/check-github-actions.sh`
+- `./scripts/manage.sh validate`
+- `git diff --check`
 
-`d1/generated-seed.sql` is verification output only. If it changes locally, restore it before commit.
+`./scripts/manage.sh validate` is the current full local gate. It runs content validation, D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. `d1/generated-seed.sql` is verification output only. If it changes locally, restore it before commit.
 
 If screenshot generation fails, do not keep a half-complete startup addition.
 
@@ -98,6 +98,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 - For a content commit, staged files may only be:
   - `content/startups/{slug}.json`
+  - `content/timestamps.json`
   - `content/investors.json`
   - `content/brand-assets.json`
   - `content/rejected.jsonl`
@@ -109,7 +110,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
   - `docs/automation/venturedex-learning-log.md`
 - Never mix content files and automation-doc files in the same commit.
 - Check the staged allowlist with `git diff --cached --name-only` before every commit.
-- After push, record the commit SHA, confirm the deploy workflow is still enabled, wait for the deploy run when it is observable, and require post-deploy live smoke to pass before marking the run as shipped. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
+- After push, record the commit SHA, confirm CI and deploy workflows are still enabled, wait for the observable runs, and require post-deploy live smoke to pass before marking the run as shipped. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
 - Do not treat post-deploy newsletter delivery as immediate success. The Daily newsletter waits for the configured delay window and records send state in D1.
 
 ## Daily Execution
@@ -135,25 +136,26 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 13. Run the taste review.
 14. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 15. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
-16. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
-17. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
-18. Generate screenshot if and only if the environment is ready.
-19. Run the GitHub Actions preflight and the three local validation steps.
-20. Perform the five review passes.
-21. Update the learning log.
-22. Apply a heuristic update only if the feedback-loop gate permits it.
-23. Commit and push only if the final staged files are allowed and local gates pass.
-24. Wait for deploy when observable and verify live smoke against the deployed site.
-25. Open an inbox item summarizing the full run.
+16. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
+17. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
+18. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
+19. Generate screenshot if and only if the environment is ready.
+20. Run the GitHub Actions preflight and the full local validation gate.
+21. Perform the review passes.
+22. Update the learning log.
+23. Apply a heuristic update only if the feedback-loop gate permits it.
+24. Commit and push only if the final staged files are allowed and local gates pass.
+25. Wait for deploy when observable and verify live smoke against the deployed site.
+26. Open an inbox item summarizing the full run.
 
-## Five Review Passes
+## Review Passes
 
 1. Facts: source, amount, stage, date, investor, source URL, lead-investor naming from the article, and any breakout-stage exception
 2. Dedup: prior acceptance, prior rejection, later-round exception
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
 5. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
-6. Scope and release: changed files, schema, screenshot completeness, GitHub Actions availability, validation, build, commit, push, deploy status, live smoke, final git status
+6. Scope and release: changed files, `content/timestamps.json`, schema, screenshot completeness, GitHub Actions availability, `./scripts/manage.sh validate`, `git diff --check`, commit, push, deploy status, live smoke, final git status
 
 ## Commit Rules
 
@@ -230,7 +232,7 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Treat a justified no-op run as better than a weak addition.
 - Prefer a precise rejection reason over a vague acceptance.
 - When the run's addition cap is above one, widen discovery enough to satisfy the rejection bar without lowering the acceptance threshold.
-- Preflight local build dependencies before deep discovery work; if `npm run build` cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
+- Preflight local build dependencies before deep discovery work; if `./scripts/manage.sh validate` or its `npm run build` substep cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
 - Check for `CLOUDFLARE_API_TOKEN` or a repo-local `.env` before promoting finalists into brand-asset and screenshot work; if credentials are absent, stop at rejected-only or no-op after documenting any viable survivors.
 - When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.
 - Before browser-based product trials, preflight `bb-browser daemon status`; if it reports no running daemon while `ps` still shows a `bb-browser/dist/daemon.js --cdp-port 19825` process, terminate only that stale daemon process, confirm CDP still responds, and rerun the failed `bb-browser` step once.

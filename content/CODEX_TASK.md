@@ -247,13 +247,13 @@ N6: 去掉产品名，这段话本身值得读吗？
 
 ```bash
 # 验证
-./scripts/validate.sh
-./scripts/build-db.sh
+./scripts/manage.sh validate
+git diff --check
 
 # 如果报错，修复后重试
 
 # 提交（每个项目单独 commit）
-git add content/startups/{slug}.json content/brand-assets.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
+git add content/startups/{slug}.json content/timestamps.json content/brand-assets.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
 git commit -m "content: add {Product Name}
 
 Funding: {amount} {stage} from {lead} ({source_name})
@@ -263,6 +263,8 @@ Bet: {一句话：这个产品做了什么赌注}"
 # 全部完成后推送
 git push
 ```
+
+当前代码架构是 JSON-first：Astro 页面通过 `src/lib/content-transform.ts` 从 `content/` prerender，D1 seed 由 `scripts/build-db.sh` 生成并供 newsletter/runtime 路径使用，`tests/content-parity.test.ts` 防止两条转换链路漂移。新增 startup 必须同步 `content/timestamps.json`，用 UTC `YYYY-MM-DD HH:MM:SS` 记录 `published_at` 和 `first_seen_at`。
 
 ### Step 6: 周刊（每周一次）
 
@@ -314,11 +316,10 @@ git push
 ```bash
 python3 scripts/weekly.py draft --week-start YYYY-MM-DD --week-end YYYY-MM-DD --write
 python3 scripts/weekly.py validate
-./scripts/validate.sh
-./scripts/build-db.sh
-npm run build
+./scripts/manage.sh validate
+git diff --check
 git add content/weekly/
-git commit -m "content: weekly #N — {title}"
+git commit -m "content: weekly #N - {title}"
 git push
 ```
 
@@ -338,7 +339,7 @@ git push
 3. 不收录自己没评估过的产品；不能直接试用的 ToB/API/基础设施产品必须有公开产品证据
 4. 不用禁用词列表里的任何词
 5. 每次最多收录 5 个
-6. 只允许内容资产范围内的修改：`content/`、`content/brand-assets.json`、`public/screenshots/`、`public/logos/`
+6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/brand-assets.json`、`content/rejected.jsonl`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
@@ -350,8 +351,13 @@ git push
 可以创建/修改:
   content/startups/*.json
   content/weekly/*.json
+  content/timestamps.json
+  content/investors.json
+  content/brand-assets.json
   content/rejected.jsonl
   public/screenshots/*.webp
+  public/logos/companies/*
+  public/logos/investors/*
 
 不可以修改:
   src/**

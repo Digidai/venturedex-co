@@ -1669,3 +1669,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - local gates passed after the duplicate-slug fix: `./scripts/check-github-actions.sh .github/workflows/deploy.yml`, `./scripts/validate.sh`, `./scripts/build-db.sh`, `npm run build`, and `git diff --check`.
   - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build.
   - content commit `4d14e75` and learning-log commit `20b13c0` were pushed to `main`; GitHub Actions passed for Validate `26494255000` and Deploy `26494254997`, then live smoke and direct detail-page checks passed.
+
+### 2026-05-31 09:33 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: human-directed automation architecture review
+- validation: pass; `./scripts/manage.sh validate` completed with 77/77 startups, zero errors, 73 existing brand-asset warnings, 61/61 tests, typecheck, and Astro build passing
+- weekly_validate: pass; `python3 scripts/weekly.py validate`
+- build_db: pass through `./scripts/manage.sh validate`
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: n/a
+- commit_push: pending
+- commit_sha: pending
+- pushed_branch: pending
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported both `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active
+- live_smoke: n/a
+- failure_tags: [none]
+- reward: 1
+- dominant_failure_mode: automation governance still referenced the old three-command local gate and did not explicitly account for the JSON-first prerender path, repo-managed `content/timestamps.json`, or newsletter release boundaries introduced by the newer code architecture.
+- proposed_change: align Daily and Weekly automation docs, Codex automation prompts, and Weekly draft scaffolding with the current Astro 6 JSON-first architecture and full `./scripts/manage.sh validate` gate.
+- decision: applied
+- affected_file: content/STANDARD.md, content/CODEX_TASK.md, docs/automation/README.md, docs/automation/venturedex-daily-runbook.md, docs/automation/venturedex-weekly-runbook.md, .github/workflows/weekly-draft.yml, scripts/check-github-actions.sh, scripts/weekly.py, local automation configs and memories under `/Users/dai/.codex/automations/venturedex-daily-curator/` and `/Users/dai/.codex/automations/venturedex-weekly-curator/`
+- affected_section: automation control plane; validation and release architecture; weekly draft scaffolding
+- evidence:
+  - updated the control plane to state that `content/*.json` feeds `src/lib/content-transform.ts` for prerendered pages while `scripts/build-db.sh` feeds the D1/newsletter runtime path, with `tests/content-parity.test.ts` guarding drift
+  - added `content/timestamps.json` to Daily file scope, staging scope, execution order, and review passes so new startup publish/first-seen dates stay stable across homepage ordering, RSS, sitemap, prerendered pages, and D1 seed output
+  - replaced old final-gate references to `./scripts/validate.sh`, `./scripts/build-db.sh`, and `npm run build` with `./scripts/manage.sh validate` plus `git diff --check`, while keeping the individual commands as failure-isolation tools
+  - updated `scripts/check-github-actions.sh` so the default preflight checks both Validate (`ci.yml`) and Deploy (`deploy.yml`) workflows; targeted single-workflow calls still work
+  - updated `scripts/weekly.py draft` so draft picks carry structured startup research sources, product evidence, and existing risk candidates into the evidence scaffold while leaving TODO fields as publication blockers
+  - updated both Codex app automations and local `automation.toml` files for `venturedex-daily-curator` and `venturedex-weekly-curator`; appended matching entries to each local automation memory
+  - verification passed: Python compile for automation scripts, bash syntax checks, Weekly validator, GitHub Actions preflight, full `./scripts/manage.sh validate`, and `git diff --check`
