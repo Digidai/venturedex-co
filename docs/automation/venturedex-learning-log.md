@@ -1741,3 +1741,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build
   - content commit `cebc9b3` and learning-log commit `581e86a` were pushed to `main`; GitHub Actions passed for Validate `26701452295` and Deploy `26701452269`
   - live smoke passed after deploy with 82 published startups, and all five new live detail pages returned HTTP 200
+
+### 2026-05-31 14:30 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-updated
+- validation: pass after iteration; final `./scripts/manage.sh validate` passed with 87/87 startups, zero errors, 73 existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: pass after iteration; the standard screenshot path flagged Didit's announcement bar as a popup false positive, an initial zsh loop wrote malformed screenshot paths, and final clean WebP captures were produced with `bb-browser` after visual review; R2 upload was skipped because bootstrap reported no R2 permission
+- commit_push: pending at learning-log write time
+- commit_sha: 6796191 for content; learning-log commit pending at write time
+- pushed_branch: pending at learning-log write time
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported both `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active
+- live_smoke: pending at learning-log write time
+- failure_tags: [screenshot_env, other]
+- reward: 2
+- dominant_failure_mode: screenshot automation remained conservative around real announcement bars and shell word-splitting in zsh can corrupt multi-argument screenshot loops if slug and URL pairs are stored as plain strings.
+- proposed_change: none; the current runbook already permits manual clean recapture after popup inspection, and the shell issue was an execution mistake rather than a policy gap.
+- decision: none
+- affected_file: content/startups/didit.json, content/startups/daloopa.json, content/startups/pace.json, content/startups/crimson.json, content/startups/triomics.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted Didit from its May 27, 2026 $7.5M seed announcement; official product review verified KYC, KYB, AML, liveness, transaction monitoring, wallet screening, public pricing, Sessions API docs, SDKs, sandbox setup, and MCP docs.
+  - accepted Daloopa from its May 28, 2026 $47M Series C led by Brighton Park Capital; official review verified source-linked financial data, 5,500+ covered tickers, Data Sheets, Scout, API, MCP, cloud integrations, and document attribution.
+  - accepted Pace from a May 27, 2026 $46M Series B co-led by Thrive Capital and Sequoia Capital; official review verified insurance SOP-to-agent workflows, document and customer-channel operations, observability, enterprise integrations, and carrier use cases.
+  - accepted Crimson from its May 28, 2026 $2.5M seed announcement led by Y Combinator; official review verified case-intelligence workflows for litigation, evidence-cited answers, case insights, and AES-256 security controls.
+  - accepted Triomics from a May 27, 2026 $22M Series B led by Battery Ventures; official and TechCrunch review verified oncology workflows for trial matching, visit prep, chart review, patient summaries, case-study metrics, and cancer-center operations.
+  - rejected Utilidata, WeRoad, Paralign Health, Secretome Therapeutics, TensorMesh, GeoWealth, Atheni, Stark Defence, Modiqo, Bidso, XCENA, ClickHouse, Thea Energy, SOND, and Cognition AI for schema fit, product inspectability, stale/non-closed financing, non-USD amount, pre-seed, late-stage, or taste-ranking reasons.
+  - added official company logos, investor logos, Battery Ventures and Brighton Park Capital directory entries, a Thrive alias for the co-led Pace round, local screenshots, and UTC timestamps for all five accepted startups.
+  - verification passed: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate` twice after the investor-format cleanup, and `git diff --check`; `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `scripts/__pycache__/`, and `dist/` were restored or removed after validation.
