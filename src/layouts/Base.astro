@@ -105,11 +105,28 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
     </script>
     {cfBeaconToken && (
-      <script
-        defer
-        src="https://static.cloudflareinsights.com/beacon.min.js"
-        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
-      />
+      <script is:inline define:vars={{ token: cfBeaconToken }}>
+        {/* Inject the CF Web Analytics beacon during idle time, after the page is
+            interactive, so its ~700ms of script execution stays out of the TBT/LCP
+            window (it was the top main-thread cost). Still records the pageview. */}
+        (function () {
+          var done = false;
+          function load() {
+            if (done) return;
+            done = true;
+            var s = document.createElement("script");
+            s.defer = true;
+            s.src = "https://static.cloudflareinsights.com/beacon.min.js";
+            s.setAttribute("data-cf-beacon", JSON.stringify({ token: token }));
+            document.head.appendChild(s);
+          }
+          if ("requestIdleCallback" in window) {
+            requestIdleCallback(load, { timeout: 4000 });
+          } else {
+            addEventListener("load", function () { setTimeout(load, 1500); });
+          }
+        })();
+      </script>
     )}
   </head>
   <body>
