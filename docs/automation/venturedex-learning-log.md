@@ -1702,3 +1702,40 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - updated `scripts/weekly.py draft` so draft picks carry structured startup research sources, product evidence, and existing risk candidates into the evidence scaffold while leaving TODO fields as publication blockers
   - updated both Codex app automations and local `automation.toml` files for `venturedex-daily-curator` and `venturedex-weekly-curator`; appended matching entries to each local automation memory
   - verification passed: Python compile for automation scripts, bash syntax checks, Weekly validator, GitHub Actions preflight, full `./scripts/manage.sh validate`, and `git diff --check`
+
+### 2026-05-31 10:47 CST
+
+- candidate_count: 21
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-catch-up-content-updated
+- validation: pass after iteration; first full validator run failed on duplicate rejected slug `scapia`, so the new Scapia reconsideration was treated as already covered and replaced with unique GEEIQ rejection evidence
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: pass; Canals and Saris used the standard screenshot path, while Geordie AI, Gray Swan, and Picogrid required manual Playwright-wrapper 1440x900 recaptures after conservative popup false positives; R2 upload was skipped because bootstrap reported no R2 permission
+- commit_push: pending; content commit `cebc9b3` created before this learning-log entry
+- commit_sha: cebc9b3 for content; see Git commit containing this entry for run log
+- pushed_branch: pending
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported both `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active
+- live_smoke: pending after push
+- failure_tags: [screenshot_env, other]
+- reward: 2
+- dominant_failure_mode: Daily curator missed three scheduled slots after the 2026-05-27 14:22 CST run, and catch-up still had to obey the current runbook's five-addition cap and duplicate-rejection rule.
+- proposed_change: none; the current runbook already defines the five-addition cap, 3:1 rejection bar, generated-output cleanup, and manual clean recapture when popup detection flags legitimate product visuals.
+- decision: none
+- affected_file: content/startups/canals.json, content/startups/saris.json, content/startups/geordie-ai.json, content/startups/gray-swan.json, content/startups/picogrid.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator catch-up
+- evidence:
+  - schedule analysis at 2026-05-31 09:55 CST found Daily last content run at 2026-05-27 14:22 CST and missed Daily scheduled slots at 2026-05-28 13:40, 2026-05-29 13:40, and 2026-05-30 13:40; the 2026-05-31 13:40 slot was not yet due
+  - Weekly was not missed: its last verified run was 2026-05-25 15:45 CST and next due time is 2026-06-01 15:20 CST
+  - accepted Canals from a May 28, 2026 $35M Series A led by Base10 Partners; official review confirmed distributor/manufacturer/contractor workflow automation around sales orders, quotes, invoices, purchasing, customer service, and ERP handoff
+  - accepted Saris from a May 28, 2026 $28.8M Series A led by 8VC; official and investor review confirmed bank and credit-union workflow agents for lending, compliance, operations, native desktop bindings, human oversight, and auditability
+  - accepted Geordie AI from its May 28, 2026 $30M Series A led by Balderton Capital; official product review confirmed AI-agent discovery across cloud, code, endpoint, tools, permissions, MCP connections, Beam remediation, and runtime governance
+  - accepted Gray Swan from its May 28, 2026 $40M Series A co-led by Wing Venture Capital and Madrona; official review confirmed Cygnal runtime protection, Shade automated red teaming, and Arena adversarial-research telemetry
+  - accepted Picogrid from its May 29, 2026 $45M Series A led by Bessemer Venture Partners; official source and docs confirmed the Legion API, Orion C2, 100+ defense-system integrations, and open integration layer positioning
+  - rejected GEEIQ, FaceUp, ONO, Muybridge, Luel, SPARQ, Buysell Standards, Solstice, Reactor, Pax, Airis Labs, NPrep, SolarZ, Cypher AI, and Kopa.ai for missing schema-clean stage or lead evidence, non-USD amount, lower product inspectability, or ranking below the five strongest profiles
+  - added official startup records, structured `research`, timestamps, company logos, investor directory entries and brand assets for Base10 Partners, 8VC, Balderton Capital, Wing Venture Capital, and Madrona, plus local screenshots for all five accepted startups
+  - verification passed: `python3 scripts/validate.py`, `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; final `./scripts/manage.sh validate` passed with 82/82 startups, zero errors, 73 existing brand-asset warnings, 66/66 tests, generated D1 seed, and Astro build
+  - `d1/generated-seed.sql`, `.playwright-cli/`, and `scripts/__pycache__/` were restored or removed after validation and build
