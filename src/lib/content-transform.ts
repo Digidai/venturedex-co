@@ -167,9 +167,24 @@ function configToCollection(config: CollectionConfig): Collection {
   };
 }
 
+// Parse a D1 datetime ("YYYY-MM-DD HH:MM:SS", UTC) or an ISO string to epoch ms.
+// Both the seeded D1 published_at and content.ts's ISO published_at represent the
+// same UTC instants; comparing by epoch makes the content-side daily-digest window
+// match D1's string comparison exactly (verified by the equivalence test).
+export function publishedEpoch(value: string | null | undefined): number | null {
+  if (!value) return null;
+  const withT = value.includes("T") ? value : value.replace(" ", "T");
+  const withZone = /(?:Z|[+-]\d\d:?\d\d)$/.test(withT) ? withT : `${withT}Z`;
+  const t = Date.parse(withZone);
+  return Number.isNaN(t) ? null : t;
+}
+
 export interface ContentReaders {
   getContentStartups(): Startup[];
   getContentStartupBySlug(slug: string): Startup | null;
+  // Published in (periodStart, periodEnd], ordered published_at ASC, name ASC —
+  // the content equivalent of the newsletter daily-digest D1 query.
+  getContentStartupsPublishedBetween(periodStart: string, periodEnd: string): Startup[];
   getContentRelatedStartups(startup: Startup, limit?: number): Startup[];
   getContentFundingRoundsForStartup(slug: string): FundingRound[];
   getContentNewsEligibleFundingRounds(): FundingRound[];
@@ -261,6 +276,30 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
   function getContentStartupBySlug(slug: string): Startup | null {
     const data = allStartupData().find((entry) => stringValue(entry.slug) === slug);
     return data ? toStartup(data) : null;
+  }
+
+  // Mirror the newsletter daily-digest D1 query:
+  //   WHERE published_at IS NOT NULL AND published_at > start AND published_at <= end
+  //   ORDER BY published_at ASC, product_name ASC
+  function getContentStartupsPublishedBetween(periodStart: string, periodEnd: string): Startup[] {
+    const startEpoch = publishedEpoch(periodStart);
+    const endEpoch = publishedEpoch(periodEnd);
+    return getContentStartups()
+      .filter((startup) => {
+        const epoch = publishedEpoch(startup.published_at);
+        if (epoch === null) return false;
+        return (startEpoch === null || epoch > startEpoch) && (endEpoch === null || epoch <= endEpoch);
+      })
+      // Code-point comparison (not localeCompare) to match SQLite's BINARY
+      // collation: published_at ASC, then product_name ASC with uppercase before
+      // lowercase, exactly as the D1 `ORDER BY` did.
+      .sort((a, b) => {
+        const pa = a.published_at ?? "";
+        const pb = b.published_at ?? "";
+        if (pa !== pb) return pa < pb ? -1 : 1;
+        if (a.product_name === b.product_name) return 0;
+        return a.product_name < b.product_name ? -1 : 1;
+      });
   }
 
   /**
@@ -386,6 +425,7 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
   return {
     getContentStartups,
     getContentStartupBySlug,
+    getContentStartupsPublishedBetween,
     getContentRelatedStartups,
     getContentFundingRoundsForStartup,
     getContentNewsEligibleFundingRounds,

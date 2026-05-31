@@ -62,6 +62,7 @@ const readers = createContentReaders({
 
 export const getContentStartups = readers.getContentStartups;
 export const getContentStartupBySlug = readers.getContentStartupBySlug;
+export const getContentStartupsPublishedBetween = readers.getContentStartupsPublishedBetween;
 export const getContentRelatedStartups = readers.getContentRelatedStartups;
 export const getContentFundingRoundsForStartup = readers.getContentFundingRoundsForStartup;
 export const getContentNewsEligibleFundingRounds = readers.getContentNewsEligibleFundingRounds;

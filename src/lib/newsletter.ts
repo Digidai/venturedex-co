@@ -1,4 +1,3 @@
-import { getFundingRoundsForStartup, getStartupBySlug } from "./db";
 import { normalizeResearch, safeJsonParse } from "./json";
 import type { FundingRound, Startup, StartupResearch } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
@@ -523,7 +522,7 @@ async function buildDailyDigest(
     .first<{ period_start: string | null; period_end: string | null }>();
 
   if (!force && unfinished?.period_start && unfinished.period_end) {
-    return buildDailyDigestForPeriod(db, siteUrl, unfinished.period_start, unfinished.period_end);
+    return buildDailyDigestForPeriod(siteUrl, unfinished.period_start, unfinished.period_end);
   }
 
   const lastSent = await db
@@ -549,7 +548,7 @@ async function buildDailyDigest(
   }
 
   const periodStart = lastSent?.period_end ?? toD1DateTime(addHours(cutoff, -24));
-  return buildDailyDigestForPeriod(db, siteUrl, periodStart, periodEnd);
+  return buildDailyDigestForPeriod(siteUrl, periodStart, periodEnd);
 }
 
 async function buildWeeklyDigest(
@@ -579,39 +578,29 @@ async function buildWeeklyDigest(
       .first<{ status: string }>();
     if (existing && !force) continue;
 
-    return buildWeeklyDigestForIssue(db, siteUrl, issue.issue_number);
+    return buildWeeklyDigestForIssue(siteUrl, issue.issue_number);
   }
 
   return null;
 }
 
 async function buildDailyDigestForPeriod(
-  db: D1Database,
   siteUrl: string,
   periodStart: string,
   periodEnd: string
 ): Promise<DigestContent> {
-  const rows = await db
-    .prepare(
-      `SELECT * FROM startups
-       WHERE workflow_status = 'published'
-         AND published_at IS NOT NULL
-         AND published_at > ?
-         AND published_at <= ?
-       ORDER BY published_at ASC, product_name ASC`
-    )
-    .bind(periodStart, periodEnd)
-    .all<Startup>();
+  // Read from version-controlled content (the single source) instead of D1.
+  // getContentStartupsPublishedBetween is proven equivalent to the old D1 query
+  // by tests/daily-digest-parity.test.ts.
+  const { getContentStartupsPublishedBetween, getContentFundingRoundsForStartup } = await import("./content");
 
-  const items: DailyStartupItem[] = [];
-  for (const startup of rows.results) {
-    const rounds = await getFundingRoundsForStartup(db, startup.slug);
-    items.push({
+  const items: DailyStartupItem[] = getContentStartupsPublishedBetween(periodStart, periodEnd).map(
+    (startup) => ({
       startup,
-      funding: rounds[0] ?? null,
+      funding: getContentFundingRoundsForStartup(startup.slug)[0] ?? null,
       research: parseResearch(startup.research_json),
-    });
-  }
+    })
+  );
 
   return buildDailyDigestContent({
     items,
@@ -622,7 +611,6 @@ async function buildDailyDigestForPeriod(
 }
 
 async function buildWeeklyDigestForIssue(
-  db: D1Database,
   siteUrl: string,
   issueNumber: number
 ): Promise<DigestContent | null> {
@@ -636,10 +624,9 @@ async function buildWeeklyDigestForIssue(
 
   const startups = new Map<string, Startup>();
   for (const pick of issue.picks) {
-    const startup = await getStartupBySlug(db, pick.slug);
     const contentStartup = getContentStartupBySlug(pick.slug);
-    if (startup ?? contentStartup) {
-      startups.set(pick.slug, startup ?? contentStartup!);
+    if (contentStartup) {
+      startups.set(pick.slug, contentStartup);
     }
   }
 
