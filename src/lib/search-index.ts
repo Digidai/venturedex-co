@@ -16,11 +16,18 @@ import type { Startup } from "./types";
  */
 
 export interface SearchEntry {
+  // Scoring fields
   slug: string;
   name: string;
   domain: string;
   type: string;
   tags: string; // comma-separated, as stored on the startup
+  // Display fields (optional) — let the client render result cards from the
+  // fetched index without prerendering every card into the page.
+  summary?: string;
+  stage?: string;
+  region?: string;
+  whyFeatured?: string;
 }
 
 const WEIGHTS = { name: 100, domain: 80, tag: 50, type: 30 } as const;
@@ -78,5 +85,9 @@ export function buildSearchEntries(startups: Startup[]): SearchEntry[] {
     domain: startup.domain,
     type: startup.product_type ?? "",
     tags: startup.tags ?? "",
+    summary: startup.summary ?? "",
+    stage: startup.funding_stage ?? "",
+    region: startup.region ?? "",
+    whyFeatured: startup.why_featured ?? "",
   }));
 }

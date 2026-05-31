@@ -76,6 +76,12 @@ test("buildSearchEntries maps Startup fields and tolerates null type/tags", () =
     { slug: "b", product_name: "Beta", domain: "b.com", product_type: null, tags: null },
   ] as unknown as Startup[];
   const built = buildSearchEntries(startups);
-  assert.deepEqual(built[0], { slug: "a", name: "Alpha", domain: "a.com", type: "SaaS", tags: "x,y" });
-  assert.deepEqual(built[1], { slug: "b", name: "Beta", domain: "b.com", type: "", tags: "" });
+  assert.deepEqual(built[0], {
+    slug: "a", name: "Alpha", domain: "a.com", type: "SaaS", tags: "x,y",
+    summary: "", stage: "", region: "", whyFeatured: "",
+  });
+  assert.deepEqual(built[1], {
+    slug: "b", name: "Beta", domain: "b.com", type: "", tags: "",
+    summary: "", stage: "", region: "", whyFeatured: "",
+  });
 });

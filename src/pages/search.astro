@@ -2,20 +2,11 @@
 export const prerender = true;
 
 import Base from "../layouts/Base.astro";
-import SiteCard from "../components/SiteCard.astro";
-import { getContentStartups } from "../lib/content";
-import { buildSearchEntries } from "../lib/search-index";
 
-// Prerendered: all cards ship in the page (browseable with JS off), plus a JSON
-// search index. The client scores the index and reorders the matching cards in
-// place — no per-request D1, and weighted substring matching (stronger than the
-// old prefix-only LIKE on search_index_terms).
-const startups = getContentStartups().sort((a, b) =>
-  a.product_name.toLowerCase().localeCompare(b.product_name.toLowerCase())
-);
-const searchEntries = buildSearchEntries(startups);
-// Escape "<" so a value containing "</script>" can't break out of the JSON block.
-const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c");
+// /search is noindex and JS-driven. Instead of prerendering every startup card
+// into the page (which would bloat to multiple MB as the directory grows), the
+// page ships a tiny shell and fetches /search-index.json once, then renders only
+// the matching result cards client-side. Scales flat with directory size.
 ---
 
 <Base
@@ -55,90 +46,71 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
       <p>This startup might not be in our directory yet.</p>
     </div>
 
-    <div class="card-grid" data-search-grid hidden>
-      {startups.map((startup) => (
-        <SiteCard startup={startup} />
-      ))}
-    </div>
+    <div class="card-grid" data-search-results></div>
 
     <noscript>
-      {/* With JS off the grid can't be searched, so reveal the full directory. */}
-      <style>[data-search-grid]{"{ display: grid !important; }"}</style>
+      <p class="search-noscript">Search needs JavaScript. Browse the full directory on the <a href="/">home page</a>.</p>
     </noscript>
-
-    <script type="application/json" data-search-index set:html={searchIndexJson} />
   </div>
 </Base>
 
 <script>
-  // Static client-side search over the prerendered cards. Ranking semantics live
-  // in src/lib/search-index.ts (unit-tested); this is the DOM adapter.
+  // Client-side search: fetch the static index once, score it (ranking lives in
+  // src/lib/search-index.ts, unit-tested), render only matching result cards.
   import { rankSearchEntries, type SearchEntry } from "../lib/search-index";
 
-  // Typed DOM lookups — see the note in index.astro: cast through `any` so the
-  // global @cloudflare/workers-types DOM-lite doesn't shadow lib.dom here.
   const q = <T,>(sel: string, root: any = document): T | null => (root.querySelector(sel) as T) ?? null;
-  const qa = <T,>(sel: string, root: any = document): T[] => Array.from(root.querySelectorAll(sel)) as T[];
 
-  const grid = q<HTMLElement>("[data-search-grid]");
   const form = q<HTMLFormElement>(".search-form");
   const input = q<HTMLInputElement>('input[name="q"]');
-  const indexEl = q<HTMLElement>("[data-search-index]");
+  const results = q<HTMLElement>("[data-search-results]");
+  const hints = q<HTMLElement>("[data-search-hints]");
+  const count = q<HTMLElement>("[data-result-count]");
+  const empty = q<HTMLElement>("[data-empty-state]");
+  const emptyTitle = q<HTMLElement>("[data-empty-title]");
 
-  if (grid && form && input && indexEl) {
+  if (form && input && results) {
     let entries: SearchEntry[] = [];
-    try {
-      entries = JSON.parse(indexEl.textContent || "[]");
-    } catch {
-      entries = [];
+
+    const esc = (s: string) =>
+      String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+    function cardHtml(e: SearchEntry): string {
+      const meta = [e.type, e.stage, e.region].filter(Boolean).join(" · ");
+      return `<article class="s-card"><a href="/startups/${esc(e.slug)}" class="s-card-link">
+        <div class="s-card-shot"><img src="/screenshots/${esc(e.slug)}.webp" alt="${esc(e.name)} screenshot" width="1440" height="900" loading="lazy" decoding="async"></div>
+        <div class="s-card-body">
+          <div class="s-card-titles"><h3 class="s-card-name">${esc(e.name)}</h3><span class="s-card-domain">${esc(e.domain)}</span></div>
+          ${e.summary ? `<p class="s-card-summary">${esc(e.summary)}</p>` : ""}
+          ${meta ? `<div class="s-card-meta">${esc(meta)}</div>` : ""}
+        </div></a></article>`;
     }
 
-    const cardBySlug = new Map<string, HTMLElement>();
-    qa<HTMLElement>("[data-slug]", grid).forEach((el) => {
-      const slug = el.getAttribute("data-slug");
-      if (slug) cardBySlug.set(slug, el);
-    });
-
-    const hints = q<HTMLElement>("[data-search-hints]");
-    const count = q<HTMLElement>("[data-result-count]");
-    const empty = q<HTMLElement>("[data-empty-state]");
-    const emptyTitle = q<HTMLElement>("[data-empty-title]");
-
     function render(raw: string) {
-      const q = raw.trim();
-      if (!q) {
-        grid!.hidden = true;
+      const query = raw.trim();
+      if (!query) {
+        results!.innerHTML = "";
         if (hints) hints.hidden = false;
         if (count) count.hidden = true;
         if (empty) empty.hidden = true;
         return;
       }
       if (hints) hints.hidden = true;
-
-      const ranked = rankSearchEntries(entries, q);
-      const visible = new Set(ranked.map((e) => e.slug));
-      cardBySlug.forEach((el, slug) => {
-        el.hidden = !visible.has(slug);
-      });
-      for (const entry of ranked) {
-        const el = cardBySlug.get(entry.slug);
-        if (el) grid!.appendChild(el);
-      }
-
-      grid!.hidden = ranked.length === 0;
+      const ranked = rankSearchEntries(entries, query);
+      results!.innerHTML = ranked.map(cardHtml).join("");
       if (count) {
         count.hidden = ranked.length === 0;
         count.textContent = `${ranked.length} result${ranked.length !== 1 ? "s" : ""}`;
       }
       if (empty) {
         empty.hidden = ranked.length !== 0;
-        if (emptyTitle && ranked.length === 0) emptyTitle.textContent = `No results for "${q}"`;
+        if (emptyTitle && ranked.length === 0) emptyTitle.textContent = `No results for "${query}"`;
       }
     }
 
     function syncUrl(raw: string) {
-      const q = raw.trim();
-      history.replaceState(null, "", q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+      const query = raw.trim();
+      history.replaceState(null, "", query ? `/search?q=${encodeURIComponent(query)}` : "/search");
     }
 
     input.addEventListener("input", () => {
@@ -150,13 +122,10 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
       render(input!.value);
       syncUrl(input!.value);
     });
-
-    // Hint links: fill the box and search in place instead of navigating.
-    const hintLinks = hints ? qa<HTMLAnchorElement>("a.hint-tag", hints) : [];
-    hintLinks.forEach((link) => {
+    hints?.querySelectorAll<HTMLAnchorElement>("a.hint-tag").forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        const query = new URL(link.href).searchParams.get("q") ?? "";
+        const query = new URL((link as any).href).searchParams.get("q") ?? "";
         input!.value = query;
         input!.focus();
         render(query);
@@ -164,9 +133,21 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
       });
     });
 
-    const initial = new URLSearchParams(location.search).get("q") ?? "";
-    if (initial) input.value = initial;
-    render(input.value);
+    // Fetch the index once, then render whatever's typed (handles deep links too).
+    fetch("/search-index.json")
+      .then((r) => r.json())
+      .then((data) => {
+        entries = (data as SearchEntry[]) ?? [];
+        const initial = new URLSearchParams(location.search).get("q") ?? "";
+        if (initial && !input!.value) input!.value = initial;
+        render(input!.value);
+      })
+      .catch(() => {
+        if (empty) {
+          empty.hidden = false;
+          if (emptyTitle) emptyTitle.textContent = "Search is temporarily unavailable.";
+        }
+      });
   }
 </script>
 
@@ -267,5 +248,78 @@ const searchIndexJson = JSON.stringify(searchEntries).split("<").join("\\u003c")
     border-color: var(--color-accent);
     color: var(--color-accent);
     text-decoration: none;
+  }
+
+  .search-noscript {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+  }
+</style>
+
+<!-- Result cards are created by the client script, so their styles must be global
+     (Astro scopes component <style> to template-rendered elements only). -->
+<style is:global>
+  [data-search-results] .s-card {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--color-bg-card);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  [data-search-results] .s-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  [data-search-results] .s-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  [data-search-results] .s-card-shot {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-badge-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+  [data-search-results] .s-card-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+  }
+  [data-search-results] .s-card-body {
+    padding: var(--space-3) var(--space-4) var(--space-4);
+  }
+  [data-search-results] .s-card-name {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  [data-search-results] .s-card-domain {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+    display: block;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  [data-search-results] .s-card-summary {
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    margin-top: var(--space-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  [data-search-results] .s-card-meta {
+    font-size: 0.7rem;
+    color: var(--color-text-secondary);
+    margin-top: var(--space-2);
   }
 </style>
