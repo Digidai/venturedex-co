@@ -1,0 +1,75 @@
+{
+  "slug": "saris",
+  "domain": "saris.ai",
+  "url": "https://saris.ai/",
+  "product_name": "Saris",
+  "summary": "AI workflow agents for lending, compliance, and operations at banks and credit unions.",
+  "editor_note": "The bet is that bank AI works only when workflow execution and human oversight ship together. Saris targets 50-step lending, compliance, and operations work, with official examples citing 70% task automation and 9.8x cost reduction per workflow. Unlike screenshot-driven RPA, its investor note describes native desktop bindings and self-healing agents. The risk is whether regulated buyers convert fast pilots into standard operating infrastructure.",
+  "editor_rating": 4,
+  "why_featured": "Bank back-office AI agents",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "banking,ai agents,lending,compliance,workflow automation",
+  "investors": "8VC",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$28.8M",
+      "stage": "Series A",
+      "lead_investor": "8VC",
+      "date": "2026-05-28",
+      "source_url": "https://www.businesswire.com/news/home/20260528291475/en/Saris-Raises-%2428.8-Million-to-Scale-Agentic-Workflow-Automation-for-Financial-Institutions",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://saris.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Business Wire",
+        "url": "https://www.businesswire.com/news/home/20260528291475/en/Saris-Raises-%2428.8-Million-to-Scale-Agentic-Workflow-Automation-for-Financial-Institutions",
+        "type": "funding"
+      },
+      {
+        "id": "investor_note",
+        "label": "8VC investment note",
+        "url": "https://www.8vc.com/resources/announcing-our-investment-in-saris-ai",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Saris automates multi-step lending, compliance, and operational workflows while keeping human approval and audit trails in place.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "8VC describes native desktop bindings, self-healing agents, 50-plus-step lending workflows, and 90-day customer go-lives without dedicated implementation engineering.",
+        "source_ids": [
+          "investor_note"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Banks and credit unions trying to automate manual back-office lending, compliance, and operations work.",
+      "category": "Fintech",
+      "differentiation": "Banking-specific agent workflows that execute across legacy systems under human supervision.",
+      "why_now": "The May 28, 2026 Series A led by 8VC funds expansion across more financial institutions and integrations."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether regulated financial institutions can scale deployment without slow security and procurement cycles.",
+        "basis": "VentureDex editorial assessment based on official product and investor-source review."
+      }
+    ]
+  }
+}

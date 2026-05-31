@@ -1,0 +1,75 @@
+{
+  "slug": "picogrid",
+  "domain": "picogrid.com",
+  "url": "https://picogrid.com/",
+  "product_name": "Picogrid",
+  "summary": "Open integration layer connecting defense sensors, autonomy systems, and command software.",
+  "editor_note": "The bet is that defense autonomy needs one integration layer before it needs more isolated hardware. Picogrid connects sensors, unmanned systems, C2 software, edge compute, and vendor systems through Legion API and Orion C2; its Series A post cites 100+ integrated defense systems. Unlike bespoke primes, the product is interoperability itself. The risk is whether procurement cycles can keep up with field demand.",
+  "editor_rating": 5,
+  "why_featured": "Defense integration layer",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "defense,autonomy,api,command and control,systems integration",
+  "investors": "Bessemer Venture Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$45M",
+      "stage": "Series A",
+      "lead_investor": "Bessemer Venture Partners",
+      "date": "2026-05-29",
+      "source_url": "https://picogrid.com/newsroom/picogrid-raises-usd45m-series-a-to-build-the-open-integration-layer-for-modern-defense",
+      "source_name": "Picogrid"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://picogrid.com/",
+        "type": "official"
+      },
+      {
+        "id": "docs_legion",
+        "label": "Legion API docs",
+        "url": "https://docs.picogrid.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Picogrid",
+        "url": "https://picogrid.com/newsroom/picogrid-raises-usd45m-series-a-to-build-the-open-integration-layer-for-modern-defense",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Picogrid's announcement says its integration ecosystem spans more than 100 defense systems across vendors including Skydio, Northrop Grumman, Echodyne, CX2, and Neros.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The Legion docs expose API surfaces for entities, feed definitions, feed data, integrations, WebRTC, tasking, tracks, permissions, and organization management.",
+        "source_ids": [
+          "docs_legion"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Defense operators and vendors integrating sensors, unmanned platforms, command software, and edge systems.",
+      "category": "Other",
+      "differentiation": "Hardware-agnostic integration infrastructure instead of one-off mission-specific system stitching.",
+      "why_now": "The May 29, 2026 Series A led by Bessemer funds product expansion and deployments with US and allied forces."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether defense procurement and deployment timelines can move quickly enough for a platform-style integration layer.",
+        "basis": "VentureDex editorial assessment based on official product and funding-source review."
+      }
+    ]
+  }
+}

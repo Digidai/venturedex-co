@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-27",
+  "verified_at": "2026-05-31",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -541,6 +541,41 @@
       "local_path": "/logos/companies/exa.png",
       "source_page": "https://exa.ai/",
       "source_url": "https://exa.ai/images/favicon-32x32.png"
+    },
+    "canals": {
+      "name": "Canals",
+      "shape": "icon",
+      "local_path": "/logos/companies/canals.png",
+      "source_page": "https://www.canals.ai/",
+      "source_url": "https://cdn.prod.website-files.com/66c5a45aa88084518308cfcb/66c728740172a62c7a8365da_Webclip.png"
+    },
+    "saris": {
+      "name": "Saris",
+      "shape": "icon",
+      "local_path": "/logos/companies/saris.png",
+      "source_page": "https://saris.ai/",
+      "source_url": "https://cdn.prod.website-files.com/69de6e75c6be8a8420749cdf/6a10c4d0895fb01ae5d667d4_Group%201321322145%20(3).png"
+    },
+    "geordie-ai": {
+      "name": "Geordie AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/geordie-ai.png",
+      "source_page": "https://www.geordie.ai/",
+      "source_url": "https://www.geordie.ai/apple-touch-icon.png"
+    },
+    "gray-swan": {
+      "name": "Gray Swan",
+      "shape": "icon",
+      "local_path": "/logos/companies/gray-swan.png",
+      "source_page": "https://www.grayswan.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6614467b00e631b0f073e2b7/68715172841ef6679c94f2bb_GS-256.png"
+    },
+    "picogrid": {
+      "name": "Picogrid",
+      "shape": "icon",
+      "local_path": "/logos/companies/picogrid.ico",
+      "source_page": "https://picogrid.com/",
+      "source_url": "https://picogrid.com/favicon.ico"
     }
   },
   "investors": {
@@ -1020,6 +1055,41 @@
       "local_path": "/logos/investors/capitalg.png",
       "source_page": "https://capitalg.com",
       "source_url": "https://capitalg.com/assets/favicon/favicon-192.png"
+    },
+    "base10-partners": {
+      "name": "Base10 Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/base10-partners.ico",
+      "source_page": "https://base10.vc",
+      "source_url": "https://base10.vc"
+    },
+    "8vc": {
+      "name": "8VC",
+      "shape": "icon",
+      "local_path": "/logos/investors/8vc.png",
+      "source_page": "https://www.8vc.com",
+      "source_url": "https://cdn.prod.website-files.com/622f20536085ed0c3c604069/62503a64f26d50803f4aedce_8VC-Webclip.png"
+    },
+    "balderton-capital": {
+      "name": "Balderton Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/balderton-capital.svg",
+      "source_page": "https://www.balderton.com",
+      "source_url": "https://ejphpcw98jt.exactdn.com/wp-content/uploads/2023/10/logo-dark.svg"
+    },
+    "wing-venture-capital": {
+      "name": "Wing Venture Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/wing-venture-capital.svg",
+      "source_page": "https://www.wing.vc",
+      "source_url": "https://cdn.prod.website-files.com/6398d0a6fb28884bbd821232/6398d0a6fb288823cb821283_Wing_Logo_Primary.svg"
+    },
+    "madrona": {
+      "name": "Madrona",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/madrona.png",
+      "source_page": "https://www.madrona.com",
+      "source_url": "https://www.madrona.com/wp-content/uploads/2022/10/Madrona_LockupV_MADGRN_RGB_1000W-300x200.png"
     }
   }
 }

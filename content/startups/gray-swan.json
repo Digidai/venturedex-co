@@ -1,0 +1,69 @@
+{
+  "slug": "gray-swan",
+  "domain": "www.grayswan.ai",
+  "url": "https://www.grayswan.ai/",
+  "product_name": "Gray Swan",
+  "summary": "AI security platform for agent red teaming, runtime defense, and adversarial evaluation.",
+  "editor_note": "The bet is that AI security needs an adversarial operating loop, not a static checklist. Gray Swan combines Cygnal runtime protection, Shade automated red teaming, and Arena's 15,000-person attack network into one platform. Unlike compliance-first AI safety tools, its evidence comes from frontier-lab evaluations and real attack trajectories. The risk is whether enterprise teams can turn findings into production controls quickly.",
+  "editor_rating": 5,
+  "why_featured": "Frontier-lab AI red teaming",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai security,red teaming,runtime protection,model evaluation,agent security",
+  "investors": "Wing Venture Capital, Madrona",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Wing Venture Capital and Madrona",
+      "date": "2026-05-28",
+      "source_url": "https://www.grayswan.ai/news/gray-swan-announces-series-a",
+      "source_name": "Gray Swan"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.grayswan.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Gray Swan",
+        "url": "https://www.grayswan.ai/news/gray-swan-announces-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Gray Swan's platform is described as Cygnal for real-time AI monitoring and protection, Shade for automated adversarial testing, and Arena for a global red-team community.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The funding post says Arena includes more than 15,000 researchers and over one million real-world attack trajectories used to train Cygnal and Shade.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Frontier labs and enterprise security teams evaluating and protecting AI models, agents, and applications.",
+      "category": "AI / ML",
+      "differentiation": "Security product telemetry fed by adversarial research, frontier-lab evaluations, and live red-team attacks.",
+      "why_now": "The May 28, 2026 Series A gives Gray Swan funding to scale enterprise AI security as agents move into production."
+    },
+    "risks": [
+      {
+        "claim": "The execution risk is whether enterprises can operationalize adversarial findings faster than AI applications expand.",
+        "basis": "VentureDex editorial assessment based on official product and funding-source review."
+      }
+    ]
+  }
+}

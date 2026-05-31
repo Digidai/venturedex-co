@@ -1,0 +1,75 @@
+{
+  "slug": "geordie-ai",
+  "domain": "www.geordie.ai",
+  "url": "https://www.geordie.ai/",
+  "product_name": "Geordie AI",
+  "summary": "Security and governance platform for enterprise AI agents and their runtime behavior.",
+  "editor_note": "The bet is that AI-agent risk lives in what agents decide to do between prompt and output. Geordie maps agents across cloud, code, endpoint, tools, permissions, MCP connections, and runtime behavior; its Series A post says one POC surfaced 327% more agents than existing inventories. Unlike prompt firewalls, it is watching agent operations. The risk is whether security teams can enforce controls without slowing adoption.",
+  "editor_rating": 5,
+  "why_featured": "AI-agent security control",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "ai security,ai agents,governance,mcp,runtime controls",
+  "investors": "Balderton Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Balderton Capital",
+      "date": "2026-05-28",
+      "source_url": "https://www.geordie.ai/resources/geordie-ai-raises-30m-series-a-as-enterprises-race-to-govern-autonomous-ai-agents",
+      "source_name": "Geordie AI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.geordie.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_page",
+        "label": "Geordie product page",
+        "url": "https://www.geordie.ai/product/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Geordie AI",
+        "url": "https://www.geordie.ai/resources/geordie-ai-raises-30m-series-a-as-enterprises-race-to-govern-autonomous-ai-agents",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product page says Geordie discovers agents across cloud, code, and endpoint environments and maps tools, permissions, MCP connections, skills, prompts, models, and sub-tools.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "The Series A post describes Beam runtime remediation and says one customer POC found 327% more agents than existing inventories, plus MCP command injection and credential-leakage risks.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security and governance teams responsible for enterprise AI-agent adoption.",
+      "category": "AI / ML",
+      "differentiation": "Agent-native visibility and runtime controls rather than prompt-only or network-only guardrails.",
+      "why_now": "The May 28, 2026 Series A followed RSAC Innovation Sandbox momentum and enterprise demand for AI-agent governance."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether agent governance becomes a standalone buying category or gets absorbed into existing security suites.",
+        "basis": "VentureDex editorial assessment based on official product and funding-source review."
+      }
+    ]
+  }
+}

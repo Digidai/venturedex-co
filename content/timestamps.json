@@ -307,5 +307,25 @@
   "wirobotics": {
     "published_at": "2026-05-25 10:27:00",
     "first_seen_at": "2026-05-25 10:27:00"
+  },
+  "canals": {
+    "published_at": "2026-05-31 02:16:09",
+    "first_seen_at": "2026-05-31 02:16:09"
+  },
+  "saris": {
+    "published_at": "2026-05-31 02:16:09",
+    "first_seen_at": "2026-05-31 02:16:09"
+  },
+  "geordie-ai": {
+    "published_at": "2026-05-31 02:16:09",
+    "first_seen_at": "2026-05-31 02:16:09"
+  },
+  "gray-swan": {
+    "published_at": "2026-05-31 02:16:09",
+    "first_seen_at": "2026-05-31 02:16:09"
+  },
+  "picogrid": {
+    "published_at": "2026-05-31 02:16:09",
+    "first_seen_at": "2026-05-31 02:16:09"
   }
 }

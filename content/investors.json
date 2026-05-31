@@ -479,5 +479,41 @@
     "short_name": "CapitalG",
     "website": "https://capitalg.com",
     "description": "Alphabet's independent growth fund backing technology companies from growth stage through long-term scale."
+  },
+  "base10-partners": {
+    "name": "Base10 Partners",
+    "slug": "base10-partners",
+    "short_name": "Base10",
+    "website": "https://base10.vc",
+    "description": "Early-stage venture capital firm investing in automation, software, fintech, and applied AI companies."
+  },
+  "8vc": {
+    "name": "8VC",
+    "slug": "8vc",
+    "short_name": "8VC",
+    "website": "https://www.8vc.com",
+    "description": "Technology investment firm backing software, infrastructure, healthcare, logistics, and defense founders from early stage through growth."
+  },
+  "balderton-capital": {
+    "name": "Balderton Capital",
+    "slug": "balderton-capital",
+    "short_name": "Balderton",
+    "website": "https://www.balderton.com",
+    "description": "European venture capital firm backing technology companies from seed through growth."
+  },
+  "wing-venture-capital": {
+    "name": "Wing Venture Capital",
+    "slug": "wing-venture-capital",
+    "short_name": "Wing",
+    "website": "https://www.wing.vc",
+    "description": "Early-stage venture capital firm investing in enterprise technology, AI, security, data, and software infrastructure.",
+    "aliases": ["Wing Venture Capital and Madrona"]
+  },
+  "madrona": {
+    "name": "Madrona",
+    "slug": "madrona",
+    "short_name": "Madrona",
+    "website": "https://www.madrona.com",
+    "description": "Seattle-based venture capital firm backing technology companies across AI, enterprise software, cloud, and consumer platforms."
   }
 }

@@ -1,0 +1,76 @@
+{
+  "slug": "canals",
+  "domain": "www.canals.ai",
+  "url": "https://www.canals.ai/",
+  "product_name": "Canals",
+  "summary": "AI workflow automation for distributor orders, quotes, invoices, purchasing, and ERP data.",
+  "editor_note": "The bet is that distributors do not need another ERP module; they need agents inside the inbox-to-warehouse gap. Canals names the ugly work directly: sales-order intake, quote generation, invoice processing, purchasing, customer service, and structured ERP handoff, with 100+ distributor partners cited. Unlike generic RPA, it starts with wholesale documents and supplier workflows. The risk is whether ERP edge cases pull it back into services.",
+  "editor_rating": 4,
+  "why_featured": "Distributor ERP workflow agents",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "distribution,workflow automation,ai agents,erp,order entry",
+  "investors": "Base10 Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$35M",
+      "stage": "Series A",
+      "lead_investor": "Base10 Partners",
+      "date": "2026-05-28",
+      "source_url": "https://www.thesaasnews.com/news/canals-raises-35m-series-a/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.canals.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "The SaaS News",
+        "url": "https://www.thesaasnews.com/news/canals-raises-35m-series-a/",
+        "type": "funding"
+      },
+      {
+        "id": "official_funding",
+        "label": "Canals funding announcement",
+        "url": "https://www.canals.ai/blog/canals-series-a-funding-announcement",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Official material positions Canals as AI workflow automation for industrial supply-chain transactions across distributors, manufacturers, and contractors.",
+        "source_ids": [
+          "official_site",
+          "official_funding"
+        ]
+      },
+      {
+        "claim": "Funding coverage says the workflow suite handles sales order entry, quote generation, invoice processing, purchasing, and customer service for distributors.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Wholesale distributors and industrial suppliers with email, PDF, spreadsheet, portal, and ERP handoff work.",
+      "category": "SaaS",
+      "differentiation": "Vertical workflow agents for distributor transaction documents instead of a horizontal RPA layer.",
+      "why_now": "The May 28, 2026 Series A gives Canals capital to expand its AI workflow suite for wholesale distribution."
+    },
+    "risks": [
+      {
+        "claim": "The main risk is whether ERP and supplier edge cases require heavy services work that slows software margins.",
+        "basis": "VentureDex editorial assessment based on official product and funding-source review."
+      }
+    ]
+  }
+}
