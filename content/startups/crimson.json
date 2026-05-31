@@ -1,0 +1,84 @@
+{
+  "slug": "crimson",
+  "domain": "www.crimson.law",
+  "url": "https://www.crimson.law/",
+  "product_name": "Crimson",
+  "summary": "AI case-intelligence platform for litigation teams working through evidence and disputes.",
+  "editor_note": "Litigation AI gets more interesting when the unit is a case record, not a blank prompt. Crimson builds a case-intelligence workspace that reads evidence, answers with citations, surfaces case insights, and wraps it in AES-256 security controls. Unlike general legal chat tools, it narrows the product around disputes and arbitration. The hard part is proving citation quality when every matter has messy files.",
+  "editor_rating": 4,
+  "why_featured": "Case-linked legal AI",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "legaltech,litigation,ai search,evidence,case intelligence",
+  "investors": "Y Combinator",
+  "links": {
+    "security": "https://www.crimson.law/security",
+    "press": "https://www.crimson.law/press/seed-round-us-expansion"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$2.5M",
+      "stage": "Seed",
+      "lead_investor": "Y Combinator",
+      "date": "2026-05-28",
+      "source_url": "https://www.crimson.law/press/seed-round-us-expansion",
+      "source_name": "Crimson"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.crimson.law/",
+        "type": "official"
+      },
+      {
+        "id": "security_page",
+        "label": "Crimson security page",
+        "url": "https://www.crimson.law/security",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Crimson seed announcement",
+        "url": "https://www.crimson.law/press/seed-round-us-expansion",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a case-intelligence platform that ingests evidence, answers questions, and returns case insights for litigation and disputes.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Crimson positions outputs as accurate and verifiable, with answers tied back to case materials rather than a free-form legal chatbot.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The security page lists AES-256 encryption and enterprise infrastructure controls for law-firm case data.",
+        "source_ids": [
+          "security_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Litigators, disputes lawyers, arbitration teams, and legal professionals reviewing case evidence.",
+      "category": "SaaS",
+      "differentiation": "Matter-specific case intelligence and cited evidence workflows instead of a general legal assistant.",
+      "why_now": "The May 28, 2026 seed announcement says Crimson will use the round to expand from the UK into the US litigation market."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether citation quality holds up across messy case files, scanned exhibits, and adversarial legal review.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

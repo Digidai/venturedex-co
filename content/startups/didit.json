@@ -1,0 +1,99 @@
+{
+  "slug": "didit",
+  "domain": "didit.me",
+  "url": "https://didit.me/",
+  "product_name": "Didit",
+  "summary": "One API for KYC, KYB, AML, fraud monitoring, wallets, and agent-native identity flows.",
+  "editor_note": "The useful bet is making identity a programmable API instead of a pile of vendor checks. Didit puts KYC, KYB, AML, liveness, transaction monitoring, wallet screening, public pricing, SDKs, and an MCP server behind one workflow. Unlike legacy verification suites that sell opaque modules, it exposes enough controls for a developer or coding agent to wire a flow in minutes. The risk is whether global data coverage stays defensible as regulators and fraud patterns move.",
+  "editor_rating": 5,
+  "why_featured": "Agent-native identity API",
+  "product_type": "Fintech",
+  "region": "Global / Remote",
+  "tags": "identity verification,fraud,kyc,api,regtech",
+  "investors": "Y Combinator",
+  "links": {
+    "docs": "https://docs.didit.me/",
+    "api": "https://docs.didit.me/sessions-api/overview",
+    "mcp": "https://docs.didit.me/mcp",
+    "pricing": "https://didit.me/pricing/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7.5M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-05-27",
+      "source_url": "https://didit.me/blog/didit-7-5m-seed-infrastructure-identity-fraud/",
+      "source_name": "Didit"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://didit.me/",
+        "type": "official"
+      },
+      {
+        "id": "docs_api",
+        "label": "Didit Sessions API docs",
+        "url": "https://docs.didit.me/sessions-api/overview",
+        "type": "product"
+      },
+      {
+        "id": "docs_mcp",
+        "label": "Didit MCP docs",
+        "url": "https://docs.didit.me/mcp",
+        "type": "product"
+      },
+      {
+        "id": "pricing",
+        "label": "Didit pricing",
+        "url": "https://didit.me/pricing/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Didit seed announcement",
+        "url": "https://didit.me/blog/didit-7-5m-seed-infrastructure-identity-fraud/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows a single API surface for KYC, KYB, AML, liveness, transaction monitoring, wallet screening, and identity workflows across 220+ countries.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public docs expose Sessions API flows, SDKs, an MCP server, integration prompts, and sandbox setup for developer-led identity verification.",
+        "source_ids": [
+          "docs_api",
+          "docs_mcp"
+        ]
+      },
+      {
+        "claim": "The pricing page publishes pay-per-call tiers for verification, AML, wallet screening, age estimation, and fraud-intelligence checks.",
+        "source_ids": [
+          "pricing"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers, risk teams, compliance operators, and fintech product teams building identity and fraud workflows.",
+      "category": "Fintech",
+      "differentiation": "Agent- and API-native breadth across identity, fraud, KYC, KYB, AML, and wallet screening instead of a narrow verification module.",
+      "why_now": "The May 27, 2026 seed announcement funds Didit after it opened public docs, pricing, sandbox access, and MCP integration paths."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether broad global coverage remains accurate and compliant as fraud patterns and local verification rules change.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

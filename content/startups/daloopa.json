@@ -1,0 +1,91 @@
+{
+  "slug": "daloopa",
+  "domain": "daloopa.com",
+  "url": "https://daloopa.com/",
+  "product_name": "Daloopa",
+  "summary": "Source-linked financial data layer for analysts, models, APIs, MCP, and AI agents.",
+  "editor_note": "The sharp bet is that financial AI fails at the spreadsheet cell, not the chat box. Daloopa covers 5,500+ public companies with source-linked numbers, Excel add-ins, Scout, API, MCP, cloud delivery, and an agent benchmark. Unlike generic market-data feeds, it is selling audit trails for every answer. The open question is whether analysts trust agents when a filing source is one click away.",
+  "editor_rating": 5,
+  "why_featured": "Source-linked finance data",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "financial data,ai agents,mcp,api,investment research",
+  "investors": "Brighton Park Capital",
+  "links": {
+    "mcp": "https://daloopa.com/products/mcp",
+    "scout": "https://daloopa.com/products/scout",
+    "api": "https://daloopa.com/products/api"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$47M",
+      "stage": "Series C",
+      "lead_investor": "Brighton Park Capital",
+      "date": "2026-05-28",
+      "source_url": "https://daloopa.com/blog/press-release/47-million-series-c",
+      "source_name": "Daloopa"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://daloopa.com/",
+        "type": "official"
+      },
+      {
+        "id": "mcp_page",
+        "label": "Daloopa MCP product page",
+        "url": "https://daloopa.com/products/mcp",
+        "type": "product"
+      },
+      {
+        "id": "api_page",
+        "label": "Daloopa API product page",
+        "url": "https://daloopa.com/products/api",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Daloopa Series C announcement",
+        "url": "https://daloopa.com/blog/press-release/47-million-series-c",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Daloopa as a source-linked financial data layer with Data Sheets, Excel add-ins, Scout, API, MCP, and cloud integrations.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The MCP page says Daloopa covers 5,500+ public-company tickers, exposes 5-10x more data points, and preserves document attribution.",
+        "source_ids": [
+          "mcp_page"
+        ]
+      },
+      {
+        "claim": "The API product page presents Daloopa data as a programmatic feed for financial models, research workflows, and downstream AI systems.",
+        "source_ids": [
+          "api_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Investment analysts, financial-data teams, and builders of source-grounded finance agents.",
+      "category": "Fintech",
+      "differentiation": "Filing-linked audit trails and analyst workflow integrations instead of a generic market-data or chat interface.",
+      "why_now": "The May 28, 2026 Series C led by Brighton Park Capital funds the trusted data layer Daloopa is pitching for financial AI agents."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether finance teams will let agents act on source-linked data, or keep the product as analyst-side evidence infrastructure.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

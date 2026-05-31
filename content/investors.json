@@ -82,7 +82,8 @@
     "slug": "thrive",
     "short_name": "Thrive",
     "website": "https://www.thrivecap.com",
-    "description": "Investment firm built to support the best technology companies at every stage."
+    "description": "Investment firm built to support the best technology companies at every stage.",
+    "aliases": ["Thrive Capital and Sequoia Capital"]
   },
   "qumra-capital": {
     "name": "Qumra Capital",
@@ -515,5 +516,19 @@
     "short_name": "Madrona",
     "website": "https://www.madrona.com",
     "description": "Seattle-based venture capital firm backing technology companies across AI, enterprise software, cloud, and consumer platforms."
+  },
+  "battery-ventures": {
+    "name": "Battery Ventures",
+    "slug": "battery-ventures",
+    "short_name": "Battery",
+    "website": "https://www.battery.com",
+    "description": "Global technology-focused investment firm backing companies across software, infrastructure, AI, and industrial technology."
+  },
+  "brighton-park-capital": {
+    "name": "Brighton Park Capital",
+    "slug": "brighton-park-capital",
+    "short_name": "Brighton Park",
+    "website": "https://www.bpc.com",
+    "description": "Growth equity firm investing in software, data, and technology-enabled services companies."
   }
 }

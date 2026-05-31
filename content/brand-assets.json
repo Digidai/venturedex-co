@@ -576,6 +576,41 @@
       "local_path": "/logos/companies/picogrid.ico",
       "source_page": "https://picogrid.com/",
       "source_url": "https://picogrid.com/favicon.ico"
+    },
+    "didit": {
+      "name": "Didit",
+      "shape": "icon",
+      "local_path": "/logos/companies/didit.png",
+      "source_page": "https://didit.me/",
+      "source_url": "https://didit.me/apple-icon.png?apple-icon.0u94h8npa_vmf.png"
+    },
+    "daloopa": {
+      "name": "Daloopa",
+      "shape": "icon",
+      "local_path": "/logos/companies/daloopa.png",
+      "source_page": "https://daloopa.com/",
+      "source_url": "https://daloopa.com/wp-content/uploads/2026/02/cropped-Favicon-Light-192x192.png"
+    },
+    "pace": {
+      "name": "Pace",
+      "shape": "icon",
+      "local_path": "/logos/companies/pace.svg",
+      "source_page": "https://withpace.com/",
+      "source_url": "https://framerusercontent.com/images/2LVGWEMcvQOcHNrOtFMzLGW7vo.svg"
+    },
+    "crimson": {
+      "name": "Crimson",
+      "shape": "icon",
+      "local_path": "/logos/companies/crimson.png",
+      "source_page": "https://www.crimson.law/",
+      "source_url": "https://www.crimson.law/icon1.png?icon1.11hqt0hpe5u6o.png?dpl=dpl_5amWyPHH4CQSpEvuzXh9M7QaF8ds"
+    },
+    "triomics": {
+      "name": "Triomics",
+      "shape": "icon",
+      "local_path": "/logos/companies/triomics.png",
+      "source_page": "https://triomics.com/",
+      "source_url": "https://cdn.prod.website-files.com/69f0f90637c1de3207beb703/69f69479dfad95070208a426_webclip.png"
     }
   },
   "investors": {
@@ -1090,6 +1125,20 @@
       "local_path": "/logos/investors/madrona.png",
       "source_page": "https://www.madrona.com",
       "source_url": "https://www.madrona.com/wp-content/uploads/2022/10/Madrona_LockupV_MADGRN_RGB_1000W-300x200.png"
+    },
+    "battery-ventures": {
+      "name": "Battery Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/battery-ventures.png",
+      "source_page": "https://www.battery.com",
+      "source_url": "https://www.battery.com/wp-content/uploads/2025/03/cropped-battery-favicon-circle-192x192.png"
+    },
+    "brighton-park-capital": {
+      "name": "Brighton Park Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/brighton-park-capital.png",
+      "source_page": "https://www.bpc.com",
+      "source_url": "https://cdn.prod.website-files.com/6532a38301b31eaa1a253407/65aa58eba3b9b7df62462067_Webclip-bpc.png"
     }
   }
 }

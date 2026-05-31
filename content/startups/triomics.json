@@ -1,0 +1,91 @@
+{
+  "slug": "triomics",
+  "domain": "triomics.com",
+  "url": "https://triomics.com/",
+  "product_name": "Triomics",
+  "summary": "Oncology AI platform for trial matching, visit prep, and cancer-center workflows.",
+  "editor_note": "The useful bet is that oncology AI should live inside the chart, not beside it. Triomics screens every visit against every trial, cites matches back to pathology and note evidence, drafts visit notes in physician formats, and reports 70% less record-review time in case studies. Unlike generic clinical copilots, it is aimed at cancer-center workflows. The risk is whether hospital deployment pace can match the product ambition.",
+  "editor_rating": 5,
+  "why_featured": "Cancer-trial workflow AI",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "oncology,clinical trials,health ai,ehr,care workflows",
+  "investors": "Battery Ventures",
+  "links": {
+    "cancer_centers": "https://triomics.com/cancer-centers",
+    "resources": "https://triomics.com/resources"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22M",
+      "stage": "Series B",
+      "lead_investor": "Battery Ventures",
+      "date": "2026-05-27",
+      "source_url": "https://techcrunch.com/2026/05/27/triomics-nabs-22m-to-bring-oncology-specific-ai-to-cancer-centers/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://triomics.com/",
+        "type": "official"
+      },
+      {
+        "id": "cancer_centers",
+        "label": "Triomics cancer-center product page",
+        "url": "https://triomics.com/cancer-centers",
+        "type": "product"
+      },
+      {
+        "id": "resources",
+        "label": "Triomics resources page",
+        "url": "https://triomics.com/resources",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Series B report",
+        "url": "https://techcrunch.com/2026/05/27/triomics-nabs-22m-to-bring-oncology-specific-ai-to-cancer-centers/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents oncology workflows for trial matching, visit prep, chart review, patient summaries, and cancer-center operations.",
+        "source_ids": [
+          "official_site",
+          "cancer_centers"
+        ]
+      },
+      {
+        "claim": "Triomics case-study content reports 70% less time per patient record for trial matching, with matches cited back to pathology, biomarkers, and notes.",
+        "source_ids": [
+          "resources"
+        ]
+      },
+      {
+        "claim": "The funding source says Triomics automates clinical trial matching, appointment prep, and cancer registry reporting for cancer centers.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Cancer centers, oncologists, clinical-trial teams, and oncology administrators handling dense patient records.",
+      "category": "HealthTech",
+      "differentiation": "Oncology-specific workflow automation and cited chart evidence instead of generic clinical summarization.",
+      "why_now": "The May 27, 2026 Series B led by Battery Ventures funds adoption of oncology AI across health systems and cancer networks."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether hospital deployment cycles, EHR integration, and clinical validation keep pace with oncology-workflow demand.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

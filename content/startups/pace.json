@@ -1,0 +1,84 @@
+{
+  "slug": "pace",
+  "domain": "withpace.com",
+  "url": "https://withpace.com/",
+  "product_name": "Pace",
+  "summary": "AI operations platform that turns insurance SOPs into agent-run workflows.",
+  "editor_note": "Insurance ops is a good place to test whether agents can do work, not just answer tickets. Pace turns SOPs into workflows that read documents, update legacy systems, route exceptions, and resolve more than 90% of some cases without human touch. Unlike horizontal copilots, it is built around Guidewire, Duck Creek, Vertafore, ACORD forms, and claims queues. The risk is whether carrier-specific edge cases eat the margin.",
+  "editor_rating": 5,
+  "why_featured": "Insurance agents in production",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "insurance,ai agents,operations,workflow automation,claims",
+  "investors": "Thrive Capital, Sequoia Capital",
+  "links": {
+    "product": "https://withpace.com/product"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$46M",
+      "stage": "Series B",
+      "lead_investor": "Thrive Capital and Sequoia Capital",
+      "date": "2026-05-27",
+      "source_url": "https://www.forbes.com/sites/annatong/2026/05/27/thrive-and-sequoia-back-pace-with-46-million-to-automate-insurances-back-office/?ss=small-business-taxes",
+      "source_name": "Forbes"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-05-31",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://withpace.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_page",
+        "label": "Pace product page",
+        "url": "https://withpace.com/product",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Forbes Series B report",
+        "url": "https://www.forbes.com/sites/annatong/2026/05/27/thrive-and-sequoia-back-pace-with-46-million-to-automate-insurances-back-office/?ss=small-business-taxes",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Pace lets insurers build, deploy, and manage AI agents that run document, workflow, and customer-channel operations end to end.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page lists agentic workflow orchestration, observability, enterprise integrations, and controls for SOP-driven insurance operations.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "The public site names insurance use cases including submission intake, life claim support, NIGO checks, policy review, FNOL automation, and core-system integrations.",
+        "source_ids": [
+          "official_site",
+          "product_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Insurance operations, claims, underwriting, and IT teams automating carrier workflows.",
+      "category": "AI / ML",
+      "differentiation": "Insurance-native agent workflows and carrier-system integrations instead of a horizontal support or document copilot.",
+      "why_now": "The May 27, 2026 Series B co-led by Thrive and Sequoia backs expansion of production AI workflows for insurance operations."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether carrier-specific exceptions, legacy-system variance, and compliance review slow deployments enough to dilute automation gains.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
