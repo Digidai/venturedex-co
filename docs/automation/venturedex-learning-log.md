@@ -1776,3 +1776,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - rejected Utilidata, WeRoad, Paralign Health, Secretome Therapeutics, TensorMesh, GeoWealth, Atheni, Stark Defence, Modiqo, Bidso, XCENA, ClickHouse, Thea Energy, SOND, and Cognition AI for schema fit, product inspectability, stale/non-closed financing, non-USD amount, pre-seed, late-stage, or taste-ranking reasons.
   - added official company logos, investor logos, Battery Ventures and Brighton Park Capital directory entries, a Thrive alias for the co-led Pace round, local screenshots, and UTC timestamps for all five accepted startups.
   - verification passed: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate` twice after the investor-format cleanup, and `git diff --check`; `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `scripts/__pycache__/`, and `dist/` were restored or removed after validation.
+
+### 2026-06-01 14:55 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-updated
+- validation: pass after iteration; final `./scripts/manage.sh validate` passed with 92/92 startups, zero errors, existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: pass after iteration; standard captures worked for CodeIntegrity, LightTable, and CLEATUS, while RevEng.AI and Olyzon required `bb-browser` inspection plus clean manual recaptures after popup/overlay guards flagged real page layers
+- commit_push: pass; content commit `ccae0d9` and release-fix commit `d05191d` were pushed to `main`; see Git commit containing this entry for the learning-log commit
+- commit_sha: ccae0d9 for content; d05191d for the Hellbender brand-asset release fix
+- pushed_branch: main
+- ci_deploy: pass after iteration; Validate `26739144850` passed for `ccae0d9`, Deploy `26739144832` failed on a stale Hellbender brand-asset source URL, Validate `26739578188` passed for `d05191d`, and rerun Deploy `26739578140` passed after the narrow asset fix
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.genedai.workers.dev` and `./scripts/manage.sh smoke https://venturedex.co` reported 92 published startups, the homepage contained all five new names, and all five live detail pages returned HTTP 200
+- newsletter: not manually triggered; latest D1 `newsletter_sends` row remained `daily:2026-05-30 07:30:02:2026-05-31 07:30:16` with status `sent`, and today's additions should be picked up no earlier than the 6-hour delay cutoff plus the 13:30 UTC Daily Cron
+- failure_tags: [screenshot_env, source_drift, release_smoke_race]
+- reward: 3
+- dominant_failure_mode: an old official brand-asset URL can drift enough to block release validation, and immediate post-upload release smoke can briefly observe the previous static card count even after the Worker version is uploaded.
+- proposed_change: none; the runbook already requires root-cause isolation, narrow fixes, rerunning failed gates and downstream checks, and delayed newsletter verification through D1.
+- decision: none
+- affected_file: content/startups/codeintegrity.json, content/startups/reveng-ai.json, content/startups/lighttable.json, content/startups/cleatus.json, content/startups/olyzon.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted CodeIntegrity from a May 30, 2026 $4.8M Seed round led by SYN Ventures; official and `bb-browser` review verified runtime controls for AI-agent tool calls, data movement, and enterprise guardrails.
+  - accepted RevEng.AI from a May 30, 2026 $15M Series A co-led by SYN Ventures and the NATO Innovation Fund; official review verified binary analysis, malware/reverse-engineering workflows, BinNet, IDA/Ghidra support, and CLI/API surfaces.
+  - accepted LightTable from a May 30, 2026 $22M Series A led by Innovation Endeavors; official review verified AI construction QA, field and plan review workflows, 20M square feet reviewed, and 4-hour first-finding claims.
+  - accepted CLEATUS from a May 30, 2026 $4M Seed round led by Las Olas Venture Capital; official review verified GovCon discovery and proposal workflows across SAM.gov, DIBBS, Grants.gov, SLED sources, APIs, and connectors.
+  - accepted Olyzon from a May 30, 2026 $10M Series A led by Revo Capital and S4S Ventures; official review verified an agentic CTV layer, AdCP support, DSP/SSP/direct publisher integrations, and published lift/reach claims.
+  - rejected Crink, Ponder AI, Proho, Hypernova, Landeed, Sumvin, Webout, Mathew, Lastwall, Tide, Coastal Measures, Transition VC, NALA, Orbital Industries, and Longwall Ventures for missing schema-clean stage or lead evidence, non-startup fit, stale/non-primary source fit, or lower product inspectability than the five accepted profiles.
+  - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, brand assets, and local screenshots for all five accepted startups.
+  - first Deploy failed because CI could not reach existing Hellbender source URL `https://hellbender.com/wp-content/uploads/2022/04/cropped-favicon-192x192.png`; the narrow fix changed only that record to the official `HB_Logo.svg` source already tracked locally.
+  - the first `d05191d` Deploy attempt uploaded Worker version `95d5056a-fdb5-4f28-89e7-74cd086e3b27` but failed release smoke because the Worker URL rendered 87 cards instead of 92 immediately after upload; manual Worker and canonical smoke later passed, and the failed deploy job rerun completed successfully.
+  - verification passed before each push: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
