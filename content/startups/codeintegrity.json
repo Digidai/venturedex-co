@@ -1,0 +1,69 @@
+{
+  "slug": "codeintegrity",
+  "domain": "www.codeintegrity.ai",
+  "url": "https://www.codeintegrity.ai/",
+  "product_name": "CodeIntegrity",
+  "summary": "Runtime control plane for AI agent tool calls and data movement.",
+  "editor_note": "The bet is that agent security belongs between intent and tool execution, not in another model judging after the fact. CodeIntegrity turns every tool call into sandboxed code, records provenance, and blocks email.send-style PII moves before execution. Unlike human approval queues or LLM-as-judge defenses, it is selling deterministic control for nondeterministic agents. The risk is whether pilots in regulated industries become a repeatable deployment pattern.",
+  "editor_rating": 5,
+  "why_featured": "Runtime controls for AI agents",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai security,agents,tool calls,data loss,mcp",
+  "investors": "SYN Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.8M",
+      "stage": "Seed",
+      "lead_investor": "SYN Ventures",
+      "date": "2026-05-27",
+      "source_url": "https://www.geekwire.com/2026/codeintegrity-raises-4-8m-to-put-permanent-guardrails-on-unpredictable-ai-agents/",
+      "source_name": "GeekWire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.codeintegrity.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GeekWire",
+        "url": "https://www.geekwire.com/2026/codeintegrity-raises-4-8m-to-put-permanent-guardrails-on-unpredictable-ai-agents/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions CodeIntegrity as a runtime layer that evaluates intent, data provenance, destination, and risk before agent tool calls execute.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows an email.send policy example where PII from a support ticket is blocked before execution and recorded as action evidence.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security and platform teams deploying AI agents with access to enterprise tools and data.",
+      "category": "AI / ML",
+      "differentiation": "Deterministic policy checks between agent intent and tool execution, with provenance and action records.",
+      "why_now": "The May 2026 seed round funds a control layer for MCP and tool-using AI agents as regulated teams move from experiments into deployments."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether runtime agent controls become default infrastructure before agent frameworks standardize their own policy layers.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

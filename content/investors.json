@@ -530,5 +530,51 @@
     "short_name": "Brighton Park",
     "website": "https://www.bpc.com",
     "description": "Growth equity firm investing in software, data, and technology-enabled services companies."
+  },
+  "syn-ventures": {
+    "name": "SYN Ventures",
+    "slug": "syn-ventures",
+    "short_name": "SYN",
+    "website": "https://www.synventures.com",
+    "description": "Cybersecurity-focused venture capital firm backing security founders from seed through growth."
+  },
+  "nato-innovation-fund": {
+    "name": "NATO Innovation Fund",
+    "slug": "nato-innovation-fund",
+    "short_name": "NIF",
+    "website": "https://www.nif.fund",
+    "description": "Deep-tech venture fund backed by NATO allies, investing in defense, security, resilience, and strategic technologies."
+  },
+  "innovation-endeavors": {
+    "name": "Innovation Endeavors",
+    "slug": "innovation-endeavors",
+    "short_name": "Innovation Endeavors",
+    "website": "https://www.innovationendeavors.com",
+    "description": "Early-stage venture capital firm backing founders in applied AI, engineering, enterprise, and industrial transformation."
+  },
+  "las-olas-venture-capital": {
+    "name": "Las Olas Venture Capital",
+    "slug": "las-olas-venture-capital",
+    "short_name": "LOVC",
+    "website": "https://www.lasolasvc.com",
+    "description": "Founders-turned-investors backing enterprise software companies from the earliest stages.",
+    "aliases": [
+      "Las Olas VC",
+      "Las Olas Venture Capital and REVO Capital"
+    ]
+  },
+  "revo-capital": {
+    "name": "REVO Capital",
+    "slug": "revo-capital",
+    "short_name": "REVO",
+    "website": "https://revo.vc",
+    "description": "Venture capital firm backing technology founders from seed through growth across Turkey, Europe, and global markets."
+  },
+  "s4s-ventures": {
+    "name": "S4S Ventures",
+    "slug": "s4s-ventures",
+    "short_name": "S4S",
+    "website": "https://www.s4sventures.com",
+    "description": "Venture firm backing sports, media, entertainment, and consumer technology companies."
   }
 }

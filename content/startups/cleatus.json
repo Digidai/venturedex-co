@@ -1,0 +1,78 @@
+{
+  "slug": "cleatus",
+  "domain": "www.cleat.ai",
+  "url": "https://www.cleat.ai/",
+  "product_name": "CLEATUS",
+  "summary": "Agentic GovCon platform for opportunity discovery, bids, and proposal workflows.",
+  "editor_note": "The bet is that government contracting needs an operating workflow, not another bid-search inbox. CLEATUS watches SAM.gov, 40,000+ SLED sources, DIBBS, and Grants.gov, then scores compliance, drafts proposals, manages pursuit CRM, and exposes REST plus Claude and ChatGPT connectors. Unlike generic proposal tools, it works where the data and paperwork actually live. The risk is whether smaller contractors can trust agentic write access on high-stakes bids.",
+  "editor_rating": 5,
+  "why_featured": "Agentic GovCon workflow",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "government contracting,proposal automation,agents,crm,compliance",
+  "investors": "Las Olas Venture Capital, REVO Capital",
+  "links": {
+    "api": "https://api.cleat.ai/api/docs"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4M",
+      "stage": "Seed",
+      "lead_investor": "Las Olas Venture Capital and REVO Capital",
+      "date": "2026-05-14",
+      "source_url": "https://www.cleat.ai/blog/cleatus-4m-seed-funding",
+      "source_name": "CLEATUS"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.cleat.ai/",
+        "type": "official"
+      },
+      {
+        "id": "api_docs",
+        "label": "CLEATUS API docs",
+        "url": "https://api.cleat.ai/api/docs",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "CLEATUS seed announcement",
+        "url": "https://www.cleat.ai/blog/cleatus-4m-seed-funding",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says CLEATUS finds opportunities across SAM.gov, 40,000+ SLED sources, DLA DIBBS, and Grants.gov.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface covers compliance scoring, proposal drafting, contract analysis, pursuit management, AI workflows, Claude and ChatGPT connectors, and a public REST API.",
+        "source_ids": [
+          "official_site",
+          "api_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Small and mid-sized government contractors managing discovery, compliance review, and proposal work.",
+      "category": "SaaS",
+      "differentiation": "GovCon-specific agentic workflow across source discovery, compliance, proposals, pursuit CRM, connectors, and API access.",
+      "why_now": "The May 2026 seed round funds an AI platform for contractors facing expanding public-sector opportunity data and heavy proposal labor."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether smaller contractors will trust agentic write access and generated proposal work on high-stakes bids.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

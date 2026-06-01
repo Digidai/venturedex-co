@@ -1,0 +1,71 @@
+{
+  "slug": "olyzon",
+  "domain": "www.olyzon.tv",
+  "url": "https://www.olyzon.tv/",
+  "product_name": "Olyzon",
+  "summary": "Agentic decision layer for connected-TV planning, activation, and measurement.",
+  "editor_note": "The bet is that CTV buying broke at the decision layer, not the media pipes. Olyzon maps inventory, scores programs, adapts creative, activates across DSPs and publishers, and claims +20% brand lift plus 15-30% mid-funnel improvement. Unlike panel-style measurement vendors, it tries to turn context, reach, and proof into one operating loop. The risk is whether agencies let an agentic layer sit above their existing stack.",
+  "editor_rating": 4,
+  "why_featured": "$10M Series A for CTV agents",
+  "product_type": "SaaS",
+  "region": "Global / Remote",
+  "tags": "adtech,connected tv,media planning,measurement,agents",
+  "investors": "S4S Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/olyzon/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "S4S Ventures",
+      "date": "2026-05-27",
+      "source_url": "https://www.prnewswire.com/news-releases/sir-martin-sorrells-s4s-ventures-leads-olyzons-10m-series-a-to-build-the-agentic-platform-for-ctv-302782399.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.olyzon.tv/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/sir-martin-sorrells-s4s-ventures-leads-olyzons-10m-series-a-to-build-the-agentic-platform-for-ctv-302782399.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes an agentic layer connected to DSPs, SSPs, and direct publishers that maps inventory, scores programs, activates plans, and proves outcomes.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Olyzon presents context transparency, deduplicated reach, outcome accountability, AdCP compatibility, and impact metrics including +20% brand lift and +15-30% mid-funnel improvement.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Agencies, brands, and trading desks buying connected-TV media across fragmented inventory sources.",
+      "category": "SaaS",
+      "differentiation": "Agentic decisioning layer above existing CTV pipes instead of a single measurement, DSP, or inventory product.",
+      "why_now": "The May 2026 Series A led by S4S Ventures supports US and EMEA expansion as CTV buying shifts from manual planning into AI-assisted workflows."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether agencies allow an agentic layer to sit above existing planning, activation, and measurement stacks.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-05-31",
+  "verified_at": "2026-06-01",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -611,6 +611,41 @@
       "local_path": "/logos/companies/triomics.png",
       "source_page": "https://triomics.com/",
       "source_url": "https://cdn.prod.website-files.com/69f0f90637c1de3207beb703/69f69479dfad95070208a426_webclip.png"
+    },
+    "codeintegrity": {
+      "name": "CodeIntegrity",
+      "shape": "icon",
+      "local_path": "/logos/companies/codeintegrity.svg",
+      "source_page": "https://www.codeintegrity.ai/",
+      "source_url": "https://www.codeintegrity.ai/icon.svg"
+    },
+    "reveng-ai": {
+      "name": "RevEng.AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/reveng-ai.ico",
+      "source_page": "https://reveng.ai/",
+      "source_url": "https://reveng.ai/favicon.ico"
+    },
+    "lighttable": {
+      "name": "LightTable",
+      "shape": "icon",
+      "local_path": "/logos/companies/lighttable.png",
+      "source_page": "https://www.lighttable.ai/",
+      "source_url": "https://www.lighttable.ai/favicon-32x32.png"
+    },
+    "cleatus": {
+      "name": "CLEATUS",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/cleatus.webp",
+      "source_page": "https://www.cleat.ai/",
+      "source_url": "https://www.cleat.ai/images/logo/logo-cleatus.webp"
+    },
+    "olyzon": {
+      "name": "Olyzon",
+      "shape": "icon",
+      "local_path": "/logos/companies/olyzon.ico",
+      "source_page": "https://www.olyzon.tv/",
+      "source_url": "https://www.olyzon.tv/favicon.ico"
     }
   },
   "investors": {
@@ -1139,6 +1174,48 @@
       "local_path": "/logos/investors/brighton-park-capital.png",
       "source_page": "https://www.bpc.com",
       "source_url": "https://cdn.prod.website-files.com/6532a38301b31eaa1a253407/65aa58eba3b9b7df62462067_Webclip-bpc.png"
+    },
+    "syn-ventures": {
+      "name": "SYN Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/syn-ventures.png",
+      "source_page": "https://www.synventures.com",
+      "source_url": "https://www.synventures.com/wp-content/uploads/Favicon_SYN.png"
+    },
+    "nato-innovation-fund": {
+      "name": "NATO Innovation Fund",
+      "shape": "icon",
+      "local_path": "/logos/investors/nato-innovation-fund.ico",
+      "source_page": "https://www.nif.fund",
+      "source_url": "https://www.nif.fund/wp-content/uploads/2024/04/favicon.ico"
+    },
+    "innovation-endeavors": {
+      "name": "Innovation Endeavors",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/innovation-endeavors.svg",
+      "source_page": "https://www.innovationendeavors.com",
+      "source_url": "https://cdn.prod.website-files.com/637cd2f61e2c9377fe287947/637dfbce017f2da54061c4de_innovation-endeavors-logo.svg"
+    },
+    "las-olas-venture-capital": {
+      "name": "Las Olas Venture Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/las-olas-venture-capital.png",
+      "source_page": "https://www.lasolasvc.com",
+      "source_url": "https://framerusercontent.com/images/hZvbTkVl7hUYMXRXj0Vbc9S89U.png"
+    },
+    "revo-capital": {
+      "name": "REVO Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/revo-capital.png",
+      "source_page": "https://revo.vc",
+      "source_url": "https://revo.vc/wp-content/uploads/2022/09/favicon.png"
+    },
+    "s4s-ventures": {
+      "name": "S4S Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/s4s-ventures.svg",
+      "source_page": "https://www.s4sventures.com",
+      "source_url": "https://www.s4sventures.com/icon.svg"
     }
   }
 }

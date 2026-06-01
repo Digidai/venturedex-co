@@ -347,5 +347,25 @@
   "triomics": {
     "published_at": "2026-05-31 06:05:47",
     "first_seen_at": "2026-05-31 06:05:47"
+  },
+  "codeintegrity": {
+    "published_at": "2026-06-01 05:58:46",
+    "first_seen_at": "2026-06-01 05:58:46"
+  },
+  "reveng-ai": {
+    "published_at": "2026-06-01 05:58:46",
+    "first_seen_at": "2026-06-01 05:58:46"
+  },
+  "lighttable": {
+    "published_at": "2026-06-01 05:58:46",
+    "first_seen_at": "2026-06-01 05:58:46"
+  },
+  "cleatus": {
+    "published_at": "2026-06-01 05:58:46",
+    "first_seen_at": "2026-06-01 05:58:46"
+  },
+  "olyzon": {
+    "published_at": "2026-06-01 05:58:46",
+    "first_seen_at": "2026-06-01 05:58:46"
   }
 }

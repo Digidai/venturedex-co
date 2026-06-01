@@ -1,0 +1,69 @@
+{
+  "slug": "lighttable",
+  "domain": "www.lighttable.ai",
+  "url": "https://www.lighttable.ai/",
+  "product_name": "LightTable",
+  "summary": "AI quality-control review for construction drawings, specs, and checklists.",
+  "editor_note": "The useful bet is that pre-construction review should behave more like QA than consultant folklore. LightTable lets teams upload drawings, specs, and checklists, then flags coordination issues across 35+ scopes with expert validation and a 4-hour first-findings target. Unlike legacy peer review, it ties issue history, comments, and handoff into the workflow. The risk is whether AI review stays trusted when projects move beyond early developer customers.",
+  "editor_rating": 5,
+  "why_featured": "20M sq ft reviewed by AI QA",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "construction,quality control,ai review,preconstruction,documents",
+  "investors": "Innovation Endeavors",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22M",
+      "stage": "Series A",
+      "lead_investor": "Innovation Endeavors",
+      "date": "2026-05-27",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/27/3297492/0/en/LightTable-Secures-22-Million-Series-A-Funding-Round-Led-by-Innovation-Endeavors.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.lighttable.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire",
+        "url": "https://www.globenewswire.com/news-release/2026/05/27/3297492/0/en/LightTable-Secures-22-Million-Series-A-Funding-Round-Led-by-Innovation-Endeavors.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says teams upload drawings, specs, and checklists so LightTable can surface coordination and constructability issues before construction starts.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "LightTable reports 20M square feet reviewed, more than $10B in project costs reviewed, and an average 4-hour time to first findings.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers, contractors, and preconstruction teams reviewing project documents before construction starts.",
+      "category": "SaaS",
+      "differentiation": "AI construction QA with expert validation and workflow tracking rather than one-off consultant review.",
+      "why_now": "The May 2026 Series A led by Innovation Endeavors funds product expansion as construction teams push document review earlier."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether expert-validated AI review maintains trust across varied project types, codes, and contractor workflows.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

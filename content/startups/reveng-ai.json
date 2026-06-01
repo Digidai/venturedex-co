@@ -1,0 +1,69 @@
+{
+  "slug": "reveng-ai",
+  "domain": "reveng.ai",
+  "url": "https://reveng.ai/",
+  "product_name": "RevEng.AI",
+  "summary": "AI binary analysis platform for reverse engineering and malware analysis.",
+  "editor_note": "The sharper move is checking the binary that actually ships, not the repository everyone hopes matches it. RevEng.AI's BinNet analyzes executables, firmware, and third-party artifacts, with IDA Pro, Ghidra, and CLI plugins for reverse engineers. Unlike source-code scanners, it treats compiled software as the source of truth. The risk is whether defense-grade binary analysis can become a normal release gate for commercial teams.",
+  "editor_rating": 5,
+  "why_featured": "BinNet for binary analysis",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "cybersecurity,binary analysis,reverse engineering,supply chain,malware",
+  "investors": "NATO Innovation Fund",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "NATO Innovation Fund",
+      "date": "2026-05-27",
+      "source_url": "https://www.nif.fund/news/nato-innovation-fund-leads-15-million-reveng-ai-round-to-verify-the-security-and-integrity-of-ai-generated-software/",
+      "source_name": "NATO Innovation Fund"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://reveng.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "NATO Innovation Fund",
+        "url": "https://www.nif.fund/news/nato-innovation-fund-leads-15-million-reveng-ai-round-to-verify-the-security-and-integrity-of-ai-generated-software/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes BinNet as a proprietary AI model for understanding the semantics of binary machine code and verifying software supply-chain integrity.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "RevEng.AI exposes IDA Pro, Ghidra, and CLI integrations so reverse engineers can analyze GNU/Linux, Windows, and Android binaries inside existing workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Reverse engineers, malware analysts, and software supply-chain security teams.",
+      "category": "DevTools",
+      "differentiation": "Binary-first AI analysis for shipped artifacts rather than source-only scanning.",
+      "why_now": "The May 2026 Series A led by NATO Innovation Fund arrives as governments and enterprises harden supply chains against malicious and unverifiable binaries."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether binary analysis can move from specialist reverse-engineering teams into standard CI and release workflows.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

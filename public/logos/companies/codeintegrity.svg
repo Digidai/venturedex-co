@@ -1,0 +1,21 @@
+<svg viewBox="0 0 83.42 83.42" xmlns="http://www.w3.org/2000/svg">
+  <!-- CodeIntegrity Favicon -->
+  <!-- CI mark from Chakra Petch Bold -->
+
+  <!-- Rounded background -->
+  <rect x="0" y="0" width="83.42" height="83.42" rx="12.5" ry="12.5" fill="#ffffff"/>
+
+  <!-- Logo (centered) -->
+  <svg x="4.5" y="13.7" width="74.5" height="56.0" viewBox="0 0 74.48 56" xmlns="http://www.w3.org/2000/svg">
+<!-- CodeIntegrity Mark — Dark -->
+  <!-- Font: Chakra Petch Bold (SIL OFL 1.1) -->
+  <g fill="#000000">
+    <g transform="translate(0.00, 56) scale(1, -1)">
+      <path id="C" d="M4.40 9.20L4.40 46.80L13.60 56.00L40.96 56.00L50.00 46.96L50.00 38.40L39.12 38.40L39.12 42.96L35.36 46.72L19.36 46.72L15.28 42.64L15.28 13.36L19.36 9.28L35.36 9.28L39.12 13.04L39.12 17.60L50.00 17.60L50.00 9.04L40.96 0.00L13.60 0.00Z"/>
+    </g>
+    <g transform="translate(52.40, 56) scale(1, -1)">
+      <path id="I" d="M5.60 56.00L16.48 56.00L16.48 0.00L5.60 0.00Z"/>
+    </g>
+  </g>
+  </svg>
+</svg>
