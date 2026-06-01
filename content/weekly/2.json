@@ -1,0 +1,257 @@
+{
+  "issue_number": 2,
+  "title": "Where AI Has to Leave Receipts",
+  "week_start": "2026-05-25",
+  "week_end": "2026-05-31",
+  "published_at": "2026-06-01",
+  "status": "published",
+  "editorial_intro": "This week was not about another batch of general-purpose agents. The stronger pattern was AI moving into environments where every action needs a source trail, permission boundary, audit log, or human review path: defense systems, bank workflows, litigation files, financial models, and enterprise agent security.",
+  "research_summary": "This issue uses only published VentureDex startup records, their structured research blocks, official product pages, linked funding or investor sources, and bb-browser checks run during this Weekly cycle. It does not add unsupported claims about private users, revenue, retention, market share, customer migration, reliability, or product effects; official-page metrics are treated as cited product evidence, not independent validation.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, linked funding or investor sources, and current bb-browser page checks.",
+    "Separate observed product evidence from VentureDex editorial judgment.",
+    "State missing evidence, deployment risk, and category uncertainty explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "AI moves into controlled workflows",
+      "summary": "The common thread is not model novelty. These products put AI behind domain-specific controls: agent inventories, source-linked data, case files, bank audit trails, ERP handoffs, and defense integration surfaces."
+    },
+    {
+      "title": "The product is the evidence layer",
+      "summary": "The strongest picks turn evidence into part of the workflow itself, either through source links, permissions, citations, runtime logs, or documented integration APIs."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "picogrid",
+      "why_this_week": "Picogrid fits this issue because its May 29 Series A framed integration, not another isolated device, as the defense bottleneck. That makes it the clearest infrastructure pick for a week focused on AI and automation inside controlled, mission-critical systems.",
+      "product_evaluation": "The product evidence is unusually concrete for defense software: the Series A announcement describes Picogrid as an open integration layer for sensors, autonomy, C2 software, edge compute, and vendor systems, while the Legion docs expose API surfaces for entities, feed definitions, feed data, integrations, permissions, WebRTC, tasking, and tracks. The editorial judgment is that interoperability itself is the product bet; VentureDex is not validating deployment scale beyond what the cited sources state.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/picogrid.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Picogrid Series A announcement",
+          "source": "Picogrid's May 29, 2026 announcement for its $45M Series A led by Bessemer Venture Partners",
+          "url": "https://picogrid.com/newsroom/picogrid-raises-usd45m-series-a-to-build-the-open-integration-layer-for-modern-defense"
+        },
+        {
+          "label": "Legion API docs",
+          "source": "Picogrid documentation checked with bb-browser; it lists Legion platform API areas including permissions, entities, feed definitions, feed data, integrations, WebRTC, tasking, and tracks",
+          "url": "https://docs.picogrid.com/"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/picogrid.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The key risk is whether defense procurement and deployment timelines can move quickly enough for a platform-style integration layer.",
+        "The public evidence supports product surface and positioning, but does not independently prove deployment breadth beyond Picogrid's own cited military and vendor language."
+      ],
+      "verdict": "Picogrid is the strongest pick when the question is whether defense automation needs a neutral integration layer before it needs more point hardware."
+    },
+    {
+      "slug": "gray-swan",
+      "why_this_week": "Gray Swan belongs in this issue because its May 28 Series A sits directly on the week's control theme: AI agents are becoming production surfaces, and the product response is adversarial testing plus runtime defense rather than a policy memo.",
+      "product_evaluation": "The official site and funding source describe three product surfaces: Shade for adversarial red teaming, Cygnal for runtime protection and monitoring, and Arena for a red-team research network. VentureDex's evaluation is that Gray Swan turns attacks into operating data for defense; the boundary is that claims about bypass rates, model-card influence, and attack volume remain official-source claims unless independently verified elsewhere.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/gray-swan.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Gray Swan homepage checked with bb-browser; it describes Shade, Cygnal, Arena, adversarial red teaming, and runtime defense",
+          "url": "https://www.grayswan.ai/"
+        },
+        {
+          "label": "Series A announcement",
+          "source": "Gray Swan's May 28, 2026 announcement for a $40M Series A co-led by Wing Venture Capital and Madrona",
+          "url": "https://www.grayswan.ai/news/gray-swan-announces-series-a"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/gray-swan.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The execution risk is whether enterprise teams can operationalize adversarial findings faster than AI applications and agents expand.",
+        "The issue uses official product and funding-source language for the research network and frontier-lab context; it does not independently validate those customer or benchmark claims."
+      ],
+      "verdict": "Gray Swan is compelling because it treats AI security as a live adversarial loop, not a static compliance checklist."
+    },
+    {
+      "slug": "geordie-ai",
+      "why_this_week": "Geordie AI made the issue because it is one of the week's cleanest examples of AI control moving below the prompt layer. Its May 28 Series A funds a product built around discovering, mapping, observing, and remediating enterprise agents.",
+      "product_evaluation": "The product page checked with bb-browser describes agent discovery across cloud, code, and endpoint environments, mapping of permissions, MCP connections, skills, prompts, models, tools, and sub-tools, plus behavioral records of prompts, plans, responses, and tool invocations. The evaluation is that Geordie is betting agent risk lives in runtime operations; the open question is whether this remains a standalone category or becomes a feature inside broader security suites.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/geordie-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Geordie product page",
+          "source": "Product page checked with bb-browser; it describes discovery, posture management, behavioral observability, risk intelligence, and Beam remediation",
+          "url": "https://www.geordie.ai/product/"
+        },
+        {
+          "label": "Series A announcement",
+          "source": "Geordie AI's May 28, 2026 $30M Series A announcement",
+          "url": "https://www.geordie.ai/resources/geordie-ai-raises-30m-series-a-as-enterprises-race-to-govern-autonomous-ai-agents"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/geordie-ai.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The main risk is category absorption: existing security platforms may treat agent governance as a feature rather than a separate budget line.",
+        "The customer POC claim in the funding source is cited as source language, not treated as a VentureDex-verified benchmark."
+      ],
+      "verdict": "Geordie AI is worth tracking because it focuses on what agents actually do with tools, permissions, and systems after deployment."
+    },
+    {
+      "slug": "daloopa",
+      "why_this_week": "Daloopa belongs in the issue because it gives the week's audit-trail theme a finance version. Its May 28 Series C is less interesting as a capital event than as evidence that source-linked financial data is becoming infrastructure for AI-assisted analysis.",
+      "product_evaluation": "The MCP page checked with bb-browser says Daloopa connects LLMs and agents to audit-ready financial data across 5,500+ global tickers, with document links back to SEC filings, press releases, investor presentations, and selected transcripts. The product evaluation is that Daloopa is not selling a generic finance chatbot; it is selling the source layer that lets analysts inspect the number behind the answer.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/daloopa.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Daloopa MCP product page",
+          "source": "Page checked with bb-browser; it describes audit-ready financial data, 5,500+ global tickers, source-document links, and AI-agent workflows",
+          "url": "https://daloopa.com/products/mcp"
+        },
+        {
+          "label": "Daloopa API product page",
+          "source": "content/startups/daloopa.json research.sources.api_page",
+          "url": "https://daloopa.com/products/api"
+        },
+        {
+          "label": "Series C announcement",
+          "source": "Daloopa's $47M Series C announcement led by Brighton Park Capital",
+          "url": "https://daloopa.com/blog/press-release/47-million-series-c"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/daloopa.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The core risk is adoption shape: finance teams may trust source-linked data for analyst workflows before they let agents act on it directly.",
+        "The issue cites Daloopa's official coverage and data-point claims as product evidence, not as independently audited accuracy or coverage validation."
+      ],
+      "verdict": "Daloopa is the finance pick because the product bet is that AI answers need filing-level provenance before they need more chat."
+    },
+    {
+      "slug": "saris",
+      "why_this_week": "Saris fits the issue because its May 28 Series A applies agentic workflow automation to one of the least forgiving buyer groups: banks and credit unions. It shares the same pattern as the other picks: automation is useful only when approvals, audit trails, and legacy systems remain visible.",
+      "product_evaluation": "The official site checked with bb-browser describes multi-step lending, compliance, and operations workflows with secure, compliant, and auditable processes, plus human supervision over critical actions. The 8VC note cited in the startup record adds native desktop bindings, self-healing agents, and 50-plus-step lending workflows. VentureDex's judgment is that Saris is stronger when framed as banking operations infrastructure than as generic RPA.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/saris.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Saris homepage checked with bb-browser; it describes lending, compliance, operations, human supervision, and audit trails",
+          "url": "https://saris.ai/"
+        },
+        {
+          "label": "Business Wire funding source",
+          "source": "Saris $28.8M Series A announcement source in the startup record",
+          "url": "https://www.businesswire.com/news/home/20260528291475/en/Saris-Raises-%2428.8-Million-to-Scale-Agentic-Workflow-Automation-for-Financial-Institutions"
+        },
+        {
+          "label": "8VC investment note",
+          "source": "content/startups/saris.json research.sources.investor_note",
+          "url": "https://www.8vc.com/resources/announcing-our-investment-in-saris-ai"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/saris.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The open question is whether regulated financial institutions can scale deployment without slow security, procurement, and integration cycles.",
+        "Official-site ROI and automation metrics were visible during the bb-browser check, but this issue relies on them only as cited source claims."
+      ],
+      "verdict": "Saris is the banking workflow pick because it puts agent execution next to approval, audit, and legacy-system constraints."
+    },
+    {
+      "slug": "crimson",
+      "why_this_week": "Crimson belongs in the issue because litigation is a useful stress test for the week's theme. If AI cannot show citations, preserve case context, and handle sensitive files, it does not belong near high-stakes disputes.",
+      "product_evaluation": "The official site checked with bb-browser describes a case-intelligence workspace that analyzes evidence, answers factual questions, provides custom drafting help, builds timelines, verifies facts, coordinates deadlines, and ties responses back to source documents. The security section also states SOC 2 Type II attestation, GDPR compliance, AES-256 encryption, Azure infrastructure, penetration testing, and no AI training on customer data. The editorial view is that Crimson is narrow in the right way: case files first, general legal chat second.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/crimson.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Crimson homepage checked with bb-browser; it describes evidence analysis, cited answers, case insights, drafting, timelines, fact verification, and case coordination",
+          "url": "https://www.crimson.law/"
+        },
+        {
+          "label": "Crimson security page",
+          "source": "Security evidence listed in content/startups/crimson.json research.sources.security_page",
+          "url": "https://www.crimson.law/security"
+        },
+        {
+          "label": "Seed announcement",
+          "source": "Crimson's $2.5M seed announcement and US expansion source",
+          "url": "https://www.crimson.law/press/seed-round-us-expansion"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/crimson.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The hard product risk is whether citation quality holds across messy case files, scanned exhibits, email trails, and adversarial legal review.",
+        "The public evidence supports product scope and security posture, but not outcome quality across real legal matters."
+      ],
+      "verdict": "Crimson is the legal pick because it treats source-backed case understanding as the product, not as a decoration around a chatbot."
+    },
+    {
+      "slug": "canals",
+      "why_this_week": "Canals fits because it takes the same audit-heavy workflow pattern into wholesale distribution and industrial supply chains. Its May 28 Series A is tied to a product surface that names the unglamorous work directly: orders, quotes, invoices, purchasing, customer service, and ERP handoff.",
+      "product_evaluation": "The official site checked with bb-browser positions Canals as AI for distributors, manufacturers, and contractors, with industry-specific models for manufacturing, distribution, and construction. The VentureDex record and funding sources describe sales order entry, quote generation, invoice processing, purchasing, customer service, and supplier workflows. The product judgment is that Canals is more interesting as vertical transaction infrastructure than as a horizontal automation layer.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/canals.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "Canals homepage checked with bb-browser; it describes distributor, manufacturer, contractor, construction, and industrial supply-chain workflows",
+          "url": "https://www.canals.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "The SaaS News coverage of Canals' $35M Series A",
+          "url": "https://www.thesaasnews.com/news/canals-raises-35m-series-a/"
+        },
+        {
+          "label": "Canals funding announcement",
+          "source": "Official Canals funding announcement in the startup record",
+          "url": "https://www.canals.ai/blog/canals-series-a-funding-announcement"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/canals.json research.product_evidence"
+        }
+      ],
+      "risks": [
+        "The main risk is whether ERP, supplier, and customer edge cases require enough services work to weaken the software model.",
+        "The issue cites official-site customer and processing metrics only as source language; it does not independently validate them."
+      ],
+      "verdict": "Canals is the supply-chain pick because it starts with the messy transaction documents where generic automation usually breaks."
+    }
+  ]
+}
