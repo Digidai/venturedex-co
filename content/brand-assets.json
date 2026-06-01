@@ -411,10 +411,10 @@
     },
     "hellbender": {
       "name": "Hellbender",
-      "shape": "icon",
-      "local_path": "/logos/companies/hellbender.png",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hellbender.svg",
       "source_page": "https://hellbender.com/hellbender-products/",
-      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/cropped-favicon-192x192.png"
+      "source_url": "https://hellbender.com/wp-content/uploads/2022/04/HB_Logo.svg"
     },
     "ocean": {
       "name": "Ocean",
