@@ -1814,3 +1814,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - first Deploy failed because CI could not reach existing Hellbender source URL `https://hellbender.com/wp-content/uploads/2022/04/cropped-favicon-192x192.png`; the narrow fix changed only that record to the official `HB_Logo.svg` source already tracked locally.
   - the first `d05191d` Deploy attempt uploaded Worker version `95d5056a-fdb5-4f28-89e7-74cd086e3b27` but failed release smoke because the Worker URL rendered 87 cards instead of 92 immediately after upload; manual Worker and canonical smoke later passed, and the failed deploy job rerun completed successfully.
   - verification passed before each push: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
+
+### 2026-06-01 15:39 CST
+
+- candidate_count: 7 weekly picks
+- accepted: 7 weekly picks
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: weekly-published
+- validation: pass; final `./scripts/manage.sh validate` passed with 92/92 startups, zero errors, 73 existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
+- weekly_validate: pass
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: browser_smoke_pass for local `/weekly` and `/weekly/2` through `bb-browser`; both rendered issue 2 and reported no JavaScript errors
+- commit_push: content commit created; learning-log commit pending at write time
+- commit_sha: 9ad44e7 for weekly issue content
+- pushed_branch: pending at learning-log write time
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported both `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active
+- live_smoke: pending deploy after push
+- newsletter: not manually triggered; Weekly newsletter remains governed by the Cloudflare Cron Tuesday 22:00 Asia/Shanghai schedule and the default 24-hour published-issue delay window
+- failure_tags: [none]
+- reward: 2
+- dominant_failure_mode: weekly draft generation worked, but the final local gate spent most of its time in existing brand/source URL checks before completing successfully.
+- proposed_change: none; current runbook already requires full `./scripts/manage.sh validate`, generated-output cleanup, and browser verification before publish.
+- decision: none
+- affected_file: content/weekly/2.json
+- affected_section: weekly research digest
+- evidence:
+  - bootstrap completed before draft/research work; it restored or confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - no issue existed for the previous full Monday-Sunday window `2026-05-25` to `2026-05-31`, so `python3 scripts/weekly.py draft --week-start 2026-05-25 --week-end 2026-05-31 --write` created `content/weekly/2.json`.
+  - issue 2 was completed and published with title `Where AI Has to Leave Receipts`, `published_at: 2026-06-01`, and seven picks: Picogrid, Gray Swan, Geordie AI, Daloopa, Saris, Crimson, and Canals.
+  - every pick includes `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`; `rg "TODO" content/weekly/2.json` returned no matches.
+  - the issue uses existing startup records and structured `research` only; no startup, logo, screenshot, schema, or deployment code was added.
+  - current `bb-browser` checks verified source/product surfaces for Picogrid docs and announcement, Gray Swan homepage and announcement, Geordie product page, Daloopa MCP page, Saris homepage, Crimson homepage, and Canals homepage.
+  - verification passed: `./scripts/check-github-actions.sh`, `python3 scripts/weekly.py validate`, `./scripts/manage.sh validate`, and `git diff --check`.
+  - `d1/generated-seed.sql`, `.astro/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation and browser checks.
