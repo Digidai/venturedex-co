@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-01",
+  "verified_at": "2026-06-02",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -646,6 +646,41 @@
       "local_path": "/logos/companies/olyzon.ico",
       "source_page": "https://www.olyzon.tv/",
       "source_url": "https://www.olyzon.tv/favicon.ico"
+    },
+    "bayshore": {
+      "name": "Bayshore",
+      "shape": "icon",
+      "local_path": "/logos/companies/bayshore.png",
+      "source_page": "https://www.bayshore.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a11a5d11aa4840419a12c89/6a16e25fe0edb9f30941574a_favicon_512x512_light.png"
+    },
+    "byron": {
+      "name": "Byron",
+      "shape": "icon",
+      "local_path": "/logos/companies/byron.png",
+      "source_page": "https://www.usebyron.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a0752e1108249d8a033ac0c/6a10aafdd1c01a9cc519e5a4_Favicon%401.5x.png"
+    },
+    "trajectory": {
+      "name": "Trajectory",
+      "shape": "icon",
+      "local_path": "/logos/companies/trajectory.svg",
+      "source_page": "https://trajectory.ai/",
+      "source_url": "https://framerusercontent.com/images/Gpbqdl4Q22EOotcAq1jwB3irtSs.svg"
+    },
+    "openobserve": {
+      "name": "OpenObserve",
+      "shape": "icon",
+      "local_path": "/logos/companies/openobserve.svg",
+      "source_page": "https://openobserve.ai/",
+      "source_url": "https://openobserve.ai/favicon.svg"
+    },
+    "sekai": {
+      "name": "Sekai",
+      "shape": "icon",
+      "local_path": "/logos/companies/sekai.svg",
+      "source_page": "https://sekaiapp.com/about",
+      "source_url": "https://sekaiapp.com/favicon.svg"
     }
   },
   "investors": {
@@ -1209,6 +1244,49 @@
       "local_path": "/logos/investors/revo-capital.png",
       "source_page": "https://revo.vc",
       "source_url": "https://revo.vc/wp-content/uploads/2022/09/favicon.png"
+    },
+    "earlybird": {
+      "name": "Earlybird Venture Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/earlybird.png",
+      "source_page": "https://www.earlybird.com",
+      "source_url": "https://framerusercontent.com/images/PXK4dCXIsPIjDEg7CSVu7zNNGcQ.png"
+    },
+    "square-peg": {
+      "name": "Square Peg",
+      "shape": "icon",
+      "local_path": "/logos/investors/square-peg.png",
+      "source_page": "https://www.squarepeg.vc",
+      "source_url": "https://cdn.prod.website-files.com/66837c6458e0869e33c82da0/66974345ec96557e11c4690f_Favicon%20(15).png"
+    },
+    "conviction": {
+      "name": "Conviction",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/conviction.png",
+      "source_page": "https://www.conviction.com",
+      "source_url": "https://www.conviction.com/splash.png",
+      "tile_background": "dark"
+    },
+    "nexus-venture-partners": {
+      "name": "Nexus Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/nexus-venture-partners.png",
+      "source_page": "https://www.nexusvp.com",
+      "source_url": "https://nexusvp.com/wp-content/uploads/2020/05/cropped-nexus-favicon-512-192x192.png"
+    },
+    "dell-technologies-capital": {
+      "name": "Dell Technologies Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/dell-technologies-capital.png",
+      "source_page": "https://www.delltechnologiescapital.com",
+      "source_url": "https://cdn.prod.website-files.com/669575b0ddf5f9d3ca320e78/674f56d0ca4e842dbb55d80a_DTC_Favicon_2024%202.png"
+    },
+    "connect-ventures": {
+      "name": "Connect Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/connect-ventures.png",
+      "source_page": "https://www.connectventures.com",
+      "source_url": "https://cdn.prod.website-files.com/612b339040ca30641de84d91/614e07548ec1bb1e4b68388f_FAVICON%20CONNECT%402x.png"
     },
     "s4s-ventures": {
       "name": "S4S Ventures",

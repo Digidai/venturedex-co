@@ -1,0 +1,69 @@
+{
+  "slug": "openobserve",
+  "domain": "openobserve.ai",
+  "url": "https://openobserve.ai/",
+  "product_name": "OpenObserve",
+  "summary": "Open-source observability platform for logs, metrics, traces, and AI SRE.",
+  "editor_note": "The interesting move is compressing the observability stack before adding AI SRE. OpenObserve already unifies logs, metrics, traces, RUM, alerts, dashboards, and object-storage economics, then layers anomaly detection and LLM observability on the same data. Unlike AI wrappers over Datadog-style sprawl, it sells one open-source control plane. The risk is whether low-cost infrastructure can support enterprise-grade incident automation.",
+  "editor_rating": 5,
+  "why_featured": "Open-source observability plus AI SRE",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "observability,logs,metrics,traces,ai sre,open source",
+  "investors": "Nexus Venture Partners, Dell Technologies Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "Nexus Venture Partners and Dell Technologies Capital",
+      "date": "2026-04-28",
+      "source_url": "https://openobserve.ai/blog/series-a-announcement/",
+      "source_name": "OpenObserve"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://openobserve.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "OpenObserve announcement",
+        "url": "https://openobserve.ai/blog/series-a-announcement/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions OpenObserve as an open-source, petabyte-scale observability platform for logs, metrics, and traces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product navigation exposes logs, metrics, traces, pipelines, alerts, dashboards, LLM observability, AI Assistant, AI SRE, incidents, and an MCP server.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Platform, SRE, and DevOps teams managing high-volume telemetry.",
+      "category": "DevTools",
+      "differentiation": "Unified open-source telemetry storage and workflow surface with AI SRE layered onto the same observability data.",
+      "why_now": "The 2026 Series A and Observability 3.0 launch target teams trying to reduce Datadog-style cost while adding AI-assisted incident workflows."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether lower-cost open-source telemetry infrastructure can earn enterprise trust for automated incident response.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

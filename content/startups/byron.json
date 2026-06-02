@@ -1,0 +1,69 @@
+{
+  "slug": "byron",
+  "domain": "www.usebyron.com",
+  "url": "https://www.usebyron.com/",
+  "product_name": "Byron",
+  "summary": "AI tax-prep agents for CPA business-tax workflows.",
+  "editor_note": "The point is not a tax chatbot; it is a controlled worker inside CPA prep. Byron processes PDFs and K-1s, rolls prior-year returns into Excel workbooks, and keeps reviewer approval gates before export. Unlike horizontal agents that stop at document Q&A, it maps to SALY workpapers, trial balances, and book-to-tax reconciliation. The risk is whether demo-led CPA adoption scales before incumbents copy the narrow workflows.",
+  "editor_rating": 5,
+  "why_featured": "CPA tax-prep agents",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "tax prep,accounting,ai agents,cpa workflows,workpapers",
+  "investors": "Square Peg",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6.5M",
+      "stage": "Seed",
+      "lead_investor": "Square Peg",
+      "date": "2026-05-28",
+      "source_url": "https://www.capitalbrief.com/briefing/ai-enabled-tax-platform-byron-secures-9m-seed-round-led-by-square-peg-96d44ac9-daba-4370-9a99-5935bc03480b/",
+      "source_name": "Capital Brief"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.usebyron.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Capital Brief",
+        "url": "https://www.capitalbrief.com/briefing/ai-enabled-tax-platform-byron-secures-9m-seed-round-led-by-square-peg-96d44ac9-daba-4370-9a99-5935bc03480b/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Byron agents help CPAs complete tax returns from document processing through reviewed returns.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists PDF processing, PBC requests, SALY workpapers, partnership allocations, Excel workbooks, trial balances, and K-1 processing.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CPA firms and business-tax teams handling complex return preparation.",
+      "category": "Fintech",
+      "differentiation": "Purpose-built agents for tax workpapers and K-1 processing instead of generic document automation.",
+      "why_now": "The 2026 seed round arrives as accounting firms face labor pressure and need reviewer-controlled automation for recurring tax workflows."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether demo-led CPA workflows become repeatable software sales across firms with different tax processes.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "slug": "trajectory",
+  "domain": "trajectory.ai",
+  "url": "https://trajectory.ai/",
+  "product_name": "Trajectory",
+  "summary": "Continual-learning platform that turns product usage into better AI behavior.",
+  "editor_note": "The sharp angle is post-training from live product usage, not another eval dashboard. Trajectory's 4-step platform instruments customer workflows, captures traces and corrections, and trains improvements back into prompts, harnesses, and models. Unlike static fine-tuning projects, it is framed around Clay, Decagon, and Harvey use cases. The risk is whether continual learning becomes infrastructure or remains bespoke research service work.",
+  "editor_rating": 5,
+  "why_featured": "Continual learning from usage",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "continual learning,ai infrastructure,product usage,model behavior,agents",
+  "investors": "Conviction",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Seed",
+      "lead_investor": "Conviction",
+      "date": "2026-05-28",
+      "source_url": "https://www.notacompany.com/fundraising-feed/trajectory-raises-15m-seed",
+      "source_name": "not a company"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://trajectory.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "not a company",
+        "url": "https://www.notacompany.com/fundraising-feed/trajectory-raises-15m-seed",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Trajectory turns real product usage into AI that continuously improves.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The platform section describes a lightweight SDK that captures traces, corrections, re-prompts, and edits, then helps teams observe, steer, learn, and deploy.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI product teams that need model behavior to improve from live customer workflows.",
+      "category": "AI / ML",
+      "differentiation": "Feedback from actual product usage becomes a continual-learning loop rather than a static evaluation report.",
+      "why_now": "The 2026 seed round backs infrastructure for AI teams moving from launch-time prompting into ongoing behavior improvement."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether continual-learning workflows become standard product infrastructure or stay tied to bespoke AI research engagements.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

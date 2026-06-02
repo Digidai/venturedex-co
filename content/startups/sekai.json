@@ -1,0 +1,69 @@
+{
+  "slug": "sekai",
+  "domain": "sekaiapp.com",
+  "url": "https://sekaiapp.com/about",
+  "product_name": "Sekai",
+  "summary": "AI-powered interactive mini-app platform for create-play-remix content.",
+  "editor_note": "The bet is that AI app creation becomes a consumer content format, not just a developer tool. Sekai lets users create, play, and remix mini apps from prompts, with iOS and Android distribution plus public examples like quizzes, cards, and utilities. Unlike web IDEs that end at deploy, it ties generation to social reuse. The risk is whether 15M creations convert into durable creator behavior after novelty fades.",
+  "editor_rating": 4,
+  "why_featured": "Prompted mini-app creation",
+  "product_type": "Creator Tools",
+  "region": "US",
+  "tags": "mini apps,creator tools,ai generation,mobile apps,remix",
+  "investors": "Khosla Ventures, Connect Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Khosla Ventures and Connect Ventures",
+      "date": "2026-06-01",
+      "source_url": "https://www.axios.com/2026/06/01/sekai-mini-app-startup-funding",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://sekaiapp.com/about",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Axios",
+        "url": "https://www.axios.com/2026/06/01/sekai-mini-app-startup-funding",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Sekai as an AI-powered platform where users create, play, and remix interactive mini-apps that open instantly from shared links.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page shows iOS and Android distribution plus examples of playable mini-apps, app-store reviews, and community remix behavior.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Mobile creators and consumers who want to generate and share playable interactive content.",
+      "category": "Creator Tools",
+      "differentiation": "Prompted generation is tied to playable, shareable mini-apps rather than static media or developer-only app builders.",
+      "why_now": "The June 2026 Series A comes as consumer AI creation shifts from text and images toward generated interactive experiences."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether mini-app creation produces durable creator retention after early novelty and viral sharing effects fade.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

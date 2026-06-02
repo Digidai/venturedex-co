@@ -104,7 +104,8 @@
     "slug": "khosla-ventures",
     "short_name": "Khosla",
     "website": "https://www.khoslaventures.com",
-    "description": "Venture capital firm backing founders building bold technology companies from early stages through growth."
+    "description": "Venture capital firm backing founders building bold technology companies from early stages through growth.",
+    "aliases": ["Khosla Ventures and Connect Ventures"]
   },
   "inovo-vc": {
     "name": "Inovo VC",
@@ -569,6 +570,49 @@
     "short_name": "REVO",
     "website": "https://revo.vc",
     "description": "Venture capital firm backing technology founders from seed through growth across Turkey, Europe, and global markets."
+  },
+  "earlybird": {
+    "name": "Earlybird Venture Capital",
+    "slug": "earlybird",
+    "short_name": "Earlybird",
+    "website": "https://www.earlybird.com",
+    "description": "European venture capital firm backing technology founders from early stages through growth."
+  },
+  "square-peg": {
+    "name": "Square Peg",
+    "slug": "square-peg",
+    "short_name": "Square Peg",
+    "website": "https://www.squarepeg.vc",
+    "description": "Australia-based venture capital firm investing in technology companies from early stage through growth."
+  },
+  "conviction": {
+    "name": "Conviction",
+    "slug": "conviction",
+    "short_name": "Conviction",
+    "website": "https://www.conviction.com",
+    "description": "Venture capital firm focused on AI-native software and infrastructure companies."
+  },
+  "nexus-venture-partners": {
+    "name": "Nexus Venture Partners",
+    "slug": "nexus-venture-partners",
+    "short_name": "Nexus",
+    "website": "https://www.nexusvp.com",
+    "description": "Venture capital firm partnering with technology founders across the US and India.",
+    "aliases": ["Nexus Venture Partners and Dell Technologies Capital"]
+  },
+  "dell-technologies-capital": {
+    "name": "Dell Technologies Capital",
+    "slug": "dell-technologies-capital",
+    "short_name": "DTC",
+    "website": "https://www.delltechnologiescapital.com",
+    "description": "Corporate venture capital arm of Dell Technologies investing in enterprise technology founders."
+  },
+  "connect-ventures": {
+    "name": "Connect Ventures",
+    "slug": "connect-ventures",
+    "short_name": "Connect",
+    "website": "https://www.connectventures.com",
+    "description": "Seed-stage venture capital firm backing product-led technology companies."
   },
   "s4s-ventures": {
     "name": "S4S Ventures",

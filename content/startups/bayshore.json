@@ -1,0 +1,69 @@
+{
+  "slug": "bayshore",
+  "domain": "www.bayshore.ai",
+  "url": "https://www.bayshore.ai/",
+  "product_name": "Bayshore",
+  "summary": "Governed AI front door for legal and compliance requests.",
+  "editor_note": "The bet is that compliance automation needs deterministic legal logic before another chat layer. Bayshore converts regulations and internal policies into machine-executable workflows, then routes requests through one front door with ISO 27001 controls, audit trails, and human escalation. Unlike generic contract assistants, it sells controlled rule execution for pharma, finance, and defense. The risk is whether expert configuration slows repeatable sales.",
+  "editor_rating": 5,
+  "why_featured": "Legal compliance front door",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "legal ai,compliance,agents,audit trails,regulated enterprise",
+  "investors": "Earlybird Venture Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Seed",
+      "lead_investor": "Earlybird Venture Capital",
+      "date": "2026-06-02",
+      "source_url": "https://techfundingnews.com/bayshore-earlybird-ai-agents-law-compliance/",
+      "source_name": "TechFundingNews"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.bayshore.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechFundingNews",
+        "url": "https://techfundingnews.com/bayshore-earlybird-ai-agents-law-compliance/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a Legal & Compliance Frontdoor that runs every request from intake to decision with a full audit trail.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says regulations, policies, and expert interpretation become machine-executable logic with auto-resolution, escalation, and dashboards.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Legal, compliance, and risk teams inside regulated enterprises.",
+      "category": "AI / ML",
+      "differentiation": "Legal and policy logic is encoded into governed workflows rather than answered only through chat.",
+      "why_now": "The June 2026 seed round funds enterprise legal-compliance automation as EU AI Act, DORA, NIS2, and audit-readiness demands increase."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Bayshore can turn expert-heavy legal configuration into a repeatable deployment model.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
