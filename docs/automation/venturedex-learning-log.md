@@ -1849,3 +1849,40 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - current `bb-browser` checks verified source/product surfaces for Picogrid docs and announcement, Gray Swan homepage and announcement, Geordie product page, Daloopa MCP page, Saris homepage, Crimson homepage, and Canals homepage.
   - verification passed: `./scripts/check-github-actions.sh`, `python3 scripts/weekly.py validate`, `./scripts/manage.sh validate`, and `git diff --check`.
   - `d1/generated-seed.sql`, `.astro/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation and browser checks.
+
+### 2026-06-02 14:25 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-updated
+- validation: pass; final `./scripts/manage.sh validate` passed with 97/97 startups, zero errors, existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: pass after iteration; Byron and OpenObserve used the standard screenshot path, Bayshore required consent-dialog dismissal after overlay inspection, Sekai required manual capture after a `pointer-events:none` background false positive, and Trajectory was recaptured at a product-visible platform section after visual review found the first hero capture too decorative
+- commit_push: content commit `4cd9c7a` created; learning-log commit pending at write time
+- commit_sha: 4cd9c7a for content additions
+- pushed_branch: pending at learning-log write time
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active before publish
+- live_smoke: pending deploy after push
+- newsletter: not manually triggered; Daily newsletter remains governed by the Cloudflare Cron 13:30 UTC / 21:30 Asia/Shanghai schedule and the default 6-hour daily delay window
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot automation remained conservative around fixed decorative layers and consent widgets, while product-visible screenshot quality still needed manual visual review for animation-heavy pages.
+- proposed_change: none; current runbook already covers overlay inspection, manual clean recapture, visual review, generated-output cleanup, and D1-backed newsletter state separation.
+- decision: none
+- affected_file: content/startups/bayshore.json, content/startups/byron.json, content/startups/trajectory.json, content/startups/openobserve.json, content/startups/sekai.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it restored or confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted Bayshore from its June 2, 2026 $8M Seed round led by Earlybird Venture Capital; official and `bb-browser` review verified a Legal & Compliance Frontdoor, machine-executable legal logic, audit trails, ISO 27001 controls, EU hosting, and on-prem deployment claims.
+  - accepted Byron from its May 28, 2026 $6.5M Seed round led by Square Peg; official review verified CPA tax-prep agents, PDF processing, PBC requests, SALY workpapers, partnership allocations, Excel workbooks, trial-balance mapping, K-1 processing, reviewer control, and SOC 2 Type II claims.
+  - accepted Trajectory from its May 28, 2026 $15M Seed round led by Conviction; official review verified continual learning from real product usage, SDK-based trace and correction capture, observe/steer/learn/deploy workflow sections, and customer use cases for Clay, Decagon, and Harvey.
+  - accepted OpenObserve from its April 28, 2026 $10M Series A co-led by Nexus Venture Partners and Dell Technologies Capital; official review verified open-source petabyte-scale observability, logs, metrics, traces, pipelines, alerts, dashboards, LLM observability, AI Assistant, AI SRE, incidents, and MCP Server surfaces.
+  - accepted Sekai from its June 1, 2026 $20M Series A co-led by Khosla Ventures and Connect Ventures; official review verified AI-powered mini-app creation, play, remix, shared-link opening, iOS/Android distribution, public app examples, and app-store review evidence.
+  - rejected CTC Global Solutions, Blank Bio, Veeper, Infrawatch, Wittify, Return Helper, Mafer AI, Memed, Radar, Lokam.ai, Phia, Inherent Laboratories, DESKi, Stack AI, and ENI Minds for pre-seed stage, product inspectability, crypto, acquisition/independence, stale-source, or taste-ranking reasons.
+  - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, investor aliases for co-led rounds, brand assets, and local screenshots for all five accepted startups.
+  - `bb-browser` verified accepted official pages and reported no JavaScript errors; Playwright wrapper console noise for Sekai was limited to GA and Ashby route-prefetch network errors, and Trajectory emitted analytics network errors plus recoverable Framer hydration warnings while still rendering product sections.
+  - verification passed: `./scripts/check-github-actions.sh`, `./scripts/validate.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
