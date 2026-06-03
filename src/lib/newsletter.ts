@@ -669,10 +669,15 @@ export function buildDailyDigestContent(input: {
 
   const dateLabel = formatDate(input.periodEnd);
   const htmlMain = `
-    ${sectionKicker("Daily additions", `${itemCount} ${itemCount === 1 ? "profile" : "profiles"} ready after review`)}
-    <h1 style="${styles.h1}">New on VentureDex</h1>
-    <p style="${styles.lede}">These companies were published after the editorial delay window, so the site record had time for cleanup before reaching inboxes.</p>
-    <div style="${styles.metaLine}">Digest cutoff: ${escapeHtml(dateLabel)}</div>
+    <div style="${styles.digestHero}">
+      <div style="${styles.heroKickerRow}">
+        <span style="${styles.heroKickerStrong}">Daily additions</span>
+        <span style="${styles.heroKicker}">${itemCount} ${itemCount === 1 ? "profile" : "profiles"} ready after review</span>
+      </div>
+      <h1 style="${styles.heroH1}">New on VentureDex</h1>
+      <p style="${styles.heroLede}">These companies were published after the editorial delay window, so the site record had time for cleanup before reaching inboxes.</p>
+      <div style="${styles.heroMetaLine}">Digest cutoff: ${escapeHtml(dateLabel)}</div>
+    </div>
     ${itemHtml || emptyHtml("No new startup profiles passed the delay gate.")}
   `;
 
@@ -2023,39 +2028,46 @@ function chunk<T>(values: T[], size: number) {
 
 const styles = {
   pageBody: "margin:0;padding:0;background:#FAFAF9;color:#1A1A1A;font-family:Arial,'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;",
-  shell: "width:100%;background:#FAFAF9;border-collapse:collapse;",
-  outerCell: "padding:32px 16px;",
-  container: "width:100%;max-width:680px;border-collapse:collapse;",
-  header: "padding:0 0 18px;border-bottom:1px solid #E5E5E5;",
+  shell: "width:100%;background:#F3F1EA;border-collapse:collapse;",
+  outerCell: "padding:28px 16px;",
+  container: "width:100%;max-width:680px;background:#FFFFFF;border:1px solid #E1DCD2;border-radius:14px;border-collapse:separate;overflow:hidden;",
+  header: "padding:22px 28px;border-bottom:1px solid #E7E1D8;",
   headerTable: "width:100%;border-collapse:collapse;",
   logo: "font-family:Georgia,'Fraunces',serif;font-size:22px;font-weight:700;line-height:1.2;color:#1A1A1A;text-decoration:none;",
   headerMeta: "font-size:12px;line-height:24px;color:#737373;",
-  content: "padding:30px 0 24px;",
+  content: "padding:26px 28px 28px;",
+  digestHero: "margin:0 0 22px;padding:24px 24px 22px;background:#151515;border-radius:12px;border:1px solid #151515;",
+  heroKickerRow: "margin:0 0 8px;",
+  heroKickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#86B7FF;font-weight:700;text-transform:uppercase;letter-spacing:.05em;",
+  heroKicker: "font-size:12px;line-height:1.4;color:#A8A29E;text-transform:uppercase;letter-spacing:.05em;",
+  heroH1: "margin:10px 0 12px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.08;color:#FAFAF9;font-weight:600;",
+  heroLede: "margin:0 0 18px;font-size:16px;line-height:1.65;color:#D6D3CC;",
+  heroMetaLine: "margin:0;font-size:12px;line-height:1.4;color:#A8A29E;font-family:'JetBrains Mono',ui-monospace,monospace;",
   h1: "margin:8px 0 14px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.12;color:#1A1A1A;font-weight:600;",
   lede: "margin:0 0 16px;font-size:17px;line-height:1.65;color:#4B5563;",
-  body: "margin:12px 0 0;font-size:15px;line-height:1.7;color:#1A1A1A;",
-  bodySmall: "margin:8px 0 0;font-size:14px;line-height:1.65;color:#4B5563;",
-  sourceText: "font-size:12px;line-height:1.5;color:#737373;",
-  inlineLink: "color:#2563EB;text-decoration:underline;",
+  body: "margin:14px 0 0;font-size:15px;line-height:1.72;color:#24211E;",
+  bodySmall: "margin:8px 0 0;font-size:14px;line-height:1.65;color:#4F4A45;",
+  sourceText: "font-size:12px;line-height:1.5;color:#78716C;",
+  inlineLink: "color:#1D4ED8;text-decoration:underline;",
   summary: "margin:8px 0 0;font-size:16px;line-height:1.55;color:#1A1A1A;",
   metaLine: "margin:0 0 22px;font-size:12px;line-height:1.4;color:#737373;font-family:'JetBrains Mono',ui-monospace,monospace;",
   kickerRow: "margin:0 0 8px;",
   kickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:.04em;",
   kicker: "font-size:12px;line-height:1.4;color:#737373;text-transform:uppercase;letter-spacing:.04em;",
-  card: "margin:22px 0 0;padding:20px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;",
-  cardTitle: "margin:4px 0 0;font-family:Georgia,'Fraunces',serif;font-size:22px;line-height:1.24;color:#1A1A1A;font-weight:600;",
+  card: "margin:18px 0 0;padding:22px;background:#FBFAF7;border:1px solid #DDD6CC;border-radius:12px;",
+  cardTitle: "margin:5px 0 0;font-family:Georgia,'Fraunces',serif;font-size:24px;line-height:1.22;color:#1A1A1A;font-weight:600;",
   titleLink: "color:#1A1A1A;text-decoration:none;",
-  badgeLine: "display:inline-block;margin:12px 0 0;padding:6px 9px;background:#F3F4F6;border-radius:4px;font-size:12px;line-height:1.3;color:#374151;",
-  rule: "height:1px;background:#E5E5E5;margin:16px 0;",
-  analysisBlock: "margin:14px 0 0;",
-  blockTitle: "margin:0;font-size:12px;line-height:1.35;color:#737373;text-transform:uppercase;letter-spacing:.04em;font-weight:700;",
-  verdict: "margin:16px 0 0;padding-left:12px;border-left:3px solid #2563EB;font-size:15px;line-height:1.65;color:#1A1A1A;",
+  badgeLine: "display:inline-block;margin:13px 0 0;padding:6px 10px;background:#EEEAE2;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.3;color:#3F3A34;",
+  rule: "height:1px;background:#DDD6CC;margin:18px 0;",
+  analysisBlock: "margin:14px 0 0;padding:14px 16px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:10px;",
+  blockTitle: "margin:0;font-size:11px;line-height:1.35;color:#78716C;text-transform:uppercase;letter-spacing:.08em;font-weight:700;",
+  verdict: "margin:16px 0 0;padding-left:12px;border-left:3px solid #1D4ED8;font-size:15px;line-height:1.65;color:#1A1A1A;",
   ctaWrap: "margin:18px 0 0;",
-  cta: "display:inline-block;padding:10px 14px;background:#1A1A1A;border-radius:6px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
+  cta: "display:inline-block;padding:11px 16px;background:#1A1A1A;border-radius:8px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
   themeGrid: "margin:18px 0 8px;",
-  themeBox: "margin:10px 0 0;padding:14px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;",
-  empty: "margin:20px 0;padding:20px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;color:#737373;font-size:15px;",
-  footer: "padding:18px 0 0;border-top:1px solid #E5E5E5;",
+  themeBox: "margin:10px 0 0;padding:14px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;",
+  empty: "margin:20px 0;padding:20px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;color:#737373;font-size:15px;",
+  footer: "padding:18px 28px 24px;border-top:1px solid #E7E1D8;background:#FBFAF7;",
   footerText: "margin:6px 0 0;font-size:12px;line-height:1.6;color:#737373;",
   footerLink: "color:#737373;text-decoration:underline;",
 };
