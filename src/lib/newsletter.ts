@@ -652,7 +652,8 @@ export function buildDailyDigestContent(input: {
     ? `New startup profiles after editorial review${names ? `: ${names}` : ""}.`
     : "No new VentureDex profiles passed the delay gate.";
 
-  const itemHtml = input.items.map(({ startup, funding, research }) => startupCardHtml({
+  const itemHtml = input.items.map(({ startup, funding, research }, index) => startupCardHtml({
+    index,
     startup,
     funding,
     research,
@@ -669,15 +670,10 @@ export function buildDailyDigestContent(input: {
 
   const dateLabel = formatDate(input.periodEnd);
   const htmlMain = `
-    <div style="${styles.digestHero}">
-      <div style="${styles.heroKickerRow}">
-        <span style="${styles.heroKickerStrong}">Daily additions</span>
-        <span style="${styles.heroKicker}">${itemCount} ${itemCount === 1 ? "profile" : "profiles"} ready after review</span>
-      </div>
-      <h1 style="${styles.heroH1}">New on VentureDex</h1>
-      <p style="${styles.heroLede}">These companies were published after the editorial delay window, so the site record had time for cleanup before reaching inboxes.</p>
-      <div style="${styles.heroMetaLine}">Digest cutoff: ${escapeHtml(dateLabel)}</div>
-    </div>
+    ${sectionKicker("Daily additions", `${itemCount} ${itemCount === 1 ? "profile" : "profiles"} ready after review`)}
+    <h1 style="${styles.h1}">New on VentureDex</h1>
+    <p style="${styles.lede}">These companies were published after the editorial delay window, so the site record had time for cleanup before reaching inboxes.</p>
+    <p style="${styles.metaLine}">Digest cutoff: ${escapeHtml(dateLabel)}</p>
     ${itemHtml || emptyHtml("No new startup profiles passed the delay gate.")}
   `;
 
@@ -1774,6 +1770,7 @@ function renderHtmlEmail(input: {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="x-apple-disable-message-reformatting">
     <title>${escapeHtml(input.subject)}</title>
   </head>
   <body style="${styles.pageBody}">
@@ -1781,7 +1778,7 @@ function renderHtmlEmail(input: {
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.shell}">
       <tr>
         <td align="center" style="${styles.outerCell}">
-          <table role="presentation" width="680" cellspacing="0" cellpadding="0" style="${styles.container}">
+          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.container}">
             <tr>
               <td style="${styles.header}">
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.headerTable}">
@@ -1831,6 +1828,7 @@ function renderTextEmail(input: {
 }
 
 function startupCardHtml(input: {
+  index: number;
   startup: Startup;
   funding: FundingRound | null;
   research: StartupResearch | null;
@@ -1842,23 +1840,20 @@ function startupCardHtml(input: {
     ? `${funding.amount ? `${funding.amount} ` : ""}${funding.stage}${funding.lead_investor ? ` led by ${funding.lead_investor}` : ""}`
     : startup.funding_stage;
   const evidence = research?.product_evidence?.slice(0, 2) ?? [];
-  const risk = research?.risks?.[0]?.claim;
+  const risks = research?.risks?.slice(0, 2) ?? [];
   const context = research?.market_context;
 
   return `
     <article style="${styles.card}">
-      <div style="${styles.kicker}">${escapeHtml(metaLabel(startup))}</div>
+      <div style="${styles.kicker}">#${input.index + 1} ${escapeHtml(metaLabel(startup))}</div>
       <h2 style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
       ${startup.summary ? `<p style="${styles.summary}">${escapeHtml(startup.summary)}</p>` : ""}
       ${fundingText ? `<p style="${styles.badgeLine}">${escapeHtml(fundingText)}</p>` : ""}
-      ${startup.editor_note ? `<p style="${styles.body}">${escapeHtml(startup.editor_note)}</p>` : ""}
-      ${evidence.length ? `
-        <div style="${styles.rule}"></div>
-        <h3 style="${styles.blockTitle}">Product evidence</h3>
-        ${evidence.map((item) => evidenceHtml(item, research)).join("")}
-      ` : ""}
-      ${context?.why_now ? analysisBlock("Market context", context.why_now) : ""}
-      ${risk ? analysisBlock("Open question", risk) : ""}
+      <div style="${styles.rule}"></div>
+      ${analysisBlock("Product evaluation", startup.editor_note)}
+      ${dailyEvidenceHtml(evidence, research)}
+      ${dailyMarketContextHtml(context)}
+      ${dailyRisksHtml(risks)}
       <p style="${styles.ctaWrap}"><a href="${escapeAttr(startupUrl)}" style="${styles.cta}">Read profile</a></p>
     </article>
   `;
@@ -1877,14 +1872,71 @@ function startupText(input: {
     input.funding
       ? `Funding: ${input.funding.amount ? `${input.funding.amount} ` : ""}${input.funding.stage}${input.funding.lead_investor ? ` led by ${input.funding.lead_investor}` : ""}`
       : null,
-    input.startup.editor_note,
+    input.startup.editor_note ? `Product evaluation: ${input.startup.editor_note}` : null,
     input.research?.product_evidence?.[0]?.claim
-      ? `Product evidence: ${input.research.product_evidence[0].claim}${sourceText(input.research.product_evidence[0], input.research)}`
+      ? `Evidence used: ${input.research.product_evidence[0].claim}${sourceText(input.research.product_evidence[0], input.research)}`
       : null,
-    input.research?.risks?.[0]?.claim ? `Open question: ${input.research.risks[0].claim}` : null,
+    input.research?.market_context ? dailyMarketContextText(input.research.market_context) : null,
+    input.research?.risks?.[0]?.claim ? `Limits and risks: ${input.research.risks[0].claim}` : null,
     absoluteUrl(input.siteUrl, `/startups/${input.startup.slug}`),
   ];
   return lines.filter(Boolean).join("\n");
+}
+
+function dailyEvidenceHtml(
+  evidence: StartupResearch["product_evidence"],
+  research: StartupResearch | null
+): string {
+  if (!evidence.length) return "";
+  return `
+    <div style="${styles.analysisBlock}">
+      <h3 style="${styles.blockTitle}">Evidence used</h3>
+      ${evidence.map((item) => evidenceHtml(item, research)).join("")}
+    </div>
+  `;
+}
+
+function dailyMarketContextHtml(context: StartupResearch["market_context"]): string {
+  if (!context) return "";
+  const rows = [
+    ["Primary user", context.primary_user],
+    ["Category", context.category],
+    ["Differentiation", context.differentiation],
+    ["Why now", context.why_now],
+  ].filter((row): row is [string, string] => Boolean(row[1]));
+
+  if (!rows.length) return "";
+  return `
+    <div style="${styles.analysisBlock}">
+      <h3 style="${styles.blockTitle}">Market context</h3>
+      ${rows.map(([label, value]) => `
+        <p style="${styles.factLine}"><span style="${styles.factLabel}">${escapeHtml(label)}:</span> ${escapeHtml(value)}</p>
+      `).join("")}
+    </div>
+  `;
+}
+
+function dailyMarketContextText(context: NonNullable<StartupResearch["market_context"]>): string {
+  const rows = [
+    ["Primary user", context.primary_user],
+    ["Category", context.category],
+    ["Differentiation", context.differentiation],
+    ["Why now", context.why_now],
+  ].filter((row): row is [string, string] => Boolean(row[1]));
+
+  return rows.length
+    ? `Market context: ${rows.map(([label, value]) => `${label}: ${value}`).join("; ")}`
+    : "";
+}
+
+function dailyRisksHtml(risks: StartupResearch["risks"]): string {
+  if (!risks?.length) return "";
+  return `
+    <div style="${styles.analysisBlock}">
+      <h3 style="${styles.blockTitle}">Limits and risks</h3>
+      ${risks.map((risk) => `<p style="${styles.bodySmall}">${escapeHtml(risk.claim)}</p>`).join("")}
+    </div>
+  `;
 }
 
 function evidenceHtml(
@@ -1925,7 +1977,7 @@ function sourceText(
   return labels.length ? ` (Sources: ${labels.join(", ")})` : "";
 }
 
-function analysisBlock(label: string, value: string) {
+function analysisBlock(label: string, value: string | null | undefined) {
   if (!value) return "";
   return `
     <div style="${styles.analysisBlock}">
@@ -2029,45 +2081,40 @@ function chunk<T>(values: T[], size: number) {
 const styles = {
   pageBody: "margin:0;padding:0;background:#FAFAF9;color:#1A1A1A;font-family:Arial,'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;",
   shell: "width:100%;background:#F3F1EA;border-collapse:collapse;",
-  outerCell: "padding:28px 16px;",
-  container: "width:100%;max-width:680px;background:#FFFFFF;border:1px solid #E1DCD2;border-radius:14px;border-collapse:separate;overflow:hidden;",
-  header: "padding:22px 28px;border-bottom:1px solid #E7E1D8;",
+  outerCell: "padding:24px 12px;",
+  container: "width:100%;max-width:680px;background:#FFFFFF;border:1px solid #E1DCD2;border-radius:12px;border-collapse:separate;overflow:hidden;",
+  header: "padding:20px 24px;border-bottom:1px solid #E7E1D8;",
   headerTable: "width:100%;border-collapse:collapse;",
   logo: "font-family:Georgia,'Fraunces',serif;font-size:22px;font-weight:700;line-height:1.2;color:#1A1A1A;text-decoration:none;",
-  headerMeta: "font-size:12px;line-height:24px;color:#737373;",
-  content: "padding:26px 28px 28px;",
-  digestHero: "margin:0 0 22px;padding:24px 24px 22px;background:#151515;border-radius:12px;border:1px solid #151515;",
-  heroKickerRow: "margin:0 0 8px;",
-  heroKickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#86B7FF;font-weight:700;text-transform:uppercase;letter-spacing:.05em;",
-  heroKicker: "font-size:12px;line-height:1.4;color:#A8A29E;text-transform:uppercase;letter-spacing:.05em;",
-  heroH1: "margin:10px 0 12px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.08;color:#FAFAF9;font-weight:600;",
-  heroLede: "margin:0 0 18px;font-size:16px;line-height:1.65;color:#D6D3CC;",
-  heroMetaLine: "margin:0;font-size:12px;line-height:1.4;color:#A8A29E;font-family:'JetBrains Mono',ui-monospace,monospace;",
-  h1: "margin:8px 0 14px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.12;color:#1A1A1A;font-weight:600;",
-  lede: "margin:0 0 16px;font-size:17px;line-height:1.65;color:#4B5563;",
+  headerMeta: "font-size:12px;line-height:22px;color:#737373;",
+  content: "padding:24px 24px 28px;",
+  h1: "margin:8px 0 12px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.12;color:#1A1A1A;font-weight:600;",
+  lede: "margin:0 0 14px;font-size:16px;line-height:1.68;color:#4B5563;",
   body: "margin:14px 0 0;font-size:15px;line-height:1.72;color:#24211E;",
-  bodySmall: "margin:8px 0 0;font-size:14px;line-height:1.65;color:#4F4A45;",
+  bodySmall: "margin:8px 0 0;font-size:14px;line-height:1.68;color:#4F4A45;",
   sourceText: "font-size:12px;line-height:1.5;color:#78716C;",
   inlineLink: "color:#1D4ED8;text-decoration:underline;",
   summary: "margin:8px 0 0;font-size:16px;line-height:1.55;color:#1A1A1A;",
-  metaLine: "margin:0 0 22px;font-size:12px;line-height:1.4;color:#737373;font-family:'JetBrains Mono',ui-monospace,monospace;",
+  metaLine: "margin:0 0 22px;font-size:12px;line-height:1.45;color:#737373;font-family:'JetBrains Mono',ui-monospace,monospace;",
   kickerRow: "margin:0 0 8px;",
   kickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:.04em;",
   kicker: "font-size:12px;line-height:1.4;color:#737373;text-transform:uppercase;letter-spacing:.04em;",
-  card: "margin:18px 0 0;padding:22px;background:#FBFAF7;border:1px solid #DDD6CC;border-radius:12px;",
+  card: "margin:22px 0 0;padding:22px;background:#FFFFFF;border:1px solid #DDD6CC;border-radius:10px;",
   cardTitle: "margin:5px 0 0;font-family:Georgia,'Fraunces',serif;font-size:24px;line-height:1.22;color:#1A1A1A;font-weight:600;",
   titleLink: "color:#1A1A1A;text-decoration:none;",
-  badgeLine: "display:inline-block;margin:13px 0 0;padding:6px 10px;background:#EEEAE2;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.3;color:#3F3A34;",
-  rule: "height:1px;background:#DDD6CC;margin:18px 0;",
-  analysisBlock: "margin:14px 0 0;padding:14px 16px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:10px;",
-  blockTitle: "margin:0;font-size:11px;line-height:1.35;color:#78716C;text-transform:uppercase;letter-spacing:.08em;font-weight:700;",
-  verdict: "margin:16px 0 0;padding-left:12px;border-left:3px solid #1D4ED8;font-size:15px;line-height:1.65;color:#1A1A1A;",
-  ctaWrap: "margin:18px 0 0;",
-  cta: "display:inline-block;padding:11px 16px;background:#1A1A1A;border-radius:8px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
+  badgeLine: "display:inline-block;margin:13px 0 0;padding:6px 10px;background:#F3F0EA;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.35;color:#3F3A34;",
+  rule: "height:1px;background:#DDD6CC;margin:18px 0 16px;",
+  analysisBlock: "margin:16px 0 0;padding:0 0 0 14px;border-left:3px solid #E5DED4;",
+  blockTitle: "margin:0 0 7px;font-size:11px;line-height:1.35;color:#78716C;text-transform:uppercase;letter-spacing:.08em;font-weight:700;",
+  factLine: "margin:8px 0 0;font-size:14px;line-height:1.62;color:#4F4A45;",
+  factLabel: "font-weight:700;color:#3F3A34;",
+  verdict: "margin:16px 0 0;padding-left:14px;border-left:3px solid #1D4ED8;font-size:15px;line-height:1.65;color:#1A1A1A;",
+  ctaWrap: "margin:20px 0 0;",
+  cta: "display:inline-block;padding:11px 16px;background:#1A1A1A;border-radius:7px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
   themeGrid: "margin:18px 0 8px;",
   themeBox: "margin:10px 0 0;padding:14px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;",
   empty: "margin:20px 0;padding:20px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;color:#737373;font-size:15px;",
-  footer: "padding:18px 28px 24px;border-top:1px solid #E7E1D8;background:#FBFAF7;",
+  footer: "padding:18px 24px 24px;border-top:1px solid #E7E1D8;background:#FBFAF7;",
   footerText: "margin:6px 0 0;font-size:12px;line-height:1.6;color:#737373;",
   footerLink: "color:#737373;text-decoration:underline;",
 };

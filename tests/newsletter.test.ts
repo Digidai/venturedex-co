@@ -67,6 +67,9 @@ const research: StartupResearch = {
     },
   ],
   market_context: {
+    primary_user: "Compliance teams at regulated operators.",
+    category: "Workflow automation",
+    differentiation: "The product keeps policy evidence and approvals in the same operating surface.",
     why_now: "Regulated teams need operational evidence before audits.",
   },
   risks: [
@@ -141,11 +144,18 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.html, /background:#FAFAF9/);
   assert.match(rendered.html, /font-family:Georgia/);
   assert.match(rendered.html, /Example AI/);
-  assert.match(rendered.html, /Product evidence/);
+  assert.match(rendered.html, /Product evaluation/);
+  assert.match(rendered.html, /Evidence used/);
+  assert.match(rendered.html, /Market context/);
+  assert.match(rendered.html, /Limits and risks/);
   assert.match(rendered.html, /Official site/);
   assert.match(rendered.html, /Read profile/);
   assert.match(rendered.html, /Unsubscribe/);
   assert.match(rendered.text, /Example AI/);
+  assert.match(rendered.text, /Product evaluation/);
+  assert.match(rendered.text, /Evidence used/);
+  assert.match(rendered.text, /Market context/);
+  assert.match(rendered.text, /Limits and risks/);
   assert.match(rendered.text, /https:\/\/venturedex\.co\/startups\/example-ai/);
 });
 
