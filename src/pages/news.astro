@@ -30,6 +30,13 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     {rounds.length > 0 ? (
       <div class="table-wrap">
         <table class="funding-table">
+          <colgroup>
+            <col class="col-company" />
+            <col class="col-round" />
+            <col class="col-date" />
+            <col class="col-investor" />
+            <col class="col-press" />
+          </colgroup>
           <thead>
             <tr>
               <th>Company</th>
@@ -104,7 +111,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
 
 <style>
   .news-page {
-    max-width: 1000px;
+    max-width: 1120px;
     padding: var(--space-12) var(--space-6) var(--space-16);
   }
 
@@ -130,7 +137,29 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
 
   .funding-table {
     width: 100%;
+    min-width: 980px;
     border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .col-company {
+    width: 22%;
+  }
+
+  .col-round {
+    width: 10%;
+  }
+
+  .col-date {
+    width: 13%;
+  }
+
+  .col-investor {
+    width: 34%;
+  }
+
+  .col-press {
+    width: 21%;
   }
 
   .funding-table thead th {
@@ -198,9 +227,13 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
   }
 
   .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
     color: var(--color-text-secondary);
     font-size: 0.8rem;
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .source-link:hover {
