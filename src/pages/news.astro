@@ -13,8 +13,7 @@ import {
 import { getContentNewsEligibleFundingRounds } from "../lib/content";
 import { newsJsonLd } from "../lib/seo";
 
-const NEWS_ROUNDS_LIMIT = 100;
-const rounds = getContentNewsEligibleFundingRounds().slice(0, NEWS_ROUNDS_LIMIT);
+const rounds = getContentNewsEligibleFundingRounds();
 
 const description = "Track recent startup funding rounds with verified press sources, company profiles, investor context, and source-backed signals.";
 const schema = newsJsonLd(rounds, Astro.site?.toString());
@@ -68,7 +67,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
                   </td>
                   <td class="cell-round">
                     {r.amount && <span class="round-amount">{r.amount}</span>}
-                    <span class="round-stage">· {r.stage}</span>
+                    <span class="round-stage">{r.stage}</span>
                   </td>
                   <td class="cell-date">
                     {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
@@ -213,11 +212,18 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
   }
 
   .round-amount {
+    display: block;
     color: var(--color-accent);
     font-weight: 600;
+    line-height: 1.35;
   }
 
-  .round-stage,
+  .round-stage {
+    display: block;
+    color: var(--color-text-secondary);
+    line-height: 1.35;
+  }
+
   .cell-date {
     color: var(--color-text-secondary);
   }
