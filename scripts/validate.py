@@ -118,6 +118,22 @@ HTTP_OK = {"200", "301", "302", "307", "308", "403"}
 # These are connection-level/ambiguous results, not dead links, so they must not block CI.
 HTTP_FALLBACK = {"000", "405", "415"}
 HTTP_NON_BLOCKING = HTTP_OK | HTTP_FALLBACK
+HTTP_GET_RETRY_AFTER_HEAD = HTTP_FALLBACK | {"404", "406"}
+CURL_HEAD_HEADERS = [
+    "-A",
+    "Mozilla/5.0",
+]
+CURL_BROWSER_HEADERS = [
+    "--http1.1",
+    "-A",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+    "-H",
+    "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,"
+    "image/avif,image/webp,image/svg+xml,image/*,*/*;q=0.8",
+    "-H",
+    "Accept-Language: en-US,en;q=0.9",
+]
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
 ALLOWED_RESEARCH_SOURCE_TYPES = {
     "official",
@@ -974,7 +990,9 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
     )
 
     status = "000"
-    for extra_args in attempts:
+    definitive_status: str | None = None
+    for attempt_index, extra_args in enumerate(attempts):
+        headers = CURL_HEAD_HEADERS if attempt_index == 0 else CURL_BROWSER_HEADERS
         cmd = [
             "/usr/bin/curl",
             "-sS",
@@ -988,8 +1006,7 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
             "--retry-delay",
             "1",
             "--retry-all-errors",
-            "-A",
-            "Mozilla/5.0",
+            *headers,
             *extra_args,
             "-o",
             "/dev/null",
@@ -1003,12 +1020,19 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
             break
         status = proc.stdout.strip() or "000"
         if status in HTTP_OK:
+            definitive_status = status
             break
+        if attempt_index == 0 and status in HTTP_GET_RETRY_AFTER_HEAD:
+            if status not in HTTP_FALLBACK:
+                definitive_status = status
+            continue
         if status not in HTTP_FALLBACK:
-            break
+            definitive_status = status
+        break
 
-    cache[cache_key] = status
-    return status
+    resolved_status = definitive_status or status
+    cache[cache_key] = resolved_status
+    return resolved_status
 
 
 if __name__ == "__main__":
