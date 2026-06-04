@@ -387,5 +387,25 @@
   "sekai": {
     "published_at": "2026-06-02 05:53:31",
     "first_seen_at": "2026-06-02 05:53:31"
+  },
+  "cinder": {
+    "published_at": "2026-06-04 05:59:59",
+    "first_seen_at": "2026-06-04 05:59:59"
+  },
+  "gradient-labs": {
+    "published_at": "2026-06-04 05:59:59",
+    "first_seen_at": "2026-06-04 05:59:59"
+  },
+  "terra-ai": {
+    "published_at": "2026-06-04 05:59:59",
+    "first_seen_at": "2026-06-04 05:59:59"
+  },
+  "endra": {
+    "published_at": "2026-06-04 05:59:59",
+    "first_seen_at": "2026-06-04 05:59:59"
+  },
+  "arpio": {
+    "published_at": "2026-06-04 05:59:59",
+    "first_seen_at": "2026-06-04 05:59:59"
   }
 }

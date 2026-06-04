@@ -620,5 +620,42 @@
     "short_name": "S4S",
     "website": "https://www.s4sventures.com",
     "description": "Venture firm backing sports, media, entertainment, and consumer technology companies."
+  },
+  "radical-ventures": {
+    "name": "Radical Ventures",
+    "slug": "radical-ventures",
+    "short_name": "Radical",
+    "website": "https://radical.vc/",
+    "description": "Venture capital firm investing in AI-first companies."
+  },
+  "octopus-ventures": {
+    "name": "Octopus Ventures",
+    "slug": "octopus-ventures",
+    "short_name": "Octopus",
+    "website": "https://octopusventures.com/",
+    "description": "European venture capital firm backing early-stage technology companies.",
+    "aliases": ["Octopus Ventures and CommerzVentures"]
+  },
+  "commerzventures": {
+    "name": "CommerzVentures",
+    "slug": "commerzventures",
+    "short_name": "CommerzVentures",
+    "website": "https://commerzventures.com/",
+    "description": "Venture capital firm investing in fintech and insurtech companies."
+  },
+  "s3-ventures": {
+    "name": "S3 Ventures",
+    "slug": "s3-ventures",
+    "short_name": "S3",
+    "website": "https://www.s3vc.com/",
+    "description": "Austin-based venture capital firm backing business technology companies.",
+    "aliases": ["S3 Ventures and Paladin Capital Group"]
+  },
+  "paladin-capital-group": {
+    "name": "Paladin Capital Group",
+    "slug": "paladin-capital-group",
+    "short_name": "Paladin",
+    "website": "https://www.paladincapgroup.com/",
+    "description": "Global venture capital firm investing in cyber, AI, and resilience technology."
   }
 }

@@ -1,0 +1,69 @@
+{
+  "slug": "terra-ai",
+  "domain": "www.terraai.com",
+  "url": "https://www.terraai.com/",
+  "product_name": "Terra AI",
+  "summary": "Frontier AI platform for subsurface exploration decisions.",
+  "editor_note": "The bet is that natural-resource exploration should price uncertainty before it drills. Terra AI gives mining and reservoir teams a model-driven way to quantify subsurface risk, compare exploration paths, and ask sharper economic questions. Unlike generic geospatial dashboards, it narrows AI to the expensive moment where a wrong drill target burns capital. The risk is whether proprietary field data coverage keeps pace with customer expectations.",
+  "editor_rating": 4,
+  "why_featured": "Subsurface uncertainty engine",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "natural resources,subsurface ai,mining,reservoirs,exploration",
+  "investors": "Khosla Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-06-03",
+      "source_url": "https://www.terraai.com/blog-post/building-the-ai-native-platform-for-subsurface-modeling",
+      "source_name": "Terra AI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.terraai.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Terra AI Series A announcement",
+        "url": "https://www.terraai.com/blog-post/building-the-ai-native-platform-for-subsurface-modeling",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Terra AI works with mining and reservoir companies to accelerate subsurface exploration.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product copy emphasizes quantifying exploration uncertainty and supporting economic decisions before teams commit capital.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Mining, reservoir, geothermal, and carbon-storage teams making capital-intensive exploration decisions.",
+      "category": "AI / ML",
+      "differentiation": "Terra AI focuses on uncertainty modeling and project economics for subsurface teams rather than broad geospatial visualization.",
+      "why_now": "The June 2026 Series A arrives as critical-mineral, energy, geothermal, and carbon-storage projects demand better early exploration decisions."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether proprietary field-data coverage can keep pace with customer expectations across resource types.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

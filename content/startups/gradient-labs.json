@@ -1,0 +1,69 @@
+{
+  "slug": "gradient-labs",
+  "domain": "gradient-labs.ai",
+  "url": "https://gradient-labs.ai/",
+  "product_name": "Gradient Labs",
+  "summary": "AI-native customer operations agents for financial services teams.",
+  "editor_note": "The sharp choice is to automate regulated customer operations before chasing general support. Gradient Labs shows finance-specific agents for collections, fraud, and outbound workflows, with the site foregrounding a live fraud-attempt demo and secure design. Unlike broad chatbot vendors, it sells the handoff-heavy work banks cannot casually outsource. The risk is whether accuracy and compliance reviews slow expansion across institutions.",
+  "editor_rating": 4,
+  "why_featured": "Finance ops agents",
+  "product_type": "Fintech",
+  "region": "Europe",
+  "tags": "financial services,customer operations,ai agents,fraud,collections",
+  "investors": "Octopus Ventures, CommerzVentures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$26M",
+      "stage": "Series A",
+      "lead_investor": "Octopus Ventures and CommerzVentures",
+      "date": "2026-06-01",
+      "source_url": "https://gradient-labs.ai/blog/weve-raised-26m-to-bring-autonomous-customer-operations-to-financial-services",
+      "source_name": "Gradient Labs"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://gradient-labs.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Gradient Labs Series A announcement",
+        "url": "https://gradient-labs.ai/blog/weve-raised-26m-to-bring-autonomous-customer-operations-to-financial-services",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Gradient Labs as AI-native customer operations for financial-services teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage shows finance-specific agent workflows including fraud response, collections, outbound outreach, and handoff-heavy support work.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Banks, lenders, fintechs, and regulated financial-services operations leaders.",
+      "category": "Fintech",
+      "differentiation": "Gradient Labs narrows autonomous agents to finance-specific operations where fraud, collections, and regulated handoffs matter.",
+      "why_now": "The June 2026 Series A expansion gives the company fresh capital as financial institutions test specialist agents beyond generic support bots."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether accuracy, escalation, and compliance reviews slow cross-institution expansion.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

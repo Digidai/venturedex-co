@@ -1,0 +1,69 @@
+{
+  "slug": "endra",
+  "domain": "www.endra.ai",
+  "url": "https://www.endra.ai/",
+  "product_name": "Endra",
+  "summary": "AI-powered MEP design platform for model and documentation generation.",
+  "editor_note": "The bet is that MEP engineering can become model generation instead of manual drafting. Endra turns fire-alarm and building-system inputs into 2D and 3D documentation, supports Revit, DXF, PDF, RVT, and IFC exports, and claims a 300-hour project can compress to 30 minutes. Unlike generic CAD copilots, it starts inside one regulated engineering workflow. The risk is whether coverage expands beyond fire alarm without losing compliance precision.",
+  "editor_rating": 5,
+  "why_featured": "MEP design generation",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "construction,engineering,mep design,revit,ai design",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-01",
+      "source_url": "https://a16z.com/announcement/investing-in-endra/",
+      "source_name": "Andreessen Horowitz"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.endra.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Andreessen Horowitz investment announcement",
+        "url": "https://a16z.com/announcement/investing-in-endra/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a purpose-built MEP platform that generates 2D drawings and 3D models and syncs with Revit.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists DXF, PDF, RVT, and IFC exports plus fire-alarm standards and a 300-hours-versus-30-minutes case study.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "MEP engineers, fire-alarm designers, and construction-design teams producing regulated building documentation.",
+      "category": "AI / ML",
+      "differentiation": "Endra starts with narrow MEP generation, standards support, and Revit-ready outputs instead of a general CAD copilot.",
+      "why_now": "The June 2026 a16z-led Series A gives Endra capital to industrialize AI design generation for building systems."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether coverage expands beyond fire alarm while preserving compliance precision.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

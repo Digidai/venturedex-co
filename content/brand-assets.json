@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-02",
+  "verified_at": "2026-06-04",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -681,6 +681,41 @@
       "local_path": "/logos/companies/sekai.svg",
       "source_page": "https://sekaiapp.com/about",
       "source_url": "https://sekaiapp.com/favicon.svg"
+    },
+    "cinder": {
+      "name": "Cinder",
+      "shape": "icon",
+      "local_path": "/logos/companies/cinder.svg",
+      "source_page": "https://cinder.ai/",
+      "source_url": "https://cdn.prod.website-files.com/659bc2b8e77100ec0e8dff5f/65b94bd997b338b5cc0a3067_fav.svg"
+    },
+    "gradient-labs": {
+      "name": "Gradient Labs",
+      "shape": "icon",
+      "local_path": "/logos/companies/gradient-labs.png",
+      "source_page": "https://gradient-labs.ai/",
+      "source_url": "https://framerusercontent.com/images/ZKBmMsalRucGWFswVxWIpRhF9Zg.png"
+    },
+    "terra-ai": {
+      "name": "Terra AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/terra-ai.png",
+      "source_page": "https://www.terraai.com/",
+      "source_url": "https://framerusercontent.com/images/EnbIk3DykhiHUCFa0jbfSX60E.png"
+    },
+    "endra": {
+      "name": "Endra",
+      "shape": "icon",
+      "local_path": "/logos/companies/endra.png",
+      "source_page": "https://www.endra.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67a5e8c83de2b6b24e8c08e8/67a5e8c83de2b6b24e8c09d3_webclip.png"
+    },
+    "arpio": {
+      "name": "Arpio",
+      "shape": "icon",
+      "local_path": "/logos/companies/arpio.png",
+      "source_page": "https://arpio.io/",
+      "source_url": "https://arpio.io/wp-content/uploads/2021/11/cropped-arpio-favicon-250x250.png"
     }
   },
   "investors": {
@@ -1294,6 +1329,41 @@
       "local_path": "/logos/investors/s4s-ventures.svg",
       "source_page": "https://www.s4sventures.com",
       "source_url": "https://www.s4sventures.com/icon.svg"
+    },
+    "radical-ventures": {
+      "name": "Radical Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/radical-ventures.png",
+      "source_page": "https://radical.vc/",
+      "source_url": "https://radical.vc/wp-content/uploads/2023/12/cropped-radical-ventures-home-hero-roundelle-192x192.png"
+    },
+    "octopus-ventures": {
+      "name": "Octopus Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/octopus-ventures.png",
+      "source_page": "https://octopusventures.com/",
+      "source_url": "https://octopusventures.com/wp-content/themes/deepsea/apple-touch-icon.png"
+    },
+    "commerzventures": {
+      "name": "CommerzVentures",
+      "shape": "icon",
+      "local_path": "/logos/investors/commerzventures.webp",
+      "source_page": "https://commerzventures.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5f686a38d1746b5c050de238/1611330573509-2C9468K8UGTQD0U1L9AT/favicon.ico?format=100w"
+    },
+    "s3-ventures": {
+      "name": "S3 Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/s3-ventures.webp",
+      "source_page": "https://www.s3vc.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/67a3c6a3c557a324b174b928/1738786582402-B859TCMY747YE18OAN42/favicon.ico?format=100w"
+    },
+    "paladin-capital-group": {
+      "name": "Paladin Capital Group",
+      "shape": "icon",
+      "local_path": "/logos/investors/paladin-capital-group.png",
+      "source_page": "https://www.paladincapgroup.com/",
+      "source_url": "https://www.paladincapgroup.com/wp-content/uploads/2015/12/favicon.png"
     }
   }
 }

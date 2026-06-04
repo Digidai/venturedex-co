@@ -1,0 +1,69 @@
+{
+  "slug": "cinder",
+  "domain": "cinder.ai",
+  "url": "https://cinder.ai/",
+  "product_name": "Cinder",
+  "summary": "Trust and safety operations platform for AI-era abuse workflows.",
+  "editor_note": "The bet is that AI abuse needs an operations system, not another moderation queue. Cinder gives trust and safety teams agents, QA, integrations, audit trails, and incident intelligence in one command center, with OpenAI and Character.AI named as customers. Unlike generic CRM-based review tooling, it treats policy decisions as reusable intelligence. The risk is whether enterprise safety teams can adopt that depth without heavy services work.",
+  "editor_rating": 5,
+  "why_featured": "AI safety command center",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "trust and safety,ai safety,moderation,abuse operations,agents",
+  "investors": "Radical Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$41M",
+      "stage": "Series B",
+      "lead_investor": "Radical Ventures",
+      "date": "2026-05-12",
+      "source_url": "https://cinder.ai/resources/blog/cinder-raises-41m-series-b-ai-abuse",
+      "source_name": "Cinder"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://cinder.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cinder Series B announcement",
+        "url": "https://cinder.ai/resources/blog/cinder-raises-41m-series-b-ai-abuse",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes infrastructure that protects platforms from abuse, fraud, manipulation, and AI-driven attacks.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists agents, QA, third-party integrations, audit trails, incident intelligence, and explainability for safety teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Trust and safety, policy, and platform-operations teams protecting AI and consumer platforms.",
+      "category": "AI / ML",
+      "differentiation": "Cinder turns moderation, agent decisions, QA, integrations, and audit trails into an operations layer rather than a review queue.",
+      "why_now": "The May 2026 Series B follows rising AI-powered abuse and gives the company capital to sell safety operations as platform infrastructure."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether complex trust-and-safety deployments can become repeatable software rollouts rather than services projects.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

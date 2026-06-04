@@ -1,0 +1,69 @@
+{
+  "slug": "arpio",
+  "domain": "arpio.io",
+  "url": "https://arpio.io/",
+  "product_name": "Arpio",
+  "summary": "Automated cloud disaster recovery platform for AWS and Azure.",
+  "editor_note": "The useful bet is that disaster recovery should be rehearsed software, not a binder of runbooks. Arpio maps cloud dependencies, replicates infrastructure, tests failover, and automates failback across AWS and Azure, with customer evidence from Choice Hotels and Scotts Miracle-Gro. Unlike backup tools that stop at restore points, it owns the orchestration step. The risk is whether AI-native recovery claims stay credible under real outage pressure.",
+  "editor_rating": 4,
+  "why_featured": "Cloud DR orchestration",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "cloud disaster recovery,aws,azure,ransomware,failover",
+  "investors": "S3 Ventures, Paladin Capital Group",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "S3 Ventures and Paladin Capital Group",
+      "date": "2026-06-03",
+      "source_url": "https://www.citybiz.co/article/855011/arpio-raises-15-million-to-expand-cloud-recovery-automation-platform/",
+      "source_name": "citybiz"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://arpio.io/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "citybiz funding report",
+        "url": "https://www.citybiz.co/article/855011/arpio-raises-15-million-to-expand-cloud-recovery-automation-platform/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Arpio provides cloud disaster recovery for AWS and Azure, including dependency mapping and infrastructure replication.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product copy lists safe failover testing, predictable RTO and RPO, push-button recovery, and automated failback workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Cloud infrastructure, SRE, security, and business-continuity teams responsible for critical workloads.",
+      "category": "DevTools",
+      "differentiation": "Arpio owns failover orchestration, testing, dependency mapping, and failback rather than stopping at backup or restore points.",
+      "why_now": "The June 2026 Series A arrives as cloud teams face ransomware, provider outages, and recovery-time scrutiny across AWS and Azure."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether AI-native recovery claims remain credible during real outage pressure.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
