@@ -725,6 +725,7 @@ export function buildWeeklyDigestContent(input: {
         <div style="${styles.kicker}">#${index + 1} ${escapeHtml(metaLabel(startup))}</div>
         <h2 style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
         ${startup.summary ? `<p style="${styles.summary}">${escapeHtml(startup.summary)}</p>` : ""}
+        ${screenshotHtml(startup, input.siteUrl)}
         <div style="${styles.rule}"></div>
         ${analysisBlock("Why this week", pick.why_this_week)}
         ${analysisBlock("Product evaluation", pick.product_evaluation)}
@@ -1849,6 +1850,7 @@ function startupCardHtml(input: {
       <h2 style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
       ${startup.summary ? `<p style="${styles.summary}">${escapeHtml(startup.summary)}</p>` : ""}
       ${fundingText ? `<p style="${styles.badgeLine}">${escapeHtml(fundingText)}</p>` : ""}
+      ${screenshotHtml(startup, siteUrl)}
       <div style="${styles.rule}"></div>
       ${analysisBlock("Product evaluation", startup.editor_note)}
       ${dailyEvidenceHtml(evidence, research)}
@@ -1949,6 +1951,25 @@ function evidenceHtml(
       ${escapeHtml(item.claim)}
       ${sources ? `<br><span style="${styles.sourceText}">${sources}</span>` : ""}
     </p>
+  `;
+}
+
+function screenshotHtml(startup: Startup, siteUrl: string): string {
+  if (startup.screenshot_status !== "ready" || !startup.screenshot_r2_key) return "";
+
+  const screenshotUrl = absoluteUrl(siteUrl, `/screenshots/${startup.screenshot_r2_key}`);
+  const startupUrl = absoluteUrl(siteUrl, `/startups/${startup.slug}`);
+  const alt = `${startup.product_name} website screenshot`;
+
+  return `
+    <a href="${escapeAttr(startupUrl)}" style="${styles.screenshotLink}">
+      <img
+        src="${escapeAttr(screenshotUrl)}"
+        width="600"
+        alt="${escapeAttr(alt)}"
+        style="${styles.screenshotImage}"
+      >
+    </a>
   `;
 }
 
@@ -2099,20 +2120,22 @@ const styles = {
   kickerRow: "margin:0 0 8px;",
   kickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:.04em;",
   kicker: "font-size:12px;line-height:1.4;color:#737373;text-transform:uppercase;letter-spacing:.04em;",
-  card: "margin:22px 0 0;padding:22px;background:#FFFFFF;border:1px solid #DDD6CC;border-radius:10px;",
+  card: "margin:24px 0 0;padding:24px 0 0;background:transparent;border:0;border-top:1px solid #DDD6CC;border-radius:0;",
   cardTitle: "margin:5px 0 0;font-family:Georgia,'Fraunces',serif;font-size:24px;line-height:1.22;color:#1A1A1A;font-weight:600;",
   titleLink: "color:#1A1A1A;text-decoration:none;",
   badgeLine: "display:inline-block;margin:13px 0 0;padding:6px 10px;background:#F3F0EA;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.35;color:#3F3A34;",
-  rule: "height:1px;background:#DDD6CC;margin:18px 0 16px;",
-  analysisBlock: "margin:16px 0 0;padding:0 0 0 14px;border-left:3px solid #E5DED4;",
+  screenshotLink: "display:block;margin:16px 0 0;text-decoration:none;",
+  screenshotImage: "display:block;width:100%;max-width:100%;height:auto;border:1px solid #E7E1D8;border-radius:8px;background:#F7F4EF;",
+  rule: "height:1px;background:#DDD6CC;margin:20px 0 16px;",
+  analysisBlock: "margin:16px 0 0;padding:14px 0 0;border-top:1px solid #E7E1D8;",
   blockTitle: "margin:0 0 7px;font-size:11px;line-height:1.35;color:#78716C;text-transform:uppercase;letter-spacing:.08em;font-weight:700;",
   factLine: "margin:8px 0 0;font-size:14px;line-height:1.62;color:#4F4A45;",
   factLabel: "font-weight:700;color:#3F3A34;",
-  verdict: "margin:16px 0 0;padding-left:14px;border-left:3px solid #1D4ED8;font-size:15px;line-height:1.65;color:#1A1A1A;",
+  verdict: "margin:16px 0 0;padding:12px 0 0;border-top:1px solid #D6D3D1;font-size:15px;line-height:1.65;color:#1A1A1A;font-weight:600;",
   ctaWrap: "margin:20px 0 0;",
   cta: "display:inline-block;padding:11px 16px;background:#1A1A1A;border-radius:7px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
   themeGrid: "margin:18px 0 8px;",
-  themeBox: "margin:10px 0 0;padding:14px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;",
+  themeBox: "margin:12px 0 0;padding:0 0 12px;background:transparent;border:0;border-bottom:1px solid #E7E1D8;border-radius:0;",
   empty: "margin:20px 0;padding:20px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;color:#737373;font-size:15px;",
   footer: "padding:18px 24px 24px;border-top:1px solid #E7E1D8;background:#FBFAF7;",
   footerText: "margin:6px 0 0;font-size:12px;line-height:1.6;color:#737373;",

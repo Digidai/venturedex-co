@@ -144,6 +144,8 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.html, /background:#FAFAF9/);
   assert.match(rendered.html, /font-family:Georgia/);
   assert.match(rendered.html, /Example AI/);
+  assert.match(rendered.html, /https:\/\/venturedex\.co\/screenshots\/example-ai\.webp/);
+  assert.match(rendered.html, /Example AI website screenshot/);
   assert.match(rendered.html, /Product evaluation/);
   assert.match(rendered.html, /Evidence used/);
   assert.match(rendered.html, /Market context/);
@@ -151,6 +153,7 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.html, /Official site/);
   assert.match(rendered.html, /Read profile/);
   assert.match(rendered.html, /Unsubscribe/);
+  assert.doesNotMatch(rendered.html, /border-left/);
   assert.match(rendered.text, /Example AI/);
   assert.match(rendered.text, /Product evaluation/);
   assert.match(rendered.text, /Evidence used/);
@@ -232,9 +235,12 @@ test("renders weekly digest from issue copy and pick evaluation", () => {
   assert.equal(digest.sendKey, "weekly:12");
   assert.match(rendered.html, /Weekly research/);
   assert.match(rendered.html, /Workflow wedges worth tracking/);
+  assert.match(rendered.html, /https:\/\/venturedex\.co\/screenshots\/example-ai\.webp/);
+  assert.match(rendered.html, /Example AI website screenshot/);
   assert.match(rendered.html, /Product evaluation/);
   assert.match(rendered.html, /Evidence used/);
   assert.match(rendered.html, /Limits and risks/);
+  assert.doesNotMatch(rendered.html, /border-left/);
   assert.match(rendered.text, /Full issue: https:\/\/venturedex\.co\/weekly\/12/);
   assert.match(rendered.text, /Adoption evidence is not public/);
 });
