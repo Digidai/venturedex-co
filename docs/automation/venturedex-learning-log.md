@@ -1886,3 +1886,70 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, investor aliases for co-led rounds, brand assets, and local screenshots for all five accepted startups.
   - `bb-browser` verified accepted official pages and reported no JavaScript errors; Playwright wrapper console noise for Sekai was limited to GA and Ashby route-prefetch network errors, and Trajectory emitted analytics network errors plus recoverable Framer hydration warnings while still rendering product sections.
   - verification passed: `./scripts/check-github-actions.sh`, `./scripts/validate.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
+
+### 2026-06-03 13:44 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: bootstrap-blocked
+- validation: not run; the required bootstrap hard gate failed before candidate discovery
+- weekly_validate: n/a
+- build_db: n/a
+- build_app: n/a
+- screenshot: n/a
+- commit_push: not attempted
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: not observed; bootstrap stopped before GitHub Actions preflight completion
+- live_smoke: n/a
+- newsletter: not manually triggered; no new content was published, so the Daily delay window did not start for this run
+- failure_tags: [other]
+- reward: -1
+- dominant_failure_mode: `./scripts/bootstrap-automation.sh venturedex-daily-curator` verified `cloudflare_token: active`, then failed during the Cloudflare R2 bucket capability check with `requests.exceptions.SSLError` / `SSL: UNEXPECTED_EOF_WHILE_READING` against `https://api.cloudflare.com/client/v4/accounts/48d9ccaf5ee7914c803b5d0656462848/r2/buckets`.
+- proposed_change: none; this is an external/bootstrap dependency failure, and the runbook already requires stopping when bootstrap fails.
+- decision: none
+- affected_file: docs/automation/venturedex-learning-log.md
+- affected_section: daily curator hard gate
+- evidence:
+  - required docs were read before execution: `docs/automation/README.md`, `content/STANDARD.md`, `content/CODEX_TASK.md`, `docs/automation/venturedex-daily-runbook.md`, `docs/automation/venturedex-feedback-loop.md`, `docs/automation/venturedex-learning-log.md`, `docs/newsletter.md`, and `docs/observability.md`.
+  - `main` was synced with `origin/main` and the worktree started clean before bootstrap.
+  - bootstrap output confirmed `repo-local .env already present` and `cloudflare_token: active`.
+  - bootstrap failed before candidate discovery on a Cloudflare API HTTPS EOF while checking R2 buckets, so the automation did not run rejected-only fallback, did not edit content, did not trigger newsletter, and did not push.
+
+### 2026-06-04 14:48 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-updated
+- validation: pass; final `./scripts/manage.sh validate` passed with 102/102 startups, zero errors, existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
+- build_app: pass through `./scripts/manage.sh validate`
+- screenshot: pass after iteration; Cinder used the standard screenshot path, Gradient Labs was recaptured after rejecting a consent banner, Terra AI used the guarded fallback after `bb-browser` verified product content and no JS errors, Endra required manual clean capture after a real cookie layer and one rejected dark/loading frame, and Arpio used the guarded fallback after a chat-widget/popup false positive
+- commit_push: content commit `b479363` created; learning-log commit pending at write time
+- commit_sha: b47936326fa41ff0300cf054f1f9bfeedffaf46f for content additions
+- pushed_branch: pending at learning-log write time
+- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active before publish
+- live_smoke: pending deploy after push
+- newsletter: not manually triggered; Daily newsletter remains governed by the Cloudflare Cron 13:30 UTC / 21:30 Asia/Shanghai schedule and the default 6-hour daily delay window
+- failure_tags: [screenshot_env, other]
+- reward: 3
+- dominant_failure_mode: screenshot automation stayed conservative around consent, chat-widget, and animation-heavy pages; product validity was clear, but final captures needed visual review and targeted recapture.
+- proposed_change: none; current runbook already covers overlay inspection, clean recapture, visual review, generated-output cleanup, and D1-backed newsletter state separation.
+- decision: none
+- affected_file: content/startups/cinder.json, content/startups/gradient-labs.json, content/startups/terra-ai.json, content/startups/endra.json, content/startups/arpio.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted Cinder from its May 12, 2026 $41M Series B led by Radical Ventures; official and `bb-browser` review verified abuse, fraud, manipulation, agents, QA, integrations, audit trails, incident intelligence, and explainability evidence.
+  - accepted Gradient Labs from its June 1, 2026 $26M Series A co-led by Octopus Ventures and CommerzVentures; official review verified financial-services customer operations, fraud, collections, outbound, and handoff-heavy agent workflows.
+  - accepted Terra AI from its June 3, 2026 $20M Series A led by Khosla Ventures; official review verified mining and reservoir exploration, subsurface uncertainty modeling, and exploration-economics decision support.
+  - accepted Endra from its June 1, 2026 $50M Series A led by Andreessen Horowitz; official review verified AI-powered MEP model and documentation generation, Revit support, DXF/PDF/RVT/IFC exports, fire-alarm standards, and the 300-hours-versus-30-minutes case study.
+  - accepted Arpio from its June 3, 2026 $15M Series A co-led by S3 Ventures and Paladin Capital Group; official review verified AWS/Azure disaster recovery, dependency mapping, infrastructure replication, failover testing, RTO/RPO, push-button recovery, and failback automation.
+  - rejected Recursive Superintelligence, Chexy, Nsave, GigFinesse, Humand, Flok Health, GradBridge, Tripo AI, Datamasque, Apoha, InGenix, Quobly, Gigaton, Town, and Wordsmith for product inspectability, stale/current-source, schema, hardware, or taste-ranking reasons.
+  - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, investor aliases for co-led rounds, brand assets, and local screenshots for all five accepted startups.
+  - verification passed: `./scripts/check-github-actions.sh`, `./scripts/validate.sh`, `./scripts/manage.sh validate` twice after a formatting-only investor cleanup, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
