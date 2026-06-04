@@ -1924,23 +1924,23 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - accepted: 5
 - rejected: 15
 - rejection_bar_met: yes
-- outcome: daily-content-updated
+- outcome: daily-content-live-deploy-smoke-blocked
 - validation: pass; final `./scripts/manage.sh validate` passed with 102/102 startups, zero errors, existing brand-asset warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build
 - weekly_validate: n/a
 - build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output
 - build_app: pass through `./scripts/manage.sh validate`
 - screenshot: pass after iteration; Cinder used the standard screenshot path, Gradient Labs was recaptured after rejecting a consent banner, Terra AI used the guarded fallback after `bb-browser` verified product content and no JS errors, Endra required manual clean capture after a real cookie layer and one rejected dark/loading frame, and Arpio used the guarded fallback after a chat-widget/popup false positive
-- commit_push: content commit `b479363` created; learning-log commit pending at write time
-- commit_sha: b47936326fa41ff0300cf054f1f9bfeedffaf46f for content additions
-- pushed_branch: pending at learning-log write time
-- ci_deploy: preflight pass; `./scripts/check-github-actions.sh` reported `.github/workflows/ci.yml` and `.github/workflows/deploy.yml` active before publish
-- live_smoke: pending deploy after push
-- newsletter: not manually triggered; Daily newsletter remains governed by the Cloudflare Cron 13:30 UTC / 21:30 Asia/Shanghai schedule and the default 6-hour daily delay window
-- failure_tags: [screenshot_env, other]
-- reward: 3
-- dominant_failure_mode: screenshot automation stayed conservative around consent, chat-widget, and animation-heavy pages; product validity was clear, but final captures needed visual review and targeted recapture.
-- proposed_change: none; current runbook already covers overlay inspection, clean recapture, visual review, generated-output cleanup, and D1-backed newsletter state separation.
-- decision: none
+- commit_push: pass; content commit `b479363` and initial learning-log commit `19e63ae` were pushed to `main`; see the Git commit containing this corrected entry for the final deploy-blocker log update
+- commit_sha: b47936326fa41ff0300cf054f1f9bfeedffaf46f for content additions; 19e63ae30b24953b65ed865f708fafb107a9cfe9 for the initial learning-log commit
+- pushed_branch: main
+- ci_deploy: partial; GitHub Validate `26935796921` passed, while Deploy `26935796938` uploaded Worker version `065d1dfd-910f-4f33-9f71-a7bc281f307e` and then failed post-release smoke
+- live_smoke: blocked by source-scope mismatch; after propagation, both Worker and canonical smoke fail only because `/news` renders 100 rows while remote D1 has 102 startups
+- newsletter: not manually triggered; remote D1 latest Daily send remained the prior skipped delayed-window row from 2026-06-03 with zero queued deliveries, and this run's additions become delay-eligible after 2026-06-04 11:59:59 UTC before the 13:30 UTC / 21:30 Asia/Shanghai Daily Cron
+- failure_tags: [screenshot_env, source_scope, smoke_limit]
+- reward: 1
+- dominant_failure_mode: content curation and local gates passed, but the post-deploy smoke gate exposed a latent source/runtime mismatch once the corpus crossed 100 startups: `/news` intentionally caps visible rounds at 100 while smoke expects the visible news-row count to equal D1 startup count.
+- proposed_change: deferred; in a non-Daily source-scope change, align `src/pages/news.astro` and `scripts/smoke-live.py` by either removing/raising the `NEWS_ROUNDS_LIMIT` cap or making smoke explicitly aware of the documented cap.
+- decision: deferred
 - affected_file: content/startups/cinder.json, content/startups/gradient-labs.json, content/startups/terra-ai.json, content/startups/endra.json, content/startups/arpio.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
 - affected_section: daily curator
 - evidence:
@@ -1953,3 +1953,6 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - rejected Recursive Superintelligence, Chexy, Nsave, GigFinesse, Humand, Flok Health, GradBridge, Tripo AI, Datamasque, Apoha, InGenix, Quobly, Gigaton, Town, and Wordsmith for product inspectability, stale/current-source, schema, hardware, or taste-ranking reasons.
   - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, investor aliases for co-led rounds, brand assets, and local screenshots for all five accepted startups.
   - verification passed: `./scripts/check-github-actions.sh`, `./scripts/validate.sh`, `./scripts/manage.sh validate` twice after a formatting-only investor cleanup, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - pushed content commit `b47936326fa41ff0300cf054f1f9bfeedffaf46f` and docs commit `19e63ae30b24953b65ed865f708fafb107a9cfe9`; GitHub Validate `26935796921` passed.
+  - Deploy `26935796938` uploaded Worker version `065d1dfd-910f-4f33-9f71-a7bc281f307e` but failed post-release smoke; remote D1 contains 102 startups and all five new slugs, all five new detail pages return HTTP 200, homepage contains all five new links, and `/news` includes all five new rows.
+  - root cause is source-scope only: `src/pages/news.astro` sets `NEWS_ROUNDS_LIMIT = 100`, while `scripts/smoke-live.py` expects the visible news-row count to equal the remote D1 startup count; Daily immutable guards block editing either file during this run.
