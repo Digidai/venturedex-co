@@ -1,0 +1,75 @@
+{
+  "slug": "scotch",
+  "domain": "scotchpos.com",
+  "url": "https://scotchpos.com/",
+  "product_name": "Scotch",
+  "summary": "Liquor-retail POS and back office for inventory, invoices, ordering, and payments.",
+  "editor_note": "Liquor stores are a better wedge than generic retail sounds. Scotch starts with case breaks, 30-distributor invoices, offline checkout, age checks, ordering, receiving, and margin dashboards. Unlike restaurant POS software retrofitted for bottle shops, it encodes the awkward unit economics of liquor retail. The risk is whether a vertical POS can keep its edge once incumbents copy the obvious workflows.",
+  "editor_rating": 4,
+  "why_featured": "Liquor-specific POS",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "retail,pos,liquor stores,inventory,payments",
+  "investors": "VMG Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "VMG Partners",
+      "date": "2026-06-04",
+      "source_url": "https://www.prnewswire.com/news-releases/scotch-raises-20m-series-a-to-modernize-liquor-stores-surpasses-1b-in-payment-volume-302790781.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://scotchpos.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_page",
+        "label": "Liquor store POS product page",
+        "url": "https://scotchpos.com/liquor-store-pos-system/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Scotch Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/scotch-raises-20m-series-a-to-modernize-liquor-stores-surpasses-1b-in-payment-volume-302790781.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents POS, payments, inventory, ordering, receiving, analytics, invoice reading, and offline selling as core surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The liquor-store product page describes case-break tracking, distributor invoice automation, shrinkage reports, age verification, and AI ordering tools.",
+        "source_ids": [
+          "product_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Independent and multi-store liquor retailers managing high-SKU inventory, checkout, compliance, and distributor workflows.",
+      "category": "SaaS",
+      "differentiation": "Scotch narrows POS around liquor-specific units, invoices, compliance, and ordering instead of broad restaurant or general-retail workflows.",
+      "why_now": "The June 2026 Series A follows more than $1B in annual gross payment volume and gives the company capital to expand a vertical retail operating system."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether vertical depth remains durable if broad POS incumbents clone the highest-value liquor workflows.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

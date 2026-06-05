@@ -1,0 +1,69 @@
+{
+  "slug": "scispot",
+  "domain": "www.scispot.com",
+  "url": "https://www.scispot.com/",
+  "product_name": "Scispot",
+  "summary": "AI-native lab operating layer for LIMS, inventory, integrations, and Scibot.",
+  "editor_note": "Lab software usually makes scientists choose between notebook, LIMS, and inventory systems. Scispot's bet is one operating layer: LabOS, sample traceability, GLUE integrations, Scibot, API, Python SDK, and CLI in the same surface. Unlike point ELNs, it sells the connective tissue. The risk is whether every lab's messy instruments can really fit the model.",
+  "editor_rating": 4,
+  "why_featured": "LabOS with AI assistant",
+  "product_type": "HealthTech",
+  "region": "Global / Remote",
+  "tags": "life sciences,lab operations,lims,inventory,ai assistant",
+  "investors": "Avenue Growth Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Series A",
+      "lead_investor": "Avenue Growth Partners",
+      "date": "2026-06-04",
+      "source_url": "https://www.prnewswire.com/news-releases/scispot-raises-8m-series-a-to-help-life-sciences-labs-move-faster-302790717.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.scispot.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Scispot Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/scispot-raises-8m-series-a-to-help-life-sciences-labs-move-faster-302790717.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows LabOS, alt-LIMS, inventory management, GLUE integrations, and Scibot as connected lab-operation modules.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface advertises API, JupyterHub, Python SDK, and CLI access for code-first lab automation.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Biotech, diagnostics, genomics, testing, and CRO lab teams running sample-heavy operations.",
+      "category": "HealthTech",
+      "differentiation": "Scispot combines LIMS-like traceability, inventory, integrations, AI search, and code interfaces rather than selling a single lab notebook.",
+      "why_now": "The June 2026 Series A arrives as labs look for auditable automation across instruments, samples, reports, and scientific data systems."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether one operating layer can absorb the custom instruments and workflows inside every specialized lab.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

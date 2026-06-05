@@ -1,0 +1,69 @@
+{
+  "slug": "willow",
+  "domain": "withwillow.ai",
+  "url": "https://withwillow.ai/",
+  "product_name": "Willow",
+  "summary": "Governance layer for AI agents, MCP tools, permissions, and audit trails.",
+  "editor_note": "The useful angle is not another agent gateway; it is permissioning for the messy agents employees already bring to work. Willow maps agents, tools, MCP servers, identities, policies, and audit trails across 1000+ connectors. Unlike routing-only gateways, it tries to govern what an agent can do inside each tool. The risk is whether teams accept a control layer before shadow AI becomes painful enough.",
+  "editor_rating": 4,
+  "why_featured": "Agent permission layer",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "ai agents,security,mcp,identity,governance",
+  "investors": "Hetz Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "Hetz Ventures",
+      "date": "2026-06-04",
+      "source_url": "https://www.prnewswire.com/news-releases/willow-raises-7m-seed-to-ensure-enterprises-can-fully-oversee-and-govern-autonomous-agents-302791492.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://withwillow.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Willow seed announcement",
+        "url": "https://www.prnewswire.com/news-releases/willow-raises-7m-seed-to-ensure-enterprises-can-fully-oversee-and-govern-autonomous-agents-302791492.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows discovery for AI agents, tools, and MCP servers, plus shadow AI detection and usage analytics.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Willow describes build/runtime guards, permissioned tool access, audit trails, IdP connection, Slack/Jira/GitHub connectors, and API-to-MCP conversion.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security, IT, compliance, and AI-platform teams letting employees use autonomous agents at work.",
+      "category": "AI / ML",
+      "differentiation": "Willow governs agent identity, tool permissions, MCP access, and auditability rather than only routing agent traffic.",
+      "why_now": "The June 2026 seed round lands as enterprises discover unmanaged agents and need enforceable controls beyond policy documents."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether teams adopt a control layer early enough, before unmanaged agent usage creates a visible incident.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

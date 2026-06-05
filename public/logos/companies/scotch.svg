@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="64" height="64"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_571_53835)">
+<rect width="64" height="64" fill="white"></rect>
+<path d="M3.11429 23.0813C3.11429 23.0813 16.6275 17.9813 31.9975 30.5277C47.3675 43.0739 60.8808 39.9117 60.8808 39.9117V60.2101H3.11429V23.0813Z" fill="#FFECD2"></path>
+<path d="M3.11429 34.0121C3.11429 34.2145 4.97105 34.9226 5.07421 35.0238C6.82784 35.8329 8.6846 36.3387 10.5414 36.8444C15.8022 38.0581 21.2694 37.8559 26.3239 35.9341C30.0375 34.5182 33.3384 32.0903 37.0523 30.5731C42.4161 28.2467 48.1927 26.8306 53.9695 26.9318C56.2386 27.033 58.7144 27.134 60.8808 28.0443V60.2101H3.11429C3.11429 60.0077 3.11429 34.0121 3.11429 34.0121Z" fill="#E5AF77"></path>
+<path d="M3.11429 43.5697C11.4698 46.8979 20.0316 49.4193 29.1091 47.6038C31.585 47.0997 33.9575 46.3936 36.33 45.6877C40.3529 44.276 44.2729 42.8638 48.3988 41.8554C52.422 40.9476 56.7545 40.2417 60.8808 41.1493V60.2102H3.11429V43.5697Z" fill="#D77C3C"></path>
+<rect x="2" y="1.93616" width="60.0639" height="60.0639" stroke="black" stroke-width="4"></rect>
+</g>
+<defs>
+<clipPath id="SvgjsClipPath1001">
+<rect width="64" height="64" fill="white"></rect>
+</clipPath>
+</defs>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>

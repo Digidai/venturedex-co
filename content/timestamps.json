@@ -407,5 +407,25 @@
   "arpio": {
     "published_at": "2026-06-04 05:59:59",
     "first_seen_at": "2026-06-04 05:59:59"
+  },
+  "scispot": {
+    "published_at": "2026-06-05 05:53:18",
+    "first_seen_at": "2026-06-05 05:53:18"
+  },
+  "scotch": {
+    "published_at": "2026-06-05 05:53:18",
+    "first_seen_at": "2026-06-05 05:53:18"
+  },
+  "willow": {
+    "published_at": "2026-06-05 05:53:18",
+    "first_seen_at": "2026-06-05 05:53:18"
+  },
+  "zerodrift": {
+    "published_at": "2026-06-05 05:53:18",
+    "first_seen_at": "2026-06-05 05:53:18"
+  },
+  "gridcare": {
+    "published_at": "2026-06-05 05:53:18",
+    "first_seen_at": "2026-06-05 05:53:18"
   }
 }

@@ -19,7 +19,9 @@
     "short_name": "Sequoia",
     "website": "https://www.sequoiacap.com",
     "description": "Helps daring founders build legendary companies from idea to IPO and beyond.",
-    "aliases": ["Sequoia Capital Scout"]
+    "aliases": [
+      "Sequoia Capital Scout"
+    ]
   },
   "yc": {
     "name": "Y Combinator",
@@ -83,7 +85,9 @@
     "short_name": "Thrive",
     "website": "https://www.thrivecap.com",
     "description": "Investment firm built to support the best technology companies at every stage.",
-    "aliases": ["Thrive Capital and Sequoia Capital"]
+    "aliases": [
+      "Thrive Capital and Sequoia Capital"
+    ]
   },
   "qumra-capital": {
     "name": "Qumra Capital",
@@ -105,7 +109,9 @@
     "short_name": "Khosla",
     "website": "https://www.khoslaventures.com",
     "description": "Venture capital firm backing founders building bold technology companies from early stages through growth.",
-    "aliases": ["Khosla Ventures and Connect Ventures"]
+    "aliases": [
+      "Khosla Ventures and Connect Ventures"
+    ]
   },
   "inovo-vc": {
     "name": "Inovo VC",
@@ -372,7 +378,9 @@
     "short_name": "Magarac",
     "website": "https://www.magarac.vc",
     "description": "Pittsburgh-based early-stage venture firm investing in technology companies across the Midwest.",
-    "aliases": ["Magarac Venture Partners and Veredas Partners"]
+    "aliases": [
+      "Magarac Venture Partners and Veredas Partners"
+    ]
   },
   "veredas-partners": {
     "name": "Veredas Partners",
@@ -387,7 +395,9 @@
     "short_name": "Forestay",
     "website": "https://www.forestay.vc",
     "description": "Early-growth technology investment firm based in London and Geneva backing enterprise AI and software companies.",
-    "aliases": ["Forestay Capital and Notion Capital"]
+    "aliases": [
+      "Forestay Capital and Notion Capital"
+    ]
   },
   "notion-capital": {
     "name": "Notion Capital",
@@ -402,7 +412,9 @@
     "short_name": "VoLo Earth",
     "website": "https://www.voloearthventures.com",
     "description": "Climate technology venture firm backing founders building products for the global energy transition.",
-    "aliases": ["VoLo Earth and Equal Ventures"]
+    "aliases": [
+      "VoLo Earth and Equal Ventures"
+    ]
   },
   "equal-ventures": {
     "name": "Equal Ventures",
@@ -424,7 +436,9 @@
     "short_name": "First Round",
     "website": "https://www.firstround.com",
     "description": "Seed-stage venture capital firm focused on supporting founders from the earliest company-building stages.",
-    "aliases": ["First Round Capital and Quiet Capital"]
+    "aliases": [
+      "First Round Capital and Quiet Capital"
+    ]
   },
   "quiet-capital": {
     "name": "Quiet Capital",
@@ -509,7 +523,9 @@
     "short_name": "Wing",
     "website": "https://www.wing.vc",
     "description": "Early-stage venture capital firm investing in enterprise technology, AI, security, data, and software infrastructure.",
-    "aliases": ["Wing Venture Capital and Madrona"]
+    "aliases": [
+      "Wing Venture Capital and Madrona"
+    ]
   },
   "madrona": {
     "name": "Madrona",
@@ -598,7 +614,9 @@
     "short_name": "Nexus",
     "website": "https://www.nexusvp.com",
     "description": "Venture capital firm partnering with technology founders across the US and India.",
-    "aliases": ["Nexus Venture Partners and Dell Technologies Capital"]
+    "aliases": [
+      "Nexus Venture Partners and Dell Technologies Capital"
+    ]
   },
   "dell-technologies-capital": {
     "name": "Dell Technologies Capital",
@@ -634,7 +652,9 @@
     "short_name": "Octopus",
     "website": "https://octopusventures.com/",
     "description": "European venture capital firm backing early-stage technology companies.",
-    "aliases": ["Octopus Ventures and CommerzVentures"]
+    "aliases": [
+      "Octopus Ventures and CommerzVentures"
+    ]
   },
   "commerzventures": {
     "name": "CommerzVentures",
@@ -649,7 +669,9 @@
     "short_name": "S3",
     "website": "https://www.s3vc.com/",
     "description": "Austin-based venture capital firm backing business technology companies.",
-    "aliases": ["S3 Ventures and Paladin Capital Group"]
+    "aliases": [
+      "S3 Ventures and Paladin Capital Group"
+    ]
   },
   "paladin-capital-group": {
     "name": "Paladin Capital Group",
@@ -657,5 +679,36 @@
     "short_name": "Paladin",
     "website": "https://www.paladincapgroup.com/",
     "description": "Global venture capital firm investing in cyber, AI, and resilience technology."
+  },
+  "avenue-growth-partners": {
+    "name": "Avenue Growth Partners",
+    "slug": "avenue-growth-partners",
+    "short_name": "Avenue",
+    "website": "https://www.avenuegp.com/",
+    "description": "Early growth equity firm partnering with vertical-specific B2B software companies."
+  },
+  "vmg-partners": {
+    "name": "VMG Partners",
+    "slug": "vmg-partners",
+    "short_name": "VMG",
+    "website": "https://www.vmgpartners.com/",
+    "description": "Investment firm backing consumer brands, services, and technologies shaping consumer markets."
+  },
+  "hetz-ventures": {
+    "name": "Hetz Ventures",
+    "slug": "hetz-ventures",
+    "short_name": "Hetz",
+    "website": "https://www.hetz.vc/",
+    "description": "Israel-based seed fund backing AI infrastructure, data infrastructure, and cybersecurity startups."
+  },
+  "sutter-hill-ventures": {
+    "name": "Sutter Hill Ventures",
+    "slug": "sutter-hill-ventures",
+    "short_name": "Sutter Hill",
+    "website": "https://shv.com/",
+    "description": "Silicon Valley venture capital firm backing technology companies from early stages.",
+    "aliases": [
+      "Sutter Hill Ventures and John Doerr"
+    ]
   }
 }

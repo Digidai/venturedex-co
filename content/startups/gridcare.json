@@ -1,0 +1,69 @@
+{
+  "slug": "gridcare",
+  "domain": "www.gridcare.ai",
+  "url": "https://www.gridcare.ai/",
+  "product_name": "GridCARE",
+  "summary": "AI-native power activation platform for data-center grid capacity.",
+  "editor_note": "The interesting bet is that AI infrastructure is constrained by interconnection, not just GPUs. GridCARE turns grid utilization, congestion, outages, weather, and flexible-load dispatch into Power Finder, Activation, and Operations workflows. Unlike energy dashboards, it sells under-12-month time to power and 650 MW connection capacity evidence. The risk is whether utility partnerships scale city by city.",
+  "editor_rating": 4,
+  "why_featured": "Grid capacity engine",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "energy,ai infrastructure,data centers,grid,utilities",
+  "investors": "Sutter Hill Ventures",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$64M",
+      "stage": "Series A",
+      "lead_investor": "Sutter Hill Ventures and John Doerr",
+      "date": "2026-05-14",
+      "source_url": "https://www.businesswire.com/news/home/20260514546216/en/GridCARE-Raises-%2464-Million-Series-A-from-Leading-AI-and-Energy-Investors-to-Create-a-New-Category-Power-Acceleration-for-AI",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.gridcare.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GridCARE Series A announcement",
+        "url": "https://www.businesswire.com/news/home/20260514546216/en/GridCARE-Raises-%2464-Million-Series-A-from-Leading-AI-and-Energy-Investors-to-Create-a-New-Category-Power-Acceleration-for-AI",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Power Finder, Power Activation, and Power Operations as platform modules for data-center energy activation and delivery.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "GridCARE publishes evidence for under-12-month activated power, 650 MW of identified New York connection capacity, and hundreds of megawatts unlocked for AI infrastructure.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI data-center developers, utilities, and energy operators trying to connect large flexible loads faster.",
+      "category": "Climate / Sustainability",
+      "differentiation": "GridCARE applies AI and grid modeling to latent capacity and flexible interconnection rather than waiting for new transmission buildout.",
+      "why_now": "The May 2026 Series A comes as power availability becomes a binding constraint for AI data centers and local grid planning."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether utility-by-utility approvals and local grid constraints let the model scale beyond early marquee projects.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

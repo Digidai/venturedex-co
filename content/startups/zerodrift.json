@@ -1,0 +1,69 @@
+{
+  "slug": "zerodrift",
+  "domain": "www.zerodrift.ai",
+  "url": "https://www.zerodrift.ai/",
+  "product_name": "ZeroDrift",
+  "summary": "Compliance firewall that gates regulated AI messages before delivery.",
+  "editor_note": "Regulated AI needs a pre-send checkpoint, not another archive after the damage is done. ZeroDrift puts Anchor between agents, chat, email, docs, and marketing, with pass, rewrite, block, and escalate decisions across a public 1000 messages/day demo. Unlike monitoring tools that discover violations later, it tries to stop SEC, FINRA, HIPAA, and insurance mistakes before output leaves. The risk is whether firms trust a model-mediated gate in high-liability workflows.",
+  "editor_rating": 4,
+  "why_featured": "Pre-send compliance gate",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "compliance,ai governance,financial services,healthcare,agents",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-06-02",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/02/3305264/0/en/zerodrift-raises-10m-seed-round-to-build-the-compliance-firewall-for-ai.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.zerodrift.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "ZeroDrift seed announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/02/3305264/0/en/zerodrift-raises-10m-seed-round-to-build-the-compliance-firewall-for-ai.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Anchor as a compliance model that evaluates every AI-generated message against regulations, firm policies, restricted data rules, and customer controls.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "ZeroDrift lists pass, rewrite, block, and escalate decisions across AI agents, chat, systems, email, docs, and marketing surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Compliance officers, AI leaders, and platform teams in financial services, insurance, healthcare, and other regulated sectors.",
+      "category": "SaaS",
+      "differentiation": "ZeroDrift sits inline before AI communication leaves the firm, instead of reviewing archives after a regulated message has already been sent.",
+      "why_now": "The June 2026 seed round follows a wave of enterprise AI-agent deployment where regulated communication needs real-time enforcement."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether regulated firms trust a model-mediated enforcement layer in workflows where false blocks and false passes both carry cost.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

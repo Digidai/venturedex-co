@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-04",
+  "verified_at": "2026-06-05",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -716,6 +716,41 @@
       "local_path": "/logos/companies/arpio.png",
       "source_page": "https://arpio.io/",
       "source_url": "https://arpio.io/wp-content/uploads/2021/11/cropped-arpio-favicon-250x250.png"
+    },
+    "scispot": {
+      "name": "Scispot",
+      "shape": "icon",
+      "local_path": "/logos/companies/scispot.png",
+      "source_page": "https://www.scispot.com/",
+      "source_url": "https://cdn.prod.website-files.com/61c463c70889dd1fe2be377f/61eed45dfe308cdbd3cad881_Scispot%20Webclip.png"
+    },
+    "scotch": {
+      "name": "Scotch",
+      "shape": "icon",
+      "local_path": "/logos/companies/scotch.svg",
+      "source_page": "https://scotchpos.com/",
+      "source_url": "https://scotchpos.com/favicon/favicon.svg"
+    },
+    "willow": {
+      "name": "Willow",
+      "shape": "icon",
+      "local_path": "/logos/companies/willow.png",
+      "source_page": "https://withwillow.ai/",
+      "source_url": "https://cdn.prod.website-files.com/69ca7b2d416aeff5210dbb8b/69dcbd1f7632062977a734fc_webclip.png"
+    },
+    "zerodrift": {
+      "name": "ZeroDrift",
+      "shape": "icon",
+      "local_path": "/logos/companies/zerodrift.png",
+      "source_page": "https://www.zerodrift.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a16d2a26330dc8d02325ee0/6a1daebd098e38d42e5cf19e_ZeroDrift%20-%20Favicon%20-%20180x180.jpg"
+    },
+    "gridcare": {
+      "name": "GridCARE",
+      "shape": "icon",
+      "local_path": "/logos/companies/gridcare.png",
+      "source_page": "https://www.gridcare.ai/",
+      "source_url": "https://cdn.prod.website-files.com/682cca4f8355e384bb3b91be/682d2480f2cf0ba830ddd4ff_light%20mode%20webclip%20(1).png"
     }
   },
   "investors": {
@@ -1364,6 +1399,35 @@
       "local_path": "/logos/investors/paladin-capital-group.png",
       "source_page": "https://www.paladincapgroup.com/",
       "source_url": "https://www.paladincapgroup.com/wp-content/uploads/2015/12/favicon.png"
+    },
+    "avenue-growth-partners": {
+      "name": "Avenue Growth Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/avenue-growth-partners.png",
+      "source_page": "https://www.avenuegp.com/",
+      "source_url": "https://www.avenuegp.com/logos/icon-white.png",
+      "tile_background": "dark"
+    },
+    "vmg-partners": {
+      "name": "VMG Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/vmg-partners.png",
+      "source_page": "https://www.vmgpartners.com/",
+      "source_url": "https://cdn.prod.website-files.com/696664a4904aedc3adb0c783/696664a4904aedc3adb0c8eb_fav.png"
+    },
+    "hetz-ventures": {
+      "name": "Hetz Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/hetz-ventures.png",
+      "source_page": "https://www.hetz.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6315e930d2cfb6827aea22b2/631614e11b1c764e33b3c8cd_favicon.png"
+    },
+    "sutter-hill-ventures": {
+      "name": "Sutter Hill Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/sutter-hill-ventures.ico",
+      "source_page": "https://shv.com/",
+      "source_url": "https://shv.com/favicon.ico"
     }
   }
 }
