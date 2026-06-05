@@ -1956,3 +1956,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - pushed content commit `b47936326fa41ff0300cf054f1f9bfeedffaf46f` and docs commit `19e63ae30b24953b65ed865f708fafb107a9cfe9`; GitHub Validate `26935796921` passed.
   - Deploy `26935796938` uploaded Worker version `065d1dfd-910f-4f33-9f71-a7bc281f307e` but failed post-release smoke; remote D1 contains 102 startups and all five new slugs, all five new detail pages return HTTP 200, homepage contains all five new links, and `/news` includes all five new rows.
   - root cause is source-scope only: `src/pages/news.astro` sets `NEWS_ROUNDS_LIMIT = 100`, while `scripts/smoke-live.py` expects the visible news-row count to equal the remote D1 startup count; Daily immutable guards block editing either file during this run.
+
+### 2026-06-05 14:59 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-live
+- validation: pass after iteration; `./scripts/check-github-actions.sh` passed, `./scripts/manage.sh validate` first failed because `better_sqlite3.node` was compiled for `NODE_MODULE_VERSION 147` while the run used Node `v22.22.3` / module `127`, `npm rebuild better-sqlite3` repaired local `node_modules`, and the final `./scripts/manage.sh validate` passed with 107/107 startups, zero errors, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass after iteration; Scispot and Scotch used the standard screenshot path, Willow required manual local Playwright capture after the standard cleanup timed out, and ZeroDrift/GridCARE were recaptured through the Playwright wrapper after visual review found consent overlays in the first manual screenshots. R2 upload was skipped because bootstrap reported no R2 permission.
+- commit_push: pass; content commit `5cfa2abf20f9fce544e19d41f25fe5a7d7df8f96` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `5cfa2abf20f9fce544e19d41f25fe5a7d7df8f96` for content additions.
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `27000284820` and Deploy `27000284816` both completed successfully for `5cfa2abf20f9fce544e19d41f25fe5a7d7df8f96`.
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` passed with 107 published startups.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-03 07:30:26:2026-06-04 07:30:18`, status `sent`, 5 items, 2 recipients, sent at `2026-06-04 13:30:52` UTC. This run's additions become delay-eligible after `2026-06-05 11:53:18` UTC and remain governed by the next 13:30 UTC / 21:30 Asia/Shanghai Cron.
+- failure_tags: [screenshot_env, validate_fail, other]
+- reward: 4
+- dominant_failure_mode: operational friction came from site-specific screenshot consent handling and a local native dependency ABI mismatch after a Node/runtime change, not from content quality or schema drift.
+- proposed_change: none; current runbook already covers visual screenshot review, manual clean recapture, generated-output cleanup, and failure-specific iteration before rerunning downstream gates.
+- decision: none
+- affected_file: content/startups/scispot.json, content/startups/scotch.json, content/startups/willow.json, content/startups/zerodrift.json, content/startups/gridcare.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted Scispot from its June 4, 2026 $15M Series A led by Avenue Growth Partners; official and `bb-browser` review verified LabOS, alt-LIMS, inventory, GLUE, Scibot, API, JupyterHub, Python SDK, and CLI evidence.
+  - accepted Scotch from its June 4, 2026 $15M Series A led by VMG Partners; official review verified liquor-retail POS, back office, order and receiving, analytics, payments, offline selling, and the 20% less-time-ordering claim.
+  - accepted Willow from its June 4, 2026 $7M Seed led by Hetz Ventures; official review verified agent identity, permissioned access, audit trails, Discover/Govern/Enable workflow, MCP Gateway, 1000+ connectors, and Slack/Jira/GitHub/IdP surfaces.
+  - accepted ZeroDrift from its June 4, 2026 $10M Seed with Andreessen Horowitz participation; official review verified Anchor, policy, gateway, guard, command, pass/rewrite/block/escalate actions, and SEC/FINRA/HIPAA/insurance compliance context.
+  - accepted GridCARE from its June 4, 2026 $64M Series A led by Sutter Hill Ventures and John Doerr; official review verified power acceleration for AI data centers, under-12-month time to power, grid utilization below 32%, 650 MW New York capacity, modules, and case studies.
+  - rejected Novellia, Forage, Shifters, SensorUp, Paypercut, HLRBO, Artan Bio, Waypoint Bio, OneSoil Rainbow Weather, Board, Tidalwave, Dono, Bronto, Matia, and Causal Labs for taste, stage/schema, biotech/token, partnership, hardware, or stale-source reasons.
+  - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, Sutter Hill aliasing for the co-led GridCARE round, brand assets, and local screenshots for all five accepted startups.
+  - `bb-browser` verified accepted official pages and reported no JavaScript errors; the installed `bb-browser` command surface used `snap`/CDP port 9222 rather than the older skill-doc command names, so the run aligned to the actual installed CLI without changing repo code.
+  - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate` after `npm rebuild better-sqlite3`, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - pushed content commit `5cfa2abf20f9fce544e19d41f25fe5a7d7df8f96`; GitHub Validate `27000284820` passed, Deploy `27000284816` passed, and production smoke passed for `https://venturedex.co` with 107 published startups.
