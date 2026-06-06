@@ -1994,3 +1994,42 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `bb-browser` verified accepted official pages and reported no JavaScript errors; the installed `bb-browser` command surface used `snap`/CDP port 9222 rather than the older skill-doc command names, so the run aligned to the actual installed CLI without changing repo code.
   - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate` after `npm rebuild better-sqlite3`, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
   - pushed content commit `5cfa2abf20f9fce544e19d41f25fe5a7d7df8f96`; GitHub Validate `27000284820` passed, Deploy `27000284816` passed, and production smoke passed for `https://venturedex.co` with 107 published startups.
+
+### 2026-06-06 14:49 CST
+
+- candidate_count: 20
+- accepted: 5
+- rejected: 15
+- rejection_bar_met: yes
+- outcome: daily-content-live
+- validation: pass after iteration; `./scripts/check-github-actions.sh` passed, initial `./scripts/validate.sh` failed only because existing `brand-assets investors.peak-xv-partners source_url` pointed at a stale WordPress favicon that no longer returned a validator-accepted status, the current official Peak XV site exposed replacement Webflow icon assets, and the final `./scripts/validate.sh`, `./scripts/manage.sh validate`, and `git diff --check` all passed with 112/112 startups, zero errors, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass after iteration; Airspeed, Offroad, TrueFan AI, and 9amHealth used the standard screenshot path, while Freshflow required a manual Playwright-wrapper recapture after the standard script correctly blocked on a cookie-consent layer. Visual review confirmed all five screenshots were product-visible and nonblank. R2 upload remained skipped because bootstrap reported no R2 permission.
+- commit_push: pass; content commit `4840204ea92c4e05f13f6d9cee3ad1550e139562` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `4840204ea92c4e05f13f6d9cee3ad1550e139562` for content additions.
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `27055267898` passed in 2m41s, Deploy `27055267903` passed in 5m21s, uploaded Worker version `9e8edaa2-6ff3-4906-9ae5-f1b17feab7cb`, and the release flow reported smoke pass for both the Workers URL and `https://venturedex.co`.
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` passed with 112 published startups, all five new detail pages returned HTTP 200, and the homepage contained all five new startup links.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-04 07:30:18:2026-06-05 07:30:16`, status `sent`, 5 items, 2 recipients, updated at `2026-06-05 13:30:50` UTC. This run's additions have `published_at` `2026-06-06 05:56:19` UTC, become delay-eligible after `2026-06-06 11:56:19` UTC, and remain governed by the next 13:30 UTC / 21:30 Asia-Shanghai Daily Cron.
+- failure_tags: [screenshot_env, validate_fail, source_drift, other]
+- reward: 4
+- dominant_failure_mode: operational friction came from site-specific screenshot consent handling and an existing official brand asset URL drifting after Peak XV moved to Webflow; content quality, schema shape, timestamp coverage, CI, deploy, and live smoke all passed after the narrow asset fix.
+- proposed_change: none; current runbook already requires failure-specific investigation, official-source verification, narrow fixes, screenshot visual review, generated-output cleanup, and rerunning downstream gates.
+- decision: none
+- affected_file: content/startups/airspeed.json, content/startups/freshflow.json, content/startups/offroad.json, content/startups/truefan-ai.json, content/startups/9amhealth.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/investors/peak-xv-partners.png
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed `node_modules`, and reported GitHub Actions active.
+  - accepted Airspeed from its June 4, 2026 $20M Series A led by DN Capital; official and `bb-browser` review verified commercial-brain positioning, multi-model agents, customer memory, pre-call prep, follow-ups, CRM hygiene, coaching plans, Customer 360, and Salesforce/HubSpot/Slack/Gmail/Outlook/Zoom/Teams integrations.
+  - accepted Freshflow from its June 5, 2026 $10M Series A led by Reimann Investors; official review verified Forecast, Inventory, Optimization, Freshflow App, 120+ signals, store-level models, saleable-inventory simulation, exception-based order proposals, 93% proposal acceptance, up to 30% less waste, and up to 4% more revenue.
+  - accepted Offroad from its June 5, 2026 $7M Seed led by Ibex Investors and Skywell Capital Partners; official review verified Discover/Investigate/Remediate agents for identity risk, human and non-human identities, OAuth apps, AI agents, 90+ sources, and the OhAuth public OAuth catalog across major SaaS ecosystems.
+  - accepted TrueFan AI from its June 4, 2026 $10M Series A led by Baring Private Equity Partners India and Z3Partners; official and `bb-browser` review verified enterprise AI video, Studio login, campaign and BFSI pages, 175+ languages from one recording, lead generation, training, referral, retention, SOC 2, and ISO 27001 claims.
+  - accepted 9amHealth from its May 13, 2026 $26M Series B led by Define Ventures; official review verified virtual specialty care for weight loss, diabetes, and heart health, care plans, prescriptions, labs, connected devices, GLP-1 support, care-team messaging, employer programs, and published outcome ranges.
+  - rejected Auger, 701x, Dockwa, NP Company, OpenPayd, Coralogix, Legend, Twin Prime, TRUCE Software, Webidoo, WebareSoft, Elephant Company, Cense, Focused Energy, and Flourish for stage/schema, source, currency, crypto, hardware/product-evaluability, or taste-ranking reasons.
+  - added official startup records, structured `research`, UTC timestamps, company logos, investor directory entries, investor aliases for co-led rounds, brand assets, and local screenshots for all five accepted startups.
+  - initial validation blocker root cause was source drift outside today's new additions: Peak XV's existing brand-asset `source_url` no longer returned a validator-accepted status, while the current official site exposed reachable Webflow `Favicon.png` and `Webclip.png`; the fix changed only the official `source_url` and refreshed `public/logos/investors/peak-xv-partners.png`.
+  - `bb-browser` verified accepted official pages and reported no JavaScript errors; the installed CLI still lacks the older skill-doc `wait` command, so the run used supported `snap`, `eval`, `console`, and explicit bounded sleeps without changing repo code.
+  - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - pushed content commit `4840204ea92c4e05f13f6d9cee3ad1550e139562`; GitHub Validate `27055267898` passed, Deploy `27055267903` passed, Worker version `9e8edaa2-6ff3-4906-9ae5-f1b17feab7cb` was deployed, production smoke passed, and D1 newsletter status was read-only checked without triggering a send.
