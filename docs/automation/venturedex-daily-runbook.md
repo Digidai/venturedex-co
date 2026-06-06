@@ -45,6 +45,7 @@ Automation must never rewrite this section.
 - If the source article naming, resolved directory slug, and official website branding do not converge on the same investor, stop the startup addition instead of guessing.
 - Company and investor logos must come from official sources only and be recorded in `content/brand-assets.json`.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
+- If the official site, official ATS page, or clearly official company jobs page exposes a Careers/Jobs/Open Roles entry, record it as `links.careers`. Do not scrape job lists, role counts, locations, salaries, or hiring claims into startup records.
 - Rejected companies stay rejected unless there is a later funding round, new product evidence, or an explicit human-governance change makes the original rejection reason obsolete.
 - Accept every startup that clears the bar in this run, up to 5 additions.
 - Rejections in a run must be at least 3x accepted additions.
@@ -133,6 +134,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
     - `risks` must state at least one falsifiable risk or open question, with a basis tied to the official product evidence and source review.
     - Do not write private revenue, usage, customer, valuation, or hiring claims unless the exact source is cited.
     - If a claim cannot be traced to a listed source or the existing VentureDex editorial assessment, remove it.
+    - If a company exposes a high-confidence official Careers/Jobs/Open Roles entry, add it to `links.careers` as a static detail-page link only.
 13. Run the taste review.
 14. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 15. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
@@ -154,8 +156,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 2. Dedup: prior acceptance, prior rejection, later-round exception
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
-5. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
-6. Scope and release: changed files, `content/timestamps.json`, schema, screenshot completeness, GitHub Actions availability, `./scripts/manage.sh validate`, `git diff --check`, commit, push, deploy status, live smoke, final git status
+5. Links: official `links.careers` is present when discoverable; no dynamic job-list, role-count, location, salary, or hiring-claim data is added
+6. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
+7. Scope and release: changed files, `content/timestamps.json`, schema, screenshot completeness, GitHub Actions availability, `./scripts/manage.sh validate`, `git diff --check`, commit, push, deploy status, live smoke, final git status
 
 ## Commit Rules
 

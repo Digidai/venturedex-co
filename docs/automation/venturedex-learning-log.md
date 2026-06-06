@@ -2033,3 +2033,35 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - `bb-browser` verified accepted official pages and reported no JavaScript errors; the installed CLI still lacks the older skill-doc `wait` command, so the run used supported `snap`, `eval`, `console`, and explicit bounded sleeps without changing repo code.
   - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
   - pushed content commit `4840204ea92c4e05f13f6d9cee3ad1550e139562`; GitHub Validate `27055267898` passed, Deploy `27055267903` passed, Worker version `9e8edaa2-6ff3-4906-9ae5-f1b17feab7cb` was deployed, production smoke passed, and D1 newsletter status was read-only checked without triggering a send.
+
+### 2026-06-07 00:10 CST
+
+- candidate_count: n/a
+- accepted: n/a
+- rejected: n/a
+- rejection_bar_met: n/a
+- outcome: human-directed-governance-update
+- validation: pass; `python3 scripts/validate.py` and `./scripts/manage.sh validate` both passed with 112/112 startups, zero errors, 74 existing warnings, 66/66 tests, generated D1 seed, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` with 112 startups and 112 funding rounds.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- live_smoke: n/a
+- newsletter: not triggered; this update only adds static company-detail Careers/Jobs/Open Roles links and automation policy alignment.
+- failure_tags: []
+- reward: n/a
+- dominant_failure_mode: company detail pages gained `links.careers` support, but the automation control plane and content validator still only documented and checked the older `links` shape.
+- proposed_change: add `links.careers` to the content templates and Daily automation policy, keep the feature as a static outbound link only, and validate link URL shape without scraping job listings.
+- decision: applied by explicit human request; this is not a scheduled Daily curator self-edit.
+- affected_file: content/startups/*.json, content/STANDARD.md, content/CODEX_TASK.md, src/lib/types.ts, src/lib/json.ts, src/pages/startups/[slug].astro, scripts/validate.py, docs/automation/README.md, docs/automation/venturedex-daily-runbook.md
+- affected_section: startup links schema; company detail external links; automation control plane
+- evidence:
+  - 78 current startup records now include high-confidence `links.careers` entries used as outbound company-detail links.
+  - The implementation deliberately does not scrape dynamic job lists, role counts, locations, salaries, or hiring claims.
+  - Daily automation docs now require future accepted startups to record `links.careers` when an official Careers/Jobs/Open Roles entry is visible.
+  - `scripts/validate.py` now validates `links` as an object and checks link URL shape without making the local gate depend on external ATS/job-board availability.
+  - HTML verification confirmed built detail pages render `Careers` outbound links, including Airspeed and 9amHealth.
