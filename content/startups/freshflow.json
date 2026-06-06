@@ -1,0 +1,69 @@
+{
+  "slug": "freshflow",
+  "domain": "freshflow.ai",
+  "url": "https://freshflow.ai/",
+  "product_name": "Freshflow",
+  "summary": "AI replenishment platform for fresh-grocery forecasting, ordering, and waste reduction.",
+  "editor_note": "Fresh departments are not normal inventory problems: shelf life, scan errors, spoilage, promotions, and weather distort demand every day. Freshflow models 120+ signals and gives buyers exception-based order proposals instead of another BI screen. The useful proof is operational: customers cite 93% proposal acceptance, up to 30% less waste, and up to 4% more sales. The risk is whether retailer data quality can keep the model honest.",
+  "editor_rating": 4,
+  "why_featured": "Fresh-replenishment AI",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "grocery,forecasting,inventory,waste reduction,retail",
+  "investors": "Reimann Investors",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "Reimann Investors",
+      "date": "2026-06-05",
+      "source_url": "https://www.worldfund.vc/articles/freshflow-brings-ai-to-europes-fresh-aisles-and-closes-10m-series-a",
+      "source_name": "World Fund"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://freshflow.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Freshflow Series A announcement",
+        "url": "https://www.worldfund.vc/articles/freshflow-brings-ai-to-europes-fresh-aisles-and-closes-10m-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site breaks the product into Forecast, Inventory, Optimization, and Freshflow App modules for fresh-food replenishment decisions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Freshflow publishes customer-facing outcome claims including 120+ demand signals, 93% order-proposal acceptance, up to 30% less waste, and up to 4% more revenue.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "European grocery retailers and fresh-department buyers balancing availability, waste, and daily order proposals.",
+      "category": "AI / ML",
+      "differentiation": "Freshflow optimizes fresh ordering around shelf life and store-level demand instead of treating produce like durable inventory.",
+      "why_now": "The June 2026 Series A gives the company capital to expand across a European grocery market under waste and margin pressure."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether each retailer's POS, spoilage, promotion, and scan-error data is clean enough for reliable store-level automation.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

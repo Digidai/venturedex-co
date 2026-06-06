@@ -1,0 +1,87 @@
+{
+  "slug": "offroad",
+  "domain": "offroad.ai",
+  "url": "https://offroad.ai/",
+  "product_name": "Offroad",
+  "summary": "Agentic identity security for users, service accounts, OAuth apps, and AI agents.",
+  "editor_note": "Identity teams are buried under findings from IdPs, SaaS apps, tickets, and endpoint tools. Offroad turns that sprawl into agents that discover, investigate, and remediate risk across users, service accounts, OAuth apps, and AI agents. Unlike another dashboard, it also ships OhAuth, a 2,349-app public OAuth catalog. The risk is whether autonomous remediation clears enterprise approval chains.",
+  "editor_rating": 4,
+  "why_featured": "Identity agents plus OAuth catalog",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "identity security,oauth,ai agents,saas security,remediation",
+  "investors": "Ibex Investors, Skywell Capital Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "Ibex Investors and Skywell Capital Partners",
+      "date": "2026-06-05",
+      "source_url": "https://startuprise.io/offroad-raises-7m-in-seed-funding-led-by-ibex-investors/",
+      "source_name": "Startuprise"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://offroad.ai/",
+        "type": "official"
+      },
+      {
+        "id": "ohauth_catalog",
+        "label": "OhAuth public OAuth catalog",
+        "url": "https://ohauth.ai/",
+        "type": "product"
+      },
+      {
+        "id": "oauth_report",
+        "label": "Offroad OAuth risk report",
+        "url": "https://offroad.ai/blog/oauthreport-2026",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Offroad seed funding article",
+        "url": "https://startuprise.io/offroad-raises-7m-in-seed-funding-led-by-ibex-investors/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Discover, Investigate, and Remediate agents for identity risk across human users, service accounts, OAuth applications, machine identities, and AI agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "OhAuth exposes a public catalog for OAuth apps across Google Workspace, GitHub, Slack, Zoom, Atlassian, Microsoft 365, Salesforce, and other ecosystems.",
+        "source_ids": [
+          "ohauth_catalog"
+        ]
+      },
+      {
+        "claim": "Offroad's OAuth report lists over-permissioned apps, dead publisher domains, buyable domains, and AI apps with broad write access as risk categories.",
+        "source_ids": [
+          "oauth_report"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CISOs and identity-security teams handling SaaS sprawl, OAuth grants, service accounts, and AI-agent access.",
+      "category": "SaaS",
+      "differentiation": "Offroad combines agentic investigation and remediation with a public OAuth-risk catalog rather than only alerting on identity posture.",
+      "why_now": "The June 2026 seed round coincides with enterprises granting broader SaaS and AI-agent permissions across fragmented identity systems."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether autonomous identity remediation can move fast while still satisfying approval, audit, and ownership requirements.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

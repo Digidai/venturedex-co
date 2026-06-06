@@ -1,0 +1,69 @@
+{
+  "slug": "airspeed",
+  "domain": "www.goairspeed.com",
+  "url": "https://www.goairspeed.com/",
+  "product_name": "Airspeed",
+  "summary": "Revenue-team AI agents for customer understanding, prep, follow-up, and CRM work.",
+  "editor_note": "Revenue teams already have call recorders, CRM fields, and dashboards; the missing layer is action. Airspeed uses multi-model agents, customer memory, and integrations with Salesforce, HubSpot, Gmail, Outlook, Zoom, and Teams to prep calls, draft follow-ups, and keep CRM clean. Unlike alerts, it tries to close the workflow loop. The risk is proving buyers trust agents inside 200-customer revenue operations.",
+  "editor_rating": 4,
+  "why_featured": "Revenue agents with memory",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "revenue operations,ai agents,crm,sales,customer data",
+  "investors": "DN Capital",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "DN Capital",
+      "date": "2026-06-04",
+      "source_url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a",
+      "source_name": "Airspeed"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.goairspeed.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Airspeed Series A story",
+        "url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes agents for call prep, follow-ups, CRM hygiene, coaching plans, and integrations with Salesforce, HubSpot, Slack, Gmail, Outlook, Zoom, and Teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A story says Airspeed is approaching 200 customers and frames the product around context layers, sub-agent orchestration, and Customer 360.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Revenue, sales, customer-success, and go-to-market teams with scattered customer context.",
+      "category": "SaaS",
+      "differentiation": "Airspeed sells an action layer that uses commercial memory and connected GTM tools rather than another sales-intelligence dashboard.",
+      "why_now": "The June 2026 Series A follows fast customer growth as revenue teams test agentic workflows against CRM and meeting data."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enterprise buyers will allow autonomous agents to act inside revenue operations instead of keeping them in draft-only mode.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

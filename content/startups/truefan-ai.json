@@ -1,0 +1,87 @@
+{
+  "slug": "truefan-ai",
+  "domain": "truefan.ai",
+  "url": "https://truefan.ai/",
+  "product_name": "TrueFan AI",
+  "summary": "Enterprise AI video platform for avatar-led personalized campaigns and training.",
+  "editor_note": "Personalized video is usually a services bottleneck, not a software habit. TrueFan AI publishes a studio login, enterprise campaign pages, and BFSI workflows for lead generation, referrals, training, and retention across 175+ languages from one recording. Unlike generic avatar demos, it anchors the pitch in SOC 2 and ISO 27001 claims. The risk is whether brand teams treat the output as production-grade.",
+  "editor_rating": 3,
+  "why_featured": "175-language video engine",
+  "product_type": "AI / ML",
+  "region": "China / Asia",
+  "tags": "ai video,avatars,marketing,training,enterprise",
+  "investors": "Baring Private Equity Partners India, Z3Partners",
+  "links": {},
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "Baring Private Equity Partners India and Z3Partners",
+      "date": "2026-06-04",
+      "source_url": "https://www.business-standard.com/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html",
+      "source_name": "Business Standard"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://truefan.ai/",
+        "type": "official"
+      },
+      {
+        "id": "studio_login",
+        "label": "TrueFan Studio login",
+        "url": "https://studio.truefan.in/login",
+        "type": "product"
+      },
+      {
+        "id": "bfsi_page",
+        "label": "BFSI industry product page",
+        "url": "https://truefan.ai/industry/powering-the-full-bfsi-journey-with-gen-ai",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TrueFan AI Series A article",
+        "url": "https://www.business-standard.com/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions TrueFan AI as an enterprise platform for personalized AI videos in 175+ languages, with a single recording used across campaigns.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Studio login exposes a production app surface with Google, Microsoft, and email sign-in paths for creating AI avatar and personalized video workflows.",
+        "source_ids": [
+          "studio_login"
+        ]
+      },
+      {
+        "claim": "The BFSI page describes lead generation, cross-sell, referrals, customer retention, and training use cases plus SOC 2 and ISO 27001 security claims.",
+        "source_ids": [
+          "bfsi_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise marketing, sales, training, and customer-engagement teams that need personalized video at campaign scale.",
+      "category": "AI / ML",
+      "differentiation": "TrueFan AI packages avatar-led localization, campaign personalization, and compliance messaging for enterprise video rather than consumer creator clips.",
+      "why_now": "The June 2026 Series A follows enterprise adoption of AI avatars as brands try to scale video without reshooting every market or audience segment."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enterprise buyers will consistently approve AI-avatar output for regulated or high-trust brand communications.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

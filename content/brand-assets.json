@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-05",
+  "verified_at": "2026-06-06",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -751,6 +751,41 @@
       "local_path": "/logos/companies/gridcare.png",
       "source_page": "https://www.gridcare.ai/",
       "source_url": "https://cdn.prod.website-files.com/682cca4f8355e384bb3b91be/682d2480f2cf0ba830ddd4ff_light%20mode%20webclip%20(1).png"
+    },
+    "airspeed": {
+      "name": "Airspeed",
+      "shape": "icon",
+      "local_path": "/logos/companies/airspeed.svg",
+      "source_page": "https://www.goairspeed.com/",
+      "source_url": "https://www.goairspeed.com/images/favicon.svg"
+    },
+    "freshflow": {
+      "name": "Freshflow",
+      "shape": "icon",
+      "local_path": "/logos/companies/freshflow.png",
+      "source_page": "https://freshflow.ai/",
+      "source_url": "https://freshflow.ai/icon.png?icon.0kpmxep1mql._.png"
+    },
+    "offroad": {
+      "name": "Offroad",
+      "shape": "icon",
+      "local_path": "/logos/companies/offroad.png",
+      "source_page": "https://offroad.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a16f6699221212039a34382/6a1fce5e5535530bddae0c41_Favicon512.png"
+    },
+    "truefan-ai": {
+      "name": "TrueFan AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/truefan-ai.png",
+      "source_page": "https://truefan.ai/",
+      "source_url": "https://truefan.ai/favicon.png?v=2"
+    },
+    "9amhealth": {
+      "name": "9amHealth",
+      "shape": "icon",
+      "local_path": "/logos/companies/9amhealth.png",
+      "source_page": "https://join9am.com/",
+      "source_url": "https://join9am.com/hubfs/raw_assets/public/9amHealthTheme2022/assets/images/favicon.png"
     }
   },
   "investors": {
@@ -1012,7 +1047,7 @@
       "shape": "icon",
       "local_path": "/logos/investors/peak-xv-partners.png",
       "source_page": "https://www.peakxv.com",
-      "source_url": "https://www.peakxv.com/wp-content/uploads/sites/2/2023/06/cropped-favicon-2-1-2.png?w=192"
+      "source_url": "https://cdn.prod.website-files.com/69183d51704ed8e1b1c250fc/692070b6650d0ca9c10dddb3_Webclip.png"
     },
     "samsung-venture-investment": {
       "name": "Samsung Venture Investment",
@@ -1428,6 +1463,55 @@
       "local_path": "/logos/investors/sutter-hill-ventures.ico",
       "source_page": "https://shv.com/",
       "source_url": "https://shv.com/favicon.ico"
+    },
+    "dn-capital": {
+      "name": "DN Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/dn-capital.png",
+      "source_page": "https://www.dncapital.com/",
+      "source_url": "https://www.dncapital.com/img/apple-touch-icon.png"
+    },
+    "reimann-investors": {
+      "name": "Reimann Investors",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/reimann-investors.gif",
+      "source_page": "https://www.reimann-investors.vc/",
+      "source_url": "https://www.reimann-investors.vc/pics/Reimann.gif"
+    },
+    "ibex-investors": {
+      "name": "Ibex Investors",
+      "shape": "icon",
+      "local_path": "/logos/investors/ibex-investors.png",
+      "source_page": "https://www.ibexinvestors.com/",
+      "source_url": "https://framerusercontent.com/images/PhrdVMVAJzCXmKKg42DvJEXHI.png"
+    },
+    "skywell-capital-partners": {
+      "name": "Skywell Capital Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/skywell-capital-partners.svg",
+      "source_page": "https://skywellcap.com/",
+      "source_url": "https://static.tildacdn.one/tild3737-3335-4336-a436-346331396162/Logo-sky.svg"
+    },
+    "baring-private-equity-partners-india": {
+      "name": "Baring Private Equity Partners India",
+      "shape": "icon",
+      "local_path": "/logos/investors/baring-private-equity-partners-india.png",
+      "source_page": "https://www.bpepindia.com/",
+      "source_url": "https://static.wixstatic.com/media/aa71f7_4f856c0159c94744964fa8542be3e3a9%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/aa71f7_4f856c0159c94744964fa8542be3e3a9%7Emv2.png"
+    },
+    "z3partners": {
+      "name": "Z3Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/z3partners.svg",
+      "source_page": "https://www.z3partners.com/",
+      "source_url": "https://z3partnersglobal.com/img/new/home/log.svg"
+    },
+    "define-ventures": {
+      "name": "Define Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/define-ventures.png",
+      "source_page": "https://www.definevc.com/",
+      "source_url": "https://cdn.prod.website-files.com/661dbd97f3eaf5f9758d9ca6/666a20fa245b6c22f674a123_define-webclip.png"
     }
   }
 }

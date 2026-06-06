@@ -710,5 +710,60 @@
     "aliases": [
       "Sutter Hill Ventures and John Doerr"
     ]
+  },
+  "dn-capital": {
+    "name": "DN Capital",
+    "slug": "dn-capital",
+    "short_name": "DN",
+    "website": "https://www.dncapital.com/",
+    "description": "Venture capital firm backing early-stage and growth technology companies across Europe and the US."
+  },
+  "reimann-investors": {
+    "name": "Reimann Investors",
+    "slug": "reimann-investors",
+    "short_name": "Reimann",
+    "website": "https://www.reimann-investors.vc/",
+    "description": "European investment firm backing growth companies in digital commerce, fintech, and SaaS."
+  },
+  "ibex-investors": {
+    "name": "Ibex Investors",
+    "slug": "ibex-investors",
+    "short_name": "Ibex",
+    "website": "https://www.ibexinvestors.com/",
+    "description": "Investment firm backing technology companies across private and public markets.",
+    "aliases": [
+      "Ibex Investors and Skywell Capital Partners"
+    ]
+  },
+  "skywell-capital-partners": {
+    "name": "Skywell Capital Partners",
+    "slug": "skywell-capital-partners",
+    "short_name": "Skywell",
+    "website": "https://skywellcap.com/",
+    "description": "Multi-stage venture capital firm investing in fintech, SaaS, AI, marketplaces, and related sectors."
+  },
+  "baring-private-equity-partners-india": {
+    "name": "Baring Private Equity Partners India",
+    "slug": "baring-private-equity-partners-india",
+    "short_name": "BPEP India",
+    "website": "https://www.bpepindia.com/",
+    "description": "India-focused private equity firm investing in technology-led growth companies.",
+    "aliases": [
+      "Baring Private Equity Partners India and Z3Partners"
+    ]
+  },
+  "z3partners": {
+    "name": "Z3Partners",
+    "slug": "z3partners",
+    "short_name": "Z3Partners",
+    "website": "https://www.z3partners.com/",
+    "description": "India-focused technology and digital investing firm backing quality-at-scale businesses."
+  },
+  "define-ventures": {
+    "name": "Define Ventures",
+    "slug": "define-ventures",
+    "short_name": "Define",
+    "website": "https://www.definevc.com/",
+    "description": "Digital health venture capital firm backing companies across the healthcare ecosystem."
   }
 }

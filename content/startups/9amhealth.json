@@ -1,0 +1,69 @@
+{
+  "slug": "9amhealth",
+  "domain": "join9am.com",
+  "url": "https://join9am.com/",
+  "product_name": "9amHealth",
+  "summary": "Virtual cardiometabolic specialty care for weight, diabetes, blood pressure, and labs.",
+  "editor_note": "Cardiometabolic care is scattered across prescriptions, labs, coaching, devices, and insurance. 9amHealth wraps those pieces into virtual specialty care with at-home tests, connected devices, GLP-1 support, care-team messaging, and employer programs. Unlike a narrow weight-loss app, it publishes outcome ranges for A1c, blood pressure, and weight. The risk is payer and employer adoption beyond early proof.",
+  "editor_rating": 3,
+  "why_featured": "At-home cardiometabolic care",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "virtual care,diabetes,weight loss,cardiometabolic,employers",
+  "investors": "Define Ventures",
+  "links": {},
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$26M",
+      "stage": "Series B",
+      "lead_investor": "Define Ventures",
+      "date": "2026-05-13",
+      "source_url": "https://www.prnewswire.com/news-releases/9amhealth-raises-26m-to-expand-into-chronic-conditions-driving-the-majority-of-employer-pharmacy-spend-302769972.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://join9am.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "9amHealth Series B announcement",
+        "url": "https://www.prnewswire.com/news-releases/9amhealth-raises-26m-to-expand-into-chronic-conditions-driving-the-majority-of-employer-pharmacy-spend-302769972.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes virtual specialty care for weight loss, diabetes, and heart health, with care plans, prescriptions, labs, devices, and specialist support.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "9amHealth publishes outcome claims for GLP-1 and non-GLP-1 weight reduction, A1c improvement, and blood-pressure reduction on its public site.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Employers, benefits teams, and patients managing cardiometabolic conditions across prescriptions, labs, devices, and coaching.",
+      "category": "HealthTech",
+      "differentiation": "9amHealth bundles specialty care, pharmacy support, labs, connected devices, and care-team messaging instead of isolating weight, diabetes, or hypertension workflows.",
+      "why_now": "The May 2026 Series B targets chronic conditions that drive a large share of employer pharmacy spend and demand virtual-first management."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether employer and payer adoption expands enough to support broad chronic-care coverage beyond early measured cohorts.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
