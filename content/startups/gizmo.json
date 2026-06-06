@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "education,study tools,flashcards,consumer app",
   "investors": "Shine Capital, Ada Ventures, Seek Investments, GSV, NFX",
-  "links": {},
+  "links": {
+    "careers": "https://apply.workable.com/gizmo/"
+  },
   "is_featured": true,
   "funding": [
     {

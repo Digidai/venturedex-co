@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "defense,autonomy,api,command and control,systems integration",
   "investors": "Bessemer Venture Partners",
-  "links": {},
+  "links": {
+    "careers": "https://picogrid.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

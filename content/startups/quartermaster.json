@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "maritime,sensors,ai,transportation",
   "investors": "First Round Capital, Quiet Capital",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/quartermaster"
+  },
   "is_featured": true,
   "funding": [
     {

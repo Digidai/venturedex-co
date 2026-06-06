@@ -11,6 +11,9 @@
   "region": "US",
   "tags": "voice ai,ai agents,developer tools,customer support",
   "investors": "Peak XV Partners",
+  "links": {
+    "careers": "https://vapi.ai/careers"
+  },
   "funding": [
     {
       "amount": "$50M",

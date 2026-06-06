@@ -11,7 +11,9 @@
   "region": "Global / Remote",
   "tags": "financial infrastructure,core banking,ledgers,cards,lending",
   "investors": "Andreessen Horowitz",
-  "links": {},
+  "links": {
+    "careers": "https://www.stitch.co/careers"
+  },
   "is_featured": true,
   "funding": [
     {

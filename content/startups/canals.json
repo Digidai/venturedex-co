@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "distribution,workflow automation,ai agents,erp,order entry",
   "investors": "Base10 Partners",
-  "links": {},
+  "links": {
+    "careers": "https://www.canals.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

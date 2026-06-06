@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "growth analytics,b2c ai,decision intelligence,marketing",
   "investors": "Andreessen Horowitz",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/hilberts"
+  },
   "is_featured": true,
   "funding": [
     {

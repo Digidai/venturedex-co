@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "energy,grid operations,climate,utility software",
   "investors": "VoLo Earth Ventures, Equal Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://www.texturehq.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

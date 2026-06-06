@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "grocery,forecasting,inventory,waste reduction,retail",
   "investors": "Reimann Investors",
-  "links": {},
+  "links": {
+    "careers": "https://freshflow.ai/careers/"
+  },
   "is_featured": true,
   "funding": [
     {

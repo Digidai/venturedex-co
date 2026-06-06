@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "fintech,investment management,ai agents,wealthtech",
   "investors": "Index Ventures, Andreessen Horowitz",
-  "links": {},
+  "links": {
+    "careers": "https://moment.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

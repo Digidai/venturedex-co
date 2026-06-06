@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "pharma,healthcare ai,audience targeting,commercialization",
   "investors": "McKesson Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://branchlab.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

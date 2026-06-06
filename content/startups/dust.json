@@ -11,7 +11,9 @@
   "region": "Global / Remote",
   "tags": "ai agents,enterprise ai,collaboration,knowledge management",
   "investors": "Sequoia Capital",
-  "links": {},
+  "links": {
+    "careers": "https://dust.tt/jobs"
+  },
   "is_featured": true,
   "funding": [
     {

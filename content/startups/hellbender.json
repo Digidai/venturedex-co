@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "edge ai,robotics,computer vision,hardware",
   "investors": "Magarac Venture Partners, Veredas Partners",
-  "links": {},
+  "links": {
+    "careers": "https://hellbender.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

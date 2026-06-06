@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "restaurants,pos,inventory,payments,operations",
   "investors": "Zigg Capital",
-  "links": {},
+  "links": {
+    "careers": "https://allo.restaurant/careers"
+  },
   "is_featured": true,
   "funding": [
     {

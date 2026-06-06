@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "ai agents,security,mcp,identity,governance",
   "investors": "Hetz Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://withwillow.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

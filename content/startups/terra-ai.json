@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "natural resources,subsurface ai,mining,reservoirs,exploration",
   "investors": "Khosla Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://www.terraai.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

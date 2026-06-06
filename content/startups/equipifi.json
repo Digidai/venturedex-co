@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "fintech,bnpl,credit unions,banking",
   "investors": "Left Lane Capital",
-  "links": {},
+  "links": {
+    "careers": "https://www.equipifi.com/careers"
+  },
   "is_featured": false,
   "funding": [
     {

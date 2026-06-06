@@ -14,7 +14,8 @@
   "links": {
     "mcp": "https://daloopa.com/products/mcp",
     "scout": "https://daloopa.com/products/scout",
-    "api": "https://daloopa.com/products/api"
+    "api": "https://daloopa.com/products/api",
+    "careers": "https://daloopa.com/careers"
   },
   "is_featured": true,
   "funding": [

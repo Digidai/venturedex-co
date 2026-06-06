@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "ai search,api,agents,retrieval,web crawling",
   "investors": "Andreessen Horowitz",
-  "links": {},
+  "links": {
+    "careers": "https://exa.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "ai infrastructure,gpu,serverless,developer tools,data workloads",
   "investors": "General Catalyst, Redpoint Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://modal.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

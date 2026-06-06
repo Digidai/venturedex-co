@@ -11,7 +11,9 @@
   "region": "Global / Remote",
   "tags": "life sciences,lab operations,lims,inventory,ai assistant",
   "investors": "Avenue Growth Partners",
-  "links": {},
+  "links": {
+    "careers": "https://www.scispot.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

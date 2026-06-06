@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "scientific ai,simulation,digital twins,hardware engineering",
   "investors": "Dorilton Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://juliahub.com/company/jobs"
+  },
   "is_featured": true,
   "funding": [
     {

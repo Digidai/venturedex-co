@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "test equipment,instrumentation,fpga,engineering tools",
   "investors": "Keysight Technologies",
-  "links": {},
+  "links": {
+    "careers": "https://www.liquidinstruments.com/company/careers/"
+  },
   "is_featured": true,
   "funding": [
     {

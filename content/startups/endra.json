@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "construction,engineering,mep design,revit,ai design",
   "investors": "Andreessen Horowitz",
-  "links": {},
+  "links": {
+    "careers": "https://www.endra.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

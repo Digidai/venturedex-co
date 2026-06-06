@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "accounts receivable,finance ops,ai agents,billing automation",
   "investors": "F-Prime Capital",
-  "links": {},
+  "links": {
+    "careers": "https://www.fazeshift.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "observability,logs,metrics,traces,ai sre,open source",
   "investors": "Nexus Venture Partners, Dell Technologies Capital",
-  "links": {},
+  "links": {
+    "careers": "https://openobserve.ai/careers/"
+  },
   "is_featured": true,
   "funding": [
     {

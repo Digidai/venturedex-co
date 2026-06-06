@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "revenue operations,ai agents,crm,sales,customer data",
   "investors": "DN Capital",
-  "links": {},
+  "links": {
+    "careers": "https://glyphic.jobs.personio.com/?language=en"
+  },
   "is_featured": true,
   "funding": [
     {

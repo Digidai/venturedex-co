@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "cloud disaster recovery,aws,azure,ransomware,failover",
   "investors": "S3 Ventures, Paladin Capital Group",
-  "links": {},
+  "links": {
+    "careers": "https://arpio.io/careers/"
+  },
   "is_featured": true,
   "funding": [
     {

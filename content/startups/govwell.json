@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "civic software,permitting,licensing,local government",
   "investors": "Insight Partners",
-  "links": {},
+  "links": {
+    "careers": "https://www.govwell.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

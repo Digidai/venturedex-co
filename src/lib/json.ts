@@ -64,11 +64,13 @@ export function normalizeLinks(value: unknown): StartupLinks {
   const twitter = optionalString(value.twitter);
   const linkedin = optionalString(value.linkedin);
   const producthunt = optionalString(value.producthunt);
+  const careers = optionalString(value.careers);
 
   if (github) links.github = github;
   if (twitter) links.twitter = twitter;
   if (linkedin) links.linkedin = linkedin;
   if (producthunt) links.producthunt = producthunt;
+  if (careers) links.careers = careers;
 
   return links;
 }

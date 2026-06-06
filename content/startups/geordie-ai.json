@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "ai security,ai agents,governance,mcp,runtime controls",
   "investors": "Balderton Capital",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/geordieai"
+  },
   "is_featured": true,
   "funding": [
     {

@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "ai models,api,gateway,routing,developer tools",
   "investors": "CapitalG",
-  "links": {},
+  "links": {
+    "careers": "https://openrouter.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

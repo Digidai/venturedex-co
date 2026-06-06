@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "insurance,ai workflows,brokerages,document automation",
   "investors": "Permanent Capital Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://outmarket.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

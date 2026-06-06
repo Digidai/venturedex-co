@@ -17,7 +17,8 @@
   "links": {
     "github": "https://github.com/supabase",
     "twitter": "https://x.com/supabase",
-    "linkedin": "https://linkedin.com/company/supabase"
+    "linkedin": "https://linkedin.com/company/supabase",
+    "careers": "https://supabase.com/careers"
   },
   "is_featured": false,
   "funding": [

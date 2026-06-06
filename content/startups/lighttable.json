@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "construction,quality control,ai review,preconstruction,documents",
   "investors": "Innovation Endeavors",
-  "links": {},
+  "links": {
+    "careers": "https://www.lighttable.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

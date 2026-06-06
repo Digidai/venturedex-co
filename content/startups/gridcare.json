@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "energy,ai infrastructure,data centers,grid,utilities",
   "investors": "Sutter Hill Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/gridcare"
+  },
   "is_featured": true,
   "funding": [
     {

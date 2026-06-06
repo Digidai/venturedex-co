@@ -11,6 +11,9 @@
   "region": "China / Asia",
   "tags": "robotics,training data,foundation models,physical ai",
   "investors": "Samsung Venture Investment",
+  "links": {
+    "careers": "https://config.inc/careers"
+  },
   "funding": [
     {
       "amount": "$27M",

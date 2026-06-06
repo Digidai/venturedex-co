@@ -11,7 +11,9 @@
   "region": "Global / Remote",
   "tags": "cybersecurity,email security,ai agents,phishing",
   "investors": "Lightspeed Venture Partners",
-  "links": {},
+  "links": {
+    "careers": "https://ocean.security/company/careers"
+  },
   "is_featured": true,
   "funding": [
     {

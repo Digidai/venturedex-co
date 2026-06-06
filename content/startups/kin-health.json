@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "healthtech,patient notes,care coordination,ai scribe",
   "investors": "Maveron",
-  "links": {},
+  "links": {
+    "careers": "https://www.meetkin.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

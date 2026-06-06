@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "trust and safety,ai safety,moderation,abuse operations,agents",
   "investors": "Radical Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://cinder.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

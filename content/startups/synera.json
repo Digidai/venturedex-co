@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "engineering,ai agents,cad,industrial software",
   "investors": "Revaia",
-  "links": {},
+  "links": {
+    "careers": "https://www.synera.io/careers"
+  },
   "is_featured": true,
   "funding": [
     {

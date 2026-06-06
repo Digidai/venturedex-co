@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "accounts receivable,finance automation,ai agents,b2b",
   "investors": "Footwork",
-  "links": {},
+  "links": {
+    "careers": "https://monk.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

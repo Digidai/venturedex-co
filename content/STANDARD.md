@@ -187,7 +187,8 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
     "github": "只填官方组织页",
     "twitter": "只填产品官方账号",
     "linkedin": "只填公司页",
-    "producthunt": "只填产品页"
+    "producthunt": "只填产品页",
+    "careers": "只填官方 Careers/Jobs/Open Roles 入口页；可选，不抓取岗位列表"
   },
   "is_featured": false,
   "funding": [

@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "water tech,carbon removal,wastewater,climate",
   "investors": "Burnt Island Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://crewcarbon.com/careers/"
+  },
   "is_featured": true,
   "funding": [
     {

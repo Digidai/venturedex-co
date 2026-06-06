@@ -61,6 +61,7 @@ export interface StartupLinks {
   twitter?: string;
   linkedin?: string;
   producthunt?: string;
+  careers?: string;
 }
 
 export interface StartupResearchSource {

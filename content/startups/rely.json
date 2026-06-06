@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "proptech,due diligence,document ai,multifamily",
   "investors": "2048 Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.gem.com/rely"
+  },
   "is_featured": true,
   "funding": [
     {

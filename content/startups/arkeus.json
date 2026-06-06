@@ -11,7 +11,9 @@
   "region": "Global / Remote",
   "tags": "defense tech,hyperspectral sensing,autonomy,edge ai",
   "investors": "QIC Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://arkeus.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {

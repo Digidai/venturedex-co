@@ -14,7 +14,9 @@
   "region": "US",
   "tags": "social ai,chat,consumer,ai companions",
   "investors": "Lightspeed Venture Partners, Betaworks, Hartbeat Ventures, The Games Fund",
-  "links": {},
+  "links": {
+    "careers": "https://shapes.inc/jobs"
+  },
   "is_featured": true,
   "funding": [
     {

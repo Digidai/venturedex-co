@@ -143,6 +143,23 @@ ALLOWED_RESEARCH_SOURCE_TYPES = {
     "social",
     "editorial",
 }
+ALLOWED_LINK_FIELDS = {
+    "api",
+    "cancer_centers",
+    "careers",
+    "docs",
+    "github",
+    "linkedin",
+    "mcp",
+    "press",
+    "pricing",
+    "product",
+    "producthunt",
+    "resources",
+    "scout",
+    "security",
+    "twitter",
+}
 
 
 @dataclass
@@ -400,6 +417,10 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
                     f"{prefix}: source url check failed with HTTP {source_status} -> {source_url}"
                 )
 
+    link_errors, link_warnings = validate_links(data)
+    result.errors.extend(link_errors)
+    result.warnings.extend(link_warnings)
+
     result.errors.extend(validate_research(data, url_cache=url_cache))
 
     if url:
@@ -415,6 +436,33 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         result.errors.append(f"missing screenshot asset: {screenshot_path.relative_to(REPO_ROOT)}")
 
     return result
+
+
+def validate_links(data: dict[str, object]) -> tuple[list[str], list[str]]:
+    errors: list[str] = []
+    warnings: list[str] = []
+    links = data.get("links")
+
+    if links is None:
+        return errors, warnings
+    if not isinstance(links, dict):
+        return ["links must be an object"], warnings
+
+    for key, value in links.items():
+        prefix = f"links.{key}"
+        if key not in ALLOWED_LINK_FIELDS:
+            warnings.append(f"{prefix} is not a recognized link field")
+
+        if not isinstance(value, str) or not value.strip():
+            errors.append(f"{prefix} must be a non-empty string URL")
+            continue
+
+        parsed = urlparse(value)
+        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            errors.append(f"{prefix} '{value}' is not a valid absolute URL")
+            continue
+
+    return errors, warnings
 
 
 def validate_research(data: dict[str, object], *, url_cache: dict[str, str]) -> list[str]:

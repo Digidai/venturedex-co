@@ -11,7 +11,9 @@
   "region": "Europe",
   "tags": "legal ai,document drafting,research,compliance,workflow",
   "investors": "Left Lane Capital",
-  "links": {},
+  "links": {
+    "careers": "https://lexroom.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

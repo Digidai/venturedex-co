@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "physical security,biometrics,ai infrastructure,access control",
   "investors": "BlackPeak Capital",
-  "links": {},
+  "links": {
+    "careers": "https://www.alcatraz.ai/company/careers"
+  },
   "is_featured": true,
   "funding": [
     {

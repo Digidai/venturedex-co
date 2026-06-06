@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "continual learning,ai infrastructure,product usage,model behavior,agents",
   "investors": "Conviction",
-  "links": {},
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/trajectory"
+  },
   "is_featured": true,
   "funding": [
     {

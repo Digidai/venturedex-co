@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "ai security,red teaming,runtime protection,model evaluation,agent security",
   "investors": "Wing Venture Capital, Madrona",
-  "links": {},
+  "links": {
+    "careers": "https://www.grayswan.ai/careers"
+  },
   "is_featured": true,
   "funding": [
     {

@@ -162,7 +162,8 @@ Q3: 它解决的问题具体吗？
     "github": "官方组织页 URL（可选）",
     "twitter": "产品官方账号 URL（可选）",
     "linkedin": "公司页 URL（可选）",
-    "producthunt": "产品页 URL（可选）"
+    "producthunt": "产品页 URL（可选）",
+    "careers": "官方 Careers/Jobs/Open Roles 入口 URL（可选；不要抓取岗位列表）"
   },
   "is_featured": false,
   "funding": [

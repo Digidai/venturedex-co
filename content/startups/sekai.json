@@ -11,7 +11,9 @@
   "region": "US",
   "tags": "mini apps,creator tools,ai generation,mobile apps,remix",
   "investors": "Khosla Ventures, Connect Ventures",
-  "links": {},
+  "links": {
+    "careers": "https://sekaiapp.com/careers"
+  },
   "is_featured": true,
   "funding": [
     {
