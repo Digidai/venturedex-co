@@ -1,0 +1,83 @@
+{
+  "slug": "findigs",
+  "domain": "www.findigs.com",
+  "url": "https://www.findigs.com/",
+  "product_name": "Findigs",
+  "summary": "AI-native rental screening decisions for property managers and residential operators.",
+  "editor_note": "Resident screening has too often been a score that pushes hard calls back to leasing teams. Findigs turns the workflow into an automated yes/no decision, with the site publishing 3.4-hour median decisions, 80% average eviction reduction, and policy, fraud, and pet-screening modules. Unlike a background-check vendor, it sells revenue quality across the full application process. The risk is whether those outcome claims hold for operators beyond the 400K+ units cited in the funding release.",
+  "editor_rating": 4,
+  "why_featured": "3.4-hour leasing decisions",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "proptech,screening,leasing,fraud,property management",
+  "investors": "RPM Ventures",
+  "links": {
+    "careers": "https://www.findigs.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$32M",
+      "stage": "Series C",
+      "lead_investor": "RPM Ventures",
+      "date": "2026-06-02",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/02/3305372/0/en/findigs-raises-32m-series-c-funding-to-redefine-leasing-decisioning.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.findigs.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://www.findigs.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Findigs Series C announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/02/3305372/0/en/findigs-raises-32m-series-c-funding-to-redefine-leasing-decisioning.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes an AI-native resident screening platform that takes manual applicant screening work off property managers' plates.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public site publishes metrics for 3.4-hour median decision time, 80% average eviction-rate reduction, 45% of decisions outside business hours, and 8 hours saved per leasing agent weekly.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Findigs generates automated yes/no decisions, supports LIHTC and Section 8 workflows, and covers 400,000+ units.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Residential property operators and leasing teams that need faster applicant decisions without increasing fraud, delinquency, or eviction risk.",
+      "category": "SaaS",
+      "differentiation": "Findigs models post-lease performance and returns an operator-ready decision instead of handing over a generic screening score.",
+      "why_now": "Higher vacancies and operating costs make revenue quality and faster leasing decisions more valuable for multifamily operators."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Findigs can keep outcome guarantees and low manual review rates as it expands across more housing types and operator policies.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

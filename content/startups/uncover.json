@@ -1,0 +1,83 @@
+{
+  "slug": "uncover",
+  "domain": "www.uncover.co",
+  "url": "https://www.uncover.co/en-us",
+  "product_name": "Uncover",
+  "summary": "Always-on marketing mix modeling and budget optimization for global brands.",
+  "editor_note": "Marketing mix modeling usually arrives as a quarterly deck after the budget fight is over. Uncover turns it into an always-on planning system with ROI 360, Budget Planner, Performance Results, and Uncovered Potential views, plus Google Meridian certification. Unlike a pure agency model, the public site and funding release frame it as recurring SaaS infrastructure for global brands. The risk is whether U.S. advertisers buy a Brazil-born MMM platform without a services-heavy sales motion.",
+  "editor_rating": 4,
+  "why_featured": "$6B MMM operating system",
+  "product_type": "SaaS",
+  "region": "Latin America",
+  "tags": "marketing analytics,mmm,budget planning,media measurement,saas",
+  "investors": "Cloud9 Capital",
+  "links": {
+    "careers": "http://careers.uncover.co/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$16M",
+      "stage": "Series A",
+      "lead_investor": "Cloud9 Capital",
+      "date": "2026-06-03",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/03/3306227/0/en/Uncover-Raises-16-Million-to-Expand-Latin-America-s-Leading-Media-Measurement-Platform-to-The-U-S.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.uncover.co/en-us",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "http://careers.uncover.co/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Uncover Series A announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/03/3306227/0/en/Uncover-Raises-16-Million-to-Expand-Latin-America-s-Leading-Media-Measurement-Platform-to-The-U-S.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Uncover as a Marketing Mix Modeling platform for global brands, with MMM Starter and platform sections for measurement teams, agencies, publishers, and brands.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public site exposes named product views including ROI 360, Budget Planner, Performance Results, and Uncovered Potential.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says the platform integrates with Google, TikTok, and Meta and has helped optimize more than $6 billion in media investment.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise marketing, measurement, media, and finance teams allocating budgets across online and offline channels.",
+      "category": "SaaS",
+      "differentiation": "Uncover packages MMM into recurring planning and optimization workflows rather than one-off measurement studies.",
+      "why_now": "Privacy limits and fragmented media buying are pushing advertisers back toward MMM, while Google Meridian gives implementation partners a clearer platform wedge."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Uncover can scale in the U.S. without becoming a services-heavy analytics consultancy.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

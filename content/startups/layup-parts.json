@@ -1,0 +1,89 @@
+{
+  "slug": "layup-parts",
+  "domain": "www.layupparts.com",
+  "url": "https://www.layupparts.com/",
+  "product_name": "Layup Parts",
+  "summary": "Digital quote-to-production workflow for custom composite parts.",
+  "editor_note": "Composite parts still move like bespoke procurement even when the CAD file is ready. Layup Parts exposes a 3-step FiberPortal flow for uploading surface models, manufacturability feedback, and quote-to-production handoff, backed by stocked materials and CNC capability pages. Unlike a generic machine-shop marketplace, it narrows the promise to carbon-fiber and fiberglass parts. The risk is whether software speed survives factory capacity limits.",
+  "editor_rating": 4,
+  "why_featured": "Composite quoting portal",
+  "product_type": "Marketplace",
+  "region": "US",
+  "tags": "manufacturing,composites,marketplace,aerospace,defense",
+  "investors": "Marlinspike",
+  "links": {
+    "careers": "https://www.layupparts.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$42M",
+      "stage": "Series A",
+      "lead_investor": "Marlinspike",
+      "date": "2026-06-02",
+      "source_url": "https://techcrunch.com/2026/06/02/ex-anduril-engineer-raises-42m-to-build-the-amazon-of-composite-parts/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.layupparts.com/",
+        "type": "official"
+      },
+      {
+        "id": "fiberportal_login",
+        "label": "FiberPortal customer login",
+        "url": "https://fiber.layupparts.com/login",
+        "type": "product"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://www.layupparts.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Layup Parts Series A article",
+        "url": "https://techcrunch.com/2026/06/02/ex-anduril-engineer-raises-42m-to-build-the-amazon-of-composite-parts/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes FiberPortal as a workflow where customers upload a surface model and move from concept to quote.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public site lists stocked materials, precision CNC capabilities, manufacturing capabilities, and certifications for composite-part production.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The customer login exposes a production FiberPortal app surface separate from the marketing homepage.",
+        "source_ids": [
+          "fiberportal_login"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Aerospace, defense, motorsports, and advanced-manufacturing engineers ordering custom carbon-fiber or fiberglass parts.",
+      "category": "Marketplace",
+      "differentiation": "Layup Parts joins quoting software, material inventory, and in-house composite manufacturing instead of acting as a generic supplier directory.",
+      "why_now": "Defense and advanced-manufacturing demand is pushing buyers to shorten custom-part procurement cycles while preserving traceability and quality."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether the software-led quoting flow can scale without factory capacity becoming the bottleneck.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

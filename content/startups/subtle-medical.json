@@ -1,0 +1,83 @@
+{
+  "slug": "subtle-medical",
+  "domain": "subtlemedical.com",
+  "url": "https://subtlemedical.com/",
+  "product_name": "Subtle Medical",
+  "summary": "AI medical-imaging software that accelerates MRI and PET acquisition workflows.",
+  "editor_note": "Radiology AI is useful only when it changes scanner throughput, not when it adds another viewer. Subtle Medical’s public site shows vendor-neutral MRI and PET software, SubtleHD(MR), SubtleSYNTH, SubtleALIGN, and SubtleHD(PET), with scan-time claims up to 80%. Unlike a single-model radiology point tool, it is building an imaging layer across acquisition and enhancement workflows. The risk is regulatory and hospital rollout drag as the platform expands across MRI, PET, and CT.",
+  "editor_rating": 4,
+  "why_featured": "MRI scans up to 80% faster",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "radiology,medical imaging,ai software,mri,pet",
+  "investors": "Morgan Stanley Expansion Capital",
+  "links": {
+    "careers": "https://subtlemedical.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$33M",
+      "stage": "Series C",
+      "lead_investor": "Morgan Stanley Expansion Capital",
+      "date": "2026-06-02",
+      "source_url": "https://www.prnewswire.com/news-releases/subtle-medical-secures-33-million-in-growth-capital-led-by-morgan-stanley-expansion-capital-and-appoints-industry-veteran-ohad-arazi-as-ceo-302788005.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://subtlemedical.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://subtlemedical.com/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Subtle Medical Series C announcement",
+        "url": "https://www.prnewswire.com/news-releases/subtle-medical-secures-33-million-in-growth-capital-led-by-morgan-stanley-expansion-capital-and-appoints-industry-veteran-ohad-arazi-as-ceo-302788005.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes vendor-neutral AI software for MRI and PET, including SubtleHD(MR), SubtleSYNTH, SubtleALIGN, SubtleHD(PET), AiMIFY, and SubtleGAD.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public site shows before-and-after imaging examples and scan-time reduction claims, including up to 80% faster MRI workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Subtle Medical is deployed on more than 1,300 scanners across hospitals and imaging centers globally.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Radiology departments, imaging-center operators, and health systems trying to improve scanner throughput and image quality.",
+      "category": "HealthTech",
+      "differentiation": "Subtle Medical works as an acquisition and image-enhancement layer across existing scanners rather than a replacement imaging workstation.",
+      "why_now": "Imaging backlogs, scanner capacity constraints, and enterprise demand for clinically validated AI make acceleration software newly strategic."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether regulatory coverage, hospital procurement cycles, and modality expansion slow adoption as the platform moves across MRI, PET, and CT.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "lassie",
+  "domain": "www.lassie.ai",
+  "url": "https://www.lassie.ai/",
+  "product_name": "Lassie",
+  "summary": "AI agents that run medical-practice admin across payments, portals, and records.",
+  "editor_note": "Medical-practice admin matters only if it leaves the queue, not if it opens another dashboard. Lassie says its agent reconciles insurance payments across portals, records, and bank deposits for 700+ practices, while the site shows enrollment, payment setup, posting, and patient-balance workflows. Unlike a dentist-office RPA consultancy, the customer story claims 100+ hours saved per month. The risk is whether the agent generalizes beyond early reimbursement work.",
+  "editor_rating": 5,
+  "why_featured": "700-practice admin agent",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai agents,healthcare,practice management,payments,automation",
+  "investors": "Andreessen Horowitz",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/lassie"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$35M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-03",
+      "source_url": "https://www.businesswire.com/news/home/20260603909717/en/Lassie-Raises-%2435M-Led-by-Andreessen-Horowitz-to-Build-AI-for-Small-Businesses-to-Run-Themselves",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.lassie.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://jobs.ashbyhq.com/lassie",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Lassie Series A announcement",
+        "url": "https://www.businesswire.com/news/home/20260603909717/en/Lassie-Raises-%2435M-Led-by-Andreessen-Horowitz-to-Build-AI-for-Small-Businesses-to-Run-Themselves",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Lassie as AI that runs the doctor's office and describes autonomous enrollment, electronic-payment setup, payment posting, and patient-balance workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Lassie reconciles insurance portals, records, and bank deposits for 700+ practices across 49 states.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The official site exposes an app login plus an Ashby careers entrance, showing production and hiring surfaces beyond a static waitlist.",
+        "source_ids": [
+          "official_site",
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Doctor, dental, and small medical-practice owners trying to reduce reimbursement, payment-posting, and insurance-portal admin work.",
+      "category": "AI / ML",
+      "differentiation": "Lassie focuses on end-to-end administrative labor in medical practices rather than a narrow claims dashboard or scheduling assistant.",
+      "why_now": "The June 2026 Series A follows public claims of 700+ practices and 250,000 annual labor hours handled by autonomous systems."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether the agent keeps accuracy and trust as it moves beyond early reimbursement and payment-posting workflows.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-06",
+  "verified_at": "2026-06-07",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -786,6 +786,42 @@
       "local_path": "/logos/companies/9amhealth.png",
       "source_page": "https://join9am.com/",
       "source_url": "https://join9am.com/hubfs/raw_assets/public/9amHealthTheme2022/assets/images/favicon.png"
+    },
+    "lassie": {
+      "name": "Lassie",
+      "shape": "icon",
+      "local_path": "/logos/companies/lassie.svg",
+      "source_page": "https://www.lassie.ai/",
+      "source_url": "https://www.lassie.ai/favicon.svg?v=2"
+    },
+    "findigs": {
+      "name": "Findigs",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/findigs.svg",
+      "source_page": "https://www.findigs.com/",
+      "source_url": "https://cdn.prod.website-files.com/65dcf4acf6071420a070fdc4/65e7a98b3248ef5e121cd18e_Findigs%20logo.svg"
+    },
+    "uncover": {
+      "name": "Uncover",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/uncover.svg",
+      "source_page": "https://www.uncover.co/en-us",
+      "source_url": "https://cdn.prod.website-files.com/642c1ca797f6a13410d3605d/642da2a68ca9fa11250cb2f1_Logo.svg"
+    },
+    "subtle-medical": {
+      "name": "Subtle Medical",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/subtle-medical.svg",
+      "source_page": "https://subtlemedical.com/",
+      "source_url": "https://subtlemedical.com/wp-content/themes/subtlemedical/img/subtle-medical-logo.svg"
+    },
+    "layup-parts": {
+      "name": "Layup Parts",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/layup-parts.svg",
+      "source_page": "https://www.layupparts.com/",
+      "source_url": "https://www.layupparts.com/logo-white.svg",
+      "tile_background": "dark"
     }
   },
   "investors": {
@@ -1512,6 +1548,36 @@
       "local_path": "/logos/investors/define-ventures.png",
       "source_page": "https://www.definevc.com/",
       "source_url": "https://cdn.prod.website-files.com/661dbd97f3eaf5f9758d9ca6/666a20fa245b6c22f674a123_define-webclip.png"
+    },
+    "rpm-ventures": {
+      "name": "RPM Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/rpm-ventures.png",
+      "source_page": "https://www.rpmvc.com",
+      "source_url": "https://static.wixstatic.com/media/c91efc_3f8114c4a8e94f448c44901dffa3a5fd~mv2.png/v1/fill/w_104,h_69,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/RPM_Logo_WhiteRed-01.png",
+      "tile_background": "dark"
+    },
+    "cloud9-capital": {
+      "name": "Cloud9 Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/cloud9-capital.png",
+      "source_page": "https://www.cloud9capital.com.br/pt",
+      "source_url": "https://static.wixstatic.com/media/279a1e_86ec04e6e7c746c3a5db9f4c0396fa3d~mv2.png/v1/fill/w_240,h_60,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/c9-logo-white.png",
+      "tile_background": "dark"
+    },
+    "morgan-stanley-expansion-capital": {
+      "name": "Morgan Stanley Expansion Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/morgan-stanley-expansion-capital.png",
+      "source_page": "https://www.morganstanley.com/im/en-us/individual-investor/strategies/private-credit-and-equity/expansion-capital.html",
+      "source_url": "https://www.morganstanley.com/etc.clientlibs/msdotcomr4/clientlibs/components/site/resources/img/logo-black.png"
+    },
+    "marlinspike": {
+      "name": "Marlinspike",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/marlinspike.svg",
+      "source_page": "https://marlinspike.us",
+      "source_url": "https://marlinspike.us/wp-content/uploads/2023/03/logo.svg"
     }
   }
 }

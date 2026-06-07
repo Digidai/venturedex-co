@@ -765,5 +765,33 @@
     "short_name": "Define",
     "website": "https://www.definevc.com/",
     "description": "Digital health venture capital firm backing companies across the healthcare ecosystem."
+  },
+  "rpm-ventures": {
+    "name": "RPM Ventures",
+    "slug": "rpm-ventures",
+    "short_name": "RPM",
+    "website": "https://www.rpmvc.com",
+    "description": "Early-stage venture capital firm based in Ann Arbor backing technology companies across mobility, fintech, real estate, and enterprise markets."
+  },
+  "cloud9-capital": {
+    "name": "Cloud9 Capital",
+    "slug": "cloud9-capital",
+    "short_name": "Cloud9",
+    "website": "https://www.cloud9capital.com.br/pt",
+    "description": "Brazil-based investment firm backing technology and growth companies in Latin America and beyond."
+  },
+  "morgan-stanley-expansion-capital": {
+    "name": "Morgan Stanley Expansion Capital",
+    "slug": "morgan-stanley-expansion-capital",
+    "short_name": "MSEC",
+    "website": "https://www.morganstanley.com/im/en-us/individual-investor/strategies/private-credit-and-equity/expansion-capital.html",
+    "description": "Morgan Stanley Investment Management growth-equity strategy investing in later-stage technology and healthcare companies."
+  },
+  "marlinspike": {
+    "name": "Marlinspike",
+    "slug": "marlinspike",
+    "short_name": "Marlinspike",
+    "website": "https://marlinspike.us",
+    "description": "Venture capital firm backing dual-use aerospace, defense, and security technology companies."
   }
 }
