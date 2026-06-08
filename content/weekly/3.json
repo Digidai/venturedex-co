@@ -1,0 +1,234 @@
+{
+  "issue_number": 3,
+  "title": "AI Is Moving Into the Awkward Work",
+  "week_start": "2026-06-01",
+  "week_end": "2026-06-07",
+  "published_at": "2026-06-08",
+  "status": "published",
+  "editorial_intro": "This week's useful AI companies were not selling a generic assistant. They were trying to make software act inside awkward rooms: identity remediation, fresh-grocery replenishment, agent permissions, liquor-store operations, lab workflows, revenue follow-up, and enterprise video approval.",
+  "research_summary": "This issue uses only published VentureDex startup records, their structured research blocks, current bb-browser checks of public product/source pages, and linked funding or company sources. It does not verify private revenue, retention, customer migration, benchmark performance, reliability, or product-effectiveness claims beyond what the cited sources visibly state.",
+  "evaluation_method": [
+    "Use published VentureDex records and structured startup research as the primary source boundary.",
+    "Use current bb-browser checks only for public page visibility, titles, product-surface text, and browser-side error state.",
+    "Separate observable product facts from VentureDex editorial judgment, and state evidence gaps instead of filling them with assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Specific workflows beat generic assistants",
+      "summary": "The strongest picks this week put automation inside constrained work: permissioned agents, perishable inventory, high-SKU retail, lab traceability, customer context, and regulated video workflows."
+    },
+    {
+      "title": "Control surfaces are becoming product features",
+      "summary": "Offroad and Willow make identity, permissions, audit, and remediation the product itself, while the other picks show the same need for operational guardrails in vertical software."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "offroad",
+      "why_this_week": "Offroad belongs in this issue because its June 5 seed round sits at the point where agent adoption creates a new identity problem: users, service accounts, OAuth apps, machine identities, and AI agents all need review before they act. The company is not pitching another posture dashboard; it is trying to turn scattered access findings into discover-investigate-remediate work.",
+      "product_evaluation": "The strongest evidence is specific: the official site names Discover, Investigate, and Remediate agents; OhAuth exposes a public OAuth catalog across major SaaS marketplaces; and Offroad's OAuth report lists dead publisher domains, buyable domains, broad scopes, and AI-app write access as risk categories. That gives the product a clear bet: identity security gets better when the system can carry context into the fix, not just surface another alert.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/offroad.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Offroad homepage; current bb-browser check found Discover, Investigate, Remediate, OAuth, and AI Agents language",
+          "url": "https://offroad.ai/"
+        },
+        {
+          "label": "OhAuth public OAuth catalog",
+          "source": "Current bb-browser check found OAuth catalog coverage across Google Workspace, GitHub, Slack, and Microsoft 365",
+          "url": "https://ohauth.ai/"
+        },
+        {
+          "label": "Offroad OAuth risk report",
+          "source": "Current bb-browser check found dead publisher domains, AI apps, and write-access risk language",
+          "url": "https://offroad.ai/blog/oauthreport-2026"
+        },
+        {
+          "label": "Funding source",
+          "source": "Startuprise article title currently loaded as Offroad Raises $7M in Seed Funding Led by Ibex Investors",
+          "url": "https://startuprise.io/offroad-raises-7m-in-seed-funding-led-by-ibex-investors/"
+        }
+      ],
+      "risks": [
+        "The public evidence does not show how enterprise approval routing, ownership review, rollback, or change-control gates work when remediation actions move beyond recommendations.",
+        "Autonomous identity fixes can create their own operational risk if teams cannot explain or stage changes before they land."
+      ],
+      "verdict": "Offroad is the cleanest security pick here because it treats agent-era identity as an action workflow, not a static risk inventory."
+    },
+    {
+      "slug": "freshflow",
+      "why_this_week": "Freshflow fits the week because its June 5 Series A is about AI in a workflow where generic forecasting usually breaks: fresh-food ordering, spoilage, scan errors, promotions, weather, and store-level shelf life. The issue theme is not abstract automation; it is software that has to survive messy operating data.",
+      "product_evaluation": "The official site currently shows Forecast, Inventory, Optimization, and Freshflow App modules, plus vendor-published claims around 120+ demand signals, 93% order-proposal acceptance, up to 30% less waste, and up to 4% more revenue. Those claims should be read as source-bound company evidence, not independently verified outcomes. The product judgment is narrower: Freshflow is solving the ordering decision itself rather than stopping at a demand forecast.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/freshflow.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser check found Forecast, Inventory, Optimization, Freshflow App, 120+, 93%, 30%, and 4% language",
+          "url": "https://freshflow.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "World Fund Series A article; current bb-browser check found $10M Series A, Reimann, and Freshflow language",
+          "url": "https://www.worldfund.vc/articles/freshflow-brings-ai-to-europes-fresh-aisles-and-closes-10m-series-a"
+        }
+      ],
+      "risks": [
+        "Retailer POS, spoilage, promotion, and scan-error data may not be clean enough across chains for reliable store-level automation without heavy implementation work.",
+        "The outcome metrics are published by the company and its sources; this issue does not independently verify customer-wide waste, revenue, or acceptance-rate results."
+      ],
+      "verdict": "Freshflow earns the slot because fresh grocery is a real test of whether AI can handle perishable, local, operational decisions."
+    },
+    {
+      "slug": "willow",
+      "why_this_week": "Willow's June 4 seed round makes sense in the same week as Offroad: enterprises are letting agents and MCP tools into work before the control layer is settled. It belongs here because the product is framed around identity, permissions, audit trails, and shadow-AI visibility rather than general agent hype.",
+      "product_evaluation": "The official site says every AI agent gets an identity, permissioned tool access, and audit trails, and the current page check found MCP, permissions, connectors, audit, and Shadow AI language. The startup record adds build/runtime guards, IdP connection, Slack/Jira/GitHub connectors, and API-to-MCP conversion. The product bet is coherent: govern what an agent can do inside tools, not just where its prompts are routed.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/willow.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser check found MCP, audit, permissions, connectors, and Shadow AI language",
+          "url": "https://withwillow.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire article title currently loaded as Willow Raises $7M Seed to Ensure Enterprises Can Fully Oversee and Govern Autonomous Agents",
+          "url": "https://www.prnewswire.com/news-releases/willow-raises-7m-seed-to-ensure-enterprises-can-fully-oversee-and-govern-autonomous-agents-302791492.html"
+        }
+      ],
+      "risks": [
+        "The evidence supports the governance surface, but it does not prove enforcement depth across every connector or MCP server a customer might bring.",
+        "The adoption risk is timing: teams may wait for a visible incident before adding an agent control layer."
+      ],
+      "verdict": "Willow is worth tracking because agent governance becomes concrete when permissions, identities, and audit logs are first-class product objects."
+    },
+    {
+      "slug": "scotch",
+      "why_this_week": "Scotch is the non-obvious pick that keeps the issue honest: its June 4 Series A is not about generic AI, but about encoding a vertical operating system for liquor retail. That matters because the week's pattern is specificity: software wins when it understands the awkward workflow nouns.",
+      "product_evaluation": "The homepage and liquor-store POS page show POS, payments, inventory, ordering, receiving, analytics, offline selling, distributor invoices, case breaks, age verification, shrinkage reports, and high-SKU store operations. The product is narrower than restaurant or general-retail POS, and that narrowness is the point. The current evidence supports a liquor-specific operating system; it does not require accepting broader claims about market dominance.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/scotch.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser check found POS, payments, inventory, ordering, receiving, analytics, and offline language",
+          "url": "https://scotchpos.com/"
+        },
+        {
+          "label": "Liquor-store POS product page",
+          "source": "Current bb-browser check found distributor, invoice, and age-verification language plus page text about case breaks and 3,000 SKUs across 30 vendors",
+          "url": "https://scotchpos.com/liquor-store-pos-system/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire Series A article; current bb-browser check found $20M, Series A, VMG, and Scotch language",
+          "url": "https://www.prnewswire.com/news-releases/scotch-raises-20m-series-a-to-modernize-liquor-stores-surpasses-1b-in-payment-volume-302790781.html"
+        }
+      ],
+      "risks": [
+        "Vertical POS depth can erode if broader incumbents copy the most valuable liquor workflows.",
+        "The Series A source states payment-volume momentum, but payment volume alone does not prove durable product quality or store-level switching costs."
+      ],
+      "verdict": "Scotch belongs here because the best operational software often starts by taking an unfashionable vertical seriously."
+    },
+    {
+      "slug": "scispot",
+      "why_this_week": "Scispot's June 4 Series A brings the same operating-layer question into life-sciences labs, where samples, instruments, notebooks, inventory, and analysis code rarely live in one tidy system. It fits this issue because the product is trying to connect the lab work, not just add an AI chat layer beside it.",
+      "product_evaluation": "The current official-site check surfaced LabOS, alt-LIMS, inventory, GLUE, Scibot, and CLI language; the structured VentureDex record also captures API, JupyterHub, and Python SDK evidence from the official product surface. That makes the product more interesting than a point ELN: Scispot is selling connective tissue for traceable lab operations. The evidence supports the operating-layer thesis, not a claim that every specialized lab workflow is already covered.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/scispot.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser check found LabOS, alt-LIMS, inventory, GLUE, Scibot, and CLI language",
+          "url": "https://www.scispot.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire Series A article; current bb-browser check found $8M, Series A, Avenue Growth, and Scispot language",
+          "url": "https://www.prnewswire.com/news-releases/scispot-raises-8m-series-a-to-help-life-sciences-labs-move-faster-302790717.html"
+        }
+      ],
+      "risks": [
+        "Specialized labs have custom instruments, data models, sample flows, and validation requirements that may resist one operating layer.",
+        "The public evidence shows product breadth, but not implementation burden or time-to-value across different lab categories."
+      ],
+      "verdict": "Scispot is a good pick because lab automation only becomes useful when it connects samples, inventory, integrations, and analysis surfaces."
+    },
+    {
+      "slug": "airspeed",
+      "why_this_week": "Airspeed's June 4 Series A is the revenue-operations version of the same idea: the agent is only useful if it remembers customers, prepares work, writes follow-ups, and updates the systems teams already use. It fits the issue because the product is framed as action inside a specific operating context, not another sales-intelligence feed.",
+      "product_evaluation": "A current bb-browser snapshot of the homepage showed the commercial-brain positioning and revenue-team sections, while the Series A story provided the strongest text evidence: Customer 360, context layers, sub-agent orchestration, and a source-stated approach toward 200 customers. The VentureDex record adds Salesforce, HubSpot, Slack, Gmail, Outlook, Zoom, and Teams integrations. That supports a product judgment around connected GTM action, while leaving actual agent autonomy and customer outcomes unverified.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/airspeed.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser snapshot loaded Airspeed homepage with commercial-brain and revenue-team sections",
+          "url": "https://www.goairspeed.com/"
+        },
+        {
+          "label": "Series A story",
+          "source": "Current bb-browser check found $20M, Series A, DN Capital, Airspeed, Customer 360, sub-agent, context layer, and 200 customers language",
+          "url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a"
+        }
+      ],
+      "risks": [
+        "Enterprise buyers may keep revenue agents in draft or assistant mode if CRM writes, customer messaging, or coaching plans feel too risky to automate.",
+        "The Series A story provides customer-count and product-direction evidence, but this issue does not independently verify retention, expansion, or revenue impact."
+      ],
+      "verdict": "Airspeed is notable because it tries to close the loop from customer context to revenue action instead of stopping at insight capture."
+    },
+    {
+      "slug": "truefan-ai",
+      "why_this_week": "TrueFan AI closes the issue with a different kind of constrained workflow: enterprise video, where brand approval, localization, compliance, and campaign reuse matter as much as model output. Its June 4 Series A belongs here because the public product surfaces are about production use cases, not consumer avatar novelty.",
+      "product_evaluation": "The official site currently states enterprise AI video and 175+ languages; the Studio login page exposed Google, Microsoft, and email sign-in paths; and the BFSI page showed lead generation, referrals, training, SOC 2, and ISO 27001 language. Those are enough to evaluate the product shape: avatar-led video packaged for enterprise campaigns and regulated verticals. They are not enough to judge output quality, conversion lift, or brand-safety performance.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/truefan-ai.json summary, funding, and structured research"
+        },
+        {
+          "label": "Official product site",
+          "source": "Current bb-browser check found 175+ languages, AI videos, campaigns, and enterprise language",
+          "url": "https://truefan.ai/"
+        },
+        {
+          "label": "TrueFan Studio login",
+          "source": "Current bb-browser snapshot showed Google, Microsoft, and email sign-in paths",
+          "url": "https://studio.truefan.in/login"
+        },
+        {
+          "label": "BFSI industry page",
+          "source": "Current bb-browser check found BFSI, lead generation, referrals, training, SOC 2, and ISO 27001 language",
+          "url": "https://truefan.ai/industry/powering-the-full-bfsi-journey-with-gen-ai"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Standard Series A article; current bb-browser check found $10 million, Series A, Baring, Z3Partners, and TrueFan language",
+          "url": "https://www.business-standard.com/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html"
+        }
+      ],
+      "risks": [
+        "Enterprise and regulated-industry buyers may approve workflows and security claims while still rejecting AI-avatar output for high-trust communications.",
+        "The public evidence supports product surfaces and positioning, but this issue does not verify campaign performance, retention, or customer ROI."
+      ],
+      "verdict": "TrueFan AI is included because personalized video becomes a real product question only when distribution, approval, and compliance are part of the surface."
+    }
+  ]
+}
