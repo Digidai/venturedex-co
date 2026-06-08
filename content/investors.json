@@ -793,5 +793,12 @@
     "short_name": "Marlinspike",
     "website": "https://marlinspike.us",
     "description": "Venture capital firm backing dual-use aerospace, defense, and security technology companies."
+  },
+  "venturefriends": {
+    "name": "VentureFriends",
+    "slug": "venturefriends",
+    "short_name": "VentureFriends",
+    "website": "https://www.venturefriends.vc/",
+    "description": "Early-stage European venture capital firm backing ambitious founders with first tickets at pre-seed and seed stage across Europe and MENA."
   }
 }

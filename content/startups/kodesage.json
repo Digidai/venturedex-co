@@ -1,0 +1,120 @@
+{
+  "slug": "kodesage",
+  "domain": "kodesage.ai",
+  "url": "https://kodesage.ai/",
+  "product_name": "Kodesage",
+  "summary": "AI legacy-modernization platform for secure enterprise codebases.",
+  "editor_note": "The bet is that legacy modernization starts with codebase understanding, not another rewrite plan. Kodesage shows repository ingestion, source-code search, documentation, ticket analysis, diagrams, and on-prem Docker deployment for regulated teams. Unlike generic coding assistants, it is built around Oracle Forms, PL/SQL, COBOL, PowerBuilder, and RPG estates where old context is the product. The risk is whether its suggestions stay trustworthy on undocumented systems with weak tests.",
+  "editor_rating": 4,
+  "why_featured": "Legacy modernization engine",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "devtools,legacy modernization,code analysis,enterprise software,ai",
+  "investors": "VentureFriends",
+  "links": {
+    "docs": "https://docs.kodesage.ai/",
+    "twitter": "https://x.com/KodeSage",
+    "linkedin": "https://www.linkedin.com/company/kodesage/",
+    "careers": "https://kodesage.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6.6M",
+      "stage": "Seed",
+      "lead_investor": "VentureFriends",
+      "date": "2026-06-04",
+      "source_url": "https://siliconangle.com/2026/06/04/startup-kodesage-secures-seed-funding-accelerate-premises-app-modernization-ai/",
+      "source_name": "SiliconANGLE"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-08",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://kodesage.ai/",
+        "type": "official"
+      },
+      {
+        "id": "docs_intro",
+        "label": "Kodesage documentation introduction",
+        "url": "https://docs.kodesage.ai/welcome-to-kodesage/introduction",
+        "type": "official"
+      },
+      {
+        "id": "docs_ask",
+        "label": "Ask Kodesage feature documentation",
+        "url": "https://docs.kodesage.ai/key-features/ask-kodesage",
+        "type": "product"
+      },
+      {
+        "id": "docs_git",
+        "label": "Git integration documentation",
+        "url": "https://docs.kodesage.ai/integrations/git",
+        "type": "product"
+      },
+      {
+        "id": "docs_engine",
+        "label": "Kodesage engine architecture documentation",
+        "url": "https://docs.kodesage.ai/welcome-to-kodesage/the-kodesage-engine",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Kodesage seed funding article",
+        "url": "https://siliconangle.com/2026/06/04/startup-kodesage-secures-seed-funding-accelerate-premises-app-modernization-ai/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Kodesage around codebase understanding, automatic documentation updates, natural-language answers, dependency diagrams, and ticket suggestions for legacy systems.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The documentation says Kodesage integrates code repositories, issue trackers, wikis, and documentation into a context-aware knowledge base for legacy software teams.",
+        "source_ids": [
+          "docs_intro"
+        ]
+      },
+      {
+        "claim": "The Git integration docs show codebase upload via ZIP, SSH Git repository, or HTTPS Git repository before Kodesage processes repository content for analysis and documentation generation.",
+        "source_ids": [
+          "docs_git"
+        ]
+      },
+      {
+        "claim": "Ask Kodesage lets users query a legacy system with natural-language questions, limit searches by resource type, generate diagrams, and customize prompt templates.",
+        "source_ids": [
+          "docs_ask"
+        ]
+      },
+      {
+        "claim": "The architecture docs describe on-premises Docker deployment, ingestion services, a searchable vector database, a knowledge graph, and issue-ticketing integration.",
+        "source_ids": [
+          "docs_engine"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering leaders and modernization teams responsible for old enterprise applications in regulated environments.",
+      "category": "DevTools",
+      "differentiation": "Kodesage starts from repository ingestion, knowledge graphs, documentation, and ticket workflows instead of treating modernization as a generic code-generation prompt.",
+      "why_now": "Enterprises are trying to reduce legacy migration risk while AI coding tools move from greenfield generation into maintenance-heavy software estates."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Kodesage suggestions remain reliable on undocumented legacy systems where tests and institutional knowledge are weakest.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      },
+      {
+        "claim": "bb-browser verification surfaced a React hydration mismatch on the official homepage while the product content still rendered.",
+        "basis": "Browser-side verification on 2026-06-08; treated as external site polish risk, not a VentureDex publish blocker."
+      }
+    ]
+  }
+}

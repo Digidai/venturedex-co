@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-07",
+  "verified_at": "2026-06-08",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -822,6 +822,13 @@
       "source_page": "https://www.layupparts.com/",
       "source_url": "https://www.layupparts.com/logo-white.svg",
       "tile_background": "dark"
+    },
+    "kodesage": {
+      "name": "Kodesage",
+      "shape": "icon",
+      "local_path": "/logos/companies/kodesage.png",
+      "source_page": "https://kodesage.ai/",
+      "source_url": "https://kodesage.ai/favicons/apple-touch-icon.png"
     }
   },
   "investors": {
@@ -1578,6 +1585,13 @@
       "local_path": "/logos/investors/marlinspike.png",
       "source_page": "https://marlinspike.us/wp-content/uploads/2026/04/cropped-Block-MS-1-192x192.png",
       "source_url": "https://marlinspike.us/wp-content/uploads/2026/04/cropped-Block-MS-1-192x192.png"
+    },
+    "venturefriends": {
+      "name": "VentureFriends",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/venturefriends.svg",
+      "source_page": "https://www.venturefriends.vc/",
+      "source_url": "https://cdn.prod.website-files.com/68f649b435ea68481370bf67/6900e4b34f8ae7ba2dd58e1c_Logo%20Lockup.svg"
     }
   }
 }
