@@ -427,13 +427,42 @@ page_has_quota() {
   return 1
 }
 
+page_request_state() {
+  run_js "
+(function(){
+  var text=(document.body?document.body.innerText:'').replace(/\\s+/g,' ').trim();
+  if(/(quota|配额)/i.test(text)) return 'quota';
+  if(/(indexing requested|request submitted|request was submitted|已请求编入索引|已请求|请求[^。\\n]*已提交|已提交[^。\\n]*请求)/i.test(text)) return 'success';
+  if(/(request failed|couldn.?t request|unable to request|something went wrong|失败|无法|出错)/i.test(text)) return 'failed';
+  return 'unknown';
+})();" 2>/dev/null || true
+}
+
+wait_for_request_result() {
+  local attempt state
+  for attempt in 1 2 3 4 5; do
+    state="$(page_request_state)"
+    if printf '%s' "$state" | grep -q 'success'; then
+      return 0
+    fi
+    if printf '%s' "$state" | grep -q 'quota'; then
+      return 2
+    fi
+    if printf '%s' "$state" | grep -q 'failed'; then
+      return 4
+    fi
+    sleep 3
+  done
+  return 3
+}
+
 dismiss_success_dialog() {
   run_js "(function(){var els=document.querySelectorAll('span,button,div[role=button]');for(var i=0;i<els.length;i++){var t=(els[i].textContent||'').replace(/\\s+/g,' ').trim();if(t==='确定'||t==='OK'||t==='Got it'||t==='知道了'){els[i].click();return 'closed';}}return 'none';})();" >/dev/null 2>&1 || true
 }
 
 submit_single_url() {
   local url="$1"
-  local escaped_url input_js click_js input_result click_result
+  local escaped_url input_js click_js input_result click_result result
 
   escaped_url=${url//\\/\\\\}
   escaped_url=${escaped_url//\'/\\\'}
@@ -495,6 +524,12 @@ submit_single_url() {
   fi
 
   sleep "$POST_CLICK_WAIT_SECONDS"
+  wait_for_request_result
+  result=$?
+  if [ "$result" -ne 0 ]; then
+    return "$result"
+  fi
+
   dismiss_success_dialog
   sleep "$POST_MODAL_WAIT_SECONDS"
 
@@ -752,9 +787,14 @@ submit_targets() {
         append_history "quota_exceeded" "$url" "quota detected"
         return 2
         ;;
+      4)
+        echo "Search Console reported a request failure." >&2
+        append_history "retry_pending" "$url" "request failure detected"
+        return 1
+        ;;
       *)
-        echo "Submit failed: $url" >&2
-        append_history "error" "$url" "submit failed"
+        echo "Submit confirmation was not detected: $url" >&2
+        append_history "retry_pending" "$url" "submit confirmation not detected"
         return 3
         ;;
     esac
