@@ -1,0 +1,380 @@
+{
+  "issue_number": 3,
+  "title": "TODO: Weekly research for 2026-06-01 to 2026-06-07",
+  "week_start": "2026-06-01",
+  "week_end": "2026-06-07",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "offroad",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/offroad.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/offroad.json research.sources.official_site",
+          "url": "https://offroad.ai/"
+        },
+        {
+          "label": "OhAuth public OAuth catalog",
+          "source": "content/startups/offroad.json research.sources.ohauth_catalog",
+          "url": "https://ohauth.ai/"
+        },
+        {
+          "label": "Offroad OAuth risk report",
+          "source": "content/startups/offroad.json research.sources.oauth_report",
+          "url": "https://offroad.ai/blog/oauthreport-2026"
+        },
+        {
+          "label": "Offroad seed funding article",
+          "source": "content/startups/offroad.json research.sources.funding_1",
+          "url": "https://startuprise.io/offroad-raises-7m-in-seed-funding-led-by-ibex-investors/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site presents Discover, Investigate, and Remediate agents for identity risk across human users, service accounts, OAuth applications, machine identities, and AI agents.",
+          "url": "https://offroad.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "OhAuth exposes a public catalog for OAuth apps across Google Workspace, GitHub, Slack, Zoom, Atlassian, Microsoft 365, Salesforce, and other ecosystems.",
+          "url": "https://ohauth.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Offroad's OAuth report lists over-permissioned apps, dead publisher domains, buyable domains, and AI apps with broad write access as risk categories.",
+          "url": "https://offroad.ai/blog/oauthreport-2026"
+        },
+        {
+          "label": "Official product site",
+          "source": "Offroad homepage",
+          "url": "https://offroad.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Startuprise",
+          "url": "https://startuprise.io/offroad-raises-7m-in-seed-funding-led-by-ibex-investors/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether autonomous identity remediation can move fast while still satisfying approval, audit, and ownership requirements.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "freshflow",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/freshflow.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/freshflow.json research.sources.official_site",
+          "url": "https://freshflow.ai/"
+        },
+        {
+          "label": "Freshflow Series A announcement",
+          "source": "content/startups/freshflow.json research.sources.funding_1",
+          "url": "https://www.worldfund.vc/articles/freshflow-brings-ai-to-europes-fresh-aisles-and-closes-10m-series-a"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site breaks the product into Forecast, Inventory, Optimization, and Freshflow App modules for fresh-food replenishment decisions.",
+          "url": "https://freshflow.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Freshflow publishes customer-facing outcome claims including 120+ demand signals, 93% order-proposal acceptance, up to 30% less waste, and up to 4% more revenue.",
+          "url": "https://freshflow.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Freshflow homepage",
+          "url": "https://freshflow.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "World Fund",
+          "url": "https://www.worldfund.vc/articles/freshflow-brings-ai-to-europes-fresh-aisles-and-closes-10m-series-a"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether each retailer's POS, spoilage, promotion, and scan-error data is clean enough for reliable store-level automation.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "willow",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/willow.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/willow.json research.sources.official_site",
+          "url": "https://withwillow.ai/"
+        },
+        {
+          "label": "Willow seed announcement",
+          "source": "content/startups/willow.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/willow-raises-7m-seed-to-ensure-enterprises-can-fully-oversee-and-govern-autonomous-agents-302791492.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site shows discovery for AI agents, tools, and MCP servers, plus shadow AI detection and usage analytics.",
+          "url": "https://withwillow.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Willow describes build/runtime guards, permissioned tool access, audit trails, IdP connection, Slack/Jira/GitHub connectors, and API-to-MCP conversion.",
+          "url": "https://withwillow.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Willow homepage",
+          "url": "https://withwillow.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/willow-raises-7m-seed-to-ensure-enterprises-can-fully-oversee-and-govern-autonomous-agents-302791492.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether teams adopt a control layer early enough, before unmanaged agent usage creates a visible incident.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "scotch",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/scotch.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/scotch.json research.sources.official_site",
+          "url": "https://scotchpos.com/"
+        },
+        {
+          "label": "Liquor store POS product page",
+          "source": "content/startups/scotch.json research.sources.product_page",
+          "url": "https://scotchpos.com/liquor-store-pos-system/"
+        },
+        {
+          "label": "Scotch Series A announcement",
+          "source": "content/startups/scotch.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/scotch-raises-20m-series-a-to-modernize-liquor-stores-surpasses-1b-in-payment-volume-302790781.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site presents POS, payments, inventory, ordering, receiving, analytics, invoice reading, and offline selling as core surfaces.",
+          "url": "https://scotchpos.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The liquor-store product page describes case-break tracking, distributor invoice automation, shrinkage reports, age verification, and AI ordering tools.",
+          "url": "https://scotchpos.com/liquor-store-pos-system/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Scotch homepage",
+          "url": "https://scotchpos.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/scotch-raises-20m-series-a-to-modernize-liquor-stores-surpasses-1b-in-payment-volume-302790781.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether vertical depth remains durable if broad POS incumbents clone the highest-value liquor workflows.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "scispot",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/scispot.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/scispot.json research.sources.official_site",
+          "url": "https://www.scispot.com/"
+        },
+        {
+          "label": "Scispot Series A announcement",
+          "source": "content/startups/scispot.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/scispot-raises-8m-series-a-to-help-life-sciences-labs-move-faster-302790717.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site shows LabOS, alt-LIMS, inventory management, GLUE integrations, and Scibot as connected lab-operation modules.",
+          "url": "https://www.scispot.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface advertises API, JupyterHub, Python SDK, and CLI access for code-first lab automation.",
+          "url": "https://www.scispot.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Scispot homepage",
+          "url": "https://www.scispot.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/scispot-raises-8m-series-a-to-help-life-sciences-labs-move-faster-302790717.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether one operating layer can absorb the custom instruments and workflows inside every specialized lab.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "airspeed",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/airspeed.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/airspeed.json research.sources.official_site",
+          "url": "https://www.goairspeed.com/"
+        },
+        {
+          "label": "Airspeed Series A story",
+          "source": "content/startups/airspeed.json research.sources.funding_1",
+          "url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes agents for call prep, follow-ups, CRM hygiene, coaching plans, and integrations with Salesforce, HubSpot, Slack, Gmail, Outlook, Zoom, and Teams.",
+          "url": "https://www.goairspeed.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Series A story says Airspeed is approaching 200 customers and frames the product around context layers, sub-agent orchestration, and Customer 360.",
+          "url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a"
+        },
+        {
+          "label": "Official product site",
+          "source": "Airspeed homepage",
+          "url": "https://www.goairspeed.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Airspeed",
+          "url": "https://www.goairspeed.com/blog/the-story-behind-airspeeds-20m-series-a"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether enterprise buyers will allow autonomous agents to act inside revenue operations instead of keeping them in draft-only mode.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "truefan-ai",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/truefan-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/truefan-ai.json research.sources.official_site",
+          "url": "https://truefan.ai/"
+        },
+        {
+          "label": "TrueFan Studio login",
+          "source": "content/startups/truefan-ai.json research.sources.studio_login",
+          "url": "https://studio.truefan.in/login"
+        },
+        {
+          "label": "BFSI industry product page",
+          "source": "content/startups/truefan-ai.json research.sources.bfsi_page",
+          "url": "https://truefan.ai/industry/powering-the-full-bfsi-journey-with-gen-ai"
+        },
+        {
+          "label": "TrueFan AI Series A article",
+          "source": "content/startups/truefan-ai.json research.sources.funding_1",
+          "url": "https://www.business-standard.com/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions TrueFan AI as an enterprise platform for personalized AI videos in 175+ languages, with a single recording used across campaigns.",
+          "url": "https://truefan.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Studio login exposes a production app surface with Google, Microsoft, and email sign-in paths for creating AI avatar and personalized video workflows.",
+          "url": "https://studio.truefan.in/login"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The BFSI page describes lead generation, cross-sell, referrals, customer retention, and training use cases plus SOC 2 and ISO 27001 security claims.",
+          "url": "https://truefan.ai/industry/powering-the-full-bfsi-journey-with-gen-ai"
+        },
+        {
+          "label": "Official product site",
+          "source": "TrueFan AI homepage",
+          "url": "https://truefan.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Standard",
+          "url": "https://www.business-standard.com/companies/start-ups/ai-startup-truefan-raises-10-million-led-by-baring-pe-india-z3partners-126060400867_1.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether enterprise buyers will consistently approve AI-avatar output for regulated or high-trust brand communications.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
