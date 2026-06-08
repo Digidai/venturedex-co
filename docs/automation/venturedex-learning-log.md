@@ -2103,3 +2103,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - root cause for the failed first deploy was content-source drift, not code: local curl and local validation could reach `marlinspike.us` and its SVG wordmark, but GitHub release validation reported the Marlinspike `source_page` and `source_url` unreachable; switching only that investor asset to the official WordPress-declared 192px icon path made both local validation and GitHub release pass.
   - `docs/automation/venturedex-daily-runbook.md` changed only inside `<!-- BEGIN AUTO-EDIT: ADAPTIVE_HEURISTICS -->` / `<!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->`, adding the WordPress-hosted investor brand-asset heuristic under Operational Heuristics.
   - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
+
+### 2026-06-08 14:41 CST
+
+- candidate_count: 20
+- accepted: 1
+- rejected: 3
+- rejection_bar_met: yes
+- outcome: daily-content-live
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 118/118 startups, reported zero errors and 74 existing warnings, regenerated the D1 seed, passed 66/66 newsletter/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass; `./scripts/screenshot.sh kodesage https://kodesage.ai/en` produced `public/screenshots/kodesage.webp`, visual review confirmed a nonblank product-visible homepage, and R2 upload remained skipped because bootstrap reported no R2 permission.
+- commit_push: pass; content commit `6cde82a2e54e882059f7077b6812c1229ca81e9f` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `6cde82a2e54e882059f7077b6812c1229ca81e9f` for the Kodesage content addition.
+- pushed_branch: main
+- ci_deploy: pass after targeted rerun; GitHub Validate `27119678396` passed in 4m29s, the first Deploy `27119678432` failed in `scripts/manage.sh release` because the GitHub runner temporarily could not reach the existing official Marlinspike WordPress icon URL, then the same deploy run passed on a targeted rerun in 6m13s and uploaded Worker version `b52c2642-c9e9-4551-b680-39f0df723406`.
+- live_smoke: pass; the release flow passed smoke for `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 118 published startups, direct `/startups/kodesage` returned HTTP 200, the live homepage listed Kodesage first, direct Cloudflare D1 API confirmed 118 published startups, and `python3 scripts/smoke-live.py https://venturedex.co --expected-startups 118` passed.
+- newsletter: not manually triggered; remote D1 latest Daily send remains `daily:2026-06-06 07:30:11:2026-06-07 07:30:03`, status `sent`, 5 items, 2 recipients, updated at `2026-06-07 13:30:37` UTC, and delivery aggregation showed two sent rows. Kodesage has `published_at` `2026-06-08 05:57:12` UTC, becomes delay-eligible after `2026-06-08 11:57:12` UTC, and remains governed by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- failure_tags: [source_drift, ci_deploy_fail, d1_cli_timeout, browser_external_error]
+- reward: 4
+- dominant_failure_mode: content quality, structured research, timestamps, schema, CI validation, deploy, and live smoke all passed, but the run exposed two operational transients: GitHub release-runner reachability drift for an existing official Marlinspike brand-asset URL, and local Wrangler `d1 execute` timing out against the D1 query endpoint while direct Cloudflare D1 REST queries succeeded.
+- proposed_change: none; the Marlinspike deploy failure resolved on one diagnosed rerun without content mutation, and the existing WordPress-hosted brand-asset heuristic already covers the official-source preference. The Wrangler D1 timeout is recorded as a local CLI/API transport issue rather than a content or runbook rule gap.
+- decision: no automation-doc heuristic change
+- affected_file: content/startups/kodesage.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/companies/kodesage.png, public/logos/investors/venturefriends.svg, public/screenshots/kodesage.webp, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery in the detached worktree; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed dependencies, and reported GitHub Actions active.
+  - accepted Kodesage from its June 4, 2026 $6.6M Seed led by VentureFriends; official and `bb-browser` review verified codebase ingestion, Git/ZIP/SSH/HTTPS integrations, documentation generation, natural-language codebase Q&A, ticket-triage support, on-prem Docker deployment, vector database, knowledge graph, and issue-tracker integration.
+  - `bb-browser` rendered `https://kodesage.ai/` with product content and no page-blocking browser errors; it surfaced a React minified hydration error on the official site plus a Readwise extension injection error, so the official-site hydration issue was recorded as an external product-polish risk and the extension error was ignored as local browser noise.
+  - added official structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logo, VentureFriends investor directory/brand asset, static official `links.careers`, and local screenshot for Kodesage.
+  - rejected Generalist AI, Aethex AI, and NewLimit for physical robotics/biotech fit or out-of-range stage; Mach Industries was reevaluated on its new Series C but not appended because the immutable rejected-slug guard already contains `mach-industries`.
+  - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
+  - first Deploy failed only on existing `brand-assets investors.marlinspike` URL reachability; local curl and local validation could reach the official URL, and the diagnosed deploy rerun passed without changing content.
+  - local `./scripts/manage.sh smoke https://venturedex.co` initially hung in `wrangler d1 execute`; the bounded rerun failed with Wrangler `ConnectionTimeout`, while direct Cloudflare D1 REST query returned 118 published startups and direct route smoke passed with the same count.
