@@ -2138,3 +2138,35 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
   - first Deploy failed only on existing `brand-assets investors.marlinspike` URL reachability; local curl and local validation could reach the official URL, and the diagnosed deploy rerun passed without changing content.
   - local `./scripts/manage.sh smoke https://venturedex.co` initially hung in `wrangler d1 execute`; the bounded rerun failed with Wrangler `ConnectionTimeout`, while direct Cloudflare D1 REST query returned 118 published startups and direct route smoke passed with the same count.
+
+### 2026-06-08 15:53 CST
+
+- candidate_count: n/a
+- accepted: n/a
+- rejected: n/a
+- rejection_bar_met: n/a
+- outcome: weekly-content-local-validated-push-blocked
+- validation: pass; required docs were read first, `./scripts/bootstrap-automation.sh venturedex-weekly-curator` passed in the current checkout, `./scripts/check-github-actions.sh` passed, `python3 scripts/weekly.py validate` returned `weekly: OK`, `./scripts/manage.sh validate` passed with 117/117 startups, zero errors, 74 existing warnings, 68/68 tests, generated D1 seed, TypeScript checking, and Astro build, and `git diff --check` passed.
+- weekly_validate: pass; issue #3 validates as a published weekly issue with seven research-object picks and no TODO text.
+- build_db: pass through `./scripts/manage.sh validate`; `d1/generated-seed.sql` was generated during validation but not staged for Weekly because the checkout already had unrelated generated-output changes before this run.
+- build_app: pass through `./scripts/manage.sh validate`; Astro prerendered `/weekly/3.html`.
+- screenshot: n/a; Weekly browser verification used `bb-browser` page/text/error checks rather than screenshots.
+- commit_push: not attempted; current checkout is behind `origin/main` by two commits and contains unrelated modified/untracked files outside Weekly scope, so the runbook's clean-worktree push condition was not met.
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: not observed; no commit or push was made.
+- live_smoke: not run; no deploy occurred. Local `bb-browser` verification passed for `http://127.0.0.1:4321/weekly` and `http://127.0.0.1:4321/weekly/3` with zero JavaScript errors.
+- newsletter: not manually triggered; because issue #3 was not committed, pushed, or deployed, the production Weekly delay window has not started. When a clean publish happens, Weekly delivery remains governed by the Tuesday 22:00 Asia/Shanghai Cloudflare Cron, the default 24-hour Weekly delay, and D1 `newsletter_sends` / `newsletter_deliveries` state.
+- failure_tags: [dirty_worktree, bootstrap_env, source_scope]
+- reward: 2
+- dominant_failure_mode: content quality and local gates passed, but the safe publish path was blocked by workspace state rather than the Weekly issue itself: the current checkout had unrelated user changes and was behind `origin/main`; an attempted clean worktree based on `origin/main` then hit the known Cloudflare R2 capability-check transport failure (`requests.exceptions.SSLError` / `SSL: UNEXPECTED_EOF_WHILE_READING`) before dependency restoration.
+- proposed_change: deferred; consider making the bootstrap R2 capability check fail-soft on transport EOF after token verification when R2 permission is optional, but that script/governance change is outside this Weekly content run.
+- decision: deferred
+- affected_file: content/weekly/3.json, docs/automation/venturedex-learning-log.md
+- affected_section: weekly curator
+- evidence:
+  - generated `content/weekly/3.json` for 2026-06-01 to 2026-06-07 and completed it as `AI Is Moving Into the Awkward Work`, with status `published`, `published_at: 2026-06-08`, and seven picks: Offroad, Freshflow, Willow, Scotch, Scispot, Airspeed, and TrueFan AI.
+  - every pick includes `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`; `rg "TODO|Research risk candidate" content/weekly/3.json` returned no matches.
+  - current `bb-browser` checks verified product/source surfaces for Offroad, OhAuth, Offroad OAuth report, Freshflow, Willow, Scotch, Scotch liquor-store POS page, Scispot, Airspeed homepage, Airspeed Series A story, TrueFan AI homepage, TrueFan Studio login, TrueFan BFSI page, and the linked funding/source pages used for the issue.
+  - local `bb-browser` checks verified `/weekly` listed issue #3 and `/weekly/3` rendered the issue, all seven pick names, evidence/risks text, and all seven verdict sentences with zero JavaScript errors.
+  - generated/ignored validation outputs `.astro/`, `dist/`, `scripts/__pycache__/`, and the temporary clean worktree were removed after verification; unrelated pre-existing dirty files were preserved.
