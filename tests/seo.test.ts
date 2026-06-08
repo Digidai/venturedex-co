@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { investorJsonLd, startupJsonLd } from "../src/lib/seo";
+import { canonicalPath, investorJsonLd, startupJsonLd } from "../src/lib/seo";
 import type { FundingRound, Investor, Startup } from "../src/lib/types";
 
 const SITE_URL = "https://venturedex.co";
@@ -195,4 +195,12 @@ test("startupJsonLd publisher/isPartOf point at the shared site organization and
   const defined = definedIds(graph);
   assert.ok(defined.has(`${SITE_URL}/#organization`), "site organization node should exist");
   assert.ok(defined.has(`${SITE_URL}/#website`), "site website node should exist");
+});
+
+test("canonicalPath strips prerendered .html file paths to public routes", () => {
+  assert.equal(canonicalPath("/index.html"), "/");
+  assert.equal(canonicalPath("/index"), "/");
+  assert.equal(canonicalPath("/startups/airspeed.html"), "/startups/airspeed");
+  assert.equal(canonicalPath("/collections/ai-ml.html"), "/collections/ai-ml");
+  assert.equal(canonicalPath("/weekly/2/"), "/weekly/2");
 });

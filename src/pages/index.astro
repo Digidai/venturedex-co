@@ -50,9 +50,11 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
         <>
           <p class="result-count" data-result-count>{startupCount} {countLabel}</p>
           <div class="card-grid" data-card-grid>
-            {startups.map((startup) => (
+            <h2 class="visually-hidden">Startup profiles</h2>
+            {startups.map((startup, position) => (
               <SiteCard
                 startup={startup}
+                priority={position < 3}
                 index={{
                   name: startup.product_name,
                   type: startup.product_type,

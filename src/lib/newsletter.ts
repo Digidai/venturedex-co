@@ -658,7 +658,7 @@ export function buildDailyDigestContent(input: {
     funding,
     research,
     siteUrl: input.siteUrl,
-  })).join("");
+  })).join(cardGapHtml());
 
   const itemText = input.items.map(({ startup, funding, research }, index) => startupText({
     index,
@@ -671,7 +671,7 @@ export function buildDailyDigestContent(input: {
   const dateLabel = formatDate(input.periodEnd);
   const htmlMain = `
     ${sectionKicker("Daily additions", `${itemCount} ${itemCount === 1 ? "profile" : "profiles"} ready after review`)}
-    <h1 style="${styles.h1}">New on VentureDex</h1>
+    <h1 class="vd-h1" style="${styles.h1}">New on VentureDex</h1>
     <p style="${styles.lede}">These companies were published after the editorial delay window, so the site record had time for cleanup before reaching inboxes.</p>
     <p style="${styles.metaLine}">Digest cutoff: ${escapeHtml(dateLabel)}</p>
     ${itemHtml || emptyHtml("No new startup profiles passed the delay gate.")}
@@ -710,7 +710,7 @@ export function buildWeeklyDigestContent(input: {
   const themesHtml = issue.themes.length
     ? `<div style="${styles.themeGrid}">${issue.themes.map((theme) => `
         <div style="${styles.themeBox}">
-          <h3 style="${styles.cardTitle}">${escapeHtml(theme.title)}</h3>
+          <h3 class="vd-card-title" style="${styles.cardTitle}">${escapeHtml(theme.title)}</h3>
           <p style="${styles.bodySmall}">${escapeHtml(theme.summary)}</p>
         </div>
       `).join("")}</div>`
@@ -720,10 +720,9 @@ export function buildWeeklyDigestContent(input: {
     const startup = input.startups.get(pick.slug);
     if (!startup) return "";
     const startupUrl = absoluteUrl(input.siteUrl, `/startups/${startup.slug}`);
-    return `
-      <article style="${styles.card}">
+    return cardShellHtml(`
         <div style="${styles.kicker}">#${index + 1} ${escapeHtml(metaLabel(startup))}</div>
-        <h2 style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
+        <h2 class="vd-card-title" style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
         ${startup.summary ? `<p style="${styles.summary}">${escapeHtml(startup.summary)}</p>` : ""}
         ${screenshotHtml(startup, input.siteUrl)}
         <div style="${styles.rule}"></div>
@@ -732,9 +731,8 @@ export function buildWeeklyDigestContent(input: {
         ${weeklyEvidenceHtml(pick.evidence)}
         ${weeklyRisksHtml(pick.risks)}
         ${pick.verdict ? `<p style="${styles.verdict}">${escapeHtml(pick.verdict)}</p>` : ""}
-      </article>
-    `;
-  }).join("");
+    `);
+  }).filter(Boolean).join(cardGapHtml());
 
   const picksText = issue.picks.map((pick, index) => {
     const startup = input.startups.get(pick.slug);
@@ -755,7 +753,7 @@ export function buildWeeklyDigestContent(input: {
 
   const htmlMain = `
     ${sectionKicker("Weekly research", `${issue.picks.length} evidence-bound picks`)}
-    <h1 style="${styles.h1}">${escapeHtml(issue.title)}</h1>
+    <h1 class="vd-h1" style="${styles.h1}">${escapeHtml(issue.title)}</h1>
     <p style="${styles.lede}">${escapeHtml(issue.editorial_intro)}</p>
     ${issue.research_summary ? `<p style="${styles.body}">${escapeHtml(issue.research_summary)}</p>` : ""}
     <p style="${styles.ctaWrap}"><a href="${escapeAttr(issueUrl)}" style="${styles.cta}">Read the full issue</a></p>
@@ -1773,25 +1771,40 @@ function renderHtmlEmail(input: {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="x-apple-disable-message-reformatting">
     <title>${escapeHtml(input.subject)}</title>
+    <style>
+      @media screen and (max-width: 520px) {
+        .vd-outer { padding: 14px 8px !important; }
+        .vd-container { width: 100% !important; max-width: 100% !important; }
+        .vd-header { padding: 16px 18px !important; }
+        .vd-header-meta { display: none !important; }
+        .vd-content { min-width: 0 !important; padding: 22px 14px 28px !important; }
+        .vd-h1 { font-size: 29px !important; line-height: 1.14 !important; }
+        .vd-card { width: 100% !important; max-width: 100% !important; min-width: 0 !important; table-layout: fixed !important; }
+        .vd-card-cell { min-width: 0 !important; padding: 20px 16px 22px !important; }
+        .vd-card-title { font-size: 22px !important; line-height: 1.24 !important; }
+        .vd-screenshot-link { display: block !important; width: 100% !important; max-width: 100% !important; overflow: hidden !important; }
+        .vd-image { display: block !important; width: 100% !important; max-width: 100% !important; min-width: 0 !important; height: auto !important; }
+      }
+    </style>
   </head>
   <body style="${styles.pageBody}">
     <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">${escapeHtml(input.previewText)}</div>
     <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.shell}">
       <tr>
-        <td align="center" style="${styles.outerCell}">
-          <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.container}">
+        <td class="vd-outer" align="center" style="${styles.outerCell}">
+          <table class="vd-container" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.container}">
             <tr>
-              <td style="${styles.header}">
+              <td class="vd-header" style="${styles.header}">
                 <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.headerTable}">
                   <tr>
                     <td align="left"><a href="https://venturedex.co" style="${styles.logo}">VentureDex</a></td>
-                    <td align="right" style="${styles.headerMeta}">Curated startup research</td>
+                    <td class="vd-header-meta" align="right" style="${styles.headerMeta}">Curated startup research</td>
                   </tr>
                 </table>
               </td>
             </tr>
             <tr>
-              <td style="${styles.content}">
+              <td class="vd-content" style="${styles.content}">
                 ${input.mainHtml}
               </td>
             </tr>
@@ -1828,6 +1841,40 @@ function renderTextEmail(input: {
   ].filter(Boolean).join("\n");
 }
 
+function cardShellHtml(content: string): string {
+  return `
+    <table class="vd-card" role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.card}">
+      <tr>
+        <td class="vd-card-cell" style="${styles.cardCell}">
+          ${content}
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
+function cardGapHtml(): string {
+  return `
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.cardGapTable}">
+      <tr>
+        <td style="${styles.cardGap}">&nbsp;</td>
+      </tr>
+    </table>
+  `;
+}
+
+function cardCtaHtml(url: string, label: string): string {
+  return `
+    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="${styles.ctaTable}">
+      <tr>
+        <td style="${styles.ctaCell}">
+          <a href="${escapeAttr(url)}" style="${styles.cta}">${escapeHtml(label)}</a>
+        </td>
+      </tr>
+    </table>
+  `;
+}
+
 function startupCardHtml(input: {
   index: number;
   startup: Startup;
@@ -1844,10 +1891,9 @@ function startupCardHtml(input: {
   const risks = research?.risks?.slice(0, 2) ?? [];
   const context = research?.market_context;
 
-  return `
-    <article style="${styles.card}">
+  return cardShellHtml(`
       <div style="${styles.kicker}">#${input.index + 1} ${escapeHtml(metaLabel(startup))}</div>
-      <h2 style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
+      <h2 class="vd-card-title" style="${styles.cardTitle}"><a href="${escapeAttr(startupUrl)}" style="${styles.titleLink}">${escapeHtml(startup.product_name)}</a></h2>
       ${startup.summary ? `<p style="${styles.summary}">${escapeHtml(startup.summary)}</p>` : ""}
       ${fundingText ? `<p style="${styles.badgeLine}">${escapeHtml(fundingText)}</p>` : ""}
       ${screenshotHtml(startup, siteUrl)}
@@ -1856,9 +1902,8 @@ function startupCardHtml(input: {
       ${dailyEvidenceHtml(evidence, research)}
       ${dailyMarketContextHtml(context)}
       ${dailyRisksHtml(risks)}
-      <p style="${styles.ctaWrap}"><a href="${escapeAttr(startupUrl)}" style="${styles.cta}">Read profile</a></p>
-    </article>
-  `;
+      ${cardCtaHtml(startupUrl, "Read profile")}
+  `);
 }
 
 function startupText(input: {
@@ -1962,10 +2007,11 @@ function screenshotHtml(startup: Startup, siteUrl: string): string {
   const alt = `${startup.product_name} website screenshot`;
 
   return `
-    <a href="${escapeAttr(startupUrl)}" style="${styles.screenshotLink}">
+    <a class="vd-screenshot-link" href="${escapeAttr(startupUrl)}" style="${styles.screenshotLink}">
       <img
+        class="vd-image"
         src="${escapeAttr(screenshotUrl)}"
-        width="600"
+        width="580"
         alt="${escapeAttr(alt)}"
         style="${styles.screenshotImage}"
       >
@@ -2103,12 +2149,12 @@ const styles = {
   pageBody: "margin:0;padding:0;background:#FAFAF9;color:#1A1A1A;font-family:Arial,'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;",
   shell: "width:100%;background:#F3F1EA;border-collapse:collapse;",
   outerCell: "padding:24px 12px;",
-  container: "width:100%;max-width:680px;background:#FFFFFF;border:1px solid #E1DCD2;border-radius:12px;border-collapse:separate;overflow:hidden;",
+  container: "width:100%;max-width:680px;background:#FFFFFF;border:1px solid #E1DCD2;border-radius:12px;border-collapse:separate;table-layout:fixed;overflow:hidden;",
   header: "padding:20px 24px;border-bottom:1px solid #E7E1D8;",
   headerTable: "width:100%;border-collapse:collapse;",
   logo: "font-family:Georgia,'Fraunces',serif;font-size:22px;font-weight:700;line-height:1.2;color:#1A1A1A;text-decoration:none;",
   headerMeta: "font-size:12px;line-height:22px;color:#737373;",
-  content: "padding:24px 24px 28px;",
+  content: "padding:28px 24px 32px;word-break:break-word;",
   h1: "margin:8px 0 12px;font-family:Georgia,'Fraunces',serif;font-size:34px;line-height:1.12;color:#1A1A1A;font-weight:600;",
   lede: "margin:0 0 14px;font-size:16px;line-height:1.68;color:#4B5563;",
   body: "margin:14px 0 0;font-size:15px;line-height:1.72;color:#24211E;",
@@ -2116,25 +2162,30 @@ const styles = {
   sourceText: "font-size:12px;line-height:1.5;color:#78716C;",
   inlineLink: "color:#1D4ED8;text-decoration:underline;",
   summary: "margin:8px 0 0;font-size:16px;line-height:1.55;color:#1A1A1A;",
-  metaLine: "margin:0 0 22px;font-size:12px;line-height:1.45;color:#737373;font-family:'JetBrains Mono',ui-monospace,monospace;",
+  metaLine: "margin:0 0 24px;font-size:12px;line-height:1.45;color:#737373;font-family:'JetBrains Mono',ui-monospace,monospace;",
   kickerRow: "margin:0 0 8px;",
   kickerStrong: "display:inline-block;margin-right:8px;font-size:12px;line-height:1.4;color:#2563EB;font-weight:700;text-transform:uppercase;letter-spacing:.04em;",
   kicker: "font-size:12px;line-height:1.4;color:#737373;text-transform:uppercase;letter-spacing:.04em;",
-  card: "margin:24px 0 0;padding:24px 0 0;background:transparent;border:0;border-top:1px solid #DDD6CC;border-radius:0;",
-  cardTitle: "margin:5px 0 0;font-family:Georgia,'Fraunces',serif;font-size:24px;line-height:1.22;color:#1A1A1A;font-weight:600;",
+  card: "width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;background:#FFFEFC;border:1px solid #E2DCD2;border-radius:10px;overflow:hidden;",
+  cardCell: "width:100%;padding:24px 24px 26px;word-break:break-word;",
+  cardGapTable: "width:100%;border-collapse:collapse;",
+  cardGap: "height:30px;line-height:30px;font-size:30px;mso-line-height-rule:exactly;",
+  cardTitle: "margin:6px 0 0;font-family:Georgia,'Fraunces',serif;font-size:25px;line-height:1.22;color:#1A1A1A;font-weight:600;",
   titleLink: "color:#1A1A1A;text-decoration:none;",
-  badgeLine: "display:inline-block;margin:13px 0 0;padding:6px 10px;background:#F3F0EA;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.35;color:#3F3A34;",
-  screenshotLink: "display:block;margin:16px 0 0;text-decoration:none;",
-  screenshotImage: "display:block;width:100%;max-width:100%;height:auto;border:1px solid #E7E1D8;border-radius:8px;background:#F7F4EF;",
-  rule: "height:1px;background:#DDD6CC;margin:20px 0 16px;",
-  analysisBlock: "margin:16px 0 0;padding:14px 0 0;border-top:1px solid #E7E1D8;",
+  badgeLine: "display:inline-block;margin:14px 0 0;padding:7px 11px;background:#F3F0EA;border:1px solid #E2D9CC;border-radius:999px;font-size:12px;line-height:1.35;color:#3F3A34;",
+  screenshotLink: "display:block;width:100%;max-width:100%;margin:18px 0 0;overflow:hidden;text-decoration:none;",
+  screenshotImage: "display:block;width:100%;max-width:580px;min-width:0;height:auto;border:1px solid #E7E1D8;border-radius:8px;background:#F7F4EF;-ms-interpolation-mode:bicubic;",
+  rule: "height:1px;line-height:1px;font-size:0;background:#E7E1D8;margin:22px 0 16px;",
+  analysisBlock: "margin:16px 0 0;padding:16px 0 0;border-top:1px solid #E7E1D8;",
   blockTitle: "margin:0 0 7px;font-size:11px;line-height:1.35;color:#78716C;text-transform:uppercase;letter-spacing:.08em;font-weight:700;",
   factLine: "margin:8px 0 0;font-size:14px;line-height:1.62;color:#4F4A45;",
   factLabel: "font-weight:700;color:#3F3A34;",
   verdict: "margin:16px 0 0;padding:12px 0 0;border-top:1px solid #D6D3D1;font-size:15px;line-height:1.65;color:#1A1A1A;font-weight:600;",
   ctaWrap: "margin:20px 0 0;",
-  cta: "display:inline-block;padding:11px 16px;background:#1A1A1A;border-radius:7px;color:#FAFAF9;text-decoration:none;font-size:14px;font-weight:700;",
-  themeGrid: "margin:18px 0 8px;",
+  ctaTable: "width:100%;border-collapse:collapse;margin:0;",
+  ctaCell: "padding-top:22px;border-top:1px solid #E7E1D8;",
+  cta: "display:inline-block;padding:12px 18px;background:#1A1A1A;border-radius:8px;color:#FAFAF9;text-decoration:none;font-size:14px;line-height:18px;font-weight:700;",
+  themeGrid: "margin:22px 0 24px;",
   themeBox: "margin:12px 0 0;padding:0 0 12px;background:transparent;border:0;border-bottom:1px solid #E7E1D8;border-radius:0;",
   empty: "margin:20px 0;padding:20px;background:#FFFFFF;border:1px solid #E7E1D8;border-radius:8px;color:#737373;font-size:15px;",
   footer: "padding:18px 24px 24px;border-top:1px solid #E7E1D8;background:#FBFAF7;",

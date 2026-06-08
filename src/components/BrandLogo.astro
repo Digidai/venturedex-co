@@ -10,6 +10,7 @@ interface Props {
   size?: number;
   class?: string;
   loading?: "eager" | "lazy";
+  autoTone?: boolean;
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   name,
   size = 20,
   class: className = "",
-  loading = "eager",
+  loading = "lazy",
+  autoTone = true,
 } = Astro.props;
 
 const shape = asset?.shape ?? "icon";
@@ -36,7 +38,7 @@ const style = `--brand-size:${size}px;`;
     className,
   ]}
   style={style}
-  data-brand-logo-auto={asset ? "true" : undefined}
+  data-brand-logo-auto={autoTone && asset ? "true" : undefined}
   data-logo-tone={initialLogoTone}
   aria-hidden="true"
 >
@@ -44,6 +46,8 @@ const style = `--brand-size:${size}px;`;
     <img
       src={asset.local_path}
       alt=""
+      width={size}
+      height={size}
       loading={loading}
       decoding="async"
       class="brand-logo"
@@ -53,6 +57,7 @@ const style = `--brand-size:${size}px;`;
   )}
 </span>
 
+{autoTone && (
 <script>
   const AUTO_LOGO_SELECTOR = "[data-brand-logo-auto]";
   const MAX_SAMPLE_EDGE = 64;
@@ -241,6 +246,7 @@ const style = `--brand-size:${size}px;`;
     }).observe(document.documentElement, { childList: true, subtree: true });
   }
 </script>
+)}
 
 <style>
   .brand-mark {

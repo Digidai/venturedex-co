@@ -393,7 +393,7 @@
       "shape": "icon",
       "local_path": "/logos/companies/stilta.png",
       "source_page": "https://www.stilta.com",
-      "source_url": "https://www.stilta.com/_assets/v11/f0c5578d61c204a8e9647b07da24d4e50d8da2a7.png"
+      "source_url": "https://framerusercontent.com/images/xSIb9kJJIAy5g6wDejZ4TTwsX0U.png"
     },
     "rely": {
       "name": "Rely",
@@ -440,7 +440,7 @@
     "pivot": {
       "name": "Pivot",
       "shape": "icon",
-      "local_path": "/logos/companies/pivot.png",
+      "local_path": "/logos/companies/pivot.webp",
       "source_page": "https://home.pivotapp.ai",
       "source_url": "https://framerusercontent.com/images/JZ6kXUF3WLwMKVk2ToQEo8AFim8.png"
     },
@@ -983,7 +983,7 @@
     "amd-ventures": {
       "name": "AMD Ventures",
       "shape": "wordmark",
-      "local_path": "/logos/investors/amd-ventures.png",
+      "local_path": "/logos/investors/amd-ventures.webp",
       "source_page": "https://www.amd.com/en/corporate/amd-ventures",
       "source_url": "https://www.amd.com/content/dam/amd/en/images/logos/corporate/3923200-ventures-logo.png"
     },
@@ -1172,7 +1172,7 @@
     "burnt-island-ventures": {
       "name": "Burnt Island Ventures",
       "shape": "wordmark",
-      "local_path": "/logos/investors/burnt-island-ventures.png",
+      "local_path": "/logos/investors/burnt-island-ventures.webp",
       "source_page": "https://www.burntislandventures.com",
       "source_url": "https://images.squarespace-cdn.com/content/v1/5f45884c04871671385c415a/a034ffae-63a2-4033-bfae-1ef540eb9a55/BIV+Logo+White+on+Blue.jpg"
     },
@@ -1207,7 +1207,7 @@
     "veredas-partners": {
       "name": "Veredas Partners",
       "shape": "icon",
-      "local_path": "/logos/investors/veredas-partners.png",
+      "local_path": "/logos/investors/veredas-partners.webp",
       "source_page": "https://veredaspartners.com",
       "source_url": "https://veredaspartners.com/veredas-logo-2.png"
     },
@@ -1410,7 +1410,7 @@
     "conviction": {
       "name": "Conviction",
       "shape": "wordmark",
-      "local_path": "/logos/investors/conviction.png",
+      "local_path": "/logos/investors/conviction.webp",
       "source_page": "https://www.conviction.com",
       "source_url": "https://www.conviction.com/splash.png",
       "tile_background": "dark"
@@ -1481,7 +1481,7 @@
     "avenue-growth-partners": {
       "name": "Avenue Growth Partners",
       "shape": "icon",
-      "local_path": "/logos/investors/avenue-growth-partners.png",
+      "local_path": "/logos/investors/avenue-growth-partners.webp",
       "source_page": "https://www.avenuegp.com/",
       "source_url": "https://www.avenuegp.com/logos/icon-white.png",
       "tile_background": "dark"

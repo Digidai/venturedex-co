@@ -55,7 +55,7 @@ function displayHostname(value: string): string {
 
     <header class="investor-header">
       <div class="investor-identity">
-        <BrandLogo asset={investorBrand} name={investor.name} size={40} class="investor-logo" />
+        <BrandLogo asset={investorBrand} name={investor.name} size={40} class="investor-logo" loading="eager" />
         <div>
           <h1>{investor.name}</h1>
           {investorWebsiteUrl && investorWebsiteHost && (

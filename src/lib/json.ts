@@ -65,12 +65,32 @@ export function normalizeLinks(value: unknown): StartupLinks {
   const linkedin = optionalString(value.linkedin);
   const producthunt = optionalString(value.producthunt);
   const careers = optionalString(value.careers);
+  const api = optionalString(value.api);
+  const cancerCenters = optionalString(value.cancer_centers);
+  const docs = optionalString(value.docs);
+  const mcp = optionalString(value.mcp);
+  const press = optionalString(value.press);
+  const pricing = optionalString(value.pricing);
+  const product = optionalString(value.product);
+  const resources = optionalString(value.resources);
+  const scout = optionalString(value.scout);
+  const security = optionalString(value.security);
 
   if (github) links.github = github;
   if (twitter) links.twitter = twitter;
   if (linkedin) links.linkedin = linkedin;
   if (producthunt) links.producthunt = producthunt;
   if (careers) links.careers = careers;
+  if (api) links.api = api;
+  if (cancerCenters) links.cancer_centers = cancerCenters;
+  if (docs) links.docs = docs;
+  if (mcp) links.mcp = mcp;
+  if (press) links.press = press;
+  if (pricing) links.pricing = pricing;
+  if (product) links.product = product;
+  if (resources) links.resources = resources;
+  if (scout) links.scout = scout;
+  if (security) links.security = security;
 
   return links;
 }

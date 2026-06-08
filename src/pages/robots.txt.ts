@@ -47,7 +47,6 @@ Disallow: /`
 # Private API endpoints are not useful crawl targets.
 
 User-agent: *
-Content-Signal: search=yes,ai-input=yes,ai-train=no
 Allow: /
 Disallow: /api/
 

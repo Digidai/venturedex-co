@@ -62,6 +62,16 @@ export interface StartupLinks {
   linkedin?: string;
   producthunt?: string;
   careers?: string;
+  api?: string;
+  cancer_centers?: string;
+  docs?: string;
+  mcp?: string;
+  press?: string;
+  pricing?: string;
+  product?: string;
+  resources?: string;
+  scout?: string;
+  security?: string;
 }
 
 export interface StartupResearchSource {

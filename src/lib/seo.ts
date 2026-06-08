@@ -52,7 +52,14 @@ export function normalizeExternalUrl(value?: string | null): string | null {
 
 export function canonicalPath(pathname: string): string {
   if (!pathname || pathname === "/") return "/";
-  return pathname.replace(/\/+$/, "");
+
+  const normalized = pathname
+    .replace(/\/index\.html$/i, "/")
+    .replace(/\/index$/i, "/")
+    .replace(/\.html$/i, "");
+
+  if (!normalized || normalized === "/") return "/";
+  return normalized.replace(/\/+$/, "");
 }
 
 export function cleanText(value?: string | null, fallback = ""): string {

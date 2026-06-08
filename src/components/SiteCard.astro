@@ -7,6 +7,7 @@ interface Props {
   // Only the card fields are needed; full Startup objects are assignable too.
   startup: StartupCard;
   size?: "default" | "large";
+  priority?: boolean;
   // When provided, emits data-* on the card root so a page-level script can
   // filter/sort cards client-side (used by the prerendered homepage). Carries
   // the fields not present on StartupCard (published_at, is_featured).
@@ -20,7 +21,7 @@ interface Props {
   } | null;
 }
 
-const { startup, size = "default", index = null } = Astro.props;
+const { startup, size = "default", priority = false, index = null } = Astro.props;
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
 
@@ -48,7 +49,8 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
           alt={`${startup.product_name} screenshot`}
           width="1440"
           height="900"
-          loading="lazy"
+          loading={priority ? "eager" : "lazy"}
+          fetchpriority={priority ? "high" : undefined}
           decoding="async"
         />
       ) : (

@@ -6,6 +6,7 @@ import json
 import re
 import subprocess
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
@@ -134,6 +135,11 @@ CURL_BROWSER_HEADERS = [
     "-H",
     "Accept-Language: en-US,en;q=0.9",
 ]
+CURL_MAX_TIME_SECONDS = "8"
+CURL_CONNECT_TIMEOUT_SECONDS = "4"
+CURL_RETRY_COUNT = "1"
+CURL_RETRY_DELAY_SECONDS = "0"
+CURL_PROCESS_TIMEOUT_SECONDS = 24
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
 ALLOWED_RESEARCH_SOURCE_TYPES = {
     "official",
@@ -160,6 +166,7 @@ ALLOWED_LINK_FIELDS = {
     "security",
     "twitter",
 }
+URL_CHECK_WORKERS = 16
 
 
 @dataclass
@@ -180,6 +187,7 @@ def main() -> int:
     print("=== VentureDex Content Validator ===\n")
 
     url_cache: dict[str, str] = {}
+    prime_url_cache(startup_files, url_cache)
     results: list[FileResult] = []
     startup_slugs: set[str] = set()
     startup_domains: dict[str, Path] = {}
@@ -1027,11 +1035,80 @@ def normalize_host(url: str) -> str:
     return host[4:] if host.startswith("www.") else host
 
 
+def prime_url_cache(startup_files: list[Path], url_cache: dict[str, str]) -> None:
+    urls = sorted(collect_validation_urls(startup_files))
+    if not urls:
+        return
+
+    print(f"Checking {len(urls)} external URLs...", flush=True)
+    with ThreadPoolExecutor(max_workers=URL_CHECK_WORKERS) as executor:
+        future_to_url = {executor.submit(fetch_url_status, url): url for url in urls}
+        for future in as_completed(future_to_url):
+            url = future_to_url[future]
+            try:
+                url_cache[url] = future.result()
+            except Exception:
+                url_cache[url] = "000"
+
+
+def collect_validation_urls(startup_files: list[Path]) -> set[str]:
+    urls: set[str] = set()
+
+    for path in startup_files:
+        try:
+            data = json.loads(path.read_text())
+        except json.JSONDecodeError:
+            continue
+
+        add_url(urls, data.get("url"))
+        for round_data in data.get("funding") or []:
+            if isinstance(round_data, dict):
+                add_url(urls, round_data.get("source_url"))
+
+        research = data.get("research")
+        if isinstance(research, dict):
+            for source in research.get("sources") or []:
+                if isinstance(source, dict) and source.get("type") != "editorial":
+                    add_url(urls, source.get("url"))
+
+    try:
+        brand_assets = json.loads(BRAND_ASSETS_FILE.read_text())
+    except json.JSONDecodeError:
+        brand_assets = {}
+
+    if isinstance(brand_assets, dict):
+        for section in ("companies", "investors"):
+            assets = brand_assets.get(section)
+            if not isinstance(assets, dict):
+                continue
+            for asset in assets.values():
+                if not isinstance(asset, dict):
+                    continue
+                add_url(urls, asset.get("source_page"))
+                add_url(urls, asset.get("source_url"))
+
+    return urls
+
+
+def add_url(urls: set[str], value: object) -> None:
+    if not isinstance(value, str):
+        return
+    url = value.strip()
+    if url:
+        urls.add(url)
+
+
 def check_url(url: str, *, cache: dict[str, str]) -> str:
     cache_key = url
     if cache_key in cache:
         return cache[cache_key]
 
+    resolved_status = fetch_url_status(url)
+    cache[cache_key] = resolved_status
+    return resolved_status
+
+
+def fetch_url_status(url: str) -> str:
     attempts = (
         ["-I"],
         [],
@@ -1046,13 +1123,13 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
             "-sS",
             "-L",
             "--max-time",
-            "20",
+            CURL_MAX_TIME_SECONDS,
             "--connect-timeout",
-            "10",
+            CURL_CONNECT_TIMEOUT_SECONDS,
             "--retry",
-            "2",
+            CURL_RETRY_COUNT,
             "--retry-delay",
-            "1",
+            CURL_RETRY_DELAY_SECONDS,
             "--retry-all-errors",
             *headers,
             *extra_args,
@@ -1063,8 +1140,17 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
             url,
         ]
         try:
-            proc = subprocess.run(cmd, capture_output=True, text=True, check=False)
+            proc = subprocess.run(
+                cmd,
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=CURL_PROCESS_TIMEOUT_SECONDS,
+            )
         except OSError:
+            break
+        except subprocess.TimeoutExpired:
+            status = "000"
             break
         status = proc.stdout.strip() or "000"
         if status in HTTP_OK:
@@ -1079,7 +1165,6 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
         break
 
     resolved_status = definitive_status or status
-    cache[cache_key] = resolved_status
     return resolved_status
 
 

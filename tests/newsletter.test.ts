@@ -146,6 +146,11 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.html, /Example AI/);
   assert.match(rendered.html, /https:\/\/venturedex\.co\/screenshots\/example-ai\.webp/);
   assert.match(rendered.html, /Example AI website screenshot/);
+  assert.match(rendered.html, /@media screen and \(max-width: 520px\)/);
+  assert.match(rendered.html, /class="vd-image"/);
+  assert.match(rendered.html, /width="580"/);
+  assert.doesNotMatch(rendered.html, /width="600"/);
+  assert.match(rendered.html, /\.vd-image \{[^}]*width: 100% !important;[^}]*max-width: 100% !important;[^}]*height: auto !important;/);
   assert.match(rendered.html, /Product evaluation/);
   assert.match(rendered.html, /Evidence used/);
   assert.match(rendered.html, /Market context/);
@@ -153,6 +158,12 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.html, /Official site/);
   assert.match(rendered.html, /Read profile/);
   assert.match(rendered.html, /Unsubscribe/);
+  assert.match(rendered.html, /class="vd-card" role="presentation"/);
+  assert.match(rendered.html, /class="vd-card-cell"/);
+  assert.match(rendered.html, /table-layout:fixed/);
+  assert.match(rendered.html, /background:#FFFEFC/);
+  assert.match(rendered.html, /padding-top:22px;border-top:1px solid #E7E1D8/);
+  assert.doesNotMatch(rendered.html, /<article/);
   assert.doesNotMatch(rendered.html, /border-left/);
   assert.match(rendered.text, /Example AI/);
   assert.match(rendered.text, /Product evaluation/);
@@ -160,6 +171,41 @@ test("renders daily digest with site detail content and VentureDex visual langua
   assert.match(rendered.text, /Market context/);
   assert.match(rendered.text, /Limits and risks/);
   assert.match(rendered.text, /https:\/\/venturedex\.co\/startups\/example-ai/);
+});
+
+test("separates adjacent daily cards with an explicit email spacer", () => {
+  const secondStartup: Startup = {
+    ...startup,
+    id: "startup-second",
+    slug: "second-ai",
+    domain: "second.ai",
+    canonical_url: "https://second.ai",
+    product_name: "Second AI",
+    summary: "AI operations layer for finance teams.",
+    editor_note: "Second AI turns a messy approval queue into a visible daily control surface.",
+    funding_stage: "Series A",
+    funding_display: "$12M",
+    screenshot_r2_key: "second-ai.webp",
+  };
+
+  const digest = buildDailyDigestContent({
+    siteUrl: "https://venturedex.co",
+    periodStart: "2026-05-27 00:00:00",
+    periodEnd: "2026-05-27 12:00:00",
+    items: [
+      { startup, funding: null, research },
+      { startup: secondStartup, funding: null, research },
+    ],
+  });
+
+  const rendered = renderNewsletterPreview(digest, {
+    unsubscribeUrl: "https://venturedex.co/api/newsletter/unsubscribe?token=test",
+  });
+
+  assert.match(
+    rendered.html,
+    /Read profile[\s\S]*height:30px;line-height:30px;font-size:30px;mso-line-height-rule:exactly;[\s\S]*#2 SaaS \/ Series A \/ US/
+  );
 });
 
 test("builds Cloudflare Email Service message with per-recipient unsubscribe headers", () => {
@@ -198,6 +244,19 @@ test("builds Cloudflare Email Service message with per-recipient unsubscribe hea
 });
 
 test("renders weekly digest from issue copy and pick evaluation", () => {
+  const secondStartup: Startup = {
+    ...startup,
+    id: "startup-weekly-second",
+    slug: "second-ai",
+    domain: "second.ai",
+    canonical_url: "https://second.ai",
+    product_name: "Second AI",
+    summary: "AI operations layer for finance teams.",
+    editor_note: "Second AI turns a messy approval queue into a visible daily control surface.",
+    funding_stage: "Series A",
+    funding_display: "$12M",
+    screenshot_r2_key: "second-ai.webp",
+  };
   const issue: WeeklyIssueContent = {
     issue_number: 12,
     title: "Workflow wedges worth tracking",
@@ -218,12 +277,23 @@ test("renders weekly digest from issue copy and pick evaluation", () => {
         risks: ["Adoption evidence is not public."],
         verdict: "Specific product-shape pick.",
       },
+      {
+        slug: "second-ai",
+        why_this_week: "The second product proves weekly pick spacing across adjacent cards.",
+        product_evaluation: "The visible workflow stays specific enough for the weekly card template.",
+        evidence: [{ label: "VentureDex record", source: "content/startups/second-ai.json" }],
+        risks: ["Adoption evidence remains early."],
+        verdict: "Second product-shape pick.",
+      },
     ],
   };
 
   const digest = buildWeeklyDigestContent({
     issue,
-    startups: new Map([["example-ai", startup]]),
+    startups: new Map([
+      ["example-ai", startup],
+      ["second-ai", secondStartup],
+    ]),
     siteUrl: "https://venturedex.co",
   });
 
@@ -240,6 +310,15 @@ test("renders weekly digest from issue copy and pick evaluation", () => {
   assert.match(rendered.html, /Product evaluation/);
   assert.match(rendered.html, /Evidence used/);
   assert.match(rendered.html, /Limits and risks/);
+  assert.match(rendered.html, /class="vd-card" role="presentation"/);
+  assert.match(rendered.html, /class="vd-card-cell"/);
+  assert.match(rendered.html, /table-layout:fixed/);
+  assert.match(rendered.html, /background:#FFFEFC/);
+  assert.match(
+    rendered.html,
+    /Specific product-shape pick\.[\s\S]*height:30px;line-height:30px;font-size:30px;mso-line-height-rule:exactly;[\s\S]*#2 SaaS \/ Series A \/ US/
+  );
+  assert.doesNotMatch(rendered.html, /<article/);
   assert.doesNotMatch(rendered.html, /border-left/);
   assert.match(rendered.text, /Full issue: https:\/\/venturedex\.co\/weekly\/12/);
   assert.match(rendered.text, /Adoption evidence is not public/);
