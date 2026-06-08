@@ -1043,12 +1043,16 @@ def prime_url_cache(startup_files: list[Path], url_cache: dict[str, str]) -> Non
     print(f"Checking {len(urls)} external URLs...", flush=True)
     with ThreadPoolExecutor(max_workers=URL_CHECK_WORKERS) as executor:
         future_to_url = {executor.submit(fetch_url_status, url): url for url in urls}
+        completed = 0
         for future in as_completed(future_to_url):
             url = future_to_url[future]
             try:
                 url_cache[url] = future.result()
             except Exception:
                 url_cache[url] = "000"
+            completed += 1
+            if completed == len(urls) or completed % 100 == 0:
+                print(f"  URL checks: {completed}/{len(urls)}", flush=True)
 
 
 def collect_validation_urls(startup_files: list[Path]) -> set[str]:
