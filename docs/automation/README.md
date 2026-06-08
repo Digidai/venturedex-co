@@ -42,6 +42,15 @@ Newsletter delivery priority order:
 3. `src/lib/newsletter.ts`
 4. `src/worker.ts`
 
+Search Console submission priority order:
+
+1. `scripts/submit-gsc-direct.sh`
+2. `package.json`
+3. `docs/automation/venturedex-daily-runbook.md`
+4. `docs/automation/venturedex-weekly-runbook.md`
+5. `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml`
+6. `$CODEX_HOME/automations/venturedex-weekly-curator/automation.toml`
+
 ## File Roles
 
 - `venturedex-daily-runbook.md`
@@ -56,6 +65,8 @@ Newsletter delivery priority order:
   The delivery contract for Daily additions and Weekly research email sends, including delay gates, compliance configuration, module review notes, and test cases.
 - `../../content/timestamps.json`
   The repo-managed first-seen and published timestamp sidecar. Prerendered pages and the D1 seed both read it, so new Daily additions must keep it aligned.
+- `../../scripts/submit-gsc-direct.sh`
+  The local Search Console URL Inspection submitter. It targets only VentureDex startup and weekly detail pages, writes `.gsc_submission_history.tsv`, and depends on an authenticated local `bb-browser` + Comet CDP session because general VentureDex pages cannot use Google's Indexing API.
 
 ## Edit Policy
 
@@ -131,5 +142,6 @@ The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-cur
 - Daily automation must add or confirm `content/timestamps.json` entries for newly accepted slugs before publishing so prerendered sort order, sitemap dates, RSS dates, and the D1 seed agree.
 - Daily automation must require structured startup `research` before publishing; weekly automation must consume that `research` when producing source-bound issue evaluations.
 - Daily automation must add `links.careers` when the official site, official ATS page, or clearly official company jobs page exposes a Careers/Jobs/Open Roles entry. This is a static company-detail link only; do not scrape dynamic job lists, role counts, or hiring claims into VentureDex records.
+- After deploy and live smoke, Daily automation must run `bash scripts/submit-gsc-direct.sh --dry-run --latest-daily` and then `bash scripts/submit-gsc-direct.sh --latest-daily`; Weekly automation must do the same with `--latest-weekly`. If the authenticated browser, Search Console UI, or quota blocks submission, record the exact blocker and preserve the live URL list instead of treating the run as complete.
 - Newsletter delivery must lag website publication. Daily sends use a default 6-hour delay and weekly sends use a default 24-hour delay so editors can correct live content before it reaches inboxes.
 - Newsletter sends are a production-delivery surface: do not bypass `newsletter_sends`, `newsletter_deliveries`, unsubscribe links, or dry-run checks.

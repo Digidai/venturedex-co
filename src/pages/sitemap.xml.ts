@@ -49,12 +49,13 @@ export const GET: APIRoute = () => {
   // there's no runtime SITE_URL binding to read here.
   const siteUrl = getSiteUrl(DEFAULT_SITE_URL);
   const weeklyIssues = getPublishedWeeklyIssuesFromContent(50);
+  const latestWeeklyIssue = weeklyIssues[0] ?? null;
 
   let urls: SitemapUrl[] = [
     { loc: "/", priority: "1.0" },
     { loc: "/investors", priority: "0.8" },
     { loc: "/news", priority: "0.8" },
-    { loc: "/weekly", priority: "0.8" },
+    { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
     { loc: "/collections", priority: "0.7" },
     { loc: "/about", priority: "0.6" },
     { loc: "/editorial-policy", priority: "0.6" },

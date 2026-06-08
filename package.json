@@ -14,7 +14,14 @@
     "typecheck": "astro check",
     "test": "tsx --test tests/*.test.ts",
     "test:newsletter": "tsx --test tests/*.test.ts",
-    "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql"
+    "db:migrate": "bash scripts/migrate-newsletter.sh --local && wrangler d1 execute venturedex-db --local --file=d1/schema.sql",
+    "seo:gsc": "bash scripts/submit-gsc-direct.sh",
+    "seo:gsc:daily:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-daily",
+    "seo:gsc:daily:submit": "bash scripts/submit-gsc-direct.sh --latest-daily",
+    "seo:gsc:weekly:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly",
+    "seo:gsc:weekly:submit": "bash scripts/submit-gsc-direct.sh --latest-weekly",
+    "seo:gsc:latest:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-daily --latest-weekly",
+    "seo:gsc:latest:submit": "bash scripts/submit-gsc-direct.sh --latest-daily --latest-weekly"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",

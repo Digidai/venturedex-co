@@ -23,6 +23,7 @@ Automation must never rewrite this section.
 - Do not modify `src/`, `scripts/`, `.github/`, config files, lock files, or deployment files.
 - Do not batch-edit old startup entries.
 - Do not manually trigger newsletter delivery. Daily newsletter delivery is handled after deploy by the delayed Cloudflare Cron flow in `docs/newsletter.md`.
+- After deploy and live smoke, submit the newly published startup detail pages to Google Search Console through `scripts/submit-gsc-direct.sh`. This is a URL Inspection request-indexing step, not a newsletter or content-generation step.
 
 ### Git and Execution Safety
 
@@ -148,7 +149,15 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 23. Apply a heuristic update only if the feedback-loop gate permits it.
 24. Commit and push only if the final staged files are allowed and local gates pass.
 25. Wait for deploy when observable and verify live smoke against the deployed site.
-26. Open an inbox item summarizing the full run.
+26. Submit the new Daily startup detail pages to Search Console:
+
+   ```bash
+   bash scripts/submit-gsc-direct.sh --dry-run --latest-daily
+   bash scripts/submit-gsc-direct.sh --latest-daily
+   ```
+
+   Then verify `.gsc_submission_history.tsv` contains a latest `requested` row for every new `/startups/{slug}` URL. If the authenticated browser, Search Console UI, or quota blocks submission, record the blocker and the exact target URLs.
+27. Open an inbox item summarizing the full run.
 
 ## Review Passes
 
@@ -158,7 +167,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
 5. Links: official `links.careers` is present when discoverable; no dynamic job-list, role-count, location, salary, or hiring-claim data is added
 6. Taste: bet, craft, specificity, product-evidence quality, rating, banned-language scan
-7. Scope and release: changed files, `content/timestamps.json`, schema, screenshot completeness, GitHub Actions availability, `./scripts/manage.sh validate`, `git diff --check`, commit, push, deploy status, live smoke, final git status
+7. Scope and release: changed files, `content/timestamps.json`, schema, screenshot completeness, GitHub Actions availability, `./scripts/manage.sh validate`, `git diff --check`, commit, push, deploy status, live smoke, Search Console submission rows, final git status
 
 ## Commit Rules
 

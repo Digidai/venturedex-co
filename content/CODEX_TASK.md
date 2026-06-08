@@ -322,6 +322,9 @@ git diff --check
 git add content/weekly/
 git commit -m "content: weekly #N - {title}"
 git push
+# after deploy and live smoke:
+bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
+bash scripts/submit-gsc-direct.sh --latest-weekly
 ```
 
 规则：
@@ -345,6 +348,7 @@ git push
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
+11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `.gsc_submission_history.tsv` 的 `requested` 记录。
 
 ## 文件操作范围
 

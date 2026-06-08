@@ -7,3 +7,4 @@ dist/
 .gstack/
 __pycache__/
 *.pyc
+.gsc_submission_history.tsv

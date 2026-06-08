@@ -369,6 +369,24 @@ git push
 GitHub Actions 自动执行验证 → D1 同步 → 部署。
 当前站点页面主要由 `content/` 在 build 阶段 prerender；D1 继续支撑 newsletter、订阅和运行时发送状态。Deploy 流程通过 `scripts/manage.sh release` 执行 newsletter preflight、远端 D1 同步、adapter v13 Worker 部署和 live smoke。
 
+**5.4 Search Console 直提**
+
+部署和 live smoke 通过后，新增 Daily startup 详情页必须进入 Google Search Console 的 URL Inspection 请求流程。先 dry-run，确认目标 URL，之后再正式提交：
+
+```bash
+bash scripts/submit-gsc-direct.sh --dry-run --latest-daily
+bash scripts/submit-gsc-direct.sh --latest-daily
+```
+
+新增 Weekly issue 发布后，对应 `/weekly/{N}` 详情页使用同一流程：
+
+```bash
+bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
+bash scripts/submit-gsc-direct.sh --latest-weekly
+```
+
+提交后检查 `.gsc_submission_history.tsv`，确认每个目标 URL 的最新状态为 `requested`。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和目标 URL，不要把它当作已提交。
+
 ---
 
 ## 第三章：周刊

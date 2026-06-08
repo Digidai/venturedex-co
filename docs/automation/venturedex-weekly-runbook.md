@@ -25,6 +25,7 @@ Automation must never rewrite this section.
 - If evidence is insufficient, keep the issue as `status: draft` or defer the claim.
 - Browser-driven source checks must use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow.
 - Do not manually trigger Weekly newsletter delivery during the publishing run. The email send is intentionally delayed by the newsletter system so the live issue can be corrected first.
+- After deploy and live smoke, submit the published weekly issue detail page to Google Search Console through `scripts/submit-gsc-direct.sh`. This is a URL Inspection request-indexing step, not a newsletter send.
 
 ## Cadence
 
@@ -71,6 +72,14 @@ Automation must never rewrite this section.
    ```
 
 11. Push only after the worktree contains no unrelated changes and all gates pass.
+12. After deployment and live smoke, submit the new Weekly detail page to Search Console:
+
+   ```bash
+   bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
+   bash scripts/submit-gsc-direct.sh --latest-weekly
+   ```
+
+   Then verify `.gsc_submission_history.tsv` contains a latest `requested` row for `/weekly/{N}`. If the authenticated browser, Search Console UI, or quota blocks submission, record the blocker and exact target URL.
 
 ## Review Passes
 
@@ -78,5 +87,5 @@ Automation must never rewrite this section.
 2. Scope: no new startup, logo, screenshot, schema, or deployment change is mixed into a weekly content PR unless explicitly requested by a human.
 3. Objectivity: the issue states evidence gaps instead of guessing.
 4. Theme: the 5-7 picks share a real product or market pattern.
-5. Release: local gates pass, generated verification outputs are restored, and browser verification confirms `/weekly` and the issue page render the research fields.
+5. Release: local gates pass, generated verification outputs are restored, browser verification confirms `/weekly` and the issue page render the research fields, deploy/live smoke passes, and the weekly detail URL has a Search Console submission row or a recorded blocker.
 6. Newsletter readiness: the issue has stable published copy, because the Weekly email will reuse `editorial_intro`, `research_summary`, themes, and pick evaluations.
