@@ -2170,3 +2170,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - current `bb-browser` checks verified product/source surfaces for Offroad, OhAuth, Offroad OAuth report, Freshflow, Willow, Scotch, Scotch liquor-store POS page, Scispot, Airspeed homepage, Airspeed Series A story, TrueFan AI homepage, TrueFan Studio login, TrueFan BFSI page, and the linked funding/source pages used for the issue.
   - local `bb-browser` checks verified `/weekly` listed issue #3 and `/weekly/3` rendered the issue, all seven pick names, evidence/risks text, and all seven verdict sentences with zero JavaScript errors.
   - generated/ignored validation outputs `.astro/`, `dist/`, `scripts/__pycache__/`, and the temporary clean worktree were removed after verification; unrelated pre-existing dirty files were preserved.
+
+### 2026-06-09 13:56 CST
+
+- candidate_count: 10
+- accepted: 2
+- rejected: 7
+- rejection_bar_met: yes
+- outcome: daily-content-live
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 120/120 startups, reported zero errors and 74 existing warnings, regenerated the D1 seed, passed 68/68 newsletter/content parity/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` with 120 startups and 120 funding rounds and then restored it as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass; `./scripts/screenshot.sh pointfive https://www.pointfive.biz/` and `./scripts/screenshot.sh lexful https://lexful.ai/` produced `public/screenshots/pointfive.webp` and `public/screenshots/lexful.webp`, and visual review confirmed both were nonblank product-visible homepage captures. R2 upload remained skipped because bootstrap reported no R2 permission.
+- commit_push: pass; content commit `be1b9c84c8ab78f2560576afe726a3848f28beea` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `be1b9c84c8ab78f2560576afe726a3848f28beea` for the PointFive and Lexful content addition.
+- pushed_branch: main
+- ci_deploy: pass after targeted rerun; initial GitHub Validate `27186937494` failed in `Validate content` because the GitHub runner could not reach existing official `brand-assets investors.marlinspike` URLs, while Deploy `27186937489` passed the unified release validation on the same commit with 120/120 startups and uploaded Worker version `8143193b-616d-4eb4-bb52-7dde42a39fb8`; the targeted Validate rerun then passed in 45s.
+- live_smoke: pass; deploy release smoke passed for `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 120 published startups, local `./scripts/manage.sh smoke https://venturedex.co` passed with 120 published startups, `/startups/lexful` and `/startups/pointfive` returned HTTP 200, and the live homepage listed both new startups first.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-07 07:30:03:2026-06-08 07:30:24`, status `sent`, 1 item, 2 recipients, updated at `2026-06-08 13:31:01` UTC, and delivery aggregation showed two sent rows. PointFive and Lexful have `published_at` `2026-06-09 05:48:20` UTC, become delay-eligible after `2026-06-09 11:48:20` UTC, and remain governed by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- failure_tags: [source_incomplete, source_drift]
+- reward: 4
+- dominant_failure_mode: content quality, structured research, timestamps, schema, screenshots, deploy, live smoke, and GSC all passed; operational friction came from an existing Marlinspike official-domain reachability transient on one GitHub Validate attempt and from a viable PhysicsX finalist whose required official lead-investor brand asset could not be fetched from Temasek official sources during this run.
+- proposed_change: none; current runbook already requires official-source brand assets and forbids substituting third-party logos when official assets are unavailable.
+- decision: no automation-doc heuristic change
+- affected_file: content/startups/pointfive.json, content/startups/lexful.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/companies/pointfive.png, public/logos/companies/lexful.ico, public/logos/investors/top-down-ventures.ico, public/logos/investors/york-ie.jpg, public/screenshots/pointfive.webp, public/screenshots/lexful.webp, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed dependencies, and reported GitHub Actions active.
+  - accepted PointFive from its June 8, 2026 $60M Series B led by Accel; official and `bb-browser` review verified cloud efficiency posture management, DeepWaste detection, ownership attribution, Jira, ServiceNow, Slack, Teams, one-click remediation, verified savings, and AWS, Azure, GCP, Kubernetes, Snowflake, and Databricks coverage.
+  - accepted Lexful from its June 8, 2026 $7M Seed led by Top Down Ventures and York IE; official and `bb-browser` review verified Ask Lex, structured assets and credentials, PSA/RMM syncing, IT Glue and Hudu imports, native MCP endpoint, SOC 2 Type 2 evidence, and official Careers entry.
+  - rejected A Security, Edge Markets, Companion.energy, Reset, Rejuvenate Bio, Goldenrod Therapeutics, and InfoHawk for official-source ambiguity, crypto/prediction-market exposure, currency/schema, taste ranking, biotech product-fit, or pre-seed-stage reasons.
+  - deferred PhysicsX despite strong industrial-AI product evidence because the required official Temasek brand asset could not be fetched or verified from official Temasek URLs during this run; no third-party logo substitute was used.
+  - added official startup records, structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logos, investor directory entries, investor aliases for Lexful's co-led round, brand assets, static official `links.careers`, and local screenshots for both accepted startups.
+  - `bb-browser` verified accepted official pages and reported no page-blocking JavaScript errors; screenshots were captured from the same official domains.
+  - verification passed before publish: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - first GitHub Validate failed only on existing `brand-assets investors.marlinspike` URL reachability; local validation and the same commit's Deploy release validation could reach the official source, so the failed Validate was rerun once as a diagnosed transient and then passed without content mutation.
+  - GSC direct submit dry-run targeted exactly `https://venturedex.co/startups/lexful` and `https://venturedex.co/startups/pointfive`; the live submit requested indexing for both URLs, and `.gsc_submission_history.tsv` latest relevant rows are `requested` at `2026-06-09 14:03:17` and `2026-06-09 14:03:59`.
+  - remote D1 newsletter inspection was read-only via Wrangler; no newsletter was manually triggered, and the latest Daily send/delivery state remained from the prior window.
