@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-08",
+  "verified_at": "2026-06-09",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -829,6 +829,20 @@
       "local_path": "/logos/companies/kodesage.png",
       "source_page": "https://kodesage.ai/",
       "source_url": "https://kodesage.ai/favicons/apple-touch-icon.png"
+    },
+    "pointfive": {
+      "name": "PointFive",
+      "shape": "icon",
+      "local_path": "/logos/companies/pointfive.png",
+      "source_page": "https://www.pointfive.biz/",
+      "source_url": "https://www.pointfive.biz/nopathsource/dd546384ec13dca6b9b1daa758db5aed.png"
+    },
+    "lexful": {
+      "name": "Lexful",
+      "shape": "icon",
+      "local_path": "/logos/companies/lexful.ico",
+      "source_page": "https://lexful.ai/",
+      "source_url": "https://lexful.ai/favicon.ico"
     }
   },
   "investors": {
@@ -1592,6 +1606,20 @@
       "local_path": "/logos/investors/venturefriends.svg",
       "source_page": "https://www.venturefriends.vc/",
       "source_url": "https://cdn.prod.website-files.com/68f649b435ea68481370bf67/6900e4b34f8ae7ba2dd58e1c_Logo%20Lockup.svg"
+    },
+    "top-down-ventures": {
+      "name": "Top Down Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/top-down-ventures.ico",
+      "source_page": "https://topdown.com/",
+      "source_url": "https://topdown.com/favicon.ico"
+    },
+    "york-ie": {
+      "name": "York IE",
+      "shape": "icon",
+      "local_path": "/logos/investors/york-ie.jpg",
+      "source_page": "https://york.ie/",
+      "source_url": "https://york.ie/wp-content/uploads/2019/07/cropped-YorkieIcon_Black-192x192.jpg"
     }
   }
 }

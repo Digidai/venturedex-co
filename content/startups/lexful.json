@@ -1,0 +1,89 @@
+{
+  "slug": "lexful",
+  "domain": "lexful.ai",
+  "url": "https://lexful.ai/",
+  "product_name": "Lexful",
+  "summary": "AI-native IT documentation and knowledge infrastructure for MSPs.",
+  "editor_note": "The sharp bet is that MSP documentation should answer tickets, not sit in a wiki. Lexful shows Ask Lex, structured asset records, PSA and RMM syncing, IT Glue or Hudu imports, an MCP endpoint, and SOC 2 Type 2 compliance. Unlike legacy folders with AI bolted on, it treats credentials, playbooks, diagrams, and client notes as agent-readable context. The risk is whether July general availability delivers the integrations promised in the funding note.",
+  "editor_rating": 4,
+  "why_featured": "MCP-native MSP docs",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "msp,it documentation,knowledge management,ai agents,mcp",
+  "investors": "Top Down Ventures, York IE",
+  "links": {
+    "careers": "https://lexful.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "Top Down Ventures and York IE",
+      "date": "2026-06-08",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/08/3308189/0/en/lexful-closes-7m-seed-round-for-next-generation-documentation-for-msps.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://lexful.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://lexful.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Lexful seed funding announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/08/3308189/0/en/lexful-closes-7m-seed-round-for-next-generation-documentation-for-msps.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Lexful as MSP documentation that turns tribal knowledge into machine intelligence for technicians, agents, and operations teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows Ask Lex, structured assets and credentials, relationship maps, and AI-generated runbooks built from MSP documentation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Lexful says it syncs with PSA and RMM systems, imports from IT Glue or Hudu, and exposes a native MCP endpoint for tools such as Copilot, Claude, and RMM agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Lexful is SOC 2 Type 2 compliant, is available through Pax8 and Sherweb marketplaces, and is building integrations with Autotask, ConnectWise, NinjaOne, and HaloPSA.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "MSP owners, service desk leaders, and senior technicians responsible for client documentation and support workflows.",
+      "category": "SaaS",
+      "differentiation": "Lexful treats documentation as an agent-readable operational knowledge layer instead of a static wiki or folder system.",
+      "why_now": "MSPs are adopting AI agents, but legacy documentation tools often lack the structured, fresh, permission-aware context those agents need."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether July general availability delivers the promised MSP integrations while preserving permission boundaries across credentials and client records.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

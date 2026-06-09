@@ -800,5 +800,22 @@
     "short_name": "VentureFriends",
     "website": "https://www.venturefriends.vc/",
     "description": "Early-stage European venture capital firm backing ambitious founders with first tickets at pre-seed and seed stage across Europe and MENA."
+  },
+  "top-down-ventures": {
+    "name": "Top Down Ventures",
+    "slug": "top-down-ventures",
+    "short_name": "Top Down",
+    "website": "https://topdown.com/",
+    "description": "Early-stage venture firm focused on founder-led software companies transforming the managed services provider ecosystem.",
+    "aliases": [
+      "Top Down Ventures and York IE"
+    ]
+  },
+  "york-ie": {
+    "name": "York IE",
+    "slug": "york-ie",
+    "short_name": "York IE",
+    "website": "https://york.ie/",
+    "description": "Strategic growth and investment firm backing and operating alongside technology companies from pre-launch through scale."
   }
 }

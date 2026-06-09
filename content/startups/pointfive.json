@@ -1,0 +1,100 @@
+{
+  "slug": "pointfive",
+  "domain": "www.pointfive.biz",
+  "url": "https://www.pointfive.biz/",
+  "product_name": "PointFive",
+  "summary": "Cloud efficiency posture management for AI and cloud spend.",
+  "editor_note": "The useful bet is that cloud waste is an engineering workflow, not a FinOps spreadsheet. PointFive shows DeepWaste detections, resource attribution, Jira, ServiceNow, Slack, and Teams workflows, verified savings, and one-click remediation across AWS, Azure, GCP, Kubernetes, Snowflake, and Databricks. Unlike dashboard-first cost tools, it pushes fixes to the people who own the resource. The risk is whether engineers accept automated savings work when performance tradeoffs get messy.",
+  "editor_rating": 4,
+  "why_featured": "Cloud waste to tickets",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "cloud cost,finops,ai infrastructure,engineering workflow,cloud optimization",
+  "investors": "Accel",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/pointfive/",
+    "careers": "https://www.pointfive.biz/careers.html"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series B",
+      "lead_investor": "Accel",
+      "date": "2026-06-08",
+      "source_url": "https://www.calcalistech.com/ctechnews/article/sjpjbnnwzl",
+      "source_name": "CTech"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.pointfive.biz/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://www.pointfive.biz/careers.html",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PointFive Series B funding article",
+        "url": "https://www.calcalistech.com/ctechnews/article/sjpjbnnwzl",
+        "type": "funding"
+      },
+      {
+        "id": "investor_1",
+        "label": "Accel investment note",
+        "url": "https://www.accel.com/news/usd1-trilliom-of-ai-and-cloud-spend-will-need-to-be-optimised-our-investment-in-pointfive",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions PointFive as cloud efficiency posture management that continuously measures, contextualizes, and improves cloud efficiency.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product workflow shows ownership attribution, DeepWaste monitoring, contextual waste review, Jira, ServiceNow, Slack, and Teams workflows, and one-click remediation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site lists coverage across AWS, Azure, GCP, Kubernetes, Snowflake, and Databricks, including verified savings and optimization actions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Accel describes PointFive detecting hundreds of inefficiency types, creating multiple optimization opportunities each week, and adding Snowflake, Databricks, and AI-specific cost signals.",
+        "source_ids": [
+          "investor_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "FinOps, platform engineering, and infrastructure leaders responsible for cloud and AI spend.",
+      "category": "SaaS",
+      "differentiation": "PointFive turns cloud waste into engineer-owned remediation tickets and one-click fixes instead of stopping at reporting dashboards.",
+      "why_now": "AI workloads, token pricing, GPU usage, and multi-cloud sprawl are making cloud cost governance an operational engineering problem."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether engineers trust automated remediation enough when savings trade off against latency, reliability, or workload ownership boundaries.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      },
+      {
+        "claim": "Vendor-reported savings and return-on-investment claims may not generalize across enterprises with less mature tagging, ownership, or platform-engineering practices.",
+        "basis": "VentureDex editorial assessment based on official product evidence and investor-source review."
+      }
+    ]
+  }
+}
