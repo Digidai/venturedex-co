@@ -448,8 +448,8 @@
       "name": "Dust",
       "shape": "icon",
       "local_path": "/logos/companies/dust.png",
-      "source_page": "https://dust.tt",
-      "source_url": "https://dust.tt/static/AppIcon_180.png"
+      "source_page": "https://app.dust.tt",
+      "source_url": "https://app.dust.tt/static/AppIcon_180.png"
     },
     "texture": {
       "name": "Texture",

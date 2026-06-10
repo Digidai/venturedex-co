@@ -1,7 +1,7 @@
 {
   "slug": "dust",
-  "domain": "dust.tt",
-  "url": "https://dust.tt",
+  "domain": "app.dust.tt",
+  "url": "https://app.dust.tt",
   "product_name": "Dust",
   "summary": "Multiplayer AI workspace where teams build and run shared workplace agents.",
   "editor_note": "The useful bet is making enterprise AI collaborative instead of a private chat window. Dust gives teams shared agents, Slack/GitHub/Drive connectors, model choice, RBAC, audit logs, and a semantic layer that improves from use. Unlike one-off copilots, the workspace makes agent behavior visible to teammates. The risk is whether agent sprawl becomes the new collaboration tax.",
@@ -26,12 +26,24 @@
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-06-10",
     "sources": [
       {
         "id": "official_site",
-        "label": "Official product site",
-        "url": "https://dust.tt",
+        "label": "Official product docs",
+        "url": "https://docs.dust.tt/docs/welcome-to-dust",
+        "type": "official"
+      },
+      {
+        "id": "official_access_controls",
+        "label": "Official access controls docs",
+        "url": "https://docs.dust.tt/docs/access-controls-and-permissions",
+        "type": "official"
+      },
+      {
+        "id": "official_audit_logs",
+        "label": "Official audit logs docs",
+        "url": "https://docs.dust.tt/docs/audit-logs",
         "type": "official"
       },
       {
@@ -43,15 +55,16 @@
     ],
     "product_evidence": [
       {
-        "claim": "Official product positioning describes Dust: Multiplayer AI workspace where teams build and run shared workplace agents.",
+        "claim": "Dust's official docs describe a unified AI-powered workspace that integrates with enterprise tools and data sources including Slack, Google Drive, Notion, Confluence, and GitHub.",
         "source_ids": [
           "official_site"
         ]
       },
       {
-        "claim": "Dust gives teams shared agents, Slack/GitHub/Drive connectors, model choice, RBAC, audit logs, and a semantic layer that improves from use.",
+        "claim": "Dust's official docs define workspaces as collaborative environments for teams and AI agents with spaces, tool connections, access roles, and enterprise audit logs for significant workspace actions.",
         "source_ids": [
-          "official_site"
+          "official_access_controls",
+          "official_audit_logs"
         ]
       }
     ],
