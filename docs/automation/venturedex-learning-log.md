@@ -2248,3 +2248,37 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - first Deploy failed only on existing `brand-assets investors.marlinspike` URL reachability inside release validation; local curl reached the official URLs, and the diagnosed deploy rerun passed without changing content.
   - GSC direct submit dry-run targeted exactly the five new startup detail pages; live submit requested indexing for all five after one targeted longer-wait retry for Champ AI.
   - remote D1 newsletter inspection was read-only; no newsletter was manually triggered, and the latest Daily send/delivery state remained from the prior window.
+
+### 2026-06-10 15:32 CST
+
+- candidate_count: n/a
+- accepted: n/a
+- rejected: n/a
+- rejection_bar_met: n/a
+- outcome: post-run-source-fix-live
+- validation: pass; the docs-only learning-log commit initially failed GitHub Validate because the existing Dust record pointed research and company brand-asset sources at `https://dust.tt`, which returned HTTP 502 from both GitHub and local curl. A narrow content-source fix moved Dust's primary URL and brand asset to the reachable official app host `https://app.dust.tt`, refreshed the official app icon, and moved structured research evidence to reachable official Dust Docs pages. After that, `./scripts/check-github-actions.sh`, `./scripts/validate.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed locally.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: n/a; no new startup screenshot was created in this follow-up source fix.
+- commit_push: pass; docs commit `68249b453e0a3340597d6949d8d72cd87211d71f` was pushed first and failed Validate on the existing Dust source drift; content fix commit `b35a3ba37d55b0e43af861258187a1c5e2dfa893` was then pushed to `main`, and this follow-up learning-log commit was pending at write time.
+- commit_sha: `b35a3ba37d55b0e43af861258187a1c5e2dfa893` for the Dust official-source refresh.
+- pushed_branch: main
+- ci_deploy: pass after targeted rerun; Validate `27260371634` passed for `b35a3ba`, while Deploy `27260371590` first failed on the recurring existing Marlinspike official URL reachability transient. Local curl returned HTTP 200 for both Marlinspike official URLs, so the failed Deploy job was rerun once and passed with Worker version `06cababf-c7f7-4557-be6f-1471d806e3a0`.
+- live_smoke: pass; release smoke passed for `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 125 published startups, and direct canonical checks returned HTTP 200 for `/startups/champ-ai`, `/startups/kosmos`, `/startups/sandstone`, `/startups/upriver`, and `/startups/vinyl-equity`.
+- newsletter: not manually triggered; the Daily send remains governed by the delayed Cloudflare Cron and D1 `newsletter_sends` / `newsletter_deliveries` state recorded in the main run entry.
+- gsc: unchanged pass; latest relevant `.gsc_submission_history.tsv` rows for Champ AI, Kosmos, Sandstone, Upriver, and Vinyl Equity remain `requested`.
+- failure_tags: [source_drift, ci_fail, source_host_guard]
+- reward: -1
+- dominant_failure_mode: the Daily content shipped, but post-run CI exposed external source drift in an older Dust record plus the recurring Marlinspike GitHub-runner reachability transient. The Dust issue was fixable within allowed content scope by using official reachable app/docs sources; the Marlinspike issue remained a diagnosed rerun-only transient because local and same-run validation could reach the official URLs.
+- proposed_change: deferred; repeated official-subdomain and source-host matching tension suggests a future human-reviewed validator policy may be useful for official subdomains, but the current Daily immutable guard blocks automatic `scripts/` changes.
+- decision: deferred
+- affected_file: content/startups/dust.json, content/brand-assets.json, public/logos/companies/dust.png, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator follow-up
+- evidence:
+  - GitHub Validate `27259881407` failed in `./scripts/validate.sh` because `research.sources[0] url is not reachable: https://dust.tt`.
+  - local curl reproduced HTTP 502 for `https://dust.tt`, `https://www.dust.tt`, `https://dust.tt/robots.txt`, `https://dust.tt/sitemap.xml`, `https://dust.tt/jobs`, and the prior `https://dust.tt/static/AppIcon_180.png` asset.
+  - official Dust Docs pages under `https://docs.dust.tt` returned HTTP 200 and supplied source-linked product evidence for workspace, integrations, access controls, and audit logs.
+  - official `https://app.dust.tt` returned HTTP 200 with title `Dust`, and `https://app.dust.tt/static/AppIcon_180.png` returned HTTP 200 as a 180x180 PNG app icon, satisfying the validator's company brand host rule without editing `scripts/validate.py`.
+  - local validation and full manage validation passed after the Dust source refresh; generated validation output was restored before commit.
+  - the first Deploy attempt for `b35a3ba` failed only on existing Marlinspike official source reachability, while local curl returned HTTP 200 for both URLs and the diagnosed Deploy rerun passed.
