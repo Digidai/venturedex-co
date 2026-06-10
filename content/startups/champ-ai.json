@@ -1,0 +1,90 @@
+{
+  "slug": "champ-ai",
+  "domain": "www.champ.ai",
+  "url": "https://www.champ.ai/",
+  "product_name": "Champ AI",
+  "summary": "AI operations agents for repetitive back-office workflows.",
+  "editor_note": "The useful bet is that operations teams want agents that run messy workflows, not narrow chatbots. Champ AI shows agents that use browsers, documents, and voice-like interactions across invoice, scheduling, data-entry, and support tasks. Unlike RPA suites, it sells outcomes that map to team workflows instead of scripts. The risk is whether each customer still needs heavy setup to make the agents dependable.",
+  "editor_rating": 4,
+  "why_featured": "Ops agents over RPA",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "operations,ai agents,workflow automation,rpa,back office",
+  "investors": "Redpoint Ventures",
+  "links": {
+    "careers": "https://app.dover.com/jobs/champ"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8.5M",
+      "stage": "Seed",
+      "lead_investor": "Redpoint Ventures",
+      "date": "2026-05-13",
+      "source_url": "https://www.globenewswire.com/news-release/2026/05/13/3294553/0/en/champ-ai-emerges-from-stealth-with-8-5m-in-new-funding.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.champ.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official Dover jobs board linked by Champ",
+        "url": "https://app.dover.com/jobs/champ",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Champ AI seed funding announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/05/13/3294553/0/en/champ-ai-emerges-from-stealth-with-8-5m-in-new-funding.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Champ AI as AI agents for operations teams that complete repetitive workflows across business systems.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows agents using browsers, documents, and voice-like interactions for invoice, scheduling, support, and data-entry work.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Champ AI publishes security, comparison, customer-use-case, and careers pages, giving buyers more than a launch-only placeholder.",
+        "source_ids": [
+          "official_site",
+          "careers_page"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Champ AI emerged from stealth with $8.5M in new funding led by Redpoint Ventures.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations leaders and back-office teams trying to automate repetitive browser, document, scheduling, and support workflows.",
+      "category": "SaaS",
+      "differentiation": "Champ AI packages agents around operations outcomes rather than asking teams to build every automation as a script.",
+      "why_now": "Agentic browser and document models make it more plausible to automate workflows that were too variable for traditional RPA."
+    },
+    "risks": [
+      {
+        "claim": "The open question is how much implementation work is needed before Champ AI agents can handle customer-specific edge cases safely.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

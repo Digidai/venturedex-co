@@ -1,0 +1,89 @@
+{
+  "slug": "upriver",
+  "domain": "upriverdata.com",
+  "url": "https://upriverdata.com/",
+  "product_name": "Upriver",
+  "summary": "AI data engineering platform for enterprise data foundations.",
+  "editor_note": "The useful bet is that data engineering needs an agent that can inspect pipelines, not more backlog tickets. Upriver shows source discovery, lineage, code generation, quality checks, and pull-request workflows for data teams. Unlike warehouse dashboards, it works closer to the engineering loop where schemas, dbt, and repo changes happen. The risk is whether enterprises trust automated changes near production data pipelines.",
+  "editor_rating": 4,
+  "why_featured": "Data pipeline agent",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "data engineering,ai agents,data pipelines,devtools,analytics infrastructure",
+  "investors": "Valley Capital Partners, Hetz Ventures",
+  "links": {
+    "careers": "https://upriverdata.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$14M",
+      "stage": "Seed",
+      "lead_investor": "Valley Capital Partners and Hetz Ventures",
+      "date": "2026-06-08",
+      "source_url": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/upriver-raises-14m-to-automate-the-enterprise-data-foundation-for-1172362",
+      "source_name": "Access Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://upriverdata.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://upriverdata.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Upriver seed funding announcement",
+        "url": "https://www.accessnewswire.com/newsroom/en/computers-technology-and-internet/upriver-raises-14m-to-automate-the-enterprise-data-foundation-for-1172362",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Upriver as an AI data engineering platform for automating the enterprise data foundation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows source discovery, lineage, code generation, quality checks, and pull-request workflows for data teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Upriver raised a $14M seed round led by Valley Capital Partners and Hetz Ventures.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data engineering, analytics engineering, and platform teams responsible for pipelines, schemas, quality, and lineage.",
+      "category": "DevTools",
+      "differentiation": "Upriver moves AI into pipeline and pull-request work rather than keeping it at the observability or dashboard layer.",
+      "why_now": "Enterprises are trying to ship AI features on data foundations that still depend on manual pipeline maintenance and schema triage."
+    },
+    "risks": [
+      {
+        "claim": "The open question is how safely Upriver can suggest or apply changes around production data contracts, lineage, and access controls.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

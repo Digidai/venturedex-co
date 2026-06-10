@@ -1,0 +1,89 @@
+{
+  "slug": "vinyl-equity",
+  "domain": "www.vinylequity.com",
+  "url": "https://www.vinylequity.com/",
+  "product_name": "Vinyl Equity",
+  "summary": "Modern transfer agency infrastructure for private markets.",
+  "editor_note": "The useful bet is that private-market transfer work should feel like software infrastructure, not a PDF-and-email service desk. Vinyl Equity shows issuer services, registrar workflows, restricted securities, proxy and AGM tools, cap-table ingestion, and realtime reporting. Unlike legacy agents, it exposes operational controls for corporate actions. The risk is regulatory trust: issuers may still prefer incumbent transfer-agent brands.",
+  "editor_rating": 4,
+  "why_featured": "Transfer-agent rails",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,capital markets,transfer agency,private markets,compliance",
+  "investors": "Jump Capital",
+  "links": {
+    "careers": "https://www.vinylequity.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Jump Capital",
+      "date": "2026-06-09",
+      "source_url": "https://www.prnewswire.com/news-releases/vinyl-equity-raises-20-million-led-by-jump-capital-as-its-infrastructure-powers-modern-capital-markets-and-corporate-transactions-302795321.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.vinylequity.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://www.vinylequity.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Vinyl Equity Series A funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/vinyl-equity-raises-20-million-led-by-jump-capital-as-its-infrastructure-powers-modern-capital-markets-and-corporate-transactions-302795321.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Vinyl Equity as modern transfer agency infrastructure for corporate transactions and capital markets.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows issuer services, registrar workflows, restricted securities, proxy and AGM tools, cap-table ingestion, and reporting.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Vinyl Equity cites SOC 2 controls, more than 65k holders, and more than 40k transactions as evidence of operating maturity.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Vinyl Equity raised a $20M Series A led by Jump Capital.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Private-company issuers, fund administrators, legal teams, and capital-markets operators managing securities records and corporate actions.",
+      "category": "Fintech",
+      "differentiation": "Vinyl Equity treats transfer agency as programmable infrastructure rather than a manually coordinated service desk.",
+      "why_now": "Private markets, secondary transactions, and corporate actions are creating more demand for digital recordkeeping and compliant investor operations."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether newer transfer-agent infrastructure can win issuer trust against incumbents with longer regulatory histories.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

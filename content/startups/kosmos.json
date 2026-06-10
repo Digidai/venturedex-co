@@ -1,0 +1,89 @@
+{
+  "slug": "kosmos",
+  "domain": "kosmoslabs.ai",
+  "url": "https://kosmoslabs.ai/",
+  "product_name": "Kosmos",
+  "summary": "Operational intelligence layer for enterprise IT incidents.",
+  "editor_note": "The useful bet is that IT incidents fail from missing context, not missing alerts. Kosmos correlates Jira, Salesforce, GitHub, and other work systems into structured risk events, escalation maps, and RCA workflows. Unlike observability dashboards, it starts from business-impact clues and ownership paths. The risk is whether customers expose enough cross-system data for the model to beat established incident platforms.",
+  "editor_rating": 4,
+  "why_featured": "Incident context graph",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "enterprise it,incident response,operational intelligence,ai agents,workflow automation",
+  "investors": "Norwest",
+  "links": {
+    "careers": "https://kosmoslabs.ai/company/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "Norwest",
+      "date": "2026-06-02",
+      "source_url": "https://www.prnewswire.com/news-releases/kosmos-raises-5-million-seed-round-led-by-norwest-to-bring-operational-intelligence-to-enterprise-it-302788014.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://kosmoslabs.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://kosmoslabs.ai/company/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Kosmos seed funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/kosmos-raises-5-million-seed-round-led-by-norwest-to-bring-operational-intelligence-to-enterprise-it-302788014.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Kosmos as an operational-intelligence platform that turns fragmented enterprise IT signals into action.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows correlation across Jira, Salesforce, GitHub, support tickets, ownership metadata, risk events, and escalation maps.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Kosmos presents RCA workflows, demo requests, and a 14-day trial path for enterprise IT teams reviewing incidents and operational risk.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Kosmos raised a $5M seed round led by Norwest to bring operational intelligence to enterprise IT.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise IT, SRE, operations, and support leaders who need to connect incidents to owners, customers, and business impact.",
+      "category": "SaaS",
+      "differentiation": "Kosmos emphasizes a cross-system operational graph and RCA workflow rather than alert streams alone.",
+      "why_now": "Enterprise systems create more ticket, repo, CRM, and observability data than incident teams can manually connect during escalations."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Kosmos can access and normalize enough enterprise systems without becoming a long integration project.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

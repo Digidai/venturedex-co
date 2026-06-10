@@ -1,0 +1,96 @@
+{
+  "slug": "sandstone",
+  "domain": "sandstone.com",
+  "url": "https://sandstone.com/",
+  "product_name": "Sandstone",
+  "summary": "Legal relationship management software for in-house counsel.",
+  "editor_note": "The useful bet is that in-house legal teams need relationship memory, not another contract inbox. Sandstone shows intake, matter tracking, document review, legal research, and work across more than 100 integrated tools. Unlike e-billing or CLM systems, it centers the counsel-client relationship and its history. The risk is whether legal teams keep enough clean context in one place for the AI layer to stay useful.",
+  "editor_rating": 4,
+  "why_featured": "Legal relationship memory",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "legaltech,in-house counsel,ai agents,workflow automation,knowledge management",
+  "investors": "Lightspeed Venture Partners",
+  "links": {
+    "careers": "https://sandstone.com/careers",
+    "press": "https://sandstone.com/blog/sandstone-announces-series-a"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-06-09",
+      "source_url": "https://techcrunch.com/2026/06/09/sandstone-raises-30m-to-bring-ai-to-in-house-legal-teams/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://sandstone.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://sandstone.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "official_news",
+        "label": "Official Series A announcement",
+        "url": "https://sandstone.com/blog/sandstone-announces-series-a",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Sandstone Series A funding article",
+        "url": "https://techcrunch.com/2026/06/09/sandstone-raises-30m-to-bring-ai-to-in-house-legal-teams/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Sandstone as legal relationship management software built for in-house counsel and internal business clients.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows legal intake, matter tracking, document review, legal research, communication, and task execution inside one workflow.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Sandstone says the system works with more than 100 integrated tools, including Microsoft 365, Google Workspace, Slack, CLM, and e-billing systems.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding article says Sandstone raised a $30M Series A led by Lightspeed to bring AI to in-house legal teams.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "In-house legal teams managing business requests, matters, documents, and legal knowledge across multiple internal tools.",
+      "category": "SaaS",
+      "differentiation": "Sandstone frames legal operations around counsel-client relationship context rather than isolated contracts, tickets, or billing workflows.",
+      "why_now": "Corporate legal teams are under pressure to answer more requests with fewer lawyers, while AI can turn matter history and documents into reusable context."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether customers can keep legal context current enough across many systems for AI work products to remain reliable.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

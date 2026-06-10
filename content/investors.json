@@ -428,7 +428,10 @@
     "slug": "valley-capital-partners",
     "short_name": "VCP",
     "website": "https://valleycapital.vc",
-    "description": "Early-stage venture capital firm making high-conviction investments in technology founders."
+    "description": "Early-stage venture capital firm making high-conviction investments in technology founders.",
+    "aliases": [
+      "Valley Capital Partners and Hetz Ventures"
+    ]
   },
   "first-round-capital": {
     "name": "First Round Capital",
@@ -817,5 +820,19 @@
     "short_name": "York IE",
     "website": "https://york.ie/",
     "description": "Strategic growth and investment firm backing and operating alongside technology companies from pre-launch through scale."
+  },
+  "norwest": {
+    "name": "Norwest",
+    "slug": "norwest",
+    "short_name": "Norwest",
+    "website": "https://www.nvp.com/",
+    "description": "Global venture capital and growth equity firm investing across enterprise, consumer, healthcare, and technology companies."
+  },
+  "jump-capital": {
+    "name": "Jump Capital",
+    "slug": "jump-capital",
+    "short_name": "Jump",
+    "website": "https://jumpcap.com/",
+    "description": "Thesis-led venture capital firm investing in data-driven technology companies across fintech, commerce, infrastructure, and software."
   }
 }

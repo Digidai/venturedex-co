@@ -843,6 +843,41 @@
       "local_path": "/logos/companies/lexful.ico",
       "source_page": "https://lexful.ai/",
       "source_url": "https://lexful.ai/favicon.ico"
+    },
+    "sandstone": {
+      "name": "Sandstone",
+      "shape": "icon",
+      "local_path": "/logos/companies/sandstone.svg",
+      "source_page": "https://sandstone.com/",
+      "source_url": "https://sandstone.com/favicon/favicon.svg"
+    },
+    "kosmos": {
+      "name": "Kosmos",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/kosmos.svg",
+      "source_page": "https://kosmoslabs.ai/",
+      "source_url": "https://kosmoslabs.ai/wp-content/themes/kosmoslabs/assets/images/logo.svg"
+    },
+    "champ-ai": {
+      "name": "Champ AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/champ-ai.png",
+      "source_page": "https://www.champ.ai/",
+      "source_url": "https://www.champ.ai/icon.png?icon.10z9_4oehz2kq.png"
+    },
+    "upriver": {
+      "name": "Upriver",
+      "shape": "icon",
+      "local_path": "/logos/companies/upriver.png",
+      "source_page": "https://upriverdata.com/",
+      "source_url": "https://upriverdata.com/logos/logo-salmon.png"
+    },
+    "vinyl-equity": {
+      "name": "Vinyl Equity",
+      "shape": "icon",
+      "local_path": "/logos/companies/vinyl-equity.png",
+      "source_page": "https://www.vinylequity.com/",
+      "source_url": "https://cdn.prod.website-files.com/66cd8d2419964b42278a4e69/67b432ba9b7c6c2bcbeb47ba_favicon_32x32.png"
     }
   },
   "investors": {
@@ -1620,6 +1655,20 @@
       "local_path": "/logos/investors/york-ie.jpg",
       "source_page": "https://york.ie/",
       "source_url": "https://york.ie/wp-content/uploads/2019/07/cropped-YorkieIcon_Black-192x192.jpg"
+    },
+    "norwest": {
+      "name": "Norwest",
+      "shape": "icon",
+      "local_path": "/logos/investors/norwest.ico",
+      "source_page": "https://www.nvp.com/",
+      "source_url": "https://www.nvp.com/favicon.ico"
+    },
+    "jump-capital": {
+      "name": "Jump Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/jump-capital.png",
+      "source_page": "https://jumpcap.com/",
+      "source_url": "https://jumpcap.com/wp-content/uploads/2024/06/cropped-favicon-192x192.png"
     }
   }
 }
