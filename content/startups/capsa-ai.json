@@ -1,0 +1,95 @@
+{
+  "slug": "capsa-ai",
+  "domain": "capsa.ai",
+  "url": "https://capsa.ai/product",
+  "product_name": "Capsa AI",
+  "summary": "AI workflow platform for private capital deal teams.",
+  "editor_note": "The useful bet is that private-capital teams need memory that compounds inside deal work rather than another document vault. Capsa shows sourcing-to-IC workflows, domain-specific integrations, source transparency, and a prompt surface tied to CRM and data tools. Unlike generic copilots, it is shaped around investment committee output. The risk is whether firms trust one AI layer across confidential deal history.",
+  "editor_rating": 4,
+  "why_featured": "Private-capital memory",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,private capital,deal workflows,ai agents,knowledge management",
+  "investors": "TX Ventures, Pivot Investment Partners",
+  "links": {
+    "careers": "https://capsa.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$18M",
+      "stage": "Series A",
+      "lead_investor": "TX Ventures and Pivot Investment Partners",
+      "date": "2026-06-10",
+      "source_url": "https://capsa.ai/news/announcing-our-18m-series-a",
+      "source_name": "Capsa AI News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official company site",
+        "url": "https://capsa.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_page",
+        "label": "Official product page",
+        "url": "https://capsa.ai/product",
+        "type": "product"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://capsa.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Capsa AI Series A announcement",
+        "url": "https://capsa.ai/news/announcing-our-18m-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product page frames Capsa as workflow software for private-capital teams, from sourcing to investment committee work.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "Capsa describes custom domain-specific workflows, integrations into deal-stack tools, and full source transparency.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "The product surface shows a prompt workflow that can produce a four-page analysis from firm intelligence and comparable companies.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Private equity, growth equity, and credit investment teams managing sourcing, diligence, and committee materials.",
+      "category": "Fintech",
+      "differentiation": "Capsa ties firm memory, integrations, and cited sources to private-capital workflows rather than serving as a generic document assistant.",
+      "why_now": "Private-market teams are trying to use AI against proprietary deal history while preserving source traceability and investment-process controls."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether private-capital firms will centralize confidential deal memory in a new AI workflow layer.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

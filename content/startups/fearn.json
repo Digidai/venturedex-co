@@ -1,0 +1,74 @@
+{
+  "slug": "fearn",
+  "domain": "fearn.ai",
+  "url": "https://fearn.ai/",
+  "product_name": "Fearn",
+  "summary": "AI-assisted patent drafting workflow with attorney review.",
+  "editor_note": "The useful bet is that patent drafting can become a guided technical workflow rather than a blank attorney memo. Fearn shows invention-note upload, AI extraction, patent preview, attorney review, a fixed $2,000 filing path, and standards checks tied to 35 USC and MPEP rules. Unlike broad legal copilots, it narrows the job to patent construction. The risk is whether expert review catches edge cases before filing.",
+  "editor_rating": 4,
+  "why_featured": "Patent drafting workflow",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "legaltech,patent drafting,ai agents,intellectual property,enterprise software",
+  "investors": "Kindred Ventures, Andreessen Horowitz",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5.5M",
+      "stage": "Seed",
+      "lead_investor": "Kindred Ventures",
+      "date": "2026-06-10",
+      "source_url": "https://www.businessinsider.com/a16z-backed-fearn-raises-5-million-legal-ai-patent-drafting-2026-6",
+      "source_name": "Business Insider"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://fearn.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fearn seed funding coverage",
+        "url": "https://www.businessinsider.com/a16z-backed-fearn-raises-5-million-legal-ai-patent-drafting-2026-6",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Fearn as patent-drafting software that can turn invention notes into a complete patent draft.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Fearn describes upload, AI extraction, patent preview, attorney review, and a fixed $2,000 filing path.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface cites patent-law checks tied to 35 USC, 37 CFR, and MPEP rules, plus enterprise deployment and security controls.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Founders, technical teams, patent attorneys, and IP operators preparing draft patents from invention notes.",
+      "category": "SaaS",
+      "differentiation": "Fearn narrows AI drafting to patent construction with attorney review rather than offering broad legal chat.",
+      "why_now": "AI-native technical teams are filing more inventions and want faster IP workflows without removing expert legal review."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Fearn's review path catches specification, claim-scope, and prior-art issues before filing.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

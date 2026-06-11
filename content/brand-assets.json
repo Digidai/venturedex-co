@@ -878,6 +878,41 @@
       "local_path": "/logos/companies/vinyl-equity.png",
       "source_page": "https://www.vinylequity.com/",
       "source_url": "https://cdn.prod.website-files.com/66cd8d2419964b42278a4e69/67b432ba9b7c6c2bcbeb47ba_favicon_32x32.png"
+    },
+    "poetic": {
+      "name": "Poetic",
+      "shape": "icon",
+      "local_path": "/logos/companies/poetic.png",
+      "source_page": "https://poetic.com/",
+      "source_url": "https://poetic.com/icon.png?icon.17wuokjlfz5y-.png"
+    },
+    "capsa-ai": {
+      "name": "Capsa AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/capsa-ai.png",
+      "source_page": "https://capsa.ai/",
+      "source_url": "https://framerusercontent.com/images/1XIWPpWybwiOFsIKYLbgckgIP8.png"
+    },
+    "jedify": {
+      "name": "Jedify",
+      "shape": "icon",
+      "local_path": "/logos/companies/jedify.svg",
+      "source_page": "https://jedify.com/",
+      "source_url": "https://jedify.com/wp-content/uploads/FavIcon.svg"
+    },
+    "billables-ai": {
+      "name": "Billables AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/billables-ai.png",
+      "source_page": "https://billables.ai/",
+      "source_url": "https://framerusercontent.com/images/lXKRAcOKyqoaYjGOwgB7qyTxig.png"
+    },
+    "fearn": {
+      "name": "Fearn",
+      "shape": "icon",
+      "local_path": "/logos/companies/fearn.svg",
+      "source_page": "https://fearn.ai/",
+      "source_url": "https://framerusercontent.com/images/L1NlyPO9lGGWABehyCATDBnQDTA.svg"
     }
   },
   "investors": {
@@ -1669,6 +1704,28 @@
       "local_path": "/logos/investors/jump-capital.png",
       "source_page": "https://jumpcap.com/",
       "source_url": "https://jumpcap.com/wp-content/uploads/2024/06/cropped-favicon-192x192.png"
+    },
+    "kindred-ventures": {
+      "name": "Kindred Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/kindred-ventures.svg",
+      "source_page": "https://kindredventures.com/",
+      "source_url": "https://kindredventures.com/wp-content/uploads/2024/02/Kindred-Logo.svg",
+      "tile_background": "dark"
+    },
+    "tx-ventures": {
+      "name": "TX Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/tx-ventures.png",
+      "source_page": "https://tx.ventures/",
+      "source_url": "https://cdn.prod.website-files.com/65c616fab9de0ed16dcc1be2/65c616fab9de0ed16dcc1c1c_favicon_big.png"
+    },
+    "pivot-investment-partners": {
+      "name": "Pivot Investment Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/pivot-investment-partners.webp",
+      "source_page": "https://www.pivotinvestment.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/58d2d68586e6c041346efb82/1493371539698-N2E0WLMX79I1MFY2PZ0L/favicon.ico?format=100w"
     }
   }
 }

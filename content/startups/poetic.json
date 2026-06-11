@@ -1,0 +1,89 @@
+{
+  "slug": "poetic",
+  "domain": "poetic.com",
+  "url": "https://poetic.com/",
+  "product_name": "Poetic",
+  "summary": "AI system for turning enterprise procedures into governed automation.",
+  "editor_note": "The useful bet is that brittle enterprise procedures can become supervised software loops rather than ticket queues. Poetic shows procedure ingestion, expert-feedback learning, recovery when systems change, and published 99%/500,000 process metrics. Unlike RPA tools, it frames reliability around rules and exceptions. The risk is how much autonomy regulated teams will allow near KYC, fraud, and dispute decisions.",
+  "editor_rating": 4,
+  "why_featured": "Process automation agent",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai agents,process automation,enterprise software,compliance workflows,operations",
+  "investors": "Kleiner Perkins",
+  "links": {
+    "careers": "https://poetic.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series A",
+      "lead_investor": "Kleiner Perkins",
+      "date": "2026-06-10",
+      "source_url": "https://www.prnewswire.com/news-releases/poetic-raises-50m-series-a-to-automate-the-worlds-most-complex-enterprise-processes-with-reliable-ai-302796939.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://poetic.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://poetic.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Poetic Series A funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/poetic-raises-50m-series-a-to-automate-the-worlds-most-complex-enterprise-processes-with-reliable-ai-302796939.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Poetic as software that learns business rules and follows them while handling end-to-end processes.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface describes uploading procedures, learning from expert feedback, and recovering when systems change.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Poetic publishes process metrics including 99% quality auto-decisioning, 100% process adherence, and 500,000 disputes handled.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations, compliance, support, and risk teams running repeatable enterprise procedures with exceptions.",
+      "category": "AI / ML",
+      "differentiation": "Poetic anchors automation in documented procedures and expert feedback rather than generic task chat.",
+      "why_now": "Enterprises are trying to automate more regulated, multi-step workflows without losing auditability around rules and exceptions."
+    },
+    "risks": [
+      {
+        "claim": "The open question is how much autonomous process execution regulated enterprises will approve near KYC, fraud, or dispute decisions.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

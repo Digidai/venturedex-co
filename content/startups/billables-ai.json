@@ -1,0 +1,89 @@
+{
+  "slug": "billables-ai",
+  "domain": "billables.ai",
+  "url": "https://billables.ai/",
+  "product_name": "Billables AI",
+  "summary": "AI timekeeping and task-intelligence platform for law firms.",
+  "editor_note": "The useful bet is that timekeeping should be inferred from work traces rather than reconstructed after the fact. Billables AI shows Microsoft 365, Teams, Adobe, Chrome, Edge, Zoom, and practice-platform integrations plus matter matching and narrative generation. Unlike passive timers, it focuses on task intelligence. The risk is lawyer adoption when privileged work and billing review meet AI suggestions.",
+  "editor_rating": 4,
+  "why_featured": "Legal timekeeping AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "legaltech,timekeeping,ai agents,professional services,workflow automation",
+  "investors": "Avenue Growth Partners",
+  "links": {
+    "careers": "https://billables.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "Avenue Growth Partners",
+      "date": "2026-06-09",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/09/3309069/0/en/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://billables.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://billables.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Billables AI Series A funding announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/09/3309069/0/en/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Billables AI as automated timekeeping and task intelligence for lawyers, consultants, and professional services.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Billables AI describes workflow tracking, AI matter matching, narrative generation, and daily customized billable activity reports.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists integrations with Microsoft 365, Teams, Adobe, Chrome, Edge, Zoom, and practice-management platforms.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Lawyers, consultants, finance teams, and professional-services operators responsible for accurate billable-time capture.",
+      "category": "SaaS",
+      "differentiation": "Billables AI infers time and task context from work activity rather than relying on manual timers or after-the-fact reconstruction.",
+      "why_now": "Professional-services firms are trying to reduce revenue leakage while maintaining review control over client, matter, and narrative entries."
+    },
+    "risks": [
+      {
+        "claim": "The open question is how firms balance automated time suggestions with privileged context, lawyer review habits, and client billing trust.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

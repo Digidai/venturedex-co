@@ -1,0 +1,89 @@
+{
+  "slug": "jedify",
+  "domain": "jedify.com",
+  "url": "https://jedify.com/",
+  "product_name": "Jedify",
+  "summary": "Context graph platform for enterprise AI agents.",
+  "editor_note": "The useful bet is that enterprise agents need a shared context graph rather than another metadata catalog. Jedify shows Semantic Fusion, data-source connections, contextual MCP, conversational analytics, Smart Scenarios, and security controls like SOC 2 Type II. Unlike dashboard tools, it tries to make business terms executable by agents. The risk is proving graph quality across messy enterprise data.",
+  "editor_rating": 4,
+  "why_featured": "Context graph for agents",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "context graph,ai agents,data platform,analytics,enterprise ai",
+  "investors": "Norwest",
+  "links": {
+    "careers": "https://jedify.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$24M",
+      "stage": "Series A",
+      "lead_investor": "Norwest",
+      "date": "2026-06-10",
+      "source_url": "https://jedify.com/heres-why-context-graphs-are-the-next-must-have-for-enterprise-ai/",
+      "source_name": "Jedify"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://jedify.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://jedify.com/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Jedify Series A announcement",
+        "url": "https://jedify.com/heres-why-context-graphs-are-the-next-must-have-for-enterprise-ai/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Jedify as a data platform for contextual AI agents with a business context layer.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Jedify describes Semantic Fusion that learns from structured, semi-structured, and unstructured sources while connecting data sources.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows Ask Jedify conversational analytics, a contextual MCP server, Smart Scenarios workflows, and an insights library.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise data, analytics, and AI teams that need agents to understand business terms, KPIs, and internal context.",
+      "category": "AI / ML",
+      "differentiation": "Jedify builds a context graph and MCP surface for agents rather than stopping at catalog metadata or dashboard answers.",
+      "why_now": "Agentic applications need trusted business context before they can act on enterprise data without constant human translation."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Jedify can keep its context graph accurate as enterprise data models, KPIs, and permissions change.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

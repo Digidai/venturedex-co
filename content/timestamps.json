@@ -499,5 +499,25 @@
   "vinyl-equity": {
     "published_at": "2026-06-10 05:57:38",
     "first_seen_at": "2026-06-10 05:57:38"
+  },
+  "poetic": {
+    "published_at": "2026-06-11 06:04:13",
+    "first_seen_at": "2026-06-11 06:04:13"
+  },
+  "capsa-ai": {
+    "published_at": "2026-06-11 06:04:13",
+    "first_seen_at": "2026-06-11 06:04:13"
+  },
+  "jedify": {
+    "published_at": "2026-06-11 06:04:13",
+    "first_seen_at": "2026-06-11 06:04:13"
+  },
+  "billables-ai": {
+    "published_at": "2026-06-11 06:04:13",
+    "first_seen_at": "2026-06-11 06:04:13"
+  },
+  "fearn": {
+    "published_at": "2026-06-11 06:04:13",
+    "first_seen_at": "2026-06-11 06:04:13"
   }
 }

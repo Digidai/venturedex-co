@@ -834,5 +834,29 @@
     "short_name": "Jump",
     "website": "https://jumpcap.com/",
     "description": "Thesis-led venture capital firm investing in data-driven technology companies across fintech, commerce, infrastructure, and software."
+  },
+  "kindred-ventures": {
+    "name": "Kindred Ventures",
+    "slug": "kindred-ventures",
+    "short_name": "Kindred",
+    "website": "https://kindredventures.com/",
+    "description": "Early-stage venture capital firm backing founders building technology and science companies."
+  },
+  "tx-ventures": {
+    "name": "TX Ventures",
+    "slug": "tx-ventures",
+    "short_name": "TX Ventures",
+    "website": "https://tx.ventures/",
+    "description": "Fintech-focused venture capital firm backed by TX Group, investing in financial infrastructure and access.",
+    "aliases": [
+      "TX Ventures and Pivot Investment Partners"
+    ]
+  },
+  "pivot-investment-partners": {
+    "name": "Pivot Investment Partners",
+    "slug": "pivot-investment-partners",
+    "short_name": "Pivot",
+    "website": "https://www.pivotinvestment.com/",
+    "description": "Early growth equity investment firm focused on transformative financial services and financial technology companies."
   }
 }
