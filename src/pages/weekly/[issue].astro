@@ -42,6 +42,7 @@ const dateRange = issue.week_start && issue.week_end
   : "";
 const description = truncateText(issue.research_summary || issue.editorial_intro || `VentureDex Weekly #${issue.issue_number}`);
 const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), Astro.site?.toString());
+const subscribeUrl = `/subscribe?source=${encodeURIComponent(`weekly:${issue.issue_number}`)}`;
 ---
 
 <Base
@@ -78,6 +79,14 @@ const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), 
           </ul>
         </div>
       )}
+    </section>
+
+    <section class="weekly-subscribe" aria-label="Newsletter">
+      <div>
+        <h2>Get the next VentureDex weekly issue</h2>
+        <p>Follow new startup profiles, funding signals, and editorial research as the market map changes.</p>
+      </div>
+      <a href={subscribeUrl}>Subscribe</a>
     </section>
 
     {issue.themes.length > 0 && (
@@ -233,6 +242,48 @@ const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), 
     margin-bottom: var(--space-12);
   }
 
+  .weekly-subscribe {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .weekly-subscribe h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .weekly-subscribe p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  .weekly-subscribe a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-text);
+    border-radius: var(--radius);
+    background: var(--color-text);
+    color: var(--color-bg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .weekly-subscribe a:hover {
+    opacity: 0.86;
+    text-decoration: none;
+  }
+
   .theme {
     border-top: 2px solid var(--color-text);
     padding-top: var(--space-3);
@@ -342,6 +393,11 @@ const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), 
     .themes,
     .evidence-grid {
       grid-template-columns: 1fr;
+    }
+
+    .weekly-subscribe {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 

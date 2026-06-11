@@ -30,6 +30,18 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
 
     if (
+      url.pathname.length > 5 &&
+      url.pathname.endsWith(".html") &&
+      !url.pathname.startsWith("/api/")
+    ) {
+      const withoutHtml = url.pathname.replace(/\.html$/, "");
+      url.pathname = withoutHtml.endsWith("/index")
+        ? withoutHtml.slice(0, -"/index".length) || "/"
+        : withoutHtml;
+      changed = true;
+    }
+
+    if (
       url.pathname.length > 1 &&
       url.pathname.endsWith("/") &&
       !url.pathname.startsWith("/api/") &&

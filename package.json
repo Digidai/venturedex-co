@@ -21,7 +21,12 @@
     "seo:gsc:weekly:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly",
     "seo:gsc:weekly:submit": "bash scripts/submit-gsc-direct.sh --latest-weekly",
     "seo:gsc:latest:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-daily --latest-weekly",
-    "seo:gsc:latest:submit": "bash scripts/submit-gsc-direct.sh --latest-daily --latest-weekly"
+    "seo:gsc:latest:submit": "bash scripts/submit-gsc-direct.sh --latest-daily --latest-weekly",
+    "seo:indexnow:latest:dry": "tsx scripts/promotion/indexnow.ts --dry-run --latest-daily --latest-weekly",
+    "seo:indexnow:latest": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
+    "seo:indexnow:latest:submit": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
+    "promotion:pack": "tsx scripts/promotion/build-pack.ts --latest-daily --latest-weekly --write",
+    "growth:report": "tsx scripts/promotion/growth-report.ts --write"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.6.0",

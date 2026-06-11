@@ -74,6 +74,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   let email: string | null;
   let preferences: NewsletterPreferences;
+  let source = "website";
   const contentType = request.headers.get("content-type") ?? "";
   const isJson = contentType.includes("application/json");
 
@@ -87,6 +88,7 @@ export const POST: APIRoute = async ({ request }) => {
       return json({ ok: true });
     }
     email = normalizeEmail(body.email);
+    source = typeof body.source === "string" ? body.source : "api";
     try {
       preferences = parseNewsletterPreferences(body.preferences, { rejectEmptySelection: true });
     } catch (error) {
@@ -101,6 +103,7 @@ export const POST: APIRoute = async ({ request }) => {
       return redirect("/subscribe?subscribed=1", 302);
     }
     email = normalizeEmail(formData.get("email"));
+    source = formData.get("source")?.toString() ?? "website";
     try {
       preferences = parseNewsletterPreferencesFromForm(formData);
     } catch (error) {
@@ -120,7 +123,7 @@ export const POST: APIRoute = async ({ request }) => {
     subscription = await subscribeToNewsletter(db, {
       email,
       preferences,
-      source: "website",
+      source,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Something went wrong.";

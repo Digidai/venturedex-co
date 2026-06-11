@@ -54,6 +54,7 @@ const pageTitle = enrichedPageTitle.length <= TITLE_MAX
     ? basicPageTitle
     : startup.product_name;
 const schema = startupJsonLd(startup, Astro.site?.toString());
+const subscribeUrl = `/subscribe?source=${encodeURIComponent(`startup:${startup.slug}`)}`;
 
 const tags = startup.tags
   ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
@@ -443,6 +444,14 @@ function sourceLabel(source?: StartupResearchSource) {
       </section>
     )}
 
+    <section class="newsletter-cta" aria-label="Newsletter">
+      <div>
+        <h2>Track startups like {startup.product_name}</h2>
+        <p>Get new VentureDex profiles and weekly research when the next batch is published.</p>
+      </div>
+      <a href={subscribeUrl}>Subscribe</a>
+    </section>
+
     {tags.length > 0 && (
       <section class="tags-section" aria-label="Tags">
         <h2>Tags</h2>
@@ -609,7 +618,8 @@ function sourceLabel(source?: StartupResearchSource) {
   .evidence-section,
   .market-section,
   .risk-section,
-  .sources-section {
+  .sources-section,
+  .newsletter-cta {
     padding-bottom: var(--space-8);
     margin-bottom: var(--space-8);
     border-bottom: 1px solid var(--color-border);
@@ -627,7 +637,8 @@ function sourceLabel(source?: StartupResearchSource) {
   .evidence-section h2,
   .market-section h2,
   .risk-section h2,
-  .sources-section h2 {
+  .sources-section h2,
+  .newsletter-cta h2 {
     font-size: 1.1rem;
     margin-bottom: var(--space-4);
   }
@@ -721,6 +732,44 @@ function sourceLabel(source?: StartupResearchSource) {
   .source-link small {
     color: var(--color-text-secondary);
     text-transform: capitalize;
+  }
+
+  .newsletter-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+
+  .newsletter-cta h2 {
+    margin-bottom: var(--space-2);
+  }
+
+  .newsletter-cta p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  .newsletter-cta a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--color-text);
+    border-radius: var(--radius);
+    color: var(--color-bg);
+    background: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .newsletter-cta a:hover {
+    opacity: 0.86;
+    text-decoration: none;
   }
 
   .note-text {
@@ -966,8 +1015,14 @@ function sourceLabel(source?: StartupResearchSource) {
   }
 
   @media (max-width: 760px) {
-    .context-grid {
+    .context-grid,
+    .newsletter-cta {
       grid-template-columns: 1fr;
+    }
+
+    .newsletter-cta {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 

@@ -5,6 +5,7 @@ import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getContentCollectionBySlug, getContentCollections } from "../../lib/content";
 import { collectionJsonLd, expandSeoDescription } from "../../lib/seo";
+import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
 export function getStaticPaths() {
   return getContentCollections().map((collection) => ({ params: { slug: collection.slug } }));
@@ -12,12 +13,52 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { collection, startups } = getContentCollectionBySlug(slug!)!;
+const subscribeUrl = `/subscribe?source=${encodeURIComponent(`collection:${collection.slug}`)}`;
 const description = expandSeoDescription(
   collection.description,
   "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.",
   `${collection.title} on VentureDex.`
 );
 const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
+const latestStartups = [...startups]
+  .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? ""))
+  .slice(0, 6);
+const topTags = countTerms(startups.flatMap((startup) =>
+  startup.tags ? startup.tags.split(",").map((tag) => tag.trim()) : []
+)).slice(0, 8);
+const topInvestors = countTerms(startups.flatMap((startup) =>
+  startup.investors ? startup.investors.split(",").map((investor) => investor.trim()) : []
+)).slice(0, 6);
+const relatedIssues = getPublishedWeeklyIssuesFromContent(Infinity)
+  .map((issue) => ({
+    issue,
+    matches: issue.picks
+      .map((pick) => startups.find((startup) => startup.slug === pick.slug))
+      .filter(Boolean),
+  }))
+  .filter((entry) => entry.matches.length > 0)
+  .slice(0, 3);
+
+function countTerms(values: string[]): Array<{ term: string; count: number }> {
+  const counts = new Map<string, number>();
+  for (const value of values) {
+    const term = value.trim();
+    if (!term) continue;
+    counts.set(term, (counts.get(term) ?? 0) + 1);
+  }
+  return Array.from(counts, ([term, count]) => ({ term, count }))
+    .sort((a, b) => b.count - a.count || a.term.localeCompare(b.term));
+}
+
+function formatDate(date: string | null | undefined) {
+  if (!date) return "";
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+}
 ---
 
 <Base title={`${collection.title} Startup Collection`} description={description} schema={schema}>
@@ -28,12 +69,108 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
       {collection.description && <p class="description">{collection.description}</p>}
     </header>
 
+    <section class="collection-brief" aria-label="Collection summary">
+      <div>
+        <h2>What this collection tracks</h2>
+        <p>
+          VentureDex follows {collection.title.toLowerCase()} companies through product evidence,
+          funding events, investor context, and editorial selection notes. This page groups
+          {startups.length} profiles that share a comparable market or technology signal.
+        </p>
+      </div>
+      <dl class="signal-list">
+        <div>
+          <dt>Profiles</dt>
+          <dd>{startups.length}</dd>
+        </div>
+        {latestStartups[0]?.published_at && (
+          <div>
+            <dt>Latest signal</dt>
+            <dd>{formatDate(latestStartups[0].published_at)}</dd>
+          </div>
+        )}
+        {topInvestors[0] && (
+          <div>
+            <dt>Frequent investor</dt>
+            <dd>{topInvestors[0].term}</dd>
+          </div>
+        )}
+      </dl>
+    </section>
+
+    {(topTags.length > 0 || topInvestors.length > 0) && (
+      <section class="pattern-section" aria-label="Common patterns">
+        {topTags.length > 0 && (
+          <div>
+            <h2>Common patterns</h2>
+            <div class="term-list">
+              {topTags.map((tag) => (
+                <a href={`/search?q=${encodeURIComponent(tag.term)}`}>
+                  <span>{tag.term}</span>
+                  <small>{tag.count}</small>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+        {topInvestors.length > 0 && (
+          <div>
+            <h2>Frequent investors</h2>
+            <div class="term-list">
+              {topInvestors.map((investor) => (
+                <span>
+                  <span>{investor.term}</span>
+                  <small>{investor.count}</small>
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
+    )}
+
+    {latestStartups.length > 0 && (
+      <section class="latest-section" aria-label="Latest signals">
+        <div class="section-heading">
+          <h2>Latest signals</h2>
+          <a href={subscribeUrl}>Get weekly research</a>
+        </div>
+        <div class="signal-grid">
+          {latestStartups.map((startup) => (
+            <article>
+              <p>{formatDate(startup.published_at)}</p>
+              <h3><a href={`/startups/${startup.slug}`}>{startup.product_name}</a></h3>
+              {startup.why_featured && <span>{startup.why_featured}</span>}
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {relatedIssues.length > 0 && (
+      <section class="weekly-section" aria-label="Related weekly research">
+        <h2>Related weekly research</h2>
+        <div class="weekly-list">
+          {relatedIssues.map(({ issue, matches }) => (
+            <a href={`/weekly/${issue.issue_number}`}>
+              <span>Weekly #{issue.issue_number}</span>
+              <strong>{issue.title}</strong>
+              <small>{matches.length} collection {matches.length === 1 ? "profile" : "profiles"}</small>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     {startups.length > 0 ? (
+      <section class="profile-section" aria-label="Startup profiles">
+        <h2>All profiles</h2>
       <div class="card-grid">
         {startups.map((startup) => (
           <SiteCard startup={startup} />
         ))}
       </div>
+      </section>
     ) : (
       <div class="empty-state">
         <p>No startups in this collection yet.</p>
@@ -68,6 +205,187 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
     max-width: 600px;
   }
 
+  .collection-brief {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
+    margin-bottom: var(--space-8);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .collection-brief h2,
+  .pattern-section h2,
+  .latest-section h2,
+  .weekly-section h2,
+  .profile-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-4);
+  }
+
+  .collection-brief p {
+    max-width: 720px;
+    color: var(--color-text-secondary);
+    line-height: 1.65;
+  }
+
+  .signal-list {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .signal-list div {
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .signal-list dt {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-1);
+  }
+
+  .signal-list dd {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .pattern-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-8);
+    margin-bottom: var(--space-10);
+  }
+
+  .term-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .term-list a,
+  .term-list > span {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 6px 10px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    font-size: 0.82rem;
+    text-decoration: none;
+  }
+
+  .term-list a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .term-list small {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+  }
+
+  .latest-section,
+  .weekly-section {
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-10);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+  }
+
+  .section-heading a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .signal-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .signal-grid article {
+    min-width: 0;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .signal-grid p {
+    margin: 0 0 var(--space-2);
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+  }
+
+  .signal-grid h3 {
+    font-size: 1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .signal-grid h3 a {
+    color: inherit;
+  }
+
+  .signal-grid span {
+    display: block;
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .weekly-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .weekly-list a {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .weekly-list a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .weekly-list span,
+  .weekly-list small {
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+  }
+
+  .weekly-list strong {
+    line-height: 1.35;
+  }
+
+  .profile-section h2 {
+    margin-bottom: var(--space-6);
+  }
+
   .card-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -75,6 +393,13 @@ const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
   }
 
   @media (max-width: 900px) {
+    .collection-brief,
+    .pattern-section,
+    .signal-grid,
+    .weekly-list {
+      grid-template-columns: 1fr;
+    }
+
     .card-grid {
       grid-template-columns: repeat(2, 1fr);
     }

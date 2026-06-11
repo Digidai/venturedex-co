@@ -26,6 +26,8 @@ const pending = Astro.url.searchParams.get("pending") === "1"
 const confirmed = Astro.url.searchParams.get("confirmed") === "1";
 const already = Astro.url.searchParams.get("already") === "1";
 const error = Astro.url.searchParams.get("error");
+const source = (Astro.url.searchParams.get("source") ?? "subscribe_page").trim().slice(0, 64)
+  || "subscribe_page";
 const errorMessage = error === "preferences"
   ? "Choose at least one newsletter."
   : error === "email"
@@ -68,6 +70,7 @@ const errorMessage = error === "preferences"
       <form class="subscribe-form" action="/api/subscribe" method="POST">
         {errorMessage && <p class="form-error" role="alert">{errorMessage}</p>}
         <input type="hidden" name="newsletter_preferences" value="1" />
+        <input type="hidden" name="source" value={source} />
         <label class="honeypot" aria-hidden="true">
           Company
           <input type="text" name="company" tabindex="-1" autocomplete="off" />

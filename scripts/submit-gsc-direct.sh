@@ -27,6 +27,7 @@ BB_BROWSER_CONNECT_RETRY_SLEEP="${BB_BROWSER_CONNECT_RETRY_SLEEP:-2}"
 MAX_URLS="${MAX_URLS:-10}"
 
 HISTORY_FILE="${HISTORY_FILE:-${ROOT_DIR}/.gsc_submission_history.tsv}"
+GSC_ARTIFACT_DIR="${GSC_ARTIFACT_DIR:-${ROOT_DIR}/docs/promotion/gsc-artifacts}"
 BB_BROWSER_CMD="${BB_BROWSER_CMD:-bb-browser}"
 COMET_APP="${COMET_APP:-/Applications/Comet.app/Contents/MacOS/Comet}"
 COMET_LOG_FILE="${COMET_LOG_FILE:-/tmp/venturedex-gsc-comet.log}"
@@ -68,6 +69,7 @@ Options:
   --force               Do not skip URLs already marked requested in the ledger.
   --skip-live-check     Do not verify the target URL returns 2xx before submit.
   --max-urls <N>        Safety cap for one run. Default: ${MAX_URLS}.
+  --artifact-dir <dir>  Write failed GSC page diagnostics to this directory.
   -h, --help            Show this help.
 
 Supported target paths:
@@ -92,6 +94,45 @@ append_history() {
     "$status" \
     "$url" \
     "$(printf '%s' "$message" | tr '\t\r\n' '   ')" >> "$HISTORY_FILE"
+}
+
+sanitize_artifact_name() {
+  python3 - "$1" <<'PY'
+import re
+import sys
+
+value = sys.argv[1].strip().lower()
+value = re.sub(r"^https?://", "", value)
+value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+print(value[:90] or "unknown")
+PY
+}
+
+capture_page_text() {
+  run_js "(function(){var text=document.body?document.body.innerText:'';return text.replace(/\\s+$/,'').slice(0,8000);})();" 2>/dev/null || true
+}
+
+write_gsc_artifact() {
+  local status="$1"
+  local url="$2"
+  local message="$3"
+  local page_text safe_url file
+
+  page_text="$(capture_page_text)"
+  safe_url="$(sanitize_artifact_name "$url")"
+  mkdir -p "$GSC_ARTIFACT_DIR"
+  file="${GSC_ARTIFACT_DIR}/$(date '+%Y%m%d-%H%M%S')-${status}-${safe_url}.txt"
+
+  {
+    printf 'timestamp: %s\n' "$(date '+%Y-%m-%d %H:%M:%S')"
+    printf 'status: %s\n' "$status"
+    printf 'url: %s\n' "$url"
+    printf 'message: %s\n' "$message"
+    printf '\n--- page text ---\n'
+    printf '%s\n' "$page_text"
+  } > "$file"
+
+  echo "GSC diagnostic artifact: $file" >&2
 }
 
 normalize_url() {
@@ -604,6 +645,14 @@ parse_args() {
         MAX_URLS="$2"
         shift 2
         ;;
+      --artifact-dir)
+        if [ $# -lt 2 ]; then
+          echo "--artifact-dir requires a directory" >&2
+          exit 1
+        fi
+        GSC_ARTIFACT_DIR="$2"
+        shift 2
+        ;;
       -h|--help)
         usage
         exit 0
@@ -704,6 +753,7 @@ print_summary() {
   echo "  ${RUN_TS}"
   echo "  Mode: ${mode}"
   echo "  History: ${HISTORY_FILE}"
+  echo "  Artifacts: ${GSC_ARTIFACT_DIR}"
   echo "  Resource: ${GSC_RESOURCE_ID}"
   echo "  Targets:"
   for url in "${TARGET_URLS[@]}"; do
@@ -764,6 +814,7 @@ submit_targets() {
     if ! check_live_url "$url"; then
       echo "Live URL check failed: $url" >&2
       append_history "live_check_failed" "$url" "target URL did not return a successful response"
+      write_gsc_artifact "live_check_failed" "$url" "target URL did not return a successful response"
       return 1
     fi
 
@@ -780,21 +831,25 @@ submit_targets() {
       1)
         echo "Request button not found; manual confirmation may be required: $url" >&2
         append_history "retry_pending" "$url" "request button not found"
+        write_gsc_artifact "retry_pending" "$url" "request button not found"
         return 1
         ;;
       2)
         echo "Quota detected; stopping remaining submissions." >&2
         append_history "quota_exceeded" "$url" "quota detected"
+        write_gsc_artifact "quota_exceeded" "$url" "quota detected"
         return 2
         ;;
       4)
         echo "Search Console reported a request failure." >&2
         append_history "retry_pending" "$url" "request failure detected"
+        write_gsc_artifact "retry_pending" "$url" "request failure detected"
         return 1
         ;;
       *)
         echo "Submit confirmation was not detected: $url" >&2
         append_history "retry_pending" "$url" "submit confirmation not detected"
+        write_gsc_artifact "retry_pending" "$url" "submit confirmation not detected"
         return 3
         ;;
     esac
