@@ -17,6 +17,21 @@ import {
 const DAILY_CRON = "30 13 * * *";
 const WEEKLY_CRON = "0 14 * * 2";
 
+function htmlCanonicalRedirect(request: Request): Response | null {
+  if (request.method !== "GET" && request.method !== "HEAD") return null;
+
+  const url = new URL(request.url);
+  if (url.pathname.length <= 5 || !url.pathname.endsWith(".html") || url.pathname.startsWith("/api/")) {
+    return null;
+  }
+
+  const withoutHtml = url.pathname.replace(/\.html$/, "");
+  url.pathname = withoutHtml.endsWith("/index")
+    ? withoutHtml.slice(0, -"/index".length) || "/"
+    : withoutHtml;
+  return Response.redirect(url.toString(), 301);
+}
+
 // Single-line JSON logs so Cloudflare Workers Logs / Logpush can parse and alert
 // on newsletter cron + queue outcomes (previously these ran silently).
 function logEvent(event: string, data: Record<string, unknown>): void {
@@ -78,6 +93,9 @@ const asNewsletterEnv = (env: Env): NewsletterEnv => env as unknown as Newslette
 
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+    const canonicalRedirect = htmlCanonicalRedirect(request);
+    if (canonicalRedirect) return canonicalRedirect;
+
     const oneClickResponse = await handleOneClickUnsubscribe(request, asNewsletterEnv(env));
     if (oneClickResponse) return oneClickResponse;
     return handle(request, env, ctx) as unknown as Promise<Response>;
