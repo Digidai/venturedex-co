@@ -6,6 +6,7 @@ import type {
 } from "./types";
 import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
 import { normalizeLinks, safeJsonParse } from "./json";
+import type { TopicPage } from "./topic-pages";
 import type { WeeklyIssueContent } from "./weekly";
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
@@ -383,6 +384,42 @@ export function collectionJsonLd(
     ),
     itemListNode(
       startups.map((startup) => ({
+        name: startup.product_name,
+        path: `/startups/${startup.slug}`,
+        description: startup.summary,
+      })),
+      siteUrl
+    ),
+  ]);
+}
+
+export function topicPageJsonLd(topic: TopicPage, siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+  const description = expandSeoDescription(
+    topic.description,
+    topic.searchIntent,
+    `${topic.title} on ${SITE_NAME}.`
+  );
+
+  return buildJsonLdGraph([
+    siteOrganization(siteUrl),
+    siteWebSite(siteUrl),
+    webPageNode({
+      path: topic.path,
+      title: topic.title,
+      description,
+      type: "CollectionPage",
+      siteUrl,
+    }),
+    breadcrumbList(
+      [
+        { name: "Home", path: "/" },
+        { name: "Topics", path: "/topics" },
+        { name: topic.title, path: topic.path },
+      ],
+      siteUrl
+    ),
+    itemListNode(
+      topic.startups.map((startup) => ({
         name: startup.product_name,
         path: `/startups/${startup.slug}`,
         description: startup.summary,

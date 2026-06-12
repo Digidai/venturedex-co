@@ -1,0 +1,80 @@
+[
+  {
+    "slug": "ai-agent-startups",
+    "title": "AI Agent Startups",
+    "kicker": "Agentic software",
+    "description": "A source-backed map of AI agent startups building systems that plan, execute, and close workflow loops.",
+    "intro": "This topic tracks AI agent companies where the product evidence points beyond chat assistance into task execution, workflow automation, orchestration, and operational handoffs. VentureDex uses public product pages, funding sources, and weekly research picks to keep the list grounded in visible market signals.",
+    "search_intent": "For investors, operators, and builders researching AI agent startups by product signal, funding context, and workflow category.",
+    "match": {
+      "product_types": ["AI / ML"],
+      "tags": ["ai agents", "agentic", "agents", "workflow automation", "enterprise ai"]
+    },
+    "featured_slugs": ["jedify", "poetic", "dust", "vapi", "parallel-web-systems"]
+  },
+  {
+    "slug": "developer-tools-startups",
+    "title": "Developer Tools Startups",
+    "kicker": "Builder infrastructure",
+    "description": "Developer tools startups across coding agents, APIs, observability, open source infrastructure, and engineering workflows.",
+    "intro": "This topic groups startups that sell directly into engineering workflows: coding copilots, API platforms, observability systems, open-source infrastructure, and tools that shorten the path from prototype to production. Each profile links back to the VentureDex source trail rather than treating the page as a generic directory.",
+    "search_intent": "For engineering leaders, founders, and investors comparing new developer tools startups and infrastructure bets.",
+    "match": {
+      "product_types": ["DevTools"],
+      "tags": ["developer tools", "devtools", "api", "open source", "mcp", "serverless", "database"]
+    },
+    "featured_slugs": ["cursor", "qodo", "val-town", "openobserve", "supabase"]
+  },
+  {
+    "slug": "ai-infrastructure-startups",
+    "title": "AI Infrastructure Startups",
+    "kicker": "Model operations",
+    "description": "AI infrastructure startups for inference, model serving, GPU clouds, search, data layers, and production AI operations.",
+    "intro": "This topic follows the systems layer underneath applied AI products: inference and serving, search and retrieval, data infrastructure, GPU access, monitoring, and developer-facing deployment tools. The page is intentionally selective so the company list reflects concrete product and funding evidence.",
+    "search_intent": "For readers mapping the AI infrastructure stack and finding companies with visible product or funding traction.",
+    "match": {
+      "product_types": ["AI / ML", "DevTools"],
+      "tags": ["ai infrastructure", "inference", "gpu cloud", "data infrastructure", "ai search", "web search", "synthetic data"]
+    },
+    "featured_slugs": ["modal", "openrouter", "exa", "featherless", "parasail"]
+  },
+  {
+    "slug": "legal-ai-startups",
+    "title": "Legal AI Startups",
+    "kicker": "Legal workflows",
+    "description": "Legal AI and legaltech startups using automation, drafting, timekeeping, and research workflows to change legal operations.",
+    "intro": "This topic tracks legal AI companies where the public signal shows a real workflow wedge: timekeeping, drafting, case work, research, compliance, or firm operations. VentureDex keeps the list tied to official pages and funding evidence so readers can separate product claims from durable adoption signals.",
+    "search_intent": "For legal operators, investors, and founders comparing legal AI startups by product use case and market signal.",
+    "match": {
+      "product_types": ["SaaS"],
+      "tags": ["legal ai", "legaltech", "legal tech", "litigation", "compliance"]
+    },
+    "featured_slugs": ["billables-ai", "fearn", "lexroom", "lexful"]
+  },
+  {
+    "slug": "fintech-infrastructure-startups",
+    "title": "Fintech Infrastructure Startups",
+    "kicker": "Financial plumbing",
+    "description": "Fintech infrastructure startups across payments, banking, lending, compliance, fraud, and financial operations.",
+    "intro": "This topic focuses on fintech companies rebuilding the operational layer behind money movement, risk, identity, financial workflows, and embedded banking. The page emphasizes what VentureDex can verify from product, funding, and investor context.",
+    "search_intent": "For fintech builders, investors, and business-development teams researching infrastructure-oriented fintech startups.",
+    "match": {
+      "product_types": ["Fintech"],
+      "tags": ["fintech", "payments", "banking", "lending", "fraud", "financial services", "wealthtech"]
+    },
+    "featured_slugs": ["equipifi", "basata", "canals", "pivot", "trackk"]
+  },
+  {
+    "slug": "healthcare-ai-startups",
+    "title": "Healthcare AI Startups",
+    "kicker": "Care operations",
+    "description": "Healthcare AI and healthtech startups applying AI to care delivery, diagnostics, clinical workflow, and patient operations.",
+    "intro": "This topic tracks healthtech companies where AI or software workflow appears in care delivery, diagnostics, clinical operations, patient intake, or specialty care. The intent is to show the operational surface and evidence trail, not to make clinical claims.",
+    "search_intent": "For healthcare operators, investors, and product teams tracking AI-enabled healthtech startups.",
+    "match": {
+      "product_types": ["HealthTech"],
+      "tags": ["healthcare ai", "healthcare", "virtual care", "diagnostics", "clinical"]
+    },
+    "featured_slugs": ["9amhealth", "triomics", "subtle-medical", "gridcare", "cvrd-health"]
+  }
+]

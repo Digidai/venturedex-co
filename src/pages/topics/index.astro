@@ -1,0 +1,162 @@
+---
+export const prerender = true;
+
+import Base from "../../layouts/Base.astro";
+import { getContentStartups } from "../../lib/content";
+import { SITE_NAME, buildJsonLdGraph, itemListNode, siteOrganization, siteWebSite, webPageNode } from "../../lib/seo";
+import { getTopicPages } from "../../lib/topic-pages";
+import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
+
+const topics = getTopicPages(getContentStartups(), getPublishedWeeklyIssuesFromContent(Infinity));
+const description = "Evidence-backed VentureDex topic pages for startup categories with product signals, funding context, investor patterns, and related weekly research.";
+const schema = buildJsonLdGraph([
+  siteOrganization(Astro.site?.toString()),
+  siteWebSite(Astro.site?.toString()),
+  webPageNode({
+    path: "/topics",
+    title: "Topics",
+    description,
+    type: "CollectionPage",
+    siteUrl: Astro.site?.toString(),
+  }),
+  itemListNode(topics.map((topic) => ({
+    name: topic.title,
+    path: topic.path,
+    description: topic.description,
+  })), Astro.site?.toString()),
+]);
+---
+
+<Base title="Startup Topics" description={description} schema={schema}>
+  <div class="container topics-index">
+    <header>
+      <p class="eyebrow">{SITE_NAME} topic maps</p>
+      <h1>Startup topics with evidence, not thin lists.</h1>
+      <p class="description">
+        Browse curated market maps that combine VentureDex profiles, funding context,
+        investor signals, and weekly research. Each topic is generated from explicit
+        editorial match rules and visible company data.
+      </p>
+    </header>
+
+    <section class="topic-grid" aria-label="Startup topic pages">
+      {topics.map((topic) => (
+        <a class="topic-card" href={topic.path}>
+          <span>{topic.kicker}</span>
+          <h2>{topic.title}</h2>
+          <p>{topic.description}</p>
+          <dl>
+            <div>
+              <dt>Profiles</dt>
+              <dd>{topic.startups.length}</dd>
+            </div>
+            <div>
+              <dt>Weekly links</dt>
+              <dd>{topic.relatedIssues.length}</dd>
+            </div>
+          </dl>
+        </a>
+      ))}
+    </section>
+  </div>
+</Base>
+
+<style>
+  .topics-index {
+    max-width: 1120px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  header {
+    margin-bottom: var(--space-10);
+  }
+
+  .eyebrow {
+    color: var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    margin-bottom: var(--space-2);
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 780px;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: var(--space-4);
+  }
+
+  .description {
+    max-width: 720px;
+    color: var(--color-text-secondary);
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+
+  .topic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .topic-card {
+    display: grid;
+    gap: var(--space-3);
+    min-width: 0;
+    padding: var(--space-5);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    color: var(--color-text);
+    text-decoration: none;
+    background: var(--color-bg-card);
+  }
+
+  .topic-card:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .topic-card > span {
+    color: var(--color-text-secondary);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+  }
+
+  .topic-card h2 {
+    font-size: 1.35rem;
+  }
+
+  .topic-card p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .topic-card dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .topic-card dt {
+    color: var(--color-text-secondary);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+  }
+
+  .topic-card dd {
+    font-weight: 700;
+  }
+
+  @media (max-width: 760px) {
+    .topics-index {
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    .topic-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

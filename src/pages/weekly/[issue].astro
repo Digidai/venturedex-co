@@ -43,12 +43,17 @@ const dateRange = issue.week_start && issue.week_end
 const description = truncateText(issue.research_summary || issue.editorial_intro || `VentureDex Weekly #${issue.issue_number}`);
 const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), Astro.site?.toString());
 const subscribeUrl = `/subscribe?source=${encodeURIComponent(`weekly:${issue.issue_number}`)}`;
+const ogImage = `/og/weekly-${issue.issue_number}.png`;
 ---
 
 <Base
   title={issue.title}
   description={description}
   ogType="article"
+  ogImage={ogImage}
+  ogImageWidth={1200}
+  ogImageHeight={630}
+  ogImageType="image/png"
   publishedTime={issue.published_at}
   modifiedTime={issue.published_at ?? issue.week_end}
   schema={schema}

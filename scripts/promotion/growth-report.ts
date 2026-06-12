@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import {
   latestDailyDate,
   latestDailyStartups,
@@ -10,6 +10,7 @@ import {
   weeklyUrl,
   writeText,
 } from "./content";
+import { classifyGscStatus, latestGscStatus, readGscLedger } from "./gsc";
 
 interface FetchSnapshot {
   url: string;
@@ -20,14 +21,8 @@ interface FetchSnapshot {
   error?: string;
 }
 
-interface LedgerRow {
-  timestamp: string;
-  status: string;
-  url: string;
-  message: string;
-}
-
 const REPORT_TIME_ZONE = process.env.REPORT_TIME_ZONE ?? "Asia/Shanghai";
+const LIVE_FETCH_ATTEMPTS = Number(process.env.LIVE_FETCH_ATTEMPTS ?? "3");
 
 function reportDate(date = new Date()): string {
   const parts = new Intl.DateTimeFormat("en-CA", {
@@ -40,39 +35,42 @@ function reportDate(date = new Date()): string {
   return `${value.year}-${value.month}-${value.day}`;
 }
 
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function statusLabel(snapshot: FetchSnapshot | undefined): string {
+  if (!snapshot) return "error";
+  if (snapshot.status === null) return `error (${snapshot.error ?? "fetch failed"})`;
+  return String(snapshot.status);
+}
+
+function lineCount(body: string | undefined): number {
+  return body ? body.split("\n").length : 0;
+}
+
 async function fetchText(url: string): Promise<FetchSnapshot> {
-  try {
-    const response = await fetch(url, { headers: { "User-Agent": "VentureDexGrowthReport/1.0" } });
-    const body = await response.text();
-    return { url, status: response.status, ok: response.ok, bytes: body.length, body };
-  } catch (error) {
-    return {
-      url,
-      status: null,
-      ok: false,
-      bytes: 0,
-      body: "",
-      error: error instanceof Error ? error.message : String(error),
-    };
+  for (let attempt = 1; attempt <= LIVE_FETCH_ATTEMPTS; attempt += 1) {
+    try {
+      const response = await fetch(url, { headers: { "User-Agent": "VentureDexGrowthReport/1.0" } });
+      const body = await response.text();
+      return { url, status: response.status, ok: response.ok, bytes: body.length, body };
+    } catch (error) {
+      if (attempt === LIVE_FETCH_ATTEMPTS) {
+        return {
+          url,
+          status: null,
+          ok: false,
+          bytes: 0,
+          body: "",
+          error: error instanceof Error ? error.message : String(error),
+        };
+      }
+      await sleep(250 * attempt);
+    }
   }
-}
 
-function parseLedger(): LedgerRow[] {
-  const path = resolveFromRoot(".gsc_submission_history.tsv");
-  if (!existsSync(path)) return [];
-  return readFileSync(path, "utf8")
-    .trim()
-    .split("\n")
-    .slice(1)
-    .map((line) => {
-      const [timestamp = "", status = "", url = "", message = ""] = line.split("\t");
-      return { timestamp, status, url, message };
-    })
-    .filter((row) => row.url);
-}
-
-function latestStatus(rows: LedgerRow[], url: string): LedgerRow | null {
-  return [...rows].reverse().find((row) => row.url === url) ?? null;
+  return { url, status: null, ok: false, bytes: 0, body: "", error: "fetch attempts exhausted" };
 }
 
 function countFiles(path: string): number {
@@ -88,7 +86,7 @@ async function main() {
   const dailyDate = latestDailyDate(startups);
   const dailyStartups = latestDailyStartups(startups);
   const weeklyIssue = latestWeeklyIssue(issues);
-  const ledger = parseLedger();
+  const ledger = readGscLedger();
 
   const snapshots = offline
     ? []
@@ -125,23 +123,25 @@ async function main() {
   if (offline) {
     lines.push("- Offline mode: live fetch skipped.");
   } else {
-    lines.push(`- sitemap.xml: ${sitemap?.status ?? "error"} / ${sitemap?.body.match(/<url>/g)?.length ?? 0} URLs`);
-    lines.push(`- feed.xml: ${feed?.status ?? "error"} / ${feed?.body.match(/<item>/g)?.length ?? 0} items`);
-    lines.push(`- llms.txt: ${llms?.status ?? "error"} / ${llms?.body.split("\n").length ?? 0} lines`);
-    lines.push(`- robots.txt: ${robots?.status ?? "error"} / ${robots?.body.includes("Content-Signal") ? "Cloudflare content signals present" : "content signals not detected"}`);
+    lines.push(`- sitemap.xml: ${statusLabel(sitemap)} / ${sitemap?.body.match(/<url>/g)?.length ?? 0} URLs`);
+    lines.push(`- feed.xml: ${statusLabel(feed)} / ${feed?.body.match(/<item>/g)?.length ?? 0} items`);
+    lines.push(`- llms.txt: ${statusLabel(llms)} / ${lineCount(llms?.body)} lines`);
+    lines.push(`- robots.txt: ${statusLabel(robots)} / ${robots?.body.includes("Content-Signal") ? "Cloudflare content signals present" : "content signals not detected"}`);
   }
   lines.push("");
 
   lines.push("## Latest GSC Ledger State");
   for (const startup of dailyStartups) {
     const url = startupUrl(startup.slug);
-    const row = latestStatus(ledger, url);
-    lines.push(`- ${startup.product_name}: ${row ? `${row.status} (${row.timestamp})` : "no ledger row"} - ${url}`);
+    const row = latestGscStatus(ledger, url);
+    const state = classifyGscStatus(row);
+    lines.push(`- ${startup.product_name}: ${state.kind} - ${state.message} - ${url}`);
   }
   if (weeklyIssue) {
     const url = weeklyUrl(weeklyIssue.issue_number);
-    const row = latestStatus(ledger, url);
-    lines.push(`- Weekly #${weeklyIssue.issue_number}: ${row ? `${row.status} (${row.timestamp})` : "no ledger row"} - ${url}`);
+    const row = latestGscStatus(ledger, url);
+    const state = classifyGscStatus(row);
+    lines.push(`- Weekly #${weeklyIssue.issue_number}: ${state.kind} - ${state.message} - ${url}`);
   }
   lines.push("");
 

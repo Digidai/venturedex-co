@@ -9,6 +9,7 @@ import {
   getContentStartups,
 } from "../lib/content";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl } from "../lib/seo";
+import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 
 interface SitemapUrl {
@@ -50,6 +51,8 @@ export const GET: APIRoute = () => {
   const siteUrl = getSiteUrl(DEFAULT_SITE_URL);
   const weeklyIssues = getPublishedWeeklyIssuesFromContent(50);
   const latestWeeklyIssue = weeklyIssues[0] ?? null;
+  const allStartups = getContentStartups();
+  const topics = getTopicPages(allStartups, weeklyIssues);
 
   let urls: SitemapUrl[] = [
     { loc: "/", priority: "1.0" },
@@ -57,6 +60,7 @@ export const GET: APIRoute = () => {
     { loc: "/news", priority: "0.8" },
     { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
     { loc: "/collections", priority: "0.7" },
+    { loc: "/topics", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
     { loc: "/about", priority: "0.6" },
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },
@@ -71,7 +75,7 @@ export const GET: APIRoute = () => {
 
   // Mirror the prior D1 startups query: published, ORDER BY is_featured DESC,
   // published_at DESC.
-  const startups: StartupSitemapRow[] = getContentStartups()
+  const startups: StartupSitemapRow[] = allStartups
     .map((startup) => ({
       slug: startup.slug,
       product_name: startup.product_name,
@@ -140,6 +144,11 @@ export const GET: APIRoute = () => {
       loc: `/collections/${collection.slug}`,
       lastmod: collection.created_at,
       priority: "0.7",
+    })),
+    topics.map((topic) => ({
+      loc: topic.path,
+      lastmod: topic.latestStartups[0]?.published_at ?? latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end,
+      priority: "0.8",
     }))
   );
 

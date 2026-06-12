@@ -116,9 +116,10 @@ write_gsc_artifact() {
   local status="$1"
   local url="$2"
   local message="$3"
-  local page_text safe_url file
+  local page_text page_state safe_url file
 
   page_text="$(capture_page_text)"
+  page_state="$(page_request_state 2>/dev/null || true)"
   safe_url="$(sanitize_artifact_name "$url")"
   mkdir -p "$GSC_ARTIFACT_DIR"
   file="${GSC_ARTIFACT_DIR}/$(date '+%Y%m%d-%H%M%S')-${status}-${safe_url}.txt"
@@ -128,6 +129,7 @@ write_gsc_artifact() {
     printf 'status: %s\n' "$status"
     printf 'url: %s\n' "$url"
     printf 'message: %s\n' "$message"
+    printf 'page_state: %s\n' "${page_state:-unknown}"
     printf '\n--- page text ---\n'
     printf '%s\n' "$page_text"
   } > "$file"

@@ -7,6 +7,7 @@ import {
   getContentStartups,
 } from "../lib/content";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
+import { getTopicPages } from "../lib/topic-pages";
 import {
   DEFAULT_SITE_URL,
   SITE_DESCRIPTION,
@@ -30,7 +31,18 @@ export const GET: APIRoute = ({ site }) => {
       latestRoundBySlug.set(round.company_slug, round);
     }
   }
-  const startups = getContentStartups()
+  const allStartups = getContentStartups();
+  const weeklyIssueData = getPublishedWeeklyIssuesFromContent(Infinity);
+  const topics = getTopicPages(allStartups, weeklyIssueData)
+    .sort((a, b) => a.slug.localeCompare(b.slug))
+    .map((topic) =>
+      startupLink(
+        topic.title,
+        topic.path,
+        `${topic.startups.length} startup profiles. ${topic.description}`
+      )
+    );
+  const startups = allStartups
     .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? ""))
     .map((startup) => {
       const round = latestRoundBySlug.get(startup.slug);
@@ -48,7 +60,7 @@ export const GET: APIRoute = ({ site }) => {
         truncateText(cleanText([startup.summary, details.join("; ")].filter(Boolean).join(" - ")), 220)
       );
     });
-  const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity)
+  const weeklyIssues = weeklyIssueData
     .sort((a, b) => b.issue_number - a.issue_number)
     .map((issue) =>
       startupLink(
@@ -83,6 +95,7 @@ ${[
     link("Funding news", "/news"),
     link("Weekly startup research", "/weekly"),
     link("Collections", "/collections"),
+    link("Startup topics", "/topics"),
   ].join("\n")}
 
 ## Startup Profiles
@@ -100,6 +113,10 @@ ${weeklyIssues.join("\n")}
 ## Collections
 
 ${collections.join("\n")}
+
+## Startup Topic Maps
+
+${topics.join("\n")}
 
 ## Discovery Feeds
 

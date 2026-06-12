@@ -4,6 +4,7 @@ import {
   INDEXNOW_KEY,
   INDEXNOW_KEY_LOCATION,
 } from "../../src/lib/indexnow";
+import { getTopicPageConfigs } from "../../src/lib/topic-pages";
 import {
   appendJsonLine,
   latestDailyStartups,
@@ -16,12 +17,15 @@ import {
   weeklyUrl,
 } from "./content";
 
+const INDEXNOW_HOST_URL = `https://${INDEXNOW_HOST}`;
+
 interface Options {
   dryRun: boolean;
   recordDryRun: boolean;
   skipKeyCheck: boolean;
   latestDaily: boolean;
   latestWeekly: boolean;
+  topics: boolean;
   dailyDate: string | null;
   weeklyIssue: number | null;
   urls: string[];
@@ -36,6 +40,7 @@ function usage(): string {
 Usage:
   tsx scripts/promotion/indexnow.ts --dry-run --latest-daily --latest-weekly
   tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly
+  tsx scripts/promotion/indexnow.ts --topics
   tsx scripts/promotion/indexnow.ts --daily-date 2026-06-11
   tsx scripts/promotion/indexnow.ts --url https://venturedex.co/startups/example
 
@@ -45,6 +50,7 @@ Options:
   --latest-daily        Include startup detail pages from newest publish date.
   --daily-date <date>   Include startup detail pages published on YYYY-MM-DD.
   --latest-weekly       Include newest published weekly issue.
+  --topics              Include configured VentureDex topic pages.
   --weekly-issue <N>    Include one weekly issue URL.
   --url <url>           Include an explicit VentureDex URL; may repeat.
   --max-urls <N>        Safety cap. Default: 100.
@@ -60,6 +66,7 @@ function parseArgs(argv: string[]): Options {
     skipKeyCheck: false,
     latestDaily: false,
     latestWeekly: false,
+    topics: false,
     dailyDate: null,
     weeklyIssue: null,
     urls: [],
@@ -85,6 +92,9 @@ function parseArgs(argv: string[]): Options {
         break;
       case "--latest-weekly":
         options.latestWeekly = true;
+        break;
+      case "--topics":
+        options.topics = true;
         break;
       case "--daily-date":
         options.dailyDate = requiredValue(argv, ++index, arg);
@@ -145,6 +155,9 @@ function collectUrls(options: Options): string[] {
     const issue = latestWeeklyIssue(issues);
     if (issue) urls.push(weeklyUrl(issue.issue_number));
   }
+  if (options.topics) {
+    urls.push(...getTopicPageConfigs().map((topic) => `${INDEXNOW_HOST_URL}/topics/${topic.slug}`));
+  }
   if (options.weeklyIssue !== null) {
     urls.push(weeklyUrl(options.weeklyIssue));
   }
@@ -165,7 +178,7 @@ function validateUrl(url: string): void {
   if (parsed.hostname !== INDEXNOW_HOST || parsed.protocol !== "https:") {
     throw new Error(`IndexNow URL must be an https://${INDEXNOW_HOST} URL: ${url}`);
   }
-  if (!/^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+)$/.test(parsed.pathname)) {
+  if (!/^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*)$/.test(parsed.pathname)) {
     throw new Error(`IndexNow target path is outside the canonical content set: ${url}`);
   }
 }

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run weekly:og && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",
@@ -22,9 +22,12 @@
     "seo:gsc:weekly:submit": "bash scripts/submit-gsc-direct.sh --latest-weekly",
     "seo:gsc:latest:dry": "bash scripts/submit-gsc-direct.sh --dry-run --latest-daily --latest-weekly",
     "seo:gsc:latest:submit": "bash scripts/submit-gsc-direct.sh --latest-daily --latest-weekly",
+    "seo:gsc:diagnose": "tsx scripts/promotion/gsc-diagnostics.ts --write",
     "seo:indexnow:latest:dry": "tsx scripts/promotion/indexnow.ts --dry-run --latest-daily --latest-weekly",
     "seo:indexnow:latest": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
     "seo:indexnow:latest:submit": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
+    "seo:indexnow:topics": "tsx scripts/promotion/indexnow.ts --topics",
+    "weekly:og": "tsx scripts/weekly-og.ts --all --write",
     "promotion:pack": "tsx scripts/promotion/build-pack.ts --latest-daily --latest-weekly --write",
     "growth:report": "tsx scripts/promotion/growth-report.ts --write"
   },
@@ -38,6 +41,7 @@
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.9.1",
     "better-sqlite3": "^12.10.0",
+    "sharp": "^0.34.5",
     "tsx": "^4.22.3",
     "typescript": "^5.8.0",
     "wrangler": "^4.14.0"
