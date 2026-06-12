@@ -157,8 +157,8 @@ export function buildTopicPage(
 export function startupMatchesTopic(startup: Startup, productTypes: string[], tags: string[]): boolean {
   if (startup.product_type && productTypes.includes(startup.product_type)) return true;
   if (tags.length === 0) return false;
-  const startupTags = splitCsv(startup.tags).map((tag) => tag.toLowerCase());
-  return tags.some((needle) => startupTags.some((tag) => tag.includes(needle.toLowerCase())));
+  const startupTags = new Set(splitCsv(startup.tags).map((tag) => tag.toLowerCase()));
+  return tags.some((needle) => startupTags.has(needle.toLowerCase()));
 }
 
 export function assertValidTopicConfigs(configs: TopicPageConfig[]): TopicPageConfig[] {

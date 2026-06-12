@@ -7,8 +7,8 @@
     "intro": "This topic tracks AI agent companies where the product evidence points beyond chat assistance into task execution, workflow automation, orchestration, and operational handoffs. VentureDex uses public product pages, funding sources, and weekly research picks to keep the list grounded in visible market signals.",
     "search_intent": "For investors, operators, and builders researching AI agent startups by product signal, funding context, and workflow category.",
     "match": {
-      "product_types": ["AI / ML"],
-      "tags": ["ai agents", "agentic", "agents", "workflow automation", "enterprise ai"]
+      "product_types": [],
+      "tags": ["ai agents", "agentic", "agents", "workflow automation"]
     },
     "featured_slugs": ["jedify", "poetic", "dust", "vapi", "parallel-web-systems"]
   },
@@ -33,7 +33,7 @@
     "intro": "This topic follows the systems layer underneath applied AI products: inference and serving, search and retrieval, data infrastructure, GPU access, monitoring, and developer-facing deployment tools. The page is intentionally selective so the company list reflects concrete product and funding evidence.",
     "search_intent": "For readers mapping the AI infrastructure stack and finding companies with visible product or funding traction.",
     "match": {
-      "product_types": ["AI / ML", "DevTools"],
+      "product_types": [],
       "tags": ["ai infrastructure", "inference", "gpu cloud", "data infrastructure", "ai search", "web search", "synthetic data"]
     },
     "featured_slugs": ["modal", "openrouter", "exa", "featherless", "parasail"]
@@ -46,7 +46,7 @@
     "intro": "This topic tracks legal AI companies where the public signal shows a real workflow wedge: timekeeping, drafting, case work, research, compliance, or firm operations. VentureDex keeps the list tied to official pages and funding evidence so readers can separate product claims from durable adoption signals.",
     "search_intent": "For legal operators, investors, and founders comparing legal AI startups by product use case and market signal.",
     "match": {
-      "product_types": ["SaaS"],
+      "product_types": [],
       "tags": ["legal ai", "legaltech", "legal tech", "litigation", "compliance"]
     },
     "featured_slugs": ["billables-ai", "fearn", "lexroom", "lexful"]

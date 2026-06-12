@@ -371,6 +371,12 @@ const topicMatches = getTopicMatchesForStartups(pickRows.map(({ startup }) => st
     text-decoration: none;
   }
 
+  .topic-map-grid a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+
   .topic-map-grid span,
   .topic-map-grid small {
     color: var(--color-text-secondary);
@@ -386,6 +392,11 @@ const topicMatches = getTopicMatchesForStartups(pickRows.map(({ startup }) => st
   .topic-map-grid strong {
     font-size: 1rem;
     line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .topic-map-grid small {
+    overflow-wrap: anywhere;
   }
 
   .picks h2 {

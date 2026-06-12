@@ -1049,6 +1049,12 @@ function sourceLabel(source?: StartupResearchSource) {
     text-decoration: none;
   }
 
+  .topic-link-card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-color: var(--color-accent);
+  }
+
   .topic-link-card span,
   .topic-link-card small {
     color: var(--color-text-secondary);
@@ -1064,6 +1070,11 @@ function sourceLabel(source?: StartupResearchSource) {
   .topic-link-card strong {
     font-size: 1rem;
     line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+
+  .topic-link-card small {
+    overflow-wrap: anywhere;
   }
 
   .related {

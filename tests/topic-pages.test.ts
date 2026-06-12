@@ -4,6 +4,7 @@ import {
   assertValidTopicConfigs,
   buildTopicPage,
   buildTopicPages,
+  getTopicPageConfigs,
   getTopicMatchesForStartups,
   getTopicPagesForStartup,
   startupMatchesTopic,
@@ -95,6 +96,8 @@ test("startupMatchesTopic matches product type and tag case-insensitively", () =
   assert.equal(startupMatchesTopic(baseStartup, ["AI / ML"], []), true);
   assert.equal(startupMatchesTopic(baseStartup, [], ["ai agents"]), true);
   assert.equal(startupMatchesTopic(baseStartup, [], ["legal ai"]), false);
+  assert.equal(startupMatchesTopic(startup({ tags: "fintech,private capital" }), [], ["api"]), false);
+  assert.equal(startupMatchesTopic(startup({ tags: "api,developer tools" }), [], ["api"]), true);
 });
 
 test("buildTopicPage filters unpublished startups and puts configured featured slugs first", () => {
@@ -127,6 +130,14 @@ test("buildTopicPages drops empty topics and rejects duplicate slugs", () => {
   const emptyConfig = { ...config, slug: "empty", match: { product_types: ["Fintech"], tags: [] } };
   assert.equal(buildTopicPages([emptyConfig], [baseStartup], []).length, 0);
   assert.throws(() => assertValidTopicConfigs([config, config]), /Duplicate topic slug/);
+});
+
+test("intent-specific topic configs avoid broad product or enterprise tags", () => {
+  const bySlug = new Map(getTopicPageConfigs().map((topic) => [topic.slug, topic]));
+  assert.deepEqual(bySlug.get("ai-agent-startups")?.match.product_types ?? [], []);
+  assert.deepEqual(bySlug.get("ai-infrastructure-startups")?.match.product_types ?? [], []);
+  assert.deepEqual(bySlug.get("legal-ai-startups")?.match.product_types ?? [], []);
+  assert.equal((bySlug.get("ai-agent-startups")?.match.tags ?? []).includes("enterprise ai"), false);
 });
 
 test("getTopicPagesForStartup returns matching topics with a stable limit", () => {
