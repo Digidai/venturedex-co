@@ -3,8 +3,9 @@ export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getContentStartupBySlug } from "../../lib/content";
+import { getContentStartupBySlug, getContentStartups } from "../../lib/content";
 import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
+import { getTopicMatchesForStartups } from "../../lib/topic-pages";
 import {
   getPublishedWeeklyIssuesFromContent,
   getWeeklyIssueByNumberFromContent,
@@ -18,6 +19,8 @@ export function getStaticPaths() {
 
 const issueNum = Number(Astro.params.issue);
 const issue = getWeeklyIssueByNumberFromContent(issueNum)!;
+const allStartups = getContentStartups();
+const allWeeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
 
 const pickRows = [];
 for (const pick of issue.picks) {
@@ -44,6 +47,7 @@ const description = truncateText(issue.research_summary || issue.editorial_intro
 const schema = weeklyIssueJsonLd(issue, pickRows.map(({ startup }) => startup), Astro.site?.toString());
 const subscribeUrl = `/subscribe?source=${encodeURIComponent(`weekly:${issue.issue_number}`)}`;
 const ogImage = `/og/weekly-${issue.issue_number}.png`;
+const topicMatches = getTopicMatchesForStartups(pickRows.map(({ startup }) => startup), allStartups, allWeeklyIssues);
 ---
 
 <Base
@@ -102,6 +106,26 @@ const ogImage = `/og/weekly-${issue.issue_number}.png`;
             <p>{theme.summary}</p>
           </div>
         ))}
+      </section>
+    )}
+
+    {topicMatches.length > 0 && (
+      <section class="topic-map" aria-label="Related topic maps">
+        <div class="section-heading">
+          <h2>Topic map</h2>
+          <a href="/topics">All topics</a>
+        </div>
+        <div class="topic-map-grid">
+          {topicMatches.map(({ topic, matchingStartups }) => (
+            <a href={topic.path}>
+              <span>{topic.kicker}</span>
+              <strong>{topic.title}</strong>
+              <small>
+                {matchingStartups.map((startup) => startup.product_name).join(", ")}
+              </small>
+            </a>
+          ))}
+        </div>
       </section>
     )}
 
@@ -221,6 +245,7 @@ const ogImage = `/og/weekly-${issue.issue_number}.png`;
 
   .method-list h2,
   .themes h2,
+  .topic-map h2,
   .picks > h2 {
     font-size: 1rem;
     margin-bottom: var(--space-3);
@@ -297,6 +322,70 @@ const ogImage = `/og/weekly-${issue.issue_number}.png`;
   .theme p {
     color: var(--color-text-secondary);
     line-height: 1.6;
+  }
+
+  .topic-map {
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-heading h2 {
+    margin-bottom: 0;
+  }
+
+  .section-heading a {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .topic-map-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+
+  .topic-map-grid a {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .topic-map-grid a:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .topic-map-grid span,
+  .topic-map-grid small {
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .topic-map-grid span {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .topic-map-grid strong {
+    font-size: 1rem;
+    line-height: 1.35;
   }
 
   .picks h2 {
@@ -396,11 +485,13 @@ const ogImage = `/og/weekly-${issue.issue_number}.png`;
     .issue-brief,
     .pick-analysis,
     .themes,
-    .evidence-grid {
+    .evidence-grid,
+    .topic-map-grid {
       grid-template-columns: 1fr;
     }
 
-    .weekly-subscribe {
+    .weekly-subscribe,
+    .section-heading {
       align-items: flex-start;
       flex-direction: column;
     }

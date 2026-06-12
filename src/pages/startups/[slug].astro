@@ -17,7 +17,9 @@ import {
 } from "../../lib/content";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
+import { getTopicPagesForStartup } from "../../lib/topic-pages";
 import type { StartupLinks, StartupResearch, StartupResearchSource } from "../../lib/types";
+import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
 export function getStaticPaths() {
   return getContentStartups().map((startup) => ({ params: { slug: startup.slug } }));
@@ -25,8 +27,11 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const startup = getContentStartupBySlug(slug!)!;
+const allStartups = getContentStartups();
+const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
 
 const related = getContentRelatedStartups(startup);
+const topicLinks = getTopicPagesForStartup(startup, allStartups, weeklyIssues);
 const fundingRounds = getContentFundingRoundsForStartup(startup.slug);
 const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
 const companyBrand = getCompanyBrandAsset(startup.slug);
@@ -458,6 +463,21 @@ function sourceLabel(source?: StartupResearchSource) {
         <div class="tag-list">
           {tags.map((tag) => (
             <a href={`/search?q=${encodeURIComponent(tag)}`} class="tag-badge">{tag}</a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {topicLinks.length > 0 && (
+      <section class="topics-section" aria-label="Related topic pages">
+        <h2>Explore related topics</h2>
+        <div class="topic-link-grid">
+          {topicLinks.map((topic) => (
+            <a href={topic.path} class="topic-link-card">
+              <span>{topic.kicker}</span>
+              <strong>{topic.title}</strong>
+              <small>{topic.startups.length} tracked profiles</small>
+            </a>
           ))}
         </div>
       </section>
@@ -969,7 +989,14 @@ function sourceLabel(source?: StartupResearchSource) {
     border-bottom: 1px solid var(--color-border);
   }
 
-  .tags-section h2 {
+  .topics-section {
+    padding-bottom: var(--space-8);
+    margin-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tags-section h2,
+  .topics-section h2 {
     font-size: 1.1rem;
     margin-bottom: var(--space-4);
   }
@@ -996,6 +1023,47 @@ function sourceLabel(source?: StartupResearchSource) {
     background: color-mix(in srgb, var(--color-accent) 12%, transparent);
     color: var(--color-accent);
     text-decoration: none;
+  }
+
+  .topic-link-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .topic-link-card {
+    display: grid;
+    gap: var(--space-2);
+    min-width: 0;
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background: var(--color-bg-card);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .topic-link-card:hover {
+    border-color: var(--color-accent);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .topic-link-card span,
+  .topic-link-card small {
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+    line-height: 1.45;
+  }
+
+  .topic-link-card span {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
+
+  .topic-link-card strong {
+    font-size: 1rem;
+    line-height: 1.35;
   }
 
   .related {
@@ -1048,7 +1116,8 @@ function sourceLabel(source?: StartupResearchSource) {
     }
 
     .score-strip,
-    .context-grid {
+    .context-grid,
+    .topic-link-grid {
       grid-template-columns: 1fr;
     }
 

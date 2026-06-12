@@ -1,4 +1,5 @@
-import { existsSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 import {
   latestDailyDate,
   latestDailyStartups,
@@ -19,6 +20,13 @@ interface FetchSnapshot {
   bytes: number;
   body: string;
   error?: string;
+}
+
+export interface IndexNowHistoryRow {
+  timestamp?: string;
+  status?: string;
+  urls?: string[];
+  message?: string;
 }
 
 const REPORT_TIME_ZONE = process.env.REPORT_TIME_ZONE ?? "Asia/Shanghai";
@@ -78,9 +86,53 @@ function countFiles(path: string): number {
   return readdirSync(path).filter((file) => !file.startsWith(".")).length;
 }
 
-async function main() {
-  const write = process.argv.includes("--write");
-  const offline = process.argv.includes("--offline");
+export function parseIndexNowHistoryText(text: string): IndexNowHistoryRow[] {
+  return text
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .flatMap((line) => {
+      try {
+        const value = JSON.parse(line) as unknown;
+        if (!value || typeof value !== "object" || Array.isArray(value)) return [];
+        const row = value as Record<string, unknown>;
+        return [{
+          timestamp: typeof row.timestamp === "string" ? row.timestamp : undefined,
+          status: typeof row.status === "string" ? row.status : undefined,
+          urls: Array.isArray(row.urls) ? row.urls.filter((url): url is string => typeof url === "string") : undefined,
+          message: typeof row.message === "string" ? row.message : undefined,
+        }];
+      } catch {
+        return [];
+      }
+    });
+}
+
+export function readIndexNowHistory(path: string): IndexNowHistoryRow[] {
+  if (!existsSync(path)) return [];
+  return parseIndexNowHistoryText(readFileSync(path, "utf8"));
+}
+
+export function summarizeLatestIndexNow(rows: IndexNowHistoryRow[]): string {
+  const latest = rows.at(-1);
+  if (!latest) return "none yet";
+
+  const urlCount = new Set(latest.urls ?? []).size;
+  const status = latest.status ?? "unknown";
+  const timestamp = latest.timestamp ?? "unknown time";
+  const message = latest.message ? ` (${latest.message})` : "";
+  const label = status === "submitted"
+    ? "submitted"
+    : status === "dry_run"
+      ? "preview only"
+      : status;
+
+  return `${label} at ${timestamp}: ${urlCount} unique URL${urlCount === 1 ? "" : "s"}${message}`;
+}
+
+export async function main(argv = process.argv.slice(2)): Promise<void> {
+  const write = argv.includes("--write");
+  const offline = argv.includes("--offline");
   const startups = loadStartups();
   const issues = loadPublishedWeeklyIssues();
   const dailyDate = latestDailyDate(startups);
@@ -103,6 +155,7 @@ async function main() {
   const robots = byUrl.get("https://venturedex.co/robots.txt");
   const outboxDir = resolveFromRoot("docs", "promotion", "outbox");
   const indexNowHistory = resolveFromRoot("docs", "promotion", "metrics", "indexnow-history.jsonl");
+  const indexNowRows = readIndexNowHistory(indexNowHistory);
   const now = new Date().toISOString();
   const dateLabel = reportDate();
   const lines: string[] = [];
@@ -148,6 +201,7 @@ async function main() {
   lines.push("## Promotion Artifacts");
   lines.push(`- Outbox files: ${countFiles(outboxDir)} (${outboxDir})`);
   lines.push(`- IndexNow history: ${existsSync(indexNowHistory) ? indexNowHistory : "none yet"}`);
+  lines.push(`- Latest IndexNow: ${summarizeLatestIndexNow(indexNowRows)}`);
   lines.push("");
 
   lines.push("## Next Actions");
@@ -166,7 +220,9 @@ async function main() {
   }
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

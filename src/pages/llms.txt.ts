@@ -100,7 +100,7 @@ ${[
 
 ## Startup Profiles
 
-Each profile is source-backed and includes product context, funding signals, investor links, evidence notes, risk notes, source trail, canonical company URL, screenshot, JSON-LD, and internal links to related companies.
+Each profile is source-backed and includes product context, funding signals, investor links, evidence notes, risk notes, source trail, canonical company URL, screenshot, JSON-LD, and internal links to related companies and topic maps.
 
 ${startups.join("\n")}
 

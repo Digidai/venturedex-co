@@ -27,6 +27,7 @@
     "seo:indexnow:latest": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
     "seo:indexnow:latest:submit": "tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly",
     "seo:indexnow:topics": "tsx scripts/promotion/indexnow.ts --topics",
+    "seo:indexnow:all-content": "tsx scripts/promotion/indexnow.ts --all-startups --all-weekly --topics",
     "weekly:og": "tsx scripts/weekly-og.ts --all --write",
     "promotion:pack": "tsx scripts/promotion/build-pack.ts --latest-daily --latest-weekly --write",
     "growth:report": "tsx scripts/promotion/growth-report.ts --write"

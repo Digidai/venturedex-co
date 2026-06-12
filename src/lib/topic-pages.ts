@@ -27,6 +27,11 @@ export interface TopicRelatedIssue {
   matchingPickSlugs: string[];
 }
 
+export interface TopicStartupMatch {
+  topic: TopicPage;
+  matchingStartups: Startup[];
+}
+
 export interface TopicPage {
   slug: string;
   title: string;
@@ -64,6 +69,35 @@ export function getTopicPageBySlug(
   weeklyIssues: WeeklyIssueContent[]
 ): TopicPage | null {
   return getTopicPages(startups, weeklyIssues).find((topic) => topic.slug === slug) ?? null;
+}
+
+export function getTopicPagesForStartup(
+  startup: Startup,
+  startups: Startup[],
+  weeklyIssues: WeeklyIssueContent[],
+  limit = 4,
+  configs = getTopicPageConfigs()
+): TopicPage[] {
+  return buildTopicPages(configs, startups, weeklyIssues)
+    .filter((topic) => topic.startups.some((entry) => entry.slug === startup.slug))
+    .slice(0, limit);
+}
+
+export function getTopicMatchesForStartups(
+  targetStartups: Startup[],
+  startups: Startup[],
+  weeklyIssues: WeeklyIssueContent[],
+  limit = 6,
+  configs = getTopicPageConfigs()
+): TopicStartupMatch[] {
+  const targetSlugs = new Set(targetStartups.map((startup) => startup.slug));
+  return buildTopicPages(configs, startups, weeklyIssues)
+    .map((topic) => ({
+      topic,
+      matchingStartups: topic.startups.filter((startup) => targetSlugs.has(startup.slug)),
+    }))
+    .filter((entry) => entry.matchingStartups.length > 0)
+    .slice(0, limit);
 }
 
 export function buildTopicPages(

@@ -1269,9 +1269,9 @@
     "aulis-capital": {
       "name": "Aulis Capital",
       "shape": "icon",
-      "local_path": "/logos/investors/aulis-capital.png",
+      "local_path": "/logos/investors/aulis-capital.svg",
       "source_page": "https://auliscapital.com",
-      "source_url": "https://auliscapital.com/wp-content/uploads/2025/11/cropped-Aulisfavicon-180x180.png"
+      "source_url": "https://auliscapital.com/favicon.svg"
     },
     "jb-investment": {
       "name": "JB Investment",

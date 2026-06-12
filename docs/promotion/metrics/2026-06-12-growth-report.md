@@ -1,6 +1,6 @@
 # VentureDex Growth Report - 2026-06-12
 
-Generated at 2026-06-12T08:26:03.975Z (Asia/Shanghai report date: 2026-06-12).
+Generated at 2026-06-12T11:22:01.942Z (Asia/Shanghai report date: 2026-06-12).
 
 ## Inventory
 - Startup profiles in content: 135
@@ -26,6 +26,7 @@ Generated at 2026-06-12T08:26:03.975Z (Asia/Shanghai report date: 2026-06-12).
 ## Promotion Artifacts
 - Outbox files: 2 (/Users/dai/Developer/CursorProjects/venturedex.co/docs/promotion/outbox)
 - IndexNow history: /Users/dai/Developer/CursorProjects/venturedex.co/docs/promotion/metrics/indexnow-history.jsonl
+- Latest IndexNow: submitted at 2026-06-12T11:21:57.139Z: 144 unique URLs (HTTP 200)
 
 ## Next Actions
 - Run `npm run promotion:pack` after each content publish and post only the strongest channel drafts.

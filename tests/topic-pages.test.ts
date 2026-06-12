@@ -4,6 +4,8 @@ import {
   assertValidTopicConfigs,
   buildTopicPage,
   buildTopicPages,
+  getTopicMatchesForStartups,
+  getTopicPagesForStartup,
   startupMatchesTopic,
   type TopicPageConfig,
 } from "../src/lib/topic-pages";
@@ -125,6 +127,51 @@ test("buildTopicPages drops empty topics and rejects duplicate slugs", () => {
   const emptyConfig = { ...config, slug: "empty", match: { product_types: ["Fintech"], tags: [] } };
   assert.equal(buildTopicPages([emptyConfig], [baseStartup], []).length, 0);
   assert.throws(() => assertValidTopicConfigs([config, config]), /Duplicate topic slug/);
+});
+
+test("getTopicPagesForStartup returns matching topics with a stable limit", () => {
+  const developerToolsConfig: TopicPageConfig = {
+    ...config,
+    slug: "developer-tools-startups",
+    title: "Developer Tools Startups",
+    match: { product_types: ["Developer Tools"], tags: ["workflow automation"] },
+  };
+  const fintechConfig: TopicPageConfig = {
+    ...config,
+    slug: "fintech-infrastructure-startups",
+    title: "Fintech Infrastructure Startups",
+    match: { product_types: ["Fintech"], tags: [] },
+  };
+  const pages = buildTopicPages([config, developerToolsConfig, fintechConfig], [baseStartup], [weekly]);
+
+  assert.deepEqual(
+    getTopicPagesForStartup(baseStartup, [baseStartup], [weekly], 1, [config, developerToolsConfig, fintechConfig]).map((topic) => topic.slug),
+    [pages[0].slug]
+  );
+  assert.deepEqual(
+    getTopicPagesForStartup(baseStartup, [baseStartup], [weekly], 10, [config, developerToolsConfig, fintechConfig]).map((topic) => topic.slug),
+    ["ai-agent-startups", "developer-tools-startups"]
+  );
+});
+
+test("getTopicMatchesForStartups lists only selected startups inside each topic", () => {
+  const agentB = startup({
+    id: "startup-b",
+    slug: "agent-b",
+    product_name: "Agent B",
+    tags: "AI Agents",
+  });
+  const matched = getTopicMatchesForStartups(
+    [baseStartup, baseStartup],
+    [baseStartup, agentB],
+    [weekly],
+    3,
+    [config]
+  );
+
+  assert.equal(matched.length, 1);
+  assert.equal(matched[0].topic.slug, "ai-agent-startups");
+  assert.deepEqual(matched[0].matchingStartups.map((entry) => entry.slug), ["agent-a"]);
 });
 
 test("topicPageJsonLd exposes CollectionPage and ItemList count", () => {

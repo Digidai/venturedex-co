@@ -1,3 +1,4 @@
+import { pathToFileURL } from "node:url";
 import {
   INDEXNOW_ENDPOINT,
   INDEXNOW_HOST,
@@ -19,12 +20,14 @@ import {
 
 const INDEXNOW_HOST_URL = `https://${INDEXNOW_HOST}`;
 
-interface Options {
+export interface Options {
   dryRun: boolean;
   recordDryRun: boolean;
   skipKeyCheck: boolean;
   latestDaily: boolean;
   latestWeekly: boolean;
+  allStartups: boolean;
+  allWeekly: boolean;
   topics: boolean;
   dailyDate: string | null;
   weeklyIssue: number | null;
@@ -41,6 +44,7 @@ Usage:
   tsx scripts/promotion/indexnow.ts --dry-run --latest-daily --latest-weekly
   tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly
   tsx scripts/promotion/indexnow.ts --topics
+  tsx scripts/promotion/indexnow.ts --all-startups --all-weekly --topics
   tsx scripts/promotion/indexnow.ts --daily-date 2026-06-11
   tsx scripts/promotion/indexnow.ts --url https://venturedex.co/startups/example
 
@@ -48,29 +52,33 @@ Options:
   --dry-run             Print payload only; do not POST.
   --record-dry-run      Write dry-run rows to docs/promotion/metrics/indexnow-history.jsonl.
   --latest-daily        Include startup detail pages from newest publish date.
+  --all-startups        Include every published startup detail page.
   --daily-date <date>   Include startup detail pages published on YYYY-MM-DD.
   --latest-weekly       Include newest published weekly issue.
+  --all-weekly          Include every published weekly issue page.
   --topics              Include configured VentureDex topic pages.
   --weekly-issue <N>    Include one weekly issue URL.
   --url <url>           Include an explicit VentureDex URL; may repeat.
-  --max-urls <N>        Safety cap. Default: 100.
+  --max-urls <N>        Safety cap. Default: 250.
   --endpoint <url>      Override IndexNow endpoint.
   --skip-key-check      Skip live key-file verification before POST.
 `;
 }
 
-function parseArgs(argv: string[]): Options {
+export function parseArgs(argv: string[]): Options {
   const options: Options = {
     dryRun: false,
     recordDryRun: false,
     skipKeyCheck: false,
     latestDaily: false,
     latestWeekly: false,
+    allStartups: false,
+    allWeekly: false,
     topics: false,
     dailyDate: null,
     weeklyIssue: null,
     urls: [],
-    maxUrls: 100,
+    maxUrls: 250,
     endpoint: INDEXNOW_ENDPOINT,
     historyFile: resolveFromRoot("docs", "promotion", "metrics", "indexnow-history.jsonl"),
   };
@@ -90,8 +98,14 @@ function parseArgs(argv: string[]): Options {
       case "--latest-daily":
         options.latestDaily = true;
         break;
+      case "--all-startups":
+        options.allStartups = true;
+        break;
       case "--latest-weekly":
         options.latestWeekly = true;
+        break;
+      case "--all-weekly":
+        options.allWeekly = true;
         break;
       case "--topics":
         options.topics = true;
@@ -140,7 +154,7 @@ function requiredValue(argv: string[], index: number, flag: string): string {
   return value;
 }
 
-function collectUrls(options: Options): string[] {
+export function collectUrls(options: Options): string[] {
   const startups = loadStartups();
   const issues = loadPublishedWeeklyIssues();
   const urls: string[] = [...options.urls];
@@ -148,12 +162,18 @@ function collectUrls(options: Options): string[] {
   if (options.latestDaily) {
     urls.push(...latestDailyStartups(startups).map((startup) => startupUrl(startup.slug)));
   }
+  if (options.allStartups) {
+    urls.push(...startups.map((startup) => startupUrl(startup.slug)));
+  }
   if (options.dailyDate) {
     urls.push(...startupsForDate(options.dailyDate, startups).map((startup) => startupUrl(startup.slug)));
   }
   if (options.latestWeekly) {
     const issue = latestWeeklyIssue(issues);
     if (issue) urls.push(weeklyUrl(issue.issue_number));
+  }
+  if (options.allWeekly) {
+    urls.push(...issues.map((issue) => weeklyUrl(issue.issue_number)));
   }
   if (options.topics) {
     urls.push(...getTopicPageConfigs().map((topic) => `${INDEXNOW_HOST_URL}/topics/${topic.slug}`));
@@ -173,17 +193,20 @@ function collectUrls(options: Options): string[] {
   return deduped;
 }
 
-function validateUrl(url: string): void {
+export function validateUrl(url: string): void {
   const parsed = new URL(url);
   if (parsed.hostname !== INDEXNOW_HOST || parsed.protocol !== "https:") {
     throw new Error(`IndexNow URL must be an https://${INDEXNOW_HOST} URL: ${url}`);
+  }
+  if (parsed.search || parsed.hash) {
+    throw new Error(`IndexNow URL must be canonical without query strings or fragments: ${url}`);
   }
   if (!/^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*)$/.test(parsed.pathname)) {
     throw new Error(`IndexNow target path is outside the canonical content set: ${url}`);
   }
 }
 
-async function submitIndexNow(options: Options, urlList: string[]): Promise<void> {
+export async function submitIndexNow(options: Options, urlList: string[]): Promise<void> {
   const payload = {
     host: INDEXNOW_HOST,
     key: INDEXNOW_KEY,
@@ -242,13 +265,15 @@ function appendHistory(options: Options, status: string, urlList: string[], mess
   });
 }
 
-async function main() {
-  const options = parseArgs(process.argv.slice(2));
+export async function main(argv = process.argv.slice(2)): Promise<void> {
+  const options = parseArgs(argv);
   const urls = collectUrls(options);
   await submitIndexNow(options, urls);
 }
 
-main().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}
