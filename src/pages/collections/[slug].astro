@@ -165,11 +165,11 @@ function formatDate(date: string | null | undefined) {
     {startups.length > 0 ? (
       <section class="profile-section" aria-label="Startup profiles">
         <h2>All profiles</h2>
-      <div class="card-grid">
-        {startups.map((startup) => (
-          <SiteCard startup={startup} />
-        ))}
-      </div>
+        <div class="card-grid">
+          {startups.map((startup) => (
+            <SiteCard startup={startup} />
+          ))}
+        </div>
       </section>
     ) : (
       <div class="empty-state">
@@ -258,7 +258,7 @@ function formatDate(date: string | null | undefined) {
   .pattern-section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-8);
+    gap: var(--space-8) var(--space-12);
     margin-bottom: var(--space-10);
   }
 
@@ -306,6 +306,11 @@ function formatDate(date: string | null | undefined) {
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-4);
+    margin-bottom: var(--space-4);
+  }
+
+  .section-heading h2 {
+    margin-bottom: 0;
   }
 
   .section-heading a {
@@ -388,7 +393,7 @@ function formatDate(date: string | null | undefined) {
 
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: var(--space-6);
   }
 
@@ -406,6 +411,29 @@ function formatDate(date: string | null | undefined) {
   }
 
   @media (max-width: 640px) {
+    .collection-detail {
+      padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    .collection-brief {
+      gap: var(--space-6);
+      padding: var(--space-6) 0;
+      margin-bottom: var(--space-6);
+    }
+
+    .pattern-section,
+    .latest-section,
+    .weekly-section {
+      margin-bottom: var(--space-8);
+      padding-bottom: var(--space-8);
+    }
+
+    .section-heading {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
     .card-grid {
       grid-template-columns: 1fr;
     }
