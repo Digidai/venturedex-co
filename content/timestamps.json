@@ -519,5 +519,25 @@
   "fearn": {
     "published_at": "2026-06-11 06:04:13",
     "first_seen_at": "2026-06-11 06:04:13"
+  },
+  "niteshift": {
+    "published_at": "2026-06-12 06:00:05",
+    "first_seen_at": "2026-06-12 06:00:05"
+  },
+  "phoenixai": {
+    "published_at": "2026-06-12 06:00:05",
+    "first_seen_at": "2026-06-12 06:00:05"
+  },
+  "dapple": {
+    "published_at": "2026-06-12 06:00:05",
+    "first_seen_at": "2026-06-12 06:00:05"
+  },
+  "leaf": {
+    "published_at": "2026-06-12 06:00:05",
+    "first_seen_at": "2026-06-12 06:00:05"
+  },
+  "rivvun-ai": {
+    "published_at": "2026-06-12 06:00:05",
+    "first_seen_at": "2026-06-12 06:00:05"
   }
 }

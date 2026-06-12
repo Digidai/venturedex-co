@@ -1,19 +1,17 @@
 {
   "slug": "layup-parts",
-  "domain": "www.layupparts.com",
-  "url": "https://www.layupparts.com/",
+  "domain": "fiber.layupparts.com",
+  "url": "https://fiber.layupparts.com/login",
   "product_name": "Layup Parts",
   "summary": "Digital quote-to-production workflow for custom composite parts.",
-  "editor_note": "Composite parts still move like bespoke procurement even when the CAD file is ready. Layup Parts exposes a 3-step FiberPortal flow for uploading surface models, manufacturability feedback, and quote-to-production handoff, backed by stocked materials and CNC capability pages. Unlike a generic machine-shop marketplace, it narrows the promise to carbon-fiber and fiberglass parts. The risk is whether software speed survives factory capacity limits.",
+  "editor_note": "Composite parts still move like bespoke procurement even when the CAD file is ready. The surviving official surface is FiberPortal, a customer login for the quote-to-production flow, while TechCrunch's June 2 Series A report frames the company around an Amazon-like marketplace for composite parts. Unlike a generic machine-shop marketplace, it narrows the promise to carbon-fiber and fiberglass parts. The risk is thinner public product evidence while the marketing site is disabled.",
   "editor_rating": 4,
   "why_featured": "Composite quoting portal",
   "product_type": "Marketplace",
   "region": "US",
   "tags": "manufacturing,composites,marketplace,aerospace,defense",
   "investors": "Marlinspike",
-  "links": {
-    "careers": "https://www.layupparts.com/careers"
-  },
+  "links": {},
   "is_featured": true,
   "funding": [
     {
@@ -29,21 +27,9 @@
     "verified_at": "2026-06-07",
     "sources": [
       {
-        "id": "official_site",
-        "label": "Official product site",
-        "url": "https://www.layupparts.com/",
-        "type": "official"
-      },
-      {
         "id": "fiberportal_login",
-        "label": "FiberPortal customer login",
+        "label": "Official FiberPortal customer login",
         "url": "https://fiber.layupparts.com/login",
-        "type": "product"
-      },
-      {
-        "id": "careers_page",
-        "label": "Official careers page",
-        "url": "https://www.layupparts.com/careers",
         "type": "official"
       },
       {
@@ -55,21 +41,21 @@
     ],
     "product_evidence": [
       {
-        "claim": "The official site describes FiberPortal as a workflow where customers upload a surface model and move from concept to quote.",
-        "source_ids": [
-          "official_site"
-        ]
-      },
-      {
-        "claim": "The public site lists stocked materials, precision CNC capabilities, manufacturing capabilities, and certifications for composite-part production.",
-        "source_ids": [
-          "official_site"
-        ]
-      },
-      {
-        "claim": "The customer login exposes a production FiberPortal app surface separate from the marketing homepage.",
+        "claim": "The official FiberPortal login exposes a production customer app surface separate from a static marketing page.",
         "source_ids": [
           "fiberportal_login"
+        ]
+      },
+      {
+        "claim": "The funding article frames Layup Parts around a marketplace for custom composite parts rather than a generic machine-shop directory.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The TechCrunch source ties the company to quote-to-production demand for carbon-fiber and fiberglass components.",
+        "source_ids": [
+          "funding_1"
         ]
       }
     ],

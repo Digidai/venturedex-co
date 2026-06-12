@@ -1,0 +1,92 @@
+{
+  "slug": "dapple",
+  "domain": "dapple.co",
+  "url": "https://dapple.co/",
+  "product_name": "Dapple",
+  "summary": "Dedicated in-country AI cloud environments for regulated enterprises.",
+  "editor_note": "The bet is that enterprise AI needs a control plane between hyperscaler queues and private data centers. Dapple packages dedicated, single-tenant, in-country GPU environments with governance, residency, and performance promises, and claims two live customers plus $100M+ contracted five months from launch. Unlike raw GPU rental, the product is sold as an operating layer for production AI workloads. The risk is whether execution keeps up with infrastructure demand.",
+  "editor_rating": 4,
+  "why_featured": "Single-tenant AI cloud",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai infrastructure,gpu cloud,enterprise ai,data residency,governance",
+  "investors": "The Raptor Group, Ion Pacific",
+  "links": {
+    "careers": "https://dapple.co/careers",
+    "linkedin": "https://linkedin.com/company/dappleco",
+    "twitter": "https://x.com/dapple_co",
+    "press": "https://dapple.co/newsroom/dapple-closes-30m-seed"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Seed",
+      "lead_investor": "The Raptor Group and Ion Pacific",
+      "date": "2026-06-10",
+      "source_url": "https://dapple.co/newsroom/dapple-closes-30m-seed",
+      "source_name": "Dapple"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official company site",
+        "url": "https://dapple.co/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://dapple.co/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Dapple seed announcement",
+        "url": "https://dapple.co/newsroom/dapple-closes-30m-seed",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Dapple as enterprise AI infrastructure between public cloud and private data centers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Dapple describes dedicated, single-tenant, in-country AI environments with governance, residency, and performance controls.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official announcement says Dapple had two live customers and more than $100M contracted five months after launch.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Regulated enterprises deploying AI workloads that require data residency, dedicated capacity, and governance controls.",
+      "category": "AI / ML",
+      "differentiation": "Dapple sells dedicated AI cloud environments as managed operating infrastructure rather than generic GPU rental.",
+      "why_now": "Enterprise AI demand is pushing buyers to seek capacity, sovereignty, and operational control outside shared hyperscaler queues."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether a young infrastructure company can keep execution and capacity ahead of contracted enterprise demand.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

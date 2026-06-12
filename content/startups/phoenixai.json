@@ -1,0 +1,91 @@
+{
+  "slug": "phoenixai",
+  "domain": "www.phoenixdata.ai",
+  "url": "https://www.phoenixdata.ai/",
+  "product_name": "PhoenixAI",
+  "summary": "Real-time analytical database built for agentic AI workloads.",
+  "editor_note": "The useful move is reframing analytics latency as an agent problem, not a dashboard problem. PhoenixAI exposes sub-second SQL on live and historical data, Kafka/Iceberg/Delta Lake integrations, 10K+ concurrent queries, SOC 2 controls, and customer case studies from Coinbase, Conductor, and Demandbase. Unlike batch-first warehouses, it is built for unplanned machine queries. The risk is whether 'agentic database' stays a category or becomes sharper OLAP positioning.",
+  "editor_rating": 4,
+  "why_featured": "Live SQL for agents",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "database,real-time analytics,ai agents,data infrastructure,enterprise data",
+  "investors": "Sky9 Capital",
+  "links": {
+    "docs": "https://docs.phoenixdata.ai/",
+    "pricing": "https://www.phoenixdata.ai/pricing",
+    "careers": "https://www.phoenixdata.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$80M",
+      "stage": "Series B",
+      "lead_investor": "Sky9 Capital",
+      "date": "2026-06-11",
+      "source_url": "https://www.phoenixdata.ai/newsroom/phoenixai-raises-led-by-sky-capital-to-power-agentic-ai.html",
+      "source_name": "PhoenixAI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official company site",
+        "url": "https://www.phoenixdata.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_page",
+        "label": "Official product page",
+        "url": "https://www.phoenixdata.ai/product",
+        "type": "product"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://www.phoenixdata.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PhoenixAI Series B announcement",
+        "url": "https://www.phoenixdata.ai/newsroom/phoenixai-raises-led-by-sky-capital-to-power-agentic-ai.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes PhoenixAI as an analytical database for agentic AI that answers live-data SQL queries in sub-second time.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists Kafka, Iceberg, Delta Lake, SOC 2 controls, row-level security, audit logging, and data masking.",
+        "source_ids": [
+          "product_page"
+        ]
+      },
+      {
+        "claim": "The official careers page confirms a static hiring surface without requiring VentureDex to scrape roles, counts, locations, or compensation.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data infrastructure teams serving AI agents, customer analytics, and high-concurrency internal data products.",
+      "category": "DevTools",
+      "differentiation": "PhoenixAI emphasizes live operational queries and agent concurrency instead of scheduled warehouse dashboards.",
+      "why_now": "AI agents create unpredictable query demand against fresh enterprise data rather than the fixed reporting patterns warehouses were tuned for."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether buyers treat agent-facing analytics as a new database category or as faster OLAP positioning.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

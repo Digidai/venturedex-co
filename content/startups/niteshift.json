@@ -1,0 +1,78 @@
+{
+  "slug": "niteshift",
+  "domain": "niteshift.dev",
+  "url": "https://niteshift.dev/",
+  "product_name": "Niteshift",
+  "summary": "Full-stack cloud runtimes where coding agents can verify PRs.",
+  "editor_note": "The bet is that coding agents need production-like environments, not another chat box. Niteshift reads repo docs, CI, Docker, secrets, and services, then runs agents against browsers, APIs, DB state, logs, and eval scripts before attaching PR evidence. Unlike laptop worktrees or single-vendor agents, it treats verification capacity as cloud infrastructure. The risk is whether teams will trust long-running agents with broad repo access.",
+  "editor_rating": 4,
+  "why_featured": "Agent verification cloud",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "devtools,coding agents,cloud sandboxes,agent infrastructure,developer productivity",
+  "investors": "Greylock",
+  "links": {
+    "docs": "https://docs.niteshift.dev/",
+    "pricing": "https://niteshift.dev/pricing"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "Greylock",
+      "date": "2026-06-10",
+      "source_url": "https://niteshift.dev/blog/introducing-niteshift",
+      "source_name": "Niteshift"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://niteshift.dev/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Niteshift seed announcement",
+        "url": "https://niteshift.dev/blog/introducing-niteshift",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Niteshift as a full-stack cloud for coding agents, with setup generated from repo docs, CI, Docker, secrets, and services.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface says agents can verify browser, API, database, log, and eval-script evidence before attaching PR proof.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Niteshift lists Claude Code, Codex, OpenCode, and Pi as supported agent choices rather than tying users to one model workflow.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams adopting coding agents across production codebases.",
+      "category": "DevTools",
+      "differentiation": "Niteshift moves verification and full-stack runtime setup into managed cloud sandboxes rather than leaving agents inside local worktrees.",
+      "why_now": "Coding agents can make larger changes, but teams still need repeatable environments and merge-ready evidence."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether engineering teams will grant long-running agents enough repo and runtime access to make the cloud model useful.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-09",
+  "verified_at": "2026-06-12",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -817,11 +817,10 @@
     },
     "layup-parts": {
       "name": "Layup Parts",
-      "shape": "wordmark",
-      "local_path": "/logos/companies/layup-parts.svg",
-      "source_page": "https://www.layupparts.com/",
-      "source_url": "https://www.layupparts.com/logo-white.svg",
-      "tile_background": "dark"
+      "shape": "icon",
+      "local_path": "/logos/companies/layup-parts.ico",
+      "source_page": "https://fiber.layupparts.com/login",
+      "source_url": "https://fiber.layupparts.com/favicon-black.ico"
     },
     "kodesage": {
       "name": "Kodesage",
@@ -913,6 +912,41 @@
       "local_path": "/logos/companies/fearn.svg",
       "source_page": "https://fearn.ai/",
       "source_url": "https://framerusercontent.com/images/L1NlyPO9lGGWABehyCATDBnQDTA.svg"
+    },
+    "niteshift": {
+      "name": "Niteshift",
+      "shape": "icon",
+      "local_path": "/logos/companies/niteshift.png",
+      "source_page": "https://niteshift.dev/",
+      "source_url": "https://niteshift.dev/api/favicon/apple-touch-icon-180x180.png"
+    },
+    "phoenixai": {
+      "name": "PhoenixAI",
+      "shape": "icon",
+      "local_path": "/logos/companies/phoenixai.ico",
+      "source_page": "https://www.phoenixdata.ai/",
+      "source_url": "https://www.phoenixdata.ai/favicon.ico"
+    },
+    "dapple": {
+      "name": "Dapple",
+      "shape": "icon",
+      "local_path": "/logos/companies/dapple.svg",
+      "source_page": "https://dapple.co/",
+      "source_url": "https://dapple.co/favicon.svg"
+    },
+    "leaf": {
+      "name": "Leaf",
+      "shape": "icon",
+      "local_path": "/logos/companies/leaf.svg",
+      "source_page": "https://withleaf.io/",
+      "source_url": "https://withleaf.io/favicon.svg"
+    },
+    "rivvun-ai": {
+      "name": "Rivvun AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/rivvun-ai.png",
+      "source_page": "https://rivvun.ai/",
+      "source_url": "https://rivvun.ai/wp-content/uploads/2026/05/rivvun-icon-300x300.png"
     }
   },
   "investors": {
@@ -1726,6 +1760,55 @@
       "local_path": "/logos/investors/pivot-investment-partners.webp",
       "source_page": "https://www.pivotinvestment.com/",
       "source_url": "https://images.squarespace-cdn.com/content/v1/58d2d68586e6c041346efb82/1493371539698-N2E0WLMX79I1MFY2PZ0L/favicon.ico?format=100w"
+    },
+    "greylock": {
+      "name": "Greylock",
+      "shape": "icon",
+      "local_path": "/logos/investors/greylock.png",
+      "source_page": "https://greylock.com",
+      "source_url": "https://greylock.com/wp-content/uploads/2023/10/footer-logo-3.png"
+    },
+    "sky9-capital": {
+      "name": "Sky9 Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/sky9-capital.png",
+      "source_page": "https://www.sky9capital.com",
+      "source_url": "https://cdn.sky9capital.com/wp-content/uploads/2021/11/sky9capital-755398-180x180.png"
+    },
+    "the-raptor-group": {
+      "name": "The Raptor Group",
+      "shape": "icon",
+      "local_path": "/logos/investors/the-raptor-group.png",
+      "source_page": "https://www.raptorgroup.com",
+      "source_url": "https://i0.wp.com/www.raptorgroup.com/wp-content/uploads/2020/12/cropped-R-Square-01.png?fit=180%2C180&quality=80&ssl=1"
+    },
+    "ion-pacific": {
+      "name": "Ion Pacific",
+      "shape": "icon",
+      "local_path": "/logos/investors/ion-pacific.png",
+      "source_page": "https://ionpacific.com/",
+      "source_url": "https://ionpacific.com/wp-content/uploads/2022/03/favicon.png"
+    },
+    "leaps-by-bayer": {
+      "name": "Leaps by Bayer",
+      "shape": "icon",
+      "local_path": "/logos/investors/leaps-by-bayer.ico",
+      "source_page": "https://leaps.bayer.com/",
+      "source_url": "https://leaps.bayer.com/favicon.ico?favicon.522e57f8.ico"
+    },
+    "sitara-capital": {
+      "name": "Sitara Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/sitara-capital.png",
+      "source_page": "https://www.sitaracap.com",
+      "source_url": "https://www.sitaracap.com/apple-touch-icon.png"
+    },
+    "3one4-capital": {
+      "name": "3one4 Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/3one4-capital.png",
+      "source_page": "https://www.3one4capital.com",
+      "source_url": "https://cdn.prod.website-files.com/6269326520418226350c9a99/626a21edd59ab564b179de8b_webclip.png"
     }
   }
 }

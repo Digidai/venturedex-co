@@ -858,5 +858,60 @@
     "short_name": "Pivot",
     "website": "https://www.pivotinvestment.com/",
     "description": "Early growth equity investment firm focused on transformative financial services and financial technology companies."
+  },
+  "greylock": {
+    "name": "Greylock",
+    "slug": "greylock",
+    "short_name": "Greylock",
+    "website": "https://greylock.com",
+    "description": "Early-stage venture capital firm partnering with founders building enduring technology companies."
+  },
+  "sky9-capital": {
+    "name": "Sky9 Capital",
+    "slug": "sky9-capital",
+    "short_name": "Sky9",
+    "website": "https://www.sky9capital.com",
+    "description": "Venture capital firm investing in AI, fintech, deep tech, and enterprise software companies."
+  },
+  "the-raptor-group": {
+    "name": "The Raptor Group",
+    "slug": "the-raptor-group",
+    "short_name": "Raptor",
+    "website": "https://www.raptorgroup.com",
+    "description": "Investment firm backing technology, consumer, sports, media, and financial platforms.",
+    "aliases": [
+      "The Raptor Group and Ion Pacific"
+    ]
+  },
+  "ion-pacific": {
+    "name": "Ion Pacific",
+    "slug": "ion-pacific",
+    "short_name": "Ion Pacific",
+    "website": "https://ionpacific.com/",
+    "description": "Investment platform serving technology companies, founders, and investors across private markets."
+  },
+  "leaps-by-bayer": {
+    "name": "Leaps by Bayer",
+    "slug": "leaps-by-bayer",
+    "short_name": "Leaps",
+    "website": "https://leaps.bayer.com/",
+    "description": "Impact investment arm of Bayer backing breakthroughs in health and agriculture."
+  },
+  "sitara-capital": {
+    "name": "Sitara Capital",
+    "slug": "sitara-capital",
+    "short_name": "Sitara",
+    "website": "https://www.sitaracap.com",
+    "description": "Investment firm backing technology founders and category-building companies.",
+    "aliases": [
+      "Sitara Capital and 3one4 Capital"
+    ]
+  },
+  "3one4-capital": {
+    "name": "3one4 Capital",
+    "slug": "3one4-capital",
+    "short_name": "3one4",
+    "website": "https://www.3one4capital.com",
+    "description": "Early-stage venture capital firm backing companies in India's new economy."
   }
 }

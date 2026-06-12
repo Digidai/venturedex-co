@@ -1,0 +1,91 @@
+{
+  "slug": "rivvun-ai",
+  "domain": "rivvun.ai",
+  "url": "https://rivvun.ai/",
+  "product_name": "Rivvun AI",
+  "summary": "Agentic P&L execution layer for enterprise spend and revenue leakage.",
+  "editor_note": "The bet is that enterprise AI should recover money, not summarize meetings. Rivvun connects contract, invoice, procurement, CRM, and ERP evidence, then runs 2 agent families for Spend Assurance and Margin Defense with governed fixes and audit trails. Unlike post-quarter finance forensics, it tries to catch rebates, pricing gaps, and settlement issues before they become write-offs. The risk is proving autonomous corrections across messy enterprise policies.",
+  "editor_rating": 4,
+  "why_featured": "P&L leakage agents",
+  "product_type": "Fintech",
+  "region": "Global / Remote",
+  "tags": "fintech,enterprise ai,procurement,revenue recovery,agentic workflows",
+  "investors": "Sitara Capital, 3one4 Capital",
+  "links": {
+    "careers": "https://rivvun.ai/careers/",
+    "linkedin": "https://www.linkedin.com/company/rivvun/",
+    "twitter": "https://x.com/rivvunai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7.55M",
+      "stage": "Seed",
+      "lead_investor": "Sitara Capital and 3one4 Capital",
+      "date": "2026-06-10",
+      "source_url": "https://economictimes.indiatimes.com/tech/funding/rivvun-ai-raises-7-55-million-led-by-sitara-capital-3one4-capital/articleshow/131636944.cms",
+      "source_name": "Economic Times"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official company site",
+        "url": "https://rivvun.ai/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://rivvun.ai/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Rivvun AI seed funding coverage",
+        "url": "https://economictimes.indiatimes.com/tech/funding/rivvun-ai-raises-7-55-million-led-by-sitara-capital-3one4-capital/articleshow/131636944.cms",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Rivvun as an agentic execution layer for detecting spend leakage, margin erosion, and revenue leakage.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Rivvun describes Spend Assurance and Margin Defense agents for invoice assessment, rebates, pricing enforcement, and commitments.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product surface cites outcomes including $70M spend reduction identified and 300% ROI on royalty governance.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page confirms an official hiring surface without requiring VentureDex to scrape roles, locations, or job counts.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, procurement, commercial, and revenue operations teams managing contract, invoice, pricing, and settlement controls.",
+      "category": "Fintech",
+      "differentiation": "Rivvun focuses agents on recoverable P&L leakage and governed corrective action instead of finance summaries.",
+      "why_now": "Large companies have enough operational data for AI agents to inspect spend and margin leaks, but still need audit trails for corrections."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether autonomous corrections can work across inconsistent policies, supplier data, and enterprise approval rules.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

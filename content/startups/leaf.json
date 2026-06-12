@@ -1,0 +1,84 @@
+{
+  "slug": "leaf",
+  "domain": "withleaf.io",
+  "url": "https://withleaf.io/",
+  "product_name": "Leaf",
+  "summary": "Farm-data infrastructure that cleans and structures agribusiness data.",
+  "editor_note": "The sharp part is treating farm data like payments data: invisible infrastructure with clear downstream value. Leaf connects OEMs, imagery, weather, soil labs, and farm management systems, then standardizes field data for dashboards, reports, AI, insurance, and product models; its funding source says it processes 20% of global crop acres annually. Unlike generic agtech dashboards, it is the plumbing other agribusiness tools build on. The risk is provider integrations and data rights.",
+  "editor_rating": 4,
+  "why_featured": "Farm-data infrastructure",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "agtech,data infrastructure,api,ai,agriculture",
+  "investors": "Leaps by Bayer",
+  "links": {
+    "docs": "https://docs.withleaf.io/",
+    "product": "https://withleaf.io/platforms/connect"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$13M",
+      "stage": "Series B",
+      "lead_investor": "Leaps by Bayer",
+      "date": "2026-06-10",
+      "source_url": "https://www.prnewswire.com/news-releases/leaf-raises-13m-series-b-to-bring-ai-to-agribusiness-302795837.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official company site",
+        "url": "https://withleaf.io/",
+        "type": "official"
+      },
+      {
+        "id": "connect_page",
+        "label": "Official Leaf Connect page",
+        "url": "https://withleaf.io/platforms/connect",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Leaf Series B announcement",
+        "url": "https://www.prnewswire.com/news-releases/leaf-raises-13m-series-b-to-bring-ai-to-agribusiness-302795837.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Leaf as a data and intelligence platform for agribusiness marketing, product, R&D, and commercial teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Leaf says it connects OEMs, imagery, weather, soil labs, and farm management systems, then standardizes and spatially allocates farm data.",
+        "source_ids": [
+          "connect_page"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Leaf processes farm data covering 20% of global crop acres annually.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Agribusiness teams building marketing, insurance, product, and AI workflows on top of farm-level data.",
+      "category": "SaaS",
+      "differentiation": "Leaf focuses on the normalization and integration layer that other agribusiness applications need before analysis.",
+      "why_now": "Agribusiness AI requires clean, permissioned, cross-provider field data instead of scattered OEM, weather, imagery, and lab feeds."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Leaf can keep data rights, provider integrations, and agribusiness buyer needs aligned at global scale.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
