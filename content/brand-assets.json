@@ -1702,7 +1702,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/marlinspike.png",
       "source_page": "https://marlinspike.us",
-      "source_url": "https://marlinspike.us/wp-content/uploads/2023/03/favicon.png"
+      "source_url": "https://marlinspike.us/wp-content/uploads/2023/03/favicon.png",
+      "allow_unreachable_source": true,
+      "note": "Official WordPress favicon source intermittently returns non-success from GitHub runners; keep local official capture and downgrade reachability drift to a warning."
     },
     "venturefriends": {
       "name": "VentureFriends",

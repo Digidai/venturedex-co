@@ -855,16 +855,16 @@ def validate_brand_assets(
             errors.append(f"{prefix} missing for published startup")
             continue
 
-        errors.extend(
-            validate_brand_asset_record(
-                prefix=prefix,
-                asset=asset,
-                expected_name=str(startup.get("product_name", "")),
-                expected_page=str(startup.get("url", "")),
-                expected_prefix="/logos/companies/",
-                url_cache=url_cache,
-            )
+        asset_errors, asset_warnings = validate_brand_asset_record(
+            prefix=prefix,
+            asset=asset,
+            expected_name=str(startup.get("product_name", "")),
+            expected_page=str(startup.get("url", "")),
+            expected_prefix="/logos/companies/",
+            url_cache=url_cache,
         )
+        errors.extend(asset_errors)
+        warnings.extend(asset_warnings)
 
     for slug in sorted(set(company_assets) - set(startup_index)):
         warnings.append(f"brand-assets companies.{slug} exists but no published startup uses it")
@@ -898,16 +898,16 @@ def validate_brand_assets(
                 )
                 continue
 
-            errors.extend(
-                validate_brand_asset_record(
-                    prefix=prefix,
-                    asset=asset,
-                    expected_name=str(investor.get("name", "")),
-                    expected_page=str(investor.get("website", "")),
-                    expected_prefix="/logos/investors/",
-                    url_cache=url_cache,
-                )
+            asset_errors, asset_warnings = validate_brand_asset_record(
+                prefix=prefix,
+                asset=asset,
+                expected_name=str(investor.get("name", "")),
+                expected_page=str(investor.get("website", "")),
+                expected_prefix="/logos/investors/",
+                url_cache=url_cache,
             )
+            errors.extend(asset_errors)
+            warnings.extend(asset_warnings)
 
         for investor_name in referenced_listed_investor_names(startup):
             investor_slug = resolve_investor_slug(investor_name, investor_lookup)
@@ -932,16 +932,16 @@ def validate_brand_assets(
                 )
                 continue
 
-            errors.extend(
-                validate_brand_asset_record(
-                    prefix=prefix,
-                    asset=asset,
-                    expected_name=str(investor.get("name", "")),
-                    expected_page=str(investor.get("website", "")),
-                    expected_prefix="/logos/investors/",
-                    url_cache=url_cache,
-                )
+            asset_errors, asset_warnings = validate_brand_asset_record(
+                prefix=prefix,
+                asset=asset,
+                expected_name=str(investor.get("name", "")),
+                expected_page=str(investor.get("website", "")),
+                expected_prefix="/logos/investors/",
+                url_cache=url_cache,
             )
+            errors.extend(asset_errors)
+            warnings.extend(asset_warnings)
 
     for slug, investor in investors.items():
         asset = investor_assets.get(slug)
@@ -950,16 +950,16 @@ def validate_brand_assets(
             errors.append(f"{prefix} missing for investor directory entry")
             continue
 
-        errors.extend(
-            validate_brand_asset_record(
-                prefix=prefix,
-                asset=asset,
-                expected_name=investor.get("name", ""),
-                expected_page=investor.get("website", ""),
-                expected_prefix="/logos/investors/",
-                url_cache=url_cache,
-            )
+        asset_errors, asset_warnings = validate_brand_asset_record(
+            prefix=prefix,
+            asset=asset,
+            expected_name=investor.get("name", ""),
+            expected_page=investor.get("website", ""),
+            expected_prefix="/logos/investors/",
+            url_cache=url_cache,
         )
+        errors.extend(asset_errors)
+        warnings.extend(asset_warnings)
 
     for slug in sorted(set(investor_assets) - set(investors)):
         warnings.append(f"brand-assets investors.{slug} exists but no investor directory entry uses it")
@@ -987,14 +987,18 @@ def validate_brand_asset_record(
     expected_page: str,
     expected_prefix: str,
     url_cache: dict[str, str],
-) -> list[str]:
+) -> tuple[list[str], list[str]]:
     errors: list[str] = []
+    warnings: list[str] = []
 
     name = str(asset.get("name", "")).strip()
     shape = str(asset.get("shape", "")).strip()
     local_path = str(asset.get("local_path", "")).strip()
     source_page = str(asset.get("source_page", "")).strip()
     source_url = str(asset.get("source_url", "")).strip()
+    allow_unreachable_source = asset.get("allow_unreachable_source") is True
+    note = str(asset.get("note", "")).strip()
+    local_asset_exists = False
 
     if not name:
         errors.append(f"{prefix} missing name")
@@ -1008,8 +1012,14 @@ def validate_brand_asset_record(
         errors.append(f"{prefix} local_path must start with '{expected_prefix}'")
     else:
         asset_file = PUBLIC_DIR / local_path.removeprefix("/")
-        if not asset_file.exists():
+        local_asset_exists = asset_file.exists()
+        if not local_asset_exists:
             errors.append(f"{prefix} missing local file: {asset_file.relative_to(REPO_ROOT)}")
+
+    source_page_host_matches = not expected_page or normalize_host(source_page) == normalize_host(expected_page)
+    allow_source_warning = allow_unreachable_source and local_asset_exists and source_page_host_matches
+    if allow_unreachable_source and not note:
+        warnings.append(f"{prefix} allow_unreachable_source should include a note")
 
     if not source_page:
         errors.append(f"{prefix} missing source_page")
@@ -1018,15 +1028,35 @@ def validate_brand_asset_record(
             f"{prefix} source_page host '{normalize_host(source_page)}' "
             f"does not match expected host '{normalize_host(expected_page)}'"
         )
-    elif check_url(source_page, cache=url_cache) not in HTTP_NON_BLOCKING:
-        errors.append(f"{prefix} source_page is not reachable: {source_page}")
+    else:
+        source_page_status = check_url(source_page, cache=url_cache)
+        if source_page_status not in HTTP_NON_BLOCKING:
+            if allow_source_warning:
+                warnings.append(
+                    f"{prefix} source_page returned HTTP {source_page_status}; "
+                    "allow_unreachable_source keeps the local official logo non-blocking"
+                )
+            else:
+                errors.append(
+                    f"{prefix} source_page check failed with HTTP {source_page_status}: {source_page}"
+                )
 
     if not source_url:
         errors.append(f"{prefix} missing source_url")
-    elif check_url(source_url, cache=url_cache) not in HTTP_NON_BLOCKING:
-        errors.append(f"{prefix} source_url is not reachable: {source_url}")
+    else:
+        source_url_status = check_url(source_url, cache=url_cache)
+        if source_url_status not in HTTP_NON_BLOCKING:
+            if allow_source_warning:
+                warnings.append(
+                    f"{prefix} source_url returned HTTP {source_url_status}; "
+                    "allow_unreachable_source keeps the local official logo non-blocking"
+                )
+            else:
+                errors.append(
+                    f"{prefix} source_url check failed with HTTP {source_url_status}: {source_url}"
+                )
 
-    return errors
+    return errors, warnings
 
 
 def normalize_host(url: str) -> str:

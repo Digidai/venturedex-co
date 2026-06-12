@@ -10,6 +10,7 @@ export interface BrandAsset {
   local_path: string;
   source_page: string;
   source_url: string;
+  allow_unreachable_source?: boolean;
   tile_background?: BrandTileBackground;
   note?: string;
 }
