@@ -2361,3 +2361,40 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - verification passed before publish; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
   - the content commit is live despite GitHub Deploy remaining red: the successful deploy attempt uploaded Worker version `0363634e-b5bf-4780-9f40-efbcfafd0ee7`, live `/news` later showed 135 rows, and live smoke passed for both Workers and canonical hosts.
   - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
+
+### 2026-06-13 14:08 CST
+
+- candidate_count: 22
+- accepted: 2
+- rejected: 10
+- rejection_bar_met: yes
+- outcome: daily-content-live-gsc-blocked
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 137/137 startups with zero errors, regenerated the D1 seed, passed 91/91 newsletter/content parity/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass after targeted browser/manual capture; final reviewed WebP captures were product-visible and nonblank for Equal AI and StratusGrid. StratusGrid required manual Playwright capture after the screenshot wrapper treated HubSpot cookie/highlight layers as a blocking popup. R2 upload remained skipped because bootstrap reported no R2 permission.
+- commit_push: pass for content; content commit `1ee90dafae33747361f368fadd96103af664e6a3` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `1ee90dafae33747361f368fadd96103af664e6a3` for the Equal AI and StratusGrid content addition.
+- pushed_branch: main
+- ci_deploy: pass after targeted rerun; GitHub Validate `27458497704` passed for the content commit. Deploy `27458497731` attempt 1 validated, uploaded Worker version `af418cca-94d6-4a05-b418-e71445821c54`, then failed immediate post-deploy smoke because the Workers host still rendered 135 startup cards/news rows instead of 137. Independent live smoke later passed on both hosts at 137 startups, and the failed Deploy job was rerun once with evidence; the rerun passed and uploaded Worker version `17f5544c-3014-4870-9c09-a6f75b491851`.
+- live_smoke: pass; `python3 scripts/smoke-live.py https://venturedex.genedai.workers.dev --expected-startups 137` and `python3 scripts/smoke-live.py https://venturedex.co --expected-startups 137` both passed, and direct Python HEAD checks returned HTTP 200 for `/startups/equal-ai` and `/startups/stratusgrid`.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-11 07:30:31:2026-06-12 07:30:21`, status `sent`, 5 items, 2 recipients, updated at `2026-06-12 13:30:55` UTC, and delivery aggregation showed two sent deliveries for that send. Today's additions have `published_at` `2026-06-13 05:49:00` UTC, become delay-eligible after `2026-06-13 11:49:00` UTC, and remain governed by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- gsc: blocked after diagnosed iteration; dry-run targeted exactly `https://venturedex.co/startups/equal-ai` and `https://venturedex.co/startups/stratusgrid`. The live submit wrote `retry_pending` for Equal AI with `submit confirmation not detected`; the artifact shows Search Console authenticated on the `venturedex.co` property, the inspected URL as `URL is not on Google`, and a visible `REQUEST INDEXING` button, but no `Indexing requested` / submitted confirmation state. StratusGrid remains dry-run only to avoid repeated blind requests while the GSC request flow is failing.
+- failure_tags: [screenshot_env, deploy_smoke_propagation, d1_cli_timeout, gsc_request_failure]
+- reward: 2
+- dominant_failure_mode: content quality, structured research, timestamps, schema, screenshots, D1 seed/runtime parity, deploy rerun, and live smoke all passed; unresolved operational issues are a screenshot-wrapper false popup on StratusGrid, an immediate post-deploy smoke propagation race that cleared without content mutation, one transient read-only Wrangler D1 timeout, and Search Console request-indexing confirmation failure.
+- proposed_change: deferred; future human-reviewed changes should make release smoke tolerate or explicitly recheck short post-D1/deploy propagation windows, add/keep bounded D1 CLI read-only retries, and improve `scripts/submit-gsc-direct.sh` diagnostics/retry controls for visible GSC request failures. These are code-level behavior changes outside the current automation-doc auto-edit scope.
+- decision: deferred
+- affected_file: content/startups/equal-ai.json, content/startups/stratusgrid.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/companies/equal-ai.png, public/logos/companies/stratusgrid.svg, public/logos/investors/prosus-ventures.png, public/logos/investors/dogwood-ventures.svg, public/screenshots/equal-ai.webp, public/screenshots/stratusgrid.webp, docs/promotion/gsc-artifacts/20260613-140645-retry_pending-venturedex-co-startups-equal-ai.txt, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed dependencies, and reported GitHub Actions active.
+  - accepted Equal AI from its June 11, 2026 $30M Series B led by Prosus Ventures; official and `bb-browser` review verified AI call-screening assistant positioning, Google Play product evidence, live transcript/caller-summary workflow claims, India usage context, and source-linked funding evidence. No official Careers/Jobs/Open Roles entry was visible, so `links.careers` was not added.
+  - accepted StratusGrid from its June 11, 2026 $3M Seed led by Dogwood Ventures; official and `bb-browser` review verified Stratusphere multi-agent cloud optimization workflows, policy simulation, safe execution/rollback/audit claims, official Careers entry, and source-linked funding evidence.
+  - rejected ChatSee.ai, Chptr, Kestrel Labs, FesariusTherapeutics, Diamond Brew, Pathway Power, Lifeline AI, Alitheon, Factorial, and BibliU for stage, source-strength, taste, hardware/biotech/energy exposure, or content-fit reasons.
+  - added official startup records, structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logos, investor directory entries, brand assets, static official `links.careers` where visible, and local screenshots for both accepted startups.
+  - verification passed before publish; generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed after validation.
+  - the first GitHub Deploy attempt failed only on immediate post-deploy stale runtime counts after successfully uploading the Worker; independent live smoke showed both hosts at 137 startups, and the targeted failed-job rerun passed.
+  - remote D1 confirmed both new slugs with `published_at` and `first_seen_at` `2026-06-13 05:49:00` UTC.
+  - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
