@@ -913,5 +913,19 @@
     "short_name": "3one4",
     "website": "https://www.3one4capital.com",
     "description": "Early-stage venture capital firm backing companies in India's new economy."
+  },
+  "prosus-ventures": {
+    "name": "Prosus Ventures",
+    "slug": "prosus-ventures",
+    "short_name": "Prosus",
+    "website": "https://www.prosus.com/prosus-ventures",
+    "description": "Venture investing team of Prosus, backing technology companies in high-growth markets."
+  },
+  "dogwood-ventures": {
+    "name": "Dogwood Ventures",
+    "slug": "dogwood-ventures",
+    "short_name": "Dogwood",
+    "website": "https://www.dogwood.vc/",
+    "description": "Atlanta-based venture capital firm partnering with early-growth B2B software founders."
   }
 }

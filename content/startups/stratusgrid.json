@@ -1,0 +1,77 @@
+{
+  "slug": "stratusgrid",
+  "domain": "stratusgrid.com",
+  "url": "https://stratusgrid.com/",
+  "product_name": "StratusGrid",
+  "summary": "Multi-agent platform that verifies and executes cloud infrastructure optimizations.",
+  "editor_note": "Cloud cost tools usually stop at dashboards; this one wants permission to change the infra. Stratusphere shows AWS/Azure agents, policy simulation, blast-radius analysis, rollback, audit trails, and executive P&L dashboards. Unlike FinOps reporting that leaves engineers with tickets, the bet is verified execution under guardrails. The question is whether enterprises let it close the loop.",
+  "editor_rating": 4,
+  "why_featured": "$3M seed for cloud agents",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "cloud infrastructure,finops,ai agents,devops,automation",
+  "investors": "Dogwood Ventures",
+  "links": {
+    "careers": "https://stratusgrid.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3M",
+      "stage": "Seed",
+      "lead_investor": "Dogwood Ventures",
+      "date": "2026-06-02",
+      "source_url": "https://www.prnewswire.com/news-releases/stratusgrid-raises-3m-seed-round-to-advance-ai-driven-cloud-infrastructure-optimization-302788056.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://stratusgrid.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/stratusgrid-raises-3m-seed-round-to-advance-ai-driven-cloud-infrastructure-optimization-302788056.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Stratusphere as a multi-agent platform that observes environments, simulates plans under policy, and executes safe changes across AWS and Azure.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product copy shows closed-loop opportunity surfacing, approval, execution, rollback, auditability, blast-radius analysis, and executive dashboards for cloud savings and risk reduction.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Stratusphere identifies, approves, executes, and verifies cloud infrastructure optimizations.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Cloud platform, FinOps, security, and engineering leaders trying to turn cloud recommendations into safe production changes.",
+      "category": "DevTools",
+      "differentiation": "StratusGrid positions the product around policy-safe execution and verification rather than visibility-only optimization dashboards.",
+      "why_now": "AI workloads are increasing infrastructure cost and change complexity, making verified cloud optimization a sharper problem than another reporting layer."
+    },
+    "risks": [
+      {
+        "claim": "Outcome-based cloud automation depends on customers trusting the approval and rollback loop enough to let agents make real infrastructure changes.",
+        "basis": "VentureDex editorial assessment based on official product evidence and the funding source's emphasis on verified execution."
+      }
+    ]
+  }
+}

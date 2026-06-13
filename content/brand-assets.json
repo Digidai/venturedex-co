@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-12",
+  "verified_at": "2026-06-13",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -947,6 +947,21 @@
       "local_path": "/logos/companies/rivvun-ai.png",
       "source_page": "https://rivvun.ai/",
       "source_url": "https://rivvun.ai/wp-content/uploads/2026/05/rivvun-icon-300x300.png"
+    },
+    "equal-ai": {
+      "name": "Equal AI",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/equal-ai.png",
+      "source_page": "https://www.myequal.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67e36aa2068f30979d6c5e1f/689acbe33870aadaabe13e6e_Frame%201171277378.png"
+    },
+    "stratusgrid": {
+      "name": "StratusGrid",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/stratusgrid.svg",
+      "source_page": "https://stratusgrid.com/",
+      "source_url": "https://stratusgrid.com/hubfs/StratusGrid%20Logo.svg",
+      "tile_background": "dark"
     }
   },
   "investors": {
@@ -1811,6 +1826,20 @@
       "local_path": "/logos/investors/3one4-capital.png",
       "source_page": "https://www.3one4capital.com",
       "source_url": "https://cdn.prod.website-files.com/6269326520418226350c9a99/626a21edd59ab564b179de8b_webclip.png"
+    },
+    "prosus-ventures": {
+      "name": "Prosus Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/prosus-ventures.png",
+      "source_page": "https://www.prosus.com/prosus-ventures",
+      "source_url": "https://www.prosus.com/~/media/41E3164927924F3BA55F3E3B1FA5DDD9.png"
+    },
+    "dogwood-ventures": {
+      "name": "Dogwood Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/dogwood-ventures.svg",
+      "source_page": "https://www.dogwood.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6692b1f1fce9dccfe84af39d/66971fc5e60ebab52cd8440f_Dogwood_green.svg"
     }
   }
 }

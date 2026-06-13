@@ -1,0 +1,90 @@
+{
+  "slug": "equal-ai",
+  "domain": "www.myequal.ai",
+  "url": "https://www.myequal.ai/",
+  "product_name": "Equal AI",
+  "summary": "AI call assistant that screens unknown calls and explains caller intent before pickup.",
+  "editor_note": "Call screening is not new, but India makes it harder: delivery calls, finance spam, and code-mixed speech all collide on one phone. Equal AI shows Android call answering, live transcripts, quick replies, recordings, 10+ languages, and 300K daily active users. Unlike caller-ID apps that only name the number, the bet is to make the phone conversation itself inspectable before you join.",
+  "editor_rating": 5,
+  "why_featured": "300K daily call assistant",
+  "product_type": "AI / ML",
+  "region": "China / Asia",
+  "tags": "ai assistant,voice ai,consumer,call screening,india",
+  "investors": "Prosus Ventures",
+  "links": {
+    "product": "https://play.google.com/store/apps/details?id=in.equal.ai.assistant",
+    "linkedin": "https://www.linkedin.com/company/myequalai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series B",
+      "lead_investor": "Prosus Ventures",
+      "date": "2026-06-11",
+      "source_url": "https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-so-indians-dont-have-to/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official Equal AI product site",
+        "url": "https://www.myequal.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_company",
+        "label": "Official Equal company site",
+        "url": "https://www.equal.in/",
+        "type": "official"
+      },
+      {
+        "id": "app_store",
+        "label": "Equal AI Google Play listing",
+        "url": "https://play.google.com/store/apps/details?id=in.equal.ai.assistant",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch",
+        "url": "https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-so-indians-dont-have-to/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product site describes Equal AI as an AI call assistant that picks up, speaks, and screens unknown calls for the user.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Google Play listing describes live call-screening transcripts, caller-intent summaries, one-tap joining, typed messages read by the assistant, full recordings, and post-call summaries.",
+        "source_ids": [
+          "app_store"
+        ]
+      },
+      {
+        "claim": "TechCrunch reports the app has more than one million monthly active users, more than 300,000 daily active users, and support for over 10 languages.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Indian smartphone users deciding whether to answer unknown delivery, finance, work, and marketing calls.",
+      "category": "AI / ML",
+      "differentiation": "Equal AI moves beyond caller ID by holding the first part of the conversation, exposing transcript and intent before the user joins.",
+      "why_now": "The Series B gives the company capital to expand a consumer voice assistant that already has meaningful daily usage in a call-heavy local market."
+    },
+    "risks": [
+      {
+        "claim": "The product still has to prove it can defend privacy expectations and keep call-handling quality high as it expands beyond unknown-number screening.",
+      "basis": "VentureDex editorial assessment based on official product evidence, Google Play copy, and TechCrunch's note that known-number screening and paid tiers remain planned."
+      }
+    ]
+  }
+}
