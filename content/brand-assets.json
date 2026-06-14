@@ -962,6 +962,13 @@
       "source_page": "https://stratusgrid.com/",
       "source_url": "https://stratusgrid.com/hubfs/StratusGrid%20Logo.svg",
       "tile_background": "dark"
+    },
+    "definic": {
+      "name": "Definic",
+      "shape": "icon",
+      "local_path": "/logos/companies/definic.png",
+      "source_page": "https://definic.ai/",
+      "source_url": "https://framerusercontent.com/images/X88B2caaO2tltUqk22bn4Kc8yyQ.png"
     }
   },
   "investors": {
@@ -1840,6 +1847,13 @@
       "local_path": "/logos/investors/dogwood-ventures.svg",
       "source_page": "https://www.dogwood.vc/",
       "source_url": "https://cdn.prod.website-files.com/6692b1f1fce9dccfe84af39d/66971fc5e60ebab52cd8440f_Dogwood_green.svg"
+    },
+    "jt-ventures": {
+      "name": "J&T Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/jt-ventures.svg",
+      "source_page": "https://www.jtventures.cz/",
+      "source_url": "https://cdn.prod.website-files.com/66c4444bb0721488b0c323bf/66c4d0cf23533c38613cae77_j-t-ventures-logo.svg"
     }
   }
 }

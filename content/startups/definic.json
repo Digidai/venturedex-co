@@ -1,0 +1,78 @@
+{
+  "slug": "definic",
+  "domain": "definic.ai",
+  "url": "https://definic.ai/",
+  "product_name": "Definic",
+  "summary": "Vendor intelligence platform for IT procurement, RFP scoping, and market benchmarking.",
+  "editor_note": "Procurement suites usually record vendor data after the choice; this tries to make the choice itself computable. The official product shows RFP assessment, vendor matching from real delivery data, market benchmarking, spend dashboards, and delivery tracking. The bet is that external IT work should be bought like a measured supply chain, not a relationship spreadsheet. The risk is whether its savings claims hold outside its early European banking proof points.",
+  "editor_rating": 4,
+  "why_featured": "$2.9M seed for IT procurement",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "procurement,vendor intelligence,it services,rfp,benchmarking",
+  "investors": "J&T Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/definic-ai/",
+    "careers": "https://definic.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$2.9M",
+      "stage": "Seed",
+      "lead_investor": "J&T Ventures",
+      "date": "2026-06-13",
+      "source_url": "https://definic.ai/press",
+      "source_name": "Definic"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://definic.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Definic press announcement",
+        "url": "https://definic.ai/press",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product site describes dashboard, assessment, intelligence, benchmarking, management, and marketplace workflows for enterprise IT vendor selection.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product copy says Definic turns vague project ideas into structured RFPs, matches vendors using real delivery data, benchmarks market rates, and tracks delivery performance.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official press announcement says Definic gives procurement teams visibility into vendor fit, project requirements, and live market pricing.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise procurement, IT sourcing, and vendor-management teams buying external IT services.",
+      "category": "Procurement Software",
+      "differentiation": "Definic narrows procurement intelligence to IT services selection, combining requirement scoping, vendor matching, market pricing, spend visibility, and delivery tracking instead of a generic supplier database.",
+      "why_now": "The company is using its seed round and rename from Nordics to expand from regional IT marketplace roots into a broader Vendor Intelligence platform for DACH, UK, and US buyers."
+    },
+    "risks": [
+      {
+        "claim": "Definic's strongest proof points come from early client examples, so the open question is whether savings and cycle-time reductions repeat across more sectors and geographies.",
+        "basis": "VentureDex editorial assessment based on official product evidence and Definic's official funding announcement."
+      }
+    ]
+  }
+}

@@ -927,5 +927,12 @@
     "short_name": "Dogwood",
     "website": "https://www.dogwood.vc/",
     "description": "Atlanta-based venture capital firm partnering with early-growth B2B software founders."
+  },
+  "jt-ventures": {
+    "name": "J&T Ventures",
+    "slug": "jt-ventures",
+    "short_name": "J&T",
+    "website": "https://www.jtventures.cz/",
+    "description": "CEE and SEE venture capital firm backing technology founders with global ambition."
   }
 }
