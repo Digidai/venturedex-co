@@ -2362,6 +2362,41 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - the content commit is live despite GitHub Deploy remaining red: the successful deploy attempt uploaded Worker version `0363634e-b5bf-4780-9f40-efbcfafd0ee7`, live `/news` later showed 135 rows, and live smoke passed for both Workers and canonical hosts.
   - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
 
+### 2026-06-14 14:05 CST
+
+- candidate_count: 20
+- accepted: 1
+- rejected: 3
+- rejection_bar_met: yes
+- outcome: daily-content-live-gsc-blocked
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 138/138 startups with zero errors, regenerated the D1 seed, passed 91/91 newsletter/content parity/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass after targeted manual capture; the standard screenshot wrapper failed on Definic because it treated real fixed navigation/cookie layers as a popup, and the first manual cleanup overmatched the page into a white screenshot. A corrected Playwright-wrapper capture hid only the small cookie/extension layers, waited for product text, scrolled to the product section, and produced a nonblank product-visible WebP.
+- commit_push: pass for content; content commit `0dab3c6cb94b1f28e469e546db39787f4e9cf661` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `0dab3c6cb94b1f28e469e546db39787f4e9cf661` for the Definic content addition.
+- pushed_branch: main
+- ci_deploy: pass after targeted rerun; GitHub Validate `27490066130` passed for the content commit. Deploy `27490066131` attempt 1 failed inside `scripts/manage.sh release` during newsletter parity tests because the release runner's generated seed exposed zero non-null `published_at` rows while content had 138 timestamped records. The same SHA's Validate workflow passed the identical timestamp parity tests, so the failed Deploy job was rerun once with evidence; the rerun passed, applied the 138-startup D1 seed, uploaded Worker version `1c3fe07a-152c-4f8c-93b9-b50e0f3f6a78`, and release-smoked both hosts.
+- live_smoke: pass; Deploy release smoke passed for `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 138 published startups. Independent `python3 scripts/smoke-live.py` checks also passed for both hosts, and direct canonical checks returned HTTP 200 for `/startups/definic` and the homepage with Definic present.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-12 07:30:21:2026-06-13 07:30:14`, status `sent`, 2 items, 2 recipients, updated at `2026-06-13 13:30:47` UTC, and delivery aggregation showed two sent deliveries. Definic has `published_at` `2026-06-14 05:48:21` UTC, becomes delay-eligible after `2026-06-14 11:48:21` UTC, and remains governed by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- gsc: blocked after diagnosed iteration; dry-run targeted exactly `https://venturedex.co/startups/definic`. Live submit wrote `retry_pending` for Definic with `request failure detected`; Search Console was authenticated on the `venturedex.co` property, showed the inspected URL as `URL is not on Google`, exposed a visible `REQUEST INDEXING` button, then displayed `Oops! Something went wrong` and `We had a problem submitting your indexing request. Please try again later.` The latest relevant `.gsc_submission_history.tsv` row is not `requested`, so GSC is not complete.
+- failure_tags: [screenshot_env, ci_release_seed_parity_transient, gsc_request_failure]
+- reward: 2
+- dominant_failure_mode: content quality, structured research, timestamps, schema, D1 seed/runtime parity, deploy after rerun, and live smoke all passed; unresolved operational friction came from screenshot wrapper false positives, a one-off Deploy release-runner seed timestamp parity failure that did not reproduce on rerun, and Search Console request-indexing failure.
+- proposed_change: deferred; future human-reviewed changes should add a screenshot cleanup guard that refuses to remove large page ancestors, preserve a seed timestamp coverage diagnostic artifact on Deploy parity failures, and keep improving GSC request-failure diagnostics/retry controls. These are code-level behavior changes outside the current automation-doc auto-edit scope.
+- decision: deferred
+- affected_file: content/startups/definic.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/companies/definic.png, public/logos/investors/jt-ventures.svg, public/screenshots/definic.webp, docs/promotion/gsc-artifacts/20260614-140444-retry_pending-venturedex-co-startups-definic.txt, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed dependencies, and reported GitHub Actions active.
+  - accepted Definic from its June 13, 2026 $2.9M Seed led by J&T Ventures; official and `bb-browser` review verified IT procurement vendor-intelligence workflows, RFP assessment, vendor matching, market benchmarking, spend visibility, delivery tracking, official Careers entry, and official funding evidence.
+  - rejected Artis, Mendo, and Remedy Science for content-fit or schema-clean funding reasons; additional discovered candidates were already covered by prior accept/reject history or dedupe.
+  - added the official startup record, structured `research`, source-linked product evidence, market context, risk, UTC timestamp, company logo, J&T Ventures investor directory/brand asset, static official `links.careers`, and local screenshot for Definic.
+  - verification passed before publish; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - the first GitHub Deploy attempt failed before D1 sync/deploy, only in the release runner's timestamp parity test; the same content commit's Validate workflow passed the identical tests, and the diagnosed Deploy rerun passed without content mutation.
+  - GSC direct submit was not reported as complete because the required latest relevant ledger row is `retry_pending`, not `requested`; the blocker, diagnostic artifact, and exact target URL were preserved.
+
 ### 2026-06-13 14:08 CST
 
 - candidate_count: 22
