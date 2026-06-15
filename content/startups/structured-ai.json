@@ -1,0 +1,101 @@
+{
+  "slug": "structured-ai",
+  "domain": "getstructured.ai",
+  "url": "https://getstructured.ai/",
+  "product_name": "Structured AI",
+  "summary": "AI drawing-review agents for construction QA/QC, code checks, and coordination gaps.",
+  "editor_note": "Construction AI often chases jobsite cameras; this starts where errors are cheaper: the PDF drawing set. Structured AI scans 2D construction documents for clashes, code gaps, dimensions, specs, and RFI-ready fixes before a senior engineer reviews them. The bet is spell-check for MEP and structural plans, not another project dashboard. The risk is adoption friction inside firms already standardized on Bluebeam/Revit/Procore.",
+  "editor_rating": 4,
+  "why_featured": "$4.2M seed for drawing QA",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "construction,ai agents,qa,qc,drawing review,compliance",
+  "investors": "FCVC, Y Combinator",
+  "links": {
+    "careers": "https://getstructured.ai/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.2M",
+      "stage": "Seed",
+      "lead_investor": "FCVC",
+      "date": "2026-06-10",
+      "source_url": "https://www.enr.com/articles/63139-construction-quality-startup-structured-ai-raises-42m-seed-round",
+      "source_name": "ENR"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://getstructured.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_compare",
+        "label": "Official comparison page",
+        "url": "https://getstructured.ai/compare/",
+        "type": "official"
+      },
+      {
+        "id": "official_blog",
+        "label": "Official seed announcement",
+        "url": "https://getstructured.ai/blog/structured-ai-4-2m-seed-round/",
+        "type": "official"
+      },
+      {
+        "id": "yc_company",
+        "label": "Y Combinator company profile",
+        "url": "https://www.ycombinator.com/companies/structured-ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "ENR funding report",
+        "url": "https://www.enr.com/articles/63139-construction-quality-startup-structured-ai-raises-42m-seed-round",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes automated construction drawing review for QA/QC, coordination issues, code concerns, and senior-engineer review workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The comparison page says the product works directly from 2D PDFs, without a BIM model or platform migration, and supports 2D clash detection, code compliance, RFI generation, revision comparison, dimensional verification, and specification analysis.",
+        "source_ids": [
+          "official_compare"
+        ]
+      },
+      {
+        "claim": "The official seed announcement says Structured AI caught more than 400 issues in a 1,000-page drawing set and traces findings back to code citations, drawing pages, and locations.",
+        "source_ids": [
+          "official_blog"
+        ]
+      },
+      {
+        "claim": "The YC profile describes the company as an AI workforce for construction design engineering focused on QA/QC over technical documents and drawings.",
+        "source_ids": [
+          "yc_company"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Construction engineers, design reviewers, MEP coordinators, and QA/QC teams reviewing drawing sets before construction.",
+      "category": "Construction Technology",
+      "differentiation": "Structured AI focuses on pre-construction document intelligence, scanning ordinary PDF drawing sets and routing findings into familiar Bluebeam, Revit, Procore, Autodesk Construction Cloud, SharePoint, and Google Drive workflows.",
+      "why_now": "Construction teams are under pressure to catch coordination and compliance errors earlier while drawing volumes and revision cycles keep growing."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether teams already standardized on Bluebeam, Revit, Procore, and Autodesk workflows will trust AI-generated findings enough to change QA habits.",
+        "basis": "VentureDex editorial assessment based on official product evidence, official seed materials, and current funding coverage."
+      }
+    ]
+  }
+}

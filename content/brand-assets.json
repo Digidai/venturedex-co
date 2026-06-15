@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-13",
+  "verified_at": "2026-06-15",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -969,6 +969,20 @@
       "local_path": "/logos/companies/definic.png",
       "source_page": "https://definic.ai/",
       "source_url": "https://framerusercontent.com/images/X88B2caaO2tltUqk22bn4Kc8yyQ.png"
+    },
+    "qorelo": {
+      "name": "Qorelo",
+      "shape": "icon",
+      "local_path": "/logos/companies/qorelo.png",
+      "source_page": "https://qorelo.com/",
+      "source_url": "https://qorelo.com/apple-touch-icon.png"
+    },
+    "structured-ai": {
+      "name": "Structured AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/structured-ai.png",
+      "source_page": "https://getstructured.ai/",
+      "source_url": "https://getstructured.ai/apple-touch-icon.png"
     }
   },
   "investors": {
@@ -1847,6 +1861,27 @@
       "local_path": "/logos/investors/dogwood-ventures.svg",
       "source_page": "https://www.dogwood.vc/",
       "source_url": "https://cdn.prod.website-files.com/6692b1f1fce9dccfe84af39d/66971fc5e60ebab52cd8440f_Dogwood_green.svg"
+    },
+    "hpi-ventures": {
+      "name": "HPI Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/hpi-ventures.png",
+      "source_page": "https://www.hpiventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/66fd081f2768daa6b8a8ad7d/66fd0b588b29a1083834700c_HPI%20Ventures%20-%20Webclip.png"
+    },
+    "caesar-ventures": {
+      "name": "Caesar Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/caesar-ventures.jpg",
+      "source_page": "https://www.caesar.vc/",
+      "source_url": "https://www.caesar.vc/wp-content/uploads/2023/05/favicon@2x-300x300.jpg"
+    },
+    "fcvc": {
+      "name": "FCVC",
+      "shape": "icon",
+      "local_path": "/logos/investors/fcvc.png",
+      "source_page": "https://www.fcvc.com/",
+      "source_url": "https://www.fcvc.com/static/frontend-public/favicon.57ca21d734a0.png"
     },
     "jt-ventures": {
       "name": "J&T Ventures",

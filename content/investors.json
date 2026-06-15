@@ -928,6 +928,27 @@
     "website": "https://www.dogwood.vc/",
     "description": "Atlanta-based venture capital firm partnering with early-growth B2B software founders."
   },
+  "hpi-ventures": {
+    "name": "HPI Ventures",
+    "slug": "hpi-ventures",
+    "short_name": "HPI Ventures",
+    "website": "https://www.hpiventures.com/",
+    "description": "European early-stage venture capital firm backing B2B technology startups across enterprise tech, data, AI, cybersecurity, and digital health."
+  },
+  "caesar-ventures": {
+    "name": "Caesar Ventures",
+    "slug": "caesar-ventures",
+    "short_name": "Caesar",
+    "website": "https://www.caesar.vc/",
+    "description": "Early-stage venture capital firm backing technology founders from its Munich and Berlin base."
+  },
+  "fcvc": {
+    "name": "FCVC",
+    "slug": "fcvc",
+    "short_name": "FCVC",
+    "website": "https://www.fcvc.com/",
+    "description": "Early-stage venture capital firm backing seed founders building technology companies."
+  },
   "jt-ventures": {
     "name": "J&T Ventures",
     "slug": "jt-ventures",

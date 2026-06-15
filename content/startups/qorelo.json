@@ -1,0 +1,83 @@
+{
+  "slug": "qorelo",
+  "domain": "qorelo.com",
+  "url": "https://qorelo.com/",
+  "product_name": "Qorelo",
+  "summary": "AI delivery layer for SAP migrations, Fit-Gap work, and post-go-live change requests.",
+  "editor_note": "SAP migrations usually turn expert memory into workshop debris; this treats the delivery method itself as software. The product maps ECC documents, transcripts, Z-objects, Fit-Gap decisions, RICEFW stories, and hypercare tickets into Activate-phase agents. The bet is not another copilot beside SAP, but a project memory that survives consultants. The risk is whether its claimed 40-45% speed gains hold beyond early enterprise pilots.",
+  "editor_rating": 4,
+  "why_featured": "$3.5M seed for SAP delivery",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "sap,erp migration,ai agents,enterprise software,consulting",
+  "investors": "HPI Ventures, Caesar Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/qorelo"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.5M",
+      "stage": "Seed",
+      "lead_investor": "HPI Ventures",
+      "date": "2026-06-15",
+      "source_url": "https://techfundingnews.com/qorelo-raises-3-5m-sap-migration-automation-seed/",
+      "source_name": "TFN"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://qorelo.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TFN funding report",
+        "url": "https://techfundingnews.com/qorelo-raises-3-5m-sap-migration-automation-seed/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage positions Qorelo as an AI engine for modern SAP delivery and says it stays embedded through discovery, fit-to-standard, build, cutover, and hypercare.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product copy says Qorelo ingests ECC enhancement documents, functional specs, Z-object registers, historical BRDs, and transcripts into a queryable migration knowledge base.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site describes Fit-Gap and build outputs including RICEFW-classified user stories, configuration guides, Fit-Gap logs, Jira tickets, and hypercare change-request handling.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding report says the company is using seed capital to expand its SAP migration automation product after early enterprise pilots.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "SAP program leads, transformation offices, systems integrators, and enterprise IT teams running ECC-to-S/4HANA migrations.",
+      "category": "Enterprise AI Delivery Software",
+      "differentiation": "Qorelo focuses on the SAP delivery method itself, turning implementation artifacts and workshop output into agents for Fit-Gap, RICEFW, Jira, Confluence, Miro, and hypercare workflows.",
+      "why_now": "Large enterprises face S/4HANA migration pressure while specialist SAP delivery capacity remains expensive, making reusable migration memory more valuable."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Qorelo's claimed speed improvements repeat outside early SAP migration pilots and across more heterogeneous integrator delivery teams.",
+        "basis": "VentureDex editorial assessment based on official product evidence and current seed funding coverage."
+      }
+    ]
+  }
+}
