@@ -1,0 +1,415 @@
+{
+  "issue_number": 4,
+  "title": "TODO: Weekly research for 2026-06-08 to 2026-06-14",
+  "week_start": "2026-06-08",
+  "week_end": "2026-06-14",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "definic",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/definic.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/definic.json research.sources.official_site",
+          "url": "https://definic.ai/"
+        },
+        {
+          "label": "Definic press announcement",
+          "source": "content/startups/definic.json research.sources.funding_1",
+          "url": "https://definic.ai/press"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official product site describes dashboard, assessment, intelligence, benchmarking, management, and marketplace workflows for enterprise IT vendor selection.",
+          "url": "https://definic.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product copy says Definic turns vague project ideas into structured RFPs, matches vendors using real delivery data, benchmarks market rates, and tracks delivery performance.",
+          "url": "https://definic.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official press announcement says Definic gives procurement teams visibility into vendor fit, project requirements, and live market pricing.",
+          "url": "https://definic.ai/press"
+        },
+        {
+          "label": "Official product site",
+          "source": "Definic homepage",
+          "url": "https://definic.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Definic",
+          "url": "https://definic.ai/press"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: Definic's strongest proof points come from early client examples, so the open question is whether savings and cycle-time reductions repeat across more sectors and geographies.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "equal-ai",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/equal-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official Equal AI product site",
+          "source": "content/startups/equal-ai.json research.sources.official_site",
+          "url": "https://www.myequal.ai/"
+        },
+        {
+          "label": "Official Equal company site",
+          "source": "content/startups/equal-ai.json research.sources.official_company",
+          "url": "https://www.equal.in/"
+        },
+        {
+          "label": "Equal AI Google Play listing",
+          "source": "content/startups/equal-ai.json research.sources.app_store",
+          "url": "https://play.google.com/store/apps/details?id=in.equal.ai.assistant"
+        },
+        {
+          "label": "TechCrunch",
+          "source": "content/startups/equal-ai.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-so-indians-dont-have-to/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official product site describes Equal AI as an AI call assistant that picks up, speaks, and screens unknown calls for the user.",
+          "url": "https://www.myequal.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Google Play listing describes live call-screening transcripts, caller-intent summaries, one-tap joining, typed messages read by the assistant, full recordings, and post-call summaries.",
+          "url": "https://play.google.com/store/apps/details?id=in.equal.ai.assistant"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "TechCrunch reports the app has more than one million monthly active users, more than 300,000 daily active users, and support for over 10 languages.",
+          "url": "https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-so-indians-dont-have-to/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Equal AI homepage",
+          "url": "https://www.myequal.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/11/equal-ai-raises-30m-to-screen-calls-so-indians-dont-have-to/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The product still has to prove it can defend privacy expectations and keep call-handling quality high as it expands beyond unknown-number screening.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "phoenixai",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/phoenixai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official company site",
+          "source": "content/startups/phoenixai.json research.sources.official_site",
+          "url": "https://www.phoenixdata.ai/"
+        },
+        {
+          "label": "Official product page",
+          "source": "content/startups/phoenixai.json research.sources.product_page",
+          "url": "https://www.phoenixdata.ai/product"
+        },
+        {
+          "label": "Official careers page",
+          "source": "content/startups/phoenixai.json research.sources.careers_page",
+          "url": "https://www.phoenixdata.ai/careers"
+        },
+        {
+          "label": "PhoenixAI Series B announcement",
+          "source": "content/startups/phoenixai.json research.sources.funding_1",
+          "url": "https://www.phoenixdata.ai/newsroom/phoenixai-raises-led-by-sky-capital-to-power-agentic-ai.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes PhoenixAI as an analytical database for agentic AI that answers live-data SQL queries in sub-second time.",
+          "url": "https://www.phoenixdata.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface lists Kafka, Iceberg, Delta Lake, SOC 2 controls, row-level security, audit logging, and data masking.",
+          "url": "https://www.phoenixdata.ai/product"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official careers page confirms a static hiring surface without requiring VentureDex to scrape roles, counts, locations, or compensation.",
+          "url": "https://www.phoenixdata.ai/careers"
+        },
+        {
+          "label": "Official product site",
+          "source": "PhoenixAI homepage",
+          "url": "https://www.phoenixdata.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PhoenixAI",
+          "url": "https://www.phoenixdata.ai/newsroom/phoenixai-raises-led-by-sky-capital-to-power-agentic-ai.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether buyers treat agent-facing analytics as a new database category or as faster OLAP positioning.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "rivvun-ai",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/rivvun-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official company site",
+          "source": "content/startups/rivvun-ai.json research.sources.official_site",
+          "url": "https://rivvun.ai/"
+        },
+        {
+          "label": "Official careers page",
+          "source": "content/startups/rivvun-ai.json research.sources.careers_page",
+          "url": "https://rivvun.ai/careers/"
+        },
+        {
+          "label": "Rivvun AI seed funding coverage",
+          "source": "content/startups/rivvun-ai.json research.sources.funding_1",
+          "url": "https://economictimes.indiatimes.com/tech/funding/rivvun-ai-raises-7-55-million-led-by-sitara-capital-3one4-capital/articleshow/131636944.cms"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions Rivvun as an agentic execution layer for detecting spend leakage, margin erosion, and revenue leakage.",
+          "url": "https://rivvun.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Rivvun describes Spend Assurance and Margin Defense agents for invoice assessment, rebates, pricing enforcement, and commitments.",
+          "url": "https://rivvun.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official product surface cites outcomes including $70M spend reduction identified and 300% ROI on royalty governance.",
+          "url": "https://rivvun.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Rivvun AI homepage",
+          "url": "https://rivvun.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Economic Times",
+          "url": "https://economictimes.indiatimes.com/tech/funding/rivvun-ai-raises-7-55-million-led-by-sitara-capital-3one4-capital/articleshow/131636944.cms"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether autonomous corrections can work across inconsistent policies, supplier data, and enterprise approval rules.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "poetic",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/poetic.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/poetic.json research.sources.official_site",
+          "url": "https://poetic.com/"
+        },
+        {
+          "label": "Official careers page",
+          "source": "content/startups/poetic.json research.sources.careers_page",
+          "url": "https://poetic.com/careers"
+        },
+        {
+          "label": "Poetic Series A funding announcement",
+          "source": "content/startups/poetic.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/poetic-raises-50m-series-a-to-automate-the-worlds-most-complex-enterprise-processes-with-reliable-ai-302796939.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions Poetic as software that learns business rules and follows them while handling end-to-end processes.",
+          "url": "https://poetic.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface describes uploading procedures, learning from expert feedback, and recovering when systems change.",
+          "url": "https://poetic.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Poetic publishes process metrics including 99% quality auto-decisioning, 100% process adherence, and 500,000 disputes handled.",
+          "url": "https://poetic.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Poetic homepage",
+          "url": "https://poetic.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/poetic-raises-50m-series-a-to-automate-the-worlds-most-complex-enterprise-processes-with-reliable-ai-302796939.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is how much autonomous process execution regulated enterprises will approve near KYC, fraud, or dispute decisions.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "niteshift",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/niteshift.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/niteshift.json research.sources.official_site",
+          "url": "https://niteshift.dev/"
+        },
+        {
+          "label": "Niteshift seed announcement",
+          "source": "content/startups/niteshift.json research.sources.funding_1",
+          "url": "https://niteshift.dev/blog/introducing-niteshift"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions Niteshift as a full-stack cloud for coding agents, with setup generated from repo docs, CI, Docker, secrets, and services.",
+          "url": "https://niteshift.dev/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface says agents can verify browser, API, database, log, and eval-script evidence before attaching PR proof.",
+          "url": "https://niteshift.dev/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Niteshift lists Claude Code, Codex, OpenCode, and Pi as supported agent choices rather than tying users to one model workflow.",
+          "url": "https://niteshift.dev/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Niteshift homepage",
+          "url": "https://niteshift.dev/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Niteshift",
+          "url": "https://niteshift.dev/blog/introducing-niteshift"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether engineering teams will grant long-running agents enough repo and runtime access to make the cloud model useful.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "leaf",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/leaf.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official company site",
+          "source": "content/startups/leaf.json research.sources.official_site",
+          "url": "https://withleaf.io/"
+        },
+        {
+          "label": "Official Leaf Connect page",
+          "source": "content/startups/leaf.json research.sources.connect_page",
+          "url": "https://withleaf.io/platforms/connect"
+        },
+        {
+          "label": "Leaf Series B announcement",
+          "source": "content/startups/leaf.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/leaf-raises-13m-series-b-to-bring-ai-to-agribusiness-302795837.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes Leaf as a data and intelligence platform for agribusiness marketing, product, R&D, and commercial teams.",
+          "url": "https://withleaf.io/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Leaf says it connects OEMs, imagery, weather, soil labs, and farm management systems, then standardizes and spatially allocates farm data.",
+          "url": "https://withleaf.io/platforms/connect"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding announcement says Leaf processes farm data covering 20% of global crop acres annually.",
+          "url": "https://www.prnewswire.com/news-releases/leaf-raises-13m-series-b-to-bring-ai-to-agribusiness-302795837.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Leaf homepage",
+          "url": "https://withleaf.io/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/leaf-raises-13m-series-b-to-bring-ai-to-agribusiness-302795837.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The open question is whether Leaf can keep data rights, provider integrations, and agribusiness buyer needs aligned at global scale.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
