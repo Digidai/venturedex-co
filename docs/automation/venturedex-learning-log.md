@@ -2433,3 +2433,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - the first GitHub Deploy attempt failed only on immediate post-deploy stale runtime counts after successfully uploading the Worker; independent live smoke showed both hosts at 137 startups, and the targeted failed-job rerun passed.
   - remote D1 confirmed both new slugs with `published_at` and `first_seen_at` `2026-06-13 05:49:00` UTC.
   - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
+
+### 2026-06-15 14:13 CST
+
+- candidate_count: 20
+- accepted: 2
+- rejected: 6
+- rejection_bar_met: yes
+- outcome: daily-content-live-gsc-blocked
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 140/140 startups with zero errors, regenerated the D1 seed, passed 91/91 newsletter/content parity/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass after diagnosed manual capture; the standard screenshot wrapper failed for Qorelo because of a real cookie banner and failed for Structured AI because normal fixed/product/decorative layers tripped the overlay classifier. `bb-browser` verified the pages and JS-error state; Qorelo's `Necessary Only` banner was dismissed, Structured AI was captured without removing product content, and final 1440x900 WebP screenshots were visually reviewed as product-visible and nonblank.
+- commit_push: pass for content; content commit `9de144ad4f349eb37d47a1371b85881ee2a5912c` was pushed to `main`, and this learning-log commit was pending at write time.
+- commit_sha: `9de144ad4f349eb37d47a1371b85881ee2a5912c` for the Qorelo and Structured AI content addition.
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `27527270008` passed, Deploy `27527270047` passed, and the Deploy workflow completed the unified release flow for the same pushed content commit.
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` passed with 140 published startups, direct canonical checks returned HTTP 200 for `/startups/qorelo` and `/startups/structured-ai`, and the live homepage listed both new startups in the top positions.
+- newsletter: not manually triggered; remote D1 latest Daily send remained `daily:2026-06-13 07:30:14:2026-06-14 07:30:19`, status `sent`, 1 item, 2 recipients, updated at `2026-06-14 13:30:51` UTC. Qorelo and Structured AI are present in remote D1 with `published_at` `2026-06-15 05:52:33` UTC, become delay-eligible after `2026-06-15 11:52:33` UTC, and remain governed by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- gsc: blocked after diagnosed iteration; dry-run targeted exactly `https://venturedex.co/startups/qorelo` and `https://venturedex.co/startups/structured-ai`. Live submit wrote `retry_pending` for Qorelo with `request failure detected`; Search Console was authenticated on the `venturedex.co` property, showed the inspected URL as `URL is not on Google`, exposed a visible `REQUEST INDEXING` button, then displayed `Oops! Something went wrong` and `We had a problem submitting your indexing request. Please try again later.` Structured AI remains dry-run only to avoid repeated blind requests while the GSC request flow is failing.
+- failure_tags: [screenshot_env, gsc_request_failure]
+- reward: 2
+- dominant_failure_mode: content quality, structured research, timestamps, schema, screenshots, CI, deploy, live smoke, and D1 seed/runtime parity all passed; unresolved operational friction came from the screenshot wrapper's site-specific overlay classifier and Search Console request-indexing failure.
+- proposed_change: deferred; future human-reviewed changes should improve the screenshot wrapper's overlay classifier for real consent banners versus nonblocking fixed/product layers, and improve `scripts/submit-gsc-direct.sh` diagnostics/retry controls for visible GSC request failures. These are code-level behavior changes outside the current automation-doc auto-edit scope.
+- decision: deferred
+- affected_file: content/startups/qorelo.json, content/startups/structured-ai.json, content/rejected.jsonl, content/investors.json, content/brand-assets.json, content/timestamps.json, public/logos/companies/qorelo.png, public/logos/companies/structured-ai.png, public/logos/investors/hpi-ventures.png, public/logos/investors/caesar-ventures.jpg, public/logos/investors/fcvc.png, public/screenshots/qorelo.webp, public/screenshots/structured-ai.webp, docs/promotion/gsc-artifacts/20260615-140823-retry_pending-venturedex-co-startups-qorelo.txt, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, confirmed dependencies, and reported GitHub Actions active.
+  - accepted Qorelo from a June 15, 2026 $3.5M Seed led by HPI Ventures; official and `bb-browser` review verified SAP delivery AI workflows for ECC/S/4HANA artifacts, Fit-Gap/RICEFW output, Jira/Confluence/Miro handoff, hypercare change requests, official Careers entry, and seed funding evidence.
+  - accepted Structured AI from a June 10, 2026 $4.2M Seed led by FCVC; official and `bb-browser` review verified construction drawing QA/QC workflows, 2D PDF review, clash/code/RFI/revision/spec checks, Bluebeam/Revit/Procore-adjacent positioning, official Careers entry, YC profile, official seed announcement, and funding evidence.
+  - rejected Pints AI, CollimateHealth, Mistral AI, Mimir, Yamify, and Myka for stage/schema, currency/stage, or product-evaluability reasons; additional discovered candidates were already covered by prior accept/reject history or dedupe.
+  - added official startup records, structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logos, investor directory entries, brand assets, static official `links.careers`, and local screenshots for both accepted startups.
+  - verification passed before publish; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
