@@ -2468,3 +2468,40 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - added official startup records, structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logos, investor directory entries, brand assets, static official `links.careers`, and local screenshots for both accepted startups.
   - verification passed before publish; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
   - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifact, and exact target URLs were preserved.
+
+### 2026-06-17 00:49 CST
+
+- candidate_count: 15
+- accepted: 3
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: daily-content-live-gsc-auth-blocked
+- validation: pass; `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before publish. The full local gate validated 143/143 startups with zero errors, regenerated the D1 seed, passed 91/91 newsletter/content parity/unit tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored as verification output.
+- build_app: pass through `./scripts/manage.sh validate`.
+- screenshot: pass with diagnosed fallback; `bb-browser`/Comet was not available for normal product verification at the start of the run, and `bb-browser daemon start --port 19825` failed with `Cannot find a Chromium-based browser`. Official HTML/docs/curl evidence and Cloudflare Browser Rendering were used for public product verification and screenshots. Probably and Arcade screenshots are clean product-visible 1440x900 WebPs; Bland is product-visible but retains a small cookie card from the official site.
+- commit_push: pass for content; content commit `f05402a` was pushed to `main`, and this learning-log/evidence commit was pending at write time.
+- commit_sha: `f05402a` for the Probably, Arcade, and Bland content addition.
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `27633329300` passed, Deploy `27633329248` passed, and the Deploy workflow completed the unified release flow for the same pushed content commit.
+- live_smoke: pass; `./scripts/manage.sh smoke https://venturedex.co` passed with 143 published startups. Direct canonical checks returned HTTP 200 for `/startups/probably`, `/startups/arcade`, and `/startups/bland`; live homepage JSON-LD/ticker, RSS, and sitemap included all three new startups.
+- newsletter: not manually triggered. Remote D1 latest Daily send was `daily:2026-06-15 07:30:00:2026-06-16 07:31:04`, status `skipped`, item_count 0, recipient_count 0, error `No eligible content after delay gate.`, updated `2026-06-16 13:31:06` UTC. Probably, Arcade, and Bland are present in remote D1 with `published_at` / `first_seen_at` `2026-06-16 16:27:39` UTC, become delay-eligible after `2026-06-16 22:27:39` UTC, and remain bounded by the next `13:30 UTC` / `21:30 Asia/Shanghai` Daily Cron.
+- gsc: blocked after diagnosed iteration; dry-run targeted exactly `https://venturedex.co/startups/arcade`, `https://venturedex.co/startups/bland`, and `https://venturedex.co/startups/probably`. The first live submit wrote `retry_pending` for Arcade with `submit confirmation not detected` because Comet CDP was reachable but exposed no `type: page` target, producing an empty artifact. A targeted CDP `/json/new?about:blank` page-target creation restored `bb-browser` daemon connectivity, but the second live submit wrote `retry_pending` for Arcade with `request button not found`; the artifact shows the Google login page for Search Console (`继续使用 Google 搜索控制台`) rather than an authenticated inspection surface. Bland and Probably remain dry-run only to avoid blind retries. Required latest relevant ledger rows are not all `requested`, so GSC is not complete.
+- failure_tags: [browser_auth, gsc_login_required]
+- reward: 3
+- dominant_failure_mode: content quality, structured research, timestamps, schema, screenshots, CI, deploy, live smoke, and D1 seed/runtime parity all passed; unresolved operational friction is Search Console browser authentication, with an additional local Comet CDP page-target startup issue diagnosed and worked around.
+- proposed_change: deferred; future human-reviewed code changes should make `scripts/submit-gsc-direct.sh` preflight for a real `type: page` target, create one when CDP exposes only extension/background targets, and fail early with a login-required classification when the page text is a Google account sign-in screen. This is code-level behavior outside the current automation-doc auto-edit scope.
+- decision: deferred
+- affected_file: content/startups/probably.json, content/startups/arcade.json, content/startups/bland.json, content/startups/trackk.json, content/startups/uncover.json, content/rejected.jsonl, content/brand-assets.json, content/timestamps.json, public/logos/companies/probably.png, public/logos/companies/arcade.png, public/logos/companies/bland.png, public/logos/companies/qorelo.png, public/screenshots/probably.webp, public/screenshots/arcade.webp, public/screenshots/bland.webp, docs/promotion/gsc-artifacts/20260617-004655-retry_pending-venturedex-co-startups-arcade.txt, docs/promotion/gsc-artifacts/20260617-004813-retry_pending-venturedex-co-startups-arcade.txt, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery; it confirmed repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored or confirmed dependencies, and reported GitHub Actions active.
+  - accepted Probably from a June 16, 2026 $9M Seed led by Andreessen Horowitz; official and docs review verified probabilistic AI/system-testing workflows, scenario generation, regression checks, guardrails, and reliability evaluation evidence. No official Careers/Jobs/Open Roles entry was visible, so `links.careers` was not added.
+  - accepted Arcade from a June 15, 2026 $60M Series A led by SYN Ventures; official and docs review verified a secure action layer for production AI agents, tool authentication, connectors, policies, hosted OAuth, and developer/API workflow evidence. Static official Careers entry was added from the official jobs path.
+  - accepted Bland from a June 16, 2026 $50M Series C led by Dell Technologies Capital; official and docs review verified enterprise voice-agent workflows, call orchestration, phone-number management, transcripts, tools, pathways, batching, and API evidence. Static official Careers entry was added from the official jobs path.
+  - rejected Limitless Labs, Copia Automation, NewCore, Atom Computing, Dioseve, HeyMilo AI, Foundation Alloy, Receipts Depositary Corporation, Vaja, Interchecks, Podium Automation, and TalentDemand for software-inspectability, schema-clean stage, tokenized-finance, hardware, biotech, or taste-fit reasons.
+  - added official startup records, structured `research`, source-linked product evidence, market context, risks, UTC timestamps, company logos, brand asset provenance, static official `links.careers` where visible, and local screenshots for all accepted startups.
+  - fixed existing validation drift narrowly: Trackk funding source now uses reachable Entrackr coverage instead of a failing Moneycontrol URL; Uncover's official careers link now uses `https://careers.uncover.co/`; Qorelo's company logo/brand asset now points to an official Webflow CDN image.
+  - verification passed before publish; generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
+  - GSC direct submit was not reported as complete because the required latest relevant ledger rows are not all `requested`; the blocker, diagnostic artifacts, and exact target URLs were preserved.

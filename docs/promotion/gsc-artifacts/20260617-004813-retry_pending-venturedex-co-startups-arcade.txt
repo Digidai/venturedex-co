@@ -1,0 +1,20 @@
+timestamp: 2026-06-17 00:48:13
+status: retry_pending
+url: https://venturedex.co/startups/arcade
+message: request button not found
+page_state: unknown
+
+--- page text ---
+正在加载
+登录
+继续使用 Google 搜索控制台
+邮箱或电话号码
+请输入有效的电子邮件地址或电话号码
+忘记了邮箱？
+您用的不是自己的电脑？请使用访客模式无痕登录。 详细了解如何使用访客模式
+下一步
+创建账号
+简体中文
+帮助
+隐私权
+条款

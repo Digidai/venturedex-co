@@ -1,0 +1,8 @@
+timestamp: 2026-06-17 00:46:55
+status: retry_pending
+url: https://venturedex.co/startups/arcade
+message: submit confirmation not detected
+page_state: unknown
+
+--- page text ---
+
