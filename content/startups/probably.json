@@ -1,0 +1,93 @@
+{
+  "slug": "probably",
+  "domain": "www.probably.dev",
+  "url": "https://www.probably.dev/",
+  "product_name": "Probably",
+  "summary": "Local-first data agent that checks every answer against deterministic validators.",
+  "editor_note": "The useful bet is that a data agent should be less charming than a spreadsheet and more accountable than a chatbot. Probably runs locally, connects CSV, Parquet, Snowflake, BigQuery, Postgres, and more, then checks answers against deterministic validators and computation traces. Instead of asking the model to sound confident, it makes the system show its math. The risk is whether a desktop-first analysis robot can replace the messy trust people place in data teams.",
+  "editor_rating": 5,
+  "why_featured": "$9M seed for verified data analysis",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "data analysis,ai agents,local first,analytics,verification",
+  "investors": "Andreessen Horowitz",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9M",
+      "stage": "Seed",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-16",
+      "source_url": "https://techcrunch.com/2026/06/16/probably-raises-9m-to-build-a-more-reliable-kind-of-ai/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.probably.dev/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Official documentation",
+        "url": "https://www.probably.dev/docs/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch funding report",
+        "url": "https://techcrunch.com/2026/06/16/probably-raises-9m-to-build-a-more-reliable-kind-of-ai/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage describes Probably as a secure local app for accurate data analysis using natural language, with downloads for macOS, Windows, and Linux.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says Probably supports local CSV, JSON, Parquet, and spreadsheet files, plus warehouses including Snowflake, BigQuery, Postgres, MySQL, MariaDB, ClickHouse, and RisingWave.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Probably says every agent action is run through deterministic validators and outputs are checked against computation traces before an answer is accepted.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official docs position Probably as a local-first data agent that operates over raw data sources and centers speed, accuracy, verifiability, and security.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The funding report says Probably raised $9M in seed funding from Andreessen Horowitz to build more reliable AI systems that catch hallucinations before users see them.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data analysts, data scientists, business operators, and engineering teams that need natural-language analysis over local files and warehouses.",
+      "category": "Data Analysis AI",
+      "differentiation": "Probably narrows the agent surface to verifiable data work, pairing local execution and warehouse connectors with deterministic validation rather than a general chat interface.",
+      "why_now": "Companies are pushing AI into analysis workflows while still needing reproducible numbers, audit trails, and lower token costs for precision-sensitive work."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether a desktop-first analysis agent can earn enough trust from data teams that already rely on notebooks, BI tools, and internal review habits.",
+        "basis": "VentureDex editorial assessment based on official product evidence, official docs, and current funding coverage."
+      }
+    ]
+  }
+}

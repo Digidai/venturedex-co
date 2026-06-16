@@ -1,0 +1,95 @@
+{
+  "slug": "arcade",
+  "domain": "www.arcade.dev",
+  "url": "https://www.arcade.dev/",
+  "product_name": "Arcade",
+  "summary": "Authorization, tool execution, and audit runtime for production AI agents.",
+  "editor_note": "The bet is that agents need permissions before they need more demos. Arcade sits between models and business systems, adds OAuth and IDP-aware authorization, thousands of MCP tools, policy hooks, and an audit trail for every action. Unlike API wrappers that just hand agents a key, it treats each tool call as a governed act on behalf of a user. The hard part is whether security teams standardize on Arcade before the agent frameworks absorb this layer.",
+  "editor_rating": 5,
+  "why_featured": "$60M Series A for agent action security",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,mcp,authorization,security,developer tools",
+  "investors": "SYN Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/arcadeai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series A",
+      "lead_investor": "SYN Ventures",
+      "date": "2026-06-15",
+      "source_url": "https://www.businesswire.com/news/home/20260615229631/en/Arcade-Raises-%2460M-to-Become-the-Secure-Action-Layer-Behind-Every-Production-AI-Agent",
+      "source_name": "BusinessWire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.arcade.dev/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Official documentation",
+        "url": "https://docs.arcade.dev/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "BusinessWire funding announcement",
+        "url": "https://www.businesswire.com/news/home/20260615229631/en/Arcade-Raises-%2460M-to-Become-the-Secure-Action-Layer-Behind-Every-Production-AI-Agent",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage positions Arcade as the runtime between agents and business systems, combining auth, tools, and governance in one layer.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Arcade describes agent authorization where agents act as real users with dynamic permissions, existing IDPs plug in, and credentials stay inside the runtime.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site describes a central control plane that records what an agent did, on behalf of which user, in which system, with cloud, on-prem, air-gapped, and hybrid deployment options.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The docs expose a broad tool catalog across productivity apps, communication tools, developer systems, payments, search, sales, databases, and customer support integrations.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Arcade raised $60M Series A led by SYN Ventures and has shipped more than 8,000 MCP tools for delegated user authorization.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise AI platform teams, security engineers, and developers putting tool-using agents into production.",
+      "category": "Agent Infrastructure",
+      "differentiation": "Arcade focuses on the action layer after model choice, tying identity-aware authorization, tool execution, policy, and audit logs to each agent tool call.",
+      "why_now": "Enterprise agent pilots are moving toward production, where security teams need evidence of who authorized each action and what system was touched."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Arcade can remain the neutral action runtime if MCP clients, cloud vendors, and agent frameworks add overlapping authorization and audit layers.",
+        "basis": "VentureDex editorial assessment based on official product evidence, docs, and current Series A coverage."
+      }
+    ]
+  }
+}

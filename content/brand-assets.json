@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-15",
+  "verified_at": "2026-06-17",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -974,8 +974,29 @@
       "name": "Qorelo",
       "shape": "icon",
       "local_path": "/logos/companies/qorelo.png",
-      "source_page": "https://qorelo.com/",
-      "source_url": "https://qorelo.com/apple-touch-icon.png"
+      "source_page": "https://www.qorelo.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a1ffec7638e46d228ef3e15/6a2b7e78318327a6e09c54d5_Qorelo-sign-blue.png"
+    },
+    "probably": {
+      "name": "Probably",
+      "shape": "icon",
+      "local_path": "/logos/companies/probably.png",
+      "source_page": "https://www.probably.dev/",
+      "source_url": "https://www.probably.dev/favicons/apple-touch-icon.png"
+    },
+    "arcade": {
+      "name": "Arcade",
+      "shape": "icon",
+      "local_path": "/logos/companies/arcade.png",
+      "source_page": "https://www.arcade.dev/",
+      "source_url": "https://www.arcade.dev/_astro/webclip.BYnZsC5R.png"
+    },
+    "bland": {
+      "name": "Bland",
+      "shape": "icon",
+      "local_path": "/logos/companies/bland.png",
+      "source_page": "https://www.bland.ai/",
+      "source_url": "https://www.bland.ai/images/webclip.png"
     },
     "structured-ai": {
       "name": "Structured AI",

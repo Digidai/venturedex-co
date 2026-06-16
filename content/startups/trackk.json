@@ -19,8 +19,8 @@
       "stage": "Seed",
       "lead_investor": "Lightspeed",
       "date": "2026-05-19",
-      "source_url": "https://www.moneycontrol.com/news/business/funding/gen-z-investment-platform-trackk-raises-3-7-million-in-funding-from-lightspeed-info-edge-ventures-13924204.html",
-      "source_name": "Moneycontrol"
+      "source_url": "https://entrackr.com/news/trading-app-trackk-raises-fresh-funds-from-lightspeed-and-info-edge-ventures-11846086",
+      "source_name": "Entrackr"
     }
   ],
   "research": {
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Moneycontrol",
-        "url": "https://www.moneycontrol.com/news/business/funding/gen-z-investment-platform-trackk-raises-3-7-million-in-funding-from-lightspeed-info-edge-ventures-13924204.html",
+        "label": "Entrackr funding report",
+        "url": "https://entrackr.com/news/trading-app-trackk-raises-fresh-funds-from-lightspeed-and-info-edge-ventures-11846086",
         "type": "funding"
       }
     ],

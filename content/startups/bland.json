@@ -1,0 +1,95 @@
+{
+  "slug": "bland",
+  "domain": "www.bland.ai",
+  "url": "https://www.bland.ai/",
+  "product_name": "Bland",
+  "summary": "Enterprise voice AI platform for regulated, long-running phone conversations.",
+  "editor_note": "The bet is that voice AI only matters when it survives the ugly calls, not the appointment-demo script. Bland builds its own phone models, tests scenarios before rollout, supports Voice, SMS, iMessage, Web Chat, and plugs into Twilio, Salesforce, HubSpot, Genesys, Five9, and Amazon Connect. Unlike call-center bots tuned for short routing, it is aiming at 30-minute regulated conversations. The risk is whether compliance-heavy customers accept enough automation to justify the operational lift.",
+  "editor_rating": 4,
+  "why_featured": "$50M Series C for regulated voice AI",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "voice ai,contact center,enterprise ai,regulated industries,automation",
+  "investors": "Dell Technologies Capital, HubSpot Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/bland"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series C",
+      "lead_investor": "Dell Technologies Capital",
+      "date": "2026-06-16",
+      "source_url": "https://www.prnewswire.com/news-releases/bland-surpasses-100m-funding-with-new-series-c-to-advance-voice-ai-for-complex-high-stakes-conversations-302801583.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.bland.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Official documentation",
+        "url": "https://docs.bland.ai/welcome-to-bland",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PRNewswire funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/bland-surpasses-100m-funding-with-new-series-c-to-advance-voice-ai-for-complex-high-stakes-conversations-302801583.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage positions Bland as voice AI for regulated industries and high-stakes phone calls where security and trust matter.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Bland describes build, test, rollout, omnichannel deployment, observability, and integrations across telephony, CRM, scheduling, contact center, and automation tools.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site lists SOC 2, HIPAA BAA, GDPR DPA, PCI DSS v4.0, AES-256 at rest, TLS 1.3 in transit, HSM-backed keys, data residency, MFA, and self-hosted or on-premises deployment options.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The docs describe inbound and outbound calls, live API calls during calls, personas, batch calls, embedded agents, API keys, and starter guides.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Bland raised a $50M Series C led by Dell Technologies Capital and handles millions of long conversations per week across regulated industries.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise operations, support, healthcare, insurance, and financial-services teams that run complex inbound and outbound phone workflows.",
+      "category": "Voice AI",
+      "differentiation": "Bland pairs in-house voice models with testing, omnichannel memory, compliance controls, and contact-center integrations for long regulated conversations rather than simple call deflection.",
+      "why_now": "Voice AI buyers are moving from scripted appointment booking toward higher-liability calls where latency, interruption handling, audit trails, and security review matter."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether regulated customers automate enough long, high-stakes calls to justify deep deployment work while managing false escalations and compliance review.",
+        "basis": "VentureDex editorial assessment based on official product evidence, official docs, and current Series C coverage."
+      }
+    ]
+  }
+}

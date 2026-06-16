@@ -12,7 +12,7 @@
   "tags": "marketing analytics,mmm,budget planning,media measurement,saas",
   "investors": "Cloud9 Capital",
   "links": {
-    "careers": "http://careers.uncover.co/"
+    "careers": "https://careers.uncover.co/"
   },
   "is_featured": true,
   "funding": [
@@ -37,7 +37,7 @@
       {
         "id": "careers_page",
         "label": "Official careers page",
-        "url": "http://careers.uncover.co/",
+        "url": "https://careers.uncover.co/",
         "type": "official"
       },
       {
