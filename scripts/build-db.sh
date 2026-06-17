@@ -402,7 +402,9 @@ lines.extend([
     "",
 ])
 
-OUTPUT.write_text("\n".join(lines))
+tmp_output = OUTPUT.with_name(f".{OUTPUT.name}.{os.getpid()}.tmp")
+tmp_output.write_text("\n".join(lines))
+tmp_output.replace(OUTPUT)
 
 # Optional canonical JSON dump for the content<->seed parity test. Never written
 # during a normal build, so the committed seed and app build are unaffected.
