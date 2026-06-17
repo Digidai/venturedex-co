@@ -1951,7 +1951,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/camber-partners.png",
       "source_page": "https://www.camberpartners.com/",
-      "source_url": "https://camberpartners.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-09-at-4.13.05-PM.png"
+      "source_url": "https://camberpartners.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-09-at-4.13.05-PM.png",
+      "allow_unreachable_source": true,
+      "note": "Official WordPress logo source returned HTTP 202 from GitHub runners during release validation; keep local official capture and downgrade runner reachability drift to a warning."
     },
     "ballistic-ventures": {
       "name": "Ballistic Ventures",
