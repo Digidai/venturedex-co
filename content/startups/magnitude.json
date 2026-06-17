@@ -1,0 +1,90 @@
+{
+  "slug": "magnitude",
+  "domain": "magnitude.ai",
+  "url": "https://magnitude.ai/",
+  "product_name": "Magnitude",
+  "summary": "AI workforce for third-party and Nth-party risk assessments, monitoring, and remediation.",
+  "editor_note": "Vendor risk is usually a spreadsheet pretending to be a control plane. Magnitude turns TPRM into seven agents for intake, assessment, Nth-party monitoring, vendor follow-up, and remediation, with cited evidence behind decisions. Unlike compliance dashboards that freeze risk at questionnaire time, it assumes suppliers and AI tools keep changing. The open question is whether CISOs want agents to chase vendors before auditors demand it.",
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://magnitude.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Official platform page",
+        "url": "https://magnitude.ai/platform",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire funding announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/16/3312413/0/en/magnitude-launches-from-stealth-with-10m-seed-funding-and-introduces-the-first-autonomous-ai-workforce-to-enable-third-party-risk-management-teams-in-the-mythos-era.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage describes a multi-agent platform that continuously assesses products, monitors risk, and remediates issues across third- and Nth-parties.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Magnitude names specialized agents for intake, autonomous assessments, continuous monitoring, Nth-party monitoring, vendor engagement, and risk remediation.",
+        "source_ids": [
+          "official_site",
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The official site says every decision cites its source and reasoning, and that policies, corrections, and fine-tuning stay inside the customer environment.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Magnitude launched from stealth with $10M seed funding led by Ballistic Ventures for autonomous third-party risk management teams.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CISOs, GRC leaders, vendor-risk teams, and security analysts responsible for third-party and Nth-party exposure.",
+      "category": "Third-Party Risk Management",
+      "differentiation": "Magnitude makes vendor-risk work agentic and evidence-grounded, pairing continuous risk monitoring with automated vendor follow-up and remediation tracking.",
+      "why_now": "AI vendors, software dependencies, and supplier chains are changing faster than point-in-time questionnaires, making continuous assessment more credible than annual review cycles."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that security teams may keep agents in recommendation mode if vendor communications and remediation tasks require too much trust to automate.",
+        "basis": "VentureDex editorial assessment based on official product evidence and seed funding coverage."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$10M seed for TPRM agents",
+  "product_type": "SaaS",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "third-party risk,grc,cybersecurity,ai agents,vendor risk",
+  "investors": "Ballistic Ventures",
+  "links": {
+    "careers": "https://magnitude.ai/careers"
+  },
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "Ballistic Ventures",
+      "date": "2026-06-16",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/16/3312413/0/en/magnitude-launches-from-stealth-with-10m-seed-funding-and-introduces-the-first-autonomous-ai-workforce-to-enable-third-party-risk-management-teams-in-the-mythos-era.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

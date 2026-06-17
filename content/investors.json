@@ -955,5 +955,40 @@
     "short_name": "J&T",
     "website": "https://www.jtventures.cz/",
     "description": "CEE and SEE venture capital firm backing technology founders with global ambition."
+  },
+  "decibel": {
+    "name": "Decibel",
+    "slug": "decibel",
+    "short_name": "Decibel",
+    "website": "https://www.decibel.vc/",
+    "description": "Early-stage venture capital firm backing technical founders building enterprise software and AI-native companies."
+  },
+  "camber-partners": {
+    "name": "Camber Partners",
+    "slug": "camber-partners",
+    "short_name": "Camber",
+    "website": "https://www.camberpartners.com/",
+    "description": "Growth equity firm backing software companies with efficient go-to-market models and durable customer demand."
+  },
+  "ballistic-ventures": {
+    "name": "Ballistic Ventures",
+    "slug": "ballistic-ventures",
+    "short_name": "Ballistic",
+    "website": "https://ballisticventures.com/",
+    "description": "Cybersecurity-focused venture capital firm backing founders building security companies."
+  },
+  "6-degrees-capital": {
+    "name": "6 Degrees Capital",
+    "slug": "6-degrees-capital",
+    "short_name": "6 Degrees",
+    "website": "https://6degrees.vc/",
+    "description": "European early-stage venture capital firm investing in fintech, enterprise software, and AI companies."
+  },
+  "newion": {
+    "name": "Newion",
+    "slug": "newion",
+    "short_name": "Newion",
+    "website": "https://www.newion.com/",
+    "description": "Amsterdam-based venture capital firm backing early-stage B2B software companies in Europe."
   }
 }

@@ -1,0 +1,90 @@
+{
+  "slug": "respond-io",
+  "domain": "respond.io",
+  "url": "https://respond.io/",
+  "product_name": "Respond.io",
+  "summary": "Customer conversation platform for chats, calls, email, CRM context, and AI agents.",
+  "editor_note": "The bet is that messaging is not support; it is the revenue interface. Respond.io pulls WhatsApp, calls, email, CRMs, and AI agents into one inbox so a customer can move channels without restarting the relationship. Compared with chatbot-first tools, the product keeps the human sales motion visible. The risk is whether mid-market teams see enough process change to switch from the stacks they already duct-taped together.",
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://respond.io/",
+        "type": "official"
+      },
+      {
+        "id": "official_ai_agents",
+        "label": "Official AI Agents page",
+        "url": "https://respond.io/ai-agents",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Respond.io Series B announcement",
+        "url": "https://respond.io/blog/respond-io-raises-62-million-series-b",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage says Respond.io unifies customer chats, calls, emails, and CRM context in a team inbox with native lead management.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site exposes AI Agent workflows for answering enquiries, routing buyers, recommending products, booking appointments, and updating CRMs across customer channels.",
+        "source_ids": [
+          "official_site",
+          "official_ai_agents"
+        ]
+      },
+      {
+        "claim": "Respond.io publishes customer-case evidence for appointment booking, conversion, response-speed, visa-inquiry, and WhatsApp sales workflows using the platform and AI Agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Respond.io raised a $62.5M Series B led by Camber Partners to expand the customer conversation management platform for mid-market B2C businesses.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Mid-market B2C sales, support, and revenue teams managing high-volume conversations across messaging, calls, and CRM systems.",
+      "category": "Customer Conversation Management",
+      "differentiation": "Respond.io treats messaging channels as revenue operations infrastructure, combining unified inbox, AI agents, calls, lead management, and CRM context rather than a standalone chatbot surface.",
+      "why_now": "Customer acquisition and support are moving into WhatsApp, social messaging, and AI-handled conversations, creating pressure for one accountable conversation record across channels."
+    },
+    "risks": [
+      {
+        "claim": "The main risk is that customer conversation management becomes a crowded CRM and support-suite feature instead of a durable standalone buying category.",
+        "basis": "VentureDex editorial assessment based on official product evidence and Series B coverage."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$62.5M Series B for chat-led sales",
+  "product_type": "SaaS",
+  "hq_location": "Kuala Lumpur",
+  "region": "China / Asia",
+  "tags": "customer conversations,ai agents,whatsapp,crm,sales automation",
+  "investors": "Camber Partners, Endeavor Catalyst",
+  "links": {
+    "careers": "https://respond.io/careers"
+  },
+  "funding": [
+    {
+      "amount": "$62.5M",
+      "stage": "Series B",
+      "lead_investor": "Camber Partners",
+      "date": "2026-06-16",
+      "source_url": "https://respond.io/blog/respond-io-raises-62-million-series-b",
+      "source_name": "Respond.io Blog"
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "slug": "lightbringer",
+  "domain": "www.lightbringer.com",
+  "url": "https://www.lightbringer.com/",
+  "product_name": "Lightbringer",
+  "summary": "AI-native patent management platform for invention intake, filing, prosecution, and strategy.",
+  "editor_note": "Patent work has always punished founders for moving fast. Lightbringer wraps idea capture, drafting, filing, office actions, competitor monitoring, and fixed-price attorney review into one product instead of another lawyer dashboard. Compared with legal AI tools built for firms, it is trying to replace the firm workflow for startups. The risk is whether quality holds when deep-tech patents get messy.",
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.lightbringer.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Official pricing page",
+        "url": "https://www.lightbringer.com/pricing/pricing",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Lightbringer funding announcement",
+        "url": "https://www.lightbringer.com/news-items/lightbringer-raises-10m-to-take-on-patent-attorneys-in-the-u-s-with-the-worlds-first-ai-native-patent-firm",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage describes a patent journey from ideation through drafting, filing, prosecution, international filing, portfolio management, and competitor monitoring.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Lightbringer says its product combines agentic AI, expert patent attorneys, fixed pricing, a single dashboard, automated tracking, AI-guided office-action response, and SOC 2 Type 2 controls.",
+        "source_ids": [
+          "official_site",
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The official funding announcement says Lightbringer has helped more than 200 deep-tech companies across 17 countries file and manage patents globally.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The funding announcement says the $10M Series A was co-led by 6 Degrees Capital and Newion to support U.S. expansion and further development of the AI-powered patent platform.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Deep-tech founders, startup operators, and technical teams trying to protect inventions without running a traditional law-firm process.",
+      "category": "LegalTech",
+      "differentiation": "Lightbringer packages patent strategy, filing, prosecution, portfolio management, and attorney review into a productized workflow with fixed pricing rather than a billable-hours law-firm loop.",
+      "why_now": "AI software is moving from lawyer-assist tooling into service-as-software workflows where startups expect fixed-price, faster legal operations."
+    },
+    "risks": [
+      {
+        "claim": "The hard question is whether an AI-native patent provider can maintain attorney-grade quality across specialized deep-tech inventions as it expands into the U.S.",
+        "basis": "VentureDex editorial assessment based on official product pages and the Series A announcement."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$10M Series A for patent workflows",
+  "product_type": "SaaS",
+  "founded_year": 2023,
+  "hq_location": "Malmo",
+  "region": "Europe",
+  "tags": "legaltech,patents,ai agents,deep tech,portfolio management",
+  "investors": "6 Degrees Capital, Newion, Luminar Ventures, Alliance VC",
+  "links": {
+    "careers": "https://www.lightbringer.com/about/career"
+  },
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "6 Degrees Capital",
+      "date": "2026-06-16",
+      "source_url": "https://www.lightbringer.com/news-items/lightbringer-raises-10m-to-take-on-patent-attorneys-in-the-u-s-with-the-worlds-first-ai-native-patent-firm",
+      "source_name": "Lightbringer News"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "ent",
+  "domain": "ent.ai",
+  "url": "https://ent.ai/",
+  "product_name": "Ent",
+  "summary": "Intent-aware endpoint security that intervenes before risky human or AI-agent actions complete.",
+  "editor_note": "The bet is that endpoint security should read intent, not just processes. Ent watches human and AI-agent activity across apps, AI tools, and workflows, then can nudge or block before a risky action completes. Compared with EDR tools that reconstruct what happened after the breach, this is prevention at the moment of work. The question is whether enterprises will trust a new agent this close to the desktop.",
+  "research": {
+    "verified_at": "2026-06-17",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://ent.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Official platform page",
+        "url": "https://ent.ai/platform",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "BusinessWire funding announcement",
+        "url": "https://www.businesswire.com/news/home/20260616680280/en/Ent-Emerges-from-Stealth-to-Bring-Prevention-Back-to-Cybersecurity",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Ent as an intent-aware workspace security platform for human, AI, and application activity across enterprise workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The platform page says Ent runs as one AI-native agent across endpoints, reading intent behind actions and stepping in with plain-language guidance or hard blocks before risky work completes.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "Ent lists integrations with EDR, SIEM, SOAR, IAM, collaboration, and service-management systems including CrowdStrike, Defender, Splunk, Okta, Google Workspace, Jira, ServiceNow, and Slack.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Ent is generally available for Windows, macOS, Linux, and browser-extension deployments and is backed by a $100M seed round led by Decibel.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise CISOs, security operations teams, insider-risk teams, and AI platform owners responsible for endpoint and agent activity.",
+      "category": "Cybersecurity",
+      "differentiation": "Ent focuses on interpreting user and agent intent at the endpoint, then intervening before an action completes rather than only reconstructing incidents after detection.",
+      "why_now": "AI agents and faster exploit discovery compress the response window for security teams, making prevention and policy enforcement at the work surface more valuable."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enterprises will accept an endpoint agent that interprets intent without creating privacy, false-positive, or workforce-trust backlash.",
+        "basis": "VentureDex editorial assessment based on official product pages and current funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 5,
+  "why_featured": "$100M seed for intent-aware security",
+  "product_type": "SaaS",
+  "founded_year": 2025,
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "cybersecurity,endpoint security,ai agents,insider risk,dlp",
+  "investors": "Decibel, Sequoia Capital, Crosspoint Capital, Craft Ventures, Shield Capital, Felicis, In-Q-Tel",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/ent-security",
+    "twitter": "https://x.com/Ent_Security",
+    "careers": "https://ent.ai/joinus"
+  },
+  "funding": [
+    {
+      "amount": "$100M",
+      "stage": "Seed",
+      "lead_investor": "Decibel",
+      "date": "2026-06-16",
+      "source_url": "https://www.businesswire.com/news/home/20260616680280/en/Ent-Emerges-from-Stealth-to-Bring-Prevention-Back-to-Cybersecurity",
+      "source_name": "BusinessWire"
+    }
+  ]
+}

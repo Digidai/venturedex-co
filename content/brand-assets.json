@@ -1004,6 +1004,34 @@
       "local_path": "/logos/companies/structured-ai.png",
       "source_page": "https://getstructured.ai/",
       "source_url": "https://getstructured.ai/apple-touch-icon.png"
+    },
+    "ent": {
+      "name": "Ent",
+      "shape": "icon",
+      "local_path": "/logos/companies/ent.png",
+      "source_page": "https://ent.ai/",
+      "source_url": "https://ent.ai/apple-touch-icon-dark.png"
+    },
+    "respond-io": {
+      "name": "Respond.io",
+      "shape": "icon",
+      "local_path": "/logos/companies/respond-io.png",
+      "source_page": "https://respond.io/",
+      "source_url": "https://assets.respond.io/favicon/apple-touch-icon.png"
+    },
+    "magnitude": {
+      "name": "Magnitude",
+      "shape": "icon",
+      "local_path": "/logos/companies/magnitude.png",
+      "source_page": "https://magnitude.ai/",
+      "source_url": "https://magnitude.ai/apple-icon.png?ba8ed46a06b8104e"
+    },
+    "lightbringer": {
+      "name": "Lightbringer",
+      "shape": "icon",
+      "local_path": "/logos/companies/lightbringer.svg",
+      "source_page": "https://www.lightbringer.com/",
+      "source_url": "https://cdn.prod.website-files.com/689ddb3abd6c2c20491ff199/689ddb3abd6c2c20491ff3ba_wc.svg"
     }
   },
   "investors": {
@@ -1910,6 +1938,41 @@
       "local_path": "/logos/investors/jt-ventures.svg",
       "source_page": "https://www.jtventures.cz/",
       "source_url": "https://cdn.prod.website-files.com/66c4444bb0721488b0c323bf/66c4d0cf23533c38613cae77_j-t-ventures-logo.svg"
+    },
+    "decibel": {
+      "name": "Decibel",
+      "shape": "icon",
+      "local_path": "/logos/investors/decibel.png",
+      "source_page": "https://www.decibel.vc/",
+      "source_url": "https://cdn.prod.website-files.com/63d771afdebdd52d0ca75a67/63db47ae7736b0d24280b684_favicon.png"
+    },
+    "camber-partners": {
+      "name": "Camber Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/camber-partners.png",
+      "source_page": "https://www.camberpartners.com/",
+      "source_url": "https://camberpartners.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-09-at-4.13.05-PM.png"
+    },
+    "ballistic-ventures": {
+      "name": "Ballistic Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/ballistic-ventures.png",
+      "source_page": "https://ballisticventures.com/",
+      "source_url": "https://ballisticventures.com/wp-content/uploads/2024/06/cropped-favicon-180x180.png"
+    },
+    "6-degrees-capital": {
+      "name": "6 Degrees Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/6-degrees-capital.png",
+      "source_page": "https://6degrees.vc/",
+      "source_url": "https://6degrees.vc/apple-touch-icon.png"
+    },
+    "newion": {
+      "name": "Newion",
+      "shape": "icon",
+      "local_path": "/logos/investors/newion.png",
+      "source_page": "https://www.newion.com/",
+      "source_url": "https://cdn.prod.website-files.com/69f88bf1f3f755d0a33dc5e0/6a02e74515a6b5d4b6d888a9_Webclip.png"
     }
   }
 }
