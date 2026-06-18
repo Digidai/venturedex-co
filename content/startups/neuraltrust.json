@@ -1,0 +1,91 @@
+{
+  "slug": "neuraltrust",
+  "domain": "neuraltrust.ai",
+  "url": "https://neuraltrust.ai/",
+  "product_name": "NeuralTrust",
+  "summary": "Platform for discovering, governing, and securing AI agents across enterprise systems.",
+  "editor_note": "Agent security is moving from prompt filtering to asset inventory. NeuralTrust gives teams TrustGate, TrustGuard, and TrustLens to find agents, broker LLM and MCP calls, enforce policies, and block risky tool use. Unlike appsec tools built around human-written code, this assumes autonomous agents will cross models, data, identities, and services. The hard part is proving it can cover the long tail of internal agents.",
+  "research": {
+    "verified_at": "2026-06-18",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://neuraltrust.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Official documentation",
+        "url": "https://docs.neuraltrust.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Official funding announcement",
+        "url": "https://neuraltrust.ai/news/neuraltrust-raises-20m",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions NeuralTrust as a centralized platform to discover and secure all AI agents in an enterprise.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage describes discovery of deployed agents, connected tools, execution workflows, reasoning, planning, and action execution.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The docs describe TrustGate, TrustGuard, TrustLens, policy controls, agent inventory, and MCP gateway deployment paths.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The official funding post reports a $20M round led by Alstin Capital to expand the AI and agent security platform.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security teams, AI platform teams, and enterprise architects responsible for agent governance and tool access.",
+      "category": "AI agent security",
+      "differentiation": "NeuralTrust combines agent discovery, runtime policy enforcement, MCP gateway controls, and red-team style testing for AI systems.",
+      "why_now": "Autonomous agents are gaining access to internal tools faster than traditional appsec and IAM workflows can model them."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that agent inventory coverage depends on enterprises routing enough model and tool traffic through NeuralTrust controls.",
+        "basis": "VentureDex editorial assessment based on official product and documentation review."
+      }
+    ]
+  },
+  "editor_rating": 5,
+  "why_featured": "$20M seed for AI-agent security",
+  "product_type": "SaaS",
+  "hq_location": "Barcelona / London",
+  "region": "Europe",
+  "tags": "ai security,ai agents,mcp,governance,cybersecurity",
+  "investors": "Alstin Capital",
+  "links": {
+    "docs": "https://docs.neuraltrust.ai/",
+    "careers": "https://neuraltrust.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Seed",
+      "lead_investor": "Alstin Capital",
+      "date": "2026-06-17",
+      "source_url": "https://neuraltrust.ai/news/neuraltrust-raises-20m",
+      "source_name": "NeuralTrust"
+    }
+  ]
+}

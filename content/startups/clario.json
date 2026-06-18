@@ -1,0 +1,81 @@
+{
+  "slug": "clario",
+  "domain": "www.clarioclean.com",
+  "url": "https://www.clarioclean.com/",
+  "product_name": "Clario",
+  "summary": "Enterprise data ROT cleanup platform for redundant, obsolete, and trivial unstructured files.",
+  "editor_note": "AI readiness often fails before the model ever sees a prompt. Clario scans 5 work surfaces: Google Drive, SharePoint, OneDrive, Box, and Confluence for redundant, obsolete, and trivial files, then pushes keep, archive, or delete workflows through Slack and Teams. Unlike data catalogs that mostly describe the mess, it only gets paid when customers decide what to remove. The risk is whether cleanup decisions can become autonomous without scaring legal and IT teams.",
+  "research": {
+    "verified_at": "2026-06-18",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.clarioclean.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "BusinessWire funding announcement",
+        "url": "https://www.businesswire.com/news/home/20260617473639/en/Clario-Launches-with-%246M-Seed-Funding-to-Rid-Enterprises-of-Garbage-Data",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Clario identifies and eliminates redundant, obsolete, and trivial unstructured data to reduce waste and risk.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage frames the workflow as keep what matters and eliminate the rest, with outcomes for token cost, AI quality, search risk, and security.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "BusinessWire says Clario analyzes Google Drive, SharePoint, OneDrive, Box, and Confluence and routes decisions through Slack and Teams.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "BusinessWire reports a $6M seed round led by Preface Ventures for cleaning enterprise unstructured data.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise IT, data governance, security, legal, and AI-readiness teams managing unstructured collaboration data.",
+      "category": "Data governance",
+      "differentiation": "Clario focuses on removing low-value unstructured files rather than only indexing or cataloging them for search.",
+      "why_now": "Enterprise AI rollouts make stale collaboration files more expensive because bad data now affects search quality, token spend, and model context."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether legal and IT teams will trust automated recommendations enough to delete or archive sensitive files at scale.",
+        "basis": "VentureDex editorial assessment based on official product and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$6M seed to delete data ROT",
+  "product_type": "SaaS",
+  "hq_location": "Menlo Park",
+  "region": "US",
+  "tags": "data governance,ai readiness,unstructured data,enterprise it,slack",
+  "investors": "Preface Ventures",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6M",
+      "stage": "Seed",
+      "lead_investor": "Preface Ventures",
+      "date": "2026-06-17",
+      "source_url": "https://www.businesswire.com/news/home/20260617473639/en/Clario-Launches-with-%246M-Seed-Funding-to-Rid-Enterprises-of-Garbage-Data",
+      "source_name": "BusinessWire"
+    }
+  ]
+}

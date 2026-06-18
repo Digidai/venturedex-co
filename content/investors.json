@@ -990,5 +990,19 @@
     "short_name": "Newion",
     "website": "https://www.newion.com/",
     "description": "Amsterdam-based venture capital firm backing early-stage B2B software companies in Europe."
+  },
+  "alstin-capital": {
+    "name": "Alstin Capital",
+    "slug": "alstin-capital",
+    "short_name": "Alstin",
+    "website": "https://alstin.capital/",
+    "description": "European B2B software venture capital firm investing in early-stage technology companies."
+  },
+  "preface-ventures": {
+    "name": "Preface Ventures",
+    "slug": "preface-ventures",
+    "short_name": "Preface",
+    "website": "https://www.prefaceventures.com/",
+    "description": "Early-stage venture firm backing enterprise software and AI companies."
   }
 }

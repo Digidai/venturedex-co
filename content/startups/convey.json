@@ -1,0 +1,85 @@
+{
+  "slug": "convey",
+  "domain": "convey.dev",
+  "url": "https://convey.dev/",
+  "product_name": "Convey",
+  "summary": "AI teammates that learn operational workflows and execute business processes for enterprises.",
+  "editor_note": "The sharp move is calling the worker a teammate, not a chatbot. Convey says operators can share a screen and train digital teammates in about 3 hours, then hand off invoices, reconciliation, reporting, and ad-ops work in the background. Unlike copilots that wait beside one employee, it sells outcome ownership to the whole operations team. The question is how often messy exceptions pull humans back into the loop.",
+  "research": {
+    "verified_at": "2026-06-18",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://convey.dev/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "BusinessWire funding announcement",
+        "url": "https://www.businesswire.com/news/home/20260617486214/en/Convey-Raises-%2438-Million-Series-A-Led-by-Andreessen-Horowitz-to-Automate-Enterprise-Operations-with-AI-Teammates",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says operators can describe a process or share their screen so an AI teammate observes, learns, and takes over execution.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Convey reports more than 1,045,000 hours of background work executed since Q3 2025 and shows enterprise customer logos and case studies.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page positions the platform as a way to train and manage enterprise-grade digital teammates across operational work.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "BusinessWire reports a $38M Series A led by Andreessen Horowitz for automating enterprise operations with AI teammates.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise operations, finance, revenue, support, and admin teams with repeatable back-office workflows.",
+      "category": "Enterprise workflow automation",
+      "differentiation": "Convey emphasizes trained digital teammates that own background execution, rather than chat copilots that only advise a single user.",
+      "why_now": "Enterprises are moving from AI experimentation to measurable labor substitution in operational queues and repetitive admin work."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that high-exception workflows may still require human judgment often enough to cap automation ROI.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 5,
+  "why_featured": "$38M Series A for AI teammates",
+  "product_type": "SaaS",
+  "founded_year": 2025,
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "ai agents,workflow automation,enterprise operations,no-code,back office",
+  "investors": "Andreessen Horowitz",
+  "links": {
+    "careers": "https://www.linkedin.com/company/conveyai/jobs/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$38M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-17",
+      "source_url": "https://www.businesswire.com/news/home/20260617486214/en/Convey-Raises-%2438-Million-Series-A-Led-by-Andreessen-Horowitz-to-Automate-Enterprise-Operations-with-AI-Teammates",
+      "source_name": "BusinessWire"
+    }
+  ]
+}

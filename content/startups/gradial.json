@@ -1,0 +1,91 @@
+{
+  "slug": "gradial",
+  "domain": "www.gradial.com",
+  "url": "https://www.gradial.com/",
+  "product_name": "Gradial",
+  "summary": "AI marketing agents for brief-to-live campaign execution across enterprise content supply chains.",
+  "editor_note": "Marketing ops has a funny failure mode: the strategy is approved, then execution disappears into tickets. Gradial maps 4 agent jobs across brief, asset execution, generative engine optimization, and journey insights, with customer stories for T-Mobile, AWS, Prudential, and Cisco. Unlike CMS plugins that fix one publishing step, it sits across the content supply chain. The test is whether governance keeps up when agents touch brand risk.",
+  "research": {
+    "verified_at": "2026-06-18",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.gradial.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Official documentation",
+        "url": "https://docs.gradial.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Axios funding coverage",
+        "url": "https://www.axios.com/2026/06/18/gradial-ai-agents-marketing",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage says Gradial creates execution velocity from brief to live across the enterprise content supply chain.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site names agent jobs for content and campaign execution, asset execution, generative engine optimization, and insights and journeys.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Gradial shows enterprise customer stories and logos including T-Mobile, AWS, Prudential, Cisco, Microsoft, Electronic Arts, and Weber.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Axios reports a $65M Series C led by Insight Partners for Gradial AI agents that help brands create marketing campaigns.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise marketing, digital operations, content supply-chain, and brand governance teams.",
+      "category": "Marketing operations AI",
+      "differentiation": "Gradial spans brief, production, optimization, and insight workflows instead of limiting AI to copy generation or CMS publishing.",
+      "why_now": "Marketing teams are under pressure to launch more personalized campaigns while keeping brand, legal, and channel governance intact."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that brand governance and approval complexity may limit how much campaign execution agents can own without human review.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 5,
+  "why_featured": "$65M Series C for marketing agents",
+  "product_type": "SaaS",
+  "hq_location": "Seattle",
+  "region": "US",
+  "tags": "marketing ops,ai agents,content supply chain,enterprise ai,campaigns",
+  "investors": "Insight Partners",
+  "links": {
+    "docs": "https://docs.gradial.com/",
+    "careers": "https://job-boards.greenhouse.io/gradial"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$65M",
+      "stage": "Series C",
+      "lead_investor": "Insight Partners",
+      "date": "2026-06-18",
+      "source_url": "https://www.axios.com/2026/06/18/gradial-ai-agents-marketing",
+      "source_name": "Axios"
+    }
+  ]
+}

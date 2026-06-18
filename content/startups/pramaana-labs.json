@@ -1,0 +1,88 @@
+{
+  "slug": "pramaana-labs",
+  "domain": "pramaanalabs.ai",
+  "url": "https://pramaanalabs.ai/",
+  "product_name": "Pramaana Labs",
+  "summary": "Formal-verification layer for high-stakes AI answers in tax, law, medicine, and safety.",
+  "editor_note": "The useful bet is that some AI answers should not ship until they can be checked like software. Pramaana turns tax codes, clinical guidelines, legal rules, and safety constraints into machine-checkable logic, then refuses answers it cannot prove. Unlike generic RAG wrappers that cite a source and hope the model behaved, this treats correctness as a compiler problem. The risk is whether domain formalization scales faster than consulting work.",
+  "research": {
+    "verified_at": "2026-06-18",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://pramaanalabs.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_funding_note",
+        "label": "Official funding note",
+        "url": "https://pramaanalabs.ai/blog/we-raised-27m-to-build-a-compiler-for-mission-critical-ai",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch funding coverage",
+        "url": "https://techcrunch.com/2026/06/17/pramaana-labs-raises-27-million-seed-round-from-khosla-ventures-to-bring-formal-verification-to-ai/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Pramaana turns tax codes, clinical guidelines, legal rules, and safety constraints into machine-checkable logic.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page describes a stack that extracts domain knowledge, creates formal representations, and verifies outputs with provers and solvers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official funding note frames the product as a compiler for mission-critical AI, not a general chatbot layer.",
+        "source_ids": [
+          "official_funding_note"
+        ]
+      },
+      {
+        "claim": "TechCrunch reports a $27M seed round led by Khosla Ventures for applying formal verification to AI systems.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI teams, domain experts, and regulated-enterprise operators who need auditable answers in high-stakes workflows.",
+      "category": "AI verification infrastructure",
+      "differentiation": "Pramaana applies formal methods to AI outputs so answers can be traced, challenged, and proved instead of merely cited.",
+      "why_now": "Enterprises are putting AI into tax, clinical, legal, and safety workflows where plausible answers are not enough."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enough domain knowledge can be formalized quickly without turning each deployment into bespoke consulting.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$27M seed for provable AI",
+  "product_type": "AI / ML",
+  "founded_year": 2025,
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "ai verification,formal methods,regulated ai,enterprise ai,ai safety",
+  "investors": "Khosla Ventures",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$27M",
+      "stage": "Seed",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-06-17",
+      "source_url": "https://techcrunch.com/2026/06/17/pramaana-labs-raises-27-million-seed-round-from-khosla-ventures-to-bring-formal-verification-to-ai/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

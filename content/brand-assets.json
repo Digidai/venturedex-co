@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-17",
+  "verified_at": "2026-06-18",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1032,6 +1032,41 @@
       "local_path": "/logos/companies/lightbringer.svg",
       "source_page": "https://www.lightbringer.com/",
       "source_url": "https://cdn.prod.website-files.com/689ddb3abd6c2c20491ff199/689ddb3abd6c2c20491ff3ba_wc.svg"
+    },
+    "pramaana-labs": {
+      "name": "Pramaana Labs",
+      "shape": "icon",
+      "local_path": "/logos/companies/pramaana-labs.png",
+      "source_page": "https://pramaanalabs.ai/",
+      "source_url": "https://framerusercontent.com/images/8w6L3lP1SP5xERD9xZJ7xlPnmbM.png"
+    },
+    "convey": {
+      "name": "Convey",
+      "shape": "icon",
+      "local_path": "/logos/companies/convey.png",
+      "source_page": "https://convey.dev/",
+      "source_url": "https://convey.dev/icon.png"
+    },
+    "neuraltrust": {
+      "name": "NeuralTrust",
+      "shape": "icon",
+      "local_path": "/logos/companies/neuraltrust.svg",
+      "source_page": "https://neuraltrust.ai/",
+      "source_url": "https://neuraltrust.ai/icon.svg?icon.170nhue1-hgb5.svg"
+    },
+    "clario": {
+      "name": "Clario",
+      "shape": "icon",
+      "local_path": "/logos/companies/clario.png",
+      "source_page": "https://www.clarioclean.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a2c268e0a6faf881ebc5337/6a2d87e2c082a1caaf147e4b_ico-light.png"
+    },
+    "gradial": {
+      "name": "Gradial",
+      "shape": "icon",
+      "local_path": "/logos/companies/gradial.png",
+      "source_page": "https://www.gradial.com/",
+      "source_url": "https://www.gradial.com/icon.png"
     }
   },
   "investors": {
@@ -1975,6 +2010,20 @@
       "local_path": "/logos/investors/newion.png",
       "source_page": "https://www.newion.com/",
       "source_url": "https://cdn.prod.website-files.com/69f88bf1f3f755d0a33dc5e0/6a02e74515a6b5d4b6d888a9_Webclip.png"
+    },
+    "alstin-capital": {
+      "name": "Alstin Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/alstin-capital.svg",
+      "source_page": "https://alstin.capital/",
+      "source_url": "https://cms.alstin.capital/uploads/blue_bf96371de4.svg"
+    },
+    "preface-ventures": {
+      "name": "Preface Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/preface-ventures.webp",
+      "source_page": "https://www.prefaceventures.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5d675fd4209fb10001b996bb/1591391754814-KG0HPVIV531MT0YZO02P/favicon.ico"
     }
   }
 }
