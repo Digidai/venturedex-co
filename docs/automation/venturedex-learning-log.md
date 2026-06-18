@@ -2543,3 +2543,71 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - fixed release blockers narrowly: Lightbringer's funding `lead_investor` now resolves to the canonical `6 Degrees Capital` directory entry while research still records the co-led source fact; optional unknown fields are omitted instead of set to `null`; generated seed writes are atomic to prevent parallel-test truncation; Camber's official runner-flaky logo source is explicitly marked `allow_unreachable_source`.
   - verification passed before the release-fix push; generated outputs including `d1/generated-seed.sql`, `.astro/`, `dist/`, and `scripts/__pycache__/` were restored or removed after validation.
   - GSC direct submit was not reported as complete because the required latest relevant ledger row for Ent is `retry_pending`, not `requested`; the blocker, diagnostic artifacts, and exact target URLs were preserved.
+
+### 2026-06-15 15:31 CST
+
+- candidate_count: 7 weekly picks from 21 target-week published startups
+- accepted: 7 weekly picks in temporary clean worktree
+- rejected: n/a
+- rejection_bar_met: n/a
+- outcome: weekly-content-local-prepared-validation-blocked
+- validation: blocked; `./scripts/check-github-actions.sh`, `python3 scripts/weekly.py validate`, and `git diff --check` passed, but `./scripts/manage.sh validate` stopped in content validation because existing `content/brand-assets.json` entry `companies.qorelo.source_url` returns HTTP 404 at `https://qorelo.com/apple-touch-icon.png`.
+- weekly_validate: pass; issue #4 validates as a published weekly issue with seven research-object picks and no TODO text.
+- build_db: not reached because full validation stopped during brand-asset URL checks before D1 seed generation.
+- build_app: not reached because full validation stopped before Astro sync, TypeScript checking, and build.
+- screenshot: n/a; Weekly source checks used `bb-browser` product/source text and error checks rather than screenshots.
+- commit_push: not attempted; the required full local gate did not pass.
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: not attempted
+- live_smoke: not attempted
+- newsletter: not manually triggered; issue #4 was not committed, pushed, or deployed, so the Weekly 24-hour delay window and Tuesday 22:00 Asia/Shanghai Cron path had not started for this issue.
+- gsc: not attempted; GSC is only allowed after deploy and live smoke, and this run did not pass local release gates.
+- failure_tags: [base_content_validation, brand_asset_source_drift, scope_guard]
+- reward: 1
+- dominant_failure_mode: Weekly content and weekly-specific validation passed, but the then-current base content was not releasable because Qorelo's recorded official brand-asset URL drifted to a 404 after the prior Daily run.
+- proposed_change: deferred; update `content/brand-assets.json` for Qorelo to the current official icon URL exposed on `https://www.qorelo.com/`, then rerun `./scripts/manage.sh validate`. That repair was later covered by the June 17 Daily baseline fix.
+- decision: deferred
+- affected_file: content/weekly/4.json, content/brand-assets.json, docs/automation/venturedex-learning-log.md
+- affected_section: weekly curator; brand asset validation blocker
+- evidence:
+  - required control docs and automation memory were read before draft/research work; bootstrap passed first in the main checkout and again in `/tmp/venturedex-weekly-curator-20260615152313`, restoring repo-local `.env`, verifying an active Cloudflare token, reporting no R2 permission, restoring dependencies, and confirming GitHub Actions active.
+  - no existing issue covered the previous full Monday-Sunday window `2026-06-08` to `2026-06-14`, so `python3 scripts/weekly.py draft --week-start 2026-06-08 --week-end 2026-06-14 --write` created `content/weekly/4.json` in the clean worktree.
+  - issue #4 was completed locally as `AI Is Leaving the Demo Lane`, `status: published`, `published_at: 2026-06-15`, with picks Definic, Equal AI, PhoenixAI, Rivvun AI, Poetic, Niteshift, and Leaf.
+  - every pick includes `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`; `rg "TODO|Research risk candidate" content/weekly/4.json` returned no matches.
+  - evidence boundary stayed within published startup records, structured `research`, official product pages, app-store or docs surfaces where present, linked funding/company announcements, and current `bb-browser` checks. No startup, logo, screenshot, schema, or deployment code was added.
+  - `bb-browser` checks verified current public surfaces for Equal AI, PhoenixAI, Rivvun AI, Poetic, Niteshift, Leaf, and Definic after a targeted wait iteration; several publication pages were title-visible but not used for new unsupported claims.
+  - failure isolation confirmed `https://qorelo.com/apple-touch-icon.png` redirects to `https://www.qorelo.com/apple-touch-icon.png` and returns HTTP 404, while the current Qorelo homepage exposes Webflow CDN icon URLs. The brand-asset repair was not made in the Weekly run because Weekly may only create or update `content/weekly/*.json`.
+
+### 2026-06-18 19:39 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: stopped
+- validation: not_run; required bootstrap failed before candidate discovery.
+- weekly_validate: n/a
+- build_db: not_run
+- build_app: not_run
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- live_smoke: n/a
+- newsletter: not manually triggered; no content was published, so no new Daily delay window started and no D1 send state was changed by this run.
+- gsc: not attempted; no new startup detail pages were created or deployed.
+- failure_tags: [other]
+- reward: -1
+- dominant_failure_mode: bootstrap stopped in the GitHub Actions availability check because `gh api repos/Digidai/venturedex-co/actions/workflows` failed with `net/http: TLS handshake timeout` after repo-local `.env`, Cloudflare token, R2 capability, and `node_modules` checks completed.
+- proposed_change: none; this was a bootstrap hard-stop and a single external API transport failure, so no automation-doc heuristic change was justified.
+- decision: none
+- affected_file: docs/automation/venturedex-learning-log.md
+- affected_section: daily curator bootstrap
+- evidence:
+  - required control docs and automation memory were read before operation, including `docs/automation/README.md`, `content/STANDARD.md`, `content/CODEX_TASK.md`, `docs/automation/venturedex-daily-runbook.md`, `docs/automation/venturedex-feedback-loop.md`, `docs/automation/venturedex-learning-log.md`, `docs/newsletter.md`, and `docs/observability.md`.
+  - `./scripts/bootstrap-automation.sh venturedex-daily-curator` printed `repo-local .env already present`, `cloudflare_token: active`, `r2_access: no (token lacks R2 permission)`, and `node_modules ready`, then exited 1 inside `scripts/check-github-actions.sh`.
+  - `scripts/check-github-actions.sh` verifies authenticated `gh`, repository Actions permissions, and active `.github/workflows/ci.yml` / `.github/workflows/deploy.yml`; the failed request was the workflow-list API call, not a content validator or deployment step.
+  - candidate discovery, rejected-only fallback, content edits, validation gates, commit/push, deploy, live smoke, GSC submission, and newsletter inspection were intentionally not run after the bootstrap failure.
+  - the checkout was behind `origin/main` by 6 commits and already had unrelated uncommitted changes in `content/brand-assets.json`, `docs/automation/venturedex-learning-log.md`, and `docs/promotion/gsc-artifacts/20260615-140823-retry_pending-venturedex-co-startups-qorelo.txt`; those pre-existing changes were preserved, then reconciled during the follow-up cleanup before the Daily rerun.
