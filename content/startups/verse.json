@@ -1,0 +1,84 @@
+{
+  "slug": "verse",
+  "domain": "verse.inc",
+  "url": "https://verse.inc/",
+  "product_name": "Verse",
+  "summary": "Energy intelligence platform accelerating data-center grid connection.",
+  "editor_note": "Power has become the bottleneck AI companies cannot hide behind software. Verse's Aria reads market prices, weather and live asset telemetry, while Dispatch Intelligence uses on-site batteries and solar so data centers can flex the grid without slowing GPUs. Unlike curtailment tools, the product sells speed-to-power and up to 3 years faster connection. The risk is that utility approvals may still move slower than the software.",
+  "research": {
+    "verified_at": "2026-06-19",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://verse.inc/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Official Series B announcement",
+        "url": "https://verse.inc/newsroom/series-b",
+        "type": "funding"
+      },
+      {
+        "id": "official_letter",
+        "label": "Official founders letter",
+        "url": "https://verse.inc/company/founders-letter",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says Verse gets data centers online up to three years faster and uses Aria to read market prices, weather, and live telemetry.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series B announcement says Dispatch Intelligence orchestrates on-site energy resources alongside existing grid infrastructure.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The founders letter says Aria grew from contract management, PPA tools, risk management, and utility bill management for large energy users.",
+        "source_ids": [
+          "official_letter"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data-center developers, AI infrastructure operators, and large energy buyers waiting on grid interconnection or power capacity.",
+      "category": "Energy infrastructure software",
+      "differentiation": "Verse links energy market intelligence, asset telemetry, contracts, and dispatch control to shorten the path to power.",
+      "why_now": "AI data-center demand is turning power access into a revenue bottleneck for compute-heavy companies."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether software-driven dispatch can overcome slow utility approvals, grid constraints, and site-specific energy economics.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "Speed-to-power software",
+  "product_type": "Climate / Sustainability",
+  "hq_location": "San Francisco, CA",
+  "region": "US",
+  "tags": "energy,data centers,grid,ai infrastructure",
+  "investors": "Bessemer Venture Partners",
+  "links": {
+    "careers": "https://verse.inc/company/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$54M",
+      "stage": "Series B",
+      "lead_investor": "Bessemer Venture Partners",
+      "date": "2026-06-18",
+      "source_url": "https://verse.inc/newsroom/series-b",
+      "source_name": "Verse"
+    }
+  ]
+}

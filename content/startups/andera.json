@@ -1,0 +1,77 @@
+{
+  "slug": "andera",
+  "domain": "www.andera.ai",
+  "url": "https://www.andera.ai/",
+  "product_name": "Andera",
+  "summary": "Audit AI platform automating SOX control testing and workpapers.",
+  "editor_note": "Audit work dies in Excel because the evidence, test matrix, and sign-off trail live in different places. Andera says its Audit AI can automate SOX control testing, email control owners, flag exceptions, and save 70% of control-testing costs. Unlike GRC suites that manage checklists, it tries to produce auditor-ready workpapers. The risk is whether external auditors trust AI-generated evidence at scale.",
+  "research": {
+    "verified_at": "2026-06-19",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.andera.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Lightspeed investment note",
+        "url": "https://lsvp.com/stories/audits-moment-has-arrived-why-we-invested-in-andera/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says Andera automates SOX control testing and saves 70% of control-testing costs with AI and no setup needed.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows Audit AI generating workpapers in auditor formats and reviewing Snowflake user-access control evidence.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site describes evidence gathering by emailing control owners, checking evidence relevance, and escalating non-responses.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Finance, internal audit, SOX, and compliance teams that still assemble evidence, workpapers, and exception follow-up manually.",
+      "category": "Audit and compliance automation",
+      "differentiation": "Andera tries to generate auditor-ready control-testing workpapers rather than only tracking compliance tasks.",
+      "why_now": "SOX teams are under pressure to cut repetitive testing cost while keeping review trails acceptable to external auditors."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that customers may still need substantial human review if external auditors resist relying on AI-generated testing evidence.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "AI SOX workpapers",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "audit,sox,compliance,finance automation",
+  "investors": "Lightspeed Venture Partners",
+  "links": {
+    "careers": "https://www.andera.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$37M",
+      "stage": "Series A",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-06-17",
+      "source_url": "https://lsvp.com/stories/audits-moment-has-arrived-why-we-invested-in-andera/",
+      "source_name": "Lightspeed Venture Partners"
+    }
+  ]
+}

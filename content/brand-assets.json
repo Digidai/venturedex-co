@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-18",
+  "verified_at": "2026-06-19",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1067,6 +1067,41 @@
       "local_path": "/logos/companies/gradial.png",
       "source_page": "https://www.gradial.com/",
       "source_url": "https://www.gradial.com/icon.png"
+    },
+    "architect-labs": {
+      "name": "Architect Labs",
+      "shape": "icon",
+      "local_path": "/logos/companies/architect-labs.jpg",
+      "source_page": "https://architectlabs.com/",
+      "source_url": "https://architectlabs.com/icon.png?icon.3jo__qi_1-sde.png"
+    },
+    "boolsi": {
+      "name": "BoolSi",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/boolsi.svg",
+      "source_page": "https://boolsi.com/",
+      "source_url": "https://boolsi.com/assets/logo.svg"
+    },
+    "devplan": {
+      "name": "Devplan",
+      "shape": "icon",
+      "local_path": "/logos/companies/devplan.svg",
+      "source_page": "https://devplan.com/",
+      "source_url": "https://devplan.com/assets/img/logo-mark.svg"
+    },
+    "verse": {
+      "name": "Verse",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/verse.svg",
+      "source_page": "https://verse.inc/",
+      "source_url": "https://verse.inc/assets/logos/verse.svg"
+    },
+    "andera": {
+      "name": "Andera",
+      "shape": "icon",
+      "local_path": "/logos/companies/andera.svg",
+      "source_page": "https://www.andera.ai/",
+      "source_url": "https://www.andera.ai/favicon-light.svg"
     }
   },
   "investors": {
@@ -2024,6 +2059,20 @@
       "local_path": "/logos/investors/preface-ventures.webp",
       "source_page": "https://www.prefaceventures.com/",
       "source_url": "https://images.squarespace-cdn.com/content/v1/5d675fd4209fb10001b996bb/1591391754814-KG0HPVIV531MT0YZO02P/favicon.ico"
+    },
+    "fine-structure-ventures": {
+      "name": "Fine Structure Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/fine-structure-ventures.png",
+      "source_page": "https://finestructure.vc/",
+      "source_url": "https://finestructure.vc/wp-content/themes/custom/f-prime-wp-theme/static/img/favicons/favicon192x192.png"
+    },
+    "ai2-incubator": {
+      "name": "AI2 Incubator",
+      "shape": "icon",
+      "local_path": "/logos/investors/ai2-incubator.png",
+      "source_page": "https://www.ai2incubator.com/",
+      "source_url": "https://framerusercontent.com/images/oUEFzIrX5wvUBPyadPdE0l2aE.png"
     }
   }
 }

@@ -1,0 +1,78 @@
+{
+  "slug": "boolsi",
+  "domain": "boolsi.com",
+  "url": "https://boolsi.com/",
+  "product_name": "BoolSi",
+  "summary": "Compiler that turns software hotspots into verified FPGA co-processors.",
+  "editor_note": "This is software-to-silicon with the abstraction pointed at developers, not RTL teams. BoolSi marks a hot C/C++ function, emits a co-processor, driver and bitstream, then checks it against source behavior; its regex demo goes from 2.66 ms on ARM to 0.042 ms with 8 agents. Unlike HLS tools for chip specialists, the bet is that hardware becomes a build artifact. The risk is private-beta reality versus the benchmark.",
+  "research": {
+    "verified_at": "2026-06-19",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://boolsi.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Official seed announcement",
+        "url": "https://boolsi.com/seed-announcement.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says BoolSi marks a hot C or C++ function and synthesizes it into custom digital logic beside the CPU.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site says the platform maps API calls, updates the BSP, produces the hardware bitstream, and verifies each generated agent against source behavior.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The seed announcement says BoolSi trains ML models to learn program behavior and converge into analyzable digital circuits for FPGAs.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Embedded software teams in robotics and devices whose C or C++ workloads are bottlenecked on CPUs or microcontrollers.",
+      "category": "Compiler and hardware-acceleration tooling",
+      "differentiation": "BoolSi exposes hardware acceleration as a compiler output for software developers instead of an HDL project for chip specialists.",
+      "why_now": "Robotics and edge devices need lower latency without every software team becoming a custom silicon team."
+    },
+    "risks": [
+      {
+        "claim": "The key open question is whether private-beta customers see reliable gains outside controlled benchmark workloads and FPGA-friendly functions.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "Software-to-FPGA compiler",
+  "product_type": "DevTools",
+  "hq_location": "Boston, MA",
+  "region": "US",
+  "tags": "compilers,fpgas,embedded,hardware acceleration",
+  "investors": "Fine Structure Ventures",
+  "links": {
+    "careers": "https://boolsi.com/careers.html"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6M",
+      "stage": "Seed",
+      "lead_investor": "Fine Structure Ventures",
+      "date": "2026-06-18",
+      "source_url": "https://boolsi.com/seed-announcement.html",
+      "source_name": "BoolSi"
+    }
+  ]
+}

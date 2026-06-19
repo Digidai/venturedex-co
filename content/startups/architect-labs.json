@@ -1,0 +1,77 @@
+{
+  "slug": "architect-labs",
+  "domain": "architectlabs.com",
+  "url": "https://architectlabs.com/",
+  "product_name": "Architect Labs",
+  "summary": "AI design partner for custom silicon and end-to-end chip verification.",
+  "editor_note": "The useful bet is that chip design needs a co-designer, not another EDA plug-in. Architect Labs says its AI flow designs and provably verifies chips end-to-end, and the founding team has taped out 80+ production chips. Unlike agent wrappers around brittle toolchains, it wants to work as a design partner for AI labs and fabless teams. The risk is whether a service-led model can scale past a few hard tapeouts.",
+  "research": {
+    "verified_at": "2026-06-19",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://architectlabs.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Official seed funding announcement",
+        "url": "https://architectlabs.com/blog/seed",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says Architect Labs is building an AI system that explores, designs and provably verifies chips for demanding workloads.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The seed announcement says the system is intended to design and provably verify chips end-to-end for custom silicon programs.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The announcement says Architect is not building EDA tools or wrappers, but a design partner that reasons about hardware, software, and manufacturing constraints.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Frontier AI labs, hyperscalers, OEMs, and fabless chip teams trying to build custom silicon faster.",
+      "category": "AI silicon design infrastructure",
+      "differentiation": "Architect aims to automate design and formal verification together, rather than adding an agent beside existing EDA workflows.",
+      "why_now": "AI workloads are changing faster than traditional chip-design programs can safely predict and tape out new architectures."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether end-to-end chip design can scale beyond high-touch expert engagements and still reach tapeout-quality reliability.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "AI silicon design partner",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai chips,eda,formal verification,semiconductors",
+  "investors": "Kindred Ventures",
+  "links": {
+    "careers": "https://architectlabs.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$24M",
+      "stage": "Seed",
+      "lead_investor": "Kindred Ventures",
+      "date": "2026-06-18",
+      "source_url": "https://architectlabs.com/blog/seed",
+      "source_name": "Architect Labs"
+    }
+  ]
+}

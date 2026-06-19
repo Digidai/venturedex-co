@@ -1004,5 +1004,19 @@
     "short_name": "Preface",
     "website": "https://www.prefaceventures.com/",
     "description": "Early-stage venture firm backing enterprise software and AI companies."
+  },
+  "fine-structure-ventures": {
+    "name": "Fine Structure Ventures",
+    "slug": "fine-structure-ventures",
+    "short_name": "Fine Structure",
+    "website": "https://finestructure.vc/",
+    "description": "Early-stage venture firm backing scientific and technological innovation, advised by F-Prime."
+  },
+  "ai2-incubator": {
+    "name": "AI2 Incubator",
+    "slug": "ai2-incubator",
+    "short_name": "AI2 Incubator",
+    "website": "https://www.ai2incubator.com/",
+    "description": "Seattle-based AI startup incubator and seed investor now operating as AI House."
   }
 }

@@ -1,0 +1,74 @@
+{
+  "slug": "devplan",
+  "domain": "devplan.com",
+  "url": "https://devplan.com/",
+  "product_name": "Devplan",
+  "summary": "Product intelligence graph for engineering status, risks, and decisions.",
+  "editor_note": "The sharp bet is that AI coding makes coordination, not execution, the bottleneck. Devplan's Weaver turns GitHub, tickets, meetings, Slack, Notion, Google Workspace and customer signals into a live product graph, with Slack and MCP answers tied back to source. Unlike generic enterprise search, it is tuned for product and engineering drift. The risk is whether teams trust one graph across messy roadmap politics.",
+  "research": {
+    "verified_at": "2026-06-19",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://devplan.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PRWeb funding announcement",
+        "url": "https://www.prweb.com/releases/devplan-emerges-from-stealth-with-2-5m-to-build-the-intelligence-layer-for-product-and-engineering-organizations-302804259.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes Daily Digest, Automated Status, Ask Devplan, Change History, and Weaver as product intelligence workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site says Weaver converts commits, tickets, meetings, Slack, Notion, Google Workspace, and customer feedback into a shared product graph.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Weaver connects GitHub, Jira, Linear, Slack, Notion, Google Workspace, meeting notes, and customer feedback.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Product managers, engineering managers, and leaders trying to keep roadmap status and decisions current across fragmented tools.",
+      "category": "Product intelligence software",
+      "differentiation": "Devplan focuses the knowledge graph on product and engineering coordination rather than general enterprise search.",
+      "why_now": "AI-assisted coding increases the amount of shipped work while making cross-team status, risk, and decision tracking harder to keep current."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that organizational politics and incomplete tool coverage limit how much teams accept one generated graph as the source of truth.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "Team-wide product graph",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "product management,engineering management,knowledge graph,mcp",
+  "investors": "AI2 Incubator",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$2.5M",
+      "stage": "Seed",
+      "lead_investor": "AI2 Incubator",
+      "date": "2026-06-18",
+      "source_url": "https://www.prweb.com/releases/devplan-emerges-from-stealth-with-2-5m-to-build-the-intelligence-layer-for-product-and-engineering-organizations-302804259.html",
+      "source_name": "PRWeb"
+    }
+  ]
+}
