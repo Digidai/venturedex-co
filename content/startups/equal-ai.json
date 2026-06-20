@@ -1,7 +1,7 @@
 {
   "slug": "equal-ai",
-  "domain": "www.myequal.ai",
-  "url": "https://www.myequal.ai/",
+  "domain": "www.equal.in",
+  "url": "https://www.equal.in/",
   "product_name": "Equal AI",
   "summary": "AI call assistant that screens unknown calls and explains caller intent before pickup.",
   "editor_note": "Call screening is not new, but India makes it harder: delivery calls, finance spam, and code-mixed speech all collide on one phone. Equal AI shows Android call answering, live transcripts, quick replies, recordings, 10+ languages, and 300K daily active users. Unlike caller-ID apps that only name the number, the bet is to make the phone conversation itself inspectable before you join.",
@@ -27,16 +27,10 @@
     }
   ],
   "research": {
-    "verified_at": "2026-06-13",
+    "verified_at": "2026-06-20",
     "sources": [
       {
         "id": "official_site",
-        "label": "Official Equal AI product site",
-        "url": "https://www.myequal.ai/",
-        "type": "official"
-      },
-      {
-        "id": "official_company",
         "label": "Official Equal company site",
         "url": "https://www.equal.in/",
         "type": "official"
@@ -56,9 +50,9 @@
     ],
     "product_evidence": [
       {
-        "claim": "The official product site describes Equal AI as an AI call assistant that picks up, speaks, and screens unknown calls for the user.",
+        "claim": "The Google Play listing describes Equal AI as an AI call assistant that picks up, speaks, and screens unknown calls for the user.",
         "source_ids": [
-          "official_site"
+          "app_store"
         ]
       },
       {
@@ -83,7 +77,7 @@
     "risks": [
       {
         "claim": "The product still has to prove it can defend privacy expectations and keep call-handling quality high as it expands beyond unknown-number screening.",
-      "basis": "VentureDex editorial assessment based on official product evidence, Google Play copy, and TechCrunch's note that known-number screening and paid tiers remain planned."
+        "basis": "VentureDex editorial assessment based on official product evidence, Google Play copy, and TechCrunch's note that known-number screening and paid tiers remain planned."
       }
     ]
   }

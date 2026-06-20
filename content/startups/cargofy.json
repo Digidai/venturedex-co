@@ -1,0 +1,83 @@
+{
+  "slug": "cargofy",
+  "domain": "cargofy.com",
+  "url": "https://cargofy.com/",
+  "product_name": "Cargofy",
+  "summary": "AI digital workforce for freight quoting, dispatch, tracking, and load closing.",
+  "editor_note": "Freight teams lose hours in calls, emails, WhatsApp threads, and tool switching between quote and delivery. Cargofy says its AI workers call, email, dispatch, track, close loads, and operate in 28 languages across existing logistics tools. Unlike broker software that mainly stores records, the product is framed as labor for daily operations. The risk is whether autonomous agents can handle exceptions, compliance, and carrier trust at scale.",
+  "research": {
+    "verified_at": "2026-06-20",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://cargofy.com/",
+        "type": "official"
+      },
+      {
+        "id": "careers_page",
+        "label": "Official careers page",
+        "url": "https://careers.cargofy.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tech.eu Series A report",
+        "url": "https://tech.eu/2026/06/18/cargofy-lands-6m-to-scale-ai-workers-for-logistics/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage says Cargofy provides a digital workforce for logistics that handles jobs from quote to delivery through calls, email, and WhatsApp.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site says its AI workers quote, dispatch, track, and close loads for forwarders, brokers, carriers, 3PLs, and shippers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The careers page says Cargofy builds an AI-native operating system for global freight with autonomous agents for procurement, dispatching, and operations.",
+        "source_ids": [
+          "careers_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Freight forwarders, brokers, carriers, shippers, 3PLs, dispatch teams, and logistics operations managers.",
+      "category": "Logistics automation",
+      "differentiation": "Cargofy sells AI workers that communicate and execute operational steps across channels, rather than only workflow software for freight records.",
+      "why_now": "Freight operations remain fragmented across phone, email, WhatsApp, documents, and legacy tools while teams face pressure to move faster with fewer manual touches."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that freight exceptions, compliance steps, and carrier relationships may still require human operators despite automation claims.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "AI freight workforce",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "logistics,freight,ai agents,dispatch,operations",
+  "investors": "u.ventures",
+  "links": {
+    "careers": "https://careers.cargofy.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$11M",
+      "stage": "Series A",
+      "lead_investor": "u.ventures",
+      "date": "2026-06-18",
+      "source_url": "https://tech.eu/2026/06/18/cargofy-lands-6m-to-scale-ai-workers-for-logistics/",
+      "source_name": "Tech.eu"
+    }
+  ]
+}

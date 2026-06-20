@@ -1,0 +1,77 @@
+{
+  "slug": "frontier-health",
+  "domain": "www.frontierhealth.ai",
+  "url": "https://www.frontierhealth.ai/",
+  "product_name": "Frontier Health",
+  "summary": "AI teammate automating high-volume healthcare administration workflows.",
+  "editor_note": "Healthcare operations often fail in the handoff between scheduling systems, patient messages, and back-office queues. Frontier Health says Juno works across existing systems to book, validate, track, chase, update, and communicate on admin tasks. Unlike point bots for one inbox, it is selling an operational teammate for NHS-style workflows. The risk is whether safe handback and governance stay reliable across clinical-adjacent exceptions.",
+  "research": {
+    "verified_at": "2026-06-20",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.frontierhealth.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TNW seed funding report",
+        "url": "https://thenextweb.com/news/frontier-health-16m-seed-atomico-nhs-admin-ai-juno",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Juno as a supportive AI teammate for healthcare administration teams, automating repetitive high-volume work across existing systems.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The public workflow examples cover outpatient referrals, waiting-list management, appointment booking and rescheduling, patient communications, and patient tracking.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "TNW says Frontier Health deployed in an NHS environment in eight weeks and reported 221 staff days saved plus a 22 percent median emergency-department time reduction.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Healthcare operations, NHS administration, scheduling, referral, rota, and patient-communication teams.",
+      "category": "Healthcare operations automation",
+      "differentiation": "Juno is positioned as a cross-system admin teammate that executes steps and hands back exceptions, not just a patient chatbot.",
+      "why_now": "Health systems are trying to reduce administrative backlogs without replacing core clinical systems or adding more manual coordination."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether healthcare buyers can validate safety, escalation, and audit controls fast enough for broader workflow automation.",
+        "basis": "VentureDex editorial assessment based on official product evidence and NHS deployment coverage."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "AI healthcare admin",
+  "product_type": "HealthTech",
+  "region": "Europe",
+  "tags": "healthcare,admin automation,nhs,ai agents,operations",
+  "investors": "Atomico",
+  "links": {
+    "careers": "https://www.frontierhealth.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$16M",
+      "stage": "Seed",
+      "lead_investor": "Atomico",
+      "date": "2026-06-19",
+      "source_url": "https://thenextweb.com/news/frontier-health-16m-seed-atomico-nhs-admin-ai-juno",
+      "source_name": "TNW"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "slug": "kyber",
+  "domain": "kyber.tech",
+  "url": "https://kyber.tech/",
+  "product_name": "Kyber",
+  "summary": "Low-latency SDK for real-time control of robots, drones, and remote machines.",
+  "editor_note": "Remote machine control breaks when video, inputs, audio, and telemetry drift apart. Kyber says its SDK synchronizes those streams over QUIC and HTTP/3, with end-to-end encryption and latency low enough for robots, drones, vehicles, XR, and remote desktops. Unlike one-off teleoperation stacks, it is open-source infrastructure for builders. The risk is whether 8 ms-style demos survive real networks and safety-critical deployments.",
+  "research": {
+    "verified_at": "2026-06-20",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://kyber.tech/",
+        "type": "official"
+      },
+      {
+        "id": "about_page",
+        "label": "Official about and careers page",
+        "url": "https://kyber.tech/about#careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch seed funding report",
+        "url": "https://techcrunch.com/2026/06/19/he-made-your-free-video-player-run-smoothly-now-hes-doing-that-for-robots/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes real-time infrastructure for machine control across robots, drones, vehicles, remote desktops, and immersive applications.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says Kyber synchronizes video, audio, control inputs, and telemetry to one clock over QUIC and HTTP/3 with end-to-end encryption.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The about page says the team is building infrastructure for robots, drones, and autonomous systems, and lists open roles for systems and deployed engineers.",
+        "source_ids": [
+          "about_page"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Robotics, drone, autonomous systems, remote desktop, XR, and machine-control engineering teams.",
+      "category": "Real-time machine-control infrastructure",
+      "differentiation": "Kyber packages synchronized media, controls, and telemetry into an open-source SDK rather than a bespoke teleoperation build for one device class.",
+      "why_now": "Robotics and physical AI teams need remote operation loops that are lower latency and easier to integrate than custom streaming stacks."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether low-latency control claims can hold across unpredictable field networks and safety-critical machine environments.",
+        "basis": "VentureDex editorial assessment based on official technical claims and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "Real-time robot control",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "robotics,developer tools,real-time,streaming,open source",
+  "investors": "Lightspeed Venture Partners",
+  "links": {
+    "careers": "https://kyber.tech/about#careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-06-19",
+      "source_url": "https://techcrunch.com/2026/06/19/he-made-your-free-video-player-run-smoothly-now-hes-doing-that-for-robots/",
+      "source_name": "TechCrunch"
+    }
+  ]
+}

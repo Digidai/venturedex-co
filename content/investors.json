@@ -1018,5 +1018,19 @@
     "short_name": "AI2 Incubator",
     "website": "https://www.ai2incubator.com/",
     "description": "Seattle-based AI startup incubator and seed investor now operating as AI House."
+  },
+  "atomico": {
+    "name": "Atomico",
+    "slug": "atomico",
+    "short_name": "Atomico",
+    "website": "https://atomico.com/",
+    "description": "European venture capital firm backing technology companies from early stage through growth."
+  },
+  "u-ventures": {
+    "name": "u.ventures",
+    "slug": "u-ventures",
+    "short_name": "u.ventures",
+    "website": "https://u.ventures/",
+    "description": "Venture capital firm backing technology companies, with a focus on Ukrainian and global founders."
   }
 }

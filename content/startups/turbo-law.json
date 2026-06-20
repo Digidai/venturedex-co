@@ -1,0 +1,77 @@
+{
+  "slug": "turbo-law",
+  "domain": "turbolaw.ai",
+  "url": "https://turbolaw.ai/",
+  "product_name": "Turbo Law",
+  "summary": "AI litigation workspace connecting case facts, evidence, drafting, and strategy.",
+  "editor_note": "Defense litigation teams drown in disconnected pleadings, records, emails, and timelines. Turbo Law says its Fact Graph turns a matter into a connected representation of facts, events, records, people, and issues, and Tech.eu says it supports 1,800 active matters. Unlike document-only legal AI, the wedge is matter-level structure. The risk is whether privilege and ethical-wall controls hold across complex insurer workflows.",
+  "research": {
+    "verified_at": "2026-06-20",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://turbolaw.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tech.eu seed funding report",
+        "url": "https://tech.eu/2026/06/18/revo-capital-leads-turbo-laws-38m-seed-round-to-expand-litigation-platform/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a Fact Graph that links facts, events, records, people, and issues across time and causation for litigation teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface describes a Unified Matter Ecosystem for documents, facts, timelines, emails, drafts, research, reports, strategy, templates, and client updates.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Tech.eu says Turbo Law supports review, drafting, research, exposure analysis, strategy, and assistant workflows for defense law firms and insurers.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Defense law firms, insurance carriers, litigation partners, associates, and claims teams handling document-heavy matters.",
+      "category": "Legal AI and litigation operations",
+      "differentiation": "Turbo Law organizes each matter as a connected case graph rather than only summarizing files or providing a generic legal chatbot.",
+      "why_now": "Litigation teams face rising document volumes and compressed response windows while insurers demand better matter visibility."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that firms may still require strict human review if privilege boundaries or ethical-wall enforcement vary by matter and client.",
+        "basis": "VentureDex editorial assessment based on official product claims and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "Litigation fact graph",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "legaltech,litigation,ai agents,insurance,knowledge graph",
+  "investors": "REVO Capital",
+  "links": {
+    "careers": "https://turbolaw.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.8M",
+      "stage": "Seed",
+      "lead_investor": "REVO Capital",
+      "date": "2026-06-18",
+      "source_url": "https://tech.eu/2026/06/18/revo-capital-leads-turbo-laws-38m-seed-round-to-expand-litigation-platform/",
+      "source_name": "Tech.eu"
+    }
+  ]
+}

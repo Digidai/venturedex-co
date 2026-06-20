@@ -1,0 +1,77 @@
+{
+  "slug": "conduct",
+  "domain": "conduct.ai",
+  "url": "https://conduct.ai/",
+  "product_name": "Conduct",
+  "summary": "AI operating system for enterprise software modernization and S/4HANA migration.",
+  "editor_note": "Legacy ERP work usually starts with consultants mapping code, dependencies, and process gaps by hand. Conduct says its AI operating system reads custom software, builds S/4HANA migration plans, and automates fit-gap analysis, refactoring, and validation. Unlike generic code assistants, it is aimed at enterprise transformation programs. The risk is whether outputs remain trusted when SAP estates are highly customized.",
+  "research": {
+    "verified_at": "2026-06-20",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://conduct.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Official Series A announcement",
+        "url": "https://conduct.ai/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage positions Conduct as an AI operating system for enterprise software, including S/4HANA migration, code analysis, planning, development, and testing.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site says Conduct reads custom code, dependencies, and downstream effects so teams can map legacy software to business functions before modernization.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A note says Conduct automates template creation, fit-gap analysis, structured refactoring, and validation for complex SAP transformation programs.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise CIO, transformation, SAP, and systems-integrator teams trying to understand and modernize customized ERP estates.",
+      "category": "Enterprise software modernization",
+      "differentiation": "Conduct focuses on translating legacy enterprise implementations into migration plans and executable transformation work, not only generating code snippets.",
+      "why_now": "SAP customers face migration deadlines while large companies still depend on heavily customized systems that are hard to inspect manually."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enterprise teams and auditors will trust AI-generated migration maps across highly customized SAP environments.",
+        "basis": "VentureDex editorial assessment based on the official product surface and Series A announcement."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "AI ERP modernization",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "enterprise software,sap,erp modernization,ai agents,systems integration",
+  "investors": "Index Ventures",
+  "links": {
+    "careers": "https://conduct.ai/about"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series A",
+      "lead_investor": "Index Ventures",
+      "date": "2026-06-17",
+      "source_url": "https://conduct.ai/blog/series-a",
+      "source_name": "Conduct"
+    }
+  ]
+}

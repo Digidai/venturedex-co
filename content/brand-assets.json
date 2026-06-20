@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-19",
+  "verified_at": "2026-06-20",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -951,9 +951,9 @@
     "equal-ai": {
       "name": "Equal AI",
       "shape": "wordmark",
-      "local_path": "/logos/companies/equal-ai.png",
-      "source_page": "https://www.myequal.ai/",
-      "source_url": "https://cdn.prod.website-files.com/67e36aa2068f30979d6c5e1f/689acbe33870aadaabe13e6e_Frame%201171277378.png"
+      "local_path": "/logos/companies/equal-ai.svg",
+      "source_page": "https://www.equal.in/",
+      "source_url": "https://www.equal.in/equal-logo.svg"
     },
     "stratusgrid": {
       "name": "StratusGrid",
@@ -1102,6 +1102,41 @@
       "local_path": "/logos/companies/andera.svg",
       "source_page": "https://www.andera.ai/",
       "source_url": "https://www.andera.ai/favicon-light.svg"
+    },
+    "conduct": {
+      "name": "Conduct",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/conduct.svg",
+      "source_page": "https://conduct.ai/",
+      "source_url": "https://framerusercontent.com/images/SxVF3q6KYCtp0gsCjT5w75cWk.svg"
+    },
+    "turbo-law": {
+      "name": "Turbo Law",
+      "shape": "icon",
+      "local_path": "/logos/companies/turbo-law.png",
+      "source_page": "https://turbolaw.ai/",
+      "source_url": "https://framerusercontent.com/images/SPIzDcKVjpaMYiFaY4FG5f0WTg.png"
+    },
+    "frontier-health": {
+      "name": "Frontier Health",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/frontier-health.svg",
+      "source_page": "https://www.frontierhealth.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67b7137186c4a729143c394d/6a26f1075bc90e34db4b83e3_logo-lockup.svg"
+    },
+    "cargofy": {
+      "name": "Cargofy",
+      "shape": "icon",
+      "local_path": "/logos/companies/cargofy.png",
+      "source_page": "https://cargofy.com/",
+      "source_url": "https://cargofy.com/apple-touch-icon.png"
+    },
+    "kyber": {
+      "name": "Kyber",
+      "shape": "icon",
+      "local_path": "/logos/companies/kyber.svg",
+      "source_page": "https://kyber.tech/",
+      "source_url": "https://kyber.tech/favicon.svg"
     }
   },
   "investors": {
@@ -2073,6 +2108,23 @@
       "local_path": "/logos/investors/ai2-incubator.png",
       "source_page": "https://www.ai2incubator.com/",
       "source_url": "https://framerusercontent.com/images/oUEFzIrX5wvUBPyadPdE0l2aE.png"
+    },
+    "atomico": {
+      "name": "Atomico",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/atomico.gif",
+      "source_page": "https://atomico.com/",
+      "source_url": "https://atomico.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo-20-white.323bbe7a.gif&w=1440&q=75&dpl=dpl_8c6TmzPGcByDQGkA3oS1KLnC1J49",
+      "allow_unreachable_source": true,
+      "tile_background": "dark",
+      "note": "Official site renders in bb-browser, but curl receives a Vercel challenge; local logo was fetched from the rendered official image response."
+    },
+    "u-ventures": {
+      "name": "u.ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/u-ventures.png",
+      "source_page": "https://u.ventures/",
+      "source_url": "https://u.ventures/wp-content/uploads/2023/11/cropped-uventur-logo-1-192x192.png"
     }
   }
 }
