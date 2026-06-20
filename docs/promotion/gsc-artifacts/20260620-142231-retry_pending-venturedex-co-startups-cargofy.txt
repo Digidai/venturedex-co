@@ -1,0 +1,7 @@
+timestamp: 2026-06-20 14:22:31
+status: retry_pending
+url: https://venturedex.co/startups/cargofy
+message: submit confirmation not detected
+page_state: unknown
+
+--- page text ---
