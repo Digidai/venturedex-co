@@ -2725,3 +2725,38 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - brand assets were sourced from official pages or official static assets; newly added investor assets cover Atomico and u.ventures, while existing Lightspeed Venture Partners was reused. Atomico's official site was browser-verified because local curl received a challenge/rate-limit response, and the official logo asset is recorded with an explicit reachability note.
   - generated outputs including `d1/generated-seed.sql`, `.astro/`, `.playwright-cli/`, `dist/`, and `scripts/__pycache__/` were restored or removed before committing content.
   - GSC was reported as complete only after the latest ledger rows for all five target URLs were `requested`; the earlier Cargofy `retry_pending` row and artifact remain preserved as diagnostic evidence.
+
+### 2026-06-21 14:00 CST
+
+- candidate_count: 24
+- accepted: 0
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: daily-rejected-only-live-no-gsc-target
+- validation: pass; required docs and automation memory were read first. `./scripts/bootstrap-automation.sh venturedex-daily-curator` passed in a clean detached worktree after the dirty main checkout was left untouched. `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before content push. The full local gate validated 162/162 startups, generated the D1 seed, passed 91/91 tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was treated as verification output and restored before commit.
+- build_app: pass through `./scripts/manage.sh validate`; Astro prerender kept the public startup count at 162 because no new startup records were accepted.
+- screenshot: n/a; no accepted startup required browser screenshot capture or brand-asset work.
+- commit_push: pass for content; content commit `99a710387237b43410aee746130c37a9bf2d4578` was pushed to `main`. This learning-log/evidence commit is pending at write time.
+- commit_sha: `99a710387237b43410aee746130c37a9bf2d4578`
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `27895277961` succeeded, and Deploy `27895277952` succeeded. The deploy found no updated static asset files, deployed Worker version `988f6365-2255-45c4-94b7-460f300d2516`, and release smoke passed both `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 162 published startups.
+- live_smoke: pass after diagnosed local smoke issue. `./scripts/manage.sh smoke https://venturedex.co` was interrupted after local Python `urllib` stalled while reading a collection detail response. Release smoke in the deploy job had already passed for both Worker and custom domain. Independent direct canonical checks then returned HTTP 200 for `/`, `/news`, `/collections`, `/collections/ai-agents`, `/startups/kyber`, `/feed.xml`, and `/sitemap.xml`; the homepage rendered 162 startup-card links, `/news` rendered 162 company rows, all 10 collection detail pages returned card counts, and `/startups/kyber` contained the expected Kyber title/text markers.
+- newsletter: not manually triggered. No new startup records were published, so there is no new Daily delay window or newsletter item set for this run. Remote D1 latest Daily send remains `daily:2026-06-19 07:30:14:2026-06-20 07:30:40`, status `sent`, item_count 5, recipient_count 2, error_log null, updated `2026-06-20 13:31:14` UTC; delivery aggregation for that send is 2 `sent` rows.
+- gsc: n/a, not attempted. No new `/startups/{slug}` detail pages were created, so `--latest-daily` would have targeted the previous accepted Daily set rather than this run. This is intentionally not reported as a completed Search Console submission.
+- failure_tags: [no_daily_accept, local_smoke_urllib_stall]
+- reward: 2
+- dominant_failure_mode: candidate discovery found current funding signals, but all fresh non-duplicate candidates failed the Daily bar because of stale resurfaced funding, undisclosed or non-equity financing, acquisition-only status, too-small early funding, physical hardware, healthcare-delivery or insurance operations, defense hardware, mining/deeptech, EUR schema mismatch, or lower software-workflow fit.
+- proposed_change: deferred; future human-reviewed code changes could make `scripts/smoke-live.py` surface the exact URL before each fetch and apply a hard wall-clock timeout around response reads. The deploy release smoke and direct curl probes passed, so this is operational observability friction rather than a content or deployment blocker.
+- decision: deferred
+- affected_file: content/rejected.jsonl, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - bootstrap completed before candidate discovery in `/Users/dai/.codex/worktrees/venturedex-daily-20260621T054345Z/venturedex.co`; it restored repo-local `.env`, verified an active Cloudflare token, reported no R2 permission, restored missing `node_modules`, and reported GitHub Actions active.
+  - the main checkout was dirty and behind before the run; it was not edited. A detached clean worktree from `origin/main` at `c98e0c2c92138cb1132a561da9564ebd01b09332` was used for all content, validation, commit, push, and deploy work.
+  - no new startup cleared the acceptance bar, so `content/startups`, `content/timestamps.json`, `content/brand-assets.json`, logos, screenshots, and weekly content were not modified.
+  - added rejected ledger entries for Galileo AI, Zameeli, Frontline, Moadna, Tern, Channel Robotics, Cuprum Metals, Icarus Medical, OffPlan, Connie Health, Traysar, and eMabler with explicit F1/F2/F3 reasons.
+  - reviewed high-signal sources included Arab News MENA startup wrap, PRNewswire venture-capital releases, HR Tech Feed venture-capital page, The SaaS News, StartupResearcher, and direct searches for stale resurfaced items such as Galileo and 1mind.
+  - generated outputs were restored before committing; the final pushed content diff was only 12 inserted JSONL rows in `content/rejected.jsonl`.
+  - GSC was not run because there were no new startup detail pages from this run; this avoids misreporting the previous Daily set as today's submission.
