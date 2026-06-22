@@ -1,0 +1,83 @@
+{
+  "slug": "ploy",
+  "domain": "ploy.ai",
+  "url": "https://ploy.ai/",
+  "product_name": "Ploy",
+  "summary": "AI growth platform that operates website-led marketing workflows.",
+  "editor_note": "The useful bet behind the $27M seed is that the website should become an operating surface, not a brochure. Ploy Web, Grow, and Ads build pages, identify visitors, run ABM and ad loops, patch SEO issues, and sync signals back to CRM systems like HubSpot. Compared with another website builder, it tries to own the work after launch. The risk is whether marketers trust autonomous changes when brand judgment still matters.",
+  "research": {
+    "verified_at": "2026-06-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://ploy.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_blog",
+        "label": "Ploy launch post",
+        "url": "https://ploy.ai/blog/ploy-raises-27m",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire seed announcement",
+        "url": "https://www.prnewswire.com/news-releases/ploy-raises-27m-to-turn-your-companys-website-into-your-hardest-working-employee-302803231.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Ploy Web, Ploy Grow, and Ploy Ads as coordinated agents for building pages, identifying visitors, creating campaigns, attributing pipeline, and syncing intent signals to CRM workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product surface exposes feature pages for AI website building, visitor identification, account-based marketing, analytics, answer-engine optimization, hosting, integrations, and Ploybooks.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The launch post says Ploy agents design pages, write copy, run campaigns, optimize performance, and sync data back to CRM, with examples from Hex, Clay, Tonik, and TNT Growth.",
+        "source_ids": [
+          "official_blog"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Founders, growth operators, marketing teams, and agencies running website-led acquisition.",
+      "category": "Marketing automation",
+      "differentiation": "Ploy treats the website as a continuously operated growth system with agents that ship pages and act on traffic, SEO, ad, and CRM signals.",
+      "why_now": "AI search and agent browsing make owned website content more important, while small growth teams are trying to ship more campaigns without adding web, design, and analytics headcount."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether teams will allow agents to change pages, copy, ads, and outreach without diluting brand control or creating noisy campaigns.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$27M seed, live growth agents",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "marketing automation,website ops,ai agents,growth,seo",
+  "investors": "First Round Capital, Y Combinator",
+  "links": {
+    "careers": "https://ploy.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$27M",
+      "stage": "Seed",
+      "lead_investor": "First Round Capital",
+      "date": "2026-06-17",
+      "source_url": "https://www.prnewswire.com/news-releases/ploy-raises-27m-to-turn-your-companys-website-into-your-hardest-working-employee-302803231.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

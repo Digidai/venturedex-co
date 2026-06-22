@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-20",
+  "verified_at": "2026-06-22",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -884,6 +884,13 @@
       "local_path": "/logos/companies/poetic.png",
       "source_page": "https://poetic.com/",
       "source_url": "https://poetic.com/icon.png?icon.17wuokjlfz5y-.png"
+    },
+    "ploy": {
+      "name": "Ploy",
+      "shape": "icon",
+      "local_path": "/logos/companies/ploy.ico",
+      "source_page": "https://ploy.ai/",
+      "source_url": "https://ploy.ai/favicon.ico"
     },
     "capsa-ai": {
       "name": "Capsa AI",
