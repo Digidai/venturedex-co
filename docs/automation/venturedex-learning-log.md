@@ -2760,3 +2760,37 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - reviewed high-signal sources included Arab News MENA startup wrap, PRNewswire venture-capital releases, HR Tech Feed venture-capital page, The SaaS News, StartupResearcher, and direct searches for stale resurfaced items such as Galileo and 1mind.
   - generated outputs were restored before committing; the final pushed content diff was only 12 inserted JSONL rows in `content/rejected.jsonl`.
   - GSC was not run because there were no new startup detail pages from this run; this avoids misreporting the previous Daily set as today's submission.
+
+### 2026-06-22 14:10 CST
+
+- candidate_count: 24
+- accepted: 1
+- rejected: 12
+- rejection_bar_met: yes
+- outcome: daily-content-live-gsc-requested
+- validation: pass after diagnosed iteration; required docs and automation memory were read first. `./scripts/bootstrap-automation.sh venturedex-daily-curator` passed before candidate discovery in both the dirty main checkout preflight and the clean detached worktree. `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check` passed before content push. The final local gate validated 163/163 startups, generated the D1 seed, passed 91/91 tests, ran Astro sync, TypeScript checking, and Astro build.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate` and release; generated `d1/generated-seed.sql` was treated as verification output and restored before commit.
+- build_app: pass through `./scripts/manage.sh validate`; Astro prerender built 163 startup pages including `/startups/ploy`.
+- screenshot: pass after diagnosed fallback. The standard screenshot tool failed for Ploy because a real cookie banner plus normal fixed/product layers tripped the popup/capture guard. `bb-browser` verified the official product surface, and a targeted Playwright-wrapper capture dismissed the consent layer and produced a visually reviewed, nonblank 1440x900 WebP.
+- commit_push: pass for content; content commit `2f93b42373c68f11eb7ac572781480cbe5cff50a` was pushed to `main`. This learning-log/evidence commit is pending at write time.
+- commit_sha: `2f93b42373c68f11eb7ac572781480cbe5cff50a`
+- pushed_branch: main
+- ci_deploy: pass after diagnosed rerun. GitHub Validate `27932832842` succeeded. Deploy `27932832867` attempt 1 uploaded Worker version `daea14ce-f638-4ee4-b2ff-a9d076a4c38a` but failed immediate release smoke because `https://venturedex.genedai.workers.dev/` rendered 162 startup cards while remote D1 already expected 163. Manual smoke a few minutes later passed both workers.dev and `https://venturedex.co` with 163 startups, confirming short deploy/D1 propagation lag. The failed deploy job was rerun for the same SHA and passed as attempt 2, deploying Worker version `8005ad1d-faa5-41c2-aef0-3e65eb13a6ed` with release smoke passing both URLs.
+- live_smoke: pass; release smoke in deploy attempt 2 passed both `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 163 published startups. Independent direct checks confirmed `/startups/ploy` returns canonical and `og:url` for `https://venturedex.co/startups/ploy`, the homepage ItemList places Ploy first, and `/feed.xml` plus `/sitemap.xml` include the Ploy detail URL.
+- newsletter: not manually triggered. Ploy was published at `2026-06-22 05:51:32` UTC, so it becomes delay-eligible after `2026-06-22 11:51:32` UTC / `2026-06-22 19:51:32 Asia/Shanghai`; the next Daily Cron boundary is `2026-06-22 13:30 UTC` / `2026-06-22 21:30 Asia/Shanghai`. Remote D1 latest Daily send at run time was `daily:2026-06-20 07:30:40:2026-06-21 07:30:11`, status `skipped`, item_count 0, recipient_count 0, updated `2026-06-21 13:30:11` UTC. Latest delivery aggregation remained sent rows for earlier sent Daily/Weekly sends; no manual send was triggered.
+- gsc: pass. Dry-run targeted exactly `https://venturedex.co/startups/ploy`; the live submit returned `Requested indexing: https://venturedex.co/startups/ploy`. The latest `.gsc_submission_history.tsv` rows for Ploy are `dry_run` at `2026-06-22 14:08:24` and `requested` at `2026-06-22 14:09:24`.
+- failure_tags: [screenshot_cookie_banner, release_smoke_propagation_lag, stale_newsletter_observability_query]
+- reward: 4
+- dominant_failure_mode: content quality, structured research, timestamps, official brand assets, local gates, CI, deploy, live smoke, and final GSC ledger state all passed; operational friction came from screenshot cookie handling, immediate post-deploy smoke seeing pre-propagation card counts, and an initial read-only newsletter observability query using the stale `scheduled_for` column name before the live schema was inspected.
+- proposed_change: deferred; future human-reviewed code changes should make release smoke tolerate or explicitly retry short post-D1/deploy propagation windows, add a documented manual screenshot fallback for consent banners, and keep newsletter observability examples aligned to the live `newsletter_sends` schema. These are code/docs behavior changes outside the current automation-doc auto-edit scope.
+- decision: deferred
+- affected_file: content/startups/ploy.json, content/rejected.jsonl, content/brand-assets.json, content/timestamps.json, public/logos/companies/ploy.ico, public/screenshots/ploy.webp, docs/automation/venturedex-learning-log.md
+- affected_section: daily curator
+- evidence:
+  - the main checkout was dirty and was not edited; all content, validation, commit, push, deploy, and GSC work used the detached clean worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260622T054214Z/venturedex.co` from `origin/main`.
+  - accepted Ploy from its June 17, 2026 $27M Seed led by First Round Capital and Y Combinator; official and browser review verified Ploy Web, Ploy Grow, Ploy Ads, visitor identification, ABM, analytics/AEO/hosting/integration surfaces, CRM sync claims, official Careers entry, and source-linked funding evidence.
+  - rejected RELAI, Itera, ChemT Biotechnology, orq.ai, Railtown Cloud, Vali Health, SpeedLabs, PDKINEMATICS, AirHub, SponsorCX, Maia, and Kopra Bio for pre-seed/stage ambiguity, EUR schema, hardware/biotech/defense/prediction-market exposure, incomplete amount/source evidence, or insufficient official product verification.
+  - brand assets were sourced from the official Ploy favicon and existing First Round Capital and Y Combinator investor assets were reused.
+  - generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed before committing content.
+  - GSC was reported as complete only after the latest relevant ledger row for `https://venturedex.co/startups/ploy` was `requested`.
