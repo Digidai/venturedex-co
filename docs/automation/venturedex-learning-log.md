@@ -2831,3 +2831,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - brand assets were sourced from official pages or official static assets; new investor directory entries and assets cover AVP, JRE Ventures, and Caffeinated Capital, while existing a16z/Base10/Y Combinator assets were reused. The existing RevEng.AI brand record was repaired to the current official SVG because the old official favicon URL returned 404 in validation.
   - generated outputs including `d1/generated-seed.sql`, `.playwright-cli/`, `.astro/`, and build outputs were restored or removed before committing content.
   - GSC was reported as complete only after the latest ledger rows for all four new detail URLs were `requested`.
+
+### 2026-06-24 00:46 CST
+
+- candidate_count: 7 weekly picks
+- accepted: 0 daily startups; 1 weekly issue published
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: weekly-content-live-gsc-requested-and-preflight-optimized
+- validation: pass after diagnosed iteration; required docs and automation memory were read first. The 2026-06-22 weekly blocker was confirmed as a transient GitHub API / local network reset during `scripts/check-github-actions.sh`, not a content or Cloudflare-token problem. A user-approved narrow optimization added bounded retries to the GitHub Actions preflight without relaxing workflow-active or authentication checks. Required bootstrap then passed in the dirty main checkout and in the clean detached worktree `/Users/dai/.codex/worktrees/venturedex-weekly-20260623T162357Z`. Local gates passed: `bash -n scripts/check-github-actions.sh`, `GITHUB_ACTIONS_CHECK_ATTEMPTS=1 ./scripts/check-github-actions.sh`, `./scripts/bootstrap-automation.sh venturedex-weekly-curator`, `python3 scripts/weekly.py validate`, `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, `git diff --check`, and `rg "TODO|Research risk candidate" content/weekly/4.json`.
+- weekly_validate: pass; `content/weekly/4.json` is published, TODO-free, and contains seven source-bound picks with `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`.
+- build_db: pass through `./scripts/manage.sh validate` and release; generated `d1/generated-seed.sql` was treated as verification output and restored before commits. Remote D1 confirmed weekly issue 4 as `published` with title `AI Is Taking the Operations Seat` and `published_at` `2026-06-24`.
+- build_app: pass through `./scripts/manage.sh validate`; Astro prerender included `/weekly/4.html`. Build-generated `public/og/weekly-4.png` was left out of the Weekly content commit because the run scope only allowed `content/weekly/*.json`; CI build regenerates the OG asset during release.
+- screenshot: n/a; no startup screenshot work was in scope.
+- commit_push: pass; optimization commit `fcd70d3` (`fix: retry github actions preflight`) and content commit `35dd980` (`content: weekly #4 - AI Is Taking the Operations Seat`) were pushed to `main`. This learning-log/evidence commit is pending at write time.
+- commit_sha: `35dd98073149e937d7067eda4ffe9a150e7c3254`
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `28041391499` passed, and Deploy `28041391480` passed. Deploy uploaded 18 files, deployed `https://venturedex.genedai.workers.dev`, and release smoke passed both `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 167 published startups.
+- live_smoke: pass; independent `./scripts/manage.sh smoke https://venturedex.co` passed with 167 published startups. `bb-browser` verified live `/weekly` lists issue 4 and live `/weekly/4` renders the issue title, all seven picks, seven each of `WHY THIS WEEK`, `PRODUCT EVALUATION`, `EVIDENCE USED`, and `LIMITS AND RISKS`, with zero JavaScript errors.
+- newsletter: not manually triggered. Remote D1 latest weekly sends remain `weekly:3`, `weekly:2`, and `weekly:1`, all sent to 2 recipients; there is no `weekly:4` send row at run time. With `published_at` `2026-06-24` parsed as `2026-06-24 00:00:00` UTC and `NEWSLETTER_WEEKLY_DELAY_HOURS=24`, issue 4 becomes delay-eligible after `2026-06-25 00:00 UTC` / `2026-06-25 08:00 Asia/Shanghai`. Because the Tuesday `2026-06-23 14:00 UTC` Weekly Cron had already passed before publication, the next normal Weekly Cron boundary is `2026-06-30 14:00 UTC` / `2026-06-30 22:00 Asia/Shanghai`.
+- gsc: pass after diagnosed retry. Dry-run targeted exactly `https://venturedex.co/weekly/4`. The first live submit wrote `retry_pending` at `2026-06-24 00:42:15` because submit confirmation was not detected; artifact `docs/promotion/gsc-artifacts/20260624-004215-retry_pending-venturedex-co-weekly-4.txt` showed authenticated Search Console URL Inspection with visible `REQUEST INDEXING`, `URL is not on Google`, and live-test state, so the blocker was a confirmation/readiness race rather than target mismatch. A single exact-target retry with longer wait settings wrote the latest relevant ledger row as `requested` at `2026-06-24 00:44:32`.
+- failure_tags: [github_api_connection_reset, gsc_confirmation_timeout]
+- reward: 4
+- dominant_failure_mode: the original weekly blocker was a transient GitHub API transport reset during bootstrap preflight; the release path later passed local gates, CI, deploy, live smoke, and GSC after one bounded Search Console confirmation retry.
+- proposed_change: add bounded retry around the GitHub Actions availability preflight so transient `gh repo view` / `gh api` transport resets do not stop future automation runs before content work.
+- decision: applied
+- affected_file: scripts/check-github-actions.sh, content/weekly/4.json, docs/promotion/gsc-artifacts/20260624-004215-retry_pending-venturedex-co-weekly-4.txt, docs/automation/venturedex-learning-log.md
+- affected_section: weekly curator; GitHub Actions preflight
+- evidence:
+  - the main checkout remained dirty and was not edited; all optimization, content, validation, commit, push, deploy, and GSC work used the clean worktree `/Users/dai/.codex/worktrees/venturedex-weekly-20260623T162357Z` based on latest `origin/main`.
+  - issue 4 covers `2026-06-15` to `2026-06-21`, is titled `AI Is Taking the Operations Seat`, and selects Kyber, Frontier Health, Gradial, Verse, Turbo Law, Devplan, and Cargofy around the theme of operational AI with handback boundaries.
+  - current `bb-browser` checks verified public official-page text for Kyber, Frontier Health, Gradial, Verse, Turbo Law, Devplan, and Cargofy; Cargofy dispatch/tracking language was limited to the official careers page, so the weekly copy states that boundary explicitly.
+  - no new startup, logo, screenshot, schema, deployment code, or generated D1 seed was added to the Weekly content commit.
+  - the GitHub preflight optimization retries transient `gh` transport failures but still fails on missing auth, disabled repository Actions, missing workflows, or inactive workflows.
