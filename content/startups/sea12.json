@@ -1,0 +1,91 @@
+{
+  "slug": "sea12",
+  "domain": "www.sea12.co",
+  "url": "https://www.sea12.co/",
+  "product_name": "Sea12",
+  "summary": "AI workflow orchestration platform for heavy-industry back-office operations.",
+  "editor_note": "The interesting part is the refusal to sell another chat layer to heavy industry. Sea12 Orchestrator connects enterprise data, turns natural-language requests into tasks, and publishes docs for schemas, processes, triggers, and data flow. The steel-order quickstart is a good signal: the product is aimed at quoting, invoices, and departmental work that usually sits in email and spreadsheets. The risk is whether custom services hide how much of the platform is repeatable.",
+  "research": {
+    "verified_at": "2026-06-23",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.sea12.co/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Sea12 documentation",
+        "url": "https://docs.sea12.co/docs/quickstart",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "The SaaS News Series A coverage",
+        "url": "https://www.thesaasnews.com/news/sea12-raises-25m-series-a/",
+        "type": "funding"
+      },
+      {
+        "id": "funding_2",
+        "label": "citybiz company profile",
+        "url": "https://www.citybiz.co/article/863009/sea12-gains-25m-to-push-back-office-ai-operations/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Sea12 Orchestrator as workflow orchestration that integrates data across the enterprise to automate departmental flows for construction, logistics, manufacturing, and facilities management.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official documentation exposes product concepts including schemas, processes, nodes, execution, triggers, authentication, testing, collections, and API reference.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The quickstart walks through a steel order quoting system that monitors Gmail, extracts structured order data, calculates a quote, and replies to the same thread.",
+        "source_ids": [
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations leaders in steel, construction, logistics, manufacturing, and facilities management teams with document-heavy back offices.",
+      "category": "Workflow automation",
+      "differentiation": "Sea12 focuses on departmental workflows in heavy industry instead of generic chat, with a product model that combines schemas, processes, triggers, and integrations.",
+      "why_now": "LLM extraction and workflow tooling can now turn email, invoices, quotes, and internal documents into repeatable operations for sectors that still rely on manual back-office routing."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether early custom-services work has become a repeatable platform rather than bespoke automation sold one customer at a time.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$25M Series A, heavy-industry ops",
+  "product_type": "SaaS",
+  "founded_year": 2024,
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "workflow automation,industrial ops,documents,ai agents,back office",
+  "investors": "Caffeinated Capital",
+  "links": {
+    "careers": "https://www.sea12.co/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Caffeinated Capital",
+      "date": "2026-06-19",
+      "source_url": "https://www.thesaasnews.com/news/sea12-raises-25m-series-a/",
+      "source_name": "The SaaS News"
+    }
+  ]
+}

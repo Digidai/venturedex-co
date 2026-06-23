@@ -1032,5 +1032,32 @@
     "short_name": "u.ventures",
     "website": "https://u.ventures/",
     "description": "Venture capital firm backing technology companies, with a focus on Ukrainian and global founders."
+  },
+  "avp": {
+    "name": "AVP",
+    "slug": "avp",
+    "short_name": "AVP",
+    "website": "https://avpcap.com/",
+    "description": "Independent global investment platform backing high-growth technology companies across Europe and North America.",
+    "aliases": [
+      "AXA Venture Partners"
+    ]
+  },
+  "jre-ventures": {
+    "name": "JRE Ventures",
+    "slug": "jre-ventures",
+    "short_name": "JRE Ventures",
+    "website": "https://jreventures.com/",
+    "description": "Corporate venture capital arm of JR East, collaborating with startups around mobility, infrastructure, retail, real estate, AI, and digital transformation."
+  },
+  "caffeinated-capital": {
+    "name": "Caffeinated Capital",
+    "slug": "caffeinated-capital",
+    "short_name": "Caffeinated",
+    "website": "https://www.caffeinated.com/",
+    "description": "Venture firm based in San Francisco and New York that leads seed and Series A rounds and invests throughout technology-company lifecycles.",
+    "aliases": [
+      "Caffeinated"
+    ]
   }
 }

@@ -1,0 +1,85 @@
+{
+  "slug": "prosper-ai",
+  "domain": "www.getprosper.ai",
+  "url": "https://www.getprosper.ai/",
+  "product_name": "Prosper AI",
+  "summary": "Voice AI platform for patient scheduling, benefits checks, and billing.",
+  "editor_note": "The useful wedge is that Prosper treats the clinic phone queue as one operating system, not a scheduling bot. Its agents book visits, verify benefits, call payers when APIs fail, collect billing context, and write back to EHR or PMS systems. The contrast with thin voice demos is breadth: one workflow spans patient and insurer calls. The risk is whether accuracy holds across the long tail of payer rules and clinic edge cases.",
+  "research": {
+    "verified_at": "2026-06-23",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.getprosper.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire Series A announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/22/3315343/0/en/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey.html",
+        "type": "funding"
+      },
+      {
+        "id": "investor_note",
+        "label": "Andreessen Horowitz investment note",
+        "url": "https://a16z.com/announcement/investing-in-prosper-ai/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents one platform replacing scheduling, benefits verification, and patient billing, with agents that book, reschedule, cancel, collect intake, recover slots, and update the EHR.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site says Prosper calls payers directly when API eligibility checks fail, navigates IVR and live representatives, and writes coverage or billing results back into the EHR or PMS.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The a16z note says Prosper handles patient, provider, payor, pharmacy, and pharma conversations in one system while writing structured data into practice tools.",
+        "source_ids": [
+          "investor_note"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Outpatient groups, specialty practices, health systems, and EHR or revenue-cycle partners.",
+      "category": "Healthcare operations automation",
+      "differentiation": "Prosper expands beyond inbound scheduling into insurance eligibility, payer calls, prior authorization, billing questions, and write-back into clinical operations systems.",
+      "why_now": "Provider groups face heavy call volumes and payer friction while voice AI is becoming reliable enough to handle structured but high-variance administrative conversations."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Prosper can keep accuracy and escalation quality high across payer-specific rules, specialty-specific workflows, and messy patient billing cases.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$30M Series A, end-to-end calls",
+  "product_type": "HealthTech",
+  "founded_year": 2023,
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "healthcare ai,voice agents,patient access,billing,ehr",
+  "investors": "Andreessen Horowitz, Base10, Emergence Capital, Y Combinator, Company Ventures",
+  "links": {
+    "careers": "https://www.getprosper.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-22",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/22/3315343/0/en/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

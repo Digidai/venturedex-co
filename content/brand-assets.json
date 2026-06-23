@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-22",
+  "verified_at": "2026-06-23",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -622,9 +622,9 @@
     "reveng-ai": {
       "name": "RevEng.AI",
       "shape": "icon",
-      "local_path": "/logos/companies/reveng-ai.ico",
+      "local_path": "/logos/companies/reveng-ai.svg",
       "source_page": "https://reveng.ai/",
-      "source_url": "https://reveng.ai/favicon.ico"
+      "source_url": "https://reveng.ai/icon.svg?icon.43a51282hljpn.svg"
     },
     "lighttable": {
       "name": "LightTable",
@@ -1144,6 +1144,34 @@
       "local_path": "/logos/companies/kyber.svg",
       "source_page": "https://kyber.tech/",
       "source_url": "https://kyber.tech/favicon.svg"
+    },
+    "isometric": {
+      "name": "Isometric",
+      "shape": "icon",
+      "local_path": "/logos/companies/isometric.png",
+      "source_page": "https://isometric.com/",
+      "source_url": "https://cdn.prod.website-files.com/65ef0b18cfe3fb84ec002a81/691c60629ca3c7b55f098a1c_favicon-256px.png"
+    },
+    "prosper-ai": {
+      "name": "Prosper AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/prosper-ai.png",
+      "source_page": "https://www.getprosper.ai/",
+      "source_url": "https://cdn.prod.website-files.com/68c796fdde22c7e30f94a223/68d1279692cc0be358b18c3e_fav-icon.png"
+    },
+    "h3-zoom": {
+      "name": "H3 Zoom",
+      "shape": "icon",
+      "local_path": "/logos/companies/h3-zoom.png",
+      "source_page": "https://www.h3zoom.ai/",
+      "source_url": "https://cdn.prod.website-files.com/69b18987277fdbe39ee39e2e/69d4b922f869cd22a0c36045_H3%20Zoom_Favicon_Webclip.png"
+    },
+    "sea12": {
+      "name": "Sea12",
+      "shape": "icon",
+      "local_path": "/logos/companies/sea12.ico",
+      "source_page": "https://www.sea12.co/",
+      "source_url": "https://www.sea12.co/favicon.ico"
     }
   },
   "investors": {
@@ -2132,6 +2160,27 @@
       "local_path": "/logos/investors/u-ventures.png",
       "source_page": "https://u.ventures/",
       "source_url": "https://u.ventures/wp-content/uploads/2023/11/cropped-uventur-logo-1-192x192.png"
+    },
+    "avp": {
+      "name": "AVP",
+      "shape": "icon",
+      "local_path": "/logos/investors/avp.png",
+      "source_page": "https://avpcap.com/",
+      "source_url": "https://avpcap.com/wp-content/uploads/2022/07/fav-1.png"
+    },
+    "jre-ventures": {
+      "name": "JRE Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/jre-ventures.svg",
+      "source_page": "https://jreventures.com/",
+      "source_url": "https://jreventures.com/wp-content/uploads/2024/07/JRE-VENTURES-Favicon.svg"
+    },
+    "caffeinated-capital": {
+      "name": "Caffeinated Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/caffeinated-capital.png",
+      "source_page": "https://www.caffeinated.com/",
+      "source_url": "https://cdn.prod.website-files.com/6760ad66dc95824d370163f1/6761f0a394bc7d2142561617_webclip.png"
     }
   }
 }

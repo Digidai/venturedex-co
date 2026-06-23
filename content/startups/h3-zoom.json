@@ -1,0 +1,82 @@
+{
+  "slug": "h3-zoom",
+  "domain": "www.h3zoom.ai",
+  "url": "https://www.h3zoom.ai/",
+  "product_name": "H3 Zoom",
+  "summary": "AI inspection intelligence for buildings, infrastructure, and regulated assets.",
+  "editor_note": "The bet worth tracking is that inspection evidence should flow from drones and 360 cameras into audit-ready reports, not slide decks and site photos. H3 Zoom localizes defects, grades severity, attaches confidence, and exports remediation packages into BIM or CMMS workflows. That is more concrete than a generic computer-vision pitch because the buyer has compliance risk. The open question is whether robotics-enabled capture stays cheap enough across older buildings.",
+  "research": {
+    "verified_at": "2026-06-23",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.h3zoom.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_company",
+        "label": "Official company page",
+        "url": "https://www.h3zoom.ai/company",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/h3-zoom-closes-oversubscribed-usd3-6-million-series-a-round-to-scale-ai-powered-inspection-intelligence-across-asia-302806186.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes software modules for facade inspection, interior inspection, custom AI integrations, and robotics-enabled capture that feed directly into the H3 Zoom platform.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site maps the workflow from sensor capture to automated diagnostics, severity-graded defects, confidence scores, audit-ready reports, remediation plans, and BIM or CMMS exports.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The company page says H3 Zoom captures visual and sensor data from drones, 360 cameras, robotics, and existing workflows, then turns it into structured regulator-defensible reports.",
+        "source_ids": [
+          "official_company"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Asset owners, facility managers, engineers, infrastructure operators, and regulators responsible for building condition reviews.",
+      "category": "Built-environment inspection intelligence",
+      "differentiation": "H3 Zoom links physical capture, AI diagnostics, defect localization, remediation planning, and defensible reporting in one inspection system.",
+      "why_now": "Aging buildings, compliance pressure, drone capture, and computer-vision models make manual inspection workflows increasingly slow and expensive relative to auditable digital evidence."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether robotics-enabled capture and site-specific inspection setup can scale economically across older, heterogeneous building portfolios.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$3.6M Series A, inspectable AI reports",
+  "product_type": "SaaS",
+  "hq_location": "Singapore",
+  "region": "China / Asia",
+  "tags": "inspection,computer vision,built environment,asset management,compliance",
+  "investors": "JRE Ventures, SGInnovate, M7 Holdings, AC S525, Moringa Ventures, Lotus One Investment",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.6M",
+      "stage": "Series A",
+      "lead_investor": "JRE Ventures",
+      "date": "2026-06-22",
+      "source_url": "https://www.prnewswire.com/news-releases/h3-zoom-closes-oversubscribed-usd3-6-million-series-a-round-to-scale-ai-powered-inspection-intelligence-across-asia-302806186.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "isometric",
+  "domain": "isometric.com",
+  "url": "https://isometric.com/",
+  "product_name": "Isometric",
+  "summary": "AI certification platform for industrial, carbon, energy, and materials claims.",
+  "editor_note": "The interesting bet is that certification can become a software workflow without pretending auditors disappear. Certify agents read evidence, cross-check sensor, satellite, supply-chain, and lab data, then route judgment calls to experts. That is sharper than another ESG dashboard because the output is an issued, traceable certificate. The risk is whether industrial buyers accept faster AI-assisted reviews when liability still lands on human sign-off.",
+  "research": {
+    "verified_at": "2026-06-23",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://isometric.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Isometric Series A announcement",
+        "url": "https://isometric.com/writing-articles/isometric-raises-40m-to-bring-agentic-certification-to-the-industrial-economy",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Certify, Registry, and Protocols for carbon removal, industrial emissions, energy, fuel, materials, and data-center certification.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says Certify agents read evidence, cross-check millions of data points, surface judgment cases to experts, publish certificates with chain of custody, and connect through APIs and MCP.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A announcement says Isometric agents review sensor readings, satellite imagery, supply-chain records, and lab results to move certification work from months to hours.",
+        "source_ids": [
+          "official_announcement"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Industrial project owners, sustainability teams, auditors, buyers, and regulators that need defensible certificates.",
+      "category": "Industrial certification",
+      "differentiation": "Isometric turns evidence review into an AI-assisted certification workflow with human expert judgment and public certificate traceability.",
+      "why_now": "Industrial decarbonization, data-center energy demand, and new materials claims are increasing the volume of evidence that must be certified before buyers or regulators trust it."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether buyers and regulators trust faster AI-assisted certification when legal and commercial liability still depends on expert sign-off.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$40M Series A, agentic certificates",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2022,
+  "hq_location": "London",
+  "region": "Europe",
+  "tags": "certification,industrial ai,climate,compliance,registry",
+  "investors": "AVP, Plural, Lowercarbon Capital, John Doerr, Walter Kortschak",
+  "links": {
+    "careers": "https://isometric.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "AVP",
+      "date": "2026-06-22",
+      "source_url": "https://isometric.com/writing-articles/isometric-raises-40m-to-bring-agentic-certification-to-the-industrial-economy",
+      "source_name": "Isometric"
+    }
+  ]
+}
