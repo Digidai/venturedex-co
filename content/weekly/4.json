@@ -1,0 +1,435 @@
+{
+  "issue_number": 4,
+  "title": "AI Is Taking the Operations Seat",
+  "week_start": "2026-06-15",
+  "week_end": "2026-06-21",
+  "published_at": "2026-06-24",
+  "status": "published",
+  "editorial_intro": "This issue follows AI products that move from suggestions into operational work: machine control, healthcare administration, marketing execution, grid dispatch, litigation, product planning, and freight. The common pattern is a tighter loop between evidence, action, and human handback, not an unsupported claim that autonomy is already solved.",
+  "research_summary": "This issue used the published VentureDex startup records, their structured research blocks, linked official and funding sources, and bb-browser checks on official product pages run on 2026-06-24. It does not add private revenue, retention, market-share, customer-migration, reliability, or benchmark claims; metrics are used only where the official page or cited funding source stated them.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Operational AI with handback boundaries",
+      "summary": "The selected companies are not just writing drafts or answering questions. They are trying to operate in systems where latency, auditability, physical constraints, regulated workflows, or exception handling decide whether the product can be trusted."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "kyber",
+      "why_this_week": "Kyber fits this week because its product turns physical AI from a model problem into a real-time control loop: video, input, audio, and telemetry have to stay synchronized before a human can safely operate remote machines.",
+      "product_evaluation": "The observable product is an SDK for real-time machine control. The official page, rechecked with bb-browser, describes synchronization of video, audio, control inputs, and telemetry to one clock, using QUIC/HTTP3 with end-to-end encryption, plus open-source AGPL access and enterprise licensing.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/kyber.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/kyber.json research.sources.official_site",
+          "url": "https://kyber.tech/"
+        },
+        {
+          "label": "Official about and careers page",
+          "source": "content/startups/kyber.json research.sources.about_page",
+          "url": "https://kyber.tech/about#careers"
+        },
+        {
+          "label": "TechCrunch seed funding report",
+          "source": "content/startups/kyber.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/06/19/he-made-your-free-video-player-run-smoothly-now-hes-doing-that-for-robots/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes real-time infrastructure for machine control across robots, drones, vehicles, remote desktops, and immersive applications.",
+          "url": "https://kyber.tech/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product page says Kyber synchronizes video, audio, control inputs, and telemetry to one clock over QUIC and HTTP/3 with end-to-end encryption.",
+          "url": "https://kyber.tech/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The about page says the team is building infrastructure for robots, drones, and autonomous systems, and lists open roles for systems and deployed engineers.",
+          "url": "https://kyber.tech/about#careers"
+        },
+        {
+          "label": "Official product site",
+          "source": "Kyber homepage",
+          "url": "https://kyber.tech/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/19/he-made-your-free-video-player-run-smoothly-now-hes-doing-that-for-robots/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://kyber.tech/"
+        }
+      ],
+      "risks": [
+        "The official page states single-digit latency and synchronization claims, but this weekly review did not independently benchmark performance across field networks or safety-critical robotics deployments.",
+        "The product evidence is strong for developer positioning, but production reliability still depends on device class, network quality, and operational safety controls outside the public page."
+      ],
+      "verdict": "Kyber is the most infrastructure-shaped pick this week: credible public evidence for the control stack, with field reliability still the key unanswered test."
+    },
+    {
+      "slug": "frontier-health",
+      "why_this_week": "Frontier Health belongs here because Juno applies the operations-seat pattern to healthcare admin work, where the product must execute steps while keeping staff oversight and escalation visible.",
+      "product_evaluation": "The public product surface, rechecked with bb-browser, describes Juno as an AI teammate for healthcare administration that works across existing systems. Visible workflows include referral processing, waiting-list management, appointment booking and rescheduling, patient communications, and patient tracking.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/frontier-health.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/frontier-health.json research.sources.official_site",
+          "url": "https://www.frontierhealth.ai/"
+        },
+        {
+          "label": "TNW seed funding report",
+          "source": "content/startups/frontier-health.json research.sources.funding_1",
+          "url": "https://thenextweb.com/news/frontier-health-16m-seed-atomico-nhs-admin-ai-juno"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes Juno as a supportive AI teammate for healthcare administration teams, automating repetitive high-volume work across existing systems.",
+          "url": "https://www.frontierhealth.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The public workflow examples cover outpatient referrals, waiting-list management, appointment booking and rescheduling, patient communications, and patient tracking.",
+          "url": "https://www.frontierhealth.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "TNW says Frontier Health deployed in an NHS environment in eight weeks and reported 221 staff days saved plus a 22 percent median emergency-department time reduction.",
+          "url": "https://thenextweb.com/news/frontier-health-16m-seed-atomico-nhs-admin-ai-juno"
+        },
+        {
+          "label": "Official product site",
+          "source": "Frontier Health homepage",
+          "url": "https://www.frontierhealth.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TNW",
+          "url": "https://thenextweb.com/news/frontier-health-16m-seed-atomico-nhs-admin-ai-juno"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://www.frontierhealth.ai/"
+        }
+      ],
+      "risks": [
+        "Healthcare administration sits near clinical risk even when the workflow is non-clinical, so safety, auditability, escalation, and buyer validation are still the central adoption questions.",
+        "The official page reports live healthcare outcomes, but this weekly issue treats those as source-stated evidence rather than independently verified performance data."
+      ],
+      "verdict": "Frontier Health is compelling because it frames healthcare AI as accountable admin execution, not just patient chat or document summarization."
+    },
+    {
+      "slug": "gradial",
+      "why_this_week": "Gradial fits the issue because marketing execution is another place where AI has to cross from idea generation into controlled production work across teams, assets, QA, and brand governance.",
+      "product_evaluation": "The official site and docs, rechecked with bb-browser, position Gradial as a marketing execution platform for the work between brief and live. Public product surfaces name content and campaign execution, asset execution, QA, accessibility, governance, optimization, and customer stories for large enterprise brands.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/gradial.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/gradial.json research.sources.official_site",
+          "url": "https://www.gradial.com/"
+        },
+        {
+          "label": "Official documentation",
+          "source": "content/startups/gradial.json research.sources.official_docs",
+          "url": "https://docs.gradial.com/"
+        },
+        {
+          "label": "Axios funding coverage",
+          "source": "content/startups/gradial.json research.sources.funding_1",
+          "url": "https://www.axios.com/2026/06/18/gradial-ai-agents-marketing"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official homepage says Gradial creates execution velocity from brief to live across the enterprise content supply chain.",
+          "url": "https://www.gradial.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The site names agent jobs for content and campaign execution, asset execution, generative engine optimization, and insights and journeys.",
+          "url": "https://www.gradial.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Gradial shows enterprise customer stories and logos including T-Mobile, AWS, Prudential, Cisco, Microsoft, Electronic Arts, and Weber.",
+          "url": "https://www.gradial.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Gradial homepage",
+          "url": "https://www.gradial.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/06/18/gradial-ai-agents-marketing"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://www.gradial.com/"
+        }
+      ],
+      "risks": [
+        "The public evidence is clear on workflow breadth, but brand, legal, and channel approval rules may limit how much execution agents can own without human review.",
+        "This review did not verify customer deployment depth beyond the official stories and Axios funding coverage."
+      ],
+      "verdict": "Gradial is the enterprise-software version of the theme: useful if agents can carry execution work without breaking brand governance."
+    },
+    {
+      "slug": "verse",
+      "why_this_week": "Verse belongs in this issue because power availability is now an operational constraint for AI infrastructure, and the product claims to optimize dispatch and site energy decisions rather than merely analyze demand.",
+      "product_evaluation": "The official page, rechecked with bb-browser, describes Aria as an intelligence layer reading market prices, weather, and live telemetry, and presents Dispatch Intelligence for real-time control of storage and flexible assets. The Series B announcement adds source-bound context on on-site energy resources and grid infrastructure.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/verse.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/verse.json research.sources.official_site",
+          "url": "https://verse.inc/"
+        },
+        {
+          "label": "Official Series B announcement",
+          "source": "content/startups/verse.json research.sources.funding_1",
+          "url": "https://verse.inc/newsroom/series-b"
+        },
+        {
+          "label": "Official founders letter",
+          "source": "content/startups/verse.json research.sources.official_letter",
+          "url": "https://verse.inc/company/founders-letter"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The homepage says Verse gets data centers online up to three years faster and uses Aria to read market prices, weather, and live telemetry.",
+          "url": "https://verse.inc/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Series B announcement says Dispatch Intelligence orchestrates on-site energy resources alongside existing grid infrastructure.",
+          "url": "https://verse.inc/newsroom/series-b"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The founders letter says Aria grew from contract management, PPA tools, risk management, and utility bill management for large energy users.",
+          "url": "https://verse.inc/company/founders-letter"
+        },
+        {
+          "label": "Official product site",
+          "source": "Verse homepage",
+          "url": "https://verse.inc/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Verse",
+          "url": "https://verse.inc/newsroom/series-b"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://verse.inc/"
+        }
+      ],
+      "risks": [
+        "The public product evidence supports the dispatch and energy-intelligence positioning, but utility approvals, grid constraints, and site economics can still move slower than software.",
+        "This issue does not independently verify the official speed-to-power claims or model the economics of any named project."
+      ],
+      "verdict": "Verse is worth tracking because it treats AI infrastructure growth as a power-operations problem with software in the control loop."
+    },
+    {
+      "slug": "turbo-law",
+      "why_this_week": "Turbo Law fits because litigation work is moving from document assistance toward matter-level operations, where facts, records, timelines, drafting, and strategy need one accountable structure.",
+      "product_evaluation": "The official site, rechecked with bb-browser, describes a Fact Graph that connects facts, events, records, people, and issues across time and causation. It also presents a Unified Matter Ecosystem spanning documents, facts, timelines, emails, drafts, research, reports, strategy, templates, and client updates.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/turbo-law.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/turbo-law.json research.sources.official_site",
+          "url": "https://turbolaw.ai/"
+        },
+        {
+          "label": "Tech.eu seed funding report",
+          "source": "content/startups/turbo-law.json research.sources.funding_1",
+          "url": "https://tech.eu/2026/06/18/revo-capital-leads-turbo-laws-38m-seed-round-to-expand-litigation-platform/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes a Fact Graph that links facts, events, records, people, and issues across time and causation for litigation teams.",
+          "url": "https://turbolaw.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface describes a Unified Matter Ecosystem for documents, facts, timelines, emails, drafts, research, reports, strategy, templates, and client updates.",
+          "url": "https://turbolaw.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Tech.eu says Turbo Law supports review, drafting, research, exposure analysis, strategy, and assistant workflows for defense law firms and insurers.",
+          "url": "https://tech.eu/2026/06/18/revo-capital-leads-turbo-laws-38m-seed-round-to-expand-litigation-platform/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Turbo Law homepage",
+          "url": "https://turbolaw.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Tech.eu",
+          "url": "https://tech.eu/2026/06/18/revo-capital-leads-turbo-laws-38m-seed-round-to-expand-litigation-platform/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://turbolaw.ai/"
+        }
+      ],
+      "risks": [
+        "The matter-graph idea is specific, but privilege boundaries, ethical walls, insurer workflows, and attorney review obligations remain hard constraints.",
+        "The weekly review did not test the product inside a live matter, so workflow depth is limited to the official product surface and Tech.eu coverage."
+      ],
+      "verdict": "Turbo Law is notable because its product evidence points at case structure, not a generic legal assistant layered over files."
+    },
+    {
+      "slug": "devplan",
+      "why_this_week": "Devplan belongs here because AI-assisted engineering increases execution speed while making coordination, status, and decision drift harder to see across product and engineering tools.",
+      "product_evaluation": "The official page, rechecked with bb-browser, exposes Daily Digest, Automated Status, Ask Devplan, Change History, and Weaver. The structured VentureDex research and funding announcement describe Weaver as converting commits, tickets, meetings, Slack, Notion, Google Workspace, and customer feedback into a shared product graph.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/devplan.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/devplan.json research.sources.official_site",
+          "url": "https://devplan.com/"
+        },
+        {
+          "label": "PRWeb funding announcement",
+          "source": "content/startups/devplan.json research.sources.funding_1",
+          "url": "https://www.prweb.com/releases/devplan-emerges-from-stealth-with-2-5m-to-build-the-intelligence-layer-for-product-and-engineering-organizations-302804259.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The homepage describes Daily Digest, Automated Status, Ask Devplan, Change History, and Weaver as product intelligence workflows.",
+          "url": "https://devplan.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The site says Weaver converts commits, tickets, meetings, Slack, Notion, Google Workspace, and customer feedback into a shared product graph.",
+          "url": "https://devplan.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding announcement says Weaver connects GitHub, Jira, Linear, Slack, Notion, Google Workspace, meeting notes, and customer feedback.",
+          "url": "https://www.prweb.com/releases/devplan-emerges-from-stealth-with-2-5m-to-build-the-intelligence-layer-for-product-and-engineering-organizations-302804259.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Devplan homepage",
+          "url": "https://devplan.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRWeb",
+          "url": "https://www.prweb.com/releases/devplan-emerges-from-stealth-with-2-5m-to-build-the-intelligence-layer-for-product-and-engineering-organizations-302804259.html"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://devplan.com/"
+        }
+      ],
+      "risks": [
+        "The product depends on teams trusting a generated graph across fragmented tools, incomplete integrations, and roadmap politics.",
+        "This review did not verify source-link fidelity inside a live workspace or whether every named integration has equal depth."
+      ],
+      "verdict": "Devplan is a strong fit for the issue because it addresses the coordination layer that gets worse when code ships faster."
+    },
+    {
+      "slug": "cargofy",
+      "why_this_week": "Cargofy fits the operations-seat theme because freight work lives in phone calls, email, WhatsApp, documents, dispatching, and tracking rather than a single clean system of record.",
+      "product_evaluation": "The official homepage, rechecked with bb-browser, presents a digital workforce for logistics that handles jobs from quote to delivery through calls, email, and WhatsApp. The official careers page adds source-bound evidence for freight procurement, dispatching, negotiations, documents, and tracking end-to-end.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cargofy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/cargofy.json research.sources.official_site",
+          "url": "https://cargofy.com/"
+        },
+        {
+          "label": "Official careers page",
+          "source": "content/startups/cargofy.json research.sources.careers_page",
+          "url": "https://careers.cargofy.com/"
+        },
+        {
+          "label": "Tech.eu Series A report",
+          "source": "content/startups/cargofy.json research.sources.funding_1",
+          "url": "https://tech.eu/2026/06/18/cargofy-lands-6m-to-scale-ai-workers-for-logistics/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The homepage says Cargofy provides a digital workforce for logistics that handles jobs from quote to delivery through calls, email, and WhatsApp.",
+          "url": "https://cargofy.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site says its AI workers quote, dispatch, track, and close loads for forwarders, brokers, carriers, 3PLs, and shippers.",
+          "url": "https://cargofy.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The careers page says Cargofy builds an AI-native operating system for global freight with autonomous agents for procurement, dispatching, and operations.",
+          "url": "https://careers.cargofy.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Cargofy homepage",
+          "url": "https://cargofy.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Tech.eu",
+          "url": "https://tech.eu/2026/06/18/cargofy-lands-6m-to-scale-ai-workers-for-logistics/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Current browser verification on 2026-06-24 confirmed the official product page text used in this pick.",
+          "url": "https://cargofy.com/"
+        }
+      ],
+      "risks": [
+        "Freight exceptions, compliance checks, carrier trust, and ambiguous handoffs may still require human operators even when routine steps are automated.",
+        "This issue does not verify autonomous performance in live freight operations; it relies on official product and careers surfaces plus the linked Tech.eu funding report."
+      ],
+      "verdict": "Cargofy is interesting because it sells AI as logistics labor across messy channels, with exception handling as the real test."
+    }
+  ]
+}
