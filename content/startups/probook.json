@@ -1,0 +1,83 @@
+{
+  "slug": "probook",
+  "domain": "www.probook.ai",
+  "url": "https://www.probook.ai/",
+  "product_name": "Probook",
+  "summary": "AI operating system for home-service dispatch, intake, and customer messaging.",
+  "editor_note": "The sharp bet is that dispatch is the brain of home services, not a back-office calendar. Probook starts with routing technicians, then pulls intake, customer messaging, data cleaning, outbound, and booking cleanup into the same context layer. Compared with a voice-agent wrapper, it owns the decision that decides revenue, ETA, and customer experience. The risk is whether the in-person deployment model scales without becoming services-heavy.",
+  "research": {
+    "verified_at": "2026-06-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.probook.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Probook platform page",
+        "url": "https://www.probook.ai/platform",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire Series A and seed announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/23/3316215/0/en/probook-raises-40m-from-andreessen-horowitz-and-sequoia-to-scale-the-ai-operating-system-for-home-services.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage positions Probook as an AI operating system for home services with dispatch as the core workflow.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The platform page describes automated board filling, lead capture, booking cleanup, dispatch support, customer updates, and chat replies.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The funding release says Probook is already used across hundreds of locations by home-service operators such as Del-Air and Peterman Brothers.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Home-service operators that manage technician dispatch, intake, booking quality, and customer follow-up.",
+      "category": "Vertical AI",
+      "differentiation": "Probook is built around the dispatch decision loop rather than a point voice agent, chat widget, or field-service calendar.",
+      "why_now": "Home-service teams face high call volume, labor constraints, and tighter ETA expectations while AI voice and workflow agents can now act across intake, routing, and customer messaging."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Probook can scale field-heavy customer deployments without turning the software motion into a services business.",
+        "basis": "VentureDex editorial assessment based on official product pages and the funding announcement."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$40M Series A for dispatch OS",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "home services,dispatch,field service,ai agents,vertical software",
+  "investors": "Andreessen Horowitz, Sequoia Capital",
+  "links": {
+    "careers": "https://www.probook.ai/company#open-roles"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-23",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/23/3316215/0/en/probook-raises-40m-from-andreessen-horowitz-and-sequoia-to-scale-the-ai-operating-system-for-home-services.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}

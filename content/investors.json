@@ -1059,5 +1059,12 @@
     "aliases": [
       "Caffeinated"
     ]
+  },
+  "singular": {
+    "name": "Singular",
+    "slug": "singular",
+    "short_name": "Singular",
+    "website": "https://www.singular.vc/",
+    "description": "European venture capital firm investing from seed to Series B in technology companies building durable software markets."
   }
 }

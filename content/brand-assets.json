@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-23",
+  "verified_at": "2026-06-24",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1172,6 +1172,41 @@
       "local_path": "/logos/companies/sea12.ico",
       "source_page": "https://www.sea12.co/",
       "source_url": "https://www.sea12.co/favicon.ico"
+    },
+    "probook": {
+      "name": "Probook",
+      "shape": "icon",
+      "local_path": "/logos/companies/probook.png",
+      "source_page": "https://www.probook.ai/",
+      "source_url": "https://www.probook.ai/apple-icon.png?apple-icon.0z8~hjko27x78.png"
+    },
+    "attention": {
+      "name": "Attention",
+      "shape": "icon",
+      "local_path": "/logos/companies/attention.png",
+      "source_page": "https://www.attention.com/",
+      "source_url": "https://cdn.prod.website-files.com/66c6eb8376ae25cee9273195/66e009849f76b63bc43dc3e8_Webclip.png"
+    },
+    "justai": {
+      "name": "JustAI",
+      "shape": "icon",
+      "local_path": "/logos/companies/justai.png",
+      "source_page": "https://www.getjust.ai/",
+      "source_url": "https://framerusercontent.com/images/S2GXyIQUcdhNBj4i0qYt6yLk.png"
+    },
+    "tsuga": {
+      "name": "Tsuga",
+      "shape": "icon",
+      "local_path": "/logos/companies/tsuga.png",
+      "source_page": "https://www.tsuga.com/",
+      "source_url": "https://www.tsuga.com/apple-icon?aa2e0cc1c10e7f0e"
+    },
+    "timefold": {
+      "name": "Timefold",
+      "shape": "icon",
+      "local_path": "/logos/companies/timefold.png",
+      "source_page": "https://timefold.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a0adc0d830bbff92e1633cd/6a0ade9d6b3f24f341c8244f_timefold-icon.png"
     }
   },
   "investors": {
@@ -2181,6 +2216,13 @@
       "local_path": "/logos/investors/caffeinated-capital.png",
       "source_page": "https://www.caffeinated.com/",
       "source_url": "https://cdn.prod.website-files.com/6760ad66dc95824d370163f1/6761f0a394bc7d2142561617_webclip.png"
+    },
+    "singular": {
+      "name": "Singular",
+      "shape": "icon",
+      "local_path": "/logos/investors/singular.png",
+      "source_page": "https://www.singular.vc/",
+      "source_url": "https://cdn.sanity.io/files/yg5ahtkw/production/12a4d4f520c33d4aa282a079e451cdf8090defb5.png"
     }
   }
 }

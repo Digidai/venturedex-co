@@ -1,0 +1,94 @@
+{
+  "slug": "tsuga",
+  "domain": "www.tsuga.com",
+  "url": "https://www.tsuga.com/",
+  "product_name": "Tsuga",
+  "summary": "BYOC observability platform for logs, metrics, traces, and AI-agent telemetry.",
+  "editor_note": "The strong refusal is that customers should not ship sensitive telemetry into another vendor cloud. Tsuga runs the data plane inside the customer VPC while managing logs, metrics, traces, APM, pipelines, PII scanning, and upgrades. Compared to classic SaaS monitoring, the bet is control plus managed operations. The risk is whether forward-deployed tuning can scale beyond early enterprise accounts.",
+  "research": {
+    "verified_at": "2026-06-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.tsuga.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Tsuga product overview",
+        "url": "https://www.tsuga.com/product/overview",
+        "type": "product"
+      },
+      {
+        "id": "official_agents",
+        "label": "Agent-native observability page",
+        "url": "https://www.tsuga.com/solutions/agent-native-observability",
+        "type": "product"
+      },
+      {
+        "id": "official_letter",
+        "label": "Tsuga founder funding note",
+        "url": "https://www.tsuga.com/resources/blog/we-raised-35-million-here-is-why-and-what-it-means-",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tsuga Series A press release",
+        "url": "https://www.tsuga.com/resources/blog/pr/tsuga-raises-35-million-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product overview says Tsuga is a BYOC observability platform for logs, metrics, and traces that runs in the customer cloud.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The product navigation exposes log management, application performance monitoring, metrics infrastructure, observability pipelines, and sensitive-data scanning.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The agent-native page and funding materials frame Tsuga around AI-era telemetry, agent loops, and observability data that should remain under customer control.",
+        "source_ids": [
+          "official_agents",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Infrastructure, platform, and security teams running high-volume observability workloads in regulated or cost-sensitive environments.",
+      "category": "Observability infrastructure",
+      "differentiation": "Tsuga puts the data plane in the customer cloud while keeping a managed product experience for telemetry, pipelines, scanning, and tuning.",
+      "why_now": "AI agents and autonomous deployments create more telemetry, sensitive interaction logs, and cost pressure than many third-party SaaS monitoring models were built to absorb."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Tsuga can keep BYOC operations simple enough as every customer environment, policy, and telemetry profile differs.",
+        "basis": "VentureDex editorial assessment based on official product pages and the Series A materials."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$35M Series A for BYOC telemetry",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "observability,infrastructure,byoc,ai agents,security",
+  "investors": "Singular",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$35M",
+      "stage": "Series A",
+      "lead_investor": "Singular",
+      "date": "2026-06-23",
+      "source_url": "https://www.tsuga.com/resources/blog/pr/tsuga-raises-35-million-series-a",
+      "source_name": "Tsuga"
+    }
+  ]
+}

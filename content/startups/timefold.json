@@ -1,0 +1,90 @@
+{
+  "slug": "timefold",
+  "domain": "timefold.ai",
+  "url": "https://timefold.ai/",
+  "product_name": "Timefold",
+  "summary": "Scheduling-optimization APIs for routing, shifts, pickups, and task planning.",
+  "editor_note": "The refreshing choice is to make scheduling a solver API instead of another planner screen. Timefold accepts JSON, returns optimized routes or shifts, and exposes APIs for field service, workforce, pickup-and-delivery, and task scheduling with weighted constraints. Compared with LLM-generated schedules, the bet is deterministic optimization that survives labor rules and disruptions. The risk is whether buyers see it as infrastructure or a feature inside their FSM or WFM suite.",
+  "research": {
+    "verified_at": "2026-06-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://timefold.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Timefold documentation",
+        "url": "https://docs.timefold.ai/",
+        "type": "product"
+      },
+      {
+        "id": "official_blog",
+        "label": "Timefold Series A blog post",
+        "url": "https://timefold.ai/blog/timefold-raises-series-a",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Tech.eu Series A report",
+        "url": "https://tech.eu/2026/06/23/timefold-raises-13m-series-a-to-scale-scheduling-optimisation-infrastructure/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes vehicle-routing and shift-scheduling APIs for field service and workforce management.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product navigation exposes field-service routing, employee shift scheduling, pickup-and-delivery routing, and task scheduling APIs.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The documentation positions Timefold as an API-driven optimization layer that accepts operational inputs and returns schedules or routes.",
+        "source_ids": [
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Software teams embedding routing, workforce scheduling, and operations planning into enterprise applications.",
+      "category": "Developer infrastructure",
+      "differentiation": "Timefold packages constraint-based scheduling as APIs instead of requiring teams to build solver logic or ship another planner UI.",
+      "why_now": "Field service, logistics, and workforce software teams need faster replanning as labor rules, service windows, fuel costs, and customer expectations change in real time."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Timefold becomes a durable infrastructure layer or gets bundled by field-service and workforce suites.",
+        "basis": "VentureDex editorial assessment based on official product docs and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$13M Series A for solver APIs",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "scheduling,optimization,apis,field service,workforce management",
+  "investors": "Alstin Capital",
+  "links": {
+    "careers": "https://jobs.timefold.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$13M",
+      "stage": "Series A",
+      "lead_investor": "Alstin Capital",
+      "date": "2026-06-23",
+      "source_url": "https://tech.eu/2026/06/23/timefold-raises-13m-series-a-to-scale-scheduling-optimisation-infrastructure/",
+      "source_name": "Tech.eu"
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "slug": "justai",
+  "domain": "www.getjust.ai",
+  "url": "https://www.getjust.ai/",
+  "product_name": "JustAI",
+  "summary": "AI lifecycle marketing platform for personalization and experimentation.",
+  "editor_note": "The best part is that lifecycle marketing is treated as a decision system, not a copy generator. JustAI splits the job across strategy, creative, decisioning, and data agents that find cohorts, generate variants, route traffic, and feed learnings back into campaigns. Compared with manual AB testing, the bet is continuous personalization with guardrails. The risk is whether brands keep enough human judgment in the loop when the system optimizes every send.",
+  "research": {
+    "verified_at": "2026-06-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.getjust.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_blog",
+        "label": "JustAI Series A blog post",
+        "url": "https://www.getjust.ai/blog/justai-seriesa",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/justai-raises-17m-series-a-to-build-an-agentic-marketing-platform-302807090.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents always-on AI agents for one-to-one lifecycle marketing personalization at scale.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage names strategy, data, creative, and decisioning agents that identify segments, create personalized content, and route campaign decisions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A announcement describes an agentic marketing platform with coordinated strategy, creative, decisioning, and data agents.",
+        "source_ids": [
+          "funding_1",
+          "official_blog"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Lifecycle marketing, growth, and CRM teams running high-volume messaging programs.",
+      "category": "Marketing automation",
+      "differentiation": "JustAI treats personalization as a decisioning loop across cohorts, content variants, and campaign routing rather than a copy assistant.",
+      "why_now": "Marketing teams are being asked to personalize more customer journeys while privacy limits and channel fatigue make manual testing slower and less precise."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether brands can keep enough governance over a system that optimizes audience, content, and send decisions together.",
+        "basis": "VentureDex editorial assessment based on official product evidence and the funding announcement."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$17M Series A for lifecycle AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "marketing automation,lifecycle marketing,personalization,ai agents,experimentation",
+  "investors": "Base10 Partners",
+  "links": {
+    "careers": "https://www.getjust.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$17M",
+      "stage": "Series A",
+      "lead_investor": "Base10 Partners",
+      "date": "2026-06-23",
+      "source_url": "https://www.prnewswire.com/news-releases/justai-raises-17m-series-a-to-build-an-agentic-marketing-platform-302807090.html",
+      "source_name": "PR Newswire"
+    }
+  ]
+}

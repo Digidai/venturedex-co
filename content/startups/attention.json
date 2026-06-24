@@ -1,0 +1,90 @@
+{
+  "slug": "attention",
+  "domain": "www.attention.com",
+  "url": "https://www.attention.com/",
+  "product_name": "Attention",
+  "summary": "AI revenue-operations platform that turns sales conversations into actions.",
+  "editor_note": "The useful move is that Attention refuses to stop at call notes. It records voice and sales touchpoints, then drafts follow-ups, updates CRM fields, runs agent actions, and keeps an audit trace for each decision. Compared to another Gong clone, the dataset compounds because the system does the next step. The risk is whether enterprise teams let it execute enough work to prove outcome lift.",
+  "research": {
+    "verified_at": "2026-06-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.attention.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Attention documentation",
+        "url": "https://docs.attention.com/",
+        "type": "product"
+      },
+      {
+        "id": "official_agents",
+        "label": "AI sales agents product page",
+        "url": "https://www.attention.com/product/ai-sales-agents",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "GlobeNewswire Series B announcement",
+        "url": "https://www.globenewswire.com/news-release/2026/06/23/3315763/0/en/attention-raises-30m-series-b-to-build-the-ai-system-that-runs-revenue-teams-not-just-records-them.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes agents that learn from sales conversations and handle follow-ups, CRM updates, next steps, and coaching.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product navigation exposes Super Agent, AI sales agents, Ask Attention Anything, call recording, forecasting, coaching, follow-up automation, and CRM auto-update modules.",
+        "source_ids": [
+          "official_site",
+          "official_agents"
+        ]
+      },
+      {
+        "claim": "The documentation provides setup and workspace guidance for using Attention as a revenue intelligence system rather than a static transcript store.",
+        "source_ids": [
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Revenue operations leaders, sales managers, and GTM teams trying to reduce CRM hygiene and follow-up work.",
+      "category": "Revenue operations",
+      "differentiation": "Attention closes the loop from conversation data to executed CRM, follow-up, coaching, and agent actions instead of stopping at call review.",
+      "why_now": "Sales teams have more recorded customer data than they can process manually, and buyers expect faster follow-through across every touchpoint."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether customers will let Attention agents execute enough workflow to create measurable lift beyond note taking.",
+        "basis": "VentureDex editorial assessment based on the product surface, docs, and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$30M Series B for sales agents",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "sales,crm,revenue operations,ai agents,conversation intelligence",
+  "investors": "RTP Global",
+  "links": {
+    "careers": "https://www.attention.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series B",
+      "lead_investor": "RTP Global",
+      "date": "2026-06-23",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/23/3315763/0/en/attention-raises-30m-series-b-to-build-the-ai-system-that-runs-revenue-teams-not-just-records-them.html",
+      "source_name": "GlobeNewswire"
+    }
+  ]
+}
