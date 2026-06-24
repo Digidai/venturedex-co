@@ -1,0 +1,10 @@
+timestamp: 2026-06-24 14:29:28
+status: retry_pending
+url: https://venturedex.co/startups/attention
+message: submit confirmation not detected
+page_state: unknown
+
+--- page text ---
+500. That’s an error.
+
+There was an error. Please try again later. That’s all we know.

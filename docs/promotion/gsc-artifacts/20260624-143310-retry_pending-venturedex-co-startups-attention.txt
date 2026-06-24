@@ -1,0 +1,118 @@
+timestamp: 2026-06-24 14:33:10
+status: retry_pending
+url: https://venturedex.co/startups/attention
+message: request button not found
+page_state: unknown
+
+--- page text ---
+
+	
+
+home
+Overview
+lightbulb_2
+Insights
+trending_up
+Performance
+search
+URL inspection
+Indexing
+keyboard_arrow_up
+file_copy
+Pages
+account_tree
+Sitemaps
+visibility_off
+Removals
+Experience
+keyboard_arrow_up
+speed
+Core Web Vitals
+lock
+HTTPS
+Enhancements
+keyboard_arrow_up
+layers
+Breadcrumbs
+Security & Manual Actions
+keyboard_arrow_down
+link_2
+Links
+trophy
+Achievements
+settings
+Settings
+feedback
+Submit feedback
+info
+About Search Console
+PrivacyTerms
+Overview
+lightbulb_outline
+Get insights into your site's Search performance
+chevron_right
+Explore your insights
+Performance
+chevron_right
+Full report
+0 total web search clicks
+Loading…
+Recommendations
+
+feedback
+Send feedback
+lightbulb
+A page recently got more impressions than usual
+Check this page's performance to investigate further
+https://venturedex.co/news
+arrow_upward
+592%
+Check page performance
+thumb_up_filled
+thumb_up
+thumb_down_filled
+thumb_down
+Indexing
+chevron_right
+Full report
+616 not indexed pages
+275 indexed pages
+Loading…
+Experience
+Type		Good	Needs improvement	Poor	Trend
+
+Core Web Vitals
+
+Mobile
+Desktop
+
+No data
+No data
+
+No data
+No data
+
+No data
+No data
+
+		HTTPS		Non HTTPS
+
+HTTPS
+
+118
+
+0
+
+
+chevron_right
+Enhancements
+Type	Valid	Invalid	Trend
+
+Breadcrumbs
+
+115
+
+0
+
+
+chevron_right
