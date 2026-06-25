@@ -6,13 +6,10 @@ import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
 import {
-  getContentCollections,
   getContentStartups,
   getContentNewsEligibleFundingRounds,
 } from "../lib/content";
 import { homeJsonLd } from "../lib/seo";
-import { getTopicPages } from "../lib/topic-pages";
-import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 
 // Prerendered at build time from version-controlled content (no per-request D1).
 // Default order mirrors the old D1 "featured" sort (is_featured DESC, then
@@ -22,54 +19,12 @@ const startups = getContentStartups().sort((a, b) => {
   return (b.published_at ?? "").localeCompare(a.published_at ?? "");
 });
 const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
-const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
-const topicPages = getTopicPages(startups, weeklyIssues);
-const latestWeekly = weeklyIssues[0] ?? null;
-const collections = getContentCollections()
-  .filter((collection) => collection.startup_count > 0);
-const featuredTopics = [...topicPages]
-  .sort((a, b) => b.startups.length - a.startups.length || a.title.localeCompare(b.title))
-  .slice(0, 4);
-const featuredCollections = [...collections]
-  .sort((a, b) => b.startup_count - a.startup_count || a.title.localeCompare(b.title))
-  .slice(0, 4);
-const latestProfiles = [...startups]
-  .filter((startup) => startup.published_at)
-  .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? "") || a.product_name.localeCompare(b.product_name))
-  .slice(0, 4);
 
 const startupCount = startups.length;
 const countLabel = startupCount === 1 ? "company" : "companies";
 const description =
   "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
 const schema = homeJsonLd(startups, Astro.site?.toString());
-
-const researchPathways = [
-  {
-    label: "Topic maps",
-    title: "Startup categories with evidence trails",
-    href: "/topics",
-    meta: `${topicPages.length} topic map${topicPages.length === 1 ? "" : "s"}`,
-  },
-  {
-    label: "Collections",
-    title: "Editorial startup lists by market theme",
-    href: "/collections",
-    meta: `${collections.length} active clusters`,
-  },
-  {
-    label: "Investors",
-    title: "Portfolio-linked funding context",
-    href: "/investors",
-    meta: "Investor and round pages",
-  },
-  {
-    label: "Weekly research",
-    title: latestWeekly ? latestWeekly.title : "Weekly VentureDex research",
-    href: latestWeekly ? `/weekly/${latestWeekly.issue_number}` : "/weekly",
-    meta: latestWeekly ? `${latestWeekly.picks.length} current picks` : "Current picks",
-  },
-];
 ---
 
 <Base title="Curated Startup Directory" description={description} schema={schema}>
@@ -83,99 +38,9 @@ const researchPathways = [
           A thoughtful gallery of {startupCount > 0 ? startupCount : ""} outstanding early-stage companies.
           Profiles include product context, funding signals, investor links, and source-backed notes.
         </p>
-        <div class="hero-actions" aria-label="Primary VentureDex paths">
-          <a href="/topics" class="primary-action">Explore topics</a>
-          <a href="/subscribe?source=home_hero" class="secondary-action">Subscribe</a>
-        </div>
       </div>
     </div>
   </section>
-
-  <section class="pathways" aria-labelledby="pathways-heading">
-    <div class="container pathways-inner">
-      <div class="pathways-copy">
-        <p class="eyebrow">Research paths</p>
-        <h2 id="pathways-heading">Move from one profile to the market around it.</h2>
-        <p>
-          VentureDex links startup profiles into topic maps, collections, investor pages,
-          weekly research, and source trails so readers can compare companies instead of
-          opening isolated profile pages.
-        </p>
-      </div>
-      <div class="pathway-grid">
-        {researchPathways.map((pathway) => (
-          <a href={pathway.href} class="pathway-card">
-            <span>{pathway.label}</span>
-            <strong>{pathway.title}</strong>
-            <small>{pathway.meta}</small>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  {(featuredTopics.length > 0 || featuredCollections.length > 0 || latestProfiles.length > 0) && (
-    <section class="signal-board" aria-label="High-intent startup research links">
-      <div class="container signal-grid">
-        {featuredTopics.length > 0 && (
-          <div class="signal-column">
-            <div class="signal-heading">
-              <h2>Topic maps</h2>
-              <a href="/topics">All topics</a>
-            </div>
-            <ul>
-              {featuredTopics.map((topic) => (
-                <li>
-                  <a href={topic.path}>
-                    <span>{topic.title}</span>
-                    <small>{topic.startups.length} profiles</small>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {featuredCollections.length > 0 && (
-          <div class="signal-column">
-            <div class="signal-heading">
-              <h2>Collections</h2>
-              <a href="/collections">All collections</a>
-            </div>
-            <ul>
-              {featuredCollections.map((collection) => (
-                <li>
-                  <a href={`/collections/${collection.slug}`}>
-                    <span>{collection.title}</span>
-                    <small>{collection.startup_count} startups</small>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-
-        {latestProfiles.length > 0 && (
-          <div class="signal-column">
-            <div class="signal-heading">
-              <h2>Latest profiles</h2>
-              <a href="/weekly">Weekly</a>
-            </div>
-            <ul>
-              {latestProfiles.map((startup) => (
-                <li>
-                  <a href={`/startups/${startup.slug}`}>
-                    <span>{startup.product_name}</span>
-                    <small>{startup.product_type ?? startup.region ?? "Startup profile"}</small>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </section>
-  )}
 
   <section class="explore">
     <div class="container">
@@ -355,192 +220,6 @@ const researchPathways = [
     line-height: 1.5;
   }
 
-  .hero-actions {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-3);
-    flex-wrap: wrap;
-    margin-top: var(--space-5);
-  }
-
-  .primary-action,
-  .secondary-action {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 40px;
-    padding: var(--space-2) var(--space-4);
-    border-radius: var(--radius);
-    font-size: 0.86rem;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .primary-action {
-    color: var(--color-bg);
-    background: var(--color-text);
-    border: 1px solid var(--color-text);
-  }
-
-  .secondary-action {
-    color: var(--color-text);
-    background: transparent;
-    border: 1px solid var(--color-border);
-  }
-
-  .primary-action:hover,
-  .secondary-action:hover {
-    opacity: 0.86;
-    text-decoration: none;
-  }
-
-  .pathways {
-    padding: var(--space-8) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .pathways-inner {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: var(--space-8);
-    align-items: start;
-  }
-
-  .pathways-copy {
-    max-width: 440px;
-  }
-
-  .eyebrow {
-    color: var(--color-accent);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    margin-bottom: var(--space-2);
-    text-transform: uppercase;
-    letter-spacing: 0;
-  }
-
-  .pathways-copy h2 {
-    font-size: clamp(1.35rem, 3vw, 2rem);
-    margin-bottom: var(--space-3);
-    line-height: 1.15;
-  }
-
-  .pathways-copy p {
-    color: var(--color-text-secondary);
-    font-size: 0.92rem;
-    line-height: 1.65;
-  }
-
-  .pathway-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-3);
-  }
-
-  .pathway-card {
-    display: grid;
-    gap: var(--space-2);
-    min-width: 0;
-    min-height: 128px;
-    padding: var(--space-4);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius);
-    background: var(--color-bg-card);
-    color: var(--color-text);
-    text-decoration: none;
-  }
-
-  .pathway-card:hover {
-    border-color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .pathway-card span {
-    color: var(--color-text-secondary);
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0;
-  }
-
-  .pathway-card strong {
-    line-height: 1.3;
-  }
-
-  .pathway-card small {
-    align-self: end;
-    color: var(--color-text-secondary);
-    font-size: 0.76rem;
-  }
-
-  .signal-board {
-    padding: var(--space-8) 0;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .signal-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-6);
-  }
-
-  .signal-column {
-    min-width: 0;
-  }
-
-  .signal-heading {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding-bottom: var(--space-3);
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .signal-heading h2 {
-    font-size: 1rem;
-  }
-
-  .signal-heading a {
-    flex: 0 0 auto;
-    font-size: 0.78rem;
-    color: var(--color-text-secondary);
-  }
-
-  .signal-column ul {
-    list-style: none;
-  }
-
-  .signal-column li {
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .signal-column li a {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-3);
-    padding: var(--space-3) 0;
-    color: var(--color-text);
-    text-decoration: none;
-  }
-
-  .signal-column li a:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .signal-column span,
-  .signal-column small {
-    min-width: 0;
-    overflow-wrap: anywhere;
-  }
-
-  .signal-column small {
-    flex: 0 0 auto;
-    color: var(--color-text-secondary);
-    font-size: 0.74rem;
-  }
-
   .explore {
     padding: var(--space-8) 0 var(--space-16);
   }
@@ -600,15 +279,6 @@ const researchPathways = [
   }
 
   @media (max-width: 900px) {
-    .pathways-inner,
-    .signal-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .pathways-copy {
-      max-width: 640px;
-    }
-
     .card-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -617,16 +287,6 @@ const researchPathways = [
   @media (max-width: 640px) {
     .hero {
       padding: var(--space-6) 0;
-    }
-
-    .pathway-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .signal-column li a {
-      align-items: flex-start;
-      flex-direction: column;
-      gap: var(--space-1);
     }
 
     .card-grid {
