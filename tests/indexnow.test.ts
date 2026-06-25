@@ -5,10 +5,13 @@ import { loadPublishedWeeklyIssues, loadStartups, startupUrl, weeklyUrl } from "
 import { getTopicPageConfigs } from "../src/lib/topic-pages";
 
 test("parseArgs accepts all-content flags and keeps the safety cap", () => {
-  const options = parseArgs(["--all-startups", "--all-weekly", "--topics", "--max-urls", "300"]);
+  const options = parseArgs(["--all-startups", "--all-weekly", "--topics", "--hubs", "--collections", "--ai-surfaces", "--max-urls", "300"]);
   assert.equal(options.allStartups, true);
   assert.equal(options.allWeekly, true);
   assert.equal(options.topics, true);
+  assert.equal(options.hubs, true);
+  assert.equal(options.collections, true);
+  assert.equal(options.aiSurfaces, true);
   assert.equal(options.maxUrls, 300);
 });
 
@@ -39,6 +42,32 @@ test("collectUrls dedupes explicit URLs and enforces max-urls", () => {
   );
 });
 
+test("collectUrls supports hub pages without stripping homepage slash", () => {
+  const urls = collectUrls(parseArgs(["--hubs", "--url", "https://venturedex.co/"]));
+
+  assert.ok(urls.includes("https://venturedex.co/"));
+  assert.ok(urls.includes("https://venturedex.co/topics"));
+  assert.ok(urls.includes("https://venturedex.co/collections"));
+  assert.equal(urls.filter((url) => url === "https://venturedex.co/").length, 1);
+});
+
+test("collectUrls supports collection detail pages", () => {
+  const urls = collectUrls(parseArgs(["--collections"]));
+
+  assert.ok(urls.includes("https://venturedex.co/collections/ai-agents"));
+  assert.ok(urls.includes("https://venturedex.co/collections/developer-tools"));
+  assert.ok(urls.every((url) => url.startsWith("https://venturedex.co/collections/")));
+});
+
+test("collectUrls supports AI discovery surfaces", () => {
+  const urls = collectUrls(parseArgs(["--ai-surfaces", "--url", "https://venturedex.co/llms.txt/"]));
+
+  assert.ok(urls.includes("https://venturedex.co/llms.txt"));
+  assert.ok(urls.includes("https://venturedex.co/llms-full.txt"));
+  assert.ok(urls.includes("https://venturedex.co/ai-index.json"));
+  assert.equal(urls.filter((url) => url === "https://venturedex.co/llms.txt").length, 1);
+});
+
 test("validateUrl rejects non-canonical IndexNow targets", () => {
   for (const invalid of [
     "http://venturedex.co/startups/dapple",
@@ -51,5 +80,12 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
     assert.throws(() => validateUrl(invalid), /IndexNow/);
   }
 
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections/ai-agents"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms.txt"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms-full.txt"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/ai-index.json"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/investors/a16z"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/topics/ai-agent-startups"));
 });

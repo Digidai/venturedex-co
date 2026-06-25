@@ -39,6 +39,12 @@ export interface PromotionWeeklyIssue {
   picks?: Array<{ slug?: string; why_this_week?: string; verdict?: string } | string>;
 }
 
+export interface PromotionCollection {
+  slug: string;
+  title: string;
+  description?: string;
+}
+
 interface TimestampEntry {
   published_at?: string | null;
   first_seen_at?: string | null;
@@ -74,6 +80,18 @@ export function startupUrl(slug: string): string {
 
 export function weeklyUrl(issueNumber: number): string {
   return `${SITE_BASE_URL}/weekly/${issueNumber}`;
+}
+
+export function collectionUrl(slug: string): string {
+  return `${SITE_BASE_URL}/collections/${slug}`;
+}
+
+export function aiSurfaceUrls(): string[] {
+  return [
+    `${SITE_BASE_URL}/llms.txt`,
+    `${SITE_BASE_URL}/llms-full.txt`,
+    `${SITE_BASE_URL}/ai-index.json`,
+  ];
 }
 
 export function utmUrl(url: string, source: string, medium: string, campaign: string): string {
@@ -128,6 +146,22 @@ export function loadPublishedWeeklyIssues(): PromotionWeeklyIssue[] {
     }))
     .filter((issue) => issue.status === "published")
     .sort((a, b) => b.issue_number - a.issue_number);
+}
+
+export function loadCollections(): PromotionCollection[] {
+  const collectionsFile = join(ROOT_DIR, "content", "collections.json");
+  if (!existsSync(collectionsFile)) return [];
+  const collections = readJson<unknown>(collectionsFile);
+  if (!Array.isArray(collections)) return [];
+  return collections
+    .filter(isRecord)
+    .filter((collection) => typeof collection.slug === "string" && typeof collection.title === "string")
+    .map((collection) => ({
+      slug: collection.slug as string,
+      title: collection.title as string,
+      description: stringValue(collection.description),
+    }))
+    .sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
 export function latestDailyDate(startups = loadStartups()): string | null {

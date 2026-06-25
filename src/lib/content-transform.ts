@@ -36,6 +36,9 @@ export interface CollectionConfig {
   slug: string;
   title: string;
   description: string;
+  intro?: string;
+  search_intent?: string;
+  why_now?: string;
   match: {
     product_types?: string[];
     tags?: string[];
@@ -162,6 +165,9 @@ function configToCollection(config: CollectionConfig): Collection {
     slug: config.slug,
     title: config.title,
     description: config.description,
+    intro: config.intro ?? null,
+    search_intent: config.search_intent ?? null,
+    why_now: config.why_now ?? null,
     type: "editorial",
     published: 1,
   };

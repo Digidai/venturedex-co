@@ -16,7 +16,7 @@ const { collection, startups } = getContentCollectionBySlug(slug!)!;
 const subscribeUrl = `/subscribe?source=${encodeURIComponent(`collection:${collection.slug}`)}`;
 const description = expandSeoDescription(
   collection.description,
-  "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.",
+  collection.search_intent ?? "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.",
   `${collection.title} on VentureDex.`
 );
 const schema = collectionJsonLd(collection, startups, Astro.site?.toString());
@@ -72,11 +72,9 @@ function formatDate(date: string | null | undefined) {
     <section class="collection-brief" aria-label="Collection summary">
       <div>
         <h2>What this collection tracks</h2>
-        <p>
-          VentureDex follows {collection.title.toLowerCase()} companies through product evidence,
-          funding events, investor context, and editorial selection notes. This page groups
-          {startups.length} profiles that share a comparable market or technology signal.
-        </p>
+        <p>{collection.intro ?? `VentureDex follows ${collection.title.toLowerCase()} companies through product evidence, funding events, investor context, and editorial selection notes.`}</p>
+        {collection.search_intent && <p>{collection.search_intent}</p>}
+        {collection.why_now && <p>{collection.why_now}</p>}
       </div>
       <dl class="signal-list">
         <div>

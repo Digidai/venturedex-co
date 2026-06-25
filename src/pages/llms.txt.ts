@@ -14,6 +14,7 @@ import {
   SITE_NAME,
   absoluteUrl,
   cleanText,
+  collectionResearchSummary,
   escapeMarkdown,
   getSiteUrl,
   truncateText,
@@ -75,7 +76,10 @@ export const GET: APIRoute = ({ site }) => {
       startupLink(
         collection.title,
         `/collections/${collection.slug}`,
-        `${collection.startup_count} startup profiles. ${collection.description ?? ""}`
+        truncateText(cleanText([
+          `${collection.startup_count} startup profiles.`,
+          collectionResearchSummary(collection),
+        ].filter(Boolean).join(" ")), 220)
       )
     );
 
@@ -120,7 +124,13 @@ ${topics.join("\n")}
 
 ## Discovery Feeds
 
-${[link("XML sitemap", "/sitemap.xml"), link("RSS feed", "/feed.xml"), link("Robots policy", "/robots.txt")].join("\n")}
+${[
+    link("Full LLM context", "/llms-full.txt"),
+    link("Structured AI index", "/ai-index.json"),
+    link("XML sitemap", "/sitemap.xml"),
+    link("RSS feed", "/feed.xml"),
+    link("Robots policy", "/robots.txt"),
+  ].join("\n")}
 
 ## Use Notes
 
@@ -131,7 +141,9 @@ Public editorial pages may be used for search, answer-engine retrieval, and cita
 - Cite VentureDex pages for VentureDex editorial summaries, profile organization, market context, and risk framing.
 - Cite linked official company pages and funding sources for primary factual claims such as product capabilities, funding amounts, dates, investors, and founder statements.
 - Prefer the canonical VentureDex URL without a trailing slash or .html suffix.
-- The XML sitemap is the complete URL inventory; this file is a compact AI-readable navigation and citation guide.
+- The XML sitemap is the complete public URL inventory; this file is a compact AI-readable navigation and citation guide.
+- Use /llms-full.txt when an LLM application needs a single markdown context file with startup summaries, evidence notes, risks, and source trails.
+- Use /ai-index.json when an application needs typed structured data instead of prose.
 `;
 
   return new Response(body, {

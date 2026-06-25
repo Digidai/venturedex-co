@@ -45,6 +45,9 @@ Disallow: /`
 # Public editorial pages are open for search, answer engines, and user-triggered citation fetchers.
 # Training and model-ingestion crawlers are not required for search visibility, so they are opted out.
 # Private API endpoints are not useful crawl targets.
+# AI-readable navigation: ${absoluteUrl("/llms.txt", siteUrl)}
+# Full LLM context: ${absoluteUrl("/llms-full.txt", siteUrl)}
+# Structured AI index: ${absoluteUrl("/ai-index.json", siteUrl)}
 
 User-agent: *
 Allow: /

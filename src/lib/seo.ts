@@ -87,6 +87,27 @@ export function expandSeoDescription(
   return truncateText(`${primary} ${cleanText(context)}`);
 }
 
+export function collectionResearchSummary(collection: Collection): string {
+  return cleanText([
+    collection.description,
+    collection.intro,
+    collection.search_intent,
+    collection.why_now,
+  ].filter(Boolean).join(" "), "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.");
+}
+
+export function collectionSeoDescription(collection: Collection): string {
+  return expandSeoDescription(
+    collection.description,
+    cleanText([
+      collection.intro,
+      collection.search_intent,
+      collection.why_now,
+    ].filter(Boolean).join(" ")),
+    `${collection.title} on ${SITE_NAME}.`
+  );
+}
+
 export function toIsoDateTime(value?: string | null): string | undefined {
   if (!value) return undefined;
 
@@ -358,11 +379,7 @@ export function collectionJsonLd(
   siteUrl = DEFAULT_SITE_URL
 ): JsonLdNode {
   const pagePath = `/collections/${collection.slug}`;
-  const description = expandSeoDescription(
-    collection.description,
-    "Browse related VentureDex startup profiles with funding signals, product context, and editorial notes.",
-    `${collection.title} on ${SITE_NAME}.`
-  );
+  const description = collectionSeoDescription(collection);
 
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
@@ -430,6 +447,7 @@ export function topicPageJsonLd(topic: TopicPage, siteUrl = DEFAULT_SITE_URL): J
 }
 
 export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+  const url = getSiteUrl(siteUrl);
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
     siteWebSite(siteUrl),
@@ -448,6 +466,39 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
       })),
       siteUrl
     ),
+    stripUndefined({
+      "@type": "Dataset",
+      "@id": `${url}/#startup-research-dataset`,
+      name: "VentureDex startup research index",
+      description: "Source-backed startup profiles, editorial notes, funding signals, investor context, topic maps, and collection metadata published by VentureDex.",
+      url,
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      creator: { "@id": `${url}/#organization` },
+      publisher: { "@id": `${url}/#organization` },
+      mainEntityOfPage: { "@id": `${url}/#webpage` },
+      conditionsOfAccess: "Public editorial pages may be used for search, answer-engine retrieval, and citation. Model training permission is governed by robots.txt.",
+      distribution: [
+        {
+          "@type": "DataDownload",
+          name: "VentureDex full LLM context",
+          encodingFormat: "text/markdown",
+          contentUrl: absoluteUrl("/llms-full.txt", siteUrl),
+        },
+        {
+          "@type": "DataDownload",
+          name: "VentureDex structured AI index",
+          encodingFormat: "application/json",
+          contentUrl: absoluteUrl("/ai-index.json", siteUrl),
+        },
+        {
+          "@type": "DataDownload",
+          name: "VentureDex RSS feed",
+          encodingFormat: "application/rss+xml",
+          contentUrl: absoluteUrl("/feed.xml", siteUrl),
+        },
+      ],
+    }),
   ]);
 }
 

@@ -9,6 +9,7 @@ compatibility_flags = ["nodejs_compat"]
 html_handling = "drop-trailing-slash"
 directory = "dist"
 binding = "ASSETS"
+run_worker_first = true
 
 [vars]
 SITE_URL = "https://venturedex.co"

@@ -98,6 +98,9 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
+    <link rel="alternate" type="text/plain" title="VentureDex LLM navigation" href="/llms.txt" />
+    <link rel="alternate" type="text/plain" title="VentureDex full LLM context" href="/llms-full.txt" />
+    <link rel="alternate" type="application/json" title="VentureDex AI index" href="/ai-index.json" />
     {schemaJson.map((json) => (
       <script type="application/ld+json" set:html={json} />
     ))}

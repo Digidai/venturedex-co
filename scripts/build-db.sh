@@ -19,7 +19,7 @@ CONTENT_DIR = REPO_ROOT / "content" / "startups"
 WEEKLY_DIR = REPO_ROOT / "content" / "weekly"
 INVESTORS_FILE = REPO_ROOT / "content" / "investors.json"
 COLLECTIONS_FILE = REPO_ROOT / "content" / "collections.json"
-OUTPUT = REPO_ROOT / "d1" / "generated-seed.sql"
+OUTPUT = Path(os.environ.get("VENTUREDEX_SEED_OUTPUT", REPO_ROOT / "d1" / "generated-seed.sql"))
 
 
 def sql(value):
@@ -423,8 +423,12 @@ if emit_json:
     print(f"Wrote canonical JSON to {emit_json}")
 
 print("")
+try:
+    output_label = str(OUTPUT.relative_to(REPO_ROOT))
+except ValueError:
+    output_label = str(OUTPUT)
 print(
-    f"Generated {OUTPUT.relative_to(REPO_ROOT)} with "
+    f"Generated {output_label} with "
     f"{len(startup_rows)} startups, {len(funding_rows)} funding rounds"
 )
 PY

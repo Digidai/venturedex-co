@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { canonicalPath, investorJsonLd, startupJsonLd } from "../src/lib/seo";
+import { canonicalPath, homeJsonLd, investorJsonLd, startupJsonLd } from "../src/lib/seo";
 import type { FundingRound, Investor, Startup } from "../src/lib/types";
 
 const SITE_URL = "https://venturedex.co";
@@ -195,6 +195,22 @@ test("startupJsonLd publisher/isPartOf point at the shared site organization and
   const defined = definedIds(graph);
   assert.ok(defined.has(`${SITE_URL}/#organization`), "site organization node should exist");
   assert.ok(defined.has(`${SITE_URL}/#website`), "site website node should exist");
+});
+
+test("homeJsonLd exposes the machine-readable startup dataset distributions", () => {
+  const graph = homeJsonLd([startup], SITE_URL) as unknown as JsonLdGraph;
+  const dataset = graph["@graph"].find((node) => node["@type"] === "Dataset");
+
+  assert.ok(dataset, "home graph should contain a Dataset node for AI consumers");
+  assert.equal(dataset?.isAccessibleForFree, true);
+  assert.equal(dataset?.conditionsOfAccess, "Public editorial pages may be used for search, answer-engine retrieval, and citation. Model training permission is governed by robots.txt.");
+
+  const distribution = dataset?.distribution;
+  assert.ok(Array.isArray(distribution), "Dataset should expose DataDownload distributions");
+  const contentUrls = (distribution as Array<Record<string, unknown>>).map((item) => item.contentUrl);
+  assert.ok(contentUrls.includes(`${SITE_URL}/llms-full.txt`));
+  assert.ok(contentUrls.includes(`${SITE_URL}/ai-index.json`));
+  assert.ok(contentUrls.includes(`${SITE_URL}/feed.xml`));
 });
 
 test("canonicalPath strips prerendered .html file paths to public routes", () => {

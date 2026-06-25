@@ -4,6 +4,9 @@
     "slug": "ai-agents",
     "title": "AI Agents",
     "description": "Autonomous, agentic systems that take real action — not just chat.",
+    "intro": "This collection tracks AI agent startups that move beyond conversational interfaces into tool use, workflow execution, governed automation, and operational handoffs. VentureDex groups them by visible product evidence, funding signals, investor context, and the specific work each company claims to automate.",
+    "search_intent": "Use this page to compare AI agent startups by category, funding stage, investor signal, and current product wedge.",
+    "why_now": "Agent adoption is shifting from demos to production workflows, so buyers and investors need evidence of permissions, auditability, reliability, and real operating surfaces.",
     "match": {
       "product_types": [],
       "tags": ["ai agent", "agentic"]
@@ -14,6 +17,9 @@
     "slug": "ai-ml",
     "title": "AI / ML",
     "description": "Companies pushing the frontier of machine intelligence.",
+    "intro": "This collection covers VentureDex profiles where machine learning is the core product surface rather than a background feature. The list spans model infrastructure, applied AI workflows, AI-native applications, and products where public evidence shows a concrete use case.",
+    "search_intent": "Use this page to scan AI and machine-learning startups with funding context, source-backed product notes, and related VentureDex research.",
+    "why_now": "AI categories move quickly, so this collection favors companies with current product, funding, or adoption signals instead of broad model hype.",
     "match": {
       "product_types": ["AI / ML"],
       "tags": []
@@ -24,6 +30,9 @@
     "slug": "ai-infrastructure",
     "title": "AI Infrastructure",
     "description": "The compute, inference, and serving layer beneath modern AI.",
+    "intro": "This collection maps AI infrastructure startups across inference, search, serving, GPU access, data layers, monitoring, and developer-facing production systems. Each profile links back to source trails so readers can separate stack positioning from verifiable product evidence.",
+    "search_intent": "Use this page to research AI infrastructure startups by stack layer, investor signal, and production-readiness angle.",
+    "why_now": "As AI workloads move into production, infrastructure decisions now shape latency, cost, governance, and reliability.",
     "match": {
       "product_types": [],
       "tags": ["ai infrastructure", "inference", "edge ai"]
@@ -34,6 +43,9 @@
     "slug": "developer-tools",
     "title": "Developer Tools",
     "description": "Tools that make builders faster — SDKs, APIs, and workflow.",
+    "intro": "This collection focuses on developer tools startups that change how teams build, test, ship, observe, or secure software. VentureDex includes APIs, open-source infrastructure, coding-agent tools, observability platforms, and workflow products with visible technical surfaces.",
+    "search_intent": "Use this page to compare developer tools startups, DevTools funding signals, open-source wedges, and engineering workflow products.",
+    "why_now": "AI-assisted development and platform consolidation are reshaping what engineering teams buy, adopt, and trust.",
     "match": {
       "product_types": ["DevTools"],
       "tags": ["developer tools"]
@@ -44,6 +56,9 @@
     "slug": "saas",
     "title": "SaaS & Productivity",
     "description": "Software that runs the modern business.",
+    "intro": "This collection groups SaaS startups that sell workflow, operations, collaboration, productivity, or vertical software. VentureDex highlights the operational problem, funding context, customer surface, and the reason each company made the editorial queue.",
+    "search_intent": "Use this page to browse SaaS startups by workflow category, funding stage, investor signal, and latest VentureDex coverage.",
+    "why_now": "Business software is being rebuilt around automation, AI assistance, and deeper vertical workflows rather than generic dashboards.",
     "match": {
       "product_types": ["SaaS"],
       "tags": []
@@ -54,6 +69,9 @@
     "slug": "fintech",
     "title": "Fintech",
     "description": "Payments, lending, and the rebuilding of financial plumbing.",
+    "intro": "This collection tracks fintech startups building financial infrastructure, lending workflows, banking software, compliance systems, private-market rails, and finance operations products. Each profile keeps product evidence and funding sources visible.",
+    "search_intent": "Use this page to research fintech infrastructure startups, finance workflow software, and investor-backed financial technology companies.",
+    "why_now": "Financial services teams are modernizing risk, compliance, data, and operations while AI agents add new automation pressure.",
     "match": {
       "product_types": ["Fintech"],
       "tags": ["fintech"]
@@ -64,6 +82,9 @@
     "slug": "physical-ai",
     "title": "Physical AI & Robotics",
     "description": "AI that moves — robotics, autonomy, and embodied systems.",
+    "intro": "This collection follows startups where software meets the physical world: robotics, autonomy, sensing, edge AI, industrial automation, construction, maritime systems, and embodied intelligence. VentureDex emphasizes deployed surfaces and product constraints over demo-only narratives.",
+    "search_intent": "Use this page to find physical AI and robotics startups with funding context, application areas, and public product evidence.",
+    "why_now": "Hardware, sensing, and model advances are pushing AI from screens into factories, hospitals, vehicles, buildings, and field operations.",
     "match": {
       "product_types": [],
       "tags": ["physical ai", "robotics", "autonomy"]
@@ -74,6 +95,9 @@
     "slug": "healthtech",
     "title": "HealthTech",
     "description": "Technology reshaping care, diagnostics, and biology.",
+    "intro": "This collection covers healthtech startups across care delivery, clinical workflow, diagnostics, patient intake, revenue cycle, and healthcare operations. VentureDex does not make clinical claims; it tracks public product evidence, funding signals, and workflow positioning.",
+    "search_intent": "Use this page to scan healthcare AI and healthtech startups by use case, funding signal, and visible operating workflow.",
+    "why_now": "Health systems are adopting automation cautiously, so evidence, workflow fit, and risk boundaries matter more than generic AI claims.",
     "match": {
       "product_types": ["HealthTech"],
       "tags": ["healthcare"]
@@ -84,6 +108,9 @@
     "slug": "open-source",
     "title": "Open Source",
     "description": "Companies building in the open.",
+    "intro": "This collection gathers startups with open-source or developer-community wedges, including infrastructure, APIs, frameworks, observability, and engineering tools. VentureDex highlights where openness supports distribution, trust, extensibility, or adoption.",
+    "search_intent": "Use this page to find open-source startups and developer-led companies with product, funding, and adoption signals.",
+    "why_now": "Open-source distribution remains a powerful wedge, but the durable companies need clear monetization, governance, and production use cases.",
     "match": {
       "product_types": [],
       "tags": ["open source"]
@@ -94,6 +121,9 @@
     "slug": "climate",
     "title": "Climate & Sustainability",
     "description": "Startups decarbonizing industry, energy, and the grid.",
+    "intro": "This collection tracks climate and sustainability startups across energy, grid operations, carbon removal, storage, industrial efficiency, and resource systems. VentureDex emphasizes operational evidence, funding context, and the infrastructure constraints behind each product.",
+    "search_intent": "Use this page to research climate tech startups, sustainability infrastructure companies, and energy software with current funding signals.",
+    "why_now": "Energy demand, AI infrastructure, grid pressure, and industrial decarbonization are making operational climate technology more urgent.",
     "match": {
       "product_types": ["Climate / Sustainability"],
       "tags": ["climate"]

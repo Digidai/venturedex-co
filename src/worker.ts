@@ -5,6 +5,7 @@
 // a plain ExportedHandler. wrangler `main` must point at this file's build output.
 import { handle } from "@astrojs/cloudflare/handler";
 import type { ExecutionContext, MessageBatch, ScheduledController } from "@cloudflare/workers-types";
+import { canonicalRedirectUrl, withHttpPolicy, withSecurityHeaders } from "./lib/http-policy";
 import {
   processNewsletterDeliveryQueue,
   runNewsletterCycle,
@@ -18,18 +19,8 @@ const DAILY_CRON = "30 13 * * *";
 const WEEKLY_CRON = "0 14 * * 2";
 
 function htmlCanonicalRedirect(request: Request): Response | null {
-  if (request.method !== "GET" && request.method !== "HEAD") return null;
-
-  const url = new URL(request.url);
-  if (url.pathname.length <= 5 || !url.pathname.endsWith(".html") || url.pathname.startsWith("/api/")) {
-    return null;
-  }
-
-  const withoutHtml = url.pathname.replace(/\.html$/, "");
-  url.pathname = withoutHtml.endsWith("/index")
-    ? withoutHtml.slice(0, -"/index".length) || "/"
-    : withoutHtml;
-  return Response.redirect(url.toString(), 301);
+  const target = canonicalRedirectUrl(request.url, request.method);
+  return target ? withSecurityHeaders(Response.redirect(target, 301)) : null;
 }
 
 // Single-line JSON logs so Cloudflare Workers Logs / Logpush can parse and alert
@@ -97,8 +88,9 @@ const worker = {
     if (canonicalRedirect) return canonicalRedirect;
 
     const oneClickResponse = await handleOneClickUnsubscribe(request, asNewsletterEnv(env));
-    if (oneClickResponse) return oneClickResponse;
-    return handle(request, env, ctx) as unknown as Promise<Response>;
+    if (oneClickResponse) return withSecurityHeaders(oneClickResponse);
+    const response = await (handle(request, env, ctx) as unknown as Promise<Response>);
+    return withHttpPolicy(request, response);
   },
 
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {

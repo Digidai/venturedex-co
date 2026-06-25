@@ -38,9 +38,10 @@ let readers: ContentReaders;
 
 before(() => {
   // Python side: regenerate the seed and dump the canonical JSON to a temp file.
-  const out = join(mkdtempSync(join(tmpdir(), "vd-parity-")), "canonical.json");
+  const temp = mkdtempSync(join(tmpdir(), "vd-parity-"));
+  const out = join(temp, "canonical.json");
   execFileSync("bash", [join(repoRoot, "scripts/build-db.sh")], {
-    env: { ...process.env, EMIT_CANONICAL_JSON: out },
+    env: { ...process.env, EMIT_CANONICAL_JSON: out, VENTUREDEX_SEED_OUTPUT: join(temp, "generated-seed.sql") },
     stdio: "ignore",
   });
   canonical = JSON.parse(readFileSync(out, "utf8"));

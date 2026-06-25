@@ -122,6 +122,9 @@ export interface Collection {
   slug: string;
   title: string;
   description: string | null;
+  intro?: string | null;
+  search_intent?: string | null;
+  why_now?: string | null;
   type: "auto" | "editorial";
   published: number;
 }

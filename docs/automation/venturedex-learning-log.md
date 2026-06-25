@@ -2795,6 +2795,39 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - generated outputs including `d1/generated-seed.sql` and `.playwright-cli/` were restored or removed before committing content.
   - GSC was reported as complete only after the latest relevant ledger row for `https://venturedex.co/startups/ploy` was `requested`.
 
+### 2026-06-22 15:22 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: yes
+- outcome: weekly-stopped-bootstrap-fail
+- validation: n/a; required control docs and automation memory were read first, but `./scripts/bootstrap-automation.sh venturedex-weekly-curator` failed before any weekly draft or research work. Per the Weekly automation contract, no `content/weekly/*.json` file was created or edited.
+- weekly_validate: n/a
+- build_db: n/a
+- build_app: n/a
+- screenshot: n/a
+- commit_push: n/a
+- commit_sha: n/a
+- pushed_branch: n/a
+- ci_deploy: n/a
+- live_smoke: n/a
+- newsletter: not manually triggered. No Weekly issue was published, so no 24-hour Weekly delay window or Tuesday 22:00 Asia/Shanghai Cron eligibility changed.
+- gsc: n/a, not attempted. No published Weekly detail page was created or deployed, so there was no `/weekly/{N}` URL to submit.
+- failure_tags: [bootstrap_fail, github_api_connection_reset]
+- reward: 0
+- dominant_failure_mode: bootstrap completed repo-local `.env` detection, Cloudflare token verification, R2 permission reporting, and `node_modules` readiness, then failed when `scripts/bootstrap-automation.sh` invoked `scripts/check-github-actions.sh`; GitHub GraphQL returned `read tcp 198.18.0.1:58291->198.18.3.19:443: read: connection reset by peer`.
+- proposed_change: deferred; this appears to be an external GitHub API/network transport failure during the required bootstrap preflight. The runbook requires stopping on bootstrap failure, so no workflow or content changes were attempted.
+- decision: deferred
+- affected_file: docs/automation/venturedex-learning-log.md
+- affected_section: weekly curator
+- evidence:
+  - current run target would have been the previous complete Monday-Sunday window, `2026-06-15` to `2026-06-21`, but the run stopped before draft generation.
+  - bootstrap output: repo-local `.env` already present; Cloudflare token active; R2 access unavailable because the token lacks R2 permission; `node_modules` ready.
+  - bootstrap failure output: `Post "https://api.github.com/graphql": read tcp 198.18.0.1:58291->198.18.3.19:443: read: connection reset by peer`.
+  - `scripts/bootstrap-automation.sh` line 73 calls `scripts/check-github-actions.sh`, making the GitHub Actions availability check the failing bootstrap step.
+  - the main checkout was already behind `origin/main` by 2 commits and had unrelated modified/untracked files, so no commit or push was attempted.
+
 ### 2026-06-24 00:18 CST
 
 - candidate_count: 24

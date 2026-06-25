@@ -8,8 +8,11 @@ import {
 import { getTopicPageConfigs } from "../../src/lib/topic-pages";
 import {
   appendJsonLine,
+  aiSurfaceUrls,
+  collectionUrl,
   latestDailyStartups,
   latestWeeklyIssue,
+  loadCollections,
   loadPublishedWeeklyIssues,
   loadStartups,
   resolveFromRoot,
@@ -29,6 +32,9 @@ export interface Options {
   allStartups: boolean;
   allWeekly: boolean;
   topics: boolean;
+  hubs: boolean;
+  collections: boolean;
+  aiSurfaces: boolean;
   dailyDate: string | null;
   weeklyIssue: number | null;
   urls: string[];
@@ -44,7 +50,10 @@ Usage:
   tsx scripts/promotion/indexnow.ts --dry-run --latest-daily --latest-weekly
   tsx scripts/promotion/indexnow.ts --latest-daily --latest-weekly
   tsx scripts/promotion/indexnow.ts --topics
-  tsx scripts/promotion/indexnow.ts --all-startups --all-weekly --topics
+  tsx scripts/promotion/indexnow.ts --hubs
+  tsx scripts/promotion/indexnow.ts --collections
+  tsx scripts/promotion/indexnow.ts --ai-surfaces
+  tsx scripts/promotion/indexnow.ts --all-startups --all-weekly --topics --hubs --collections --ai-surfaces
   tsx scripts/promotion/indexnow.ts --daily-date 2026-06-11
   tsx scripts/promotion/indexnow.ts --url https://venturedex.co/startups/example
 
@@ -57,6 +66,9 @@ Options:
   --latest-weekly       Include newest published weekly issue.
   --all-weekly          Include every published weekly issue page.
   --topics              Include configured VentureDex topic pages.
+  --hubs                Include homepage and primary hub pages.
+  --collections         Include editorial collection detail pages.
+  --ai-surfaces         Include llms.txt, llms-full.txt, and ai-index.json.
   --weekly-issue <N>    Include one weekly issue URL.
   --url <url>           Include an explicit VentureDex URL; may repeat.
   --max-urls <N>        Safety cap. Default: 250.
@@ -75,6 +87,9 @@ export function parseArgs(argv: string[]): Options {
     allStartups: false,
     allWeekly: false,
     topics: false,
+    hubs: false,
+    collections: false,
+    aiSurfaces: false,
     dailyDate: null,
     weeklyIssue: null,
     urls: [],
@@ -109,6 +124,15 @@ export function parseArgs(argv: string[]): Options {
         break;
       case "--topics":
         options.topics = true;
+        break;
+      case "--hubs":
+        options.hubs = true;
+        break;
+      case "--collections":
+        options.collections = true;
+        break;
+      case "--ai-surfaces":
+        options.aiSurfaces = true;
         break;
       case "--daily-date":
         options.dailyDate = requiredValue(argv, ++index, arg);
@@ -178,11 +202,27 @@ export function collectUrls(options: Options): string[] {
   if (options.topics) {
     urls.push(...getTopicPageConfigs().map((topic) => `${INDEXNOW_HOST_URL}/topics/${topic.slug}`));
   }
+  if (options.hubs) {
+    urls.push(
+      `${INDEXNOW_HOST_URL}/`,
+      `${INDEXNOW_HOST_URL}/topics`,
+      `${INDEXNOW_HOST_URL}/collections`,
+      `${INDEXNOW_HOST_URL}/weekly`,
+      `${INDEXNOW_HOST_URL}/investors`,
+      `${INDEXNOW_HOST_URL}/news`
+    );
+  }
+  if (options.collections) {
+    urls.push(...loadCollections().map((collection) => collectionUrl(collection.slug)));
+  }
+  if (options.aiSurfaces) {
+    urls.push(...aiSurfaceUrls());
+  }
   if (options.weeklyIssue !== null) {
     urls.push(weeklyUrl(options.weeklyIssue));
   }
 
-  const deduped = Array.from(new Set(urls.map((url) => url.replace(/\/+$/, ""))));
+  const deduped = Array.from(new Set(urls.map(normalizeIndexNowUrl)));
   for (const url of deduped) validateUrl(url);
   if (deduped.length === 0) {
     throw new Error(`No IndexNow URLs selected.\n\n${usage()}`);
@@ -193,6 +233,15 @@ export function collectUrls(options: Options): string[] {
   return deduped;
 }
 
+function normalizeIndexNowUrl(url: string): string {
+  const trimmed = url.trim();
+  const parsed = new URL(trimmed);
+  if (parsed.pathname === "/") {
+    return `${parsed.origin}/`;
+  }
+  return trimmed.replace(/\/+$/, "");
+}
+
 export function validateUrl(url: string): void {
   const parsed = new URL(url);
   if (parsed.hostname !== INDEXNOW_HOST || parsed.protocol !== "https:") {
@@ -201,7 +250,10 @@ export function validateUrl(url: string): void {
   if (parsed.search || parsed.hash) {
     throw new Error(`IndexNow URL must be canonical without query strings or fragments: ${url}`);
   }
-  if (!/^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*)$/.test(parsed.pathname)) {
+  const hubPaths = new Set(["/", "/topics", "/collections", "/weekly", "/investors", "/news"]);
+  const aiSurfacePaths = new Set(["/llms.txt", "/llms-full.txt", "/ai-index.json"]);
+  const contentPath = /^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*|collections\/[a-z0-9][a-z0-9-]*|investors\/[a-z0-9][a-z0-9-]*)$/;
+  if (!hubPaths.has(parsed.pathname) && !aiSurfacePaths.has(parsed.pathname) && !contentPath.test(parsed.pathname)) {
     throw new Error(`IndexNow target path is outside the canonical content set: ${url}`);
   }
 }
