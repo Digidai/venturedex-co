@@ -1066,5 +1066,22 @@
     "short_name": "Singular",
     "website": "https://www.singular.vc/",
     "description": "European venture capital firm investing from seed to Series B in technology companies building durable software markets."
+  },
+  "b-capital": {
+    "name": "B Capital",
+    "slug": "b-capital",
+    "short_name": "B Capital",
+    "website": "https://www.bcapital.com",
+    "description": "Global multi-stage investment firm backing technology companies across enterprise software, AI, fintech, and other large markets."
+  },
+  "goldman-sachs-alternatives": {
+    "name": "Goldman Sachs Alternatives",
+    "slug": "goldman-sachs-alternatives",
+    "short_name": "GS Alternatives",
+    "website": "https://am.gs.com/en-us/advisors/products/alternative-investing",
+    "description": "Alternative-investing business within Goldman Sachs Asset Management, investing across private equity, growth equity, venture capital, private credit, real estate, infrastructure, and other alternatives.",
+    "aliases": [
+      "Growth Equity at Goldman Sachs Alternatives"
+    ]
   }
 }

@@ -1,0 +1,92 @@
+{
+  "slug": "taktile",
+  "domain": "www.taktile.com",
+  "url": "https://www.taktile.com/",
+  "product_name": "Taktile",
+  "summary": "Agentic decision platform for regulated banking and insurance workflows.",
+  "editor_note": "The interesting choice is putting AI agents where mistakes are expensive, then surrounding them with rules and review. Taktile shows Agent Manager, Decision Engine, Case Manager, Context Layer, KYC, onboarding, credit, AML, fraud, underwriting, claims, traceability, and third-party data integrations. Compared with generic copilots, the bet is auditable agents for regulated decisions. The risk is whether banks let autonomous workflows cross from recommendations into approvals.",
+  "research": {
+    "verified_at": "2026-06-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.taktile.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Taktile Series C announcement",
+        "url": "https://taktile.com/articles/taktile-secures-110m-in-goldman-sachs-led-series-c-to-power-ai-transformation-in-financial-institutions",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Taktile product documentation",
+        "url": "https://docs.taktile.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fortune Series C funding report",
+        "url": "https://fortune.com/2026/06/24/exclusive-taktile-goldman-sachs-ai-bank-insurance-funding/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product navigation exposes AI Agent Manager, Decision Engine, Case Manager, Data Orchestration, Enterprise-Grade Infrastructure, Agent Library, and Data Marketplace modules.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site maps Taktile to banking and insurance workflows including onboarding, credit, AML and compliance, fraud, underwriting, and claims.",
+        "source_ids": [
+          "official_site",
+          "official_announcement"
+        ]
+      },
+      {
+        "claim": "The announcement says customers combine AI agents, rules, context, and human oversight to automate decisions, with Mercury, Monzo, Faire, and Pleo cited as customers.",
+        "source_ids": [
+          "official_announcement"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Financial-services risk, credit, fraud, compliance, insurance, and operations teams that need controlled decision automation.",
+      "category": "Financial decision automation",
+      "differentiation": "Taktile packages agents, rules, context, data integrations, case review, and traceability for high-liability financial workflows rather than broad employee productivity.",
+      "why_now": "Banks and insurers are moving from AI pilots toward production workflows, but regulated decisions still require explainability, review, and auditable controls."
+    },
+    "risks": [
+      {
+        "claim": "The open question is how quickly regulated customers will allow autonomous workflows to move from recommendations into approvals and customer-facing outcomes.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$110M Series C for decision AI",
+  "product_type": "Fintech",
+  "region": "Europe",
+  "tags": "financial services,decisioning,ai agents,aml,underwriting",
+  "investors": "Goldman Sachs Alternatives",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/taktile1/",
+    "twitter": "https://twitter.com/taktileorg",
+    "careers": "https://www.taktile.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$110M",
+      "stage": "Series C",
+      "lead_investor": "Goldman Sachs Alternatives",
+      "date": "2026-06-24",
+      "source_url": "https://taktile.com/articles/taktile-secures-110m-in-goldman-sachs-led-series-c-to-power-ai-transformation-in-financial-institutions",
+      "source_name": "Taktile"
+    }
+  ]
+}

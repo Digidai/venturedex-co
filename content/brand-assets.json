@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-24",
+  "verified_at": "2026-06-25",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1071,9 +1071,9 @@
     "gradial": {
       "name": "Gradial",
       "shape": "icon",
-      "local_path": "/logos/companies/gradial.png",
+      "local_path": "/logos/companies/gradial.svg",
       "source_page": "https://www.gradial.com/",
-      "source_url": "https://www.gradial.com/icon.png"
+      "source_url": "https://www.gradial.com/favicon.svg"
     },
     "architect-labs": {
       "name": "Architect Labs",
@@ -1207,6 +1207,27 @@
       "local_path": "/logos/companies/timefold.png",
       "source_page": "https://timefold.ai/",
       "source_url": "https://cdn.prod.website-files.com/6a0adc0d830bbff92e1633cd/6a0ade9d6b3f24f341c8244f_timefold-icon.png"
+    },
+    "seltz": {
+      "name": "Seltz",
+      "shape": "icon",
+      "local_path": "/logos/companies/seltz.svg",
+      "source_page": "https://seltz.ai/",
+      "source_url": "https://framerusercontent.com/images/aEGscVbyetGsr1g68ucuAUzPcU.svg"
+    },
+    "runlayer": {
+      "name": "Runlayer",
+      "shape": "icon",
+      "local_path": "/logos/companies/runlayer.jpg",
+      "source_page": "https://www.runlayer.com/",
+      "source_url": "https://www.runlayer.com/apple-touch-icon.png"
+    },
+    "taktile": {
+      "name": "Taktile",
+      "shape": "icon",
+      "local_path": "/logos/companies/taktile.svg",
+      "source_page": "https://www.taktile.com/",
+      "source_url": "https://www.taktile.com/icon/favicon.svg"
     }
   },
   "investors": {
@@ -2223,6 +2244,20 @@
       "local_path": "/logos/investors/singular.png",
       "source_page": "https://www.singular.vc/",
       "source_url": "https://cdn.sanity.io/files/yg5ahtkw/production/12a4d4f520c33d4aa282a079e451cdf8090defb5.png"
+    },
+    "b-capital": {
+      "name": "B Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/b-capital.png",
+      "source_page": "https://www.bcapital.com",
+      "source_url": "https://www.bcapital.com/wp-content/themes/bcapital-theme/assets/images/logo.png"
+    },
+    "goldman-sachs-alternatives": {
+      "name": "Goldman Sachs Alternatives",
+      "shape": "icon",
+      "local_path": "/logos/investors/goldman-sachs-alternatives.png",
+      "source_page": "https://am.gs.com/en-us/advisors/products/alternative-investing",
+      "source_url": "https://cdn.gs.com/images/goldman-sachs/v1/gs-favicon-180.png"
     }
   }
 }

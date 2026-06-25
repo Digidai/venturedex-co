@@ -1,0 +1,87 @@
+{
+  "slug": "seltz",
+  "domain": "seltz.ai",
+  "url": "https://seltz.ai/",
+  "product_name": "Seltz",
+  "summary": "Web-knowledge API that returns source-backed context for AI agents.",
+  "editor_note": "The sharp bet is that AI agents need search results shaped for machines, not blue links for people. Seltz exposes Python, Node, and cURL quickstarts, ranks passages instead of pages, and says it owns the crawler, index, retrieval models, and ranking stack. Compared with SERP APIs or brittle scrapers, the wager is full-pipeline control for fresh, citable context. The risk is whether a small team can keep enough coverage against Google, Exa, Parallel, and lab-owned crawlers.",
+  "research": {
+    "verified_at": "2026-06-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://seltz.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Seltz documentation",
+        "url": "https://docs.seltz.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fortune seed funding report",
+        "url": "https://fortune.com/2026/06/24/exclusive-seltz-a-startup-rebuilding-web-search-for-ai-agents-raises-12-5-million-in-seed-funding/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes a Web Knowledge API for AI agents and exposes a direct Try the API call to action.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official quickstart shows Python, Node, and cURL examples for querying the web knowledge endpoint and returning context with source URLs.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The FAQ says Seltz differs from SERP APIs and scraping tools by controlling crawling, indexing, retrieval models, passage ranking, and context packaging for LLM apps.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI infrastructure teams building agents, RAG systems, research workflows, and LLM applications that need fresh web context with citations.",
+      "category": "AI search infrastructure",
+      "differentiation": "Seltz sells machine-shaped context rather than search-result pages, with its own crawler, index, retrieval model, and passage-ranking layer.",
+      "why_now": "Agent builders need current web evidence at inference time, while consumer search pages, scraping stacks, and raw SERP APIs are awkward inputs for automated reasoning."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Seltz can maintain enough index freshness, coverage, and source quality against larger search incumbents and AI-lab-owned crawlers.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$12.5M Seed for agent search",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "ai agents,search api,web data,retrieval,rag",
+  "investors": "B Capital",
+  "links": {
+    "github": "https://github.com/seltz-ai/",
+    "linkedin": "https://www.linkedin.com/company/seltz/",
+    "twitter": "https://x.com/seltz_ai",
+    "careers": "https://seltz-ai.notion.site/careers-at-seltz"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12.5M",
+      "stage": "Seed",
+      "lead_investor": "B Capital",
+      "date": "2026-06-24",
+      "source_url": "https://fortune.com/2026/06/24/exclusive-seltz-a-startup-rebuilding-web-search-for-ai-agents-raises-12-5-million-in-seed-funding/",
+      "source_name": "Fortune"
+    }
+  ]
+}

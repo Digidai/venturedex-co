@@ -1,0 +1,93 @@
+{
+  "slug": "runlayer",
+  "domain": "www.runlayer.com",
+  "url": "https://www.runlayer.com/",
+  "product_name": "Runlayer",
+  "summary": "Enterprise AI control plane for governed agent access, MCPs, and audit.",
+  "editor_note": "The useful move is treating AI adoption as infrastructure, not a pile of chat licenses. Runlayer gives employees a sanctioned agent catalog, MCP gateway, scoped permissions, audit logs, shadow-AI discovery, runtime checks, and spend visibility across tools like Claude, ChatGPT, Cursor, and Agentforce. Compared with locking AI down, the bet is that the approved path has to be easier than the workaround. The risk is whether neutral control stays neutral once every platform ships guardrails.",
+  "research": {
+    "verified_at": "2026-06-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.runlayer.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_blog",
+        "label": "Runlayer Series A announcement",
+        "url": "https://www.runlayer.com/blog/series-A-30m-fundraise-felicis-khosla",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fortune Series A funding report",
+        "url": "https://fortune.com/2026/06/24/exclusive-vinod-khosla-felicis-runlayer-nanit-30-million-enterprise-ai/",
+        "type": "funding"
+      },
+      {
+        "id": "funding_2",
+        "label": "PR Newswire Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/runlayer-raises-30m-series-a-to-help-enterprises-go-all-in-on-ai-302809271.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes an AI enablement layer with a company catalog, 18,000+ MCPs, internal MCP publishing, a governed gateway, and employee-created AI coworkers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface lists shadow-AI discovery, access and action governance, runtime security, audit logs, and spend visibility across enterprise AI tools.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A announcement frames Runlayer as a governed control plane for agent use, with customers including Jane, AngelList, Homebase, Lemonade, dbt Labs, and Justworks.",
+        "source_ids": [
+          "official_blog",
+          "funding_1",
+          "funding_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CIOs, security teams, AI transformation leaders, and platform teams rolling out approved AI agents across a company.",
+      "category": "Enterprise AI governance",
+      "differentiation": "Runlayer combines sanctioned agent discovery, MCP access, runtime controls, permissions, audit, and spend tracking instead of offering only a gateway or security checklist.",
+      "why_now": "Enterprises are moving from scattered AI experimentation to agent workflows that touch internal systems, which makes identity, audit, access, and runtime control urgent."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Runlayer can remain the neutral control layer as AI platforms add their own governance, audit, and agent-management controls.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  },
+  "editor_rating": 4,
+  "why_featured": "$30M Series A for AI control",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,governance,mcp,security,enterprise ai",
+  "investors": "Felicis Ventures, Khosla Ventures",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/runlayer/",
+    "twitter": "https://x.com/runlayer",
+    "careers": "https://www.runlayer.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Felicis Ventures",
+      "date": "2026-06-24",
+      "source_url": "https://fortune.com/2026/06/24/exclusive-vinod-khosla-felicis-runlayer-nanit-30-million-enterprise-ai/",
+      "source_name": "Fortune"
+    }
+  ]
+}
