@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import MicrosoftClarity from "../components/MicrosoftClarity.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import {
   DEFAULT_SITE_URL,
@@ -104,6 +105,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     {schemaJson.map((json) => (
       <script type="application/ld+json" set:html={json} />
     ))}
+    <MicrosoftClarity />
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
     </script>

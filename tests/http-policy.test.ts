@@ -36,7 +36,14 @@ test("withSecurityHeaders adds crawl-safe hardening headers", async () => {
   assert.equal(response.headers.get("Referrer-Policy"), "strict-origin-when-cross-origin");
   assert.equal(response.headers.get("X-Frame-Options"), "DENY");
   assert.match(response.headers.get("Strict-Transport-Security") ?? "", /max-age=31536000/);
-  assert.match(response.headers.get("Content-Security-Policy") ?? "", /frame-ancestors 'none'/);
+  const csp = response.headers.get("Content-Security-Policy") ?? "";
+  assert.match(csp, /frame-ancestors 'none'/);
+  assert.match(csp, /script-src[^;]*https:\/\/static\.cloudflareinsights\.com/);
+  assert.match(csp, /script-src[^;]*https:\/\/\*\.clarity\.ms/);
+  assert.match(csp, /connect-src[^;]*https:\/\/cloudflareinsights\.com/);
+  assert.match(csp, /connect-src[^;]*https:\/\/\*\.clarity\.ms/);
+  assert.match(csp, /connect-src[^;]*https:\/\/c\.bing\.com/);
+  assert.match(csp, /img-src[^;]*https:\/\/\*\.clarity\.ms/);
 });
 
 test("withSecurityHeaders preserves route-specific stricter headers", () => {

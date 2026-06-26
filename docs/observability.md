@@ -22,6 +22,27 @@ To enable it, set `PUBLIC_CF_BEACON_TOKEN` in the environment that runs
 Get the token from **Cloudflare dashboard → Analytics & Logs → Web Analytics**
 for the `venturedex.co` site. The value is public (it appears in page source).
 
+## Session analytics (Microsoft Clarity)
+
+The shared layout also renders the Microsoft Clarity tracking snippet through
+`src/components/MicrosoftClarity.astro` with project id `xd53ih81m0`.
+
+- Microsoft's manual setup docs say the tracking code belongs in the website
+  `<head>`; `src/layouts/Base.astro` renders it there for every page.
+- The snippet only loads on `venturedex.co` or `www.venturedex.co`, so local dev
+  and worker preview hosts do not pollute Clarity sessions.
+- `src/lib/http-policy.ts` keeps the CSP compatible with both analytics systems:
+  Cloudflare Web Analytics stays allowed, and Clarity/Bing endpoints are allowed
+  for script, connect, and image traffic.
+- If internal traffic or sensitive text needs to be excluded, configure masking
+  and IP blocking in the Clarity dashboard rather than changing the site code.
+
+References:
+
+- https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-setup
+- https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-csp
+- https://learn.microsoft.com/en-us/clarity/setup-and-installation/ip-exclusion
+
 ## Worker logs (cron + queue)
 
 `src/worker.ts` emits single-line JSON logs so they can be parsed by Cloudflare
