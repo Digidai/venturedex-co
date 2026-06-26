@@ -1,0 +1,7 @@
+timestamp: 2026-06-26 15:25:12
+status: retry_pending
+url: https://venturedex.co/startups/caplight
+message: submit confirmation not detected
+page_state: unknown
+
+--- page text ---
