@@ -1,7 +1,12 @@
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import test from "node:test";
-import { canonicalRedirectUrl, withHttpPolicy, withSecurityHeaders } from "../src/lib/http-policy";
+import {
+  CONTENT_SECURITY_POLICY,
+  canonicalRedirectUrl,
+  withHttpPolicy,
+  withSecurityHeaders,
+} from "../src/lib/http-policy";
 
 test("canonicalRedirectUrl consolidates host, protocol, .html, and trailing slash", () => {
   assert.equal(
@@ -57,6 +62,11 @@ test("withSecurityHeaders preserves route-specific stricter headers", () => {
   assert.equal(response.headers.get("Cache-Control"), "no-store");
   assert.equal(response.headers.get("Referrer-Policy"), "no-referrer");
   assert.equal(response.headers.get("X-Content-Type-Options"), "nosniff");
+});
+
+test("static asset header policy stays aligned with runtime CSP", () => {
+  const headersFile = readFileSync(new URL("../public/_headers", import.meta.url), "utf8");
+  assert.match(headersFile, new RegExp(`Content-Security-Policy: ${escapeRegExp(CONTENT_SECURITY_POLICY)}`));
 });
 
 test("withHttpPolicy preserves static asset cache rules when Worker runs first", () => {
@@ -168,3 +178,7 @@ test("wrangler keeps long-cache asset paths behind Worker policy", () => {
     "run_worker_first exclusions bypass Worker canonical redirects and route-specific headers"
   );
 });
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}

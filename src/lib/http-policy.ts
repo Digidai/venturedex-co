@@ -3,7 +3,7 @@ const STATIC_FILE_RE = /\/[^/]+\.[^/]+$/;
 const ONE_HOUR_SECONDS = 3600;
 const ONE_WEEK_SECONDS = 604800;
 const ONE_YEAR_SECONDS = 31536000;
-const CONTENT_SECURITY_POLICY = [
+export const CONTENT_SECURITY_POLICY = [
   "frame-ancestors 'none'",
   "object-src 'none'",
   "base-uri 'self'",
