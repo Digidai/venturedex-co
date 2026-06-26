@@ -1811,7 +1811,9 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/innovation-endeavors.svg",
       "source_page": "https://www.innovationendeavors.com",
-      "source_url": "https://cdn.prod.website-files.com/637cd2f61e2c9377fe287947/637dfbce017f2da54061c4de_innovation-endeavors-logo.svg"
+      "source_url": "https://cdn.prod.website-files.com/637cd2f61e2c9377fe287947/637dfbce017f2da54061c4de_innovation-endeavors-logo.svg",
+      "allow_unreachable_source": true,
+      "note": "Official homepage returned a Vercel HTTP 429 security checkpoint during validation; keep the local official Webflow logo and treat reachability drift as non-blocking."
     },
     "las-olas-venture-capital": {
       "name": "Las Olas Venture Capital",
