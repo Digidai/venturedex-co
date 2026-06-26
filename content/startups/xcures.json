@@ -1,0 +1,87 @@
+{
+  "slug": "xcures",
+  "domain": "xcures.com",
+  "url": "https://xcures.com/",
+  "product_name": "xCures",
+  "summary": "Clinical data engine that turns medical records into decision-ready evidence.",
+  "editor_note": "Medical-record AI is usually sold as summarization; xCures is more interesting because it starts with the evidence trail. Decision-ready checklists, automated patient history, evidence-grade data, and a $46M Series B frame clinical clarity as infrastructure, not a chatbot. The risk is adoption inside conservative care workflows.",
+  "editor_rating": 3,
+  "why_featured": "Clinical evidence from records",
+  "product_type": "HealthTech",
+  "founded_year": 2018,
+  "team_size": "30-50",
+  "hq_location": "Oakland",
+  "region": "US",
+  "tags": "healthcare,data,clinical records,ai",
+  "investors": "Innovius Capital",
+  "links": {
+    "careers": "https://xcures.com/careers/"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$46M",
+      "stage": "Series B",
+      "lead_investor": "Innovius Capital",
+      "date": "2026-06-24",
+      "source_url": "https://www.prnewswire.com/news-releases/xcures-closes-46-million-series-b-financing-to-transform-fragmented-medical-records-into-decision-ready-data-through-its-clinical-clarity-engine-302809282.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://xcures.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_series_b",
+        "label": "xCures Series B announcement",
+        "url": "https://xcures.com/series-b/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire Series B funding report",
+        "url": "https://www.prnewswire.com/news-releases/xcures-closes-46-million-series-b-financing-to-transform-fragmented-medical-records-into-decision-ready-data-through-its-clinical-clarity-engine-302809282.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes Decision-Ready Checklists, Automated Patient History, Evidence Grade Data, engine workflow pages, use cases, and API documentation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage positions xCures as a Clinical Clarity Engine that structures fragmented healthcare records into decision-ready clinical evidence.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series B announcement says xCures is expanding a clinical clarity layer for turning fragmented medical records into decision-ready clinical data.",
+        "source_ids": [
+          "official_series_b",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Clinicians, diagnostics teams, value-based care organizations, and healthcare data teams that need structured evidence from messy patient records.",
+      "category": "Healthcare data infrastructure",
+      "differentiation": "xCures focuses on source-linked clinical evidence and decision-ready checklists rather than generic visit summaries or patient chat.",
+      "why_now": "Healthcare AI workflows are limited by fragmented records, and model output is only useful when the underlying clinical data is complete and traceable."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that provider workflows, privacy review, and clinical governance slow adoption even when the data structuring is technically useful.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  }
+}

@@ -1083,5 +1083,65 @@
     "aliases": [
       "Growth Equity at Goldman Sachs Alternatives"
     ]
+  },
+  "greenfield-partners": {
+    "name": "Greenfield Partners",
+    "slug": "greenfield-partners",
+    "short_name": "Greenfield",
+    "website": "https://greenfield-growth.com/",
+    "description": "Growth-focused investment firm backing technology and tech-enabled companies as they scale.",
+    "aliases": [
+      "Greenfield"
+    ]
+  },
+  "j2-ventures": {
+    "name": "J2 Ventures",
+    "slug": "j2-ventures",
+    "short_name": "J2",
+    "website": "https://www.j2vp.com/",
+    "description": "Early-stage venture firm investing in companies across advanced computing, biomedical engineering, cybersecurity, and infrastructure.",
+    "aliases": [
+      "J2"
+    ]
+  },
+  "village-global": {
+    "name": "Village Global",
+    "slug": "village-global",
+    "short_name": "Village Global",
+    "website": "https://www.villageglobal.com/",
+    "description": "Early-stage venture capital firm connecting founders with a broad operator and investor network.",
+    "aliases": [
+      "Village"
+    ]
+  },
+  "blackrock": {
+    "name": "BlackRock",
+    "slug": "blackrock",
+    "short_name": "BlackRock",
+    "website": "https://www.blackrock.com/corporate",
+    "description": "Global investment manager investing across public markets, private markets, alternatives, and technology-enabled financial infrastructure.",
+    "aliases": [
+      "BlackRock, Inc."
+    ]
+  },
+  "fin-capital": {
+    "name": "Fin Capital",
+    "slug": "fin-capital",
+    "short_name": "Fin",
+    "website": "https://fin.capital/",
+    "description": "Lifecycle investor focused on B2B fintech software companies from early stage through growth.",
+    "aliases": [
+      "Fin"
+    ]
+  },
+  "innovius-capital": {
+    "name": "Innovius Capital",
+    "slug": "innovius-capital",
+    "short_name": "Innovius",
+    "website": "https://www.innoviuscapital.com/",
+    "description": "Venture capital firm backing SaaS and AI companies with capital and go-to-market operating support.",
+    "aliases": [
+      "Innovius"
+    ]
   }
 }

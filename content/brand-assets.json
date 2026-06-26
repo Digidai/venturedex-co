@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-25",
+  "verified_at": "2026-06-26",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1228,6 +1228,41 @@
       "local_path": "/logos/companies/taktile.svg",
       "source_page": "https://www.taktile.com/",
       "source_url": "https://www.taktile.com/icon/favicon.svg"
+    },
+    "patronus-ai": {
+      "name": "Patronus AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/patronus-ai.png",
+      "source_page": "https://www.patronus.ai/",
+      "source_url": "https://cdn.prod.website-files.com/64e655d42d3be60f582d0472/64f619d2bf9e3d5ed811e63c_patronus-webclip.png"
+    },
+    "sazabi": {
+      "name": "Sazabi",
+      "shape": "icon",
+      "local_path": "/logos/companies/sazabi.ico",
+      "source_page": "https://www.sazabi.com/",
+      "source_url": "https://www.sazabi.com/sazabi-icon.ico"
+    },
+    "coval": {
+      "name": "Coval",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/coval.svg",
+      "source_page": "https://www.coval.ai/",
+      "source_url": "https://www.coval.ai/assets/coval-logo.svg"
+    },
+    "caplight": {
+      "name": "Caplight",
+      "shape": "icon",
+      "local_path": "/logos/companies/caplight.png",
+      "source_page": "https://www.caplight.com/",
+      "source_url": "https://www.caplight.com/_next/static/media/favicon.fe7d1718.png"
+    },
+    "xcures": {
+      "name": "xCures",
+      "shape": "icon",
+      "local_path": "/logos/companies/xcures.svg",
+      "source_page": "https://xcures.com/",
+      "source_url": "https://xcures.com/wp-content/themes/website-theme/assets/favicon/favicon.svg"
     }
   },
   "investors": {
@@ -2258,6 +2293,50 @@
       "local_path": "/logos/investors/goldman-sachs-alternatives.png",
       "source_page": "https://am.gs.com/en-us/advisors/products/alternative-investing",
       "source_url": "https://cdn.gs.com/images/goldman-sachs/v1/gs-favicon-180.png"
+    },
+    "greenfield-partners": {
+      "name": "Greenfield Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/greenfield-partners.svg",
+      "source_page": "https://greenfield-growth.com/",
+      "source_url": "https://greenfield-growth.com/assets/images/favicon.svg"
+    },
+    "j2-ventures": {
+      "name": "J2 Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/j2-ventures.jpg",
+      "source_page": "https://www.j2vp.com/",
+      "source_url": "https://cdn.prod.website-files.com/66a284f9e3c172e01535a5f1/66b11233fab9b9ce5df7b947_favicomn.jpg"
+    },
+    "village-global": {
+      "name": "Village Global",
+      "shape": "icon",
+      "local_path": "/logos/investors/village-global.png",
+      "source_page": "https://www.villageglobal.com/",
+      "source_url": "https://cdn.prod.website-files.com/67167e56b8481bdcc6627a23/6764c4ee7d4d29735c2096e0_Frame%20852.png"
+    },
+    "blackrock": {
+      "name": "BlackRock",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/blackrock.png",
+      "source_page": "https://www.blackrock.com/corporate",
+      "source_url": "https://www.blackrock.com/blk-corp-assets/include/common/images/blackrock_logo.png"
+    },
+    "fin-capital": {
+      "name": "Fin Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/fin-capital.svg",
+      "source_page": "https://fin.capital/",
+      "source_url": "https://fin.capital/logo.svg?v=2",
+      "allow_unreachable_source": true,
+      "note": "Official homepage exposed the logo, but HEAD returned HTTP 500 during this run; local logo was fetched from the official asset URL."
+    },
+    "innovius-capital": {
+      "name": "Innovius Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/innovius-capital.png",
+      "source_page": "https://www.innoviuscapital.com/",
+      "source_url": "https://framerusercontent.com/images/aO6YatKkgcqI1zxmNm688FaCMg.png"
     }
   }
 }

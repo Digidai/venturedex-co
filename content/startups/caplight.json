@@ -1,0 +1,86 @@
+{
+  "slug": "caplight",
+  "domain": "www.caplight.com",
+  "url": "https://www.caplight.com/",
+  "product_name": "Caplight",
+  "summary": "Private market data, pricing, trading, and API infrastructure.",
+  "editor_note": "Private markets are still priced through relationships and stale spreadsheets; Caplight turns that into a data product. Secondary pricing, MarketPrice, company and investor databases, API/MCP access, and a $16M Series A make it more like market plumbing than another VC dashboard. The tension is whether users trade enough inside its network.",
+  "editor_rating": 4,
+  "why_featured": "Private-market data rails",
+  "product_type": "Fintech",
+  "founded_year": 2021,
+  "team_size": "30-50",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "private markets,fintech,data,api",
+  "investors": "BlackRock, Fin Capital",
+  "links": {
+    "careers": "https://www.caplight.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$16M",
+      "stage": "Series A",
+      "lead_investor": "BlackRock",
+      "date": "2026-06-24",
+      "source_url": "https://www.prnewswire.com/news-releases/caplight-raises-16m-series-a-led-by-blackrock-and-fin-capital-to-power-the-next-era-of-private-markets-302808600.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.caplight.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_insight",
+        "label": "Caplight Series A product note",
+        "url": "https://www.caplight.com/insights/venture-capital-outgrew-its-rails-it-s-time-to-rebuild-them",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire Series A funding report",
+        "url": "https://www.prnewswire.com/news-releases/caplight-raises-16m-series-a-led-by-blackrock-and-fin-capital-to-power-the-next-era-of-private-markets-302808600.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes Secondary Data and Trading, Caplight MarketPrice, Company Database, Investor Database, Sourcing, and API and MCP products.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage describes historical pricing trends, real-time market alerts, and data sourced from primary and secondary transactions.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A product note says Caplight sits on proprietary secondary-market data, funding-round data, platform conversations, and registered-broker-dealer pipes.",
+        "source_ids": [
+          "official_insight"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Private-market investors, brokers, secondary buyers and sellers, and research teams that need pricing, data, and transaction workflows.",
+      "category": "Private market data infrastructure",
+      "differentiation": "Caplight combines secondary pricing data, company and investor databases, trading workflow, and API/MCP access in one private-market platform.",
+      "why_now": "Private-company financing has become larger and more frequent, increasing demand for secondary pricing signals and transaction infrastructure."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enough private-market transaction flow happens on Caplight to make the data advantage durable against incumbents and bank-led platforms.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  }
+}

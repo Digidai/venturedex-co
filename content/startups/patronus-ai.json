@@ -1,0 +1,92 @@
+{
+  "slug": "patronus-ai",
+  "domain": "www.patronus.ai",
+  "url": "https://www.patronus.ai/",
+  "product_name": "Patronus AI",
+  "summary": "Simulation and evaluation infrastructure for training reliable AI agents.",
+  "editor_note": "The sharp bet is that agent safety will be trained in worlds, not audited after deployment. Digital World Models, RL environments, Lynx and Glider evaluators, and a $50M Series B make it feel closer to infrastructure than another eval dashboard. The risk is whether simulated software work predicts messy enterprise workflows well enough.",
+  "editor_rating": 4,
+  "why_featured": "Digital worlds for agent evals",
+  "product_type": "AI / ML",
+  "founded_year": 2023,
+  "team_size": "30-50",
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "ai agents,evaluation,simulation,developer tools",
+  "investors": "Greenfield Partners",
+  "links": {
+    "careers": "https://www.patronus.ai/join"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series B",
+      "lead_investor": "Greenfield Partners",
+      "date": "2026-06-25",
+      "source_url": "https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.patronus.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_products",
+        "label": "Patronus AI products",
+        "url": "https://www.patronus.ai/products",
+        "type": "product"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Patronus AI Series B announcement",
+        "url": "https://www.patronus.ai/announcements/announcing-our-50m-series-b",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Series B funding report",
+        "url": "https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage says Digital World Models predict and simulate agent actions in digital workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The products page lists a core platform for experiments, logging, comparisons, and traces alongside Lynx, Glider, LLM-as-a-Judge, and Digital World Models.",
+        "source_ids": [
+          "official_products"
+        ]
+      },
+      {
+        "claim": "The official announcement says Patronus-DWM is evaluated across coding, dialogue, research, GUI, API, and general tool-use benchmark domains.",
+        "source_ids": [
+          "official_announcement"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI research, agent, and platform engineering teams that need to evaluate long-horizon agent behavior before production deployment.",
+      "category": "AI evaluation and simulation infrastructure",
+      "differentiation": "Patronus is moving from post-hoc LLM evaluation into simulated digital work environments for training and testing agents.",
+      "why_now": "Autonomous agents are shifting from chat responses to software, research, and tool-use workflows where failures need pre-production simulation."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether simulated digital workflows predict enterprise-specific agent failures closely enough to become a deployment gate.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  }
+}

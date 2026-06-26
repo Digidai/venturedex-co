@@ -1,0 +1,93 @@
+{
+  "slug": "sazabi",
+  "domain": "www.sazabi.com",
+  "url": "https://www.sazabi.com/",
+  "product_name": "Sazabi",
+  "summary": "AI-native observability centered on logs, alerts, and incident investigations.",
+  "editor_note": "Most observability startups add more dashboards; this one says logs are enough. Autonomous alerts, code search, cost spike detection, and PR-generating investigations give the product a sharper bet than generic AI monitoring. The open question is whether teams will trust a chat-first debugger when production is down.",
+  "editor_rating": 4,
+  "why_featured": "$8M seed for log-first observability",
+  "product_type": "DevTools",
+  "founded_year": 2026,
+  "team_size": "1-10",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "observability,logs,developer tools,ai agents",
+  "investors": "J2 Ventures, Village Global, Y Combinator",
+  "links": {
+    "careers": "https://www.sazabi.com/about#careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Seed",
+      "lead_investor": "J2 Ventures",
+      "date": "2026-06-25",
+      "source_url": "https://www.prnewswire.com/news-releases/sazabi-raises-8-million-seed-round-to-build-the-ai-native-observability-platform-for-fast-moving-engineering-teams-302810085.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.sazabi.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_alerts",
+        "label": "Sazabi autonomous alerts feature page",
+        "url": "https://www.sazabi.com/features/autonomous-alerts",
+        "type": "product"
+      },
+      {
+        "id": "official_seed",
+        "label": "Sazabi seed round and open beta announcement",
+        "url": "https://www.sazabi.com/blog/seed-round",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire seed funding report",
+        "url": "https://www.prnewswire.com/news-releases/sazabi-raises-8-million-seed-round-to-build-the-ai-native-observability-platform-for-fast-moving-engineering-teams-302810085.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage exposes autonomous alerts, code search, instrumentation, security, and integrations as core product surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The autonomous-alerts page describes silent-failure detection, user-frustration correlation, cost-spike alerts, incident memory, and Slack-context signals.",
+        "source_ids": [
+          "official_alerts"
+        ]
+      },
+      {
+        "claim": "The seed announcement says the company opened beta and is positioning Sazabi around AI-native observability for fast-moving engineering teams.",
+        "source_ids": [
+          "official_seed",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams using AI coding tools and shipping fast enough that static dashboards and monitors fall behind.",
+      "category": "AI-native observability",
+      "differentiation": "Sazabi focuses observability on logs, chat, autonomous alerting, and code-level investigation rather than broad metrics dashboards.",
+      "why_now": "AI-generated code is increasing production-change velocity, which makes incident investigation and automatic instrumentation more valuable."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that log-first observability may miss enough metric, trace, or session context that larger teams keep legacy stacks as the source of truth.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  }
+}

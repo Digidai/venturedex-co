@@ -1,0 +1,93 @@
+{
+  "slug": "coval",
+  "domain": "www.coval.ai",
+  "url": "https://www.coval.ai/",
+  "product_name": "Coval",
+  "summary": "Simulation and evaluation platform for production voice and chat agents.",
+  "editor_note": "Voice agents need a proving ground before they hit real callers, not another call transcript viewer. Coval's simulation, Observe, human review, benchmarks, and $28M Series A point at QA as deployment infrastructure. The wedge is narrow and useful: catch the edge case before it becomes a live support failure.",
+  "editor_rating": 4,
+  "why_featured": "$28M Series A for voice AI QA",
+  "product_type": "AI / ML",
+  "founded_year": 2024,
+  "team_size": "10-30",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "voice ai,evaluation,simulation,observability",
+  "investors": "Norwest",
+  "links": {
+    "careers": "https://www.coval.ai/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$28M",
+      "stage": "Series A",
+      "lead_investor": "Norwest",
+      "date": "2026-06-24",
+      "source_url": "https://www.prnewswire.com/news-releases/coval-raises-28-million-series-a-to-define-safety-and-reliability-for-autonomous-voice-agents-302808740.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.coval.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Coval Series A announcement",
+        "url": "https://www.coval.ai/blog/coval-series-a",
+        "type": "official"
+      },
+      {
+        "id": "official_benchmarks",
+        "label": "Coval voice AI benchmarks",
+        "url": "https://www.coval.ai/blog/benchmarks",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "PR Newswire Series A funding report",
+        "url": "https://www.prnewswire.com/news-releases/coval-raises-28-million-series-a-to-define-safety-and-reliability-for-autonomous-voice-agents-302808740.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Simulate, Observe, Human Review, benchmarking, documentation, and pricing as product navigation surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A announcement describes Coval as simulation, observability, and labelling infrastructure for AI voice and chat agents.",
+        "source_ids": [
+          "official_announcement",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The benchmarks page publishes voice-agent measurement methodology, including time to first audio, latency range, and word error rate.",
+        "source_ids": [
+          "official_benchmarks"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Voice-agent builders and enterprise teams that need to test, monitor, and review automated calls before and after launch.",
+      "category": "Voice AI evaluation",
+      "differentiation": "Coval specializes in simulation and production reliability for voice and chat agents rather than general LLM observability.",
+      "why_now": "Voice agents are moving into customer-support, healthcare, and financial-services calls where small failures create real operational liability."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that voice-agent teams may stitch together provider-native logs and broader eval platforms instead of buying a dedicated QA layer.",
+        "basis": "VentureDex editorial assessment based on the official product surface and funding-source review."
+      }
+    ]
+  }
+}
