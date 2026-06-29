@@ -1,0 +1,310 @@
+{
+  "issue_number": 5,
+  "title": "Agents Need a Control Layer",
+  "week_start": "2026-06-22",
+  "week_end": "2026-06-28",
+  "published_at": "2026-06-29",
+  "status": "published",
+  "editorial_intro": "This issue follows products that make AI-driven work easier to inspect, constrain, or feed with better evidence. The common pattern is not more automation for its own sake; it is a control layer around agents, decisions, voice calls, logs, web context, and private-market data.",
+  "research_summary": "This issue used published VentureDex startup records, their structured research blocks, linked official and funding sources, and bb-browser checks on official product pages run on 2026-06-29. It does not independently verify private revenue, retention, market share, liquidity depth, benchmark performance, model lift, index freshness, or production reliability; source-stated numbers are treated as source claims, not VentureDex measurements.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Control surfaces for agentic work",
+      "summary": "The selected companies sit around the parts of AI adoption that become fragile in production: observability, simulation, regulated decisions, web context, agent governance, voice-agent QA, and trusted market data."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "sazabi",
+      "why_this_week": "Sazabi fits this week because faster AI-assisted engineering makes the runtime evidence layer more important. If code changes arrive faster, teams need alerts, logs, code context, and incident memory that can be inspected when production behavior changes.",
+      "product_evaluation": "The VentureDex record and official pages show a log-first observability product with autonomous alerts, code search, instrumentation, security, integrations, and conversational debugging. A current bb-browser check on the homepage confirmed visible product surfaces for AI-native observability, Autonomous Alerts, Conversational Debugging, Coding Agents, compliance labels, and About/Careers links.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/sazabi.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/sazabi.json research.sources.official_site",
+          "url": "https://www.sazabi.com/"
+        },
+        {
+          "label": "Sazabi autonomous alerts feature page",
+          "source": "content/startups/sazabi.json research.sources.official_alerts",
+          "url": "https://www.sazabi.com/features/autonomous-alerts"
+        },
+        {
+          "label": "Sazabi seed round and open beta announcement",
+          "source": "content/startups/sazabi.json research.sources.official_seed",
+          "url": "https://www.sazabi.com/blog/seed-round"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire seed funding report",
+          "url": "https://www.prnewswire.com/news-releases/sazabi-raises-8-million-seed-round-to-build-the-ai-native-observability-platform-for-fast-moving-engineering-teams-302810085.html"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered homepage check on 2026-06-29 confirmed the visible product labels used in this pick.",
+          "url": "https://www.sazabi.com/"
+        }
+      ],
+      "risks": [
+        "The log-first bet may miss enough metrics, traces, session replay, or infrastructure context that larger teams keep existing observability suites as the source of truth.",
+        "This weekly review did not test Sazabi during a live incident or verify whether autonomous alerts reduce time to diagnosis in production."
+      ],
+      "verdict": "Sazabi is a credible fit for the issue because it treats observability as an AI-native investigation surface, while replacement of mature monitoring stacks remains unproven."
+    },
+    {
+      "slug": "patronus-ai",
+      "why_this_week": "Patronus AI belongs here because agent deployment needs a pre-production proving ground. The product thesis is that agents should be tested in simulated digital workflows before they are trusted with software, research, GUI, API, or customer-facing tasks.",
+      "product_evaluation": "The official homepage, verified with bb-browser, states that Digital World Models predict and simulate agent actions in digital workflows and lists simulation domains across research, software development, customer service, product applications, and finance. The startup record adds source-bound evidence for the product stack around experiments, logging, comparisons, traces, Lynx, Glider, LLM-as-a-Judge, and Digital World Models.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/patronus-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/patronus-ai.json research.sources.official_site",
+          "url": "https://www.patronus.ai/"
+        },
+        {
+          "label": "Patronus AI products",
+          "source": "content/startups/patronus-ai.json research.sources.official_products",
+          "url": "https://www.patronus.ai/products"
+        },
+        {
+          "label": "Patronus AI Series B announcement",
+          "source": "content/startups/patronus-ai.json research.sources.official_announcement",
+          "url": "https://www.patronus.ai/announcements/announcing-our-50m-series-b"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch Series B funding report",
+          "url": "https://techcrunch.com/2026/06/25/patronus-ai-lands-50m-to-build-digital-worlds-that-stress-test-ai-agents/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered homepage check on 2026-06-29 confirmed Digital World Models and simulation-domain positioning.",
+          "url": "https://www.patronus.ai/"
+        }
+      ],
+      "risks": [
+        "The key open question is whether simulated digital workflows predict customer-specific agent failures closely enough to become a real deployment gate.",
+        "The official page includes research and scale claims, but this issue does not independently reproduce model training, benchmark, or simulation-performance results."
+      ],
+      "verdict": "Patronus AI is the clearest evaluation pick this week: strong public evidence for agent simulation, with predictive validity still the hard test."
+    },
+    {
+      "slug": "taktile",
+      "why_this_week": "Taktile fits because regulated finance is where agentic workflows need the tightest control surface. Onboarding, credit, AML, fraud, underwriting, and claims can use AI speed only if rules, context, review, and audit remain visible.",
+      "product_evaluation": "A current bb-browser page snapshot rendered Taktile as an Agentic Decision Platform for financial institutions and showed page sections around onboarding, credit, AML and fraud investigation, rules, human judgement, and data connections. The structured record adds AI Agent Manager, Decision Engine, Case Manager, Data Orchestration, Agent Library, and Data Marketplace as source-linked product modules.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/taktile.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/taktile.json research.sources.official_site",
+          "url": "https://www.taktile.com/"
+        },
+        {
+          "label": "Taktile Series C announcement",
+          "source": "content/startups/taktile.json research.sources.official_announcement",
+          "url": "https://taktile.com/articles/taktile-secures-110m-in-goldman-sachs-led-series-c-to-power-ai-transformation-in-financial-institutions"
+        },
+        {
+          "label": "Taktile product documentation",
+          "source": "content/startups/taktile.json research.sources.official_docs",
+          "url": "https://docs.taktile.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Taktile Series C announcement",
+          "url": "https://taktile.com/articles/taktile-secures-110m-in-goldman-sachs-led-series-c-to-power-ai-transformation-in-financial-institutions"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered snapshot on 2026-06-29 confirmed the financial-services decisioning and human-judgement page sections.",
+          "url": "https://www.taktile.com/"
+        }
+      ],
+      "risks": [
+        "Banks and insurers may keep agents in recommendation or back-office support modes until compliance, model-risk, and customer-impact controls are proven over time.",
+        "This issue does not verify customer deployment depth or approval-rate outcomes beyond the official announcement and public product surface."
+      ],
+      "verdict": "Taktile is a strong control-layer example because the product evidence centers AI agents inside regulated decisions rather than generic employee productivity."
+    },
+    {
+      "slug": "seltz",
+      "why_this_week": "Seltz belongs in the issue because agents need current web context with citations before they can act responsibly. The control surface here is not approval workflow; it is the evidence feed an agent reads before it reasons.",
+      "product_evaluation": "The VentureDex record describes a Web Knowledge API for AI agents with source URLs, quickstarts, and a crawler/index/retrieval stack aimed at machine-shaped context. A current bb-browser snapshot confirmed visible homepage sections for Web Knowledge for AI Agents, Context for Reasoning at Scale, Quickstart, source-backed web context, enterprise design, docs, pricing, and FAQ surfaces.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/seltz.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/seltz.json research.sources.official_site",
+          "url": "https://seltz.ai/"
+        },
+        {
+          "label": "Seltz documentation",
+          "source": "content/startups/seltz.json research.sources.official_docs",
+          "url": "https://docs.seltz.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Fortune seed funding report",
+          "url": "https://fortune.com/2026/06/24/exclusive-seltz-a-startup-rebuilding-web-search-for-ai-agents-raises-12-5-million-in-seed-funding/"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/seltz.json research.product_evidence records Python, Node, and cURL quickstarts plus source URL return behavior.",
+          "url": "https://seltz.ai/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered snapshot on 2026-06-29 confirmed the Web Knowledge for AI Agents and Quickstart sections.",
+          "url": "https://seltz.ai/"
+        }
+      ],
+      "risks": [
+        "Index freshness, coverage, source quality, and resistance to larger search incumbents remain unverified by this weekly review.",
+        "The public surface supports the API positioning, but this run did not make live API calls or compare returned citations against competing retrieval products."
+      ],
+      "verdict": "Seltz is worth including because the next agent bottleneck may be trustworthy web context, not another chat interface."
+    },
+    {
+      "slug": "runlayer",
+      "why_this_week": "Runlayer fits the issue because enterprise agent adoption creates a governance problem as soon as tools touch internal systems. The product tries to make the approved path for agents easier to use than shadow AI workarounds.",
+      "product_evaluation": "The current homepage, verified with bb-browser, describes AI enablement, security, and control in one product; it names 18,000+ MCPs, internal MCP publishing, a governed MCP gateway, employee-created AI coworkers, shadow-AI discovery, access and action governance, runtime security, audit logs, and spend visibility. Those claims match the structured VentureDex research and official Series A source.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/runlayer.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/runlayer.json research.sources.official_site",
+          "url": "https://www.runlayer.com/"
+        },
+        {
+          "label": "Runlayer Series A announcement",
+          "source": "content/startups/runlayer.json research.sources.official_blog",
+          "url": "https://www.runlayer.com/blog/series-A-30m-fundraise-felicis-khosla"
+        },
+        {
+          "label": "Funding source",
+          "source": "Fortune Series A funding report",
+          "url": "https://fortune.com/2026/06/24/exclusive-vinod-khosla-felicis-runlayer-nanit-30-million-enterprise-ai/"
+        },
+        {
+          "label": "PR Newswire source",
+          "source": "PR Newswire Series A announcement",
+          "url": "https://www.prnewswire.com/news-releases/runlayer-raises-30m-series-a-to-help-enterprises-go-all-in-on-ai-302809271.html"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered homepage check on 2026-06-29 confirmed MCP, governance, runtime security, audit, and spend-visibility language.",
+          "url": "https://www.runlayer.com/"
+        }
+      ],
+      "risks": [
+        "The neutral-control-layer position may get squeezed if AI platforms add native governance, audit, and agent-management controls that buyers prefer.",
+        "This issue treats named customers and MCP counts as official-source claims; it does not verify deployment scope or utilization inside those companies."
+      ],
+      "verdict": "Runlayer is the governance pick: credible public evidence for the agent control plane, with platform competition as the main unresolved pressure."
+    },
+    {
+      "slug": "coval",
+      "why_this_week": "Coval belongs here because voice agents need test harnesses before they reach real callers. The product turns quality control into a lifecycle loop across simulation, production observation, and human review.",
+      "product_evaluation": "The current homepage, verified with bb-browser, shows Simulate, Observe, and Review as product stages, plus realistic call examples around identity verification, escalation, resolution, latency, sentiment, and human-review annotations. The startup record adds source-bound evidence for simulation, observability, labelling infrastructure, documentation, pricing, and the benchmarks page.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/coval.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/coval.json research.sources.official_site",
+          "url": "https://www.coval.ai/"
+        },
+        {
+          "label": "Coval Series A announcement",
+          "source": "content/startups/coval.json research.sources.official_announcement",
+          "url": "https://www.coval.ai/blog/coval-series-a"
+        },
+        {
+          "label": "Coval voice AI benchmarks",
+          "source": "content/startups/coval.json research.sources.official_benchmarks",
+          "url": "https://www.coval.ai/blog/benchmarks"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire Series A funding report",
+          "url": "https://www.prnewswire.com/news-releases/coval-raises-28-million-series-a-to-define-safety-and-reliability-for-autonomous-voice-agents-302808740.html"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered homepage check on 2026-06-29 confirmed Simulate, Observe, Review, and call-quality evaluation examples.",
+          "url": "https://www.coval.ai/"
+        }
+      ],
+      "risks": [
+        "Voice-agent teams may rely on provider-native logs, broader evaluation platforms, or internal QA instead of buying a dedicated voice-agent layer.",
+        "This issue did not run synthetic calls through Coval or validate benchmark methodology beyond the official benchmark and product surfaces."
+      ],
+      "verdict": "Coval is compelling because it puts a QA loop around voice agents before production failures reach customers."
+    },
+    {
+      "slug": "caplight",
+      "why_this_week": "Caplight is the non-agent pick, but it still fits the theme: automated decision systems are only as useful as the market data they can trust. In private markets, the control layer starts with pricing, liquidity signals, and sourceable transaction context.",
+      "product_evaluation": "The current homepage, verified with bb-browser, shows Secondary Market Pricing, MarketPrice, Trading, Company Data, Sourcing, API and MCP products, historical pricing trends, real-time market alerts, and primary plus secondary transaction data. The page also labels some displayed order-book and sourcing data as illustrative, so this issue treats those examples as product demonstration rather than verified market depth.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/caplight.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Official product site",
+          "source": "content/startups/caplight.json research.sources.official_site",
+          "url": "https://www.caplight.com/"
+        },
+        {
+          "label": "Caplight Series A product note",
+          "source": "content/startups/caplight.json research.sources.official_insight",
+          "url": "https://www.caplight.com/insights/venture-capital-outgrew-its-rails-it-s-time-to-rebuild-them"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire Series A funding report",
+          "url": "https://www.prnewswire.com/news-releases/caplight-raises-16m-series-a-led-by-blackrock-and-fin-capital-to-power-the-next-era-of-private-markets-302808600.html"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "content/startups/caplight.json research.product_evidence records Secondary Data and Trading, MarketPrice, Company Database, Investor Database, Sourcing, API, and MCP surfaces.",
+          "url": "https://www.caplight.com/"
+        },
+        {
+          "label": "bb-browser official-page check",
+          "source": "Rendered homepage check on 2026-06-29 confirmed private-market pricing, trading, data, sourcing, API, and MCP product labels.",
+          "url": "https://www.caplight.com/"
+        }
+      ],
+      "risks": [
+        "The durability of Caplight's data advantage depends on whether enough real transaction flow, broker activity, and institutional usage happen inside or adjacent to its network.",
+        "This issue does not verify live order-book depth, pricing accuracy, registered-broker-dealer operations, or the freshness of any market data shown in product examples."
+      ],
+      "verdict": "Caplight rounds out the issue because control layers need trusted data rails too, especially in markets where prices are still hard to observe."
+    }
+  ]
+}
