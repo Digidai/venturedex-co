@@ -1,0 +1,90 @@
+{
+  "slug": "netris",
+  "domain": "netris.io",
+  "url": "https://netris.io/",
+  "product_name": "Netris",
+  "summary": "Network automation and multi-tenancy platform for GPU cloud operators.",
+  "editor_note": "The bet is that AI clouds fail at the network layer before they fail at GPUs. Netris exposes multi-tenant fabrics, elastic IPs, load balancers, Terraform docs, and NVIDIA/InfiniBand support instead of asking neocloud teams to build an SDN department. Compared with generic controllers, it treats hard network isolation as the product. The risk is whether smaller GPU clouds can absorb such deep infrastructure.",
+  "editor_rating": 4,
+  "why_featured": "$15M Series A for GPU networks",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,network automation,gpu cloud,multi-tenancy,devops",
+  "investors": "Andreessen Horowitz",
+  "links": {
+    "docs": "https://www.netris.io/docs/",
+    "product": "https://www.netris.io/docs/en/latest/supported-platform-matrix.html"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-06-25",
+      "source_url": "https://www.thesaasnews.com/news/netris-raises-15m-series-a/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-29",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://netris.io/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Netris documentation",
+        "url": "https://www.netris.io/docs/",
+        "type": "product"
+      },
+      {
+        "id": "terraform_docs",
+        "label": "Netris Terraform provider docs",
+        "url": "https://registry.terraform.io/providers/netrisai/netris/latest/docs",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Netris Series A funding report",
+        "url": "https://www.thesaasnews.com/news/netris-raises-15m-series-a/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Netris as network automation and multi-tenancy for AI cloud operators running GPU infrastructure.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The documentation exposes supported platform matrices, hardware requirements, and Netris compatibility details for cloud-network deployments.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The Terraform provider docs show that operators can manage Netris resources through infrastructure-as-code workflows.",
+        "source_ids": [
+          "terraform_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI cloud operators and infrastructure teams trying to sell shared GPU capacity without building a custom networking stack.",
+      "category": "AI infrastructure networking",
+      "differentiation": "Netris narrows the product around GPU-cloud network automation, hard multi-tenancy, elastic IPs, load balancers, and Terraform-controlled operations rather than generic data-center SDN.",
+      "why_now": "GPU clouds are adding tenants faster than network teams can hand-build isolation, making automated fabric control a bottleneck for revenue."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether smaller GPU-cloud operators can adopt a deep networking control plane without services-heavy rollout work.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

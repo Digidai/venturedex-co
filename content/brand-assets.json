@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-26",
+  "verified_at": "2026-06-29",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1263,6 +1263,41 @@
       "local_path": "/logos/companies/xcures.svg",
       "source_page": "https://xcures.com/",
       "source_url": "https://xcures.com/wp-content/themes/website-theme/assets/favicon/favicon.svg"
+    },
+    "grailpay": {
+      "name": "GrailPay",
+      "shape": "icon",
+      "local_path": "/logos/companies/grailpay.png",
+      "source_page": "https://www.grailpay.com/",
+      "source_url": "https://cdn.prod.website-files.com/67db180f2e24323cc204a78b/67ec955832c775f8cf4279fd_webclip.png"
+    },
+    "nebulock": {
+      "name": "Nebulock",
+      "shape": "icon",
+      "local_path": "/logos/companies/nebulock.svg",
+      "source_page": "https://nebulock.io/",
+      "source_url": "https://cdn.prod.website-files.com/699f3d4103e81bd7b27e4fe4/69a79b01d02177d2e4448fd2_nebulock-webclip.svg"
+    },
+    "netris": {
+      "name": "Netris",
+      "shape": "icon",
+      "local_path": "/logos/companies/netris.png",
+      "source_page": "https://netris.io/",
+      "source_url": "https://netris.io/wp-content/uploads/2025/10/cropped-netris-element-pink-100-1-192x192-1.png"
+    },
+    "sail-research": {
+      "name": "Sail Research",
+      "shape": "icon",
+      "local_path": "/logos/companies/sail-research.ico",
+      "source_page": "https://www.sailresearch.com/",
+      "source_url": "https://www.sailresearch.com/favicon.ico?favicon.0tgzlrwaytlhl.ico?dpl=dpl_BXEtrZpNEjK3LmBSA7ETXqQD25Jz"
+    },
+    "scaled-cognition": {
+      "name": "Scaled Cognition",
+      "shape": "icon",
+      "local_path": "/logos/companies/scaled-cognition.png",
+      "source_page": "https://www.scaledcognition.com/",
+      "source_url": "https://cdn.prod.website-files.com/695bbfca07da756ac77e9b23/69f0d4e5f4a9f3085d8c4f7c_webclip.png"
     }
   },
   "investors": {
@@ -2339,6 +2374,20 @@
       "local_path": "/logos/investors/innovius-capital.png",
       "source_page": "https://www.innoviuscapital.com/",
       "source_url": "https://framerusercontent.com/images/aO6YatKkgcqI1zxmNm688FaCMg.png"
+    },
+    "missionog": {
+      "name": "MissionOG",
+      "shape": "icon",
+      "local_path": "/logos/investors/missionog.png",
+      "source_page": "https://missionog.com/",
+      "source_url": "https://missionog.com/wp-content/uploads/2018/04/cropped-mog_favicon_512-180x180.png"
+    },
+    "firstmark": {
+      "name": "FirstMark",
+      "shape": "icon",
+      "local_path": "/logos/investors/firstmark.png",
+      "source_page": "https://firstmark.com/",
+      "source_url": "https://firstmark.com/app/themes/sage/resources/images/favicons/apple-touch-icon.png"
     }
   }
 }

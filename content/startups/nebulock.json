@@ -1,0 +1,93 @@
+{
+  "slug": "nebulock",
+  "domain": "nebulock.io",
+  "url": "https://nebulock.io/",
+  "product_name": "Nebulock",
+  "summary": "AI threat-hunting platform that turns security intel into durable detections.",
+  "editor_note": "Threat detection gets sharper when the unit is a hunt, not another alert queue. Nebulock maps hypotheses to MITRE ATT&CK, reads EDR, IAM, cloud, network, and SaaS telemetry, builds a context graph, and produces findings plus deployable rules. Unlike SIEM copilots that summarize alerts, it starts from threat intel and asks whether your environment is exposed.",
+  "editor_rating": 4,
+  "why_featured": "$25M Series A for threat hunts",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "cybersecurity,threat hunting,security operations,ai agents,detection",
+  "investors": "FirstMark",
+  "links": {
+    "careers": "https://nebulock.io/careers",
+    "docs": "https://docs.nebulock.io/",
+    "github": "https://github.com/Nebulock-Inc",
+    "security": "https://trust.nebulock.io/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "FirstMark",
+      "date": "2026-06-25",
+      "source_url": "https://nebulock.io/blog/nebulock-raises-25m-series-a-for-hunt-first-always-on-security-operations",
+      "source_name": "Nebulock"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-29",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://nebulock.io/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Nebulock platform page",
+        "url": "https://nebulock.io/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Nebulock documentation",
+        "url": "https://docs.nebulock.io/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Nebulock Series A announcement",
+        "url": "https://nebulock.io/blog/nebulock-raises-25m-series-a-for-hunt-first-always-on-security-operations",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The platform page says Nebulock hunts across EDR, IAM, cloud, network, and SaaS sources using a behavioral context graph.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "Nebulock describes a /LOCK/ framework that maps hypotheses to MITRE ATT&CK, observes baselines, correlates signals, and emits findings.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The official surface links docs, Trust Center, and GitHub resources including an agentic threat-hunting framework.",
+        "source_ids": [
+          "official_platform",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security operations teams and CISOs trying to turn threat intelligence into proactive detection coverage.",
+      "category": "Security operations software",
+      "differentiation": "Nebulock centers the workflow on hunt hypotheses, context graphs, and deployable detection rules rather than alert summarization.",
+      "why_now": "Security teams are flooded with tools and threat intel, making automated hunt execution more valuable than another alert surface."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that transparent AI hunting still needs enough clean telemetry integrations and analyst trust to replace manual investigation.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

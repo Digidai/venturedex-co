@@ -1,0 +1,90 @@
+{
+  "slug": "scaled-cognition",
+  "domain": "www.scaledcognition.com",
+  "url": "https://www.scaledcognition.com/",
+  "product_name": "Scaled Cognition",
+  "summary": "Enterprise AI agent platform built around reliable customer-experience workflows.",
+  "editor_note": "The useful bet is that customer-service agents need correctness more than another fluent chat layer. APT validates function parameters, enforces business rules, confirms API execution, and offers VPC or on-prem deployment. Unlike wrapper platforms that hide policy logic in prompts, Scaled Cognition makes reliability the architecture. The risk is whether its claims survive messy enterprise edge cases.",
+  "editor_rating": 4,
+  "why_featured": "$100M Series A for APT agents",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "customer experience,ai agents,enterprise ai,reliability,workflow automation",
+  "investors": "Khosla Ventures",
+  "links": {
+    "careers": "https://www.scaledcognition.com/careers",
+    "product": "https://www.scaledcognition.com/product/meet-apt-1"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$100M",
+      "stage": "Series A",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-06-25",
+      "source_url": "https://www.globenewswire.com/news-release/2026/06/25/3317460/0/en/scaled-cognition-raises-100m-series-a-led-by-khosla-ventures-to-build-reliable-enterprise-ai.html",
+      "source_name": "GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-29",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.scaledcognition.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_apt",
+        "label": "Scaled Cognition APT product page",
+        "url": "https://www.scaledcognition.com/product/meet-apt-1",
+        "type": "product"
+      },
+      {
+        "id": "official_platform",
+        "label": "Scaled Cognition platform page",
+        "url": "https://www.scaledcognition.com/product/explore-platform",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Scaled Cognition Series A funding release",
+        "url": "https://www.globenewswire.com/news-release/2026/06/25/3317460/0/en/scaled-cognition-raises-100m-series-a-led-by-khosla-ventures-to-build-reliable-enterprise-ai.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The APT product page says the model validates parameters against system schemas before executing functions and confirms system execution before replying.",
+        "source_ids": [
+          "official_apt"
+        ]
+      },
+      {
+        "claim": "The product surface describes Spec, Sim, Ship, and Scale as a lifecycle for defining, testing, deploying, and operating CX agents.",
+        "source_ids": [
+          "official_apt"
+        ]
+      },
+      {
+        "claim": "Scaled Cognition states that APT supports SOC 2 Type II controls plus VPC and on-prem deployment for enterprise data boundaries.",
+        "source_ids": [
+          "official_apt"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise customer-experience teams and product owners replacing brittle support workflows with AI agents.",
+      "category": "Enterprise AI agents",
+      "differentiation": "Scaled Cognition focuses on transactional correctness, policy constraints, verified execution, and deployment sovereignty rather than general chat orchestration.",
+      "why_now": "Enterprise AI budgets are moving from demos toward workflow ownership, making reliability and auditability a more important buying criterion."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether the reliability architecture keeps working across long-tail enterprise policies, integrations, and exception handling.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

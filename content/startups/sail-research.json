@@ -1,0 +1,92 @@
+{
+  "slug": "sail-research",
+  "domain": "www.sailresearch.com",
+  "url": "https://www.sailresearch.com/",
+  "product_name": "Sail Research",
+  "summary": "Inference platform priced for long-horizon agents and background AI workloads.",
+  "editor_note": "The bet is that agent infrastructure should price patience, not just speed. Sail shows OpenAI- and Anthropic-compatible APIs, completion windows from asap to flex, model pricing, LoRA/RL rollout support, and Sailboxes for persistent agent compute. Compared with inference vendors racing every token to zero latency, it sells cheaper intelligence when a background agent can wait a minute.",
+  "editor_rating": 5,
+  "why_featured": "$80M for long-horizon inference",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,inference,developer tools,agents,api",
+  "investors": "Kleiner Perkins, Sequoia Capital",
+  "links": {
+    "careers": "https://www.sailresearch.com/careers",
+    "docs": "https://docs.sailresearch.com/",
+    "pricing": "https://docs.sailresearch.com/pricing"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$80M",
+      "stage": "Series A",
+      "lead_investor": "Kleiner Perkins",
+      "date": "2026-06-25",
+      "source_url": "https://www.sailresearch.com/blog/sail-raises-80m",
+      "source_name": "Sail Research"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-29",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.sailresearch.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Sail model pricing docs",
+        "url": "https://docs.sailresearch.com/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_sailboxes",
+        "label": "Sailboxes documentation",
+        "url": "https://docs.sailresearch.com/sailboxes",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Sail seed and Series A announcement",
+        "url": "https://www.sailresearch.com/blog/sail-raises-80m",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows OpenAI- and Anthropic-compatible APIs, model pricing, free credits, and completion windows that trade latency for token cost.",
+        "source_ids": [
+          "official_site",
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "Sail describes LoRA fine-tune serving, RL rollouts, usage-based billing, and trillions of tokens served per week as production surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Sailboxes docs describe persistent hosted sandboxes for agents that need compute state across long-running tasks.",
+        "source_ids": [
+          "official_sailboxes"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI engineers running background agents, deep research systems, evals, and RL sampling workloads.",
+      "category": "AI inference infrastructure",
+      "differentiation": "Sail prices inference by completion windows and pairs it with persistent agent compute, rather than only competing on fastest response time.",
+      "why_now": "Long-running agents and eval-heavy development make token economics matter as much as raw latency for many AI teams."
+    },
+    "risks": [
+      {
+        "claim": "The risk is that developers may still route mission-critical agent steps to lower-latency providers when task timing is unpredictable.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

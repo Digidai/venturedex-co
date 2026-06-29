@@ -1143,5 +1143,19 @@
     "aliases": [
       "Innovius"
     ]
+  },
+  "missionog": {
+    "name": "MissionOG",
+    "slug": "missionog",
+    "short_name": "MissionOG",
+    "website": "https://missionog.com/",
+    "description": "Growth equity and venture firm investing in B2B software, fintech, and data-driven technology companies."
+  },
+  "firstmark": {
+    "name": "FirstMark",
+    "slug": "firstmark",
+    "short_name": "FirstMark",
+    "website": "https://firstmark.com/",
+    "description": "New York-based venture capital firm backing technology companies from early stage through growth."
   }
 }

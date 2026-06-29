@@ -1,0 +1,91 @@
+{
+  "slug": "grailpay",
+  "domain": "www.grailpay.com",
+  "url": "https://www.grailpay.com/",
+  "product_name": "GrailPay",
+  "summary": "Payments risk-intelligence layer for ACH, open banking, and instant settlement.",
+  "editor_note": "The interesting bet is that faster payments need authorization before money moves, not better recovery afterward. GrailPay exposes account intelligence, open-banking checks, 99% US bank-account coverage, API settlement, and transaction risk models. Compared with legacy ACH verification, it treats payer identity and payment intent as the network layer.",
+  "editor_rating": 4,
+  "why_featured": "$10.5M Series A for payment risk",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "payments,risk intelligence,ach,open banking,fintech",
+  "investors": "MissionOG",
+  "links": {
+    "docs": "https://docs.grailpay.com/home/welcome",
+    "product": "https://www.grailpay.com/risk/account-intelligence"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10.5M",
+      "stage": "Series A",
+      "lead_investor": "MissionOG",
+      "date": "2026-06-25",
+      "source_url": "https://www.thesaasnews.com/news/grailpay-raises-10-5m-series-a/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-29",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Official product site",
+        "url": "https://www.grailpay.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "GrailPay documentation",
+        "url": "https://docs.grailpay.com/home/welcome",
+        "type": "product"
+      },
+      {
+        "id": "official_account",
+        "label": "GrailPay Account Intelligence page",
+        "url": "https://www.grailpay.com/risk/account-intelligence",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "GrailPay Series A funding report",
+        "url": "https://www.thesaasnews.com/news/grailpay-raises-10-5m-series-a/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes tailored risk models, multi-factor payer checks, instant onboarding, account validation, and open-banking account links.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "GrailPay says its Payments Identity Network covers over 99% of US bank accounts for account and identity risk decisioning.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface exposes docs plus same-day and instant settlement availability through API-led payment workflows.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Fintechs, payment processors, banks, and software companies embedding ACH or instant bank payments.",
+      "category": "Payments risk infrastructure",
+      "differentiation": "GrailPay combines identity, bank-account validation, open banking, and settlement controls rather than selling a single verification endpoint.",
+      "why_now": "Instant and agentic payments reduce the time available to detect fraud, so risk checks need to happen before settlement."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether a proprietary payments identity network can stay predictive as fraud tactics and bank data access change.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}
