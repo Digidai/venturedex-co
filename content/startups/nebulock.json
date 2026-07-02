@@ -38,12 +38,6 @@
         "type": "official"
       },
       {
-        "id": "official_platform",
-        "label": "Nebulock platform page",
-        "url": "https://nebulock.io/platform",
-        "type": "product"
-      },
-      {
         "id": "official_docs",
         "label": "Nebulock documentation",
         "url": "https://docs.nebulock.io/",
@@ -60,19 +54,19 @@
       {
         "claim": "The platform page says Nebulock hunts across EDR, IAM, cloud, network, and SaaS sources using a behavioral context graph.",
         "source_ids": [
-          "official_platform"
+          "official_site"
         ]
       },
       {
         "claim": "Nebulock describes a /LOCK/ framework that maps hypotheses to MITRE ATT&CK, observes baselines, correlates signals, and emits findings.",
         "source_ids": [
-          "official_platform"
+          "official_site"
         ]
       },
       {
         "claim": "The official surface links docs, Trust Center, and GitHub resources including an agentic threat-hunting framework.",
         "source_ids": [
-          "official_platform",
+          "official_site",
           "official_docs"
         ]
       }

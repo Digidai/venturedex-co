@@ -21,37 +21,44 @@
       "stage": "Series B",
       "lead_investor": "Radical Ventures",
       "date": "2026-05-12",
-      "source_url": "https://cinder.ai/resources/blog/cinder-raises-41m-series-b-ai-abuse",
-      "source_name": "Cinder"
+      "source_url": "https://www.thesaasnews.com/news/cinder-raises-41m-series-b/",
+      "source_name": "The SaaS News"
     }
   ],
   "research": {
-    "verified_at": "2026-06-04",
+    "verified_at": "2026-07-02",
     "sources": [
       {
-        "id": "official_site",
-        "label": "Official product site",
-        "url": "https://cinder.ai/",
+        "id": "official_docs",
+        "label": "Official Cinder documentation index",
+        "url": "https://docs.cinder.ai/llms.txt",
         "type": "official"
       },
       {
+        "id": "official_h1_2026",
+        "label": "Official H1 2026 product changelog",
+        "url": "https://docs.cinder.ai/changelog/2026-07-01-what-youve-missed.md",
+        "type": "product"
+      },
+      {
         "id": "funding_1",
-        "label": "Cinder Series B announcement",
-        "url": "https://cinder.ai/resources/blog/cinder-raises-41m-series-b-ai-abuse",
+        "label": "Cinder Series B funding report",
+        "url": "https://www.thesaasnews.com/news/cinder-raises-41m-series-b/",
         "type": "funding"
       }
     ],
     "product_evidence": [
       {
-        "claim": "The official site describes infrastructure that protects platforms from abuse, fraud, manipulation, and AI-driven attacks.",
+        "claim": "The official changelog says Cinder agents can review jobs in queues, apply policies, and move from training review mode into production.",
         "source_ids": [
-          "official_site"
+          "official_h1_2026"
         ]
       },
       {
-        "claim": "The product surface lists agents, QA, third-party integrations, audit trails, incident intelligence, and explainability for safety teams.",
+        "claim": "The official docs list workflow, queue management, review, QA, analytics, MCP connected apps, webhook, and API surfaces for safety operations.",
         "source_ids": [
-          "official_site"
+          "official_docs",
+          "official_h1_2026"
         ]
       }
     ],

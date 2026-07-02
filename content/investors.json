@@ -1157,5 +1157,36 @@
     "short_name": "FirstMark",
     "website": "https://firstmark.com/",
     "description": "New York-based venture capital firm backing technology companies from early stage through growth."
+  },
+  "salesforce-ventures": {
+    "name": "Salesforce Ventures",
+    "slug": "salesforce-ventures",
+    "short_name": "Salesforce Ventures",
+    "website": "https://salesforceventures.com/",
+    "description": "Enterprise technology venture firm investing from seed through growth with access to the Salesforce ecosystem."
+  },
+  "marathon-management-partners": {
+    "name": "Marathon Management Partners",
+    "slug": "marathon-management-partners",
+    "short_name": "Marathon",
+    "website": "https://www.marathonmp.com/",
+    "description": "Investment firm partnering with founders building category-defining companies."
+  },
+  "gv": {
+    "name": "GV",
+    "slug": "gv",
+    "short_name": "GV",
+    "website": "https://www.gv.com/",
+    "description": "Venture capital firm formerly known as Google Ventures, backing companies across AI, enterprise, life sciences, consumer, and frontier technology."
+  },
+  "boldstart-ventures": {
+    "name": "boldstart ventures",
+    "slug": "boldstart-ventures",
+    "short_name": "boldstart",
+    "website": "https://boldstart.vc/",
+    "description": "Early-stage venture firm backing technical founders building enterprise software, AI infrastructure, security, applications, and models.",
+    "aliases": [
+      "Boldstart Ventures"
+    ]
   }
 }

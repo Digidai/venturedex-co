@@ -687,7 +687,37 @@
       "shape": "icon",
       "local_path": "/logos/companies/cinder.svg",
       "source_page": "https://cinder.ai/",
-      "source_url": "https://cdn.prod.website-files.com/659bc2b8e77100ec0e8dff5f/65b94bd997b338b5cc0a3067_fav.svg"
+      "source_url": "https://cdn.prod.website-files.com/659bc2b8e77100ec0e8dff5f/65b94bd997b338b5cc0a3067_fav.svg",
+      "allow_unreachable_source": true,
+      "note": "Official homepage returns a Vercel HTTP 429 challenge to curl validation, while bb-browser loads the Cinder product page; keep the official Webflow favicon non-blocking."
+    },
+    "8090": {
+      "name": "8090",
+      "shape": "icon",
+      "local_path": "/logos/companies/8090.svg",
+      "source_page": "https://www.8090.ai/",
+      "source_url": "https://www.8090.ai/icon-1jdwle.svg?icon.0f_-dy8xxf.vn.svg?dpl=dpl_7GunrEHtCsKo6FLpgmwPpEBfAMgX"
+    },
+    "straiker": {
+      "name": "Straiker",
+      "shape": "icon",
+      "local_path": "/logos/companies/straiker.jpg",
+      "source_page": "https://www.straiker.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67e35850d44d18d58bb2404c/68b8b1193ae377e52020f0fe_straiker-webclip-icon.jpg"
+    },
+    "baz": {
+      "name": "Baz",
+      "shape": "icon",
+      "local_path": "/logos/companies/baz.png",
+      "source_page": "https://www.baz.co/",
+      "source_url": "https://cdn.prod.website-files.com/6687c611cd9ac075eb1fc52f/6694d83590603568e0b4bfc3_Favicon%20256x256.png"
+    },
+    "nebex": {
+      "name": "Nebex",
+      "shape": "icon",
+      "local_path": "/logos/companies/nebex.png",
+      "source_page": "https://www.nebex.com/",
+      "source_url": "https://cdn.prod.website-files.com/69d7ce76ca1b5fcddfbd6f08/69e4ee154fb05506898127bf_safeimagekit-resized-logoW%20(1).png"
     },
     "gradient-labs": {
       "name": "Gradient Labs",
@@ -2388,6 +2418,36 @@
       "local_path": "/logos/investors/firstmark.png",
       "source_page": "https://firstmark.com/",
       "source_url": "https://firstmark.com/app/themes/sage/resources/images/favicons/apple-touch-icon.png"
+    },
+    "salesforce-ventures": {
+      "name": "Salesforce Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/salesforce-ventures.png",
+      "source_page": "https://salesforceventures.com/",
+      "source_url": "https://salesforceventures.com/wp-content/uploads/2022/05/cropped-Untitled-1-2.png?w=180"
+    },
+    "marathon-management-partners": {
+      "name": "Marathon Management Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/marathon-management-partners.png",
+      "source_page": "https://www.marathonmp.com/",
+      "source_url": "https://img1.wsimg.com/isteam/ip/020bd5a7-d418-4b9d-8fe9-b912d21b7bed/favicon/e6aa9fe8-3451-41e5-a183-33f4b043b0ed/972a8b9a-803a-45da-aeed-594e91499f38.png/:/rs=w:180,h:180,m",
+      "allow_unreachable_source": true,
+      "note": "Official homepage links this GoDaddy-hosted favicon, but the asset probe returns HTTP 204; local logo was fetched from the official asset URL."
+    },
+    "gv": {
+      "name": "GV",
+      "shape": "icon",
+      "local_path": "/logos/investors/gv.png",
+      "source_page": "https://www.gv.com/",
+      "source_url": "https://www.gv.com/favicon.png"
+    },
+    "boldstart-ventures": {
+      "name": "boldstart ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/boldstart-ventures.png",
+      "source_page": "https://boldstart.vc/",
+      "source_url": "https://boldstart.vc/wp-content/uploads/2021/06/cropped-boldstart-favicon-180x180.png"
     }
   }
 }

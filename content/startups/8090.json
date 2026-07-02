@@ -1,0 +1,97 @@
+{
+  "slug": "8090",
+  "domain": "www.8090.ai",
+  "url": "https://www.8090.ai/",
+  "product_name": "8090",
+  "summary": "AI-native software factory for enterprise SDLC control.",
+  "editor_note": "The bet is that AI coding needs an operating layer before it needs another agent. Software Factory exposes 5 modules: requirements, blueprints, work orders, tests, and feedback, plus docs, pricing, and an audit trail. Unlike prompt-first coding assistants, 8090 moves intent and oversight upstream so business leaders can see what agents are building.",
+  "editor_rating": 4,
+  "why_featured": "$135M Series A for AI SDLC control",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai coding,sdlc,enterprise software,developer tools,audit trail",
+  "investors": "Salesforce Ventures",
+  "links": {
+    "docs": "https://www.8090.ai/docs/general/introduction",
+    "product": "https://www.8090.ai/software-factory",
+    "careers": "https://www.8090.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$135M",
+      "stage": "Series A",
+      "lead_investor": "Salesforce Ventures",
+      "date": "2026-06-29",
+      "source_url": "https://www.8090.ai/blog/series-a",
+      "source_name": "8090"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "8090 official site",
+        "url": "https://www.8090.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "8090 Software Factory product page",
+        "url": "https://www.8090.ai/software-factory",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "8090 documentation",
+        "url": "https://www.8090.ai/docs/general/introduction",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "8090 Series A announcement",
+        "url": "https://www.8090.ai/blog/series-a",
+        "type": "funding"
+      },
+      {
+        "id": "funding_2",
+        "label": "TechCrunch coverage of 8090 Series A",
+        "url": "https://techcrunch.com/2026/06/29/chamath-palihapitiya-raises-135m-series-a-for-his-ai-coding-startup-takes-ceo-role/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Software Factory is presented as an AI-native software development control plane that coordinates teams and AI agents with visibility and auditability from intent to code.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The product page exposes five modules: Requirements, Blueprints, Work Orders, Tests, and Feedback.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The official Series A post says 8090 works with regulated industries including healthcare, insurance, life sciences, aerospace, energy, manufacturing, financial services, and the U.S. government.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise engineering, product, and transformation teams adopting AI-assisted software development.",
+      "category": "AI software development control plane",
+      "differentiation": "8090 emphasizes requirements, documentation, work orders, tests, and auditability rather than only code completion.",
+      "why_now": "The $135M Series A and regulated-enterprise positioning signal investor demand for governed AI software creation beyond individual developer copilots."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether enterprise buyers will let an external software factory sit close enough to requirements, architecture, and code to become the system of record.",
+        "basis": "VentureDex editorial assessment based on the official product page, docs, and Series A announcement."
+      }
+    ]
+  }
+}

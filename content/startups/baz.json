@@ -1,0 +1,94 @@
+{
+  "slug": "baz",
+  "domain": "www.baz.co",
+  "url": "https://www.baz.co/",
+  "product_name": "Baz",
+  "summary": "Agentic code review and planning layer for AI-generated code.",
+  "editor_note": "AI-generated code needs judgment before it needs more throughput. Baz shows a 14-day trial, coding agents for review, bugs, standards, security issues, incident response, and a Planner that evaluates ideas before code is saved. Unlike PR-only review tools, it moves risk checks into the planning loop where architecture and security mistakes are cheaper.",
+  "editor_rating": 4,
+  "why_featured": "$9M Seed extension for AI code QA",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "code review,ai coding,security,developer tools,sre",
+  "investors": "Battery Ventures, boldstart ventures",
+  "links": {
+    "docs": "https://docs.baz.co/",
+    "github": "https://github.com/baz-scm",
+    "product": "https://www.baz.co/features",
+    "careers": "https://www.baz.co/career"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9M",
+      "stage": "Seed",
+      "lead_investor": "Battery Ventures",
+      "date": "2026-06-29",
+      "source_url": "https://www.baz.co/resources/agentic-coding-company-baz-announces-planner-that-lets-engineering-teams-eliminate-entire-classes-of-bugs-and-vulnerabilities-at-superhuman-scale-and-an-extended-funding-round-co-led-by-battery-ventures-and-boldstart-ventures",
+      "source_name": "Baz"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Baz official site",
+        "url": "https://www.baz.co/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Baz documentation",
+        "url": "https://docs.baz.co/",
+        "type": "product"
+      },
+      {
+        "id": "official_github",
+        "label": "Baz GitHub organization",
+        "url": "https://github.com/baz-scm",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Baz Planner and seed extension announcement",
+        "url": "https://www.baz.co/resources/agentic-coding-company-baz-announces-planner-that-lets-engineering-teams-eliminate-entire-classes-of-bugs-and-vulnerabilities-at-superhuman-scale-and-an-extended-funding-round-co-led-by-battery-ventures-and-boldstart-ventures",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage describes precision coding agents that review code, find bugs, enforce standards, fix security issues, and respond to incidents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Planner announcement says Baz routes ideas through loops that detect, root-cause, patch, and validate vulnerabilities before code reaches production.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "Baz exposes docs, a GitHub organization, SOC 2 trust link, customer case studies, and a 14-day trial path from the official site.",
+        "source_ids": [
+          "official_site",
+          "official_docs",
+          "official_github"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering leaders and platform teams adopting AI coding agents across pull requests, security review, and incident response.",
+      "category": "AI code quality and security",
+      "differentiation": "Baz reaches earlier than pull-request review by checking plans, requirements, runtime impact, security, and reliability before generated code is committed.",
+      "why_now": "The seed extension and Planner launch arrive as teams look for control points around AI-written code rather than only faster code generation."
+    },
+    "risks": [
+      {
+        "claim": "The key open question is whether Baz can keep false positives low enough that developers trust the Planner before code is written.",
+        "basis": "VentureDex editorial assessment based on the official homepage, docs, and Planner announcement."
+      }
+    ]
+  }
+}

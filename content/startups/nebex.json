@@ -1,0 +1,83 @@
+{
+  "slug": "nebex",
+  "domain": "www.nebex.com",
+  "url": "https://www.nebex.com/",
+  "product_name": "Nebex",
+  "summary": "Market infrastructure connecting space suppliers, sovereign buyers, and capital.",
+  "editor_note": "Space startups do not only need rockets; they need a transaction layer. Nebex exposes Nebra Exchange, qualified-participant access, and 3 platform modules: supplier discovery, execution coordination, and payment rails. Unlike aerospace procurement services, the software bet is to make demand, suppliers, and financing visible in one market workflow.",
+  "editor_rating": 3,
+  "why_featured": "$30M Seed for space-market rails",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "space,market infrastructure,fintech,procurement,payments",
+  "investors": "GV",
+  "links": {
+    "product": "https://invite.nebex.com"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Seed",
+      "lead_investor": "GV",
+      "date": "2026-06-29",
+      "source_url": "https://techstartups.com/2026/06/29/venture-capital-startup-funding-roundup-june-29-2026/",
+      "source_name": "TechStartups"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Nebex official site",
+        "url": "https://www.nebex.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_exchange",
+        "label": "Nebra Exchange request access page",
+        "url": "https://invite.nebex.com",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechStartups funding roundup covering Nebex seed round",
+        "url": "https://techstartups.com/2026/06/29/venture-capital-startup-funding-roundup-june-29-2026/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Nebex connects buyers, suppliers, and capital in one platform for transactions from demand to delivery.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The platform section exposes SOURCE vendor network, COORDINATE execution workflow, and PAYMENTS settlement rails.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Nebex defines three participant types on the official site: commercial suppliers, sovereign buyers, and financial institutions.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Space companies, prime contractors, sovereign buyers, space agencies, governments, and institutional capital providers.",
+      "category": "Space-market financial infrastructure",
+      "differentiation": "Nebex treats space procurement as a marketplace, financing, coordination, and payment-rails problem rather than a pure launch or hardware problem.",
+      "why_now": "The $30M seed round led by GV suggests investors see commercial space growth constrained by demand access and transaction execution, not only by technical capability."
+    },
+    "risks": [
+      {
+        "claim": "The risk is whether a gated exchange can attract enough qualified sovereign demand and supplier liquidity to become market infrastructure rather than a high-touch brokerage layer.",
+        "basis": "VentureDex editorial assessment based on the official product site and current funding-source review."
+      }
+    ]
+  }
+}

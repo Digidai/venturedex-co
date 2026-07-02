@@ -1,0 +1,99 @@
+{
+  "slug": "straiker",
+  "domain": "www.straiker.ai",
+  "url": "https://www.straiker.ai/",
+  "product_name": "Straiker",
+  "summary": "Security platform for discovering, red-teaming, and defending AI agents.",
+  "editor_note": "Agent security is becoming a runtime problem, not a policy memo. Straiker splits the work into 3 products: Discover AI for agent and MCP visibility, Ascend AI for adversarial testing, and Defend AI for prompt-injection and data-leakage blocking. Unlike classic appsec scanners, it treats agents as active identities that can reason, call tools, and leak data.",
+  "editor_rating": 4,
+  "why_featured": "$64M Series A for agent security",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "ai security,agents,mcp,red teaming,runtime security",
+  "investors": "Marathon Management Partners",
+  "links": {
+    "product": "https://www.straiker.ai/products/discover-ai",
+    "careers": "https://www.straiker.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$64M",
+      "stage": "Series A",
+      "lead_investor": "Marathon Management Partners",
+      "date": "2026-06-29",
+      "source_url": "https://www.straiker.ai/blog/straiker-raises-64m-series-a-to-secure-the-agentic-workforce",
+      "source_name": "Straiker"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-06-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Straiker official site",
+        "url": "https://www.straiker.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_discover",
+        "label": "Straiker Discover AI product page",
+        "url": "https://www.straiker.ai/products/discover-ai",
+        "type": "product"
+      },
+      {
+        "id": "official_ascend",
+        "label": "Straiker Ascend AI product page",
+        "url": "https://www.straiker.ai/products/ascend-ai",
+        "type": "product"
+      },
+      {
+        "id": "official_defend",
+        "label": "Straiker Defend AI product page",
+        "url": "https://www.straiker.ai/products/defend-ai",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Straiker Series A announcement",
+        "url": "https://www.straiker.ai/blog/straiker-raises-64m-series-a-to-secure-the-agentic-workforce",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The homepage presents Discover AI as a way to map AI agents, MCP servers, and agentic workflows with posture monitoring and governance.",
+        "source_ids": [
+          "official_site",
+          "official_discover"
+        ]
+      },
+      {
+        "claim": "Ascend AI is described as adversarial testing for prompt injection, goal hijacking, tool misuse, and inter-agent manipulation before production.",
+        "source_ids": [
+          "official_site",
+          "official_ascend"
+        ]
+      },
+      {
+        "claim": "Defend AI is positioned as runtime security that detects and blocks prompt injection, data leakage, identity abuse, memory poisoning, and tool manipulation.",
+        "source_ids": [
+          "official_site",
+          "official_defend"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security teams and platform teams deploying coding, productivity, or custom AI agents inside enterprises.",
+      "category": "AI agent security",
+      "differentiation": "Straiker covers discovery, adversarial testing, and runtime defense across agents and MCP tools instead of focusing on one security test.",
+      "why_now": "The Series A lands as enterprises move agents from demos into workflows that can touch code, data, and business systems."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is integration depth: Straiker must keep pace with changing agent frameworks, MCP servers, and enterprise tool permissions to stay ahead of built-in controls.",
+        "basis": "VentureDex editorial assessment based on official product pages and the Series A announcement."
+      }
+    ]
+  }
+}
