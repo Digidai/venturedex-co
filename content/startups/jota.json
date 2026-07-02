@@ -1,0 +1,92 @@
+{
+  "slug": "jota",
+  "domain": "jota.ai",
+  "url": "https://jota.ai/",
+  "product_name": "Jota",
+  "summary": "WhatsApp-native banking assistant for payments, Pix, cards, and business tasks.",
+  "editor_note": "The sharp part is not a chatbot bolted onto banking; it is banking moved into the chat thread Brazilians already use. Jota lets users pay by WhatsApp text, voice, or photo, accept Pix and card payments, and run account tasks from the same assistant. Unlike neobank apps that still make users open another dashboard, the interface is the distribution bet.",
+  "editor_rating": 4,
+  "why_featured": "$30M Series A for WhatsApp banking",
+  "product_type": "Fintech",
+  "region": "Latin America",
+  "tags": "fintech,whatsapp,ai agents,payments,brazil",
+  "investors": "Haun Ventures",
+  "links": {
+    "product": "https://jota.ai/como-funciona",
+    "careers": "https://jota.ai/carreiras"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Haun Ventures",
+      "date": "2026-07-01",
+      "source_url": "https://www.thesaasnews.com/news/jota-raises-30m-series-a/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Jota official site",
+        "url": "https://jota.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_falatap",
+        "label": "Jota Fala Tap product page",
+        "url": "https://jota.ai/falatap",
+        "type": "product"
+      },
+      {
+        "id": "official_security",
+        "label": "Jota security page",
+        "url": "https://jota.ai/seguranca",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Jota Series A funding report",
+        "url": "https://www.thesaasnews.com/news/jota-raises-30m-series-a/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage positions Jota as a financial and personal AI assistant inside WhatsApp for both individuals and businesses.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site says Fala Tap lets individuals, MEIs, and companies accept debit, Pix, and installment credit with voice as the terminal.",
+        "source_ids": [
+          "official_site",
+          "official_falatap"
+        ]
+      },
+      {
+        "claim": "Jota's official footer links personal and business products including Pix on WhatsApp, Jota Rende+, tasks, open finance, collections, and bill radar.",
+        "source_ids": [
+          "official_site",
+          "official_security"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Brazilian consumers, MEIs, and small businesses that already coordinate money movement and customer communication in WhatsApp.",
+      "category": "Conversational fintech",
+      "differentiation": "Jota puts banking, payments, collections, and assistant workflows into WhatsApp instead of requiring users to adopt a separate finance app as the main interface.",
+      "why_now": "Pix adoption, WhatsApp commerce, and AI assistant familiarity make chat-native banking more credible for Brazilian users and small businesses."
+    },
+    "risks": [
+      {
+        "claim": "The key open question is whether free assistant usage converts into durable revenue from payments, credit, Fala Tap, or business-account products.",
+        "basis": "VentureDex editorial assessment based on Jota's official site and Series A funding report."
+      }
+    ]
+  }
+}

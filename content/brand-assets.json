@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-06-29",
+  "verified_at": "2026-07-02",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -718,6 +718,34 @@
       "local_path": "/logos/companies/nebex.png",
       "source_page": "https://www.nebex.com/",
       "source_url": "https://cdn.prod.website-files.com/69d7ce76ca1b5fcddfbd6f08/69e4ee154fb05506898127bf_safeimagekit-resized-logoW%20(1).png"
+    },
+    "higharc": {
+      "name": "Higharc",
+      "shape": "icon",
+      "local_path": "/logos/companies/higharc.png",
+      "source_page": "https://www.higharc.com/",
+      "source_url": "https://cdn.prod.website-files.com/65880fe1a6298c932c229007/6a0b91954fc062c23917a53c_Higharc%20Mark%20-%20Black.png"
+    },
+    "build": {
+      "name": "Build",
+      "shape": "icon",
+      "local_path": "/logos/companies/build.svg",
+      "source_page": "https://build.inc/",
+      "source_url": "https://build.inc/favicon.svg"
+    },
+    "omen": {
+      "name": "Omen",
+      "shape": "icon",
+      "local_path": "/logos/companies/omen.svg",
+      "source_page": "https://www.omen.ai/",
+      "source_url": "https://www.omen.ai/favicon/icon0.svg"
+    },
+    "jota": {
+      "name": "Jota",
+      "shape": "icon",
+      "local_path": "/logos/companies/jota.svg",
+      "source_page": "https://jota.ai/",
+      "source_url": "https://jota.ai/favicon.svg"
     },
     "gradient-labs": {
       "name": "Gradient Labs",
@@ -2448,6 +2476,20 @@
       "local_path": "/logos/investors/boldstart-ventures.png",
       "source_page": "https://boldstart.vc/",
       "source_url": "https://boldstart.vc/wp-content/uploads/2021/06/cropped-boldstart-favicon-180x180.png"
+    },
+    "nava-ventures": {
+      "name": "Nava Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/nava-ventures.png",
+      "source_page": "https://www.nava.vc/",
+      "source_url": "https://cdn.prod.website-files.com/642c43d5282084a2640b7172/642ca2d85cf7f6a7d6a0d9f7_Webclip.png"
+    },
+    "haun-ventures": {
+      "name": "Haun Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/haun-ventures.jpg",
+      "source_page": "https://www.haun.co/",
+      "source_url": "https://cdn.prod.website-files.com/64637a7d7382aa6b39aeb954/68cd199e47288bc0a6329500_Webclip.jpg"
     }
   }
 }

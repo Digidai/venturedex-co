@@ -1188,5 +1188,25 @@
     "aliases": [
       "Boldstart Ventures"
     ]
+  },
+  "nava-ventures": {
+    "name": "Nava Ventures",
+    "slug": "nava-ventures",
+    "short_name": "Nava",
+    "website": "https://www.nava.vc/",
+    "description": "Early-stage venture firm working with companies creating new markets, changing industries, and building durable technology businesses.",
+    "aliases": [
+      "Nava"
+    ]
+  },
+  "haun-ventures": {
+    "name": "Haun Ventures",
+    "slug": "haun-ventures",
+    "short_name": "Haun",
+    "website": "https://www.haun.co/",
+    "description": "Venture firm backing founders building financial infrastructure, digital assets, and frontier technology from seed stage to scale.",
+    "aliases": [
+      "Haun"
+    ]
   }
 }

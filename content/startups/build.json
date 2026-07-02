@@ -1,0 +1,91 @@
+{
+  "slug": "build",
+  "domain": "build.inc",
+  "url": "https://build.inc/",
+  "product_name": "Build",
+  "summary": "AI operating partner for site selection, diligence, and infrastructure development.",
+  "editor_note": "Real estate diligence is full of PDFs that arrive after the site has already gone cold. Build puts agentic AI against grid capacity, fiber access, planning constraints, environmental risk, zoning, and investment memos, then promises 100% auditable outputs. Unlike CRE dashboards, it sells compressed work rather than prettier maps.",
+  "editor_rating": 4,
+  "why_featured": "$8.5M Seed for built-world AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "proptech,real estate,ai agents,due diligence,infrastructure",
+  "investors": "Index Ventures",
+  "links": {
+    "product": "https://build.inc/offering/services",
+    "careers": "https://build.inc/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8.5M",
+      "stage": "Seed",
+      "lead_investor": "Index Ventures",
+      "date": "2026-06-30",
+      "source_url": "https://www.thesaasnews.com/news/build-raises-8-5m-seed/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Build official site",
+        "url": "https://build.inc/",
+        "type": "official"
+      },
+      {
+        "id": "official_services",
+        "label": "Build services page",
+        "url": "https://build.inc/offering/services",
+        "type": "product"
+      },
+      {
+        "id": "investor_index",
+        "label": "Index Ventures partnership note",
+        "url": "https://www.indexventures.com/perspectives/automating-the-built-world-our-partnership-with-build/",
+        "type": "funding"
+      },
+      {
+        "id": "funding_1",
+        "label": "Build seed funding report",
+        "url": "https://www.thesaasnews.com/news/build-raises-8-5m-seed/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Build as an AI-native operating partner for the built world, pairing agentic AI with CRE domain experts.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Build's site says Dougie automates site selection, desktop diligence, underwriting, IC memos, test-fit analysis, market research, zoning, and ESG reporting.",
+        "source_ids": [
+          "official_site",
+          "official_services"
+        ]
+      },
+      {
+        "claim": "Index describes specialized agents that evaluate grid capacity, fiber access, planning constraints, environmental risks, and physical conditions.",
+        "source_ids": [
+          "investor_index"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Institutional real estate investors, developers, data-center operators, and infrastructure teams evaluating physical assets.",
+      "category": "AI for real estate and infrastructure diligence",
+      "differentiation": "Build combines source-traced AI agents with domain operators rather than selling only a map, data feed, or workflow dashboard.",
+      "why_now": "Power, land, data-center, and infrastructure constraints are making early diligence speed a board-level gating factor for real estate development."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Build can turn expert-reviewed project delivery into repeatable software economics instead of a faster services firm.",
+        "basis": "VentureDex editorial assessment based on Build's official site and Index's partnership note."
+      }
+    ]
+  }
+}

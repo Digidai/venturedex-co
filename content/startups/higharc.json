@@ -1,0 +1,85 @@
+{
+  "slug": "higharc",
+  "domain": "www.higharc.com",
+  "url": "https://www.higharc.com/",
+  "product_name": "Higharc",
+  "summary": "Homebuilding AI that turns plans into estimates, documents, and 3D sales models.",
+  "editor_note": "Homebuilding software usually breaks when the drawing becomes a jobsite. Higharc models homes as spatial data, so plan changes can update estimates, permit-ready documents, and shoppable 3D visuals together. Unlike CAD plus estimating handoffs, the bet is one structured home record from design to supplier takeoff.",
+  "editor_rating": 4,
+  "why_featured": "$95M Series C for homebuilding AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "homebuilding,construction,ai,estimating,proptech",
+  "investors": "Insight Partners",
+  "links": {
+    "product": "https://www.higharc.com/how-it-works",
+    "careers": "https://www.higharc.com/company/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$95M",
+      "stage": "Series C",
+      "lead_investor": "Insight Partners",
+      "date": "2026-06-30",
+      "source_url": "https://www.prnewswire.com/news-releases/higharc-raises-95m-series-c-to-scale-ai-for-homebuilding-302814598.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Higharc official site",
+        "url": "https://www.higharc.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_how_it_works",
+        "label": "Higharc How It Works page",
+        "url": "https://www.higharc.com/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Higharc Series C announcement",
+        "url": "https://www.prnewswire.com/news-releases/higharc-raises-95m-series-c-to-scale-ai-for-homebuilding-302814598.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage says Higharc lets builders design plans, configure market-proven homes, create 3D visuals, estimates, and permit-ready documents.",
+        "source_ids": [
+          "official_site",
+          "official_how_it_works"
+        ]
+      },
+      {
+        "claim": "The Series C announcement describes AI Estimating, AutoTranslate AI, material takeoffs, and a 3D spatial data model for home designs.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The official site states that plan changes and buyer selections can produce updated estimates, documents, and marketing assets from the same plan data.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Production homebuilders and suppliers that need plan, estimate, sales, and construction data to stay aligned.",
+      "category": "Homebuilding AI and construction software",
+      "differentiation": "Higharc treats the home plan as a structured 3D data record rather than separate CAD, estimating, document, and sales outputs.",
+      "why_now": "The Series C arrives as builders face margin pressure and need faster plan changes, takeoffs, permit packages, and buyer-ready visual assets."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is localization: Higharc must keep estimates and documents accurate across local codes, supplier catalogs, and builder-specific plan rules.",
+        "basis": "VentureDex editorial assessment based on official product pages and the Series C announcement."
+      }
+    ]
+  }
+}

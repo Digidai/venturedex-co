@@ -1,0 +1,78 @@
+{
+  "slug": "omen",
+  "domain": "www.omen.ai",
+  "url": "https://www.omen.ai/",
+  "product_name": "Omen",
+  "summary": "Real-time fluid analysis for data-center and industrial equipment health.",
+  "editor_note": "Data-center reliability has a strange blind spot: the coolant knows before the rack does. Omen puts spectroscopic sensors on oil, coolant, and water loops to track metal content, contaminants, wear patterns, and fluid degradation in real time. Unlike quarterly lab samples, it turns machine fluid into 21-element telemetry.",
+  "editor_rating": 4,
+  "why_featured": "$31M Series A for fluid AI",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "data centers,predictive maintenance,industrial ai,sensors,infrastructure",
+  "investors": "Nava Ventures",
+  "links": {
+    "product": "https://www.omen.ai/",
+    "careers": "https://www.omen.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$31M",
+      "stage": "Series A",
+      "lead_investor": "Nava Ventures",
+      "date": "2026-06-30",
+      "source_url": "https://www.prnewswire.com/news-releases/omen-ai-raises-31m-series-a-to-bring-continuous-fluid-intelligence-to-the-machines-powering-the-ai-economy-302814262.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Omen official site",
+        "url": "https://www.omen.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Omen Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/omen-ai-raises-31m-series-a-to-bring-continuous-fluid-intelligence-to-the-machines-powering-the-ai-economy-302814262.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Omen uses continuous fluid analysis to read equipment health in real time before failures occur.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site describes a canister and sensor that attach to machines and monitor metal content, contamination, wear patterns, and fluid degradation.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Series A announcement says Omen sells permanent monitoring and a portable diagnostic unit across oil, coolant, and water systems.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data-center operators and industrial fleet teams responsible for preventing downtime in mission-critical equipment.",
+      "category": "Industrial asset intelligence",
+      "differentiation": "Omen reads machine health from fluid chemistry instead of relying only on vibration, thermal, scheduled lab testing, or after-the-fact maintenance logs.",
+      "why_now": "AI data-center buildouts are raising the cost of cooling, generator, and industrial equipment failure while quarterly testing leaves long blind spots."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is deployment friction: Omen must prove sensor installation and maintenance scale cleanly across different fluids and machine types.",
+        "basis": "VentureDex editorial assessment based on the official site and Series A announcement."
+      }
+    ]
+  }
+}
