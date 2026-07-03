@@ -4,7 +4,6 @@ import MicrosoftClarity from "../components/MicrosoftClarity.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import {
   DEFAULT_SITE_URL,
-  DEFAULT_SOCIAL_IMAGE,
   SITE_NAME,
   absoluteUrl,
   canonicalPath as normalizeCanonicalPath,
@@ -12,6 +11,7 @@ import {
   truncateText,
   type JsonLdNode,
 } from "../lib/seo";
+import { resolveSocialPreviewMeta } from "../lib/social-meta";
 
 interface Props {
   title: string;
@@ -47,11 +47,15 @@ const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
 const canonicalURL = absoluteUrl(normalizeCanonicalPath(canonicalPath ?? Astro.url.pathname), siteUrl);
 const metaDescription = truncateText(description);
 const pageTitle = `${title} | ${SITE_NAME}`;
-const usesDefaultOgImage = !ogImage;
-const ogImageUrl = absoluteUrl(ogImage ?? DEFAULT_SOCIAL_IMAGE, siteUrl);
-const resolvedOgImageWidth = ogImageWidth ?? (usesDefaultOgImage ? 1200 : undefined);
-const resolvedOgImageHeight = ogImageHeight ?? (usesDefaultOgImage ? 630 : undefined);
-const ogImageAlt = `${title} on ${SITE_NAME}`;
+const social = resolveSocialPreviewMeta({
+  title,
+  siteUrl,
+  image: ogImage,
+  imageWidth: ogImageWidth,
+  imageHeight: ogImageHeight,
+  imageType: ogImageType,
+  twitterSite: import.meta.env.PUBLIC_TWITTER_SITE,
+});
 const publishedIso = toIsoDateTime(publishedTime);
 const modifiedIso = toIsoDateTime(modifiedTime);
 const schemaItems = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
@@ -87,16 +91,18 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <meta property="og:locale" content="en_US" />
     {ogType === "article" && publishedIso && <meta property="article:published_time" content={publishedIso} />}
     {ogType === "article" && modifiedIso && <meta property="article:modified_time" content={modifiedIso} />}
-    <meta property="og:image" content={ogImageUrl} />
-    {resolvedOgImageWidth && <meta property="og:image:width" content={String(resolvedOgImageWidth)} />}
-    {resolvedOgImageHeight && <meta property="og:image:height" content={String(resolvedOgImageHeight)} />}
-    {ogImageType && <meta property="og:image:type" content={ogImageType} />}
-    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:image" content={social.imageUrl} />
+    {social.imageSecureUrl && <meta property="og:image:secure_url" content={social.imageSecureUrl} />}
+    {social.imageWidth && <meta property="og:image:width" content={String(social.imageWidth)} />}
+    {social.imageHeight && <meta property="og:image:height" content={String(social.imageHeight)} />}
+    {social.imageType && <meta property="og:image:type" content={social.imageType} />}
+    <meta property="og:image:alt" content={social.imageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    {social.twitterSite && <meta name="twitter:site" content={social.twitterSite} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={metaDescription} />
-    <meta name="twitter:image" content={ogImageUrl} />
-    <meta name="twitter:image:alt" content={ogImageAlt} />
+    <meta name="twitter:image" content={social.imageUrl} />
+    <meta name="twitter:image:alt" content={social.imageAlt} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="alternate" type="application/rss+xml" title="VentureDex" href="/feed.xml" />
     <link rel="alternate" type="text/plain" title="VentureDex LLM navigation" href="/llms.txt" />

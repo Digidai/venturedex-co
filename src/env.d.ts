@@ -40,6 +40,8 @@ declare namespace App {
 interface ImportMetaEnv {
   // Cloudflare Web Analytics beacon token; when unset the beacon is not rendered.
   readonly PUBLIC_CF_BEACON_TOKEN?: string;
+  // Optional official X/Twitter account handle, e.g. @VentureDex.
+  readonly PUBLIC_TWITTER_SITE?: string;
 }
 
 interface ImportMeta {
