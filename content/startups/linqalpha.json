@@ -1,0 +1,83 @@
+{
+  "slug": "linqalpha",
+  "domain": "linqalpha.com",
+  "url": "https://linqalpha.com/",
+  "product_name": "LinqAlpha",
+  "summary": "Multi-agent investment research platform for global public-market teams.",
+  "editor_note": "The sharp part is not another finance copilot; it is a research desk that remembers how a fund thinks. LinqAlpha turns global filings, market data, internal docs, and thesis history into source-linked agents for public-market teams. Unlike terminal add-ons that speed up search, the product is trying to make differentiated coverage itself scalable.",
+  "editor_rating": 4,
+  "why_featured": "$22M for public-market AI",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,ai agents,investment research,public markets,market intelligence",
+  "investors": "AVP",
+  "links": {
+    "product": "https://linqalpha.com/terminal"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22M",
+      "stage": "Series A",
+      "lead_investor": "AVP",
+      "date": "2026-07-02",
+      "source_url": "https://www.prnewswire.com/apac/news-releases/linqalpha-raises-22-million-to-build-the-alpha-intelligence-layer-for-global-public-markets-302816654.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-03",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "LinqAlpha official site",
+        "url": "https://linqalpha.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_terminal",
+        "label": "LinqAlpha Terminal product page",
+        "url": "https://linqalpha.com/terminal",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "LinqAlpha Series A press release",
+        "url": "https://www.prnewswire.com/apac/news-releases/linqalpha-raises-22-million-to-build-the-alpha-intelligence-layer-for-global-public-markets-302816654.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions LinqAlpha as AI-powered investment research that turns fragmented global-market data into investment signals across more than 120 countries and 30 native languages.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The Terminal page describes multi-step reasoning over market data, filings, internal documents, purpose-built workflows, and source-linked verifiable outputs.",
+        "source_ids": [
+          "official_terminal"
+        ]
+      },
+      {
+        "claim": "The funding release says institutional teams use specialized agents that learn each user's investment framework and synthesize research into public-market insight.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Hedge funds, asset managers, investment banks, and public-market research teams covering global equities, macro, credit, and multi-asset strategies.",
+      "category": "AI-native public-market research workspace",
+      "differentiation": "LinqAlpha emphasizes source-linked multi-agent workflows that carry analyst context and proprietary thesis history, rather than only retrieval over filings.",
+      "why_now": "Public-market research teams are under pressure to monitor faster cross-border signals while retaining verifiable sourcing and internal research context."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether LinqAlpha can keep source traceability and zero-retention controls tight enough as customers add internal datasets and cross-model workflows.",
+        "basis": "VentureDex editorial assessment based on the official site, Terminal page, and Series A release."
+      }
+    ]
+  }
+}

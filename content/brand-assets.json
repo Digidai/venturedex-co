@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-02",
+  "verified_at": "2026-07-03",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1356,6 +1356,20 @@
       "local_path": "/logos/companies/scaled-cognition.png",
       "source_page": "https://www.scaledcognition.com/",
       "source_url": "https://cdn.prod.website-files.com/695bbfca07da756ac77e9b23/69f0d4e5f4a9f3085d8c4f7c_webclip.png"
+    },
+    "linqalpha": {
+      "name": "LinqAlpha",
+      "shape": "icon",
+      "local_path": "/logos/companies/linqalpha.png",
+      "source_page": "https://linqalpha.com/",
+      "source_url": "https://framerusercontent.com/images/AbwTwD2ZqryPaCk08RsFBFmCmuk.png"
+    },
+    "kredosai": {
+      "name": "KredosAi",
+      "shape": "icon",
+      "local_path": "/logos/companies/kredosai.png",
+      "source_page": "https://www.kredosai.com/",
+      "source_url": "https://www.kredosai.com/_resources/themes/app/dist/favicon/apple-touch-icon.png"
     }
   },
   "investors": {
@@ -2490,6 +2504,13 @@
       "local_path": "/logos/investors/haun-ventures.jpg",
       "source_page": "https://www.haun.co/",
       "source_url": "https://cdn.prod.website-files.com/64637a7d7382aa6b39aeb954/68cd199e47288bc0a6329500_Webclip.jpg"
+    },
+    "bmw-i-ventures": {
+      "name": "BMW i Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/bmw-i-ventures.webp",
+      "source_page": "https://www.bmwiventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/665dbb1e15eb8903490282cf/66698eef61b4aeb197d2d60d_1c9e54bfb46b61c0be599828e09feafb_BMW%20i%20Ventures%20Logo.webp"
     }
   }
 }

@@ -1208,5 +1208,12 @@
     "aliases": [
       "Haun"
     ]
+  },
+  "bmw-i-ventures": {
+    "name": "BMW i Ventures",
+    "slug": "bmw-i-ventures",
+    "short_name": "BMW i Ventures",
+    "website": "https://www.bmwiventures.com/",
+    "description": "Independent venture capital firm backed by BMW Group, investing in startups across automotive, industrial software, physical AI, agentic AI, manufacturing, and supply-chain technology."
   }
 }

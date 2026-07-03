@@ -1,0 +1,90 @@
+{
+  "slug": "kredosai",
+  "domain": "www.kredosai.com",
+  "url": "https://www.kredosai.com/",
+  "product_name": "KredosAi",
+  "summary": "Behavioral AI engagement platform for enterprise payment collections.",
+  "editor_note": "Collections software usually treats late payers like a queue to pressure. KredosAi treats the pre-write-off window as an experimentation problem across SMS, email, RCS, timing, and call to action. Unlike dialer-first collections stacks, the product bets repayment lift comes from adaptive engagement before accounts become hostile.",
+  "editor_rating": 4,
+  "why_featured": "$7M for collections AI",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "fintech,collections,behavioral intelligence,enterprise,reinforcement learning",
+  "investors": "BMW i Ventures",
+  "links": {
+    "product": "https://www.kredosai.com/solution/",
+    "careers": "https://www.kredosai.com/company/job-board/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Series A",
+      "lead_investor": "BMW i Ventures",
+      "date": "2026-07-02",
+      "source_url": "https://www.businesswire.com/news/home/20260702629349/en/KredosAi-Raises-%247-Million-Series-A",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-03",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "KredosAi official site",
+        "url": "https://www.kredosai.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_solution",
+        "label": "KredosAi solution page",
+        "url": "https://www.kredosai.com/solution/",
+        "type": "product"
+      },
+      {
+        "id": "official_blog",
+        "label": "KredosAi official blog",
+        "url": "https://www.kredosai.com/company/blog/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "KredosAi Series A press release",
+        "url": "https://www.businesswire.com/news/home/20260702629349/en/KredosAi-Raises-%247-Million-Series-A",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage says KredosAi uses reinforcement learning with human feedback to improve payment engagement, deliver faster outcomes, and support telecom, auto-financing, and financial-services enterprises.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The solution page says the platform sends tailored messages through preferred channels, experiments with thousands of messages and calls to action, and supports SMS, email, RCS, APIs, and secure file transfer.",
+        "source_ids": [
+          "official_solution"
+        ]
+      },
+      {
+        "claim": "The official blog exposes product posts on RCS collections, behavioral economics, and multi-armed-bandit experimentation, plus the July 2026 Series A announcement.",
+        "source_ids": [
+          "official_blog"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Large telecom, auto-lending, and financial-services enterprises trying to recover overdue payments without destroying customer relationships.",
+      "category": "AI-powered collections and payment engagement",
+      "differentiation": "KredosAi optimizes messages, timing, channel, and calls to action against actual payment outcomes rather than only clicks or static campaign tests.",
+      "why_now": "Consumer delinquencies and enterprise bad-debt pressure are pushing collections teams to improve recovery while protecting retention and lifetime value."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether customer-specific reinforcement-learning gains transfer cleanly across new verticals such as auto lending without long implementation cycles.",
+        "basis": "VentureDex editorial assessment based on the official site, solution page, and Series A release."
+      }
+    ]
+  }
+}
