@@ -23,7 +23,7 @@ const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
 const startupCount = startups.length;
 const countLabel = startupCount === 1 ? "company" : "companies";
 const description =
-  "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.";
+  "Explore source-backed startup profiles with product evidence, funding signals, investor context, editorial notes, and canonical company links.";
 const schema = homeJsonLd(startups, Astro.site?.toString());
 ---
 
@@ -49,7 +49,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
       {startups.length > 0 ? (
         <>
           <p class="result-count" data-result-count>{startupCount} {countLabel}</p>
-          <div class="card-grid" data-card-grid>
+          <div class="card-grid" data-card-grid data-total={startupCount}>
             <h2 class="visually-hidden">Startup profiles</h2>
             {startups.map((startup, position) => (
               <SiteCard
@@ -108,15 +108,22 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
   const grid = q<HTMLElement>("[data-card-grid]");
   if (grid) {
     type Entry = FilterableCard & { el: HTMLElement };
-    const entries: Entry[] = qa<HTMLElement>("[data-card]", grid).map((el) => ({
-      el,
-      name: el.dataset.name ?? "",
-      type: el.dataset.type ?? null,
-      stage: el.dataset.stage ?? null,
-      region: el.dataset.region ?? null,
-      published: el.dataset.published ?? null,
-    }));
-    const total = entries.length;
+    let entries: Entry[] | null = null;
+    const total = Number(grid.dataset.total ?? "0");
+
+    function getEntries(): Entry[] {
+      if (!entries) {
+        entries = qa<HTMLElement>("[data-card]", grid).map((el) => ({
+          el,
+          name: el.dataset.name ?? "",
+          type: el.dataset.type ?? null,
+          stage: el.dataset.stage ?? null,
+          region: el.dataset.region ?? null,
+          published: el.dataset.published ?? null,
+        }));
+      }
+      return entries;
+    }
 
     const typeSel = q<HTMLSelectElement>("#filter-type");
     const stageSel = q<HTMLSelectElement>("#filter-stage");
@@ -140,6 +147,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
 
     function apply(updateUrl = true) {
       const state = readState();
+      const entries = getEntries();
       for (const entry of entries) entry.el.hidden = !cardMatchesFilters(entry, state);
       const ordered = orderVisibleCards(entries, state);
       for (const entry of ordered) grid!.appendChild(entry.el);
@@ -195,8 +203,17 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
       reset();
     });
 
-    hydrateFromUrl();
-    apply(false);
+    const initialParams = new URLSearchParams(location.search);
+    const hasActiveParams = Boolean(
+      initialParams.get("type") ||
+      initialParams.get("stage") ||
+      initialParams.get("region") ||
+      (initialParams.get("sort") && initialParams.get("sort") !== "featured")
+    );
+    if (hasActiveParams) {
+      hydrateFromUrl();
+      apply(false);
+    }
   }
 </script>
 

@@ -229,20 +229,30 @@ const style = `--brand-size:${size}px;`;
       root.querySelectorAll(AUTO_LOGO_SELECTOR).forEach(analyzeMark);
     };
 
+    const schedule = (callback: () => void) => {
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(callback, { timeout: 3000 });
+      } else {
+        setTimeout(callback, 0);
+      }
+    };
+
     if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", () => scan(), { once: true });
+      document.addEventListener("DOMContentLoaded", () => schedule(() => scan()), { once: true });
     } else {
-      scan();
+      schedule(() => scan());
     }
 
     new MutationObserver((mutations) => {
-      for (const mutation of mutations) {
-        for (const node of mutation.addedNodes) {
-          if (!(node instanceof Element)) continue;
-          if (node.matches(AUTO_LOGO_SELECTOR)) analyzeMark(node);
-          scan(node);
+      schedule(() => {
+        for (const mutation of mutations) {
+          for (const node of mutation.addedNodes) {
+            if (!(node instanceof Element)) continue;
+            if (node.matches(AUTO_LOGO_SELECTOR)) analyzeMark(node);
+            scan(node);
+          }
         }
-      }
+      });
     }).observe(document.documentElement, { childList: true, subtree: true });
   }
 </script>

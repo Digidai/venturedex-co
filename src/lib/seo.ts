@@ -5,7 +5,7 @@ import type {
   Startup,
 } from "./types";
 import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
-import { normalizeLinks, safeJsonParse } from "./json";
+import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
 import type { TopicPage } from "./topic-pages";
 import type { WeeklyIssueContent } from "./weekly";
 
@@ -120,6 +120,19 @@ export function toIsoDateTime(value?: string | null): string | undefined {
   return Number.isNaN(date.getTime()) ? undefined : date.toISOString();
 }
 
+export function sitemapLastmodDate(value?: string | null): string | null {
+  return toIsoDateTime(value)?.slice(0, 10) ?? null;
+}
+
+export function latestSitemapLastmod(values: Array<string | null | undefined>): string | null {
+  let latest: string | null = null;
+  for (const value of values) {
+    const date = sitemapLastmodDate(value);
+    if (date && (!latest || date > latest)) latest = date;
+  }
+  return latest;
+}
+
 export function escapeXml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
@@ -207,6 +220,7 @@ export function webPageNode(input: {
   image?: string | null;
   datePublished?: string | null;
   dateModified?: string | null;
+  citation?: string[];
   mainEntityId?: string;
   siteUrl?: string;
 }): JsonLdNode {
@@ -226,6 +240,7 @@ export function webPageNode(input: {
     publisher: { "@id": `${siteUrl}/#organization` },
     datePublished: toIsoDateTime(input.datePublished),
     dateModified: toIsoDateTime(input.dateModified),
+    citation: input.citation && input.citation.length > 0 ? input.citation : undefined,
   };
 
   return stripUndefined(node);
@@ -255,6 +270,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
   const pageUrl = absoluteUrl(pagePath, siteUrl);
   const description = truncateText(startup.summary ?? startup.editor_note ?? `${startup.product_name} on ${SITE_NAME}`);
   const links = safeJsonParse(startup.links_json, normalizeLinks) ?? {};
+  const research = safeJsonParse(startup.research_json, normalizeResearch);
   const sameAs = [links.github, links.twitter, links.linkedin, links.producthunt]
     .map(normalizeExternalUrl)
     .filter((url): url is string => Boolean(url));
@@ -263,6 +279,10 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
   const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
   const logoUrl = getCompanyBrandAsset(startup.slug)?.local_path ?? null;
   const officialUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
+  const citationUrls = Array.from(new Set([
+    officialUrl,
+    ...(research?.sources ?? []).map((source) => normalizeExternalUrl(source.url)),
+  ].filter((url): url is string => Boolean(url)))).slice(0, 12);
   const organizationId = `${pageUrl}#organization`;
 
   return buildJsonLdGraph([
@@ -275,6 +295,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
       image: screenshotUrl,
       datePublished: startup.published_at,
       dateModified: startup.updated_at,
+      citation: citationUrls,
       mainEntityId: organizationId,
       siteUrl,
     }),
@@ -454,7 +475,7 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
     webPageNode({
       path: "/",
       title: "Explore",
-      description: "Discover curated startup profiles with editorial notes, funding signals, investor context, and canonical company links.",
+      description: "Explore source-backed startup profiles with product evidence, funding signals, investor context, editorial notes, and canonical company links.",
       type: "CollectionPage",
       siteUrl,
     }),
@@ -530,7 +551,7 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): 
     webPageNode({
       path: "/news",
       title: "News",
-      description: "Recent funding rounds with verified press sources and official company and investor logos.",
+      description: "Track source-linked startup funding rounds with VentureDex company profiles, investor context, press citations, and daily discovery signals.",
       type: "CollectionPage",
       siteUrl,
     }),

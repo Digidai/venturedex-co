@@ -3,12 +3,13 @@ export const prerender = true;
 import type { APIRoute } from "astro";
 import { resolveInvestorSlugByName } from "../lib/brand-assets";
 import {
+  getContentCollectionBySlug,
   getContentCollections,
   getContentInvestors,
   getContentNewsEligibleFundingRounds,
   getContentStartups,
 } from "../lib/content";
-import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl } from "../lib/seo";
+import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLastmod, sitemapLastmodDate } from "../lib/seo";
 import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 
@@ -53,14 +54,19 @@ export const GET: APIRoute = () => {
   const latestWeeklyIssue = weeklyIssues[0] ?? null;
   const allStartups = getContentStartups();
   const topics = getTopicPages(allStartups, weeklyIssues);
+  const rounds = getContentNewsEligibleFundingRounds();
+  const latestStartupLastmod = latestSitemapLastmod(allStartups.map((startup) => startup.updated_at || startup.published_at));
+  const latestFundingLastmod = latestSitemapLastmod(rounds.map((round) => round.date));
+  const latestWeeklyLastmod = latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end ?? null;
+  const latestTopicLastmod = latestSitemapLastmod([latestStartupLastmod, latestWeeklyLastmod]);
 
   let urls: SitemapUrl[] = [
-    { loc: "/", priority: "1.0" },
-    { loc: "/investors", priority: "0.8" },
-    { loc: "/news", priority: "0.8" },
+    { loc: "/", lastmod: latestStartupLastmod, priority: "1.0" },
+    { loc: "/investors", lastmod: latestFundingLastmod, priority: "0.8" },
+    { loc: "/news", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
-    { loc: "/collections", priority: "0.7" },
-    { loc: "/topics", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
+    { loc: "/collections", lastmod: latestStartupLastmod, priority: "0.7" },
+    { loc: "/topics", lastmod: latestTopicLastmod, priority: "0.8" },
     { loc: "/about", priority: "0.6" },
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },
@@ -91,11 +97,18 @@ export const GET: APIRoute = () => {
     });
 
   const allInvestors = getContentInvestors();
-  const rounds = getContentNewsEligibleFundingRounds();
   // Collections by slug (the prior query ordered ORDER BY slug). content has no
-  // per-collection created_at, so lastmod is omitted.
+  // authored per-collection created_at, so lastmod is derived from member
+  // profile publish/update dates. Membership changes are significant content
+  // updates for these collection pages.
   const collections: CollectionSitemapRow[] = getContentCollections()
-    .map((collection) => ({ slug: collection.slug, created_at: null }))
+    .map((collection) => {
+      const collectionStartups = getContentCollectionBySlug(collection.slug)?.startups ?? [];
+      return {
+        slug: collection.slug,
+        created_at: latestSitemapLastmod(collectionStartups.map((startup) => startup.updated_at || startup.published_at)),
+      };
+    })
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   // Aggregate the most-recent round date per investor slug via the canonical
@@ -191,13 +204,5 @@ ${title}${caption}    </image:image>
 }
 
 function formatLastmod(value?: string | null): string | null {
-  if (!value) return null;
-  const normalized = value.includes("T")
-    ? value
-    : value.includes(" ")
-      ? `${value.replace(" ", "T")}Z`
-      : `${value}T00:00:00Z`;
-  const date = new Date(normalized);
-  if (Number.isNaN(date.getTime())) return null;
-  return date.toISOString().slice(0, 10);
+  return sitemapLastmodDate(value);
 }

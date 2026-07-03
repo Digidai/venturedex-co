@@ -1,6 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { canonicalPath, homeJsonLd, investorJsonLd, startupJsonLd } from "../src/lib/seo";
+import {
+  canonicalPath,
+  homeJsonLd,
+  investorJsonLd,
+  latestSitemapLastmod,
+  sitemapLastmodDate,
+  startupJsonLd,
+} from "../src/lib/seo";
 import type { FundingRound, Investor, Startup } from "../src/lib/types";
 
 const SITE_URL = "https://venturedex.co";
@@ -15,7 +22,16 @@ const startup: Startup = {
   summary: "Agent workspace for regulated operators.",
   long_description: null,
   editor_note: "Example AI turns compliance review into a daily operating workflow.",
-  research_json: null,
+  research_json: JSON.stringify({
+    verified_at: "2026-05-27",
+    sources: [
+      { id: "official", label: "Official product page", url: "https://example.ai/product", type: "official" },
+      { id: "funding", label: "Example News funding source", url: "https://example.com/funding", type: "funding" },
+    ],
+    product_evidence: [
+      { claim: "Example AI describes governed workflow automation.", source_ids: ["official"] },
+    ],
+  }),
   editor_rating: 4,
   why_featured: "Compliance workflow wedge",
   curator: "dai",
@@ -197,6 +213,18 @@ test("startupJsonLd publisher/isPartOf point at the shared site organization and
   assert.ok(defined.has(`${SITE_URL}/#website`), "site website node should exist");
 });
 
+test("startupJsonLd cites official and source-backed research URLs on the WebPage node", () => {
+  const graph = startupJsonLd(startup, SITE_URL) as unknown as JsonLdGraph;
+  const page = graph["@graph"].find((node) => node["@id"] === `${SITE_URL}/startups/example-ai#webpage`);
+
+  assert.ok(page, "startup graph should define the profile WebPage");
+  assert.deepEqual(page?.citation, [
+    "https://example.ai/",
+    "https://example.ai/product",
+    "https://example.com/funding",
+  ]);
+});
+
 test("homeJsonLd exposes the machine-readable startup dataset distributions", () => {
   const graph = homeJsonLd([startup], SITE_URL) as unknown as JsonLdGraph;
   const dataset = graph["@graph"].find((node) => node["@type"] === "Dataset");
@@ -219,4 +247,11 @@ test("canonicalPath strips prerendered .html file paths to public routes", () =>
   assert.equal(canonicalPath("/startups/airspeed.html"), "/startups/airspeed");
   assert.equal(canonicalPath("/collections/ai-ml.html"), "/collections/ai-ml");
   assert.equal(canonicalPath("/weekly/2/"), "/weekly/2");
+});
+
+test("sitemap lastmod helpers normalize UTC timestamps and keep newest significant date", () => {
+  assert.equal(sitemapLastmodDate("2026-07-03 15:42:00"), "2026-07-03");
+  assert.equal(sitemapLastmodDate("2026-07-04T00:30:00Z"), "2026-07-04");
+  assert.equal(sitemapLastmodDate("not-a-date"), null);
+  assert.equal(latestSitemapLastmod(["2026-07-01", "2026-07-03 02:00:00", null]), "2026-07-03");
 });
