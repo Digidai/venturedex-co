@@ -4,13 +4,22 @@ const CANONICAL_HOSTS = ["venturedex.co", "www.venturedex.co"];
 ---
 
 <script is:inline define:vars={{ projectId: PROJECT_ID, canonicalHosts: CANONICAL_HOSTS }}>
-  (function (c, l, a, r, i, t, y) {
+  (function (c, l, a, r, i) {
     if (canonicalHosts.indexOf(l.location.hostname) === -1) return;
     c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-    t = l.createElement(r);
-    t.async = 1;
-    t.src = "https://www.clarity.ms/tag/" + i;
-    y = l.getElementsByTagName(r)[0];
-    y.parentNode.insertBefore(t, y);
+
+    function load() {
+      var t = l.createElement(r);
+      var y = l.getElementsByTagName(r)[0];
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y.parentNode.insertBefore(t, y);
+    }
+
+    if ("requestIdleCallback" in c) {
+      c.requestIdleCallback(load, { timeout: 4000 });
+    } else {
+      c.addEventListener("load", function () { setTimeout(load, 1500); }, { once: true });
+    }
   })(window, document, "clarity", "script", projectId);
 </script>

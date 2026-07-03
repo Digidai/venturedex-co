@@ -15,7 +15,7 @@ import { newsJsonLd } from "../lib/seo";
 
 const rounds = getContentNewsEligibleFundingRounds();
 
-const description = "Track recent startup funding rounds with verified press sources, company profiles, investor context, and source-backed signals.";
+const description = "Track source-linked startup funding rounds with VentureDex company profiles, investor context, press citations, and daily discovery signals.";
 const schema = newsJsonLd(rounds, Astro.site?.toString());
 ---
 
@@ -27,78 +27,84 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     </header>
 
     {rounds.length > 0 ? (
-      <div class="table-wrap">
-        <table class="funding-table">
-          <colgroup>
-            <col class="col-company" />
-            <col class="col-round" />
-            <col class="col-date" />
-            <col class="col-investor" />
-            <col class="col-press" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Company</th>
-              <th>Round</th>
-              <th>Date</th>
-              <th>Lead Investor</th>
-              <th>Press</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rounds.map((r) => {
-              const companyBrand = getCompanyBrandAsset(r.company_slug);
-              const investor = resolveInvestorByName(r.lead_investor);
-              const investorBrand = investor ? getInvestorBrandAsset(investor.slug) : null;
+      <section class="funding-section" aria-labelledby="funding-rounds-heading">
+        <div class="section-heading">
+          <h2 id="funding-rounds-heading">Verified funding rounds</h2>
+          <p>Each row links back to a VentureDex profile and the original press or company source when available.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="funding-table">
+            <colgroup>
+              <col class="col-company" />
+              <col class="col-round" />
+              <col class="col-date" />
+              <col class="col-investor" />
+              <col class="col-press" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Round</th>
+                <th>Date</th>
+                <th>Lead Investor</th>
+                <th>Press</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rounds.map((r) => {
+                const companyBrand = getCompanyBrandAsset(r.company_slug);
+                const investor = resolveInvestorByName(r.lead_investor);
+                const investorBrand = investor ? getInvestorBrandAsset(investor.slug) : null;
 
-              return (
-                <tr>
-                  <td class="cell-company">
-                    <div class="company-info">
-                      <BrandLogo asset={companyBrand} name={r.company_name} size={20} />
-                      {r.company_slug ? (
-                        <a href={`/startups/${r.company_slug}`} class="company-link">
-                          {r.company_name}
-                        </a>
-                      ) : (
-                        <span>{r.company_name}</span>
-                      )}
-                    </div>
-                  </td>
-                  <td class="cell-round">
-                    {r.amount && <span class="round-amount">{r.amount}</span>}
-                    <span class="round-stage">{r.stage}</span>
-                  </td>
-                  <td class="cell-date">
-                    {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </td>
-                  <td class="cell-investor">
-                    <div class="investor-info">
-                      <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={20} />
-                      {investor ? (
-                        <a href={`/investors/${investor.slug}`} class="investor-link">
-                          {r.lead_investor}
-                        </a>
-                      ) : (
-                        <span>{r.lead_investor || "—"}</span>
-                      )}
-                    </div>
-                  </td>
-                  <td class="cell-source">
-                    <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
-                      {r.source_name || "Press"} ↗
-                    </a>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
+                return (
+                  <tr>
+                    <td class="cell-company">
+                      <div class="company-info">
+                        <BrandLogo asset={companyBrand} name={r.company_name} size={20} />
+                        {r.company_slug ? (
+                          <a href={`/startups/${r.company_slug}`} class="company-link">
+                            {r.company_name}
+                          </a>
+                        ) : (
+                          <span>{r.company_name}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="cell-round">
+                      {r.amount && <span class="round-amount">{r.amount}</span>}
+                      <span class="round-stage">{r.stage}</span>
+                    </td>
+                    <td class="cell-date">
+                      {new Date(`${r.date}T00:00:00`).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </td>
+                    <td class="cell-investor">
+                      <div class="investor-info">
+                        <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={20} />
+                        {investor ? (
+                          <a href={`/investors/${investor.slug}`} class="investor-link">
+                            {r.lead_investor}
+                          </a>
+                        ) : (
+                          <span>{r.lead_investor || "—"}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="cell-source">
+                      <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
+                        {r.source_name || "Press"} ↗
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
     ) : (
       <div class="empty-state">
         <h2>No funding data yet.</h2>
@@ -128,6 +134,22 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
     color: var(--color-text-secondary);
     font-size: 0.9rem;
     line-height: 1.5;
+  }
+
+  .funding-section {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .section-heading h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .section-heading p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
   }
 
   .table-wrap {
