@@ -3153,3 +3153,35 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - rejected Quantum Systems, Celea Therapeutics, Qolab, Oxmiq, Luxonis, StirlingX, Kapture CX, Data Science Wizards, TuringDream, Maalexi, Pie, DeepGrov, and Spense for hardware/biotech/semiconductor/defense/crypto mismatch, schema-incompatible stage, stale or incomplete funding metadata, noindex/blank official product surface, or weaker VentureDex software-workflow distinctiveness.
   - brand assets were sourced from official pages or official static assets; new investor directory and brand asset coverage was added for BMW i Ventures, while existing AVP coverage was reused.
   - generated outputs including `d1/generated-seed.sql`, `.playwright-cli/`, `dist/`, and build-generated weekly OG artifacts were restored, removed, or left untracked before commits.
+
+### 2026-07-04 00:46 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: main-checkout-cleaned-social-preview-live
+- validation: pass. Required Daily docs and automation memory were reviewed before cleanup; `./scripts/bootstrap-automation.sh venturedex-daily-curator` passed in the main checkout with Cloudflare token active, GitHub Actions active, R2 unavailable due token scope, and `node_modules` ready. Local gates passed before the code push: `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate`, and `git diff --check`. The full local gate validated 195/195 startups, generated the D1 seed, passed 125/125 tests including the new social metadata coverage, ran Astro sync, TypeScript checking, and Astro build. Generated `d1/generated-seed.sql` and `public/og/weekly-5.png` were restored or removed before commits.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; no content timestamps or D1 seed were committed because no new startup content was published.
+- build_app: pass through `./scripts/manage.sh validate`; the code deploy later passed GitHub Validate `28673422567` and Deploy `28673422579`.
+- screenshot: n/a; no startup screenshots changed.
+- commit_push: pass for code; code commit `798f1d832fea842f4b7778e505c787cdb58780f8` was pushed to `main`. This automation-doc evidence commit is pending at write time.
+- commit_sha: `798f1d832fea842f4b7778e505c787cdb58780f8`
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `28673422567` and Deploy `28673422579` both succeeded for the code commit.
+- live_smoke: pass; independent smoke passed for both `https://venturedex.co` and `https://venturedex.genedai.workers.dev` with 195 published startups. Curl and `bb-browser` DOM checks on `https://venturedex.co/startups/kredosai` verified that startup detail pages now use `https://venturedex.co/og-image.png` with `og:image:type=image/png` and width `1200` for OG/Twitter cards while the visible detail screenshot remains `/screenshots/kredosai.webp`.
+- newsletter: not manually triggered. No new Daily content was published in this cleanup/SEO optimization pass, so there is no new newsletter delay boundary beyond the already-published July 3 Daily run.
+- gsc: not run. No new startup detail URL was published in this cleanup/SEO optimization pass, so no `--latest-daily` GSC submission target exists.
+- failure_tags: [stale_main_checkout, local_branch_divergence, stale_duplicate_drafts, source_drift_404, bb_browser_cli_mismatch]
+- reward: 1
+- dominant_failure_mode: the main checkout had been left dirty/ahead/behind while recent Daily work correctly ran from detached clean worktrees. The untracked GrailPay, Nebulock, Netris, Sail Research, and Scaled Cognition JSON files were stale local copies of content already present on `origin/main`, and `content/rejected.jsonl` was an older local reject append. The only apparent unique local Nebulock product source (`https://nebulock.io/platform`) now returns HTTP 404, so it was not ported. A separate unpushed local SEO commit contained valid social-preview improvements but was based on the old branch point and included generated D1 seed output; the valid source/test changes were reapplied narrowly on latest `main`.
+- proposed_change: applied; add a main-checkout cleanup audit heuristic after detached-worktree Daily publishes or repairs when the original checkout is dirty, ahead, or behind.
+- decision: applied
+- affected_file: src/env.d.ts, src/layouts/Base.astro, src/lib/social-meta.ts, src/pages/startups/[slug].astro, tests/social-meta.test.ts, docs/automation/venturedex-daily-runbook.md, docs/automation/venturedex-learning-log.md
+- affected_section: `Adaptive Heuristics` / `Operational Heuristics`
+- evidence:
+  - the stale dirty state was preserved once with `git stash push -u`, then the original checkout was aligned to `origin/main`; the old divergent local SEO commit was temporarily preserved as `codex/backup-local-main-b203db9` before valid changes were reapplied on latest `main`.
+  - comparing dirty Daily files against `origin/main` showed the five startup JSON drafts already existed remotely with newer verification dates; Nebulock's extra local `/platform` source returned HTTP 404 and was not retained.
+  - the final code change adds a shared social metadata helper, emits complete default OG/Twitter image metadata, keeps optional custom OG images for pages that pass them, and stops startup detail pages from using 1440x900 product screenshots as social share cards.
+  - `bb-browser` was used for browser-side live DOM verification; the installed CLI rejects the documented `wait` command and requires explicit `--tab` for `eval`, so a bounded `sleep` plus tab-specific DOM read was used instead.
