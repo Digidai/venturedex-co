@@ -1,0 +1,84 @@
+{
+  "slug": "equilibre",
+  "domain": "equilibre.ai",
+  "url": "https://equilibre.ai/",
+  "product_name": "EquiLibre",
+  "summary": "Reinforcement-learning trading lab for global financial markets.",
+  "editor_note": "Most trading software sells dashboards; this team is building the model that makes the trade. EquiLibre takes poker-born reinforcement learning into S&P 500 and Nasdaq markets, where its agents reportedly move billions in daily volume. Unlike finance copilots that advise humans, the bet is that the market itself can train the agent faster than a desk can.",
+  "editor_rating": 4,
+  "why_featured": "$500M RL trading lab",
+  "product_type": "Fintech",
+  "region": "Europe",
+  "tags": "fintech,reinforcement learning,algorithmic trading,ai agents,capital markets",
+  "investors": "Creandum",
+  "links": {
+    "linkedin": "https://www.linkedin.com/company/equilibre-technologies",
+    "careers": "https://equilibre.ai/hiring"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "stage": "Series A",
+      "lead_investor": "Creandum",
+      "date": "2026-06-30",
+      "source_url": "https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-04",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "EquiLibre official site",
+        "url": "https://equilibre.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_hiring",
+        "label": "EquiLibre hiring page",
+        "url": "https://equilibre.ai/hiring",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Series A coverage",
+        "url": "https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says EquiLibre builds reinforcement-learning trading systems whose models trade billions of dollars every day on challenging global markets.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official approach section describes self-learning agents that learn to trade like poker, chess, or Go agents and adapt as markets and participants change.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "TechCrunch reports that EquiLibre's algorithms trade billions in daily volume across the S&P 500 and Nasdaq through a Tower Research Capital partnership.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Quant funds, proprietary trading teams, and financial-market researchers evaluating reinforcement-learning systems for liquid markets.",
+      "category": "AI trading research lab",
+      "differentiation": "EquiLibre applies poker-derived reinforcement-learning research to autonomous trading agents instead of building a human-facing finance assistant or analytics dashboard.",
+      "why_now": "The Series A follows public evidence of live market deployment, a Creandum-led valuation step-up, and rising investor interest in reinforcement learning beyond language-model workflows."
+    },
+    "risks": [
+      {
+        "claim": "The key open question is whether a small research lab can keep an edge against compute-rich quant firms as markets adapt to reinforcement-learning strategies.",
+        "basis": "VentureDex editorial assessment based on the official product evidence and TechCrunch's competitive context."
+      }
+    ]
+  }
+}

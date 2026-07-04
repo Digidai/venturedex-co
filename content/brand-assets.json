@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-03",
+  "verified_at": "2026-07-04",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1370,6 +1370,13 @@
       "local_path": "/logos/companies/kredosai.png",
       "source_page": "https://www.kredosai.com/",
       "source_url": "https://www.kredosai.com/_resources/themes/app/dist/favicon/apple-touch-icon.png"
+    },
+    "equilibre": {
+      "name": "EquiLibre",
+      "shape": "icon",
+      "local_path": "/logos/companies/equilibre.png",
+      "source_page": "https://equilibre.ai/",
+      "source_url": "https://equilibre.ai/images/favicon.png"
     }
   },
   "investors": {
@@ -2511,6 +2518,13 @@
       "local_path": "/logos/investors/bmw-i-ventures.webp",
       "source_page": "https://www.bmwiventures.com/",
       "source_url": "https://cdn.prod.website-files.com/665dbb1e15eb8903490282cf/66698eef61b4aeb197d2d60d_1c9e54bfb46b61c0be599828e09feafb_BMW%20i%20Ventures%20Logo.webp"
+    },
+    "creandum": {
+      "name": "Creandum",
+      "shape": "icon",
+      "local_path": "/logos/investors/creandum.ico",
+      "source_page": "https://creandum.com/",
+      "source_url": "https://creandum.com/favicon.ico"
     }
   }
 }

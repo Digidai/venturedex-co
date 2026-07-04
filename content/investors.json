@@ -611,6 +611,13 @@
     "website": "https://www.conviction.com",
     "description": "Venture capital firm focused on AI-native software and infrastructure companies."
   },
+  "creandum": {
+    "name": "Creandum",
+    "slug": "creandum",
+    "short_name": "Creandum",
+    "website": "https://creandum.com/",
+    "description": "European early-stage venture capital firm backing technology founders from seed through IPO."
+  },
   "nexus-venture-partners": {
     "name": "Nexus Venture Partners",
     "slug": "nexus-venture-partners",
