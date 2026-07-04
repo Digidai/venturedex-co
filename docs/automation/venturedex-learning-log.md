@@ -3185,3 +3185,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - comparing dirty Daily files against `origin/main` showed the five startup JSON drafts already existed remotely with newer verification dates; Nebulock's extra local `/platform` source returned HTTP 404 and was not retained.
   - the final code change adds a shared social metadata helper, emits complete default OG/Twitter image metadata, keeps optional custom OG images for pages that pass them, and stops startup detail pages from using 1440x900 product screenshots as social share cards.
   - `bb-browser` was used for browser-side live DOM verification; the installed CLI rejects the documented `wait` command and requires explicit `--tab` for `eval`, so a bounded `sleep` plus tab-specific DOM read was used instead.
+
+### 2026-07-04 12:44 CST
+
+- candidate_count: 0
+- accepted: 0
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: seo-geo-surfaces-live-gsc-weekly-blocked
+- validation: pass. Targeted `npx tsx --test tests/gsc-diagnostics.test.ts tests/seo.test.ts tests/indexnow.test.ts`, `./scripts/check-github-actions.sh`, `./scripts/manage.sh validate` twice after a small review fix, and `git diff --check` all passed. Full local validation reported 195/195 startups, 128/128 tests, Astro sync, TypeScript checking, and Astro build. Generated `d1/generated-seed.sql` and `public/og/weekly-5.png` were restored or removed before commits.
+- weekly_validate: n/a
+- build_db: pass through `./scripts/manage.sh validate`; no content timestamps or D1 seed were committed because no startup or weekly content changed.
+- build_app: pass through `./scripts/manage.sh validate`; the code deploy later passed GitHub Validate `28695093543` and Deploy `28695093532`.
+- screenshot: n/a; no startup screenshots changed.
+- commit_push: pass for code; code commit `87592c68210b135f208a54f02616c92754575910` was pushed to `main`. Follow-up docs/evidence commit is pending at write time.
+- commit_sha: `87592c68210b135f208a54f02616c92754575910`
+- pushed_branch: main
+- ci_deploy: pass; GitHub Validate `28695093543` and Deploy `28695093532` both completed successfully for the code commit.
+- live_smoke: pass; independent smoke passed for both `https://venturedex.co` and `https://venturedex.genedai.workers.dev` with 195 published startups. Live sitemap checks returned HTTP 200 with 367 URL entries and included `https://venturedex.co/llms.txt`, `https://venturedex.co/llms-full.txt`, and `https://venturedex.co/ai-index.json`; those three live endpoints returned HTTP 200.
+- newsletter: not manually triggered. No Daily content was published in this SEO/GEO pass, so there is no new newsletter delay boundary beyond the already-published July 3 Daily run.
+- indexnow: pass; `npm run geo:indexnow` submitted exactly the three AI discovery surfaces and returned HTTP 200. `docs/promotion/metrics/indexnow-history.jsonl` records the submission.
+- gsc: blocked, not complete. Dry-run targeted exactly `https://venturedex.co/weekly/5`; live submit with `POST_CLICK_WAIT_SECONDS=150` wrote `retry_pending` at `2026-07-04 12:44:12` because Search Console displayed `Oops! Something went wrong` and `We had a problem submitting your indexing request. Please try again later.` Diagnostic artifact: `docs/promotion/gsc-artifacts/20260704-124413-retry_pending-venturedex-co-weekly-5.txt`. Final diagnostics classify KredosAi and LinqAlpha as complete and Weekly #5 as blocked.
+- failure_tags: [seo_geo_sitemap_gap, stale_gsc_ledger_default, gsc_request_failure, detached_worktree_cleanup_guard]
+- reward: 3
+- dominant_failure_mode: live AI/GEO discovery files existed and were linked, but the sitemap did not expose them as crawlable canonical discovery targets; GSC diagnostics also read the stale repo-local ledger rather than the central automation ledger, which made same-day status checks look missing until the stable ledger was used.
+- proposed_change: applied; expose the AI discovery surfaces in sitemap, prefer the stable automation GSC ledger with env overrides, add regression tests, add an IndexNow evidence row, add a safe detached-worktree cleanup helper, and add one Daily auto-edit cleanup heuristic.
+- decision: applied with deferred governance. Broader mandatory Daily/Weekly cleanup wording was not committed because those sections are outside allowed auto-edit regions and Weekly has no auto-edit region.
+- affected_file: src/pages/sitemap.xml.ts, scripts/promotion/gsc.ts, scripts/submit-gsc-direct.sh, tests/gsc-diagnostics.test.ts, tests/seo.test.ts, scripts/cleanup-automation-worktrees.sh, docs/automation/venturedex-daily-runbook.md, docs/promotion/metrics/indexnow-history.jsonl, docs/promotion/gsc-artifacts/20260704-124413-retry_pending-venturedex-co-weekly-5.txt, docs/promotion/outbox/2026-07-04-seo-geo-closeout.md, docs/automation/venturedex-learning-log.md
+- affected_section: SEO/GEO, GSC diagnostics, Daily `Adaptive Heuristics` / `Operational Heuristics`
+- evidence:
+  - the named `seo-geo-audit` tool was not available as an exact callable skill/tool in this environment, so the available SEO skill, repo promotion scripts, primary docs, local gates, live smoke, sitemap checks, IndexNow, and GSC diagnostics were used as the audit workflow.
+  - official guidance reviewed during the audit supports sitemap exposure for important canonical URLs, treats IndexNow as an update notification rather than indexing proof, and confirms Search Console URL Inspection API is inspect-only rather than an indexing-request API.
+  - a Python `urllib` sitemap read returned HTTP 403, but curl default, Mozilla UA, and Googlebot UA all returned the sitemap with the new entries; this was classified as a validation-client User-Agent block rather than a live sitemap failure.
+  - `bash scripts/cleanup-automation-worktrees.sh --all` dry-run passed and deleted nothing; it skipped the main checkout and a non-matching old SEO worktree path instead of forcing removal.
