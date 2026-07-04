@@ -1,4 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
+import { homedir } from "node:os";
+import { dirname, join } from "node:path";
 import {
   latestDailyStartups,
   latestWeeklyIssue,
@@ -28,6 +30,23 @@ export interface GscUrlDiagnostic {
 }
 
 export function defaultGscHistoryPath(): string {
+  return resolveDefaultGscHistoryPath();
+}
+
+export function resolveDefaultGscHistoryPath(options: {
+  env?: NodeJS.ProcessEnv;
+  homeDir?: string;
+  exists?: (path: string) => boolean;
+} = {}): string {
+  const env = options.env ?? process.env;
+  const explicit = env.HISTORY_FILE || env.GSC_HISTORY_FILE;
+  if (explicit) return explicit;
+
+  const codeHome = env.CODEX_HOME || join(options.homeDir ?? homedir(), ".codex");
+  const centralPath = join(codeHome, "automations", "venturedex-daily-curator", "gsc_submission_history.tsv");
+  const pathExists = options.exists ?? existsSync;
+  if (pathExists(dirname(centralPath))) return centralPath;
+
   return resolveFromRoot(".gsc_submission_history.tsv");
 }
 

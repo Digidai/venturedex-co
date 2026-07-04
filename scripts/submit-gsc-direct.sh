@@ -26,7 +26,14 @@ BB_BROWSER_CONNECT_MAX_ATTEMPTS="${BB_BROWSER_CONNECT_MAX_ATTEMPTS:-6}"
 BB_BROWSER_CONNECT_RETRY_SLEEP="${BB_BROWSER_CONNECT_RETRY_SLEEP:-2}"
 MAX_URLS="${MAX_URLS:-10}"
 
-HISTORY_FILE="${HISTORY_FILE:-${ROOT_DIR}/.gsc_submission_history.tsv}"
+CODEX_HOME_DEFAULT="${CODEX_HOME:-${HOME}/.codex}"
+CENTRAL_HISTORY_FILE="${CODEX_HOME_DEFAULT}/automations/venturedex-daily-curator/gsc_submission_history.tsv"
+if [[ -d "$(dirname "$CENTRAL_HISTORY_FILE")" ]]; then
+  DEFAULT_HISTORY_FILE="$CENTRAL_HISTORY_FILE"
+else
+  DEFAULT_HISTORY_FILE="${ROOT_DIR}/.gsc_submission_history.tsv"
+fi
+HISTORY_FILE="${HISTORY_FILE:-${GSC_HISTORY_FILE:-$DEFAULT_HISTORY_FILE}}"
 GSC_ARTIFACT_DIR="${GSC_ARTIFACT_DIR:-${ROOT_DIR}/docs/promotion/gsc-artifacts}"
 BB_BROWSER_CMD="${BB_BROWSER_CMD:-bb-browser}"
 COMET_APP="${COMET_APP:-/Applications/Comet.app/Contents/MacOS/Comet}"

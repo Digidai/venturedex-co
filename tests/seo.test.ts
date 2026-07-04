@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   canonicalPath,
@@ -239,6 +240,14 @@ test("homeJsonLd exposes the machine-readable startup dataset distributions", ()
   assert.ok(contentUrls.includes(`${SITE_URL}/llms-full.txt`));
   assert.ok(contentUrls.includes(`${SITE_URL}/ai-index.json`));
   assert.ok(contentUrls.includes(`${SITE_URL}/feed.xml`));
+});
+
+test("sitemap source includes AI discovery surfaces", () => {
+  const source = readFileSync("src/pages/sitemap.xml.ts", "utf8");
+
+  assert.ok(source.includes('loc: "/llms.txt"'));
+  assert.ok(source.includes('loc: "/llms-full.txt"'));
+  assert.ok(source.includes('loc: "/ai-index.json"'));
 });
 
 test("canonicalPath strips prerendered .html file paths to public routes", () => {

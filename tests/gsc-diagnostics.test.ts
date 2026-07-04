@@ -6,6 +6,7 @@ import {
   normalizeCanonicalUrl,
   parseGscLedgerText,
   renderGscDiagnosticsMarkdown,
+  resolveDefaultGscHistoryPath,
   type GscUrlDiagnostic,
 } from "../scripts/promotion/gsc";
 
@@ -53,4 +54,26 @@ test("renderGscDiagnosticsMarkdown preserves rule that dry_run is not success", 
   });
   assert.match(markdown, /dry-run only/);
   assert.match(markdown, /it is not a Google indexing request/);
+});
+
+test("default GSC history path prefers the stable automation ledger when available", () => {
+  const path = resolveDefaultGscHistoryPath({
+    env: { CODEX_HOME: "/tmp/codex-home" },
+    homeDir: "/tmp/home",
+    exists: (candidate) => candidate === "/tmp/codex-home/automations/venturedex-daily-curator",
+  });
+
+  assert.equal(path, "/tmp/codex-home/automations/venturedex-daily-curator/gsc_submission_history.tsv");
+});
+
+test("explicit GSC history env override wins over automation defaults", () => {
+  const path = resolveDefaultGscHistoryPath({
+    env: {
+      CODEX_HOME: "/tmp/codex-home",
+      GSC_HISTORY_FILE: "/tmp/custom.tsv",
+    },
+    exists: () => true,
+  });
+
+  assert.equal(path, "/tmp/custom.tsv");
 });

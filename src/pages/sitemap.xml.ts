@@ -71,6 +71,9 @@ export const GET: APIRoute = () => {
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },
     { loc: "/sponsor", priority: "0.4" },
+    { loc: "/llms.txt", lastmod: latestTopicLastmod, priority: "0.5" },
+    { loc: "/llms-full.txt", lastmod: latestTopicLastmod, priority: "0.5" },
+    { loc: "/ai-index.json", lastmod: latestTopicLastmod, priority: "0.5" },
   ].concat(
     weeklyIssues.map((issue) => ({
       loc: `/weekly/${issue.issue_number}`,
