@@ -1,0 +1,93 @@
+timestamp: 2026-07-04 14:02:53
+status: retry_pending
+url: https://venturedex.co/startups/equilibre
+message: request failure detected
+page_state: failed
+
+--- page text ---
+
+	
+
+home
+Overview
+lightbulb_2
+Insights
+trending_up
+Performance
+search
+URL inspection
+Indexing
+keyboard_arrow_up
+file_copy
+Pages
+account_tree
+Sitemaps
+visibility_off
+Removals
+Experience
+keyboard_arrow_up
+speed
+Core Web Vitals
+lock
+HTTPS
+Enhancements
+keyboard_arrow_up
+layers
+Breadcrumbs
+Security & Manual Actions
+keyboard_arrow_down
+link_2
+Links
+trophy
+Achievements
+settings
+Settings
+feedback
+Submit feedback
+info
+About Search Console
+PrivacyTerms
+https://venturedex.co/startups/equilibre
+URL Inspection
+TEST LIVE URL
+info
+URL is not on Google
+This page is not indexed. Pages that aren't indexed can't be served on Google. See the details below to learn why it wasn't indexed. Learn more
+VIEW CRAWLED PAGE
+Page changed?
+REQUEST INDEXING
+info
+Page indexing
+Page is not indexed: URL is unknown to Google
+
+Discovery
+Sitemaps
+No referring sitemaps detected
+Referring page
+None detected
+URL might be known from other sources that are currently not reported
+Crawl
+Last crawl
+N/A
+Crawled as
+N/A
+Crawl allowed?
+N/A
+Page fetch
+N/A
+Indexing allowed?
+info
+N/A
+Indexing
+User-declared canonical
+N/A
+Google-selected canonical
+
+N/A
+LEARN MORE
+Enhancements & Experience
+Only indexed URLs can have enhancements
+error_outline
+Oops! Something went wrong
+We had a problem submitting your indexing request. Please try again later.
+Dismiss
