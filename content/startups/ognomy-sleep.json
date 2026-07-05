@@ -1,0 +1,96 @@
+{
+  "slug": "ognomy-sleep",
+  "domain": "www.ognomy.com",
+  "url": "https://www.ognomy.com/",
+  "product_name": "Ognomy Sleep",
+  "summary": "Virtual sleep apnea care network with at-home testing and follow-up.",
+  "editor_note": "Sleep apnea care usually makes patients coordinate the system; Ognomy makes the care path the product. It combines virtual specialist visits, FDA-cleared home tests, insurance checks, treatment orders, and follow-up across all 50 states. Unlike referral-only telehealth, the bet is sleep care without the lab bottleneck.",
+  "editor_rating": 4,
+  "why_featured": "$20M for virtual sleep apnea care",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "healthtech,telehealth,sleep apnea,at-home testing,virtual care",
+  "investors": "Catalyst Investors, Blue Heron Capital",
+  "links": {
+    "product": "https://www.ognomy.com/what-to-expect",
+    "linkedin": "https://www.linkedin.com/company/ognomysleep/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Catalyst Investors",
+      "date": "2026-06-30",
+      "source_url": "https://sleepreviewmag.com/sleep-diagnostics/connected-care/ai-machine-learning/ognomy-sleep-series-expand-ai-enabled-sleep-apnea-care/",
+      "source_name": "Sleep Review"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Ognomy Sleep official site",
+        "url": "https://www.ognomy.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_what_to_expect",
+        "label": "Ognomy Sleep What to Expect page",
+        "url": "https://www.ognomy.com/what-to-expect",
+        "type": "product"
+      },
+      {
+        "id": "official_doctors",
+        "label": "Ognomy Sleep Doctors page",
+        "url": "https://www.ognomy.com/doctors",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Ognomy Sleep Series A announcement",
+        "url": "https://www.ognomy.com/resources/ognomy-sleep-raises-series-a",
+        "type": "funding"
+      },
+      {
+        "id": "funding_1",
+        "label": "Sleep Review Series A coverage",
+        "url": "https://sleepreviewmag.com/sleep-diagnostics/connected-care/ai-machine-learning/ognomy-sleep-series-expand-ai-enabled-sleep-apnea-care/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official What to Expect page says patients can start with $25+, be seen in days, use at-home testing, and access in-network coverage for more than 200 million people.",
+        "source_ids": [
+          "official_what_to_expect"
+        ]
+      },
+      {
+        "claim": "The official Doctors page describes provider referrals by EMR, fax, or self-registration and sends digital sleep-study reports back to referring clinicians.",
+        "source_ids": [
+          "official_doctors"
+        ]
+      },
+      {
+        "claim": "Ognomy's Series A page says it has completed 85,000+ patient visits, operates across all 50 states, and moves patients nine times faster than traditional sleep treatment.",
+        "source_ids": [
+          "official_funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Patients with suspected obstructive sleep apnea, referring clinicians, and employers or payers that need faster sleep-care access.",
+      "category": "Virtual sleep apnea care",
+      "differentiation": "Ognomy Sleep manages the care path from virtual visit to home sleep test, treatment order, and adherence follow-up rather than stopping at referral intake.",
+      "why_now": "The Series A follows 85,000+ patient visits, national coverage, and rising payer interest in at-home diagnostics and remote cardiometabolic care."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether clinical quality and adherence stay high as Ognomy expands across more insurers, states, and treatment paths.",
+        "basis": "VentureDex assessment from official care-flow pages and Series A coverage."
+      }
+    ]
+  }
+}

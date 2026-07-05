@@ -1,0 +1,90 @@
+{
+  "slug": "brainsmingle",
+  "domain": "brainsmingle.com",
+  "url": "https://brainsmingle.com/",
+  "product_name": "BrainsMingle",
+  "summary": "Video-first professional network for live sessions, rooms, and mentorship.",
+  "editor_note": "Professional networking broke when every relationship became a feed metric. BrainsMingle shows 5-minute matching rounds, live rooms, expert communities, booking, payments, and branded private hubs for universities and accelerators. Unlike LinkedIn plus Calendly plus Zoom, the bet is that weak ties need a room, not another inbox.",
+  "editor_rating": 4,
+  "why_featured": "$400K for video networking",
+  "product_type": "SaaS",
+  "region": "Africa",
+  "tags": "professional networking,video,communities,mentorship,marketplace",
+  "investors": "BasharSoft Group",
+  "links": {
+    "product": "https://brainsmingle.com/spaces"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$400K",
+      "stage": "Seed",
+      "lead_investor": "BasharSoft Group",
+      "date": "2026-06-30",
+      "source_url": "https://www.wamda.com/2026/06/egypt-brainsmingle-raises-400000-seed-basharsoft-group",
+      "source_name": "Wamda"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "BrainsMingle official site",
+        "url": "https://brainsmingle.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_spaces",
+        "label": "BrainsMingle Spaces page",
+        "url": "https://brainsmingle.com/spaces",
+        "type": "product"
+      },
+      {
+        "id": "official_consultations",
+        "label": "BrainsMingle Consultations page",
+        "url": "https://brainsmingle.com/consultations",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Wamda seed funding coverage",
+        "url": "https://www.wamda.com/2026/06/egypt-brainsmingle-raises-400000-seed-basharsoft-group",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage shows Golden Hour speed networking with short 1:1 video chats, a new professional every round, and reserved seats.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official room listings expose live community rooms with approval rules, language, expert counts, video-call formats, and sign-up actions.",
+        "source_ids": [
+          "official_site",
+          "official_spaces"
+        ]
+      },
+      {
+        "claim": "Wamda reports BrainsMingle bundles live video sessions, calendar booking, payment processing, community engagement, and private branded hubs.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Experts, community builders, universities, accelerators, and companies running professional learning or networking programs.",
+      "category": "Professional networking and community software",
+      "differentiation": "BrainsMingle combines synchronous matching, live video rooms, communities, booking, payments, and branded hubs instead of leaving users across feeds and scheduling tools.",
+      "why_now": "BasharSoft's backing gives the product a distribution path into MENA talent networks while the site already shows active rooms and event formats."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether BrainsMingle can keep room quality and matching liquidity high as it moves from events into repeat enterprise use.",
+        "basis": "VentureDex assessment from live product pages and Wamda funding coverage."
+      }
+    ]
+  }
+}

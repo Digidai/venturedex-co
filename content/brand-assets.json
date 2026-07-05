@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-04",
+  "verified_at": "2026-07-05",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -1377,6 +1377,20 @@
       "local_path": "/logos/companies/equilibre.png",
       "source_page": "https://equilibre.ai/",
       "source_url": "https://equilibre.ai/images/favicon.png"
+    },
+    "ognomy-sleep": {
+      "name": "Ognomy Sleep",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/ognomy-sleep.svg",
+      "source_page": "https://www.ognomy.com/",
+      "source_url": "https://cdn.prod.website-files.com/6791af81ad273ba07c3d9922/679bebc434a49f821975825d_b2e9aaaa00e047de2270bd2e4fa1af20_ognomy%20logo%20stacked%20blue.svg"
+    },
+    "brainsmingle": {
+      "name": "BrainsMingle",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/brainsmingle.png",
+      "source_page": "https://brainsmingle.com/",
+      "source_url": "https://static.brainsmingle.com/BrainsMingle/logo-dark.png"
     }
   },
   "investors": {
@@ -2525,6 +2539,27 @@
       "local_path": "/logos/investors/creandum.ico",
       "source_page": "https://creandum.com/",
       "source_url": "https://creandum.com/favicon.ico"
+    },
+    "catalyst-investors": {
+      "name": "Catalyst Investors",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/catalyst-investors.png",
+      "source_page": "https://catalyst.com",
+      "source_url": "https://catalyst.com/wp-content/uploads/2022/10/logo-dark.png"
+    },
+    "blue-heron-capital": {
+      "name": "Blue Heron Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/blue-heron-capital.svg",
+      "source_page": "https://www.blueheroncap.com",
+      "source_url": "https://www.blueheroncap.com/wp-content/uploads/2023/02/Header-logo-4.svg"
+    },
+    "basharsoft-group": {
+      "name": "BasharSoft Group",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/basharsoft-group.png",
+      "source_page": "https://basharsoft.com",
+      "source_url": "https://basharsoft.com/wp-content/uploads/2019/12/logo.png"
     }
   }
 }

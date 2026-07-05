@@ -1222,5 +1222,26 @@
     "short_name": "BMW i Ventures",
     "website": "https://www.bmwiventures.com/",
     "description": "Independent venture capital firm backed by BMW Group, investing in startups across automotive, industrial software, physical AI, agentic AI, manufacturing, and supply-chain technology."
+  },
+  "catalyst-investors": {
+    "name": "Catalyst Investors",
+    "slug": "catalyst-investors",
+    "short_name": "Catalyst",
+    "website": "https://catalyst.com",
+    "description": "Growth equity firm backing technology-enabled companies across software, healthcare, and business services."
+  },
+  "blue-heron-capital": {
+    "name": "Blue Heron Capital",
+    "slug": "blue-heron-capital",
+    "short_name": "Blue Heron",
+    "website": "https://www.blueheroncap.com",
+    "description": "Growth equity firm investing in healthcare and enterprise technology companies."
+  },
+  "basharsoft-group": {
+    "name": "BasharSoft Group",
+    "slug": "basharsoft-group",
+    "short_name": "BasharSoft",
+    "website": "https://basharsoft.com",
+    "description": "Human-capital technology group behind WUZZUF, Forasna, iCareer, and Recruitera in the MENA region."
   }
 }
