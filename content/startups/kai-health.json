@@ -1,0 +1,97 @@
+{
+  "slug": "kai-health",
+  "domain": "kaihealth.ai",
+  "url": "https://kaihealth.ai/",
+  "product_name": "Kai Health",
+  "summary": "AI performance improvement platform for emergency medicine.",
+  "editor_note": "Emergency-medicine quality review is usually a sample-and-lecture ritual; Kai Health turns it into encounter-level operating software. The site shows 90-day note analysis against RSQ indicators, provider dashboards, personalized training, Epic integration, and a planned real-time guidance tier. Unlike manual chart review, the bet is every ED encounter becomes a risk and revenue signal.",
+  "editor_rating": 4,
+  "why_featured": "$4.8M for ED risk review",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "healthtech,emergency medicine,clinical risk,ai,compliance",
+  "investors": "Distributed Ventures",
+  "links": {
+    "product": "https://kaihealth.ai/how-to-work-with-us",
+    "linkedin": "https://www.linkedin.com/company/kai-health-technology",
+    "security": "https://kaihealth.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.8M",
+      "stage": "Seed",
+      "lead_investor": "Distributed Ventures",
+      "date": "2026-06-29",
+      "source_url": "https://kaihealth.ai/insights/kai-health-raises-4.8-million-seed-round-led-by-distributed-ventures-to-automate-performance-improvement-in-emergency-medicine",
+      "source_name": "Kai Health"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-06",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Kai Health official site",
+        "url": "https://kaihealth.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_programs",
+        "label": "Kai Health How to Work With Us page",
+        "url": "https://kaihealth.ai/how-to-work-with-us",
+        "type": "product"
+      },
+      {
+        "id": "official_partnerships",
+        "label": "Kai Health Proven Partnerships page",
+        "url": "https://kaihealth.ai/proven-partnerships",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Kai Health seed funding announcement",
+        "url": "https://kaihealth.ai/insights/kai-health-raises-4.8-million-seed-round-led-by-distributed-ventures-to-automate-performance-improvement-in-emergency-medicine",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official program page describes Insights, Adaptive, and Autonomous tiers covering 90-day retrospective analysis, post-visit analysis of every encounter, personalized training, and real-time clinical decision support.",
+        "source_ids": [
+          "official_programs"
+        ]
+      },
+      {
+        "claim": "The official homepage says Kai Health combines real-time analytics, personalized training, intelligent decision support, Epic integration, and SOC2, ISO 27001, and HIPAA compliance.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official partnerships page ties the product to The Sullivan Group's RSQ methodology, 20M+ patient visits impacted annually, and d2i data infrastructure processing 12M+ patient records each year.",
+        "source_ids": [
+          "official_partnerships"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Kai Health has five clients spanning 107 acute care facilities and 2.7M annual patient visits, and processes up to 1,800 medical records per hour on Microsoft Azure and Databricks.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Emergency department leaders, clinical quality teams, risk managers, and health-system finance teams.",
+      "category": "Emergency medicine performance improvement",
+      "differentiation": "Kai Health moves quality and risk review from sampled manual chart checks into AI-assisted analysis of every emergency encounter, with RSQ methodology, provider-level education, and planned point-of-care guidance.",
+      "why_now": "The seed round follows signed health-system customers, Epic integration, security certifications, and enough volume to test whether AI can make emergency-medicine risk review continuous."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Kai Health's real-time Autonomous tier can move from contracted development into routine clinical use without alert fatigue or documentation-vendor dependency slowing adoption.",
+        "basis": "VentureDex assessment from the official program page, partnership page, and seed announcement."
+      }
+    ]
+  }
+}

@@ -1391,6 +1391,15 @@
       "local_path": "/logos/companies/brainsmingle.png",
       "source_page": "https://brainsmingle.com/",
       "source_url": "https://static.brainsmingle.com/BrainsMingle/logo-dark.png"
+    },
+    "kai-health": {
+      "name": "Kai Health",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/kai-health.svg",
+      "source_page": "https://kaihealth.ai/",
+      "source_url": "https://kaihealth.ai/hubfs/BRAND/Logo_Reverse_Color%20(3).svg",
+      "allow_unreachable_source": true,
+      "note": "Official HubSpot wordmark was fetched successfully during this run, but direct HEAD probes to kaihealth.ai assets intermittently returned TLS 000."
     }
   },
   "investors": {
@@ -2560,6 +2569,13 @@
       "local_path": "/logos/investors/basharsoft-group.png",
       "source_page": "https://basharsoft.com",
       "source_url": "https://basharsoft.com/wp-content/uploads/2019/12/logo.png"
+    },
+    "distributed-ventures": {
+      "name": "Distributed Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/distributed-ventures.svg",
+      "source_page": "https://www.distributedvc.com",
+      "source_url": "https://cdn.prod.website-files.com/6762e4382d9109f24d3c8ec8/6776adc3e40d59fa13849c7a_Distributed_Ventures-Logo-Without_Clear_Space-RGB_Multicolor.svg"
     }
   }
 }

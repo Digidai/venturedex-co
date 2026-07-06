@@ -1243,5 +1243,12 @@
     "short_name": "BasharSoft",
     "website": "https://basharsoft.com",
     "description": "Human-capital technology group behind WUZZUF, Forasna, iCareer, and Recruitera in the MENA region."
+  },
+  "distributed-ventures": {
+    "name": "Distributed Ventures",
+    "slug": "distributed-ventures",
+    "short_name": "Distributed",
+    "website": "https://www.distributedvc.com",
+    "description": "Early-stage venture firm leading Seed and Series A investments across health, insurance, and wealth risk-ecosystem innovation."
   }
 }
