@@ -3285,3 +3285,37 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - brand assets were sourced from official pages or official static assets; new investor directory and brand asset coverage was added for Catalyst Investors, Blue Heron Capital, and BasharSoft Group.
   - `bb-browser` verified 1001, Lantern/getlantern mismatch, Ognomy Sleep, and BrainsMingle browser surfaces; BrainsMingle had only a non-blocking Bugsnag send error while Ognomy exposed a non-blocking `Swiper is not defined` site console error with visible content intact.
   - the main checkout was used for this run, not a detached automation worktree; generated outputs were removed/restored before commits, and detached-worktree cleanup was not applicable.
+
+### 2026-07-06 17:04 CST
+
+- candidate_count: 7 weekly picks
+- accepted: 0 daily startups; 1 weekly issue published
+- rejected: 0
+- rejection_bar_met: n/a
+- outcome: weekly-content-live-gsc-requested
+- validation: pass. Required Weekly docs and automation memory were read first. `./scripts/bootstrap-automation.sh venturedex-weekly-curator` passed in the main checkout, then the run moved to detached clean worktree `/Users/dai/.codex/worktrees/venturedex-weekly-20260706T084353Z/venturedex.co` and bootstrap passed again after restoring repo-local `.env`, running `npm ci`, verifying Cloudflare token status, and confirming GitHub Actions. Local release gates passed: `./scripts/check-github-actions.sh`, `python3 scripts/weekly.py validate`, `./scripts/manage.sh validate`, `git diff --check`, and `git diff --cached --check`.
+- weekly_validate: pass; `content/weekly/6.json` is published, TODO-free, and contains seven source-bound picks with `why_this_week`, `product_evaluation`, `evidence`, `risks`, and `verdict`.
+- build_db: pass through `./scripts/manage.sh validate`; generated `d1/generated-seed.sql` was restored before commit.
+- build_app: pass through `./scripts/manage.sh validate`; Astro prerendered `/weekly/6.html`. Build-generated `public/og/weekly-5.png` and `public/og/weekly-6.png` were removed before commit because Weekly content scope did not include generated OG assets.
+- screenshot: n/a; Weekly browser verification used `bb-browser` page/text/error checks rather than startup screenshots.
+- commit_push: pass for content; content commit `2327a919b00cbdbd2c1d39d2cd38acaf0c68542c` (`content: weekly #6 - The Interface Is Becoming the System`) was pushed to `main`. This learning-log/evidence commit is pending at write time.
+- commit_sha: `2327a919b00cbdbd2c1d39d2cd38acaf0c68542c`
+- pushed_branch: main
+- ci_deploy: pass. GitHub Validate `28779850014` succeeded for `2327a919b00cbdbd2c1d39d2cd38acaf0c68542c`; Deploy to Cloudflare Workers `28779850009` succeeded for the same SHA.
+- live_smoke: pass. Independent `./scripts/manage.sh smoke https://venturedex.co` passed with 198 published startups. `bb-browser` verified live `/weekly` lists issue 6 and live `/weekly/6` renders the title, all seven picks, and seven each of `WHY THIS WEEK`, `PRODUCT EVALUATION`, `EVIDENCE USED`, and `LIMITS AND RISKS`, with no JavaScript errors.
+- newsletter: not manually triggered. Remote D1 confirms weekly issues 4, 5, and 6 are `published`; `newsletter_sends` currently contains weekly sends only through `weekly:4`, with no `weekly:5` or `weekly:6` row. Issue 6 was published on `2026-07-06`, so it becomes delay-eligible after `2026-07-07 00:00 UTC` / `2026-07-07 08:00 Asia/Shanghai`; the next normal Weekly Cron boundary is `2026-07-07 14:00 UTC` / `2026-07-07 22:00 Asia/Shanghai`. The missing `weekly:5` send row is an existing newsletter delivery gap and was not repaired manually because Weekly newsletter sends must remain Cron/D1-driven.
+- gsc: pass. Dry-run targeted exactly `https://venturedex.co/weekly/6`. Formal submit with longer confirmation wait returned `Requested indexing: https://venturedex.co/weekly/6`; stable automation ledger `/Users/dai/.codex/automations/venturedex-daily-curator/gsc_submission_history.tsv` latest relevant row is `2026-07-06 17:03:42	requested	https://venturedex.co/weekly/6	indexing requested`. The detached worktree has no repo-local `.gsc_submission_history.tsv`.
+- failure_tags: [newsletter_delivery_gap_existing, d1_query_drift_nonblocking, product_page_js_noise]
+- reward: 4
+- dominant_failure_mode: Weekly content quality, structured research, local gates, CI, deploy, live smoke, and final GSC ledger state all passed. Operational friction came from one corrected read-only D1 query that used stale `automation_runs` column names, non-blocking product-page browser noise on third-party official sites, and the pre-existing absence of `weekly:5` in `newsletter_sends`.
+- proposed_change: deferred; future human-reviewed work should investigate why published weekly issue 5 has no D1 `newsletter_sends` row after its delay/Cron window, and should align newsletter observability examples to the live schema. This is outside the current Weekly publication scope and manual newsletter triggering remains disallowed.
+- decision: deferred
+- affected_file: content/weekly/6.json, docs/automation/venturedex-learning-log.md, stable GSC ledger `/Users/dai/.codex/automations/venturedex-daily-curator/gsc_submission_history.tsv`
+- affected_section: weekly curator
+- evidence:
+  - generated `content/weekly/6.json` for `2026-06-29` to `2026-07-05` and published it as `The Interface Is Becoming the System`, with picks LinqAlpha, KredosAi, Jota, Omen, Ognomy Sleep, Higharc, and EquiLibre.
+  - the issue uses existing published startup records, structured `research`, official product pages, linked funding/source pages, and run-time `bb-browser` checks only; no startup, logo, screenshot, schema, deployment code, or generated D1 seed was committed.
+  - `bb-browser` verified current product surfaces for LinqAlpha Terminal, KredosAi Solution, Jota, Omen, Ognomy Sleep What to Expect, Higharc How It Works, and EquiLibre before publication.
+  - local `bb-browser` checks passed for `http://127.0.0.1:4323/weekly` and `/weekly/6`; live `bb-browser` checks passed for `https://venturedex.co/weekly` and `/weekly/6`.
+  - generated outputs from validation and build were restored or removed before the content commit, leaving only `content/weekly/6.json` staged.
+  - work was performed in detached worktree `/Users/dai/.codex/worktrees/venturedex-weekly-20260706T084353Z/venturedex.co`; cleanup is pending after the learning-log, automation memory, commit/push, deploy/GSC evidence, and closeout are persisted.
