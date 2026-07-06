@@ -1,0 +1,469 @@
+{
+  "issue_number": 6,
+  "title": "The Interface Is Becoming the System",
+  "week_start": "2026-06-29",
+  "week_end": "2026-07-05",
+  "published_at": "2026-07-06",
+  "status": "published",
+  "editorial_intro": "This week is less about AI as a sidecar and more about AI becoming the operating surface. The strongest picks move decisions into the place where work already happens: a research terminal, a collections engine, a WhatsApp money thread, machine fluid loops, sleep-care intake, builder plan data, or live trading models.",
+  "research_summary": "This issue uses only published VentureDex startup records, their structured research blocks, linked official product pages, and linked funding or primary source pages. During this run, bb-browser verified current public product pages for LinqAlpha Terminal, KredosAi Solution, Jota, Omen, Ognomy What to Expect, Higharc How It Works, and EquiLibre. No private revenue, retention, market-share, benchmark, reliability, or migration claims are added.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, linked funding or primary source URLs, and this run's bb-browser page checks.",
+    "Separate observable product evidence from VentureDex editorial judgment.",
+    "State evidence gaps explicitly instead of filling them with market, adoption, or performance assumptions."
+  ],
+  "themes": [
+    {
+      "title": "AI as the operating surface",
+      "summary": "The shared pattern is an interface shift: these products do not merely summarize work after the fact. They try to sit inside the workflow, preserve context, and turn domain evidence into the next action."
+    },
+    {
+      "title": "Control beats generic automation",
+      "summary": "The credible products in this set expose a control loop: source-linked investment reasoning, adaptive collections messaging, WhatsApp-native money movement, sensor telemetry, remote care routing, plan-to-estimate data, or reinforcement-learning execution."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "linqalpha",
+      "why_this_week": "LinqAlpha belongs this week because its July 2 Series A and current Terminal page make the strongest version of the interface shift: investment research moves from search and notes into a source-linked agent workspace for public-market teams.",
+      "product_evaluation": "The product evidence supports a serious research workflow, not just a finance chatbot. The Terminal page describes interpret, pull, search, and run steps over market data, filings, internal documents, purpose-built workflows, cross-model delegation, and verifiable source-linked outputs. VentureDex treats that as a credible operating layer for analyst work, while avoiding any claim that it improves returns or coverage quality.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/linqalpha.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "LinqAlpha official site",
+          "source": "content/startups/linqalpha.json research.sources.official_site",
+          "url": "https://linqalpha.com/"
+        },
+        {
+          "label": "LinqAlpha Terminal product page",
+          "source": "content/startups/linqalpha.json research.sources.official_terminal",
+          "url": "https://linqalpha.com/terminal"
+        },
+        {
+          "label": "LinqAlpha Series A press release",
+          "source": "content/startups/linqalpha.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/apac/news-releases/linqalpha-raises-22-million-to-build-the-alpha-intelligence-layer-for-global-public-markets-302816654.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions LinqAlpha as AI-powered investment research that turns fragmented global-market data into investment signals across more than 120 countries and 30 native languages.",
+          "url": "https://linqalpha.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Terminal page describes multi-step reasoning over market data, filings, internal documents, purpose-built workflows, and source-linked verifiable outputs.",
+          "url": "https://linqalpha.com/terminal"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding release says institutional teams use specialized agents that learn each user's investment framework and synthesize research into public-market insight.",
+          "url": "https://www.prnewswire.com/apac/news-releases/linqalpha-raises-22-million-to-build-the-alpha-intelligence-layer-for-global-public-markets-302816654.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "LinqAlpha homepage",
+          "url": "https://linqalpha.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/apac/news-releases/linqalpha-raises-22-million-to-build-the-alpha-intelligence-layer-for-global-public-markets-302816654.html"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the Terminal page text for multi-step reasoning, market data, filings, internal documents, purpose-built workflows, and source-linked outputs on 2026-07-06.",
+          "url": "https://linqalpha.com/terminal"
+        }
+      ],
+      "risks": [
+        "The open question is whether LinqAlpha can keep source traceability and zero-retention controls tight as customers add internal datasets and cross-model workflows.",
+        "The public evidence verifies workflow scope and sourcing language, but it does not prove investment performance, analyst productivity gains, or customer retention."
+      ],
+      "verdict": "LinqAlpha is most compelling as a verifiable research desk for public markets; the evidence supports workflow depth, not performance claims."
+    },
+    {
+      "slug": "kredosai",
+      "why_this_week": "KredosAi fits the issue because payment collections is a domain where the interface itself changes the outcome boundary. Its July 2 Series A and official solution page show collections moving from static campaigns into an adaptive message, timing, and channel loop.",
+      "product_evaluation": "The official solution page supports the core claim: KredosAi sends tailored messages through a customer-preferred channel, experiments at scale, and supports SMS, email, RCS, APIs, and secure file transfer. The product reads like an operating system for pre-write-off engagement rather than a dialer replacement. VentureDex does not add repayment-lift, retention, or collection-rate numbers beyond what the cited sources state.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/kredosai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "KredosAi official site",
+          "source": "content/startups/kredosai.json research.sources.official_site",
+          "url": "https://www.kredosai.com/"
+        },
+        {
+          "label": "KredosAi solution page",
+          "source": "content/startups/kredosai.json research.sources.official_solution",
+          "url": "https://www.kredosai.com/solution/"
+        },
+        {
+          "label": "KredosAi official blog",
+          "source": "content/startups/kredosai.json research.sources.official_blog",
+          "url": "https://www.kredosai.com/company/blog/"
+        },
+        {
+          "label": "KredosAi Series A press release",
+          "source": "content/startups/kredosai.json research.sources.funding_1",
+          "url": "https://www.businesswire.com/news/home/20260702629349/en/KredosAi-Raises-%247-Million-Series-A"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official homepage says KredosAi uses reinforcement learning with human feedback to improve payment engagement, deliver faster outcomes, and support telecom, auto-financing, and financial-services enterprises.",
+          "url": "https://www.kredosai.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The solution page says the platform sends tailored messages through preferred channels, experiments with thousands of messages and calls to action, and supports SMS, email, RCS, APIs, and secure file transfer.",
+          "url": "https://www.kredosai.com/solution/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official blog exposes product posts on RCS collections, behavioral economics, and multi-armed-bandit experimentation, plus the July 2026 Series A announcement.",
+          "url": "https://www.kredosai.com/company/blog/"
+        },
+        {
+          "label": "Official product site",
+          "source": "KredosAi homepage",
+          "url": "https://www.kredosai.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Wire",
+          "url": "https://www.businesswire.com/news/home/20260702629349/en/KredosAi-Raises-%247-Million-Series-A"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the Solution page text for tailored messages, reinforcement learning, accelerated deployment, RCS, dashboards, and cookie-gated but readable page content on 2026-07-06.",
+          "url": "https://www.kredosai.com/solution/"
+        }
+      ],
+      "risks": [
+        "Customer-specific reinforcement-learning gains may not transfer cleanly across telecom, auto finance, and financial-services portfolios without long implementation cycles.",
+        "Collections products also carry compliance and customer-experience risk; the public pages verify channels and experimentation, not regulatory outcomes or borrower sentiment."
+      ],
+      "verdict": "KredosAi is worth watching because it makes collections an adaptive engagement system, but the public evidence stops short of proving durable recovery gains."
+    },
+    {
+      "slug": "jota",
+      "why_this_week": "Jota belongs because it makes WhatsApp the primary money interface instead of a support channel around a bank app. Its July 1 Series A puts conversational finance in the same weekly pattern as other products that turn context into action.",
+      "product_evaluation": "The official site shows a concrete workflow: a WhatsApp-style assistant surfaces bills, receives Pix, pays contacts, records who owes money, handles boleto payment, and shows card-payment acceptance. The structured research also points to Fala Tap and business-account surfaces. VentureDex reads the product as a distribution bet around chat-native finance, not as evidence of revenue scale or conversion from free assistant usage.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/jota.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Jota official site",
+          "source": "content/startups/jota.json research.sources.official_site",
+          "url": "https://jota.ai/"
+        },
+        {
+          "label": "Jota Fala Tap product page",
+          "source": "content/startups/jota.json research.sources.official_falatap",
+          "url": "https://jota.ai/falatap"
+        },
+        {
+          "label": "Jota security page",
+          "source": "content/startups/jota.json research.sources.official_security",
+          "url": "https://jota.ai/seguranca"
+        },
+        {
+          "label": "Jota Series A funding report",
+          "source": "content/startups/jota.json research.sources.funding_1",
+          "url": "https://www.thesaasnews.com/news/jota-raises-30m-series-a/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official homepage positions Jota as a financial and personal AI assistant inside WhatsApp for both individuals and businesses.",
+          "url": "https://jota.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site says Fala Tap lets individuals, MEIs, and companies accept debit, Pix, and installment credit with voice as the terminal.",
+          "url": "https://jota.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Jota's official footer links personal and business products including Pix on WhatsApp, Jota Rende+, tasks, open finance, collections, and bill radar.",
+          "url": "https://jota.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Jota homepage",
+          "url": "https://jota.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "The SaaS News",
+          "url": "https://www.thesaasnews.com/news/jota-raises-30m-series-a/"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the homepage text for WhatsApp-native money workflows including Pix receipt, bill payment, contact payment, debt reminders, and card-payment acceptance on 2026-07-06.",
+          "url": "https://jota.ai/"
+        }
+      ],
+      "risks": [
+        "The key open question is whether free assistant usage converts into durable revenue from payments, credit, Fala Tap, or business-account products.",
+        "The model depends on WhatsApp behavior and financial-regulation execution; the public pages verify product surfaces, not long-term unit economics or platform resilience."
+      ],
+      "verdict": "Jota earns its place because the interface choice is the strategy: money movement, reminders, and payment acceptance move into the conversation itself."
+    },
+    {
+      "slug": "omen",
+      "why_this_week": "Omen extends the theme into physical infrastructure. Its June 30 Series A and official site show a control surface built from fluid telemetry, where the operating signal comes from oil, coolant, and water rather than a dashboard after maintenance has already lagged.",
+      "product_evaluation": "The official page supports the product thesis: Omen attaches a sensor to a machine fluid system, tracks metal content, contamination, wear patterns, and fluid degradation, and also offers a portable diagnostic box. That is a concrete product surface for data-center and industrial equipment teams. VentureDex does not treat the page as proof of avoided failures, uptime gains, or reliability benchmarks.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/omen.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Omen official site",
+          "source": "content/startups/omen.json research.sources.official_site",
+          "url": "https://www.omen.ai/"
+        },
+        {
+          "label": "Omen Series A announcement",
+          "source": "content/startups/omen.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/omen-ai-raises-31m-series-a-to-bring-continuous-fluid-intelligence-to-the-machines-powering-the-ai-economy-302814262.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Omen uses continuous fluid analysis to read equipment health in real time before failures occur.",
+          "url": "https://www.omen.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site describes a canister and sensor that attach to machines and monitor metal content, contamination, wear patterns, and fluid degradation.",
+          "url": "https://www.omen.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The Series A announcement says Omen sells permanent monitoring and a portable diagnostic unit across oil, coolant, and water systems.",
+          "url": "https://www.prnewswire.com/news-releases/omen-ai-raises-31m-series-a-to-bring-continuous-fluid-intelligence-to-the-machines-powering-the-ai-economy-302814262.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Omen homepage",
+          "url": "https://www.omen.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/omen-ai-raises-31m-series-a-to-bring-continuous-fluid-intelligence-to-the-machines-powering-the-ai-economy-302814262.html"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the homepage text for attach-monitor-predict flow, oil/coolant/water systems, metal content, contamination, wear patterns, portable diagnostics, and data-center use cases on 2026-07-06.",
+          "url": "https://www.omen.ai/"
+        }
+      ],
+      "risks": [
+        "The falsifiable risk is deployment friction: Omen must prove sensor installation and maintenance scale cleanly across different fluids and machine types.",
+        "The public evidence verifies monitoring mechanics and target users, but it does not prove field accuracy, false-positive rates, or lifecycle cost versus lab testing."
+      ],
+      "verdict": "Omen is a strong pick because it turns machine fluid into real-time operational evidence, while the hard proof will be deployment quality and diagnostic accuracy."
+    },
+    {
+      "slug": "ognomy-sleep",
+      "why_this_week": "Ognomy Sleep belongs because it turns a fragmented care path into a product surface. The June 30 Series A and official patient and doctor pages show a workflow that starts with virtual access and carries through home testing, reports, treatment orders, and follow-up.",
+      "product_evaluation": "The official What to Expect page supports the patient-side workflow: starting at $25+, being seen in days, at-home testing, insurance coverage language, and specialist visits. The doctors page adds referral routes by EMR, fax, or self-registration plus digital sleep-study reports. The official Series A page states 85,000+ patient visits and all-50-state coverage, but VentureDex keeps those as cited company claims rather than independent quality proof.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/ognomy-sleep.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Ognomy Sleep official site",
+          "source": "content/startups/ognomy-sleep.json research.sources.official_site",
+          "url": "https://www.ognomy.com/"
+        },
+        {
+          "label": "Ognomy Sleep What to Expect page",
+          "source": "content/startups/ognomy-sleep.json research.sources.official_what_to_expect",
+          "url": "https://www.ognomy.com/what-to-expect"
+        },
+        {
+          "label": "Ognomy Sleep Doctors page",
+          "source": "content/startups/ognomy-sleep.json research.sources.official_doctors",
+          "url": "https://www.ognomy.com/doctors"
+        },
+        {
+          "label": "Ognomy Sleep Series A announcement",
+          "source": "content/startups/ognomy-sleep.json research.sources.official_funding",
+          "url": "https://www.ognomy.com/resources/ognomy-sleep-raises-series-a"
+        },
+        {
+          "label": "Sleep Review Series A coverage",
+          "source": "content/startups/ognomy-sleep.json research.sources.funding_1",
+          "url": "https://sleepreviewmag.com/sleep-diagnostics/connected-care/ai-machine-learning/ognomy-sleep-series-expand-ai-enabled-sleep-apnea-care/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official What to Expect page says patients can start with $25+, be seen in days, use at-home testing, and access in-network coverage for more than 200 million people.",
+          "url": "https://www.ognomy.com/what-to-expect"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official Doctors page describes provider referrals by EMR, fax, or self-registration and sends digital sleep-study reports back to referring clinicians.",
+          "url": "https://www.ognomy.com/doctors"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Ognomy's Series A page says it has completed 85,000+ patient visits, operates across all 50 states, and moves patients nine times faster than traditional sleep treatment.",
+          "url": "https://www.ognomy.com/resources/ognomy-sleep-raises-series-a"
+        },
+        {
+          "label": "Official product site",
+          "source": "Ognomy Sleep homepage",
+          "url": "https://www.ognomy.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Sleep Review",
+          "url": "https://sleepreviewmag.com/sleep-diagnostics/connected-care/ai-machine-learning/ognomy-sleep-series-expand-ai-enabled-sleep-apnea-care/"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the What to Expect page text for $25+ starting cost language, all-50-state availability, in-network coverage language, home testing, and four-step virtual sleep-care flow on 2026-07-06.",
+          "url": "https://www.ognomy.com/what-to-expect"
+        }
+      ],
+      "risks": [
+        "The falsifiable risk is whether clinical quality and adherence stay high as Ognomy expands across more insurers, states, and treatment paths.",
+        "The public evidence verifies access and care-flow claims, but it does not independently validate diagnosis quality, adherence, or long-term clinical outcomes."
+      ],
+      "verdict": "Ognomy Sleep is compelling because the product is the care route itself: intake, testing, reporting, and treatment are packaged as one remote workflow."
+    },
+    {
+      "slug": "higharc",
+      "why_this_week": "Higharc fits because homebuilding is full of brittle handoffs between design, estimating, sales, and construction documents. Its June 30 Series C and official How It Works page show a product trying to make the home plan the shared control record.",
+      "product_evaluation": "The official page supports the operating-layer claim: Higharc offers automated construction documents, sales assets, takeoffs, 3D sales tools, plan and option management, and real-time material quantities from a cloud platform. The funding announcement adds AI Estimating, AutoTranslate AI, and a 3D spatial data model. VentureDex treats this as evidence of workflow integration, not proof that every local estimate or permit package is accurate.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/higharc.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Higharc official site",
+          "source": "content/startups/higharc.json research.sources.official_site",
+          "url": "https://www.higharc.com/"
+        },
+        {
+          "label": "Higharc How It Works page",
+          "source": "content/startups/higharc.json research.sources.official_how_it_works",
+          "url": "https://www.higharc.com/how-it-works"
+        },
+        {
+          "label": "Higharc Series C announcement",
+          "source": "content/startups/higharc.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/higharc-raises-95m-series-c-to-scale-ai-for-homebuilding-302814598.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official homepage says Higharc lets builders design plans, configure market-proven homes, create 3D visuals, estimates, and permit-ready documents.",
+          "url": "https://www.higharc.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Series C announcement describes AI Estimating, AutoTranslate AI, material takeoffs, and a 3D spatial data model for home designs.",
+          "url": "https://www.prnewswire.com/news-releases/higharc-raises-95m-series-c-to-scale-ai-for-homebuilding-302814598.html"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official site states that plan changes and buyer selections can produce updated estimates, documents, and marketing assets from the same plan data.",
+          "url": "https://www.higharc.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Higharc homepage",
+          "url": "https://www.higharc.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/higharc-raises-95m-series-c-to-scale-ai-for-homebuilding-302814598.html"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the How It Works page text for design, estimate, sell, build, automatic construction documents, material takeoffs, 3D sales tools, and a cloud single-source-of-truth claim on 2026-07-06.",
+          "url": "https://www.higharc.com/how-it-works"
+        }
+      ],
+      "risks": [
+        "The falsifiable risk is localization: Higharc must keep estimates and documents accurate across local codes, supplier catalogs, and builder-specific plan rules.",
+        "The public site verifies product modules and builder positioning, but it does not prove error rates, jurisdiction coverage, or implementation speed for every builder."
+      ],
+      "verdict": "Higharc is strongest as a structured plan-data system for builders; its value depends on keeping every downstream artifact aligned when plans change."
+    },
+    {
+      "slug": "equilibre",
+      "why_this_week": "EquiLibre closes the issue because it is the most literal control-loop example: reinforcement-learning systems that do not merely advise traders but are described as trading in live markets. Its June 30 Series A puts autonomous execution beside this week's workflow-interface products.",
+      "product_evaluation": "The official site says EquiLibre builds reinforcement-learning trading systems that learn, adapt, and compete in global markets, and describes a path from poker AI to Wall Street. TechCrunch adds the Tower Research Capital partnership and S&P 500/Nasdaq deployment context. Those sources support a serious research-lab profile, but VentureDex does not infer returns, risk-adjusted performance, or durability of edge.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/equilibre.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "EquiLibre official site",
+          "source": "content/startups/equilibre.json research.sources.official_site",
+          "url": "https://equilibre.ai/"
+        },
+        {
+          "label": "EquiLibre hiring page",
+          "source": "content/startups/equilibre.json research.sources.official_hiring",
+          "url": "https://equilibre.ai/hiring"
+        },
+        {
+          "label": "TechCrunch Series A coverage",
+          "source": "content/startups/equilibre.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says EquiLibre builds reinforcement-learning trading systems whose models trade billions of dollars every day on challenging global markets.",
+          "url": "https://equilibre.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official approach section describes self-learning agents that learn to trade like poker, chess, or Go agents and adapt as markets and participants change.",
+          "url": "https://equilibre.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "TechCrunch reports that EquiLibre's algorithms trade billions in daily volume across the S&P 500 and Nasdaq through a Tower Research Capital partnership.",
+          "url": "https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/"
+        },
+        {
+          "label": "Official product site",
+          "source": "EquiLibre homepage",
+          "url": "https://equilibre.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/06/30/the-deepmind-trio-who-built-a-poker-ai-are-now-making-money-for-quant-hedge-funds/"
+        },
+        {
+          "label": "Run-time bb-browser verification",
+          "source": "bb-browser verified the homepage text for reinforcement-learning trading systems, self-learning agents, continual learning, and models trading billions of dollars every day on 2026-07-06.",
+          "url": "https://equilibre.ai/"
+        }
+      ],
+      "risks": [
+        "The key open question is whether a small research lab can keep an edge against compute-rich quant firms as markets adapt to reinforcement-learning strategies.",
+        "The public evidence verifies live-market positioning and research pedigree, but it does not disclose model risk controls, drawdowns, or customer economics."
+      ],
+      "verdict": "EquiLibre is the highest-conviction but highest-uncertainty pick here: the evidence shows autonomous RL trading ambition, not a public scorecard."
+    }
+  ]
+}
