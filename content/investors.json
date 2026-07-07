@@ -1250,5 +1250,19 @@
     "short_name": "Distributed",
     "website": "https://www.distributedvc.com",
     "description": "Early-stage venture firm leading Seed and Series A investments across health, insurance, and wealth risk-ecosystem innovation."
+  },
+  "bonfire-ventures": {
+    "name": "Bonfire Ventures",
+    "slug": "bonfire-ventures",
+    "short_name": "Bonfire",
+    "website": "https://www.bonfirevc.com/",
+    "description": "Seed-stage venture firm backing B2B software founders building workflow, data, and infrastructure companies."
+  },
+  "tlv-partners": {
+    "name": "TLV Partners",
+    "slug": "tlv-partners",
+    "short_name": "TLV",
+    "website": "https://www.tlv.partners/",
+    "description": "Early-stage venture firm backing Israeli founders across enterprise software, cybersecurity, data, and AI infrastructure."
   }
 }

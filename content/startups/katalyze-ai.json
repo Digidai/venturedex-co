@@ -1,0 +1,83 @@
+{
+  "slug": "katalyze-ai",
+  "domain": "www.katalyzeai.com",
+  "url": "https://www.katalyzeai.com/",
+  "product_name": "Katalyze AI",
+  "summary": "Agentic infrastructure for pharma manufacturing operations.",
+  "editor_note": "Pharma agents need a production record before they need another chat box. Katalyze connects MES, LIMS, ELN, historians, SAP, paper, and Excel into a source-grounded layer, then lets Katalyst assemble deviation and release work. Unlike a LIMS or data lake, it sells audit-ready execution. The risk is whether top-20 pharma pilots become repeatable deployments.",
+  "editor_rating": 4,
+  "why_featured": "$10.5M Seed for GxP agents",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "pharma,manufacturing,ai agents,gxp,traceability",
+  "investors": "Bonfire Ventures",
+  "links": {
+    "careers": "https://saber-plume-d6c.notion.site/Open-Positions-Katalyze-AI-6da0c0ab0fd74e199605eecec46b44d5"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10.5M",
+      "stage": "Seed",
+      "lead_investor": "Bonfire Ventures",
+      "date": "2026-07-06",
+      "source_url": "https://techstartups.com/2026/07/06/katalyze-ai-raises-10-5m-to-bring-agentic-ai-to-pharma-manufacturing-and-life-sciences/",
+      "source_name": "Tech Startups"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Katalyze AI official site",
+        "url": "https://www.katalyzeai.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Katalyze AI official careers entry",
+        "url": "https://saber-plume-d6c.notion.site/Open-Positions-Katalyze-AI-6da0c0ab0fd74e199605eecec46b44d5",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Katalyze AI seed funding report",
+        "url": "https://techstartups.com/2026/07/06/katalyze-ai-raises-10-5m-to-bring-agentic-ai-to-pharma-manufacturing-and-life-sciences/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes an agentic layer that connects MES, LIMS, ELN, historians, SAP, paper, Excel, and documents for regulated manufacturing work.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product tabs cover process improvement, tech transfer, deviation management, traceability, batch-release support, and source-grounded ontology.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding report says five of the top 20 pharma manufacturers use Katalyze and cites a Sanofi deployment for deviation work.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Pharma manufacturing, quality, deviation, tech-transfer, and process-improvement teams.",
+      "category": "GxP manufacturing AI infrastructure",
+      "differentiation": "Katalyze packages regulated pharma plant data, audit trails, and workflow agents around manufacturing records rather than general knowledge work.",
+      "why_now": "Pharma manufacturers are trying to use agents on deviation, release, and transfer work while keeping GxP traceability across legacy plant systems."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether top-pharma pilots convert into repeatable deployments across more plants without long integration cycles.",
+        "basis": "VentureDex assessment from the official product copy and seed funding report."
+      }
+    ]
+  }
+}

@@ -795,5 +795,17 @@
   "kai-health": {
     "published_at": "2026-07-06 08:49:00",
     "first_seen_at": "2026-07-06 08:49:00"
+  },
+  "katalyze-ai": {
+    "published_at": "2026-07-07 05:51:27",
+    "first_seen_at": "2026-07-07 05:51:27"
+  },
+  "bespoke-labs": {
+    "published_at": "2026-07-07 05:51:27",
+    "first_seen_at": "2026-07-07 05:51:27"
+  },
+  "arato": {
+    "published_at": "2026-07-07 05:51:27",
+    "first_seen_at": "2026-07-07 05:51:27"
   }
 }

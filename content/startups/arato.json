@@ -1,0 +1,83 @@
+{
+  "slug": "arato",
+  "domain": "arato.ai",
+  "url": "https://arato.ai/",
+  "product_name": "Arato",
+  "summary": "AI user-simulation testing for production agents and GenAI apps.",
+  "editor_note": "AI QA should simulate customers, not checklist prompts. Arato generates simulation context, scenarios, multi-turn interactions, and turn-level analysis across text, voice, data, and image. Unlike model eval libraries, it starts from the product surface and business goals. The risk is whether outside-in tests catch failures before real users do.",
+  "editor_rating": 4,
+  "why_featured": "$10M Seed for AI simulation QA",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "ai testing,agent simulation,evaluations,devtools",
+  "investors": "TLV Partners",
+  "links": {
+    "careers": "https://arato.ai/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "TLV Partners",
+      "date": "2026-06-29",
+      "source_url": "https://www.thesaasnews.com/news/arato-raises-10m-seed/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Arato official site",
+        "url": "https://arato.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Arato official careers page",
+        "url": "https://arato.ai/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Arato seed funding report",
+        "url": "https://www.thesaasnews.com/news/arato-raises-10m-seed/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes simulation context, generated scenarios, simulated user interactions, and analysis for validating AI apps.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product copy says Arato can run multi-modal user journeys through the actual interface across text, voice, data, and images.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The site describes Arato Observe, Arato Studio, APIs, SDKs, A/B testing, custom evals, session replay, and experiment audit trails.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Product, QA, AI engineering, and compliance teams shipping customer-facing AI agents.",
+      "category": "AI agent simulation and testing",
+      "differentiation": "Arato tests agents by simulating user behavior against the product experience instead of only scoring model outputs in offline eval sets.",
+      "why_now": "More companies are putting agents into customer workflows, making repeatable user-simulation tests more useful than prompt checklists."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether outside-in simulations catch the high-impact production failures that real users discover first.",
+        "basis": "VentureDex assessment from the official product site and seed funding coverage."
+      }
+    ]
+  }
+}

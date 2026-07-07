@@ -1,0 +1,77 @@
+{
+  "slug": "bespoke-labs",
+  "domain": "bespokelabs.ai",
+  "url": "https://bespokelabs.ai/",
+  "product_name": "Bespoke Labs",
+  "summary": "RL environments and optimization infrastructure for production AI agents.",
+  "editor_note": "Agent reliability is an environment problem, not a prompt problem. Bespoke builds company-scale RL worlds from codebases, Jira tickets, logs, microservices, and tool use, then applies GEPA and RL to optimize agents. Unlike eval dashboards, it gives agents a place to practice; the site also cites 200+ teams using GEPA. The risk is whether every enterprise environment becomes a custom research build.",
+  "editor_rating": 4,
+  "why_featured": "$40M for agent RL",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,reinforcement learning,evaluations,developer tools",
+  "investors": "Wing Venture Capital, 8VC",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/bespokelabs"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Wing Venture Capital",
+      "date": "2026-07-06",
+      "source_url": "https://bespokelabs.ai/blog/bespoke-labs-raises-40m-to-build-environments-that-enable-reliable-agents",
+      "source_name": "Bespoke Labs"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-07",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Bespoke Labs official site",
+        "url": "https://bespokelabs.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Bespoke Labs funding and product post",
+        "url": "https://bespokelabs.ai/blog/bespoke-labs-raises-40m-to-build-environments-that-enable-reliable-agents",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Bespoke builds company-scale RL environments and infrastructure for long-horizon production agents.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding post describes an environment engine, sandbox and execution layer, and optimization through GEPA and RL.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The funding post ties the platform to Terminal-Bench, OpenThoughts, and agent training on real codebases, microservices, and business context.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Frontier AI labs, enterprise AI teams, and developers building long-horizon agents.",
+      "category": "Agent evaluation and reinforcement-learning infrastructure",
+      "differentiation": "Bespoke focuses on executable environments and RL optimization instead of static benchmark dashboards or prompt-only testing.",
+      "why_now": "Enterprises are moving from chat workflows to agents that operate across codebases, tickets, services, and tools, where static evals miss failure modes."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether environment creation becomes repeatable enough for enterprise teams without services-heavy research work.",
+        "basis": "VentureDex assessment from the official site, company blog, and funding release."
+      }
+    ]
+  }
+}

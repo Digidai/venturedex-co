@@ -1400,6 +1400,27 @@
       "source_url": "https://kaihealth.ai/hubfs/BRAND/Logo_Reverse_Color%20(3).svg",
       "allow_unreachable_source": true,
       "note": "Official HubSpot wordmark was fetched successfully during this run, but direct HEAD probes to kaihealth.ai assets intermittently returned TLS 000."
+    },
+    "katalyze-ai": {
+      "name": "Katalyze AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/katalyze-ai.png",
+      "source_page": "https://www.katalyzeai.com/",
+      "source_url": "https://framerusercontent.com/images/hqO0wz8v1rJbIuDpVeHPC1aSw8.png"
+    },
+    "bespoke-labs": {
+      "name": "Bespoke Labs",
+      "shape": "icon",
+      "local_path": "/logos/companies/bespoke-labs.png",
+      "source_page": "https://bespokelabs.ai/",
+      "source_url": "https://framerusercontent.com/images/tBmIC2QpuzBT566Qth8NNaI5CJE.png"
+    },
+    "arato": {
+      "name": "Arato",
+      "shape": "icon",
+      "local_path": "/logos/companies/arato.svg",
+      "source_page": "https://arato.ai/",
+      "source_url": "https://arato.ai/wp-content/uploads/2025/05/logoA.svg"
     }
   },
   "investors": {
@@ -2576,6 +2597,20 @@
       "local_path": "/logos/investors/distributed-ventures.svg",
       "source_page": "https://www.distributedvc.com",
       "source_url": "https://cdn.prod.website-files.com/6762e4382d9109f24d3c8ec8/6776adc3e40d59fa13849c7a_Distributed_Ventures-Logo-Without_Clear_Space-RGB_Multicolor.svg"
+    },
+    "bonfire-ventures": {
+      "name": "Bonfire Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/bonfire-ventures.svg",
+      "source_page": "https://www.bonfirevc.com/",
+      "source_url": "https://cdn.prod.website-files.com/653bdca4fb0a05628a12eb20/685ad4cc256a651768b66043_bonfire-logo.svg"
+    },
+    "tlv-partners": {
+      "name": "TLV Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/tlv-partners.svg",
+      "source_page": "https://www.tlv.partners/",
+      "source_url": "https://www.tlv.partners/wp-content/uploads/2021/04/TLV-logo.svg"
     }
   }
 }
