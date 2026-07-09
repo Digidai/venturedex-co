@@ -1,0 +1,91 @@
+{
+  "slug": "norm-ai",
+  "domain": "www.norm.ai",
+  "url": "https://www.norm.ai/",
+  "product_name": "Norm Ai",
+  "summary": "Agentic law platform and AI-native law firm for regulated institutions.",
+  "editor_note": "Legal AI gets more interesting when it stops pretending to be a better document editor. Norm pairs legal agents, an affiliated AI-native law firm, and a supervisory layer for agents operating under law. Unlike contract copilots, the bet is to encode legal judgment into service delivery and governance. The risk is whether institutional buyers treat AI-native law as a category or just a premium services wrapper.",
+  "editor_rating": 4,
+  "why_featured": "$120M Series C for agentic law",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "legal ai,compliance,ai agents,law,governance",
+  "investors": "Khosla Ventures",
+  "links": {
+    "careers": "https://www.norm.ai/careers",
+    "product": "https://www.norm.ai/technology",
+    "resources": "https://www.norm.ai/resources"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$120M",
+      "stage": "Series C",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-07-07",
+      "source_url": "https://techstartups.com/2026/07/07/venture-capital-startup-funding-roundup-july-7-2026/",
+      "source_name": "Tech Startups"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-08",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Norm Ai official site",
+        "url": "https://www.norm.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_technology",
+        "label": "Norm Ai technology page",
+        "url": "https://www.norm.ai/technology",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Norm Ai official careers page",
+        "url": "https://www.norm.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Norm Ai Series C funding roundup",
+        "url": "https://techstartups.com/2026/07/07/venture-capital-startup-funding-roundup-july-7-2026/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Norm around Norm Law, Norm Technology, Supervisory AI, and institutions managing more than $30T in assets.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The technology page describes legal AI agents, outcome-driven pricing, domain-specific models, and supervision for agentic legal work.",
+        "source_ids": [
+          "official_technology"
+        ]
+      },
+      {
+        "claim": "The funding roundup says Norm raised a $120M Series C led by Khosla Ventures at a $1.2B valuation.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Legal, compliance, and operations teams at financial institutions and other regulated enterprises.",
+      "category": "Agentic legal services and compliance software",
+      "differentiation": "Norm combines legal AI agents, supervisory tooling, and an AI-native law firm model rather than only selling document drafting or contract review software.",
+      "why_now": "Large institutions are experimenting with agents, but legal and compliance tasks need supervised service delivery, liability boundaries, and auditable decision paths."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether AI-native legal work becomes a repeatable software category rather than a services-heavy wrapper for elite buyers.",
+        "basis": "VentureDex assessment from the official product pages and Series C report."
+      }
+    ]
+  }
+}

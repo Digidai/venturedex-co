@@ -1,7 +1,7 @@
 {
   "slug": "baz",
-  "domain": "www.baz.co",
-  "url": "https://www.baz.co/",
+  "domain": "baz.ai",
+  "url": "https://baz.ai/",
   "product_name": "Baz",
   "summary": "Agentic code review and planning layer for AI-generated code.",
   "editor_note": "AI-generated code needs judgment before it needs more throughput. Baz shows a 14-day trial, coding agents for review, bugs, standards, security issues, incident response, and a Planner that evaluates ideas before code is saved. Unlike PR-only review tools, it moves risk checks into the planning loop where architecture and security mistakes are cheaper.",
@@ -12,10 +12,10 @@
   "tags": "code review,ai coding,security,developer tools,sre",
   "investors": "Battery Ventures, boldstart ventures",
   "links": {
-    "docs": "https://docs.baz.co/",
+    "docs": "https://baz.ai/docs",
     "github": "https://github.com/baz-scm",
-    "product": "https://www.baz.co/features",
-    "careers": "https://www.baz.co/career"
+    "product": "https://baz.ai/product/agents",
+    "careers": "https://baz.ai/careers"
   },
   "is_featured": true,
   "funding": [
@@ -24,7 +24,7 @@
       "stage": "Seed",
       "lead_investor": "Battery Ventures",
       "date": "2026-06-29",
-      "source_url": "https://www.baz.co/resources/agentic-coding-company-baz-announces-planner-that-lets-engineering-teams-eliminate-entire-classes-of-bugs-and-vulnerabilities-at-superhuman-scale-and-an-extended-funding-round-co-led-by-battery-ventures-and-boldstart-ventures",
+      "source_url": "https://baz.ai/resources/news/baz-announces-planner-and-extended-seed-round",
       "source_name": "Baz"
     }
   ],
@@ -34,13 +34,13 @@
       {
         "id": "official_site",
         "label": "Baz official site",
-        "url": "https://www.baz.co/",
+        "url": "https://baz.ai/",
         "type": "official"
       },
       {
         "id": "official_docs",
         "label": "Baz documentation",
-        "url": "https://docs.baz.co/",
+        "url": "https://baz.ai/docs",
         "type": "product"
       },
       {
@@ -52,7 +52,7 @@
       {
         "id": "funding_1",
         "label": "Baz Planner and seed extension announcement",
-        "url": "https://www.baz.co/resources/agentic-coding-company-baz-announces-planner-that-lets-engineering-teams-eliminate-entire-classes-of-bugs-and-vulnerabilities-at-superhuman-scale-and-an-extended-funding-round-co-led-by-battery-ventures-and-boldstart-ventures",
+        "url": "https://baz.ai/resources/news/baz-announces-planner-and-extended-seed-round",
         "type": "funding"
       }
     ],

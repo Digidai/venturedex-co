@@ -1,0 +1,84 @@
+{
+  "slug": "bidbus",
+  "domain": "bidbus.com",
+  "url": "https://bidbus.com/",
+  "product_name": "Bidbus",
+  "summary": "Dealer-auction marketplace for selling used cars from home.",
+  "editor_note": "Selling a used car is a price-discovery problem disguised as a chore. Bidbus turns the trade-in quote into a 2-hour dealer auction, with 1,000+ dealers, live bids, and past auction outcomes visible on the page. Unlike instant-offer buyers, it does not own the car; it makes dealers compete for private supply. The risk is whether market density holds outside California and Texas.",
+  "editor_rating": 4,
+  "why_featured": "$15M Series A for used-car auctions",
+  "product_type": "Marketplace",
+  "region": "US",
+  "tags": "marketplace,automotive,auctions,dealers,consumer",
+  "investors": "Ibex Investors",
+  "links": {
+    "product": "https://bidbus.com/",
+    "resources": "https://bidbus.com/pm/how-it-works"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Ibex Investors",
+      "date": "2026-07-07",
+      "source_url": "https://techcrunch.com/2026/07/07/this-startup-is-pitting-dealerships-against-each-other-to-bid-on-your-used-car/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-08",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Bidbus official site",
+        "url": "https://bidbus.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_how_it_works",
+        "label": "Bidbus How It Works page",
+        "url": "https://bidbus.com/pm/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Bidbus Series A funding report",
+        "url": "https://techcrunch.com/2026/07/07/this-startup-is-pitting-dealerships-against-each-other-to-bid-on-your-used-car/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows a consumer selling flow where dealers compete for a car and buyers can request an offer from the homepage.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official How It Works page describes listing a car, receiving dealer bids, accepting an offer, and completing pickup and payment.",
+        "source_ids": [
+          "official_how_it_works"
+        ]
+      },
+      {
+        "claim": "The funding report says Bidbus runs a 2-hour dealer bidding window, has processed about 10,000 cars, and often beats instant-offer prices by $2,000 to $3,000.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumers selling used cars and local franchised or independent dealerships seeking private-party inventory.",
+      "category": "Used-car dealer marketplace",
+      "differentiation": "Bidbus creates dealer competition for a specific consumer vehicle instead of buying inventory directly or sending sellers to one instant-offer counterparty.",
+      "why_now": "Dealerships need private-party supply, while consumers can compare live dealer demand without visiting multiple lots or negotiating one quote at a time."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Bidbus can maintain enough dealer density and buyer trust outside its strongest regional markets.",
+        "basis": "VentureDex assessment from the official product flow and Series A report."
+      }
+    ]
+  }
+}

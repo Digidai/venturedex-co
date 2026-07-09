@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-05",
+  "verified_at": "2026-07-08",
   "companies": {
     "cal-com": {
       "name": "Cal.com",
@@ -709,7 +709,7 @@
       "name": "Baz",
       "shape": "icon",
       "local_path": "/logos/companies/baz.png",
-      "source_page": "https://www.baz.co/",
+      "source_page": "https://baz.ai/",
       "source_url": "https://cdn.prod.website-files.com/6687c611cd9ac075eb1fc52f/6694d83590603568e0b4bfc3_Favicon%20256x256.png"
     },
     "nebex": {
@@ -1421,6 +1421,34 @@
       "local_path": "/logos/companies/arato.svg",
       "source_page": "https://arato.ai/",
       "source_url": "https://arato.ai/wp-content/uploads/2025/05/logoA.svg"
+    },
+    "agave": {
+      "name": "Agave",
+      "shape": "icon",
+      "local_path": "/logos/companies/agave.png",
+      "source_page": "https://useagave.com/",
+      "source_url": "https://cdn.prod.website-files.com/686bbe4117d329bcecd33a03/68b0f7bf62539de3828ead95_256x256.png"
+    },
+    "savi-security": {
+      "name": "Savi Security",
+      "shape": "icon",
+      "local_path": "/logos/companies/savi-security.png",
+      "source_page": "https://www.savisecurity.com/",
+      "source_url": "https://cdn.prod.website-files.com/69ae7ed1403a612b26655652/69b28da768c5091339dcb343_Webclip.png"
+    },
+    "bidbus": {
+      "name": "Bidbus",
+      "shape": "icon",
+      "local_path": "/logos/companies/bidbus.ico",
+      "source_page": "https://bidbus.com/",
+      "source_url": "https://bidbus.com/favicon.ico"
+    },
+    "norm-ai": {
+      "name": "Norm Ai",
+      "shape": "icon",
+      "local_path": "/logos/companies/norm-ai.png",
+      "source_page": "https://www.norm.ai/",
+      "source_url": "https://cdn.sanity.io/images/5mkfcvr8/production/6ee050dd8f673b287e8071d7f98a672e00b03d4e-48x48.png"
     }
   },
   "investors": {
@@ -1458,6 +1486,13 @@
       "local_path": "/logos/investors/accel.png",
       "source_page": "https://www.accel.com",
       "source_url": "https://cdn.prod.website-files.com/6643a08d305ab77f8c7566b6/67095848704c3bf1f0f4ee81_favicon.png"
+    },
+    "acrew-capital": {
+      "name": "Acrew Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/acrew-capital.png",
+      "source_page": "https://www.acrewcapital.com/",
+      "source_url": "https://cdn.prod.website-files.com/613cc63039123e8fdddbcfc4/6152792bee5c6424818185d2_acrew-favicon-min.png"
     },
     "ivp": {
       "name": "IVP",

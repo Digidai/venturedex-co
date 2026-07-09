@@ -1,0 +1,91 @@
+{
+  "slug": "savi-security",
+  "domain": "www.savisecurity.com",
+  "url": "https://www.savisecurity.com/",
+  "product_name": "Savi Security",
+  "summary": "Family scam protection across calls, texts, voicemail, and Scamwise checks.",
+  "editor_note": "Consumer security feels different when the threat is a fake grandchild call, not a malware pop-up. Savi bundles voicemail screening, text filtering, live-call monitoring, and Scamwise checks into one family plan. Unlike antivirus for devices, the bet is protection for moments when people are confused, pressured, and mid-conversation. The risk is whether phone-level permissions and model accuracy are enough to earn daily trust.",
+  "editor_rating": 4,
+  "why_featured": "$7M Seed for AI scam defense",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "security,consumer,ai scams,voice,text",
+  "investors": "Acrew Capital",
+  "links": {
+    "product": "https://www.savisecurity.com/download",
+    "resources": "https://scamwise.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "Acrew Capital",
+      "date": "2026-07-07",
+      "source_url": "https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-08",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Savi Security official site",
+        "url": "https://www.savisecurity.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Savi Security download page",
+        "url": "https://www.savisecurity.com/download",
+        "type": "product"
+      },
+      {
+        "id": "official_scamwise",
+        "label": "Scamwise official checker",
+        "url": "https://scamwise.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Savi Security seed funding report",
+        "url": "https://techcrunch.com/2026/07/07/savis-app-aims-to-protect-consumers-from-realistic-ai-scams-like-kidnappers-demanding-ransom/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents Savi as an iOS and Android family protection app covering suspicious calls, texts, voicemail, and Scamwise checks.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official download page and Scamwise checker provide the app entry point and a public scam-validation surface linked from Savi's homepage.",
+        "source_ids": [
+          "official_product",
+          "official_scamwise"
+        ]
+      },
+      {
+        "claim": "The funding report says Savi launched with a $7M Seed led by Acrew Capital and cites more than 100,000 Scamwise submissions before launch.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Families trying to protect parents, grandparents, and household members from phone, text, and AI-voice scams.",
+      "category": "Consumer scam protection",
+      "differentiation": "Savi protects the moment of communication itself through call, text, voicemail, and family alert surfaces rather than only scanning devices or emails.",
+      "why_now": "AI voice cloning and impersonation scams are making family-level phone protection more urgent, while mobile apps can now mediate calls, voicemails, and texts."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether users keep the app installed and permissioned if live-call monitoring produces false positives or misses urgent scam attempts.",
+        "basis": "VentureDex assessment from the official product page and seed funding report."
+      }
+    ]
+  }
+}

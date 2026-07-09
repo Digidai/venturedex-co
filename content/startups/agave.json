@@ -1,0 +1,91 @@
+{
+  "slug": "agave",
+  "domain": "useagave.com",
+  "url": "https://useagave.com/",
+  "product_name": "Agave",
+  "summary": "AI financial operations for construction contractors.",
+  "editor_note": "Construction finance does not need another dashboard; it needs software willing to touch the old systems. Agave connects Procore, Autodesk Forma Build, ERPs, invoices, credit cards, and vendor insurance checks, then lets teams build agents on top. Unlike generic accounting AI, the bet is two-way integration with job, phase, and cost-code reality. The risk is whether custom workflows stay manageable as contractor types multiply.",
+  "editor_rating": 4,
+  "why_featured": "$15M Series A for construction AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "construction,finance,erp,ai agents,back office",
+  "investors": "Accel",
+  "links": {
+    "careers": "https://useagave.com/careers",
+    "product": "https://useagave.com/",
+    "resources": "https://useagave.com/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Accel",
+      "date": "2026-07-07",
+      "source_url": "https://www.businesswire.com/news/home/20260707861533/en/Agave-Raises-%2415M-Series-A-to-Bring-AI-to-Construction-Financials",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-08",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Agave official site",
+        "url": "https://useagave.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Agave resources page",
+        "url": "https://useagave.com/blog",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Agave official careers page",
+        "url": "https://useagave.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Agave Series A announcement",
+        "url": "https://www.businesswire.com/news/home/20260707861533/en/Agave-Raises-%2415M-Series-A-to-Bring-AI-to-Construction-Financials",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes construction financial operations across ERP sync, AP invoice automation, expense management, vendor management, and AI analytics.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The resources page links official case studies for Procore, Foundation, Autodesk Build, Sage 300 CRE, and other construction finance integrations.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Agave supports more than 500 contractors, 80,000 projects, and more than $100B in project volume across 14 ERP and project-management integrations.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Construction finance teams, controllers, project accountants, and operations leaders.",
+      "category": "Construction financial operations",
+      "differentiation": "Agave focuses on two-way construction-system integration and contractor-specific financial workflows rather than generic bookkeeping automation.",
+      "why_now": "The Series A follows contractor adoption across ERP and project-management integrations, giving Agave enough live workflow surface to test AI agents on construction financial data."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether contractor-specific custom workflows stay scalable as Agave expands beyond early ERP and project-management integrations.",
+        "basis": "VentureDex assessment from the official product copy and Series A announcement."
+      }
+    ]
+  }
+}

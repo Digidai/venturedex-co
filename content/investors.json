@@ -37,6 +37,13 @@
     "website": "https://www.accel.com",
     "description": "Global venture capital firm that partners with exceptional founders from seed through growth."
   },
+  "acrew-capital": {
+    "name": "Acrew Capital",
+    "slug": "acrew-capital",
+    "short_name": "Acrew",
+    "website": "https://www.acrewcapital.com/",
+    "description": "Venture capital firm backing early and growth-stage companies across data, security, fintech, health, and AI."
+  },
   "ivp": {
     "name": "IVP",
     "slug": "ivp",
