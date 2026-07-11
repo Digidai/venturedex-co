@@ -1,0 +1,101 @@
+{
+  "slug": "ollama",
+  "domain": "ollama.com",
+  "url": "https://ollama.com/",
+  "product_name": "Ollama",
+  "summary": "Local-to-cloud developer platform for running open AI models.",
+  "editor_note": "Open models needed less ceremony and more command line. Ollama made local model use feel like `ollama run`, then added cloud, pricing, docs, and team surfaces. Unlike hosted-only AI tools, the bet is that developers want models close to their laptop, server, or private environment. The risk is whether a $65M Series B changes the developer-first feel.",
+  "editor_rating": 4,
+  "why_featured": "$65M Series B for open models",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "open models,developer tools,inference,local ai,cloud",
+  "investors": "Theory Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/ollama",
+    "docs": "https://docs.ollama.com",
+    "github": "https://github.com/ollama/ollama",
+    "pricing": "https://ollama.com/pricing",
+    "product": "https://ollama.com/download"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$65M",
+      "stage": "Series B",
+      "lead_investor": "Theory Ventures",
+      "date": "2026-07-09",
+      "source_url": "https://www.businesswire.com/news/home/20260709429551/en/Ollama-Raises-%2465M-Series-B-Funding-to-Grow-its-Open-source-AI-Platform",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Ollama official site",
+        "url": "https://ollama.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Ollama official documentation",
+        "url": "https://docs.ollama.com",
+        "type": "product"
+      },
+      {
+        "id": "official_github",
+        "label": "Ollama GitHub repository",
+        "url": "https://github.com/ollama/ollama",
+        "type": "repository"
+      },
+      {
+        "id": "official_careers",
+        "label": "Ollama official careers page",
+        "url": "https://jobs.ashbyhq.com/ollama",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Ollama Series B announcement",
+        "url": "https://www.businesswire.com/news/home/20260709429551/en/Ollama-Raises-%2465M-Series-B-Funding-to-Grow-its-Open-source-AI-Platform",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site gives a one-command installer and presents Ollama as a way to build with open models from local machines to cloud usage.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official page links models, docs, pricing, GitHub, download, and account surfaces, showing a developer workflow beyond a landing page.",
+        "source_ids": [
+          "official_site",
+          "official_docs",
+          "official_github"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Ollama raised a $65M Series B led by Theory Ventures to grow its open-source AI platform.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers, AI engineers, and teams running open models locally, on servers, or through hosted cloud capacity.",
+      "category": "Open-model developer infrastructure",
+      "differentiation": "Ollama begins with local model ergonomics and extends to cloud capacity rather than forcing all experimentation through a hosted-only API.",
+      "why_now": "Open model quality and enterprise privacy needs are pushing developers to keep model execution close to their own environments."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether cloud monetization and enterprise controls can grow without weakening the simple local developer experience.",
+        "basis": "VentureDex assessment from the official product page, docs, repository, and Series B announcement."
+      }
+    ]
+  }
+}

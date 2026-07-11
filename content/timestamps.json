@@ -1,4 +1,8 @@
 {
+  "8090": {
+    "published_at": "2026-07-02 03:13:11",
+    "first_seen_at": "2026-07-02 03:13:11"
+  },
   "__doc__": "Authoritative publish/first-seen timestamps per startup slug, version-controlled so build-db.sh seeds deterministic dates and detail pages can prerender at build time. Exported from D1 on 2026-05-29. New startups without an entry fall back to seed-time now(); re-export to lock their date.",
   "alcatraz": {
     "published_at": "2026-05-02 09:59:18",
@@ -740,10 +744,6 @@
     "published_at": "2026-06-29 05:50:02",
     "first_seen_at": "2026-06-29 05:50:02"
   },
-  "8090": {
-    "published_at": "2026-07-02 03:13:11",
-    "first_seen_at": "2026-07-02 03:13:11"
-  },
   "straiker": {
     "published_at": "2026-07-02 03:13:11",
     "first_seen_at": "2026-07-02 03:13:11"
@@ -823,5 +823,25 @@
   "norm-ai": {
     "published_at": "2026-07-09 05:51:27",
     "first_seen_at": "2026-07-09 05:51:27"
+  },
+  "prime-intellect": {
+    "published_at": "2026-07-11 05:43:10",
+    "first_seen_at": "2026-07-11 05:43:10"
+  },
+  "qiz-security": {
+    "published_at": "2026-07-11 05:43:10",
+    "first_seen_at": "2026-07-11 05:43:10"
+  },
+  "hostie": {
+    "published_at": "2026-07-11 05:43:10",
+    "first_seen_at": "2026-07-11 05:43:10"
+  },
+  "polysense": {
+    "published_at": "2026-07-11 05:43:10",
+    "first_seen_at": "2026-07-11 05:43:10"
+  },
+  "ollama": {
+    "published_at": "2026-07-11 05:43:10",
+    "first_seen_at": "2026-07-11 05:43:10"
   }
 }

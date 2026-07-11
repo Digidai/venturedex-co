@@ -1,0 +1,92 @@
+{
+  "slug": "polysense",
+  "domain": "www.polysense.ai",
+  "url": "https://www.polysense.ai/",
+  "product_name": "Polysense",
+  "summary": "AI machine vision and process control for food production lines.",
+  "editor_note": "Food factories do not need prettier dashboards; they need the line to catch drift before a batch becomes waste. Polysense pairs inline machine vision with Qualify inspection, Intelligence analytics, and AutoControl adjustments. Unlike sample-based QC, the bet is every product checked in realtime. The risk is whether $10.7M Seed expansion keeps pace with plant-by-plant variation.",
+  "editor_rating": 4,
+  "why_featured": "$10.7M Seed for food-line AI",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "food production,quality control,machine vision,manufacturing,process control",
+  "investors": "Felix Capital",
+  "links": {
+    "careers": "https://careers.polysense.ai/",
+    "product": "https://www.polysense.ai/platform/polysense-qualify",
+    "resources": "https://www.polysense.ai/resources/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10.7M",
+      "stage": "Seed",
+      "lead_investor": "Felix Capital",
+      "date": "2026-07-08",
+      "source_url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform",
+      "source_name": "FoodBev Media"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Polysense official site",
+        "url": "https://www.polysense.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_qualify",
+        "label": "Polysense Qualify product page",
+        "url": "https://www.polysense.ai/platform/polysense-qualify",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Polysense official careers page",
+        "url": "https://careers.polysense.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Polysense seed funding report",
+        "url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes AI-native machine vision and process control for food production lines that catch quality drift before waste occurs.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product navigation exposes Qualify, Intelligence, and AutoControl modules for inspection, analytics, and process adjustment.",
+        "source_ids": [
+          "official_site",
+          "official_qualify"
+        ]
+      },
+      {
+        "claim": "The funding report says Polysense secured $10.7M to expand its food-manufacturing quality-control platform.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Food manufacturers, plant managers, production engineers, and quality-control teams.",
+      "category": "Industrial quality control",
+      "differentiation": "Polysense applies inline AI vision and process feedback to food-production drift rather than relying only on sample-based quality checks.",
+      "why_now": "Food processors are under pressure to reduce waste, protect margins, and prove quality without adding more manual inspection labor."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether the system adapts across heterogeneous food lines quickly enough for repeatable deployment economics.",
+        "basis": "VentureDex assessment from the official product pages and seed funding report."
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "hostie",
+  "domain": "hostie.ai",
+  "url": "https://hostie.ai/",
+  "product_name": "Hostie",
+  "summary": "AI virtual concierge for restaurant calls, texts, reservations, and events.",
+  "editor_note": "Restaurant AI gets interesting when it stays in the phone line rather than asking staff to watch another console. Hostie answers calls, texts, reservations, takeout, and private-event inquiries, with pricing from $199 per location. Unlike generic chatbots, the bet is hospitality-specific operations. The risk is whether voice tone survives messy guest edge cases.",
+  "editor_rating": 4,
+  "why_featured": "$12M Series A for restaurant AI",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "restaurants,voice,ai agents,reservations,hospitality",
+  "investors": "Obvious Ventures",
+  "links": {
+    "careers": "https://hostie.ai/careers",
+    "pricing": "https://hostie.ai/pricing",
+    "product": "https://hostie.ai/features",
+    "resources": "https://hostie.ai/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Series A",
+      "lead_investor": "Obvious Ventures",
+      "date": "2026-07-08",
+      "source_url": "https://www.prnewswire.com/news-releases/hostie-raises-12m-series-a-to-power-the-future-of-restaurant-hospitality-302820521.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Hostie official site",
+        "url": "https://hostie.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Hostie pricing page",
+        "url": "https://hostie.ai/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Hostie official careers page",
+        "url": "https://hostie.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Hostie Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/hostie-raises-12m-series-a-to-power-the-future-of-restaurant-hospitality-302820521.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Hostie as a virtual concierge for restaurants that answers guest calls, texts, reservations, takeout, and event inquiries.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The pricing page exposes public restaurant plans starting at $199 per location, with phone and texting automation tiers.",
+        "source_ids": [
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Hostie raised a $12M Series A led by Obvious Ventures to expand restaurant hospitality automation.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Restaurant owners, operators, reservation teams, and hospitality groups handling guest calls and texts.",
+      "category": "Restaurant guest operations",
+      "differentiation": "Hostie narrows AI voice and texting to restaurant-specific guest operations rather than a general business phone assistant.",
+      "why_now": "Restaurants face high call volume, labor constraints, and guest expectations for instant reservation, takeout, and event answers."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether voice quality and escalation logic hold up during emotionally charged or unusual guest conversations.",
+        "basis": "VentureDex assessment from the official product, pricing page, and Series A announcement."
+      }
+    ]
+  }
+}

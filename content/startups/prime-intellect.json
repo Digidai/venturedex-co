@@ -1,0 +1,98 @@
+{
+  "slug": "prime-intellect",
+  "domain": "www.primeintellect.ai",
+  "url": "https://www.primeintellect.ai/",
+  "product_name": "Prime Intellect",
+  "summary": "Training, inference, compute, and sandbox stack for company-owned AI agents.",
+  "editor_note": "AI infrastructure is moving from renting prompts to owning feedback loops. Prime Intellect puts compute, training, inference, sandboxes, and Lab post-training behind a `pip install prime` entry point. Unlike model APIs alone, the bet is company-owned agent improvement. The risk is whether $130M Series A expectations turn into repeatable customer results.",
+  "editor_rating": 4,
+  "why_featured": "$130M Series A for open agent stack",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai agents,training,inference,compute,developer tools",
+  "investors": "Radical Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/PrimeIntellect",
+    "docs": "https://docs.primeintellect.ai/introduction",
+    "product": "https://app.primeintellect.ai/dashboard/home/quickstart",
+    "resources": "https://www.primeintellect.ai/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$130M",
+      "stage": "Series A",
+      "lead_investor": "Radical Ventures",
+      "date": "2026-07-08",
+      "source_url": "https://www.primeintellect.ai/blog/series-a",
+      "source_name": "Prime Intellect"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Prime Intellect official site",
+        "url": "https://www.primeintellect.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Prime Intellect documentation",
+        "url": "https://docs.primeintellect.ai/introduction",
+        "type": "product"
+      },
+      {
+        "id": "official_lab",
+        "label": "Prime Intellect Lab announcement",
+        "url": "https://www.primeintellect.ai/blog/lab-is-open",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Prime Intellect official careers page",
+        "url": "https://jobs.ashbyhq.com/PrimeIntellect",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Prime Intellect Series A announcement",
+        "url": "https://www.primeintellect.ai/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a stack for training, deploying, and continuously improving AI agents across Training, Inference, Compute, and Research surfaces.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official docs expose a product entry point for developers to install Prime and start working with the platform from a command line.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The Lab announcement describes task specification, evaluation harnesses, reward signals, rollouts, adapter training, and deployment for self-improving agents.",
+        "source_ids": [
+          "official_lab"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI platform teams, applied AI labs, and engineering teams building company-owned agents.",
+      "category": "Agent training and inference infrastructure",
+      "differentiation": "Prime Intellect packages compute, RL/post-training, evals, sandboxes, and inference as one owned training loop rather than only hosted model access.",
+      "why_now": "More teams are trying to turn production traces and task outcomes into model improvement loops instead of stopping at prompt orchestration."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether customer-owned agent training loops produce durable gains outside early design-partner and research-heavy deployments.",
+        "basis": "VentureDex assessment from the official stack, docs, Lab post, and Series A announcement."
+      }
+    ]
+  }
+}

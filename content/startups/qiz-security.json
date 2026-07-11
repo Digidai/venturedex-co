@@ -1,0 +1,86 @@
+{
+  "slug": "qiz-security",
+  "domain": "qizsecurity.com",
+  "url": "https://qizsecurity.com/",
+  "product_name": "QIZ Security",
+  "summary": "Cryptography posture and post-quantum readiness management.",
+  "editor_note": "Quantum readiness is not another compliance memo; it starts with finding every certificate, key, and weak cipher in production. QIZ maps cryptographic assets, ranks risk, and gives remediation steps across policy and systems. Unlike point-in-time audits, the bet is continuous crypto-agility for the 100-organizations problem. The risk is whether budgets move before PQC deadlines feel urgent.",
+  "editor_rating": 4,
+  "why_featured": "$17M Seed for quantum cryptography",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "security,cryptography,post quantum,compliance,risk",
+  "investors": "Bessemer Venture Partners, Merlin Ventures",
+  "links": {
+    "careers": "https://qizsecurity.com/careers",
+    "linkedin": "https://www.linkedin.com/company/qizsecurity/",
+    "product": "https://qizsecurity.com/",
+    "resources": "https://qizsecurity.com/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$17M",
+      "stage": "Seed",
+      "lead_investor": "Bessemer Venture Partners",
+      "date": "2026-07-09",
+      "source_url": "https://www.prnewswire.com/news-releases/qiz-security-raises-17m-seed-to-lead-cyber-readiness-for-the-post-quantum-era-302820074.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "QIZ Security official site",
+        "url": "https://qizsecurity.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "QIZ Security official careers page",
+        "url": "https://qizsecurity.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "QIZ Security seed funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/qiz-security-raises-17m-seed-to-lead-cyber-readiness-for-the-post-quantum-era-302820074.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says the QIZ Cryptography Management Platform supports end-to-end discovery, prioritization, remediation, and governance.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product copy describes mapping cryptographic assets, ranking risks by context and impact, and producing step-by-step remediation plans.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding announcement positions QIZ around cryptographic posture, crypto-agility, and post-quantum cryptography management after a $17M Seed.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security, compliance, and infrastructure teams preparing cryptography inventories for post-quantum migration.",
+      "category": "Cryptography management and post-quantum readiness",
+      "differentiation": "QIZ focuses on continuous cryptographic asset context and remediation planning rather than a one-time PQC assessment.",
+      "why_now": "Post-quantum cryptography timelines are turning hidden certificate, key, and cipher inventory gaps into board-level migration risk."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether buyers treat post-quantum cryptography as urgent enough to fund continuous inventory and remediation before deadlines harden.",
+        "basis": "VentureDex assessment from the official product site and seed funding announcement."
+      }
+    ]
+  }
+}

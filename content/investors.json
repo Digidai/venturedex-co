@@ -1271,5 +1271,33 @@
     "short_name": "TLV",
     "website": "https://www.tlv.partners/",
     "description": "Early-stage venture firm backing Israeli founders across enterprise software, cybersecurity, data, and AI infrastructure."
+  },
+  "merlin-ventures": {
+    "name": "Merlin Ventures",
+    "slug": "merlin-ventures",
+    "short_name": "Merlin",
+    "website": "https://merlin.vc/",
+    "description": "Cybersecurity-focused venture platform backing early-stage security companies from seed toward scale."
+  },
+  "obvious-ventures": {
+    "name": "Obvious Ventures",
+    "slug": "obvious-ventures",
+    "short_name": "Obvious",
+    "website": "https://obvious.com/",
+    "description": "Venture capital firm backing founders building technology companies across economic health, human health, and planetary health."
+  },
+  "felix-capital": {
+    "name": "Felix Capital",
+    "slug": "felix-capital",
+    "short_name": "Felix",
+    "website": "https://www.felixcap.com/",
+    "description": "Venture capital firm investing at the intersection of technology, creativity, and digital consumer or business experiences."
+  },
+  "theory-ventures": {
+    "name": "Theory Ventures",
+    "slug": "theory-ventures",
+    "short_name": "Theory",
+    "website": "https://theoryvc.com/",
+    "description": "Early-stage venture firm investing in software companies built around AI, data infrastructure, and go-to-market advantages."
   }
 }

@@ -1,6 +1,13 @@
 {
-  "verified_at": "2026-07-08",
+  "verified_at": "2026-07-11",
   "companies": {
+    "8090": {
+      "name": "8090",
+      "shape": "icon",
+      "local_path": "/logos/companies/8090.svg",
+      "source_page": "https://www.8090.ai/",
+      "source_url": "https://www.8090.ai/icon-1jdwle.svg?icon.0f_-dy8xxf.vn.svg?dpl=dpl_7GunrEHtCsKo6FLpgmwPpEBfAMgX"
+    },
     "cal-com": {
       "name": "Cal.com",
       "shape": "icon",
@@ -690,13 +697,6 @@
       "source_url": "https://cdn.prod.website-files.com/659bc2b8e77100ec0e8dff5f/65b94bd997b338b5cc0a3067_fav.svg",
       "allow_unreachable_source": true,
       "note": "Official homepage returns a Vercel HTTP 429 challenge to curl validation, while bb-browser loads the Cinder product page; keep the official Webflow favicon non-blocking."
-    },
-    "8090": {
-      "name": "8090",
-      "shape": "icon",
-      "local_path": "/logos/companies/8090.svg",
-      "source_page": "https://www.8090.ai/",
-      "source_url": "https://www.8090.ai/icon-1jdwle.svg?icon.0f_-dy8xxf.vn.svg?dpl=dpl_7GunrEHtCsKo6FLpgmwPpEBfAMgX"
     },
     "straiker": {
       "name": "Straiker",
@@ -1449,6 +1449,41 @@
       "local_path": "/logos/companies/norm-ai.png",
       "source_page": "https://www.norm.ai/",
       "source_url": "https://cdn.sanity.io/images/5mkfcvr8/production/6ee050dd8f673b287e8071d7f98a672e00b03d4e-48x48.png"
+    },
+    "prime-intellect": {
+      "name": "Prime Intellect",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/prime-intellect.svg",
+      "source_page": "https://www.primeintellect.ai/",
+      "source_url": "https://www.primeintellect.ai/icons/primeintellect-logo.svg"
+    },
+    "qiz-security": {
+      "name": "QIZ Security",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/qiz-security.svg",
+      "source_page": "https://qizsecurity.com/",
+      "source_url": "https://cdn.prod.website-files.com/68aaf9f3e6a3075a7b880ab8/68aafb30f00aa6f33bd6c931_QIZ-logo.svg"
+    },
+    "hostie": {
+      "name": "Hostie",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hostie.png",
+      "source_page": "https://hostie.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6803352d10c80e32009ee356/680335ee22d820a342762241_logo.png"
+    },
+    "polysense": {
+      "name": "Polysense",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/polysense.svg",
+      "source_page": "https://www.polysense.ai/",
+      "source_url": "https://cdn.prod.website-files.com/69f867142c04d7e1499bf874/69f9aedaa00a169005038759_polysens-logo_footer.svg"
+    },
+    "ollama": {
+      "name": "Ollama",
+      "shape": "icon",
+      "local_path": "/logos/companies/ollama.png",
+      "source_page": "https://ollama.com/",
+      "source_url": "https://ollama.com/public/ollama.png"
     }
   },
   "investors": {
@@ -2646,6 +2681,34 @@
       "local_path": "/logos/investors/tlv-partners.svg",
       "source_page": "https://www.tlv.partners/",
       "source_url": "https://www.tlv.partners/wp-content/uploads/2021/04/TLV-logo.svg"
+    },
+    "merlin-ventures": {
+      "name": "Merlin Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/merlin-ventures.webp",
+      "source_page": "https://merlin.vc/",
+      "source_url": "https://merlin.vc/wp-content/uploads/2024/10/merlin-ventures-RGB-dark-300x121.webp"
+    },
+    "obvious-ventures": {
+      "name": "Obvious Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/obvious-ventures.webp",
+      "source_page": "https://obvious.com/",
+      "source_url": "https://obvious.com/wp-content/uploads/2025/08/icon-48x48-1.webp"
+    },
+    "felix-capital": {
+      "name": "Felix Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/felix-capital.webp",
+      "source_page": "https://www.felixcap.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/6901c6924daad61a8dd73c3f/3713d1c2-71f3-4e26-8b9d-157c2a976140/Felix_logo.png?format=500w"
+    },
+    "theory-ventures": {
+      "name": "Theory Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/theory-ventures.png",
+      "source_page": "https://theoryvc.com/",
+      "source_url": "https://cdn.prod.website-files.com/681d38e1d2bd41e296aba37f/683218ae4d8cdbc2353886bb_favicon.png"
     }
   }
 }
