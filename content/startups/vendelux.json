@@ -1,0 +1,100 @@
+{
+  "slug": "vendelux",
+  "domain": "vendelux.com",
+  "url": "https://vendelux.com/",
+  "product_name": "Vendelux",
+  "summary": "AI-native event marketing platform for finding high-ROI events and booking meetings.",
+  "editor_note": "Event marketing usually fails in the handoff between budget and booked meetings. Vendelux maps more than 250,000 B2B events, lets teams upload or connect ICP lists, and uses attendee intelligence plus outreach to fill calendars before day 1. Unlike event directories, the workflow ties event choice, CRM context, meetings, and ROI together. The risk is whether proprietary attendee data stays fresh enough across long-tail conferences.",
+  "editor_rating": 4,
+  "why_featured": "$50M Series B for event intelligence",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "event marketing,b2b,crm,meetings,ai",
+  "investors": "Tribeca Venture Partners",
+  "links": {
+    "careers": "https://vendelux.com/careers",
+    "pricing": "https://vendelux.com/pricing",
+    "product": "https://vendelux.com/product",
+    "resources": "https://vendelux.com/resources/event-reports"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "stage": "Series B",
+      "lead_investor": "Tribeca Venture Partners",
+      "date": "2026-07-08",
+      "source_url": "https://vendelux.com/series-b-announcement",
+      "source_name": "Vendelux"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Vendelux official site",
+        "url": "https://vendelux.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Vendelux product overview",
+        "url": "https://vendelux.com/product",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Vendelux pricing page",
+        "url": "https://vendelux.com/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Vendelux official careers page",
+        "url": "https://vendelux.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Vendelux Series B announcement",
+        "url": "https://vendelux.com/series-b-announcement",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The rendered official site says teams can map ICP lists, match buyers to high-ROI events, and book meetings before day 1.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product surface shows event discovery, list builder, CRM integration, meetings, pricing, login, free trial, and demo paths.",
+        "source_ids": [
+          "official_site",
+          "official_product",
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The official Series B announcement says Vendelux tracks more than 250,000 global B2B events for buyer and event intelligence.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "B2B event marketers, field marketers, demand generation teams, sales leaders, and event organizers.",
+      "category": "Event marketing intelligence",
+      "differentiation": "Vendelux links event selection, attendee intelligence, CRM context, outreach, meetings, and revenue attribution rather than stopping at event directories.",
+      "why_now": "AI-saturated digital outreach makes in-person pipeline more valuable, while event teams need data to defend and optimize large field-marketing budgets."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether proprietary attendee and event data stays current enough to support automated meeting booking across long-tail events.",
+        "basis": "VentureDex assessment from the rendered official product site and Series B announcement."
+      }
+    ]
+  }
+}

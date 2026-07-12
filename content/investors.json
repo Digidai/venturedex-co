@@ -1299,5 +1299,29 @@
     "short_name": "Theory",
     "website": "https://theoryvc.com/",
     "description": "Early-stage venture firm investing in software companies built around AI, data infrastructure, and go-to-market advantages."
+  },
+  "energize-capital": {
+    "name": "Energize Capital",
+    "slug": "energize-capital",
+    "short_name": "Energize",
+    "website": "https://energizecap.com/",
+    "description": "Multi-stage investment firm backing software and services companies advancing climate, energy, industrial, and critical-infrastructure markets."
+  },
+  "tribeca-venture-partners": {
+    "name": "Tribeca Venture Partners",
+    "slug": "tribeca-venture-partners",
+    "short_name": "Tribeca",
+    "website": "https://tribecavp.com/",
+    "description": "New York-based multi-stage venture capital firm partnering with technology founders building large markets."
+  },
+  "11-tribes-ventures": {
+    "name": "11 Tribes Ventures",
+    "slug": "11-tribes-ventures",
+    "short_name": "11 Tribes",
+    "website": "https://11tribes.com/",
+    "description": "Venture firm backing purpose-driven entrepreneurs building durable companies with sustainable cultures.",
+    "aliases": [
+      "11 Tribes"
+    ]
   }
 }

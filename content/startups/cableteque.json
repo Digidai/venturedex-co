@@ -1,0 +1,97 @@
+{
+  "slug": "cableteque",
+  "domain": "cableteque.com",
+  "url": "https://cableteque.com/",
+  "product_name": "Cableteque",
+  "summary": "AI quoting software for wire harness and cable assembly manufacturers.",
+  "editor_note": "Wire harness quoting is a strange place for AI to be useful because the inputs arrive as messy drawings, not clean BOMs. Cableteque reads PDF, TIFF, Excel, CSV, XML, Zuken, and Capital XML files, then extracts BOMs, sources materials from 20+ supplier or ERP integrations, and fills labor templates. Unlike generic CPQ, it is purpose-built for harness shops. The risk is whether the AI stays accurate on custom parts and low-quality scans.",
+  "editor_rating": 4,
+  "why_featured": "$6M Seed for wire harness quoting",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "manufacturing,quoting,ai,erp,wire harness",
+  "investors": "11 Tribes Ventures",
+  "links": {
+    "careers": "https://cableteque.com/about",
+    "pricing": "https://cableteque.com/pricing",
+    "product": "https://cableteque.com/quote"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-07-09",
+      "source_url": "https://www.finsmes.com/2026/07/cableteque-raises-6m-in-seed-funding.html",
+      "source_name": "FinSMEs"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Cableteque official site",
+        "url": "https://cableteque.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Cableteque Quote product page",
+        "url": "https://cableteque.com/quote",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Cableteque pricing page",
+        "url": "https://cableteque.com/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Cableteque official careers/about page",
+        "url": "https://cableteque.com/about",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cableteque Seed funding coverage",
+        "url": "https://www.finsmes.com/2026/07/cableteque-raises-6m-in-seed-funding.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Cableteque as quoting software for wire harness and cable assembly manufacturers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says Cableteque extracts BOMs from customer drawings, sources materials, and fills labor templates.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The pricing page describes Cableteque as a SaaS subscription priced by quoting volume and number of users.",
+        "source_ids": [
+          "official_pricing"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Wire harness and cable assembly manufacturers, estimators, sales engineers, and operations leaders.",
+      "category": "Manufacturing quoting software",
+      "differentiation": "Cableteque starts from messy customer drawings and harness-specific labor/material realities rather than generic CPQ or CAD quoting modules.",
+      "why_now": "Manufacturers face margin pressure and slow quote turnaround while multimodal extraction and supplier integrations make quote automation more practical."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether AI extraction remains accurate on custom parts, poor scans, and edge-case customer drawings.",
+        "basis": "VentureDex assessment from official product, pricing, and funding-source review."
+      }
+    ]
+  }
+}

@@ -1484,6 +1484,27 @@
       "local_path": "/logos/companies/ollama.png",
       "source_page": "https://ollama.com/",
       "source_url": "https://ollama.com/public/ollama.png"
+    },
+    "axle-energy": {
+      "name": "Axle Energy",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/axle-energy.svg",
+      "source_page": "https://www.axle.energy/",
+      "source_url": "https://cdn.prod.website-files.com/6706a319ca966248529c44be/67488b8d90638a995e91cb8f_axle-logo-black.svg"
+    },
+    "vendelux": {
+      "name": "Vendelux",
+      "shape": "icon",
+      "local_path": "/logos/companies/vendelux.png",
+      "source_page": "https://vendelux.com/",
+      "source_url": "https://vendelux.com/wp-content/uploads/2026/02/Favicon-128px.png"
+    },
+    "cableteque": {
+      "name": "Cableteque",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/cableteque.png",
+      "source_page": "https://cableteque.com/",
+      "source_url": "https://cableteque.com/hubfs/Brand%20Assets/logo-transparent.png"
     }
   },
   "investors": {
@@ -2709,6 +2730,29 @@
       "local_path": "/logos/investors/theory-ventures.png",
       "source_page": "https://theoryvc.com/",
       "source_url": "https://cdn.prod.website-files.com/681d38e1d2bd41e296aba37f/683218ae4d8cdbc2353886bb_favicon.png"
+    },
+    "energize-capital": {
+      "name": "Energize Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/energize-capital.svg",
+      "source_page": "https://energizecap.com/",
+      "source_url": "https://cdn.prod.website-files.com/69afb2f0225a3daa54981981/69afd89767985e53fa219110_02f0cb0266c7f7d0bab59debce9edac6_Energize-logo.svg"
+    },
+    "tribeca-venture-partners": {
+      "name": "Tribeca Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/tribeca-venture-partners.svg",
+      "source_page": "https://tribecavp.com/",
+      "source_url": "https://tribecavp.com/wp-content/themes/tribecavp/dist/images/tribeca-logo_855cb0f0.svg"
+    },
+    "11-tribes-ventures": {
+      "name": "11 Tribes Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/11-tribes-ventures.svg",
+      "source_page": "https://11tribes.com/",
+      "source_url": "https://11tribes.com/wp-content/themes/11tribes/img/11-tribes-ventures.svg",
+      "allow_unreachable_source": true,
+      "note": "Official homepage renders in bb-browser and links this SVG, but curl HEAD returns HTTP 406; local logo was fetched from the official asset URL."
     }
   }
 }

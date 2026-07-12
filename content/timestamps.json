@@ -843,5 +843,17 @@
   "ollama": {
     "published_at": "2026-07-11 05:43:10",
     "first_seen_at": "2026-07-11 05:43:10"
+  },
+  "axle-energy": {
+    "published_at": "2026-07-12 06:00:54",
+    "first_seen_at": "2026-07-12 06:00:54"
+  },
+  "vendelux": {
+    "published_at": "2026-07-12 06:00:54",
+    "first_seen_at": "2026-07-12 06:00:54"
+  },
+  "cableteque": {
+    "published_at": "2026-07-12 06:00:54",
+    "first_seen_at": "2026-07-12 06:00:54"
   }
 }

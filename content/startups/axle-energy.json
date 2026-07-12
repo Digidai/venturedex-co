@@ -1,0 +1,93 @@
+{
+  "slug": "axle-energy",
+  "domain": "www.axle.energy",
+  "url": "https://www.axle.energy/",
+  "product_name": "Axle Energy",
+  "summary": "Virtual power plant API connecting home energy assets to electricity markets.",
+  "editor_note": "Home energy software gets sharper when it turns devices into market participants, not another savings dashboard. Axle connects EVs, batteries, and heat pumps to energy markets through one API, with 300k assets, 2GW of shiftable load, and >99.9% API uptime on the official site. Unlike installer software, the bet is grid monetization as infrastructure. The risk is market-by-market integration drag.",
+  "editor_rating": 4,
+  "why_featured": "$25M Series A for VPP APIs",
+  "product_type": "Climate / Sustainability",
+  "region": "Europe",
+  "tags": "energy,api,virtual power plants,grid,climate software",
+  "investors": "Energize Capital",
+  "links": {
+    "careers": "https://www.axle.energy/careers",
+    "docs": "https://docs.axle.energy/introduction",
+    "product": "https://www.axle.energy/product/for-oems",
+    "resources": "https://www.axle.energy/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Energize Capital",
+      "date": "2026-07-08",
+      "source_url": "https://www.axle.energy/blog/announcing-our-series-a",
+      "source_name": "Axle Energy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Axle Energy official site",
+        "url": "https://www.axle.energy/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Axle Energy API docs",
+        "url": "https://docs.axle.energy/introduction",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Axle Energy official careers page",
+        "url": "https://www.axle.energy/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Axle Energy Series A announcement",
+        "url": "https://www.axle.energy/blog/announcing-our-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Axle connects EVs, batteries, and heat pumps to energy markets through a single unified API.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site describes one API call or React components for onboarding sites and assets into flexibility markets.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The official Series A post says device makers, suppliers, and fleet operators use Axle across dozens of electricity markets.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Energy suppliers, device manufacturers, utilities, EV charging operators, and fleet teams.",
+      "category": "Virtual power plant software",
+      "differentiation": "Axle focuses on API-driven monetization of distributed home energy assets rather than consumer energy monitoring or installer operations.",
+      "why_now": "Electrification is adding flexible home load while grid operators need dispatchable demand to balance renewables, congestion, and peak events."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether market-by-market regulation and utility integration work slow expansion beyond the early electricity markets.",
+        "basis": "VentureDex assessment from the official product site, API docs, and Series A announcement."
+      }
+    ]
+  }
+}
