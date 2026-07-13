@@ -1,0 +1,465 @@
+{
+  "issue_number": 7,
+  "title": "TODO: Weekly research for 2026-07-06 to 2026-07-12",
+  "week_start": "2026-07-06",
+  "week_end": "2026-07-12",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "qiz-security",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/qiz-security.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "QIZ Security official site",
+          "source": "content/startups/qiz-security.json research.sources.official_site",
+          "url": "https://qizsecurity.com/"
+        },
+        {
+          "label": "QIZ Security official careers page",
+          "source": "content/startups/qiz-security.json research.sources.official_careers",
+          "url": "https://qizsecurity.com/careers"
+        },
+        {
+          "label": "QIZ Security seed funding announcement",
+          "source": "content/startups/qiz-security.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/qiz-security-raises-17m-seed-to-lead-cyber-readiness-for-the-post-quantum-era-302820074.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says the QIZ Cryptography Management Platform supports end-to-end discovery, prioritization, remediation, and governance.",
+          "url": "https://qizsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official product copy describes mapping cryptographic assets, ranking risks by context and impact, and producing step-by-step remediation plans.",
+          "url": "https://qizsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding announcement positions QIZ around cryptographic posture, crypto-agility, and post-quantum cryptography management after a $17M Seed.",
+          "url": "https://www.prnewswire.com/news-releases/qiz-security-raises-17m-seed-to-lead-cyber-readiness-for-the-post-quantum-era-302820074.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "QIZ Security homepage",
+          "url": "https://qizsecurity.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/qiz-security-raises-17m-seed-to-lead-cyber-readiness-for-the-post-quantum-era-302820074.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether buyers treat post-quantum cryptography as urgent enough to fund continuous inventory and remediation before deadlines harden.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "ollama",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/ollama.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Ollama official site",
+          "source": "content/startups/ollama.json research.sources.official_site",
+          "url": "https://ollama.com/"
+        },
+        {
+          "label": "Ollama official documentation",
+          "source": "content/startups/ollama.json research.sources.official_docs",
+          "url": "https://docs.ollama.com"
+        },
+        {
+          "label": "Ollama GitHub repository",
+          "source": "content/startups/ollama.json research.sources.official_github",
+          "url": "https://github.com/ollama/ollama"
+        },
+        {
+          "label": "Ollama official careers page",
+          "source": "content/startups/ollama.json research.sources.official_careers",
+          "url": "https://jobs.ashbyhq.com/ollama"
+        },
+        {
+          "label": "Ollama Series B announcement",
+          "source": "content/startups/ollama.json research.sources.funding_1",
+          "url": "https://www.businesswire.com/news/home/20260709429551/en/Ollama-Raises-%2465M-Series-B-Funding-to-Grow-its-Open-source-AI-Platform"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site gives a one-command installer and presents Ollama as a way to build with open models from local machines to cloud usage.",
+          "url": "https://ollama.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official page links models, docs, pricing, GitHub, download, and account surfaces, showing a developer workflow beyond a landing page.",
+          "url": "https://ollama.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding announcement says Ollama raised a $65M Series B led by Theory Ventures to grow its open-source AI platform.",
+          "url": "https://www.businesswire.com/news/home/20260709429551/en/Ollama-Raises-%2465M-Series-B-Funding-to-Grow-its-Open-source-AI-Platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Ollama homepage",
+          "url": "https://ollama.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Wire",
+          "url": "https://www.businesswire.com/news/home/20260709429551/en/Ollama-Raises-%2465M-Series-B-Funding-to-Grow-its-Open-source-AI-Platform"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether cloud monetization and enterprise controls can grow without weakening the simple local developer experience.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "cableteque",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cableteque.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Cableteque official site",
+          "source": "content/startups/cableteque.json research.sources.official_site",
+          "url": "https://cableteque.com/"
+        },
+        {
+          "label": "Cableteque Quote product page",
+          "source": "content/startups/cableteque.json research.sources.official_product",
+          "url": "https://cableteque.com/quote"
+        },
+        {
+          "label": "Cableteque pricing page",
+          "source": "content/startups/cableteque.json research.sources.official_pricing",
+          "url": "https://cableteque.com/pricing"
+        },
+        {
+          "label": "Cableteque official careers/about page",
+          "source": "content/startups/cableteque.json research.sources.official_careers",
+          "url": "https://cableteque.com/about"
+        },
+        {
+          "label": "Cableteque Seed funding coverage",
+          "source": "content/startups/cableteque.json research.sources.funding_1",
+          "url": "https://www.finsmes.com/2026/07/cableteque-raises-6m-in-seed-funding.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions Cableteque as quoting software for wire harness and cable assembly manufacturers.",
+          "url": "https://cableteque.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product page says Cableteque extracts BOMs from customer drawings, sources materials, and fills labor templates.",
+          "url": "https://cableteque.com/quote"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The pricing page describes Cableteque as a SaaS subscription priced by quoting volume and number of users.",
+          "url": "https://cableteque.com/pricing"
+        },
+        {
+          "label": "Official product site",
+          "source": "Cableteque homepage",
+          "url": "https://cableteque.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "FinSMEs",
+          "url": "https://www.finsmes.com/2026/07/cableteque-raises-6m-in-seed-funding.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether AI extraction remains accurate on custom parts, poor scans, and edge-case customer drawings.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "vendelux",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/vendelux.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Vendelux official site",
+          "source": "content/startups/vendelux.json research.sources.official_site",
+          "url": "https://vendelux.com/"
+        },
+        {
+          "label": "Vendelux product overview",
+          "source": "content/startups/vendelux.json research.sources.official_product",
+          "url": "https://vendelux.com/product"
+        },
+        {
+          "label": "Vendelux pricing page",
+          "source": "content/startups/vendelux.json research.sources.official_pricing",
+          "url": "https://vendelux.com/pricing"
+        },
+        {
+          "label": "Vendelux official careers page",
+          "source": "content/startups/vendelux.json research.sources.official_careers",
+          "url": "https://vendelux.com/careers"
+        },
+        {
+          "label": "Vendelux Series B announcement",
+          "source": "content/startups/vendelux.json research.sources.funding_1",
+          "url": "https://vendelux.com/series-b-announcement"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The rendered official site says teams can map ICP lists, match buyers to high-ROI events, and book meetings before day 1.",
+          "url": "https://vendelux.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface shows event discovery, list builder, CRM integration, meetings, pricing, login, free trial, and demo paths.",
+          "url": "https://vendelux.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official Series B announcement says Vendelux tracks more than 250,000 global B2B events for buyer and event intelligence.",
+          "url": "https://vendelux.com/series-b-announcement"
+        },
+        {
+          "label": "Official product site",
+          "source": "Vendelux homepage",
+          "url": "https://vendelux.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Vendelux",
+          "url": "https://vendelux.com/series-b-announcement"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether proprietary attendee and event data stays current enough to support automated meeting booking across long-tail events.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "prime-intellect",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/prime-intellect.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Prime Intellect official site",
+          "source": "content/startups/prime-intellect.json research.sources.official_site",
+          "url": "https://www.primeintellect.ai/"
+        },
+        {
+          "label": "Prime Intellect documentation",
+          "source": "content/startups/prime-intellect.json research.sources.official_docs",
+          "url": "https://docs.primeintellect.ai/introduction"
+        },
+        {
+          "label": "Prime Intellect Lab announcement",
+          "source": "content/startups/prime-intellect.json research.sources.official_lab",
+          "url": "https://www.primeintellect.ai/blog/lab-is-open"
+        },
+        {
+          "label": "Prime Intellect official careers page",
+          "source": "content/startups/prime-intellect.json research.sources.official_careers",
+          "url": "https://jobs.ashbyhq.com/PrimeIntellect"
+        },
+        {
+          "label": "Prime Intellect Series A announcement",
+          "source": "content/startups/prime-intellect.json research.sources.funding_1",
+          "url": "https://www.primeintellect.ai/blog/series-a"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes a stack for training, deploying, and continuously improving AI agents across Training, Inference, Compute, and Research surfaces.",
+          "url": "https://www.primeintellect.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official docs expose a product entry point for developers to install Prime and start working with the platform from a command line.",
+          "url": "https://docs.primeintellect.ai/introduction"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The Lab announcement describes task specification, evaluation harnesses, reward signals, rollouts, adapter training, and deployment for self-improving agents.",
+          "url": "https://www.primeintellect.ai/blog/lab-is-open"
+        },
+        {
+          "label": "Official product site",
+          "source": "Prime Intellect homepage",
+          "url": "https://www.primeintellect.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Prime Intellect",
+          "url": "https://www.primeintellect.ai/blog/series-a"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether customer-owned agent training loops produce durable gains outside early design-partner and research-heavy deployments.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "polysense",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/polysense.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Polysense official site",
+          "source": "content/startups/polysense.json research.sources.official_site",
+          "url": "https://www.polysense.ai/"
+        },
+        {
+          "label": "Polysense Qualify product page",
+          "source": "content/startups/polysense.json research.sources.official_qualify",
+          "url": "https://www.polysense.ai/platform/polysense-qualify"
+        },
+        {
+          "label": "Polysense official careers page",
+          "source": "content/startups/polysense.json research.sources.official_careers",
+          "url": "https://careers.polysense.ai/"
+        },
+        {
+          "label": "Polysense seed funding report",
+          "source": "content/startups/polysense.json research.sources.funding_1",
+          "url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes AI-native machine vision and process control for food production lines that catch quality drift before waste occurs.",
+          "url": "https://www.polysense.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product navigation exposes Qualify, Intelligence, and AutoControl modules for inspection, analytics, and process adjustment.",
+          "url": "https://www.polysense.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding report says Polysense secured $10.7M to expand its food-manufacturing quality-control platform.",
+          "url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Polysense homepage",
+          "url": "https://www.polysense.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "FoodBev Media",
+          "url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether the system adapts across heterogeneous food lines quickly enough for repeatable deployment economics.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "hostie",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/hostie.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Hostie official site",
+          "source": "content/startups/hostie.json research.sources.official_site",
+          "url": "https://hostie.ai/"
+        },
+        {
+          "label": "Hostie pricing page",
+          "source": "content/startups/hostie.json research.sources.official_pricing",
+          "url": "https://hostie.ai/pricing"
+        },
+        {
+          "label": "Hostie official careers page",
+          "source": "content/startups/hostie.json research.sources.official_careers",
+          "url": "https://hostie.ai/careers"
+        },
+        {
+          "label": "Hostie Series A announcement",
+          "source": "content/startups/hostie.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/hostie-raises-12m-series-a-to-power-the-future-of-restaurant-hospitality-302820521.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes Hostie as a virtual concierge for restaurants that answers guest calls, texts, reservations, takeout, and event inquiries.",
+          "url": "https://hostie.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The pricing page exposes public restaurant plans starting at $199 per location, with phone and texting automation tiers.",
+          "url": "https://hostie.ai/pricing"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding announcement says Hostie raised a $12M Series A led by Obvious Ventures to expand restaurant hospitality automation.",
+          "url": "https://www.prnewswire.com/news-releases/hostie-raises-12m-series-a-to-power-the-future-of-restaurant-hospitality-302820521.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Hostie homepage",
+          "url": "https://hostie.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/hostie-raises-12m-series-a-to-power-the-future-of-restaurant-hospitality-302820521.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether voice quality and escalation logic hold up during emotionally charged or unusual guest conversations.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
