@@ -1,0 +1,92 @@
+{
+  "slug": "gridcog",
+  "domain": "www.gridcog.com",
+  "url": "https://www.gridcog.com/",
+  "product_name": "Gridcog",
+  "summary": "Energy flexibility modelling software for developers and utilities.",
+  "editor_note": "Energy modelling is more valuable when it traces every interval instead of hiding a project behind spreadsheet assumptions. Gridcog says 16,000+ projects across 40+ markets use its platform for generation, storage, flexible load, tariffs, and market participation. Unlike static feasibility tools, it is a decision model for hybrid assets. The risk is converting strategic investors into repeat commercial channels.",
+  "editor_rating": 4,
+  "why_featured": "$10M Series A for energy models",
+  "product_type": "Climate / Sustainability",
+  "region": "Global / Remote",
+  "tags": "energy,climate software,modelling,storage,grid",
+  "investors": "ABB",
+  "links": {
+    "careers": "https://www.gridcog.com/profile#careers",
+    "pricing": "https://www.gridcog.com/pricing",
+    "product": "https://www.gridcog.com/large-scale-asset-developers",
+    "resources": "https://www.gridcog.com/reports"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "ABB",
+      "date": "2026-07-14",
+      "source_url": "https://www.gridcog.com/blog/gridcog-series-a-funding-abb-axpo-dnv-verbund",
+      "source_name": "Gridcog"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Gridcog official site",
+        "url": "https://www.gridcog.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Gridcog large-scale asset developers page",
+        "url": "https://www.gridcog.com/large-scale-asset-developers",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Gridcog official careers section",
+        "url": "https://www.gridcog.com/profile#careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Gridcog Series A announcement",
+        "url": "https://www.gridcog.com/blog/gridcog-series-a-funding-abb-axpo-dnv-verbund",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Gridcog for large-scale asset developers, consultants, e-mobility teams, and energy majors.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The product page says Gridcog helps evaluate utility-scale hybrid and co-located projects for storage, renewables, flexible load, and market participation.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The funding post says Gridcog has been used to model more than 16,000 energy projects across more than 40 markets.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Energy developers, utilities, consultants, e-mobility teams, and energy majors assessing storage, renewables, and flexible-load projects.",
+      "category": "Energy flexibility modelling",
+      "differentiation": "Gridcog emphasizes transparent interval-level modelling and optimization for hybrid energy assets rather than black-box feasibility spreadsheets.",
+      "why_now": "More renewable generation, storage, and flexible demand are making project value depend on market rules, tariffs, constraints, and co-location choices."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Gridcog can scale market coverage and implementation support quickly enough for global developers with local tariff and grid-rule needs.",
+        "basis": "VentureDex assessment from the official product site and Series A announcement."
+      }
+    ]
+  }
+}

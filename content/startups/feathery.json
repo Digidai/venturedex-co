@@ -1,0 +1,98 @@
+{
+  "slug": "feathery",
+  "domain": "www.feathery.io",
+  "url": "https://www.feathery.io/",
+  "product_name": "Feathery",
+  "summary": "AI workflow and decisioning platform for insurers and wealth firms.",
+  "editor_note": "Financial workflow AI gets more interesting when every submission feeds the next decision rather than ending as a form. Feathery processes tens of millions of monthly submissions and serves 300+ insurance and wealth firms across onboarding, documents, and policy workflows. Unlike form builders, the bet is decisioning on top of operational data. The risk is proving cross-client learning without becoming a services project.",
+  "editor_rating": 4,
+  "why_featured": "$30M Series A for financial workflows",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "financial services,workflow automation,insurance,wealth management,ai",
+  "investors": "Portage Ventures",
+  "links": {
+    "careers": "https://www.feathery.io/careers",
+    "docs": "https://docs.feathery.io/",
+    "pricing": "https://www.feathery.io/pricing",
+    "product": "https://www.feathery.io/product/document-intelligence"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Portage Ventures",
+      "date": "2026-07-14",
+      "source_url": "https://www.feathery.io/blog/feathery-raises-30m-to-scale-the-ai-operating-decisioning-system-for-financial-services",
+      "source_name": "Feathery"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Feathery official site",
+        "url": "https://www.feathery.io/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Feathery document intelligence page",
+        "url": "https://www.feathery.io/product/document-intelligence",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Feathery documentation",
+        "url": "https://docs.feathery.io/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Feathery official careers page",
+        "url": "https://www.feathery.io/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Feathery funding announcement",
+        "url": "https://www.feathery.io/blog/feathery-raises-30m-to-scale-the-ai-operating-decisioning-system-for-financial-services",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product menu lists forms, document templates, document intelligence, meeting and audio intelligence, workflows, and a white-label editor.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The document-intelligence page claims structured extraction from documents with 98%+ accuracy for financial-services workflows.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The funding post says customers use Feathery for RIA onboarding, proposal generation, insurance submission intake, FNOL, policy checks, and benefit guides.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations, underwriting, onboarding, and transformation teams at insurance and wealth-management firms.",
+      "category": "Financial-services workflow automation",
+      "differentiation": "Feathery connects data collection, document processing, workflow routing, and decisioning in regulated financial workflows rather than staying at the form layer.",
+      "why_now": "Insurance and wealth firms are trying to automate submission intake, onboarding, account opening, and policy checks without replacing every system of record."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether Feathery can compound data across many client workflows while keeping regulated customers comfortable with model behavior and data boundaries.",
+        "basis": "VentureDex assessment from the official product pages, docs link, and Series A announcement."
+      }
+    ]
+  }
+}

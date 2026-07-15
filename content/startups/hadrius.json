@@ -1,0 +1,91 @@
+{
+  "slug": "hadrius",
+  "domain": "www.hadrius.com",
+  "url": "https://www.hadrius.com/",
+  "product_name": "Hadrius",
+  "summary": "AI compliance infrastructure for financial-services firms.",
+  "editor_note": "Compliance teams get more useful AI when review, surveillance, and evidence live in one audit trail rather than scattered queues. Hadrius says 500+ financial institutions use its platform, with 95% fewer false positives and 70% less manual review. Unlike point tools, it is betting on compliance as the system of record. The risk is whether coverage keeps up with regulator-specific rules.",
+  "editor_rating": 4,
+  "why_featured": "$27M Series A for compliance AI",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "compliance,fintech,ai,financial services,audit",
+  "investors": "CRV",
+  "links": {
+    "careers": "https://www.hadrius.com/careers",
+    "product": "https://www.hadrius.com/solutions",
+    "security": "https://www.hadrius.com/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$27M",
+      "stage": "Series A",
+      "lead_investor": "CRV",
+      "date": "2026-07-14",
+      "source_url": "https://www.prnewswire.com/news-releases/hadrius-raises-27-million-to-build-agentic-compliance-infrastructure-302824196.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Hadrius official site",
+        "url": "https://www.hadrius.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Hadrius communications oversight page",
+        "url": "https://www.hadrius.com/solutions/communications-oversight",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Hadrius official careers page",
+        "url": "https://www.hadrius.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Hadrius funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/hadrius-raises-27-million-to-build-agentic-compliance-infrastructure-302824196.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site groups marketing review, communications archiving, trade surveillance, employee oversight, and firm oversight in one compliance platform.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The communications page says Hadrius supports email, chat, and social supervision with zero-retention AI, WORM archiving, and immutable timelines.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The funding source says Hadrius reduces false positives by 95%, manual compliance work by 70%, and saves 20+ hours per week.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Chief compliance officers and operations teams at RIAs, broker-dealers, and investment firms.",
+      "category": "Financial compliance infrastructure",
+      "differentiation": "Hadrius presents compliance review, surveillance, archiving, and evidence packs as one audit-ready system rather than separate review queues.",
+      "why_now": "Financial firms are reviewing more AI-generated communications, marketing, and trades while regulators expect faster proof with limited compliance headcount."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Hadrius can keep its review rules, integrations, and evidence packs current across each regulator and firm policy set.",
+        "basis": "VentureDex assessment from the official product site, communications page, and Series A announcement."
+      }
+    ]
+  }
+}

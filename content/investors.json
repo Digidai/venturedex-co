@@ -1323,5 +1323,33 @@
     "aliases": [
       "11 Tribes"
     ]
+  },
+  "crv": {
+    "name": "CRV",
+    "slug": "crv",
+    "short_name": "CRV",
+    "website": "https://www.crv.com/",
+    "description": "Early-stage venture capital firm backing technology founders across enterprise, consumer, fintech, and bio or health markets."
+  },
+  "portage-ventures": {
+    "name": "Portage Ventures",
+    "slug": "portage-ventures",
+    "short_name": "Portage",
+    "website": "https://portageinvest.com/",
+    "description": "Financial-services and fintech investment platform backing companies across venture and growth stages."
+  },
+  "abb": {
+    "name": "ABB",
+    "slug": "abb",
+    "short_name": "ABB",
+    "website": "https://global.abb/",
+    "description": "Global electrification and automation company with strategic venture activity across energy and industrial technology."
+  },
+  "chingona-ventures": {
+    "name": "Chingona Ventures",
+    "slug": "chingona-ventures",
+    "short_name": "Chingona",
+    "website": "https://www.chingona.ventures/",
+    "description": "Early-stage venture capital firm investing in overlooked founders and markets across fintech, work, food, and health."
   }
 }

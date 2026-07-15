@@ -1,0 +1,98 @@
+{
+  "slug": "instalily",
+  "domain": "www.instalily.ai",
+  "url": "https://www.instalily.ai/",
+  "product_name": "InstaLILY",
+  "summary": "AI forward-deployed engineer for operational workflows.",
+  "editor_note": "Enterprise AI is more credible when it stays with the workflow rather than leaving as a consulting handoff. InstaLILY says Lily runs in production across quoting, diagnosis, routing, and sales coverage, with examples from hours to seconds and 98% lower cost to serve. Unlike chat agents, the product is closer to deployed software maintenance. The risk is whether each deployment can scale without heavy services.",
+  "editor_rating": 4,
+  "why_featured": "$60M Series B for AI engineer",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai agents,enterprise software,operations,logistics,field service",
+  "investors": "Energize Capital",
+  "links": {
+    "careers": "https://www.instalily.ai/careers",
+    "product": "https://www.instalily.ai/lily",
+    "resources": "https://www.instalily.ai/research/the-engineer-that-never-leaves"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Series B",
+      "lead_investor": "Energize Capital",
+      "date": "2026-07-14",
+      "source_url": "https://www.thesaasnews.com/news/instalily-raises-60m-series-b/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "InstaLILY official site",
+        "url": "https://www.instalily.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "InstaLILY Lily product page",
+        "url": "https://www.instalily.ai/lily",
+        "type": "product"
+      },
+      {
+        "id": "official_research",
+        "label": "InstaLILY Series B research post",
+        "url": "https://www.instalily.ai/research/the-engineer-that-never-leaves",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "InstaLILY official careers page",
+        "url": "https://www.instalily.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "InstaLILY funding coverage",
+        "url": "https://www.thesaasnews.com/news/instalily-raises-60m-series-b/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Lily as an AI forward-deployed engineer that learns a business, builds needed software, deploys it, and stays current.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The official site lists operational systems and data sources including SAP, NetSuite, Epicor, Salesforce, HubSpot, Snowflake, inboxes, and PDFs.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official research post says Lily is live in construction, industrial distribution, logistics, field service, and healthcare operations.",
+        "source_ids": [
+          "official_research"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations leaders in industrial distribution, construction, logistics, field service, and healthcare operations.",
+      "category": "Enterprise AI agents",
+      "differentiation": "InstaLILY positions Lily as deployed software that keeps adapting to company workflows rather than a chatbot or temporary consulting build.",
+      "why_now": "Enterprise AI buyers are shifting from model demos toward production deployment, integration, governance, and maintenance inside existing systems."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether each customer deployment can remain productized enough to avoid a labor-heavy forward-deployed engineering model.",
+        "basis": "VentureDex assessment from the official product pages, official Series B research post, and funding coverage."
+      }
+    ]
+  }
+}

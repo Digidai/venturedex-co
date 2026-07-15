@@ -1,0 +1,95 @@
+{
+  "slug": "linker-finance",
+  "domain": "www.linkerfinance.com",
+  "url": "https://www.linkerfinance.com/",
+  "product_name": "Linker Finance",
+  "summary": "Digital banking and CRM platform for community banks.",
+  "editor_note": "Community banks need growth software that fits core systems rather than asking for a core conversion. Linker says customers can go live in 8 weeks across Fiserv, CSI, FIS, and soon DCI, with account opening, business onboarding, treasury, CRM, and branded mobile banking. Unlike standalone account-opening tools, the thesis is a bank growth stack. The risk is that AI and stablecoin add-ons blur the clean banking wedge.",
+  "editor_rating": 4,
+  "why_featured": "$5M Seed for community banks",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "banking,fintech,crm,digital onboarding,community banks",
+  "investors": "Chingona Ventures",
+  "links": {
+    "careers": "https://www.linkerfinance.com/careers",
+    "press": "https://www.linkerfinance.com/news",
+    "security": "https://www.linkerfinance.com/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "Chingona Ventures",
+      "date": "2026-07-14",
+      "source_url": "https://www.prnewswire.com/news-releases/linker-finance-secures-5-million-seed-to-accelerate-growth-engine-for-community-banks-302824716.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Linker Finance official site",
+        "url": "https://www.linkerfinance.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_security",
+        "label": "Linker Finance security page",
+        "url": "https://www.linkerfinance.com/security",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Linker Finance official careers page",
+        "url": "https://www.linkerfinance.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Linker Finance funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/linker-finance-secures-5-million-seed-to-accelerate-growth-engine-for-community-banks-302824716.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Linker supports digital account opening in under 3 minutes with KYC, fraud checks, core-account creation, and account funding.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site lists business onboarding, retail banking, commercial banking, Positive Pay, Treasury Management, and RDC capabilities.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding source says Linker is live with more than 10 customers across multiple cores, including Fiserv Premier, CSI, FIS, and soon DCI.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Community-bank executives, digital-banking teams, operations leaders, and commercial-banking teams.",
+      "category": "Community-bank digital infrastructure",
+      "differentiation": "Linker packages account opening, CRM, treasury, customer intelligence, and branded mobile or online banking around existing core systems rather than requiring a core conversion.",
+      "why_now": "Community banks need modern digital acquisition and onboarding while preserving relationship banking and working around legacy core-provider constraints."
+    },
+    "risks": [
+      {
+        "claim": "The funding announcement does not name a formal lead; Chingona Ventures is used as the representative lead because it is the first named returning investor with a sourced quote.",
+        "basis": "VentureDex assessment from the PRNewswire funding source and official product site."
+      },
+      {
+        "claim": "A second open question is whether the emerging AI and stablecoin-enabled payment capabilities distract from the clearer community-bank onboarding wedge.",
+        "basis": "VentureDex assessment from the PRNewswire funding source and official product site."
+      }
+    ]
+  }
+}
