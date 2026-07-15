@@ -1,0 +1,8 @@
+timestamp: 2026-07-15 19:00:35
+status: retry_pending
+url: https://venturedex.co/startups/feathery
+message: submit confirmation not detected
+page_state: unknown
+
+--- page text ---
+

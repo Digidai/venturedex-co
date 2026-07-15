@@ -1,0 +1,138 @@
+timestamp: 2026-07-15 18:53:06
+status: retry_pending
+url: https://venturedex.co/startups/feathery
+message: request button not found
+page_state: unknown
+
+--- page text ---
+
+	
+
+home
+Overview
+lightbulb_2
+Insights
+trending_up
+Performance
+search
+URL inspection
+Indexing
+keyboard_arrow_up
+file_copy
+Pages
+account_tree
+Sitemaps
+visibility_off
+Removals
+Experience
+keyboard_arrow_up
+speed
+Core Web Vitals
+lock
+HTTPS
+Enhancements
+keyboard_arrow_up
+layers
+Breadcrumbs
+Security & Manual Actions
+keyboard_arrow_down
+link_2
+Links
+trophy
+Achievements
+settings
+Settings
+feedback
+Submit feedback
+info
+About Search Console
+PrivacyTerms
+Overview
+lightbulb_outline
+Get insights into your site's Search performance
+chevron_right
+Explore your insights
+Performance
+chevron_right
+Full report
+0 total web search clicks
+4/19/26
+5/5/26
+5/21/26
+6/6/26
+6/22/26
+7/8/26
+3
+2
+1
+0
+Recommendations
+
+feedback
+Send feedback
+lightbulb
+A page recently got fewer impressions than usual
+Check this page's performance to investigate further
+https://venturedex.co/weekly/4
+arrow_downward
+93%
+Check page performance
+thumb_up_filled
+thumb_up
+thumb_down_filled
+thumb_down
+Indexing
+chevron_right
+Full report
+756 not indexed pages
+273 indexed pages
+4/16/26
+5/2/26
+5/18/26
+6/3/26
+6/19/26
+7/5/26
+900
+600
+300
+0
+Experience
+Type		Good	Needs improvement	Poor	Trend	
+
+Core Web Vitals
+	
+Mobile
+Desktop
+	
+No data
+No data
+	
+No data
+No data
+	
+No data
+No data
+	
+		HTTPS		Non HTTPS		
+
+HTTPS
+		
+150
+		
+0
+	
+	
+chevron_right
+Enhancements
+Type	Valid	Invalid	Trend	
+
+Breadcrumbs
+	
+142
+	
+0
+	
+	
+chevron_right
+Retrieving data from Google Index
+Cancel
