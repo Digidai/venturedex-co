@@ -1351,5 +1351,26 @@
     "short_name": "Chingona",
     "website": "https://www.chingona.ventures/",
     "description": "Early-stage venture capital firm investing in overlooked founders and markets across fintech, work, food, and health."
+  },
+  "m13-ventures": {
+    "name": "M13 Ventures",
+    "slug": "m13-ventures",
+    "short_name": "M13",
+    "website": "https://www.m13.co/",
+    "description": "Early-stage venture capital firm investing in seed and Series A software companies with operating support for founders."
+  },
+  "creaegis": {
+    "name": "Creaegis",
+    "slug": "creaegis",
+    "short_name": "Creaegis",
+    "website": "https://www.creaegis.com/",
+    "description": "Investment management firm backing technology companies with long-term private capital."
+  },
+  "kbr": {
+    "name": "KBR",
+    "slug": "kbr",
+    "short_name": "KBR",
+    "website": "https://www.kbr.com/en",
+    "description": "Science, technology, and engineering company with strategic investment activity across government and industrial technology markets."
   }
 }

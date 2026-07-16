@@ -1,0 +1,97 @@
+{
+  "slug": "emergent",
+  "domain": "emergent.sh",
+  "url": "https://emergent.sh/",
+  "product_name": "Emergent",
+  "summary": "AI app builder for shipping web and mobile software from prompts.",
+  "editor_note": "The useful version of vibe coding for small businesses is less about a prompt box and more about hosting, integrations, GitHub handoff, credits, and repeatable edits. Emergent's pricing and app-builder pages show web apps, mobile apps, dashboards, private hosting, GitHub integration, and larger-context plans. Unlike developer copilots, the target is operators who need an engineering team in a box. The risk is maintainability after demo day.",
+  "editor_rating": 4,
+  "why_featured": "$130M Series C for AI app building",
+  "product_type": "DevTools",
+  "region": "China / Asia",
+  "tags": "ai coding,app builder,no-code,developer tools,smb software",
+  "investors": "Creaegis",
+  "links": {
+    "product": "https://emergent.sh/ai-app-builder",
+    "pricing": "https://emergent.sh/pricing",
+    "docs": "https://help.emergent.sh/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$130M",
+      "stage": "Series C",
+      "lead_investor": "Creaegis",
+      "date": "2026-07-15",
+      "source_url": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-16",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Emergent official site",
+        "url": "https://emergent.sh/",
+        "type": "official"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Emergent pricing page",
+        "url": "https://emergent.sh/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_app_builder",
+        "label": "Emergent AI app builder page",
+        "url": "https://emergent.sh/ai-app-builder",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Emergent docs",
+        "url": "https://help.emergent.sh/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Emergent Series C coverage",
+        "url": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official app-builder page says users can turn natural-language prompts into production-ready websites, apps, dashboards, and mobile builds.",
+        "source_ids": [
+          "official_app_builder"
+        ]
+      },
+      {
+        "claim": "The official pricing page exposes Free, Standard, Pro, and Enterprise plans with credits, private project hosting, GitHub integration, fork tasks, larger context, and system-prompt editing.",
+        "source_ids": [
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The funding source says Emergent has more than 200,000 paying customers and examples spanning trucking, factories, construction, and property-management businesses.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Entrepreneurs, SMB operators, product managers, agencies, and non-specialist builders who need custom internal or customer-facing software.",
+      "category": "AI software generation",
+      "differentiation": "Emergent combines prompt-based app generation with hosting, pricing, GitHub integration, and business-solution pages, aiming at full app delivery rather than code snippets.",
+      "why_now": "AI coding tools are moving from developer copilots into software generation for operators who need working apps but cannot staff a full engineering team."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether apps generated for non-technical SMBs remain debuggable, secure, and maintainable after real customer data and workflow exceptions arrive.",
+        "basis": "VentureDex assessment from the official product pages and Series C coverage."
+      }
+    ]
+  }
+}

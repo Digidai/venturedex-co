@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-11",
+  "verified_at": "2026-07-16",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1540,6 +1540,34 @@
       "local_path": "/logos/companies/linker-finance.svg",
       "source_page": "https://www.linkerfinance.com/",
       "source_url": "https://cdn.prod.website-files.com/680eb381b07bfb98dfc0b117/680eb382b07bfb98dfc0b1fa_Web%20clip.svg"
+    },
+    "rime": {
+      "name": "Rime",
+      "shape": "icon",
+      "local_path": "/logos/companies/rime.png",
+      "source_page": "https://rime.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a4d70b04f64b0fe572eff71/6a554ed17f2b9d0f80597943_rime_LinkedIn_profile.png"
+    },
+    "oak": {
+      "name": "Oak",
+      "shape": "icon",
+      "local_path": "/logos/companies/oak.png",
+      "source_page": "https://www.oak.id/",
+      "source_url": "https://cdn.prod.website-files.com/699c31f14c21ca84334d5864/6a5757798982dd6532c4b7e4_Webclip.png"
+    },
+    "emergent": {
+      "name": "Emergent",
+      "shape": "icon",
+      "local_path": "/logos/companies/emergent.png",
+      "source_page": "https://emergent.sh/",
+      "source_url": "https://cdn.prod.website-files.com/6a0edf12ef1a8562ed56d806/6a16a2342289a062e853d068_emergent.png"
+    },
+    "applied-computing": {
+      "name": "Applied Computing",
+      "shape": "icon",
+      "local_path": "/logos/companies/applied-computing.svg",
+      "source_page": "https://appliedcomputing.com/",
+      "source_url": "https://framerusercontent.com/images/IsiMvqviuDQ4eY3WeMT8gelnQU.svg"
     }
   },
   "investors": {
@@ -2816,6 +2844,29 @@
       "local_path": "/logos/investors/chingona-ventures.ico",
       "source_page": "https://www.chingona.ventures/",
       "source_url": "https://images.squarespace-cdn.com/content/v1/5d824285c5ea6419308819e4/ffdad227-2bf7-464e-a758-4011bbb7e0d7/favicon.ico"
+    },
+    "m13-ventures": {
+      "name": "M13 Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/m13-ventures.svg",
+      "source_page": "https://www.m13.co/",
+      "source_url": "https://cdn.prod.website-files.com/65d4f8a1a62c18a502877cd5/67068646af0f1b25f728e832_m13-logo.svg"
+    },
+    "creaegis": {
+      "name": "Creaegis",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/creaegis.png",
+      "source_page": "https://www.creaegis.com/",
+      "source_url": "https://www.creaegis.com/img/logo.png"
+    },
+    "kbr": {
+      "name": "KBR",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/kbr.svg",
+      "source_page": "https://www.kbr.com/en",
+      "source_url": "https://www.kbr.com/themes/custom/kbrcom/images/logo-kbr-white.svg",
+      "allow_unreachable_source": true,
+      "note": "Official homepage renders in bb-browser and links this SVG, but curl HEAD returns HTTP 406; local logo was fetched through the official same-origin page."
     }
   }
 }

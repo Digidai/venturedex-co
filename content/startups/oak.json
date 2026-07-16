@@ -1,0 +1,103 @@
+{
+  "slug": "oak",
+  "domain": "www.oak.id",
+  "url": "https://www.oak.id/",
+  "product_name": "Oak",
+  "summary": "AI-native identity operating system for humans, machines, and agents.",
+  "editor_note": "Identity systems were brittle before every team added agents, service accounts, and shadow SaaS. Oak's official site frames the wedge as a live graph across human, machine, and AI-agent identities, with pages for intelligence, agent governance, and connectors. Compared with static access reviews, the product aims to clean up entitlements from actual app usage. The risk is whether a new platform earns enough connector depth.",
+  "editor_rating": 4,
+  "why_featured": "$60M seed for AI identity governance",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "identity,security,ai agents,governance,iam",
+  "investors": "Accel, CRV, Greylock",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/oak",
+    "product": "https://www.oak.id/identity-intelligence-layer",
+    "resources": "https://www.oak.id/ai-agent-governance"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "stage": "Seed",
+      "lead_investor": "Accel",
+      "date": "2026-07-15",
+      "source_url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-16",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Oak official site",
+        "url": "https://www.oak.id/",
+        "type": "official"
+      },
+      {
+        "id": "official_identity",
+        "label": "Oak identity intelligence layer",
+        "url": "https://www.oak.id/identity-intelligence-layer",
+        "type": "product"
+      },
+      {
+        "id": "official_agentic_identity",
+        "label": "Oak AI agent governance page",
+        "url": "https://www.oak.id/ai-agent-governance",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Oak official careers page",
+        "url": "https://jobs.ashbyhq.com/oak",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Oak seed coverage",
+        "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes one platform that sees and governs human, machine, and AI-agent identities from a single live graph.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Oak exposes product pages for an identity intelligence layer, AI-agent governance, universal connectors, white-glove migration, and a demo flow.",
+        "source_ids": [
+          "official_site",
+          "official_identity",
+          "official_agentic_identity"
+        ]
+      },
+      {
+        "claim": "The funding source says Oak maps access to application usage and can remove no-longer-needed permissions in real time.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CISOs, identity teams, IT operations, and security engineers governing SaaS, machine, and AI-agent access.",
+      "category": "Identity governance and administration",
+      "differentiation": "Oak is positioning a live identity graph and agent-governance layer as the control plane, rather than selling another static access-review workflow.",
+      "why_now": "AI agents and machine identities are increasing the number of non-human actors with production access faster than legacy IAM review cycles can track."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Oak can build connector coverage and remediation trust quickly enough for security teams to let it change live permissions.",
+        "basis": "VentureDex assessment from the official product pages and seed coverage."
+      },
+      {
+        "claim": "TechCrunch names Accel, CRV, and Greylock as co-leads; Accel is used as the lead investor field to keep the single-lead schema resolvable.",
+        "basis": "Schema handling note based on the TechCrunch seed coverage."
+      }
+    ]
+  }
+}

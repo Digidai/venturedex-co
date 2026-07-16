@@ -1,0 +1,91 @@
+{
+  "slug": "applied-computing",
+  "domain": "appliedcomputing.com",
+  "url": "https://appliedcomputing.com/",
+  "product_name": "Applied Computing",
+  "summary": "Physics-grounded industrial AI model for energy operations.",
+  "editor_note": "Industrial AI demos often fail because models ignore physics, plant constraints, and sensor context. Applied Computing's Orbital product is more specific: it learns from DCS, historian, LIMS, and plant data, then monitors sensors, forecasts outcomes, finds set-points, and flags equipment warnings. Unlike a dashboard, it is framed as a plant model for operational decisions. The risk is scaling beyond expert-led deployments.",
+  "editor_rating": 4,
+  "why_featured": "$20M Series A for plant AI",
+  "product_type": "AI / ML",
+  "region": "Europe",
+  "tags": "industrial ai,energy,operations,physics models,process optimization",
+  "investors": "KBR",
+  "links": {
+    "careers": "https://appliedcomputing.com/about/careers",
+    "product": "https://appliedcomputing.com/watch",
+    "resources": "https://appliedcomputing.com/more/news"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "KBR",
+      "date": "2026-07-15",
+      "source_url": "https://techcrunch.com/2026/07/15/applied-computing-wants-to-give-oil-and-gas-operators-an-ai-model-for-the-entire-plant/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-16",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Applied Computing official site",
+        "url": "https://appliedcomputing.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_demo",
+        "label": "Applied Computing demo page",
+        "url": "https://appliedcomputing.com/watch",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Applied Computing official careers page",
+        "url": "https://appliedcomputing.com/about/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Applied Computing Series A coverage",
+        "url": "https://techcrunch.com/2026/07/15/applied-computing-wants-to-give-oil-and-gas-operators-an-ai-model-for-the-entire-plant/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Orbital monitors thousands of sensors, forecasts outcomes, finds optimal set-points, and informs early equipment warnings in real time.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site describes Orbital connecting to DCS, historians, and LIMS while constraining learned plant behavior with physics.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The funding source says Orbital combines time-series data, physics-based models, and language models to flag anomalies, investigate causes, and model proposed fixes.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Energy operators, refinery teams, petrochemical plant managers, process engineers, and industrial operations leaders.",
+      "category": "Industrial operations intelligence",
+      "differentiation": "Applied Computing is packaging plant-wide sensor data, engineering documents, and physics constraints into an operational model for set-points and anomaly investigation.",
+      "why_now": "Energy operators are under pressure to squeeze more reliability, safety, and yield from existing assets while experienced process engineers are hard to replace."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Orbital can scale from expert-supported deployments to repeatable plant onboarding across different assets, process histories, and data quality levels.",
+        "basis": "VentureDex assessment from the official product site, demo link, careers page, and Series A coverage."
+      }
+    ]
+  }
+}

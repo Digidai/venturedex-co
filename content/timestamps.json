@@ -875,5 +875,21 @@
   "linker-finance": {
     "published_at": "2026-07-15 10:04:01",
     "first_seen_at": "2026-07-15 10:04:01"
+  },
+  "rime": {
+    "published_at": "2026-07-16 05:57:31",
+    "first_seen_at": "2026-07-16 05:57:31"
+  },
+  "oak": {
+    "published_at": "2026-07-16 05:57:31",
+    "first_seen_at": "2026-07-16 05:57:31"
+  },
+  "emergent": {
+    "published_at": "2026-07-16 05:57:31",
+    "first_seen_at": "2026-07-16 05:57:31"
+  },
+  "applied-computing": {
+    "published_at": "2026-07-16 05:57:31",
+    "first_seen_at": "2026-07-16 05:57:31"
   }
 }

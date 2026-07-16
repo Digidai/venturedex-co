@@ -1,0 +1,99 @@
+{
+  "slug": "rime",
+  "domain": "rime.ai",
+  "url": "https://rime.ai/",
+  "product_name": "Rime",
+  "summary": "Enterprise voice models for real-time conversational agents.",
+  "editor_note": "Voice agents fail fast when the voice sounds generic or stalls in the middle of a support call. Rime is pushing below the wrapper layer with enterprise speech models, 600+ voices, multilingual coverage, pricing, docs, and signup all visible. Compared with a generic TTS API, the bet is voice infrastructure for patient, cardholder, airline, and food-service conversations. The risk is noisy, regulated call-center load.",
+  "editor_rating": 4,
+  "why_featured": "$24M Series A for enterprise voice AI",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "voice ai,speech-to-speech,contact center,api,enterprise ai",
+  "investors": "M13 Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/rime",
+    "docs": "https://docs.rime.ai/docs/quickstart-five-minute",
+    "pricing": "https://rime.ai/pricing"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$24M",
+      "stage": "Series A",
+      "lead_investor": "M13 Ventures",
+      "date": "2026-07-15",
+      "source_url": "https://techcrunch.com/2026/07/15/rime-picks-up-24m-series-a-to-help-enterprises-field-customer-calls/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-16",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Rime official site",
+        "url": "https://rime.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Rime quickstart docs",
+        "url": "https://docs.rime.ai/docs/quickstart-five-minute",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Rime pricing page",
+        "url": "https://rime.ai/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Rime official careers page",
+        "url": "https://jobs.ashbyhq.com/rime",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Rime Series A coverage",
+        "url": "https://techcrunch.com/2026/07/15/rime-picks-up-24m-series-a-to-help-enterprises-field-customer-calls/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions Rime as voice models for real-time conversations, listing 600+ voices, 50+ languages, and sub-100ms latency.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official navigation exposes pricing, docs, demo booking, login, and free signup, making the product workflow inspectable beyond a waitlist.",
+        "source_ids": [
+          "official_site",
+          "official_docs",
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The funding source says Rime is moving toward speech-to-speech models to improve latency, turn-taking, and background-noise handling for enterprise calls.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise voice-agent teams, contact-center product leaders, and AI infrastructure teams.",
+      "category": "Conversational voice infrastructure",
+      "differentiation": "Rime focuses on real-time, controllable voice models for regulated customer conversations rather than treating speech as a generic add-on to text agents.",
+      "why_now": "Voice agents are moving from demos to live support calls, where latency, accents, compliance, background noise, and brand tone decide whether automation survives production use."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Rime's speech-to-speech models can maintain natural turn-taking and low latency when deployed across noisy enterprise call-center traffic.",
+        "basis": "VentureDex assessment from the official site, docs, pricing surface, and Series A coverage."
+      }
+    ]
+  }
+}
