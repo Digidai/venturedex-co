@@ -1372,5 +1372,26 @@
     "short_name": "KBR",
     "website": "https://www.kbr.com/en",
     "description": "Science, technology, and engineering company with strategic investment activity across government and industrial technology markets."
+  },
+  "forerunner-ventures": {
+    "name": "Forerunner Ventures",
+    "slug": "forerunner-ventures",
+    "short_name": "Forerunner",
+    "website": "https://www.forerunnerventures.com/",
+    "description": "Venture capital firm investing in companies reshaping consumer experiences, commerce, and culture."
+  },
+  "lux-capital": {
+    "name": "Lux Capital",
+    "slug": "lux-capital",
+    "short_name": "Lux",
+    "website": "https://www.luxcapital.com/",
+    "description": "Venture capital firm backing scientists and technologists building companies at the edge of science, technology, and deep tech."
+  },
+  "copper-sky-capital": {
+    "name": "Copper Sky Capital",
+    "slug": "copper-sky-capital",
+    "short_name": "Copper Sky",
+    "website": "https://copperskycapital.com/",
+    "description": "Early-stage venture capital firm backing AI-first software and enterprise technology companies across underserved markets."
   }
 }

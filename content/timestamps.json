@@ -891,5 +891,21 @@
   "applied-computing": {
     "published_at": "2026-07-16 05:57:31",
     "first_seen_at": "2026-07-16 05:57:31"
+  },
+  "natural": {
+    "published_at": "2026-07-22 11:36:18",
+    "first_seen_at": "2026-07-22 11:36:18"
+  },
+  "skypilot": {
+    "published_at": "2026-07-22 11:36:18",
+    "first_seen_at": "2026-07-22 11:36:18"
+  },
+  "gritt": {
+    "published_at": "2026-07-22 11:36:18",
+    "first_seen_at": "2026-07-22 11:36:18"
+  },
+  "mydecisive": {
+    "published_at": "2026-07-22 11:36:18",
+    "first_seen_at": "2026-07-22 11:36:18"
   }
 }

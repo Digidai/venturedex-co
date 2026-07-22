@@ -1568,6 +1568,34 @@
       "local_path": "/logos/companies/applied-computing.svg",
       "source_page": "https://appliedcomputing.com/",
       "source_url": "https://framerusercontent.com/images/IsiMvqviuDQ4eY3WeMT8gelnQU.svg"
+    },
+    "natural": {
+      "name": "Natural",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/natural.svg",
+      "source_page": "https://www.natural.com/",
+      "source_url": "https://www.natural.com/assets/brand/natural-logo.svg"
+    },
+    "skypilot": {
+      "name": "SkyPilot",
+      "shape": "icon",
+      "local_path": "/logos/companies/skypilot.svg",
+      "source_page": "https://skypilot.ai/",
+      "source_url": "https://skypilot.ai/favicon-48x48.svg"
+    },
+    "gritt": {
+      "name": "Gritt",
+      "shape": "icon",
+      "local_path": "/logos/companies/gritt.svg",
+      "source_page": "https://www.gritt.ai/",
+      "source_url": "https://www.gritt.ai/launch/logo-symbol.svg"
+    },
+    "mydecisive": {
+      "name": "MyDecisive",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/mydecisive.svg",
+      "source_page": "https://www.mydecisive.ai/",
+      "source_url": "https://cdn.mydecisive.ai/media/latest/logo.svg"
     }
   },
   "investors": {
@@ -2867,6 +2895,27 @@
       "source_url": "https://www.kbr.com/themes/custom/kbrcom/images/logo-kbr-white.svg",
       "allow_unreachable_source": true,
       "note": "Official homepage renders in bb-browser and links this SVG, but curl HEAD returns HTTP 406; local logo was fetched through the official same-origin page."
+    },
+    "forerunner-ventures": {
+      "name": "Forerunner Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/forerunner-ventures.png",
+      "source_page": "https://www.forerunnerventures.com/",
+      "source_url": "https://www.forerunnerventures.com/img/forerunner-f.png"
+    },
+    "lux-capital": {
+      "name": "Lux Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/lux-capital.svg",
+      "source_page": "https://www.luxcapital.com/brand",
+      "source_url": "https://cdn.prod.website-files.com/62cdfd11dfb27b3fbe70e0b6/668dd8aee02dca0b115a1a67_lux-color.svg"
+    },
+    "copper-sky-capital": {
+      "name": "Copper Sky Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/copper-sky-capital.png",
+      "source_page": "https://copperskycapital.com/",
+      "source_url": "https://framerusercontent.com/images/yf012EDEI3jCkJ20BZAcXMI0xo.png?width=3480&height=1093"
     }
   }
 }

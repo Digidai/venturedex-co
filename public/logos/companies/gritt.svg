@@ -1,0 +1,26 @@
+<svg width="475" height="303" viewBox="0 0 475 303" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 274" clip-path="url(#clip0_253_421)">
+<rect width="1440" height="9472" transform="translate(-965 -9169)" fill="white"/>
+<g id="Group 202">
+<g id="Logo Symbol" opacity="0.1">
+<g id="Group 1">
+<path id="Vector" d="M223.211 17.7617L103.631 225.054L103.506 225.27L103.631 225.487L171.624 343.32L171.749 343.537H308.251L308.376 343.32L427.982 136.001L479.499 225.27L359.753 432.779H120.247L0.5 225.27L120.247 17.7617H223.211Z" stroke="url(#paint0_linear_253_421)" stroke-width="0.866426"/>
+<path id="Vector_2" d="M359.852 17.7617L399.605 86.6416L359.852 155.523H280.359L240.604 86.6416L280.359 17.7617H359.852Z" stroke="url(#paint1_linear_253_421)" stroke-width="0.866426"/>
+</g>
+</g>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_253_421" x1="240" y1="17.3281" x2="240" y2="433.213" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1D1D18"/>
+<stop offset="0.990385" stop-color="white"/>
+</linearGradient>
+<linearGradient id="paint1_linear_253_421" x1="320.105" y1="17.3281" x2="320.105" y2="155.956" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1D1D18"/>
+<stop offset="0.990385" stop-color="white"/>
+</linearGradient>
+<clipPath id="clip0_253_421">
+<rect width="1440" height="9472" fill="white" transform="translate(-965 -9169)"/>
+</clipPath>
+</defs>
+</svg>

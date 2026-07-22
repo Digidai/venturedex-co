@@ -1,0 +1,98 @@
+{
+  "slug": "skypilot",
+  "domain": "skypilot.ai",
+  "url": "https://skypilot.ai/",
+  "product_name": "SkyPilot",
+  "summary": "AI compute control plane across clouds, clusters, and accelerators.",
+  "editor_note": "GPU scarcity creates a practical kind of lock-in: the job goes where capacity exists. SkyPilot turns Kubernetes, Slurm, on-prem clusters, and 20+ clouds into one control plane for AI work. Unlike another neocloud, the bet is neutrality over owning supply. The risk is whether infra teams want a broker in the middle of production workloads.",
+  "editor_rating": 4,
+  "why_featured": "$20M Seed for AI compute control",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,gpu orchestration,kubernetes,open source,mlops",
+  "investors": "Lux Capital",
+  "links": {
+    "careers": "https://skypilot.ai/about#careers",
+    "docs": "https://docs.skypilot.ai/",
+    "github": "https://github.com/skypilot-org/skypilot",
+    "product": "https://docs-platform.skypilot.ai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Seed",
+      "lead_investor": "Lux Capital",
+      "date": "2026-07-21",
+      "source_url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/",
+      "source_name": "SiliconANGLE"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "SkyPilot official site",
+        "url": "https://skypilot.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "SkyPilot open-source docs",
+        "url": "https://docs.skypilot.ai/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "SkyPilot official careers section",
+        "url": "https://skypilot.ai/about#careers",
+        "type": "official"
+      },
+      {
+        "id": "github_repo",
+        "label": "SkyPilot GitHub repository",
+        "url": "https://github.com/skypilot-org/skypilot",
+        "type": "repository"
+      },
+      {
+        "id": "funding_1",
+        "label": "SkyPilot seed coverage",
+        "url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says SkyPilot manages AI compute across Kubernetes, Slurm, VMs, on-prem clusters, and 20+ clouds under one interface.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official docs expose concrete workflows for launching, managing, and scaling AI workloads across many cloud and cluster backends.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The GitHub repository describes SkyPilot as an AI compute platform for frontier teams and exposes the open-source project surface.",
+        "source_ids": [
+          "github_repo"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Frontier AI teams, ML infrastructure engineers, research labs, and platform teams managing scarce GPU capacity.",
+      "category": "AI compute orchestration",
+      "differentiation": "SkyPilot abstracts fragmented compute into a scheduler and control plane across clouds and clusters rather than locking teams into a single neocloud or hyperscaler.",
+      "why_now": "AI teams are mixing reservations, burst capacity, Kubernetes, Slurm, and new accelerator types as GPU supply fragments across providers."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether production AI teams trust a neutral orchestration layer for quota, failover, monitoring, and workload placement across critical compute pools.",
+        "basis": "VentureDex assessment from the official site, docs, GitHub repository, and seed coverage."
+      }
+    ]
+  }
+}

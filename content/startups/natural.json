@@ -1,0 +1,98 @@
+{
+  "slug": "natural",
+  "domain": "www.natural.com",
+  "url": "https://www.natural.com/",
+  "product_name": "Natural",
+  "summary": "Payments infrastructure for autonomous AI-agent transactions.",
+  "editor_note": "Agent payments will break if the rails still assume a human is watching every checkout. Natural pairs identity, observability, ledgering, routing, compliance, risk, and credit around agents that can hold and move funds after a $30M Series A. Unlike a Stripe wrapper, the bet is a financial control plane for software that transacts at machine speed. The risk is whether banks and buyers trust that much autonomy.",
+  "editor_rating": 4,
+  "why_featured": "$30M Series A for agent payments",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "agent payments,fintech,ai agents,payments infrastructure,compliance",
+  "investors": "Forerunner Ventures",
+  "links": {
+    "careers": "https://www.natural.com/careers",
+    "product": "https://www.natural.com/identity",
+    "resources": "https://www.natural.com/observability"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Forerunner Ventures",
+      "date": "2026-07-20",
+      "source_url": "https://techcrunch.com/2026/07/20/natural-raises-30m-to-reinvent-payments-for-ai-agents-and-take-on-stripe/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Natural official site",
+        "url": "https://www.natural.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_identity",
+        "label": "Natural identity product page",
+        "url": "https://www.natural.com/identity",
+        "type": "product"
+      },
+      {
+        "id": "official_observability",
+        "label": "Natural observability product page",
+        "url": "https://www.natural.com/observability",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Natural official careers page",
+        "url": "https://www.natural.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Natural Series A coverage",
+        "url": "https://techcrunch.com/2026/07/20/natural-raises-30m-to-reinvent-payments-for-ai-agents-and-take-on-stripe/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes Natural as an agentic payments platform for money movement between agents, businesses, and consumers.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Natural's official product pages expose persistent agent identities and payment monitoring or tracing as separate product surfaces.",
+        "source_ids": [
+          "official_identity",
+          "official_observability"
+        ]
+      },
+      {
+        "claim": "The funding source says Natural lets companies allow agents to move and store funds, make autonomous payments, collect funds, and transact with humans or other agents.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI-agent platforms, commerce teams, fintech infrastructure builders, risk teams, and developer teams adding transactional autonomy.",
+      "category": "Agent payments infrastructure",
+      "differentiation": "Natural is building identity, observability, compliance, risk, and money movement around autonomous agents rather than treating agent checkout as a thin API wrapper.",
+      "why_now": "Agentic commerce is moving from demos to real purchasing flows, which creates new disputes, authorization, custody, and monitoring problems when software initiates payments."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether banks, merchants, and buyers accept autonomous-agent payment authorization, dispute handling, and fraud controls at production scale.",
+        "basis": "VentureDex assessment from official product pages and TechCrunch Series A coverage."
+      }
+    ]
+  }
+}

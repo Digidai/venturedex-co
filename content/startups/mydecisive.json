@@ -1,0 +1,110 @@
+{
+  "slug": "mydecisive",
+  "domain": "www.mydecisive.ai",
+  "url": "https://www.mydecisive.ai/",
+  "product_name": "MyDecisive",
+  "summary": "AI DevOps control plane for telemetry decisions in production.",
+  "editor_note": "Observability tools are good at making engineers look backward; production AI needs action while telemetry is still moving. MyDecisive puts SmartHub inside OpenTelemetry, Kubernetes, and Prometheus streams, with P95 latency, PII redaction, trace sampling, and auto-scaling examples. Unlike another dashboard, the bet is runbooks on the wire. The risk is blast-radius control.",
+  "editor_rating": 4,
+  "why_featured": "$12M Seed for AI DevOps control",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "observability,devops,opentelemetry,kubernetes,ai operations",
+  "investors": "Copper Sky Capital",
+  "links": {
+    "careers": "https://www.mydecisive.ai/careers",
+    "docs": "https://docs.mydecisive.ai/",
+    "github": "https://github.com/MyDecisive",
+    "product": "https://www.mydecisive.ai/platform"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Seed",
+      "lead_investor": "Copper Sky Capital",
+      "date": "2026-07-21",
+      "source_url": "https://seedtable.com/companies/mydecisive/funding-rounds/seed-2026-07",
+      "source_name": "Seedtable"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "MyDecisive official site",
+        "url": "https://www.mydecisive.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "MyDecisive SmartHub platform page",
+        "url": "https://www.mydecisive.ai/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "MyDecisive docs",
+        "url": "https://docs.mydecisive.ai/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "MyDecisive official careers page",
+        "url": "https://www.mydecisive.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "github_org",
+        "label": "MyDecisive GitHub organization",
+        "url": "https://github.com/MyDecisive",
+        "type": "repository"
+      },
+      {
+        "id": "funding_1",
+        "label": "MyDecisive seed funding page",
+        "url": "https://seedtable.com/companies/mydecisive/funding-rounds/seed-2026-07",
+        "type": "funding"
+      },
+      {
+        "id": "funding_announcement",
+        "label": "MyDecisive launch announcement",
+        "url": "https://www.prnewswire.com/news-releases/mydecisive-exits-stealth-with-12m-funding-to-redefine-enterprise-it-operations-with-open-source-smarthub-platform-302830260.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site positions MyDecisive as an AI DevOps control plane for production systems, observability, FinOps, and automated operations.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official platform page shows SmartHub working with Kubernetes, OpenTelemetry, Prometheus, PII redaction, trace sampling, and auto-scaling examples.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The launch announcement says SmartHub is open source and Octant is the commercial suite for governance, security, anomaly detection, and runbook automation.",
+        "source_ids": [
+          "funding_announcement"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Platform engineers, SRE teams, observability owners, FinOps teams, and enterprises running AI workloads in production.",
+      "category": "AI DevOps and telemetry automation",
+      "differentiation": "MyDecisive processes telemetry at the edge and ties it to automated runbooks rather than shipping every signal into a passive observability dashboard.",
+      "why_now": "AI workloads are increasing telemetry cost, incident volume, and governance pressure while teams still need fast rollback, sampling, routing, and auto-scaling decisions."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether enterprises allow an AI DevOps layer to edit telemetry routing, scaling, and incident response without unacceptable blast radius.",
+        "basis": "VentureDex assessment from official pages, docs, GitHub surface, and current funding sources."
+      }
+    ]
+  }
+}

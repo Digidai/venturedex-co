@@ -1,0 +1,98 @@
+{
+  "slug": "gritt",
+  "domain": "www.gritt.ai",
+  "url": "https://www.gritt.ai/",
+  "product_name": "Gritt",
+  "summary": "Physical AI systems for outdoor construction and solar builds.",
+  "editor_note": "Construction robotics usually fails when the site stops looking like a lab. Gritt starts with rented machines, off-the-shelf robot arms, and field data from 7+ jobsites, then handles pick-and-place, transport, assembly, verification, and planning. Compared to a bespoke robot, the bet is an AI backbone riding on ordinary equipment. The risk is whether the 4X field gain survives contractor rollout.",
+  "editor_rating": 4,
+  "why_featured": "$26M Series A for solar robots",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "physical ai,robotics,construction,solar,climate infrastructure",
+  "investors": "Obvious Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/gritt",
+    "product": "https://www.gritt.ai/solar",
+    "resources": "https://www.gritt.ai/team"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$26M",
+      "stage": "Series A",
+      "lead_investor": "Obvious Ventures",
+      "date": "2026-07-21",
+      "source_url": "https://www.businesswire.com/news/home/20260720470414/en/Gritt-Launches-with-%2432.4M-to-Build-Physical-AI-for-Accelerating-the-Worlds-Infrastructure-Buildout",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Gritt official site",
+        "url": "https://www.gritt.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_solar",
+        "label": "Gritt solar product page",
+        "url": "https://www.gritt.ai/solar",
+        "type": "product"
+      },
+      {
+        "id": "official_team",
+        "label": "Gritt team page",
+        "url": "https://www.gritt.ai/team",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Gritt official jobs page",
+        "url": "https://jobs.ashbyhq.com/gritt",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Gritt Series A announcement",
+        "url": "https://www.businesswire.com/news/home/20260720470414/en/Gritt-Launches-with-%2432.4M-to-Build-Physical-AI-for-Accelerating-the-Worlds-Infrastructure-Buildout",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Gritt combines robotics and AI for construction, with pick-and-place, transport, assembly, verification, and planning workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Gritt's official site reports 7+ deployed jobsites and a 4X efficiency gain, with systems using rented construction equipment and off-the-shelf attachments.",
+        "source_ids": [
+          "official_site",
+          "official_solar"
+        ]
+      },
+      {
+        "claim": "The funding announcement says Gritt launched with $32.4M total funding, including a $26M Series A led by Obvious Ventures.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Solar EPCs, construction robotics teams, infrastructure contractors, and climate-infrastructure operators.",
+      "category": "Physical AI for construction",
+      "differentiation": "Gritt uses AI software on ordinary construction equipment and robotic attachments rather than requiring a custom robot for every construction workflow.",
+      "why_now": "Utility-scale solar and infrastructure projects face labor, throughput, and field-verification bottlenecks that are difficult to solve with software-only planning tools."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Gritt can reproduce its reported field efficiency across different jobsite layouts, contractors, equipment fleets, and weather conditions.",
+        "basis": "VentureDex assessment from official pages, careers surface, and Business Wire Series A announcement."
+      }
+    ]
+  }
+}
