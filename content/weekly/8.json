@@ -1,0 +1,472 @@
+{
+  "issue_number": 8,
+  "title": "TODO: Weekly research for 2026-07-13 to 2026-07-19",
+  "week_start": "2026-07-13",
+  "week_end": "2026-07-19",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "rime",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/rime.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Rime official site",
+          "source": "content/startups/rime.json research.sources.official_site",
+          "url": "https://rime.ai/"
+        },
+        {
+          "label": "Rime quickstart docs",
+          "source": "content/startups/rime.json research.sources.official_docs",
+          "url": "https://docs.rime.ai/docs/quickstart-five-minute"
+        },
+        {
+          "label": "Rime pricing page",
+          "source": "content/startups/rime.json research.sources.official_pricing",
+          "url": "https://rime.ai/pricing"
+        },
+        {
+          "label": "Rime official careers page",
+          "source": "content/startups/rime.json research.sources.official_careers",
+          "url": "https://jobs.ashbyhq.com/rime"
+        },
+        {
+          "label": "Rime Series A coverage",
+          "source": "content/startups/rime.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/07/15/rime-picks-up-24m-series-a-to-help-enterprises-field-customer-calls/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions Rime as voice models for real-time conversations, listing 600+ voices, 50+ languages, and sub-100ms latency.",
+          "url": "https://rime.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official navigation exposes pricing, docs, demo booking, login, and free signup, making the product workflow inspectable beyond a waitlist.",
+          "url": "https://rime.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Rime is moving toward speech-to-speech models to improve latency, turn-taking, and background-noise handling for enterprise calls.",
+          "url": "https://techcrunch.com/2026/07/15/rime-picks-up-24m-series-a-to-help-enterprises-field-customer-calls/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Rime homepage",
+          "url": "https://rime.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/15/rime-picks-up-24m-series-a-to-help-enterprises-field-customer-calls/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Rime's speech-to-speech models can maintain natural turn-taking and low latency when deployed across noisy enterprise call-center traffic.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "oak",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/oak.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Oak official site",
+          "source": "content/startups/oak.json research.sources.official_site",
+          "url": "https://www.oak.id/"
+        },
+        {
+          "label": "Oak identity intelligence layer",
+          "source": "content/startups/oak.json research.sources.official_identity",
+          "url": "https://www.oak.id/identity-intelligence-layer"
+        },
+        {
+          "label": "Oak AI agent governance page",
+          "source": "content/startups/oak.json research.sources.official_agentic_identity",
+          "url": "https://www.oak.id/ai-agent-governance"
+        },
+        {
+          "label": "Oak official careers page",
+          "source": "content/startups/oak.json research.sources.official_careers",
+          "url": "https://jobs.ashbyhq.com/oak"
+        },
+        {
+          "label": "Oak seed coverage",
+          "source": "content/startups/oak.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes one platform that sees and governs human, machine, and AI-agent identities from a single live graph.",
+          "url": "https://www.oak.id/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Oak exposes product pages for an identity intelligence layer, AI-agent governance, universal connectors, white-glove migration, and a demo flow.",
+          "url": "https://www.oak.id/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Oak maps access to application usage and can remove no-longer-needed permissions in real time.",
+          "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Oak homepage",
+          "url": "https://www.oak.id/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/15/backed-by-60m-in-funding-oak-steps-out-of-stealth-to-fix-the-identity-mess-that-ai-agents-are-making-worse/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Oak can build connector coverage and remediation trust quickly enough for security teams to let it change live permissions.",
+        "Research risk candidate: TechCrunch names Accel, CRV, and Greylock as co-leads; Accel is used as the lead investor field to keep the single-lead schema resolvable.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "emergent",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/emergent.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Emergent official site",
+          "source": "content/startups/emergent.json research.sources.official_site",
+          "url": "https://emergent.sh/"
+        },
+        {
+          "label": "Emergent pricing page",
+          "source": "content/startups/emergent.json research.sources.official_pricing",
+          "url": "https://emergent.sh/pricing"
+        },
+        {
+          "label": "Emergent AI app builder page",
+          "source": "content/startups/emergent.json research.sources.official_app_builder",
+          "url": "https://emergent.sh/ai-app-builder"
+        },
+        {
+          "label": "Emergent docs",
+          "source": "content/startups/emergent.json research.sources.official_docs",
+          "url": "https://help.emergent.sh/"
+        },
+        {
+          "label": "Emergent Series C coverage",
+          "source": "content/startups/emergent.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official app-builder page says users can turn natural-language prompts into production-ready websites, apps, dashboards, and mobile builds.",
+          "url": "https://emergent.sh/ai-app-builder"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official pricing page exposes Free, Standard, Pro, and Enterprise plans with credits, private project hosting, GitHub integration, fork tasks, larger context, and system-prompt editing.",
+          "url": "https://emergent.sh/pricing"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Emergent has more than 200,000 paying customers and examples spanning trucking, factories, construction, and property-management businesses.",
+          "url": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Emergent homepage",
+          "url": "https://emergent.sh/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/15/indian-ai-coding-startup-emergent-becomes-a-unicorn-just-over-a-year-after-launch/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether apps generated for non-technical SMBs remain debuggable, secure, and maintainable after real customer data and workflow exceptions arrive.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "applied-computing",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/applied-computing.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Applied Computing official site",
+          "source": "content/startups/applied-computing.json research.sources.official_site",
+          "url": "https://appliedcomputing.com/"
+        },
+        {
+          "label": "Applied Computing demo page",
+          "source": "content/startups/applied-computing.json research.sources.official_demo",
+          "url": "https://appliedcomputing.com/watch"
+        },
+        {
+          "label": "Applied Computing official careers page",
+          "source": "content/startups/applied-computing.json research.sources.official_careers",
+          "url": "https://appliedcomputing.com/about/careers"
+        },
+        {
+          "label": "Applied Computing Series A coverage",
+          "source": "content/startups/applied-computing.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/07/15/applied-computing-wants-to-give-oil-and-gas-operators-an-ai-model-for-the-entire-plant/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Orbital monitors thousands of sensors, forecasts outcomes, finds optimal set-points, and informs early equipment warnings in real time.",
+          "url": "https://appliedcomputing.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site describes Orbital connecting to DCS, historians, and LIMS while constraining learned plant behavior with physics.",
+          "url": "https://appliedcomputing.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Orbital combines time-series data, physics-based models, and language models to flag anomalies, investigate causes, and model proposed fixes.",
+          "url": "https://techcrunch.com/2026/07/15/applied-computing-wants-to-give-oil-and-gas-operators-an-ai-model-for-the-entire-plant/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Applied Computing homepage",
+          "url": "https://appliedcomputing.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/15/applied-computing-wants-to-give-oil-and-gas-operators-an-ai-model-for-the-entire-plant/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Orbital can scale from expert-supported deployments to repeatable plant onboarding across different assets, process histories, and data quality levels.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "linker-finance",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/linker-finance.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Linker Finance official site",
+          "source": "content/startups/linker-finance.json research.sources.official_site",
+          "url": "https://www.linkerfinance.com/"
+        },
+        {
+          "label": "Linker Finance security page",
+          "source": "content/startups/linker-finance.json research.sources.official_security",
+          "url": "https://www.linkerfinance.com/security"
+        },
+        {
+          "label": "Linker Finance official careers page",
+          "source": "content/startups/linker-finance.json research.sources.official_careers",
+          "url": "https://www.linkerfinance.com/careers"
+        },
+        {
+          "label": "Linker Finance funding announcement",
+          "source": "content/startups/linker-finance.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/linker-finance-secures-5-million-seed-to-accelerate-growth-engine-for-community-banks-302824716.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Linker supports digital account opening in under 3 minutes with KYC, fraud checks, core-account creation, and account funding.",
+          "url": "https://www.linkerfinance.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site lists business onboarding, retail banking, commercial banking, Positive Pay, Treasury Management, and RDC capabilities.",
+          "url": "https://www.linkerfinance.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Linker is live with more than 10 customers across multiple cores, including Fiserv Premier, CSI, FIS, and soon DCI.",
+          "url": "https://www.prnewswire.com/news-releases/linker-finance-secures-5-million-seed-to-accelerate-growth-engine-for-community-banks-302824716.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Linker Finance homepage",
+          "url": "https://www.linkerfinance.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/linker-finance-secures-5-million-seed-to-accelerate-growth-engine-for-community-banks-302824716.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The funding announcement does not name a formal lead; Chingona Ventures is used as the representative lead because it is the first named returning investor with a sourced quote.",
+        "Research risk candidate: A second open question is whether the emerging AI and stablecoin-enabled payment capabilities distract from the clearer community-bank onboarding wedge.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "instalily",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/instalily.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "InstaLILY official site",
+          "source": "content/startups/instalily.json research.sources.official_site",
+          "url": "https://www.instalily.ai/"
+        },
+        {
+          "label": "InstaLILY Lily product page",
+          "source": "content/startups/instalily.json research.sources.official_product",
+          "url": "https://www.instalily.ai/lily"
+        },
+        {
+          "label": "InstaLILY Series B research post",
+          "source": "content/startups/instalily.json research.sources.official_research",
+          "url": "https://www.instalily.ai/research/the-engineer-that-never-leaves"
+        },
+        {
+          "label": "InstaLILY official careers page",
+          "source": "content/startups/instalily.json research.sources.official_careers",
+          "url": "https://www.instalily.ai/careers"
+        },
+        {
+          "label": "InstaLILY funding coverage",
+          "source": "content/startups/instalily.json research.sources.funding_1",
+          "url": "https://www.thesaasnews.com/news/instalily-raises-60m-series-b/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site describes Lily as an AI forward-deployed engineer that learns a business, builds needed software, deploys it, and stays current.",
+          "url": "https://www.instalily.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site lists operational systems and data sources including SAP, NetSuite, Epicor, Salesforce, HubSpot, Snowflake, inboxes, and PDFs.",
+          "url": "https://www.instalily.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official research post says Lily is live in construction, industrial distribution, logistics, field service, and healthcare operations.",
+          "url": "https://www.instalily.ai/research/the-engineer-that-never-leaves"
+        },
+        {
+          "label": "Official product site",
+          "source": "InstaLILY homepage",
+          "url": "https://www.instalily.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "The SaaS News",
+          "url": "https://www.thesaasnews.com/news/instalily-raises-60m-series-b/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether each customer deployment can remain productized enough to avoid a labor-heavy forward-deployed engineering model.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "hadrius",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/hadrius.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Hadrius official site",
+          "source": "content/startups/hadrius.json research.sources.official_site",
+          "url": "https://www.hadrius.com/"
+        },
+        {
+          "label": "Hadrius communications oversight page",
+          "source": "content/startups/hadrius.json research.sources.official_product",
+          "url": "https://www.hadrius.com/solutions/communications-oversight"
+        },
+        {
+          "label": "Hadrius official careers page",
+          "source": "content/startups/hadrius.json research.sources.official_careers",
+          "url": "https://www.hadrius.com/careers"
+        },
+        {
+          "label": "Hadrius funding announcement",
+          "source": "content/startups/hadrius.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/hadrius-raises-27-million-to-build-agentic-compliance-infrastructure-302824196.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site groups marketing review, communications archiving, trade surveillance, employee oversight, and firm oversight in one compliance platform.",
+          "url": "https://www.hadrius.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The communications page says Hadrius supports email, chat, and social supervision with zero-retention AI, WORM archiving, and immutable timelines.",
+          "url": "https://www.hadrius.com/solutions/communications-oversight"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The funding source says Hadrius reduces false positives by 95%, manual compliance work by 70%, and saves 20+ hours per week.",
+          "url": "https://www.prnewswire.com/news-releases/hadrius-raises-27-million-to-build-agentic-compliance-infrastructure-302824196.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "Hadrius homepage",
+          "url": "https://www.hadrius.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/hadrius-raises-27-million-to-build-agentic-compliance-infrastructure-302824196.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Hadrius can keep its review rules, integrations, and evidence packs current across each regulator and firm policy set.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
