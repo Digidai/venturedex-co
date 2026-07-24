@@ -6,6 +6,7 @@ import json
 import re
 import subprocess
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -138,7 +139,7 @@ CURL_BROWSER_HEADERS = [
 CURL_MAX_TIME_SECONDS = "8"
 CURL_CONNECT_TIMEOUT_SECONDS = "4"
 CURL_RETRY_COUNT = "1"
-CURL_RETRY_DELAY_SECONDS = "0"
+CURL_RETRY_DELAY_SECONDS = "1"
 CURL_PROCESS_TIMEOUT_SECONDS = 24
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
 ALLOWED_RESEARCH_SOURCE_TYPES = {
@@ -167,6 +168,10 @@ ALLOWED_LINK_FIELDS = {
     "twitter",
 }
 URL_CHECK_WORKERS = 16
+GET_ONLY_SERIAL_HOSTS = {"globenewswire.com"}
+SERIAL_HOST_DELAY_SECONDS = 2.0
+RETRYABLE_HTTP_STATUSES = {"408", "429", "500", "502", "503", "504"}
+GET_ONLY_RETRY_DELAYS_SECONDS = (2.0, 5.0)
 
 
 @dataclass
@@ -1071,9 +1076,12 @@ def prime_url_cache(startup_files: list[Path], url_cache: dict[str, str]) -> Non
         return
 
     print(f"Checking {len(urls)} external URLs...", flush=True)
+    parallel_urls = [url for url in urls if normalize_host(url) not in GET_ONLY_SERIAL_HOSTS]
+    serial_urls = [url for url in urls if normalize_host(url) in GET_ONLY_SERIAL_HOSTS]
+    completed = 0
+
     with ThreadPoolExecutor(max_workers=URL_CHECK_WORKERS) as executor:
-        future_to_url = {executor.submit(fetch_url_status, url): url for url in urls}
-        completed = 0
+        future_to_url = {executor.submit(fetch_url_status, url): url for url in parallel_urls}
         for future in as_completed(future_to_url):
             url = future_to_url[future]
             try:
@@ -1083,6 +1091,20 @@ def prime_url_cache(startup_files: list[Path], url_cache: dict[str, str]) -> Non
             completed += 1
             if completed == len(urls) or completed % 100 == 0:
                 print(f"  URL checks: {completed}/{len(urls)}", flush=True)
+
+    # GlobeNewswire intermittently returns 503 when many HEAD requests arrive
+    # together. A serialized browser-style GET still enforces reachability while
+    # avoiding a validator-created burst against the same official source host.
+    for index, url in enumerate(serial_urls):
+        if index:
+            time.sleep(SERIAL_HOST_DELAY_SECONDS)
+        try:
+            url_cache[url] = fetch_url_status(url)
+        except Exception:
+            url_cache[url] = "000"
+        completed += 1
+        if completed == len(urls) or completed % 100 == 0:
+            print(f"  URL checks: {completed}/{len(urls)}", flush=True)
 
 
 def collect_validation_urls(startup_files: list[Path]) -> set[str]:
@@ -1143,15 +1165,17 @@ def check_url(url: str, *, cache: dict[str, str]) -> str:
 
 
 def fetch_url_status(url: str) -> str:
+    get_only = normalize_host(url) in GET_ONLY_SERIAL_HOSTS
     attempts = (
-        ["-I"],
-        [],
+        tuple([] for _ in range(len(GET_ONLY_RETRY_DELAYS_SECONDS) + 1))
+        if get_only
+        else (["-I"], [])
     )
 
     status = "000"
     definitive_status: str | None = None
     for attempt_index, extra_args in enumerate(attempts):
-        headers = CURL_HEAD_HEADERS if attempt_index == 0 else CURL_BROWSER_HEADERS
+        headers = CURL_BROWSER_HEADERS if get_only or attempt_index > 0 else CURL_HEAD_HEADERS
         cmd = [
             "/usr/bin/curl",
             "-sS",
@@ -1189,6 +1213,14 @@ def fetch_url_status(url: str) -> str:
         status = proc.stdout.strip() or "000"
         if status in HTTP_OK:
             definitive_status = status
+            break
+        if get_only:
+            if status in RETRYABLE_HTTP_STATUSES and attempt_index < len(attempts) - 1:
+                definitive_status = status
+                time.sleep(GET_ONLY_RETRY_DELAYS_SECONDS[attempt_index])
+                continue
+            if status not in HTTP_FALLBACK:
+                definitive_status = status
             break
         if attempt_index == 0 and status in HTTP_GET_RETRY_AFTER_HEAD:
             if status not in HTTP_FALLBACK:
