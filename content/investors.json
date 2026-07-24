@@ -1393,5 +1393,15 @@
     "short_name": "Copper Sky",
     "website": "https://copperskycapital.com/",
     "description": "Early-stage venture capital firm backing AI-first software and enterprise technology companies across underserved markets."
+  },
+  "rsquared-investment": {
+    "name": "Rsquared Investment",
+    "slug": "rsquared-investment",
+    "short_name": "Rsquared",
+    "website": "https://bossjob.com/",
+    "description": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed round.",
+    "aliases": [
+      "Rsquared Investment Pte. Ltd."
+    ]
   }
 }

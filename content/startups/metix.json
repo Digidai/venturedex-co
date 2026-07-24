@@ -1,0 +1,118 @@
+{
+  "slug": "metix",
+  "domain": "metix.ai",
+  "url": "https://metix.ai/",
+  "product_name": "Metix AI",
+  "summary": "AI-native hiring platform combining agent-run recruiting with expert delivery.",
+  "editor_note": "The sharper bet is to sell completed recruiting work, not another ATS seat. Metix pairs 4 workflow stages—sourcing, outreach, screening, and scheduling—with expert shortlist review, then exposes a demo and outcome-based pricing. Unlike sourcing copilots that hand recruiters another queue, it is accountable for interview-ready candidates. The open question is whether the human layer can shrink as volume grows or each customer stays service-heavy.",
+  "editor_rating": 4,
+  "why_featured": "$3M Seed for outcome-priced recruiting",
+  "product_type": "AI / ML",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "recruiting,ai agents,talent acquisition,outcome pricing,human-in-the-loop",
+  "investors": "Rsquared Investment",
+  "links": {
+    "product": "https://metix.ai/demo",
+    "pricing": "https://metix.ai/pricing",
+    "careers": "https://metix.ai/careers",
+    "press": "https://metix.ai/blog/metix-ai-raises-5-5m",
+    "github": "https://github.com/OpenJobsAI",
+    "twitter": "https://x.com/metix_ai",
+    "linkedin": "https://www.linkedin.com/company/metixai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3M",
+      "stage": "Seed",
+      "lead_investor": "Rsquared Investment",
+      "date": "2026-07-13",
+      "source_url": "https://app.dealroom.co/news/note/metix-ai-raises-3m-seed-for-autonomous-recruiting-agent-mira",
+      "source_name": "Dealroom.co"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Metix AI official site",
+        "url": "https://metix.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_demo",
+        "label": "Metix AI interactive demo",
+        "url": "https://metix.ai/demo",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Metix AI pricing",
+        "url": "https://metix.ai/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Metix AI careers",
+        "url": "https://metix.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "official_funding",
+        "label": "Metix AI funding and rebrand announcement",
+        "url": "https://metix.ai/blog/metix-ai-raises-5-5m",
+        "type": "funding"
+      },
+      {
+        "id": "funding_1",
+        "label": "Dealroom Metix AI Seed coverage",
+        "url": "https://app.dealroom.co/news/note/metix-ai-raises-3m-seed-for-autonomous-recruiting-agent-mira",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official demo exposes a four-step hiring walkthrough from role definition through sample review, candidate outreach, and completion without requiring an account.",
+        "source_ids": [
+          "official_demo"
+        ]
+      },
+      {
+        "claim": "The official pricing page ties each credit to an interested, hire-ready candidate, waives the credit when a candidate is not worth meeting, and offers a 14-day trial without a card.",
+        "source_ids": [
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The official funding announcement describes sourcing, outreach, screening, and scheduling across a global talent network, followed by delivery-team review before the shortlist reaches the customer.",
+        "source_ids": [
+          "official_funding"
+        ]
+      },
+      {
+        "claim": "Dealroom reports that Mira manages the hiring flow from drafting job descriptions through candidate interaction using a vertical language model and agent layer.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Founders without internal recruiting capacity and talent-acquisition teams overloaded by sourcing.",
+      "category": "AI-native recruiting operations",
+      "differentiation": "Metix combines agent-run sourcing, outreach, screening, and scheduling with human shortlist review, then charges for interview-ready candidates instead of software access or recruiter hours.",
+      "why_now": "The latest $3M Seed round funds deeper automation and North American expansion as vertical AI agents move from workflow assistance toward accountable outcome delivery."
+    },
+    "risks": [
+      {
+        "claim": "If delivery-team hours do not fall per qualified interview as customer volume grows, gross margins and software-like scalability will remain constrained.",
+        "basis": "The official funding announcement says people review every shortlist and that part of the new funding will expand the delivery team."
+      },
+      {
+        "claim": "The $5.5M headline is cumulative across two rounds, so treating it as the latest round would overstate this financing event.",
+        "basis": "The official announcement separates an earlier $2.5M seed from the latest $3M round; Dealroom labels the current event a $3M Seed."
+      }
+    ]
+  }
+}

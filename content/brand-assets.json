@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-24",
+  "verified_at": "2026-07-25",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1624,6 +1624,13 @@
       "local_path": "/logos/companies/infinity.png",
       "source_page": "https://infinity.inc/",
       "source_url": "https://infinity.inc/infinity_small.png"
+    },
+    "metix": {
+      "name": "Metix AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/metix.svg",
+      "source_page": "https://metix.ai/",
+      "source_url": "https://brand.metix.ai/logos/metix-app-icon.svg"
     }
   },
   "investors": {
@@ -2944,6 +2951,14 @@
       "local_path": "/logos/investors/copper-sky-capital.png",
       "source_page": "https://copperskycapital.com/",
       "source_url": "https://framerusercontent.com/images/yf012EDEI3jCkJ20BZAcXMI0xo.png?width=3480&height=1093"
+    },
+    "rsquared-investment": {
+      "name": "Rsquared Investment",
+      "shape": "icon",
+      "local_path": "/logos/investors/rsquared-investment.png",
+      "source_page": "https://bossjob.com/",
+      "source_url": "https://bossjob.com/favicon.ico",
+      "note": "Rsquared Investment Pte. Ltd. is the Singapore company behind Bossjob; this is its only verified public brand surface and is not affiliated with similarly named U.S. firms."
     }
   }
 }
