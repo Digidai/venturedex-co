@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-16",
+  "verified_at": "2026-07-24",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1596,6 +1596,34 @@
       "local_path": "/logos/companies/mydecisive.svg",
       "source_page": "https://www.mydecisive.ai/",
       "source_url": "https://cdn.mydecisive.ai/media/latest/logo.svg"
+    },
+    "aegisai": {
+      "name": "AegisAI",
+      "shape": "icon",
+      "local_path": "/logos/companies/aegisai.png",
+      "source_page": "https://www.aegisai.ai/",
+      "source_url": "https://cdn.prod.website-files.com/68a5997d75521225dec56569/68ca09fa5580f7f11ad81cf8_favicon-32x32.png"
+    },
+    "paper": {
+      "name": "Paper",
+      "shape": "icon",
+      "local_path": "/logos/companies/paper.ico",
+      "source_page": "https://paper.design/",
+      "source_url": "https://paper.design/favicon.ico"
+    },
+    "cascade": {
+      "name": "Cascade",
+      "shape": "icon",
+      "local_path": "/logos/companies/cascade.png",
+      "source_page": "https://usecascade.ai/",
+      "source_url": "https://usecascade.ai/favicon.png"
+    },
+    "infinity": {
+      "name": "Infinity",
+      "shape": "icon",
+      "local_path": "/logos/companies/infinity.png",
+      "source_page": "https://infinity.inc/",
+      "source_url": "https://infinity.inc/infinity_small.png"
     }
   },
   "investors": {

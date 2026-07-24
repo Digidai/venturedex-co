@@ -1,0 +1,97 @@
+{
+  "slug": "paper",
+  "domain": "paper.design",
+  "url": "https://paper.design/",
+  "product_name": "Paper",
+  "summary": "HTML and CSS design canvas shared by product teams, codebases, and AI agents.",
+  "editor_note": "Design handoff breaks when the agent sees code but not the canvas. Paper uses HTML and CSS as the rendering layer, then lets Cursor, Claude Code, Codex, and other tools read or write design files through its desktop MCP server. Unlike an image-first mockup tool, the bet is a continuous loop from production code to canvas and back, now backed by a $34M Series A. The risk is whether a desktop-local bridge can become a governed source of truth for large teams.",
+  "editor_rating": 5,
+  "why_featured": "$34M Series A for agent-connected design",
+  "product_type": "Creator Tools",
+  "region": "Global / Remote",
+  "tags": "design tools,html,css,mcp,ai agents",
+  "investors": "Accel",
+  "links": {
+    "product": "https://app.paper.design/",
+    "docs": "https://paper.design/docs",
+    "mcp": "https://paper.design/docs/mcp",
+    "pricing": "https://paper.design/pricing"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$34M",
+      "stage": "Series A",
+      "lead_investor": "Accel",
+      "date": "2026-07-22",
+      "source_url": "https://paper.design/blog/series-a",
+      "source_name": "Paper"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Paper official site",
+        "url": "https://paper.design/",
+        "type": "official"
+      },
+      {
+        "id": "official_mcp",
+        "label": "Paper MCP documentation",
+        "url": "https://paper.design/docs/mcp",
+        "type": "product"
+      },
+      {
+        "id": "official_downloads",
+        "label": "Paper Desktop downloads",
+        "url": "https://paper.design/downloads",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Paper Series A announcement",
+        "url": "https://paper.design/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents a live design canvas built on HTML and CSS, with workflows for syncing tokens, styles, components, content, and production code.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Paper's MCP documentation shows that agents can read and write design files through Paper Desktop and gives concrete connection instructions for Cursor, Claude Code, Codex, Copilot, and OpenCode.",
+        "source_ids": [
+          "official_mcp",
+          "official_downloads"
+        ]
+      },
+      {
+        "claim": "The homepage exposes separate Web, Desktop, MCP, Snapshot, and Shaders product surfaces rather than a single design-demo landing page.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Product designers, design engineers, software teams, and organizations building interfaces with coding agents.",
+      "category": "Agent-connected product design",
+      "differentiation": "Paper treats web standards as the shared representation between canvas and code, then exposes that canvas to agents through a read-write MCP surface.",
+      "why_now": "Coding agents are compressing implementation time, but design context, real data, responsive variants, and visual review still fragment across separate tools."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable product risk is whether Paper's desktop-local MCP workflow can support permissions, concurrency, auditability, and design-system governance for larger teams.",
+        "basis": "The official MCP documentation requires Paper Desktop and starts a local MCP server in the background."
+      },
+      {
+        "claim": "The funding announcement names Accel and ICONIQ but does not designate a formal lead; Accel is recorded as the representative lead because it is the first investor named.",
+        "basis": "VentureDex normalization under the Daily standard from Paper's official Series A announcement."
+      }
+    ]
+  }
+}

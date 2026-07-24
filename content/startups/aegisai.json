@@ -1,0 +1,102 @@
+{
+  "slug": "aegisai",
+  "domain": "www.aegisai.ai",
+  "url": "https://www.aegisai.ai/",
+  "product_name": "AegisAI",
+  "summary": "Agentic email security deployed through Microsoft 365 and Google Workspace APIs.",
+  "editor_note": "Email attacks now move faster than rule-writing. AegisAI deploys through Microsoft 365 and Google Workspace APIs without changing MX records, then uses coordinated agents for detection, triage, and response. Unlike a secure email gateway, the bet is analyst-style reasoning inside each inbox, backed by a $36M Series A. The risk is proving its vendor-reported detection gains across a customer base broader than the current early adopters.",
+  "editor_rating": 4,
+  "why_featured": "$36M Series A for agentic email defense",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "email security,cybersecurity,ai agents,phishing,microsoft 365",
+  "investors": "Battery Ventures",
+  "links": {
+    "careers": "https://www.aegisai.ai/careers",
+    "product": "https://www.aegisai.ai/product",
+    "resources": "https://www.aegisai.ai/customers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$36M",
+      "stage": "Series A",
+      "lead_investor": "Battery Ventures",
+      "date": "2026-07-23",
+      "source_url": "https://www.prnewswire.com/news-releases/aegisai-raises-36-million-series-a-led-by-battery-ventures-to-fight-the-new-wave-of-ai-spear-phishing-302833624.html",
+      "source_name": "PRNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "AegisAI official site",
+        "url": "https://www.aegisai.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "AegisAI product page",
+        "url": "https://www.aegisai.ai/product",
+        "type": "product"
+      },
+      {
+        "id": "official_customers",
+        "label": "AegisAI customer stories",
+        "url": "https://www.aegisai.ai/customers",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "AegisAI official careers page",
+        "url": "https://www.aegisai.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "AegisAI Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/aegisai-raises-36-million-series-a-led-by-battery-ventures-to-fight-the-new-wave-of-ai-spear-phishing-302833624.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product page says AegisAI connects through Google Workspace and Microsoft 365 APIs, needs no MX-record change, and can begin in monitoring mode.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The product page exposes automated triage, agent summaries, indicators of compromise, recommended actions, dashboards, and executive reporting rather than only a phishing classifier.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The official site publishes named customer evidence from Mesh, Lokker, LangChain, and other security teams describing deployed threat detection and dashboard workflows.",
+        "source_ids": [
+          "official_site",
+          "official_customers"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security operations teams, CISOs, IT administrators, and enterprises running Microsoft 365 or Google Workspace.",
+      "category": "AI-native email security",
+      "differentiation": "AegisAI uses an orchestrated network of language-model agents and direct mailbox APIs instead of depending on static gateway rules, signatures, or MX rerouting.",
+      "why_now": "Generative AI is lowering the cost of personalized phishing and business-email compromise while security teams still face alert fatigue and slow gateway deployment."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable product risk is whether AegisAI's reported reductions in false positives and added attack detection reproduce across independent evaluations and a wider enterprise customer base.",
+        "basis": "The performance figures are published by AegisAI on its own product pages alongside early customer testimonials."
+      },
+      {
+        "claim": "AegisAI's homepage currently labels the Series A as $49M, while the company-supplied funding announcement says the round was $36M and total funding reached $49M.",
+        "basis": "Direct comparison of the official homepage banner and the July 23 PRNewswire announcement supplied by AegisAI."
+      }
+    ]
+  }
+}

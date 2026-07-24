@@ -1,0 +1,113 @@
+{
+  "slug": "infinity",
+  "domain": "infinity.inc",
+  "url": "https://infinity.inc/",
+  "product_name": "Infinity",
+  "summary": "AI-generated inference software that makes new accelerator hardware production-ready.",
+  "editor_note": "A new AI chip is only useful when its inference stack catches up. Infinity's agents generate and tune kernels for specific hardware, reaching more than 90% of d-Matrix's theoretical peak in 10 hours and end-to-end Qwen3 inference in 10 days. Unlike a chipmaker or general serving framework, the bet is automated software for every accelerator, backed by a $15M Seed. The risk is whether benchmark gains repeat across architectures without each deployment becoming bespoke services.",
+  "editor_rating": 5,
+  "why_featured": "$15M Seed for AI-chip inference software",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai infrastructure,inference,semiconductors,kernel optimization,ai agents",
+  "investors": "Touring Capital",
+  "links": {
+    "careers": "https://infinity.inc/careers",
+    "product": "https://infinity.inc/partnerships/hardware",
+    "resources": "https://infinity.inc/research",
+    "press": "https://infinity.inc/press"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Seed",
+      "lead_investor": "Touring Capital",
+      "date": "2026-07-20",
+      "source_url": "https://infinity.inc/press/seed-funding",
+      "source_name": "Infinity"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Infinity official site",
+        "url": "https://infinity.inc/",
+        "type": "official"
+      },
+      {
+        "id": "official_hardware",
+        "label": "Infinity hardware-partnership product page",
+        "url": "https://infinity.inc/partnerships/hardware",
+        "type": "product"
+      },
+      {
+        "id": "official_dmatrix",
+        "label": "Infinity d-Matrix implementation report",
+        "url": "https://infinity.inc/research/dmatrix-corsair",
+        "type": "product"
+      },
+      {
+        "id": "official_benchmark",
+        "label": "Infinity Qwen3 inference benchmark",
+        "url": "https://infinity.inc/research/qwen3-optimization",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Infinity official careers page",
+        "url": "https://infinity.inc/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Infinity seed announcement",
+        "url": "https://infinity.inc/press/seed-funding",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Infinity's official product surface says hardware specifications are the input and a model-specific, production-ready inference library is the output, with support spanning accelerator architectures and modalities.",
+        "source_ids": [
+          "official_site",
+          "official_hardware"
+        ]
+      },
+      {
+        "claim": "The d-Matrix report says Infinity reached more than 90% of theoretical peak for matrix operations within 10 hours and brought Qwen3 to end-to-end inference within 10 days.",
+        "source_ids": [
+          "official_dmatrix"
+        ]
+      },
+      {
+        "claim": "Infinity publishes a Qwen3-8B benchmark in which its generated stack delivered up to 34.3% more tokens per second than vLLM under stated identical parameters.",
+        "source_ids": [
+          "official_benchmark"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI accelerator companies, inference providers, cloud platforms, chip architects, and low-level performance engineering teams.",
+      "category": "AI accelerator inference enablement",
+      "differentiation": "Infinity generates model-aware kernels and serving libraries for each target architecture instead of asking scarce human teams to port a general framework by hand.",
+      "why_now": "New accelerators are arriving faster than mature software ecosystems can form, while inference economics increasingly depend on usable throughput rather than theoretical chip specifications."
+    },
+    "risks": [
+      {
+        "claim": "Infinity's published Qwen3 benchmark says its independent third-party audit is still pending.",
+        "basis": "The benchmark-integrity section of Infinity's official Qwen3 optimization report."
+      },
+      {
+        "claim": "The falsifiable business risk is whether Infinity can repeat its results across partner architectures without each deployment requiring a large amount of bespoke engineering.",
+        "basis": "The seed announcement says Infinity works shoulder to shoulder with partner engineering teams and aligns revenue to performance gains."
+      },
+      {
+        "claim": "The funding source does not name a formal lead; Touring Capital is recorded as the representative lead because it is the first institutional investor named.",
+        "basis": "VentureDex normalization under the Daily standard from Infinity's official seed announcement."
+      }
+    ]
+  }
+}

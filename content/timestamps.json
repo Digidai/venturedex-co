@@ -907,5 +907,21 @@
   "mydecisive": {
     "published_at": "2026-07-22 11:36:18",
     "first_seen_at": "2026-07-22 11:36:18"
+  },
+  "aegisai": {
+    "published_at": "2026-07-24 11:32:15",
+    "first_seen_at": "2026-07-24 11:32:15"
+  },
+  "paper": {
+    "published_at": "2026-07-24 11:32:15",
+    "first_seen_at": "2026-07-24 11:32:15"
+  },
+  "cascade": {
+    "published_at": "2026-07-24 11:32:15",
+    "first_seen_at": "2026-07-24 11:32:15"
+  },
+  "infinity": {
+    "published_at": "2026-07-24 11:32:15",
+    "first_seen_at": "2026-07-24 11:32:15"
   }
 }

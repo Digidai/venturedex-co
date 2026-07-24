@@ -1,0 +1,96 @@
+{
+  "slug": "cascade",
+  "domain": "usecascade.ai",
+  "url": "https://usecascade.ai/",
+  "product_name": "Cascade",
+  "summary": "Project intelligence that predicts and ranks AEC opportunities before RFPs appear.",
+  "editor_note": "AEC business development is still a treasure hunt across public portals and private relationships. Cascade says it scans 41,206 active projects, connects signals such as bond filings and city minutes, and ranks opportunities for each firm before an RFP drops. Unlike a bid-notification feed, the bet is prediction plus relationship context, backed by a $3.5M Seed. The risk is proving that surfaced opportunities translate into attributable wins beyond the current customer stories.",
+  "editor_rating": 4,
+  "why_featured": "$3.5M Seed for AEC project prediction",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "construction tech,aec,project intelligence,rfp,vertical ai",
+  "investors": "Andreessen Horowitz",
+  "links": {
+    "careers": "https://usecascade.ai/careers",
+    "product": "https://usecascade.ai/",
+    "resources": "https://usecascade.ai/blog"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.5M",
+      "stage": "Seed",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-07-22",
+      "source_url": "https://techcrunch.com/2026/07/22/cascade-raises-3-5m-to-help-construction-firms-find-and-win-projects/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-24",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Cascade official site",
+        "url": "https://usecascade.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_blog",
+        "label": "Cascade industry guides",
+        "url": "https://usecascade.ai/blog",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Cascade official careers page",
+        "url": "https://usecascade.ai/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cascade seed coverage",
+        "url": "https://techcrunch.com/2026/07/22/cascade-raises-3-5m-to-help-construction-firms-find-and-win-projects/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Cascade scans 41,206 active U.S. projects, grades each opportunity for firm fit, and can show a first match within five minutes without an integration.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Cascade says it predicts projects months before an RFP by connecting new funding, bond filings, city minutes, and prior award signals, then maps which contacts are likely to have work coming.",
+        "source_ids": [
+          "official_site",
+          "official_blog"
+        ]
+      },
+      {
+        "claim": "TechCrunch describes the workflow as onboarding a firm's profile, ranking projects it can win, and predicting upcoming work across state, local, private, and federal sources.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Architecture, engineering, general contracting, subcontracting, and construction business-development teams.",
+      "category": "AEC project intelligence",
+      "differentiation": "Cascade combines opportunity discovery, early project prediction, fit scoring, and relationship mapping instead of stopping at public bid aggregation.",
+      "why_now": "Public-sector infrastructure spending and fragmented procurement data create more opportunity than small AEC teams can monitor manually, while models can connect weak pre-RFP signals."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable product risk is whether Cascade can keep private and public project signals fresh enough to produce measurable bid wins rather than more leads for teams to review.",
+        "basis": "VentureDex assessment from the official workflow, customer testimonials, and TechCrunch coverage."
+      },
+      {
+        "claim": "The funding source does not name a formal lead; Andreessen Horowitz is recorded as the representative lead because Andreessen Horowitz Speedrun is the first investor named.",
+        "basis": "VentureDex normalization under the Daily standard from the TechCrunch seed coverage."
+      }
+    ]
+  }
+}
