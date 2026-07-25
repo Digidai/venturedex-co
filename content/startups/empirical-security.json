@@ -1,0 +1,86 @@
+{
+  "slug": "empirical-security",
+  "domain": "www.empiricalsecurity.com",
+  "url": "https://www.empiricalsecurity.com/",
+  "product_name": "Empirical Security",
+  "summary": "Predictive exploit intelligence tuned to each organization's environment.",
+  "editor_note": "A global severity score cannot know which vulnerability matters inside one company. Empirical splits the problem in two: Foundation tracks 18,000+ CVEs, while Radiant combines that baseline with each customer's assets, telemetry, configurations, and cloud context. Unlike static CVSS triage, the bet is organization-specific exploit probability. The question is calibration: independent evidence must show that local models predict attacks better without creating a new integration burden.",
+  "editor_rating": 5,
+  "why_featured": "$25M Series A for exploit prediction",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "cybersecurity,vulnerability management,predictive models,threat intelligence,exposure management",
+  "investors": "Brightmind Partners",
+  "links": {
+    "api": "https://docs.empiricalsecurity.com/",
+    "careers": "https://jobs.ashbyhq.com/empirical-security",
+    "product": "https://app.empiricalsecurity.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "Brightmind Partners",
+      "date": "2026-07-20",
+      "source_url": "https://research.empiricalsecurity.com/research/empirical-series-a",
+      "source_name": "Empirical Security"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Empirical Security official site",
+        "url": "https://www.empiricalsecurity.com/",
+        "type": "official"
+      },
+      {
+        "id": "foundation_docs",
+        "label": "Empirical Foundation model documentation",
+        "url": "https://docs.empiricalsecurity.com/models/foundation",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Empirical Security official careers page",
+        "url": "https://jobs.ashbyhq.com/empirical-security",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Empirical Security Series A announcement",
+        "url": "https://research.empiricalsecurity.com/research/empirical-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Empirical Security separates Foundation, a global predictive model monitoring more than 18,000 CVEs, from Radiant, a local model tuned with each organization's assets, applications, telemetry, configurations, vulnerabilities, and cloud signals.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The Foundation API documentation exposes hourly model and EPSS score updates, permanent model keys, score history, CVE metadata, exploitation-activity windows, and exploit-code provenance.",
+        "source_ids": [
+          "foundation_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Vulnerability-management, exposure-management, threat-intelligence, and security-operations teams.",
+      "category": "Predictive exposure management",
+      "differentiation": "Empirical combines a global exploitation model with a separately tuned model for each organization's environment instead of applying the same severity or probability score to every customer.",
+      "why_now": "Security teams face more vulnerabilities and faster attack iteration while model-based prioritization can incorporate both external exploitation signals and internal asset context."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable open question is whether Radiant remains calibrated on independent, out-of-sample customer environments and improves remediation decisions enough to justify the required security-data integrations.",
+        "basis": "VentureDex assessment from the official dual-model architecture and API documentation; reviewed performance and scale evidence is company-published."
+      }
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "apaluma",
+  "domain": "apaluma.com",
+  "url": "https://apaluma.com/",
+  "product_name": "Apaluma",
+  "summary": "A governed intelligence layer for fragmented government records.",
+  "editor_note": "Government data is not scarce; it is trapped in scanned PDFs, maps, and incompatible databases. Apaluma connects records around places, permits, facilities, and enforcement history, then gives agencies role-based search, mapping, permitting, and incident response. Unlike a rip-and-replace records project, the bet is an intelligence layer over legacy systems. The question is whether deployments stay repeatable across agencies with different ontologies, procurement rules, and data quality.",
+  "editor_rating": 4,
+  "why_featured": "$5.55M Seed for government data",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "govtech,data infrastructure,regulatory data,gis,document intelligence",
+  "investors": "Crosslink Capital",
+  "links": {
+    "product": "https://apaluma.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5.55M",
+      "stage": "Seed",
+      "lead_investor": "Crosslink Capital and Kickstart",
+      "date": "2026-07-16",
+      "source_url": "https://www.prnewswire.com/news-releases/apaluma-announces-5-55-million-seed-funding-to-scale-unified-government-data-platform-302828065.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Apaluma official site",
+        "url": "https://apaluma.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Apaluma seed announcement",
+        "url": "https://www.prnewswire.com/news-releases/apaluma-announces-5-55-million-seed-funding-to-scale-unified-government-data-platform-302828065.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Apaluma says its Fathom layer ingests scanned PDFs and structured records, applies OCR and classification, and connects facilities, permits, violations, and locations through an agency-specific ontology.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site exposes separate Harbor permitting, Riptide incident-response, and Meridian cross-jurisdiction mapping workflows with role-based access and audit controls.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Apaluma presents an API-first integration approach intended to connect legacy systems instead of requiring agencies to replace them.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Government analysts, regulators, permitting teams, incident responders, and records staff.",
+      "category": "Government data intelligence",
+      "differentiation": "Apaluma connects decades of regulatory records to physical places and agency workflows while preserving role-based governance and existing systems.",
+      "why_now": "Agencies are under pressure to answer permitting, environmental, enforcement, and public-record questions faster as document understanding and geospatial linking become practical."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Apaluma can make agency deployments repeatable when each jurisdiction has different source systems, ontologies, procurement rules, and record quality.",
+        "basis": "VentureDex assessment from the official integration and agency-workflow claims; deployment-speed and FOIA outcome claims were not independently benchmarked."
+      },
+      {
+        "claim": "The announcement names Crosslink Capital and Kickstart as joint leads and Haven Ventures and Overwater Ventures as co-leads; the lead field preserves the first named joint-lead pair.",
+        "basis": "PR Newswire company announcement dated 2026-07-16."
+      }
+    ]
+  }
+}

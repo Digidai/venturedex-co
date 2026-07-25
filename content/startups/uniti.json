@@ -1,0 +1,85 @@
+{
+  "slug": "uniti",
+  "domain": "getuniti.com",
+  "url": "https://getuniti.com/",
+  "product_name": "Uniti",
+  "summary": "Configurable AI agents for real-estate operations.",
+  "editor_note": "Real-estate operators do not need eight disconnected chatbots; they need one layer that follows their playbook. Uniti handles leasing, support, maintenance, collections, renewals, reviews, analysis, and payments across voice, email, SMS, WhatsApp, and web chat, then writes back to PMS and CRM systems. Rather than replace the system of record, it sits above it. The risk is whether one configurable layer can handle emergency, payment, and tenant edge cases across every property type.",
+  "editor_rating": 4,
+  "why_featured": "$12M Series A for real-estate agents",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "real estate,property operations,voice ai,vertical ai,automation",
+  "investors": "Pathlight",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/uniti",
+    "linkedin": "https://www.linkedin.com/company/uniti-ai/",
+    "product": "https://app.getuniti.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Series A",
+      "lead_investor": "Pathlight",
+      "date": "2026-07-21",
+      "source_url": "https://getuniti.com/company/blog/dear-operators-growth-shouldnt-break-what-you-built",
+      "source_name": "Uniti"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Uniti official site",
+        "url": "https://getuniti.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Uniti official careers page",
+        "url": "https://jobs.ashbyhq.com/uniti",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Uniti Series A announcement",
+        "url": "https://getuniti.com/company/blog/dear-operators-growth-shouldnt-break-what-you-built",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes eight agent categories spanning sales and leasing, support, maintenance, collections, reviews, renewals, data analysis, and payments.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Uniti says its agents work across voice, email, SMS, WhatsApp, and web chat, read from and write to existing PMS and CRM systems, and let operators configure workflows, tone, rules, and escalation paths.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The homepage lists integrations with more than 15 property-management and CRM platforms and reports that StorQuest uses Uniti to resolve 70% of inbound calls.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Operations, leasing, support, maintenance, and collections teams at multi-site real-estate operators.",
+      "category": "Agentic real-estate operations",
+      "differentiation": "Uniti offers one configurable agent layer across property workflows and communication channels while keeping existing PMS and CRM systems as the records of truth.",
+      "why_now": "Real-estate operators face high-volume, always-on customer interactions while modern models can finally coordinate voice, messaging, workflow rules, and system write-backs in one layer."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether one configurable agent layer can handle emergency maintenance, collections, payments, and tenant-sensitive edge cases consistently across different property types and jurisdictions.",
+        "basis": "VentureDex assessment from the breadth of workflows and industries presented on the official site; reviewed outcome figures are company-published."
+      }
+    ]
+  }
+}

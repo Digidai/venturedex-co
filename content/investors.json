@@ -1403,5 +1403,36 @@
     "aliases": [
       "Rsquared Investment Pte. Ltd."
     ]
+  },
+  "pathlight": {
+    "name": "Pathlight",
+    "slug": "pathlight",
+    "short_name": "Pathlight",
+    "website": "https://pathlight.vc/",
+    "description": "Early-stage venture fund backing infrastructure, fintech, go-to-market, and physical-world software companies."
+  },
+  "crosslink-capital": {
+    "name": "Crosslink Capital",
+    "slug": "crosslink-capital",
+    "short_name": "Crosslink",
+    "website": "https://www.crosslinkcapital.com/",
+    "description": "Early-stage venture capital firm partnering with enterprise and consumer technology founders from Seed and Series A.",
+    "aliases": [
+      "Crosslink Capital and Kickstart"
+    ]
+  },
+  "fintop-capital": {
+    "name": "FINTOP",
+    "slug": "fintop-capital",
+    "short_name": "FINTOP",
+    "website": "https://www.fintopcapital.com/",
+    "description": "Fintech-focused venture capital firm run by former founders and operators."
+  },
+  "brightmind-partners": {
+    "name": "Brightmind Partners",
+    "slug": "brightmind-partners",
+    "short_name": "Brightmind",
+    "website": "https://www.brightmindpartners.com/",
+    "description": "Early-stage venture firm focused on cybersecurity and resilience."
   }
 }

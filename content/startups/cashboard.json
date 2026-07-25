@@ -1,0 +1,81 @@
+{
+  "slug": "cashboard",
+  "domain": "cashboard.co",
+  "url": "https://cashboard.co/",
+  "product_name": "Cashboard",
+  "summary": "A governed financial semantic layer for AI-assisted FP&A.",
+  "editor_note": "AI cannot answer finance questions reliably when every spreadsheet defines revenue differently. Cashboard puts live data, mappings, metrics, report definitions, and permissions behind one MCP, then exposes that context to Claude, ChatGPT, Slack, Gmail, and Excel. Rather than ship another finance agent, it makes models share one governed vocabulary. The risk is whether six-week onboarding hides how much services work is needed to keep 900+ integrations and semantics current.",
+  "editor_rating": 5,
+  "why_featured": "$5M Seed for finance semantics",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "finance,fp&a,semantic layer,mcp,data governance",
+  "investors": "FINTOP",
+  "links": {
+    "product": "https://app.cashboard.finance",
+    "resources": "https://cashboard.co/news"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "FINTOP",
+      "date": "2026-07-22",
+      "source_url": "https://cashboard.co/news/seed-round-fintop",
+      "source_name": "Cashboard"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Cashboard official site",
+        "url": "https://cashboard.co/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cashboard seed announcement",
+        "url": "https://cashboard.co/news/seed-round-fintop",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Cashboard presents a financial semantic layer that keeps live source data, mapping logic, metric definitions, report definitions, and access permissions in one governed system exposed through MCP.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The official site says Cashboard connects more than 900 ERP, CRM, HRIS, warehouse, and spreadsheet sources and uses an approval workflow to keep new data labels from silently changing mappings.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "Cashboard shows outputs moving into Claude, ChatGPT, Slack, Gmail, and Excel while row- and system-level permissions travel with the underlying data.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CFOs, FP&A teams, controllers, and finance analysts at operationally complex companies.",
+      "category": "Financial data semantics and AI governance",
+      "differentiation": "Cashboard standardizes the data, definitions, mappings, and permissions that finance agents consume instead of competing as a single proprietary analyst model.",
+      "why_now": "Finance teams want to use general-purpose AI tools, but inconsistent definitions and spreadsheet imports make each session expensive to verify and hard to govern."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Cashboard can maintain more than 900 integrations and company-specific semantic models without onboarding and ongoing services becoming the dominant product cost.",
+        "basis": "The official site describes a six-week onboarding process, while the funding announcement describes the integration and mapping scope."
+      }
+    ]
+  }
+}

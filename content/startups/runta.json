@@ -1,0 +1,88 @@
+{
+  "slug": "runta",
+  "domain": "runta.com",
+  "url": "https://runta.com/",
+  "product_name": "Runta",
+  "summary": "Stateful, governed computer runtimes for AI agents.",
+  "editor_note": "The useful agent boundary is the computer it can touch, not the prompt that asks it to behave. Runta turns that boundary into a stateful runtime with CLI and SDK creation, governed egress, secret protection, and token compression; its docs expose CPU and memory sizing plus structured command results. Unlike another framework wrapper, the bet is enforcement at execution time. The question is whether those controls and economics hold under long-lived, adversarial enterprise workloads.",
+  "editor_rating": 5,
+  "why_featured": "$20M Seed for governed agent runtimes",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,runtimes,developer infrastructure,egress,secrets",
+  "investors": "Andreessen Horowitz",
+  "links": {
+    "careers": "https://runta.com/careers/",
+    "docs": "https://runta.com/docs/",
+    "github": "https://github.com/runta-dev",
+    "pricing": "https://runta.com/pricing/",
+    "product": "https://dashboard.runta.com/login"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Seed",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-07-16",
+      "source_url": "https://runta.com/blog/runta-the-execution-layer-for-agents/",
+      "source_name": "Runta"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Runta official site",
+        "url": "https://runta.com/",
+        "type": "official"
+      },
+      {
+        "id": "runtime_docs",
+        "label": "Runta runtime basics",
+        "url": "https://runta.com/docs/runtime/runtime-basic/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Runta official careers page",
+        "url": "https://runta.com/careers/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Runta seed announcement",
+        "url": "https://runta.com/blog/runta-the-execution-layer-for-agents/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Runta's documentation defines each runtime as an isolated, stateful computer and shows equivalent creation flows through its CLI, Python SDK, and TypeScript SDK with explicit CPU and memory requests.",
+        "source_ids": [
+          "runtime_docs"
+        ]
+      },
+      {
+        "claim": "The public product surface documents governed egress, secret stubs, checkpoints, auto-suspend and wake-up, memory auto-scaling, file operations, and a REST API for runtime lifecycle and command execution.",
+        "source_ids": [
+          "official_site",
+          "runtime_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and platform teams deploying AI agents that execute code or interact with external systems.",
+      "category": "AI agent runtime infrastructure",
+      "differentiation": "Runta places controls at the agent's operating-system and network boundary instead of relying only on prompts or an orchestration framework.",
+      "why_now": "Agents are moving from text generation into long-running computer work, making persistent state, resource limits, egress policy, and secret handling operational requirements."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable open question is whether Runta's runtime controls, token savings, and suspend-resume economics remain reliable under long-lived, adversarial, multi-tenant enterprise workloads.",
+        "basis": "VentureDex assessment from the official runtime documentation and product claims; no independent production benchmark was published in the reviewed sources."
+      }
+    ]
+  }
+}

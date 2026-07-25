@@ -1631,6 +1631,41 @@
       "local_path": "/logos/companies/metix.svg",
       "source_page": "https://metix.ai/",
       "source_url": "https://brand.metix.ai/logos/metix-app-icon.svg"
+    },
+    "runta": {
+      "name": "Runta",
+      "shape": "icon",
+      "local_path": "/logos/companies/runta.ico",
+      "source_page": "https://runta.com/",
+      "source_url": "https://runta.com/favicon.ico"
+    },
+    "uniti": {
+      "name": "Uniti",
+      "shape": "icon",
+      "local_path": "/logos/companies/uniti.png",
+      "source_page": "https://getuniti.com/",
+      "source_url": "https://framerusercontent.com/images/faqHXcbA4McJhVwIMAIBZZDUJRo.png"
+    },
+    "apaluma": {
+      "name": "Apaluma",
+      "shape": "icon",
+      "local_path": "/logos/companies/apaluma.png",
+      "source_page": "https://apaluma.com/",
+      "source_url": "https://apaluma.com/assets/apaluma-icon-180.png"
+    },
+    "cashboard": {
+      "name": "Cashboard",
+      "shape": "icon",
+      "local_path": "/logos/companies/cashboard.png",
+      "source_page": "https://cashboard.co/",
+      "source_url": "https://framerusercontent.com/images/ZaP586rhUlzp2fOI7gtXk8EYxk.png"
+    },
+    "empirical-security": {
+      "name": "Empirical Security",
+      "shape": "icon",
+      "local_path": "/logos/companies/empirical-security.ico",
+      "source_page": "https://www.empiricalsecurity.com/",
+      "source_url": "https://www.empiricalsecurity.com/new-favicon.ico"
     }
   },
   "investors": {
@@ -2959,6 +2994,34 @@
       "source_page": "https://bossjob.com/",
       "source_url": "https://bossjob.com/favicon.ico",
       "note": "Rsquared Investment Pte. Ltd. is the Singapore company behind Bossjob; this is its only verified public brand surface and is not affiliated with similarly named U.S. firms."
+    },
+    "pathlight": {
+      "name": "Pathlight",
+      "shape": "icon",
+      "local_path": "/logos/investors/pathlight.png",
+      "source_page": "https://pathlight.vc/",
+      "source_url": "https://pathlight.vc/img/apple-touch-icon.png"
+    },
+    "crosslink-capital": {
+      "name": "Crosslink Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/crosslink-capital.svg",
+      "source_page": "https://www.crosslinkcapital.com/",
+      "source_url": "https://www.crosslinkcapital.com/wp-content/themes/crosslinkcapitalwptheme/images/logo.svg"
+    },
+    "fintop-capital": {
+      "name": "FINTOP",
+      "shape": "icon",
+      "local_path": "/logos/investors/fintop-capital.png",
+      "source_page": "https://www.fintopcapital.com/",
+      "source_url": "https://static.wixstatic.com/media/66ae15_8bd72b1a96df41dea0924084a7d967a1%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/66ae15_8bd72b1a96df41dea0924084a7d967a1%7Emv2.png"
+    },
+    "brightmind-partners": {
+      "name": "Brightmind Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/brightmind-partners.png",
+      "source_page": "https://www.brightmindpartners.com/",
+      "source_url": "https://cdn.prod.website-files.com/688d5bee33e8e8d66bb0d89c/688d5bee33e8e8d66bb0d8ac_Webclip.png"
     }
   }
 }
