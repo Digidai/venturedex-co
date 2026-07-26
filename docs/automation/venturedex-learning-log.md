@@ -3747,3 +3747,15 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: applied
 - affected_file: `scripts/manage.sh`, `tests/release-gates.test.ts`, `docs/automation/venturedex-learning-log.md`
 - affected_section: unified release post-build source-race guard
+
+### 2026-07-26 13:06 CST — D1 preflight closeout iteration
+
+- outcome: second Deploy run `30188589991` deployed Worker version `762607e3-9e3e-4362-b142-3a9148797260`, then failed closed before D1 mutation; the diagnosed read-only preflight repair passed the complete local gate and is pending a new Validate/Deploy cycle
+- failure_tags: [release_data_guard, external_dependency]
+- reward: -1
+- root_cause: the unique-constraint probe combined six correlated `pragma_index_list` / `pragma_index_info` checks with `UNION ALL`. Cloudflare D1 reproducibly rejected that read-only statement with `too many terms in compound SELECT: SQLITE_ERROR [code: 7500]`, while the same six checks sent as six independent `SELECT` statements returned all six required constraints. The first pre-Worker failure also exposed a Bash control-flow defect: because `deploy_worker_after_remote_sync_preflight` was captured inside a conditional command substitution, `set -e` did not make the failed schema helper terminal; later successful set guards and the final status message replaced the error status. The post-Worker preflight ran in a stricter context and stopped before schema or seed mutation.
+- iteration: the schema probe now sends 12 `PRAGMA table_info` statements and six independent constraint `SELECT` statements, and the parser requires exactly 18 ordered result objects with exactly one row per constraint probe. Every seed/schema/remote-set/local-set/deletion-guard step in `remote_sync_preflight`, plus the caller before Worker deployment, now uses explicit `|| return 1`; tests invoke the same captured-conditional context as production.
+- validation: pass. The failing D1 compound statement and succeeding six-statement replacement were both reproduced directly against the read-only remote database. Official Cloudflare documentation confirms D1's SQLite SQL/PRAGMA support and multi-statement execution model, and SQLite documents a runtime compound-SELECT term limit. The release-gate suite passed 19/19, `bash -n` and `git diff --check` passed, and an independent agent returned NO BLOCKER for parser completeness, explicit error propagation, and mutation ordering. The downstream full gate again validated 237/237 startups and 1,308/1,308 URLs, passed 230/230 tests, produced 0 Astro diagnostics, and completed the Astro/Cloudflare build.
+- decision: applied
+- affected_file: `scripts/manage.sh`, `tests/release-gates.test.ts`, `docs/automation/venturedex-learning-log.md`
+- affected_section: remote D1 schema preflight and production error propagation
