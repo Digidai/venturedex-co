@@ -739,12 +739,51 @@ async function buildDailyDigest(
     return buildDailyDigestForPeriod(siteUrl, unfinished.period_start, unfinished.period_end);
   }
 
+  const lastSentPeriodEnd = await getDailyCursorPeriodEnd(db);
+
+  if (!lastSentPeriodEnd && !force && env.NEWSLETTER_BOOTSTRAP_DAILY !== "false") {
+    return {
+      type: "daily",
+      sendKey: `daily:baseline:${periodEnd}`,
+      subject: "VentureDex Daily baseline",
+      previewText: "Daily newsletter baseline recorded.",
+      periodStart: periodEnd,
+      periodEnd,
+      itemCount: 0,
+      htmlMain: "",
+      textMain: "",
+    };
+  }
+
+  const periodStart = lastSentPeriodEnd ?? toD1DateTime(addHours(cutoff, -24));
+  if (periodStart >= periodEnd) {
+    return null;
+  }
+  return buildDailyDigestForPeriod(siteUrl, periodStart, periodEnd);
+}
+
+/**
+ * Return the last Daily period that is safe to treat as consumed.
+ *
+ * Empty operational skips are deliberately excluded. A release can land after
+ * Cron while carrying a published_at inside the just-skipped window; advancing
+ * past that empty window would make the late-deployed content permanently
+ * ineligible. Bootstrap rows and content-bearing skips remain terminal cursors.
+ */
+export async function getDailyCursorPeriodEnd(db: D1Database): Promise<string | null> {
   const lastSent = await db
     .prepare(
       `SELECT s.period_end FROM newsletter_sends s
        WHERE newsletter_type = 'daily'
          AND (
-           status IN ('sent','skipped')
+           status = 'sent'
+           OR (
+             status = 'skipped'
+             AND (
+               item_count > 0
+               OR send_key LIKE 'daily:baseline:%'
+             )
+           )
            OR (
              status = 'failed'
              AND EXISTS (
@@ -768,25 +807,7 @@ async function buildDailyDigest(
     )
     .first<{ period_end: string | null }>();
 
-  if (!lastSent?.period_end && !force && env.NEWSLETTER_BOOTSTRAP_DAILY !== "false") {
-    return {
-      type: "daily",
-      sendKey: `daily:baseline:${periodEnd}`,
-      subject: "VentureDex Daily baseline",
-      previewText: "Daily newsletter baseline recorded.",
-      periodStart: periodEnd,
-      periodEnd,
-      itemCount: 0,
-      htmlMain: "",
-      textMain: "",
-    };
-  }
-
-  const periodStart = lastSent?.period_end ?? toD1DateTime(addHours(cutoff, -24));
-  if (periodStart >= periodEnd) {
-    return null;
-  }
-  return buildDailyDigestForPeriod(siteUrl, periodStart, periodEnd);
+  return lastSent?.period_end ?? null;
 }
 
 async function buildWeeklyDigest(

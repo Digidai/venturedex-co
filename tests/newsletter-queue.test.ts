@@ -4,6 +4,7 @@ import type { D1Database, D1PreparedStatement } from "@cloudflare/workers-types"
 import { createTestD1 } from "./helpers/d1";
 import {
   claimDelivery,
+  getDailyCursorPeriodEnd,
   getConfirmedSubscribers,
   markDeliverySent,
   processNewsletterDeliveryQueue,
@@ -323,6 +324,95 @@ const preparedDigest: DigestContent = {
   htmlMain: "<p>One reviewed startup.</p>",
   textMain: "One reviewed startup.",
 };
+
+test("an empty skipped Daily window does not hide content deployed after that Cron", async () => {
+  await db.batch([
+    db
+      .prepare(
+        `INSERT INTO newsletter_sends (
+           id, send_key, newsletter_type, status, period_start, period_end,
+           item_count, recipient_count
+         )
+         VALUES (?, ?, 'daily', 'sent', ?, ?, 10, 2)`
+      )
+      .bind(
+        "cursor-sent",
+        "daily:2026-07-24 07:30:42:2026-07-25 07:30:09",
+        "2026-07-24 07:30:42",
+        "2026-07-25 07:30:09"
+      ),
+    db
+      .prepare(
+        `INSERT INTO newsletter_sends (
+           id, send_key, newsletter_type, status, period_start, period_end,
+           item_count, recipient_count, error_log
+         )
+         VALUES (?, ?, 'daily', 'skipped', ?, ?, 0, 0, ?)`
+      )
+      .bind(
+        "cursor-empty-skip",
+        "daily:2026-07-25 07:30:09:2026-07-26 07:30:03",
+        "2026-07-25 07:30:09",
+        "2026-07-26 07:30:03",
+        "No eligible content after delay gate."
+      ),
+  ]);
+
+  assert.equal(
+    await getDailyCursorPeriodEnd(db),
+    "2026-07-25 07:30:09",
+    "the cursor must stay at the last content-bearing terminal window"
+  );
+});
+
+test("the bootstrap Daily baseline still advances the first real cursor", async () => {
+  await db
+    .prepare(
+      `INSERT INTO newsletter_sends (
+         id, send_key, newsletter_type, status, period_start, period_end,
+         item_count, recipient_count
+       )
+       VALUES (?, ?, 'daily', 'skipped', ?, ?, 0, 0)`
+    )
+    .bind(
+      "cursor-baseline",
+      "daily:baseline:2026-07-26 07:30:03",
+      "2026-07-26 07:30:03",
+      "2026-07-26 07:30:03"
+    )
+    .run();
+
+  assert.equal(
+    await getDailyCursorPeriodEnd(db),
+    "2026-07-26 07:30:03",
+    "excluding empty operational skips must not repeat bootstrap forever"
+  );
+});
+
+test("a content-bearing skipped Daily window remains terminal", async () => {
+  await db
+    .prepare(
+      `INSERT INTO newsletter_sends (
+         id, send_key, newsletter_type, status, period_start, period_end,
+         item_count, recipient_count, error_log
+       )
+       VALUES (?, ?, 'daily', 'skipped', ?, ?, 2, 0, ?)`
+    )
+    .bind(
+      "cursor-no-subscribers",
+      "daily:2026-07-25 07:30:09:2026-07-26 07:30:03",
+      "2026-07-25 07:30:09",
+      "2026-07-26 07:30:03",
+      "No confirmed subscribers for this newsletter type."
+    )
+    .run();
+
+  assert.equal(
+    await getDailyCursorPeriodEnd(db),
+    "2026-07-26 07:30:03",
+    "content deliberately skipped for zero subscribers must not be replayed later"
+  );
+});
 
 test("same-key cycle ownership preserves an in-flight provider claim after partial enqueue failure", async () => {
   await seedConfirmedSubscribers(db);
