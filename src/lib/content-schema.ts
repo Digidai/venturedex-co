@@ -13,19 +13,16 @@ import { z } from "astro/zod";
  * content.ts / build-db.sh; this only guards the inputs.
  */
 
-const fundingRoundSchema = z
-  .object({
+const fundingRoundSchema = z.looseObject({
     amount: z.string().optional(),
     stage: z.string().optional(),
     lead_investor: z.string().optional(),
     date: z.string().optional(),
     source_url: z.string().optional(),
     source_name: z.string().optional(),
-  })
-  .passthrough();
+  });
 
-export const startupSchema = z
-  .object({
+export const startupSchema = z.looseObject({
     slug: z.string().min(1),
     domain: z.string().min(1),
     product_name: z.string().min(1),
@@ -45,11 +42,9 @@ export const startupSchema = z
     funding: z.array(fundingRoundSchema).optional(),
     research: z.record(z.string(), z.unknown()).optional(),
     links: z.record(z.string(), z.unknown()).optional(),
-  })
-  .passthrough();
+  });
 
-export const weeklyIssueSchema = z
-  .object({
+export const weeklyIssueSchema = z.looseObject({
     issue_number: z.number().int(),
     title: z.string().min(1),
     status: z.enum(["draft", "published", "archived"]).optional(),
@@ -59,34 +54,27 @@ export const weeklyIssueSchema = z
     editorial_intro: z.string().optional(),
     research_summary: z.string().optional(),
     picks: z.array(z.union([z.string(), z.record(z.string(), z.unknown())])).optional(),
-  })
-  .passthrough();
+  });
 
-export const investorEntrySchema = z
-  .object({
+export const investorEntrySchema = z.looseObject({
     name: z.string().min(1),
     slug: z.string().min(1),
     short_name: z.string().optional(),
     website: z.string().optional(),
     description: z.string().optional(),
     aliases: z.array(z.string()).optional(),
-  })
-  .passthrough();
+  });
 
-export const collectionConfigSchema = z
-  .object({
+export const collectionConfigSchema = z.looseObject({
     id: z.string().min(1),
     slug: z.string().min(1),
     title: z.string().min(1),
     description: z.string(),
-    match: z
-      .object({
+    match: z.looseObject({
         product_types: z.array(z.string()).optional(),
         tags: z.array(z.string()).optional(),
-      })
-      .passthrough(),
-  })
-  .passthrough();
+      }),
+  });
 
 export type StartupContent = z.infer<typeof startupSchema>;
 

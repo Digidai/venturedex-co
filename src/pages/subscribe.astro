@@ -63,8 +63,8 @@ const errorMessage = error === "preferences"
       </div>
     ) : pending ? (
       <div class="success-box" role="status">
-        <h2>Almost there — check your inbox.</h2>
-        <p>We sent a confirmation link to your email. Click it to finish subscribing. You won't receive anything until you confirm.</p>
+        <h2>Thanks — check your inbox if needed.</h2>
+        <p>If this address needs confirmation, a link will arrive shortly. You won't receive newsletters until the address is confirmed.</p>
       </div>
     ) : (
       <form class="subscribe-form" action="/api/subscribe" method="POST">

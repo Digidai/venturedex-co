@@ -3,11 +3,18 @@ export const prerender = false;
 
 import Base from "../layouts/Base.astro";
 import { env } from "cloudflare:workers";
-import { getSubscriptionByToken } from "../lib/newsletter";
+import {
+  getSubscriptionByToken,
+  parseNewsletterPreferences,
+  type NewsletterPreferences,
+} from "../lib/newsletter";
 
 const token = Astro.url.searchParams.get("token") ?? "";
 const subscription = token ? await getSubscriptionByToken(env.DB, token) : null;
-const title = "Unsubscribe from VentureDex";
+const canManage = subscription?.status === "confirmed";
+const preferenceState = Astro.url.searchParams.get("preferences");
+const preferences = storedPreferences(subscription?.preferences_json);
+const title = "Manage your VentureDex subscription";
 const description = "Manage VentureDex newsletter delivery preferences.";
 Astro.response.headers.set("Cache-Control", "no-store");
 Astro.response.headers.set("Referrer-Policy", "no-referrer");
@@ -17,23 +24,66 @@ function maskEmail(email: string) {
   if (!local || !domain) return "this address";
   return `${local.slice(0, 2)}***@${domain}`;
 }
+
+function storedPreferences(value: string | null | undefined): NewsletterPreferences {
+  if (!value) return { daily: true, weekly: true };
+  try {
+    return parseNewsletterPreferences(JSON.parse(value));
+  } catch {
+    return { daily: true, weekly: true };
+  }
+}
 ---
 
-<Base title={title} description={description} robots="noindex,nofollow">
+<Base title={title} description={description} robots="noindex,nofollow" analytics={false}>
   <div class="container unsubscribe-page">
-    {subscription ? (
+    {canManage ? (
       <>
-        <h1>Unsubscribe?</h1>
-        <p class="subtitle">{maskEmail(subscription.email)} will stop receiving VentureDex Daily additions and Weekly research.</p>
-        <form method="POST" action="/api/newsletter/unsubscribe">
+        <h1>Manage your emails</h1>
+        <p class="subtitle">Choose what VentureDex sends to {maskEmail(subscription.email)}.</p>
+        {preferenceState === "saved" && (
+          <p class="notice success" role="status">Your newsletter preferences were saved.</p>
+        )}
+        {preferenceState === "error" && (
+          <p class="notice error" role="alert">We could not save those preferences. Please try again.</p>
+        )}
+        <form class="preferences-form" method="POST" action="/api/newsletter/preferences">
           <input type="hidden" name="token" value={token} />
-          <button type="submit">Unsubscribe</button>
+          <input type="hidden" name="newsletter_preferences" value="1" />
+          <fieldset>
+            <legend>Newsletter preferences</legend>
+            <label>
+              <input type="checkbox" name="daily" checked={preferences.daily} />
+              <span>
+                <strong>Daily additions</strong>
+                <small>New startup profiles added to VentureDex.</small>
+              </span>
+            </label>
+            <label>
+              <input type="checkbox" name="weekly" checked={preferences.weekly} />
+              <span>
+                <strong>Weekly research</strong>
+                <small>The weekly market brief and curated picks.</small>
+              </span>
+            </label>
+          </fieldset>
+          <button type="submit">Save preferences</button>
         </form>
+
+        <section class="unsubscribe-section">
+          <h2>Unsubscribe from all</h2>
+          <p>Stop both VentureDex newsletters. You can subscribe again later with a new confirmation link.</p>
+          <form method="POST" action="/api/newsletter/unsubscribe">
+            <input type="hidden" name="token" value={token} />
+            <button class="secondary" type="submit">Unsubscribe</button>
+          </form>
+        </section>
       </>
     ) : (
       <>
-        <h1>Link not found.</h1>
-        <p class="subtitle">The unsubscribe link is incomplete or no longer valid.</p>
+        <h1>Link unavailable.</h1>
+        <p class="subtitle">This management link is incomplete or no longer active.</p>
+        <a class="subscribe-link" href="/subscribe">Subscribe to VentureDex</a>
       </>
     )}
   </div>
@@ -41,9 +91,8 @@ function maskEmail(email: string) {
 
 <style>
   .unsubscribe-page {
-    max-width: 520px;
+    max-width: 560px;
     padding: var(--space-16) var(--space-6);
-    text-align: center;
   }
 
   h1 {
@@ -51,20 +100,100 @@ function maskEmail(email: string) {
     margin-bottom: var(--space-3);
   }
 
-  .subtitle {
-    color: var(--color-text-secondary);
-    line-height: 1.6;
-    margin-bottom: var(--space-8);
+  h2 {
+    font-size: 1.25rem;
+    margin: 0 0 var(--space-2);
   }
 
-  button {
-    padding: var(--space-3) var(--space-6);
+  .subtitle,
+  .unsubscribe-section p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .subtitle {
+    margin-bottom: var(--space-6);
+  }
+
+  .notice {
+    border-radius: var(--radius);
+    margin: 0 0 var(--space-5);
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .notice.success {
+    background: #ecfdf5;
+    color: #166534;
+  }
+
+  .notice.error {
+    background: #fef2f2;
+    color: #991b1b;
+  }
+
+  fieldset {
+    border: 0;
+    margin: 0 0 var(--space-5);
+    padding: 0;
+  }
+
+  legend {
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  label {
+    align-items: flex-start;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    padding: var(--space-4);
+  }
+
+  label input {
+    margin-top: 0.2rem;
+  }
+
+  label span {
+    display: grid;
+    gap: var(--space-1);
+  }
+
+  label small {
+    color: var(--color-text-secondary);
+    line-height: 1.45;
+  }
+
+  button,
+  .subscribe-link {
     border: 0;
     border-radius: var(--radius);
     background: var(--color-text);
     color: var(--color-bg);
+    cursor: pointer;
+    display: inline-block;
     font: inherit;
     font-weight: 600;
-    cursor: pointer;
+    padding: var(--space-3) var(--space-6);
+    text-decoration: none;
+  }
+
+  .unsubscribe-section {
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--space-10);
+    padding-top: var(--space-8);
+  }
+
+  .unsubscribe-section p {
+    margin: 0 0 var(--space-4);
+  }
+
+  button.secondary {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
   }
 </style>

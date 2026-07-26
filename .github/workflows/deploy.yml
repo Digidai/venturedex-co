@@ -2,25 +2,65 @@ name: Deploy to Cloudflare Workers
 
 on:
   workflow_dispatch:
-  push:
+  workflow_run:
+    workflows: [Validate]
+    types: [completed]
     branches: [main]
-    paths-ignore:
-      - 'docs/**'
+
+concurrency:
+  group: venturedex-production-deploy
+  # A running release may already have published a Worker or mutated D1, so it
+  # must finish. GitHub retains only the newest pending run in this group.
+  cancel-in-progress: false
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   deploy:
+    if: >-
+      (
+        github.event_name == 'workflow_dispatch' &&
+        github.ref == 'refs/heads/main'
+      ) ||
+      (
+        github.event_name == 'workflow_run' &&
+        github.event.workflow_run.event == 'push' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.conclusion == 'success'
+      )
     runs-on: ubuntu-latest
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Every release is pinned to the checked-out SHA and must still equal
+      # origin/main. A feature branch or tag can never be a production source.
+      VENTUREDEX_RELEASE_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+      # A workflow_run release may trust only the exact commit that passed Validate.
+      # Manual dispatch leaves this empty and runs the complete local gate.
+      VENTUREDEX_VALIDATED_SHA: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || '' }}
       # Cloudflare Web Analytics beacon token (public id, not a secret). Inlined at
       # build time so the beacon ships on the deployed pages. See docs/observability.md.
       PUBLIC_CF_BEACON_TOKEN: ${{ vars.PUBLIC_CF_BEACON_TOKEN }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ env.VENTUREDEX_RELEASE_SHA }}
+
+      - name: Refuse a non-main or superseded release commit
+        run: |
+          set -euo pipefail
+          current_sha="$(git rev-parse HEAD)"
+          remote_main_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [ "${current_sha}" != "${VENTUREDEX_RELEASE_SHA}" ]; then
+            echo "Release SHA ${VENTUREDEX_RELEASE_SHA} does not match checkout ${current_sha}." >&2
+            exit 1
+          fi
+          if [ -z "${remote_main_sha}" ] || [ "${remote_main_sha}" != "${VENTUREDEX_RELEASE_SHA}" ]; then
+            echo "Release SHA ${VENTUREDEX_RELEASE_SHA} is not current origin/main (${remote_main_sha})." >&2
+            exit 1
+          fi
 
       - uses: actions/setup-node@v5
         with:
@@ -28,6 +68,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Audit runtime and build dependencies
+        run: npm audit --audit-level=high
 
       - name: Verify Cloudflare auth and D1 access
         run: |

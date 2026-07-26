@@ -30,6 +30,31 @@ test("latestGscStatus returns the newest row for a target URL", () => {
   assert.equal(classifyGscStatus(row).kind, "blocked");
 });
 
+test("a later dry-run cannot hide requested or blocked operational evidence", () => {
+  const blockedRows = parseGscLedgerText(`${ledger}
+2026-06-11 10:06:00\tdry_run\thttps://venturedex.co/startups/billables-ai\tpreview only
+`);
+  const requestedRows = parseGscLedgerText(`${ledger}
+2026-06-11 10:06:00\tdry_run\thttps://venturedex.co/weekly/3\tpreview only
+`);
+  const previewOnly = parseGscLedgerText(`timestamp\tstatus\turl\tmessage
+2026-06-11 10:06:00\tdry_run\thttps://venturedex.co/startups/new-company\tpreview only
+`);
+
+  assert.equal(
+    latestGscStatus(blockedRows, "https://venturedex.co/startups/billables-ai")?.status,
+    "retry_pending"
+  );
+  assert.equal(
+    latestGscStatus(requestedRows, "https://venturedex.co/weekly/3")?.status,
+    "requested"
+  );
+  assert.equal(
+    latestGscStatus(previewOnly, "https://venturedex.co/startups/new-company")?.status,
+    "dry_run"
+  );
+});
+
 test("classifyGscStatus distinguishes requested, dry_run, blocked, and missing", () => {
   assert.equal(classifyGscStatus({ timestamp: "t", status: "requested", url: "u", message: "" }).kind, "complete");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "dry_run", url: "u", message: "" }).kind, "needs_submit");
@@ -56,11 +81,10 @@ test("renderGscDiagnosticsMarkdown preserves rule that dry_run is not success", 
   assert.match(markdown, /it is not a Google indexing request/);
 });
 
-test("default GSC history path prefers the stable automation ledger when available", () => {
+test("default GSC history path remains the stable authority when its parent is missing", () => {
   const path = resolveDefaultGscHistoryPath({
     env: { CODEX_HOME: "/tmp/codex-home" },
     homeDir: "/tmp/home",
-    exists: (candidate) => candidate === "/tmp/codex-home/automations/venturedex-daily-curator",
   });
 
   assert.equal(path, "/tmp/codex-home/automations/venturedex-daily-curator/gsc_submission_history.tsv");
@@ -72,7 +96,6 @@ test("explicit GSC history env override wins over automation defaults", () => {
       CODEX_HOME: "/tmp/codex-home",
       GSC_HISTORY_FILE: "/tmp/custom.tsv",
     },
-    exists: () => true,
   });
 
   assert.equal(path, "/tmp/custom.tsv");

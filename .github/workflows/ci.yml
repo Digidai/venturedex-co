@@ -5,6 +5,10 @@ on:
   push:
     branches: [main]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -21,20 +25,11 @@ jobs:
 
       - run: npm ci
 
-      - name: Validate content
-        run: ./scripts/validate.sh
+      - name: Audit runtime and build dependencies
+        run: npm audit --audit-level=high
 
-      - name: Build generated database seed
-        run: ./scripts/build-db.sh
-
-      - name: Build app
-        run: npm run build
-
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Run tests
-        run: npm test
+      - name: Run complete local release gate
+        run: bash scripts/manage.sh validate
 
       - name: Check whitespace
         run: git diff --check

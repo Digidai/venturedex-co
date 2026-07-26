@@ -18,13 +18,17 @@ function asRecord(value: unknown): Record<string, unknown> {
 function json(payload: unknown, status = 200) {
   return new Response(JSON.stringify(payload), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store",
+      "Referrer-Policy": "no-referrer",
+    },
   });
 }
 
-function sameOriginOrNoOrigin(request: Request): boolean {
+function hasSameOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
-  if (!origin) return true;
+  if (!origin) return false;
   try {
     return new URL(origin).origin === new URL(request.url).origin;
   } catch {
@@ -35,12 +39,18 @@ function sameOriginOrNoOrigin(request: Request): boolean {
 function redirect(location: string, status = 303) {
   return new Response(null, {
     status,
-    headers: { Location: location },
+    headers: {
+      Location: location,
+      "Cache-Control": "no-store",
+      "Referrer-Policy": "no-referrer",
+    },
   });
 }
 
 // Fixed-window rate limit backed by the rate_limits D1 table. Returns false when
-// the bucket is over `limit` within `windowSeconds`; resets when the window expires.
+// the bucket is over `limit` within `windowSeconds`; resets when the window
+// expires. Conditional updates make the limit decision atomic under concurrent
+// requests instead of using an unguarded SELECT followed by increment.
 async function rateLimitOk(
   db: D1Database,
   bucket: string,
@@ -54,31 +64,54 @@ async function rateLimitOk(
   if (row) {
     const started = Date.parse(row.window_start.replace(" ", "T") + "Z");
     if (Number.isFinite(started) && Date.now() - started < windowSeconds * 1000) {
-      if (row.count >= limit) return false;
-      await db.prepare("UPDATE rate_limits SET count = count + 1 WHERE bucket = ?").bind(bucket).run();
-      return true;
+      const result = await db
+        .prepare(
+          `UPDATE rate_limits
+           SET count = count + 1
+           WHERE bucket = ? AND window_start = ? AND count < ?`
+        )
+        .bind(bucket, row.window_start, limit)
+        .run();
+      return result.meta.changes > 0;
     }
+    const result = await db
+      .prepare(
+        `UPDATE rate_limits
+         SET count = 1, window_start = datetime('now')
+         WHERE bucket = ? AND window_start = ?`
+      )
+      .bind(bucket, row.window_start)
+      .run();
+    return result.meta.changes > 0;
   }
-  await db
+  const result = await db
     .prepare(
-      "INSERT INTO rate_limits (bucket, count, window_start) VALUES (?, 1, datetime('now')) "
-        + "ON CONFLICT(bucket) DO UPDATE SET count = 1, window_start = datetime('now')"
+      `INSERT INTO rate_limits (bucket, count, window_start)
+       VALUES (?, 1, datetime('now'))
+       ON CONFLICT(bucket) DO NOTHING`
     )
     .bind(bucket)
     .run();
-  return true;
+  return result.meta.changes > 0;
 }
 
-export const POST: APIRoute = async ({ request }) => {
+function genericAcceptedResponse(isJson: boolean) {
+  return isJson
+    ? json({ ok: true, status: "pending" })
+    : redirect("/subscribe?pending=1", 302);
+}
+
+export const POST: APIRoute = async ({ request, locals }) => {
   const db = env.DB;
 
   let email: string | null;
   let preferences: NewsletterPreferences;
+  let proofToken: string | undefined;
   let source = "website";
   const contentType = request.headers.get("content-type") ?? "";
   const isJson = contentType.includes("application/json");
 
-  if (!sameOriginOrNoOrigin(request)) {
+  if (!hasSameOrigin(request)) {
     return isJson ? json({ error: "Invalid request origin." }, 403) : redirect("/subscribe?error=server");
   }
 
@@ -88,6 +121,7 @@ export const POST: APIRoute = async ({ request }) => {
       return json({ ok: true });
     }
     email = normalizeEmail(body.email);
+    proofToken = typeof body.token === "string" ? body.token : undefined;
     source = typeof body.source === "string" ? body.source : "api";
     try {
       preferences = parseNewsletterPreferences(body.preferences, { rejectEmptySelection: true });
@@ -103,6 +137,7 @@ export const POST: APIRoute = async ({ request }) => {
       return redirect("/subscribe?subscribed=1", 302);
     }
     email = normalizeEmail(formData.get("email"));
+    proofToken = formData.get("token")?.toString();
     source = formData.get("source")?.toString() ?? "website";
     try {
       preferences = parseNewsletterPreferencesFromForm(formData);
@@ -118,12 +153,29 @@ export const POST: APIRoute = async ({ request }) => {
     return json({ error: "Valid email required." }, 400);
   }
 
+  // Throttle before any subscription write so rejected traffic cannot grow the
+  // table or change state. Infrastructure failures fail closed, while the
+  // external response remains indistinguishable from an accepted request.
+  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
+  let mayProcess = false;
+  try {
+    mayProcess =
+      (await rateLimitOk(db, `confirm-ip:${ip}`, 8, 3600))
+      && (await rateLimitOk(db, `confirm-email:${email}`, 1, 600));
+  } catch {
+    mayProcess = false;
+  }
+  if (!mayProcess) {
+    return genericAcceptedResponse(isJson);
+  }
+
   let subscription: Awaited<ReturnType<typeof subscribeToNewsletter>>;
   try {
     subscription = await subscribeToNewsletter(db, {
       email,
       preferences,
       source,
+      proofToken,
     });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Something went wrong.";
@@ -137,36 +189,20 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  // Already confirmed earlier: acknowledge without resending anything.
-  if (subscription.status === "confirmed") {
-    return isJson
-      ? json({ ok: true, status: "confirmed" })
-      : redirect("/subscribe?already=1", 302);
+  // New, pending, and re-subscribed addresses prove mailbox possession through
+  // the existing double-opt-in link. Confirmed addresses are never mutated
+  // unless `proofToken` matches the token previously delivered to that inbox.
+  // The task runs after the response so timing and response bodies do not reveal
+  // whether the address was already confirmed.
+  if (subscription.status === "pending") {
+    locals.cfContext.waitUntil(
+      sendConfirmationEmail(env, subscription).then((confirmation) => {
+        if (!confirmation.ok) {
+          console.error("Newsletter confirmation email could not be sent.");
+        }
+      })
+    );
   }
 
-  // Pending (new or re-subscribed): send the double opt-in confirmation email,
-  // throttled to stop email-bombing / sender-reputation + quota abuse —
-  // 1 confirmation per email / 10 min and 8 per IP / hour. Fail open on infra errors.
-  const ip = request.headers.get("cf-connecting-ip") ?? "unknown";
-  let maySend = true;
-  try {
-    maySend =
-      (await rateLimitOk(db, `confirm-email:${email}`, 1, 600))
-      && (await rateLimitOk(db, `confirm-ip:${ip}`, 8, 3600));
-  } catch {
-    maySend = true;
-  }
-  if (maySend) {
-    const confirmation = await sendConfirmationEmail(env, subscription);
-    if (!confirmation.ok) {
-      return isJson
-        ? json({ error: "Could not send confirmation email." }, 502)
-        : redirect("/subscribe?error=server", 302);
-    }
-  }
-
-  // Always return the same pending state — never reveal whether a send was throttled.
-  return isJson
-    ? json({ ok: true, status: "pending" })
-    : redirect("/subscribe?pending=1", 302);
+  return genericAcceptedResponse(isJson);
 };

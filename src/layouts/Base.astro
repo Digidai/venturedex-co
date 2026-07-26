@@ -26,6 +26,7 @@ interface Props {
   publishedTime?: string | null;
   modifiedTime?: string | null;
   schema?: JsonLdNode | JsonLdNode[];
+  analytics?: boolean;
 }
 
 const {
@@ -41,6 +42,7 @@ const {
   publishedTime,
   modifiedTime,
   schema,
+  analytics = true,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
@@ -109,13 +111,13 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <link rel="alternate" type="text/plain" title="VentureDex full LLM context" href="/llms-full.txt" />
     <link rel="alternate" type="application/json" title="VentureDex AI index" href="/ai-index.json" />
     {schemaJson.map((json) => (
-      <script type="application/ld+json" set:html={json} />
+      <script is:inline type="application/ld+json" set:html={json} />
     ))}
-    <MicrosoftClarity />
+    {analytics && <MicrosoftClarity />}
     <script is:inline>
       (function(){var t;try{t=localStorage.getItem('venturedex-theme')}catch{}if(t&&t!=='auto'){document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t}})();
     </script>
-    {cfBeaconToken && (
+    {analytics && cfBeaconToken && (
       <script is:inline define:vars={{ token: cfBeaconToken }}>
         {/* Inject the CF Web Analytics beacon during idle time, after the page is
             interactive, so its ~700ms of script execution stays out of the TBT/LCP

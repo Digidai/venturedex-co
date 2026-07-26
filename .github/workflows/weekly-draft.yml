@@ -9,6 +9,10 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: weekly-draft-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
   draft:
     runs-on: ubuntu-latest
@@ -20,6 +24,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
 
       - name: Compute previous week
         id: week
@@ -36,14 +45,35 @@ jobs:
           PY
 
       - name: Draft weekly issue
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           python3 scripts/weekly.py draft \
             --week-start "${{ steps.week.outputs.week_start }}" \
             --week-end "${{ steps.week.outputs.week_end }}" \
+            --check-open-prs \
+            --repo "${{ github.repository }}" \
             --write
 
       - name: Validate weekly draft
         run: python3 scripts/weekly.py validate
+
+      - name: Install locked dependencies
+        run: npm ci
+
+      - name: Audit runtime and build dependencies
+        run: npm audit --audit-level=high
+
+      - name: Run complete local release gate
+        run: bash scripts/manage.sh validate
+
+      - name: Check whitespace
+        run: git diff --check
+
+      - name: Restore generated validation outputs
+        run: |
+          git restore --worktree -- d1/generated-seed.sql
+          git clean -f -- public/og/weekly-*.png
 
       - uses: peter-evans/create-pull-request@v7
         with:
@@ -55,9 +85,11 @@ jobs:
           body: |
             Automated weekly draft scaffold.
 
+            Before this PR was created or updated, the bot branch passed `python3 scripts/weekly.py validate`, `npm audit --audit-level=high`, `bash scripts/manage.sh validate`, and `git diff --check`. GitHub may not start `pull_request` CI for the bot's initial push, so this pre-creation gate is the authoritative bot validation.
+
             Before merging:
             - replace every TODO with source-bound research
             - set status to published
             - set published_at
-            - run python3 scripts/weekly.py validate, ./scripts/manage.sh validate, and git diff --check
-            - restore d1/generated-seed.sql if validation changed it locally
+            - after any human edit, rerun `python3 scripts/weekly.py validate`, `bash scripts/manage.sh validate`, and `git diff --check`
+            - restore `d1/generated-seed.sql` and generated Weekly OG files if validation changed them locally

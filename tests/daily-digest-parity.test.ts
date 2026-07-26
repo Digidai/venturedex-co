@@ -1,7 +1,9 @@
-import { test, before } from "node:test";
+import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import Database from "better-sqlite3";
-import { readFileSync, readdirSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+import { readFileSync, readdirSync, mkdtempSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -34,11 +36,19 @@ const DAILY_QUERY = `SELECT slug FROM startups
 
 let raw: Database.Database;
 let readers: ContentReaders;
+let tempRoot = "";
 
 before(() => {
+  tempRoot = mkdtempSync(join(tmpdir(), "vd-daily-parity-"));
+  const seedPath = join(tempRoot, "generated-seed.sql");
+  execFileSync("bash", [join(repoRoot, "scripts/build-db.sh")], {
+    env: { ...process.env, VENTUREDEX_SEED_OUTPUT: seedPath },
+    stdio: "ignore",
+  });
+
   raw = new Database(":memory:");
   raw.exec(readFileSync(join(repoRoot, "d1/schema.sql"), "utf8"));
-  raw.exec(readFileSync(join(repoRoot, "d1/generated-seed.sql"), "utf8"));
+  raw.exec(readFileSync(seedPath, "utf8"));
 
   const startupsDir = join(repoRoot, "content/startups");
   const records: JsonRecord[] = readdirSync(startupsDir)
@@ -55,6 +65,11 @@ before(() => {
     investorDirectory: JSON.parse(readFileSync(join(repoRoot, "content/investors.json"), "utf8")) as Record<string, InvestorDirectoryEntry>,
     collectionConfigs: JSON.parse(readFileSync(join(repoRoot, "content/collections.json"), "utf8")) as CollectionConfig[],
   });
+});
+
+after(() => {
+  if (raw) raw.close();
+  if (tempRoot) rmSync(tempRoot, { recursive: true, force: true });
 });
 
 function d1Slugs(start: string, end: string): string[] {

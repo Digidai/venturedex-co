@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -16,6 +17,8 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 STARTUPS_DIR = REPO_ROOT / "content" / "startups"
 WEEKLY_DIR = REPO_ROOT / "content" / "weekly"
 DATE_FORMAT = "%Y-%m-%d"
+WEEKLY_PR_BRANCH_PREFIX = "automation/weekly-draft-"
+WEEKLY_FILE_PATTERN = re.compile(r"^content/weekly/([1-9][0-9]*)\.json$")
 
 
 @dataclass(frozen=True)
@@ -30,6 +33,15 @@ class StartupCandidate:
     latest_funding_source_url: str
     research: dict
     path: Path
+
+
+@dataclass(frozen=True)
+class OpenWeeklyPullRequest:
+    number: int
+    title: str
+    head_ref_name: str
+    url: str
+    issue_numbers: frozenset[int]
 
 
 def parse_date(value: str) -> date:
@@ -109,12 +121,13 @@ def used_weekly_slugs() -> set[str]:
     return used
 
 
-def next_issue_number() -> int:
+def next_issue_number(reserved_issue_numbers: set[int] | None = None) -> int:
     numbers = [
         issue.get("issue_number")
         for _, issue in load_weekly_files()
         if isinstance(issue.get("issue_number"), int)
     ]
+    numbers.extend(reserved_issue_numbers or set())
     return (max(numbers) + 1) if numbers else 1
 
 
@@ -123,6 +136,105 @@ def issue_exists_for_week(week_start: str, week_end: str) -> bool:
         if issue.get("week_start") == week_start and issue.get("week_end") == week_end:
             return True
     return False
+
+
+def load_open_weekly_pull_requests(repo: str) -> list[OpenWeeklyPullRequest]:
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo):
+        raise SystemExit(f"Invalid GitHub repository name for --repo: {repo}")
+
+    command = [
+        "gh",
+        "pr",
+        "list",
+        "--repo",
+        repo,
+        "--state",
+        "open",
+        "--limit",
+        "100",
+        "--json",
+        "number,title,headRefName,url,files,isCrossRepository,headRepositoryOwner",
+    ]
+    try:
+        result = subprocess.run(
+            command,
+            cwd=REPO_ROOT,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+    except FileNotFoundError as exc:
+        raise SystemExit(
+            "Cannot check open weekly pull requests because the GitHub CLI (gh) is unavailable."
+        ) from exc
+
+    if result.returncode != 0:
+        detail = result.stderr.strip() or "unknown GitHub CLI error"
+        raise SystemExit(f"Cannot check open weekly pull requests: {detail}")
+
+    try:
+        rows = json.loads(result.stdout)
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"GitHub CLI returned invalid pull-request JSON: {exc}") from exc
+    if not isinstance(rows, list):
+        raise SystemExit("GitHub CLI returned an unexpected pull-request response.")
+
+    pull_requests: list[OpenWeeklyPullRequest] = []
+    repo_owner = repo.split("/", 1)[0].casefold()
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        number = row.get("number")
+        if not isinstance(number, int):
+            continue
+        head_ref_name = row.get("headRefName")
+        head_repository_owner = row.get("headRepositoryOwner")
+        head_owner_login = (
+            head_repository_owner.get("login")
+            if isinstance(head_repository_owner, dict)
+            else None
+        )
+        if (
+            row.get("isCrossRepository") is not False
+            or not isinstance(head_owner_login, str)
+            or head_owner_login.casefold() != repo_owner
+            or not isinstance(head_ref_name, str)
+            or not head_ref_name.startswith(WEEKLY_PR_BRANCH_PREFIX)
+        ):
+            continue
+        issue_numbers: set[int] = set()
+        files = row.get("files")
+        if isinstance(files, list):
+            for file in files:
+                if not isinstance(file, dict):
+                    continue
+                path = file.get("path")
+                if not isinstance(path, str):
+                    continue
+                match = WEEKLY_FILE_PATTERN.fullmatch(path)
+                if match:
+                    issue_numbers.add(int(match.group(1)))
+        pull_requests.append(
+            OpenWeeklyPullRequest(
+                number=number,
+                title=str(row.get("title") or ""),
+                head_ref_name=head_ref_name,
+                url=str(row.get("url") or ""),
+                issue_numbers=frozenset(issue_numbers),
+            )
+        )
+    return pull_requests
+
+
+def pull_request_owns_week(
+    pull_request: OpenWeeklyPullRequest,
+    *,
+    week_start: str,
+    week_end: str,
+) -> bool:
+    expected_branch = f"{WEEKLY_PR_BRANCH_PREFIX}{week_end}"
+    return pull_request.head_ref_name == expected_branch
 
 
 def git_changed_startup_slugs(week_start: str, week_end: str) -> set[str]:
@@ -334,7 +446,11 @@ def draft_pick(candidate: StartupCandidate) -> dict:
     }
 
 
-def build_draft_issue(args: argparse.Namespace) -> dict:
+def build_draft_issue(
+    args: argparse.Namespace,
+    *,
+    reserved_issue_numbers: set[int] | None = None,
+) -> dict:
     week_start = parse_date(args.week_start)
     week_end = parse_date(args.week_end)
     if week_start > week_end:
@@ -349,7 +465,7 @@ def build_draft_issue(args: argparse.Namespace) -> dict:
     )
 
     return {
-        "issue_number": args.issue_number or next_issue_number(),
+        "issue_number": args.issue_number or next_issue_number(reserved_issue_numbers),
         "title": args.title or f"TODO: Weekly research for {week_start.isoformat()} to {week_end.isoformat()}",
         "week_start": week_start.isoformat(),
         "week_end": week_end.isoformat(),
@@ -489,7 +605,44 @@ def cmd_draft(args: argparse.Namespace) -> int:
         print(f"weekly: issue already exists for {args.week_start} to {args.week_end}")
         return 0
 
-    payload = build_draft_issue(args)
+    reserved_issue_numbers: set[int] = set()
+    if args.check_open_prs:
+        if not args.repo:
+            raise SystemExit("--repo is required with --check-open-prs.")
+        open_pull_requests = load_open_weekly_pull_requests(args.repo)
+        for pull_request in open_pull_requests:
+            if pull_request_owns_week(
+                pull_request,
+                week_start=args.week_start,
+                week_end=args.week_end,
+            ):
+                location = pull_request.url or f"PR #{pull_request.number}"
+                print(
+                    "weekly: open pull request already owns "
+                    f"{args.week_start} to {args.week_end}: {location}"
+                )
+                return 0
+            reserved_issue_numbers.update(pull_request.issue_numbers)
+
+        if args.issue_number and args.issue_number in reserved_issue_numbers:
+            owners = [
+                pull_request
+                for pull_request in open_pull_requests
+                if args.issue_number in pull_request.issue_numbers
+            ]
+            locations = ", ".join(
+                pull_request.url or f"PR #{pull_request.number}"
+                for pull_request in owners
+            )
+            raise SystemExit(
+                f"Weekly issue {args.issue_number} is reserved by open pull request(s): "
+                f"{locations}"
+            )
+
+    payload = build_draft_issue(
+        args,
+        reserved_issue_numbers=reserved_issue_numbers,
+    )
     if args.write:
         path = write_issue(payload, force=args.force)
         print(f"weekly: wrote {path.relative_to(REPO_ROOT)}")
@@ -514,6 +667,15 @@ def build_parser() -> argparse.ArgumentParser:
     draft.add_argument("--max-picks", type=int, default=7)
     draft.add_argument("--write", action="store_true", help="Write content/weekly/{N}.json instead of printing JSON.")
     draft.add_argument("--force", action="store_true", help="Overwrite an existing issue file.")
+    draft.add_argument(
+        "--check-open-prs",
+        action="store_true",
+        help="Fail closed against open automation weekly pull requests before allocating an issue.",
+    )
+    draft.add_argument(
+        "--repo",
+        help="GitHub owner/repository used by --check-open-prs.",
+    )
     draft.set_defaults(func=cmd_draft)
 
     validate = subparsers.add_parser("validate", help="Validate weekly issue schema and published evidence fields.")

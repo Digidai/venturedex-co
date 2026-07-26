@@ -1,13 +1,14 @@
-// Custom Cloudflare Worker entrypoint (adapter v13). `handle()` runs Astro's
+// Custom Cloudflare Worker entrypoint (adapter v14). `handle()` runs Astro's
 // request handling (assets + SSR routes); we wrap it to add the RFC 8058
 // one-click unsubscribe, the daily/weekly newsletter cron, and the delivery
-// queue consumer. `createExports(manifest)` was removed in v13 — the entry is now
-// a plain ExportedHandler. wrangler `main` must point at this file's build output.
+// queue consumer. The current adapter uses a plain ExportedHandler; wrangler
+// `main` must point at this file's build output.
 import { handle } from "@astrojs/cloudflare/handler";
 import type { ExecutionContext, MessageBatch, ScheduledController } from "@cloudflare/workers-types";
 import { canonicalRedirectUrl, withHttpPolicy, withSecurityHeaders } from "./lib/http-policy";
 import {
   processNewsletterDeliveryQueue,
+  requireSuccessfulNewsletterCycle,
   runNewsletterCycle,
   unsubscribeByToken,
   type NewsletterEnv,
@@ -96,13 +97,20 @@ const worker = {
   async scheduled(controller: ScheduledController, env: Env, ctx: ExecutionContext): Promise<void> {
     const type = typeForCron(controller.cron);
     if (!type) return;
-    ctx.waitUntil(
-      runNewsletterCycle(asNewsletterEnv(env), { type })
-        .then((result) => logEvent("newsletter_cycle", { ...result }))
-        .catch((error) =>
-          logEvent("newsletter_cycle_error", { type, error: error instanceof Error ? error.message : String(error) })
-        )
-    );
+    const cycle = runNewsletterCycle(asNewsletterEnv(env), { type })
+      .then((result) => {
+        const successful = requireSuccessfulNewsletterCycle(result);
+        logEvent("newsletter_cycle", { ...successful });
+      })
+      .catch((error) => {
+        logEvent("newsletter_cycle_error", {
+          type,
+          error: error instanceof Error ? error.message : String(error),
+        });
+        throw error;
+      });
+    ctx.waitUntil(cycle);
+    await cycle;
   },
 
   async queue(batch: MessageBatch<NewsletterQueueMessage>, env: Env): Promise<void> {

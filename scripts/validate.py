@@ -2,13 +2,16 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass, field
+from datetime import date as calendar_date, datetime
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -22,10 +25,15 @@ from investor_utils import (
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STARTUPS_DIR = REPO_ROOT / "content" / "startups"
+TIMESTAMPS_FILE = Path(
+    os.environ.get("VENTUREDEX_TIMESTAMPS_FILE", REPO_ROOT / "content" / "timestamps.json")
+)
 INVESTORS_FILE = REPO_ROOT / "content" / "investors.json"
 BRAND_ASSETS_FILE = REPO_ROOT / "content" / "brand-assets.json"
 REJECTED_FILE = REPO_ROOT / "content" / "rejected.jsonl"
-WEEKLY_DIR = REPO_ROOT / "content" / "weekly"
+WEEKLY_DIR = Path(
+    os.environ.get("VENTUREDEX_WEEKLY_DIR", REPO_ROOT / "content" / "weekly")
+)
 SCREENSHOTS_DIR = REPO_ROOT / "public" / "screenshots"
 PUBLIC_DIR = REPO_ROOT / "public"
 
@@ -66,6 +74,55 @@ REJECTED_STAGES = {
     "F4",
     "taste",
 }
+
+REJECTED_V2_SOURCE_TYPES = {
+    "official",
+    "funding",
+    "discovery",
+}
+
+REJECTED_V2_REVISIT_TRIGGERS = {
+    "later_funding_round",
+    "new_product_evidence",
+    "company_status_change",
+    "governance_change",
+}
+
+REJECTED_V2_FIELDS = {
+    "schema_version",
+    "slug",
+    "company_url",
+    "decision_source_url",
+    "decision_source_type",
+    "rejected_at",
+    "stage",
+    "reason",
+    "lifecycle",
+}
+
+REJECTED_V2_LIFECYCLE_FIELDS = {
+    "status",
+    "revisit_triggers",
+}
+
+REJECTED_V2_RESOLUTION_FIELDS = {
+    "resolved_at",
+    "trigger",
+    "outcome",
+    "note",
+}
+
+# v2 was adopted with 872 schema-less v1 rows already in the append-only
+# registry. Those rows remain valid in place and may be upgraded in place after
+# evidence-backed review; schema-less rows appended after this boundary are not
+# legacy and must fail closed.
+REJECTED_LEGACY_V1_LINE_LIMIT = 872
+REJECTED_LEGACY_V1_ORDERED_SLUG_SHA256 = (
+    "4e9af209d2fa9845ad2c23e600991ec5641494b0b22babaca56253f407f7c8e0"
+)
+REJECTED_LEGACY_V1_BLOCK_SHA256 = (
+    "afe118addb4bfbbab604a02d06df91ed719c4b5d7f0b36a2d52f922ab502155e"
+)
 
 BANNED_TERMS = [
     "革命",
@@ -114,6 +171,8 @@ FACT_MARKER_RE = re.compile(
 
 AMOUNT_RE = re.compile(r"^\$[0-9]+(?:\.[0-9]+)?(?:[MBK])?\+?$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+UTC_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$")
 
 HTTP_OK = {"200", "301", "302", "307", "308", "403"}
 # 000 = unreachable from the runner (DNS/TLS/timeout/IP block), 405/415 = method rejected.
@@ -186,10 +245,19 @@ def main() -> int:
     startup_files = sorted(STARTUPS_DIR.glob("*.json"))
     if not startup_files:
         print("=== VentureDex Content Validator ===\n")
-        print("No startup files found.")
-        return 0
+        print("FAIL: No startup files found; refusing to validate an empty catalog.")
+        print("\nBUILD BLOCKED. Restore content/startups/*.json before deploying.")
+        return 1
 
     print("=== VentureDex Content Validator ===\n")
+
+    timestamp_errors = validate_timestamps({path.stem for path in startup_files})
+    if timestamp_errors:
+        print("  Checking deterministic startup timestamps...")
+        for err in timestamp_errors:
+            print(f"    FAIL: {err}")
+        print("\nBUILD BLOCKED. Fix all timestamp errors before validating external sources.")
+        return 1
 
     url_cache: dict[str, str] = {}
     prime_url_cache(startup_files, url_cache)
@@ -303,6 +371,47 @@ def main() -> int:
 
     print("All content validated.")
     return 0
+
+
+def validate_timestamps(startup_slugs: set[str]) -> list[str]:
+    """Require deterministic UTC timestamps for every startup in the JSON catalog."""
+    try:
+        timestamp_label = str(TIMESTAMPS_FILE.relative_to(REPO_ROOT))
+    except ValueError:
+        timestamp_label = str(TIMESTAMPS_FILE)
+
+    try:
+        raw = json.loads(TIMESTAMPS_FILE.read_text())
+    except FileNotFoundError:
+        return [f"missing file: {timestamp_label}"]
+    except json.JSONDecodeError as exc:
+        return [f"{timestamp_label} invalid JSON: {exc}"]
+
+    if not isinstance(raw, dict):
+        return ["content/timestamps.json must be an object keyed by startup slug"]
+
+    timestamps = {key: value for key, value in raw.items() if not key.startswith("__")}
+    errors: list[str] = []
+    for slug in sorted(startup_slugs):
+        entry = timestamps.get(slug)
+        if not isinstance(entry, dict):
+            errors.append(f"content/timestamps.json missing timestamp entry for startup '{slug}'")
+            continue
+        for field_name in ("published_at", "first_seen_at"):
+            value = entry.get(field_name)
+            valid = isinstance(value, str) and bool(UTC_TIMESTAMP_RE.fullmatch(value))
+            if valid:
+                try:
+                    datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+                except ValueError:
+                    valid = False
+            if not valid:
+                errors.append(
+                    f"content/timestamps.json {slug}.{field_name} must be UTC "
+                    "YYYY-MM-DD HH:MM:SS"
+                )
+
+    return errors
 
 
 def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
@@ -593,6 +702,7 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
     warnings: list[str] = []
     weekly_files = sorted(WEEKLY_DIR.glob("*.json"))
     seen_numbers: set[int] = set()
+    published_issue_count = 0
 
     for path in weekly_files:
         try:
@@ -613,6 +723,8 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
         themes = data.get("themes")
         picks = data.get("picks")
         is_published = status == "published"
+        if is_published:
+            published_issue_count += 1
 
         if not isinstance(issue_number, int):
             errors.append(f"{path.relative_to(REPO_ROOT)} issue_number must be an integer")
@@ -758,27 +870,361 @@ def validate_weekly_files(startup_slugs: set[str]) -> tuple[list[str], list[str]
         if len(pick_slugs) != len(set(pick_slugs)):
             errors.append(f"{path.relative_to(REPO_ROOT)} contains duplicate picks")
 
-    if not weekly_files:
-        warnings.append("content/weekly/ has no issues yet.")
+    if published_issue_count == 0:
+        message = (
+            "content/weekly/ has no published Weekly issues; refusing a release "
+            "that could erase the remote published issue set"
+        )
+        weekly_removal_override = os.environ.get(
+            "VENTUREDEX_ALLOW_WEEKLY_ISSUE_REMOVALS", ""
+        )
+        if re.fullmatch(
+            r"[1-9][0-9]*(?:,[1-9][0-9]*)*", weekly_removal_override
+        ):
+            warnings.append(
+                f"{message}; human removal override is present and the exact "
+                "remote issue-number set must still pass the D1 sync guard"
+            )
+        else:
+            errors.append(message)
 
     return errors, warnings
 
 
-def validate_rejected_file(startup_slugs: set[str]) -> tuple[int, list[str], list[str]]:
+def _rejected_error(line_number: int, message: str) -> str:
+    return f"rejected.jsonl:{line_number} {message}"
+
+
+def _is_absolute_http_url(value: object) -> bool:
+    if not isinstance(value, str) or not value.strip():
+        return False
+    parsed = urlparse(value)
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def _is_valid_calendar_date(value: object) -> bool:
+    if not isinstance(value, str) or not DATE_RE.fullmatch(value):
+        return False
+    try:
+        calendar_date.fromisoformat(value)
+    except ValueError:
+        return False
+    return True
+
+
+def _validate_rejected_legacy_block(lines: list[str]) -> list[str]:
+    if len(lines) < REJECTED_LEGACY_V1_LINE_LIMIT:
+        return [
+            "content/rejected.jsonl legacy v1 block was shortened: "
+            f"expected at least {REJECTED_LEGACY_V1_LINE_LIMIT} lines, found {len(lines)}"
+        ]
+
+    legacy_lines = lines[:REJECTED_LEGACY_V1_LINE_LIMIT]
+    ordered_slugs: list[str] = []
+    for line in legacy_lines:
+        try:
+            entry = json.loads(line)
+        except json.JSONDecodeError:
+            entry = None
+        slug = entry.get("slug") if isinstance(entry, dict) else None
+        ordered_slugs.append(slug if isinstance(slug, str) else "")
+
+    digest = hashlib.sha256("\n".join(ordered_slugs).encode("utf-8")).hexdigest()
+    if digest != REJECTED_LEGACY_V1_ORDERED_SLUG_SHA256:
+        return [
+            "content/rejected.jsonl legacy v1 ordered slug digest mismatch; "
+            "do not insert, delete, reorder, or rename the first 872 records"
+        ]
+
+    block_digest = hashlib.sha256(
+        ("\n".join(legacy_lines) + "\n").encode("utf-8")
+    ).hexdigest()
+    if block_digest != REJECTED_LEGACY_V1_BLOCK_SHA256:
+        return [
+            "content/rejected.jsonl frozen legacy v1 block digest mismatch; "
+            "do not edit historical fields or upgrade a row without an "
+            "evidence-reviewed governance change that updates the validator digest"
+        ]
+    return []
+
+
+def _validate_legacy_rejected_entry(
+    entry: dict[str, object],
+    line_number: int,
+) -> tuple[list[str], str]:
+    """Validate a schema-less v1 row without changing its historical semantics."""
+    errors: list[str] = []
+
+    v2_only_fields = sorted(
+        (REJECTED_V2_FIELDS - {"schema_version", "slug", "stage", "reason"})
+        & set(entry)
+    )
+    if v2_only_fields:
+        errors.append(
+            _rejected_error(
+                line_number,
+                "schema-less legacy entry contains v2 fields "
+                f"({', '.join(v2_only_fields)}); add schema_version: 2 and "
+                "complete the v2 contract",
+            )
+        )
+
+    for field_name in ["slug", "url", "date", "stage", "reason"]:
+        if not entry.get(field_name):
+            errors.append(_rejected_error(line_number, f"missing field: {field_name}"))
+
+    slug = entry.get("slug")
+    if slug is not None and not isinstance(slug, str):
+        errors.append(_rejected_error(line_number, "legacy field slug must be a string"))
+
+    date = entry.get("date")
+    if date and (not isinstance(date, str) or not DATE_RE.fullmatch(date)):
+        errors.append(_rejected_error(line_number, f"invalid date: {date}"))
+
+    stage = entry.get("stage")
+    if stage and (not isinstance(stage, str) or stage not in REJECTED_STAGES):
+        errors.append(
+            _rejected_error(line_number, f"invalid rejection stage '{stage}'")
+        )
+
+    url = entry.get("url")
+    if url and not _is_absolute_http_url(url):
+        errors.append(_rejected_error(line_number, f"invalid url: {url}"))
+
+    return errors, "active"
+
+
+def _validate_v2_rejected_entry(
+    entry: dict[str, object],
+    line_number: int,
+) -> tuple[list[str], str | None]:
+    errors: list[str] = []
+
+    unknown_fields = sorted(set(entry) - REJECTED_V2_FIELDS)
+    if unknown_fields:
+        errors.append(
+            _rejected_error(
+                line_number,
+                f"v2 contains unsupported fields: {', '.join(unknown_fields)}",
+            )
+        )
+
+    missing_fields = sorted(REJECTED_V2_FIELDS - set(entry))
+    for field_name in missing_fields:
+        errors.append(_rejected_error(line_number, f"v2 missing field: {field_name}"))
+
+    slug = entry.get("slug")
+    if not isinstance(slug, str) or not SLUG_RE.fullmatch(slug):
+        errors.append(_rejected_error(line_number, f"v2 invalid slug: {slug}"))
+
+    for field_name in ["company_url", "decision_source_url"]:
+        value = entry.get(field_name)
+        if not _is_absolute_http_url(value):
+            errors.append(_rejected_error(line_number, f"v2 invalid {field_name}: {value}"))
+
+    source_type = entry.get("decision_source_type")
+    if (
+        not isinstance(source_type, str)
+        or source_type not in REJECTED_V2_SOURCE_TYPES
+    ):
+        errors.append(
+            _rejected_error(
+                line_number,
+                f"v2 invalid decision_source_type '{source_type}'",
+            )
+        )
+
+    rejected_at = entry.get("rejected_at")
+    if not _is_valid_calendar_date(rejected_at):
+        errors.append(
+            _rejected_error(line_number, f"v2 invalid rejected_at: {rejected_at}")
+        )
+
+    stage = entry.get("stage")
+    if not isinstance(stage, str) or stage not in REJECTED_STAGES:
+        errors.append(
+            _rejected_error(line_number, f"invalid rejection stage '{stage}'")
+        )
+
+    reason = entry.get("reason")
+    if not isinstance(reason, str) or not reason.strip():
+        errors.append(_rejected_error(line_number, "v2 reason must be a non-empty string"))
+
+    lifecycle = entry.get("lifecycle")
+    if not isinstance(lifecycle, dict):
+        errors.append(_rejected_error(line_number, "v2 lifecycle must be an object"))
+        return errors, None
+
+    status = lifecycle.get("status")
+    if not isinstance(status, str) or status not in {"active", "superseded"}:
+        errors.append(
+            _rejected_error(line_number, f"v2 invalid lifecycle status '{status}'")
+        )
+
+    lifecycle_fields = set(lifecycle)
+    required_lifecycle_fields = set(REJECTED_V2_LIFECYCLE_FIELDS)
+    if status == "superseded":
+        required_lifecycle_fields.add("resolution")
+    unknown_lifecycle_fields = sorted(lifecycle_fields - required_lifecycle_fields)
+    if unknown_lifecycle_fields:
+        errors.append(
+            _rejected_error(
+                line_number,
+                "v2 lifecycle contains unsupported fields: "
+                + ", ".join(unknown_lifecycle_fields),
+            )
+        )
+    for field_name in sorted(required_lifecycle_fields - lifecycle_fields):
+        errors.append(
+            _rejected_error(line_number, f"v2 lifecycle missing field: {field_name}")
+        )
+
+    triggers = lifecycle.get("revisit_triggers")
+    trigger_values: list[str] = []
+    if not isinstance(triggers, list) or not triggers:
+        errors.append(
+            _rejected_error(
+                line_number,
+                "v2 lifecycle.revisit_triggers must be a non-empty array",
+            )
+        )
+    elif not all(isinstance(trigger, str) and trigger.strip() for trigger in triggers):
+        errors.append(
+            _rejected_error(
+                line_number,
+                "v2 lifecycle.revisit_triggers items must be non-empty strings",
+            )
+        )
+    else:
+        trigger_values = triggers
+        invalid_triggers = sorted(
+            set(trigger_values) - REJECTED_V2_REVISIT_TRIGGERS
+        )
+        if invalid_triggers:
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.revisit_triggers contains unsupported values: "
+                    + ", ".join(invalid_triggers),
+                )
+            )
+        if len(trigger_values) != len(set(trigger_values)):
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.revisit_triggers must not contain duplicates",
+                )
+            )
+
+    resolution = lifecycle.get("resolution")
+    if status == "active" and resolution is not None:
+        errors.append(
+            _rejected_error(
+                line_number,
+                "v2 active lifecycle must not contain resolution",
+            )
+        )
+    elif status == "superseded" and isinstance(resolution, dict):
+        unknown_resolution_fields = sorted(
+            set(resolution) - REJECTED_V2_RESOLUTION_FIELDS
+        )
+        if unknown_resolution_fields:
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.resolution contains unsupported fields: "
+                    + ", ".join(unknown_resolution_fields),
+                )
+            )
+        for field_name in sorted(REJECTED_V2_RESOLUTION_FIELDS - set(resolution)):
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    f"v2 lifecycle.resolution missing field: {field_name}",
+                )
+            )
+
+        resolved_at = resolution.get("resolved_at")
+        if not _is_valid_calendar_date(resolved_at):
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    f"v2 lifecycle.resolution invalid resolved_at: {resolved_at}",
+                )
+            )
+        elif isinstance(rejected_at, str) and resolved_at < rejected_at:
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.resolution.resolved_at must be on or after rejected_at",
+                )
+            )
+
+        resolution_trigger = resolution.get("trigger")
+        if (
+            not isinstance(resolution_trigger, str)
+            or resolution_trigger not in REJECTED_V2_REVISIT_TRIGGERS
+        ):
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    f"v2 lifecycle.resolution invalid trigger '{resolution_trigger}'",
+                )
+            )
+        elif trigger_values and resolution_trigger not in trigger_values:
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.resolution.trigger must be listed in revisit_triggers",
+                )
+            )
+
+        if resolution.get("outcome") != "accepted":
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.resolution.outcome must be 'accepted'",
+                )
+            )
+
+        note = resolution.get("note")
+        if not isinstance(note, str) or not note.strip():
+            errors.append(
+                _rejected_error(
+                    line_number,
+                    "v2 lifecycle.resolution.note must be a non-empty string",
+                )
+            )
+    elif status == "superseded":
+        errors.append(
+            _rejected_error(
+                line_number,
+                "v2 superseded lifecycle resolution must be an object",
+            )
+        )
+
+    return errors, status if isinstance(status, str) else None
+
+
+def validate_rejected_file(
+    startup_slugs: set[str],
+    rejected_file: Path = REJECTED_FILE,
+) -> tuple[int, list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
 
-    if not REJECTED_FILE.exists():
-        warnings.append("content/rejected.jsonl is missing.")
+    if not rejected_file.exists():
+        errors.append("content/rejected.jsonl is missing.")
         return 0, errors, warnings
 
-    lines = REJECTED_FILE.read_text().splitlines()
+    lines = rejected_file.read_text().splitlines()
     if not lines:
-        warnings.append("content/rejected.jsonl is empty.")
+        errors.append("content/rejected.jsonl is empty.")
         return 0, errors, warnings
 
+    errors.extend(_validate_rejected_legacy_block(lines))
     seen: set[str] = set()
-    valid_entries = 0
+    active_entries = 0
 
     for line_number, line in enumerate(lines, start=1):
         if not line.strip():
@@ -786,40 +1232,69 @@ def validate_rejected_file(startup_slugs: set[str]) -> tuple[int, list[str], lis
         try:
             entry = json.loads(line)
         except json.JSONDecodeError as exc:
-            errors.append(f"rejected.jsonl:{line_number} invalid JSON: {exc}")
+            errors.append(_rejected_error(line_number, f"invalid JSON: {exc}"))
             continue
 
-        valid_entries += 1
+        if not isinstance(entry, dict):
+            errors.append(_rejected_error(line_number, "entry must be a JSON object"))
+            continue
 
-        for field_name in ["slug", "url", "date", "stage", "reason"]:
-            if not entry.get(field_name):
-                errors.append(f"rejected.jsonl:{line_number} missing field: {field_name}")
-
-        slug = entry.get("slug", "")
-        if slug in seen:
-            errors.append(f"rejected.jsonl:{line_number} duplicate slug: {slug}")
-        seen.add(slug)
-
-        if slug in startup_slugs:
-            errors.append(f"rejected.jsonl:{line_number} slug also exists in content/startups: {slug}")
-
-        date = entry.get("date", "")
-        if date and not DATE_RE.match(date):
-            errors.append(f"rejected.jsonl:{line_number} invalid date: {date}")
-
-        stage = entry.get("stage", "")
-        if stage and stage not in REJECTED_STAGES:
-            errors.append(
-                f"rejected.jsonl:{line_number} invalid rejection stage '{stage}'"
+        if "schema_version" not in entry:
+            entry_errors, lifecycle_status = _validate_legacy_rejected_entry(
+                entry, line_number
             )
+            if line_number > REJECTED_LEGACY_V1_LINE_LIMIT:
+                entry_errors.append(
+                    _rejected_error(
+                        line_number,
+                        "new rejected entries must use schema_version: 2; "
+                        f"legacy v1 is limited to lines 1-{REJECTED_LEGACY_V1_LINE_LIMIT}",
+                    )
+                )
+        elif (
+            type(entry.get("schema_version")) is int
+            and entry.get("schema_version") == 2
+        ):
+            entry_errors, lifecycle_status = _validate_v2_rejected_entry(
+                entry, line_number
+            )
+        else:
+            entry_errors = [
+                _rejected_error(
+                    line_number,
+                    f"unsupported schema_version: {entry.get('schema_version')}",
+                )
+            ]
+            lifecycle_status = None
 
-        url = entry.get("url", "")
-        if url:
-            parsed = urlparse(url)
-            if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-                errors.append(f"rejected.jsonl:{line_number} invalid url: {url}")
+        errors.extend(entry_errors)
+        if lifecycle_status == "active":
+            active_entries += 1
 
-    return valid_entries, errors, warnings
+        slug = entry.get("slug")
+        if isinstance(slug, str) and slug:
+            if slug in seen:
+                errors.append(_rejected_error(line_number, f"duplicate slug: {slug}"))
+            seen.add(slug)
+
+            if slug in startup_slugs:
+                if lifecycle_status != "superseded":
+                    errors.append(
+                        _rejected_error(
+                            line_number,
+                            f"slug also exists in content/startups: {slug}",
+                        )
+                    )
+            elif lifecycle_status == "superseded":
+                errors.append(
+                    _rejected_error(
+                        line_number,
+                        "v2 superseded rejection must resolve to an existing "
+                        f"content/startups entry: {slug}",
+                    )
+                )
+
+    return active_entries, errors, warnings
 
 
 def validate_brand_assets(

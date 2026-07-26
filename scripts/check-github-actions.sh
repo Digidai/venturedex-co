@@ -9,8 +9,9 @@ else
 fi
 
 if ! command -v gh >/dev/null 2>&1; then
-  echo "github_actions: skipped (gh CLI unavailable)"
-  exit 0
+  echo "ERROR: github_actions check requires the gh CLI, but it is unavailable." >&2
+  echo "Install gh and authenticate it before running the automation bootstrap." >&2
+  exit 1
 fi
 
 if ! gh auth status >/dev/null 2>&1; then

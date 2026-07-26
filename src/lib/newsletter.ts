@@ -61,7 +61,7 @@ export interface NewsletterRunResult {
   error?: string;
 }
 
-interface DigestContent {
+export interface DigestContent {
   type: NewsletterType;
   sendKey: string;
   subject: string;
@@ -94,6 +94,29 @@ const CLOUDFLARE_MAX_SUBJECT_LENGTH = 998;
 const CLOUDFLARE_MAX_MESSAGE_BYTES = 5 * 1024 * 1024;
 const CLOUDFLARE_MAX_HEADER_BYTES = 16 * 1024;
 const CLOUDFLARE_MAX_HEADER_VALUE_BYTES = 2048;
+const STALE_PROVIDER_SEND_CLAIM_MINUTES = 30;
+const STALE_SEND_OWNERSHIP_MINUTES = 30;
+const DEFINITIVE_EMAIL_REJECTION_CODES = new Set([
+  "E_VALIDATION_ERROR",
+  "E_FIELD_MISSING",
+  "E_TOO_MANY_RECIPIENTS",
+  "E_TOO_MANY_ATTACHMENTS",
+  "E_SENDER_NOT_VERIFIED",
+  "E_RECIPIENT_NOT_ALLOWED",
+  "E_RECIPIENT_SUPPRESSED",
+  "E_SENDER_DOMAIN_NOT_AVAILABLE",
+  "E_CONTENT_TOO_LARGE",
+  "E_DELIVERY_FAILED",
+  "E_RATE_LIMIT_EXCEEDED",
+  "E_DAILY_LIMIT_EXCEEDED",
+  "E_HEADER_NOT_ALLOWED",
+  "E_HEADER_USE_API_FIELD",
+  "E_HEADER_VALUE_INVALID",
+  "E_HEADER_VALUE_TOO_LONG",
+  "E_HEADER_NAME_INVALID",
+  "E_HEADERS_TOO_LARGE",
+  "E_HEADERS_TOO_MANY",
+]);
 
 export function normalizeEmail(email: unknown): string | null {
   if (typeof email !== "string") return null;
@@ -102,6 +125,26 @@ export function normalizeEmail(email: unknown): string | null {
     return null;
   }
   return normalized;
+}
+
+function subscriptionProofMatches(
+  storedToken: string | null,
+  candidateToken: string | undefined
+): boolean {
+  const stored = storedToken?.trim() ?? "";
+  const candidate = candidateToken?.trim() ?? "";
+  if (!stored || !candidate || stored.length > 128 || candidate.length > 128) {
+    return false;
+  }
+
+  // Avoid a character-by-character early exit when checking a bearer secret.
+  // The length is folded into the result and the full longest input is visited.
+  let difference = stored.length ^ candidate.length;
+  const length = Math.max(stored.length, candidate.length);
+  for (let index = 0; index < length; index += 1) {
+    difference |= (stored.charCodeAt(index) || 0) ^ (candidate.charCodeAt(index) || 0);
+  }
+  return difference === 0;
 }
 
 export function parseNewsletterPreferences(
@@ -139,6 +182,7 @@ export async function subscribeToNewsletter(
     email: string;
     preferences?: NewsletterPreferences;
     source?: string;
+    proofToken?: string;
   }
 ): Promise<NewsletterSubscription> {
   const email = normalizeEmail(input.email);
@@ -149,24 +193,41 @@ export async function subscribeToNewsletter(
   const preferences = input.preferences ?? DEFAULT_PREFERENCES;
   const preferencesJson = JSON.stringify(preferences);
   const source = cleanSource(input.source);
+  const cleanProofToken = input.proofToken?.trim() ?? "";
+  const currentProofToken = cleanProofToken.length <= 128 ? cleanProofToken : "";
   const existing = await getSubscriptionByEmail(db, email);
 
-  // Already confirmed: refresh preferences without resetting the opt-in state.
+  // An email address is public information, not proof that the requester owns
+  // the subscription. Confirmed preferences can only be changed with the
+  // high-entropy token already delivered to that mailbox.
   if (existing?.status === "confirmed") {
+    if (!subscriptionProofMatches(existing.unsubscribe_token, input.proofToken)) {
+      return existing;
+    }
     await db
       .prepare(
         `UPDATE newsletter_subscriptions
          SET preferences_json = ?, source = ?, updated_at = datetime('now')
-         WHERE id = ?`
+         WHERE id = ?
+           AND status = 'confirmed'
+           AND unsubscribe_token = ?`
       )
-      .bind(preferencesJson, source, existing.id)
+      .bind(preferencesJson, source, existing.id, currentProofToken)
       .run();
-    return { ...existing, preferences_json: preferencesJson };
+    const current = await getSubscriptionByEmail(db, email);
+    if (!current) {
+      throw new Error("Subscription was not found.");
+    }
+    return current;
   }
 
   // New, still-pending, or previously unsubscribed addresses (re)enter the
   // pending state and must confirm via the emailed link before any sends.
-  const token = existing?.unsubscribe_token ?? crypto.randomUUID();
+  // Always mint a candidate token. New rows use it, pending rows retain their
+  // current token, and an unsubscribed -> pending transition replaces the old
+  // bearer secret so links issued before the opt-out cannot confirm or manage
+  // the new subscription.
+  const token = crypto.randomUUID();
   const id = existing?.id ?? crypto.randomUUID();
   await db
     .prepare(
@@ -175,15 +236,61 @@ export async function subscribeToNewsletter(
        )
        VALUES (?, ?, ?, 'pending', ?, ?, NULL, NULL, datetime('now'))
        ON CONFLICT(email) DO UPDATE SET
-         preferences_json = excluded.preferences_json,
-         status = 'pending',
-         source = excluded.source,
-         unsubscribe_token = COALESCE(newsletter_subscriptions.unsubscribe_token, excluded.unsubscribe_token),
-         confirmed_at = NULL,
-         unsubscribed_at = NULL,
-         updated_at = datetime('now')`
+         preferences_json = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             AND newsletter_subscriptions.unsubscribe_token = NULLIF(?, '')
+             THEN excluded.preferences_json
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.preferences_json
+           ELSE excluded.preferences_json
+         END,
+         status = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed' THEN 'confirmed'
+           ELSE 'pending'
+         END,
+         source = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             AND newsletter_subscriptions.unsubscribe_token = NULLIF(?, '')
+             THEN excluded.source
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.source
+           ELSE excluded.source
+         END,
+         unsubscribe_token = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.unsubscribe_token
+           WHEN newsletter_subscriptions.status = 'unsubscribed' THEN excluded.unsubscribe_token
+           ELSE COALESCE(newsletter_subscriptions.unsubscribe_token, excluded.unsubscribe_token)
+         END,
+         confirmed_at = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.confirmed_at
+           ELSE NULL
+         END,
+         unsubscribed_at = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.unsubscribed_at
+           ELSE NULL
+         END,
+         updated_at = CASE
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             AND newsletter_subscriptions.unsubscribe_token = NULLIF(?, '')
+             THEN datetime('now')
+           WHEN newsletter_subscriptions.status = 'confirmed'
+             THEN newsletter_subscriptions.updated_at
+           ELSE datetime('now')
+         END`
     )
-    .bind(id, email, preferencesJson, source, token)
+    .bind(
+      id,
+      email,
+      preferencesJson,
+      source,
+      token,
+      currentProofToken,
+      currentProofToken,
+      currentProofToken
+    )
     .run();
 
   const subscription = await getSubscriptionByEmail(db, email);
@@ -206,22 +313,28 @@ export async function unsubscribeByToken(
     .first<NewsletterSubscription>();
 
   if (!subscription) return null;
+  if (subscription.status === "unsubscribed") return subscription;
 
-  await db
+  const update = await db
     .prepare(
       `UPDATE newsletter_subscriptions
        SET status = 'unsubscribed',
            unsubscribed_at = COALESCE(unsubscribed_at, datetime('now')),
            updated_at = datetime('now')
-       WHERE id = ?`
+       WHERE id = ?
+         AND unsubscribe_token = ?
+         AND status IN ('pending', 'confirmed')`
     )
-    .bind(subscription.id)
+    .bind(subscription.id, cleanToken)
     .run();
 
-  return {
-    ...subscription,
-    status: "unsubscribed",
-  };
+  // A delayed request must not unsubscribe a new pending lifecycle after a
+  // concurrent opt-out/resubscribe rotated the token. A concurrent request
+  // using the same current token remains an idempotent success.
+  const current = await getSubscriptionByToken(db, cleanToken);
+  if (!current) return null;
+  if (update.meta.changes === 0) return current;
+  return current;
 }
 
 export async function getSubscriptionByToken(
@@ -234,6 +347,30 @@ export async function getSubscriptionByToken(
     .prepare("SELECT * FROM newsletter_subscriptions WHERE unsubscribe_token = ?")
     .bind(cleanToken)
     .first<NewsletterSubscription>();
+}
+
+export async function updateNewsletterPreferencesByToken(
+  db: D1Database,
+  token: string,
+  preferences: NewsletterPreferences
+): Promise<boolean> {
+  const cleanToken = token.trim();
+  if (!cleanToken || cleanToken.length > 128) return false;
+  const normalizedPreferences = parseNewsletterPreferences(
+    preferences,
+    { rejectEmptySelection: true }
+  );
+  const result = await db
+    .prepare(
+      `UPDATE newsletter_subscriptions
+       SET preferences_json = ?,
+           updated_at = datetime('now')
+       WHERE unsubscribe_token = ?
+         AND status = 'confirmed'`
+    )
+    .bind(JSON.stringify(normalizedPreferences), cleanToken)
+    .run();
+  return result.meta.changes > 0;
 }
 
 // A pending confirmation link is only honored within this window. After it, the
@@ -262,9 +399,10 @@ function isPendingExpired(
   ttlHours = CONFIRMATION_TOKEN_TTL_HOURS
 ): boolean {
   // updated_at marks when the row last (re-)entered the pending state; fall back
-  // to created_at. If neither parses, fail safe and do NOT mark expired.
+  // to created_at. If neither parses, fail closed: a corrupt or legacy token
+  // without a trustworthy issuance timestamp must never remain valid forever.
   const since = parseDbTimestamp(subscription.updated_at) ?? parseDbTimestamp(subscription.created_at);
-  if (!since) return false;
+  if (!since) return true;
   return now.getTime() - since.getTime() > ttlHours * 60 * 60 * 1000;
 }
 
@@ -287,25 +425,48 @@ export async function confirmSubscription(
     return { subscription, newlyConfirmed: false, expired: true };
   }
 
-  await db
+  const cleanToken = token.trim();
+  const update = await db
     .prepare(
       `UPDATE newsletter_subscriptions
        SET status = 'confirmed',
            confirmed_at = COALESCE(confirmed_at, datetime('now')),
            unsubscribed_at = NULL,
            updated_at = datetime('now')
-       WHERE id = ?`
+       WHERE id = ?
+         AND unsubscribe_token = ?
+         AND status = 'pending'`
     )
-    .bind(subscription.id)
+    .bind(subscription.id, cleanToken)
     .run();
 
-  return { subscription: { ...subscription, status: "confirmed" }, newlyConfirmed: true, expired: false };
+  // A concurrent request may have won the conditional update. Re-read the row
+  // so the loser reports an idempotent success without triggering a second
+  // welcome email. A concurrent token rotation makes the old token invalid.
+  const current = await getSubscriptionByToken(db, cleanToken);
+  if (!current) return null;
+  if (update.meta.changes === 0) {
+    return {
+      subscription: current,
+      newlyConfirmed: false,
+      expired: current.status === "pending" && isPendingExpired(current, now),
+    };
+  }
+
+  return {
+    subscription: current,
+    newlyConfirmed: current.status === "confirmed",
+    expired: false,
+  };
 }
 
 export async function runNewsletterCycle(
   env: NewsletterEnv,
   options: NewsletterRunOptions
 ): Promise<NewsletterRunResult> {
+  if (!options.dryRun) {
+    await reconcileStaleNewsletterDeliveryClaims(env.DB);
+  }
   const now = options.now ?? new Date();
   const siteUrl = normalizeSiteUrl(env.SITE_URL);
   const digest = options.type === "daily"
@@ -323,6 +484,17 @@ export async function runNewsletterCycle(
     };
   }
 
+  return runPreparedNewsletterCycle(env, options, digest);
+}
+
+// Executes a fully rendered digest. Keeping content selection separate from the
+// D1 send-state machine makes its ownership and partial-enqueue races directly
+// testable without Vite-only content loaders.
+export async function runPreparedNewsletterCycle(
+  env: NewsletterEnv,
+  options: NewsletterRunOptions,
+  digest: DigestContent
+): Promise<NewsletterRunResult> {
   const existing = await env.DB
     .prepare("SELECT * FROM newsletter_sends WHERE send_key = ?")
     .bind(digest.sendKey)
@@ -338,19 +510,6 @@ export async function runNewsletterCycle(
       itemCount: digest.itemCount,
       recipientCount: 0,
       message: "Newsletter was already sent.",
-    };
-  }
-
-  if (existing && existing.status === "sending" && !options.force) {
-    return {
-      ok: true,
-      status: "skipped",
-      type: options.type,
-      sendKey: digest.sendKey,
-      subject: digest.subject,
-      itemCount: digest.itemCount,
-      recipientCount: 0,
-      message: "Newsletter send is already in progress.",
     };
   }
 
@@ -411,9 +570,29 @@ export async function runNewsletterCycle(
     };
   }
 
+  const send = await beginSend(
+    env.DB,
+    digest,
+    subscribers.length,
+    options.force ?? false
+  );
+  if (!send.acquired) {
+    return {
+      ok: true,
+      status: "skipped",
+      type: digest.type,
+      sendKey: digest.sendKey,
+      subject: digest.subject,
+      itemCount: digest.itemCount,
+      recipientCount: subscribers.length,
+      message: "Newsletter send is already owned by another run.",
+    };
+  }
+  const sendId = send.id;
+
   const config = deliveryConfig(env);
   if (!config.ok) {
-    await recordFailedSend(env.DB, digest, subscribers.length, config.error);
+    await markSendFailed(env.DB, sendId, config.error);
     return {
       ok: false,
       status: "failed",
@@ -426,24 +605,23 @@ export async function runNewsletterCycle(
     };
   }
 
-  const sendId = await beginSend(env.DB, digest, subscribers.length);
-  const deliveries = await ensureDeliveries(env.DB, sendId, subscribers);
-
-  if (deliveries.length === 0) {
-    await finalizeSendIfComplete(env.DB, sendId);
-    return {
-      ok: true,
-      status: "skipped",
-      type: digest.type,
-      sendKey: digest.sendKey,
-      subject: digest.subject,
-      itemCount: digest.itemCount,
-      recipientCount: subscribers.length,
-      message: "No unsent newsletter deliveries remain.",
-    };
-  }
-
   try {
+    const deliveries = await ensureDeliveries(env.DB, sendId, subscribers);
+
+    if (deliveries.length === 0) {
+      await finalizeSendIfComplete(env.DB, sendId);
+      return {
+        ok: true,
+        status: "skipped",
+        type: digest.type,
+        sendKey: digest.sendKey,
+        subject: digest.subject,
+        itemCount: digest.itemCount,
+        recipientCount: subscribers.length,
+        message: "No unsent newsletter deliveries remain.",
+      };
+    }
+
     await enqueueNewsletterDeliveries({
       queue: config.queue,
       sendId,
@@ -462,8 +640,26 @@ export async function runNewsletterCycle(
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    await markDeliveriesFailed(env.DB, deliveries, message);
-    await markSendFailed(env.DB, sendId, message);
+    const enqueueFailure = error instanceof NewsletterDeliveryEnqueueError
+      ? error
+      : null;
+    // `ensureDeliveries` and Queue submission share one ownership boundary.
+    // A successful sendBatch hands those rows to Queue even before a consumer
+    // claims them. A rejected sendBatch is also acceptance-uncertain: Queue may
+    // have persisted some or all of that batch before the client observed the
+    // rejection. Keep both groups queued and terminalize only later batches
+    // that were never submitted. Active claims are preserved in every group.
+    await markUnclaimedDeliveriesFailedForSend(
+      env.DB,
+      sendId,
+      message,
+      enqueueFailure?.neverAttemptedDeliveryIds
+    );
+    await finalizeSendIfComplete(env.DB, sendId);
+    if (!enqueueFailure) {
+      await markSendFailedIfNoActiveDeliveryOwner(env.DB, sendId, message);
+    }
+    await recordSendEnqueueErrorWhileInProgress(env.DB, sendId, message);
     return {
       ok: false,
       status: "failed",
@@ -513,10 +709,27 @@ async function buildDailyDigest(
   const periodEnd = toD1DateTime(cutoff);
   const unfinished = await db
     .prepare(
-      `SELECT period_start, period_end FROM newsletter_sends
+      `SELECT s.period_start, s.period_end FROM newsletter_sends s
        WHERE newsletter_type = 'daily'
          AND status IN ('sending','failed')
          AND item_count > 0
+         AND (
+           NOT EXISTS (
+             SELECT 1
+             FROM newsletter_deliveries d
+             WHERE d.send_id = s.id
+               AND d.status = 'failed'
+               AND d.provider_message_id IS NOT NULL
+               AND d.provider_message_id != ''
+           )
+           OR EXISTS (
+             SELECT 1
+             FROM newsletter_deliveries d
+             WHERE d.send_id = s.id
+               AND d.status = 'failed'
+               AND (d.provider_message_id IS NULL OR d.provider_message_id = '')
+           )
+         )
        ORDER BY datetime(created_at) DESC LIMIT 1`
     )
     .first<{ period_start: string | null; period_end: string | null }>();
@@ -527,8 +740,29 @@ async function buildDailyDigest(
 
   const lastSent = await db
     .prepare(
-      `SELECT period_end FROM newsletter_sends
-       WHERE newsletter_type = 'daily' AND status IN ('sent','skipped')
+      `SELECT s.period_end FROM newsletter_sends s
+       WHERE newsletter_type = 'daily'
+         AND (
+           status IN ('sent','skipped')
+           OR (
+             status = 'failed'
+             AND EXISTS (
+               SELECT 1
+             FROM newsletter_deliveries d
+               WHERE d.send_id = s.id
+                 AND d.status = 'failed'
+                 AND d.provider_message_id IS NOT NULL
+                 AND d.provider_message_id != ''
+             )
+             AND NOT EXISTS (
+               SELECT 1
+               FROM newsletter_deliveries d
+               WHERE d.send_id = s.id
+                 AND d.status = 'failed'
+                 AND (d.provider_message_id IS NULL OR d.provider_message_id = '')
+             )
+           )
+         )
        ORDER BY period_end DESC LIMIT 1`
     )
     .first<{ period_end: string | null }>();
@@ -548,6 +782,9 @@ async function buildDailyDigest(
   }
 
   const periodStart = lastSent?.period_end ?? toD1DateTime(addHours(cutoff, -24));
+  if (periodStart >= periodEnd) {
+    return null;
+  }
   return buildDailyDigestForPeriod(siteUrl, periodStart, periodEnd);
 }
 
@@ -577,6 +814,32 @@ async function buildWeeklyDigest(
       .bind(sendKey)
       .first<{ status: string }>();
     if (existing && !force) continue;
+
+    const terminalReconciliation = await db
+      .prepare(
+        `SELECT 1 AS terminal
+         FROM newsletter_sends s
+         JOIN newsletter_deliveries d ON d.send_id = s.id
+         WHERE s.send_key = ?
+           AND s.status = 'failed'
+           AND d.status = 'failed'
+           AND d.provider_message_id IS NOT NULL
+           AND d.provider_message_id != ''
+           AND NOT EXISTS (
+             SELECT 1
+             FROM newsletter_deliveries retryable
+             WHERE retryable.send_id = s.id
+               AND retryable.status = 'failed'
+               AND (
+                 retryable.provider_message_id IS NULL
+                 OR retryable.provider_message_id = ''
+               )
+           )
+         LIMIT 1`
+      )
+      .bind(sendKey)
+      .first<{ terminal: number }>();
+    if (terminalReconciliation && !force) continue;
 
     return buildWeeklyDigestForIssue(siteUrl, issue.issue_number);
   }
@@ -1092,8 +1355,41 @@ async function enqueueNewsletterDeliveries(input: {
     contentType: "json" as const,
   }));
 
-  for (const batch of chunk(messages, QUEUE_BATCH_SIZE)) {
-    await input.queue.sendBatch(batch);
+  const acceptedDeliveryIds: string[] = [];
+  for (let offset = 0; offset < messages.length; offset += QUEUE_BATCH_SIZE) {
+    const batch = messages.slice(offset, offset + QUEUE_BATCH_SIZE);
+    try {
+      await input.queue.sendBatch(batch);
+      acceptedDeliveryIds.push(...batch.map((message) => message.body.deliveryId));
+    } catch (error) {
+      throw new NewsletterDeliveryEnqueueError(
+        error instanceof Error ? error.message : String(error),
+        acceptedDeliveryIds,
+        batch.map((message) => message.body.deliveryId),
+        messages
+          .slice(offset + batch.length)
+          .map((message) => message.body.deliveryId)
+      );
+    }
+  }
+}
+
+class NewsletterDeliveryEnqueueError extends Error {
+  readonly acceptedDeliveryIds: string[];
+  readonly acceptanceUncertainDeliveryIds: string[];
+  readonly neverAttemptedDeliveryIds: string[];
+
+  constructor(
+    message: string,
+    acceptedDeliveryIds: string[],
+    acceptanceUncertainDeliveryIds: string[],
+    neverAttemptedDeliveryIds: string[]
+  ) {
+    super(message);
+    this.name = "NewsletterDeliveryEnqueueError";
+    this.acceptedDeliveryIds = [...acceptedDeliveryIds];
+    this.acceptanceUncertainDeliveryIds = [...acceptanceUncertainDeliveryIds];
+    this.neverAttemptedDeliveryIds = [...neverAttemptedDeliveryIds];
   }
 }
 
@@ -1101,6 +1397,7 @@ export async function processNewsletterDeliveryQueue(
   env: NewsletterEnv,
   batch: MessageBatch<NewsletterQueueMessage>
 ): Promise<void> {
+  await reconcileStaleNewsletterDeliveryClaims(env.DB);
   for (const message of batch.messages) {
     const body = message.body;
     if (!isNewsletterQueueMessage(body)) {
@@ -1113,8 +1410,19 @@ export async function processNewsletterDeliveryQueue(
     } catch (error) {
       const normalized = normalizeEmailServiceError(error);
       if (isPermanentEmailServiceError(normalized.code) || message.attempts >= 5) {
-        await markQueuedDeliveryFailed(env.DB, body, normalized.message);
-        message.ack();
+        const safeToAcknowledge = await markQueuedDeliveryFailed(
+          env.DB,
+          body,
+          normalized.message
+        );
+        if (safeToAcknowledge) {
+          message.ack();
+        } else {
+          // Another attempt still owns a pre-send or provider-send claim. The
+          // duplicate message may reach its Queue retry/DLQ limit, but it must
+          // never terminalize the delivery out from under the active owner.
+          message.retry({ delaySeconds: retryDelaySeconds(message.attempts) });
+        }
       } else {
         message.retry({ delaySeconds: retryDelaySeconds(message.attempts) });
       }
@@ -1132,57 +1440,156 @@ async function sendQueuedNewsletterDelivery(
   }
 
   const claimToken = await claimDelivery(env.DB, message.deliveryId, message.sendId);
-  if (!claimToken) return;
-
-  const context = await getQueuedDeliveryContext(env.DB, message.deliveryId, message.sendId);
-  if (!context) return;
-  if (context.delivery_status === "sent" || context.delivery_status === "skipped") return;
-  if (context.delivery_status === "failed") return;
-
-  const subscription: NewsletterSubscription = {
-    id: context.subscription_id,
-    email: context.email,
-    status: context.subscription_status,
-    preferences_json: context.preferences_json,
-    unsubscribe_token: context.unsubscribe_token,
-    created_at: null,
-    confirmed_at: null,
-    unsubscribed_at: null,
-    updated_at: null,
-  };
-
-  if (subscription.status !== "confirmed" || !subscriberWants(subscription, context.newsletter_type)) {
-    await markDeliverySkipped(env.DB, context.delivery_id, "Subscriber is no longer eligible for this newsletter type.");
-    await finalizeSendIfComplete(env.DB, context.send_id);
-    return;
+  if (!claimToken) {
+    const current = await getQueuedDeliveryContext(env.DB, message.deliveryId, message.sendId);
+    if (!current) return;
+    if (
+      current.delivery_status === "sent"
+      || current.delivery_status === "skipped"
+      || current.delivery_status === "failed"
+    ) {
+      await finalizeSendIfComplete(env.DB, current.send_id);
+      return;
+    }
+    throw emailServiceError(
+      "E_NEWSLETTER_CLAIM_BUSY",
+      `Newsletter delivery ${message.deliveryId} is still owned by another attempt.`
+    );
   }
 
-  const siteUrl = normalizeSiteUrl(env.SITE_URL);
-  const digest = digestFromSendContext(context);
-
-  if (!digest) {
-    throw emailServiceError("E_NEWSLETTER_CONTENT", `Could not rebuild digest for ${context.send_key}.`);
-  }
-
-  const emailMessage = buildCloudflareEmailMessage({
-    digest,
-    subscription,
-    siteUrl,
-    from: config.from,
-    replyTo: config.replyTo,
-    mailingAddress: config.mailingAddress,
-  });
-  validateCloudflareEmailMessage(emailMessage);
-
-  let response: EmailSendResult;
+  let activeClaimToken = claimToken;
+  let providerCallStarted = false;
+  let providerAccepted = false;
+  let providerMessageId: string | null = null;
   try {
-    response = await config.email.send(emailMessage);
+    const context = await getQueuedDeliveryContext(env.DB, message.deliveryId, message.sendId);
+    if (!context) {
+      throw emailServiceError(
+        "E_NEWSLETTER_CONTEXT",
+        `Newsletter delivery context disappeared for ${message.deliveryId}.`
+      );
+    }
+
+    const subscription: NewsletterSubscription = {
+      id: context.subscription_id,
+      email: context.email,
+      status: context.subscription_status,
+      preferences_json: context.preferences_json,
+      unsubscribe_token: context.unsubscribe_token,
+      created_at: null,
+      confirmed_at: null,
+      unsubscribed_at: null,
+      updated_at: null,
+    };
+
+    if (subscription.status !== "confirmed" || !subscriberWants(subscription, context.newsletter_type)) {
+      const skipped = await markDeliverySkipped(
+        env.DB,
+        context.delivery_id,
+        activeClaimToken,
+        "Subscriber is no longer eligible for this newsletter type."
+      );
+      if (!skipped) {
+        throw emailServiceError(
+          "E_NEWSLETTER_CLAIM_LOST",
+          `Newsletter delivery ${context.delivery_id} lost its claim before it could be skipped.`
+        );
+      }
+      await finalizeSendIfComplete(env.DB, context.send_id);
+      return;
+    }
+
+    const siteUrl = normalizeSiteUrl(env.SITE_URL);
+    const digest = digestFromSendContext(context);
+    if (!digest) {
+      throw emailServiceError("E_NEWSLETTER_CONTENT", `Could not rebuild digest for ${context.send_key}.`);
+    }
+
+    const emailMessage = buildCloudflareEmailMessage({
+      digest,
+      subscription,
+      siteUrl,
+      from: config.from,
+      replyTo: config.replyTo,
+      mailingAddress: config.mailingAddress,
+    });
+    validateCloudflareEmailMessage(emailMessage);
+
+    const sendingClaimToken = await beginDeliveryProviderSend(
+      env.DB,
+      context.delivery_id,
+      activeClaimToken
+    );
+    if (!sendingClaimToken) {
+      throw emailServiceError(
+        "E_NEWSLETTER_CLAIM_LOST",
+        `Newsletter delivery ${context.delivery_id} lost its claim before provider send.`
+      );
+    }
+    activeClaimToken = sendingClaimToken;
+
+    providerCallStarted = true;
+    const response = await config.email.send(emailMessage);
+    providerAccepted = true;
+    providerMessageId = response.messageId;
+
+    const recorded = await markDeliverySent(
+      env.DB,
+      context.delivery_id,
+      activeClaimToken,
+      providerMessageId
+    );
+    if (!recorded) {
+      throw emailServiceError(
+        "E_NEWSLETTER_POST_SEND_COMMIT",
+        `Email provider accepted ${providerMessageId || "the message"}, but the delivery claim was not committed.`
+      );
+    }
+    await finalizeSendIfComplete(env.DB, context.send_id);
   } catch (error) {
-    await releaseDeliveryClaim(env.DB, context.delivery_id, claimToken, error instanceof Error ? error.message : String(error));
+    const normalized = normalizeEmailServiceError(error);
+    if (
+      providerAccepted
+      || (providerCallStarted && providerSendOutcomeIsUncertain(normalized.code))
+    ) {
+      const reconciliationMessage = providerAccepted
+        ? `Email provider accepted ${providerMessageId || "the message"}, `
+          + `but delivery state commit failed: ${normalized.message}`
+        : `Email provider send outcome is uncertain after ${normalized.code}: `
+          + normalized.message;
+      const recorded = await markDeliveryFailedAfterProviderAcceptance(
+        env.DB,
+        message.deliveryId,
+        activeClaimToken,
+        providerMessageId,
+        reconciliationMessage
+      );
+      if (!recorded) {
+        throw emailServiceError(
+          "E_NEWSLETTER_POST_SEND_COMMIT",
+          `${reconciliationMessage}; the reconciliation row could not be committed.`
+        );
+      }
+      await finalizeSendIfComplete(env.DB, message.sendId);
+      return;
+    }
+
+    try {
+      await releaseDeliveryClaim(
+        env.DB,
+        message.deliveryId,
+        activeClaimToken,
+        normalized.message
+      );
+    } catch (releaseError) {
+      const releaseFailure = normalizeEmailServiceError(releaseError);
+      throw emailServiceError(
+        "E_NEWSLETTER_CLAIM_RELEASE",
+        `Delivery failed before provider acceptance and its claim could not be released: ${releaseFailure.message}`
+      );
+    }
     throw error;
   }
-  await markDeliverySent(env.DB, context.delivery_id, claimToken, response.messageId);
-  await finalizeSendIfComplete(env.DB, context.send_id);
 }
 
 async function getSubscriptionByEmail(
@@ -1195,7 +1602,7 @@ async function getSubscriptionByEmail(
     .first<NewsletterSubscription>();
 }
 
-async function getConfirmedSubscribers(db: D1Database): Promise<NewsletterSubscription[]> {
+export async function getConfirmedSubscribers(db: D1Database): Promise<NewsletterSubscription[]> {
   const result = await db
     .prepare(
       `SELECT * FROM newsletter_subscriptions
@@ -1207,15 +1614,35 @@ async function getConfirmedSubscribers(db: D1Database): Promise<NewsletterSubscr
   const missingTokens = subscribers.filter((subscriber) => !subscriber.unsubscribe_token);
   for (const subscriber of missingTokens) {
     const token = crypto.randomUUID();
-    await db
+    const minted = await db
       .prepare(
         `UPDATE newsletter_subscriptions
          SET unsubscribe_token = ?, updated_at = datetime('now')
-         WHERE id = ? AND (unsubscribe_token IS NULL OR unsubscribe_token = '')`
+         WHERE id = ? AND (unsubscribe_token IS NULL OR unsubscribe_token = '')
+         RETURNING unsubscribe_token`
       )
       .bind(token, subscriber.id)
-      .run();
-    subscriber.unsubscribe_token = token;
+      .first<{ unsubscribe_token: string | null }>();
+    if (minted?.unsubscribe_token) {
+      subscriber.unsubscribe_token = minted.unsubscribe_token;
+      continue;
+    }
+
+    // Another cycle may have won the conditional mint. Use only the token that
+    // is actually stored in D1; never render an unsubscribe link from a losing
+    // local candidate.
+    const current = await db
+      .prepare(
+        `SELECT unsubscribe_token
+         FROM newsletter_subscriptions
+         WHERE id = ? AND status = 'confirmed'`
+      )
+      .bind(subscriber.id)
+      .first<{ unsubscribe_token: string | null }>();
+    if (!current?.unsubscribe_token) {
+      throw new Error(`Confirmed subscriber ${subscriber.id} has no persisted unsubscribe token.`);
+    }
+    subscriber.unsubscribe_token = current.unsubscribe_token;
   }
   return subscribers;
 }
@@ -1223,29 +1650,22 @@ async function getConfirmedSubscribers(db: D1Database): Promise<NewsletterSubscr
 async function beginSend(
   db: D1Database,
   digest: DigestContent,
-  recipientCount: number
-): Promise<string> {
+  recipientCount: number,
+  force: boolean
+): Promise<
+  | { id: string; acquired: true }
+  | { id: null; acquired: false }
+> {
   const id = crypto.randomUUID();
-  await db
+  const inserted = await db
     .prepare(
       `INSERT INTO newsletter_sends (
          id, send_key, newsletter_type, status, subject, preview_text,
          html_main, text_main, period_start, period_end, item_count, recipient_count, provider, updated_at
        )
        VALUES (?, ?, ?, 'sending', ?, ?, ?, ?, ?, ?, ?, ?, 'cloudflare_email_service', datetime('now'))
-       ON CONFLICT(send_key) DO UPDATE SET
-         status = 'sending',
-         provider = 'cloudflare_email_service',
-         subject = excluded.subject,
-         preview_text = excluded.preview_text,
-         html_main = excluded.html_main,
-         text_main = excluded.text_main,
-         period_start = excluded.period_start,
-         period_end = excluded.period_end,
-         item_count = excluded.item_count,
-         recipient_count = excluded.recipient_count,
-         error_log = NULL,
-         updated_at = datetime('now')`
+       ON CONFLICT(send_key) DO NOTHING
+       RETURNING id`
     )
     .bind(
       id,
@@ -1260,15 +1680,71 @@ async function beginSend(
       digest.itemCount,
       recipientCount
     )
-    .run();
-
-  const row = await db
-    .prepare("SELECT id FROM newsletter_sends WHERE send_key = ?")
-    .bind(digest.sendKey)
     .first<{ id: string }>();
 
-  if (!row) throw new Error("Newsletter send row was not created.");
-  return row.id;
+  if (inserted) {
+    return { id: inserted.id, acquired: true };
+  }
+
+  // Only a stable terminal row may transition back to `sending`. The status
+  // transition is the ownership compare-and-swap: simultaneous first runs, or
+  // simultaneous retries/force runs, cannot both enqueue the same send key.
+  // A force run deliberately does not steal an already in-progress send.
+  const resumableStatuses = force
+    ? "('failed', 'skipped', 'sent')"
+    : "('failed', 'skipped')";
+  const staleInterval = `-${STALE_SEND_OWNERSHIP_MINUTES} minutes`;
+  const acquired = await db
+    .prepare(
+      `UPDATE newsletter_sends
+       SET status = 'sending',
+           provider = 'cloudflare_email_service',
+           subject = ?,
+           preview_text = ?,
+           html_main = ?,
+           text_main = ?,
+           period_start = ?,
+           period_end = ?,
+           item_count = ?,
+           recipient_count = ?,
+           error_log = NULL,
+           updated_at = datetime('now')
+       WHERE send_key = ?
+         AND (
+           status IN ${resumableStatuses}
+           OR (
+             status = 'sending'
+             AND datetime(updated_at) < datetime('now', ?)
+             AND NOT EXISTS (
+               SELECT 1
+               FROM newsletter_deliveries active
+               WHERE active.send_id = newsletter_sends.id
+                 AND active.status = 'queued'
+                 AND active.provider_message_id LIKE 'claim:%'
+                 AND datetime(active.updated_at) >= datetime('now', ?)
+             )
+           )
+         )
+       RETURNING id`
+    )
+    .bind(
+      digest.subject,
+      digest.previewText,
+      digest.htmlMain,
+      digest.textMain,
+      digest.periodStart,
+      digest.periodEnd,
+      digest.itemCount,
+      recipientCount,
+      digest.sendKey,
+      staleInterval,
+      staleInterval
+    )
+    .first<{ id: string; status: string }>();
+
+  return acquired
+    ? { id: acquired.id, acquired: true }
+    : { id: null, acquired: false };
 }
 
 async function ensureDeliveries(
@@ -1284,17 +1760,50 @@ async function ensureDeliveries(
         `INSERT INTO newsletter_deliveries (id, send_id, subscription_id, email, status, updated_at)
          VALUES (?, ?, ?, ?, 'queued', datetime('now'))
          ON CONFLICT(send_id, subscription_id) DO UPDATE SET
-           email = excluded.email,
+           email = CASE
+             WHEN newsletter_deliveries.status = 'queued'
+               AND newsletter_deliveries.provider_message_id LIKE 'claim:%'
+               THEN newsletter_deliveries.email
+             ELSE excluded.email
+           END,
            status = CASE
+             WHEN newsletter_deliveries.status = 'queued'
+               AND newsletter_deliveries.provider_message_id LIKE 'claim:%'
+               THEN newsletter_deliveries.status
              WHEN newsletter_deliveries.status = 'sent' THEN 'sent'
+             WHEN newsletter_deliveries.status = 'failed'
+               AND newsletter_deliveries.provider_message_id IS NOT NULL
+               AND newsletter_deliveries.provider_message_id != ''
+               THEN 'failed'
              ELSE 'queued'
            END,
            provider_message_id = CASE
+             WHEN newsletter_deliveries.status = 'queued'
+               AND newsletter_deliveries.provider_message_id LIKE 'claim:%'
+               THEN newsletter_deliveries.provider_message_id
              WHEN newsletter_deliveries.status = 'sent' THEN newsletter_deliveries.provider_message_id
+             WHEN newsletter_deliveries.status = 'failed'
+               AND newsletter_deliveries.provider_message_id IS NOT NULL
+               AND newsletter_deliveries.provider_message_id != ''
+               THEN newsletter_deliveries.provider_message_id
              ELSE NULL
            END,
-           error_message = NULL,
-           updated_at = datetime('now')`
+           error_message = CASE
+             WHEN newsletter_deliveries.status = 'queued'
+               AND newsletter_deliveries.provider_message_id LIKE 'claim:%'
+               THEN newsletter_deliveries.error_message
+             WHEN newsletter_deliveries.status = 'failed'
+               AND newsletter_deliveries.provider_message_id IS NOT NULL
+               AND newsletter_deliveries.provider_message_id != ''
+               THEN newsletter_deliveries.error_message
+             ELSE NULL
+           END,
+           updated_at = CASE
+             WHEN newsletter_deliveries.status = 'queued'
+               AND newsletter_deliveries.provider_message_id LIKE 'claim:%'
+               THEN newsletter_deliveries.updated_at
+             ELSE datetime('now')
+           END`
       )
       .bind(id, sendId, subscriber.id, subscriber.email);
   }));
@@ -1303,7 +1812,7 @@ async function ensureDeliveries(
     .prepare(
       `SELECT id, subscription_id, email
        FROM newsletter_deliveries
-       WHERE send_id = ? AND status != 'sent'`
+       WHERE send_id = ? AND status = 'queued'`
     )
     .bind(sendId)
     .all<{ id: string; subscription_id: string; email: string }>();
@@ -1370,7 +1879,7 @@ export async function claimDelivery(
   deliveryId: string,
   sendId: string
 ): Promise<string | null> {
-  const claimToken = `claim:${crypto.randomUUID()}`;
+  const claimToken = `claim:pre:${crypto.randomUUID()}`;
   const result = await db
     .prepare(
       `UPDATE newsletter_deliveries
@@ -1383,13 +1892,76 @@ export async function claimDelivery(
          AND (
            provider_message_id IS NULL
            OR provider_message_id = ''
-           OR (provider_message_id LIKE 'claim:%' AND datetime(updated_at) < datetime('now', '-30 minutes'))
+           OR (
+             provider_message_id LIKE 'claim:pre:%'
+             AND datetime(updated_at) < datetime('now', '-30 minutes')
+           )
          )`
     )
     .bind(claimToken, deliveryId, sendId)
     .run();
 
   return result.meta.changes > 0 ? claimToken : null;
+}
+
+async function beginDeliveryProviderSend(
+  db: D1Database,
+  deliveryId: string,
+  claimToken: string
+): Promise<string | null> {
+  const sendingClaimToken = claimToken.replace(/^claim:pre:/, "claim:sending:");
+  if (sendingClaimToken === claimToken) return null;
+
+  const result = await db
+    .prepare(
+      `UPDATE newsletter_deliveries
+       SET provider_message_id = ?,
+           updated_at = datetime('now')
+       WHERE id = ?
+         AND status = 'queued'
+         AND provider_message_id = ?`
+    )
+    .bind(sendingClaimToken, deliveryId, claimToken)
+    .run();
+
+  return result.meta.changes > 0 ? sendingClaimToken : null;
+}
+
+export async function reconcileStaleNewsletterDeliveryClaims(
+  db: D1Database
+): Promise<number> {
+  const staleInterval = `-${STALE_PROVIDER_SEND_CLAIM_MINUTES} minutes`;
+  const candidates = await db
+    .prepare(
+      `SELECT DISTINCT send_id
+       FROM newsletter_deliveries
+       WHERE status = 'queued'
+         AND provider_message_id LIKE 'claim:sending:%'
+         AND datetime(updated_at) < datetime('now', ?)`
+    )
+    .bind(staleInterval)
+    .all<{ send_id: string }>();
+
+  const result = await db
+    .prepare(
+      `UPDATE newsletter_deliveries
+       SET status = 'failed',
+           error_message = ?,
+           updated_at = datetime('now')
+       WHERE status = 'queued'
+         AND provider_message_id LIKE 'claim:sending:%'
+         AND datetime(updated_at) < datetime('now', ?)`
+    )
+    .bind(
+      `Provider send outcome remained uncertain for more than ${STALE_PROVIDER_SEND_CLAIM_MINUTES} minutes; automatic resend is disabled.`,
+      staleInterval
+    )
+    .run();
+
+  for (const candidate of candidates.results) {
+    await finalizeSendIfComplete(db, candidate.send_id);
+  }
+  return result.meta.changes;
 }
 
 async function releaseDeliveryClaim(
@@ -1417,8 +1989,8 @@ export async function markDeliverySent(
   deliveryId: string,
   claimToken: string,
   providerMessageId: string | null
-): Promise<void> {
-  await db
+): Promise<boolean> {
+  const result = await db
     .prepare(
       `UPDATE newsletter_deliveries
        SET status = 'sent',
@@ -1430,60 +2002,158 @@ export async function markDeliverySent(
     )
     .bind(providerMessageId, deliveryId, claimToken)
     .run();
+  return result.meta.changes > 0;
 }
 
 async function markDeliverySkipped(
   db: D1Database,
   deliveryId: string,
+  claimToken: string,
   reason: string
-): Promise<void> {
-  await db
+): Promise<boolean> {
+  const result = await db
     .prepare(
       `UPDATE newsletter_deliveries
        SET status = 'skipped',
+           provider_message_id = NULL,
            error_message = ?,
            updated_at = datetime('now')
-       WHERE id = ? AND status != 'sent'`
+       WHERE id = ?
+         AND status = 'queued'
+         AND provider_message_id = ?`
     )
-    .bind(reason.slice(0, 1000), deliveryId)
+    .bind(reason.slice(0, 1000), deliveryId, claimToken)
     .run();
+  return result.meta.changes > 0;
 }
 
 async function markQueuedDeliveryFailed(
   db: D1Database,
   message: NewsletterQueueMessage,
   error: string
-): Promise<void> {
-  await db
+): Promise<boolean> {
+  const result = await db
     .prepare(
       `UPDATE newsletter_deliveries
        SET status = 'failed',
            error_message = ?,
            updated_at = datetime('now')
-       WHERE id = ? AND send_id = ? AND status != 'sent'`
+       WHERE id = ?
+         AND send_id = ?
+         AND status = 'queued'
+         AND (provider_message_id IS NULL OR provider_message_id = '')`
     )
     .bind(error.slice(0, 1000), message.deliveryId, message.sendId)
     .run();
-  await finalizeSendIfComplete(db, message.sendId);
+  if (result.meta.changes > 0) {
+    await finalizeSendIfComplete(db, message.sendId);
+    return true;
+  }
+
+  const current = await getQueuedDeliveryContext(db, message.deliveryId, message.sendId);
+  if (!current) return true;
+  if (
+    current.delivery_status === "sent"
+    || current.delivery_status === "skipped"
+    || current.delivery_status === "failed"
+  ) {
+    await finalizeSendIfComplete(db, current.send_id);
+    return true;
+  }
+  return false;
 }
 
-async function markDeliveriesFailed(
+async function markDeliveryFailedAfterProviderAcceptance(
   db: D1Database,
-  deliveries: Array<{ id: string }>,
+  deliveryId: string,
+  claimToken: string,
+  providerMessageId: string | null,
   error: string
+): Promise<boolean> {
+  const result = await db
+    .prepare(
+      `UPDATE newsletter_deliveries
+       SET status = 'failed',
+           provider_message_id = COALESCE(?, provider_message_id),
+           error_message = ?,
+           updated_at = datetime('now')
+       WHERE id = ?
+         AND status = 'queued'
+         AND provider_message_id = ?`
+    )
+    .bind(providerMessageId, error.slice(0, 1000), deliveryId, claimToken)
+    .run();
+  return result.meta.changes > 0;
+}
+
+async function markUnclaimedDeliveriesFailedForSend(
+  db: D1Database,
+  sendId: string,
+  error: string,
+  deliveryIds?: string[]
 ): Promise<void> {
-  for (const delivery of deliveries) {
+  if (deliveryIds?.length === 0) return;
+  const groups = deliveryIds ? chunk(deliveryIds, QUEUE_BATCH_SIZE) : [null];
+  for (const group of groups) {
+    const idFilter = group
+      ? `\n         AND id IN (${group.map(() => "?").join(", ")})`
+      : "";
     await db
       .prepare(
         `UPDATE newsletter_deliveries
          SET status = 'failed',
              error_message = ?,
              updated_at = datetime('now')
-         WHERE id = ? AND status != 'sent'`
+         WHERE send_id = ?
+           AND status = 'queued'
+           AND (provider_message_id IS NULL OR provider_message_id = '')${idFilter}`
       )
-      .bind(error.slice(0, 1000), delivery.id)
+      .bind(error.slice(0, 1000), sendId, ...(group ?? []))
       .run();
   }
+}
+
+async function markSendFailedIfNoActiveDeliveryOwner(
+  db: D1Database,
+  sendId: string,
+  error: string
+): Promise<void> {
+  await db
+    .prepare(
+      `UPDATE newsletter_sends
+       SET status = 'failed',
+           provider = 'cloudflare_email_service',
+           error_log = ?,
+           updated_at = datetime('now')
+       WHERE id = ?
+         AND status = 'sending'
+         AND NOT EXISTS (
+           SELECT 1
+           FROM newsletter_deliveries active
+           WHERE active.send_id = newsletter_sends.id
+             AND active.status = 'queued'
+             AND active.provider_message_id LIKE 'claim:%'
+         )`
+    )
+    .bind(error.slice(0, 2000), sendId)
+    .run();
+}
+
+async function recordSendEnqueueErrorWhileInProgress(
+  db: D1Database,
+  sendId: string,
+  error: string
+): Promise<void> {
+  await db
+    .prepare(
+      `UPDATE newsletter_sends
+       SET error_log = ?,
+           updated_at = datetime('now')
+       WHERE id = ?
+         AND status = 'sending'`
+    )
+    .bind(`Delivery enqueue was incomplete: ${error}`.slice(0, 2000), sendId)
+    .run();
 }
 
 async function finalizeSendIfComplete(db: D1Database, sendId: string): Promise<void> {
@@ -1505,6 +2175,7 @@ async function finalizeSendIfComplete(db: D1Database, sendId: string): Promise<v
   const failed = Number(counts.failed ?? 0);
   const sent = Number(counts.sent ?? 0);
   const skipped = Number(counts.skipped ?? 0);
+  if (failed + sent + skipped === 0) return;
   const terminalStatus = failed > 0 ? "failed" : "sent";
   const errorLog = failed > 0
     ? `${failed} newsletter deliveries failed; ${sent} sent; ${skipped} skipped.`
@@ -1536,17 +2207,7 @@ async function recordSkippedSend(
          period_start, period_end, item_count, recipient_count, provider, error_log, updated_at
        )
        VALUES (?, ?, ?, 'skipped', ?, ?, ?, ?, ?, 0, 'cloudflare_email_service', ?, datetime('now'))
-       ON CONFLICT(send_key) DO UPDATE SET
-         status = 'skipped',
-         provider = 'cloudflare_email_service',
-         subject = excluded.subject,
-         preview_text = excluded.preview_text,
-         period_start = excluded.period_start,
-         period_end = excluded.period_end,
-         item_count = excluded.item_count,
-         recipient_count = 0,
-         error_log = excluded.error_log,
-         updated_at = datetime('now')`
+       ON CONFLICT(send_key) DO NOTHING`
     )
     .bind(
       crypto.randomUUID(),
@@ -1558,41 +2219,6 @@ async function recordSkippedSend(
       digest.periodEnd,
       digest.itemCount,
       reason
-    )
-    .run();
-}
-
-async function recordFailedSend(
-  db: D1Database,
-  digest: DigestContent,
-  recipientCount: number,
-  error: string
-): Promise<void> {
-  await db
-    .prepare(
-      `INSERT INTO newsletter_sends (
-         id, send_key, newsletter_type, status, subject, preview_text,
-         period_start, period_end, item_count, recipient_count, provider, error_log, updated_at
-       )
-       VALUES (?, ?, ?, 'failed', ?, ?, ?, ?, ?, ?, 'cloudflare_email_service', ?, datetime('now'))
-       ON CONFLICT(send_key) DO UPDATE SET
-         status = 'failed',
-         provider = 'cloudflare_email_service',
-         recipient_count = excluded.recipient_count,
-         error_log = excluded.error_log,
-         updated_at = datetime('now')`
-    )
-    .bind(
-      crypto.randomUUID(),
-      digest.sendKey,
-      digest.type,
-      digest.subject,
-      digest.previewText,
-      digest.periodStart,
-      digest.periodEnd,
-      digest.itemCount,
-      recipientCount,
-      error
     )
     .run();
 }
@@ -1654,6 +2280,18 @@ function emailConfig(env: NewsletterEnv):
     replyTo,
     mailingAddress: env.NEWSLETTER_MAILING_ADDRESS,
   };
+}
+
+export function requireSuccessfulNewsletterCycle(
+  result: NewsletterRunResult
+): NewsletterRunResult {
+  if (!result.ok || result.status === "failed") {
+    throw emailServiceError(
+      "E_NEWSLETTER_CYCLE_FAILED",
+      result.error || result.message || `Newsletter ${result.type} cycle failed.`
+    );
+  }
+  return result;
 }
 
 function parseSenderAddress(value: string): SenderAddress | undefined {
@@ -1719,11 +2357,17 @@ function normalizeEmailServiceError(error: unknown): { code: string; message: st
   return { code: "E_UNKNOWN", message: String(error) };
 }
 
+function providerSendOutcomeIsUncertain(code: string): boolean {
+  return !DEFINITIVE_EMAIL_REJECTION_CODES.has(code);
+}
+
 export function isPermanentEmailServiceError(code: string): boolean {
   return ![
     "E_RATE_LIMIT_EXCEEDED",
     "E_INTERNAL_SERVER_ERROR",
     "E_UNKNOWN",
+    "E_NEWSLETTER_CLAIM_BUSY",
+    "E_NEWSLETTER_CLAIM_RELEASE",
   ].includes(code);
 }
 

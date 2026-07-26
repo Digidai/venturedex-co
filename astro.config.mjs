@@ -10,16 +10,13 @@ export default defineConfig({
   // instead of 307-redirecting /startups/x -> /startups/x/. Keeps prerendered
   // URLs aligned with the canonical tags, sitemap, and trailing-slash middleware.
   build: { format: "file" },
-  // Astro 6 enables sessions by default; the Cloudflare adapter would otherwise
+  // Astro enables sessions by default; the Cloudflare adapter would otherwise
   // auto-provision a "SESSION" KV binding. This site never uses Astro.session, so
   // use the no-op driver — no KV namespace to create, nothing persisted.
   session: { driver: sessionDrivers.null() },
   adapter: cloudflare({
-    platformProxy: {
-      enabled: true,
-    },
     // We never call Astro's <Image/> / getImage(), so skip the image service
-    // (v13's default switched to a Cloudflare image binding we don't provision).
+    // (the adapter defaults to a Cloudflare image binding we don't provision).
     imageService: "passthrough",
   }),
 });

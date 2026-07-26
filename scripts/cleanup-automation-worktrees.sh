@@ -3,6 +3,7 @@
 set -euo pipefail
 
 MAIN_REPO="${VENTUREDEX_MAIN_REPO:-/Users/dai/Developer/CursorProjects/venturedex.co}"
+AUTOMATION_WORKTREE_ROOT="${VENTUREDEX_AUTOMATION_WORKTREE_ROOT:-${CODEX_HOME:-/Users/dai/.codex}/worktrees}"
 EXECUTE=0
 FORCE_DIRTY=0
 SCAN_ALL=0
@@ -16,13 +17,16 @@ Usage:
 
 Safely removes VentureDex automation worktrees after a Daily or Weekly run.
 The default mode is a dry run. Use --execute to remove clean worktrees and
-prune stale Git worktree metadata.
+prune stale Git worktree metadata. Execution also refreshes origin and requires
+the worktree HEAD to be reachable from an explicit refs/remotes/origin/* ref.
+Unregistered Git directories are never deleted automatically.
 
 Options:
   --all          Scan known VentureDex automation worktree locations.
   --path PATH   Clean one explicit worktree path.
   --execute     Apply changes. Without this flag, only print actions.
-  --force-dirty Remove dirty automation worktrees. Use only after evidence is preserved.
+  --force-dirty Remove dirty registered automation worktrees. This never bypasses
+                remote-reachability or registration checks.
   --main PATH   Main VentureDex checkout. Defaults to VENTUREDEX_MAIN_REPO or
                 /Users/dai/Developer/CursorProjects/venturedex.co.
   -h, --help    Show this help.
@@ -79,6 +83,9 @@ done
 
 [ -d "$MAIN_REPO/.git" ] || die "main repo is not a Git checkout: $MAIN_REPO"
 MAIN_REPO="$(canonical_existing_dir "$MAIN_REPO")"
+if [ -d "$AUTOMATION_WORKTREE_ROOT" ]; then
+  AUTOMATION_WORKTREE_ROOT="$(canonical_existing_dir "$AUTOMATION_WORKTREE_ROOT")"
+fi
 ORIGIN_URL="$(git -C "$MAIN_REPO" config --get remote.origin.url || true)"
 case "$ORIGIN_URL" in
   *github.com/Digidai/venturedex-co.git|*github.com:Digidai/venturedex-co.git)
@@ -114,8 +121,8 @@ fi
 if [ "$SCAN_ALL" -eq 1 ]; then
   git -C "$MAIN_REPO" worktree list --porcelain | sed -n 's/^worktree //p' >>"$TMP_TARGETS"
 
-  if [ -d /Users/dai/.codex/worktrees ]; then
-    find /Users/dai/.codex/worktrees -maxdepth 2 -type d -name venturedex.co -print >>"$TMP_TARGETS"
+  if [ -d "$AUTOMATION_WORKTREE_ROOT" ]; then
+    find "$AUTOMATION_WORKTREE_ROOT" -maxdepth 2 -type d -name venturedex.co -print >>"$TMP_TARGETS"
   fi
 
   find /tmp /private/tmp -maxdepth 1 -type d -name 'venturedex-weekly-curator-*' -print 2>/dev/null >>"$TMP_TARGETS" || true
@@ -127,9 +134,10 @@ is_safe_automation_path() {
   [ "$path" != "$MAIN_REPO" ] || return 1
 
   case "$path" in
-    /Users/dai/.codex/worktrees/venturedex-daily-*/venturedex.co|\
-    /Users/dai/.codex/worktrees/venturedex-weekly-*/venturedex.co|\
-    /Users/dai/.codex/worktrees/[0-9a-f][0-9a-f][0-9a-f][0-9a-f]/venturedex.co|\
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-daily-*/venturedex.co|\
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-weekly-*/venturedex.co|\
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-repair-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/venturedex.co|\
+    "$AUTOMATION_WORKTREE_ROOT"/[0-9a-f][0-9a-f][0-9a-f][0-9a-f]/venturedex.co|\
     /tmp/venturedex-weekly-curator-*|\
     /private/tmp/venturedex-weekly-curator-*)
       return 0
@@ -163,15 +171,26 @@ is_registered_worktree() {
   git -C "$MAIN_REPO" worktree list --porcelain | sed -n 's/^worktree //p' | grep -Fx -- "$path" >/dev/null
 }
 
+origin_refs_containing_head() {
+  local head="$1"
+
+  git -C "$MAIN_REPO" for-each-ref \
+    --format='%(refname)' \
+    --contains "$head" \
+    refs/remotes/origin/ \
+    | grep -vFx 'refs/remotes/origin/HEAD' || true
+}
+
 remove_empty_parent() {
   local path="$1"
   local parent
 
   parent="$(dirname "$path")"
   case "$parent" in
-    /Users/dai/.codex/worktrees/venturedex-daily-*|\
-    /Users/dai/.codex/worktrees/venturedex-weekly-*|\
-    /Users/dai/.codex/worktrees/[0-9a-f][0-9a-f][0-9a-f][0-9a-f])
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-daily-*|\
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-weekly-*|\
+    "$AUTOMATION_WORKTREE_ROOT"/venturedex-repair-[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]|\
+    "$AUTOMATION_WORKTREE_ROOT"/[0-9a-f][0-9a-f][0-9a-f][0-9a-f])
       if [ "$EXECUTE" -eq 1 ]; then
         rmdir "$parent" 2>/dev/null || true
       else
@@ -183,7 +202,8 @@ remove_empty_parent() {
 
 cleanup_target() {
   local path="$1"
-  local status
+  local status status_again head head_again reachable_refs
+  local -a remove_args
 
   if [ -d "$path" ]; then
     path="$(canonical_existing_dir "$path")"
@@ -200,36 +220,91 @@ cleanup_target() {
   fi
 
   if ! is_venturedex_worktree "$path"; then
+    if [ -f "$path/.git" ] || [ -d "$path/.git" ] || [ -L "$path/.git" ]; then
+      echo "BLOCKED: Git metadata exists but the automation path cannot be verified as a VentureDex worktree: $path" >&2
+      echo "Preserve the directory and repair or inspect .git metadata before cleanup." >&2
+      if [ "$EXECUTE" -eq 1 ]; then
+        return 1
+      fi
+      return 0
+    fi
     echo "skip: not a VentureDex Git worktree: $path"
     return 0
   fi
 
   status="$(git -C "$path" status --porcelain --untracked-files=all)"
   if [ -n "$status" ] && [ "$FORCE_DIRTY" -ne 1 ]; then
-    echo "skip: dirty worktree requires manual preservation or --force-dirty: $path"
+    echo "BLOCKED: dirty worktree requires manual preservation or --force-dirty: $path" >&2
+    if [ "$EXECUTE" -eq 1 ]; then
+      return 1
+    fi
+    return 0
+  fi
+
+  head="$(git -C "$path" rev-parse HEAD)"
+  reachable_refs="$(origin_refs_containing_head "$head")"
+  if [ -z "$reachable_refs" ]; then
+    echo "BLOCKED: worktree HEAD $head is not reachable from any refreshed origin ref: $path" >&2
+    echo "Preserve the worktree and push or otherwise recover the commit before cleanup." >&2
+    if [ "$EXECUTE" -eq 1 ]; then
+      return 1
+    fi
     return 0
   fi
 
   if is_registered_worktree "$path"; then
+    remove_args=("$path")
+    if [ "$FORCE_DIRTY" -eq 1 ]; then
+      remove_args=(--force "$path")
+    fi
+
     if [ "$EXECUTE" -eq 1 ]; then
-      git -C "$MAIN_REPO" worktree remove ${FORCE_DIRTY:+--force} "$path"
+      # A clean commit can appear after the reachability check, and Git will
+      # happily remove such a clean worktree. Re-read HEAD immediately before
+      # removal and require the exact SHA whose origin reachability was proven.
+      head_again="$(git -C "$path" rev-parse HEAD)"
+      if [ "$head_again" != "$head" ]; then
+        echo "BLOCKED: worktree HEAD changed after reachability verification: $path" >&2
+        echo "Verified $head, now $head_again. Rerun cleanup after pushing and refreshing origin." >&2
+        return 1
+      fi
+      # Without --force, Git performs its own final dirtiness check. This closes
+      # the race between the status snapshot above and the destructive removal.
+      git -C "$MAIN_REPO" worktree remove "${remove_args[@]}"
       remove_empty_parent "$path"
       echo "removed registered worktree: $path"
     else
-      echo "DRY-RUN: git -C $MAIN_REPO worktree remove ${FORCE_DIRTY:+--force }$path"
+      if [ "$FORCE_DIRTY" -eq 1 ]; then
+        echo "DRY-RUN: git -C $MAIN_REPO worktree remove --force $path"
+      else
+        echo "DRY-RUN: git -C $MAIN_REPO worktree remove $path"
+      fi
       remove_empty_parent "$path"
     fi
   else
-    if [ "$EXECUTE" -eq 1 ]; then
-      rm -rf "$path"
-      remove_empty_parent "$path"
-      echo "removed orphan automation directory: $path"
+    # A path can become unregistered because metadata was lost while its Git
+    # directory still contains recoverable commits. Recheck its complete status
+    # immediately before refusing automatic deletion so a concurrent write is
+    # visible in the blocker report.
+    status_again="$(git -C "$path" status --porcelain --untracked-files=all)"
+    if [ "$status_again" != "$status" ]; then
+      echo "BLOCKED: unregistered worktree changed during cleanup and was preserved: $path" >&2
     else
-      echo "DRY-RUN: rm -rf $path"
-      remove_empty_parent "$path"
+      echo "BLOCKED: unregistered VentureDex Git directory; automatic deletion is refused: $path" >&2
+    fi
+    printf 'Reachable origin refs for HEAD %s:\n%s\n' "$head" "$reachable_refs" >&2
+    echo "Recover by re-registering/moving the directory or preserving it manually; do not use recursive deletion." >&2
+    if [ "$EXECUTE" -eq 1 ]; then
+      return 1
     fi
   fi
 }
+
+if [ "$EXECUTE" -eq 1 ]; then
+  echo "Refreshing origin refs before destructive cleanup..."
+  git -C "$MAIN_REPO" fetch --quiet --prune origin \
+    || die "could not refresh origin refs; refusing worktree cleanup"
+fi
 
 sort -u "$TMP_TARGETS" | while IFS= read -r target; do
   [ -n "$target" ] || continue

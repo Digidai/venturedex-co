@@ -28,13 +28,9 @@ MAX_URLS="${MAX_URLS:-10}"
 
 CODEX_HOME_DEFAULT="${CODEX_HOME:-${HOME}/.codex}"
 CENTRAL_HISTORY_FILE="${CODEX_HOME_DEFAULT}/automations/venturedex-daily-curator/gsc_submission_history.tsv"
-if [[ -d "$(dirname "$CENTRAL_HISTORY_FILE")" ]]; then
-  DEFAULT_HISTORY_FILE="$CENTRAL_HISTORY_FILE"
-else
-  DEFAULT_HISTORY_FILE="${ROOT_DIR}/.gsc_submission_history.tsv"
-fi
-HISTORY_FILE="${HISTORY_FILE:-${GSC_HISTORY_FILE:-$DEFAULT_HISTORY_FILE}}"
-GSC_ARTIFACT_DIR="${GSC_ARTIFACT_DIR:-${ROOT_DIR}/docs/promotion/gsc-artifacts}"
+LEGACY_HISTORY_FILE="${GSC_LEGACY_HISTORY_FILE:-${ROOT_DIR}/.gsc_submission_history.tsv}"
+HISTORY_FILE="${HISTORY_FILE:-${GSC_HISTORY_FILE:-$CENTRAL_HISTORY_FILE}}"
+GSC_ARTIFACT_DIR="${GSC_ARTIFACT_DIR:-${CODEX_HOME_DEFAULT}/automations/venturedex-daily-curator/gsc-artifacts}"
 BB_BROWSER_CMD="${BB_BROWSER_CMD:-bb-browser}"
 COMET_APP="${COMET_APP:-/Applications/Comet.app/Contents/MacOS/Comet}"
 COMET_LOG_FILE="${COMET_LOG_FILE:-/tmp/venturedex-gsc-comet.log}"
@@ -45,6 +41,8 @@ COMET_CDP_PORT="${COMET_CDP_PORT:-19825}"
 DRY_RUN=0
 ADD_LATEST_DAILY=0
 ADD_LATEST_WEEKLY=0
+ADD_RETRY_PENDING=0
+MIGRATE_LEGACY_HISTORY=0
 DAILY_DATE=""
 WEEKLY_ISSUE=""
 EXPECT_URL=""
@@ -52,6 +50,11 @@ FORCE=0
 SKIP_LIVE_CHECK=0
 BB_BROWSER_TAB_OPENED=0
 BB_BROWSER_TAB_ID=""
+HISTORY_LOCK_PATH=""
+HISTORY_LOCK_OWNER_CANDIDATE=""
+HISTORY_LOCK_TOKEN=""
+HISTORY_LOCK_HELD=0
+HISTORY_LOCK_ACQUIRING=0
 TARGET_URLS=()
 
 usage() {
@@ -63,7 +66,9 @@ Usage:
   bash scripts/submit-gsc-direct.sh --latest-daily
   bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
   bash scripts/submit-gsc-direct.sh --latest-weekly
+  bash scripts/submit-gsc-direct.sh --dry-run --retry-pending --max-urls 10
   bash scripts/submit-gsc-direct.sh --url <url> [--expect-url <url>]
+  bash scripts/submit-gsc-direct.sh --migrate-legacy-history
 
 Options:
   --dry-run             Preview targets and write dry-run ledger rows only.
@@ -71,8 +76,11 @@ Options:
   --daily-date <date>   Submit startup detail pages published on YYYY-MM-DD.
   --latest-weekly       Submit the newest published weekly issue detail page.
   --weekly-issue <N>    Submit one published weekly issue detail page.
+  --retry-pending       Retry canonical detail URLs whose latest submit state is retry_pending.
   --url <url>           Submit one detail URL; may be repeated.
   --expect-url <url>    Safety check for single-URL submissions.
+  --migrate-legacy-history
+                        Merge unique rows from the old repo ledger into the central ledger.
   --force               Do not skip URLs already marked requested in the ledger.
   --skip-live-check     Do not verify the target URL returns 2xx before submit.
   --max-urls <N>        Safety cap for one run. Default: ${MAX_URLS}.
@@ -86,21 +94,335 @@ USAGE
 }
 
 ensure_history_file() {
-  if [ ! -f "$HISTORY_FILE" ]; then
-    printf 'timestamp\tstatus\turl\tmessage\n' > "$HISTORY_FILE"
+  local history_dir
+  history_dir="$(dirname "$HISTORY_FILE")"
+  if ! mkdir -p "$history_dir"; then
+    echo "Could not create GSC ledger directory: ${history_dir}" >&2
+    return 1
   fi
+  if [ ! -f "$HISTORY_FILE" ]; then
+    if ! printf 'timestamp\tstatus\turl\tmessage\n' > "$HISTORY_FILE"; then
+      echo "Could not create authoritative GSC ledger: ${HISTORY_FILE}" >&2
+      return 1
+    fi
+  fi
+  python3 - "$HISTORY_FILE" <<'PY'
+import csv
+import sys
+from pathlib import Path
+
+history = Path(sys.argv[1])
+expected = ["timestamp", "status", "url", "message"]
+with history.open(newline="", encoding="utf-8") as handle:
+    reader = csv.reader(handle, delimiter="\t", strict=True)
+    try:
+        header = next(reader)
+    except StopIteration:
+        raise SystemExit(f"Invalid GSC ledger header in {history}: file is empty")
+    if header != expected:
+        raise SystemExit(f"Invalid GSC ledger header in {history}")
+    for line_number, row in enumerate(reader, start=2):
+        if not row or (len(row) == 1 and not row[0]):
+            continue
+        if len(row) != 4:
+            raise SystemExit(
+                f"Invalid GSC ledger row in {history}:{line_number}: expected 4 columns"
+            )
+        if not row[0].strip() or not row[1].strip() or not row[2].strip():
+            raise SystemExit(
+                f"Invalid GSC ledger row in {history}:{line_number}: "
+                "timestamp, status, and url are required"
+            )
+PY
+}
+
+history_lock_token_matches() {
+  local candidate="$1"
+  local line
+
+  [ -f "$candidate" ] || return 1
+  while IFS= read -r line; do
+    if [ "$line" = "token=${HISTORY_LOCK_TOKEN}" ]; then
+      return 0
+    fi
+  done < "$candidate"
+  return 1
+}
+
+release_history_lock() {
+  local owns_lock=0
+
+  if [ "$HISTORY_LOCK_ACQUIRING" -eq 1 ] \
+    && [ -f "$HISTORY_LOCK_OWNER_CANDIDATE" ] \
+    && [ -f "$HISTORY_LOCK_PATH" ] \
+    && [ "$HISTORY_LOCK_OWNER_CANDIDATE" -ef "$HISTORY_LOCK_PATH" ]; then
+    owns_lock=1
+  elif [ "$HISTORY_LOCK_HELD" -eq 1 ] \
+    && history_lock_token_matches "$HISTORY_LOCK_PATH"; then
+    owns_lock=1
+  fi
+
+  if [ "$owns_lock" -eq 1 ]; then
+    if ! rm -f "$HISTORY_LOCK_PATH"; then
+      echo "Could not remove owned GSC history lock: ${HISTORY_LOCK_PATH}" >&2
+    fi
+  elif { [ "$HISTORY_LOCK_HELD" -eq 1 ] || [ "$HISTORY_LOCK_ACQUIRING" -eq 1 ]; } \
+    && [ -e "$HISTORY_LOCK_PATH" ]; then
+    echo "Refusing to remove GSC history lock with unknown ownership: ${HISTORY_LOCK_PATH}" >&2
+  fi
+
+  if [ -n "$HISTORY_LOCK_OWNER_CANDIDATE" ]; then
+    rm -f "$HISTORY_LOCK_OWNER_CANDIDATE" \
+      || echo "Could not remove GSC lock owner candidate: ${HISTORY_LOCK_OWNER_CANDIDATE}" >&2
+  fi
+
+  HISTORY_LOCK_HELD=0
+  HISTORY_LOCK_ACQUIRING=0
+  HISTORY_LOCK_OWNER_CANDIDATE=""
+}
+
+print_history_lock_owner() {
+  local line
+
+  echo "BLOCKED: authoritative GSC history lock is already held." >&2
+  echo "Lock path: ${HISTORY_LOCK_PATH}" >&2
+  if [ -f "$HISTORY_LOCK_PATH" ] && [ -r "$HISTORY_LOCK_PATH" ]; then
+    echo "Lock owner:" >&2
+    while IFS= read -r line; do
+      printf '  %s\n' "$line" >&2
+    done < "$HISTORY_LOCK_PATH"
+  else
+    echo "Lock owner metadata is unavailable; refusing to remove or replace the lock." >&2
+  fi
+}
+
+acquire_history_lock() {
+  local canonical_history lock_parent
+
+  if ! canonical_history="$(python3 - "$HISTORY_FILE" <<'PY'
+import sys
+from pathlib import Path
+
+print(Path(sys.argv[1]).expanduser().resolve(strict=False))
+PY
+)"; then
+    echo "Could not canonicalize authoritative GSC ledger path: ${HISTORY_FILE}" >&2
+    return 1
+  fi
+
+  HISTORY_LOCK_PATH="${canonical_history}.lock"
+  lock_parent="$(dirname "$HISTORY_LOCK_PATH")"
+  if ! mkdir -p "$lock_parent"; then
+    echo "Could not create GSC history lock directory: ${lock_parent}" >&2
+    return 1
+  fi
+
+  HISTORY_LOCK_TOKEN="$$:$(date '+%s'):${RANDOM}"
+  HISTORY_LOCK_OWNER_CANDIDATE="${HISTORY_LOCK_PATH}.owner.$$.$RANDOM"
+  if ! (
+    umask 077
+    {
+      printf 'token=%s\n' "$HISTORY_LOCK_TOKEN"
+      printf 'pid=%s\n' "$$"
+      printf 'started_at=%s\n' "$RUN_TS"
+      printf 'history_file=%s\n' "$canonical_history"
+      printf 'working_directory=%s\n' "$ROOT_DIR"
+    } > "$HISTORY_LOCK_OWNER_CANDIDATE"
+  ); then
+    echo "Could not write GSC history lock owner metadata: ${HISTORY_LOCK_OWNER_CANDIDATE}" >&2
+    rm -f "$HISTORY_LOCK_OWNER_CANDIDATE" || true
+    HISTORY_LOCK_OWNER_CANDIDATE=""
+    return 1
+  fi
+
+  HISTORY_LOCK_ACQUIRING=1
+  if ! ln "$HISTORY_LOCK_OWNER_CANDIDATE" "$HISTORY_LOCK_PATH" 2>/dev/null; then
+    HISTORY_LOCK_ACQUIRING=0
+    rm -f "$HISTORY_LOCK_OWNER_CANDIDATE" || true
+    HISTORY_LOCK_OWNER_CANDIDATE=""
+    if [ -e "$HISTORY_LOCK_PATH" ] || [ -L "$HISTORY_LOCK_PATH" ]; then
+      print_history_lock_owner
+    else
+      echo "Could not atomically acquire GSC history lock: ${HISTORY_LOCK_PATH}" >&2
+    fi
+    return 1
+  fi
+
+  HISTORY_LOCK_HELD=1
+  HISTORY_LOCK_ACQUIRING=0
+  rm -f "$HISTORY_LOCK_OWNER_CANDIDATE" \
+    || echo "Could not remove linked GSC lock owner candidate: ${HISTORY_LOCK_OWNER_CANDIDATE}" >&2
+  HISTORY_LOCK_OWNER_CANDIDATE=""
+  return 0
+}
+
+diagnose_history_layout() {
+  if [ "$HISTORY_FILE" != "$CENTRAL_HISTORY_FILE" ]; then
+    echo "GSC history override active: ${HISTORY_FILE}" >&2
+    return 0
+  fi
+
+  if [ -f "$LEGACY_HISTORY_FILE" ] && [ "$LEGACY_HISTORY_FILE" != "$HISTORY_FILE" ]; then
+    if awk '
+      NR == FNR { central[$0] = 1; next }
+      FNR == 1 || $0 == "" { next }
+      !($0 in central) { missing = 1 }
+      END { exit(missing ? 0 : 1) }
+    ' "$HISTORY_FILE" "$LEGACY_HISTORY_FILE"; then
+      echo "Legacy repo GSC ledger detected at ${LEGACY_HISTORY_FILE}." >&2
+      echo "The central ledger is authoritative: ${HISTORY_FILE}" >&2
+      echo "Run --migrate-legacy-history to import unique legacy rows safely." >&2
+    fi
+  fi
+}
+
+migrate_legacy_history() {
+  if [ "$HISTORY_FILE" != "$CENTRAL_HISTORY_FILE" ]; then
+    echo "--migrate-legacy-history requires the central default HISTORY_FILE." >&2
+    return 1
+  fi
+  if [ "$LEGACY_HISTORY_FILE" = "$HISTORY_FILE" ]; then
+    echo "Legacy and central GSC history paths resolve to the same file; nothing to migrate."
+    return 0
+  fi
+  if [ ! -f "$LEGACY_HISTORY_FILE" ]; then
+    echo "No legacy GSC history file found: ${LEGACY_HISTORY_FILE}"
+    return 0
+  fi
+
+  python3 - "$HISTORY_FILE" "$LEGACY_HISTORY_FILE" <<'PY'
+import csv
+import os
+import sys
+import tempfile
+from pathlib import Path
+
+central = Path(sys.argv[1])
+legacy = Path(sys.argv[2])
+fields = ("timestamp", "status", "url", "message")
+
+
+def read_rows(path: Path) -> list[tuple[str, str, str, str]]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        reader = csv.reader(handle, delimiter="\t", strict=True)
+        try:
+            header = next(reader)
+        except StopIteration:
+            raise SystemExit(f"Invalid GSC ledger header in {path}: file is empty")
+        if header != list(fields):
+            raise SystemExit(f"Invalid GSC ledger header in {path}")
+        rows = []
+        try:
+            for row in reader:
+                line_number = reader.line_num
+                if not row or (len(row) == 1 and not row[0]):
+                    continue
+                if len(row) != len(fields):
+                    raise SystemExit(
+                        f"Invalid GSC ledger row in {path}:{line_number}: "
+                        f"expected 4 columns; found {len(row)}"
+                    )
+                if (
+                    not row[0].strip()
+                    or not row[1].strip()
+                    or not row[2].strip()
+                ):
+                    raise SystemExit(
+                        f"Invalid GSC ledger row in {path}:{line_number}: "
+                        "timestamp, status, and url are required"
+                    )
+                rows.append(tuple(row))
+        except csv.Error as error:
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{reader.line_num}: {error}"
+            ) from error
+        return rows
+
+
+central.parent.mkdir(parents=True, exist_ok=True)
+central_rows = read_rows(central)
+legacy_rows = read_rows(legacy)
+seen = set(central_rows)
+merged = [(row, 1, index) for index, row in enumerate(central_rows)]
+imported = 0
+for index, row in enumerate(legacy_rows):
+    if row in seen:
+        continue
+    seen.add(row)
+    merged.append((row, 0, index))
+    imported += 1
+
+# Preserve each ledger's line order. If timestamps tie, existing central rows
+# come after imported rows and therefore remain authoritative.
+merged.sort(key=lambda item: (item[0][0], item[1], item[2]))
+central_rows = [row for row, _source_priority, _index in merged]
+fd, temporary_name = tempfile.mkstemp(
+    prefix=".gsc-history-",
+    suffix=".tsv",
+    dir=central.parent,
+    text=True,
+)
+try:
+    with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle, delimiter="\t", lineterminator="\n")
+        writer.writerow(fields)
+        writer.writerows(central_rows)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary_name, central)
+finally:
+    if os.path.exists(temporary_name):
+        os.unlink(temporary_name)
+
+suffix = "" if imported == 1 else "s"
+print(
+    f"History migration: imported {imported} unique legacy row{suffix}; "
+    f"authoritative ledger: {central}"
+)
+PY
 }
 
 append_history() {
   local status="$1"
   local url="$2"
   local message="$3"
-  ensure_history_file
-  printf '%s\t%s\t%s\t%s\n' \
+  local sanitized_message
+
+  if ! ensure_history_file; then
+    echo "Could not validate authoritative GSC ledger before appending status=${status} url=${url}" >&2
+    return 1
+  fi
+  sanitized_message="$(printf '%s' "$message" | tr '\t\r\n' '   ')"
+  if ! printf '%s\t%s\t%s\t%s\n' \
     "$(date '+%Y-%m-%d %H:%M:%S')" \
     "$status" \
     "$url" \
-    "$(printf '%s' "$message" | tr '\t\r\n' '   ')" >> "$HISTORY_FILE"
+    "$sanitized_message" >> "$HISTORY_FILE"; then
+    echo "Could not persist authoritative GSC ledger row for status=${status} url=${url}" >&2
+    return 1
+  fi
+  return 0
+}
+
+append_history_or_block() {
+  local status="$1"
+  local url="$2"
+  local message="$3"
+
+  if append_history "$status" "$url" "$message"; then
+    return 0
+  fi
+
+  echo "BLOCKED: authoritative GSC ledger persistence failed for status=${status} url=${url}" >&2
+  echo "Do not retry automatically or report this URL complete; reconcile Search Console state and the ledger manually." >&2
+  if [ "$status" = "requested" ]; then
+    write_gsc_artifact \
+      "ledger_write_failed_after_request" \
+      "$url" \
+      "Search Console may have accepted the request, but the authoritative ledger row could not be persisted; manual reconciliation required and automatic retry disabled." \
+      || echo "Could not persist the fallback GSC reconciliation artifact." >&2
+  fi
+  return 1
 }
 
 sanitize_artifact_name() {
@@ -113,6 +435,34 @@ value = re.sub(r"^https?://", "", value)
 value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
 print(value[:90] or "unknown")
 PY
+}
+
+unresolved_reconciliation_artifact() {
+  local url="$1"
+  local safe_url candidate
+
+  [ -d "$GSC_ARTIFACT_DIR" ] || return 1
+  safe_url="$(sanitize_artifact_name "$url")" || return 1
+  for candidate in \
+    "$GSC_ARTIFACT_DIR"/*-ledger_write_failed_after_request-"$safe_url".txt; do
+    if [ -f "$candidate" ]; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+require_no_unresolved_reconciliation() {
+  local url="$1"
+  local artifact
+
+  if artifact="$(unresolved_reconciliation_artifact "$url")"; then
+    echo "BLOCKED: unresolved GSC reconciliation artifact exists for ${url}: ${artifact}" >&2
+    echo "Verify Search Console state and reconcile the authoritative ledger before removing the artifact; automatic retry is disabled." >&2
+    return 1
+  fi
+  return 0
 }
 
 capture_page_text() {
@@ -128,10 +478,13 @@ write_gsc_artifact() {
   page_text="$(capture_page_text)"
   page_state="$(page_request_state 2>/dev/null || true)"
   safe_url="$(sanitize_artifact_name "$url")"
-  mkdir -p "$GSC_ARTIFACT_DIR"
+  if ! mkdir -p "$GSC_ARTIFACT_DIR"; then
+    echo "Could not create GSC artifact directory: ${GSC_ARTIFACT_DIR}" >&2
+    return 1
+  fi
   file="${GSC_ARTIFACT_DIR}/$(date '+%Y%m%d-%H%M%S')-${status}-${safe_url}.txt"
 
-  {
+  if ! {
     printf 'timestamp: %s\n' "$(date '+%Y-%m-%d %H:%M:%S')"
     printf 'status: %s\n' "$status"
     printf 'url: %s\n' "$url"
@@ -139,9 +492,13 @@ write_gsc_artifact() {
     printf 'page_state: %s\n' "${page_state:-unknown}"
     printf '\n--- page text ---\n'
     printf '%s\n' "$page_text"
-  } > "$file"
+  } > "$file"; then
+    echo "Could not write GSC diagnostic artifact: ${file}" >&2
+    return 1
+  fi
 
   echo "GSC diagnostic artifact: $file" >&2
+  return 0
 }
 
 normalize_url() {
@@ -160,7 +517,7 @@ add_target() {
 
 validate_detail_url() {
   local url="$1"
-  if ! printf '%s' "$url" | grep -Eq '^https://venturedex\.co/(startups/[a-z0-9][a-z0-9-]*|weekly/[0-9]+)$'; then
+  if ! printf '%s' "$url" | grep -Eq '^https://venturedex\.co/(startups/([a-z0-9]|[a-z0-9][a-z0-9-]*[a-z0-9])|weekly/[1-9][0-9]*)$'; then
     echo "Invalid VentureDex detail URL: $url" >&2
     return 1
   fi
@@ -172,7 +529,7 @@ dedupe_targets() {
   seen_file="$(mktemp)"
   unique_file="$(mktemp)"
 
-  for url in "${TARGET_URLS[@]}"; do
+  for url in ${TARGET_URLS[@]+"${TARGET_URLS[@]}"}; do
     url="$(normalize_url "$url")"
     if [ -n "$url" ] && ! grep -Fxq "$url" "$seen_file"; then
       printf '%s\n' "$url" >> "$seen_file"
@@ -303,7 +660,124 @@ PY
 target_already_requested() {
   local url="$1"
   [ -f "$HISTORY_FILE" ] || return 1
-  awk -F '\t' -v target="$url" '$2 == "requested" && $3 == target { found = 1 } END { exit(found ? 0 : 1) }' "$HISTORY_FILE"
+  awk -F '\t' -v target="$url" '
+    $3 == target && ($2 == "requested" || $2 == "retry_pending") { latest = $2 }
+    END { exit(latest == "requested" ? 0 : 1) }
+  ' "$HISTORY_FILE"
+}
+
+retry_pending_urls() {
+  python3 - "$HISTORY_FILE" <<'PY'
+import csv
+import re
+import sys
+from pathlib import Path
+
+history = Path(sys.argv[1])
+canonical = re.compile(
+    r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
+)
+latest = {}
+
+with history.open(newline="", encoding="utf-8") as handle:
+    reader = csv.DictReader(handle, delimiter="\t")
+    expected = ["timestamp", "status", "url", "message"]
+    if reader.fieldnames != expected:
+        raise SystemExit(f"Invalid GSC ledger header in {history}")
+    for sequence, row in enumerate(reader):
+        status = str(row.get("status") or "").strip()
+        if status not in {"requested", "retry_pending"}:
+            continue
+        url = str(row.get("url") or "").strip().rstrip("/")
+        if not canonical.fullmatch(url):
+            continue
+        latest[url] = (status, str(row.get("timestamp") or ""), sequence)
+
+pending = [
+    (timestamp, sequence, url)
+    for url, (status, timestamp, sequence) in latest.items()
+    if status == "retry_pending"
+]
+for _timestamp, _sequence, url in sorted(pending):
+    print(url)
+PY
+}
+
+validate_max_urls_value() {
+  if ! printf '%s' "$MAX_URLS" | grep -Eq '^[1-9][0-9]*$'; then
+    echo "--max-urls must be a positive integer: $MAX_URLS" >&2
+    exit 1
+  fi
+}
+
+target_is_selected() {
+  local candidate="$1"
+  local selected
+  for selected in ${TARGET_URLS[@]+"${TARGET_URLS[@]}"}; do
+    if [ "$selected" = "$candidate" ]; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+target_count() {
+  local selected
+  local count=0
+  for selected in ${TARGET_URLS[@]+"${TARGET_URLS[@]}"}; do
+    count=$((count + 1))
+  done
+  printf '%s\n' "$count"
+}
+
+has_targets() {
+  [ "$(target_count)" -gt 0 ]
+}
+
+append_discovered_targets() {
+  local output url
+  if ! output="$("$@")"; then
+    echo "GSC target discovery failed: $*" >&2
+    return 1
+  fi
+  while IFS= read -r url; do
+    [ -n "$url" ] && add_target "$url"
+  done <<< "$output"
+}
+
+collect_retry_pending_targets() {
+  local pending_output url
+  local selected_count
+  local capacity=0
+  local added=0
+  local remaining=0
+
+  if ! pending_output="$(retry_pending_urls)"; then
+    echo "Could not read the GSC retry backlog from ${HISTORY_FILE}." >&2
+    return 1
+  fi
+
+  selected_count="$(target_count)"
+
+  if [ "$selected_count" -lt "$MAX_URLS" ]; then
+    capacity=$((MAX_URLS - selected_count))
+  fi
+
+  while IFS= read -r url; do
+    url="$(normalize_url "$url")"
+    [ -n "$url" ] || continue
+    if target_is_selected "$url"; then
+      continue
+    fi
+    if [ "$added" -lt "$capacity" ]; then
+      add_target "$url"
+      added=$((added + 1))
+    else
+      remaining=$((remaining + 1))
+    fi
+  done <<< "$pending_output"
+
+  echo "GSC retry backlog: selected=${added}, remaining=${remaining}, max_urls=${MAX_URLS}"
 }
 
 check_live_url() {
@@ -468,6 +942,23 @@ cleanup_browser_tab() {
   fi
 }
 
+cleanup_run() {
+  local exit_code=$?
+
+  trap - EXIT HUP INT QUIT TERM
+  cleanup_browser_tab || true
+  release_history_lock || true
+  exit "$exit_code"
+}
+
+install_cleanup_traps() {
+  trap cleanup_run EXIT
+  trap 'exit 129' HUP
+  trap 'exit 130' INT
+  trap 'exit 131' QUIT
+  trap 'exit 143' TERM
+}
+
 page_has_quota() {
   local result
   result=$(run_js "(function(){var t=document.body?document.body.innerText:'';return /(quota|配额)/i.test(t)?'quota':'ok';})();" 2>/dev/null || true)
@@ -486,6 +977,58 @@ page_request_state() {
   if(/(request failed|couldn.?t request|unable to request|something went wrong|失败|无法|出错)/i.test(text)) return 'failed';
   return 'unknown';
 })();" 2>/dev/null || true
+}
+
+page_matches_inspected_url() {
+  local url="$1"
+  local escaped_url input_match page_text
+  escaped_url=${url//\\/\\\\}
+  escaped_url=${escaped_url//\'/\\\'}
+  input_match="$(run_js "
+(function(){
+  var expected='${escaped_url}';
+  var input = document.querySelector('input[aria-label*=\"Inspect any URL\"]') ||
+              document.querySelector('input[aria-label*=\"检查\"]') ||
+              document.querySelector('input.Ax4B8') ||
+              document.querySelector('input[type=\"text\"]');
+  return input && input.value.trim()===expected
+    ? 'input_target_match'
+    : 'input_target_mismatch';
+})();" 2>/dev/null || true)"
+  if ! printf '%s' "$input_match" | grep -q 'input_target_match'; then
+    return 1
+  fi
+  page_text="$(capture_page_text)"
+  printf '%s' "$page_text" | python3 -c '
+import re
+import sys
+from urllib.parse import urlsplit, urlunsplit
+
+expected = sys.argv[1]
+visible_text = sys.stdin.read()
+
+def normalize(raw):
+    raw = raw.strip().strip("\"'"'"'()[]{}<>,.;:!?")
+    try:
+        parsed = urlsplit(raw)
+    except ValueError:
+        return None
+    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+        return None
+    path = parsed.path.rstrip("/") or "/"
+    return urlunsplit(
+        (parsed.scheme.lower(), parsed.netloc.lower(), path, parsed.query, "")
+    )
+
+normalized_expected = normalize(expected)
+candidates = re.findall(r"https?://[^\s<>\"'"'"'()]+", visible_text)
+raise SystemExit(
+    0
+    if normalized_expected
+    and any(normalize(candidate) == normalized_expected for candidate in candidates)
+    else 1
+)
+' "$url"
 }
 
 wait_for_request_result() {
@@ -550,6 +1093,11 @@ submit_single_url() {
     return 2
   fi
 
+  if ! page_matches_inspected_url "$url"; then
+    echo "Search Console did not render the exact inspected URL; refusing to click: $url" >&2
+    return 5
+  fi
+
   click_js="
 (function(){
   var allEls=document.querySelectorAll('span,button,div[role=button],a,material-button');
@@ -580,6 +1128,11 @@ submit_single_url() {
     return "$result"
   fi
 
+  if ! page_matches_inspected_url "$url"; then
+    echo "Search Console success state is not associated with the exact inspected URL: $url" >&2
+    return 5
+  fi
+
   dismiss_success_dialog
   sleep "$POST_MODAL_WAIT_SECONDS"
 
@@ -604,6 +1157,10 @@ parse_args() {
         ;;
       --latest-weekly)
         ADD_LATEST_WEEKLY=1
+        shift
+        ;;
+      --retry-pending)
+        ADD_RETRY_PENDING=1
         shift
         ;;
       --daily-date)
@@ -637,6 +1194,10 @@ parse_args() {
         fi
         EXPECT_URL="$2"
         shift 2
+        ;;
+      --migrate-legacy-history)
+        MIGRATE_LEGACY_HISTORY=1
+        shift
         ;;
       --force)
         FORCE=1
@@ -676,12 +1237,8 @@ parse_args() {
 }
 
 collect_targets() {
-  local url
-
   if [ "$ADD_LATEST_DAILY" -eq 1 ]; then
-    while IFS= read -r url; do
-      add_target "$url"
-    done < <(latest_daily_urls)
+    append_discovered_targets latest_daily_urls || return 1
   fi
 
   if [ -n "$DAILY_DATE" ]; then
@@ -689,13 +1246,11 @@ collect_targets() {
       echo "--daily-date must be YYYY-MM-DD: $DAILY_DATE" >&2
       exit 1
     fi
-    while IFS= read -r url; do
-      add_target "$url"
-    done < <(daily_date_urls "$DAILY_DATE")
+    append_discovered_targets daily_date_urls "$DAILY_DATE" || return 1
   fi
 
   if [ "$ADD_LATEST_WEEKLY" -eq 1 ]; then
-    add_target "$(latest_weekly_url)"
+    append_discovered_targets latest_weekly_url || return 1
   fi
 
   if [ -n "$WEEKLY_ISSUE" ]; then
@@ -703,26 +1258,27 @@ collect_targets() {
       echo "--weekly-issue must be a number: $WEEKLY_ISSUE" >&2
       exit 1
     fi
-    add_target "$(weekly_issue_url "$WEEKLY_ISSUE")"
+    append_discovered_targets weekly_issue_url "$WEEKLY_ISSUE" || return 1
   fi
 
   dedupe_targets
+
+  if [ "$ADD_RETRY_PENDING" -eq 1 ]; then
+    collect_retry_pending_targets || return 1
+    dedupe_targets
+  fi
 }
 
 validate_targets() {
   local url count
 
-  count="${#TARGET_URLS[@]}"
+  count="$(target_count)"
   if [ "$count" -eq 0 ]; then
     echo "No GSC target URLs were selected." >&2
     usage >&2
     exit 1
   fi
 
-  if ! printf '%s' "$MAX_URLS" | grep -Eq '^[0-9]+$'; then
-    echo "--max-urls must be numeric: $MAX_URLS" >&2
-    exit 1
-  fi
   if [ "$count" -gt "$MAX_URLS" ]; then
     echo "Refusing to submit $count URLs in one run; max is $MAX_URLS." >&2
     echo "Use --max-urls to raise the cap intentionally." >&2
@@ -739,7 +1295,7 @@ validate_targets() {
       echo "Target URL does not match --expect-url." >&2
       echo "target: ${TARGET_URLS[0]}" >&2
       echo "expect: $EXPECT_URL" >&2
-      append_history "stopped_mismatch" "${TARGET_URLS[0]}" "target mismatch with --expect-url"
+      append_history_or_block "stopped_mismatch" "${TARGET_URLS[0]}" "target mismatch with --expect-url" || exit 1
       exit 2
     fi
   fi
@@ -778,13 +1334,14 @@ precheck_targets() {
       echo "Already requested, skipping unless --force is set: $url"
       continue
     fi
+    require_no_unresolved_reconciliation "$url" || exit 1
     if ! check_live_url "$url"; then
       echo "Live URL check failed: $url" >&2
-      append_history "live_check_failed" "$url" "target URL did not return a successful response"
+      append_history_or_block "live_check_failed" "$url" "target URL did not return a successful response" || exit 1
       exit 1
     fi
     if [ "$DRY_RUN" -eq 1 ]; then
-      append_history "dry_run" "$url" "preview only"
+      append_history_or_block "dry_run" "$url" "preview only" || exit 1
     fi
   done
 }
@@ -807,7 +1364,6 @@ submit_targets() {
 
   require_deps
   ensure_bb_browser_connected || exit 1
-  trap cleanup_browser_tab EXIT INT TERM
 
   inspect_url="https://search.google.com/search-console/inspect?resource_id=${GSC_RESOURCE_ID}&hl=${GSC_LANG}"
   open_gsc_page "$inspect_url"
@@ -819,10 +1375,11 @@ submit_targets() {
       skipped_count=$((skipped_count + 1))
       continue
     fi
+    require_no_unresolved_reconciliation "$url" || return 1
 
     if ! check_live_url "$url"; then
       echo "Live URL check failed: $url" >&2
-      append_history "live_check_failed" "$url" "target URL did not return a successful response"
+      append_history_or_block "live_check_failed" "$url" "target URL did not return a successful response" || return 1
       write_gsc_artifact "live_check_failed" "$url" "target URL did not return a successful response"
       return 1
     fi
@@ -833,31 +1390,37 @@ submit_targets() {
 
     case "$result" in
       0)
+        append_history_or_block "requested" "$url" "indexing requested" || return 1
         echo "Requested indexing: $url"
-        append_history "requested" "$url" "indexing requested"
         submitted_count=$((submitted_count + 1))
         ;;
       1)
         echo "Request button not found; manual confirmation may be required: $url" >&2
-        append_history "retry_pending" "$url" "request button not found"
+        append_history_or_block "retry_pending" "$url" "request button not found" || return 1
         write_gsc_artifact "retry_pending" "$url" "request button not found"
         return 1
         ;;
       2)
         echo "Quota detected; stopping remaining submissions." >&2
-        append_history "quota_exceeded" "$url" "quota detected"
+        append_history_or_block "quota_exceeded" "$url" "quota detected" || return 1
         write_gsc_artifact "quota_exceeded" "$url" "quota detected"
         return 2
         ;;
       4)
         echo "Search Console reported a request failure." >&2
-        append_history "retry_pending" "$url" "request failure detected"
+        append_history_or_block "retry_pending" "$url" "request failure detected" || return 1
         write_gsc_artifact "retry_pending" "$url" "request failure detected"
+        return 1
+        ;;
+      5)
+        echo "Search Console inspected URL mismatch; refusing requested status: $url" >&2
+        append_history_or_block "retry_pending" "$url" "inspected URL mismatch" || return 1
+        write_gsc_artifact "retry_pending" "$url" "inspected URL mismatch"
         return 1
         ;;
       *)
         echo "Submit confirmation was not detected: $url" >&2
-        append_history "retry_pending" "$url" "submit confirmation not detected"
+        append_history_or_block "retry_pending" "$url" "submit confirmation not detected" || return 1
         write_gsc_artifact "retry_pending" "$url" "submit confirmation not detected"
         return 3
         ;;
@@ -869,7 +1432,42 @@ submit_targets() {
 
 main() {
   parse_args "$@"
-  collect_targets
+  validate_max_urls_value
+  install_cleanup_traps
+  acquire_history_lock || exit 1
+  ensure_history_file || exit 1
+  diagnose_history_layout
+
+  if [ "$MIGRATE_LEGACY_HISTORY" -eq 1 ]; then
+    migrate_legacy_history || exit 1
+  fi
+
+  if [ "$MIGRATE_LEGACY_HISTORY" -eq 1 ] \
+    && [ "$ADD_LATEST_DAILY" -eq 0 ] \
+    && [ "$ADD_LATEST_WEEKLY" -eq 0 ] \
+    && [ "$ADD_RETRY_PENDING" -eq 0 ] \
+    && [ -z "$DAILY_DATE" ] \
+    && [ -z "$WEEKLY_ISSUE" ] \
+    && [ -z "$EXPECT_URL" ]; then
+    if ! has_targets; then
+      exit 0
+    fi
+  fi
+
+  collect_targets || exit 1
+
+  if [ "$ADD_RETRY_PENDING" -eq 1 ] \
+    && [ "$ADD_LATEST_DAILY" -eq 0 ] \
+    && [ "$ADD_LATEST_WEEKLY" -eq 0 ] \
+    && [ -z "$DAILY_DATE" ] \
+    && [ -z "$WEEKLY_ISSUE" ] \
+    && [ -z "$EXPECT_URL" ]; then
+    if ! has_targets; then
+      echo "No unresolved GSC retry_pending targets remain."
+      exit 0
+    fi
+  fi
+
   validate_targets
   print_summary
   precheck_targets

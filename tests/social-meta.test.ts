@@ -61,6 +61,19 @@ test("Base layout emits complete social image metadata", () => {
   assert.match(source, /resolveSocialPreviewMeta/);
 });
 
+test("bearer-token subscription management disables third-party analytics", () => {
+  const base = readFileSync("src/layouts/Base.astro", "utf8");
+  const unsubscribe = readFileSync("src/pages/unsubscribe.astro", "utf8");
+
+  assert.match(base, /analytics\?: boolean/);
+  assert.match(base, /\{analytics && <MicrosoftClarity \/>}/);
+  assert.match(base, /\{analytics && cfBeaconToken && \(/);
+  assert.match(
+    unsubscribe,
+    /<Base[^>]*robots="noindex,nofollow"[^>]*analytics=\{false\}/
+  );
+});
+
 test("startup pages do not use screenshots as social preview cards", () => {
   const source = readFileSync("src/pages/startups/[slug].astro", "utf8");
 

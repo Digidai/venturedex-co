@@ -1,12 +1,11 @@
 import { existsSync, readFileSync } from "node:fs";
 import { homedir } from "node:os";
-import { dirname, join } from "node:path";
+import { join } from "node:path";
 import {
   latestDailyStartups,
   latestWeeklyIssue,
   loadPublishedWeeklyIssues,
   loadStartups,
-  resolveFromRoot,
   startupUrl,
   weeklyUrl,
   writeText,
@@ -36,18 +35,24 @@ export function defaultGscHistoryPath(): string {
 export function resolveDefaultGscHistoryPath(options: {
   env?: NodeJS.ProcessEnv;
   homeDir?: string;
-  exists?: (path: string) => boolean;
 } = {}): string {
   const env = options.env ?? process.env;
   const explicit = env.HISTORY_FILE || env.GSC_HISTORY_FILE;
   if (explicit) return explicit;
 
   const codeHome = env.CODEX_HOME || join(options.homeDir ?? homedir(), ".codex");
-  const centralPath = join(codeHome, "automations", "venturedex-daily-curator", "gsc_submission_history.tsv");
-  const pathExists = options.exists ?? existsSync;
-  if (pathExists(dirname(centralPath))) return centralPath;
-
-  return resolveFromRoot(".gsc_submission_history.tsv");
+  // The automation-scoped ledger is the only default authority. A missing
+  // central file must surface as missing evidence; silently falling back to
+  // the stale repo-local ledger can turn legacy rows into false completion.
+  // Operators may still select another authority explicitly with HISTORY_FILE
+  // or GSC_HISTORY_FILE, while legacy import remains an explicit submit-script
+  // migration step.
+  return join(
+    codeHome,
+    "automations",
+    "venturedex-daily-curator",
+    "gsc_submission_history.tsv"
+  );
 }
 
 export function parseGscLedgerText(text: string): GscLedgerRow[] {
@@ -73,7 +78,15 @@ export function readGscLedger(path = defaultGscHistoryPath()): GscLedgerRow[] {
 
 export function latestGscStatus(rows: GscLedgerRow[], url: string): GscLedgerRow | null {
   const target = normalizeCanonicalUrl(url);
-  return [...rows].reverse().find((row) => row.url === target) ?? null;
+  const matching = rows.filter((row) => row.url === target);
+  if (matching.length === 0) return null;
+
+  // A dry run is a preview, not a state transition. It must not downgrade an
+  // earlier requested row or hide an unresolved retry/quota/live-check blocker.
+  // When no operational row exists yet, the newest dry-run remains useful as
+  // explicit "needs submit" evidence.
+  return [...matching].reverse().find((row) => row.status !== "dry_run")
+    ?? matching[matching.length - 1];
 }
 
 export function classifyGscStatus(row: GscLedgerRow | null): { kind: GscStatusKind; message: string } {

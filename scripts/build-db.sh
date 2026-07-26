@@ -11,15 +11,25 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
+from datetime import datetime
 from pathlib import Path
 
 
 REPO_ROOT = Path(os.environ["REPO_ROOT"])
-CONTENT_DIR = REPO_ROOT / "content" / "startups"
-WEEKLY_DIR = REPO_ROOT / "content" / "weekly"
+CONTENT_DIR = Path(
+    os.environ.get("VENTUREDEX_STARTUPS_DIR", REPO_ROOT / "content" / "startups")
+)
+WEEKLY_DIR = Path(
+    os.environ.get("VENTUREDEX_WEEKLY_DIR", REPO_ROOT / "content" / "weekly")
+)
 INVESTORS_FILE = REPO_ROOT / "content" / "investors.json"
 COLLECTIONS_FILE = REPO_ROOT / "content" / "collections.json"
 OUTPUT = Path(os.environ.get("VENTUREDEX_SEED_OUTPUT", REPO_ROOT / "d1" / "generated-seed.sql"))
+TIMESTAMPS_FILE = Path(
+    os.environ.get("VENTUREDEX_TIMESTAMPS_FILE", REPO_ROOT / "content" / "timestamps.json")
+)
+UTC_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$")
 
 
 def sql(value):
@@ -78,18 +88,110 @@ startup_files = sorted(CONTENT_DIR.glob("*.json"))
 weekly_files = sorted(WEEKLY_DIR.glob("*.json"))
 investors = json.loads(INVESTORS_FILE.read_text()) if INVESTORS_FILE.exists() else {}
 
-# Version-controlled per-slug publish/first-seen timestamps (content/timestamps.json).
-# Keeps seeded dates deterministic and lets detail pages prerender with real dates.
-# Slugs missing here fall back to seed-time now() (then can be exported back to lock them).
-TIMESTAMPS_FILE = REPO_ROOT / "content" / "timestamps.json"
-_timestamps_raw = json.loads(TIMESTAMPS_FILE.read_text()) if TIMESTAMPS_FILE.exists() else {}
+if not startup_files:
+    raise SystemExit(
+        "ERROR: No startup files found; refusing to generate a seed that would delete "
+        "all published manual startups."
+    )
+
+weekly_documents: list[tuple[Path, dict]] = []
+for path in weekly_files:
+    try:
+        data = json.loads(path.read_text())
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"ERROR: Invalid Weekly JSON in {path}: {exc}") from exc
+    if not isinstance(data, dict):
+        raise SystemExit(f"ERROR: Weekly file must contain an object: {path}")
+    weekly_documents.append((path, data))
+
+published_weekly_documents = [
+    (path, data)
+    for path, data in weekly_documents
+    if data.get("status", "published") == "published"
+]
+if not published_weekly_documents:
+    weekly_removal_override = os.environ.get(
+        "VENTUREDEX_ALLOW_WEEKLY_ISSUE_REMOVALS", ""
+    )
+    if not re.fullmatch(
+        r"[1-9][0-9]*(?:,[1-9][0-9]*)*", weekly_removal_override
+    ):
+        raise SystemExit(
+            "ERROR: No published Weekly issues found; refusing to generate a seed "
+            "that would delete every published Weekly issue. A human-reviewed "
+            "removal must supply a comma-separated issue-number set in "
+            "VENTUREDEX_ALLOW_WEEKLY_ISSUE_REMOVALS; the exact remote set will be "
+            "checked again before D1 sync."
+        )
+
+# Version-controlled per-slug publish/first-seen timestamps are mandatory. The
+# JSON/prerender and D1/runtime paths must never substitute seed-time now().
+try:
+    _timestamps_raw = json.loads(TIMESTAMPS_FILE.read_text())
+except FileNotFoundError as exc:
+    raise SystemExit(f"ERROR: Missing timestamp file: {TIMESTAMPS_FILE}") from exc
+except json.JSONDecodeError as exc:
+    raise SystemExit(f"ERROR: Invalid timestamp JSON in {TIMESTAMPS_FILE}: {exc}") from exc
+
+if not isinstance(_timestamps_raw, dict):
+    raise SystemExit(f"ERROR: {TIMESTAMPS_FILE} must be an object keyed by startup slug")
 timestamps = {k: v for k, v in _timestamps_raw.items() if not k.startswith("__")}
+
+timestamp_errors: list[str] = []
+for path in startup_files:
+    slug = path.stem
+    entry = timestamps.get(slug)
+    if not isinstance(entry, dict):
+        timestamp_errors.append(f"missing timestamp entry for startup '{slug}'")
+        continue
+    for field in ("published_at", "first_seen_at"):
+        value = entry.get(field)
+        valid = isinstance(value, str) and bool(UTC_TIMESTAMP_RE.fullmatch(value))
+        if valid:
+            try:
+                datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+            except ValueError:
+                valid = False
+        if not valid:
+            timestamp_errors.append(
+                f"{slug}.{field} must be UTC YYYY-MM-DD HH:MM:SS"
+            )
+
+if timestamp_errors:
+    rendered = "\n  - ".join(timestamp_errors)
+    raise SystemExit(
+        "ERROR: Deterministic startup timestamps are required before seed generation:\n"
+        f"  - {rendered}"
+    )
 
 
 def timestamp_sql(slug: str, field: str) -> str:
-    entry = timestamps.get(slug) or {}
-    value = entry.get(field)
-    return sql(value) if value else "datetime('now')"
+    return sql(timestamps[slug][field])
+
+
+def source_fingerprint() -> str:
+    """Hash every source that can change generated seed semantics or rows."""
+    sources: list[tuple[str, Path]] = [
+        ("scripts/build-db.sh", REPO_ROOT / "scripts" / "build-db.sh"),
+        ("d1/schema.sql", REPO_ROOT / "d1" / "schema.sql"),
+        ("content/timestamps.json", TIMESTAMPS_FILE),
+        ("content/investors.json", INVESTORS_FILE),
+        ("content/collections.json", COLLECTIONS_FILE),
+    ]
+    sources.extend((f"content/startups/{path.name}", path) for path in startup_files)
+    sources.extend((f"content/weekly/{path.name}", path) for path in weekly_files)
+
+    digest = hashlib.sha256()
+    digest.update(b"venturedex-seed-source-v1\0")
+    for label, path in sources:
+        digest.update(label.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
+seed_source_fingerprint = source_fingerprint()
 
 startup_rows = []
 funding_rows = []
@@ -123,20 +225,6 @@ for path in startup_files:
         sorted(funding, key=lambda round_data: round_data.get("date", ""), reverse=True)[0]
         if funding
         else {}
-    )
-
-    # When the slug has a version-controlled timestamp, the repo is authoritative
-    # (sidecar value wins on re-seed). Otherwise preserve the first seed-time now().
-    in_timestamps = slug in timestamps
-    published_conflict = (
-        "published_at = excluded.published_at, "
-        if in_timestamps
-        else "published_at = COALESCE(startups.published_at, excluded.published_at), "
-    )
-    first_seen_conflict = (
-        "first_seen_at = excluded.first_seen_at, "
-        if in_timestamps
-        else "first_seen_at = COALESCE(startups.first_seen_at, excluded.first_seen_at), "
     )
 
     startup_rows.append(
@@ -182,9 +270,9 @@ for path in startup_files:
         "screenshot_status = excluded.screenshot_status, "
         "workflow_status = excluded.workflow_status, "
         "codex_stage = excluded.codex_stage, "
-        + first_seen_conflict
-        + published_conflict
-        + "created_at = COALESCE(startups.created_at, datetime('now')), "
+        "first_seen_at = excluded.first_seen_at, "
+        "published_at = excluded.published_at, "
+        "created_at = COALESCE(startups.created_at, datetime('now')), "
         "updated_at = COALESCE(startups.updated_at, datetime('now'));"
     )
 
@@ -298,8 +386,7 @@ for _, investor in sorted(investors.items()):
         "description = excluded.description;"
     )
 
-for path in weekly_files:
-    data = json.loads(path.read_text())
+for path, data in weekly_documents:
     status = data.get("status", "published")
     if status != "published":
         continue
@@ -341,6 +428,7 @@ for path in weekly_files:
 lines = [
     "-- AUTO-GENERATED from content/startups/*.json",
     "-- Do not edit manually. Modify the JSON files instead.",
+    f"-- Source fingerprint: sha256:{seed_source_fingerprint}",
     "",
     "-- Reset fully derived tables before rebuilding them.",
     "DELETE FROM funding_rounds;",
@@ -360,19 +448,14 @@ if issue_numbers:
 else:
     lines.append("DELETE FROM weekly_issues;")
 
-if startup_slugs:
-    lines.append(
-        "DELETE FROM startups "
-        "WHERE workflow_status = 'published' "
-        "AND codex_stage = 'manual' "
-        "AND slug NOT IN ("
-        + sql_list(startup_slugs)
-        + ");"
-    )
-else:
-    lines.append(
-        "DELETE FROM startups WHERE workflow_status = 'published' AND codex_stage = 'manual';"
-    )
+lines.append(
+    "DELETE FROM startups "
+    "WHERE workflow_status = 'published' "
+    "AND codex_stage = 'manual' "
+    "AND slug NOT IN ("
+    + sql_list(startup_slugs)
+    + ");"
+)
 
 lines.extend([
     "",

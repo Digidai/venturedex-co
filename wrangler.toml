@@ -1,5 +1,5 @@
 name = "venturedex"
-# adapter v13 builds the worker through @cloudflare/vite-plugin, which resolves
+# adapter v14 builds the worker through @cloudflare/vite-plugin, which resolves
 # `main` from source (the Astro vite plugins supply the virtual config module).
 main = "src/worker.ts"
 compatibility_date = "2026-04-13"

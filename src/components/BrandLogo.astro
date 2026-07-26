@@ -144,7 +144,7 @@ const style = `--brand-size:${size}px;`;
       }
       if (!sample) return null;
 
-      const { data, width, height } = sample;
+      const { data } = sample;
       const background = estimateBackground(sample);
       const luminanceValues = [];
       let visiblePixels = 0;
