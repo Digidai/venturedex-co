@@ -3735,3 +3735,15 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - the rejected registry now freezes the 872 historical schema-less rows by ordered and full-block digests, while new v2 decisions require explicit company/decision URLs, lifecycle fields, and governance-supported supersession.
   - generated outputs such as the temporary D1 seed, Weekly OG images, Wrangler dry-run directory, `.astro/`, `.playwright-cli/`, `scripts/__pycache__/`, and `d1/generated-seed.sql` were not included in the intended commit scope.
   - the worktree remains intentionally pending cleanup until commit/push, CI/deploy/live evidence, GSC/Weekly PR closeout, automation memory, and the final inbox entry are persisted.
+
+### 2026-07-26 12:53 CST — release closeout iteration
+
+- outcome: first Deploy run `30188321007` failed before Worker or D1 mutation; the evidence-backed guard repair passed the complete local gate and is pending a new Validate/Deploy cycle
+- failure_tags: [release_data_guard]
+- reward: -1
+- root_cause: the Astro build's `weekly:og` step deterministically rewrote tracked `public/og/weekly-1.png` through `weekly-4.png` on the Linux/Sharp toolchain. `assert_release_post_build_source_clean` already derived an exact allowlist from published Weekly issue numbers but allowed only missing/untracked generated files, so it rejected the same allowlisted assets when their Git state was an unstaged tracked modification. Cloudflare authentication, remote D1 readability, seed freshness, Astro build, and Wrangler dry-run had passed; no Worker deploy or D1 write occurred.
+- iteration: `scripts/manage.sh` now permits only `" M"` or `"??"` states for exact published-issue OG paths. Staged, deleted, renamed, unpublished/invalid issue, unknown OG, and all other source paths remain blocking. The guard still runs immediately before Worker deployment and again before D1 sync, while locked dist and seed hashes protect the actual release artifacts.
+- validation: pass. The release-gate regression covers tracked regeneration, previously missing regeneration, staged rejection, and unknown-path rejection; 18/18 focused tests, `bash -n`, and `git diff --check` passed. An independent agent returned NO BLOCKER. The downstream full gate then again validated 237/237 startups and 1,308/1,308 URLs, passed 229/229 tests, produced 0 Astro diagnostics, and completed the Astro/Cloudflare build.
+- decision: applied
+- affected_file: `scripts/manage.sh`, `tests/release-gates.test.ts`, `docs/automation/venturedex-learning-log.md`
+- affected_section: unified release post-build source-race guard
