@@ -1190,7 +1190,8 @@ capture_page_text() {
     if(!runtime || runtime.inspectionSurface()!=='inspection_surface_ready') {
       return 'Page text capture suppressed because the authenticated VentureDex Search Console inspection surface was not ready; observed '+observed;
     }
-    var routeId=current.searchParams.get('id');
+    var routeIds=current.searchParams.getAll('id');
+    var routeId=routeIds.length===1?routeIds[0]:'';
     var roots=Array.from(document.querySelectorAll('c-wiz[jsrenderer=\"jtca7c\"][jsname=\"a9kxte\"][data-p]'))
       .filter(function(root){
         return root.getClientRects &&
@@ -1198,7 +1199,7 @@ capture_page_text() {
           root.getAttribute('aria-busy')!=='true' &&
           String(root.getAttribute('data-p')||'').includes(routeId||'');
       });
-    if(!routeId || roots.length!==1) {
+    if(routeIds.length!==1 || !routeId || roots.length!==1) {
       return 'Page text capture suppressed because one active route-bound inspection root was not available; observed '+observed;
     }
     var text=roots[0].innerText||roots[0].textContent||'';
@@ -1803,14 +1804,16 @@ run_gsc_browser_call() {
 }
 
 verify_gsc_inspection_surface() {
-  local result
+  local result result_status
   GSC_SURFACE_BLOCKER=""
   GSC_SURFACE_OBSERVED=""
   result="$(run_gsc_browser_call \
-    "inspection_surface" \
-    "globalThis.__VENTUREDEX_GSC__.inspectionSurface();" \
+    "inspection_entry_surface" \
+    "globalThis.__VENTUREDEX_GSC__.inspectionEntrySurface();" \
     2>&1)"
-  if printf '%s\n' "$result" | grep -q 'inspection_surface_ready'; then
+  result_status=$?
+  if [ "$result_status" -eq 0 ] \
+    && [ "$result" = "inspection_entry_surface_ready" ]; then
     return 0
   fi
   capture_gsc_surface_blocker "$result" || true
@@ -1977,49 +1980,34 @@ dismiss_success_dialog() {
 
 submit_single_url() {
   local url="$1"
-  local escaped_url escaped_route_id force_js input_js input_result click_result click_call_status
+  local escaped_url escaped_route_id force_js input_result input_call_status click_result click_call_status
   local inspection_route_id pre_click_state pre_click_state_status quota_state quota_state_status result
 
   escaped_url=${url//\\/\\\\}
   escaped_url=${escaped_url//\'/\\\'}
 
-  input_js="
-(function(){
-  if(location.origin !== 'https://search.google.com' ||
-     location.pathname !== '/search-console/inspect' ||
-     new URLSearchParams(location.search).get('resource_id') !== 'sc-domain:venturedex.co') {
-    var blocker = location.origin === 'https://search.google.com'
-      ? 'gsc_inspection_surface_blocker'
-      : 'gsc_auth_session_blocker';
-    return blocker + '|||' + location.origin + location.pathname;
-  }
-  var input = document.querySelector('input[aria-label*=\"Inspect any URL\"]') ||
-              document.querySelector('input[aria-label*=\"检查\"]') ||
-              document.querySelector('input.Ax4B8[role=\"combobox\"]');
-  if(!input) return 'input_not_found';
-  input.focus();
-  var setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-  setter.call(input, '');
-  input.dispatchEvent(new Event('input',{bubbles:true}));
-  input.dispatchEvent(new Event('change',{bubbles:true}));
-  setter.call(input, '${escaped_url}');
-  input.dispatchEvent(new Event('input',{bubbles:true}));
-  input.dispatchEvent(new Event('change',{bubbles:true}));
-  input.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true}));
-  input.dispatchEvent(new KeyboardEvent('keyup',{key:'Enter',code:'Enter',keyCode:13,which:13,bubbles:true}));
-  return 'submitted';
-})();"
-
-  input_result=$(run_js "/*VENTUREDEX_CALL:submit_input*/${input_js}" 2>&1)
-  if printf '%s' "$input_result" | grep -q 'gsc_.*_blocker'; then
-    capture_gsc_surface_blocker "$input_result" || true
-    echo "Search Console left the authenticated inspection surface before input." >&2
-    return 12
-  fi
-  if ! printf '%s' "$input_result" | grep -q 'submitted'; then
-    echo "URL inspection input was not found or did not accept the URL." >&2
+  input_result="$(run_gsc_browser_call \
+    "submit_input" \
+    "globalThis.__VENTUREDEX_GSC__.submitInspectionInput('${escaped_url}');" \
+    2>&1)"
+  input_call_status=$?
+  if [ "$input_call_status" -ne 0 ]; then
+    echo "URL inspection input transport failed before any request click." >&2
     return 7
   fi
+  case "$input_result" in
+    submitted)
+      ;;
+    gsc_auth_session_blocker\|\|\|*|gsc_inspection_surface_blocker\|\|\|*)
+      capture_gsc_surface_blocker "$input_result" || true
+      echo "Search Console left the authenticated inspection entry surface before input." >&2
+      return 12
+      ;;
+    *)
+      echo "URL inspection input was not found unambiguously or did not accept the URL." >&2
+      return 7
+      ;;
+  esac
 
   sleep "$INSPECT_WAIT_SECONDS"
 

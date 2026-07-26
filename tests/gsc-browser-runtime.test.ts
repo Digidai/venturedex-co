@@ -19,8 +19,10 @@ type RuntimeApi = {
     allowExistingStaticSuccess?: boolean,
     expectedPriorTerminal?: string,
   ): string;
+  inspectionEntrySurface(expectedResourceId?: string): string;
   inspectionSurface(expectedResourceId?: string): string;
   requestState(expected?: string, expectedRouteId?: string): string;
+  submitInspectionInput(expected: string): string;
 };
 
 type ElementOptions = {
@@ -37,6 +39,8 @@ class FakeElement {
   parentElement: FakeElement | null = null;
   disabled = false;
   clickCount = 0;
+  focusCount = 0;
+  readonly dispatchedEvents: string[] = [];
   rendered: boolean;
   value: string;
   private ownText: string;
@@ -122,6 +126,15 @@ class FakeElement {
   click(): void {
     this.clickCount += 1;
   }
+
+  focus(): void {
+    this.focusCount += 1;
+  }
+
+  dispatchEvent(event: { type: string }): boolean {
+    this.dispatchedEvents.push(event.type);
+    return true;
+  }
 }
 
 class FakeDocument {
@@ -181,7 +194,10 @@ function matchesSelector(element: FakeElement, selector: string): boolean {
 
 function createInput(value = ""): FakeElement {
   return new FakeElement("input", {
-    attributes: { "aria-label": "Inspect any URL" },
+    attributes: {
+      "aria-label": "Inspect any URL in venturedex.co",
+      role: "combobox",
+    },
     value,
   });
 }
@@ -242,12 +258,29 @@ function inspectionHref(routeId: string): string {
 function loadRuntime(
   document: FakeDocument,
   routeId: string,
+  href = inspectionHref(routeId),
 ): {
   api: RuntimeApi;
   location: { href: string };
 } {
-  const location = { href: inspectionHref(routeId) };
+  class FakeEvent {
+    readonly type: string;
+
+    constructor(type: string) {
+      this.type = type;
+    }
+  }
+  class FakeHtmlInputElement {}
+  Object.defineProperty(FakeHtmlInputElement.prototype, "value", {
+    set(this: FakeElement, value: string) {
+      this.value = String(value);
+    },
+  });
+  const location = { href };
   const context = vm.createContext({
+    Event: FakeEvent,
+    HTMLInputElement: FakeHtmlInputElement,
+    KeyboardEvent: FakeEvent,
     URL,
     document,
     getComputedStyle(element: FakeElement) {
@@ -277,6 +310,10 @@ test("runtime inspects an exact URL with a cleared input and clicks once", () =>
     routeId,
   );
 
+  assert.equal(
+    api.inspectionEntrySurface(),
+    "inspection_entry_surface_ready",
+  );
   assert.equal(api.inspectionSurface(), "inspection_surface_ready");
   assert.equal(
     api.inspectTarget(expected),
@@ -284,6 +321,120 @@ test("runtime inspects an exact URL with a cleared input and clicks once", () =>
   );
   assert.equal(api.clickTarget(expected, routeId), "clicked");
   assert.equal(button.clickCount, 1);
+});
+
+test("runtime accepts only the exact VentureDex Overview as an initial entry surface", () => {
+  const expected = "https://venturedex.co/startups/alpha";
+  const routeId = "route-alpha";
+  const input = createInput("");
+  const stale = createInspectionRoot(expected, routeId);
+  const { api, location } = loadRuntime(
+    new FakeDocument([input, stale.root]),
+    routeId,
+    "https://search.google.com/search-console?resource_id=sc-domain%3Aventuredex.co",
+  );
+
+  assert.equal(
+    api.inspectionEntrySurface(),
+    "inspection_entry_surface_ready",
+  );
+  assert.equal(
+    api.inspectionSurface(),
+    "gsc_inspection_surface_blocker|||https://search.google.com/search-console",
+  );
+  assert.match(api.inspectTarget(expected), /^gsc_inspection_surface_blocker/);
+  assert.match(
+    api.clickTarget(expected, routeId),
+    /^gsc_inspection_surface_blocker/,
+  );
+  assert.equal(stale.button.clickCount, 0);
+
+  assert.equal(api.submitInspectionInput(expected), "submitted");
+  assert.equal(input.value, expected);
+  assert.equal(input.focusCount, 1);
+  assert.deepEqual(input.dispatchedEvents, [
+    "input",
+    "change",
+    "input",
+    "change",
+    "keydown",
+    "keyup",
+  ]);
+
+  location.href =
+    "https://search.google.com/search-console?resource_id=sc-domain%3Awrong.example";
+  assert.match(api.inspectionEntrySurface(), /^gsc_inspection_surface_blocker/);
+  location.href =
+    "https://search.google.com/search-console?resource_id=sc-domain%3Aventuredex.co&unexpected=1";
+  assert.match(api.inspectionEntrySurface(), /^gsc_inspection_surface_blocker/);
+  location.href =
+    "https://search.google.com/search-console?resource_id=sc-domain%3Aventuredex.co#settings";
+  assert.match(api.inspectionEntrySurface(), /^gsc_inspection_surface_blocker/);
+  location.href =
+    "https://search.google.com/search-console/settings?resource_id=sc-domain%3Aventuredex.co";
+  assert.match(api.inspectionEntrySurface(), /^gsc_inspection_surface_blocker/);
+  location.href = "https://accounts.google.com/v3/signin/identifier";
+  assert.match(api.inspectionEntrySurface(), /^gsc_auth_session_blocker/);
+});
+
+test("runtime requires one unique visible global inspection input on entry", () => {
+  const routeId = "route-alpha";
+  const overview =
+    "https://search.google.com/search-console?resource_id=sc-domain%3Aventuredex.co&hl=zh-cn";
+  const duplicate = loadRuntime(
+    new FakeDocument([createInput(""), createInput("")]),
+    routeId,
+    overview,
+  );
+  assert.match(
+    duplicate.api.inspectionEntrySurface(),
+    /^gsc_inspection_surface_blocker/,
+  );
+
+  const unrelated = new FakeElement("input", {
+    attributes: {
+      "aria-label": "Search venturedex.co",
+      role: "combobox",
+    },
+  });
+  const wrongCombobox = loadRuntime(
+    new FakeDocument([unrelated]),
+    routeId,
+    overview,
+  );
+  assert.match(
+    wrongCombobox.api.inspectionEntrySurface(),
+    /^gsc_inspection_surface_blocker/,
+  );
+
+  const hidden = createInput("");
+  hidden.rendered = false;
+  const visible = createInput("");
+  const unique = loadRuntime(
+    new FakeDocument([hidden, visible]),
+    routeId,
+    overview,
+  );
+  assert.equal(
+    unique.api.inspectionEntrySurface(),
+    "inspection_entry_surface_ready",
+  );
+
+  const chinese = new FakeElement("input", {
+    attributes: {
+      "aria-label": "检查 venturedex.co 中的任意网址",
+      role: "combobox",
+    },
+  });
+  const localized = loadRuntime(
+    new FakeDocument([chinese]),
+    routeId,
+    overview,
+  );
+  assert.equal(
+    localized.api.inspectionEntrySurface(),
+    "inspection_entry_surface_ready",
+  );
 });
 
 test("runtime rejects auth redirects, wrong properties, and missing inspection inputs", () => {
@@ -296,6 +447,10 @@ test("runtime rejects auth redirects, wrong properties, and missing inspection i
   );
 
   location.href = "https://accounts.google.com/v3/signin/identifier";
+  assert.equal(
+    api.inspectionEntrySurface(),
+    "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier",
+  );
   assert.equal(
     api.inspectionSurface(),
     "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier",
@@ -358,6 +513,31 @@ test("runtime refuses to click after the inspection route changes", () => {
   assert.equal(
     api.clickTarget(expected, oldRouteId),
     "inspection_route_id_changed",
+  );
+  assert.equal(button.clickCount, 0);
+});
+
+test("runtime rejects duplicate inspection route ids before input or click", () => {
+  const expected = "https://venturedex.co/startups/alpha";
+  const routeId = "route-alpha";
+  const { button, root } = createInspectionRoot(expected, routeId);
+  const { api, location } = loadRuntime(
+    new FakeDocument([createInput(""), root]),
+    routeId,
+  );
+
+  location.href = `${inspectionHref(routeId)}&id=route-other`;
+  assert.match(
+    api.inspectionEntrySurface(),
+    /^gsc_inspection_surface_blocker/,
+  );
+  assert.equal(
+    api.inspectTarget(expected, routeId),
+    "inspection_route_id_ambiguous",
+  );
+  assert.equal(
+    api.clickTarget(expected, routeId),
+    "inspection_route_id_ambiguous",
   );
   assert.equal(button.clickCount, 0);
 });

@@ -388,13 +388,19 @@ case "$1" in
   eval)
     js="$2"
     case "$js" in
-      *VENTUREDEX_CALL:inspection_surface*)
+      *VENTUREDEX_CALL:inspection_entry_surface*)
         if [ "$MOCK_SURFACE_MODE" = "auth_redirect" ]; then
           echo "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier"
+        elif [ "$MOCK_SURFACE_MODE" = "entry_transport_failure" ]; then
+          echo "inspection_entry_surface_ready"
+          echo "mock entry transport failure" >&2
+          exit 72
+        elif [ "$MOCK_SURFACE_MODE" = "overview_wrong_property" ]; then
+          echo "gsc_inspection_surface_blocker|||https://search.google.com/search-console"
         elif [ "$MOCK_SURFACE_MODE" = "wrong_property" ]; then
           echo "gsc_inspection_surface_blocker|||https://search.google.com/search-console/inspect"
         else
-          echo "inspection_surface_ready"
+          echo "inspection_entry_surface_ready"
         fi
         ;;
       *VENTUREDEX_CALL:inspect_target*)
@@ -404,6 +410,8 @@ case "$1" in
         printf '%s\\n' "$count" > "$MOCK_TARGET_COUNTER"
         if [ "$MOCK_SURFACE_MODE" = "auth_after_input" ]; then
           echo "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier"
+        elif [ "$MOCK_SURFACE_MODE" = "overview_stuck_after_input" ]; then
+          echo "gsc_inspection_surface_blocker|||https://search.google.com/search-console"
         elif [ "$MOCK_INPUT_MODE" = "mismatch" ]; then
           echo "inspection_input_mismatch"
         elif [ "$MOCK_TARGET_MODE" = "prefix_collision" ]; then
@@ -417,6 +425,8 @@ case "$1" in
           echo "inspection_active_root_ambiguous"
         elif [ "$MOCK_TARGET_MODE" = "route_id_missing" ]; then
           echo "inspection_route_id_missing"
+        elif [ "$MOCK_TARGET_MODE" = "duplicate_route_id" ]; then
+          echo "inspection_route_id_ambiguous"
         elif [ "$MOCK_TARGET_MODE" = "header_missing" ]; then
           echo "inspection_header_missing"
         else
@@ -430,6 +440,10 @@ case "$1" in
         printf '%s\\n' "$submits" > "$MOCK_SUBMIT_COUNTER"
         if [ "$MOCK_SURFACE_MODE" = "atomic_redirect" ]; then
           echo "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier"
+        elif [ "$MOCK_INPUT_MODE" = "transport_failure" ]; then
+          echo "submitted"
+          echo "mock input transport failure" >&2
+          exit 73
         else
           echo "submitted"
         fi
@@ -1567,6 +1581,7 @@ test("GSC rejects hidden stale target evidence and ambiguous route-bound result 
     "hidden_stale_target_visible_wrong",
     "active_root_ambiguous",
     "route_id_missing",
+    "duplicate_route_id",
     "header_missing",
   ]) {
     const root = createGscFixture();
@@ -2506,6 +2521,195 @@ test("GSC never clicks through a success-plus-quota pre-request conflict", () =>
     );
   } finally {
     rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC accepts the exact VentureDex Overview only as an inspection entry surface", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  writeFileSync(history, historyHeader);
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_SURFACE_MODE: "overview",
+          MOCK_TARGET_MODE: "success",
+          MOCK_TARGET_URL: target,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+          POST_CLICK_WAIT_SECONDS: "0",
+          POST_MODAL_WAIT_SECONDS: "0",
+          REQUEST_RESULT_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(gscClickCount(mock), 1);
+    assert.match(readFileSync(history, "utf8"), /\trequested\t/);
+    const browserLog = readFileSync(mock.log, "utf8");
+    assert.match(browserLog, /inspectionEntrySurface\(\)/);
+    assert.match(browserLog, /submitInspectionInput\(/);
+    assert.match(browserLog, /inspectTarget\(/);
+    assert.match(browserLog, /clickTarget\(/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC never treats Overview itself as a route-bound inspection result", () => {
+  const scenarios = [
+    {
+      mode: "overview_wrong_property",
+      expected: /gsc_inspection_surface_blocker: observed https:\/\/search\.google\.com\/search-console/,
+      submitted: false,
+    },
+    {
+      mode: "overview_stuck_after_input",
+      expected:
+        /gsc_inspection_surface_blocker: observed https:\/\/search\.google\.com\/search-console; inspection surface changed before any request click/,
+      submitted: true,
+    },
+  ];
+
+  for (const scenario of scenarios) {
+    const root = createGscFixture();
+    const mock = createGscBrowserMock(root);
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    writeFileSync(history, historyHeader);
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          target,
+          "--expect-url",
+          target,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_SURFACE_MODE: scenario.mode,
+            MOCK_TARGET_MODE: "success",
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(result.status, 0, scenario.mode);
+      assert.equal(gscClickCount(mock), 0, scenario.mode);
+      assert.doesNotMatch(readFileSync(history, "utf8"), /\trequested\t/, scenario.mode);
+      assert.match(
+        `${result.stdout}\n${result.stderr}\n${readFileSync(history, "utf8")}`,
+        scenario.expected,
+        scenario.mode,
+      );
+      assert.equal(existsSync(mock.submitCounter), scenario.submitted);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC entry and input transport failures cannot spoof ready markers", () => {
+  const scenarios = [
+    {
+      surfaceMode: "entry_transport_failure",
+      inputMode: "",
+      expected: /inspection surface preflight failed/,
+    },
+    {
+      surfaceMode: "overview",
+      inputMode: "transport_failure",
+      expected: /inspection input transport failed/,
+    },
+  ];
+
+  for (const scenario of scenarios) {
+    const root = createGscFixture();
+    const mock = createGscBrowserMock(root);
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    writeFileSync(history, historyHeader);
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          target,
+          "--expect-url",
+          target,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_SURFACE_MODE: scenario.surfaceMode,
+            MOCK_INPUT_MODE: scenario.inputMode,
+            MOCK_TARGET_MODE: "success",
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(result.status, 0);
+      assert.equal(gscClickCount(mock), 0);
+      assert.doesNotMatch(readFileSync(history, "utf8"), /\trequested\t/);
+      assert.match(`${result.stdout}\n${result.stderr}`, scenario.expected);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
   }
 });
 
