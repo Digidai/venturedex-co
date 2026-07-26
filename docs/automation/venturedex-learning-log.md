@@ -3759,3 +3759,36 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: applied
 - affected_file: `scripts/manage.sh`, `tests/release-gates.test.ts`, `docs/automation/venturedex-learning-log.md`
 - affected_section: remote D1 schema preflight and production error propagation
+
+### 2026-07-26 14:29 CST — GSC indexing-hygiene repair closeout
+
+- candidate_count: n/a; this was a human-directed indexing and crawl-policy repair, not a second Daily candidate-discovery cycle
+- accepted: n/a; no startup, investor record, timestamp, brand asset, rejected decision, or Weekly content was added
+- rejected: n/a
+- rejection_bar_met: n/a
+- outcome: indexing-hygiene-live-gsc-test-passed
+- validation: pass. Before the code push, `./scripts/check-github-actions.sh`, the complete `./scripts/manage.sh validate`, and `git diff --check` passed. The full gate validated 237/237 startups and 1,308/1,308 external URLs, generated the D1 seed, passed 239/239 tests, ran Astro sync, reported 0 errors, warnings, or hints across 96 files, and completed the Astro 7 / Cloudflare adapter 14 build. Generated D1, Astro, Wrangler, Playwright, Python cache, build, and Weekly OG outputs were restored, removed, or kept ignored and were not committed.
+- weekly_validate: n/a; Weekly content and workflow behavior were not modified.
+- build_db: pass through the complete local gate and Deploy; JSON/D1 content remained at 237 startups and no D1 content mutation was needed for this repair.
+- build_app: pass. A post-build artifact audit found 457 HTML documents, zero `SearchAction` objects, 190 investor detail pages with 165 indexable and 25 intentional `noindex` pages, exact 165-URL parity between the investor hub and sitemap, and 1,515 parameterized internal anchors with zero missing `nofollow`.
+- commit_push: pass. Code and regression-test commit `b28ae498089e8d590300390e91371cb1b09cb78a` (`fix: align indexability and crawl signals`) was pushed to `origin/main`; this learning-log evidence commit is intentionally separate and pending at write time.
+- commit_sha: `b28ae498089e8d590300390e91371cb1b09cb78a`
+- pushed_branch: main
+- ci_deploy: pass. Exact-SHA Validate run `30190633947` succeeded in 1m52s and Deploy run `30190688580` succeeded in 1m29s, publishing Cloudflare Worker version `56809e83-ec81-4206-bc1e-2cf4fe6815d0`. Release smoke passed both the workers.dev and canonical hosts on the first attempt.
+- live_smoke: pass. Independent `./scripts/manage.sh smoke` passed on `https://venturedex.co` and `https://venturedex.genedai.workers.dev` at 237 startups. Direct checks returned HTTP 200 for root, search, startup, collection, topic, Weekly, investor-hub, representative indexable/nonindexable investor details, and sitemap surfaces. Live HTML has zero `SearchAction` objects, sampled query-parameter links all carry `nofollow`, the investor hub and sitemap expose the same 165 eligible details, Revo Capital is indexable, Madrona remains intentionally `noindex`, and `/search` remains intentionally `noindex`.
+- newsletter: not manually triggered. No content or timestamp changed, so this repair creates no new Daily delay window or eligible newsletter batch; normal Cloudflare Cron remains the only delivery path.
+- gsc: authenticated live verification passed. The Page Indexing aggregate remained a lagging snapshot last updated `2026-07-10`, showing 756 not indexed and 273 indexed; 374 `noindex`, 187 redirects, and 167 alternate-canonical URLs account for 728/756 (96.3%) of that reported total. URL Inspection for `https://venturedex.co/investors/revo-capital` first showed Google's cached June 1 view with the retired `noindex` and `.html` canonical, then `测试实际网址` completed at `2026-07-26 14:23 CST` with `网址可编入 Google 索引` / `网页可以编入索引` and a valid breadcrumb. No indexing request or ledger row was created because this repair introduced no new Daily detail URL; running `--latest-daily` would have targeted unrelated content and consumed quota.
+- failure_tags: [external_dependency, other]
+- reward: 0
+- dominant_failure_mode: the high Search Console percentage was primarily historical discovery and report lag, not a current canonical-page indexability failure. The remaining real project issues were inconsistent investor eligibility signals, crawlable parameter links, and retired sitelinks-search-box markup; all were repaired at their shared source and guarded by tests.
+- proposed_change: no automation-heuristic edit. A future observability improvement may compare Search Console crawl dates and live URL tests with current metadata before treating aggregate counts as a release regression, but one human-directed repair does not justify rewriting Daily policy.
+- decision: no_change
+- affected_file: `src/lib/investor-indexing.ts`, `src/lib/newsletter.ts`, `src/lib/seo.ts`, investor/news/search/startup/collection/topic/Weekly/sitemap route templates, `tests/investor-indexing.test.ts`, `tests/query-link-crawl-policy.test.ts`, `tests/seo.test.ts`, newsletter regression tests, and `docs/automation/venturedex-learning-log.md`
+- affected_section: indexability, crawl signals, structured data, newsletter source integrity, and production/GSC closeout
+- root_cause_and_iterations:
+  - investor detail robots, hub links, sitemap URLs, and contextual links previously evaluated eligibility through separate logic. Centralizing the rule at one complete source-linked portfolio company eliminated contradictory index/crawl signals without excluding the 135 legitimate single-company investor pages.
+  - internal `/search?q=` and `/subscribe?source=` links made parameter variants discoverable even though their target pages were intentionally nonindexable; adding `rel="nofollow"` at every emitting template reduced future crawl discovery without blocking Google from reading page-level robots or canonicals.
+  - the site still emitted Google's retired sitelinks-search-box `SearchAction`; it was removed while preserving the `WebSite` entity.
+  - the first artifact audit assumed the pre-upgrade `dist/investors` path and failed because Astro 7 / Cloudflare adapter 14 writes prerendered client HTML under `dist/client`. Inspecting the actual build tree identified configuration-output drift; the same audit was rerun against `dist/client` and passed. No product-code change was required.
+  - Search Console's JS action did not respond to the first generic browser click. A bounded DOM `click()` on the exact visible action launched the live test; two diagnostic evaluation errors (`innerText` missing and a persisted top-level binding collision) were corrected with defensive text access and an IIFE, after which the actual test completed. No blind retry or index-request submission was performed.
+- worktree_cleanup: pending until this separate evidence commit, its CI result, automation memory, inbox closeout, and main-checkout synchronization are persisted.
