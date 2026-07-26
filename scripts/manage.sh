@@ -1484,9 +1484,11 @@ for raw_record in status_result.stdout.split(b"\0"):
     if change == " M" and path == "d1/generated-seed.sql":
         continue
 
-    # weekly:og writes only published issue-number assets. Requiring the issue
-    # to exist prevents a broad public/og glob from hiding arbitrary payloads.
-    if change == "??" and path in allowed_og_paths:
+    # weekly:og deterministically rewrites both tracked and previously missing
+    # published issue-number assets. Requiring the issue to exist, and allowing
+    # only unstaged modifications or untracked files, prevents a broad
+    # public/og glob from hiding arbitrary, staged, deleted, or renamed payloads.
+    if change in {" M", "??"} and path in allowed_og_paths:
         continue
 
     unexpected.append(f"{change} {path}")

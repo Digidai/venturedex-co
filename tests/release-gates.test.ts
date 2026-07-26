@@ -941,6 +941,18 @@ test("post-build race guard permits only exact generated release artifacts", () 
       title: "Fixture",
     })}\n`
   );
+  writeFileSync(
+    join(fixtureRepo, "public", "og", "weekly-5.png"),
+    "tracked original"
+  );
+  writeFileSync(
+    join(fixtureRepo, "content", "weekly", "6.json"),
+    `${JSON.stringify({
+      issue_number: 6,
+      status: "published",
+      title: "Fixture without a tracked OG asset",
+    })}\n`
+  );
 
   execFileSync("git", ["init", "-q", fixtureRepo]);
   execFileSync("git", ["-C", fixtureRepo, "config", "user.email", "tests@example.com"]);
@@ -950,7 +962,14 @@ test("post-build race guard permits only exact generated release artifacts", () 
 
   try {
     writeFileSync(join(fixtureRepo, "d1", "generated-seed.sql"), "-- generated seed\n");
-    writeFileSync(join(fixtureRepo, "public", "og", "weekly-5.png"), "generated");
+    writeFileSync(
+      join(fixtureRepo, "public", "og", "weekly-5.png"),
+      "generated tracked replacement"
+    );
+    writeFileSync(
+      join(fixtureRepo, "public", "og", "weekly-6.png"),
+      "generated untracked replacement"
+    );
 
     const generatedOnly = spawnSync(
       "bash",
@@ -958,6 +977,32 @@ test("post-build race guard permits only exact generated release artifacts", () 
       { cwd: fixtureRepo, encoding: "utf8" }
     );
     assert.equal(generatedOnly.status, 0, generatedOnly.stderr);
+
+    execFileSync("git", [
+      "-C",
+      fixtureRepo,
+      "add",
+      "public/og/weekly-5.png",
+    ]);
+    const stagedGeneratedAsset = spawnSync(
+      "bash",
+      [join(fixtureRepo, "scripts", "manage.sh"), "__test-post-build-source-clean"],
+      { cwd: fixtureRepo, encoding: "utf8" }
+    );
+    assert.notEqual(stagedGeneratedAsset.status, 0);
+    assert.match(
+      `${stagedGeneratedAsset.stdout}\n${stagedGeneratedAsset.stderr}`,
+      /weekly-5\.png/
+    );
+    execFileSync("git", [
+      "-C",
+      fixtureRepo,
+      "reset",
+      "-q",
+      "HEAD",
+      "--",
+      "public/og/weekly-5.png",
+    ]);
 
     const lockedSeedHash = createHash("sha256")
       .update(readFileSync(join(fixtureRepo, "d1", "generated-seed.sql")))
