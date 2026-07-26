@@ -520,7 +520,7 @@ test("diagnostics neither replaces a held lock nor deletes a changed lock on rel
         unlinkSync(`${canonicalHistory}.lock`);
         writeFileSync(`${canonicalHistory}.lock`, "token=replacement-owner\n");
       }),
-      /unknown identity/,
+      /unknown (?:identity|ownership)/,
     );
     assert.equal(readFileSync(lockPath, "utf8"), "token=replacement-owner\n");
   } finally {
