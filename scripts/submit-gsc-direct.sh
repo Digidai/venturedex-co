@@ -13,15 +13,19 @@ set -u
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 ROOT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 RUN_TS="$(date '+%Y-%m-%d %H:%M:%S')"
+GSC_BROWSER_RUNTIME_FILE="${SCRIPT_DIR}/gsc-browser-runtime.js"
+GSC_BROWSER_RUNTIME=""
 
 SITE_BASE_URL="${SITE_BASE_URL:-https://venturedex.co}"
 GSC_RESOURCE_ID="${GSC_RESOURCE_ID:-sc-domain%3Aventuredex.co}"
 GSC_LANG="${GSC_LANG:-zh-cn}"
 
 NAV_WAIT_SECONDS="${NAV_WAIT_SECONDS:-8}"
+COMET_START_WAIT_SECONDS="${COMET_START_WAIT_SECONDS:-4}"
 INSPECT_WAIT_SECONDS="${INSPECT_WAIT_SECONDS:-18}"
 POST_CLICK_WAIT_SECONDS="${POST_CLICK_WAIT_SECONDS:-12}"
 POST_MODAL_WAIT_SECONDS="${POST_MODAL_WAIT_SECONDS:-5}"
+REQUEST_RESULT_WAIT_SECONDS="${REQUEST_RESULT_WAIT_SECONDS:-3}"
 BB_BROWSER_CONNECT_MAX_ATTEMPTS="${BB_BROWSER_CONNECT_MAX_ATTEMPTS:-6}"
 BB_BROWSER_CONNECT_RETRY_SLEEP="${BB_BROWSER_CONNECT_RETRY_SLEEP:-2}"
 MAX_URLS="${MAX_URLS:-10}"
@@ -55,6 +59,10 @@ HISTORY_LOCK_OWNER_CANDIDATE=""
 HISTORY_LOCK_TOKEN=""
 HISTORY_LOCK_HELD=0
 HISTORY_LOCK_ACQUIRING=0
+HISTORY_FILE_IDENTITY=""
+LAST_INSPECTION_ROUTE_ID=""
+GSC_SURFACE_BLOCKER=""
+GSC_SURFACE_OBSERVED=""
 TARGET_URLS=()
 
 usage() {
@@ -100,39 +108,163 @@ ensure_history_file() {
     echo "Could not create GSC ledger directory: ${history_dir}" >&2
     return 1
   fi
-  if [ ! -f "$HISTORY_FILE" ]; then
-    if ! printf 'timestamp\tstatus\turl\tmessage\n' > "$HISTORY_FILE"; then
-      echo "Could not create authoritative GSC ledger: ${HISTORY_FILE}" >&2
-      return 1
-    fi
-  fi
-  python3 - "$HISTORY_FILE" <<'PY'
-import csv
+  python3 - "$HISTORY_FILE" "$HISTORY_FILE_IDENTITY" <<'PY'
+import os
+import re
+import stat
 import sys
 from pathlib import Path
 
 history = Path(sys.argv[1])
-expected = ["timestamp", "status", "url", "message"]
-with history.open(newline="", encoding="utf-8") as handle:
-    reader = csv.reader(handle, delimiter="\t", strict=True)
+expected_identity = sys.argv[2]
+expected = "timestamp\tstatus\turl\tmessage"
+canonical = re.compile(
+    r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
+)
+timestamp_pattern = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$")
+allowed_statuses = {
+    "requested",
+    "dry_run",
+    "retry_pending",
+    "stopped_mismatch",
+    "live_check_failed",
+    "quota_exceeded",
+    "request_click_pending",
+    "pre_request_success_unverified",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+}
+
+
+def create_ledger(path: Path) -> None:
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
+    fd = os.open(path, flags, 0o666)
     try:
-        header = next(reader)
-    except StopIteration:
-        raise SystemExit(f"Invalid GSC ledger header in {history}: file is empty")
-    if header != expected:
-        raise SystemExit(f"Invalid GSC ledger header in {history}")
-    for line_number, row in enumerate(reader, start=2):
-        if not row or (len(row) == 1 and not row[0]):
+        payload = (expected + "\n").encode("utf-8")
+        offset = 0
+        while offset < len(payload):
+            offset += os.write(fd, payload[offset:])
+        os.fsync(fd)
+    finally:
+        os.close(fd)
+    directory_fd = os.open(path.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
+
+
+def read_regular_bytes(path: Path) -> bytes:
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    for _attempt in range(2):
+        try:
+            fd = os.open(path, flags)
+        except FileNotFoundError:
+            try:
+                create_ledger(path)
+            except FileExistsError:
+                continue
             continue
-        if len(row) != 4:
+        except OSError as error:
             raise SystemExit(
-                f"Invalid GSC ledger row in {history}:{line_number}: expected 4 columns"
+                f"Authoritative GSC ledger must be a readable regular, "
+                f"non-symlink file: {path}: {error}"
             )
-        if not row[0].strip() or not row[1].strip() or not row[2].strip():
-            raise SystemExit(
-                f"Invalid GSC ledger row in {history}:{line_number}: "
-                "timestamp, status, and url are required"
-            )
+        try:
+            opened_stat = os.fstat(fd)
+            if not stat.S_ISREG(opened_stat.st_mode):
+                raise SystemExit(
+                    f"Authoritative GSC ledger must be a regular, "
+                    f"non-symlink file: {path}"
+                )
+            if opened_stat.st_nlink != 1:
+                raise SystemExit(
+                    f"Authoritative GSC ledger must not have hard-link aliases: {path}"
+                )
+            opened_identity = f"{opened_stat.st_dev}:{opened_stat.st_ino}"
+            if expected_identity and opened_identity != expected_identity:
+                raise SystemExit(
+                    f"Authoritative GSC ledger identity changed: {path}"
+                )
+            try:
+                if path.resolve(strict=True) != path:
+                    raise SystemExit(
+                        f"Authoritative GSC ledger path no longer resolves to "
+                        f"its frozen canonical authority: {path}"
+                    )
+            except OSError as error:
+                raise SystemExit(
+                    f"Could not resolve authoritative GSC ledger authority "
+                    f"{path}: {error}"
+                )
+            chunks = []
+            while True:
+                chunk = os.read(fd, 65536)
+                if not chunk:
+                    current_stat = os.lstat(path)
+                    if (
+                        not stat.S_ISREG(current_stat.st_mode)
+                        or current_stat.st_nlink != 1
+                        or current_stat.st_dev != opened_stat.st_dev
+                        or current_stat.st_ino != opened_stat.st_ino
+                    ):
+                        raise SystemExit(
+                            f"Authoritative GSC ledger path changed while "
+                            f"being validated: {path}"
+                        )
+                    return b"".join(chunks)
+                chunks.append(chunk)
+        finally:
+            os.close(fd)
+    raise SystemExit(f"Could not safely create or open authoritative GSC ledger: {path}")
+
+
+text = read_regular_bytes(history).decode("utf-8")
+if re.search(r"\r(?!\n)|[\v\f\x1c-\x1f\x85\ufeff\u2028\u2029]", text):
+    raise SystemExit(f"Invalid GSC ledger line separator in {history}")
+lines = text.replace("\r\n", "\n").split("\n")
+if not lines:
+    raise SystemExit(f"Invalid GSC ledger header in {history}: file is empty")
+if lines[0] != expected:
+    raise SystemExit(f"Invalid GSC ledger header in {history}")
+for line_number, line in enumerate(lines[1:], start=2):
+    if not line:
+        continue
+    row = line.split("\t")
+    if len(row) != 4:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            f"expected 4 columns; found {len(row)}"
+        )
+    if (
+        not row[0].strip()
+        or not row[1].strip()
+        or not row[2].strip()
+        or any(value != value.strip() for value in row[:3])
+    ):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "timestamp, status, and url are required and cannot have outer whitespace"
+        )
+    if not canonical.fullmatch(row[2]):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "url must be a canonical VentureDex detail URL"
+        )
+    if not timestamp_pattern.fullmatch(row[0]):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "timestamp must use YYYY-MM-DD HH:MM:SS"
+        )
+    if row[1] not in allowed_statuses:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            f"unknown status {row[1]!r}"
+        )
 PY
 }
 
@@ -196,17 +328,127 @@ print_history_lock_owner() {
   fi
 }
 
+capture_history_identity() {
+  python3 - "$HISTORY_FILE" <<'PY'
+import os
+import stat
+import sys
+from pathlib import Path
+
+history = Path(sys.argv[1])
+flags = (
+    os.O_RDONLY
+    | getattr(os, "O_NONBLOCK", 0)
+    | getattr(os, "O_NOFOLLOW", 0)
+)
+try:
+    fd = os.open(history, flags)
+except OSError as error:
+    print(
+        f"Could not open authoritative GSC ledger identity: {history}: {error}",
+        file=sys.stderr,
+    )
+    raise SystemExit(1)
+try:
+    opened_stat = os.fstat(fd)
+    if not stat.S_ISREG(opened_stat.st_mode):
+        raise OSError(f"ledger is not a regular, non-symlink file: {history}")
+    if opened_stat.st_nlink != 1:
+        raise OSError(f"ledger has hard-link aliases: {history}")
+    if history.resolve(strict=True) != history:
+        raise OSError(
+            f"ledger no longer resolves to its frozen canonical authority: {history}"
+        )
+    current_stat = os.lstat(history)
+    if (
+        not stat.S_ISREG(current_stat.st_mode)
+        or current_stat.st_nlink != 1
+        or current_stat.st_dev != opened_stat.st_dev
+        or current_stat.st_ino != opened_stat.st_ino
+    ):
+        raise OSError(f"ledger path changed while resolving identity: {history}")
+    print(f"{opened_stat.st_dev}:{opened_stat.st_ino}")
+finally:
+    os.close(fd)
+PY
+}
+
+verify_history_identity() {
+  local observed_identity
+
+  if ! observed_identity="$(capture_history_identity)"; then
+    return 1
+  fi
+  if [ -z "$HISTORY_FILE_IDENTITY" ]; then
+    echo "Authoritative GSC ledger identity was not frozen." >&2
+    return 1
+  fi
+  if [ "$observed_identity" != "$HISTORY_FILE_IDENTITY" ]; then
+    echo "Authoritative GSC ledger identity changed after lock acquisition: ${HISTORY_FILE}" >&2
+    return 1
+  fi
+  return 0
+}
+
+refresh_history_identity_after_controlled_replace() {
+  HISTORY_FILE_IDENTITY=""
+  if ! ensure_history_file; then
+    return 1
+  fi
+  if ! HISTORY_FILE_IDENTITY="$(capture_history_identity)"; then
+    echo "Could not refresh authoritative GSC ledger identity after migration: ${HISTORY_FILE}" >&2
+    return 1
+  fi
+  verify_history_identity
+}
+
 acquire_history_lock() {
-  local canonical_history lock_parent
+  local canonical_central canonical_history lock_parent
 
   if ! canonical_history="$(python3 - "$HISTORY_FILE" <<'PY'
+import os
+import stat
+import sys
+from pathlib import Path
+
+candidate = Path(sys.argv[1]).expanduser()
+try:
+    if stat.S_ISLNK(os.lstat(candidate).st_mode):
+        raise SystemExit(
+            f"Authoritative GSC ledger must be a regular, non-symlink file; "
+            f"the ledger itself is a symlink: {candidate}"
+        )
+except FileNotFoundError:
+    pass
+print(candidate.resolve(strict=False))
+PY
+)"; then
+    echo "Could not canonicalize authoritative GSC ledger path: ${HISTORY_FILE}" >&2
+    return 1
+  fi
+
+  if ! canonical_central="$(python3 - "$CENTRAL_HISTORY_FILE" <<'PY'
 import sys
 from pathlib import Path
 
 print(Path(sys.argv[1]).expanduser().resolve(strict=False))
 PY
 )"; then
-    echo "Could not canonicalize authoritative GSC ledger path: ${HISTORY_FILE}" >&2
+    echo "Could not canonicalize central GSC ledger path: ${CENTRAL_HISTORY_FILE}" >&2
+    return 1
+  fi
+  CENTRAL_HISTORY_FILE="$canonical_central"
+
+  # Freeze the canonical authority before creating or reading the ledger. All
+  # later operations use this path, so changing an input parent symlink cannot
+  # redirect the locked run to a different file.
+  HISTORY_FILE="$canonical_history"
+  HISTORY_FILE_IDENTITY=""
+  if ! ensure_history_file; then
+    return 1
+  fi
+  if ! HISTORY_FILE_IDENTITY="$(capture_history_identity)"; then
+    echo "Could not freeze authoritative GSC ledger identity: ${HISTORY_FILE}" >&2
     return 1
   fi
 
@@ -253,6 +495,10 @@ PY
   rm -f "$HISTORY_LOCK_OWNER_CANDIDATE" \
     || echo "Could not remove linked GSC lock owner candidate: ${HISTORY_LOCK_OWNER_CANDIDATE}" >&2
   HISTORY_LOCK_OWNER_CANDIDATE=""
+  if ! verify_history_identity; then
+    echo "Authoritative GSC ledger authority changed while acquiring its lock." >&2
+    return 1
+  fi
   return 0
 }
 
@@ -285,62 +531,146 @@ migrate_legacy_history() {
     echo "Legacy and central GSC history paths resolve to the same file; nothing to migrate."
     return 0
   fi
-  if [ ! -f "$LEGACY_HISTORY_FILE" ]; then
+  if [ ! -e "$LEGACY_HISTORY_FILE" ] && [ ! -L "$LEGACY_HISTORY_FILE" ]; then
     echo "No legacy GSC history file found: ${LEGACY_HISTORY_FILE}"
     return 0
   fi
 
-  python3 - "$HISTORY_FILE" "$LEGACY_HISTORY_FILE" <<'PY'
-import csv
+  python3 - "$HISTORY_FILE" "$LEGACY_HISTORY_FILE" "$HISTORY_FILE_IDENTITY" <<'PY'
 import os
+import re
+import stat
 import sys
 import tempfile
 from pathlib import Path
 
 central = Path(sys.argv[1])
 legacy = Path(sys.argv[2])
+expected_central_identity = sys.argv[3]
 fields = ("timestamp", "status", "url", "message")
+canonical = re.compile(
+    r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
+)
+timestamp_pattern = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$")
+allowed_statuses = {
+    "requested",
+    "dry_run",
+    "retry_pending",
+    "stopped_mismatch",
+    "live_check_failed",
+    "quota_exceeded",
+    "request_click_pending",
+    "pre_request_success_unverified",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+}
 
 
-def read_rows(path: Path) -> list[tuple[str, str, str, str]]:
-    with path.open(newline="", encoding="utf-8") as handle:
-        reader = csv.reader(handle, delimiter="\t", strict=True)
-        try:
-            header = next(reader)
-        except StopIteration:
-            raise SystemExit(f"Invalid GSC ledger header in {path}: file is empty")
-        if header != list(fields):
-            raise SystemExit(f"Invalid GSC ledger header in {path}")
-        rows = []
-        try:
-            for row in reader:
-                line_number = reader.line_num
-                if not row or (len(row) == 1 and not row[0]):
-                    continue
-                if len(row) != len(fields):
-                    raise SystemExit(
-                        f"Invalid GSC ledger row in {path}:{line_number}: "
-                        f"expected 4 columns; found {len(row)}"
-                    )
-                if (
-                    not row[0].strip()
-                    or not row[1].strip()
-                    or not row[2].strip()
-                ):
-                    raise SystemExit(
-                        f"Invalid GSC ledger row in {path}:{line_number}: "
-                        "timestamp, status, and url are required"
-                    )
-                rows.append(tuple(row))
-        except csv.Error as error:
+def read_rows(
+    path: Path,
+    *,
+    expected_identity: str = "",
+    require_single_link: bool = False,
+) -> list[tuple[str, str, str, str]]:
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    try:
+        fd = os.open(path, flags)
+    except OSError as error:
+        raise SystemExit(
+            f"GSC ledger must be a readable regular, non-symlink file: "
+            f"{path}: {error}"
+        )
+    try:
+        opened_stat = os.fstat(fd)
+        if not stat.S_ISREG(opened_stat.st_mode):
             raise SystemExit(
-                f"Invalid GSC ledger row in {path}:{reader.line_num}: {error}"
-            ) from error
-        return rows
+                f"GSC ledger must be a regular, non-symlink file: {path}"
+            )
+        if require_single_link and opened_stat.st_nlink != 1:
+            raise SystemExit(f"GSC ledger must not have hard-link aliases: {path}")
+        if (
+            expected_identity
+            and f"{opened_stat.st_dev}:{opened_stat.st_ino}" != expected_identity
+        ):
+            raise SystemExit(f"GSC ledger identity changed before migration: {path}")
+        if expected_identity and path.resolve(strict=True) != path:
+            raise SystemExit(
+                f"GSC ledger no longer resolves to its frozen canonical "
+                f"authority: {path}"
+            )
+        chunks = []
+        while True:
+            chunk = os.read(fd, 65536)
+            if not chunk:
+                break
+            chunks.append(chunk)
+        current_stat = os.lstat(path)
+        if (
+            not stat.S_ISREG(current_stat.st_mode)
+            or current_stat.st_dev != opened_stat.st_dev
+            or current_stat.st_ino != opened_stat.st_ino
+            or (require_single_link and current_stat.st_nlink != 1)
+        ):
+            raise SystemExit(f"GSC ledger path changed during migration read: {path}")
+    finally:
+        os.close(fd)
+    text = b"".join(chunks).decode("utf-8")
+    if re.search(r"\r(?!\n)|[\v\f\x1c-\x1f\x85\ufeff\u2028\u2029]", text):
+        raise SystemExit(f"Invalid GSC ledger line separator in {path}")
+    lines = text.replace("\r\n", "\n").split("\n")
+    if not lines:
+        raise SystemExit(f"Invalid GSC ledger header in {path}: file is empty")
+    if lines[0] != "\t".join(fields):
+        raise SystemExit(f"Invalid GSC ledger header in {path}")
+    rows = []
+    for line_number, line in enumerate(lines[1:], start=2):
+        if not line:
+            continue
+        row = line.split("\t")
+        if len(row) != len(fields):
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{line_number}: "
+                f"expected 4 columns; found {len(row)}"
+            )
+        if (
+            not row[0].strip()
+            or not row[1].strip()
+            or not row[2].strip()
+            or any(value != value.strip() for value in row[:3])
+        ):
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{line_number}: "
+                "timestamp, status, and url are required and cannot have outer whitespace"
+            )
+        if not canonical.fullmatch(row[2]):
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{line_number}: "
+                "url must be a canonical VentureDex detail URL"
+            )
+        if not timestamp_pattern.fullmatch(row[0]):
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{line_number}: "
+                "timestamp must use YYYY-MM-DD HH:MM:SS"
+            )
+        if row[1] not in allowed_statuses:
+            raise SystemExit(
+                f"Invalid GSC ledger row in {path}:{line_number}: "
+                f"unknown status {row[1]!r}"
+            )
+        rows.append(tuple(row))
+    return rows
 
 
 central.parent.mkdir(parents=True, exist_ok=True)
-central_rows = read_rows(central)
+central_rows = read_rows(
+    central,
+    expected_identity=expected_central_identity,
+    require_single_link=True,
+)
 legacy_rows = read_rows(legacy)
 seen = set(central_rows)
 merged = [(row, 1, index) for index, row in enumerate(central_rows)]
@@ -364,12 +694,43 @@ fd, temporary_name = tempfile.mkstemp(
 )
 try:
     with os.fdopen(fd, "w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle, delimiter="\t", lineterminator="\n")
-        writer.writerow(fields)
-        writer.writerows(central_rows)
+        handle.write("\t".join(fields) + "\n")
+        for row in central_rows:
+            handle.write("\t".join(row) + "\n")
         handle.flush()
         os.fsync(handle.fileno())
-    os.replace(temporary_name, central)
+    verify_flags = (
+        os.O_RDONLY
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    verify_fd = os.open(central, verify_flags)
+    try:
+        verify_stat = os.fstat(verify_fd)
+        current_stat = os.lstat(central)
+        if (
+            not stat.S_ISREG(verify_stat.st_mode)
+            or verify_stat.st_nlink != 1
+            or f"{verify_stat.st_dev}:{verify_stat.st_ino}"
+            != expected_central_identity
+            or not stat.S_ISREG(current_stat.st_mode)
+            or current_stat.st_nlink != 1
+            or current_stat.st_dev != verify_stat.st_dev
+            or current_stat.st_ino != verify_stat.st_ino
+            or central.resolve(strict=True) != central
+        ):
+            raise SystemExit(
+                f"Authoritative GSC ledger identity changed before migration replace: "
+                f"{central}"
+            )
+        os.replace(temporary_name, central)
+    finally:
+        os.close(verify_fd)
+    directory_fd = os.open(central.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
 finally:
     if os.path.exists(temporary_name):
         os.unlink(temporary_name)
@@ -386,18 +747,93 @@ append_history() {
   local status="$1"
   local url="$2"
   local message="$3"
-  local sanitized_message
+  local sanitized_status sanitized_url sanitized_message
 
+  case "$status" in
+    requested|dry_run|retry_pending|stopped_mismatch|live_check_failed|quota_exceeded|request_click_pending|pre_request_success_unverified|post_request_target_unverified|post_request_confirmation_unknown)
+      ;;
+    *)
+      echo "Refusing to append an unknown GSC ledger status: ${status}" >&2
+      return 1
+      ;;
+  esac
   if ! ensure_history_file; then
     echo "Could not validate authoritative GSC ledger before appending status=${status} url=${url}" >&2
     return 1
   fi
+  sanitized_status="$(printf '%s' "$status" | tr '\t\r\n' '   ')"
+  sanitized_url="$(printf '%s' "$url" | tr '\t\r\n' '   ')"
   sanitized_message="$(printf '%s' "$message" | tr '\t\r\n' '   ')"
-  if ! printf '%s\t%s\t%s\t%s\n' \
+  if [ "$sanitized_status" != "$status" ] || [ "$sanitized_url" != "$url" ]; then
+    echo "Refusing to append a GSC ledger row with control characters in status or URL." >&2
+    return 1
+  fi
+  if ! python3 - \
+    "$HISTORY_FILE" \
     "$(date '+%Y-%m-%d %H:%M:%S')" \
-    "$status" \
-    "$url" \
-    "$sanitized_message" >> "$HISTORY_FILE"; then
+    "$sanitized_status" \
+    "$sanitized_url" \
+    "$sanitized_message" \
+    "$HISTORY_FILE_IDENTITY" <<'PY'
+import os
+import stat
+import sys
+from pathlib import Path
+
+history = Path(sys.argv[1])
+row = "\t".join(sys.argv[2:6]) + "\n"
+expected_identity = sys.argv[6]
+try:
+    flags = (
+        os.O_WRONLY
+        | os.O_APPEND
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    fd = os.open(history, flags)
+    try:
+        opened_stat = os.fstat(fd)
+        if not stat.S_ISREG(opened_stat.st_mode):
+            raise OSError(
+                f"ledger is not a regular, non-symlink file: {history}"
+            )
+        if opened_stat.st_nlink != 1:
+            raise OSError(f"ledger has hard-link aliases: {history}")
+        opened_identity = f"{opened_stat.st_dev}:{opened_stat.st_ino}"
+        if not expected_identity or opened_identity != expected_identity:
+            raise OSError(f"ledger identity changed before durable append: {history}")
+        if history.resolve(strict=True) != history:
+            raise OSError(
+                f"ledger no longer resolves to its frozen canonical authority: {history}"
+            )
+        payload = row.encode("utf-8")
+        offset = 0
+        while offset < len(payload):
+            written = os.write(fd, payload[offset:])
+            if written <= 0:
+                raise OSError("zero-byte ledger append")
+            offset += written
+        os.fsync(fd)
+        current_stat = os.lstat(history)
+        if (
+            not stat.S_ISREG(current_stat.st_mode)
+            or current_stat.st_nlink != 1
+            or current_stat.st_dev != opened_stat.st_dev
+            or current_stat.st_ino != opened_stat.st_ino
+        ):
+            raise OSError("ledger path changed during durable append")
+    finally:
+        os.close(fd)
+    directory_fd = os.open(history.parent, os.O_RDONLY)
+    try:
+        os.fsync(directory_fd)
+    finally:
+        os.close(directory_fd)
+except OSError as error:
+    print(f"Could not durably append authoritative GSC ledger row: {error}", file=sys.stderr)
+    raise SystemExit(1)
+PY
+  then
     echo "Could not persist authoritative GSC ledger row for status=${status} url=${url}" >&2
     return 1
   fi
@@ -425,64 +861,373 @@ append_history_or_block() {
   return 1
 }
 
-sanitize_artifact_name() {
+artifact_target_key() {
   python3 - "$1" <<'PY'
+import hashlib
 import re
 import sys
 
-value = sys.argv[1].strip().lower()
-value = re.sub(r"^https?://", "", value)
-value = re.sub(r"[^a-z0-9]+", "-", value).strip("-")
-print(value[:90] or "unknown")
+url = sys.argv[1].strip().rstrip("/")
+readable = re.sub(r"^https?://", "", url.lower())
+readable = re.sub(r"[^a-z0-9]+", "-", readable).strip("-")
+readable = readable[:90] or "unknown"
+digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:12]
+print(f"{readable}--sha256-{digest}")
 PY
 }
 
 unresolved_reconciliation_artifact() {
   local url="$1"
-  local safe_url candidate
 
-  [ -d "$GSC_ARTIFACT_DIR" ] || return 1
-  safe_url="$(sanitize_artifact_name "$url")" || return 1
-  for candidate in \
-    "$GSC_ARTIFACT_DIR"/*-ledger_write_failed_after_request-"$safe_url".txt; do
-    if [ -f "$candidate" ]; then
-      printf '%s\n' "$candidate"
+  if [ ! -e "$GSC_ARTIFACT_DIR" ] && [ ! -L "$GSC_ARTIFACT_DIR" ]; then
+    return 3
+  fi
+  if [ ! -d "$GSC_ARTIFACT_DIR" ]; then
+    echo "GSC artifact path is not a directory: ${GSC_ARTIFACT_DIR}" >&2
+    return 2
+  fi
+  python3 - "$GSC_ARTIFACT_DIR" "$url" <<'PY'
+import hashlib
+import re
+import sys
+from pathlib import Path
+
+directory = Path(sys.argv[1])
+target = sys.argv[2].strip().rstrip("/")
+statuses = (
+    "ledger_write_failed_after_request",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+    "pre_request_success_unverified",
+)
+canonical = re.compile(
+    r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
+)
+hashed_key = re.compile(r"^.+--sha256-[0-9a-f]{12}$")
+
+
+def safe_name(url: str) -> str:
+    readable = re.sub(r"^https?://", "", url.lower())
+    readable = re.sub(r"[^a-z0-9]+", "-", readable).strip("-")
+    return readable[:90] or "unknown"
+
+
+def target_key(url: str) -> str:
+    digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:12]
+    return f"{safe_name(url)}--sha256-{digest}"
+
+
+expected_key = target_key(target)
+try:
+    paths = sorted(directory.iterdir())
+except OSError as error:
+    print(f"Could not scan GSC artifact directory {directory}: {error}", file=sys.stderr)
+    raise SystemExit(2)
+
+for path in paths:
+    if path.suffix != ".txt":
+        continue
+    status = next(
+        (candidate for candidate in statuses if f"-{candidate}-" in path.name),
+        None,
+    )
+    if status is None:
+        continue
+    if path.is_symlink() or not path.is_file():
+        print(path)
+        raise SystemExit(0)
+    marker = f"-{status}-"
+    artifact_key = path.name.split(marker, 1)[1][:-len(".txt")]
+    is_hashed = bool(hashed_key.fullmatch(artifact_key))
+    if is_hashed and artifact_key == expected_key:
+        print(path)
+        raise SystemExit(0)
+
+    fields = {}
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        text = ""
+    for line in text.splitlines():
+        if not line.strip():
+            break
+        name, separator, value = line.partition(":")
+        if separator and name.strip():
+            fields[name.strip()] = value.strip()
+    artifact_url = fields.get("url", "").rstrip("/")
+    header_status = fields.get("status", "")
+
+    if is_hashed:
+        if header_status and header_status != status:
+            print(path)
+            raise SystemExit(0)
+        if artifact_url and (
+            not canonical.fullmatch(artifact_url)
+            or target_key(artifact_url) != artifact_key
+        ):
+            print(path)
+            raise SystemExit(0)
+        continue
+
+    # Legacy filenames did not contain a collision-resistant URL identity.
+    # Exact readable evidence can still scope them; missing, unreadable, or
+    # internally inconsistent legacy evidence blocks globally.
+    if (
+        not canonical.fullmatch(artifact_url)
+        or safe_name(artifact_url) != artifact_key
+        or (header_status and header_status != status)
+    ):
+        print(path)
+        raise SystemExit(0)
+    if artifact_url == target:
+        print(path)
+        raise SystemExit(0)
+
+raise SystemExit(3)
+PY
+}
+
+latest_operational_history_status() {
+  local url="$1"
+
+  python3 - "$HISTORY_FILE" "$HISTORY_FILE_IDENTITY" "$url" <<'PY'
+import os
+import re
+import stat
+import sys
+from pathlib import Path
+
+history = Path(sys.argv[1])
+expected_identity = sys.argv[2]
+target = sys.argv[3]
+canonical = re.compile(
+    r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
+)
+timestamp_pattern = re.compile(
+    r"^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$"
+)
+allowed_statuses = {
+    "requested",
+    "dry_run",
+    "retry_pending",
+    "stopped_mismatch",
+    "live_check_failed",
+    "quota_exceeded",
+    "request_click_pending",
+    "pre_request_success_unverified",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+}
+flags = (
+    os.O_RDONLY
+    | getattr(os, "O_NONBLOCK", 0)
+    | getattr(os, "O_NOFOLLOW", 0)
+)
+try:
+    fd = os.open(history, flags)
+except OSError as error:
+    raise SystemExit(
+        f"Authoritative GSC ledger could not be opened safely: {history}: {error}"
+    )
+try:
+    opened_stat = os.fstat(fd)
+    if not stat.S_ISREG(opened_stat.st_mode):
+        raise SystemExit(
+            f"Authoritative GSC ledger must be a regular, non-symlink file: {history}"
+        )
+    if opened_stat.st_nlink != 1:
+        raise SystemExit(
+            f"Authoritative GSC ledger must not have hard-link aliases: {history}"
+        )
+    if (
+        not expected_identity
+        or f"{opened_stat.st_dev}:{opened_stat.st_ino}" != expected_identity
+    ):
+        raise SystemExit(f"Authoritative GSC ledger identity changed: {history}")
+    if history.resolve(strict=True) != history:
+        raise SystemExit(
+            f"Authoritative GSC ledger no longer resolves to its frozen "
+            f"canonical authority: {history}"
+        )
+    chunks = []
+    while True:
+        chunk = os.read(fd, 65536)
+        if not chunk:
+            break
+        chunks.append(chunk)
+    current_stat = os.lstat(history)
+    if (
+        not stat.S_ISREG(current_stat.st_mode)
+        or current_stat.st_nlink != 1
+        or current_stat.st_dev != opened_stat.st_dev
+        or current_stat.st_ino != opened_stat.st_ino
+    ):
+        raise SystemExit(
+            f"Authoritative GSC ledger path changed while reading: {history}"
+        )
+finally:
+    os.close(fd)
+
+text = b"".join(chunks).decode("utf-8")
+if re.search(r"\r(?!\n)|[\v\f\x1c-\x1f\x85\ufeff\u2028\u2029]", text):
+    raise SystemExit(f"Invalid GSC ledger line separator in {history}")
+lines = text.replace("\r\n", "\n").split("\n")
+if not lines or lines[0] != "timestamp\tstatus\turl\tmessage":
+    raise SystemExit(f"Invalid GSC ledger header in {history}")
+latest = ""
+for line_number, line in enumerate(lines[1:], start=2):
+    if not line:
+        continue
+    row = line.split("\t")
+    if len(row) != 4:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            f"expected 4 columns; found {len(row)}"
+        )
+    timestamp, status, url, _message = row
+    if (
+        not timestamp
+        or not status
+        or not url
+        or any(value != value.strip() for value in (timestamp, status, url))
+    ):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "timestamp, status, and url are required and cannot have outer whitespace"
+        )
+    if not timestamp_pattern.fullmatch(timestamp):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "timestamp must use YYYY-MM-DD HH:MM:SS"
+        )
+    if status not in allowed_statuses:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            f"unknown status {status!r}"
+        )
+    if not canonical.fullmatch(url):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{line_number}: "
+            "url must be a canonical VentureDex detail URL"
+        )
+    if url == target and status != "dry_run":
+        latest = status
+print(latest)
+PY
+}
+
+target_has_unresolved_reconciliation_status() {
+  local url="$1"
+  local latest_status
+
+  if ! latest_status="$(latest_operational_history_status "$url")"; then
+    return 2
+  fi
+  case "$latest_status" in
+    request_click_pending|post_request_target_unverified|post_request_confirmation_unknown|pre_request_success_unverified)
       return 0
-    fi
-  done
-  return 1
+      ;;
+    *)
+      return 1
+      ;;
+  esac
 }
 
 require_no_unresolved_reconciliation() {
   local url="$1"
-  local artifact
+  local artifact artifact_result ledger_status
 
-  if artifact="$(unresolved_reconciliation_artifact "$url")"; then
-    echo "BLOCKED: unresolved GSC reconciliation artifact exists for ${url}: ${artifact}" >&2
-    echo "Verify Search Console state and reconcile the authoritative ledger before removing the artifact; automatic retry is disabled." >&2
-    return 1
-  fi
+  target_has_unresolved_reconciliation_status "$url"
+  ledger_status=$?
+  case "$ledger_status" in
+    0)
+      echo "BLOCKED: unresolved GSC reconciliation state exists in the authoritative ledger for ${url}." >&2
+      echo "Verify Search Console state and append a reconciled requested/blocking row before retrying; automatic retry is disabled." >&2
+      return 1
+      ;;
+    1)
+      ;;
+    *)
+      echo "BLOCKED: authoritative GSC ledger identity or contents could not be checked safely for ${url}." >&2
+      return 1
+      ;;
+  esac
+  artifact="$(unresolved_reconciliation_artifact "$url")"
+  artifact_result=$?
+  case "$artifact_result" in
+    0)
+      echo "BLOCKED: unresolved GSC reconciliation artifact exists for ${url}: ${artifact}" >&2
+      echo "Verify Search Console state and reconcile the authoritative ledger before removing the artifact; automatic retry is disabled." >&2
+      return 1
+      ;;
+    3)
+      ;;
+    *)
+      echo "BLOCKED: GSC reconciliation artifacts could not be checked safely for ${url}." >&2
+      echo "Repair access to ${GSC_ARTIFACT_DIR} before any dry-run or formal submission." >&2
+      return 1
+      ;;
+  esac
   return 0
 }
 
 capture_page_text() {
-  run_js "(function(){var text=document.body?document.body.innerText:'';return text.replace(/\\s+$/,'').slice(0,8000);})();" 2>/dev/null || true
+  run_js "/*VENTUREDEX_SAFE_PAGE_CAPTURE:inspection_surface_ready*/(function(){
+    var observed='invalid_location';
+    var current;
+    try {
+      current=new URL(location.href);
+      observed=current.origin+current.pathname;
+      if(current.origin!=='https://search.google.com' ||
+         current.pathname!=='/search-console/inspect' ||
+         current.searchParams.get('resource_id')!=='sc-domain:venturedex.co') {
+        return 'Page text capture suppressed outside authenticated VentureDex Search Console inspection surface; observed '+observed;
+      }
+    } catch (_error) {
+      return 'Page text capture suppressed outside authenticated VentureDex Search Console inspection surface; observed '+observed;
+    }
+    var runtime=globalThis.__VENTUREDEX_GSC__;
+    if(!runtime || runtime.inspectionSurface()!=='inspection_surface_ready') {
+      return 'Page text capture suppressed because the authenticated VentureDex Search Console inspection surface was not ready; observed '+observed;
+    }
+    var routeId=current.searchParams.get('id');
+    var roots=Array.from(document.querySelectorAll('c-wiz[jsrenderer=\"jtca7c\"][jsname=\"a9kxte\"][data-p]'))
+      .filter(function(root){
+        return root.getClientRects &&
+          root.getClientRects().length>0 &&
+          root.getAttribute('aria-busy')!=='true' &&
+          String(root.getAttribute('data-p')||'').includes(routeId||'');
+      });
+    if(!routeId || roots.length!==1) {
+      return 'Page text capture suppressed because one active route-bound inspection root was not available; observed '+observed;
+    }
+    var text=roots[0].innerText||roots[0].textContent||'';
+    return text
+      .replace(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}/gi,'[redacted-email]')
+      .replace(/\\s+$/,'')
+      .slice(0,8000);
+  })();" 2>/dev/null || true
 }
 
 write_gsc_artifact() {
   local status="$1"
   local url="$2"
   local message="$3"
-  local page_text page_state safe_url file
+  local page_text page_state target_key file
 
-  page_text="$(capture_page_text)"
-  page_state="$(page_request_state 2>/dev/null || true)"
-  safe_url="$(sanitize_artifact_name "$url")"
+  if [ -n "${BB_BROWSER_TAB_ID:-}" ]; then
+    page_text="$(capture_page_text)"
+    page_state="$(page_request_state 2>/dev/null || true)"
+  else
+    page_text="Managed Search Console tab was unavailable; no page text captured."
+    page_state="browser_tab_unavailable"
+  fi
+  target_key="$(artifact_target_key "$url")" || return 1
   if ! mkdir -p "$GSC_ARTIFACT_DIR"; then
     echo "Could not create GSC artifact directory: ${GSC_ARTIFACT_DIR}" >&2
     return 1
   fi
-  file="${GSC_ARTIFACT_DIR}/$(date '+%Y%m%d-%H%M%S')-${status}-${safe_url}.txt"
+  file="${GSC_ARTIFACT_DIR}/$(date '+%Y%m%d-%H%M%S')-${status}-${target_key}.txt"
 
   if ! {
     printf 'timestamp: %s\n' "$(date '+%Y-%m-%d %H:%M:%S')"
@@ -659,39 +1404,136 @@ PY
 
 target_already_requested() {
   local url="$1"
-  [ -f "$HISTORY_FILE" ] || return 1
-  awk -F '\t' -v target="$url" '
-    $3 == target && ($2 == "requested" || $2 == "retry_pending") { latest = $2 }
-    END { exit(latest == "requested" ? 0 : 1) }
-  ' "$HISTORY_FILE"
+  local latest_status
+
+  if ! latest_status="$(latest_operational_history_status "$url")"; then
+    return 2
+  fi
+  [ "$latest_status" = "requested" ]
 }
 
 retry_pending_urls() {
-  python3 - "$HISTORY_FILE" <<'PY'
-import csv
+  python3 - "$HISTORY_FILE" "$HISTORY_FILE_IDENTITY" <<'PY'
+import os
 import re
+import stat
 import sys
 from pathlib import Path
 
 history = Path(sys.argv[1])
+expected_identity = sys.argv[2]
 canonical = re.compile(
     r"^https://venturedex\.co/(?:startups/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly/[1-9][0-9]*)$"
 )
+timestamp_pattern = re.compile(r"^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$")
+allowed_statuses = {
+    "requested",
+    "dry_run",
+    "retry_pending",
+    "stopped_mismatch",
+    "live_check_failed",
+    "quota_exceeded",
+    "request_click_pending",
+    "pre_request_success_unverified",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+}
 latest = {}
 
-with history.open(newline="", encoding="utf-8") as handle:
-    reader = csv.DictReader(handle, delimiter="\t")
-    expected = ["timestamp", "status", "url", "message"]
-    if reader.fieldnames != expected:
-        raise SystemExit(f"Invalid GSC ledger header in {history}")
-    for sequence, row in enumerate(reader):
-        status = str(row.get("status") or "").strip()
-        if status not in {"requested", "retry_pending"}:
-            continue
-        url = str(row.get("url") or "").strip().rstrip("/")
-        if not canonical.fullmatch(url):
-            continue
-        latest[url] = (status, str(row.get("timestamp") or ""), sequence)
+flags = (
+    os.O_RDONLY
+    | getattr(os, "O_NONBLOCK", 0)
+    | getattr(os, "O_NOFOLLOW", 0)
+)
+try:
+    fd = os.open(history, flags)
+except OSError as error:
+    raise SystemExit(
+        f"Authoritative GSC ledger must be a readable regular, "
+        f"non-symlink file: {history}: {error}"
+    )
+try:
+    opened_stat = os.fstat(fd)
+    if not stat.S_ISREG(opened_stat.st_mode):
+        raise SystemExit(
+            f"Authoritative GSC ledger must be a regular, non-symlink file: {history}"
+        )
+    if opened_stat.st_nlink != 1:
+        raise SystemExit(
+            f"Authoritative GSC ledger must not have hard-link aliases: {history}"
+        )
+    if (
+        not expected_identity
+        or f"{opened_stat.st_dev}:{opened_stat.st_ino}" != expected_identity
+    ):
+        raise SystemExit(f"Authoritative GSC ledger identity changed: {history}")
+    if history.resolve(strict=True) != history:
+        raise SystemExit(
+            f"Authoritative GSC ledger no longer resolves to its frozen "
+            f"canonical authority: {history}"
+        )
+    chunks = []
+    while True:
+        chunk = os.read(fd, 65536)
+        if not chunk:
+            break
+        chunks.append(chunk)
+    current_stat = os.lstat(history)
+    if (
+        not stat.S_ISREG(current_stat.st_mode)
+        or current_stat.st_nlink != 1
+        or current_stat.st_dev != opened_stat.st_dev
+        or current_stat.st_ino != opened_stat.st_ino
+    ):
+        raise SystemExit(
+            f"Authoritative GSC ledger path changed while reading: {history}"
+        )
+finally:
+    os.close(fd)
+text = b"".join(chunks).decode("utf-8")
+if re.search(r"\r(?!\n)|[\v\f\x1c-\x1f\x85\ufeff\u2028\u2029]", text):
+    raise SystemExit(f"Invalid GSC ledger line separator in {history}")
+lines = text.replace("\r\n", "\n").split("\n")
+if not lines or lines[0] != "timestamp\tstatus\turl\tmessage":
+    raise SystemExit(f"Invalid GSC ledger header in {history}")
+for sequence, line in enumerate(lines[1:]):
+    if not line:
+        continue
+    row = line.split("\t")
+    if len(row) != 4:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{sequence + 2}: "
+            f"expected 4 columns; found {len(row)}"
+        )
+    timestamp, status, url, _message = row
+    if (
+        not timestamp
+        or not status
+        or not url
+        or any(value != value.strip() for value in (timestamp, status, url))
+    ):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{sequence + 2}: "
+            "timestamp, status, and url are required and cannot have outer whitespace"
+        )
+    if not canonical.fullmatch(url):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{sequence + 2}: "
+            "url must be a canonical VentureDex detail URL"
+        )
+    if not timestamp_pattern.fullmatch(timestamp):
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{sequence + 2}: "
+            "timestamp must use YYYY-MM-DD HH:MM:SS"
+        )
+    if status not in allowed_statuses:
+        raise SystemExit(
+            f"Invalid GSC ledger row in {history}:{sequence + 2}: "
+            f"unknown status {status!r}"
+        )
+    if status == "dry_run":
+        continue
+    latest[url] = (status, timestamp, sequence)
 
 pending = [
     (timestamp, sequence, url)
@@ -801,8 +1643,9 @@ require_deps() {
     missing=1
   fi
   if [ "$missing" -ne 0 ]; then
-    exit 1
+    return 1
   fi
+  return 0
 }
 
 bb_browser_connected() {
@@ -868,7 +1711,7 @@ ensure_comet_cdp_ready() {
 
   echo "Comet CDP is not ready; starting managed browser..."
   nohup "$COMET_APP" --remote-debugging-port="$COMET_CDP_PORT" >"$COMET_LOG_FILE" 2>&1 &
-  sleep 4
+  sleep "$COMET_START_WAIT_SECONDS"
 
   if comet_cdp_reachable; then
     return 0
@@ -914,9 +1757,20 @@ ensure_bb_browser_connected() {
 open_gsc_page() {
   local inspect_url="$1"
   local output
-  output=$("$BB_BROWSER_CMD" open "$inspect_url")
+  if ! output=$("$BB_BROWSER_CMD" open "$inspect_url" 2>&1); then
+    echo "Could not open the managed Search Console tab." >&2
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
   BB_BROWSER_TAB_ID=$(printf '%s\n' "$output" | sed -nE 's/^tab:[[:space:]]*([^[:space:]]+).*$/\1/p' | head -n 1)
+  if ! printf '%s\n' "$BB_BROWSER_TAB_ID" | grep -Eq '^[A-Za-z0-9_-]+$'; then
+    echo "Managed Search Console tab opened without a usable tab id." >&2
+    printf '%s\n' "$output" >&2
+    BB_BROWSER_TAB_ID=""
+    return 1
+  fi
   BB_BROWSER_TAB_OPENED=1
+  return 0
 }
 
 run_js() {
@@ -928,6 +1782,59 @@ run_js() {
   else
     "$BB_BROWSER_CMD" eval "$flattened"
   fi
+}
+
+load_gsc_browser_runtime() {
+  if [ -n "$GSC_BROWSER_RUNTIME" ]; then
+    return 0
+  fi
+  if [ ! -r "$GSC_BROWSER_RUNTIME_FILE" ]; then
+    echo "Missing GSC browser runtime: $GSC_BROWSER_RUNTIME_FILE" >&2
+    return 1
+  fi
+  GSC_BROWSER_RUNTIME="$(tr '\n' ' ' < "$GSC_BROWSER_RUNTIME_FILE")"
+}
+
+run_gsc_browser_call() {
+  local marker="$1"
+  local call="$2"
+  load_gsc_browser_runtime || return 1
+  run_js "${GSC_BROWSER_RUNTIME};/*VENTUREDEX_CALL:${marker}*/${call}"
+}
+
+verify_gsc_inspection_surface() {
+  local result
+  GSC_SURFACE_BLOCKER=""
+  GSC_SURFACE_OBSERVED=""
+  result="$(run_gsc_browser_call \
+    "inspection_surface" \
+    "globalThis.__VENTUREDEX_GSC__.inspectionSurface();" \
+    2>&1)"
+  if printf '%s\n' "$result" | grep -q 'inspection_surface_ready'; then
+    return 0
+  fi
+  capture_gsc_surface_blocker "$result" || true
+  if [ -z "$GSC_SURFACE_BLOCKER" ]; then
+    GSC_SURFACE_BLOCKER="gsc_inspection_surface_blocker"
+    GSC_SURFACE_OBSERVED="unknown"
+  fi
+  echo "Search Console inspection surface preflight failed: ${GSC_SURFACE_BLOCKER}; observed=${GSC_SURFACE_OBSERVED}" >&2
+  return 1
+}
+
+capture_gsc_surface_blocker() {
+  local result="$1"
+  local observed
+  if printf '%s\n' "$result" | grep -q 'gsc_auth_session_blocker'; then
+    GSC_SURFACE_BLOCKER="gsc_auth_session_blocker"
+  elif printf '%s\n' "$result" | grep -q 'gsc_inspection_surface_blocker'; then
+    GSC_SURFACE_BLOCKER="gsc_inspection_surface_blocker"
+  else
+    return 1
+  fi
+  observed="$(printf '%s\n' "$result" | sed -nE 's/.*(gsc_[a-z_]+_blocker)\|\|\|([^[:space:]]+).*/\2/p' | tail -n 1)"
+  GSC_SURFACE_OBSERVED="${observed:-unknown}"
+  return 0
 }
 
 cleanup_browser_tab() {
@@ -959,92 +1866,107 @@ install_cleanup_traps() {
   trap 'exit 143' TERM
 }
 
-page_has_quota() {
-  local result
-  result=$(run_js "(function(){var t=document.body?document.body.innerText:'';return /(quota|配额)/i.test(t)?'quota':'ok';})();" 2>/dev/null || true)
-  if printf '%s' "$result" | grep -q 'quota'; then
-    return 0
-  fi
-  return 1
+page_quota_state() {
+  run_js "(function(){var t=document.body?document.body.innerText:'';return /(quota|配额)/i.test(t)?'quota':'ok';})();" 2>/dev/null
 }
 
 page_request_state() {
-  run_js "
-(function(){
-  var text=(document.body?document.body.innerText:'').replace(/\\s+/g,' ').trim();
-  if(/(quota|配额)/i.test(text)) return 'quota';
-  if(/(indexing requested|request submitted|request was submitted|已请求编入索引|已请求|请求[^。\\n]*已提交|已提交[^。\\n]*请求)/i.test(text)) return 'success';
-  if(/(request failed|couldn.?t request|unable to request|something went wrong|失败|无法|出错)/i.test(text)) return 'failed';
-  return 'unknown';
-})();" 2>/dev/null || true
+  local url="${1:-}"
+  local expected_route_id="${2:-}"
+  local escaped_url escaped_route_id
+  escaped_url=${url//\\/\\\\}
+  escaped_url=${escaped_url//\'/\\\'}
+  escaped_route_id=${expected_route_id//\\/\\\\}
+  escaped_route_id=${escaped_route_id//\'/\\\'}
+  run_gsc_browser_call \
+    "request_state" \
+    "globalThis.__VENTUREDEX_GSC__.requestState('${escaped_url}','${escaped_route_id}');" \
+    2>/dev/null
 }
 
 page_matches_inspected_url() {
   local url="$1"
-  local escaped_url input_match page_text
+  local expected_route_id="${2:-}"
+  local escaped_url escaped_route_id inspection_probe validated_route_id
   escaped_url=${url//\\/\\\\}
   escaped_url=${escaped_url//\'/\\\'}
-  input_match="$(run_js "
-(function(){
-  var expected='${escaped_url}';
-  var input = document.querySelector('input[aria-label*=\"Inspect any URL\"]') ||
-              document.querySelector('input[aria-label*=\"检查\"]') ||
-              document.querySelector('input.Ax4B8') ||
-              document.querySelector('input[type=\"text\"]');
-  return input && input.value.trim()===expected
-    ? 'input_target_match'
-    : 'input_target_mismatch';
-})();" 2>/dev/null || true)"
-  if ! printf '%s' "$input_match" | grep -q 'input_target_match'; then
+  escaped_route_id=${expected_route_id//\\/\\\\}
+  escaped_route_id=${escaped_route_id//\'/\\\'}
+  inspection_probe="$(run_gsc_browser_call \
+    "inspect_target" \
+    "globalThis.__VENTUREDEX_GSC__.inspectTarget('${escaped_url}','${escaped_route_id}');" \
+    2>/dev/null || true)"
+  case "$inspection_probe" in
+    inspection_target_match\|\|\|*)
+      validated_route_id="${inspection_probe#inspection_target_match|||}"
+      ;;
+    *gsc_auth_session_blocker*|*gsc_inspection_surface_blocker*)
+      capture_gsc_surface_blocker "$inspection_probe" || true
+      LAST_INSPECTION_ROUTE_ID=""
+      return 2
+      ;;
+    *)
+      LAST_INSPECTION_ROUTE_ID=""
+      return 1
+      ;;
+  esac
+  if ! printf '%s\n' "$validated_route_id" |
+    grep -Eq '^[A-Za-z0-9_-]{1,255}$'; then
+    LAST_INSPECTION_ROUTE_ID=""
     return 1
   fi
-  page_text="$(capture_page_text)"
-  printf '%s' "$page_text" | python3 -c '
-import re
-import sys
-from urllib.parse import urlsplit, urlunsplit
-
-expected = sys.argv[1]
-visible_text = sys.stdin.read()
-
-def normalize(raw):
-    raw = raw.strip().strip("\"'"'"'()[]{}<>,.;:!?")
-    try:
-        parsed = urlsplit(raw)
-    except ValueError:
-        return None
-    if parsed.scheme not in {"http", "https"} or not parsed.netloc:
-        return None
-    path = parsed.path.rstrip("/") or "/"
-    return urlunsplit(
-        (parsed.scheme.lower(), parsed.netloc.lower(), path, parsed.query, "")
-    )
-
-normalized_expected = normalize(expected)
-candidates = re.findall(r"https?://[^\s<>\"'"'"'()]+", visible_text)
-raise SystemExit(
-    0
-    if normalized_expected
-    and any(normalize(candidate) == normalized_expected for candidate in candidates)
-    else 1
-)
-' "$url"
+  LAST_INSPECTION_ROUTE_ID="$validated_route_id"
+  return 0
 }
 
 wait_for_request_result() {
-  local attempt state
+  local pre_click_state="${1:-unknown}"
+  local url="${2:-}"
+  local inspection_route_id="${3:-}"
+  local attempt state state_status saw_non_failed_after_click=0
   for attempt in 1 2 3 4 5; do
-    state="$(page_request_state)"
-    if printf '%s' "$state" | grep -q 'success'; then
+    state="$(page_request_state "$url" "$inspection_route_id")"
+    state_status=$?
+    if [ "$state_status" -ne 0 ]; then
+      return 3
+    fi
+    if [ "$state" = "success" ] && [ "$pre_click_state" != "success" ]; then
       return 0
     fi
-    if printf '%s' "$state" | grep -q 'quota'; then
+    if [ "$state" = "success_static" ] && [ "$pre_click_state" != "success_static" ]; then
+      return 0
+    fi
+    if [ "$state" = "quota" ]; then
       return 2
     fi
-    if printf '%s' "$state" | grep -q 'failed'; then
+    if [ "$state" = "failed" ] && [ "$pre_click_state" != "failed" ]; then
       return 4
     fi
-    sleep 3
+    if [ "$pre_click_state" = "failed" ]; then
+      if [ "$state" != "failed" ]; then
+        saw_non_failed_after_click=1
+      elif [ "$saw_non_failed_after_click" -eq 1 ]; then
+        return 4
+      fi
+    fi
+    if [ "$state" = "target_changed" ]; then
+      return 6
+    fi
+    case "$state" in
+      gsc_auth_session_blocker\|\|\|*|gsc_inspection_surface_blocker\|\|\|*)
+        capture_gsc_surface_blocker "$state" || true
+        return 6
+        ;;
+      unknown|failed|success|success_static)
+        ;;
+      conflict)
+        return 3
+        ;;
+      *)
+        return 3
+        ;;
+    esac
+    sleep "$REQUEST_RESULT_WAIT_SECONDS"
   done
   return 3
 }
@@ -1055,17 +1977,25 @@ dismiss_success_dialog() {
 
 submit_single_url() {
   local url="$1"
-  local escaped_url input_js click_js input_result click_result result
+  local escaped_url escaped_route_id force_js input_js input_result click_result click_call_status
+  local inspection_route_id pre_click_state pre_click_state_status quota_state quota_state_status result
 
   escaped_url=${url//\\/\\\\}
   escaped_url=${escaped_url//\'/\\\'}
 
   input_js="
 (function(){
+  if(location.origin !== 'https://search.google.com' ||
+     location.pathname !== '/search-console/inspect' ||
+     new URLSearchParams(location.search).get('resource_id') !== 'sc-domain:venturedex.co') {
+    var blocker = location.origin === 'https://search.google.com'
+      ? 'gsc_inspection_surface_blocker'
+      : 'gsc_auth_session_blocker';
+    return blocker + '|||' + location.origin + location.pathname;
+  }
   var input = document.querySelector('input[aria-label*=\"Inspect any URL\"]') ||
               document.querySelector('input[aria-label*=\"检查\"]') ||
-              document.querySelector('input.Ax4B8') ||
-              document.querySelector('input[type=\"text\"]');
+              document.querySelector('input.Ax4B8[role=\"combobox\"]');
   if(!input) return 'input_not_found';
   input.focus();
   var setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
@@ -1080,66 +2010,145 @@ submit_single_url() {
   return 'submitted';
 })();"
 
-  input_result=$(run_js "$input_js" 2>&1)
+  input_result=$(run_js "/*VENTUREDEX_CALL:submit_input*/${input_js}" 2>&1)
+  if printf '%s' "$input_result" | grep -q 'gsc_.*_blocker'; then
+    capture_gsc_surface_blocker "$input_result" || true
+    echo "Search Console left the authenticated inspection surface before input." >&2
+    return 12
+  fi
   if ! printf '%s' "$input_result" | grep -q 'submitted'; then
     echo "URL inspection input was not found or did not accept the URL." >&2
-    return 3
+    return 7
   fi
 
   sleep "$INSPECT_WAIT_SECONDS"
 
-  if page_has_quota; then
-    echo "Detected Search Console quota limit." >&2
-    return 2
-  fi
-
-  if ! page_matches_inspected_url "$url"; then
+  page_matches_inspected_url "$url"
+  result=$?
+  if [ "$result" -ne 0 ]; then
     echo "Search Console did not render the exact inspected URL; refusing to click: $url" >&2
+    if [ "$result" -eq 2 ]; then
+      return 12
+    fi
     return 5
   fi
+  inspection_route_id="$LAST_INSPECTION_ROUTE_ID"
+  escaped_route_id=${inspection_route_id//\\/\\\\}
+  escaped_route_id=${escaped_route_id//\'/\\\'}
+  force_js="false"
+  if [ "$FORCE" -eq 1 ]; then
+    force_js="true"
+  fi
+  pre_click_state="$(page_request_state "$url" "$inspection_route_id")"
+  pre_click_state_status=$?
+  if [ "$pre_click_state_status" -ne 0 ] || [ -z "$pre_click_state" ]; then
+    echo "The pre-click Search Console request-state probe was unavailable; refusing to click." >&2
+    return 14
+  fi
+  case "$pre_click_state" in
+    gsc_auth_session_blocker\|\|\|*|gsc_inspection_surface_blocker\|\|\|*)
+      capture_gsc_surface_blocker "$pre_click_state" || true
+      return 12
+      ;;
+    target_changed)
+      return 8
+      ;;
+    success|success_static|conflict|quota|failed|unknown)
+      ;;
+    *)
+      echo "The pre-click Search Console request-state probe returned an unknown marker; refusing to click." >&2
+      return 14
+      ;;
+  esac
+  if [ "$pre_click_state" = "success" ] || [ "$pre_click_state" = "conflict" ]; then
+    echo "Search Console exposes an unbound or conflicting pre-request terminal state; refusing to infer completion or click." >&2
+    return 10
+  fi
+  if [ "$FORCE" -ne 1 ] && [ "$pre_click_state" = "success_static" ]; then
+    echo "Search Console already shows an indexing-request success state for the exact target; refusing a duplicate click." >&2
+    return 9
+  fi
+  if [ "$pre_click_state" = "quota" ]; then
+    echo "Detected target-bound Search Console quota limit." >&2
+    return 2
+  fi
+  if [ "$pre_click_state" = "unknown" ] || [ "$pre_click_state" = "failed" ]; then
+    quota_state="$(page_quota_state)"
+    quota_state_status=$?
+    if [ "$quota_state_status" -ne 0 ] \
+      || { [ "$quota_state" != "quota" ] && [ "$quota_state" != "ok" ]; }; then
+      echo "The pre-click Search Console quota probe was unavailable; refusing to click." >&2
+      return 14
+    fi
+    if [ "$quota_state" = "quota" ]; then
+      echo "Detected Search Console quota limit." >&2
+      return 2
+    fi
+  fi
 
-  click_js="
-(function(){
-  var allEls=document.querySelectorAll('span,button,div[role=button],a,material-button');
-  for(var i=0;i<allEls.length;i++){
-    var text=(allEls[i].textContent||'').replace(/\\s+/g,' ').trim();
-    var lower=text.toLowerCase();
-    if(lower==='request indexing' || text==='请求编入索引'){allEls[i].click();return 'clicked';}
-  }
-  var xpath=\"//span[contains(translate(normalize-space(text()), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'request indexing')] | //button[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'request indexing')] | //div[contains(normalize-space(text()), '请求编入索引')] | //button[contains(normalize-space(.), '请求编入索引')]\";
-  var snapshot=document.evaluate(xpath, document, null, XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, null);
-  for(var j=0;j<snapshot.snapshotLength;j++){
-    var el=snapshot.snapshotItem(j);
-    if(el && el.offsetParent!==null){el.click();return 'clicked';}
-  }
-  return 'not_found';
-})();"
+  if ! append_history_or_block \
+    "request_click_pending" \
+    "$url" \
+    "request click intent persisted before browser action; completion unresolved until a terminal ledger row is recorded"; then
+    echo "Request click intent could not be persisted; refusing the browser action." >&2
+    return 11
+  fi
 
-  click_result=$(run_js "$click_js" 2>&1)
-  if ! printf '%s' "$click_result" | grep -q 'clicked'; then
-    echo "Request indexing button was not found." >&2
-    return 1
+  click_result="$(run_gsc_browser_call \
+    "click_target" \
+    "globalThis.__VENTUREDEX_GSC__.clickTarget('${escaped_url}','${escaped_route_id}',${force_js},'${pre_click_state}');" \
+    2>&1)"
+  click_call_status=$?
+  if [ "$click_call_status" -ne 0 ]; then
+    echo "Browser click transport failed; the persisted intent requires manual reconciliation." >&2
+    return 13
+  fi
+  if [ "$click_result" != "clicked" ]; then
+    if printf '%s' "$click_result" | grep -q '^gsc_.*_blocker|||'; then
+      capture_gsc_surface_blocker "$click_result" || true
+      echo "Search Console left the authenticated inspection surface before the request click." >&2
+      return 12
+    fi
+    if printf '%s' "$click_result" | grep -q '^inspection_'; then
+      echo "The active Search Console inspection changed before the request click." >&2
+      return 8
+    fi
+    if [ "$click_result" = "request_button_ambiguous" ]; then
+      echo "Request indexing button was not found unambiguously." >&2
+      return 1
+    fi
+    case "$click_result" in
+      preclick_terminal\|\|\|success_static)
+        return 9
+        ;;
+      preclick_terminal\|\|\|success|preclick_terminal\|\|\|conflict)
+        return 10
+        ;;
+      preclick_terminal\|\|\|quota)
+        return 2
+        ;;
+      preclick_terminal\|\|\|failed)
+        return 4
+        ;;
+    esac
+    echo "Browser click outcome was not returned reliably; the persisted intent requires manual reconciliation." >&2
+    return 13
   fi
 
   sleep "$POST_CLICK_WAIT_SECONDS"
-  wait_for_request_result
+  wait_for_request_result "$pre_click_state" "$url" "$inspection_route_id"
   result=$?
   if [ "$result" -ne 0 ]; then
     return "$result"
   fi
 
-  if ! page_matches_inspected_url "$url"; then
+  if ! page_matches_inspected_url "$url" "$inspection_route_id"; then
     echo "Search Console success state is not associated with the exact inspected URL: $url" >&2
-    return 5
+    return 6
   fi
 
   dismiss_success_dialog
   sleep "$POST_MODAL_WAIT_SECONDS"
-
-  if page_has_quota; then
-    echo "Detected quota after submit click." >&2
-    return 2
-  fi
 
   return 0
 }
@@ -1285,8 +2294,13 @@ validate_targets() {
     exit 1
   fi
 
+  for url in "${TARGET_URLS[@]}"; do
+    validate_detail_url "$url" || exit 1
+  done
+
   if [ -n "$EXPECT_URL" ]; then
     EXPECT_URL="$(normalize_url "$EXPECT_URL")"
+    validate_detail_url "$EXPECT_URL" || exit 1
     if [ "$count" -ne 1 ]; then
       echo "--expect-url can only be used with exactly one target URL." >&2
       exit 1
@@ -1300,9 +2314,6 @@ validate_targets() {
     fi
   fi
 
-  for url in "${TARGET_URLS[@]}"; do
-    validate_detail_url "$url" || exit 1
-  done
 }
 
 print_summary() {
@@ -1328,16 +2339,42 @@ print_summary() {
 }
 
 precheck_targets() {
-  local url
+  local requested_state url
   for url in "${TARGET_URLS[@]}"; do
-    if [ "$FORCE" -ne 1 ] && target_already_requested "$url"; then
-      echo "Already requested, skipping unless --force is set: $url"
-      continue
+    if ! require_no_unresolved_reconciliation "$url"; then
+      record_retry_pending_targets \
+        "" \
+        "batch stopped during precheck after reconciliation blocker for ${url}; target was not attempted" \
+        0 \
+        "$url" \
+        || exit 1
+      exit 1
     fi
-    require_no_unresolved_reconciliation "$url" || exit 1
+    if [ "$FORCE" -ne 1 ]; then
+      target_already_requested "$url"
+      requested_state=$?
+      case "$requested_state" in
+        0)
+          echo "Already requested, skipping unless --force is set: $url"
+          continue
+          ;;
+        1)
+          ;;
+        *)
+          echo "BLOCKED: authoritative GSC ledger changed while checking requested state for ${url}." >&2
+          exit 1
+          ;;
+      esac
+    fi
     if ! check_live_url "$url"; then
       echo "Live URL check failed: $url" >&2
       append_history_or_block "live_check_failed" "$url" "target URL did not return a successful response" || exit 1
+      record_retry_pending_targets \
+        "" \
+        "batch stopped during precheck after live check failure for ${url}; target was not attempted" \
+        0 \
+        "$url" \
+        || exit 1
       exit 1
     fi
     if [ "$DRY_RUN" -eq 1 ]; then
@@ -1347,40 +2384,157 @@ precheck_targets() {
 }
 
 all_targets_already_requested() {
-  local url
+  local requested_state url
   if [ "$FORCE" -eq 1 ]; then
     return 1
   fi
   for url in "${TARGET_URLS[@]}"; do
-    if ! target_already_requested "$url"; then
-      return 1
-    fi
+    require_no_unresolved_reconciliation "$url" || return 1
+    target_already_requested "$url"
+    requested_state=$?
+    case "$requested_state" in
+      0)
+        ;;
+      1)
+        return 1
+        ;;
+      *)
+        echo "BLOCKED: authoritative GSC ledger changed while checking requested state for ${url}." >&2
+        return 2
+        ;;
+    esac
   done
   return 0
 }
 
-submit_targets() {
-  local inspect_url url result submitted_count=0 skipped_count=0
+record_retry_pending_targets() {
+  local after_url="$1"
+  local message="$2"
+  local write_artifacts="${3:-0}"
+  local exclude_url="${4:-}"
+  local url requested_state started=0 found=0 blocked=0
 
-  require_deps
-  ensure_bb_browser_connected || exit 1
-
-  inspect_url="https://search.google.com/search-console/inspect?resource_id=${GSC_RESOURCE_ID}&hl=${GSC_LANG}"
-  open_gsc_page "$inspect_url"
-  sleep "$NAV_WAIT_SECONDS"
-
+  if [ -z "$after_url" ]; then
+    started=1
+    found=1
+  fi
   for url in "${TARGET_URLS[@]}"; do
-    if [ "$FORCE" -ne 1 ] && target_already_requested "$url"; then
-      echo "Already requested, skipping: $url"
-      skipped_count=$((skipped_count + 1))
+    if [ "$started" -eq 0 ]; then
+      if [ "$url" = "$after_url" ]; then
+        started=1
+        found=1
+      fi
       continue
     fi
+    if [ -n "$after_url" ] && [ "$url" = "$after_url" ]; then
+      continue
+    fi
+    if [ -n "$exclude_url" ] && [ "$url" = "$exclude_url" ]; then
+      continue
+    fi
+    if ! require_no_unresolved_reconciliation "$url"; then
+      echo "Preserving existing reconciliation evidence while recording the batch blocker: $url" >&2
+      blocked=1
+      continue
+    fi
+    target_already_requested "$url"
+    requested_state=$?
+    case "$requested_state" in
+      0)
+        echo "Preserving requested state while recording batch blocker: $url"
+        continue
+        ;;
+      1)
+        ;;
+      *)
+        echo "Could not read authoritative requested state while recording the batch blocker: $url" >&2
+        blocked=1
+        continue
+        ;;
+    esac
+    append_history_or_block "retry_pending" "$url" "$message" || return 1
+    if [ "$write_artifacts" -eq 1 ]; then
+      write_gsc_artifact "retry_pending" "$url" "$message" \
+        || echo "Could not persist GSC retry artifact for ${url}." >&2
+    fi
+  done
+  if [ "$found" -eq 0 ]; then
+    echo "Could not locate current GSC target while recording the remaining batch: ${after_url}" >&2
+    return 1
+  fi
+  if [ "$blocked" -ne 0 ]; then
+    return 1
+  fi
+  return 0
+}
+
+submit_targets() {
+  local inspect_url url result reconciliation_detail requested_state submitted_count=0 skipped_count=0
+
+  if ! require_deps; then
+    record_retry_pending_targets \
+      "" \
+      "gsc_browser_dependency_blocker: a required bb-browser, Comet, or submitter dependency is unavailable before any Search Console interaction" \
+      1 \
+      || return 1
+    return 1
+  fi
+  if ! ensure_bb_browser_connected; then
+    record_retry_pending_targets \
+      "" \
+      "gsc_browser_session_blocker: bb-browser could not connect to managed Comet CDP before any Search Console interaction" \
+      1 \
+      || return 1
+    return 1
+  fi
+
+  inspect_url="https://search.google.com/search-console/inspect?resource_id=${GSC_RESOURCE_ID}&hl=${GSC_LANG}"
+  if ! open_gsc_page "$inspect_url"; then
+    record_retry_pending_targets \
+      "" \
+      "gsc_browser_session_blocker: managed Search Console tab open failed before any input or request click" \
+      1 \
+      || return 1
+    return 1
+  fi
+  sleep "$NAV_WAIT_SECONDS"
+  if ! verify_gsc_inspection_surface; then
+    record_retry_pending_targets \
+      "" \
+      "${GSC_SURFACE_BLOCKER}: observed ${GSC_SURFACE_OBSERVED}; Search Console did not remain on the authenticated VentureDex URL Inspection surface before any input or request click" \
+      0 \
+      || return 1
+    return 1
+  fi
+
+  for url in "${TARGET_URLS[@]}"; do
     require_no_unresolved_reconciliation "$url" || return 1
+    if [ "$FORCE" -ne 1 ]; then
+      target_already_requested "$url"
+      requested_state=$?
+      case "$requested_state" in
+        0)
+          echo "Already requested, skipping: $url"
+          skipped_count=$((skipped_count + 1))
+          continue
+          ;;
+        1)
+          ;;
+        *)
+          echo "BLOCKED: authoritative GSC ledger changed while checking requested state for ${url}." >&2
+          return 1
+          ;;
+      esac
+    fi
 
     if ! check_live_url "$url"; then
       echo "Live URL check failed: $url" >&2
       append_history_or_block "live_check_failed" "$url" "target URL did not return a successful response" || return 1
       write_gsc_artifact "live_check_failed" "$url" "target URL did not return a successful response"
+      record_retry_pending_targets \
+        "$url" \
+        "batch stopped after live check failure for ${url}; target was not attempted" \
+        || return 1
       return 1
     fi
 
@@ -1398,31 +2552,191 @@ submit_targets() {
         echo "Request button not found; manual confirmation may be required: $url" >&2
         append_history_or_block "retry_pending" "$url" "request button not found" || return 1
         write_gsc_artifact "retry_pending" "$url" "request button not found"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after request button blocker for ${url}; target was not attempted" \
+          || return 1
         return 1
         ;;
       2)
         echo "Quota detected; stopping remaining submissions." >&2
-        append_history_or_block "quota_exceeded" "$url" "quota detected" || return 1
-        write_gsc_artifact "quota_exceeded" "$url" "quota detected"
+        append_history_or_block "retry_pending" "$url" "quota blocker: Search Console quota detected" || return 1
+        write_gsc_artifact "retry_pending" "$url" "quota blocker: Search Console quota detected"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after Search Console quota blocker for ${url}; target was not attempted" \
+          || return 1
         return 2
         ;;
       4)
         echo "Search Console reported a request failure." >&2
         append_history_or_block "retry_pending" "$url" "request failure detected" || return 1
         write_gsc_artifact "retry_pending" "$url" "request failure detected"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after explicit request failure for ${url}; target was not attempted" \
+          || return 1
         return 1
         ;;
       5)
         echo "Search Console inspected URL mismatch; refusing requested status: $url" >&2
         append_history_or_block "retry_pending" "$url" "inspected URL mismatch" || return 1
         write_gsc_artifact "retry_pending" "$url" "inspected URL mismatch"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after inspected URL mismatch for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      6)
+        echo "BLOCKED: request succeeded but the post-request target could not be verified: $url" >&2
+        if [ -n "${GSC_SURFACE_BLOCKER:-}" ]; then
+          reconciliation_detail="${GSC_SURFACE_BLOCKER}: observed ${GSC_SURFACE_OBSERVED:-unknown}; Search Console left the authenticated VentureDex inspection surface after the request click. Acceptance is unknown, so manual reconciliation is required and automatic retry is disabled."
+        else
+          reconciliation_detail="Search Console reported success after the click, but the active route-bound inspection header no longer proved the exact target; manual reconciliation required and automatic retry disabled."
+        fi
+        write_gsc_artifact \
+          "post_request_target_unverified" \
+          "$url" \
+          "$reconciliation_detail" \
+          || echo "Could not persist the post-request target reconciliation artifact." >&2
+        append_history_or_block \
+          "post_request_target_unverified" \
+          "$url" \
+          "request may have been accepted; ${reconciliation_detail}" \
+          || return 1
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after post-request target reconciliation blocker for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      11)
+        echo "BLOCKED: no request click occurred because its durable intent could not be recorded: $url" >&2
+        return 1
+        ;;
+      14)
+        echo "Pre-click Search Console state could not be verified; no request click occurred: $url" >&2
+        append_history_or_block \
+          "retry_pending" \
+          "$url" \
+          "pre-click Search Console state or quota probe was unavailable; no request click occurred" \
+          || return 1
+        write_gsc_artifact \
+          "retry_pending" \
+          "$url" \
+          "Pre-click Search Console state or quota probe was unavailable; the request button was not clicked."
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after pre-click Search Console state probe blocker for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      7)
+        echo "URL inspection input was unavailable before any request click: $url" >&2
+        append_history_or_block "retry_pending" "$url" "inspection input unavailable" || return 1
+        write_gsc_artifact "retry_pending" "$url" "inspection input unavailable"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after inspection input blocker for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      8)
+        echo "Search Console changed the active inspected target before the click: $url" >&2
+        append_history_or_block "retry_pending" "$url" "inspected target changed before request click" || return 1
+        write_gsc_artifact "retry_pending" "$url" "inspected target changed before request click"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after pre-click target change for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      9)
+        append_history_or_block \
+          "requested" \
+          "$url" \
+          "existing route-bound Search Console success state; duplicate click skipped" \
+          || return 1
+        echo "Recorded existing indexing request without a duplicate click: $url"
+        skipped_count=$((skipped_count + 1))
+        ;;
+      10)
+        echo "BLOCKED: a pre-existing success dialog could not be associated with the exact target: $url" >&2
+        write_gsc_artifact \
+          "pre_request_success_unverified" \
+          "$url" \
+          "Search Console exposed an unbound or conflicting terminal state before the request click. Completion cannot be inferred and automatic retry is disabled pending manual reconciliation." \
+          || echo "Could not persist the pre-request success reconciliation artifact." >&2
+        append_history_or_block \
+          "pre_request_success_unverified" \
+          "$url" \
+          "pre-existing terminal state was unbound or conflicting; no request click occurred" \
+          || return 1
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after pre-request reconciliation blocker for ${url}; target was not attempted" \
+          || return 1
+        return 1
+        ;;
+      3)
+        echo "BLOCKED: request was clicked but submit confirmation was not detected: $url" >&2
+        write_gsc_artifact \
+          "post_request_confirmation_unknown" \
+          "$url" \
+          "The request click intent was persisted and the browser action may have occurred, but Search Console did not expose a terminal success or failure state; manual reconciliation required and automatic retry disabled." \
+          || echo "Could not persist the post-request confirmation reconciliation artifact." >&2
+        append_history_or_block \
+          "post_request_confirmation_unknown" \
+          "$url" \
+          "request click may have occurred; terminal confirmation was not detected" \
+          || return 1
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after post-request confirmation reconciliation blocker for ${url}; target was not attempted" \
+          || return 1
+        return 3
+        ;;
+      13)
+        echo "BLOCKED: browser click transport did not prove whether the persisted request intent executed: $url" >&2
+        write_gsc_artifact \
+          "post_request_confirmation_unknown" \
+          "$url" \
+          "The request click intent was persisted, but the browser transport did not return a reliable click outcome. The click may have occurred; manual reconciliation is required and automatic retry is disabled." \
+          || echo "Could not persist the browser-transport reconciliation artifact." >&2
+        append_history_or_block \
+          "post_request_confirmation_unknown" \
+          "$url" \
+          "browser click outcome was not returned reliably; click may have occurred" \
+          || return 1
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after uncertain browser click transport for ${url}; target was not attempted" \
+          || return 1
+        return 3
+        ;;
+      12)
+        echo "Search Console left the authenticated VentureDex inspection surface before input: $url" >&2
+        append_history_or_block \
+          "retry_pending" \
+          "$url" \
+          "${GSC_SURFACE_BLOCKER:-gsc_inspection_surface_blocker}: observed ${GSC_SURFACE_OBSERVED:-unknown}; inspection surface changed before any request click" \
+          || return 1
+        record_retry_pending_targets \
+          "$url" \
+          "${GSC_SURFACE_BLOCKER:-gsc_inspection_surface_blocker}: observed ${GSC_SURFACE_OBSERVED:-unknown}; batch stopped after authenticated inspection surface changed for ${url}; target was not attempted" \
+          || return 1
         return 1
         ;;
       *)
-        echo "Submit confirmation was not detected: $url" >&2
-        append_history_or_block "retry_pending" "$url" "submit confirmation not detected" || return 1
-        write_gsc_artifact "retry_pending" "$url" "submit confirmation not detected"
-        return 3
+        echo "Unexpected GSC submission result code ${result}: $url" >&2
+        append_history_or_block "retry_pending" "$url" "unexpected local result before completion" || return 1
+        write_gsc_artifact "retry_pending" "$url" "unexpected local result before completion"
+        record_retry_pending_targets \
+          "$url" \
+          "batch stopped after unexpected local result for ${url}; target was not attempted" \
+          || return 1
+        return 1
         ;;
     esac
   done
@@ -1431,6 +2745,8 @@ submit_targets() {
 }
 
 main() {
+  local requested_state
+
   parse_args "$@"
   validate_max_urls_value
   install_cleanup_traps
@@ -1440,6 +2756,7 @@ main() {
 
   if [ "$MIGRATE_LEGACY_HISTORY" -eq 1 ]; then
     migrate_legacy_history || exit 1
+    refresh_history_identity_after_controlled_replace || exit 1
   fi
 
   if [ "$MIGRATE_LEGACY_HISTORY" -eq 1 ] \
@@ -1477,10 +2794,19 @@ main() {
     exit 0
   fi
 
-  if all_targets_already_requested; then
-    echo "All selected targets already have requested rows in ${HISTORY_FILE}; no browser submission needed."
-    exit 0
-  fi
+  all_targets_already_requested
+  requested_state=$?
+  case "$requested_state" in
+    0)
+      echo "All selected targets already have requested rows in ${HISTORY_FILE}; no browser submission needed."
+      exit 0
+      ;;
+    1)
+      ;;
+    *)
+      exit 1
+      ;;
+  esac
 
   submit_targets
 }

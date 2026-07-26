@@ -1,20 +1,24 @@
 import { pathToFileURL } from "node:url";
 import {
   buildLatestGscDiagnostics,
+  defaultGscArtifactDir,
   defaultGscHistoryPath,
   readGscLedger,
+  readGscReconciliationArtifacts,
   renderGscDiagnosticsMarkdown,
   writeGscDiagnosticsReport,
 } from "./gsc";
 import { resolveFromRoot } from "./content";
 
 interface Options {
+  artifactDir: string;
   write: boolean;
   historyFile: string;
 }
 
 function parseArgs(argv: string[]): Options {
   const options: Options = {
+    artifactDir: defaultGscArtifactDir(),
     write: false,
     historyFile: defaultGscHistoryPath(),
   };
@@ -27,9 +31,12 @@ function parseArgs(argv: string[]): Options {
       case "--history-file":
         options.historyFile = requiredValue(argv, ++index, arg);
         break;
+      case "--artifact-dir":
+        options.artifactDir = requiredValue(argv, ++index, arg);
+        break;
       case "-h":
       case "--help":
-        console.log("Usage: tsx scripts/promotion/gsc-diagnostics.ts --write");
+        console.log("Usage: tsx scripts/promotion/gsc-diagnostics.ts [--write] [--history-file PATH] [--artifact-dir DIR]");
         process.exit(0);
       default:
         throw new Error(`Unknown argument: ${arg}`);
@@ -54,7 +61,10 @@ function main() {
   const body = renderGscDiagnosticsMarkdown({
     generatedAt: now.toISOString(),
     historyPath: options.historyFile,
-    diagnostics: buildLatestGscDiagnostics(readGscLedger(options.historyFile)),
+    diagnostics: buildLatestGscDiagnostics(
+      readGscLedger(options.historyFile),
+      readGscReconciliationArtifacts(options.artifactDir)
+    ),
   });
   if (options.write) {
     const outputPath = reportPathForDate(now);

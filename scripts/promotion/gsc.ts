@@ -1,6 +1,17 @@
-import { existsSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import {
+  closeSync,
+  constants as fsConstants,
+  existsSync,
+  fstatSync,
+  lstatSync,
+  openSync,
+  readFileSync,
+  readdirSync,
+} from "node:fs";
 import { homedir } from "node:os";
 import { join } from "node:path";
+import { TextDecoder } from "node:util";
 import {
   latestDailyStartups,
   latestWeeklyIssue,
@@ -18,6 +29,33 @@ export interface GscLedgerRow {
   message: string;
 }
 
+const GSC_LEDGER_STATUSES = new Set([
+  "requested",
+  "dry_run",
+  "retry_pending",
+  "stopped_mismatch",
+  "live_check_failed",
+  "quota_exceeded",
+  "request_click_pending",
+  "pre_request_success_unverified",
+  "post_request_target_unverified",
+  "post_request_confirmation_unknown",
+]);
+
+export interface GscReconciliationArtifact {
+  path: string;
+  targetKey: string | null;
+  globalBlock: boolean;
+  timestamp: string;
+  status:
+    | "ledger_write_failed_after_request"
+    | "pre_request_success_unverified"
+    | "post_request_target_unverified"
+    | "post_request_confirmation_unknown";
+  url: string;
+  message: string;
+}
+
 export type GscStatusKind = "complete" | "needs_submit" | "blocked" | "missing" | "skipped";
 
 export interface GscUrlDiagnostic {
@@ -30,6 +68,10 @@ export interface GscUrlDiagnostic {
 
 export function defaultGscHistoryPath(): string {
   return resolveDefaultGscHistoryPath();
+}
+
+export function defaultGscArtifactDir(): string {
+  return resolveDefaultGscArtifactDir();
 }
 
 export function resolveDefaultGscHistoryPath(options: {
@@ -55,25 +97,248 @@ export function resolveDefaultGscHistoryPath(options: {
   );
 }
 
+export function resolveDefaultGscArtifactDir(options: {
+  env?: NodeJS.ProcessEnv;
+  homeDir?: string;
+} = {}): string {
+  const env = options.env ?? process.env;
+  if (env.GSC_ARTIFACT_DIR) return env.GSC_ARTIFACT_DIR;
+  const codeHome = env.CODEX_HOME || join(options.homeDir ?? homedir(), ".codex");
+  return join(
+    codeHome,
+    "automations",
+    "venturedex-daily-curator",
+    "gsc-artifacts"
+  );
+}
+
 export function parseGscLedgerText(text: string): GscLedgerRow[] {
-  const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  const rows = lines[0]?.startsWith("timestamp\t") ? lines.slice(1) : lines;
-  return rows
-    .map((line) => {
-      const [timestamp = "", status = "", url = "", ...messageParts] = line.split("\t");
-      return {
-        timestamp: timestamp.trim(),
-        status: status.trim(),
-        url: normalizeCanonicalUrl(url),
-        message: messageParts.join("\t").trim(),
-      };
-    })
-    .filter((row) => row.url);
+  if (/\r(?!\n)|[\v\f\u001c-\u001f\u0085\ufeff\u2028\u2029]/u.test(text)) {
+    throw new Error("Invalid GSC ledger line separator");
+  }
+  const lines = text.split(/\r?\n/);
+  const expectedHeader = "timestamp\tstatus\turl\tmessage";
+  if (lines[0] !== expectedHeader) {
+    throw new Error("Invalid GSC ledger header");
+  }
+  const rows: GscLedgerRow[] = [];
+  for (let index = 1; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line) continue;
+    const columns = line.split("\t");
+    if (columns.length !== 4) {
+      throw new Error(
+        `Invalid GSC ledger row at line ${index + 1}: expected 4 columns`,
+      );
+    }
+    const [timestamp, status, url, message] = columns;
+    if (
+      !timestamp.trim()
+      || !status.trim()
+      || !url.trim()
+      || timestamp !== timestamp.trim()
+      || status !== status.trim()
+      || url !== url.trim()
+    ) {
+      throw new Error(
+        `Invalid GSC ledger row at line ${index + 1}: timestamp, status, and url are required and cannot have outer whitespace`,
+      );
+    }
+    if (!isCanonicalGscDetailUrl(url)) {
+      throw new Error(
+        `Invalid GSC ledger row at line ${index + 1}: url must be a canonical VentureDex detail URL`,
+      );
+    }
+    if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$/.test(timestamp)) {
+      throw new Error(
+        `Invalid GSC ledger row at line ${index + 1}: timestamp must use YYYY-MM-DD HH:MM:SS`,
+      );
+    }
+    if (!GSC_LEDGER_STATUSES.has(status)) {
+      throw new Error(
+        `Invalid GSC ledger row at line ${index + 1}: unknown status ${JSON.stringify(status)}`,
+      );
+    }
+    rows.push({
+      timestamp,
+      status,
+      url,
+      message: message.trim(),
+    });
+  }
+  return rows;
 }
 
 export function readGscLedger(path = defaultGscHistoryPath()): GscLedgerRow[] {
-  if (!existsSync(path)) return [];
-  return parseGscLedgerText(readFileSync(path, "utf8"));
+  let descriptor: number;
+  try {
+    descriptor = openSync(
+      path,
+      fsConstants.O_RDONLY
+        | fsConstants.O_NONBLOCK
+        | (fsConstants.O_NOFOLLOW ?? 0),
+    );
+  } catch (error) {
+    if (
+      error
+      && typeof error === "object"
+      && "code" in error
+      && error.code === "ENOENT"
+    ) {
+      return [];
+    }
+    throw new Error(
+      `GSC ledger must be a readable regular, non-symlink file: ${path}`,
+      { cause: error },
+    );
+  }
+  let bytes: Buffer;
+  try {
+    const openedStat = fstatSync(descriptor);
+    if (!openedStat.isFile()) {
+      throw new Error(
+        `GSC ledger must be a regular, non-symlink file: ${path}`,
+      );
+    }
+    if (openedStat.nlink !== 1) {
+      throw new Error(
+        `GSC ledger must not have hard-link aliases: ${path}`,
+      );
+    }
+    bytes = readFileSync(descriptor);
+    const currentStat = lstatSync(path);
+    if (
+      !currentStat.isFile()
+      || currentStat.isSymbolicLink()
+      || currentStat.nlink !== 1
+      || currentStat.dev !== openedStat.dev
+      || currentStat.ino !== openedStat.ino
+    ) {
+      throw new Error(
+        `GSC ledger path changed while reading: ${path}`,
+      );
+    }
+  } finally {
+    closeSync(descriptor);
+  }
+  const text = new TextDecoder("utf-8", {
+    fatal: true,
+    ignoreBOM: true,
+  }).decode(bytes);
+  return parseGscLedgerText(text);
+}
+
+export function readGscReconciliationArtifacts(
+  directory = defaultGscArtifactDir()
+): GscReconciliationArtifact[] {
+  if (!existsSync(directory)) {
+    try {
+      const stat = lstatSync(directory);
+      if (stat.isSymbolicLink()) {
+        throw new Error(`GSC artifact directory is a broken symlink: ${directory}`);
+      }
+    } catch (error) {
+      if (
+        error
+        && typeof error === "object"
+        && "code" in error
+        && error.code === "ENOENT"
+      ) {
+        return [];
+      }
+      throw error;
+    }
+    throw new Error(`GSC artifact directory is not reachable: ${directory}`);
+  }
+  const statuses = new Set<GscReconciliationArtifact["status"]>([
+    "ledger_write_failed_after_request",
+    "pre_request_success_unverified",
+    "post_request_target_unverified",
+    "post_request_confirmation_unknown",
+  ]);
+  const artifacts: GscReconciliationArtifact[] = [];
+
+  for (const name of readdirSync(directory).sort()) {
+    if (!name.endsWith(".txt")) continue;
+    const path = join(directory, name);
+    const status = [...statuses].find((candidate) => (
+      name.includes(`-${candidate}-`)
+    ));
+    if (!status) continue;
+    const marker = `-${status}-`;
+    const artifactTarget = name.slice(
+      name.indexOf(marker) + marker.length,
+      -".txt".length,
+    );
+    const hashedTarget = /^.+--sha256-[0-9a-f]{12}$/.test(artifactTarget);
+    let nonRegularEntry = true;
+    try {
+      const stat = lstatSync(path);
+      nonRegularEntry = stat.isSymbolicLink() || !stat.isFile();
+    } catch {
+      // A directory race or unreadable entry is not clean evidence.
+    }
+    let text = "";
+    let decodeFailed = false;
+    if (!nonRegularEntry) {
+      try {
+        const bytes = readFileSync(path);
+        text = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+      } catch {
+        // The submitter treats the existence of the durable filename itself as
+        // a blocker. Diagnostics must fail closed the same way if it is unreadable.
+        try {
+          readFileSync(path);
+          decodeFailed = true;
+        } catch {
+          // A hashed filename still scopes an unreadable artifact to one exact
+          // URL identity. An unreadable legacy filename is handled globally below.
+        }
+      }
+    }
+    const fields = new Map<string, string>();
+    for (const line of text.split(/\r?\n/)) {
+      if (!line.trim()) break;
+      const separator = line.indexOf(":");
+      if (separator <= 0) continue;
+      fields.set(
+        line.slice(0, separator).trim(),
+        line.slice(separator + 1).trim()
+      );
+    }
+    const rawUrl = fields.get("url") ?? "";
+    const url = normalizeCanonicalUrl(rawUrl);
+    const headerStatus = fields.get("status") ?? "";
+    let globalBlock = decodeFailed || nonRegularEntry;
+    if (hashedTarget) {
+      if (headerStatus && headerStatus !== status) globalBlock = true;
+      if (
+        rawUrl
+        && (
+          !isCanonicalGscDetailUrl(rawUrl)
+          || gscArtifactTargetKey(rawUrl) !== artifactTarget
+        )
+      ) {
+        globalBlock = true;
+      }
+    } else if (
+      !isCanonicalGscDetailUrl(rawUrl)
+      || sanitizeGscArtifactTarget(rawUrl) !== artifactTarget
+      || (headerStatus && headerStatus !== status)
+    ) {
+      globalBlock = true;
+    }
+    artifacts.push({
+      path,
+      targetKey: hashedTarget ? artifactTarget : null,
+      globalBlock,
+      timestamp: fields.get("timestamp") ?? "",
+      status,
+      url,
+      message: fields.get("message") ?? "manual reconciliation required",
+    });
+  }
+  return artifacts;
 }
 
 export function latestGscStatus(rows: GscLedgerRow[], url: string): GscLedgerRow | null {
@@ -100,15 +365,49 @@ export function classifyGscStatus(row: GscLedgerRow | null): { kind: GscStatusKi
     case "live_check_failed":
     case "retry_pending":
     case "quota_exceeded":
+    case "request_click_pending":
+    case "pre_request_success_unverified":
+    case "post_request_target_unverified":
+    case "post_request_confirmation_unknown":
       return { kind: "blocked", message: `${row.status} at ${row.timestamp}: ${row.message}` };
-    case "already_requested":
-      return { kind: "skipped", message: `already requested at ${row.timestamp}` };
     default:
       return { kind: "needs_submit", message: `${row.status || "unknown"} at ${row.timestamp}` };
   }
 }
 
-export function buildLatestGscDiagnostics(rows = readGscLedger()): GscUrlDiagnostic[] {
+export function classifyGscUrl(
+  rows: GscLedgerRow[],
+  url: string,
+  artifacts: GscReconciliationArtifact[] = []
+): {
+  kind: GscStatusKind;
+  latest: GscLedgerRow | null;
+  message: string;
+} {
+  const normalizedUrl = normalizeCanonicalUrl(url);
+  const targetKey = gscArtifactTargetKey(normalizedUrl);
+  const artifact = [...artifacts]
+    .reverse()
+    .find((candidate) => (
+      candidate.globalBlock
+      || candidate.targetKey === targetKey
+      || candidate.url === normalizedUrl
+    ));
+  const latest = latestGscStatus(rows, normalizedUrl);
+  if (artifact) {
+    return {
+      kind: "blocked",
+      latest,
+      message: `${artifact.status} artifact at ${artifact.path}: ${artifact.message}`,
+    };
+  }
+  return { latest, ...classifyGscStatus(latest) };
+}
+
+export function buildLatestGscDiagnostics(
+  rows = readGscLedger(),
+  artifacts = readGscReconciliationArtifacts()
+): GscUrlDiagnostic[] {
   const startups = latestDailyStartups(loadStartups());
   const weekly = latestWeeklyIssue(loadPublishedWeeklyIssues());
   const targets = startups.map((startup) => ({
@@ -123,11 +422,10 @@ export function buildLatestGscDiagnostics(rows = readGscLedger()): GscUrlDiagnos
   }
 
   return targets.map((target) => {
-    const latest = latestGscStatus(rows, target.url);
-    const classification = classifyGscStatus(latest);
+    const classification = classifyGscUrl(rows, target.url, artifacts);
     return {
       ...target,
-      latest,
+      latest: classification.latest,
       kind: classification.kind,
       message: classification.message,
     };
@@ -161,7 +459,7 @@ export function renderGscDiagnosticsMarkdown(input: {
   lines.push("## Rules");
   lines.push("- Treat `requested` as complete.");
   lines.push("- Treat `dry_run` as preview only; it is not a Google indexing request.");
-  lines.push("- Treat `retry_pending`, `quota_exceeded`, `live_check_failed`, and mismatches as blocked until visible Search Console state or the ledger changes.");
+  lines.push("- Treat `retry_pending`, `quota_exceeded`, `live_check_failed`, mismatches, `request_click_pending`, `pre_request_success_unverified`, `post_request_target_unverified`, and `post_request_confirmation_unknown` as blocked until visible Search Console state and the authoritative ledger are manually reconciled.");
   lines.push("- Do not infer success from hidden DOM text or a stale `REQUEST INDEXING` button.");
   lines.push("");
   return `${lines.join("\n").trim()}\n`;
@@ -169,6 +467,29 @@ export function renderGscDiagnosticsMarkdown(input: {
 
 export function normalizeCanonicalUrl(url: string): string {
   return url.trim().replace(/\/+$/, "").replace(/\.html$/i, "");
+}
+
+function sanitizeGscArtifactTarget(url: string): string {
+  return url
+    .trim()
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 90) || "unknown";
+}
+
+export function gscArtifactTargetKey(url: string): string {
+  const normalizedUrl = normalizeCanonicalUrl(url);
+  const digest = createHash("sha256")
+    .update(normalizedUrl, "utf8")
+    .digest("hex")
+    .slice(0, 12);
+  return `${sanitizeGscArtifactTarget(normalizedUrl)}--sha256-${digest}`;
+}
+
+function isCanonicalGscDetailUrl(url: string): boolean {
+  return /^https:\/\/venturedex\.co\/(?:startups\/[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|weekly\/[1-9][0-9]*)$/.test(url);
 }
 
 function countBy(values: string[]): Record<string, number> {
