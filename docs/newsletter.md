@@ -54,7 +54,7 @@ Delay gates are separate from cron timing:
 - `NEWSLETTER_WEEKLY_DELAY_HOURS=24`
 - `NEWSLETTER_WEEKLY_MAX_AGE_DAYS=21`
 
-The first daily run records a baseline instead of sending historical content. This prevents a first deploy from emailing the entire existing catalog. Future daily runs send only profiles published after the last daily send and older than the delay cutoff.
+The first daily run records a baseline instead of sending historical content. This prevents a first deploy from emailing the entire existing catalog. Future daily runs send profiles published after the last consumed Daily cursor and older than the delay cutoff. Sent windows, the bootstrap baseline, content-bearing skipped windows, and terminal provider-evidence failures advance that cursor. An ordinary skipped window with zero eligible items does not: content deployed after that Cron but carrying a `published_at` inside the empty window remains eligible for the next normal run.
 
 ## Configuration
 
@@ -152,7 +152,7 @@ Files:
 
 Review:
 
-- Daily sends query D1 `startups` by `published_at` and the delay cutoff.
+- Daily sends select version-controlled `content/startups/*.json` through the JSON-first content transform by `published_at` and the delay cutoff; D1 stores the consumed-period cursor and send/delivery state. `tests/daily-digest-parity.test.ts` keeps that content selection equivalent to the generated D1 seed.
 - Weekly sends use published `content/weekly/*.json` issue content, then hydrates startup records from D1 when available.
 - Email copy is derived from the same editorial fields displayed on site detail pages, including daily source labels and weekly evidence/risks.
 - No private metrics or unsourced claims are introduced by the email renderer.
