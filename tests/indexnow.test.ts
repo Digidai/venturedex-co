@@ -6,6 +6,7 @@ import { getTopicPageConfigs } from "../src/lib/topic-pages";
 
 test("parseArgs accepts all-content flags and keeps the safety cap", () => {
   const options = parseArgs(["--all-startups", "--all-weekly", "--topics", "--hubs", "--collections", "--ai-surfaces", "--max-urls", "300"]);
+  assert.equal(parseArgs([]).maxUrls, 250);
   assert.equal(options.allStartups, true);
   assert.equal(options.allWeekly, true);
   assert.equal(options.topics, true);
@@ -19,9 +20,16 @@ test("collectUrls includes all startup, weekly, and topic canonical URLs", () =>
   const startups = loadStartups();
   const issues = loadPublishedWeeklyIssues();
   const topicConfigs = getTopicPageConfigs();
-  const urls = collectUrls(parseArgs(["--all-startups", "--all-weekly", "--topics"]));
+  const expectedUrlCount = startups.length + issues.length + topicConfigs.length;
+  const urls = collectUrls(parseArgs([
+    "--all-startups",
+    "--all-weekly",
+    "--topics",
+    "--max-urls",
+    String(expectedUrlCount),
+  ]));
 
-  assert.equal(urls.length, startups.length + issues.length + topicConfigs.length);
+  assert.equal(urls.length, expectedUrlCount);
   assert.ok(urls.includes(startupUrl(startups[0].slug)));
   assert.ok(urls.includes(weeklyUrl(issues[0].issue_number)));
   assert.ok(urls.includes(`https://venturedex.co/topics/${topicConfigs[0].slug}`));

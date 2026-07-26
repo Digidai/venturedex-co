@@ -1,6 +1,12 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
-import { mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import {
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
@@ -9,7 +15,21 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 const scriptsDir = join(repoRoot, "scripts");
 const rejectedPath = join(repoRoot, "content", "rejected.jsonl");
-const legacyLines = readFileSync(rejectedPath, "utf8").trim().split("\n");
+const startupsDir = join(repoRoot, "content", "startups");
+const LEGACY_V1_LINE_LIMIT = 872;
+const rejectedLines = readFileSync(rejectedPath, "utf8").trim().split("\n");
+const rejectedEntries = rejectedLines.map(
+  (line) => JSON.parse(line) as Record<string, unknown>
+);
+const legacyLines = rejectedLines.slice(0, LEGACY_V1_LINE_LIMIT);
+const startupSlugs = readdirSync(startupsDir)
+  .filter((filename) => filename.endsWith(".json"))
+  .map((filename) => {
+    const entry = JSON.parse(
+      readFileSync(join(startupsDir, filename), "utf8")
+    ) as { slug: string };
+    return entry.slug;
+  });
 const pythonProgram = [
   "import json",
   "import sys",
@@ -83,10 +103,26 @@ function activeV2(slug = "example-company"): Record<string, unknown> {
 }
 
 test("the 872 schema-less rows remain valid legacy v1 entries", () => {
-  const result = validateFile(rejectedPath);
+  const result = validateLines(legacyLines);
 
-  assert.equal(legacyLines.length, 872);
-  assert.equal(result.active, 872);
+  assert.equal(legacyLines.length, LEGACY_V1_LINE_LIMIT);
+  assert.equal(result.active, LEGACY_V1_LINE_LIMIT);
+  assert.deepEqual(result.errors, []);
+  assert.deepEqual(result.warnings, []);
+});
+
+test("the complete append-only rejection registry remains valid", () => {
+  const result = validateFile(rejectedPath, startupSlugs);
+  const v2Entries = rejectedEntries.slice(LEGACY_V1_LINE_LIMIT);
+  const expectedActive = rejectedEntries.filter((entry) => {
+    if (entry.schema_version !== 2) return true;
+    const lifecycle = entry.lifecycle as { status?: unknown } | undefined;
+    return lifecycle?.status === "active";
+  }).length;
+
+  assert.ok(rejectedLines.length >= LEGACY_V1_LINE_LIMIT);
+  assert.ok(v2Entries.every((entry) => entry.schema_version === 2));
+  assert.equal(result.active, expectedActive);
   assert.deepEqual(result.errors, []);
   assert.deepEqual(result.warnings, []);
 });
@@ -197,7 +233,9 @@ test("a schema-less row appended after the frozen legacy block is rejected", () 
 
   assert.match(
     result.errors.join("\n"),
-    /rejected\.jsonl:873 new rejected entries must use schema_version: 2/
+    new RegExp(
+      `rejected\\.jsonl:${LEGACY_V1_LINE_LIMIT + 1} new rejected entries must use schema_version: 2`
+    )
   );
 });
 
