@@ -335,15 +335,73 @@
     return "unknown";
   }
 
-  function terminalStateForRoot(root) {
-    const dialogs = Array.from(global.document.querySelectorAll(
+  function visibleRequestDialogs() {
+    return Array.from(global.document.querySelectorAll(
       '[role="dialog"],[aria-modal="true"],material-dialog',
     )).filter((dialog) => (
       visible(dialog)
       /* Search Console's persistent aria-modal=false application drawer is not
          a request terminal. Keep comments safe when this file is flattened. */
       && dialog.getAttribute("aria-modal") !== "false"
-      && !dialog.contains(root)
+    ));
+  }
+
+  function requestDialogStates() {
+    return visibleRequestDialogs()
+      .map((dialog) => ({
+        dialog,
+        state: stateFor(dialog.innerText || dialog.textContent || ""),
+      }));
+  }
+
+  function successDialogState() {
+    const visibleDialogs = requestDialogStates();
+    if (visibleDialogs.length === 0) return "success_dialog_absent";
+    if (visibleDialogs.length !== 1) return "success_dialog_ambiguous";
+    return visibleDialogs[0].state === "success"
+      ? "success_dialog_visible"
+      : `success_dialog_conflict|||${visibleDialogs[0].state}`;
+  }
+
+  function dismissSuccessDialog() {
+    const visibleDialogs = requestDialogStates();
+    if (visibleDialogs.length === 0) return "success_dialog_absent";
+    if (visibleDialogs.length !== 1) return "success_dialog_ambiguous";
+    const [{ dialog, state }] = visibleDialogs;
+    if (state !== "success") return `success_dialog_conflict|||${state}`;
+
+    const acknowledgementLabels = new Set([
+      "OK",
+      "GOT IT",
+      "CLOSE",
+      "确定",
+      "知道了",
+      "关闭",
+    ]);
+    const buttons = Array.from(dialog.querySelectorAll(
+      'button,[role="button"]',
+    )).filter((button) => {
+      const label = String(
+        button.innerText
+        || button.textContent
+        || button.getAttribute("aria-label")
+        || "",
+      ).replace(/\s+/g, " ").trim().toUpperCase();
+      return (
+        visible(button)
+        && button.getAttribute("aria-disabled") !== "true"
+        && !button.disabled
+        && acknowledgementLabels.has(label)
+      );
+    });
+    if (buttons.length !== 1) return "success_dialog_ack_ambiguous";
+    buttons[0].click();
+    return "success_dialog_dismissed";
+  }
+
+  function terminalStateForRoot(root) {
+    const dialogs = visibleRequestDialogs().filter((dialog) => (
+      !dialog.contains(root)
     ));
     if (dialogs.length) {
       const dialogState = stateFor(
@@ -395,10 +453,12 @@
 
   global.__VENTUREDEX_GSC__ = Object.freeze({
     clickTarget,
+    dismissSuccessDialog,
     inspectTarget,
     inspectionEntrySurface,
     inspectionSurface,
     requestState,
+    successDialogState,
     submitInspectionInput,
   });
 })(globalThis);

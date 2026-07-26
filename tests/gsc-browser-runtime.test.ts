@@ -19,9 +19,11 @@ type RuntimeApi = {
     allowExistingStaticSuccess?: boolean,
     expectedPriorTerminal?: string,
   ): string;
+  dismissSuccessDialog(): string;
   inspectionEntrySurface(expectedResourceId?: string): string;
   inspectionSurface(expectedResourceId?: string): string;
   requestState(expected?: string, expectedRouteId?: string): string;
+  successDialogState(): string;
   submitInspectionInput(expected: string): string;
 };
 
@@ -651,6 +653,95 @@ test("runtime request state prioritizes visible dialogs and detects conflicts", 
     );
     assert.equal(api.requestState(), "success");
   }
+});
+
+test("runtime dismisses only one visible success dialog through one exact acknowledgement", () => {
+  const expected = "https://venturedex.co/startups/alpha";
+  const routeId = "route-alpha";
+  const { root } = createInspectionRoot(expected, routeId);
+  const acknowledgement = new FakeElement("button", {
+    text: "GOT IT",
+  });
+  const successDialog = new FakeElement("div", {
+    attributes: { "aria-modal": "true", role: "dialog" },
+    text: "Indexing requested",
+  }).append(acknowledgement);
+  const unrelated = new FakeElement("button", { text: "GOT IT" });
+  const { api } = loadRuntime(
+    new FakeDocument([createInput(""), root, unrelated, successDialog]),
+    routeId,
+  );
+
+  assert.equal(api.successDialogState(), "success_dialog_visible");
+  assert.equal(api.dismissSuccessDialog(), "success_dialog_dismissed");
+  assert.equal(acknowledgement.clickCount, 1);
+  assert.equal(unrelated.clickCount, 0);
+});
+
+test("runtime refuses ambiguous or conflicting terminal-dialog cleanup", () => {
+  const expected = "https://venturedex.co/startups/alpha";
+  const routeId = "route-alpha";
+  const { root } = createInspectionRoot(expected, routeId);
+  const firstButton = new FakeElement("button", { text: "GOT IT" });
+  const secondButton = new FakeElement("button", { text: "OK" });
+  const first = new FakeElement("div", {
+    attributes: { role: "dialog" },
+    text: "Indexing requested",
+  }).append(firstButton);
+  const second = new FakeElement("div", {
+    attributes: { role: "dialog" },
+    text: "Request submitted",
+  }).append(secondButton);
+  const ambiguous = loadRuntime(
+    new FakeDocument([createInput(""), root, first, second]),
+    routeId,
+  );
+  assert.equal(
+    ambiguous.api.dismissSuccessDialog(),
+    "success_dialog_ambiguous",
+  );
+  assert.equal(firstButton.clickCount, 0);
+  assert.equal(secondButton.clickCount, 0);
+
+  const conflictButton = new FakeElement("button", { text: "GOT IT" });
+  const conflictDialog = new FakeElement("div", {
+    attributes: { role: "dialog" },
+    text: "Request failed",
+  }).append(conflictButton);
+  const conflict = loadRuntime(
+    new FakeDocument([createInput(""), root, conflictDialog]),
+    routeId,
+  );
+  assert.equal(
+    conflict.api.dismissSuccessDialog(),
+    "success_dialog_conflict|||failed",
+  );
+  assert.equal(conflictButton.clickCount, 0);
+
+  const successButton = new FakeElement("button", { text: "OK" });
+  const success = new FakeElement("div", {
+    attributes: { role: "dialog" },
+    text: "Indexing requested",
+  }).append(successButton);
+  const unknown = new FakeElement("div", {
+    attributes: { role: "dialog" },
+    text: "Please wait",
+  });
+  const successPlusUnknown = loadRuntime(
+    new FakeDocument([createInput(""), root, success, unknown]),
+    routeId,
+  );
+  assert.equal(
+    successPlusUnknown.api.dismissSuccessDialog(),
+    "success_dialog_ambiguous",
+  );
+  assert.equal(successButton.clickCount, 0);
+
+  success.rendered = false;
+  assert.equal(
+    successPlusUnknown.api.successDialogState(),
+    "success_dialog_conflict|||unknown",
+  );
 });
 
 test("runtime excludes the persistent aria-modal=false drawer and binds state to the target route", () => {

@@ -3,8 +3,7 @@ import {
   buildLatestGscDiagnostics,
   defaultGscArtifactDir,
   defaultGscHistoryPath,
-  readGscLedger,
-  readGscReconciliationArtifacts,
+  readGscDiagnosticSnapshot,
   renderGscDiagnosticsMarkdown,
   writeGscDiagnosticsReport,
 } from "./gsc";
@@ -58,12 +57,16 @@ export function reportPathForDate(date: Date): string {
 function main() {
   const options = parseArgs(process.argv.slice(2));
   const now = new Date();
+  const snapshot = readGscDiagnosticSnapshot({
+    historyPath: options.historyFile,
+    artifactDir: options.artifactDir,
+  });
   const body = renderGscDiagnosticsMarkdown({
     generatedAt: now.toISOString(),
     historyPath: options.historyFile,
     diagnostics: buildLatestGscDiagnostics(
-      readGscLedger(options.historyFile),
-      readGscReconciliationArtifacts(options.artifactDir)
+      snapshot.rows,
+      snapshot.artifacts,
     ),
   });
   if (options.write) {

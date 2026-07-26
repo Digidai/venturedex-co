@@ -1,11 +1,15 @@
 import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import {
+  existsSync,
   linkSync,
   mkdirSync,
   mkdtempSync,
+  readFileSync,
+  realpathSync,
   rmSync,
   symlinkSync,
+  unlinkSync,
   writeFileSync,
 } from "node:fs";
 import os from "node:os";
@@ -18,12 +22,14 @@ import {
   latestGscStatus,
   normalizeCanonicalUrl,
   parseGscLedgerText,
+  readGscDiagnosticSnapshot,
   readGscLedger,
   readGscReconciliationArtifacts,
   renderGscDiagnosticsMarkdown,
   resolveDefaultGscArtifactDir,
   resolveDefaultGscHistoryPath,
   type GscUrlDiagnostic,
+  withGscSnapshotLock,
 } from "../scripts/promotion/gsc";
 
 const ledger = `timestamp\tstatus\turl\tmessage
@@ -37,6 +43,10 @@ test("parseGscLedgerText keeps canonical URL rows and latest row order", () => {
   assert.equal(rows.length, 3);
   assert.equal(rows[0].url, "https://venturedex.co/startups/billables-ai");
   assert.equal(normalizeCanonicalUrl("https://venturedex.co/weekly/3.html/"), "https://venturedex.co/weekly/3");
+  assert.equal(
+    parseGscLedgerText(ledger.replaceAll("\n", "\r\n")).length,
+    3,
+  );
 });
 
 test("parseGscLedgerText fails closed on a missing header or truncated row", () => {
@@ -52,6 +62,29 @@ test("parseGscLedgerText fails closed on a missing header or truncated row", () 
     ),
     /expected 4 columns/,
   );
+});
+
+test("GSC diagnostics reject a non-empty ledger without a terminal LF", () => {
+  const root = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-ledger-lf-"));
+  const history = path.join(root, "history.tsv");
+  const unterminated =
+    `${historyHeaderForTest()}2026-06-11 10:00:00\tretry_pending\t` +
+    "https://venturedex.co/startups/billables-ai\t" +
+    "manual pre-click reconciliation confirmed no request click";
+  writeFileSync(history, unterminated);
+
+  try {
+    assert.throws(
+      () => parseGscLedgerText(unterminated),
+      /terminal LF/,
+    );
+    assert.throws(
+      () => readGscLedger(history),
+      /terminal LF/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
 });
 
 test("parseGscLedgerText rejects ambiguous TSV, outer whitespace, and noncanonical URLs", () => {
@@ -195,6 +228,7 @@ test("classifyGscStatus distinguishes requested, dry_run, blocked, and missing",
   assert.equal(classifyGscStatus({ timestamp: "t", status: "dry_run", url: "u", message: "" }).kind, "needs_submit");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "quota_exceeded", url: "u", message: "" }).kind, "blocked");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "pre_request_success_unverified", url: "u", message: "" }).kind, "blocked");
+  assert.equal(classifyGscStatus({ timestamp: "t", status: "reconciliation_archive_pending", url: "u", message: "" }).kind, "blocked");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "post_request_target_unverified", url: "u", message: "" }).kind, "blocked");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "post_request_confirmation_unknown", url: "u", message: "" }).kind, "blocked");
   assert.equal(classifyGscStatus({ timestamp: "t", status: "request_click_pending", url: "u", message: "" }).kind, "blocked");
@@ -202,7 +236,9 @@ test("classifyGscStatus distinguishes requested, dry_run, blocked, and missing",
 });
 
 test("a reconciliation artifact overrides an older requested ledger row", () => {
-  const artifactDir = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const artifactDir = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const target = "https://venturedex.co/startups/billables-ai";
   const artifactPath = path.join(
     artifactDir,
@@ -242,7 +278,9 @@ test("a reconciliation artifact overrides an older requested ledger row", () => 
 });
 
 test("an unreadable or partial reconciliation filename still blocks like the submitter", () => {
-  const artifactDir = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const artifactDir = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const target = "https://venturedex.co/startups/billables-ai";
   writeFileSync(
     path.join(
@@ -269,7 +307,9 @@ test("an unreadable or partial reconciliation filename still blocks like the sub
 });
 
 test("hashed reconciliation artifacts cannot collide across similar slugs", () => {
-  const artifactDir = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const artifactDir = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const first = "https://venturedex.co/startups/alpha-beta";
   const second = "https://venturedex.co/startups/alpha--beta";
   writeFileSync(
@@ -294,7 +334,9 @@ test("hashed reconciliation artifacts cannot collide across similar slugs", () =
 });
 
 test("malformed legacy reconciliation filenames block diagnostics globally", () => {
-  const artifactDir = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const artifactDir = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const target = "https://venturedex.co/startups/billables-ai";
   writeFileSync(
     path.join(
@@ -318,7 +360,9 @@ test("malformed legacy reconciliation filenames block diagnostics globally", () 
 });
 
 test("a broken reconciliation artifact-directory symlink fails closed", () => {
-  const root = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const root = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const artifactDir = path.join(root, "artifacts");
   symlinkSync(path.join(root, "missing-target"), artifactDir);
   try {
@@ -331,8 +375,47 @@ test("a broken reconciliation artifact-directory symlink fails closed", () => {
   }
 });
 
+test("a live reconciliation artifact-directory symlink fails closed", () => {
+  const root = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
+  const realArtifactDir = path.join(root, "real-artifacts");
+  const artifactDir = path.join(root, "artifacts");
+  mkdirSync(realArtifactDir);
+  symlinkSync(realArtifactDir, artifactDir);
+  try {
+    assert.throws(
+      () => readGscReconciliationArtifacts(artifactDir),
+      /real, non-symlink directory/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("a reconciliation artifact authority through a symlink parent fails closed", () => {
+  const root = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
+  const realParent = path.join(root, "real-parent");
+  const linkedParent = path.join(root, "linked-parent");
+  mkdirSync(realParent);
+  mkdirSync(path.join(realParent, "artifacts"));
+  symlinkSync(realParent, linkedParent);
+  try {
+    assert.throws(
+      () => readGscReconciliationArtifacts(path.join(linkedParent, "artifacts")),
+      /exact canonical path/,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("a reconciliation artifact file symlink is a global blocker and is never read", () => {
-  const artifactDir = mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-"));
+  const artifactDir = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-artifacts-")),
+  );
   const target = "https://venturedex.co/startups/billables-ai";
   symlinkSync(
     path.join(artifactDir, "missing-evidence"),
@@ -357,6 +440,91 @@ test("a reconciliation artifact file symlink is a global blocker and is never re
     );
   } finally {
     rmSync(artifactDir, { recursive: true, force: true });
+  }
+});
+
+test("the diagnostics snapshot lock excludes a reconciliation interleaving", () => {
+  const root = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-snapshot-")),
+  );
+  const history = path.join(root, "history.tsv");
+  const artifactDir = path.join(root, "artifacts");
+  const target = "https://venturedex.co/startups/billables-ai";
+  mkdirSync(artifactDir);
+  writeFileSync(
+    history,
+    `${historyHeaderForTest()}2026-07-25 12:00:00\trequested\t${target}\trequested\n`,
+  );
+  writeFileSync(
+    path.join(
+      artifactDir,
+      `20260726-120000-pre_request_success_unverified-${gscArtifactTargetKey(target)}.txt`,
+    ),
+    [
+      "timestamp: 2026-07-26 12:00:00",
+      "status: pre_request_success_unverified",
+      `url: ${target}`,
+      "message: zero-click evidence",
+      "",
+    ].join("\n"),
+  );
+
+  const contender = `${history}.lock.reconciler`;
+  try {
+    const result = withGscSnapshotLock(history, (canonicalHistory) => {
+      const rows = readGscLedger(canonicalHistory);
+      writeFileSync(contender, "token=reconciler\n");
+      assert.throws(
+        () => linkSync(contender, `${canonicalHistory}.lock`),
+        (error: unknown) => (
+          error instanceof Error
+          && "code" in error
+          && error.code === "EEXIST"
+        ),
+      );
+      const artifacts = readGscReconciliationArtifacts(artifactDir);
+      return classifyGscUrl(rows, target, artifacts);
+    });
+    assert.equal(result.kind, "blocked");
+    assert.match(result.message, /pre_request_success_unverified artifact/);
+    assert.equal(existsSync(`${history}.lock`), false);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("diagnostics neither replaces a held lock nor deletes a changed lock on release", () => {
+  const root = realpathSync(
+    mkdtempSync(path.join(os.tmpdir(), "venturedex-gsc-lock-")),
+  );
+  const history = path.join(root, "history.tsv");
+  const artifactDir = path.join(root, "artifacts");
+  const lockPath = `${history}.lock`;
+  mkdirSync(artifactDir);
+  writeFileSync(history, historyHeaderForTest());
+  writeFileSync(lockPath, "token=existing-owner\n");
+
+  try {
+    assert.throws(
+      () => readGscDiagnosticSnapshot({
+        historyPath: history,
+        artifactDir,
+      }),
+      /already held; refusing to remove or replace/,
+    );
+    assert.equal(readFileSync(lockPath, "utf8"), "token=existing-owner\n");
+
+    unlinkSync(lockPath);
+    assert.throws(
+      () => withGscSnapshotLock(history, (canonicalHistory) => {
+        unlinkSync(`${canonicalHistory}.lock`);
+        writeFileSync(`${canonicalHistory}.lock`, "token=replacement-owner\n");
+      }),
+      /unknown identity/,
+    );
+    assert.equal(readFileSync(lockPath, "utf8"), "token=replacement-owner\n");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });
 

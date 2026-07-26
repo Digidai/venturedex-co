@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { execFileSync, spawn, spawnSync } from "node:child_process";
 import { createHash } from "node:crypto";
 import {
+  appendFileSync,
   chmodSync,
   cpSync,
   existsSync,
@@ -13,6 +14,7 @@ import {
   realpathSync,
   renameSync,
   rmSync,
+  statSync,
   symlinkSync,
   writeFileSync,
 } from "node:fs";
@@ -27,7 +29,7 @@ const realPython3 = execFileSync("sh", ["-c", "command -v python3"], {
 }).trim();
 
 function tempDir(prefix: string): string {
-  return mkdtempSync(path.join(os.tmpdir(), prefix));
+  return realpathSync(mkdtempSync(path.join(os.tmpdir(), prefix)));
 }
 
 function writeExecutable(file: string, body: string): void {
@@ -315,7 +317,7 @@ function createGscFixture(): string {
   const productionArtifactDefault =
     'GSC_ARTIFACT_DIR="${GSC_ARTIFACT_DIR:-${CODEX_HOME_DEFAULT}/automations/venturedex-daily-curator/gsc-artifacts}"';
   const fixtureArtifactDefault =
-    `GSC_ARTIFACT_DIR="\${GSC_ARTIFACT_DIR:-${path.join(root, "artifacts")}}"`;
+    `GSC_ARTIFACT_DIR="\${GSC_ARTIFACT_DIR:-${path.join(realpathSync(root), "artifacts")}}"`;
   const submitter = readFileSync(submitterPath, "utf8");
   assert.match(submitter, new RegExp(
     productionArtifactDefault.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
@@ -327,6 +329,10 @@ function createGscFixture(): string {
   cpSync(
     path.join(repoRoot, "scripts", "gsc-browser-runtime.js"),
     path.join(root, "scripts", "gsc-browser-runtime.js"),
+  );
+  cpSync(
+    path.join(repoRoot, "scripts", "gsc-reconciliation.py"),
+    path.join(root, "scripts", "gsc-reconciliation.py"),
   );
   return root;
 }
@@ -357,6 +363,40 @@ MOCK_REQUEST_STATE_COUNTER="\${MOCK_REQUEST_STATE_COUNTER:-${stateCounter}}"
 MOCK_CLICK_COUNTER="\${MOCK_CLICK_COUNTER:-${clickCounter}}"
 MOCK_SUBMIT_COUNTER="\${MOCK_SUBMIT_COUNTER:-${submitCounter}}"
 MOCK_QUOTA_COUNTER="\${MOCK_QUOTA_COUNTER:-${quotaCounter}}"
+MOCK_CONCURRENT_ROW_MARKER="\${MOCK_CONCURRENT_ROW_MARKER:-${path.join(root, "concurrent-row-once")}}"
+append_concurrent_row() {
+  status="$1"
+  message="$2"
+  if [ ! -e "$MOCK_CONCURRENT_ROW_MARKER" ]; then
+    : > "$MOCK_CONCURRENT_ROW_MARKER"
+    printf '2026-07-26 23:59:59\\t%s\\t%s\\t%s\\n' \
+      "$status" \
+      "$MOCK_TARGET_URL" \
+      "$message" \
+      >> "$HISTORY_FILE"
+  fi
+}
+append_blocker_and_replay_latest() {
+  blocker_status="$1"
+  blocker_message="$2"
+  if [ ! -e "$MOCK_CONCURRENT_ROW_MARKER" ]; then
+    : > "$MOCK_CONCURRENT_ROW_MARKER"
+    latest_row=$(awk -F '\\t' -v target="$MOCK_TARGET_URL" '
+      $3 == target && $2 != "dry_run" { latest = $0 }
+      END { print latest }
+    ' "$HISTORY_FILE")
+    if [ -z "$latest_row" ]; then
+      echo "missing replay row" >&2
+      exit 97
+    fi
+    printf '2026-07-26 23:59:58\\t%s\\t%s\\t%s\\n' \
+      "$blocker_status" \
+      "$MOCK_TARGET_URL" \
+      "$blocker_message" \
+      >> "$HISTORY_FILE"
+    printf '%s\\n' "$latest_row" >> "$HISTORY_FILE"
+  fi
+}
 printf '%s\\n' "$*" >> "$MOCK_BROWSER_LOG"
 case "$1" in
   status)
@@ -438,7 +478,29 @@ case "$1" in
         if [ -f "$MOCK_SUBMIT_COUNTER" ]; then submits=$(cat "$MOCK_SUBMIT_COUNTER"); fi
         submits=$((submits + 1))
         printf '%s\\n' "$submits" > "$MOCK_SUBMIT_COUNTER"
-        if [ "$MOCK_SURFACE_MODE" = "atomic_redirect" ]; then
+        if [ "$MOCK_TARGET_MODE" = "concurrent_blocker_before_intent" ]; then
+          append_concurrent_row \
+            "reconciliation_archive_pending" \
+            "concurrent blocker inserted after frozen capture"
+          echo "submitted"
+        elif [ "$MOCK_TARGET_MODE" = "concurrent_retry_aba_before_intent" ]; then
+          append_blocker_and_replay_latest \
+            "reconciliation_archive_pending" \
+            "concurrent blocker inserted before exact retry replay"
+          echo "submitted"
+        elif [ "$MOCK_TARGET_MODE" = "concurrent_artifact_before_intent" ]; then
+          mkdir -p "$GSC_ARTIFACT_DIR"
+          mv "$MOCK_STAGED_ARTIFACT" \
+            "$GSC_ARTIFACT_DIR/$(basename "$MOCK_STAGED_ARTIFACT")"
+          echo "submitted"
+        elif [ "$MOCK_TARGET_MODE" = "artifact_authority_swap_before_intent" ] ||
+             [ "$MOCK_TARGET_MODE" = "artifact_authority_swap_requested_conflict" ]; then
+          mv "$MOCK_STAGED_ARTIFACT" \
+            "$GSC_ARTIFACT_DIR/$(basename "$MOCK_STAGED_ARTIFACT")"
+          mv "$GSC_ARTIFACT_DIR" "$MOCK_HIDDEN_ARTIFACT_DIR"
+          mkdir "$GSC_ARTIFACT_DIR"
+          echo "submitted"
+        elif [ "$MOCK_SURFACE_MODE" = "atomic_redirect" ]; then
           echo "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier"
         elif [ "$MOCK_INPUT_MODE" = "transport_failure" ]; then
           echo "submitted"
@@ -446,6 +508,27 @@ case "$1" in
           exit 73
         else
           echo "submitted"
+        fi
+        ;;
+      *VENTUREDEX_CALL:dismiss_success_dialog*)
+        if [ "$MOCK_DIALOG_MODE" = "transport_failure" ]; then
+          echo "success_dialog_dismissed"
+          exit 74
+        elif [ "$MOCK_DIALOG_MODE" = "ambiguous_ack" ]; then
+          echo "success_dialog_ack_ambiguous"
+        elif [ "$MOCK_DIALOG_MODE" = "absent" ]; then
+          echo "success_dialog_absent"
+        else
+          echo "success_dialog_dismissed"
+        fi
+        ;;
+      *VENTUREDEX_CALL:success_dialog_state*)
+        if [ "$MOCK_DIALOG_MODE" = "persists" ]; then
+          echo "success_dialog_visible"
+        elif [ "$MOCK_DIALOG_MODE" = "verify_transport_failure" ]; then
+          exit 75
+        else
+          echo "success_dialog_absent"
         fi
         ;;
       *VENTUREDEX_SAFE_PAGE_CAPTURE:inspection_surface_ready*)
@@ -485,7 +568,39 @@ case "$1" in
         fi
         ;;
       *VENTUREDEX_CALL:click_target*)
-        if [ "$MOCK_SURFACE_MODE" = "auth_before_click" ]; then
+        if [ "$MOCK_TARGET_MODE" = "concurrent_requested_then_ambiguous" ]; then
+          append_concurrent_row \
+            "requested" \
+            "concurrent requested inserted after exact intent"
+          echo "request_button_ambiguous"
+        elif [ "$MOCK_TARGET_MODE" = "concurrent_retry_after_click" ]; then
+          clicks=0
+          if [ -f "$MOCK_CLICK_COUNTER" ]; then clicks=$(cat "$MOCK_CLICK_COUNTER"); fi
+          clicks=$((clicks + 1))
+          printf '%s\\n' "$clicks" > "$MOCK_CLICK_COUNTER"
+          append_concurrent_row \
+            "retry_pending" \
+            "concurrent retry inserted after browser click"
+          echo "clicked"
+        elif [ "$MOCK_TARGET_MODE" = "concurrent_old_intent_after_click" ]; then
+          clicks=0
+          if [ -f "$MOCK_CLICK_COUNTER" ]; then clicks=$(cat "$MOCK_CLICK_COUNTER"); fi
+          clicks=$((clicks + 1))
+          printf '%s\\n' "$clicks" > "$MOCK_CLICK_COUNTER"
+          append_concurrent_row \
+            "request_click_pending" \
+            "request click intent persisted before browser action; completion unresolved until a terminal ledger row is recorded"
+          echo "clicked"
+        elif [ "$MOCK_TARGET_MODE" = "concurrent_intent_aba_after_click" ]; then
+          clicks=0
+          if [ -f "$MOCK_CLICK_COUNTER" ]; then clicks=$(cat "$MOCK_CLICK_COUNTER"); fi
+          clicks=$((clicks + 1))
+          printf '%s\\n' "$clicks" > "$MOCK_CLICK_COUNTER"
+          append_blocker_and_replay_latest \
+            "post_request_confirmation_unknown" \
+            "concurrent blocker inserted before exact intent replay"
+          echo "clicked"
+        elif [ "$MOCK_SURFACE_MODE" = "auth_before_click" ]; then
           echo "gsc_auth_session_blocker|||https://accounts.google.com/v3/signin/identifier"
         elif [ "$MOCK_TARGET_MODE" = "click_route_flip" ]; then
           echo "inspection_route_id_changed"
@@ -534,7 +649,13 @@ case "$1" in
           rm -f "$HISTORY_FILE"
           mkdir "$HISTORY_FILE"
         fi
-        if [ "$MOCK_TARGET_MODE" = "preexisting_failed_retry" ]; then
+        if [ "$MOCK_TARGET_MODE" = "concurrent_blocker_after_click" ] &&
+           [ "$state_count" -ge 2 ]; then
+          append_concurrent_row \
+            "post_request_confirmation_unknown" \
+            "concurrent blocker inserted after browser click"
+          echo "success"
+        elif [ "$MOCK_TARGET_MODE" = "preexisting_failed_retry" ]; then
           if [ "$state_count" -eq 1 ]; then echo "failed"; else echo "success"; fi
         elif [ "$MOCK_TARGET_MODE" = "preexisting_failed_then_failed" ]; then
           if [ "$state_count" -eq 1 ]; then
@@ -557,6 +678,7 @@ case "$1" in
         elif [ "$MOCK_TARGET_MODE" = "unchanged_dialog_success" ]; then
           echo "success"
         elif [ "$MOCK_TARGET_MODE" = "pre_click_conflict" ] ||
+             [ "$MOCK_TARGET_MODE" = "artifact_authority_swap_requested_conflict" ] ||
              [ "$MOCK_TARGET_MODE" = "pre_click_success_quota" ]; then
           echo "conflict"
         elif [ "$MOCK_TARGET_MODE" = "batch_second_quota" ]; then
@@ -634,6 +756,62 @@ function gscArtifactTargetKeyForTest(url: string): string {
     .digest("hex")
     .slice(0, 12);
   return `${readable}--sha256-${digest}`;
+}
+
+function writePreClickReconciliationArtifact(
+  artifactDir: string,
+  url: string,
+): string {
+  mkdirSync(artifactDir, { recursive: true });
+  const artifact = path.join(
+    artifactDir,
+    `20260726-174233-pre_request_success_unverified-${gscArtifactTargetKeyForTest(url)}.txt`,
+  );
+  writeFileSync(
+    artifact,
+    [
+      "timestamp: 2026-07-26 17:42:33",
+      "status: pre_request_success_unverified",
+      `url: ${url}`,
+      "message: pre-existing terminal state was unbound; no request click occurred",
+      "page_state: success",
+      "",
+      "--- page text ---",
+      url,
+      "URL is not on Google",
+      "REQUEST INDEXING",
+      "",
+    ].join("\n"),
+  );
+  return artifact;
+}
+
+function runPreClickReconciliation(
+  root: string,
+  history: string,
+  artifactDir: string,
+  artifact: string,
+  env: NodeJS.ProcessEnv = {},
+) {
+  return spawnSync(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        ...env,
+      },
+      encoding: "utf8",
+    },
+  );
 }
 
 test("GSC retry backlog selects only unresolved canonical detail URLs", () => {
@@ -1085,6 +1263,146 @@ test("GSC shell ledger authority rejects bare CR and ambiguous Unicode control s
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
+  }
+});
+
+test("GSC durable append rechecks the terminal LF after validation", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const bin = path.join(root, "bin");
+  const mutationMarker = path.join(root, "ledger-mutated");
+  const target = "https://venturedex.co/startups/alpha";
+  mkdirSync(bin);
+  writeFileSync(history, historyHeader);
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$4" = "dry_run" ] && [ ! -e "$MOCK_MUTATION_MARKER" ]; then
+  : > "$MOCK_MUTATION_MARKER"
+  "$MOCK_REAL_PYTHON" -c 'import os, sys
+fd = os.open(sys.argv[1], os.O_RDWR)
+try:
+    os.ftruncate(fd, os.fstat(fd).st_size - 1)
+finally:
+    os.close(fd)' "$2"
+fi
+exec "$MOCK_REAL_PYTHON" "$@"
+`,
+  );
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PATH: `${bin}:${process.env.PATH}`,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          MOCK_MUTATION_MARKER: mutationMarker,
+          MOCK_REAL_PYTHON: realPython3,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /ledger must end with a terminal LF/,
+    );
+    assert.equal(readFileSync(history, "utf8"), historyHeader.slice(0, -1));
+    assert.ok(existsSync(mutationMarker));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC dry-run append rejects a valid same-size in-place ledger rewrite", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const bin = path.join(root, "bin");
+  const mutationMarker = path.join(root, "ledger-rewritten");
+  const target = "https://venturedex.co/startups/beta";
+  mkdirSync(bin);
+  writeFileSync(
+    history,
+    historyHeader +
+      "2026-07-26 17:42:34\tretry_pending\thttps://venturedex.co/startups/alpha\tordinary retry\n",
+  );
+  const originalInode = statSync(history).ino;
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$4" = "dry_run" ] && [ ! -e "$MOCK_MUTATION_MARKER" ]; then
+  : > "$MOCK_MUTATION_MARKER"
+  "$MOCK_REAL_PYTHON" -c 'import os, sys
+path = sys.argv[1]
+fd = os.open(path, os.O_RDWR)
+try:
+    payload = os.read(fd, os.fstat(fd).st_size)
+    old = b"/startups/alpha"
+    new = b"/startups/gamma"
+    offset = payload.index(old)
+    os.lseek(fd, offset, os.SEEK_SET)
+    if os.write(fd, new) != len(new):
+        raise OSError("partial same-size rewrite")
+    os.fsync(fd)
+finally:
+    os.close(fd)' "$2"
+fi
+exec "$MOCK_REAL_PYTHON" "$@"
+`,
+  );
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PATH: `${bin}:${process.env.PATH}`,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          MOCK_MUTATION_MARKER: mutationMarker,
+          MOCK_REAL_PYTHON: realPython3,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /ledger no longer matches its frozen append snapshot/,
+    );
+    assert.equal(statSync(history).ino, originalInode);
+    const ledger = readFileSync(history, "utf8");
+    assert.match(ledger, /startups\/gamma/);
+    assert.doesNotMatch(ledger, /\tdry_run\t/);
+    assert.ok(existsSync(mutationMarker));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
   }
 });
 
@@ -2468,6 +2786,84 @@ test("GSC never treats a pre-existing unbound success dialog as target completio
   }
 });
 
+test("GSC records a confirmed request before stopping on unsafe success-dialog cleanup", () => {
+  for (const dialogMode of [
+    "ambiguous_ack",
+    "persists",
+    "transport_failure",
+    "verify_transport_failure",
+  ]) {
+    const root = createGscFixture();
+    const mock = createGscBrowserMock(root);
+    const history = path.join(root, "history.tsv");
+    const first = "https://venturedex.co/startups/alpha";
+    const second = "https://venturedex.co/startups/beta";
+    writeFileSync(history, historyHeader);
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          first,
+          "--url",
+          second,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_DIALOG_MODE: dialogMode,
+            MOCK_TARGET_MODE: "exact",
+            MOCK_TARGET_URL: first,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+            REQUEST_RESULT_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(result.status, 0, dialogMode);
+      assert.equal(gscClickCount(mock), 1, dialogMode);
+      const ledger = readFileSync(history, "utf8");
+      assert.match(
+        ledger,
+        new RegExp(
+          `\\trequested\\t${first}\\tindexing requested; batch stopped`,
+        ),
+        dialogMode,
+      );
+      assert.match(
+        ledger,
+        new RegExp(
+          `\\tretry_pending\\t${second}\\tbatch stopped after a confirmed indexing request`,
+        ),
+        dialogMode,
+      );
+      assert.doesNotMatch(
+        ledger,
+        new RegExp(
+          `\\t(?:pre_request_success_unverified|post_request_confirmation_unknown)\\t${first}\\t`,
+        ),
+        dialogMode,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
 test("GSC never clicks through a success-plus-quota pre-request conflict", () => {
   const root = createGscFixture();
   const mock = createGscBrowserMock(root);
@@ -2943,7 +3339,11 @@ test("GSC auth redirect records every unfinished URL without input, click, or lo
     assert.doesNotMatch(browserLog, /VENTUREDEX_CALL:click_target/);
     assert.match(browserLog, /close --tab mock-tab/);
     assert.equal(gscClickCount(mock), 0);
-    assert.equal(existsSync(artifactDir), false);
+    assert.deepEqual(
+      readdirSync(artifactDir),
+      [],
+      "the frozen artifact authority should exist but remain empty",
+    );
 
     const retryPreview = spawnSync(
       "bash",
@@ -3027,7 +3427,11 @@ test("GSC auth races before input, after input, or before click stay zero-click 
         );
       }
       assert.doesNotMatch(ledger, /\trequested\t/, surfaceMode);
-      assert.equal(existsSync(artifactDir), false, surfaceMode);
+      assert.deepEqual(
+        readdirSync(artifactDir),
+        [],
+        `${surfaceMode}: the frozen artifact authority should remain empty`,
+      );
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
@@ -3358,7 +3762,7 @@ test("GSC artifact identities do not collide across similar canonical URLs", () 
   }
 });
 
-test("GSC artifact scan errors and broken symlinks block before ledger mutation", () => {
+test("GSC artifact scan errors and broken symlinks fail closed with durable authority when available", () => {
   for (const failureMode of ["invalid_utf8", "broken_directory_symlink", "broken_file_symlink"]) {
     const root = createGscFixture();
     const history = path.join(root, "history.tsv");
@@ -3414,10 +3818,20 @@ test("GSC artifact scan errors and broken symlinks block before ledger mutation"
       assert.notEqual(result.status, 0, failureMode);
       assert.match(
         `${result.stdout}\n${result.stderr}`,
-        /artifacts could not be checked safely|artifact path is not a directory|unresolved GSC reconciliation artifact/,
+        /artifacts could not be checked safely|Could not establish GSC artifact directory|Could not normalize the GSC artifact authority|artifact authority must be a real, non-symlink directory|unresolved GSC reconciliation artifact/,
         failureMode,
       );
-      assert.equal(readFileSync(history, "utf8"), historyHeader, failureMode);
+      const ledger = readFileSync(history, "utf8");
+      if (failureMode === "broken_directory_symlink") {
+        assert.equal(ledger, historyHeader, failureMode);
+      } else {
+        assert.match(
+          ledger,
+          new RegExp(`\\treconciliation_archive_pending\\t${target}\\t`),
+          failureMode,
+        );
+        assert.doesNotMatch(ledger, /\tdry_run\t/, failureMode);
+      }
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
@@ -4094,6 +4508,7 @@ test("GSC explicitly migrates a legacy repo ledger into the central authority", 
       [
         "2026-01-01 00:00:00\tretry_pending\thttps://venturedex.co/startups/alpha\tfailed",
         "2026-01-02 00:00:00\trequested\thttps://venturedex.co/startups/beta\trequested",
+        "2099-12-31 23:59:59\tretry_pending\thttps://venturedex.co/startups/beta\tfuture-dated legacy retry",
       ].join("\n") +
       "\n",
   );
@@ -4113,11 +4528,103 @@ test("GSC explicitly migrates a legacy repo ledger into the central authority", 
       },
     );
     assert.equal(result.status, 0, result.stderr);
-    assert.match(result.stdout, /imported 1 unique legacy row/);
+    assert.match(result.stdout, /imported 2 unique legacy rows/);
     const merged = readFileSync(central, "utf8");
-    assert.equal((merged.match(/startups\/beta/g) ?? []).length, 1);
+    assert.equal((merged.match(/startups\/beta/g) ?? []).length, 2);
     assert.match(merged, /startups\/alpha/);
     assert.ok(merged.indexOf("startups/alpha") < merged.indexOf("startups/beta"));
+    const betaRows = merged
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === "https://venturedex.co/startups/beta");
+    assert.equal(
+      betaRows.at(-1)?.[1],
+      "requested",
+      "future-dated legacy retry must never override existing central authority",
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC migration refuses a central append between read and replace", () => {
+  const root = createGscFixture();
+  const codexHome = path.join(root, "codex");
+  const legacy = path.join(root, "legacy.tsv");
+  const hookDir = path.join(root, "python-hook");
+  const central = path.join(
+    codexHome,
+    "automations",
+    "venturedex-daily-curator",
+    "gsc_submission_history.tsv",
+  );
+  mkdirSync(path.dirname(central), { recursive: true });
+  mkdirSync(hookDir);
+  const originalCentral =
+    `${historyHeader}2026-01-02 00:00:00\trequested\thttps://venturedex.co/startups/beta\trequested\n`;
+  const concurrentRow =
+    "2026-01-03 00:00:00\trequested\thttps://venturedex.co/startups/gamma\tconcurrent central append\n";
+  writeFileSync(central, originalCentral);
+  writeFileSync(
+    legacy,
+    `${historyHeader}2026-01-01 00:00:00\tretry_pending\thttps://venturedex.co/startups/alpha\tfailed\n`,
+  );
+  writeFileSync(
+    path.join(hookDir, "sitecustomize.py"),
+    `import os
+import tempfile
+
+_original_mkstemp = tempfile.mkstemp
+_injected = False
+
+def _mkstemp(*args, **kwargs):
+    global _injected
+    if not _injected and kwargs.get("prefix") == ".gsc-history-":
+        _injected = True
+        fd = os.open(
+            os.environ["MOCK_MIGRATION_CENTRAL"],
+            os.O_WRONLY | os.O_APPEND | getattr(os, "O_NOFOLLOW", 0),
+        )
+        try:
+            payload = os.environ["MOCK_MIGRATION_CONCURRENT_ROW"].encode("utf-8")
+            if os.write(fd, payload) != len(payload):
+                raise OSError("partial concurrent central append")
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    return _original_mkstemp(*args, **kwargs)
+
+tempfile.mkstemp = _mkstemp
+`,
+  );
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [path.join(root, "scripts", "submit-gsc-direct.sh"), "--migrate-legacy-history"],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PYTHONPATH: hookDir,
+          CODEX_HOME: codexHome,
+          GSC_LEGACY_HISTORY_FILE: legacy,
+          MOCK_MIGRATION_CENTRAL: central,
+          MOCK_MIGRATION_CONCURRENT_ROW: concurrentRow,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /Authoritative GSC ledger changed before migration lock/,
+    );
+    assert.equal(readFileSync(central, "utf8"), originalCentral + concurrentRow);
+    assert.doesNotMatch(readFileSync(central, "utf8"), /startups\/alpha/);
   } finally {
     rmSync(root, { recursive: true, force: true });
   }
@@ -4278,6 +4785,12 @@ test("GSC legacy migration rejects malformed evidence without replacing the auth
       row: "2026-01-01 00:00:00\trequested\thttps://venturedex.co/startups/alpha\tmessage\ufeffcontinuation",
       error: /line separator/,
     },
+    {
+      label: "missing terminal LF",
+      row: "2026-01-01 00:00:00\trequested\thttps://venturedex.co/startups/alpha\tmessage",
+      error: /terminal LF/,
+      terminalNewline: false,
+    },
   ];
 
   for (const invalid of invalidRows) {
@@ -4295,7 +4808,10 @@ test("GSC legacy migration rejects malformed evidence without replacing the auth
       "2026-01-02 00:00:00\trequested\thttps://venturedex.co/startups/beta\trequested\n";
     mkdirSync(path.dirname(central), { recursive: true });
     writeFileSync(central, originalCentral);
-    writeFileSync(legacy, historyHeader + invalid.row + "\n");
+    writeFileSync(
+      legacy,
+      historyHeader + invalid.row + (invalid.terminalNewline === false ? "" : "\n"),
+    );
 
     try {
       const result = spawnSync(
@@ -4318,6 +4834,2521 @@ test("GSC legacy migration rejects malformed evidence without replacing the auth
     } finally {
       rmSync(root, { recursive: true, force: true });
     }
+  }
+});
+
+test("GSC pre-click reconciliation stays blocked until exact archival and resumes safely", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const bin = path.join(root, "bin");
+  mkdirSync(path.join(root, "artifacts"), { recursive: true });
+  mkdirSync(bin);
+  const artifactDir = realpathSync(path.join(root, "artifacts"));
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$2" = "archive" ]; then
+  echo "injected archive failure" >&2
+  exit 88
+fi
+exec "${realPython3}" "$@"
+`,
+  );
+
+  const run = (injectArchiveFailure = false) => spawnSync(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PATH: injectArchiveFailure
+          ? `${bin}:${process.env.PATH}`
+          : process.env.PATH,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+      },
+      encoding: "utf8",
+    },
+  );
+
+  try {
+    const first = run(true);
+    assert.notEqual(first.status, 0);
+    assert.match(first.stderr, /reconciliation_archive_pending outcome is durable/);
+    assert.ok(existsSync(artifact), "active artifact must remain on archive failure");
+    let ledger = readFileSync(history, "utf8");
+    assert.equal(
+      (
+        ledger.match(
+          new RegExp(`\\treconciliation_archive_pending\\t${target}\\t`, "g"),
+        ) ?? []
+      )
+        .length,
+      1,
+    );
+    assert.doesNotMatch(ledger, new RegExp(`\\tretry_pending\\t${target}\\t`));
+
+    const second = run();
+    assert.equal(second.status, 0, `${second.stdout}\n${second.stderr}`);
+    assert.match(second.stdout, /Resuming transaction-bound reconciliation archival/);
+    assert.ok(!existsSync(artifact));
+    assert.ok(
+      existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+    );
+    ledger = readFileSync(history, "utf8");
+    assert.equal(
+      (ledger.match(new RegExp(`\\tretry_pending\\t${target}\\t`, "g")) ?? [])
+        .length,
+      1,
+      "archive recovery must append one final retry outcome",
+    );
+
+    const consumer = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--retry-pending",
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(
+      consumer.status,
+      0,
+      `${consumer.stdout}\n${consumer.stderr}`,
+    );
+    assert.match(consumer.stdout, new RegExp(target));
+    assert.match(consumer.stdout, /Dry-run complete; no indexing request was sent/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation snapshot token seals initial and archive-final ABA replay", () => {
+  for (const phase of ["initial", "final"] as const) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    const artifactDirectory = path.join(root, "artifacts");
+    const hookDir = path.join(root, "python-hook");
+    mkdirSync(artifactDirectory);
+    mkdirSync(hookDir);
+    const artifactDir = realpathSync(artifactDirectory);
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    writeFileSync(
+      history,
+      historyHeader +
+        `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tartifact=${path.basename(artifact)}; pre-existing terminal state was unbound or conflicting; no request click occurred\n`,
+    );
+    writeFileSync(
+      path.join(hookDir, "sitecustomize.py"),
+      `import os
+
+_original_open = os.open
+_injected = False
+
+def _open(path, flags, *args, **kwargs):
+    global _injected
+    raw = os.path.abspath(os.fspath(path))
+    history = os.environ["MOCK_RECONCILE_ABA_HISTORY"]
+    if (
+        not _injected
+        and raw == history
+        and flags & os.O_RDWR
+    ):
+        with open(history, "rb") as handle:
+            rows = [line for line in handle.readlines()[1:] if line.strip()]
+        latest = rows[-1]
+        fields = latest.rstrip(b"\\n").split(b"\\t", 3)
+        status = fields[1].decode("utf-8")
+        phase = os.environ["MOCK_RECONCILE_ABA_PHASE"]
+        trigger = (
+            (phase == "initial" and status == "pre_request_success_unverified")
+            or (
+                phase == "final"
+                and status == "reconciliation_archive_pending"
+            )
+        )
+        if trigger:
+            _injected = True
+            fd = _original_open(
+                history,
+                os.O_WRONLY | os.O_APPEND | getattr(os, "O_NOFOLLOW", 0),
+            )
+            try:
+                blocker = (
+                    b"2026-07-26 23:59:58\\tpost_request_confirmation_unknown\\t"
+                    + fields[2]
+                    + b"\\tconcurrent blocker inserted before exact reconciliation replay\\n"
+                )
+                payload = blocker + latest
+                if os.write(fd, payload) != len(payload):
+                    raise OSError("partial reconciliation ABA injection")
+                os.fsync(fd)
+            finally:
+                os.close(fd)
+    return _original_open(path, flags, *args, **kwargs)
+
+os.open = _open
+`,
+    );
+
+    const run = () => spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--reconcile-pre-click-retry",
+        artifact,
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PYTHONPATH: hookDir,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          MOCK_RECONCILE_ABA_HISTORY: history,
+          MOCK_RECONCILE_ABA_PHASE: phase,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    try {
+      const first = run();
+      assert.notEqual(
+        first.status,
+        0,
+        `${phase}\n${first.stdout}\n${first.stderr}`,
+      );
+      let ledger = readFileSync(history, "utf8");
+      assert.doesNotMatch(ledger, /\tretry_pending\t/);
+      const targetRows = ledger
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(targetRows.at(-1)?.[1], "reconciliation_archive_pending");
+      assert.match(
+        targetRows.at(-1)?.[3] ?? "",
+        /conditional transition interference detected/,
+      );
+      if (phase === "initial") {
+        assert.ok(existsSync(artifact));
+        assert.ok(
+          !existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+        );
+      } else {
+        assert.ok(!existsSync(artifact));
+        assert.ok(
+          existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+        );
+      }
+
+      const second = run();
+      assert.notEqual(second.status, 0, phase);
+      ledger = readFileSync(history, "utf8");
+      assert.doesNotMatch(ledger, /\tretry_pending\t/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC retry consumer accepts a canonical target key truncated on a hyphen", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const slug = `${"a".repeat(66)}-b`;
+  const target = `https://venturedex.co/startups/${slug}`;
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  assert.match(path.basename(artifact), /---sha256-[0-9a-f]{12}\.txt$/);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+
+  try {
+    const reconciled = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+    );
+    assert.equal(
+      reconciled.status,
+      0,
+      `${reconciled.stdout}\n${reconciled.stderr}`,
+    );
+
+    const consumer = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--retry-pending",
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(
+      consumer.status,
+      0,
+      `${consumer.stdout}\n${consumer.stderr}`,
+    );
+    assert.match(consumer.stdout, new RegExp(target));
+    assert.match(consumer.stdout, /Dry-run complete; no indexing request was sent/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation canonicalizes relative and trailing-slash artifact authorities", () => {
+  for (const mode of ["relative", "trailing-slash"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    const artifactDirectory = path.join(root, "artifacts");
+    mkdirSync(artifactDirectory);
+    const artifactDir = realpathSync(artifactDirectory);
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    const suppliedArtifactDir =
+      mode === "relative"
+        ? path.relative(root, artifactDir)
+        : `${artifactDir}///`;
+    writeFileSync(
+      history,
+      historyHeader +
+        `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+    );
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--artifact-dir",
+          suppliedArtifactDir,
+          "--reconcile-pre-click-retry",
+          artifact,
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.equal(result.status, 0, `${mode}\n${result.stdout}\n${result.stderr}`);
+      assert.match(
+        result.stdout,
+        new RegExp(
+          `Archived reconciliation artifact: ${path
+            .join(artifactDir, "resolved", path.basename(artifact))
+            .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
+        ),
+        mode,
+      );
+      assert.ok(!existsSync(artifact), mode);
+      assert.ok(
+        existsSync(
+          path.join(artifactDir, "resolved", path.basename(artifact)),
+        ),
+        mode,
+      );
+      const targetRows = readFileSync(history, "utf8")
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(targetRows.at(-1)?.[1], "retry_pending", mode);
+      assert.equal(
+        targetRows.filter(
+          (row) => row[1] === "reconciliation_archive_pending",
+        ).length,
+        1,
+        mode,
+      );
+      assert.equal(
+        targetRows.filter((row) => row[1] === "retry_pending").length,
+        1,
+        mode,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC pre-click reconciliation rejects mixed modes and aliased evidence without mutation", () => {
+  for (const mode of ["mixed", "hardlink"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    mkdirSync(path.join(root, "artifacts"), { recursive: true });
+    const artifactDir = realpathSync(path.join(root, "artifacts"));
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    writeFileSync(
+      history,
+      historyHeader +
+        `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+    );
+    if (mode === "hardlink") {
+      linkSync(artifact, path.join(artifactDir, "artifact-hardlink.txt"));
+    }
+
+    try {
+      const args = [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--reconcile-pre-click-retry",
+        artifact,
+      ];
+      if (mode === "mixed") {
+        args.push("--url", target);
+      }
+      const result = spawnSync("bash", args, {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      });
+
+      assert.notEqual(result.status, 0, mode);
+      assert.doesNotMatch(readFileSync(history, "utf8"), /\tretry_pending\t/);
+      assert.ok(existsSync(artifact));
+      if (mode === "mixed") {
+        assert.match(result.stderr, /exclusive, non-browser operation/);
+      } else {
+        assert.match(result.stderr, /single-link regular file/);
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC pre-click reconciliation rejects unrelated retry provenance and substring-only URL evidence", () => {
+  for (const mode of ["unrelated-retry", "substring-url"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    mkdirSync(path.join(root, "artifacts"), { recursive: true });
+    const artifactDir = realpathSync(path.join(root, "artifacts"));
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    if (mode === "substring-url") {
+      const original = readFileSync(artifact, "utf8");
+      writeFileSync(
+        artifact,
+        original.replace(
+          `--- page text ---\n${target}\n`,
+          `--- page text ---\n${target}-different\n`,
+        ),
+      );
+    }
+    const initialLedger =
+      historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n` +
+      (mode === "unrelated-retry"
+        ? `2026-07-26 17:43:34\tretry_pending\t${target}\tbutton not found during an unrelated run\n`
+        : "");
+    writeFileSync(history, initialLedger);
+
+    try {
+      const result = runPreClickReconciliation(
+        root,
+        history,
+        artifactDir,
+        artifact,
+      );
+      assert.notEqual(result.status, 0, mode);
+      assert.equal(readFileSync(history, "utf8"), initialLedger, mode);
+      assert.ok(existsSync(artifact), mode);
+      if (mode === "substring-url") {
+        assert.match(result.stderr, /exact route-bound target as a visible URL line/);
+      } else {
+        assert.match(result.stderr, /latest operational status is retry_pending/);
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC reconciliation source disappearance leaves a durable non-retryable transaction", async () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDir = realpathSync(
+    (() => {
+      const directory = path.join(root, "artifacts");
+      mkdirSync(directory);
+      return directory;
+    })(),
+  );
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const bin = path.join(root, "bin");
+  const held = path.join(root, "archive-held");
+  const release = path.join(root, "archive-release");
+  mkdirSync(bin);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$2" = "archive" ]; then
+  : > "$MOCK_ARCHIVE_HELD"
+  while [ ! -e "$MOCK_ARCHIVE_RELEASE" ]; do sleep 0.05; done
+fi
+exec "${realPython3}" "$@"
+`,
+  );
+  const child = spawn(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PATH: `${bin}:${process.env.PATH}`,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        MOCK_ARCHIVE_HELD: held,
+        MOCK_ARCHIVE_RELEASE: release,
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  const outcomePromise = captureChild(child);
+
+  try {
+    await waitForPath(held);
+    rmSync(artifact);
+    writeFileSync(release, "release\n");
+    const outcome = await outcomePromise;
+    assert.notEqual(outcome.code, 0);
+    assert.match(outcome.stderr, /artifact disappeared before archival/);
+    const ledger = readFileSync(history, "utf8");
+    assert.match(
+      ledger,
+      new RegExp(`\\treconciliation_archive_pending\\t${target}\\t`),
+    );
+    assert.doesNotMatch(ledger, new RegExp(`\\tretry_pending\\t${target}\\t`));
+
+    const retry = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--retry-pending",
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(retry.status, 0, `${retry.stdout}\n${retry.stderr}`);
+    assert.match(retry.stdout, /No unresolved GSC retry_pending targets remain/);
+    assert.doesNotMatch(retry.stdout, new RegExp(target));
+  } finally {
+    writeFileSync(release, "release\n");
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill("SIGTERM");
+      await outcomePromise;
+    }
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation never overwrites a raced archive destination", async () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const bin = path.join(root, "bin");
+  const held = path.join(root, "archive-held");
+  const release = path.join(root, "archive-release");
+  const resolved = path.join(artifactDir, "resolved");
+  const destination = path.join(resolved, path.basename(artifact));
+  mkdirSync(bin);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$2" = "archive" ]; then
+  : > "$MOCK_ARCHIVE_HELD"
+  while [ ! -e "$MOCK_ARCHIVE_RELEASE" ]; do sleep 0.05; done
+fi
+exec "${realPython3}" "$@"
+`,
+  );
+  const child = spawn(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PATH: `${bin}:${process.env.PATH}`,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        MOCK_ARCHIVE_HELD: held,
+        MOCK_ARCHIVE_RELEASE: release,
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  const outcomePromise = captureChild(child);
+
+  try {
+    await waitForPath(held);
+    assert.ok(
+      existsSync(resolved),
+      "prepare must freeze the resolved authority before archival",
+    );
+    writeFileSync(destination, "sentinel archive evidence\n");
+    writeFileSync(release, "release\n");
+    const outcome = await outcomePromise;
+    assert.notEqual(outcome.code, 0);
+    assert.match(
+      outcome.stderr,
+      /archive destination already exists|evidence exists in both active and resolved authorities/,
+    );
+    assert.equal(readFileSync(destination, "utf8"), "sentinel archive evidence\n");
+    assert.ok(existsSync(artifact));
+    const ledger = readFileSync(history, "utf8");
+    assert.match(ledger, /\treconciliation_archive_pending\t/);
+    assert.doesNotMatch(ledger, /\tretry_pending\t/);
+  } finally {
+    writeFileSync(release, "release\n");
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill("SIGTERM");
+      await outcomePromise;
+    }
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation CAS cannot downgrade a concurrently requested URL", async () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const bin = path.join(root, "bin");
+  const held = path.join(root, "transition-held");
+  const release = path.join(root, "transition-release");
+  mkdirSync(bin);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$9" = "reconciliation_archive_pending" ]; then
+  : > "$MOCK_TRANSITION_HELD"
+  while [ ! -e "$MOCK_TRANSITION_RELEASE" ]; do sleep 0.05; done
+fi
+exec "${realPython3}" "$@"
+`,
+  );
+  const child = spawn(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PATH: `${bin}:${process.env.PATH}`,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        MOCK_TRANSITION_HELD: held,
+        MOCK_TRANSITION_RELEASE: release,
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  const outcomePromise = captureChild(child);
+
+  try {
+    await waitForPath(held);
+    appendFileSync(
+      history,
+      `2026-07-26 17:43:34\trequested\t${target}\tconcurrent verified request\n`,
+    );
+    writeFileSync(release, "release\n");
+    const outcome = await outcomePromise;
+    assert.notEqual(outcome.code, 0);
+    const ledger = readFileSync(history, "utf8");
+    assert.match(ledger, new RegExp(`\\trequested\\t${target}\\t`));
+    assert.doesNotMatch(ledger, /\treconciliation_archive_pending\t|\tretry_pending\t/);
+    assert.ok(existsSync(artifact));
+  } finally {
+    writeFileSync(release, "release\n");
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill("SIGTERM");
+      await outcomePromise;
+    }
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation seals a first-write interleaving with a non-retry blocker", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  const pythonPath = path.join(root, "python-path");
+  mkdirSync(artifactDirectory);
+  mkdirSync(pythonPath);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const artifactDigest = createHash("sha256")
+    .update(readFileSync(artifact))
+    .digest("hex");
+  const resolvedDirectory = path.join(artifactDir, "resolved");
+  mkdirSync(resolvedDirectory);
+  const artifactStat = statSync(artifact);
+  const directoryStat = statSync(artifactDir);
+  const resolvedStat = statSync(resolvedDirectory);
+  const transactionMessage =
+    `artifact=${path.basename(artifact)}; sha256=${artifactDigest}; ` +
+    `file_identity=${artifactStat.dev}:${artifactStat.ino}; ` +
+    `artifact_dir_identity=${directoryStat.dev}:${directoryStat.ino}; ` +
+    `resolved_dir_identity=${resolvedStat.dev}:${resolvedStat.ino}; ` +
+    "zero-click reconciliation archive pending";
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n` +
+      `2026-07-26 17:43:34\treconciliation_archive_pending\t${target}\t${transactionMessage}\n`,
+  );
+  writeFileSync(
+    path.join(pythonPath, "sitecustomize.py"),
+    `import os
+
+_original_write = os.write
+_injected = False
+
+def _interleaving_write(fd, payload):
+    global _injected
+    target = os.environ["MOCK_INTERLEAVE_TARGET"]
+    needle = ("\\tretry_pending\\t" + target + "\\t").encode("utf-8")
+    if not _injected and needle in bytes(payload):
+        _injected = True
+        history = os.environ["MOCK_INTERLEAVE_HISTORY"]
+        injected = (
+            "2026-07-26 17:44:34\\trequested\\t"
+            + target
+            + "\\tconcurrent verified request inside first os.write\\n"
+        ).encode("utf-8")
+        other_fd = os.open(
+            history,
+            os.O_WRONLY
+            | os.O_APPEND
+            | getattr(os, "O_NONBLOCK", 0)
+            | getattr(os, "O_NOFOLLOW", 0),
+        )
+        try:
+            _original_write(other_fd, injected)
+            os.fsync(other_fd)
+        finally:
+            os.close(other_fd)
+    return _original_write(fd, payload)
+
+os.write = _interleaving_write
+`,
+  );
+
+  try {
+    const first = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      {
+        PYTHONPATH: pythonPath,
+        MOCK_INTERLEAVE_HISTORY: history,
+        MOCK_INTERLEAVE_TARGET: target,
+      },
+    );
+    assert.notEqual(first.status, 0);
+    assert.match(
+      `${first.stdout}\n${first.stderr}`,
+      /interleaved append|non-retry reconciliation blocker/,
+    );
+    assert.ok(!existsSync(artifact));
+    assert.ok(
+      existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+    );
+
+    const ledgerAfterInterference = readFileSync(history, "utf8");
+    const rows = ledgerAfterInterference.trimEnd().split("\n").slice(1);
+    const statuses = rows.map((row) => row.split("\t")[1]);
+    assert.deepEqual(statuses.slice(-4), [
+      "reconciliation_archive_pending",
+      "requested",
+      "retry_pending",
+      "reconciliation_archive_pending",
+    ]);
+    const latest = rows.at(-1)?.split("\t") ?? [];
+    assert.equal(latest[1], "reconciliation_archive_pending");
+    assert.match(latest[3] ?? "", /conditional transition interference detected/);
+
+    const second = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+    );
+    assert.notEqual(second.status, 0);
+    assert.match(second.stderr, /transaction provenance does not bind/);
+    assert.equal(readFileSync(history, "utf8"), ledgerAfterInterference);
+
+    const retry = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--retry-pending",
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(retry.status, 0, `${retry.stdout}\n${retry.stderr}`);
+    assert.match(retry.stdout, /No unresolved GSC retry_pending targets remain/);
+    assert.doesNotMatch(retry.stdout, new RegExp(target));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC reconciliation seals a post-read size race with a non-retry blocker", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const unrelated = "https://venturedex.co/startups/beta";
+  const artifactDirectory = path.join(root, "artifacts");
+  const pythonPath = path.join(root, "python-path");
+  mkdirSync(artifactDirectory);
+  mkdirSync(pythonPath);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const artifactDigest = createHash("sha256")
+    .update(readFileSync(artifact))
+    .digest("hex");
+  const resolvedDirectory = path.join(artifactDir, "resolved");
+  mkdirSync(resolvedDirectory);
+  const artifactStat = statSync(artifact);
+  const directoryStat = statSync(artifactDir);
+  const resolvedStat = statSync(resolvedDirectory);
+  const transactionMessage =
+    `artifact=${path.basename(artifact)}; sha256=${artifactDigest}; ` +
+    `file_identity=${artifactStat.dev}:${artifactStat.ino}; ` +
+    `artifact_dir_identity=${directoryStat.dev}:${directoryStat.ino}; ` +
+    `resolved_dir_identity=${resolvedStat.dev}:${resolvedStat.ino}; ` +
+    "zero-click reconciliation archive pending";
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n` +
+      `2026-07-26 17:43:34\treconciliation_archive_pending\t${target}\t${transactionMessage}\n`,
+  );
+  writeFileSync(
+    path.join(pythonPath, "sitecustomize.py"),
+    `import os
+
+_original_lstat = os.lstat
+_original_write = os.write
+_injected = False
+
+def _raced_lstat(path, *args, **kwargs):
+    global _injected
+    history = os.environ["MOCK_INTERLEAVE_HISTORY"]
+    target = os.environ["MOCK_INTERLEAVE_TARGET"]
+    if not _injected and os.path.abspath(os.fspath(path)) == history:
+        check_fd = os.open(
+            history,
+            os.O_RDONLY
+            | getattr(os, "O_NONBLOCK", 0)
+            | getattr(os, "O_NOFOLLOW", 0),
+        )
+        try:
+            chunks = []
+            while True:
+                chunk = os.read(check_fd, 65536)
+                if not chunk:
+                    break
+                chunks.append(chunk)
+        finally:
+            os.close(check_fd)
+        needle = ("\\tretry_pending\\t" + target + "\\t").encode("utf-8")
+        if needle in b"".join(chunks):
+            _injected = True
+            unrelated = os.environ["MOCK_INTERLEAVE_UNRELATED"]
+            injected = (
+                "2026-07-26 17:44:34\\trequested\\t"
+                + unrelated
+                + "\\tconcurrent unrelated request after transition read\\n"
+            ).encode("utf-8")
+            other_fd = os.open(
+                history,
+                os.O_WRONLY
+                | os.O_APPEND
+                | getattr(os, "O_NONBLOCK", 0)
+                | getattr(os, "O_NOFOLLOW", 0),
+            )
+            try:
+                _original_write(other_fd, injected)
+                os.fsync(other_fd)
+            finally:
+                os.close(other_fd)
+    return _original_lstat(path, *args, **kwargs)
+
+os.lstat = _raced_lstat
+`,
+  );
+
+  try {
+    const first = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      {
+        PYTHONPATH: pythonPath,
+        MOCK_INTERLEAVE_HISTORY: history,
+        MOCK_INTERLEAVE_TARGET: target,
+        MOCK_INTERLEAVE_UNRELATED: unrelated,
+      },
+    );
+    assert.notEqual(first.status, 0);
+    assert.match(
+      `${first.stdout}\n${first.stderr}`,
+      /identity or size changed|non-retry reconciliation blocker/,
+    );
+    assert.ok(!existsSync(artifact));
+    assert.ok(
+      existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+    );
+
+    const ledgerAfterInterference = readFileSync(history, "utf8");
+    const rows = ledgerAfterInterference.trimEnd().split("\n").slice(1);
+    const statusesAndUrls = rows.map((row) => {
+      const columns = row.split("\t");
+      return `${columns[1]} ${columns[2]}`;
+    });
+    assert.deepEqual(statusesAndUrls.slice(-4), [
+      `reconciliation_archive_pending ${target}`,
+      `retry_pending ${target}`,
+      `requested ${unrelated}`,
+      `reconciliation_archive_pending ${target}`,
+    ]);
+    const latestTarget = [...rows]
+      .reverse()
+      .map((row) => row.split("\t"))
+      .find((columns) => columns[2] === target);
+    assert.equal(latestTarget?.[1], "reconciliation_archive_pending");
+    assert.match(
+      latestTarget?.[3] ?? "",
+      /conditional transition interference detected/,
+    );
+
+    const retry = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--retry-pending",
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(retry.status, 0, `${retry.stdout}\n${retry.stderr}`);
+    assert.match(retry.stdout, /No unresolved GSC retry_pending targets remain/);
+    assert.doesNotMatch(retry.stdout, new RegExp(target));
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC final reconciliation blocks resolved authority swaps at ledger entry", () => {
+  for (const mode of ["replace-resolved", "move-evidence"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    const artifactDirectory = path.join(root, "artifacts");
+    const pythonPath = path.join(root, "python-path");
+    mkdirSync(artifactDirectory);
+    mkdirSync(pythonPath);
+    const artifactDir = realpathSync(artifactDirectory);
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    writeFileSync(
+      history,
+      historyHeader +
+        `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+    );
+    writeFileSync(
+      path.join(pythonPath, "sitecustomize.py"),
+      `import os
+
+_original_open = os.open
+_resolved_opened = False
+_injected = False
+
+def _copy_file(source, destination):
+    source_fd = _original_open(source, os.O_RDONLY)
+    try:
+        chunks = []
+        while True:
+            chunk = os.read(source_fd, 65536)
+            if not chunk:
+                break
+            chunks.append(chunk)
+    finally:
+        os.close(source_fd)
+    destination_fd = _original_open(
+        destination,
+        os.O_WRONLY | os.O_CREAT | os.O_EXCL,
+        0o600,
+    )
+    try:
+        for chunk in chunks:
+            offset = 0
+            while offset < len(chunk):
+                offset += os.write(destination_fd, chunk[offset:])
+        os.fsync(destination_fd)
+    finally:
+        os.close(destination_fd)
+
+def _open(path, flags, *args, **kwargs):
+    global _resolved_opened, _injected
+    raw = os.fspath(path)
+    if (
+        raw == "resolved"
+        and kwargs.get("dir_fd") is not None
+        and flags & getattr(os, "O_DIRECTORY", 0)
+    ):
+        _resolved_opened = True
+    history = os.environ["MOCK_FINALIZE_HISTORY"]
+    if (
+        not _injected
+        and _resolved_opened
+        and os.path.abspath(raw) == history
+        and flags & os.O_RDWR
+    ):
+        _injected = True
+        artifact_dir = os.environ["MOCK_FINALIZE_ARTIFACT_DIR"]
+        name = os.environ["MOCK_FINALIZE_ARTIFACT_NAME"]
+        resolved = os.path.join(artifact_dir, "resolved")
+        if os.environ["MOCK_FINALIZE_MODE"] == "replace-resolved":
+            moved = os.path.join(artifact_dir, "resolved-held-original")
+            os.rename(resolved, moved)
+            os.mkdir(resolved)
+            _copy_file(
+                os.path.join(moved, name),
+                os.path.join(resolved, name),
+            )
+        else:
+            os.rename(
+                os.path.join(resolved, name),
+                os.path.join(artifact_dir, "moved-evidence.txt"),
+            )
+    return _original_open(path, flags, *args, **kwargs)
+
+os.open = _open
+`,
+    );
+
+    try {
+      const result = runPreClickReconciliation(
+        root,
+        history,
+        artifactDir,
+        artifact,
+        {
+          PYTHONPATH: pythonPath,
+          MOCK_FINALIZE_HISTORY: history,
+          MOCK_FINALIZE_ARTIFACT_DIR: artifactDir,
+          MOCK_FINALIZE_ARTIFACT_NAME: path.basename(artifact),
+          MOCK_FINALIZE_MODE: mode,
+        },
+      );
+
+      assert.notEqual(result.status, 0, mode);
+      assert.match(
+        `${result.stdout}\n${result.stderr}`,
+        /Resolved reconciliation evidence (path|authority)|durable ledger transaction remains blocked/,
+        mode,
+      );
+      const ledger = readFileSync(history, "utf8");
+      const targetRows = ledger
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(targetRows.at(-1)?.[1], "reconciliation_archive_pending", mode);
+      assert.equal(
+        targetRows.filter((row) => row[1] === "retry_pending").length,
+        0,
+        mode,
+      );
+      assert.match(
+        targetRows.at(-1)?.[3] ?? "",
+        /file_identity=.*artifact_dir_identity=.*resolved_dir_identity=/,
+        mode,
+      );
+      assert.ok(!existsSync(artifact), mode);
+      if (mode === "replace-resolved") {
+        assert.ok(
+          existsSync(
+            path.join(
+              artifactDir,
+              "resolved-held-original",
+              path.basename(artifact),
+            ),
+          ),
+          mode,
+        );
+        assert.ok(
+          existsSync(
+            path.join(artifactDir, "resolved", path.basename(artifact)),
+          ),
+          mode,
+        );
+      } else {
+        assert.ok(existsSync(path.join(artifactDir, "moved-evidence.txt")), mode);
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC final reconciliation seals a resolved swap during retry append", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  const pythonPath = path.join(root, "python-path");
+  mkdirSync(artifactDirectory);
+  mkdirSync(pythonPath);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeFileSync(
+    path.join(pythonPath, "sitecustomize.py"),
+    `import os
+
+_original_write = os.write
+_injected = False
+
+def _write(fd, payload):
+    global _injected
+    target = os.environ["MOCK_APPEND_SWAP_TARGET"]
+    needle = ("\\tretry_pending\\t" + target + "\\t").encode("utf-8")
+    if not _injected and needle in bytes(payload):
+        _injected = True
+        artifact_dir = os.environ["MOCK_APPEND_SWAP_ARTIFACT_DIR"]
+        resolved = os.path.join(artifact_dir, "resolved")
+        os.rename(resolved, os.path.join(artifact_dir, "resolved-held-original"))
+        os.mkdir(resolved)
+    return _original_write(fd, payload)
+
+os.write = _write
+`,
+  );
+
+  try {
+    const result = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      {
+        PYTHONPATH: pythonPath,
+        MOCK_APPEND_SWAP_TARGET: target,
+        MOCK_APPEND_SWAP_ARTIFACT_DIR: artifactDir,
+      },
+    );
+
+    assert.notEqual(result.status, 0);
+    assert.match(
+      `${result.stdout}\n${result.stderr}`,
+      /evidence authority changed during the ledger append|non-retry reconciliation blocker/,
+    );
+    const targetRows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(
+      targetRows.filter((row) => row[1] === "retry_pending").length,
+      1,
+      "the injected swap occurs inside the retry append itself",
+    );
+    assert.equal(targetRows.at(-1)?.[1], "reconciliation_archive_pending");
+    assert.match(
+      targetRows.at(-1)?.[3] ?? "",
+      /conditional transition interference detected/,
+    );
+    assert.ok(
+      existsSync(
+        path.join(
+          artifactDir,
+          "resolved-held-original",
+          path.basename(artifact),
+        ),
+      ),
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC consumer rejects a fsynced reconciliation retry after SIGKILL moved its evidence", () => {
+  for (const mode of ["retry-backlog", "explicit-url"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    const artifactDirectory = path.join(root, "artifacts");
+    const pythonPath = path.join(root, "python-path");
+    mkdirSync(artifactDirectory);
+    mkdirSync(pythonPath);
+    const artifactDir = realpathSync(artifactDirectory);
+    const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+    writeFileSync(
+      history,
+      historyHeader +
+        `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+    );
+    writeFileSync(
+      path.join(pythonPath, "sitecustomize.py"),
+      `import os
+import signal
+
+_original_write = os.write
+_injected = False
+
+def _write(fd, payload):
+    global _injected
+    target = os.environ["MOCK_SIGKILL_TARGET"]
+    needle = ("\\tretry_pending\\t" + target + "\\t").encode("utf-8")
+    if not _injected and needle in bytes(payload):
+        _injected = True
+        written = _original_write(fd, payload)
+        os.fsync(fd)
+        artifact_dir = os.environ["MOCK_SIGKILL_ARTIFACT_DIR"]
+        resolved = os.path.join(artifact_dir, "resolved")
+        os.rename(resolved, os.path.join(artifact_dir, "resolved-held-original"))
+        os.mkdir(resolved)
+        os.kill(os.getpid(), signal.SIGKILL)
+        return written
+    return _original_write(fd, payload)
+
+os.write = _write
+`,
+    );
+
+    try {
+      const interrupted = runPreClickReconciliation(
+        root,
+        history,
+        artifactDir,
+        artifact,
+        {
+          PYTHONPATH: pythonPath,
+          MOCK_SIGKILL_TARGET: target,
+          MOCK_SIGKILL_ARTIFACT_DIR: artifactDir,
+        },
+      );
+      assert.notEqual(interrupted.status, 0, mode);
+      const interruptedRows = readFileSync(history, "utf8")
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(
+        interruptedRows.at(-1)?.[1],
+        "retry_pending",
+        "the durable retry row must survive the killed transition process",
+      );
+      assert.match(
+        interruptedRows.at(-1)?.[3] ?? "",
+        /artifact=.*sha256=.*file_identity=.*artifact_dir_identity=.*resolved_dir_identity=/,
+      );
+      assert.ok(
+        existsSync(
+          path.join(
+            artifactDir,
+            "resolved-held-original",
+            path.basename(artifact),
+          ),
+        ),
+      );
+      assert.equal(
+        existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+        false,
+      );
+
+      const mock = createGscBrowserMock(root);
+      const args = mode === "retry-backlog"
+        ? ["--dry-run", "--retry-pending", "--skip-live-check"]
+        : [
+            "--url",
+            target,
+            "--expect-url",
+            target,
+            "--skip-live-check",
+          ];
+      const retry = spawnSync(
+        "bash",
+        [path.join(root, "scripts", "submit-gsc-direct.sh"), ...args],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            PYTHONPATH: "",
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: artifactDir,
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_TARGET_MODE: "exact",
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      if (mode === "retry-backlog") {
+        assert.notEqual(retry.status, 0);
+        assert.doesNotMatch(retry.stdout, new RegExp(target));
+      } else {
+        assert.notEqual(retry.status, 0);
+      }
+      assert.match(
+        retry.stderr,
+        /reconciliation-derived retry evidence is missing, moved, or no longer matches/,
+      );
+      assert.match(retry.stderr, new RegExp(target));
+      assert.equal(
+        existsSync(mock.log),
+        false,
+        "retry provenance must fail before any browser command",
+      );
+      assert.equal(gscClickCount(mock), 0);
+
+      const finalRows = readFileSync(history, "utf8")
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(finalRows.at(-1)?.[1], "reconciliation_archive_pending");
+      assert.match(
+        finalRows.at(-1)?.[3] ?? "",
+        /current canonical evidence no longer matches the latest retry provenance/,
+      );
+      assert.equal(
+        finalRows.filter((row) => row[1] === "retry_pending").length,
+        1,
+      );
+      assert.equal(
+        finalRows.filter((row) => row[1] === "dry_run").length,
+        0,
+      );
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC consumer rejects an unterminated retry ledger before selection or append", () => {
+  for (const mode of ["retry-backlog", "explicit-url"]) {
+    const root = createGscFixture();
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    const artifactDir = path.join(root, "artifacts");
+    const mock = createGscBrowserMock(root);
+    const original =
+      historyHeader +
+      `2026-07-26 17:42:34\tretry_pending\t${target}\t` +
+      "manual pre-click reconciliation confirmed no request click";
+    writeFileSync(history, original);
+
+    try {
+      const args = mode === "retry-backlog"
+        ? ["--dry-run", "--retry-pending", "--skip-live-check"]
+        : [
+            "--url",
+            target,
+            "--expect-url",
+            target,
+            "--skip-live-check",
+          ];
+      const result = spawnSync(
+        "bash",
+        [path.join(root, "scripts", "submit-gsc-direct.sh"), ...args],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: artifactDir,
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(result.status, 0, mode);
+      assert.match(`${result.stdout}\n${result.stderr}`, /terminal LF/, mode);
+      assert.equal(readFileSync(history, "utf8"), original, mode);
+      assert.equal(existsSync(mock.log), false, mode);
+      assert.equal(gscClickCount(mock), 0, mode);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC consumer treats a terminated truncated reconciliation prefix as malformed", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDir = path.join(root, "artifacts");
+  const mock = createGscBrowserMock(root);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tretry_pending\t${target}\t` +
+      "manual pre-click reconciliation confirmed no request click\n",
+  );
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--dry-run",
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0);
+    assert.match(
+      result.stderr,
+      /reconciliation-derived retry evidence is missing, moved, or no longer matches/,
+    );
+    assert.equal(existsSync(mock.log), false);
+    assert.equal(gscClickCount(mock), 0);
+    const rows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(rows.at(-1)?.[1], "reconciliation_archive_pending");
+    assert.equal(rows.filter((row) => row[1] === "dry_run").length, 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC outcome CAS preserves concurrent request and reconciliation authority", () => {
+  const cases = [
+    {
+      mode: "concurrent_blocker_before_intent",
+      clicks: 0,
+      latest: "reconciliation_archive_pending",
+      message: /concurrent blocker inserted after frozen capture/,
+    },
+    {
+      mode: "concurrent_requested_then_ambiguous",
+      clicks: 0,
+      latest: "requested",
+      message: /concurrent requested inserted after exact intent/,
+    },
+    {
+      mode: "concurrent_blocker_after_click",
+      clicks: 1,
+      latest: "post_request_confirmation_unknown",
+      message: /concurrent blocker inserted after browser click/,
+    },
+    {
+      mode: "concurrent_retry_after_click",
+      clicks: 1,
+      latest: "post_request_confirmation_unknown",
+      message: /conditional transition interference detected while appending requested/,
+    },
+    {
+      mode: "concurrent_old_intent_after_click",
+      clicks: 1,
+      latest: "request_click_pending",
+      message: /^request click intent persisted before browser action; completion unresolved until a terminal ledger row is recorded$/,
+    },
+  ] as const;
+
+  for (const scenario of cases) {
+    const root = createGscFixture();
+    const mock = createGscBrowserMock(root);
+    const history = path.join(root, "history.tsv");
+    const artifactDir = path.join(root, "artifacts");
+    const target = "https://venturedex.co/startups/alpha";
+    writeFileSync(history, historyHeader);
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          target,
+          "--expect-url",
+          target,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: artifactDir,
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_TARGET_MODE: scenario.mode,
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+            REQUEST_RESULT_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(
+        result.status,
+        0,
+        `${scenario.mode}\n${result.stdout}\n${result.stderr}`,
+      );
+      assert.equal(gscClickCount(mock), scenario.clicks, scenario.mode);
+      const rows = readFileSync(history, "utf8")
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(rows.at(-1)?.[1], scenario.latest, scenario.mode);
+      assert.match(rows.at(-1)?.[3] ?? "", scenario.message, scenario.mode);
+      assert.equal(
+        rows.filter((row) => row[1] === "requested").length,
+        scenario.latest === "requested" ? 1 : 0,
+        scenario.mode,
+      );
+      if (scenario.mode === "concurrent_requested_then_ambiguous") {
+        assert.equal(
+          rows.filter((row) => row[1] === "retry_pending").length,
+          0,
+          "an ambiguous no-click result must not downgrade concurrent requested",
+        );
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC full-ledger snapshot token rejects pre-click and post-click ABA replay", () => {
+  const cases = [
+    {
+      mode: "concurrent_retry_aba_before_intent",
+      initial:
+        "2026-07-26 17:42:34\tretry_pending\t%s\tordinary retry\n",
+      clicks: 0,
+      latest: "reconciliation_archive_pending",
+      blocker: "reconciliation_archive_pending",
+    },
+    {
+      mode: "concurrent_intent_aba_after_click",
+      initial: "",
+      clicks: 1,
+      latest: "request_click_pending",
+      blocker: "post_request_confirmation_unknown",
+    },
+  ] as const;
+
+  for (const scenario of cases) {
+    const root = createGscFixture();
+    const mock = createGscBrowserMock(root);
+    const history = path.join(root, "history.tsv");
+    const target = "https://venturedex.co/startups/alpha";
+    writeFileSync(
+      history,
+      historyHeader + scenario.initial.replace("%s", target),
+    );
+
+    try {
+      const result = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          target,
+          "--expect-url",
+          target,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_TARGET_MODE: scenario.mode,
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+            REQUEST_RESULT_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+
+      assert.notEqual(
+        result.status,
+        0,
+        `${scenario.mode}\n${result.stdout}\n${result.stderr}`,
+      );
+      assert.equal(gscClickCount(mock), scenario.clicks, scenario.mode);
+      const rows = readFileSync(history, "utf8")
+        .trimEnd()
+        .split("\n")
+        .slice(1)
+        .map((row) => row.split("\t"))
+        .filter((row) => row[2] === target);
+      assert.equal(rows.at(-1)?.[1], scenario.latest, scenario.mode);
+      assert.ok(
+        rows.some((row) => row[1] === scenario.blocker),
+        `${scenario.mode} must retain the concurrent blocker`,
+      );
+      assert.equal(
+        rows.filter((row) => row[1] === "requested").length,
+        0,
+        `${scenario.mode} must not report requested`,
+      );
+
+      const second = spawnSync(
+        "bash",
+        [
+          path.join(root, "scripts", "submit-gsc-direct.sh"),
+          "--url",
+          target,
+          "--expect-url",
+          target,
+          "--skip-live-check",
+        ],
+        {
+          cwd: root,
+          env: {
+            ...process.env,
+            HISTORY_FILE: history,
+            GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+            GSC_ARTIFACT_DIR: path.join(root, "artifacts"),
+            BB_BROWSER_CMD: mock.browser,
+            COMET_APP: mock.comet,
+            MOCK_BROWSER_LOG: mock.log,
+            MOCK_TARGET_MODE: scenario.mode,
+            MOCK_TARGET_URL: target,
+            NAV_WAIT_SECONDS: "0",
+            INSPECT_WAIT_SECONDS: "0",
+            POST_CLICK_WAIT_SECONDS: "0",
+            POST_MODAL_WAIT_SECONDS: "0",
+            REQUEST_RESULT_WAIT_SECONDS: "0",
+          },
+          encoding: "utf8",
+        },
+      );
+      assert.notEqual(second.status, 0, scenario.mode);
+      assert.equal(
+        gscClickCount(mock),
+        scenario.clicks,
+        `${scenario.mode} must remain blocked on a new run`,
+      );
+      assert.doesNotMatch(readFileSync(history, "utf8"), /\trequested\t/);
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC refuses the click when an active artifact appears after browser input", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const stagingDir = path.join(root, "staging-artifacts");
+  const artifactDir = path.join(root, "artifacts");
+  mkdirSync(stagingDir);
+  const stagedArtifact = writePreClickReconciliationArtifact(
+    realpathSync(stagingDir),
+    target,
+  );
+  writeFileSync(history, historyHeader);
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_MODE: "concurrent_artifact_before_intent",
+          MOCK_TARGET_URL: target,
+          MOCK_STAGED_ARTIFACT: stagedArtifact,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+          POST_CLICK_WAIT_SECONDS: "0",
+          POST_MODAL_WAIT_SECONDS: "0",
+          REQUEST_RESULT_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.equal(gscClickCount(mock), 0);
+    assert.ok(existsSync(path.join(artifactDir, path.basename(stagedArtifact))));
+    assert.match(
+      readFileSync(history, "utf8"),
+      new RegExp(`\\treconciliation_archive_pending\\t${target}\\t`),
+    );
+
+    const second = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_MODE: "concurrent_artifact_before_intent",
+          MOCK_TARGET_URL: target,
+          MOCK_STAGED_ARTIFACT: stagedArtifact,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+          POST_CLICK_WAIT_SECONDS: "0",
+          POST_MODAL_WAIT_SECONDS: "0",
+          REQUEST_RESULT_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.notEqual(second.status, 0);
+    assert.equal(gscClickCount(mock), 0);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC artifact authority swap is durably blocked across a new run", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const stagingDir = path.join(root, "staging-artifacts");
+  const artifactDir = path.join(root, "artifacts");
+  const hiddenArtifactDir = path.join(root, "artifacts-hidden");
+  mkdirSync(stagingDir);
+  const stagedArtifact = writePreClickReconciliationArtifact(
+    realpathSync(stagingDir),
+    target,
+  );
+  writeFileSync(history, historyHeader);
+  const args = [
+    path.join(root, "scripts", "submit-gsc-direct.sh"),
+    "--url",
+    target,
+    "--expect-url",
+    target,
+    "--skip-live-check",
+  ];
+  const env = {
+    ...process.env,
+    HISTORY_FILE: history,
+    GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+    GSC_ARTIFACT_DIR: artifactDir,
+    BB_BROWSER_CMD: mock.browser,
+    COMET_APP: mock.comet,
+    MOCK_BROWSER_LOG: mock.log,
+    MOCK_TARGET_MODE: "artifact_authority_swap_before_intent",
+    MOCK_TARGET_URL: target,
+    MOCK_STAGED_ARTIFACT: stagedArtifact,
+    MOCK_HIDDEN_ARTIFACT_DIR: hiddenArtifactDir,
+    NAV_WAIT_SECONDS: "0",
+    INSPECT_WAIT_SECONDS: "0",
+    POST_CLICK_WAIT_SECONDS: "0",
+    POST_MODAL_WAIT_SECONDS: "0",
+    REQUEST_RESULT_WAIT_SECONDS: "0",
+  };
+
+  try {
+    const first = spawnSync("bash", args, {
+      cwd: root,
+      env,
+      encoding: "utf8",
+    });
+    assert.notEqual(first.status, 0, `${first.stdout}\n${first.stderr}`);
+    assert.equal(gscClickCount(mock), 0);
+    assert.ok(
+      existsSync(path.join(hiddenArtifactDir, path.basename(stagedArtifact))),
+      "the hidden original authority must remain auditable",
+    );
+    assert.deepEqual(readdirSync(artifactDir), []);
+    const ledger = readFileSync(history, "utf8");
+    assert.match(
+      ledger,
+      new RegExp(`\\treconciliation_archive_pending\\t${target}\\t`),
+    );
+    assert.match(ledger, /GSC artifact authority changed or could not be verified/);
+    assert.doesNotMatch(ledger, /\trequested\t/);
+
+    const second = spawnSync("bash", args, {
+      cwd: root,
+      env,
+      encoding: "utf8",
+    });
+    assert.notEqual(second.status, 0, `${second.stdout}\n${second.stderr}`);
+    assert.equal(gscClickCount(mock), 0);
+    assert.doesNotMatch(readFileSync(history, "utf8"), /\trequested\t/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC artifact authority swap cannot downgrade frozen requested authority", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const stagingDir = path.join(root, "staging-artifacts");
+  const artifactDir = path.join(root, "artifacts");
+  const hiddenArtifactDir = path.join(root, "artifacts-hidden");
+  mkdirSync(stagingDir);
+  const stagedArtifact = writePreClickReconciliationArtifact(
+    realpathSync(stagingDir),
+    target,
+  );
+  const requestedRow =
+    `2026-07-26 17:42:34\trequested\t${target}\tpre-existing requested authority\n`;
+  writeFileSync(history, historyHeader + requestedRow);
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+        "--force",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_MODE: "artifact_authority_swap_requested_conflict",
+          MOCK_TARGET_URL: target,
+          MOCK_STAGED_ARTIFACT: stagedArtifact,
+          MOCK_HIDDEN_ARTIFACT_DIR: hiddenArtifactDir,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+          POST_CLICK_WAIT_SECONDS: "0",
+          POST_MODAL_WAIT_SECONDS: "0",
+          REQUEST_RESULT_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.equal(gscClickCount(mock), 0);
+    assert.equal(readFileSync(history, "utf8"), historyHeader + requestedRow);
+    assert.ok(
+      existsSync(path.join(hiddenArtifactDir, path.basename(stagedArtifact))),
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC precheck live failure cannot downgrade a concurrent requested row", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const artifactDir = path.join(root, "artifacts");
+  const bin = path.join(root, "bin");
+  const target = "https://venturedex.co/startups/alpha";
+  mkdirSync(bin);
+  writeFileSync(history, historyHeader);
+  writeExecutable(
+    path.join(bin, "curl"),
+    `#!/bin/sh
+printf '2026-07-26 23:59:59\\trequested\\t%s\\tconcurrent requested during live precheck\\n' \
+  "$MOCK_TARGET_URL" \
+  >> "$HISTORY_FILE"
+exit 22
+`,
+  );
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PATH: `${bin}:${process.env.PATH}`,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_URL: target,
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.equal(gscClickCount(mock), 0);
+    const rows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(rows.at(-1)?.[1], "requested");
+    assert.match(rows.at(-1)?.[3] ?? "", /concurrent requested during live precheck/);
+    assert.equal(
+      rows.filter((row) => row[1] === "live_check_failed").length,
+      0,
+    );
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC batch retry CAS seals reconciliation provenance inserted after its snapshot", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const artifactDirectory = path.join(root, "artifacts");
+  const hookDir = path.join(root, "python-hook");
+  const target = "https://venturedex.co/startups/alpha";
+  mkdirSync(artifactDirectory);
+  mkdirSync(hookDir);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+
+  try {
+    const reconciled = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+    );
+    assert.equal(
+      reconciled.status,
+      0,
+      `${reconciled.stdout}\n${reconciled.stderr}`,
+    );
+    const derivedMessage = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target && row[1] === "retry_pending")
+      .at(-1)?.[3];
+    assert.ok(derivedMessage);
+    appendFileSync(
+      history,
+      `2026-07-26 18:00:00\tlive_check_failed\t${target}\tolder operational blocker\n`,
+    );
+    writeFileSync(
+      path.join(hookDir, "sitecustomize.py"),
+      `import os
+
+_original_open = os.open
+_injected = False
+
+def _open(path, flags, *args, **kwargs):
+    global _injected
+    raw = os.path.abspath(os.fspath(path))
+    history = os.environ["MOCK_BATCH_RACE_HISTORY"]
+    if (
+        not _injected
+        and raw == history
+        and flags & os.O_RDWR
+    ):
+        _injected = True
+        fd = _original_open(
+            history,
+            os.O_WRONLY | os.O_APPEND | getattr(os, "O_NOFOLLOW", 0),
+        )
+        try:
+            payload = os.environ["MOCK_BATCH_RACE_ROW"].encode("utf-8")
+            written = os.write(fd, payload)
+            if written != len(payload):
+                raise OSError("partial injected row")
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    return _original_open(path, flags, *args, **kwargs)
+
+os.open = _open
+`,
+    );
+
+    const blocked = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PYTHONPATH: hookDir,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: path.join(root, "missing-bb-browser"),
+          COMET_APP: path.join(root, "Comet"),
+          MOCK_BATCH_RACE_HISTORY: history,
+          MOCK_BATCH_RACE_ROW:
+            `2026-07-26 18:00:01\tretry_pending\t${target}\t${derivedMessage}\n`,
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.notEqual(blocked.status, 0);
+
+    const afterRace = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(afterRace.at(-1)?.[1], "reconciliation_archive_pending");
+    assert.match(
+      afterRace.at(-1)?.[3] ?? "",
+      /conditional transition interference detected/,
+    );
+    assert.ok(
+      afterRace.some(
+        (row) => row[1] === "retry_pending" && row[3] === derivedMessage,
+      ),
+      "the concurrent reconciliation provenance row must remain auditable",
+    );
+    assert.equal(
+      afterRace.filter((row) => (
+        row[1] === "retry_pending"
+        && /gsc_browser_dependency_blocker/.test(row[3] ?? "")
+      )).length,
+      0,
+    );
+
+    renameSync(
+      path.join(artifactDir, "resolved"),
+      path.join(artifactDir, "resolved-moved"),
+    );
+    mkdirSync(path.join(artifactDir, "resolved"));
+    const mock = createGscBrowserMock(root);
+    const retry = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PYTHONPATH: "",
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_URL: target,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+          POST_CLICK_WAIT_SECONDS: "0",
+          POST_MODAL_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+
+    assert.notEqual(retry.status, 0);
+    assert.equal(gscClickCount(mock), 0);
+    const finalRows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(finalRows.at(-1)?.[1], "reconciliation_archive_pending");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC diagnostic artifact writer is exclusive, non-following, and non-overwriting", () => {
+  for (const mode of ["regular", "symlink"]) {
+    const root = tempDir("venturedex-gsc-artifact-write-");
+    const artifactDir = realpathSync(root);
+    const name =
+      "20260726-174233-pre_request_success_unverified-" +
+      `${gscArtifactTargetKeyForTest("https://venturedex.co/startups/alpha")}.txt`;
+    const destination = path.join(artifactDir, name);
+    const sentinel = path.join(artifactDir, "sentinel.txt");
+    writeFileSync(sentinel, "preserve me\n");
+    if (mode === "regular") {
+      writeFileSync(destination, "existing evidence\n");
+    } else {
+      symlinkSync(sentinel, destination);
+    }
+
+    try {
+      const result = spawnSync(
+        realPython3,
+        [
+          path.join(repoRoot, "scripts", "gsc-reconciliation.py"),
+          "write",
+          artifactDir,
+          name,
+          "2026-07-26 17:42:33",
+          "pre_request_success_unverified",
+          "https://venturedex.co/startups/alpha",
+          "zero click",
+          "success",
+          "https://venturedex.co/startups/alpha\nREQUEST INDEXING",
+        ],
+        { encoding: "utf8" },
+      );
+      assert.notEqual(result.status, 0, mode);
+      assert.equal(readFileSync(sentinel, "utf8"), "preserve me\n", mode);
+      if (mode === "regular") {
+        assert.equal(readFileSync(destination, "utf8"), "existing evidence\n");
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC helper rejects top-level artifact authority swaps during write and archive", () => {
+  for (const mode of ["write", "archive"]) {
+    const root = tempDir("venturedex-gsc-artifact-authority-");
+    const artifactDir = path.join(root, "artifacts");
+    const movedArtifactDir = path.join(root, "artifacts-moved");
+    const hookDir = path.join(root, "hooks");
+    const target = "https://venturedex.co/startups/alpha";
+    const name =
+      "20260726-174233-pre_request_success_unverified-" +
+      `${gscArtifactTargetKeyForTest(target)}.txt`;
+    mkdirSync(artifactDir);
+    mkdirSync(hookDir);
+
+    const helperArgs = [
+      path.join(repoRoot, "scripts", "gsc-reconciliation.py"),
+    ];
+    if (mode === "write") {
+      const directoryStat = statSync(artifactDir);
+      helperArgs.push(
+        "write",
+        artifactDir,
+        `${directoryStat.dev}:${directoryStat.ino}`,
+        name,
+        "2026-07-26 17:42:33",
+        "pre_request_success_unverified",
+        target,
+        "zero click",
+        "success",
+        `${target}\nREQUEST INDEXING`,
+      );
+    } else {
+      const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+      const resolvedDirectory = path.join(artifactDir, "resolved");
+      mkdirSync(resolvedDirectory);
+      const artifactStat = statSync(artifact);
+      const directoryStat = statSync(artifactDir);
+      const resolvedStat = statSync(resolvedDirectory);
+      const digest = createHash("sha256")
+        .update(readFileSync(artifact))
+        .digest("hex");
+      helperArgs.push(
+        "archive",
+        artifactDir,
+        name,
+        `${artifactStat.dev}:${artifactStat.ino}`,
+        `${directoryStat.dev}:${directoryStat.ino}`,
+        `${resolvedStat.dev}:${resolvedStat.ino}`,
+        digest,
+      );
+    }
+    writeFileSync(
+      path.join(hookDir, "sitecustomize.py"),
+      [
+        "import os",
+        "import stat",
+        "_original_fsync = os.fsync",
+        "_injected = False",
+        "def _fsync(fd):",
+        "    global _injected",
+        "    result = _original_fsync(fd)",
+        "    observed = os.fstat(fd)",
+        "    archive_ready = (",
+        "        os.environ['INJECT_MODE'] == 'archive'",
+        "        and stat.S_ISDIR(observed.st_mode)",
+        "        and os.path.exists(os.path.join(",
+        "            os.environ['INJECT_ARTIFACT_DIR'],",
+        "            'resolved',",
+        "            os.environ['INJECT_ARTIFACT_NAME'],",
+        "        ))",
+        "    )",
+        "    write_ready = (",
+        "        os.environ['INJECT_MODE'] == 'write'",
+        "        and stat.S_ISREG(observed.st_mode)",
+        "    )",
+        "    if not _injected and (archive_ready or write_ready):",
+        "        _injected = True",
+        "        os.rename(",
+        "            os.environ['INJECT_ARTIFACT_DIR'],",
+        "            os.environ['INJECT_MOVED_ARTIFACT_DIR'],",
+        "        )",
+        "        os.mkdir(os.environ['INJECT_ARTIFACT_DIR'])",
+        "    return result",
+        "os.fsync = _fsync",
+        "",
+      ].join("\n"),
+    );
+
+    try {
+      const result = spawnSync(realPython3, helperArgs, {
+        env: {
+          ...process.env,
+          PYTHONPATH: hookDir,
+          INJECT_MODE: mode,
+          INJECT_ARTIFACT_DIR: artifactDir,
+          INJECT_MOVED_ARTIFACT_DIR: movedArtifactDir,
+          INJECT_ARTIFACT_NAME: name,
+        },
+        encoding: "utf8",
+      });
+
+      assert.notEqual(result.status, 0, mode);
+      assert.match(result.stderr, /authority path changed/, mode);
+      if (mode === "write") {
+        assert.ok(!existsSync(path.join(artifactDir, name)), mode);
+        assert.ok(existsSync(path.join(movedArtifactDir, name)), mode);
+      } else {
+        assert.ok(!existsSync(path.join(artifactDir, "resolved", name)), mode);
+        assert.ok(
+          existsSync(path.join(movedArtifactDir, "resolved", name)),
+          mode,
+        );
+      }
+    } finally {
+      rmSync(root, { recursive: true, force: true });
+    }
+  }
+});
+
+test("GSC reconciliation rejects same-inode artifact mutation after preparation", async () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  const bin = path.join(root, "bin");
+  const held = path.join(root, "archive-held");
+  const release = path.join(root, "archive-release");
+  mkdirSync(artifactDirectory);
+  mkdirSync(bin);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const originalIdentity = statSync(artifact).ino;
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+  writeExecutable(
+    path.join(bin, "python3"),
+    `#!/bin/sh
+if [ "$2" = "archive" ]; then
+  : > "$MOCK_ARCHIVE_HELD"
+  while [ ! -e "$MOCK_ARCHIVE_RELEASE" ]; do sleep 0.05; done
+fi
+exec "${realPython3}" "$@"
+`,
+  );
+  const child = spawn(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-pre-click-retry",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        PATH: `${bin}:${process.env.PATH}`,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        MOCK_ARCHIVE_HELD: held,
+        MOCK_ARCHIVE_RELEASE: release,
+      },
+      stdio: ["ignore", "pipe", "pipe"],
+    },
+  );
+  const outcomePromise = captureChild(child);
+
+  try {
+    await waitForPath(held);
+    const original = readFileSync(artifact, "utf8");
+    writeFileSync(
+      artifact,
+      original.replace(
+        "message: pre-existing terminal state was unbound; no request click occurred",
+        "message: altered after transaction preparation",
+      ),
+    );
+    assert.equal(
+      statSync(artifact).ino,
+      originalIdentity,
+      "the adversarial mutation must preserve the prepared inode",
+    );
+    writeFileSync(release, "release\n");
+    const outcome = await outcomePromise;
+
+    assert.notEqual(outcome.code, 0);
+    assert.match(outcome.stderr, /artifact digest changed before archival/);
+    assert.ok(existsSync(artifact));
+    assert.ok(
+      !existsSync(path.join(artifactDir, "resolved", path.basename(artifact))),
+    );
+    const ledger = readFileSync(history, "utf8");
+    assert.match(ledger, /\treconciliation_archive_pending\t/);
+    assert.doesNotMatch(ledger, /\tretry_pending\t/);
+  } finally {
+    writeFileSync(release, "release\n");
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill("SIGTERM");
+      await outcomePromise;
+    }
+    rmSync(root, { recursive: true, force: true });
   }
 });
 
