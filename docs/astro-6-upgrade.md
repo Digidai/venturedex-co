@@ -1,4 +1,19 @@
-# Astro 6 / @astrojs/cloudflare 13 upgrade
+# Historical: Astro 6 / @astrojs/cloudflare 13 upgrade
+
+> This is the migration record for the earlier Astro 5 → 6 transition. The
+> current production baseline is Astro 7 with `@astrojs/cloudflare` 14,
+> Wrangler 4.114+, Node 22.12+, and the same generated
+> `dist/server/wrangler.json` deployment layout. Current release truth lives in
+> `package.json`, `scripts/manage.sh`, and `docs/automation/README.md`.
+>
+> The 7.x move is a security boundary, not a routine churn update. The July 2026
+> [View Transition XSS advisory](https://github.com/advisories/GHSA-4g3v-8h47-v7g6)
+> affects Astro through 7.0.9 and is patched in 7.1.0; the
+> [spread-attribute XSS advisory](https://github.com/advisories/GHSA-f48w-9m4c-m7f5)
+> has no patched 6.x line. Astro 6 also pins a vulnerable Sharp line covered by
+> [GHSA-f88m-g3jw-g9cj](https://github.com/advisories/GHSA-f88m-g3jw-g9cj).
+> A direct 6.4.8 / adapter 13.7.0 audit still reports high-severity findings,
+> while 7.1.3 / adapter 14.1.4 audits clean.
 
 What changed when moving off Astro 5 / adapter 12, and what to verify on deploy.
 

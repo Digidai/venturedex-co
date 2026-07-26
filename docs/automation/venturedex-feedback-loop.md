@@ -78,7 +78,19 @@ Use stable tags in the learning log so repeated issues can be detected without g
 - `investor_identity_ambiguous`
 - `capacity_budget_mismatch`
 - `governance_trace_missing`
+- `dependency_audit`
+- `release_data_guard`
+- `deploy_propagation`
+- `newsletter_queue`
+- `newsletter_claim_reconciliation`
+- `weekly_duplicate_draft`
+- `gsc_retry_pending`
+- `gsc_auth_session_blocker`
+- `worktree_cleanup`
+- `external_dependency`
 - `other`
+
+Use the narrowest stable tag above. Put provider names, command output, URL lists, and one-off error strings in the evidence text instead of inventing a new tag for every incident. Historical entries are append-only and are not rewritten merely because their older tags predate this vocabulary.
 
 ## Reward Model
 

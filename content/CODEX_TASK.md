@@ -59,8 +59,10 @@ F4: 不在排除品类中吗？
 
 淘汰时写入 `content/rejected.jsonl`：
 ```jsonl
-{"slug":"example","url":"https://example.com","date":"2026-04-16","stage":"F2","reason":"Google subsidiary"}
+{"schema_version":2,"slug":"example","company_url":"https://example.com/","decision_source_url":"https://parent.example.com/products/example","decision_source_type":"official","rejected_at":"2026-07-26","stage":"F2","reason":"The official parent-company page identifies this as a subsidiary, not an independent company.","lifecycle":{"status":"active","revisit_triggers":["company_status_change","governance_change"]}}
 ```
+
+新增拒绝记录只使用 `content/STANDARD.md` 定义的 v2 合同。`company_url` 必须是核验过的官方公司/产品主页，`decision_source_url` 必须是实际支撑决定的官方、融资或发现来源，不能再用一个 `url` 字段混装两种角色。`lifecycle.revisit_triggers` 必须明确列出允许复审的事件。现有第 1-872 行无 `schema_version` 的五字段记录是冻结的 legacy v1 区块，验证器固定其有序 slug 和完整区块摘要；不要插入、删除、重排、改名或改写历史字段。真实复审需要原位升级 v2 时，必须作为可审查的治理变更同步更新验证器摘要，不能只改数据行。
 
 ### Step 3: 深度评估（通过初筛的每个候选 5-10 分钟）
 
@@ -99,7 +101,7 @@ Q3: 它解决的问题具体吗？
 
 0-1 个"是" → 淘汰，记录到 rejected.jsonl：
 ```jsonl
-{"slug":"boring","url":"https://boring.com","date":"2026-04-16","stage":"taste","reason":"Q1=no (no discernible bet), Q2=no (template landing page), Q3=yes"}
+{"schema_version":2,"slug":"boring","company_url":"https://boring.example/","decision_source_url":"https://boring.example/","decision_source_type":"official","rejected_at":"2026-07-26","stage":"taste","reason":"Q1=no (no discernible bet), Q2=no (template landing page), Q3=yes.","lifecycle":{"status":"active","revisit_triggers":["new_product_evidence","governance_change"]}}
 ```
 
 **3.3 验证融资信息**
@@ -253,13 +255,22 @@ git diff --check
 
 # 如果报错，修复后重试
 
-# 提交（每个项目单独 commit）
+# 提交（单个新增用单项目 commit；2-5 个新增可在逐项通过门禁后批量 commit）
 git add content/startups/{slug}.json content/timestamps.json content/brand-assets.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
 git commit -m "content: add {Product Name}
 
 Funding: {amount} {stage} from {lead} ({source_name})
 Rating: {N}/5
 Bet: {一句话：这个产品做了什么赌注}"
+
+# 本次运行有 2-5 个新增时，可改用：
+# git commit -m "content: add curated startups
+#
+# Count: {N} startups
+# Names: {Name A}, {Name B}, ...
+# Note: every addition independently passed F1-F4, taste review, screenshot, and local gates"
+#
+# 内容与 automation docs 必须保持分开 commit。
 
 # 全部完成后推送
 git push
@@ -348,7 +359,7 @@ bash scripts/submit-gsc-direct.sh --latest-weekly
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
-11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `.gsc_submission_history.tsv` 的 `requested` 记录。
+11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；未完成积压通过 `--retry-pending` 有界重试。
 
 ## 文件操作范围
 

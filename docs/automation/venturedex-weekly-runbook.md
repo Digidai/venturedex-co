@@ -30,7 +30,7 @@ Automation must never rewrite this section.
 ## Cadence
 
 - Create a draft every Monday for the previous Monday-Sunday window.
-- A GitHub Actions workflow runs `scripts/weekly.py draft` and opens a draft PR when there is a new issue file.
+- A GitHub Actions workflow runs `scripts/weekly.py draft --check-open-prs` and opens a draft PR only when neither main nor a trusted open automation PR already owns that week. A PR is trusted for week ownership or issue-number reservation only when it is non-cross-repository, its head repository owner matches the target repository owner, and its head branch starts with `automation/weekly-draft-`; a matching title alone is never authority. Trusted automation PR issue numbers are reserved before allocating the next number, and the workflow is serialized so overlapping schedules cannot create competing drafts.
 - Publishing is a review step: replace TODO fields with source-bound research, set `status` to `published`, set `published_at`, and merge only after local gates pass.
 - Newsletter delivery is a separate post-publish step governed by `docs/newsletter.md`. The default Weekly email delay is 24 hours after the issue is published.
 
@@ -79,7 +79,7 @@ Automation must never rewrite this section.
    bash scripts/submit-gsc-direct.sh --latest-weekly
    ```
 
-   Then verify `.gsc_submission_history.tsv` contains a latest `requested` row for `/weekly/{N}`. If the authenticated browser, Search Console UI, or quota blocks submission, record the blocker and exact target URL.
+   Then verify the authoritative `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` contains a latest `requested` row for `/weekly/{N}`. The ignored repo-local ledger is a legacy migration source only. If the authenticated browser, Search Console UI, or quota blocks submission, preserve a `retry_pending` row and the exact target URL; later process unresolved canonical detail URLs with bounded `--retry-pending` dry-run and submit commands.
 
 ## Review Passes
 

@@ -72,8 +72,16 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 淘汰时记录到 `content/rejected.jsonl`：
 ```jsonl
-{"slug":"bad-example","url":"https://bad.com","date":"2026-04-16","stage":"F2","reason":"Google subsidiary, not independent"}
+{"schema_version":2,"slug":"bad-example","company_url":"https://example.com/","decision_source_url":"https://parent.example.com/products/bad-example","decision_source_type":"official","rejected_at":"2026-07-26","stage":"F2","reason":"The official parent-company page identifies this as a subsidiary, not an independent company.","lifecycle":{"status":"active","revisit_triggers":["company_status_change","governance_change"]}}
 ```
+
+`rejected.jsonl` 当前第 1-872 行的无版本五字段记录是冻结的 **legacy v1 区块**。它们继续有效，但旧字段 `url` 可能是公司官网，也可能是发现或融资报道；不要复制这个歧义。验证器同时固定该区块的有序 slug 摘要和完整区块摘要，因此不要插入、删除、重排、改名或改写历史字段。第 872 行之后的所有新增记录必须使用上面的 v2 合同：
+
+- `company_url` 只保存已核验的官方公司或产品主页。
+- `decision_source_url` 保存实际支撑拒绝决定的页面；`decision_source_type` 只能是 `official`、`funding` 或 `discovery`。
+- `lifecycle.status` 新增时必须是 `active`；`revisit_triggers` 至少列出一个可复审条件，只能使用 `later_funding_round`、`new_product_evidence`、`company_status_change` 或 `governance_change`。
+- 触发复审但仍拒绝时，用新核验的事实更新同一行，保持 `active`。触发复审并收录时，把同一行改为 `superseded`，并增加 `resolution`：`resolved_at`、已列入 `revisit_triggers` 的 `trigger`、固定值 `outcome: "accepted"` 和非空 `note`；对应 slug 必须同时存在于 `content/startups/`。`superseded` 行保留审计历史，但不计入 3:1 拒绝比例。
+- 不批量迁移或猜测 legacy v1 的 URL 角色。只有在真实复审时重新核验公司官网和决定来源，才把对应旧行原位升级为 v2；该升级必须作为显式治理变更同步更新验证器中的冻结区块摘要。v2 缺字段、混入旧 `url`/`date` 字段、使用未知字段或生命周期不完整都会阻断验证。
 
 通过初筛的候选进入 Stage 3。预期：10-20 个候选中，约 5-8 个通过初筛。
 
@@ -102,7 +110,7 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 淘汰时记录：
 ```jsonl
-{"slug":"boring-saas","url":"https://boring.com","date":"2026-04-16","stage":"taste","reason":"No discernible bet. Generic SaaS dashboard, no craft signal. Solves 'team collaboration' with no specificity."}
+{"schema_version":2,"slug":"boring-saas","company_url":"https://boring.example/","decision_source_url":"https://boring.example/","decision_source_type":"official","rejected_at":"2026-07-26","stage":"taste","reason":"No discernible bet. Generic SaaS dashboard, no craft signal, and no specific user problem.","lifecycle":{"status":"active","revisit_triggers":["new_product_evidence","governance_change"]}}
 ```
 
 **步骤 3.3: 交叉验证融资信息**
@@ -348,7 +356,7 @@ git diff --check              # 空白和补丁格式检查
 
 **5.2 提交**
 
-每个项目单独 commit：
+一次只新增一个项目时使用单项目 commit：
 
 ```
 content: add {Product Name}
@@ -360,14 +368,25 @@ Bet: {一句话描述这个产品的赌注}
 
 commit message 保持简洁。Gate check 清单不需要放在 commit 里（验证器已经做了）。重要的是把赌注写出来 — 如果你不能用一句话说出它的赌注，你还没有理解它。
 
+一次 Daily 运行新增 2-5 个项目时，允许在所有项目分别通过同一套事实、品牌、research、taste 和发布门禁后合并为一个内容 commit：
+
+```
+content: add curated startups
+
+Count: {N} startups
+Names: {Name A}, {Name B}, ...
+Note: every addition independently passed F1-F4, taste review, screenshot, and local gates
+```
+
+内容和自动化治理文档仍必须分开 commit；不要为了减少 commit 数量降低单项目审查粒度。
+
 **5.3 推送**
 
 ```bash
 git push
 ```
 
-GitHub Actions 自动执行验证 → D1 同步 → 部署。
-当前站点页面主要由 `content/` 在 build 阶段 prerender；D1 继续支撑 newsletter、订阅和运行时发送状态。Deploy 流程通过 `scripts/manage.sh release` 执行 newsletter preflight、远端 D1 同步、adapter v13 Worker 部署和 live smoke。
+GitHub Actions 先对同一个 main commit 执行完整 Validate；只有 clean checkout 的该 SHA 仍是 `origin/main` 且验证成功时才进入串行 Deploy，手动触发也只能发布精确的当前 `origin/main` SHA。`scripts/manage.sh sync` 和 `scripts/manage.sh deploy` 不再直接修改生产；唯一允许发布 Worker 或写入 D1 的 CLI 路径是统一的 `scripts/manage.sh release`。当前站点页面主要由 `content/` 在 build 阶段 prerender；D1 继续支撑 newsletter、订阅和运行时发送状态。Release 流程执行 newsletter preflight、adapter v14 Worker 部署、远端 D1 同步和带界限的 live smoke 重试。D1 同步必须比较远端与本地完整的 published/manual startup slug 集合及 published Weekly issue_number 集合；任何远端条目缺失都默认阻塞，只有人工复核后才可用精确集合覆盖，Daily 自动化不得自行设置删除覆盖变量。
 
 **5.4 Search Console 直提**
 
@@ -385,7 +404,7 @@ bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
 bash scripts/submit-gsc-direct.sh --latest-weekly
 ```
 
-提交后检查 `.gsc_submission_history.tsv`，确认每个目标 URL 的最新状态为 `requested`。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和目标 URL，不要把它当作已提交。
+提交后检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 这一权威 ledger，确认每个目标 URL 的最新状态为 `requested`。仓库根目录的 `.gsc_submission_history.tsv` 仅是旧版兼容输入，不再作为完成证据。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和目标 URL，不要把它当作已提交；后续可用 `--retry-pending` 在安全上限内继续处理积压。
 
 ---
 
@@ -481,7 +500,7 @@ git diff --check
 5. **不批量收录。** 每次运行最多收录 5 个。宁缺毋滥。
 6. **不越界修改。** 只操作 `content/`、`content/brand-assets.json`、`public/screenshots/`、`public/logos/`。
 7. **不重复收录。** 先查 content/startups/ 和 rejected.jsonl。
-8. **不重复消耗旧候选。** rejected.jsonl 中的条目默认不再评估，除非有新一轮融资、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则。
+8. **不重复消耗旧候选。** rejected.jsonl 中 legacy v1 或 v2 `active` 条目默认不再评估，除非出现 v2 合同允许的复审触发条件；复审时核验并原位升级/更新同一行，不追加重复 slug。
 9. **不用第三方 Logo 服务。** 品牌素材必须能追溯到官网。
 
 ---

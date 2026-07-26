@@ -50,7 +50,7 @@ Workers Logs / Logpush and alerted on:
 
 - `newsletter_cycle` — the result of each daily/weekly cron send
   (`status`, `type`, `itemCount`, `recipientCount`, ...).
-- `newsletter_cycle_error` — the cron handler threw.
+- `newsletter_cycle_error` — the cron handler threw or returned a failed newsletter result; either form is converted to a rejection so the scheduled invocation remains failed in Cloudflare observability.
 - `newsletter_queue_error` — a delivery-queue batch threw (then re-thrown so the
   platform retries the batch).
 
@@ -63,3 +63,18 @@ npx wrangler tail venturedex
 Per-recipient delivery state (sent / skipped / failed, provider message id, error)
 is also persisted in the `newsletter_deliveries` D1 table, and per-send status in
 `newsletter_sends` — query those for delivery history beyond the log retention window.
+
+Delivery claims are visible in `newsletter_deliveries.provider_message_id`:
+
+- `claim:pre:*` means the message is still before provider send and may be reclaimed after the stale window.
+- `claim:sending:*` means provider acceptance is uncertain. It is never automatically reclaimed or resent. Queue processing and non-dry-run Cron cycles convert a claim that remains in this state for more than 30 minutes to a terminal `failed` row while retaining the claim token; inspect `error_message` and provider logs before any human-authorized follow-up.
+
+Useful stuck-claim query:
+
+```sql
+SELECT d.id, s.send_key, d.status, d.provider_message_id, d.error_message, d.updated_at
+FROM newsletter_deliveries d
+JOIN newsletter_sends s ON s.id = d.send_id
+WHERE d.provider_message_id LIKE 'claim:%'
+ORDER BY datetime(d.updated_at) ASC;
+```

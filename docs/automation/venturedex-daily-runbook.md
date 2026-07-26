@@ -79,7 +79,7 @@ Before commit and push, all must pass:
 - `./scripts/manage.sh validate`
 - `git diff --check`
 
-`./scripts/manage.sh validate` is the current full local gate. It runs content validation, D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. `d1/generated-seed.sql` is verification output only. If it changes locally, restore it before commit.
+`./scripts/manage.sh validate` is the current full local gate. It runs the high-severity dependency audit, content validation, deterministic D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. `d1/generated-seed.sql` is verification output only. If it changes locally, restore it before commit.
 
 If screenshot generation fails, do not keep a half-complete startup addition.
 
@@ -112,7 +112,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
   - `docs/automation/venturedex-learning-log.md`
 - Never mix content files and automation-doc files in the same commit.
 - Check the staged allowlist with `git diff --cached --name-only` before every commit.
-- After push, record the commit SHA, confirm CI and deploy workflows are still enabled, wait for the observable runs, and require post-deploy live smoke to pass before marking the run as shipped. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
+- After push, record the commit SHA, confirm CI and deploy workflows are still enabled, and wait for the observable runs. Validate must pass for a clean checkout at the exact current `origin/main` SHA before serialized Deploy can run; a manual dispatch is also restricted to that exact main SHA and reruns the full gate. Release holds a Git-common-directory lock and checks the worktree after validation/build directly before Worker upload and again before D1 sync; the only permitted dirtiness is the unstaged generated D1 seed plus untracked Weekly OG files tied to published issue numbers. The build-time generated-seed and ignored-`dist/` SHA-256 values are locked before preflight, both are rechecked before Worker upload, and the exact seed is rechecked immediately before D1 execution. Direct `manage.sh sync` and `manage.sh deploy` commands are intentionally non-mutating; only `manage.sh release` may publish the Worker or write D1. Deploy publishes the Worker/static bundle before applying the D1 seed, compares complete remote/local published-manual startup slug sets and published Weekly issue-number sets, and performs bounded smoke retries on both public hosts. An intentional removal needs separate human review plus the exact comma-separated remote-only set in `VENTUREDEX_ALLOW_STARTUP_REMOVALS` or `VENTUREDEX_ALLOW_WEEKLY_ISSUE_REMOVALS`; Daily automation must never set either override. If CI/deploy cannot be observed, record the blocker explicitly instead of treating the run as successfully deployed. Do not auto-revert `main`.
 - Do not treat post-deploy newsletter delivery as immediate success. The Daily newsletter waits for the configured delay window and records send state in D1.
 
 ## Daily Execution
@@ -125,8 +125,8 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 6. Sync `main` with `origin/main`.
 7. Check for a clean worktree.
 8. Discover 20-40 recent funding candidates.
-9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`.
-10. Run F1-F4 screening.
+9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`; schema-less legacy rows and v2 `active` rows suppress repeat review unless an allowed trigger is present.
+10. Run F1-F4 screening and write every new rejection as a complete v2 row.
 11. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
 12. Write structured `research` for every accepted startup:
     - `sources` must include the official product site and the funding source; add GitHub, docs, LinkedIn, Product Hunt, or other official sources only when they were checked.
@@ -156,13 +156,18 @@ If screenshot generation fails, do not keep a half-complete startup addition.
    bash scripts/submit-gsc-direct.sh --latest-daily
    ```
 
-   Then verify `.gsc_submission_history.tsv` contains a latest `requested` row for every new `/startups/{slug}` URL. If the authenticated browser, Search Console UI, or quota blocks submission, record the blocker and the exact target URLs.
+   The submitter must see the exact target URL in Search Console's visible inspection result both before clicking **Request indexing** and after the success state appears; an input value or a generic success message alone is not completion evidence. Then verify the authoritative `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` contains a latest `requested` row for every new `/startups/{slug}` URL. The ignored repo-local `.gsc_submission_history.tsv` is a legacy migration source, not completion evidence. GSC failure diagnostics default to the durable `$CODEX_HOME/automations/venturedex-daily-curator/gsc-artifacts/` directory so they survive worktree cleanup without dirtying the repository. If the exact inspected URL, authenticated browser, Search Console UI, or quota blocks submission, record `retry_pending`, the blocker, and the exact target URLs. Later runs may process unresolved canonical detail URLs in bounded batches with:
+
+   ```bash
+   bash scripts/submit-gsc-direct.sh --dry-run --retry-pending
+   bash scripts/submit-gsc-direct.sh --retry-pending
+   ```
 27. Open an inbox item summarizing the full run.
 
 ## Review Passes
 
 1. Facts: source, amount, stage, date, investor, source URL, lead-investor naming from the article, and any breakout-stage exception
-2. Dedup: prior acceptance, prior rejection, later-round exception
+2. Dedup: prior acceptance, frozen legacy block digests, v2-active rejection, allowed revisit trigger, one row per slug, and complete v2 superseded resolution when a revisit becomes accepted
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
 5. Links: official `links.careers` is present when discoverable; no dynamic job-list, role-count, location, salary, or hiring-claim data is added
@@ -257,5 +262,5 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - When immediate post-deploy smoke sees remote D1 or collection-index counts from the new release but stale root, news, or collection-detail counts, classify it as a propagation hypothesis rather than a deploy failure: first rerun independent smoke on both `workers.dev` and the custom domain, and only after both pass rerun the failed Deploy job at most once to restore green observable release evidence.
 - Before a formal GSC submit, open the Search Console inspection route through `bb-browser` and confirm it stays on an authenticated `search.google.com` URL Inspection surface instead of redirecting to `accounts.google.com`; if authentication is missing, close the automation tab, record `gsc_auth_session_blocker` plus every exact target URL, and do not substitute longer wait retries for the missing login state.
 - When a detached automation worktree publishes or repairs Daily content while the main checkout is dirty, ahead, or behind, finish the run with a main-checkout cleanup audit before final closeout: fetch `origin/main`, compare each dirty or untracked Daily file against remote, preserve or port only independently verified improvements, discard stale generated/duplicate drafts from the working tree, and leave the main checkout either clean and aligned to `origin/main` or explicitly reported as blocked.
-- When a main-checkout cleanup audit finds stale detached VentureDex automation worktrees, start with `bash scripts/cleanup-automation-worktrees.sh --all` as a dry run. Use `--execute --path <worktree>` only after required commits, GSC evidence, learning-log entries, and automation-memory updates are preserved; report dirty or unpushed blockers instead of force-removing them.
+- When a main-checkout cleanup audit finds stale detached VentureDex automation worktrees, start with `bash scripts/cleanup-automation-worktrees.sh --all` as a dry run. Use `--execute --path <worktree>` only after required commits, GSC evidence, learning-log entries, and automation-memory updates are preserved. Execution refreshes `origin`, requires the worktree HEAD to be reachable from an explicit `refs/remotes/origin/*` ref, and rereads the exact reachable HEAD immediately before removal. Dirty, concurrently changed, unreachable, and unregistered targets return a nonzero blocker; unregistered Git directories are never recursively deleted because they may contain recoverable commits.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->
