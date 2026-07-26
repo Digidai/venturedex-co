@@ -1434,5 +1434,19 @@
     "short_name": "Brightmind",
     "website": "https://www.brightmindpartners.com/",
     "description": "Early-stage venture firm focused on cybersecurity and resilience."
+  },
+  "chemistry": {
+    "name": "Chemistry",
+    "slug": "chemistry",
+    "short_name": "Chemistry",
+    "website": "https://www.chemistry.vc/",
+    "description": "Early-stage venture firm leading concentrated Seed and Series A investments in software companies."
+  },
+  "burda-principal-investments": {
+    "name": "Burda Principal Investments",
+    "slug": "burda-principal-investments",
+    "short_name": "BPI",
+    "website": "https://www.burdaprincipalinvestments.com/",
+    "description": "Growth-equity investment arm of Hubert Burda Media backing digital technology and media companies globally."
   }
 }

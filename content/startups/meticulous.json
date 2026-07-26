@@ -1,0 +1,88 @@
+{
+  "slug": "meticulous",
+  "domain": "www.meticulous.ai",
+  "url": "https://www.meticulous.ai/",
+  "product_name": "Meticulous",
+  "summary": "Deterministic browser testing that evolves with every application change.",
+  "editor_note": "AI coding does not need more tests written faster; it needs a browser that can prove what changed. Meticulous records interactions, evolves end-to-end flows, replays backend responses, and uses a deterministic Chromium scheduler to remove flaky noise. Unlike assertion-first generators, it previews pixel-level pull-request impact across thousands of screens in under 120 seconds. The question is whether recorded behavior stays representative as permissions and workflows become more dynamic.",
+  "editor_rating": 5,
+  "why_featured": "$15M Series A for zero-flake testing",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "software testing,developer tools,visual regression,deterministic browser,ai coding",
+  "investors": "Chemistry",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/meticulous",
+    "docs": "https://app.meticulous.ai/docs",
+    "linkedin": "https://www.linkedin.com/company/alwaysmeticulous/",
+    "product": "https://app.meticulous.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Chemistry",
+      "date": "2026-07-15",
+      "source_url": "https://sifted.eu/articles/ex-palantir-dropbox-elevenlabs-notion-wiz-ship-ai-generated-code",
+      "source_name": "Sifted"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Meticulous official site",
+        "url": "https://www.meticulous.ai/",
+        "type": "official"
+      },
+      {
+        "id": "how_it_works",
+        "label": "Meticulous how it works",
+        "url": "https://www.meticulous.ai/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Meticulous official careers page",
+        "url": "https://jobs.ashbyhq.com/meticulous",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Meticulous Series A",
+        "url": "https://sifted.eu/articles/ex-palantir-dropbox-elevenlabs-notion-wiz-ship-ai-generated-code",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says a recorder script captures interactions in local, staging, preview, and optionally production environments, while branch coverage is used to curate visual end-to-end flows as the application changes.",
+        "source_ids": [
+          "official_site",
+          "how_it_works"
+        ]
+      },
+      {
+        "claim": "Meticulous saves and replays backend responses to keep tests side-effect free, runs on a deterministic Chromium-level scheduler to suppress flakes, and parallelizes thousands of screens with a stated result time under 120 seconds.",
+        "source_ids": [
+          "official_site",
+          "how_it_works"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams shipping web applications with growing volumes of human- and agent-written code.",
+      "category": "Automated end-to-end software testing",
+      "differentiation": "Meticulous replaces hand-authored assertion suites with recorded behavior, automatically evolving visual flows, deterministic browser execution, and pull-request impact review.",
+      "why_now": "Code generation is accelerating faster than manual review and test maintenance, making deterministic feedback and exhaustive regression coverage a release bottleneck."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether recorded interactions and visual diffs continue to represent important behavior as applications add dynamic data, permissions, and workflows that appear infrequently.",
+        "basis": "VentureDex assessment from the official recorder, test-curation, and deterministic-browser workflow."
+      }
+    ]
+  }
+}

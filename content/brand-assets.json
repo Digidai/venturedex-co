@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-25",
+  "verified_at": "2026-07-26",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1666,6 +1666,21 @@
       "local_path": "/logos/companies/empirical-security.ico",
       "source_page": "https://www.empiricalsecurity.com/",
       "source_url": "https://www.empiricalsecurity.com/new-favicon.ico"
+    },
+    "meticulous": {
+      "name": "Meticulous",
+      "shape": "icon",
+      "local_path": "/logos/companies/meticulous.png",
+      "source_page": "https://www.meticulous.ai/",
+      "source_url": "https://cdn.prod.website-files.com/65310f49fd3cda9049c4e065/6667179fbb0a3e7f974507f5_meticulous-256x256%20(1).png",
+      "tile_background": "dark"
+    },
+    "fleek": {
+      "name": "Fleek",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/fleek.png",
+      "source_page": "https://www.joinfleek.com/home",
+      "source_url": "https://www.joinfleek.com/_next/static/media/Logo.6ba37d95.webp"
     }
   },
   "investors": {
@@ -3022,6 +3037,22 @@
       "local_path": "/logos/investors/brightmind-partners.png",
       "source_page": "https://www.brightmindpartners.com/",
       "source_url": "https://cdn.prod.website-files.com/688d5bee33e8e8d66bb0d89c/688d5bee33e8e8d66bb0d8ac_Webclip.png"
+    },
+    "chemistry": {
+      "name": "Chemistry",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/chemistry.png",
+      "source_page": "https://www.chemistry.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6717ae652c13a07892c7857d/6717ae652c13a07892c78614_chemistry_logo_white%20(1).png",
+      "tile_background": "dark"
+    },
+    "burda-principal-investments": {
+      "name": "Burda Principal Investments",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/burda-principal-investments.svg",
+      "source_page": "https://www.burdaprincipalinvestments.com/",
+      "source_url": "https://www.burdaprincipalinvestments.com/wp-content/themes/burda/assets/img/logo.svg",
+      "tile_background": "dark"
     }
   }
 }

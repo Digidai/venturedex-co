@@ -1,0 +1,83 @@
+{
+  "slug": "fleek",
+  "domain": "www.joinfleek.com",
+  "url": "https://www.joinfleek.com/home",
+  "product_name": "Fleek",
+  "summary": "AI-graded wholesale marketplace for secondhand fashion inventory.",
+  "editor_note": "Secondhand retail has demand, but its wholesale supply chain still behaves like a private chat thread. Fleek combines verified suppliers, graded bundles, live video handpicks, shipping, customs, payments, and buyer protection, then uses FleekSort to grade and price one photo in about 6 seconds. Unlike a resale storefront, it focuses on the warehouses behind the storefront. The test is whether automated grades stay trustworthy across inconsistent stock, lighting, and regions.",
+  "editor_rating": 5,
+  "why_featured": "AI grading for secondhand wholesale",
+  "product_type": "Marketplace",
+  "region": "Europe",
+  "tags": "marketplace,secondhand fashion,computer vision,wholesale,supply chain",
+  "investors": "Burda Principal Investments",
+  "links": {
+    "careers": "https://www.joinfleek.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series B",
+      "lead_investor": "Burda Principal Investments",
+      "date": "2026-07-13",
+      "source_url": "https://www.burdaprincipalinvestments.com/2026/07/13/bpi-invests-in-fleek/",
+      "source_name": "Burda Principal Investments"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-26",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Fleek official marketplace",
+        "url": "https://www.joinfleek.com/home",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Fleek official careers and technology page",
+        "url": "https://www.joinfleek.com/careers",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fleek Series B announcement",
+        "url": "https://www.burdaprincipalinvestments.com/2026/07/13/bpi-invests-in-fleek/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The live marketplace exposes supplier and bundle listings with per-piece prices, small minimum order quantities, supplier verification, ratings, buyer protection, inspections, shipping, customs clearance, and secure payments.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Fleek's official technology page says FleekSort grades, prices, and catalogues inventory from one photo in roughly six seconds, and publishes company-reported 82% accuracy and 100 tonnes processed per month.",
+        "source_ids": [
+          "official_careers"
+        ]
+      },
+      {
+        "claim": "The marketplace offers Demand Hub for planned bulk inventory and Virtual Handpick for curating bundles with suppliers over live video and moodboards.",
+        "source_ids": [
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Vintage resellers, retailers, and secondhand wholesalers sourcing and grading bulk inventory across borders.",
+      "category": "Secondhand fashion wholesale infrastructure",
+      "differentiation": "Fleek combines a live B2B marketplace with supplier trust, fulfillment, and transaction-trained visual grading for inventory that lacks standard catalog data.",
+      "why_now": "Secondhand demand is growing while wholesale sorting, grading, and trading remain manual and fragmented, giving transaction data a direct role in supply quality."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether FleekSort's grades and price estimates stay reliable across inconsistent photography, garment condition, brands, warehouses, and regional resale demand.",
+        "basis": "VentureDex assessment from the official marketplace, technology page, and investor funding announcement."
+      }
+    ]
+  }
+}
