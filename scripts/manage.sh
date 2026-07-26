@@ -362,8 +362,8 @@ SELECT 'startups.slug' AS constraint_name,
         )
       ) = 'slug'
   ) AS ok
-UNION ALL
-SELECT 'weekly_issues.issue_number',
+;
+SELECT 'weekly_issues.issue_number' AS constraint_name,
   EXISTS (
     SELECT 1
     FROM pragma_index_list('weekly_issues') AS indexes
@@ -376,9 +376,9 @@ SELECT 'weekly_issues.issue_number',
           ORDER BY seqno
         )
       ) = 'issue_number'
-  )
-UNION ALL
-SELECT 'investors.slug',
+  ) AS ok
+;
+SELECT 'investors.slug' AS constraint_name,
   EXISTS (
     SELECT 1
     FROM pragma_index_list('investors') AS indexes
@@ -391,9 +391,9 @@ SELECT 'investors.slug',
           ORDER BY seqno
         )
       ) = 'slug'
-  )
-UNION ALL
-SELECT 'newsletter_subscriptions.email',
+  ) AS ok
+;
+SELECT 'newsletter_subscriptions.email' AS constraint_name,
   EXISTS (
     SELECT 1
     FROM pragma_index_list('newsletter_subscriptions') AS indexes
@@ -406,9 +406,9 @@ SELECT 'newsletter_subscriptions.email',
           ORDER BY seqno
         )
       ) = 'email'
-  )
-UNION ALL
-SELECT 'newsletter_sends.send_key',
+  ) AS ok
+;
+SELECT 'newsletter_sends.send_key' AS constraint_name,
   EXISTS (
     SELECT 1
     FROM pragma_index_list('newsletter_sends') AS indexes
@@ -421,9 +421,9 @@ SELECT 'newsletter_sends.send_key',
           ORDER BY seqno
         )
       ) = 'send_key'
-  )
-UNION ALL
-SELECT 'newsletter_deliveries.send_id,subscription_id',
+  ) AS ok
+;
+SELECT 'newsletter_deliveries.send_id,subscription_id' AS constraint_name,
   EXISTS (
     SELECT 1
     FROM pragma_index_list('newsletter_deliveries') AS indexes
@@ -436,7 +436,7 @@ SELECT 'newsletter_deliveries.send_id,subscription_id',
           ORDER BY seqno
         )
       ) = 'send_id,subscription_id'
-  );
+  ) AS ok;
 " 2>&1
   )"; then
     printf '%s\n' "$output" >&2
@@ -464,7 +464,15 @@ table_names = [
     "newsletter_deliveries",
     "rate_limits",
 ]
-if len(payload) != len(table_names) + 1:
+constraint_names = [
+    "startups.slug",
+    "weekly_issues.issue_number",
+    "investors.slug",
+    "newsletter_subscriptions.email",
+    "newsletter_sends.send_key",
+    "newsletter_deliveries.send_id,subscription_id",
+]
+if len(payload) != len(table_names) + len(constraint_names):
     raise SystemExit(
         "ERROR: Remote D1 schema preflight returned an incomplete snapshot; "
         "refusing to deploy."
@@ -547,7 +555,13 @@ for table, additions in supported_additions.items():
         missing = sorted(additions - columns[table])
         plan.extend(f"add {table}.{column}" for column in missing)
 
-constraint_rows = payload[-1].get("results", [])
+constraint_rows = []
+for result in payload[len(table_names):]:
+    rows = result.get("results", [])
+    if len(rows) != 1:
+        errors.append("unique-constraint probe returned an incomplete result")
+        continue
+    constraint_rows.extend(rows)
 constraints = {
     row.get("constraint_name"): row.get("ok")
     for row in constraint_rows
@@ -1540,24 +1554,26 @@ remote_sync_preflight() {
   local remote_manual_slugs local_slugs remote_weekly_issues local_weekly_issues
 
   require_token
-  VENTUREDEX_SEED_OUTPUT="$REPO_ROOT/d1/generated-seed.sql" assert_generated_seed_fresh
-  assert_release_seed_hash_unchanged
-  assert_remote_schema_not_legacy
-  assert_remote_schema_migration_feasible
+  VENTUREDEX_SEED_OUTPUT="$REPO_ROOT/d1/generated-seed.sql" \
+    assert_generated_seed_fresh || return 1
+  assert_release_seed_hash_unchanged || return 1
+  assert_remote_schema_not_legacy || return 1
+  assert_remote_schema_migration_feasible || return 1
 
-  remote_manual_slugs="$(remote_manual_startup_slugs)"
-  local_slugs="$(local_startup_slugs)"
-  assert_catalog_slug_change_allowed "$remote_manual_slugs" "$local_slugs"
+  remote_manual_slugs="$(remote_manual_startup_slugs)" || return 1
+  local_slugs="$(local_startup_slugs)" || return 1
+  assert_catalog_slug_change_allowed "$remote_manual_slugs" "$local_slugs" || return 1
 
-  remote_weekly_issues="$(remote_published_weekly_issue_numbers)"
-  local_weekly_issues="$(local_published_weekly_issue_numbers)"
-  assert_weekly_issue_change_allowed "$remote_weekly_issues" "$local_weekly_issues"
+  remote_weekly_issues="$(remote_published_weekly_issue_numbers)" || return 1
+  local_weekly_issues="$(local_published_weekly_issue_numbers)" || return 1
+  assert_weekly_issue_change_allowed \
+    "$remote_weekly_issues" "$local_weekly_issues" || return 1
 
   echo "remote_sync_preflight: read-only guards passed"
 }
 
 deploy_worker_after_remote_sync_preflight() {
-  remote_sync_preflight
+  remote_sync_preflight || return 1
   deploy_worker
 }
 
@@ -1985,7 +2001,11 @@ case "${1:-help}" in
   __test-preflight-deploy)
     shift
     RELEASE_SEED_SHA256="${1:-}"
-    deploy_worker_after_remote_sync_preflight
+    if ! preflight_output="$(deploy_worker_after_remote_sync_preflight)"; then
+      printf '%s\n' "$preflight_output"
+      exit 1
+    fi
+    printf '%s\n' "$preflight_output"
     ;;
   sync) shift; cmd_sync_public "$@" ;;
   deploy) cmd_deploy_public ;;

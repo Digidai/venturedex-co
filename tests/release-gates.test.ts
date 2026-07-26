@@ -147,19 +147,16 @@ function remoteSchemaPayload(options: { brokenWeekly?: boolean } = {}): string {
       pk: name === "id" || name === "bucket" ? 1 : 0,
     })),
   }));
-  payload.push({
-    results: [
-      { constraint_name: "startups.slug", ok: 1 },
-      { constraint_name: "weekly_issues.issue_number", ok: 1 },
-      { constraint_name: "investors.slug", ok: 1 },
-      { constraint_name: "newsletter_subscriptions.email", ok: 1 },
-      { constraint_name: "newsletter_sends.send_key", ok: 1 },
-      {
-        constraint_name: "newsletter_deliveries.send_id,subscription_id",
-        ok: 1,
-      },
-    ],
-  });
+  for (const constraint_name of [
+    "startups.slug",
+    "weekly_issues.issue_number",
+    "investors.slug",
+    "newsletter_subscriptions.email",
+    "newsletter_sends.send_key",
+    "newsletter_deliveries.send_id,subscription_id",
+  ]) {
+    payload.push({ results: [{ constraint_name, ok: 1 }] });
+  }
   return JSON.stringify(payload);
 }
 
@@ -770,6 +767,36 @@ test("remote guard, schema, and legacy failures prevent Worker deploy", () => {
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
   }
+});
+
+test("remote schema probes avoid compound SELECT and captured failures stay terminal", () => {
+  const manager = readFileSync(manage, "utf8");
+  const schemaPreflight = manager.slice(
+    manager.indexOf("assert_remote_schema_migration_feasible()"),
+    manager.indexOf("\nassert_remote_schema_not_legacy()")
+  );
+  const remotePreflight = manager.slice(
+    manager.indexOf("remote_sync_preflight()"),
+    manager.indexOf("\ndeploy_worker_after_remote_sync_preflight()")
+  );
+  const capturedTestPath = manager.slice(
+    manager.indexOf("__test-preflight-deploy)"),
+    manager.indexOf("\n  sync)")
+  );
+
+  assert.doesNotMatch(schemaPreflight, /UNION ALL/);
+  assert.match(
+    schemaPreflight,
+    /SELECT 'startups\.slug'[\s\S]*;\s*SELECT 'weekly_issues\.issue_number'/
+  );
+  assert.match(
+    remotePreflight,
+    /assert_remote_schema_migration_feasible \|\| return 1/
+  );
+  assert.match(
+    capturedTestPath,
+    /if ! preflight_output=\"\\?\$\(deploy_worker_after_remote_sync_preflight\)\"?/
+  );
 });
 
 test("Wrangler deploy output preserves the exact workers.dev smoke target", () => {
