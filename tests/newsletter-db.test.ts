@@ -210,6 +210,18 @@ test("new email subscribes as pending with a minted token and id, confirmed_at N
   assert.deepEqual(JSON.parse(stored?.preferences_json ?? "{}"), { daily: true, weekly: false });
 });
 
+test("subscription source attribution is normalized and persisted", async () => {
+  const subscription = await subscribeToNewsletter(db, {
+    email: "attributed@example.com",
+    preferences: { daily: true, weekly: true },
+    source: "  startup:metix  ",
+  });
+
+  assert.equal(subscription.source, "startup:metix");
+  const stored = await readSubscription("attributed@example.com");
+  assert.equal(stored?.source, "startup:metix");
+});
+
 test("confirmSubscription flips pending -> confirmed and reports newlyConfirmed", async () => {
   const seeded = await seedSubscription(db, {
     email: "reader@example.com",
@@ -244,12 +256,19 @@ test("re-subscribing a confirmed address without token proof cannot change prefe
   const result = await subscribeToNewsletter(db, {
     email: "loyal@example.com",
     preferences: { daily: false, weekly: true },
+    source: "topic:healthcare-ai-startups",
   });
 
   assert.equal(result.status, "confirmed");
+  assert.equal(result.source, "website");
   const stored = await readSubscription("loyal@example.com");
   assert.equal(stored?.status, "confirmed", "status must stay confirmed");
   assert.equal(stored?.confirmed_at, "2026-05-02 09:00:00", "confirmed_at must not change");
+  assert.equal(
+    stored?.source,
+    "website",
+    "an email address alone must not change source attribution"
+  );
   assert.deepEqual(
     JSON.parse(stored?.preferences_json ?? "{}"),
     { daily: true, weekly: true },
@@ -269,13 +288,16 @@ test("a confirmed subscriber can change preferences with their emailed token", a
   const result = await subscribeToNewsletter(db, {
     email: "owner@example.com",
     preferences: { daily: false, weekly: true },
+    source: "topic:healthcare-ai-startups",
     proofToken: "tok-owner",
   });
 
   assert.equal(result.status, "confirmed");
+  assert.equal(result.source, "topic:healthcare-ai-startups");
   const stored = await readSubscription("owner@example.com");
   assert.equal(stored?.status, "confirmed");
   assert.equal(stored?.confirmed_at, "2026-05-02 09:00:00");
+  assert.equal(stored?.source, "topic:healthcare-ai-startups");
   assert.deepEqual(JSON.parse(stored?.preferences_json ?? "{}"), { daily: false, weekly: true });
 });
 

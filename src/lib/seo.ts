@@ -189,11 +189,6 @@ export function siteWebSite(siteUrl = DEFAULT_SITE_URL): JsonLdNode {
     description: SITE_DESCRIPTION,
     inLanguage: "en",
     publisher: { "@id": `${url}/#organization` },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${url}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 

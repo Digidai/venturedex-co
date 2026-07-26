@@ -8,6 +8,7 @@ import {
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
 import { getContentInvestorBySlug, getContentInvestors } from "../../lib/content";
+import { evaluateInvestorIndexEligibility } from "../../lib/investor-indexing";
 import { expandSeoDescription, investorJsonLd, normalizeExternalUrl } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -16,6 +17,7 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 const { investor, rounds } = getContentInvestorBySlug(slug!)!;
+const eligibility = evaluateInvestorIndexEligibility(rounds);
 const investorBrand = getInvestorBrandAsset(investor.slug);
 const description = expandSeoDescription(
   investor.description,
@@ -47,7 +49,7 @@ function displayHostname(value: string): string {
 <Base
   title={pageTitle}
   description={description}
-  robots={rounds.length > 0 ? undefined : "noindex,follow"}
+  robots={eligibility.indexable ? undefined : "noindex,follow"}
   schema={schema}
 >
   <div class="container investor-page">

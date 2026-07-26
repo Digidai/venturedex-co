@@ -7,6 +7,7 @@ import {
   investorJsonLd,
   latestSitemapLastmod,
   sitemapLastmodDate,
+  siteWebSite,
   startupJsonLd,
 } from "../src/lib/seo";
 import type { FundingRound, Investor, Startup } from "../src/lib/types";
@@ -212,6 +213,11 @@ test("startupJsonLd publisher/isPartOf point at the shared site organization and
   const defined = definedIds(graph);
   assert.ok(defined.has(`${SITE_URL}/#organization`), "site organization node should exist");
   assert.ok(defined.has(`${SITE_URL}/#website`), "site website node should exist");
+});
+
+test("WebSite schema does not advertise the retired parameterized SearchAction", () => {
+  const website = siteWebSite(SITE_URL);
+  assert.equal("potentialAction" in website, false);
 });
 
 test("startupJsonLd cites official and source-backed research URLs on the WebPage node", () => {

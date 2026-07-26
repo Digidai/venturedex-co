@@ -6,6 +6,10 @@ import Base from "../../layouts/Base.astro";
 import { getInvestorBrandAsset, resolveInvestorSlugByName } from "../../lib/brand-assets";
 import { getContentInvestors, getContentNewsEligibleFundingRounds } from "../../lib/content";
 import {
+  evaluateInvestorIndexEligibility,
+  groupFundingRoundsByInvestorSlug,
+} from "../../lib/investor-indexing";
+import {
   buildJsonLdGraph,
   itemListNode,
   siteOrganization,
@@ -15,46 +19,39 @@ import {
 import type { Investor } from "../../lib/types";
 
 interface InvestorIndexRow extends Investor {
-  round_count: number;
+  company_count: number;
   last_round_at: string | null;
 }
 
 const allInvestors = getContentInvestors();
 const rounds = getContentNewsEligibleFundingRounds();
-
-// Aggregate round counts and most-recent date per investor slug using the
-// canonical resolver (matches the rounds shown on each investor page).
-const stats = new Map<string, { count: number; lastRoundAt: string | null }>();
-for (const round of rounds) {
-  const slug = resolveInvestorSlugByName(round.lead_investor);
-  if (!slug) continue;
-  const entry = stats.get(slug) ?? { count: 0, lastRoundAt: null };
-  entry.count += 1;
-  if (round.date && (!entry.lastRoundAt || round.date > entry.lastRoundAt)) {
-    entry.lastRoundAt = round.date;
-  }
-  stats.set(slug, entry);
-}
+const roundsByInvestor = groupFundingRoundsByInvestorSlug(rounds, resolveInvestorSlugByName);
 
 const investors: InvestorIndexRow[] = allInvestors
-  .map((investor) => {
-    const entry = stats.get(investor.slug);
-    return {
+  .flatMap((investor) => {
+    const investorRounds = roundsByInvestor.get(investor.slug) ?? [];
+    const eligibility = evaluateInvestorIndexEligibility(investorRounds);
+    if (!eligibility.indexable) return [];
+
+    const lastRoundAt = investorRounds.reduce<string | null>(
+      (latest, round) => round.date && (!latest || round.date > latest) ? round.date : latest,
+      null
+    );
+    return [{
       ...investor,
-      round_count: entry?.count ?? 0,
-      last_round_at: entry?.lastRoundAt ?? null,
-    };
+      company_count: eligibility.distinctCompanyCount,
+      last_round_at: lastRoundAt,
+    }];
   })
-  .filter((investor) => investor.round_count > 0)
   .sort((a, b) => {
-    if (b.round_count !== a.round_count) return b.round_count - a.round_count;
+    if (b.company_count !== a.company_count) return b.company_count - a.company_count;
     const aDate = a.last_round_at ?? "";
     const bDate = b.last_round_at ?? "";
     if (bDate !== aDate) return bDate.localeCompare(aDate);
     return a.name.localeCompare(b.name);
   });
 
-const description = "Browse startup investors with VentureDex-tracked funding activity, portfolio company links, and source-backed market context.";
+const description = "Browse startup investors with source-linked funding activity, portfolio company links, and verified market context.";
 const schema = buildJsonLdGraph([
   siteOrganization(Astro.site?.toString()),
   siteWebSite(Astro.site?.toString()),
@@ -98,7 +95,7 @@ const schema = buildJsonLdGraph([
               </div>
               {investor.description && <p class="description">{investor.description}</p>}
               <p class="meta">
-                {investor.round_count} tracked round{investor.round_count !== 1 ? "s" : ""}
+                {investor.company_count} tracked portfolio compan{investor.company_count === 1 ? "y" : "ies"}
                 {investor.last_round_at && ` · Latest ${new Date(`${investor.last_round_at}T00:00:00`).toLocaleDateString("en-US", {
                   month: "short",
                   day: "numeric",

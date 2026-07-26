@@ -14,6 +14,7 @@ export interface NewsletterSubscription {
   email: string;
   status: "pending" | "confirmed" | "unsubscribed";
   preferences_json: string | null;
+  source: string | null;
   unsubscribe_token: string | null;
   created_at: string | null;
   confirmed_at: string | null;
@@ -1475,6 +1476,7 @@ async function sendQueuedNewsletterDelivery(
       email: context.email,
       status: context.subscription_status,
       preferences_json: context.preferences_json,
+      source: null,
       unsubscribe_token: context.unsubscribe_token,
       created_at: null,
       confirmed_at: null,

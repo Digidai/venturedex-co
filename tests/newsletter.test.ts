@@ -226,6 +226,7 @@ test("builds Cloudflare Email Service message with per-recipient unsubscribe hea
       email: "reader@example.com",
       status: "confirmed",
       preferences_json: JSON.stringify({ daily: true, weekly: true }),
+      source: "website",
       unsubscribe_token: "token-123",
       created_at: null,
       confirmed_at: null,

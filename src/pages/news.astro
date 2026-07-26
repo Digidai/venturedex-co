@@ -9,11 +9,14 @@ import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
   resolveInvestorByName,
+  resolveInvestorSlugByName,
 } from "../lib/brand-assets";
 import { getContentNewsEligibleFundingRounds } from "../lib/content";
+import { getIndexableInvestorSlugs } from "../lib/investor-indexing";
 import { newsJsonLd } from "../lib/seo";
 
 const rounds = getContentNewsEligibleFundingRounds();
+const indexableInvestorSlugs = getIndexableInvestorSlugs(rounds, resolveInvestorSlugByName);
 
 const description = "Track source-linked startup funding rounds with VentureDex company profiles, investor context, press citations, and daily discovery signals.";
 const schema = newsJsonLd(rounds, Astro.site?.toString());
@@ -84,7 +87,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString());
                     <td class="cell-investor">
                       <div class="investor-info">
                         <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={20} />
-                        {investor ? (
+                        {investor && indexableInvestorSlugs.has(investor.slug) ? (
                           <a href={`/investors/${investor.slug}`} class="investor-link">
                             {r.lead_investor}
                           </a>

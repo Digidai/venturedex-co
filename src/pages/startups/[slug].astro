@@ -8,13 +8,16 @@ import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
   resolveInvestorByName,
+  resolveInvestorSlugByName,
 } from "../../lib/brand-assets";
 import {
   getContentFundingRoundsForStartup,
+  getContentNewsEligibleFundingRounds,
   getContentRelatedStartups,
   getContentStartupBySlug,
   getContentStartups,
 } from "../../lib/content";
+import { getIndexableInvestorSlugs } from "../../lib/investor-indexing";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import { getTopicPagesForStartup } from "../../lib/topic-pages";
@@ -64,12 +67,17 @@ const subscribeUrl = `/subscribe?source=${encodeURIComponent(`startup:${startup.
 const tags = startup.tags
   ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
+const indexableInvestorSlugs = getIndexableInvestorSlugs(
+  getContentNewsEligibleFundingRounds(),
+  resolveInvestorSlugByName
+);
 
 const investorEntries = investors.map((name) => {
   const investor = resolveInvestorByName(name);
   return {
     name,
     slug: investor?.slug ?? null,
+    linkable: investor ? indexableInvestorSlugs.has(investor.slug) : false,
     logo: investor ? getInvestorBrandAsset(investor.slug) : null,
   };
 });
@@ -397,7 +405,7 @@ function sourceLabel(source?: StartupResearchSource) {
         <h2>Investors</h2>
         <div class="pill-list">
           {investorEntries.map((investor) => (
-            investor.slug ? (
+            investor.slug && investor.linkable ? (
               <a href={`/investors/${investor.slug}`} class="pill pill-link">
                 <BrandLogo asset={investor.logo} name={investor.name} size={18} />
                 <span>{investor.name}</span>
@@ -450,7 +458,7 @@ function sourceLabel(source?: StartupResearchSource) {
         <h2>Track startups like {startup.product_name}</h2>
         <p>Get new VentureDex profiles and weekly research when the next batch is published.</p>
       </div>
-      <a href={subscribeUrl}>Subscribe</a>
+      <a href={subscribeUrl} rel="nofollow">Subscribe</a>
     </section>
 
     {tags.length > 0 && (
@@ -458,7 +466,7 @@ function sourceLabel(source?: StartupResearchSource) {
         <h2>Tags</h2>
         <div class="tag-list">
           {tags.map((tag) => (
-            <a href={`/search?q=${encodeURIComponent(tag)}`} class="tag-badge">{tag}</a>
+            <a href={`/search?q=${encodeURIComponent(tag)}`} class="tag-badge" rel="nofollow">{tag}</a>
           ))}
         </div>
       </section>

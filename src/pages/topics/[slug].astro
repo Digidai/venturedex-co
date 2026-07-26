@@ -89,7 +89,7 @@ function formatDate(value: string | null | undefined) {
           <h2>Common tags</h2>
           <div class="term-list">
             {topic.topTags.map((tag) => (
-              <a href={`/search?q=${encodeURIComponent(tag.term)}`}>{tag.term}<small>{tag.count}</small></a>
+              <a href={`/search?q=${encodeURIComponent(tag.term)}`} rel="nofollow">{tag.term}<small>{tag.count}</small></a>
             ))}
           </div>
         </div>
@@ -110,7 +110,7 @@ function formatDate(value: string | null | undefined) {
       <section class="latest-section" aria-label="Latest profiles">
         <div class="section-heading">
           <h2>Latest profiles</h2>
-          <a href={subscribeUrl}>Get weekly research</a>
+          <a href={subscribeUrl} rel="nofollow">Get weekly research</a>
         </div>
         <div class="signal-grid">
           {topic.latestStartups.map((startup) => (

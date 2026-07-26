@@ -9,6 +9,10 @@ import {
   getContentNewsEligibleFundingRounds,
   getContentStartups,
 } from "../lib/content";
+import {
+  evaluateInvestorIndexEligibility,
+  groupFundingRoundsByInvestorSlug,
+} from "../lib/investor-indexing";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLastmod, sitemapLastmodDate } from "../lib/seo";
 import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
@@ -114,26 +118,18 @@ export const GET: APIRoute = () => {
     })
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
-  // Aggregate the most-recent round date per investor slug via the canonical
-  // resolver, mirroring the investors index. Only investors with ≥1 tracked
-  // round get a sitemap URL (those pages are noindex when empty).
-  const investorLastmod = new Map<string, string | null>();
-  for (const round of rounds) {
-    const slug = resolveInvestorSlugByName(round.lead_investor);
-    if (!slug) continue;
-    const current = investorLastmod.get(slug) ?? null;
-    if (round.date && (!current || round.date > current)) {
-      investorLastmod.set(slug, round.date);
-    } else if (!investorLastmod.has(slug)) {
-      investorLastmod.set(slug, current);
-    }
-  }
+  // Mirror the investor hub and detail robots policy: sitemap only profiles
+  // with at least one complete, source-linked portfolio company.
+  const roundsByInvestor = groupFundingRoundsByInvestorSlug(rounds, resolveInvestorSlugByName);
   const investors: InvestorSitemapRow[] = allInvestors
-    .filter((investor) => investorLastmod.has(investor.slug))
-    .map((investor) => ({
-      slug: investor.slug,
-      lastmod: investorLastmod.get(investor.slug) ?? null,
-    }))
+    .flatMap((investor) => {
+      const investorRounds = roundsByInvestor.get(investor.slug) ?? [];
+      if (!evaluateInvestorIndexEligibility(investorRounds).indexable) return [];
+      return [{
+        slug: investor.slug,
+        lastmod: latestSitemapLastmod(investorRounds.map((round) => round.date)),
+      }];
+    })
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   urls = urls.concat(

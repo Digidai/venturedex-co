@@ -103,7 +103,7 @@ function formatDate(date: string | null | undefined) {
             <h2>Common patterns</h2>
             <div class="term-list">
               {topTags.map((tag) => (
-                <a href={`/search?q=${encodeURIComponent(tag.term)}`}>
+                <a href={`/search?q=${encodeURIComponent(tag.term)}`} rel="nofollow">
                   <span>{tag.term}</span>
                   <small>{tag.count}</small>
                 </a>
@@ -131,7 +131,7 @@ function formatDate(date: string | null | undefined) {
       <section class="latest-section" aria-label="Latest signals">
         <div class="section-heading">
           <h2>Latest signals</h2>
-          <a href={subscribeUrl}>Get weekly research</a>
+          <a href={subscribeUrl} rel="nofollow">Get weekly research</a>
         </div>
         <div class="signal-grid">
           {latestStartups.map((startup) => (
