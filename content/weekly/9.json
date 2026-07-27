@@ -1,0 +1,464 @@
+{
+  "issue_number": 9,
+  "title": "The Context Layer Becomes the Product",
+  "week_start": "2026-07-20",
+  "week_end": "2026-07-26",
+  "published_at": "2026-07-27",
+  "status": "published",
+  "editorial_intro": "This week is about products that make AI useful by giving it a real operating context. The strongest picks expose the layer where work can be interpreted and controlled: inbox APIs, design files, finance semantics, project signals, property workflows, compute fleets, and telemetry streams.",
+  "research_summary": "This issue uses published VentureDex startup records, their structured research blocks, and the official product and funding sources linked inside those records. On 2026-07-27, bb-browser re-opened the AegisAI product page, Paper MCP documentation, Cashboard homepage, Cascade homepage, Uniti homepage, SkyPilot homepage, and MyDecisive SmartHub platform page; no users, revenue, retention, market-share, reliability, benchmark, customer-migration, or product-effect claims are added beyond cited source boundaries.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Context before autonomy",
+      "summary": "Each pick is less credible as a generic agent and more credible as a domain context layer: mailbox APIs, MCP design files, finance mappings, AEC project signals, property-system workflows, compute schedulers, or telemetry rules."
+    },
+    {
+      "title": "Control surfaces need evidence boundaries",
+      "summary": "The weekly judgment stays inside observable product surfaces. Where official pages publish outcome figures or customer quotes, this issue treats them as company-published evidence, not independent proof of performance."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "aegisai",
+      "why_this_week": "AegisAI belongs this week because email security is moving from gateway rules toward inbox-level context and response. Its July 23 Series A sits inside the target week, and the product page verifies API deployment through Google Workspace and Microsoft 365, monitoring mode, triage, analyst summaries, IOCs, dashboards, and reporting.",
+      "product_evaluation": "The official product surface supports a mailbox-native security workflow rather than a simple phishing classifier. VentureDex reads the product as an attempt to put analyst-style reasoning inside each employee inbox without MX rerouting, while treating its false-positive and attack-detection figures as company-published claims rather than independent validation.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/aegisai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "AegisAI official site",
+          "source": "content/startups/aegisai.json research.sources.official_site",
+          "url": "https://www.aegisai.ai/"
+        },
+        {
+          "label": "AegisAI product page",
+          "source": "content/startups/aegisai.json research.sources.official_product",
+          "url": "https://www.aegisai.ai/product"
+        },
+        {
+          "label": "AegisAI customer stories",
+          "source": "content/startups/aegisai.json research.sources.official_customers",
+          "url": "https://www.aegisai.ai/customers"
+        },
+        {
+          "label": "AegisAI official careers page",
+          "source": "content/startups/aegisai.json research.sources.official_careers",
+          "url": "https://www.aegisai.ai/careers"
+        },
+        {
+          "label": "AegisAI Series A announcement",
+          "source": "content/startups/aegisai.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/aegisai-raises-36-million-series-a-led-by-battery-ventures-to-fight-the-new-wave-of-ai-spear-phishing-302833624.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official product page says AegisAI connects through Google Workspace and Microsoft 365 APIs, needs no MX-record change, and can begin in monitoring mode.",
+          "url": "https://www.aegisai.ai/product"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product page exposes automated triage, agent summaries, indicators of compromise, recommended actions, dashboards, and executive reporting rather than only a phishing classifier.",
+          "url": "https://www.aegisai.ai/product"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official site publishes named customer evidence from Mesh, Lokker, LangChain, and other security teams describing deployed threat detection and dashboard workflows.",
+          "url": "https://www.aegisai.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "AegisAI homepage",
+          "url": "https://www.aegisai.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PRNewswire",
+          "url": "https://www.prnewswire.com/news-releases/aegisai-raises-36-million-series-a-led-by-battery-ventures-to-fight-the-new-wave-of-ai-spear-phishing-302833624.html"
+        }
+      ],
+      "risks": [
+        "The main evidence gap is independent performance proof: the public product pages and testimonials do not establish whether AegisAI's reported detection and false-positive gains reproduce across a wider enterprise base.",
+        "The funding evidence also needs precision: the homepage labels the Series A as $49M, while the company-supplied announcement says the round was $36M and total funding reached $49M."
+      ],
+      "verdict": "AegisAI is the inbox-security pick because its product evidence shows a real API-deployed response workflow; the unresolved proof is independent detection quality."
+    },
+    {
+      "slug": "paper",
+      "why_this_week": "Paper belongs this week because coding agents need design context they can actually inspect and modify. Its July 22 Series A falls inside the target week, and the MCP documentation verifies that Paper Desktop can expose design files to Cursor, Claude Code, Codex, Copilot, and OpenCode through a local read-write MCP server.",
+      "product_evaluation": "The official evidence supports a concrete design-to-agent workflow: Paper is based on web technology, the MCP server can read and write design files, and the homepage presents Web, Desktop, MCP, Snapshot, and Shaders surfaces. VentureDex reads this as stronger than image-first handoff, while leaving team-scale permissions, concurrency, and auditability unproven.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/paper.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Paper official site",
+          "source": "content/startups/paper.json research.sources.official_site",
+          "url": "https://paper.design/"
+        },
+        {
+          "label": "Paper MCP documentation",
+          "source": "content/startups/paper.json research.sources.official_mcp",
+          "url": "https://paper.design/docs/mcp"
+        },
+        {
+          "label": "Paper Desktop downloads",
+          "source": "content/startups/paper.json research.sources.official_downloads",
+          "url": "https://paper.design/downloads"
+        },
+        {
+          "label": "Paper Series A announcement",
+          "source": "content/startups/paper.json research.sources.funding_1",
+          "url": "https://paper.design/blog/series-a"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site presents a live design canvas built on HTML and CSS, with workflows for syncing tokens, styles, components, content, and production code.",
+          "url": "https://paper.design/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Paper's MCP documentation shows that agents can read and write design files through Paper Desktop and gives concrete connection instructions for Cursor, Claude Code, Codex, Copilot, and OpenCode.",
+          "url": "https://paper.design/docs/mcp"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The homepage exposes separate Web, Desktop, MCP, Snapshot, and Shaders product surfaces rather than a single design-demo landing page.",
+          "url": "https://paper.design/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Paper homepage",
+          "url": "https://paper.design/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Paper",
+          "url": "https://paper.design/blog/series-a"
+        }
+      ],
+      "risks": [
+        "The main product risk is whether a desktop-local MCP bridge can support permissions, concurrency, auditability, and design-system governance once multiple teams and agents touch the same source of truth.",
+        "The funding source names Accel and ICONIQ but does not designate a formal lead; VentureDex records Accel as the representative lead because it is the first investor named."
+      ],
+      "verdict": "Paper is the design-context pick because it gives agents a read-write path into the canvas; governance at team scale remains the open question."
+    },
+    {
+      "slug": "cashboard",
+      "why_this_week": "Cashboard belongs this week because finance AI fails when every tool sees a different metric definition. Its July 22 Seed round falls inside the target week, and the official site verifies a finance-governed semantic layer that exposes data, mappings, metrics, reports, and permissions through a single MCP.",
+      "product_evaluation": "The product evidence is specific: Cashboard claims 900+ integrations, approval-controlled mappings, standardized metrics and reports, row- and column-level permissions, and use from Claude, ChatGPT, Slack, Gmail, Excel, and MCP-compatible tools. VentureDex reads it as infrastructure for AI-assisted FP&A, not proof that finance answers become cheaper or more accurate in every deployment.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cashboard.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Cashboard official site",
+          "source": "content/startups/cashboard.json research.sources.official_site",
+          "url": "https://cashboard.co/"
+        },
+        {
+          "label": "Cashboard seed announcement",
+          "source": "content/startups/cashboard.json research.sources.funding_1",
+          "url": "https://cashboard.co/news/seed-round-fintop"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Cashboard presents a financial semantic layer that keeps live source data, mapping logic, metric definitions, report definitions, and access permissions in one governed system exposed through MCP.",
+          "url": "https://cashboard.co/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site says Cashboard connects more than 900 ERP, CRM, HRIS, warehouse, and spreadsheet sources and uses an approval workflow to keep new data labels from silently changing mappings.",
+          "url": "https://cashboard.co/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Cashboard shows outputs moving into Claude, ChatGPT, Slack, Gmail, and Excel while row- and system-level permissions travel with the underlying data.",
+          "url": "https://cashboard.co/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Cashboard homepage",
+          "url": "https://cashboard.co/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Cashboard",
+          "url": "https://cashboard.co/news/seed-round-fintop"
+        }
+      ],
+      "risks": [
+        "The main risk is maintenance burden: more than 900 integrations and company-specific semantic models may require substantial onboarding and ongoing services work.",
+        "The permission model is also an evidence boundary; the public site states row- and column-level controls, but does not prove enforcement quality across every downstream AI tool."
+      ],
+      "verdict": "Cashboard is the finance-context pick because it makes the governed semantic layer the product, while implementation cost remains the hard proof."
+    },
+    {
+      "slug": "cascade",
+      "why_this_week": "Cascade belongs this week because AEC business development is a context problem before it is an automation problem. Its July 22 Seed coverage falls inside the target week, and the homepage verifies project scanning, firm-fit grading, pre-RFP prediction from signals such as funding, bond filings, and city minutes, plus relationship mapping.",
+      "product_evaluation": "The official page supports a concrete workflow: Cascade scans 41,206 active U.S. projects, grades opportunities for firm fit, predicts projects before RFPs, maps contacts, and can show a first match after setup. VentureDex treats customer quotes and opportunity values as company-published context, not independent proof of bid-win attribution or data freshness.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cascade.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Cascade official site",
+          "source": "content/startups/cascade.json research.sources.official_site",
+          "url": "https://usecascade.ai/"
+        },
+        {
+          "label": "Cascade industry guides",
+          "source": "content/startups/cascade.json research.sources.official_blog",
+          "url": "https://usecascade.ai/blog"
+        },
+        {
+          "label": "Cascade official careers page",
+          "source": "content/startups/cascade.json research.sources.official_careers",
+          "url": "https://usecascade.ai/careers"
+        },
+        {
+          "label": "Cascade seed coverage",
+          "source": "content/startups/cascade.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/07/22/cascade-raises-3-5m-to-help-construction-firms-find-and-win-projects/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Cascade scans 41,206 active U.S. projects, grades each opportunity for firm fit, and can show a first match within five minutes without an integration.",
+          "url": "https://usecascade.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Cascade says it predicts projects months before an RFP by connecting new funding, bond filings, city minutes, and prior award signals, then maps which contacts are likely to have work coming.",
+          "url": "https://usecascade.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "TechCrunch describes the workflow as onboarding a firm's profile, ranking projects it can win, and predicting upcoming work across state, local, private, and federal sources.",
+          "url": "https://techcrunch.com/2026/07/22/cascade-raises-3-5m-to-help-construction-firms-find-and-win-projects/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Cascade homepage",
+          "url": "https://usecascade.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/22/cascade-raises-3-5m-to-help-construction-firms-find-and-win-projects/"
+        }
+      ],
+      "risks": [
+        "The main product risk is signal freshness: Cascade must keep private and public project data current enough to produce useful bid opportunities rather than another review queue.",
+        "The funding source does not name a formal lead; Andreessen Horowitz is recorded as the representative lead because Andreessen Horowitz Speedrun is the first investor named."
+      ],
+      "verdict": "Cascade is the AEC-context pick because it turns pre-RFP signals and relationships into a pursuit workflow; measurable win attribution is still unproven."
+    },
+    {
+      "slug": "uniti",
+      "why_this_week": "Uniti belongs this week because real-estate operators need agents that understand workflow rules, channels, and system write-backs. Its July 21 Series A falls inside the target week, and the homepage verifies eight agent categories across leasing, support, maintenance, collections, reviews, renewals, data analysis, and payments.",
+      "product_evaluation": "The official product surface verifies voice, email, SMS, WhatsApp, and web-chat channels, no-code configuration, escalation paths, PMS and CRM read-write integrations, and more than 15 property-management integrations. VentureDex reads Uniti as an operating layer above existing systems of record, while treating customer outcome figures as company-published evidence rather than independent product-effect proof.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/uniti.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Uniti official site",
+          "source": "content/startups/uniti.json research.sources.official_site",
+          "url": "https://getuniti.com/"
+        },
+        {
+          "label": "Uniti official careers page",
+          "source": "content/startups/uniti.json research.sources.official_careers",
+          "url": "https://jobs.ashbyhq.com/uniti"
+        },
+        {
+          "label": "Uniti Series A announcement",
+          "source": "content/startups/uniti.json research.sources.funding_1",
+          "url": "https://getuniti.com/company/blog/dear-operators-growth-shouldnt-break-what-you-built"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site exposes eight agent categories spanning sales and leasing, support, maintenance, collections, reviews, renewals, data analysis, and payments.",
+          "url": "https://getuniti.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Uniti says its agents work across voice, email, SMS, WhatsApp, and web chat, read from and write to existing PMS and CRM systems, and let operators configure workflows, tone, rules, and escalation paths.",
+          "url": "https://getuniti.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The homepage lists integrations with more than 15 property-management and CRM platforms and reports that StorQuest uses Uniti to resolve 70% of inbound calls.",
+          "url": "https://getuniti.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Uniti homepage",
+          "url": "https://getuniti.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Uniti",
+          "url": "https://getuniti.com/company/blog/dear-operators-growth-shouldnt-break-what-you-built"
+        }
+      ],
+      "risks": [
+        "The main risk is edge-case handling: emergency maintenance, collections, payments, and tenant-sensitive requests may need different escalation and compliance boundaries across property types.",
+        "Integration reliability is also unproven in public evidence; the site verifies PMS and CRM positioning, not behavior across every operator stack."
+      ],
+      "verdict": "Uniti is the property-operations pick because it narrows AI agents to real-estate workflows and channels; escalation quality is the hard boundary."
+    },
+    {
+      "slug": "skypilot",
+      "why_this_week": "SkyPilot belongs this week because fragmented AI compute is becoming a control-plane problem. Its July 21 Seed coverage falls inside the target week, and the official site verifies support across Kubernetes, Slurm, VMs, on-prem infrastructure, and 20+ clouds under one interface.",
+      "product_evaluation": "The official page and linked open-source surfaces support a real infrastructure product: scheduling, quota, GPU monitoring, health checks, multi-cluster support, BYOC/BYOK language, and an open-source project surface. VentureDex reads SkyPilot as a neutral orchestration layer rather than another neocloud, without adding cost-savings, reliability, or workload-performance claims.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/skypilot.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "SkyPilot official site",
+          "source": "content/startups/skypilot.json research.sources.official_site",
+          "url": "https://skypilot.ai/"
+        },
+        {
+          "label": "SkyPilot open-source docs",
+          "source": "content/startups/skypilot.json research.sources.official_docs",
+          "url": "https://docs.skypilot.ai/"
+        },
+        {
+          "label": "SkyPilot official careers section",
+          "source": "content/startups/skypilot.json research.sources.official_careers",
+          "url": "https://skypilot.ai/about#careers"
+        },
+        {
+          "label": "SkyPilot GitHub repository",
+          "source": "content/startups/skypilot.json research.sources.github_repo",
+          "url": "https://github.com/skypilot-org/skypilot"
+        },
+        {
+          "label": "SkyPilot seed coverage",
+          "source": "content/startups/skypilot.json research.sources.funding_1",
+          "url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says SkyPilot manages AI compute across Kubernetes, Slurm, VMs, on-prem clusters, and 20+ clouds under one interface.",
+          "url": "https://skypilot.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official docs expose concrete workflows for launching, managing, and scaling AI workloads across many cloud and cluster backends.",
+          "url": "https://docs.skypilot.ai/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The GitHub repository describes SkyPilot as an AI compute platform for frontier teams and exposes the open-source project surface.",
+          "url": "https://github.com/skypilot-org/skypilot"
+        },
+        {
+          "label": "Official product site",
+          "source": "SkyPilot homepage",
+          "url": "https://skypilot.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "SiliconANGLE",
+          "url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/"
+        }
+      ],
+      "risks": [
+        "The main risk is trust: production AI teams must accept a neutral orchestration layer for quotas, failover, monitoring, and placement across critical compute pools.",
+        "The public evidence verifies breadth of surfaces and customer quotes, but not failure behavior, security posture, or operational cost across every supported backend."
+      ],
+      "verdict": "SkyPilot is the compute-context pick because it abstracts where AI work runs; production reliability remains outside the public proof."
+    },
+    {
+      "slug": "mydecisive",
+      "why_this_week": "MyDecisive belongs this week because telemetry only becomes operational when it can trigger governed action. Its July 21 Seed sources place it in the target window, and the SmartHub platform page verifies OpenTelemetry, Kubernetes, Prometheus, P95 latency, PII redaction, trace sampling, and infrastructure-action examples.",
+      "product_evaluation": "The official platform page supports the product boundary: SmartHub runs inside an existing telemetry stack, reads signals on the wire, and expresses actions as rule-like runbooks over latency, privacy, sampling, CI/CD, and alert state. VentureDex reads this as an AI DevOps action layer, while avoiding any claim that it independently proves lower MTTR, lower spend, or safe autonomous operations.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/mydecisive.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "MyDecisive official site",
+          "source": "content/startups/mydecisive.json research.sources.official_site",
+          "url": "https://www.mydecisive.ai/"
+        },
+        {
+          "label": "MyDecisive SmartHub platform page",
+          "source": "content/startups/mydecisive.json research.sources.official_platform",
+          "url": "https://www.mydecisive.ai/platform"
+        },
+        {
+          "label": "MyDecisive docs",
+          "source": "content/startups/mydecisive.json research.sources.official_docs",
+          "url": "https://docs.mydecisive.ai/"
+        },
+        {
+          "label": "MyDecisive official careers page",
+          "source": "content/startups/mydecisive.json research.sources.official_careers",
+          "url": "https://www.mydecisive.ai/careers"
+        },
+        {
+          "label": "MyDecisive GitHub organization",
+          "source": "content/startups/mydecisive.json research.sources.github_org",
+          "url": "https://github.com/MyDecisive"
+        },
+        {
+          "label": "MyDecisive seed funding page",
+          "source": "content/startups/mydecisive.json research.sources.funding_1",
+          "url": "https://seedtable.com/companies/mydecisive/funding-rounds/seed-2026-07"
+        },
+        {
+          "label": "MyDecisive launch announcement",
+          "source": "content/startups/mydecisive.json research.sources.funding_announcement",
+          "url": "https://www.prnewswire.com/news-releases/mydecisive-exits-stealth-with-12m-funding-to-redefine-enterprise-it-operations-with-open-source-smarthub-platform-302830260.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site positions MyDecisive as an AI DevOps control plane for production systems, observability, FinOps, and automated operations.",
+          "url": "https://www.mydecisive.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official platform page shows SmartHub working with Kubernetes, OpenTelemetry, Prometheus, PII redaction, trace sampling, and auto-scaling examples.",
+          "url": "https://www.mydecisive.ai/platform"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The launch announcement says SmartHub is open source and Octant is the commercial suite for governance, security, anomaly detection, and runbook automation.",
+          "url": "https://www.prnewswire.com/news-releases/mydecisive-exits-stealth-with-12m-funding-to-redefine-enterprise-it-operations-with-open-source-smarthub-platform-302830260.html"
+        },
+        {
+          "label": "Official product site",
+          "source": "MyDecisive homepage",
+          "url": "https://www.mydecisive.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Seedtable",
+          "url": "https://seedtable.com/companies/mydecisive/funding-rounds/seed-2026-07"
+        }
+      ],
+      "risks": [
+        "The main risk is blast radius: enterprises may limit any layer that edits telemetry routing, scaling, or incident response from live production signals.",
+        "The public evidence shows example runbooks and platform positioning, but not permission design, rollback behavior, or production adoption across regulated environments."
+      ],
+      "verdict": "MyDecisive is the telemetry-context pick because it turns observability streams into action rules; control safety is the unresolved test."
+    }
+  ]
+}
