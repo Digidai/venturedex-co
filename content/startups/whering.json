@@ -1,0 +1,89 @@
+{
+  "slug": "whering",
+  "domain": "whering.co.uk",
+  "url": "https://whering.co.uk/",
+  "product_name": "Whering",
+  "summary": "Digital wardrobe and social styling app for cataloging clothes, planning outfits, and tracking wear.",
+  "editor_note": "The interesting move is turning a closet into a personal data set before asking the user to shop again. Whering removes photo backgrounds, searches a 100M-item catalog, suggests daily outfits, plans packing, and tracks cost per wear. Unlike shopping-led fashion apps, its core loop begins with what someone already owns and adds a social wardrobe graph. The risk is whether cataloging friction and recommendation quality can sustain repeat use beyond novelty.",
+  "editor_rating": 4,
+  "why_featured": "$7M Seed for a wardrobe graph",
+  "product_type": "E-commerce",
+  "founded_year": 2021,
+  "hq_location": "London",
+  "region": "Europe",
+  "tags": "digital wardrobe,consumer app,personal styling,circular fashion,social commerce",
+  "investors": "eBay Ventures, Google AI Futures Fund",
+  "links": {
+    "careers": "https://whering.co.uk/careers",
+    "linkedin": "https://www.linkedin.com/company/wearewhering/",
+    "product": "https://apps.apple.com/us/app/whering-your-digital-closet/id1519461680"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Seed",
+      "lead_investor": "eBay Ventures and Google AI Futures Fund",
+      "date": "2026-07-07",
+      "source_url": "https://www.theindustry.fashion/whering-secures-7m-to-expand-ai-powered-wardrobe-app/",
+      "source_name": "TheIndustry.fashion"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-27",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Whering official site",
+        "url": "https://whering.co.uk/",
+        "type": "official"
+      },
+      {
+        "id": "app_store",
+        "label": "Whering App Store listing",
+        "url": "https://apps.apple.com/us/app/whering-your-digital-closet/id1519461680",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Whering Seed announcement coverage",
+        "url": "https://www.theindustry.fashion/whering-secures-7m-to-expand-ai-powered-wardrobe-app/",
+        "type": "funding"
+      },
+      {
+        "id": "official_careers",
+        "label": "Whering official careers page",
+        "url": "https://whering.co.uk/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site lets users add garments from photos, retailer pages, or a database of more than 100 million items, then search and filter the resulting digital wardrobe.",
+        "source_ids": [
+          "official_site",
+          "app_store"
+        ]
+      },
+      {
+        "claim": "Whering provides daily outfit suggestions, friend wardrobe styling, event and packing planning, plus wear-rate, closet-longevity, and cost-per-wear analytics.",
+        "source_ids": [
+          "official_site",
+          "app_store"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumers who want to organize clothes, plan outfits, and reduce unnecessary fashion purchases.",
+      "category": "Digital wardrobe and social styling",
+      "differentiation": "Whering starts with a structured graph of what users already own, then layers styling, planning, analytics, and friend wardrobes on top of it.",
+      "why_now": "Better image processing and consumer interest in resale and circular fashion make a persistent digital wardrobe more useful than a static closet inventory."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether outfit value and social discovery remain high enough to offset the initial work of cataloging a real wardrobe.",
+        "basis": "VentureDex assessment from the official upload, organization, styling, and social workflow."
+      }
+    ]
+  }
+}

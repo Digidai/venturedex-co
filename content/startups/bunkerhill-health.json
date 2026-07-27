@@ -1,0 +1,95 @@
+{
+  "slug": "bunkerhill-health",
+  "domain": "www.bunkerhillhealth.com",
+  "url": "https://www.bunkerhillhealth.com/",
+  "product_name": "Bunkerhill Health",
+  "summary": "Agentic platform for health systems to build and run clinical and operational AI workflows.",
+  "editor_note": "The sharper bet is not another hospital copilot but a system of action that turns each health system's own operating ideas into governed agents. Carebricks already runs at more than 100 hospitals, and UTMB reports over 20 live agents spanning triage, follow-up, and administration. Unlike point solutions, one platform can carry a referral from review to routing. The test is whether that breadth remains governable across local clinical rules.",
+  "editor_rating": 5,
+  "why_featured": "Series B for health-system AI agents",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "healthcare ai,agentic workflows,clinical operations,care coordination,health systems",
+  "investors": "Khosla Ventures",
+  "links": {
+    "careers": "https://jobs.ashbyhq.com/bunkerhillhealth",
+    "linkedin": "https://www.linkedin.com/company/bunkerhill-health",
+    "resources": "https://www.bunkerhillhealth.com/case-studies",
+    "twitter": "https://x.com/joinBunkerhill"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "stage": "Series B",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-07-16",
+      "source_url": "https://www.bunkerhillhealth.com/resources/series-b-announcement",
+      "source_name": "Bunkerhill Health"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-27",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Bunkerhill Health official site",
+        "url": "https://www.bunkerhillhealth.com/",
+        "type": "official"
+      },
+      {
+        "id": "case_studies",
+        "label": "Bunkerhill Health case studies",
+        "url": "https://www.bunkerhillhealth.com/case-studies",
+        "type": "product"
+      },
+      {
+        "id": "utmb_ipn",
+        "label": "UTMB lung nodule triage case study",
+        "url": "https://www.bunkerhillhealth.com/case-studies/utmb-ipn",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Bunkerhill Health Series B announcement",
+        "url": "https://www.bunkerhillhealth.com/resources/series-b-announcement",
+        "type": "funding"
+      },
+      {
+        "id": "official_careers",
+        "label": "Bunkerhill Health official careers page",
+        "url": "https://jobs.ashbyhq.com/bunkerhillhealth",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official announcement says Carebricks lets health systems build agents that review cardiology imaging, identify patients needing follow-up, navigate prior authorization, and automate registry management.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "Bunkerhill reports more than 20 agents live at UTMB; its lung-nodule workflow identifies incidental findings, triages urgency, and routes each patient to the appropriate follow-up.",
+        "source_ids": [
+          "case_studies",
+          "utmb_ipn",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Health-system clinical, operational, and administrative teams deploying AI across institution-specific workflows.",
+      "category": "Healthcare agent orchestration",
+      "differentiation": "Carebricks provides one governed execution layer for health systems to turn their own ideas into production agents instead of buying a separate point solution for each workflow.",
+      "why_now": "Provider labor shortages and fragmented clinical operations are colliding with models capable of reasoning over records and completing multi-step administrative work."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether one platform can maintain safety, monitoring, and workflow fidelity as deployments span many hospitals and locally defined clinical rules.",
+        "basis": "VentureDex assessment from Bunkerhill's multi-domain product claims and named health-system deployments."
+      }
+    ]
+  }
+}

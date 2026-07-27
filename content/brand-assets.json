@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-26",
+  "verified_at": "2026-07-27",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1681,6 +1681,28 @@
       "local_path": "/logos/companies/fleek.png",
       "source_page": "https://www.joinfleek.com/home",
       "source_url": "https://www.joinfleek.com/_next/static/media/Logo.6ba37d95.webp"
+    },
+    "bunkerhill-health": {
+      "name": "Bunkerhill Health",
+      "shape": "icon",
+      "local_path": "/logos/companies/bunkerhill-health.png",
+      "source_page": "https://www.bunkerhillhealth.com/",
+      "source_url": "https://www.bunkerhillhealth.com/icon.png"
+    },
+    "mage": {
+      "name": "Mage",
+      "shape": "icon",
+      "local_path": "/logos/companies/mage.ico",
+      "source_page": "https://www.mage.ai/",
+      "source_url": "https://www.mage.ai/assets/system/favicons/favicon.ico",
+      "tile_background": "dark"
+    },
+    "whering": {
+      "name": "Whering",
+      "shape": "icon",
+      "local_path": "/logos/companies/whering.png",
+      "source_page": "https://whering.co.uk/",
+      "source_url": "https://whering.co.uk/favicon.ico"
     }
   },
   "investors": {
@@ -2770,7 +2792,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/missionog.png",
       "source_page": "https://missionog.com/",
-      "source_url": "https://missionog.com/wp-content/uploads/2018/04/cropped-mog_favicon_512-180x180.png"
+      "source_url": "https://missionog.com/wp-content/uploads/2018/04/cropped-mog_favicon_512-180x180.png",
+      "allow_unreachable_source": true,
+      "note": "The official homepage and WordPress favicon both returned HTTP 500 during this run; keep the existing local official icon and downgrade external reachability drift to a warning."
     },
     "firstmark": {
       "name": "FirstMark",
@@ -3053,6 +3077,27 @@
       "source_page": "https://www.burdaprincipalinvestments.com/",
       "source_url": "https://www.burdaprincipalinvestments.com/wp-content/themes/burda/assets/img/logo.svg",
       "tile_background": "dark"
+    },
+    "sinewave-ventures": {
+      "name": "SineWave Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/sinewave-ventures.png",
+      "source_page": "https://sinewave.vc/",
+      "source_url": "https://sinewave.vc/wp-content/uploads/2021/02/SineWave-Ventures.png"
+    },
+    "ebay-ventures": {
+      "name": "eBay Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/ebay-ventures.ico",
+      "source_page": "https://www.ebayinc.com/ebay-ventures/",
+      "source_url": "https://www.ebayinc.com/favicon.ico"
+    },
+    "google-ai-futures-fund": {
+      "name": "Google AI Futures Fund",
+      "shape": "icon",
+      "local_path": "/logos/investors/google-ai-futures-fund.ico",
+      "source_page": "https://blog.google/innovation-and-ai/models-and-research/google-labs/ai-futures-fund/",
+      "source_url": "https://blog.google/favicon.ico"
     }
   }
 }

@@ -1448,5 +1448,29 @@
     "short_name": "BPI",
     "website": "https://www.burdaprincipalinvestments.com/",
     "description": "Growth-equity investment arm of Hubert Burda Media backing digital technology and media companies globally."
+  },
+  "sinewave-ventures": {
+    "name": "SineWave Ventures",
+    "slug": "sinewave-ventures",
+    "short_name": "SineWave",
+    "website": "https://sinewave.vc/",
+    "description": "Technology-focused venture firm investing in enterprise software, data infrastructure, cybersecurity, and public-sector technology."
+  },
+  "ebay-ventures": {
+    "name": "eBay Ventures",
+    "slug": "ebay-ventures",
+    "short_name": "eBay Ventures",
+    "website": "https://www.ebayinc.com/ebay-ventures/",
+    "description": "eBay's venture investment group backing founders building the future of commerce and recommerce.",
+    "aliases": [
+      "eBay Ventures and Google AI Futures Fund"
+    ]
+  },
+  "google-ai-futures-fund": {
+    "name": "Google AI Futures Fund",
+    "slug": "google-ai-futures-fund",
+    "short_name": "AI Futures Fund",
+    "website": "https://blog.google/innovation-and-ai/models-and-research/google-labs/ai-futures-fund/",
+    "description": "Google initiative investing in and collaborating with startups building with models and expertise from Google DeepMind and Google Labs."
   }
 }

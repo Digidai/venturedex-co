@@ -1,0 +1,94 @@
+{
+  "slug": "mage",
+  "domain": "www.mage.ai",
+  "url": "https://www.mage.ai/",
+  "product_name": "Mage",
+  "summary": "Data and AI execution platform that builds, runs, repairs, and governs production workflows.",
+  "editor_note": "AI workflow builders usually stop at generated code; Mage is betting on the operating layer after generation. One request becomes editable code, validation, orchestration, monitoring, replay, and governed delivery, with cloud and self-hosted options. Unlike opaque agent builders, every workflow stays inspectable and versioned, while the open-source base gives teams an exit path. The question is whether generated logic remains correct as schemas and permissions change.",
+  "editor_rating": 5,
+  "why_featured": "$12M Series A for AI execution",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "data workflows,ai agents,orchestration,open source,developer tools",
+  "investors": "SineWave Ventures",
+  "links": {
+    "careers": "https://www.mage.ai/company/careers",
+    "docs": "https://www.mage.ai/docs",
+    "github": "https://github.com/mage-ai/mage-ai",
+    "product": "https://cloud.mage.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Series A",
+      "lead_investor": "SineWave Ventures",
+      "date": "2026-07-15",
+      "source_url": "https://www.mage.ai/updates/mage-raises-series-a",
+      "source_name": "Mage"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-27",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Mage official site",
+        "url": "https://www.mage.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Mage documentation",
+        "url": "https://www.mage.ai/docs",
+        "type": "product"
+      },
+      {
+        "id": "github",
+        "label": "Mage open-source repository",
+        "url": "https://github.com/mage-ai/mage-ai",
+        "type": "repository"
+      },
+      {
+        "id": "funding_1",
+        "label": "Mage Series A announcement",
+        "url": "https://www.mage.ai/updates/mage-raises-series-a",
+        "type": "funding"
+      },
+      {
+        "id": "official_careers",
+        "label": "Mage official careers page",
+        "url": "https://www.mage.ai/company/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site shows a request becoming a production workflow with connected sources, editable code, checks, orchestration, monitoring, automatic recovery, and governed delivery.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "Mage supports managed cloud and self-hosted deployment, while its public repository exposes the open-source data-pipeline foundation teams can inspect and operate themselves.",
+        "source_ids": [
+          "official_site",
+          "github"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data and engineering teams turning natural-language requests into reliable operational workflows and AI-ready context.",
+      "category": "Data and AI workflow orchestration",
+      "differentiation": "Mage combines AI-assisted workflow creation with editable code, validation, recovery, governance, and an open-source deployment path in one execution layer.",
+      "why_now": "Agent adoption is moving the bottleneck from generating code to keeping data and business processes observable, recoverable, and trustworthy in production."
+    },
+    "risks": [
+      {
+        "claim": "The open question is whether generated workflows preserve business meaning and access controls as upstream schemas, APIs, and permissions change.",
+        "basis": "VentureDex assessment from Mage's generation, repair, governance, and reusable-context workflow."
+      }
+    ]
+  }
+}
