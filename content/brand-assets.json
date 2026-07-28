@@ -871,7 +871,9 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/subtle-medical.svg",
       "source_page": "https://subtlemedical.com/",
-      "source_url": "https://subtlemedical.com/wp-content/themes/subtlemedical/img/subtle-medical-logo.svg"
+      "source_url": "https://subtlemedical.com/wp-content/themes/subtlemedical/img/subtle-medical-logo.svg",
+      "allow_unreachable_source": true,
+      "note": "The official homepage and its same-origin logo asset returned HTTP 503 and closed browser connections during this run; retain the existing locally captured official wordmark while company evidence uses the reachable official LinkedIn page."
     },
     "layup-parts": {
       "name": "Layup Parts",
