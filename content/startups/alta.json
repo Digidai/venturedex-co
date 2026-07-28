@@ -1,0 +1,127 @@
+{
+  "slug": "alta",
+  "domain": "www.altahq.com",
+  "url": "https://www.altahq.com/",
+  "product_name": "Alta",
+  "summary": "AI GTM platform coordinating outbound, inbound, and growth agents through a shared Company Brain.",
+  "editor_note": "The sharper bet is that sales agents need one memory before they need more channels. A Company Brain connects CRM data and 50-plus sources, then coordinates Katie, Alex, and Luna across outreach, qualification, calls, and optimization. Unlike a stack of point bots, every interaction is meant to improve the shared system. The risk is whether that context stays accurate as permissions, playbooks, and customer data change.",
+  "editor_rating": 4,
+  "why_featured": "$25M Series A for one GTM brain",
+  "product_type": "SaaS",
+  "founded_year": 2023,
+  "hq_location": "Tel Aviv, Israel",
+  "region": "Europe",
+  "tags": "ai sales,go-to-market,revenue operations,sales automation,ai agents",
+  "investors": "IN Venture",
+  "links": {
+    "product": "https://www.altahq.com/",
+    "docs": "https://support.altahq.com/en",
+    "pricing": "https://www.altahq.com/plans",
+    "careers": "https://careers.altahq.com/",
+    "linkedin": "https://www.linkedin.com/company/altahqdotcom/",
+    "twitter": "https://x.com/alta_revenue",
+    "security": "https://www.altahq.com/trust"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$25M",
+      "stage": "Series A",
+      "lead_investor": "IN Venture",
+      "date": "2026-07-08",
+      "source_url": "https://www.prnewswire.com/news-releases/alta-raises-25m-to-redefine-the-go-to-market-architecture-for-revenue-teams-302820618.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-28",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Alta official platform site",
+        "url": "https://www.altahq.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_about",
+        "label": "Alta official about page",
+        "url": "https://www.altahq.com/about-us",
+        "type": "official"
+      },
+      {
+        "id": "official_katie",
+        "label": "Katie AI Outbound Agent",
+        "url": "https://www.altahq.com/ai-outbound",
+        "type": "product"
+      },
+      {
+        "id": "official_alex",
+        "label": "Alex AI Inbound Agent",
+        "url": "https://www.altahq.com/ai-inbound-agent",
+        "type": "product"
+      },
+      {
+        "id": "official_luna",
+        "label": "Luna AI Growth Agent",
+        "url": "https://www.altahq.com/ai",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Alta Academy and Help Center",
+        "url": "https://support.altahq.com/en",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Alta pricing",
+        "url": "https://www.altahq.com/plans",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Alta careers",
+        "url": "https://careers.altahq.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Alta Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/alta-raises-25m-to-redefine-the-go-to-market-architecture-for-revenue-teams-302820618.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Katie analyzes the customer's CRM plus more than 50 data sources and signals to identify ICPs and prospects, then runs outreach across email, LinkedIn, and text.",
+        "source_ids": [
+          "official_katie"
+        ]
+      },
+      {
+        "claim": "Alex handles inbound qualification across voice, chat, email, SMS, WhatsApp, and LinkedIn, following customer-defined criteria while synchronizing CRM and calendar updates.",
+        "source_ids": [
+          "official_alex"
+        ]
+      },
+      {
+        "claim": "Luna connects CRM, enrichment tools, and more than 50 data sources, detects buying signals and patterns, runs tests, and feeds targeting and messaging improvements to Katie and Alex.",
+        "source_ids": [
+          "official_luna"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Revenue operations, sales-development, demand-generation, and sales leaders managing outbound and inbound pipeline.",
+      "category": "AI go-to-market orchestration",
+      "differentiation": "A shared Company Brain coordinates outbound, inbound, and growth agents across the existing GTM stack instead of operating as a single-channel AI SDR point tool.",
+      "why_now": "AI sales tools are increasing outreach volume without reliably improving pipeline quality; Alta's Series A funds deeper CRM, data, advertising, account-management, and cross-sell integrations."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether shared orchestration across 60-plus integrations improves qualified-meeting conversion without increasing duplicate outreach, stale-data targeting, manual overrides, or attribution errors.",
+        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+      }
+    ]
+  }
+}

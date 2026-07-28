@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-27",
+  "verified_at": "2026-07-28",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1705,6 +1705,20 @@
       "local_path": "/logos/companies/whering.png",
       "source_page": "https://whering.co.uk/",
       "source_url": "https://whering.co.uk/favicon.ico"
+    },
+    "enigma": {
+      "name": "Enigma",
+      "shape": "icon",
+      "local_path": "/logos/companies/enigma.svg",
+      "source_page": "https://www.enigma.inc/",
+      "source_url": "https://www.enigma.inc/favicon/favicon.svg"
+    },
+    "alta": {
+      "name": "Alta",
+      "shape": "icon",
+      "local_path": "/logos/companies/alta.png",
+      "source_page": "https://www.altahq.com/",
+      "source_url": "https://cdn.prod.website-files.com/631883dcd370766be66dd299/65c0f5cfea3301bff29af3c4_Favicon%20256x256.png"
     }
   },
   "investors": {
@@ -3100,6 +3114,20 @@
       "local_path": "/logos/investors/google-ai-futures-fund.ico",
       "source_page": "https://blog.google/innovation-and-ai/models-and-research/google-labs/ai-futures-fund/",
       "source_url": "https://blog.google/favicon.ico"
+    },
+    "ribbit-capital": {
+      "name": "Ribbit Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/ribbit-capital.png",
+      "source_page": "https://www.ribbitcap.com/",
+      "source_url": "https://www.ribbitcap.com/ribbit-coin.png"
+    },
+    "in-venture": {
+      "name": "IN Venture",
+      "shape": "icon",
+      "local_path": "/logos/investors/in-venture.png",
+      "source_page": "https://in-venture.com/",
+      "source_url": "https://in-venture.com/wp-content/uploads/2021/06/cropped-favicon.png"
     }
   }
 }

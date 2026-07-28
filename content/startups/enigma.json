@@ -1,0 +1,105 @@
+{
+  "slug": "enigma",
+  "domain": "www.enigma.inc",
+  "url": "https://www.enigma.inc/",
+  "product_name": "Enigma",
+  "summary": "Robot-agnostic AI models and interfaces for intelligent machines.",
+  "editor_note": "The bottleneck in robotics may be the interface, not the arm. A foundation-model stack, hardware abstraction, and browser controls already put two live robot experiences behind visible queues. Unlike a hardware company optimizing one form factor, the bet is that intelligence and interaction should travel across machines. The open question is whether a three-day public demo becomes a durable deployment product.",
+  "editor_rating": 5,
+  "why_featured": "$71M Seed for robot-native interfaces",
+  "product_type": "AI / ML",
+  "founded_year": 2025,
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "physical ai,robotics,foundation models,human-robot interfaces,robot software",
+  "investors": "Index Ventures,Ribbit Capital,Conviction",
+  "links": {
+    "product": "https://www.robots.online/discover",
+    "github": "https://github.com/EnigmaLabsAI",
+    "twitter": "https://x.com/Enigma_AI"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$71M",
+      "stage": "Seed",
+      "lead_investor": "Index Ventures and Ribbit Capital",
+      "date": "2026-07-27",
+      "source_url": "https://www.newswire.com/news/enigma-raises-71-million-seed-round-with-a-new-game-plan-for-ai-and-robots",
+      "source_name": "Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-28",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Enigma official company site",
+        "url": "https://www.enigma.inc/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Enigma live robot product",
+        "url": "https://www.robots.online/discover",
+        "type": "product"
+      },
+      {
+        "id": "official_product_terms",
+        "label": "Robots.online terms and product mechanics",
+        "url": "https://www.robots.online/terms",
+        "type": "product"
+      },
+      {
+        "id": "official_github",
+        "label": "Enigma official GitHub organization",
+        "url": "https://github.com/EnigmaLabsAI",
+        "type": "repository"
+      },
+      {
+        "id": "funding_1",
+        "label": "Enigma $71M Seed announcement",
+        "url": "https://www.newswire.com/news/enigma-raises-71-million-seed-round-with-a-new-game-plan-for-ai-and-robots",
+        "type": "funding"
+      },
+      {
+        "id": "funding_2",
+        "label": "Index Ventures investment announcement",
+        "url": "https://www.indexventures.com/perspectives/enigma-emerges-from-stealth-our-investment-in-jj-and-gal/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Enigma describes a stack of foundation robotics models, a robot-agnostic abstraction, and a human interface intended to work across warehouse arms, humanoids, and other form factors without rebuilding for each platform.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Robots.online exposes browser-based live robot interactions: The Painter and The Duelist were queueable, while The Laborant was marked offline and coming soon at verification.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The product terms describe browser sessions with real-time robot feeds, prompts or controls, and session recordings, with interaction data reusable for product improvement and model training.",
+        "source_ids": [
+          "official_product_terms"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Robotics engineers, enterprises, and product teams evaluating intelligent behavior and interfaces across heterogeneous robot hardware.",
+      "category": "Physical AI software",
+      "differentiation": "A full-stack approach combining robotics foundation models, a robot-agnostic adaptation layer, and human interfaces with a public live-interaction feedback loop.",
+      "why_now": "The July 2026 $71M Seed round coincides with a public live-control surface, making the financing signal and product-evaluation evidence observable at the same time."
+    },
+    "risks": [
+      {
+        "claim": "Whether the claimed no-rebuild-per-platform behavior generalizes beyond staged browser demos remains unproven and can be tested through public benchmarks or named heterogeneous-hardware deployments.",
+        "basis": "The official site makes the cross-form-factor claim, while the public product exposed two queueable experiences and one offline or coming-soon experience."
+      }
+    ]
+  }
+}

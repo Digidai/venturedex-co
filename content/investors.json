@@ -56,7 +56,10 @@
     "slug": "index-ventures",
     "short_name": "Index",
     "website": "https://www.indexventures.com",
-    "description": "Global venture capital firm partnering with founders from seed through growth."
+    "description": "Global venture capital firm partnering with founders from seed through growth.",
+    "aliases": [
+      "Index Ventures and Ribbit Capital"
+    ]
   },
   "spark": {
     "name": "Spark Capital",
@@ -1472,5 +1475,19 @@
     "short_name": "AI Futures Fund",
     "website": "https://blog.google/innovation-and-ai/models-and-research/google-labs/ai-futures-fund/",
     "description": "Google initiative investing in and collaborating with startups building with models and expertise from Google DeepMind and Google Labs."
+  },
+  "ribbit-capital": {
+    "name": "Ribbit Capital",
+    "slug": "ribbit-capital",
+    "short_name": "Ribbit",
+    "website": "https://www.ribbitcap.com/",
+    "description": "Venture capital firm investing in financial technology and software companies."
+  },
+  "in-venture": {
+    "name": "IN Venture",
+    "slug": "in-venture",
+    "short_name": "IN Venture",
+    "website": "https://in-venture.com/",
+    "description": "Sumitomo Corporation-backed venture fund connecting Israeli startups with global markets."
   }
 }
