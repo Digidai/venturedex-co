@@ -1,0 +1,95 @@
+{
+  "slug": "credible-data",
+  "domain": "www.credibledata.com",
+  "url": "https://www.credibledata.com/",
+  "product_name": "Credible Data",
+  "summary": "Context engine that turns governed business meaning into runtime data for agents and analytics.",
+  "editor_note": "Enterprise agents do not need another dashboard; they need definitions they can query at runtime. Credible encodes metrics, entities, rules, and permissions in Malloy, versions models in Git, and serves the same context through MCP, APIs, BI, and embedded analytics. Unlike a proprietary chatbot layer, the models remain inspectable and portable on an open-source foundation. The risk is whether teams adopt a new semantic workflow before catalogs and BI layers improve their agent interfaces.",
+  "editor_rating": 5,
+  "why_featured": "$10M for governed AI context",
+  "product_type": "DevTools",
+  "hq_location": "Boulder, Colorado",
+  "region": "US",
+  "tags": "semantic layer,enterprise data,ai agents,malloy,data governance",
+  "investors": "SignalFire",
+  "links": {
+    "product": "https://www.credibledata.com/experience",
+    "docs": "https://docs.credibledata.com/introduction",
+    "careers": "https://jobs.gusto.com/boards/credible-e923a681-f2ba-42fb-bae3-2f9a2a08a432",
+    "security": "https://www.credibledata.com/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-07-28",
+      "source_url": "https://www.credibledata.com/news/credible-raises-10m-seed",
+      "source_name": "Credible Data"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Credible Data official site",
+        "url": "https://www.credibledata.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_funding",
+        "label": "Credible Data Seed announcement",
+        "url": "https://www.credibledata.com/news/credible-raises-10m-seed",
+        "type": "funding"
+      },
+      {
+        "id": "official_experience",
+        "label": "Credible Data modeling workflow",
+        "url": "https://www.credibledata.com/experience",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Credible Data documentation",
+        "url": "https://docs.credibledata.com/introduction",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Credible Data official careers board",
+        "url": "https://jobs.gusto.com/boards/credible-e923a681-f2ba-42fb-bae3-2f9a2a08a432",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Credible models governed metrics, entities, relationships, access rules, and edge cases in Malloy and versions the semantic definitions through Git.",
+        "source_ids": [
+          "official_funding",
+          "official_experience"
+        ]
+      },
+      {
+        "claim": "The same executable business context is available at runtime to AI agents, MCP clients, APIs, BI tools, and embedded analytics rather than being confined to one interface.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data platform, analytics, and AI application teams that need consistent governed meaning for enterprise warehouse data.",
+      "category": "Semantic layer and enterprise AI context",
+      "differentiation": "Credible turns open-source Malloy models into a governed runtime context service shared across agents, APIs, BI, and embedded products.",
+      "why_now": "Enterprise agents can retrieve warehouse rows but still produce inconsistent answers when metric definitions, entity relationships, and permissions are not machine-readable."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that data teams retain existing catalogs and BI semantic layers if those products expose adequate agent interfaces before Credible earns workflow adoption.",
+        "basis": "VentureDex editorial assessment based on the official product workflow, documentation, and Seed announcement."
+      }
+    ]
+  }
+}

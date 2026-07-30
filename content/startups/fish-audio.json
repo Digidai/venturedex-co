@@ -1,0 +1,97 @@
+{
+  "slug": "fish-audio",
+  "domain": "fish.audio",
+  "url": "https://fish.audio/",
+  "product_name": "Fish Audio",
+  "summary": "Voice AI platform for expressive speech, cloning, transcription, and real-time APIs.",
+  "editor_note": "Voice models are becoming application infrastructure, but most demos optimize for a perfect sentence. Fish Audio makes a different bet: emotional control and consistency across five minutes matter more than a five-second clone. Its surface exposes text-to-speech, cloning, transcription, emotion tags, real-time APIs, and a 2 million-voice library. Unlike an enterprise API, it offers open models and self-hosting. The risk is whether consent and rights controls scale with user-uploaded voices.",
+  "editor_rating": 4,
+  "why_featured": "$52M Seed for controllable voice AI",
+  "product_type": "AI / ML",
+  "founded_year": 2025,
+  "hq_location": "Palo Alto, California",
+  "region": "US",
+  "tags": "voice ai,text to speech,voice cloning,speech api,open source",
+  "investors": "Coreline Ventures,Capital Today",
+  "links": {
+    "product": "https://fish.audio/",
+    "docs": "https://docs.fish.audio/developer-guide/getting-started/quickstart",
+    "api": "https://docs.fish.audio/api-reference/introduction",
+    "github": "https://github.com/fishaudio"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$52M",
+      "stage": "Seed",
+      "lead_investor": "Coreline Ventures and Capital Today",
+      "date": "2026-07-28",
+      "source_url": "https://www.prnewswire.com/news-releases/fish-audio-raises-52m-in-seed-funding-after-turning-passion-project-into-one-of-voice-ais-fastest-growing-companies-302836233.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Fish Audio official product site",
+        "url": "https://fish.audio/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Fish Audio developer documentation",
+        "url": "https://docs.fish.audio/developer-guide/getting-started/quickstart",
+        "type": "product"
+      },
+      {
+        "id": "official_api",
+        "label": "Fish Audio API reference",
+        "url": "https://docs.fish.audio/api-reference/introduction",
+        "type": "product"
+      },
+      {
+        "id": "official_github",
+        "label": "Fish Audio official GitHub organization",
+        "url": "https://github.com/fishaudio",
+        "type": "repository"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fish Audio Seed announcement",
+        "url": "https://www.prnewswire.com/news-releases/fish-audio-raises-52m-in-seed-funding-after-turning-passion-project-into-one-of-voice-ais-fastest-growing-companies-302836233.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Fish Audio exposes expressive text-to-speech, voice cloning, speech-to-text, emotion controls, and real-time APIs alongside a public library of more than 2 million voices.",
+        "source_ids": [
+          "official_site",
+          "official_api"
+        ]
+      },
+      {
+        "claim": "Developers can use hosted APIs or open and self-hosted models, while the funding announcement reports support for more than 83 languages and word-level emotion control.",
+        "source_ids": [
+          "official_docs",
+          "official_github",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers, creators, and enterprises building expressive speech, voice-agent, localization, and audio-generation products.",
+      "category": "Voice AI infrastructure",
+      "differentiation": "Fish Audio combines controllable expressive speech, cloning, open models, self-hosting, and hosted real-time APIs on one public developer surface.",
+      "why_now": "Voice is becoming a common interface for agents and media workflows, increasing demand for low-latency multilingual speech with controllable emotion."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether consent, provenance, removal, and rights controls keep pace as a user-uploaded library grows beyond 2 million voices.",
+        "basis": "VentureDex editorial assessment based on the official public library, developer surface, and funding announcement."
+      }
+    ]
+  }
+}

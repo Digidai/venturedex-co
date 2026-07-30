@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-28",
+  "verified_at": "2026-07-30",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1719,6 +1719,41 @@
       "local_path": "/logos/companies/alta.png",
       "source_page": "https://www.altahq.com/",
       "source_url": "https://cdn.prod.website-files.com/631883dcd370766be66dd299/65c0f5cfea3301bff29af3c4_Favicon%20256x256.png"
+    },
+    "weave": {
+      "name": "Weave",
+      "shape": "icon",
+      "local_path": "/logos/companies/weave.png",
+      "source_page": "https://weaveos.com/",
+      "source_url": "https://framerusercontent.com/images/BH010hbjoLflpuTVyp4KZLjZ0.png"
+    },
+    "credible-data": {
+      "name": "Credible Data",
+      "shape": "icon",
+      "local_path": "/logos/companies/credible-data.png",
+      "source_page": "https://www.credibledata.com/",
+      "source_url": "https://www.credibledata.com/icon.png?icon.0bkoqgc.mt72i.png"
+    },
+    "act-security": {
+      "name": "Act Security",
+      "shape": "icon",
+      "local_path": "/logos/companies/act-security.png",
+      "source_page": "https://act.security/",
+      "source_url": "https://cdn.prod.website-files.com/6a5c93a0f204be1459f417f5/6a67b06c0cf10619fad6d12b_card.png"
+    },
+    "fish-audio": {
+      "name": "Fish Audio",
+      "shape": "icon",
+      "local_path": "/logos/companies/fish-audio.png",
+      "source_page": "https://fish.audio/",
+      "source_url": "https://fish.audio/apple-touch-icon.png"
+    },
+    "hush-security": {
+      "name": "Hush Security",
+      "shape": "icon",
+      "local_path": "/logos/companies/hush-security.png",
+      "source_page": "https://www.hush.security/",
+      "source_url": "https://www.hush.security/wp-content/uploads/2025/11/cropped-68af7cbcdcb9d80b7042172a_Hush-Security-Favicon-1-192x192.png"
     }
   },
   "investors": {
@@ -3128,6 +3163,34 @@
       "local_path": "/logos/investors/in-venture.png",
       "source_page": "https://in-venture.com/",
       "source_url": "https://in-venture.com/wp-content/uploads/2021/06/cropped-favicon.png"
+    },
+    "standard-capital": {
+      "name": "Standard Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/standard-capital.png",
+      "source_page": "https://www.standardcap.com/",
+      "source_url": "https://www.standardcap.com/favicon.png"
+    },
+    "notable-capital": {
+      "name": "Notable Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/notable-capital.png",
+      "source_page": "https://www.notablecap.com/",
+      "source_url": "https://cdn.prod.website-files.com/6676f2ff781277b704130b3a/66800442a90e35101ecdcd5e_Webclip.png"
+    },
+    "coreline-ventures": {
+      "name": "Coreline Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/coreline-ventures.png",
+      "source_page": "https://coreline.vc/",
+      "source_url": "https://cdn.prod.website-files.com/67b85381f7d5991e70173257/67b85381f7d5991e70173296_Favicon.png"
+    },
+    "capital-today": {
+      "name": "Capital Today",
+      "shape": "icon",
+      "local_path": "/logos/investors/capital-today.ico",
+      "source_page": "https://www.capitaltoday.com/",
+      "source_url": "https://www.capitaltoday.com/favicon.ico"
     }
   }
 }

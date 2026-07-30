@@ -1,0 +1,90 @@
+{
+  "slug": "weave",
+  "domain": "weaveos.com",
+  "url": "https://weaveos.com/",
+  "product_name": "Weave",
+  "summary": "Engineering intelligence that measures AI output and routes prompts by cost and quality.",
+  "editor_note": "AI coding spend needs an accounting layer, not another adoption dashboard. Weave normalizes human and AI work across more than 2 million code contributions, then connects token spend to shipped output. Its router uses production outcomes to send each prompt to the cheapest model that preserves quality rather than defaulting every task to a frontier model. The open question is whether one output unit stays credible across languages, repositories, and teams.",
+  "editor_rating": 5,
+  "why_featured": "Prompt-to-production AI accounting",
+  "product_type": "DevTools",
+  "hq_location": "San Francisco, California",
+  "region": "US",
+  "tags": "engineering intelligence,ai coding,developer productivity,model routing,finops",
+  "investors": "Standard Capital",
+  "links": {
+    "product": "https://weaveos.com/",
+    "github": "https://github.com/workweave/router",
+    "pricing": "https://weaveos.com/pricing",
+    "careers": "https://jobs.ashbyhq.com/workweave",
+    "security": "https://weaveos.com/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$13.5M",
+      "stage": "Series A",
+      "lead_investor": "Standard Capital",
+      "date": "2026-07-28",
+      "source_url": "https://weaveos.com/blog/weave-raises-13.5m-series-a-to-build-engineering-and-token-intelligence",
+      "source_name": "Weave"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Weave official product site",
+        "url": "https://weaveos.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_funding",
+        "label": "Weave Series A announcement",
+        "url": "https://weaveos.com/blog/weave-raises-13.5m-series-a-to-build-engineering-and-token-intelligence",
+        "type": "funding"
+      },
+      {
+        "id": "official_router",
+        "label": "Weave Router official GitHub repository",
+        "url": "https://github.com/workweave/router",
+        "type": "repository"
+      },
+      {
+        "id": "official_careers",
+        "label": "Weave official careers board",
+        "url": "https://jobs.ashbyhq.com/workweave",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Weave analyzes human and AI contributions across pull requests, reviews, and deployments, then normalizes the work into a model-derived output measure.",
+        "source_ids": [
+          "official_site",
+          "official_funding"
+        ]
+      },
+      {
+        "claim": "The open-source router works with Claude Code, Cursor, and Codex and uses production outcomes to choose a cheaper model when predicted quality and speed remain acceptable.",
+        "source_ids": [
+          "official_funding",
+          "official_router"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering, platform, and FinOps leaders measuring the output and cost of AI-assisted software development.",
+      "category": "Engineering intelligence and AI model routing",
+      "differentiation": "Weave connects prompt-level token spend to normalized production output and feeds those outcomes back into model-routing decisions.",
+      "why_now": "Engineering teams are increasing AI coding spend while legacy activity metrics cannot distinguish generated volume from useful shipped work."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether one model-derived output unit remains comparable across repositories, languages, work types, and teams without rewarding artificial patterns.",
+        "basis": "VentureDex editorial assessment based on the official product, funding announcement, and open-source router."
+      }
+    ]
+  }
+}

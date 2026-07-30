@@ -1,0 +1,95 @@
+{
+  "slug": "hush-security",
+  "domain": "www.hush.security",
+  "url": "https://www.hush.security/",
+  "product_name": "Hush Security",
+  "summary": "Identity and access control plane for AI agents, MCP servers, secrets, and service accounts.",
+  "editor_note": "AI-agent governance becomes real only when each agent stops borrowing a human's credentials. Hush discovers agents, MCP servers, secrets, and service accounts, assigns owners, then brokers task-scoped JIT access for API and tool calls with an audit trail. Unlike vault-centered tooling, the product aims to remove standing credentials instead of rotating them more carefully. The open question is whether runtime discovery and policy coverage stay complete across heterogeneous enterprise stacks.",
+  "editor_rating": 4,
+  "why_featured": "$30M for task-scoped agent identity",
+  "product_type": "SaaS",
+  "hq_location": "Tel Aviv, Israel",
+  "region": "Europe",
+  "tags": "ai agent security,non-human identity,just-in-time access,mcp security,identity governance",
+  "investors": "Battery Ventures",
+  "links": {
+    "product": "https://www.hush.security/platform/",
+    "docs": "https://docs.hush.security/knowledgebase/",
+    "careers": "https://www.hush.security/about/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-07-28",
+      "source_url": "https://www.prnewswire.com/il/news-releases/hush-security-raises-30m-to-close-the-ai-agent-governance-gap-with-akamai-joining-as-strategic-investor-302836307.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Hush Security official site",
+        "url": "https://www.hush.security/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Hush Security platform",
+        "url": "https://www.hush.security/platform/",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Hush Security knowledge base",
+        "url": "https://docs.hush.security/knowledgebase/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Hush Security about and careers page",
+        "url": "https://www.hush.security/about/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Hush Security Series A announcement",
+        "url": "https://www.prnewswire.com/il/news-releases/hush-security-raises-30m-to-close-the-ai-agent-governance-gap-with-akamai-joining-as-strategic-investor-302836307.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Hush discovers enterprise AI agents, desktop assistants, MCP servers, tools, secrets, service accounts, and the resources each identity can reach.",
+        "source_ids": [
+          "official_platform",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The platform registers each agent, maps it to an owner, strips standing credentials, and grants scoped just-in-time permissions with logging and a central kill switch.",
+        "source_ids": [
+          "official_platform",
+          "official_docs",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Identity, security, and platform teams governing autonomous agents and other non-human identities across enterprise systems.",
+      "category": "AI agent and non-human identity security",
+      "differentiation": "Hush unifies discovery and task-scoped runtime access for agents, MCP infrastructure, service accounts, and secrets while removing standing credentials.",
+      "why_now": "Enterprises are granting autonomous agents production authority through human accounts and long-lived API keys that existing identity controls were not designed to govern."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether discovery and policy enforcement remain complete across custom agents, shadow MCP servers, legacy IAM, and heterogeneous runtime environments.",
+        "basis": "VentureDex editorial assessment based on the official platform, documentation, and Series A announcement."
+      }
+    ]
+  }
+}

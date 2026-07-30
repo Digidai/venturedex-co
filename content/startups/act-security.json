@@ -1,0 +1,94 @@
+{
+  "slug": "act-security",
+  "domain": "act.security",
+  "url": "https://act.security/",
+  "product_name": "Act Security",
+  "summary": "Cloud security platform that removes access paths across identity, network, and AI workloads.",
+  "editor_note": "Cloud security has enough findings; the scarce output is a safe policy change. Act maps identity, network, and AI reachability across 3 control planes, groups paths into hardening campaigns, simulates each change, and applies it through cloud controls. Compared to posture tools that stop at alerts, its unit of work is an enforced boundary delivered through infrastructure-as-code. The open question is whether broad policy changes reduce exposure without blocking legitimate production traffic.",
+  "editor_rating": 4,
+  "why_featured": "$40M to remove cloud attack paths",
+  "product_type": "SaaS",
+  "founded_year": 2025,
+  "hq_location": "Tel Aviv, Israel",
+  "region": "Europe",
+  "tags": "cloud security,access control,attack paths,identity security,ai security",
+  "investors": "Notable Capital",
+  "links": {
+    "product": "https://act.security/platform",
+    "careers": "https://www.linkedin.com/company/act-sec/jobs/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Notable Capital",
+      "date": "2026-07-28",
+      "source_url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-07-30",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Act Security official site",
+        "url": "https://act.security/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Act Security platform",
+        "url": "https://act.security/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_about",
+        "label": "Act Security company page",
+        "url": "https://act.security/about",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Act Security launch and funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html",
+        "type": "funding"
+      },
+      {
+        "id": "official_careers",
+        "label": "Act Security official LinkedIn jobs entry",
+        "url": "https://www.linkedin.com/company/act-sec/jobs/",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Act reasons across identity, network, and AI access together to identify exploitable paths and organize them into boundary-hardening campaigns.",
+        "source_ids": [
+          "official_platform",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "Teams can simulate proposed access changes before enforcing them through existing cloud-native controls and infrastructure-as-code workflows.",
+        "source_ids": [
+          "official_platform",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Cloud security, identity, and platform teams reducing exploitable access across human, workload, and AI identities.",
+      "category": "Cloud access-path remediation",
+      "differentiation": "Act focuses on changing and continuously enforcing access boundaries instead of returning another queue of posture findings.",
+      "why_now": "AI agents inherit broad human and workload permissions while exploiting reachable paths faster than manual security triage can respond."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether campaign-level access changes measurably reduce exploitable reachability without increasing blocked production traffic or emergency overrides.",
+        "basis": "VentureDex editorial assessment based on the official platform description and company funding announcement."
+      }
+    ]
+  }
+}

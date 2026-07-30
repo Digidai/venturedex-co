@@ -1489,5 +1489,36 @@
     "short_name": "IN Venture",
     "website": "https://in-venture.com/",
     "description": "Sumitomo Corporation-backed venture fund connecting Israeli startups with global markets."
+  },
+  "standard-capital": {
+    "name": "Standard Capital",
+    "slug": "standard-capital",
+    "short_name": "Standard",
+    "website": "https://www.standardcap.com/",
+    "description": "Early-stage venture firm partnering with technical founders building software and technology companies."
+  },
+  "notable-capital": {
+    "name": "Notable Capital",
+    "slug": "notable-capital",
+    "short_name": "Notable",
+    "website": "https://www.notablecap.com/",
+    "description": "Venture capital firm investing in technology companies from early stage through growth."
+  },
+  "coreline-ventures": {
+    "name": "Coreline Ventures",
+    "slug": "coreline-ventures",
+    "short_name": "Coreline",
+    "website": "https://coreline.vc/",
+    "description": "Early-stage venture firm investing in AI, software, and frontier technology companies.",
+    "aliases": [
+      "Coreline Ventures and Capital Today"
+    ]
+  },
+  "capital-today": {
+    "name": "Capital Today",
+    "slug": "capital-today",
+    "short_name": "Capital Today",
+    "website": "https://www.capitaltoday.com/",
+    "description": "Venture capital firm backing consumer, internet, and technology companies."
   }
 }

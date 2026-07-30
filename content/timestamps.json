@@ -975,5 +975,25 @@
   "alta": {
     "published_at": "2026-07-28 06:25:16",
     "first_seen_at": "2026-07-28 06:25:16"
+  },
+  "weave": {
+    "published_at": "2026-07-30 05:40:38",
+    "first_seen_at": "2026-07-30 05:40:38"
+  },
+  "credible-data": {
+    "published_at": "2026-07-30 05:40:38",
+    "first_seen_at": "2026-07-30 05:40:38"
+  },
+  "act-security": {
+    "published_at": "2026-07-30 05:40:38",
+    "first_seen_at": "2026-07-30 05:40:38"
+  },
+  "fish-audio": {
+    "published_at": "2026-07-30 05:40:38",
+    "first_seen_at": "2026-07-30 05:40:38"
+  },
+  "hush-security": {
+    "published_at": "2026-07-30 05:40:38",
+    "first_seen_at": "2026-07-30 05:40:38"
   }
 }
