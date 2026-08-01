@@ -995,5 +995,25 @@
   "hush-security": {
     "published_at": "2026-07-30 05:40:38",
     "first_seen_at": "2026-07-30 05:40:38"
+  },
+  "groundcover": {
+    "published_at": "2026-08-01 12:18:58",
+    "first_seen_at": "2026-08-01 12:18:58"
+  },
+  "terminal": {
+    "published_at": "2026-08-01 12:18:58",
+    "first_seen_at": "2026-08-01 12:18:58"
+  },
+  "dili": {
+    "published_at": "2026-08-01 12:18:58",
+    "first_seen_at": "2026-08-01 12:18:58"
+  },
+  "polar": {
+    "published_at": "2026-08-01 12:18:58",
+    "first_seen_at": "2026-08-01 12:18:58"
+  },
+  "lemonedge": {
+    "published_at": "2026-08-01 12:18:58",
+    "first_seen_at": "2026-08-01 12:18:58"
   }
 }

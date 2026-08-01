@@ -1,0 +1,95 @@
+{
+  "slug": "terminal",
+  "domain": "www.withterminal.com",
+  "url": "https://www.withterminal.com/",
+  "product_name": "Terminal",
+  "summary": "A unified telematics API connecting commercial fleet products to 336 providers.",
+  "editor_note": "Commercial fleet products inherit a brittle integration business before they create any customer value. Terminal turns that tax into one white-labeled API across 336 telematics providers, while staying a data subprocessor instead of competing with the applications it supplies. The provider explorer, common data models, and sandbox make the infrastructure concrete. The test is whether normalized data quality and historical coverage stay reliable as hundreds of upstream APIs drift.",
+  "editor_rating": 5,
+  "why_featured": "336 telematics providers, one API",
+  "product_type": "SaaS",
+  "hq_location": "Toronto, Canada",
+  "region": "US",
+  "tags": "telematics,commercial fleets,api,data infrastructure,integrations",
+  "investors": "Battery Ventures",
+  "links": {
+    "product": "https://www.withterminal.com/",
+    "docs": "https://docs.withterminal.com/home",
+    "careers": "https://www.withterminal.com/careers",
+    "security": "https://docs.withterminal.com/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "stage": "Series A",
+      "lead_investor": "Battery Ventures",
+      "date": "2026-07-29",
+      "source_url": "https://www.axios.com/pro/supply-chain-deals/2026/07/29/terminal-20m-commercial-fleet-telematics-data",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Terminal official product site",
+        "url": "https://www.withterminal.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "Terminal Series A report",
+        "url": "https://www.axios.com/pro/supply-chain-deals/2026/07/29/terminal-20m-commercial-fleet-telematics-data",
+        "type": "funding"
+      },
+      {
+        "id": "official_docs",
+        "label": "Terminal developer documentation",
+        "url": "https://docs.withterminal.com/home",
+        "type": "product"
+      },
+      {
+        "id": "official_providers",
+        "label": "Terminal supported-provider explorer",
+        "url": "https://docs.withterminal.com/providers/explorer",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Terminal official careers page",
+        "url": "https://www.withterminal.com/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Terminal presents one white-labeled connection layer across 336 aftermarket telematics providers and positions itself as a data subprocessor that does not resell data or disintermediate customers.",
+        "source_ids": [
+          "official_site",
+          "official_providers"
+        ]
+      },
+      {
+        "claim": "The documentation exposes unified models for vehicle location, driving events, hours of service, drivers, and fleets, plus a sandbox, link component, webhooks, raw payloads, and connection-health monitoring.",
+        "source_ids": [
+          "official_docs",
+          "official_providers"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering and product teams at fleet software, insurance, fuel-card, and transportation-management companies.",
+      "category": "Commercial fleet telematics data infrastructure",
+      "differentiation": "Terminal normalizes a fragmented provider market behind a white-labeled API while leaving models, workflows, and customer relationships to its customers.",
+      "why_now": "Fleet applications increasingly depend on real-time vehicle data, but integrating and maintaining hundreds of ELD, camera, and tracker APIs remains a recurring infrastructure cost."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that normalized fields, historical depth, and connection reliability degrade as 336 upstream providers change schemas, authentication, and polling limits.",
+        "basis": "VentureDex editorial assessment based on the official provider catalog, common models, raw-data access, and connection-health tooling."
+      }
+    ]
+  }
+}

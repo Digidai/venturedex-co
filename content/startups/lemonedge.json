@@ -1,0 +1,93 @@
+{
+  "slug": "lemonedge",
+  "domain": "www.lemonedge.com",
+  "url": "https://www.lemonedge.com/",
+  "product_name": "LemonEdge",
+  "summary": "Event-driven fund accounting infrastructure for private-market firms.",
+  "editor_note": "Private-market accounting breaks when each fund structure becomes another spreadsheet exception. LemonEdge encodes transactions as events, supports multiple ledgers and allocation paths, and exposes the system through APIs, audit history, reporting, and an investor portal. Its bet is configurable accounting infrastructure rather than a fixed workflow suite. The test is whether that flexibility shortens implementations and closes instead of relocating spreadsheet complexity into configuration.",
+  "editor_rating": 5,
+  "why_featured": "$21M for event-driven fund accounting",
+  "product_type": "Fintech",
+  "region": "Europe",
+  "tags": "fund accounting,private markets,event-driven accounting,api,financial infrastructure",
+  "investors": "Blackstone Innovations Investments",
+  "links": {
+    "product": "https://www.lemonedge.com/",
+    "docs": "https://web.lemonedge.com/help-api/index.html",
+    "careers": "https://www.lemonedge.com/about/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$21M",
+      "stage": "Series A",
+      "lead_investor": "Blackstone Innovations Investments",
+      "date": "2026-07-29",
+      "source_url": "https://www.lemonedge.com/news/lemonedge-raises-21m-series-a-led-by-blackstone-joined-by-bny",
+      "source_name": "LemonEdge"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "LemonEdge official product site",
+        "url": "https://www.lemonedge.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_funding",
+        "label": "LemonEdge Series A announcement",
+        "url": "https://www.lemonedge.com/news/lemonedge-raises-21m-series-a-led-by-blackstone-joined-by-bny",
+        "type": "funding"
+      },
+      {
+        "id": "official_api",
+        "label": "LemonEdge API product page",
+        "url": "https://www.lemonedge.com/innovations/api",
+        "type": "product"
+      },
+      {
+        "id": "official_architecture",
+        "label": "LemonEdge technical architecture",
+        "url": "https://www.lemonedge.com/technical-architecture",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "LemonEdge official careers page",
+        "url": "https://www.lemonedge.com/about/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "LemonEdge records fund activity as event-driven transactions, automates multi-entry and multi-ledger bookkeeping, and retains detailed audit history while replacing offline spreadsheet calculations.",
+        "source_ids": [
+          "official_site",
+          "official_architecture"
+        ]
+      },
+      {
+        "claim": "Its API layer can connect bidirectionally to CRMs, banks, data warehouses, valuation systems, and files, while separate Design, Context, and UI APIs expose data models, transactions, validation, and client interfaces.",
+        "source_ids": [
+          "official_api",
+          "official_architecture"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Fund controllers, administrators, finance teams, and operations leaders at private-equity, venture, family-office, and real-estate firms.",
+      "category": "Private-market fund accounting infrastructure",
+      "differentiation": "LemonEdge combines an event-driven multi-ledger engine with configurable allocation logic, auditability, and APIs rather than treating each fund structure as a spreadsheet customization.",
+      "why_now": "Private-market firms are scaling the number and complexity of structures while legacy accounting systems and offline models constrain close speed, reporting, and governed AI adoption."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that implementation time, close-cycle improvement, and configuration maintenance fail to outperform incumbent platforms once complex client-specific allocation logic is migrated.",
+        "basis": "VentureDex editorial assessment based on the official accounting engine, API controls, architecture, and Series A announcement."
+      }
+    ]
+  }
+}

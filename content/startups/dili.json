@@ -1,0 +1,99 @@
+{
+  "slug": "dili",
+  "domain": "www.dili.com",
+  "url": "https://www.dili.com/",
+  "product_name": "Dili",
+  "summary": "Compliance automation for federally funded construction and infrastructure projects.",
+  "editor_note": "Construction compliance is not a chat problem: payroll, wage tables, apprenticeship ratios, and federal rules must reconcile deterministically. Dili uses models to structure messy project records, then applies rules to certified payroll and flags exceptions in a shared workspace. The core bet is probabilistic ingestion paired with deterministic enforcement. The risk is whether its rule coverage and audit trail hold across jurisdictions without services becoming the system.",
+  "editor_rating": 5,
+  "why_featured": "$1B+ in project funding protected",
+  "product_type": "SaaS",
+  "founded_year": 2023,
+  "hq_location": "New York City, NY",
+  "region": "US",
+  "tags": "construction compliance,prevailing wage,certified payroll,infrastructure,ai automation",
+  "investors": "Khosla Ventures",
+  "links": {
+    "product": "https://www.dili.com/#platform",
+    "careers": "https://www.dili.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-07-30",
+      "source_url": "https://techcrunch.com/2026/07/30/dili-raises-15-million-to-bring-ai-compliance-to-the-infrastructure-boom/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Dili official product site",
+        "url": "https://www.dili.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "Dili Series A report",
+        "url": "https://techcrunch.com/2026/07/30/dili-raises-15-million-to-bring-ai-compliance-to-the-infrastructure-boom/",
+        "type": "funding"
+      },
+      {
+        "id": "official_case_study",
+        "label": "Dili solar portfolio case study",
+        "url": "https://www.dili.com/case-studies/",
+        "type": "product"
+      },
+      {
+        "id": "official_about",
+        "label": "Dili official company page",
+        "url": "https://www.dili.com/about/",
+        "type": "official"
+      },
+      {
+        "id": "yc_profile",
+        "label": "Dili Y Combinator company profile",
+        "url": "https://www.ycombinator.com/companies/dili",
+        "type": "official"
+      },
+      {
+        "id": "official_careers",
+        "label": "Dili official careers page",
+        "url": "https://www.dili.com/careers/",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Dili ingests certified payroll from PDF, Excel, CSV, and state forms, cross-checks wages and classifications against applicable rules, calculates fringe benefits, and tracks underpayment remediation.",
+        "source_ids": [
+          "official_site",
+          "official_case_study"
+        ]
+      },
+      {
+        "claim": "In its published solar-portfolio case, Dili processed 606 payroll reports and more than 83,000 labor hours across 14 projects in about one week, surfacing wage, apprenticeship, and data-quality exceptions.",
+        "source_ids": [
+          "official_case_study"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "EPC contractors, project owners, developers, compliance teams, and tax-equity investors on federally funded projects.",
+      "category": "Construction and infrastructure compliance automation",
+      "differentiation": "Dili separates AI-assisted document structuring from deterministic wage and apprenticeship rules, then keeps remediation evidence in one project-level workflow.",
+      "why_now": "U.S. infrastructure and clean-energy incentives attach detailed prevailing-wage and apprenticeship obligations to large projects whose payroll evidence still arrives in inconsistent formats."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether independent audits show low false-negative and false-positive rates for wage, fringe-benefit, apprenticeship, and backpay exceptions as federal and state rules change.",
+        "basis": "VentureDex editorial assessment based on the official workflow, customer case study, and the funding report's description of deterministic enforcement."
+      }
+    ]
+  }
+}

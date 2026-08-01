@@ -12,7 +12,7 @@
   "tags": "radiology,medical imaging,ai software,mri,pet",
   "investors": "Morgan Stanley Expansion Capital",
   "links": {
-    "careers": "https://www.linkedin.com/company/subtlemedical/jobs/"
+    "careers": "https://subtlemedical.com/careers/"
   },
   "is_featured": true,
   "funding": [
@@ -26,12 +26,12 @@
     }
   ],
   "research": {
-    "verified_at": "2026-07-28",
+    "verified_at": "2026-08-01",
     "sources": [
       {
-        "id": "official_company_page",
-        "label": "Official LinkedIn company page",
-        "url": "https://www.linkedin.com/company/subtlemedical",
+        "id": "official_site",
+        "label": "Subtle Medical official product site",
+        "url": "https://subtlemedical.com/",
         "type": "official"
       },
       {
@@ -43,15 +43,15 @@
     ],
     "product_evidence": [
       {
-        "claim": "The official company page describes medical-imaging software aimed at reducing imaging time and radiation dose, with current product updates spanning MRI, PET, and CT.",
+        "claim": "The official site describes vendor-neutral AI software across MRI, PET, and CT, including image enhancement, accelerated acquisition, and denoising products.",
         "source_ids": [
-          "official_company_page"
+          "official_site"
         ]
       },
       {
-        "claim": "Official company updates describe software that improves image quality and scanner throughput while extending the value of existing MRI, PET, and CT equipment.",
+        "claim": "The official product surface says SubtleHD(MR) can enable up to 80% faster MRI sequences and SubtleHD(PET) can enable up to 75% faster PET scans.",
         "source_ids": [
-          "official_company_page"
+          "official_site"
         ]
       },
       {

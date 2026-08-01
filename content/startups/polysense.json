@@ -23,12 +23,12 @@
       "stage": "Seed",
       "lead_investor": "Felix Capital",
       "date": "2026-07-08",
-      "source_url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform",
-      "source_name": "FoodBev Media"
+      "source_url": "https://www.polysense.ai/blog/polysense-raises-107-million-seed-round-food-manufacturing",
+      "source_name": "Polysense"
     }
   ],
   "research": {
-    "verified_at": "2026-07-11",
+    "verified_at": "2026-08-01",
     "sources": [
       {
         "id": "official_site",
@@ -50,8 +50,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Polysense seed funding report",
-        "url": "https://www.foodbev.com/news/polysense-secures-10-7m-to-expand-food-manufacturing-quality-control-platform",
+        "label": "Polysense seed funding announcement",
+        "url": "https://www.polysense.ai/blog/polysense-raises-107-million-seed-round-food-manufacturing",
         "type": "funding"
       }
     ],

@@ -1520,5 +1520,19 @@
     "short_name": "Capital Today",
     "website": "https://www.capitaltoday.com/",
     "description": "Venture capital firm backing consumer, internet, and technology companies."
+  },
+  "one-peak": {
+    "name": "One Peak",
+    "slug": "one-peak",
+    "short_name": "One Peak",
+    "website": "https://www.onepeak.tech/",
+    "description": "Growth-equity firm investing in technology companies as they scale across global markets."
+  },
+  "blackstone-innovations-investments": {
+    "name": "Blackstone Innovations Investments",
+    "slug": "blackstone-innovations-investments",
+    "short_name": "Blackstone Innovations",
+    "website": "https://www.blackstone.com/",
+    "description": "Blackstone's early-stage investment arm backing technology and software companies."
   }
 }

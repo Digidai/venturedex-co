@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-07-30",
+  "verified_at": "2026-08-01",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1754,6 +1754,41 @@
       "local_path": "/logos/companies/hush-security.png",
       "source_page": "https://www.hush.security/",
       "source_url": "https://www.hush.security/wp-content/uploads/2025/11/cropped-68af7cbcdcb9d80b7042172a_Hush-Security-Favicon-1-192x192.png"
+    },
+    "groundcover": {
+      "name": "groundcover",
+      "shape": "icon",
+      "local_path": "/logos/companies/groundcover.png",
+      "source_page": "https://www.groundcover.com/",
+      "source_url": "https://cdn.prod.website-files.com/6268eda2c1a363801996822a/6499288fe527dd82aba671ca_favicon.png"
+    },
+    "terminal": {
+      "name": "Terminal",
+      "shape": "icon",
+      "local_path": "/logos/companies/terminal.svg",
+      "source_page": "https://www.withterminal.com/",
+      "source_url": "https://cdn.prod.website-files.com/69942a8b5da0f84ba38c9a19/69a578a4bf276d02eb98e92c_Favicon.svg"
+    },
+    "dili": {
+      "name": "Dili",
+      "shape": "icon",
+      "local_path": "/logos/companies/dili.ico",
+      "source_page": "https://www.dili.com/",
+      "source_url": "https://www.dili.com/favicon.ico"
+    },
+    "polar": {
+      "name": "Polar",
+      "shape": "icon",
+      "local_path": "/logos/companies/polar.svg",
+      "source_page": "https://polarbrowser.com/",
+      "source_url": "https://polarbrowser.com/favicon.svg"
+    },
+    "lemonedge": {
+      "name": "LemonEdge",
+      "shape": "icon",
+      "local_path": "/logos/companies/lemonedge.png",
+      "source_page": "https://www.lemonedge.com/",
+      "source_url": "https://cdn.prod.website-files.com/63da45cfeb207e7664d87689/6a50d648dc2f053499efadaf_LemonEdge%20Favicon.png"
     }
   },
   "investors": {
@@ -3191,6 +3226,21 @@
       "local_path": "/logos/investors/capital-today.ico",
       "source_page": "https://www.capitaltoday.com/",
       "source_url": "https://www.capitaltoday.com/favicon.ico"
+    },
+    "one-peak": {
+      "name": "One Peak",
+      "shape": "icon",
+      "local_path": "/logos/investors/one-peak.ico",
+      "source_page": "https://www.onepeak.tech/",
+      "source_url": "https://www.onepeak.tech/favicon.ico"
+    },
+    "blackstone-innovations-investments": {
+      "name": "Blackstone Innovations Investments",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/blackstone-innovations-investments.svg",
+      "source_page": "https://www.blackstone.com/",
+      "source_url": "https://www.blackstone.com/",
+      "note": "Extracted from the official inline header SVG in a bb-browser session because the official favicon asset is Cloudflare challenge-gated."
     }
   }
 }

@@ -1,0 +1,93 @@
+{
+  "slug": "polar",
+  "domain": "polarbrowser.com",
+  "url": "https://polarbrowser.com/",
+  "product_name": "Polar",
+  "summary": "A Chromium browser that runs scheduled, long-horizon knowledge-work agents.",
+  "editor_note": "Browser agents matter most when they inherit the user's logged-in context, not when they answer another question. Polar's downloadable Chromium browser can run multi-site tasks for hours, schedule repeat workflows, and hand work off from the current tab while remaining observable. That is sharper than a general AI sidebar. The test is whether reliability and permission boundaries survive long-running automations across changing sites, especially while SOC 2 work remains in progress.",
+  "editor_rating": 5,
+  "why_featured": "$5.7M for long-running browser agents",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai browser,browser agents,workflow automation,knowledge work,computer use",
+  "investors": "Madrona",
+  "links": {
+    "product": "https://polarbrowser.com/download",
+    "pricing": "https://polarbrowser.com/pricing",
+    "security": "https://polarbrowser.com/privacy"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5.7M",
+      "stage": "Seed",
+      "lead_investor": "Madrona",
+      "date": "2026-07-29",
+      "source_url": "https://techcrunch.com/2026/07/29/perplexity-employee-who-worked-on-comet-launches-an-ai-browser-aimed-at-knowledge-work/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Polar official product site",
+        "url": "https://polarbrowser.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "Polar Seed report",
+        "url": "https://techcrunch.com/2026/07/29/perplexity-employee-who-worked-on-comet-launches-an-ai-browser-aimed-at-knowledge-work/",
+        "type": "funding"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Polar launch announcement",
+        "url": "https://polarbrowser.com/blog/introducing-polar",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Polar pricing and usage tiers",
+        "url": "https://polarbrowser.com/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_privacy",
+        "label": "Polar privacy policy",
+        "url": "https://polarbrowser.com/privacy",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Polar is a Chromium-based browser that operates inside existing authenticated sessions, exposes its actions for observation or takeover, and can continue multi-site tasks for hours.",
+        "source_ids": [
+          "official_site",
+          "official_announcement"
+        ]
+      },
+      {
+        "claim": "Users can save prompts as workflows, schedule them hourly, daily, weekly, or on custom intervals, and hand tasks off from the current tab; the public tiers include free daily credits and paid individual and team plans.",
+        "source_ids": [
+          "official_site",
+          "official_pricing"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Founders, operators, recruiters, sales teams, and researchers whose workflows span logged-in web applications.",
+      "category": "Agentic browser and knowledge-work automation",
+      "differentiation": "Polar makes the browser itself the agent runtime, carrying authenticated context and allowing concurrent, scheduled, long-running work instead of limiting assistance to page chat.",
+      "why_now": "Computer-use models are becoming capable of longer task horizons while browser sessions remain the most complete shared context for everyday knowledge work."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that harmful-action and task-error rates remain too high for authenticated long-running workflows, or that enterprise adoption stalls before Polar completes SOC 2 controls.",
+        "basis": "VentureDex editorial assessment based on the official product controls, privacy data flows, pricing, and the site's statement that SOC 2 compliance is in progress."
+      }
+    ]
+  }
+}

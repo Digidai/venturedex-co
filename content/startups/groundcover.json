@@ -1,0 +1,99 @@
+{
+  "slug": "groundcover",
+  "domain": "www.groundcover.com",
+  "url": "https://www.groundcover.com/",
+  "product_name": "groundcover",
+  "summary": "BYOC observability with full-fidelity eBPF telemetry and agent-driven investigations.",
+  "editor_note": "Most observability platforms ask teams to trade coverage for a manageable bill. By keeping the data plane in the customer's cloud and collecting full-fidelity telemetry with eBPF, groundcover makes the opposite bet. Its public playground shows engineers and agents querying the same logs, traces, metrics, and events. The test is whether this BYOC model stays simple beyond Kubernetes-heavy stacks and during migrations from customized incumbents.",
+  "editor_rating": 5,
+  "why_featured": "$100M for BYOC observability",
+  "product_type": "DevTools",
+  "founded_year": 2021,
+  "hq_location": "Tel Aviv, Israel",
+  "region": "Europe",
+  "tags": "observability,ebpf,byoc,opentelemetry,agentic operations",
+  "investors": "One Peak",
+  "links": {
+    "product": "https://play.groundcover.com/",
+    "docs": "https://docs.groundcover.com/",
+    "github": "https://github.com/groundcover-com",
+    "pricing": "https://www.groundcover.com/pricing",
+    "careers": "https://www.groundcover.com/careers",
+    "security": "https://trust.groundcover.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$100M",
+      "stage": "Series C",
+      "lead_investor": "One Peak",
+      "date": "2026-07-29",
+      "source_url": "https://www.groundcover.com/news/groundcover-raises-100-million-series-c",
+      "source_name": "groundcover"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-01",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "groundcover official product site",
+        "url": "https://www.groundcover.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_funding",
+        "label": "groundcover Series C announcement",
+        "url": "https://www.groundcover.com/news/groundcover-raises-100-million-series-c",
+        "type": "funding"
+      },
+      {
+        "id": "official_docs",
+        "label": "groundcover documentation",
+        "url": "https://docs.groundcover.com/",
+        "type": "product"
+      },
+      {
+        "id": "official_playground",
+        "label": "groundcover public playground",
+        "url": "https://play.groundcover.com/",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "groundcover official careers page",
+        "url": "https://www.groundcover.com/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "groundcover deploys its data plane inside the customer's cloud and uses an adaptive eBPF sensor to capture unsampled telemetry across infrastructure, applications, and AI workloads without code changes.",
+        "source_ids": [
+          "official_site",
+          "official_funding"
+        ]
+      },
+      {
+        "claim": "Agent Mode can choose signals and queries from a goal, build dashboards and monitors, and use team-defined Skills on the same logs, traces, metrics, events, and entities available in the public playground.",
+        "source_ids": [
+          "official_site",
+          "official_docs",
+          "official_playground"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Platform, SRE, and application engineering teams operating cloud-native and AI workloads.",
+      "category": "Full-stack observability and autonomous production operations",
+      "differentiation": "A customer-cloud data plane combines eBPF collection, OpenTelemetry compatibility, and agent workflows without exporting the full telemetry set to a SaaS vendor.",
+      "why_now": "AI workloads and agents increase telemetry volume and require richer production context than sampling-heavy observability stacks preserve."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether BYOC onboarding, query performance, and migration coverage remain simple for heterogeneous non-Kubernetes environments and deeply customized incumbent deployments.",
+        "basis": "VentureDex editorial assessment based on the official architecture, documentation, playground, and migration claims."
+      }
+    ]
+  }
+}
