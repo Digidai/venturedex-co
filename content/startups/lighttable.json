@@ -21,12 +21,12 @@
       "stage": "Series A",
       "lead_investor": "Innovation Endeavors",
       "date": "2026-05-27",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/27/3297492/0/en/LightTable-Secures-22-Million-Series-A-Funding-Round-Led-by-Innovation-Endeavors.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.lighttable.ai/blog/series-a",
+      "source_name": "LightTable"
     }
   ],
   "research": {
-    "verified_at": "2026-06-01",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -36,8 +36,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/27/3297492/0/en/LightTable-Secures-22-Million-Series-A-Funding-Round-Led-by-Innovation-Endeavors.html",
+        "label": "LightTable official Series A announcement",
+        "url": "https://www.lighttable.ai/blog/series-a",
         "type": "funding"
       }
     ],

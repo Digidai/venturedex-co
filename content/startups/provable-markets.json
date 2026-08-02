@@ -1,0 +1,93 @@
+{
+  "slug": "provable-markets",
+  "domain": "provablemarkets.com",
+  "url": "https://provablemarkets.com/",
+  "product_name": "Provable Markets",
+  "summary": "Cloud-native execution and lifecycle infrastructure for securities lending.",
+  "editor_note": "Most securities-lending software stops at workflow screens; Provable Markets is rebuilding the market plumbing underneath them. Aurora combines an SEC-registered ATS matching engine, automation for returns and recalls, and NSCC/DTC connectivity, while the company reports more than $30 trillion in monthly order volume. The bet is that neutral execution and post-trade automation belong in one rail. The risk is whether U.S. clearing concentration limits expansion or creates operational dependency.",
+  "editor_rating": 5,
+  "why_featured": "One rail for securities lending",
+  "product_type": "Fintech",
+  "hq_location": "New York, NY",
+  "region": "US",
+  "tags": "securities lending,capital markets,alternative trading system,clearing,trade lifecycle",
+  "investors": "Charles Schwab",
+  "links": {
+    "product": "https://provablemarkets.com/marketplace",
+    "careers": "https://provablemarkets.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "stage": "Series B",
+      "lead_investor": "Charles Schwab",
+      "date": "2026-07-29",
+      "source_url": "https://www.prnewswire.com/news-releases/provable-markets-raises-series-b-funding-round-led-by-charles-schwab-with-additional-participation-by-dtcc-302837256.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Provable Markets official site",
+        "url": "https://provablemarkets.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "Provable Markets Series B announcement",
+        "url": "https://www.prnewswire.com/news-releases/provable-markets-raises-series-b-funding-round-led-by-charles-schwab-with-additional-participation-by-dtcc-302837256.html",
+        "type": "funding"
+      },
+      {
+        "id": "official_marketplace",
+        "label": "Provable Markets Marketplace",
+        "url": "https://provablemarkets.com/marketplace",
+        "type": "product"
+      },
+      {
+        "id": "official_trade_manager",
+        "label": "Provable Markets Trade Manager",
+        "url": "https://provablemarkets.com/trademanager",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "Provable Markets official careers page",
+        "url": "https://provablemarkets.com/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Aurora operates an SEC-registered alternative trading system with neutral order matching, multi-counterparty visibility, and FIX, REST, and gRPC APIs for automated securities-lending order flow.",
+        "source_ids": [
+          "official_marketplace",
+          "funding_source"
+        ]
+      },
+      {
+        "claim": "Trade Manager automates lifecycle events such as returns, recalls, marks, and rate changes, while the platform connects to NSCC, DTC, OCC, and tri-party market infrastructure for cleared and uncleared transactions.",
+        "source_ids": [
+          "official_trade_manager",
+          "funding_source"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Broker-dealers, lenders, borrowers, and operations teams participating in securities finance.",
+      "category": "Securities-lending execution and post-trade infrastructure",
+      "differentiation": "Provable combines regulated neutral execution, lifecycle automation, APIs, and U.S. clearing connectivity in one cloud-native rail.",
+      "why_now": "Capital and operational constraints are increasing demand for automated matching, central clearing, and scalable securities-finance workflows."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that dependence on U.S. clearing and regulatory infrastructure constrains geographic expansion or concentrates operational failure modes.",
+        "basis": "VentureDex editorial assessment based on the official Marketplace, Trade Manager, and financing announcement."
+      }
+    ]
+  }
+}

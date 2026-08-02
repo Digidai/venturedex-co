@@ -22,12 +22,12 @@
       "stage": "Series A",
       "lead_investor": "Khosla Ventures",
       "date": "2026-06-25",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/25/3317460/0/en/scaled-cognition-raises-100m-series-a-led-by-khosla-ventures-to-build-reliable-enterprise-ai.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.scaledcognition.com/series-a",
+      "source_name": "Scaled Cognition"
     }
   ],
   "research": {
-    "verified_at": "2026-06-29",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -49,8 +49,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Scaled Cognition Series A funding release",
-        "url": "https://www.globenewswire.com/news-release/2026/06/25/3317460/0/en/scaled-cognition-raises-100m-series-a-led-by-khosla-ventures-to-build-reliable-enterprise-ai.html",
+        "label": "Scaled Cognition official Series A announcement",
+        "url": "https://www.scaledcognition.com/series-a",
         "type": "funding"
       }
     ],

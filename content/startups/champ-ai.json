@@ -20,13 +20,13 @@
       "amount": "$8.5M",
       "stage": "Seed",
       "lead_investor": "Redpoint Ventures",
-      "date": "2026-05-13",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/13/3294553/0/en/champ-ai-emerges-from-stealth-with-8-5m-in-new-funding.html",
-      "source_name": "GlobeNewswire"
+      "date": "2026-05-12",
+      "source_url": "https://www.linkedin.com/posts/champ-ai-hq_out-of-stealth-and-just-getting-started-activity-7460014147913781249-87p5",
+      "source_name": "Champ AI"
     }
   ],
   "research": {
-    "verified_at": "2026-06-10",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -42,8 +42,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Champ AI seed funding announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/05/13/3294553/0/en/champ-ai-emerges-from-stealth-with-8-5m-in-new-funding.html",
+        "label": "Champ AI official seed announcement",
+        "url": "https://www.linkedin.com/posts/champ-ai-hq_out-of-stealth-and-just-getting-started-activity-7460014147913781249-87p5",
         "type": "funding"
       }
     ],

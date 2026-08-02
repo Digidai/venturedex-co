@@ -6,7 +6,7 @@
   "summary": "Voice AI platform for patient scheduling, benefits checks, and billing.",
   "editor_note": "The useful wedge is that Prosper treats the clinic phone queue as one operating system, not a scheduling bot. Its agents book visits, verify benefits, call payers when APIs fail, collect billing context, and write back to EHR or PMS systems. The contrast with thin voice demos is breadth: one workflow spans patient and insurer calls. The risk is whether accuracy holds across the long tail of payer rules and clinic edge cases.",
   "research": {
-    "verified_at": "2026-06-23",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -16,8 +16,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire Series A announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/22/3315343/0/en/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey.html",
+        "label": "Prosper AI official Series A announcement",
+        "url": "https://www.getprosper.ai/blog/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey",
         "type": "funding"
       },
       {
@@ -78,8 +78,8 @@
       "stage": "Series A",
       "lead_investor": "Andreessen Horowitz",
       "date": "2026-06-22",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/22/3315343/0/en/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.getprosper.ai/blog/prosper-ai-raises-30m-from-andreessen-horowitz-to-scale-the-first-ai-platform-to-run-the-entire-patient-journey",
+      "source_name": "Prosper AI"
     }
   ]
 }

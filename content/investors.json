@@ -1534,5 +1534,29 @@
     "short_name": "Blackstone Innovations",
     "website": "https://www.blackstone.com/",
     "description": "Blackstone's early-stage investment arm backing technology and software companies."
+  },
+  "mucker-capital": {
+    "name": "Mucker Capital",
+    "slug": "mucker-capital",
+    "short_name": "Mucker",
+    "website": "https://mucker.com/",
+    "description": "Seed and Series A venture firm partnering with technology companies outside Silicon Valley."
+  },
+  "charles-schwab": {
+    "name": "Charles Schwab",
+    "slug": "charles-schwab",
+    "short_name": "Schwab",
+    "website": "https://www.schwab.com/",
+    "description": "Financial services company providing brokerage, banking, and investment services."
+  },
+  "pitchdrive": {
+    "name": "PitchDrive",
+    "slug": "pitchdrive",
+    "short_name": "PitchDrive",
+    "website": "https://www.pitchdrive.com/",
+    "description": "Entrepreneur-backed venture fund investing in pre-seed and seed-stage technology companies.",
+    "aliases": [
+      "PitchDrive and Reign Ventures"
+    ]
   }
 }

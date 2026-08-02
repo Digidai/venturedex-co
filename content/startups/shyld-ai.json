@@ -19,12 +19,12 @@
       "stage": "Seed",
       "lead_investor": "Aulis Capital",
       "date": "2026-05-14",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/14/3295222/0/en/shyld-ai-raises-13-4m-to-expand-active-ai-across-u-s-hospitals.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://medcitynews.com/2026/05/hospital-infection-clinical/",
+      "source_name": "MedCity News"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/14/3295222/0/en/shyld-ai-raises-13-4m-to-expand-active-ai-across-u-s-hospitals.html",
+        "label": "MedCity News seed coverage",
+        "url": "https://medcitynews.com/2026/05/hospital-infection-clinical/",
         "type": "funding"
       }
     ],

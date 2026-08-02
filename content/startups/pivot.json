@@ -19,12 +19,12 @@
       "stage": "Series B",
       "lead_investor": "Forestay Capital and Notion Capital",
       "date": "2026-05-21",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/21/3299278/0/en/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.pivotapp.ai/blog/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system",
+      "source_name": "Pivot"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/21/3299278/0/en/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system.html",
+        "label": "Pivot official Series B announcement",
+        "url": "https://www.pivotapp.ai/blog/pivot-raises-40-million-series-b-to-replace-legacy-procurement-software-with-an-enterprise-ai-operating-system",
         "type": "funding"
       }
     ],

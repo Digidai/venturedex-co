@@ -1,0 +1,93 @@
+{
+  "slug": "databahn",
+  "domain": "www.databahn.ai",
+  "url": "https://www.databahn.ai/",
+  "product_name": "DataBahn",
+  "summary": "Agentic control plane for collecting, reducing, governing, and routing enterprise telemetry.",
+  "editor_note": "Most telemetry stacks optimize what happens after data lands; DataBahn makes the control decision while it is moving. Smart Edge, Highway, Cruz, and Reef collect, filter, normalize, monitor, and contextualize data from more than 600 sources. The bet is that AI agents need a neutral control plane rather than another destination. The risk is whether autonomous filtering preserves forensic completeness as policies and schemas drift.",
+  "editor_rating": 5,
+  "why_featured": "Telemetry decisions before storage",
+  "product_type": "DevTools",
+  "hq_location": "Dallas, TX",
+  "region": "US",
+  "tags": "telemetry,data pipelines,security data,agentic infrastructure,data governance",
+  "investors": "Insight Partners",
+  "links": {
+    "product": "https://www.databahn.ai/platform",
+    "careers": "https://www.databahn.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series B",
+      "lead_investor": "Insight Partners",
+      "date": "2026-07-30",
+      "source_url": "https://www.prnewswire.com/news-releases/databahn-raises-40-million-series-b-led-by-insight-partners-to-accelerate-innovation-across-the-agentic-data-control-plane-302838690.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "DataBahn official site",
+        "url": "https://www.databahn.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "DataBahn Series B announcement",
+        "url": "https://www.prnewswire.com/news-releases/databahn-raises-40-million-series-b-led-by-insight-partners-to-accelerate-innovation-across-the-agentic-data-control-plane-302838690.html",
+        "type": "funding"
+      },
+      {
+        "id": "official_platform",
+        "label": "DataBahn platform overview",
+        "url": "https://www.databahn.ai/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_integrations",
+        "label": "DataBahn integrations catalog",
+        "url": "https://www.databahn.ai/integrations",
+        "type": "product"
+      },
+      {
+        "id": "official_careers",
+        "label": "DataBahn official careers page",
+        "url": "https://www.databahn.ai/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Smart Edge collects telemetry without host agents and can analyze data at the edge, while Highway filters, enriches, normalizes, and routes data before it reaches downstream platforms.",
+        "source_ids": [
+          "official_platform",
+          "official_integrations"
+        ]
+      },
+      {
+        "claim": "Cruz automates parsing and pipeline monitoring, and Reef connects enterprise data into contextual graphs; the company states that the platform supports more than 600 sources without destination or model lock-in.",
+        "source_ids": [
+          "official_platform",
+          "funding_source"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security, data-platform, and observability teams managing high-volume enterprise telemetry.",
+      "category": "Enterprise telemetry control and data-pipeline infrastructure",
+      "differentiation": "DataBahn combines edge collection, in-stream reduction, schema governance, monitoring, and contextual retrieval in a vendor-neutral control plane.",
+      "why_now": "AI agents require governed enterprise context while telemetry volume, cloud movement, storage, and inference costs keep rising."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is that autonomous filtering or normalization drops forensic detail as source schemas and security policies change across large deployments.",
+        "basis": "VentureDex editorial assessment based on the official platform architecture, integration catalog, and funding announcement."
+      }
+    ]
+  }
+}

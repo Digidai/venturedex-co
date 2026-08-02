@@ -21,12 +21,12 @@
       "stage": "Seed",
       "lead_investor": "Top Down Ventures and York IE",
       "date": "2026-06-08",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/08/3308189/0/en/lexful-closes-7m-seed-round-for-next-generation-documentation-for-msps.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.linkedin.com/posts/lexful_we-just-closed-7m-lexful-raised-an-activity-7469792505039986688-_j2L",
+      "source_name": "Lexful"
     }
   ],
   "research": {
-    "verified_at": "2026-06-09",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -42,8 +42,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Lexful seed funding announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/08/3308189/0/en/lexful-closes-7m-seed-round-for-next-generation-documentation-for-msps.html",
+        "label": "Lexful official seed announcement",
+        "url": "https://www.linkedin.com/posts/lexful_we-just-closed-7m-lexful-raised-an-activity-7469792505039986688-_j2L",
         "type": "funding"
       }
     ],

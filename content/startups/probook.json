@@ -6,7 +6,7 @@
   "summary": "AI operating system for home-service dispatch, intake, and customer messaging.",
   "editor_note": "The sharp bet is that dispatch is the brain of home services, not a back-office calendar. Probook starts with routing technicians, then pulls intake, customer messaging, data cleaning, outbound, and booking cleanup into the same context layer. Compared with a voice-agent wrapper, it owns the decision that decides revenue, ETA, and customer experience. The risk is whether the in-person deployment model scales without becoming services-heavy.",
   "research": {
-    "verified_at": "2026-06-24",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -22,8 +22,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire Series A and seed announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/23/3316215/0/en/probook-raises-40m-from-andreessen-horowitz-and-sequoia-to-scale-the-ai-operating-system-for-home-services.html",
+        "label": "Andreessen Horowitz Series A announcement",
+        "url": "https://a16z.com/announcement/investing-in-probook/",
         "type": "funding"
       }
     ],
@@ -61,7 +61,7 @@
     ]
   },
   "editor_rating": 4,
-  "why_featured": "$40M Series A for dispatch OS",
+  "why_featured": "$34M Series A for dispatch OS",
   "product_type": "SaaS",
   "region": "US",
   "tags": "home services,dispatch,field service,ai agents,vertical software",
@@ -72,12 +72,12 @@
   "is_featured": true,
   "funding": [
     {
-      "amount": "$40M",
+      "amount": "$34M",
       "stage": "Series A",
       "lead_investor": "Andreessen Horowitz",
       "date": "2026-06-23",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/23/3316215/0/en/probook-raises-40m-from-andreessen-horowitz-and-sequoia-to-scale-the-ai-operating-system-for-home-services.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://a16z.com/announcement/investing-in-probook/",
+      "source_name": "Andreessen Horowitz"
     }
   ]
 }

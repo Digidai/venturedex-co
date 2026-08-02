@@ -6,7 +6,7 @@
   "summary": "AI revenue-operations platform that turns sales conversations into actions.",
   "editor_note": "The useful move is that Attention refuses to stop at call notes. It records voice and sales touchpoints, then drafts follow-ups, updates CRM fields, runs agent actions, and keeps an audit trace for each decision. Compared to another Gong clone, the dataset compounds because the system does the next step. The risk is whether enterprise teams let it execute enough work to prove outcome lift.",
   "research": {
-    "verified_at": "2026-06-24",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -28,8 +28,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire Series B announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/23/3315763/0/en/attention-raises-30m-series-b-to-build-the-ai-system-that-runs-revenue-teams-not-just-records-them.html",
+        "label": "Attention official Series B announcement",
+        "url": "https://www.attention.com/blog-posts/attention-series-b-press-release",
         "type": "funding"
       }
     ],
@@ -83,8 +83,8 @@
       "stage": "Series B",
       "lead_investor": "RTP Global",
       "date": "2026-06-23",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/23/3315763/0/en/attention-raises-30m-series-b-to-build-the-ai-system-that-runs-revenue-teams-not-just-records-them.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.attention.com/blog-posts/attention-series-b-press-release",
+      "source_name": "Attention"
     }
   ]
 }

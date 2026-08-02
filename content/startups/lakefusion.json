@@ -21,13 +21,13 @@
       "amount": "$7.5M",
       "stage": "Seed",
       "lead_investor": "Silverton Partners",
-      "date": "2026-05-03",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/04/3286394/0/en/LakeFusion-Raises-7-5M-Seed-Financing-to-Redefine-Master-Data-Management-MDM-Natively-on-Databricks.html",
-      "source_name": "GlobeNewswire"
+      "date": "2026-05-05",
+      "source_url": "https://www.siliconlegal.com/sls-client-carbide-ventures-joins-lakefusions-7-5mm-seed-round/",
+      "source_name": "Silicon Legal Strategy"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -37,9 +37,15 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/04/3286394/0/en/LakeFusion-Raises-7-5M-Seed-Financing-to-Redefine-Master-Data-Management-MDM-Natively-on-Databricks.html",
+        "label": "LakeFusion Seed transaction counsel announcement",
+        "url": "https://www.siliconlegal.com/sls-client-carbide-ventures-joins-lakefusions-7-5mm-seed-round/",
         "type": "funding"
+      },
+      {
+        "id": "official_investor",
+        "label": "Silverton Partners LakeFusion portfolio and press listing",
+        "url": "https://www.silvertonpartners.com/press/",
+        "type": "official"
       }
     ],
     "product_evidence": [

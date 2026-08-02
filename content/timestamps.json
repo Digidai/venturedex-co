@@ -1015,5 +1015,17 @@
   "lemonedge": {
     "published_at": "2026-08-01 12:18:58",
     "first_seen_at": "2026-08-01 12:18:58"
+  },
+  "databahn": {
+    "published_at": "2026-08-02 06:03:23",
+    "first_seen_at": "2026-08-02 06:03:23"
+  },
+  "copysight": {
+    "published_at": "2026-08-02 06:03:23",
+    "first_seen_at": "2026-08-02 06:03:23"
+  },
+  "provable-markets": {
+    "published_at": "2026-08-02 06:03:23",
+    "first_seen_at": "2026-08-02 06:03:23"
   }
 }

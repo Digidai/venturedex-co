@@ -19,12 +19,12 @@
       "stage": "Seed",
       "lead_investor": "Impression Ventures",
       "date": "2026-05-13",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/13/3294051/0/en/secludy-raises-4m-to-safely-unlock-proprietary-data-for-genai.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.manaventures.vc/newsroom",
+      "source_name": "Mana Ventures"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/13/3294051/0/en/secludy-raises-4m-to-safely-unlock-proprietary-data-for-genai.html",
+        "label": "Mana Ventures portfolio funding note",
+        "url": "https://www.manaventures.vc/newsroom",
         "type": "funding"
       }
     ],

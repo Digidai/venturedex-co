@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-01",
+  "verified_at": "2026-08-02",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1789,6 +1789,28 @@
       "local_path": "/logos/companies/lemonedge.png",
       "source_page": "https://www.lemonedge.com/",
       "source_url": "https://cdn.prod.website-files.com/63da45cfeb207e7664d87689/6a50d648dc2f053499efadaf_LemonEdge%20Favicon.png"
+    },
+    "databahn": {
+      "name": "DataBahn",
+      "shape": "icon",
+      "local_path": "/logos/companies/databahn.png",
+      "source_page": "https://www.databahn.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67eb571d0fe797071c2c2759/68051e1e83c4661ee048afe9_favicon.png"
+    },
+    "copysight": {
+      "name": "CopySight",
+      "shape": "icon",
+      "local_path": "/logos/companies/copysight.png",
+      "source_page": "https://copysight.ai/",
+      "source_url": "https://copysight.ai/icon.png?d0e39be940174977",
+      "tile_background": "dark"
+    },
+    "provable-markets": {
+      "name": "Provable Markets",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/provable-markets.webp",
+      "source_page": "https://provablemarkets.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/62e97b7fc169532e38ab0933/5c2e68f8-e197-4458-98dd-5a64fde6a892/Provable+lt+green.png?format=1500w"
     }
   },
   "investors": {
@@ -3241,6 +3263,29 @@
       "source_page": "https://www.blackstone.com/",
       "source_url": "https://www.blackstone.com/",
       "note": "Extracted from the official inline header SVG in a bb-browser session because the official favicon asset is Cloudflare challenge-gated."
+    },
+    "mucker-capital": {
+      "name": "Mucker Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/mucker-capital.ico",
+      "source_page": "https://mucker.com/",
+      "source_url": "https://mucker.com/wp-content/uploads/2026/03/favicon.ico"
+    },
+    "charles-schwab": {
+      "name": "Charles Schwab",
+      "shape": "icon",
+      "local_path": "/logos/investors/charles-schwab.jpg",
+      "source_page": "https://www.schwab.com/",
+      "source_url": "https://cdn.cookielaw.org/logos/a9974912-473f-42db-8840-bf20d48f0189/7e29ceee-79e7-451d-8f3f-6670cdb47cbf/fddbb540-7c66-446a-b77b-6c6af62ca1e7/CS_logo_140x140.jpg",
+      "note": "Official Charles Schwab company logo loaded by the consent interface on schwab.com; direct schwab.com favicon requests return an Akamai HTML interstitial to non-browser clients."
+    },
+    "pitchdrive": {
+      "name": "PitchDrive",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/pitchdrive.png",
+      "source_page": "https://www.pitchdrive.com/",
+      "source_url": "https://www.pitchdrive.com/assets/pitchdrive-wordmark-white.png",
+      "tile_background": "dark"
     }
   }
 }

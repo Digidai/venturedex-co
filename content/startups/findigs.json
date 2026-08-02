@@ -21,12 +21,12 @@
       "stage": "Series C",
       "lead_investor": "RPM Ventures",
       "date": "2026-06-02",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/02/3305372/0/en/findigs-raises-32m-series-c-funding-to-redefine-leasing-decisioning.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://www.findigs.com/blog/findigs-raises-series-c",
+      "source_name": "Findigs"
     }
   ],
   "research": {
-    "verified_at": "2026-06-07",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -42,8 +42,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Findigs Series C announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/02/3305372/0/en/findigs-raises-32m-series-c-funding-to-redefine-leasing-decisioning.html",
+        "label": "Findigs official Series C announcement",
+        "url": "https://www.findigs.com/blog/findigs-raises-series-c",
         "type": "funding"
       }
     ],

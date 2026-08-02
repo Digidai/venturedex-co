@@ -21,12 +21,12 @@
       "stage": "Series C",
       "lead_investor": "Index Ventures",
       "date": "2026-05-19",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/19/3297569/0/en/Moment-Raises-78-Million-as-Largest-Wealth-Firms-Standardize-on-its-AI-Operating-System-for-Investment-Management.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://moment.com/series-c",
+      "source_name": "Moment"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -36,8 +36,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/19/3297569/0/en/Moment-Raises-78-Million-as-Largest-Wealth-Firms-Standardize-on-its-AI-Operating-System-for-Investment-Management.html",
+        "label": "Moment official Series C announcement",
+        "url": "https://moment.com/series-c",
         "type": "funding"
       }
     ],

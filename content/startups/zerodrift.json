@@ -10,21 +10,21 @@
   "product_type": "SaaS",
   "region": "US",
   "tags": "compliance,ai governance,financial services,healthcare,agents",
-  "investors": "Andreessen Horowitz",
+  "investors": "PitchDrive, Reign Ventures, Andreessen Horowitz",
   "links": {},
   "is_featured": true,
   "funding": [
     {
       "amount": "$10M",
       "stage": "Seed",
-      "lead_investor": "undisclosed",
+      "lead_investor": "PitchDrive and Reign Ventures",
       "date": "2026-06-02",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/02/3305264/0/en/zerodrift-raises-10m-seed-round-to-build-the-compliance-firewall-for-ai.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://content.pitchdrive.com/stories/meet-zerodrift-the-compliance-firewall-every-ai-powered-enterprise-will-need",
+      "source_name": "PitchDrive"
     }
   ],
   "research": {
-    "verified_at": "2026-06-05",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "ZeroDrift seed announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/02/3305264/0/en/zerodrift-raises-10m-seed-round-to-build-the-compliance-firewall-for-ai.html",
+        "label": "PitchDrive investment announcement",
+        "url": "https://content.pitchdrive.com/stories/meet-zerodrift-the-compliance-firewall-every-ai-powered-enterprise-will-need",
         "type": "funding"
       }
     ],

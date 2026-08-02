@@ -19,12 +19,12 @@
       "stage": "Seed",
       "lead_investor": "Team8",
       "date": "2026-05-20",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://team8.vc/why-we-invested-in-tribal/",
+      "source_name": "Team8"
     }
   ],
   "research": {
-    "verified_at": "2026-05-26",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/20/3298634/0/en/Tribal-Raises-10M-Seed-to-Bring-Context-Aware-AI-Agents-to-Enterprise-Systems.html",
+        "label": "Team8 investment announcement",
+        "url": "https://team8.vc/why-we-invested-in-tribal/",
         "type": "funding"
       }
     ],

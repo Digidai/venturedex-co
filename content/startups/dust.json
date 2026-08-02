@@ -21,12 +21,12 @@
       "stage": "Series B",
       "lead_investor": "undisclosed",
       "date": "2026-05-18",
-      "source_url": "https://www.globenewswire.com/news-release/2026/05/18/3296726/0/en/Dust-raises-40M-to-make-AI-multiplayer-inside-the-enterprise.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://dust.tt/blog/series-b-multiplayer-ai",
+      "source_name": "Dust"
     }
   ],
   "research": {
-    "verified_at": "2026-06-10",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -48,8 +48,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire",
-        "url": "https://www.globenewswire.com/news-release/2026/05/18/3296726/0/en/Dust-raises-40M-to-make-AI-multiplayer-inside-the-enterprise.html",
+        "label": "Dust official Series B announcement",
+        "url": "https://dust.tt/blog/series-b-multiplayer-ai",
         "type": "funding"
       }
     ],

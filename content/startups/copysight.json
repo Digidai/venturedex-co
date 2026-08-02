@@ -1,0 +1,88 @@
+{
+  "slug": "copysight",
+  "domain": "copysight.ai",
+  "url": "https://copysight.ai/",
+  "product_name": "CopySight",
+  "summary": "IP risk scoring and chain-of-creation records for commercial generative media.",
+  "editor_note": "Generative-media teams usually discover IP risk after assets enter review; CopySight moves clearance before release. CopyScore checks images and video for trademarks, characters, likenesses, and styles, then keeps prompts, model versions, settings, and results in a chain-of-creation record. The bet is that copyright operations become measurable infrastructure. The open question is whether its scores and reference coverage withstand independent legal validation across jurisdictions.",
+  "editor_rating": 5,
+  "why_featured": "Pre-release IP clearance for AI media",
+  "product_type": "SaaS",
+  "hq_location": "Los Angeles, CA",
+  "region": "US",
+  "tags": "generative media,intellectual property,copyright,compliance,video analysis",
+  "investors": "Mucker Capital",
+  "links": {
+    "product": "https://copysight.ai/#how-it-works",
+    "pricing": "https://copysight.ai/#pricing"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3M",
+      "stage": "Seed",
+      "lead_investor": "Mucker Capital",
+      "date": "2026-07-29",
+      "source_url": "https://www.prnewswire.com/news-releases/copysight-raises-3-million-to-build-the-intellectual-property-clearance-layer-for-generative-ai-302837194.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-02",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "CopySight official site",
+        "url": "https://copysight.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding_source",
+        "label": "CopySight Seed announcement",
+        "url": "https://www.prnewswire.com/news-releases/copysight-raises-3-million-to-build-the-intellectual-property-clearance-layer-for-generative-ai-302837194.html",
+        "type": "funding"
+      },
+      {
+        "id": "official_workflow",
+        "label": "CopySight product workflow",
+        "url": "https://copysight.ai/#how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "CopySight pricing",
+        "url": "https://copysight.ai/#pricing",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "CopyScore evaluates images and video for trademarks, characters, iconic designs, celebrity likenesses, and artistic styles, with frame-by-frame video analysis and configurable sensitivity.",
+        "source_ids": [
+          "official_workflow",
+          "funding_source"
+        ]
+      },
+      {
+        "claim": "Each assessment can retain prompts, model versions, generation settings, and results as chain-of-creation documentation; public plans expose creator, business, and API-oriented workflows.",
+        "source_ids": [
+          "official_site",
+          "official_pricing",
+          "funding_source"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Studios, gaming companies, creative platforms, legal teams, and enterprises shipping generative media.",
+      "category": "Generative-media intellectual-property governance",
+      "differentiation": "CopySight combines asset-level risk scores with production metadata and an auditable chain-of-creation record before distribution.",
+      "why_now": "Commercial image and video generation is scaling faster than manual copyright, likeness, and trademark clearance workflows."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable question is whether risk scores and reference coverage predict independently reviewed legal outcomes across media types and jurisdictions.",
+        "basis": "VentureDex editorial assessment based on the official workflow, pricing surface, and product claims in the funding announcement."
+      }
+    ]
+  }
+}

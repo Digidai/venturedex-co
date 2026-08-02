@@ -21,12 +21,12 @@
       "stage": "Series A",
       "lead_investor": "Cloud9 Capital",
       "date": "2026-06-03",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/03/3306227/0/en/Uncover-Raises-16-Million-to-Expand-Latin-America-s-Leading-Media-Measurement-Platform-to-The-U-S.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://techstartups.com/2026/06/03/venture-capital-startup-funding-roundup-june-3-2026/",
+      "source_name": "Tech Startups"
     }
   ],
   "research": {
-    "verified_at": "2026-06-07",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -42,8 +42,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Uncover Series A announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/03/3306227/0/en/Uncover-Raises-16-Million-to-Expand-Latin-America-s-Leading-Media-Measurement-Platform-to-The-U-S.html",
+        "label": "Tech Startups funding roundup",
+        "url": "https://techstartups.com/2026/06/03/venture-capital-startup-funding-roundup-june-3-2026/",
         "type": "funding"
       }
     ],

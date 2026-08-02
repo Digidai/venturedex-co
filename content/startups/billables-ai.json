@@ -21,12 +21,12 @@
       "stage": "Series A",
       "lead_investor": "Avenue Growth Partners",
       "date": "2026-06-09",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/09/3309069/0/en/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://billables.ai/blog/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms",
+      "source_name": "Billables AI"
     }
   ],
   "research": {
-    "verified_at": "2026-06-11",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -42,8 +42,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Billables AI Series A funding announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/09/3309069/0/en/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms.html",
+        "label": "Billables AI official Series A announcement",
+        "url": "https://billables.ai/blog/billables-ai-raises-10-million-series-a-to-accelerate-ai-powered-operational-intelligence-for-law-firms",
         "type": "funding"
       }
     ],

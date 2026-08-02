@@ -6,7 +6,7 @@
   "summary": "AI workforce for third-party and Nth-party risk assessments, monitoring, and remediation.",
   "editor_note": "Vendor risk is usually a spreadsheet pretending to be a control plane. Magnitude turns TPRM into seven agents for intake, assessment, Nth-party monitoring, vendor follow-up, and remediation, with cited evidence behind decisions. Unlike compliance dashboards that freeze risk at questionnaire time, it assumes suppliers and AI tools keep changing. The open question is whether CISOs want agents to chase vendors before auditors demand it.",
   "research": {
-    "verified_at": "2026-06-17",
+    "verified_at": "2026-08-02",
     "sources": [
       {
         "id": "official_site",
@@ -22,8 +22,8 @@
       },
       {
         "id": "funding_1",
-        "label": "GlobeNewswire funding announcement",
-        "url": "https://www.globenewswire.com/news-release/2026/06/16/3312413/0/en/magnitude-launches-from-stealth-with-10m-seed-funding-and-introduces-the-first-autonomous-ai-workforce-to-enable-third-party-risk-management-teams-in-the-mythos-era.html",
+        "label": "Ballistic Ventures investment announcement",
+        "url": "https://ballisticventures.com/why-we-invested-in-magnitude-ai/",
         "type": "funding"
       }
     ],
@@ -83,8 +83,8 @@
       "stage": "Seed",
       "lead_investor": "Ballistic Ventures",
       "date": "2026-06-16",
-      "source_url": "https://www.globenewswire.com/news-release/2026/06/16/3312413/0/en/magnitude-launches-from-stealth-with-10m-seed-funding-and-introduces-the-first-autonomous-ai-workforce-to-enable-third-party-risk-management-teams-in-the-mythos-era.html",
-      "source_name": "GlobeNewswire"
+      "source_url": "https://ballisticventures.com/why-we-invested-in-magnitude-ai/",
+      "source_name": "Ballistic Ventures"
     }
   ]
 }
