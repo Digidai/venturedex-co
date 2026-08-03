@@ -3320,7 +3320,9 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/g2-venture-partners.svg",
       "source_page": "https://g2vp.com/",
-      "source_url": "https://g2vp.com/wp-content/uploads/2023/04/logo-color.svg"
+      "source_url": "https://g2vp.com/wp-content/uploads/2023/04/logo-color.svg",
+      "allow_unreachable_source": true,
+      "note": "The official G2 site and logo asset return HTTP 202 to GitHub Actions while loading in bb-browser and returning HTTP 200 locally; the saved wordmark remains the official asset."
     },
     "eclipse": {
       "name": "Eclipse",
