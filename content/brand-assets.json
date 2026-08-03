@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-02",
+  "verified_at": "2026-08-03",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1811,6 +1811,27 @@
       "local_path": "/logos/companies/provable-markets.webp",
       "source_page": "https://provablemarkets.com/",
       "source_url": "https://images.squarespace-cdn.com/content/v1/62e97b7fc169532e38ab0933/5c2e68f8-e197-4458-98dd-5a64fde6a892/Provable+lt+green.png?format=1500w"
+    },
+    "discern-security": {
+      "name": "Discern Security",
+      "shape": "icon",
+      "local_path": "/logos/companies/discern-security.png",
+      "source_page": "https://www.discernsecurity.com/",
+      "source_url": "https://cdn.prod.website-files.com/68539d37d07386b5b8c1e880/69b97e3af50f9ff67389587d_logo-img.png"
+    },
+    "antora-energy": {
+      "name": "Antora Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/antora-energy.svg",
+      "source_page": "https://www.antora.com/",
+      "source_url": "https://www.antora.com/favicon.svg"
+    },
+    "soundhealth": {
+      "name": "SoundHealth",
+      "shape": "icon",
+      "local_path": "/logos/companies/soundhealth.svg",
+      "source_page": "https://soundhealth.life/",
+      "source_url": "https://soundhealth.life/cdn/shop/files/favicon.svg?crop=center&height=32&v=1729133154&width=32"
     }
   },
   "investors": {
@@ -3286,6 +3307,34 @@
       "source_page": "https://www.pitchdrive.com/",
       "source_url": "https://www.pitchdrive.com/assets/pitchdrive-wordmark-white.png",
       "tile_background": "dark"
+    },
+    "forgepoint-capital": {
+      "name": "Forgepoint Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/forgepoint-capital.svg",
+      "source_page": "https://forgepointcap.com/",
+      "source_url": "https://forgepointcap.com/wp-content/themes/forgepoint-capital/dist/logo.svg"
+    },
+    "g2-venture-partners": {
+      "name": "G2 Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/g2-venture-partners.svg",
+      "source_page": "https://g2vp.com/",
+      "source_url": "https://g2vp.com/wp-content/uploads/2023/04/logo-color.svg"
+    },
+    "eclipse": {
+      "name": "Eclipse",
+      "shape": "icon",
+      "local_path": "/logos/investors/eclipse.png",
+      "source_page": "https://eclipse.capital/",
+      "source_url": "https://cdn.sanity.io/images/5uq66tk5/production/760081f4994965efe12899d377f5f414663d6e96-512x512.png?fit=max&auto=format"
+    },
+    "shangbay-capital": {
+      "name": "ShangBay Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/shangbay-capital.png",
+      "source_page": "https://www.shangbaycapital.com/",
+      "source_url": "https://static.wixstatic.com/media/751c27_a97b40bd16b54ed48d6274be2c1de37f~mv2.png"
     }
   }
 }

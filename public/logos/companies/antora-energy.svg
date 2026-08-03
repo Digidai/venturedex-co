@@ -1,0 +1,24 @@
+<svg width="100px" height="87px" viewBox="0 0 100 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <style>
+    g {
+      fill: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      g {
+        fill: #fff;
+      }
+    }
+  </style>
+
+  <title>Antora</title>
+
+  <g fill="#FFFFFF" fill-rule="nonzero">
+    <polygon id="Path" points="92.7092561 73.7172289 85.4185122 86.4087677 49.9550483 75.5176036 55.7154571 61.926042"></polygon>
+    <polygon id="Path" points="72.8172061 36.0934469 100 61.1162521 92.7092561 73.7172289 63.9062238 47.7048268"></polygon>
+    <polygon id="Path" points="49.9550483 0 64.6264395 0 72.8172061 36.0934469 58.2357184 37.8039182"></polygon>
+    <polygon id="Path" points="27.2727303 36.0934469 35.3735605 0 49.9550483 0 41.7642816 37.8039182"></polygon>
+    <polygon id="Path" points="7.29071096 73.7172289 0 61.1162521 27.2727303 36.0934469 36.0934469 47.7048268"></polygon>
+    <polygon id="Path" points="7.29071096 73.7172289 14.5814549 86.4087677 49.9550483 75.5176036 44.2845429 61.926042"></polygon>
+  </g>
+</svg>

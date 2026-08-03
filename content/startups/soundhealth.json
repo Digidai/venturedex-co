@@ -1,0 +1,92 @@
+{
+  "slug": "soundhealth",
+  "domain": "soundhealth.life",
+  "url": "https://soundhealth.life/",
+  "product_name": "SoundHealth",
+  "summary": "AI-personalized acoustic wearables for nasal congestion and sleep.",
+  "editor_note": "Breathing wearables usually stop at tracking; this one tries to deliver treatment. SONU uses a phone facial scan to tune acoustic resonance, sells for $299, and has FDA 510(k) clearance for nasal congestion, while Spatial Sleep targets sleep onset. The bet is personalized sound instead of recurring medication. The risk is whether independent use matches the company-reported 81% clinical response rate.",
+  "editor_rating": 4,
+  "why_featured": "$12.25M for acoustic treatment",
+  "product_type": "HealthTech",
+  "hq_location": "San Francisco, California",
+  "region": "US",
+  "tags": "healthtech,wearables,acoustic therapy,sleep,nasal congestion",
+  "investors": "ShangBay Capital",
+  "links": {
+    "product": "https://soundhealth.life/products/sonu-band",
+    "linkedin": "https://www.linkedin.com/company/sound-health-systems/",
+    "careers": "https://soundhealth.life/pages/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12.25M",
+      "stage": "Series A",
+      "lead_investor": "ShangBay Capital",
+      "date": "2026-07-30",
+      "source_url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders",
+      "source_name": "Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-03",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "SoundHealth official site",
+        "url": "https://soundhealth.life/",
+        "type": "official"
+      },
+      {
+        "id": "official_sonu",
+        "label": "SONU Band product page",
+        "url": "https://soundhealth.life/products/sonu-band",
+        "type": "product"
+      },
+      {
+        "id": "official_spatial",
+        "label": "Spatial Sleep product page",
+        "url": "https://soundhealth.life/products/spatial-sleep",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "SoundHealth Series A announcement",
+        "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The SONU product page offers direct checkout and a 30-day risk-free trial, identifies SONU as FDA 510(k) cleared, and says its app creates a 3D facial and sinus map to tune acoustic resonance delivered by bone-conduction transducers.",
+        "source_ids": [
+          "official_sonu"
+        ]
+      },
+      {
+        "claim": "The Spatial Sleep product page offers direct checkout and a 45-day risk-free trial, and describes an app-generated 3D cranial map used to calculate personalized frequencies delivered through a forehead-worn bone-conduction band.",
+        "source_ids": [
+          "official_spatial"
+        ]
+      },
+      {
+        "claim": "The Series A release says SONU has delivered more than 500,000 acoustic-resonance sessions and that the same craniofacial dataset underpins Spatial Sleep.",
+        "source_ids": [
+          "official_funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumers seeking drug-free support for moderate-to-severe nasal congestion or sleep, plus clinicians recommending non-invasive options.",
+      "category": "Personalized acoustic therapeutic wearables",
+      "differentiation": "SoundHealth combines a phone-based anatomy scan, AI personalization, and bone-conduction hardware to deliver therapy rather than merely monitor symptoms.",
+      "why_now": "Direct commercial availability, an FDA-cleared SONU indication, and a shared craniofacial data stack give the company a path from congestion therapy into adjacent sleep wellness."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether congestion and sleep outcomes replicate in independent, long-duration, real-world cohorts; FDA clearance for SONU must not be generalized to Spatial Sleep.",
+        "basis": "VentureDex editorial assessment from the official product, science, and funding surfaces."
+      }
+    ]
+  }
+}

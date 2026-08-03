@@ -1,0 +1,96 @@
+{
+  "slug": "antora-energy",
+  "domain": "www.antora.com",
+  "url": "https://www.antora.com/",
+  "product_name": "Antora Energy",
+  "summary": "Solid-carbon thermal batteries for round-the-clock industrial heat and power.",
+  "editor_note": "Industrial storage gets more interesting when the battery is a hot block, not a scarce-mineral chemistry. Antora resistively heats solid carbon to 2,400°C, stores energy for multiple days, and began delivering energy from a 5 GWh POET project in under 12 months. Unlike lithium-ion systems optimized for shorter electrical cycles, this bet targets continuous factory heat and firm power with factory-built modules. The risk is whether those project economics repeat beyond the flagship site.",
+  "editor_rating": 5,
+  "why_featured": "$550M after a 5 GWh deployment",
+  "product_type": "Climate / Sustainability",
+  "hq_location": "San Jose, California",
+  "region": "US",
+  "tags": "thermal batteries,industrial heat,energy storage,manufacturing,data centers",
+  "investors": "G2 Venture Partners,Eclipse",
+  "links": {
+    "product": "https://www.antora.com/technology",
+    "linkedin": "https://www.linkedin.com/company/antora-energy/",
+    "twitter": "https://x.com/antoraenergy/",
+    "careers": "https://www.antora.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$550M",
+      "stage": "Series C",
+      "lead_investor": "G2 Venture Partners and Eclipse",
+      "date": "2026-07-30",
+      "source_url": "https://www.antora.com/insights/series-c",
+      "source_name": "Antora Energy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-03",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Antora Energy official site",
+        "url": "https://www.antora.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_technology",
+        "label": "Antora thermal battery technology",
+        "url": "https://www.antora.com/technology",
+        "type": "product"
+      },
+      {
+        "id": "official_project",
+        "label": "Antora Project Big Stone",
+        "url": "https://www.antora.com/project-big-stone",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Antora Energy Series C announcement",
+        "url": "https://www.antora.com/insights/series-c",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Antora says its thermal battery resistively heats solid carbon to as high as 2,400°C, stores that energy for multiple days, and can return it as industrial heat or electricity through a steam turbine.",
+        "source_ids": [
+          "official_site",
+          "official_technology"
+        ]
+      },
+      {
+        "claim": "The official technology surface says factory-built modules scale from megawatts to gigawatts and use domestic, earth-abundant solid carbon rather than supply-constrained critical minerals.",
+        "source_ids": [
+          "official_site",
+          "official_technology"
+        ]
+      },
+      {
+        "claim": "Project Big Stone is a 5 GWh, 50 MW thermal-battery project with more than 200 modules under a POET energy offtake agreement; Antora says it advanced from an empty lot to first energy delivery in under 12 months.",
+        "source_ids": [
+          "official_project",
+          "official_funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Industrial operators, data-center developers, utilities, and energy project teams that need firm heat or power at large scale.",
+      "category": "Industrial thermal energy storage",
+      "differentiation": "Antora stores electricity in abundant solid carbon and ships modular systems that can deliver both process heat and power, instead of relying on lithium electrochemistry for every load.",
+      "why_now": "Industrial electrification and data-center growth are increasing demand for firm energy that can be deployed faster than new generation and transmission infrastructure."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Antora can repeat Project Big Stone's sub-12-month delivery pace and economics across different industrial sites and duty cycles.",
+        "basis": "VentureDex editorial assessment based on the official technology, project, and Series C surfaces."
+      }
+    ]
+  }
+}

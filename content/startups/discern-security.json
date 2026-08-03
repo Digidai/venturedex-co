@@ -1,0 +1,92 @@
+{
+  "slug": "discern-security",
+  "domain": "www.discernsecurity.com",
+  "url": "https://www.discernsecurity.com/",
+  "product_name": "Discern Security",
+  "summary": "Agentic workspace that finds, prioritizes, and closes security-control gaps.",
+  "editor_note": "Security teams do not need another posture dashboard; they need a loop that closes findings. Discern splits discovery, context, prioritization, and remediation across 4 named agents—Scout, Oracle, Pathfinder, and Resolve—then keeps approvals and tickets inside existing tools. The bet is coordinated action over alert aggregation. The risk is whether cross-vendor recommendations remain precise enough for engineers to trust automation.",
+  "editor_rating": 4,
+  "why_featured": "$13M to close security loops",
+  "product_type": "SaaS",
+  "hq_location": "Sunnyvale, California",
+  "region": "US",
+  "tags": "cybersecurity,security posture,ai agents,control optimization,remediation",
+  "investors": "Forgepoint Capital",
+  "links": {
+    "product": "https://www.discernsecurity.com/use-cases",
+    "linkedin": "https://www.linkedin.com/company/discern-security/",
+    "careers": "https://www.linkedin.com/company/discern-security/jobs/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$13M",
+      "stage": "Series A",
+      "lead_investor": "Forgepoint Capital",
+      "date": "2026-07-30",
+      "source_url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-03",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Discern Security official product site",
+        "url": "https://www.discernsecurity.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform_release",
+        "label": "Discern agentic platform launch",
+        "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Discern Security Series A announcement",
+        "url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site says Atlas turns plain-English questions into dashboards, charts, and reusable queries, while Pathfinder prioritizes vulnerabilities, misconfigurations, and assets using business context.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official site says Resolve converts findings into tracked remediation actions with approvals and accountability, and Mesh aligns policy and coverage across connected security tools.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The platform release says Scout converts vendor best practices into measurable health checks and Mesh identifies cross-stack policy and MITRE coverage gaps.",
+        "source_ids": [
+          "official_platform_release"
+        ]
+      },
+      {
+        "claim": "The Series A release describes reusable AI Skills, intelligent agents, and human-approved workflows that connect findings to controls, assets, and compliance requirements.",
+        "source_ids": [
+          "official_funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "CISOs, security operations, security engineering, architecture, and compliance teams managing multi-tool environments.",
+      "category": "Security posture and control optimization",
+      "differentiation": "Discern organizes existing security tools into a closed improvement loop with named agents, business-context prioritization, and human-approved remediation rather than stopping at findings or tickets.",
+      "why_now": "Security teams face expanding tool stacks and AI-driven finding volume, increasing the value of continuously tuning the controls they already own."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether Discern can deliver safe, measurable cross-vendor remediation improvements in production instead of adding another exposure dashboard layer.",
+        "basis": "VentureDex editorial assessment from the demo-gated official product surface, launch release, and Series A announcement."
+      }
+    ]
+  }
+}

@@ -1027,5 +1027,17 @@
   "provable-markets": {
     "published_at": "2026-08-02 06:03:23",
     "first_seen_at": "2026-08-02 06:03:23"
+  },
+  "discern-security": {
+    "published_at": "2026-08-03 06:22:21",
+    "first_seen_at": "2026-08-03 06:22:21"
+  },
+  "antora-energy": {
+    "published_at": "2026-08-03 06:22:21",
+    "first_seen_at": "2026-08-03 06:22:21"
+  },
+  "soundhealth": {
+    "published_at": "2026-08-03 06:22:21",
+    "first_seen_at": "2026-08-03 06:22:21"
   }
 }

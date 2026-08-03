@@ -1,0 +1,7 @@
+<svg fill="none" height="256" width="256" xmlns="http://www.w3.org/2000/svg">
+  <style>path{stroke:#004484}@media (prefers-color-scheme:dark){path{stroke:#fff}}</style>
+  <circle stroke-width="12" stroke="#004484" r="104" cy="128" cx="128"></circle>
+  <path stroke-miterlimit="10" stroke-width="12" stroke="#004484" d="M231 134.871c-12.677-15.366-23.374-33.229-48.243-33.229-43.64 0-43.644 46.708-87.28 46.708-35.43 0-42.093-36.263-66.708-49.9"></path>
+  <path stroke-miterlimit="10" stroke-width="12" stroke="#004484" d="M228.081 152.033c-27.238-15.829-32.946-66.977-69.833-66.977-43.639 0-43.643 79.881-87.279 79.881-23.78 0-34.6-21.262-46.588-40.611"></path>
+  <path stroke-miterlimit="10" stroke-width="12" stroke="#004484" d="M227.664 156.643h-6.644c-43.639 0-43.639-88.174-87.279-88.174-43.64 0-43.644 113.054-87.28 113.054-2.257 0-4.398-.236-6.434-.683"></path>
+</svg>

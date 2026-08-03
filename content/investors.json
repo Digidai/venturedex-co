@@ -1558,5 +1558,36 @@
     "aliases": [
       "PitchDrive and Reign Ventures"
     ]
+  },
+  "forgepoint-capital": {
+    "name": "Forgepoint Capital",
+    "slug": "forgepoint-capital",
+    "short_name": "Forgepoint",
+    "website": "https://forgepointcap.com/",
+    "description": "Venture capital firm investing in cybersecurity, artificial intelligence, and infrastructure software."
+  },
+  "g2-venture-partners": {
+    "name": "G2 Venture Partners",
+    "slug": "g2-venture-partners",
+    "short_name": "G2",
+    "website": "https://g2vp.com/",
+    "description": "Venture capital firm investing in technology that transforms traditional industries.",
+    "aliases": [
+      "G2 Venture Partners and Eclipse"
+    ]
+  },
+  "eclipse": {
+    "name": "Eclipse",
+    "slug": "eclipse",
+    "short_name": "Eclipse",
+    "website": "https://eclipse.capital/",
+    "description": "Venture capital firm investing in technology for physical industries."
+  },
+  "shangbay-capital": {
+    "name": "ShangBay Capital",
+    "slug": "shangbay-capital",
+    "short_name": "ShangBay",
+    "website": "https://www.shangbaycapital.com/",
+    "description": "Venture capital firm investing in medical devices, biotechnology, and healthcare technology."
   }
 }
