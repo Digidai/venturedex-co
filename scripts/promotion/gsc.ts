@@ -561,8 +561,8 @@ export function withGscSnapshotLock<T>(
     "GSC ledger lock parent",
   );
 
-  const token = `${process.pid}:${Date.now()}:${randomBytes(16).toString("hex")}`;
-  const candidatePath = `${lockPath}.diagnostics.${process.pid}.${randomBytes(8).toString("hex")}`;
+  const token = `${process.pid}:${Date.now()}:${Buffer.from(randomBytes(16)).toString("hex")}`;
+  const candidatePath = `${lockPath}.diagnostics.${process.pid}.${Buffer.from(randomBytes(8)).toString("hex")}`;
   const payload = Buffer.from(
     [
       `token=${token}`,
