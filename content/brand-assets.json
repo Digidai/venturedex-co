@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-03",
+  "verified_at": "2026-08-09",
   "companies": {
     "8090": {
       "name": "8090",
@@ -645,7 +645,9 @@
       "shape": "wordmark",
       "local_path": "/logos/companies/cleatus.webp",
       "source_page": "https://www.cleat.ai/",
-      "source_url": "https://www.cleat.ai/images/logo/logo-cleatus.webp"
+      "source_url": "https://www.cleat.ai/images/logo/logo-cleatus.webp",
+      "allow_unreachable_source": true,
+      "note": "Official CLEATUS homepage and its same-origin logo reference remained browser-verifiable on 2026-08-09; automated validation received HTTP 429 from the official logo asset."
     },
     "olyzon": {
       "name": "Olyzon",
@@ -1832,6 +1834,34 @@
       "local_path": "/logos/companies/soundhealth.svg",
       "source_page": "https://soundhealth.life/",
       "source_url": "https://soundhealth.life/cdn/shop/files/favicon.svg?crop=center&height=32&v=1729133154&width=32"
+    },
+    "venus-aerospace": {
+      "name": "Venus Aerospace",
+      "shape": "icon",
+      "local_path": "/logos/companies/venus-aerospace.png",
+      "source_page": "https://www.venusaero.com/",
+      "source_url": "https://cdn.prod.website-files.com/689185f14513f9a00c297276/689654876ea8b587be3775ec_Frame%2067%20(1).png"
+    },
+    "bioscan-research": {
+      "name": "Bioscan Research",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/bioscan-research.png",
+      "source_page": "https://www.bioscanresearch.com/",
+      "source_url": "https://www.bioscanresearch.com/images/logo.png"
+    },
+    "sofab-inks": {
+      "name": "Sofab Inks",
+      "shape": "icon",
+      "local_path": "/logos/companies/sofab-inks.png",
+      "source_page": "https://www.sofabinks.com/",
+      "source_url": "https://cdn.prod.website-files.com/670fdb3c6faff7ca0db15c9a/6728ed885b4e56300587e00e_sofab-favi.png"
+    },
+    "intelligence": {
+      "name": "Intelligence",
+      "shape": "icon",
+      "local_path": "/logos/companies/intelligence.svg",
+      "source_page": "https://www.intelligence.ai/",
+      "source_url": "https://www.intelligence.ai/favicon.svg"
     }
   },
   "investors": {
@@ -3337,6 +3367,28 @@
       "local_path": "/logos/investors/shangbay-capital.png",
       "source_page": "https://www.shangbaycapital.com/",
       "source_url": "https://static.wixstatic.com/media/751c27_a97b40bd16b54ed48d6274be2c1de37f~mv2.png"
+    },
+    "mercury-fund": {
+      "name": "Mercury Fund",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/mercury-fund.svg",
+      "source_page": "https://www.mercuryfund.com/",
+      "source_url": "https://cdn.prod.website-files.com/69cadb08cdf09560af856342/6a074e6b3a7642f9f4342e7e_Mercury-Fund_Logo-Lockup_White_RGB.svg",
+      "tile_background": "dark"
+    },
+    "unicorn-india-ventures": {
+      "name": "Unicorn India Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/unicorn-india-ventures.png",
+      "source_page": "https://www.unicornivc.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a2014c9b202effc115bdf79/6a5e046e13ea68946c388ffd_Primary%20Logo%20Symbol%202.png"
+    },
+    "cloudberry-ventures": {
+      "name": "Cloudberry Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/cloudberry-ventures.png",
+      "source_page": "https://www.cloudberry.ventures/",
+      "source_url": "https://cdn.prod.website-files.com/6946cbadf69c13274eace9f5/6946cbadf69c13274eacea01_Favicon.png"
     }
   }
 }

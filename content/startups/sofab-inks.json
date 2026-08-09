@@ -1,0 +1,96 @@
+{
+  "slug": "sofab-inks",
+  "domain": "www.sofabinks.com",
+  "url": "https://www.sofabinks.com/",
+  "product_name": "Sofab Inks",
+  "summary": "Solution-processable transport-layer inks for perovskite solar cells.",
+  "editor_note": "Perovskite manufacturing has a materials bottleneck hiding behind its efficiency charts. Sofab sells Tinfab and Nicfab inks: its SnO2 layer has produced cells above 20% efficiency and stays stable for over two years, while its NiOx layer is claimed to be three times more durable than PTAA. Unlike a lab-only recipe, the bet is coating-compatible chemistry customers can order and test. The risk is whether those results survive module-scale qualification and volume production.",
+  "editor_rating": 4,
+  "why_featured": "$6M for scalable perovskite inks",
+  "product_type": "Climate / Sustainability",
+  "hq_location": "Louisville, Kentucky",
+  "region": "US",
+  "tags": "perovskite solar,materials science,solar manufacturing,thin films,climate tech",
+  "investors": "Cloudberry Ventures",
+  "links": {
+    "product": "https://www.sofabinks.com/tinfab"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6M",
+      "stage": "Seed",
+      "lead_investor": "Cloudberry Ventures",
+      "date": "2026-07-21",
+      "source_url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f",
+      "source_name": "Axios Pro Rata"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Sofab Inks official site",
+        "url": "https://www.sofabinks.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_tinfab",
+        "label": "Tinfab electron transport layer",
+        "url": "https://www.sofabinks.com/tinfab",
+        "type": "product"
+      },
+      {
+        "id": "official_nicfab",
+        "label": "Nicfab hole transport layer",
+        "url": "https://www.sofabinks.com/nicfab",
+        "type": "product"
+      },
+      {
+        "id": "funding_report",
+        "label": "Sofab Inks Seed report",
+        "url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f",
+        "type": "funding"
+      },
+      {
+        "id": "funding_corroboration",
+        "label": "Sofab funding and materials report",
+        "url": "https://www.pv-magazine.com/2026/07/22/sofab-inks-announces-6-million-in-funding-to-advance-novel-perovskite-etl-materials/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Sofab says Tinfab is a solution-processable SnO2 electron-transport layer that supports PIN and NIP architectures, multiple coating methods, and cells above 20% efficiency.",
+        "source_ids": [
+          "official_tinfab"
+        ]
+      },
+      {
+        "claim": "The Tinfab page says the ink remains stable for more than two years and is available as an orderable sample rather than only as a laboratory formulation.",
+        "source_ids": [
+          "official_tinfab"
+        ]
+      },
+      {
+        "claim": "Sofab says its tunable NiOx Nicfab layer is three times more durable than PTAA and has produced an 18% efficient full-metal-oxide cell.",
+        "source_ids": [
+          "official_nicfab"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Perovskite cell developers, solar manufacturers, and materials teams qualifying transport layers for scalable coating processes.",
+      "category": "Perovskite solar materials",
+      "differentiation": "Sofab packages tin-oxide and nickel-oxide transport layers as stable, orderable inks compatible with multiple deposition methods instead of leaving them as lab recipes.",
+      "why_now": "Perovskite commercialization increasingly depends on repeatable materials and module-scale manufacturing, not another record-efficiency cell in isolation."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether reported cell efficiency and durability translate into module-scale yield, customer qualification, and high-volume production economics.",
+        "basis": "VentureDex editorial assessment from the official Tinfab, Nicfab, and funding evidence."
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "intelligence",
+  "domain": "www.intelligence.ai",
+  "url": "https://www.intelligence.ai/",
+  "product_name": "Intelligence",
+  "summary": "Human-vote leaderboards and an API that routes work to the top-ranked model.",
+  "editor_note": "Model routing gets more credible when taste is measured by people, not inferred from synthetic scores. Intelligence turns millions of side-by-side Design Arena votes into format-specific leaderboards, then exposes a gateway that selects the top-ranked model. Unlike a static benchmark, the product links live human preference data to an OpenAI-compatible API. The risk is identity and metric drift: public surfaces still reference Arcada domains and disagree on user totals.",
+  "editor_rating": 5,
+  "why_featured": "$7.9M to route by human taste",
+  "product_type": "AI / ML",
+  "hq_location": "San Francisco, California",
+  "region": "US",
+  "tags": "model evaluation,human preference,ai routing,benchmarks,generative ai",
+  "investors": "Index Ventures",
+  "links": {
+    "product": "https://www.designarena.ai/",
+    "careers": "https://www.intelligence.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7.9M",
+      "stage": "Seed",
+      "lead_investor": "Index Ventures",
+      "date": "2026-08-03",
+      "source_url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Intelligence official site",
+        "url": "https://www.intelligence.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_arena",
+        "label": "Design Arena live product",
+        "url": "https://www.designarena.ai/",
+        "type": "product"
+      },
+      {
+        "id": "official_gateway",
+        "label": "Intelligence Gateway API reference",
+        "url": "https://router.intelligence.ai/docs/reference",
+        "type": "product"
+      },
+      {
+        "id": "funding_report",
+        "label": "Intelligence Seed report",
+        "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes live leaderboards across code, image, video, audio, slides, SVG, and other formats, with Elo-rating and win-rate views built from human comparisons.",
+        "source_ids": [
+          "official_site",
+          "official_arena"
+        ]
+      },
+      {
+        "claim": "The Gateway API accepts standard message payloads and input/output formats, then selects the top-ranked Design Arena model without requiring the caller to specify a model.",
+        "source_ids": [
+          "official_gateway"
+        ]
+      },
+      {
+        "claim": "TechCrunch reports that Design Arena serves millions of users and supplies human evaluations to frontier labs, turning participation into a continuously refreshed preference dataset.",
+        "source_ids": [
+          "funding_report"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI labs, application developers, and model buyers comparing or routing across generative models for specific output formats.",
+      "category": "Human-preference model evaluation and routing",
+      "differentiation": "Intelligence connects side-by-side human preference data to a model-selection gateway instead of treating a static benchmark as the end product.",
+      "why_now": "Rapid model turnover and inconsistent quality across modalities make continuously refreshed human evaluation more useful than one universal score."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether the company can reconcile Arcada-era domains and conflicting user metrics while keeping human votes resistant to bias, gaming, and sampling drift.",
+        "basis": "VentureDex editorial assessment from official product surfaces, API documentation, and the Seed report."
+      }
+    ]
+  }
+}

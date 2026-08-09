@@ -1592,5 +1592,26 @@
     "short_name": "ShangBay",
     "website": "https://www.shangbaycapital.com/",
     "description": "Venture capital firm investing in medical devices, biotechnology, and healthcare technology."
+  },
+  "mercury-fund": {
+    "name": "Mercury Fund",
+    "slug": "mercury-fund",
+    "short_name": "Mercury",
+    "website": "https://www.mercuryfund.com/",
+    "description": "Early-stage venture capital firm backing technology companies transforming foundational industries outside Silicon Valley."
+  },
+  "unicorn-india-ventures": {
+    "name": "Unicorn India Ventures",
+    "slug": "unicorn-india-ventures",
+    "short_name": "Unicorn India",
+    "website": "https://www.unicornivc.com/",
+    "description": "Early-stage Indian venture capital firm investing across technology, health, deep tech, SaaS, and fintech."
+  },
+  "cloudberry-ventures": {
+    "name": "Cloudberry Ventures",
+    "slug": "cloudberry-ventures",
+    "short_name": "Cloudberry",
+    "website": "https://www.cloudberry.ventures/",
+    "description": "Seed-to-Series-A venture firm backing deep-technology companies in advanced materials, manufacturing, climate, and related markets."
   }
 }

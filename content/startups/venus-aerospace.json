@@ -1,0 +1,93 @@
+{
+  "slug": "venus-aerospace",
+  "domain": "www.venusaero.com",
+  "url": "https://www.venusaero.com/",
+  "product_name": "Venus Aerospace",
+  "summary": "Detonation-based rocket engines built for reusable hypersonic flight.",
+  "editor_note": "Rocket propulsion has spent decades optimizing familiar cycles; this team is changing the cycle itself. Venus says its flight-proven RDRE uses supersonic detonations, improves efficiency by 15%, and removes moving parts, while VDR pairs it with a ramjet for runway-to-hypersonic operation. Unlike another airframe startup, the bet is a manufacturable engine primitive made with standard materials and 3D printing. The risk is whether flight hardware scales into repeatable customer programs.",
+  "editor_rating": 5,
+  "why_featured": "$91M for a new rocket cycle",
+  "product_type": "Other",
+  "hq_location": "Houston, Texas",
+  "region": "US",
+  "tags": "aerospace,rocket propulsion,hypersonics,defense,advanced manufacturing",
+  "investors": "Mercury Fund",
+  "links": {
+    "product": "https://www.venusaero.com/rdre",
+    "linkedin": "https://www.linkedin.com/company/venusaero/",
+    "twitter": "https://x.com/VenusAerospace",
+    "careers": "https://www.venusaero.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$91M",
+      "stage": "Series B",
+      "lead_investor": "Mercury Fund",
+      "date": "2026-07-08",
+      "source_url": "https://www.venusaero.com/newsroom/venus-aerospace-raises-91m-series-b",
+      "source_name": "Venus Aerospace"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Venus Aerospace official site",
+        "url": "https://www.venusaero.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_rdre",
+        "label": "Venus rotating detonation rocket engine",
+        "url": "https://www.venusaero.com/rdre",
+        "type": "product"
+      },
+      {
+        "id": "official_vdr",
+        "label": "Venus Detonation Ramjet product page",
+        "url": "https://www.venusaero.com/vdr",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Venus Aerospace Series B announcement",
+        "url": "https://www.venusaero.com/newsroom/venus-aerospace-raises-91m-series-b",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Venus says its flight-proven high-thrust RDRE uses supersonic detonation waves, has no moving parts, uses standard materials, and is 15% more efficient than conventional rocket engines.",
+        "source_ids": [
+          "official_rdre"
+        ]
+      },
+      {
+        "claim": "The VDR page describes a reusable, 3D-printed propulsion system that combines the RDRE with an air-breathing ramjet for operation from runway speeds through hypersonic cruise.",
+        "source_ids": [
+          "official_vdr"
+        ]
+      },
+      {
+        "claim": "The official funding release says Venus has completed a U.S. flight demonstration of the RDRE and will use the Series B to advance VDR development and scale production.",
+        "source_ids": [
+          "official_funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Defense, space, and aerospace teams developing high-speed reusable vehicles and propulsion programs.",
+      "category": "Detonation-based rocket propulsion",
+      "differentiation": "Venus is commercializing a rotating-detonation engine cycle and a combined detonation ramjet instead of optimizing another conventional rocket engine architecture.",
+      "why_now": "A flight-demonstrated RDRE and fresh Series B capital move the company from propulsion research toward manufacturable vehicle programs."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether flight-demonstrated detonation hardware can become a reliable, manufacturable full propulsion system across repeated customer missions.",
+        "basis": "VentureDex editorial assessment based on the official RDRE, VDR, and Series B surfaces."
+      }
+    ]
+  }
+}

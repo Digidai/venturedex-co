@@ -1,0 +1,91 @@
+{
+  "slug": "bioscan-research",
+  "domain": "www.bioscanresearch.com",
+  "url": "https://www.bioscanresearch.com/",
+  "product_name": "Bioscan Research",
+  "summary": "Portable non-invasive screening for intracranial bleeding.",
+  "editor_note": "Emergency triage gets more useful when the first brain scan fits in a bag. CEREBO uses diffuse reflectance and near-infrared spectroscopy to screen for intracranial bleeding, then applies machine learning so the result does not depend on specialist interpretation. Unlike CT, the device is portable, non-invasive, and offered in Value, Plus, and Cloud configurations. The risk is whether independent clinical evidence supports deployment beyond current Indian settings.",
+  "editor_rating": 4,
+  "why_featured": "$1M for portable brain triage",
+  "product_type": "HealthTech",
+  "hq_location": "Ahmedabad, Gujarat, India",
+  "region": "China / Asia",
+  "tags": "brain injury,medical devices,near-infrared spectroscopy,emergency triage,diagnostics",
+  "investors": "Unicorn India Ventures",
+  "links": {
+    "product": "https://www.bioscanresearch.com/product.php",
+    "linkedin": "https://www.linkedin.com/company/bioscanresearch"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$1M",
+      "stage": "Seed",
+      "lead_investor": "Unicorn India Ventures",
+      "date": "2026-07-22",
+      "source_url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/",
+      "source_name": "Express Healthcare"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-09",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Bioscan Research official site",
+        "url": "https://www.bioscanresearch.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "CEREBO product page",
+        "url": "https://www.bioscanresearch.com/product.php",
+        "type": "product"
+      },
+      {
+        "id": "official_patent",
+        "label": "Bioscan probe patent page",
+        "url": "https://www.bioscanresearch.com/patent.php",
+        "type": "product"
+      },
+      {
+        "id": "funding_report",
+        "label": "Bioscan Research Seed report",
+        "url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The CEREBO page describes a portable, non-invasive intracranial-hemorrhage screening device that uses diffuse reflectance and near-infrared spectroscopy with machine-learning interpretation.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "Bioscan presents Value, Plus, and Cloud configurations, with patient-history storage in Plus and application plus web access in the Cloud tier.",
+        "source_ids": [
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The official patent surface describes passive self-alignment, safe optical switching, and multi-probe mechanisms intended to improve placement and measurement consistency.",
+        "source_ids": [
+          "official_patent"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Emergency departments, ambulances, clinics, and care teams that need rapid triage for suspected traumatic brain injury.",
+      "category": "Portable brain-injury diagnostics",
+      "differentiation": "CEREBO applies optical sensing and machine-learning interpretation at the point of triage rather than requiring every initial screen to begin with stationary CT equipment.",
+      "why_now": "Fresh Seed capital can support clinical validation and commercialization in settings where access to CT and specialist interpretation remains constrained."
+    },
+    "risks": [
+      {
+        "claim": "The falsifiable risk is whether independent clinical studies show sufficient sensitivity and specificity for safe deployment across populations and care settings beyond India.",
+        "basis": "VentureDex editorial assessment from the official product, patent, and Seed-funding evidence."
+      }
+    ]
+  }
+}

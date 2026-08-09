@@ -1039,5 +1039,21 @@
   "soundhealth": {
     "published_at": "2026-08-03 06:22:21",
     "first_seen_at": "2026-08-03 06:22:21"
+  },
+  "venus-aerospace": {
+    "published_at": "2026-08-09 14:58:52",
+    "first_seen_at": "2026-08-09 14:58:52"
+  },
+  "bioscan-research": {
+    "published_at": "2026-08-09 14:58:52",
+    "first_seen_at": "2026-08-09 14:58:52"
+  },
+  "sofab-inks": {
+    "published_at": "2026-08-09 14:58:52",
+    "first_seen_at": "2026-08-09 14:58:52"
+  },
+  "intelligence": {
+    "published_at": "2026-08-09 14:58:52",
+    "first_seen_at": "2026-08-09 14:58:52"
   }
 }
