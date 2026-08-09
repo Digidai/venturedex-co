@@ -19,8 +19,8 @@
       "stage": "Seed",
       "lead_investor": "Earlybird Venture Capital",
       "date": "2026-06-02",
-      "source_url": "https://techfundingnews.com/bayshore-earlybird-ai-agents-law-compliance/",
-      "source_name": "TechFundingNews"
+      "source_url": "https://earlybird.com/perspectives/making-compliance-executable-why-we-backed-bayshore",
+      "source_name": "Earlybird Venture Capital"
     }
   ],
   "research": {
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "TechFundingNews",
-        "url": "https://techfundingnews.com/bayshore-earlybird-ai-agents-law-compliance/",
+        "label": "Earlybird investment announcement",
+        "url": "https://earlybird.com/perspectives/making-compliance-executable-why-we-backed-bayshore",
         "type": "funding"
       }
     ],

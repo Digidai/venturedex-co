@@ -19,8 +19,8 @@
       "stage": "Seed",
       "lead_investor": "daphni",
       "date": "2026-05-26",
-      "source_url": "https://techfundingnews.com/certo-4m-seed-ai-compliance-cpg/",
-      "source_name": "Tech Funding News"
+      "source_url": "https://tech.eu/2026/05/26/certo-raises-4m-for-ai-powered-consumer-goods-compliance-platform/",
+      "source_name": "Tech.eu"
     }
   ],
   "research": {
@@ -34,8 +34,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Tech Funding News",
-        "url": "https://techfundingnews.com/certo-4m-seed-ai-compliance-cpg/",
+        "label": "Tech.eu funding report",
+        "url": "https://tech.eu/2026/05/26/certo-raises-4m-for-ai-powered-consumer-goods-compliance-platform/",
         "type": "funding"
       }
     ],

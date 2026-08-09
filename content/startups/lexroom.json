@@ -21,8 +21,8 @@
       "stage": "Series B",
       "lead_investor": "Left Lane Capital",
       "date": "2026-05-19",
-      "source_url": "https://techfundingnews.com/harvey-rival-lexroom-raises-50m-to-power-ai-for-europes-one-million-lawyers/",
-      "source_name": "Tech Funding News"
+      "source_url": "https://www.lexroom.ai/es/blog/lexroom-levanta-50-millones-de-dolares-en-su-ronda-de-financiacion-serie-b-para-desarrollar-ia-legal-aplicada-al-derecho-civil-europeo",
+      "source_name": "Lexroom"
     }
   ],
   "research": {
@@ -36,8 +36,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Tech Funding News",
-        "url": "https://techfundingnews.com/harvey-rival-lexroom-raises-50m-to-power-ai-for-europes-one-million-lawyers/",
+        "label": "Lexroom Series B announcement",
+        "url": "https://www.lexroom.ai/es/blog/lexroom-levanta-50-millones-de-dolares-en-su-ronda-de-financiacion-serie-b-para-desarrollar-ia-legal-aplicada-al-derecho-civil-europeo",
         "type": "funding"
       }
     ],

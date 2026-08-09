@@ -14,8 +14,7 @@
   "tags": "cloud security,access control,attack paths,identity security,ai security",
   "investors": "Notable Capital",
   "links": {
-    "product": "https://act.security/platform",
-    "careers": "https://www.linkedin.com/company/act-sec/jobs/"
+    "product": "https://act.security/platform"
   },
   "is_featured": true,
   "funding": [
@@ -54,12 +53,6 @@
         "label": "Act Security launch and funding announcement",
         "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html",
         "type": "funding"
-      },
-      {
-        "id": "official_careers",
-        "label": "Act Security official LinkedIn jobs entry",
-        "url": "https://www.linkedin.com/company/act-sec/jobs/",
-        "type": "official"
       }
     ],
     "product_evidence": [
