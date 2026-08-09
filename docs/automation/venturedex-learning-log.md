@@ -4204,3 +4204,264 @@ Append one entry per daily automation run. Do not rewrite old entries.
   - rejected Commonwealth Fusion Systems, Function, PEX, Xsight Labs, QuantumDiamonds, Maia Fertility, Cantina, BirdAI Labs, and SiEngine for canonical stage/amount, product-evaluability, or immutable category constraints. Seven existing decisions were suppressed, and Smallest.ai was deferred rather than mutating its frozen legacy row.
   - all new company and investor assets came from official sources. Static Careers entries were stored for all three accepted companies; no role lists, role counts, locations, compensation, or hiring claims were collected.
   - this run used the main checkout `/Users/dai/Developer/CursorProjects/venturedex.co`, not a detached automation worktree; no `RUN_WORKTREE` cleanup is required.
+
+### 2026-08-04 14:32 CST — Daily curation blocked at dependency audit
+
+- candidate_count: 20 fresh scored decisions, plus duplicate suppression and two viable cap-deferred candidates.
+- accepted: 5 editorially accepted drafts — Venus Aerospace, Assured, Bioscan Research, Sofab Inks, and Intelligence (Design Arena). They were not committed, pushed, deployed, or published because the immutable full local gate did not pass.
+- rejected: 15 fresh decisions appended locally; the 15:5 ratio meets the exact 3:1 research bar but is not published.
+- deferred: Onyx Security and Sent remained viable beyond the five-addition cap; no rejection row was written for either.
+- rejection_bar_met: yes; 15:5, exactly 3:1.
+- outcome: blocked-before-commit.
+- validation: blocked. Required documents and prior automation memory were read first, then `./scripts/bootstrap-automation.sh venturedex-daily-curator` passed before discovery in the main checkout. `./scripts/check-github-actions.sh` passed and `git diff --check` passed for the content draft. The authoritative `./scripts/manage.sh validate` stopped immediately at its immutable `npm audit --audit-level=high` preflight, before content validation, D1 seed, newsletter/unit tests, Astro sync, TypeScript, or build. `npm audit --json` reported six dependency advisories: two high and four moderate. The high findings are `fast-uri` 3.1.4, patched in 3.1.5, and `undici` 7.28.0, patched in 7.29.0. The same lock state had reported zero vulnerabilities on August 3; the advisories were newly published/ingested on August 3, so this is audit-database drift over an unchanged dependency tree rather than a Daily content defect.
+- weekly_validate: n/a; Weekly content and workflow data were not modified.
+- build_db: not reached because the dependency audit is the first full-gate step.
+- build_app: not reached because the dependency audit is the first full-gate step.
+- screenshot: five visually reviewed 1440x900 WebP drafts exist. Venus, Bioscan Research, Sofab Inks, and Intelligence used the standard browser-led flow. Assured repeatedly triggered the conservative popup guard because its Enzuzo consent banner persisted; `bb-browser` and DOM inspection isolated the banner, and a bounded browser-backed capture clicked only `Decline` before producing the clean product screenshot. No screenshot guard was changed.
+- commit_push: not attempted. Daily scope prohibits package, configuration, script, and lockfile edits, and all local gates must pass before commit or push. The content and learning-log changes remain uncommitted in the main checkout at `/Users/dai/Developer/CursorProjects/venturedex.co`.
+- commit_sha: none; baseline `main`/`origin/main` remained `cffe007db228b8838fd64e2b03e8ca20230ebecf`.
+- ci_deploy: not attempted; no eligible commit exists.
+- live_smoke: not attempted; no deployment exists for this batch.
+- gsc: not attempted. No new detail URL was deployed, so `--latest-daily` has no eligible target from this run and no `requested` completion is claimed.
+- newsletter: not manually triggered and no remote D1 query was needed. The five records are unpublished local drafts, so no delay window started; only future `newsletter_sends` / `newsletter_deliveries` rows after a valid deployment would be authoritative.
+- failure_tags: [dependency_audit, validate_fail, external_dependency, policy_conflict, screenshot_env]
+- reward: -5 (`-2` for the failed authoritative local gate; `-3` for the preventable debug-trace credential exposure described below). No positive release reward applies because validation, push, deployment, and live proof did not occur.
+- dominant_failure_mode: newly disclosed transitive dependency vulnerabilities conflict with the Daily immutable file-scope guard. `@astrojs/check` resolves through AJV to `fast-uri` 3.1.4; AJV's `^3.0.1` range allows a lock-only move to patched 3.1.5. In contrast, `@astrojs/cloudflare` 14.1.4 / `wrangler` 4.114.0 resolve through Miniflare to an exact `undici` 7.28.0 pin. The latest registry chain (`wrangler` 4.118.0, Cloudflare Vite plugin 1.50.0, and Miniflare 4.20260730.0 / 5.20260730.0-alpha) still pins 7.28.0, so there is no lock-only or ordinary upstream-version upgrade that clears both high findings today.
+- root_cause_and_iterations:
+  - The full gate was not blindly retried. The failing command, audit JSON, installed dependency graph, immutable runbook scope, current registry metadata, recent learning entries, and official GitHub advisories were inspected. `npm audit fix` was not run because npm's forced proposal includes a breaking Wrangler change and any package/lock mutation is outside Daily scope; an ephemeral `--no-save` override would also fail to repair clean CI.
+  - The standard Assured screenshot helper failed twice on the persistent consent layer. Browser and DOM inspection established the exact cause, and the narrow capture removed only the verified consent overlay. Temporary `.playwright-cli` output was moved outside the repository; no generated cache is included in the draft.
+  - During screenshot diagnosis, a `bash -x` invocation echoed the repo-local Cloudflare API token into the local task trace. The value is not recorded here or elsewhere in the closeout. The credential must be rotated before a future release; rotation is an external privileged action and was not attempted automatically.
+- proposed_change: deferred. Run a separate human-reviewed dependency update outside the Daily immutable scope: move the lockfile to `fast-uri` 3.1.5, add a narrowly scoped Miniflare override to `undici` 7.29.0, rebuild the lock, and run the complete audit/test/build/CI matrix. Cloudflare workers-sdk issue `#15007` tracks the still-unreleased upstream Undici upgrade; remove the override after an official Miniflare/Wrangler release carries the fix. Rotate the exposed Cloudflare token and rerun bootstrap before any deployment. A separate screenshot-helper change may target the Enzuzo locator at the actual consent button rather than its ancestor while preserving popup fail-closed behavior.
+- decision: deferred for dependency/lock, credential rotation, and screenshot-helper changes; no validator, script, package, lockfile, governance, Adaptive Heuristics, or Weekly file was changed.
+- affected_file: local drafts in `content/startups/{venus-aerospace,assured,bioscan-research,sofab-inks,intelligence}.json`, `content/rejected.jsonl`, `content/investors.json`, `content/brand-assets.json`, `content/timestamps.json`, official company/investor assets, five product screenshots, and this learning-log entry.
+- affected_section: Daily curation, structured research, official brand provenance, screenshot evidence, immutable dependency audit, credential hygiene, Newsletter delay boundary, and fail-closed release/GSC handling.
+- evidence:
+  - all five accepted drafts independently cleared product, financing, evidence, taste, and asset review. Each has structured official and funding sources, at least two source-linked product facts, market context, a falsifiable risk/open question, an official brand asset, and UTC `published_at` / `first_seen_at` of `2026-08-04 06:10:34`. Static official Careers links were stored for Venus Aerospace, Assured, and Intelligence; none was invented for Bioscan Research or Sofab Inks.
+  - fifteen fresh rejection rows cover eligibility, product-evaluability, source, stage, currency, or finalist-quality failures without duplicating active rejection slugs. Weekly content remained untouched.
+  - all five run-owned browser/product-research tabs were closed; the pre-existing 22 unrelated tabs and browser daemon remain untouched. This run used the main checkout, not a detached automation worktree, so `RUN_WORKTREE` cleanup is not applicable. The checkout remains intentionally dirty because gate-failed drafts and required evidence were preserved rather than destructively discarded.
+
+### 2026-08-05 13:47 CST — Daily preflight blocked before bootstrap
+
+- candidate_count: 0; candidate discovery did not start.
+- accepted: 0 new decisions in this preflight. The five unpublished August 4 drafts remain preserved and were not re-evaluated or changed.
+- rejected: 0 new decisions.
+- rejection_bar_met: n/a; no Daily candidate cycle started.
+- outcome: blocked-before-bootstrap.
+- validation: not started. Read-only `npm audit --audit-level=high --json` reconfirmed 2 high and 4 moderate advisories. The high findings remain `fast-uri` below 3.1.5 and transitive `undici` below 7.29.0 through Miniflare, so the immutable first step of `./scripts/manage.sh validate` would fail. Daily scope prohibits package, lockfile, override, script, and config changes.
+- weekly_validate: n/a; Weekly content and workflow data were not modified.
+- build_db: not started.
+- build_app: not started.
+- screenshot: not started; no browser tabs were opened.
+- commit_push: not attempted. `HEAD` and `origin/main` both remain `cffe007db228b8838fd64e2b03e8ca20230ebecf`; the August 4 drafts and append-only evidence remain uncommitted.
+- commit_sha: none.
+- ci_deploy: not attempted.
+- live_smoke: not attempted.
+- gsc: not attempted because no new detail URL was deployed; no `requested` completion is claimed.
+- newsletter: not manually triggered. No content was published, so no new delay window began; future D1 `newsletter_sends` / `newsletter_deliveries` rows remain authoritative.
+- failure_tags: [dependency_audit, external_dependency, policy_conflict, governance_trace_missing]
+- reward: 0; this was a safe preflight stop with no Daily cycle or release outcome.
+- dominant_failure_mode: the Cloudflare API token exposed in the August 4 local debug trace remains unrotated. Both durable env-file timestamps predate that exposure, so the credential was not reused for bootstrap or release. Independently, the current dependency audit still cannot pass inside Daily immutable scope.
+- root_cause_and_iterations:
+  - Required Daily documents, prior automation memory, current checkout/worktree state, bootstrap implementation, package/lock versions, and the August 4 learning entry were inspected before any candidate work.
+  - The trusted repository state is Astro 7.1.3 / Cloudflare adapter 14.1.4; the automation definition's Astro 6 / adapter 13 wording remains known stale configuration outside Daily auto-edit authority.
+  - A credential-free current audit added new evidence and confirmed that yesterday's dependency blocker remains active; no blind retry, audit bypass, `npm audit fix`, bootstrap, or credential use followed.
+- proposed_change: deferred. Rotate the exposed Cloudflare token and update both durable env copies; perform a separately authorized dependency remediation and full test matrix; reconcile the August 4 unpublished batch; and update the automation definition to Astro 7 / adapter 14 through a separately reviewed governance change.
+- decision: deferred; no Adaptive Heuristics, immutable guard, validator, script, package, lockfile, config, content, Weekly, deployment, GSC, or newsletter change was made.
+- affected_file: this append-only learning-log entry and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`. The preserved August 4 content/assets were not modified.
+- affected_section: pre-bootstrap credential hygiene, immutable dependency audit, automation-definition drift, fail-closed release boundary, and closeout persistence.
+
+### 2026-08-06 14:16 CST — Daily preflight blocked before bootstrap
+
+- candidate_count: 0; candidate discovery did not start.
+- accepted: 0 new decisions. The five unpublished August 4 drafts remain preserved and were not re-evaluated or changed.
+- rejected: 0 new decisions.
+- rejection_bar_met: n/a; no Daily candidate cycle started.
+- outcome: blocked-before-bootstrap.
+- validation: not started. A fresh credential-free `npm audit --audit-level=high --json` exited 1 with 2 high and 4 moderate advisories. The high findings remain `fast-uri` 3.1.4, patched in 3.1.5, and transitive `undici` 7.28.0 through Miniflare, patched in 7.29.0. `scripts/manage.sh validate` runs this audit as its first step, so the immutable local release gate still cannot pass. Daily scope prohibits package, lockfile, override, script, and config changes.
+- weekly_validate: n/a; Weekly content and workflow data were not modified.
+- build_db: not started.
+- build_app: not started.
+- screenshot: not started; no browser tabs were opened.
+- bootstrap: intentionally not executed because no post-exposure credential rotation can be proved. The repo `.env` and automation `local.env` metadata both predate the August 4 token exposure, and `scripts/load-local-env.sh` would load the repo copy before `scripts/bootstrap-automation.sh` sends it as a Bearer token to Cloudflare. Reusing that credential would violate the fail-closed credential boundary.
+- commit_push: not attempted. `HEAD` and live `origin/main` both remain `cffe007db228b8838fd64e2b03e8ca20230ebecf`; the August 4 drafts and append-only evidence remain uncommitted.
+- commit_sha: none.
+- ci_deploy: not attempted.
+- live_smoke: not attempted.
+- gsc: not attempted because no new detail URL was deployed; no `requested` completion is claimed.
+- newsletter: not manually triggered. No content was published, so no new delay window began; future D1 `newsletter_sends` / `newsletter_deliveries` rows remain authoritative.
+- worktree_cleanup: n/a. No August 6 Daily worktree was created, so there is no `RUN_WORKTREE` to clean. The dirty main checkout and unrelated registered Weekly/SEO worktrees were preserved.
+- failure_tags: [dependency_audit, external_dependency, policy_conflict, governance_trace_missing]
+- reward: 0; this was a safe preflight stop with no Daily cycle or release outcome.
+- dominant_failure_mode: two independent immutable blockers remain active before candidate discovery: an exposed Cloudflare token has no rotation evidence, and the current dependency graph fails the mandatory high-severity audit. The automation definition also remains inconsistent with the trusted repository control plane: it says Astro 6 / adapter 13 and implies bootstrap creates a detached worktree, while the required docs/package state use Astro 7.1.3 / adapter 14.1.4 and the bootstrap script operates only in its current checkout.
+- root_cause_and_iterations:
+  - Read the required Daily control-plane documents, automation memory, and last ten learning-log entries before any candidate work. A same-day duplicate-run audit found no August 6 Daily worktree, process, commit, file write, GitHub Actions run, or automation artifact outside this invocation.
+  - Inspected the bootstrap and env-loader implementations without exposing a secret. Both durable env copies are older than the August 4 exposure; the loader prefers repo `.env`, and bootstrap immediately verifies the loaded token against Cloudflare. The token was therefore not reused and bootstrap was not blindly attempted.
+  - Re-ran only the credential-free dependency audit. GitHub's reviewed advisories still identify the installed `fast-uri` and `undici` versions as affected; Cloudflare workers-sdk issue `#15007` remains open and In Review because current Miniflare still pins `undici` 7.28.0. No `npm audit fix`, override, package/lock mutation, audit bypass, or speculative retry was attempted.
+  - Confirmed `main` equals live `origin/main` but remains intentionally dirty with the unpublished August 4 batch. Because bootstrap does not create a detached worktree, a later recovered run must first provision a clean detached worktree from the exact current `origin/main` and only then execute bootstrap there.
+- proposed_change: deferred. Rotate the exposed Cloudflare token, update both durable env copies, and set the automation `local.env` permission to `0600`; perform a separately authorized dependency remediation and full test matrix; reconcile or deliberately retire the August 4 unpublished batch; align the automation definition with Astro 7 / adapter 14 and the real worktree/bootstrap boundary; and resolve the higher-priority `content/STANDARD.md` R2-upload expectation versus the current non-blocking R2 bootstrap behavior through human-reviewed governance work.
+- decision: deferred; no Adaptive Heuristics, immutable guard, validator, script, package, lockfile, config, content, Weekly, deployment, GSC, newsletter, or credential file was changed.
+- affected_file: this append-only learning-log entry and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`. The preserved August 4 content/assets were not modified.
+- affected_section: pre-bootstrap credential hygiene, immutable dependency audit, automation-definition drift, detached-worktree boundary, and closeout persistence.
+
+### 2026-08-07 13:48 CST — Daily preflight blocked before bootstrap
+
+- candidate_count: 0; candidate discovery did not start.
+- accepted: 0 new decisions. The five unpublished August 4 drafts remain preserved and were not re-evaluated or changed.
+- rejected: 0 new decisions.
+- rejection_bar_met: n/a; no Daily candidate cycle started.
+- outcome: blocked-before-bootstrap.
+- validation: not started. A fresh credential-free `npm audit --audit-level=high --json` exited 1 with 3 high and 4 moderate advisories. High findings are installed `fast-uri` 3.1.4 (patched in 3.1.5), `js-yaml` 4.3.0 (patched in 4.3.1), and Miniflare-pinned `undici` 7.28.0 (patched in 7.29.0). `scripts/manage.sh validate` runs the audit first, so downstream content validation, D1 seed, tests, Astro sync, TypeScript, and build cannot run. Daily scope prohibits package, lockfile, override, script, and config remediation.
+- weekly_validate: n/a; Weekly content and the dirty detached Weekly worktree were not modified.
+- build_db: not started.
+- build_app: not started.
+- screenshot: not started; no browser tabs were opened.
+- bootstrap: intentionally not executed. The repo `.env` and automation `local.env` metadata still predate the August 4 token exposure, so post-exposure rotation cannot be proved; the repo loader would source that credential before bootstrap sends it to Cloudflare. The required control plane also conflicts with the automation definition: trusted repo docs, `package.json`, and lock state use Astro 7.1.3 / adapter 14.1.4, while the automation still says Astro 6 / adapter 13. The automation also says bootstrap runs in a detached worktree, but the script operates only in its current checkout and does not create one.
+- commit_push: not attempted. `HEAD`, local `origin/main`, and live `origin/main` all remain `cffe007db228b8838fd64e2b03e8ca20230ebecf`; the August 4 drafts and append-only evidence remain uncommitted.
+- commit_sha: none.
+- ci_deploy: not attempted; GitHub Actions has no August 7 Daily run.
+- live_smoke: not attempted.
+- gsc: not attempted because no new detail URL was deployed; no `requested` completion is claimed.
+- newsletter: not manually triggered. No content was published, so no new delay window began; future D1 `newsletter_sends` / `newsletter_deliveries` rows remain authoritative.
+- worktree_cleanup: n/a. No August 7 Daily worktree exists, so there is no `RUN_WORKTREE` to clean. The main checkout's 22 preserved August 4 content/assets, the detached Weekly worktree, and the unrelated SEO worktree were left untouched.
+- failure_tags: [dependency_audit, external_dependency, policy_conflict, governance_trace_missing]
+- reward: 0; this was a safe fail-closed preflight with no Daily cycle or release outcome.
+- dominant_failure_mode: three independent pre-discovery blockers remain: no evidence that the exposed Cloudflare credential was rotated, the automation definition contradicts the trusted repository architecture and actual worktree/bootstrap boundary, and the mandatory dependency audit now reports three high findings. The new `js-yaml` advisory makes the audit blocker worse than August 6.
+- root_cause_and_iterations:
+  - Read the required Daily control-plane documents, automation memory, `bb-browser` workflow, and the last ten learning-log entries before candidate work. A same-day audit found no August 7 Daily worktree, process, commit, file write, automation artifact, or GitHub Actions run.
+  - Inspected `package.json`, `package-lock.json`, the automation definition, bootstrap, env loader, and validation entrypoint. Repo truth converges on Astro 7.1.3 / adapter 14.1.4; bootstrap contains no worktree creation and would run against the intentionally dirty main checkout.
+  - Inspected env metadata without reading or printing secret values. Repo `.env` remains mode `0600` with May 26 mtime; automation `local.env` remains mode `0644` with April 20 mtime. Both predate the August 4 exposure, so bootstrap was not allowed to reuse the credential.
+  - Re-ran only the credential-free dependency audit. `fast-uri` and `js-yaml` have patch releases that can be handled in separately authorized lock maintenance; current Miniflare still exactly pins vulnerable `undici` and Cloudflare workers-sdk issue `#15007` remains open. No `npm audit fix`, override, lock mutation, audit bypass, bootstrap, or blind retry was attempted.
+- proposed_change: deferred. Rotate the Cloudflare token, update both durable env copies, and set automation `local.env` to `0600`; perform separately authorized dependency maintenance for `fast-uri` and `js-yaml` and a reviewed upstream/workaround path for Miniflare-pinned `undici`; reconcile or deliberately retire the August 4 unpublished batch; then align the automation definition with Astro 7 / adapter 14 and the real detached-worktree-before-bootstrap sequence. These changes are outside the Daily auto-edit region.
+- decision: deferred; no Adaptive Heuristics, immutable guard, validator, script, package, lockfile, automation config, content, Weekly, deployment, GSC, newsletter, or credential file was changed.
+- affected_file: this append-only learning-log entry and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`. The preserved August 4 batch was not modified.
+- affected_section: pre-bootstrap credential hygiene, dependency audit, automation-definition drift, detached-worktree boundary, duplicate-run protection, and closeout persistence.
+
+### 2026-08-08 13:48 CST — Daily preflight blocked before bootstrap
+
+- candidate_count: 0; candidate discovery did not start.
+- accepted: 0 new decisions. The five unpublished August 4 drafts remain preserved and were not re-evaluated or changed.
+- rejected: 0 new decisions.
+- rejection_bar_met: n/a; no Daily candidate cycle started.
+- outcome: blocked-before-bootstrap.
+- validation: not started. A fresh credential-free `npm audit --audit-level=high --json` exited 1 with 4 high and 4 moderate advisories. High findings are locked `fast-uri` 3.1.4, `js-yaml` 4.3.0, `nanoid` 3.3.16, and Miniflare-pinned `undici` 7.28.0. `scripts/manage.sh validate` runs this audit as its first command, so content validation, D1 seed generation, newsletter/unit tests, Astro sync, TypeScript, and build cannot begin. Daily scope prohibits package, lockfile, override, script, or config remediation.
+- weekly_validate: n/a; Weekly content and the detached Weekly worktree were not modified.
+- build_db: not started.
+- build_app: not started.
+- screenshot: not started; no browser product or Search Console tabs were opened.
+- bootstrap: intentionally not executed because the Cloudflare token exposed on August 4 still has no rotation evidence. Repo `.env` remains mode `0600` with a May 26 mtime; automation `local.env` remains mode `0644` with an April 20 mtime. Both predate the exposure, and `scripts/load-local-env.sh` prefers repo `.env` before `scripts/bootstrap-automation.sh` sends the loaded token to Cloudflare. The token value was not read, printed, or reused.
+- commit_push: not attempted. `HEAD`, local `origin/main`, and freshly fetched `origin/main` remain equal at `cffe007db228b8838fd64e2b03e8ca20230ebecf`. The 22 preserved August 4 content/asset paths and append-only learning evidence remain uncommitted.
+- commit_sha: none.
+- ci_deploy: not attempted; no eligible content commit exists.
+- live_smoke: not attempted.
+- gsc: not attempted because no new detail URL was deployed; no `requested` completion is claimed.
+- newsletter: not manually triggered. No content was published, so no new delay window began; future D1 `newsletter_sends` / `newsletter_deliveries` rows remain authoritative.
+- worktree_cleanup: n/a. No August 8 Daily worktree was created, so there is no `RUN_WORKTREE` to clean. The dirty main checkout, detached Weekly worktree, and unrelated SEO/GEO worktree were preserved.
+- failure_tags: [dependency_audit, external_dependency, policy_conflict, governance_trace_missing]
+- reward: 0; this was a safe fail-closed preflight with no Daily cycle or release outcome.
+- dominant_failure_mode: three independent pre-discovery blockers remain: the exposed Cloudflare credential lacks rotation evidence, the mandatory high-severity audit fails, and the intentionally dirty main checkout preserves a prior gate-failed batch. The automation definition also remains lower-priority stale control-plane text: it names Astro 6 / adapter 13 and implies bootstrap creates a detached worktree, while trusted repo docs/package state use Astro 7.1.3 / adapter 14.1.4 and bootstrap only operates in its current checkout.
+- root_cause_and_iterations:
+  - Read the required Daily control-plane documents, automation memory, `bb-browser` workflow, and the last ten learning-log entries before candidate work. Fresh `git fetch`, status, worktree, and env-metadata checks confirmed no recovery or August 8 Daily worktree had appeared.
+  - Inspected `scripts/bootstrap-automation.sh`, `scripts/load-local-env.sh`, and the `scripts/manage.sh validate` entrypoint without exposing a secret. Bootstrap would immediately verify the old token, while the full gate would stop at the audit before any content check.
+  - Re-ran only the credential-free dependency audit and inspected the installed dependency paths. The newly reviewed `nanoid` advisory raises the high count from three on August 7 to four on August 8.
+  - Current primary-source research found that Cloudflare merged workers-sdk PR `#15013` on August 7, and npm now publishes `wrangler@4.120.0` with `miniflare@5.20260801.1-alpha` depending on patched `undici@7.29.0`. Patched releases also exist for the other three findings. The blocker has therefore narrowed from waiting on the Undici upstream to a separately authorized lock/dependency refresh plus the complete test matrix; no Daily-scope dependency mutation was attempted.
+- proposed_change: deferred. Rotate and persist the Cloudflare token in both durable env copies and set automation `local.env` to `0600`; separately authorize a dependency/lock refresh that moves all four high findings to patched versions and runs the full test/CI matrix; reconcile or deliberately retire the August 4 unpublished batch; then align the automation definition with Astro 7 / adapter 14 and the real detached-worktree-before-bootstrap sequence.
+- decision: deferred; no Adaptive Heuristics, immutable guard, validator, script, package, lockfile, automation config, content, Weekly, deployment, GSC, newsletter, or credential file was changed.
+- affected_file: this append-only learning-log entry and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`. The preserved August 4 batch was not modified.
+- affected_section: pre-bootstrap credential hygiene, dependency audit, upstream-remediation status, automation-definition drift, dirty-checkout boundary, and closeout persistence.
+
+### 2026-08-09 13:46 CST — Daily preflight blocked before bootstrap
+
+- candidate_count: 0; candidate discovery did not start.
+- accepted: 0 new decisions. The five unpublished August 4 drafts remain preserved and were not re-evaluated or changed.
+- rejected: 0 new decisions.
+- rejection_bar_met: n/a; no Daily candidate cycle started.
+- outcome: blocked-before-bootstrap.
+- validation: not started. A fresh credential-free `npm audit --audit-level=high --json` reported 4 high and 4 moderate advisories. The locked high packages remain `fast-uri` 3.1.4, `js-yaml` 4.3.0, `nanoid` 3.3.16, and `undici` 7.28.0. `scripts/manage.sh validate` runs the high-severity audit first, so content validation, D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and build cannot begin. Daily scope prohibits package, lockfile, override, script, or config remediation.
+- weekly_validate: n/a; Weekly content and the detached Weekly worktree were not modified.
+- build_db: not started.
+- build_app: not started.
+- screenshot: not started; no browser product or Search Console tabs were opened.
+- bootstrap: intentionally not executed because the Cloudflare token exposed on August 4 still has no rotation evidence. Repo `.env` remains mode `0600` with a May 26 mtime; automation `local.env` remains mode `0644` with an April 20 mtime. Both predate the exposure, the process environment contains no Cloudflare override, and `scripts/load-local-env.sh` prefers repo `.env` before `scripts/bootstrap-automation.sh` sends the token to Cloudflare's verification endpoint. The token value was not printed or reused.
+- commit_push: not attempted. Fresh fetch confirmed `HEAD` and `origin/main` remain equal at `cffe007db228b8838fd64e2b03e8ca20230ebecf`. The 22 preserved August 4 content/asset paths plus append-only learning evidence remain uncommitted.
+- commit_sha: none.
+- ci_deploy: not attempted; no eligible content commit exists.
+- live_smoke: not attempted.
+- gsc: not attempted because no new detail URL was deployed; no `requested` completion is claimed.
+- newsletter: not manually triggered. No content was published, so no new delay window began; future D1 `newsletter_sends` / `newsletter_deliveries` rows remain authoritative.
+- worktree_cleanup: n/a. No August 9 Daily worktree was created, so there is no `RUN_WORKTREE` to clean. The dirty main checkout, detached Weekly worktree, and unrelated SEO/GEO worktree were preserved.
+- failure_tags: [dependency_audit, external_dependency, policy_conflict, governance_trace_missing]
+- reward: 0; this was a safe fail-closed preflight with no Daily cycle or release outcome.
+- dominant_failure_mode: two independent pre-discovery blockers remain: the exposed Cloudflare credential lacks rotation evidence, and the mandatory high-severity dependency audit fails. The intentionally dirty main checkout preserves the prior gate-failed batch. The automation prompt also remains lower-priority stale control-plane text: it names Astro 6 / adapter 13, while `docs/automation/README.md`, `package.json`, the lock state, and installed dependencies converge on Astro 7.1.3 / adapter 14.1.4.
+- root_cause_and_iterations:
+  - Read the required Daily control-plane documents, prior automation memory, `bb-browser` workflow, and recent learning entries before candidate work. Fresh fetch, process, worktree, commit, and status checks found no concurrent or completed August 9 Daily cycle.
+  - Inspected `scripts/load-local-env.sh`, `scripts/bootstrap-automation.sh`, and the `scripts/manage.sh validate` entrypoint without exposing a secret. The loader would source the unrotated repo credential, bootstrap would immediately transmit it to Cloudflare, and the full gate would then fail at dependency audit.
+  - Re-ran only the credential-free dependency audit and inspected the exact local dependency paths. `fast-uri` comes through the Astro language-server AJV chain, `js-yaml` through Astro/adapter helpers, `nanoid` through Vite/PostCSS, and `undici` through Wrangler/Miniflare. No `npm audit fix`, dependency mutation, audit bypass, bootstrap, candidate discovery, or blind retry followed.
+- proposed_change: deferred. Rotate and persist the Cloudflare token in both durable env copies and set automation `local.env` to `0600`; separately authorize a dependency/lock refresh that moves all four high findings to patched versions and runs the full test/CI matrix; reconcile or deliberately retire the August 4 unpublished batch; then align the automation prompt with Astro 7 / adapter 14 and the actual detached-worktree-before-bootstrap boundary.
+- decision: deferred; no Adaptive Heuristics, immutable guard, validator, script, package, lockfile, automation config, content, Weekly, deployment, GSC, newsletter, or credential file was changed.
+- affected_file: this append-only learning-log entry and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`. The preserved August 4 batch was not modified.
+- affected_section: pre-bootstrap credential hygiene, dependency audit, automation-definition drift, dirty-checkout boundary, duplicate-run protection, and closeout persistence.
+
+### 2026-08-09 23:22 CST — Daily curation resumed with authorized token reuse; publish blocked at dependency audit
+
+- candidate_count: 20 reconciled decisions from the unfinished August 4 cycle: 4 accepted drafts, 15 fresh rejected decisions, and 1 previously rejected duplicate suppressed.
+- accepted: 4 publication-ready drafts — Venus Aerospace, Bioscan Research, Sofab Inks, and Intelligence (Design Arena).
+- rejected: 15 fresh v2 rows; the 15:4 ratio exceeds the required 3:1 bar.
+- duplicate_suppressed: Assured. Its July 25 frozen legacy rejection used the same financing and substantially the same product evidence; no later funding round, new product evidence, or explicit governance change authorized reopening it. The Assured draft and its run-owned assets were removed only from the detached publication batch and remain preserved in the main checkout.
+- deferred: Onyx Security and Sent remain unpromoted survivors from the earlier cap review; neither was counted as a rejection or published record.
+- outcome: content-ready but blocked-before-commit by the immutable dependency audit.
+- bootstrap: pass after the user explicitly authorized reuse of the existing Cloudflare token. In detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260809T144925Z/venturedex.co`, `./scripts/bootstrap-automation.sh venturedex-daily-curator` restored repo-local `.env`, reported the Cloudflare token active, confirmed both GitHub Actions workflows, restored 350 dependency packages, and reported only the existing non-blocking lack of R2 scope.
+- validation: partial formal gate, with all content/build downstream checks passing. `./scripts/check-github-actions.sh` passed. The authoritative `./scripts/manage.sh validate` exited 1 at its first `npm audit --audit-level=high` command with 4 high and 4 moderate findings: locked `fast-uri` 3.1.4, `js-yaml` 4.3.0, `nanoid` 3.3.16, and `undici` 7.28.0. `git diff --check` passed. Because the audit failure was unchanged after evidence gathering and no permitted dependency fix existed inside Daily scope, the full gate was not blindly retried.
+- content_validation: pass after diagnosed iteration. The first isolated `./scripts/validate.sh` found the frozen Assured rejection conflict plus three TechFundingNews HTTP-520 failures. Removing Assured from the publication batch resolved the immutable decision conflict. The rotating HTTP-520 failure then moved to Bayshore, proving host-level instability rather than four isolated pages. All four remaining TechFundingNews dependencies were replaced with complete primary-source evidence: Certo's official company announcement, Lexroom's official Series B announcement, Qorelo's official Seed announcement, and Earlybird's official Bayshore investment announcement. Final validation passed 264/264 startups and 1,508/1,508 external URLs with 0 errors; rejected-registry and official-brand checks also passed without adding reachability exceptions.
+- build_db: pass in isolation. `VENTUREDEX_SEED_OUTPUT=/tmp/venturedex-daily-20260809-seed.sql ./scripts/build-db.sh` generated 264 startups and 264 funding rounds; no D1 seed output entered the repository.
+- tests_build: pass in isolation. `npm run test:newsletter` passed 347/347 tests, `npx astro sync` passed, `npm run typecheck` reported 0 errors / 0 warnings / 0 hints across 98 files, and `npm run build` completed on Astro 7 / Cloudflare adapter 14 with all four new detail routes prerendered. Generated Weekly OG files were removed before closeout.
+- dependency_research: `npm audit fix --dry-run` showed a non-forced remediation path through `@astrojs/cloudflare` 14.2.0, Wrangler 4.120.0, Cloudflare Vite plugin 1.51.1, Miniflare 5.20260801.1-alpha, `undici` 7.29.0, `fast-uri` 3.1.5, `js-yaml` 4.3.1, and `nanoid` 3.3.18. The direct package ranges already permit those versions, but the remediation necessarily changes `package-lock.json`; the Daily immutable Scope explicitly forbids lock/config/dependency edits, so no mutation or audit bypass was applied.
+- screenshot_browser: pass. The four retained 1440x900 WebP screenshots were visually reviewed as nonblank, product-visible, and free of blocking overlays. Official product, funding, investor, brand, and Careers surfaces were reverified through the browser-backed workflow. All identifiable run-owned tabs were closed, the six unrelated tabs were preserved, and the run-started `bb-browser` daemon was stopped.
+- weekly_validate: n/a; Weekly content was not modified.
+- commit_push: not attempted because all local gates did not pass. Baseline `HEAD` and `origin/main` remain `cffe007db228b8838fd64e2b03e8ca20230ebecf`.
+- ci_deploy: not attempted; no eligible commit exists.
+- live_smoke: not attempted; no deployment exists for this batch.
+- gsc: not attempted. No new startup detail URL was deployed, so neither the dry-run nor formal submission was eligible and no `requested` completion is claimed.
+- newsletter: not manually triggered. The four retained drafts use UTC `published_at` / `first_seen_at` `2026-08-09 14:58:52`, but no publication occurred and therefore no Daily delay window began. Future `newsletter_sends` / `newsletter_deliveries` rows after a valid deployment remain authoritative.
+- worktree_cleanup: blocked and intentionally not forced. The run worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260809T144925Z/venturedex.co` is dirty with the four validated content records, primary-source migrations, timestamps, rejection ledger, official assets, and screenshots; deleting it would lose required evidence. A second concurrently modified worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260809T145003Z/venturedex.co` contains unrelated `package-lock.json`, content, and `scripts/promotion/gsc.ts` changes and was also preserved without cleanup or adoption.
+- failure_tags: [dependency_audit, validate_fail, source_drift, external_dependency, policy_conflict, resumed_detached_closeout, worktree_cleanup]
+- reward: -2; the curation, evidence repair, content validation, parity, tests, type checking, and build succeeded, but the authoritative local gate failed and no publish reward applies.
+- dominant_failure_mode: the only remaining release blocker in this execution chain is the immutable high-severity dependency audit. The token was used successfully under explicit human authorization; content and application checks are green. Completing publication now requires a separately authorized dependency-maintenance change outside the Daily file allowlist.
+- proposed_change: deferred. In a separate reviewed maintenance change, refresh the allowed lock graph to the patched versions identified by the dry-run, run the complete audit/test/build matrix, and keep that maintenance commit separate from the Daily content and automation-documentation commits. The stale automation prompt wording for Astro 6 / adapter 13 remains outside Daily auto-edit authority.
+- decision: no immutable guard, validator, script, package, lockfile, automation config, Weekly, deployment, GSC ledger, or newsletter state was changed. Content evidence and this append-only closeout were preserved pending explicit dependency-maintenance authorization.
+- affected_file: four new startup records; `content/rejected.jsonl`; `content/investors.json`; `content/brand-assets.json`; `content/timestamps.json`; official company/investor assets and four screenshots; source migrations in `content/startups/{bayshore,certo,lexroom,qorelo}.json`; this learning log; and `/Users/dai/.codex/automations/venturedex-daily-curator/memory.md`.
+- affected_section: Daily curation, frozen-rejection reconciliation, primary-source resilience, structured research, official brand and Careers evidence, dependency audit, Newsletter delay boundary, and detached-worktree closeout.
+
+### 2026-08-10 00:04 CST — Daily curation published after authorized dependency maintenance
+
+- candidate_count: 20 reconciled decisions from the unfinished August 4 cycle: 4 accepted, 15 newly rejected, and 1 frozen-decision duplicate suppressed.
+- accepted: 4 — Venus Aerospace, Bioscan Research, Sofab Inks, and Intelligence (Design Arena).
+- rejected: 15 complete v2 rows; the 15:4 ratio exceeds the required 3:1 bar.
+- duplicate_suppressed: Assured. Its July 25 frozen rejection covers the same financing and substantially the same product evidence, so no unauthorized revisit was published.
+- deferred: Onyx Security and Sent remain outside this four-company publication batch and were neither rejected nor published.
+- outcome: complete; Daily content is committed, pushed, deployed, independently smoke-tested, and submitted to GSC. Newsletter delivery remains inside its scheduled delay boundary.
+- bootstrap: pass in detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260809T145003Z/venturedex.co`. After explicit human authorization to continue using the existing credential, bootstrap restored repo-local `.env`, proved the Cloudflare token active, confirmed both GitHub Actions workflows, and restored dependencies before discovery work continued. Credential rotation is an owner decision; an agent must distinguish token validity from rotation preference and must not replace explicit business authorization with its own stop decision.
+- dependency_maintenance: pass under explicit user authorization and kept separate from Daily content. Commit `16beb2c` refreshed the Cloudflare toolchain and patched `fast-uri`, `js-yaml`, `nanoid`, and `undici`, producing zero audit vulnerabilities. `@astrojs/cloudflare` 14.2.0 then failed against Astro 7.1.3 because it imported a missing Astro internal export. The first local downgrade left package metadata divergent: `package.json` still permitted 14.2.0, the root lockfile resolved 14.2.0, and only `node_modules` held 14.1.7, causing `npm audit` to reject an invalid package tree. Commit `bd3e7d5` fixed the root cause by pinning package, lockfile, and installed adapter to 14.1.7; a clean `npm ci` and audit then passed with zero vulnerabilities.
+- source_repair: pass. Commit `7c78101` replaced stale Act Security, Bayshore, Certo, Lexroom, and Qorelo source dependencies with reachable official or stable first-party-linked evidence and corrected Qorelo's co-lead naming without weakening content rules.
+- validation: pass after evidence-driven iteration. CLEATUS's official same-origin logo returned HTTP 429 to the automated checker while `bb-browser` rendered the official homepage and its exact `/images/logo/logo-cleatus.webp` reference. The existing schema-supported reachability exception received a dated factual note while retaining the official URL and local official asset. Final `./scripts/check-github-actions.sh`, `VENTUREDEX_SEED_OUTPUT=/tmp/venturedex-daily-seed-20260809-final.sql ./scripts/manage.sh validate`, and `git diff --check` passed: 1,507 external URLs, 264/264 startups, rejected-registry and brand checks, a 264-startup/264-round D1 seed, 347/347 tests including JSON/D1 parity, Astro sync, 98-file TypeScript checking with zero diagnostics, and the Astro 7 / Cloudflare adapter 14 build. Generated seed, Astro, Playwright, Python cache, and untracked Weekly OG outputs were excluded.
+- research_brand_links: pass. Each new startup has an official source, funding source, three source-linked product claims, four-part market context, and one falsifiable risk. Company and investor assets use official sources. Static official Careers links were stored for Venus Aerospace and Intelligence; Bioscan Research and Sofab Inks exposed no high-confidence official Careers entry. No role list, count, location, salary, or hiring assertion was collected.
+- screenshot: pass. All four 1440x900 WebP screenshots were visually reviewed as nonblank, product-visible, and free of blocking overlays.
+- weekly_validate: n/a; Weekly content was not modified.
+- commit_push: pass. Maintenance commits `16beb2c` and `bd3e7d5`, source-repair commit `7c78101`, and Daily content commit `69c6ccda730abc8f649783c3a60ebb0c3bb28773` were pushed to `origin/main`; automation documentation remains a separate docs-only commit at write time.
+- ci_deploy: pass. Exact-SHA Validate run `31322172685` succeeded in 3m52s. Deploy run `31322349245` succeeded in 1m56s, verified Cloudflare auth and D1, proved `startup_set_guard: safe (260 remote, 264 local, 4 added)`, uploaded the Worker/static bundle, synced the deterministic D1 seed, and published Worker version `35a79897-8860-46e6-973c-1a59fddda01d`.
+- live_smoke: pass after bounded edge propagation. Workers.dev initially rendered 260 news rows and the custom-domain healthtech collection initially lagged by one card; each host passed the built-in second attempt at 264. Independent `bb-browser` checks then confirmed exact URL, H1, canonical, and error-free rendering for all four new detail pages; all four URLs are present in the live RSS feed and sitemap.
+- gsc: pass after state-preserving iteration. Required dry-run targeted exactly the four new `/startups/{slug}` detail URLs. Search Console remained authenticated on the VentureDex property. Each confirmed request exposed the known `success_dialog_ack_ambiguous` cleanup state, so the hardened submitter persisted `requested`, stopped before the next click, and on a fresh run skipped every already-requested URL. After four bounded formal continuations, the authoritative central ledger's latest rows are all `requested`: Bioscan Research at `2026-08-09 23:59:16` CST, Intelligence at `2026-08-10 00:00:55`, Sofab Inks at `00:01:59`, and Venus Aerospace at `00:02:57`. No forced or duplicate request was used.
+- newsletter: not manually triggered. Read-only production D1 shows the latest Daily run at `2026-08-09 13:30:18` UTC was a zero-item `skipped` window and the most recent content-bearing Daily send remains `daily:2026-08-02 07:30:07:2026-08-03 07:30:57`, sent with three items and two sent deliveries. The four additions use `published_at` / `first_seen_at` `2026-08-09 14:58:52` UTC, cross the six-hour delay at `20:58:52` UTC, and first become eligible at the next normal Daily Cron on `2026-08-10 13:30 UTC` / `21:30 Asia/Shanghai`. Later `newsletter_sends` and `newsletter_deliveries` rows remain authoritative.
+- worktree_cleanup: pending closeout at write time. The active `RUN_WORKTREE` will be removed only after this docs-only commit, push, automation memory, browser-tab closeout, and origin reachability are durable. The earlier dirty evidence worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260809T144925Z/venturedex.co` and the intentionally dirty main checkout remain protected from forced deletion.
+- failure_tags: [dependency_audit, dependency_tree_drift, source_drift, external_rate_limit, deploy_propagation, gsc_dialog_cleanup, resumed_detached_closeout]
+- reward: 5 (`+6` for four independently researched startups, complete rejection accounting, zero-vulnerability full gates, separate commits, exact-SHA CI/deploy, live proof, and four requested GSC rows; `-1` for avoidable adapter metadata drift and operational UI/source friction).
+- dominant_failure_mode: no immutable blocker remains. The failures were locally recoverable mismatches or external UI/reachability behavior: an incompletely pinned adapter, a 429 on a browser-verifiable official logo, bounded Cloudflare edge propagation, and an ambiguous GSC success-dialog acknowledgement after each already-confirmed request.
+- root_cause_and_iterations:
+  - explicit human authorization resolved the policy conflict around continued token use; bootstrap and CI independently proved the token active. Future automation must surface credential risk without converting it into an unauthorized business decision.
+  - the adapter downgrade initially changed only the installed tree. Comparing package.json, the root lockfile, `node_modules/.package-lock.json`, and the installed package exposed the mismatch; exact source pinning plus `npm ci` repaired it.
+  - the CLEATUS 429 was classified as an automated-client rate limit only after `bb-browser` verified the official page and exact same-origin logo reference; the narrow existing exception kept provenance and local evidence intact.
+  - release smoke used the runbook's bounded propagation retries and passed both hosts without rerunning or reverting the release.
+  - GSC continuations relied only on durable latest-status authority and fresh tabs. Every new run skipped prior `requested` rows and advanced exactly one untouched target before the same conservative cleanup stop.
+- proposed_change: deferred. Separately reviewed work should make bootstrap detect package/lock/installed-version divergence and should add a route-bound safe GSC success-dialog cleanup path without weakening request confirmation or duplicate-click guards. The stale automation wording for Astro 6 / adapter 13 also remains outside Daily auto-edit authority.
+- decision: applied only narrow evidence and dependency fixes explicitly authorized for this run; no immutable governance, validator, Weekly content, newsletter trigger, or GSC safety guard was weakened. Tooling and automation-definition changes remain deferred.
+- affected_file: four new startup JSON files; `content/rejected.jsonl`; `content/investors.json`; `content/brand-assets.json`; `content/timestamps.json`; official company/investor assets; four screenshots; package metadata; `scripts/promotion/gsc.ts`; this learning log; the automation memory; and the stable GSC ledger.
+- affected_section: Daily curation, human authorization boundary, structured research, official brand/Careers evidence, dependency integrity, exact-SHA release, live observability, GSC state authority, newsletter delay boundary, and detached-worktree closeout.
