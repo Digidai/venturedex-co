@@ -1,0 +1,86 @@
+{
+  "slug": "naive",
+  "domain": "usenaive.ai",
+  "url": "https://usenaive.ai/",
+  "product_name": "Naïve",
+  "summary": "Governed identity, infrastructure, payments, and operations for autonomous AI companies.",
+  "editor_note": "A governed operating layer is the missing primitive in many agent-company pitches. One configuration can provision Postgres, a scoped card with a hard cap, KYC or company formation, and a router spanning hundreds of models. Unlike agent frameworks that stop at orchestration, this product supplies legal and economic rails. The test is whether its unusually broad primitive set stays reliable under real approvals and spend controls.",
+  "editor_rating": 5,
+  "why_featured": "$28.5M A for governed AI companies",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,agent infrastructure,identity,payments,developer tools",
+  "investors": "Nexus Venture Partners",
+  "links": {
+    "product": "https://usenaive.ai/docs/getting-started/quickstart",
+    "github": "https://github.com/usenaive",
+    "twitter": "https://x.com/usenaive"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$28.5M",
+      "stage": "Series A",
+      "lead_investor": "Nexus Venture Partners",
+      "date": "2026-08-06",
+      "source_url": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Naïve official product site",
+        "url": "https://usenaive.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_quickstart",
+        "label": "Naïve official quickstart",
+        "url": "https://usenaive.ai/docs/getting-started/quickstart",
+        "type": "product"
+      },
+      {
+        "id": "official_developer_platform",
+        "label": "Naïve official developer platform launch",
+        "url": "https://usenaive.ai/blog/launching-the-naive-developer-platform",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Naïve $28.5M Series A report",
+        "url": "https://techcrunch.com/2026/08/06/naive-raises-28-5m-to-automate-the-grunt-work-of-setting-up-and-running-a-company/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Naïve exposes governed identities, scoped payment instruments, approval controls, auditability, and revocation as primitives for autonomous software organizations.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official quickstart lets an agent register, mint an API key, call a first primitive, and connect by hosted MCP; the developer platform also exposes its primitives through SDK, CLI, MCP, and REST.",
+        "source_ids": [
+          "official_quickstart",
+          "official_developer_platform"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Developers and operators building autonomous agents or agent-run software businesses that need identity, infrastructure, payments, and governance.",
+      "category": "Agent company infrastructure",
+      "differentiation": "A single governed control plane combines company formation, identity, cloud primitives, model routing, and scoped financial operations rather than stopping at agent orchestration.",
+      "why_now": "The August 2026 Series A arrives as agent builders increasingly need operational controls beyond prompts and workflow graphs."
+    },
+    "risks": [
+      {
+        "claim": "Whether the broad primitive set can maintain dependable approvals, revocation, and spend enforcement at production scale remains unproven and can be tested through incident history and customer control audits.",
+        "basis": "The official surface spans legal, financial, compute, model, and communications primitives, creating a wider reliability boundary than a conventional agent framework."
+      }
+    ]
+  }
+}

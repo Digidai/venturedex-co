@@ -254,7 +254,10 @@
     "slug": "bessemer-venture-partners",
     "short_name": "Bessemer",
     "website": "https://www.bvp.com",
-    "description": "Venture capital firm partnering with technology founders from seed through growth across enterprise, consumer, healthcare, and frontier technology."
+    "description": "Venture capital firm partnering with technology founders from seed through growth across enterprise, consumer, healthcare, and frontier technology.",
+    "aliases": [
+      "Bessemer Venture Partners and Gradient"
+    ]
   },
   "basis-set-ventures": {
     "name": "Basis Set Ventures",
@@ -1613,5 +1616,53 @@
     "short_name": "Cloudberry",
     "website": "https://www.cloudberry.ventures/",
     "description": "Seed-to-Series-A venture firm backing deep-technology companies in advanced materials, manufacturing, climate, and related markets."
+  },
+  "gradient": {
+    "name": "Gradient",
+    "slug": "gradient",
+    "short_name": "Gradient",
+    "website": "https://gradient.com/",
+    "description": "Venture fund focused on early-stage artificial intelligence companies."
+  },
+  "expedition-growth-capital": {
+    "name": "Expedition Growth Capital",
+    "slug": "expedition-growth-capital",
+    "short_name": "Expedition",
+    "website": "https://expedition.capital/",
+    "description": "Growth investor partnering with software and technology companies across Europe."
+  },
+  "elev8-venture-partners": {
+    "name": "Elev8 Venture Partners",
+    "slug": "elev8-venture-partners",
+    "short_name": "Elev8",
+    "website": "https://elev8vp.com/",
+    "description": "India-focused growth-stage venture capital firm backing technology companies as they scale.",
+    "aliases": [
+      "Elev8 Venture Partners and Claypond Capital"
+    ]
+  },
+  "claypond-capital": {
+    "name": "Claypond Capital",
+    "slug": "claypond-capital",
+    "short_name": "Claypond",
+    "website": "https://manipalgroup.com/claypond-capital/",
+    "description": "Investment office of the Manipal Education and Medical Group providing flexible capital and operational support."
+  },
+  "prysm-capital": {
+    "name": "Prysm Capital",
+    "slug": "prysm-capital",
+    "short_name": "Prysm",
+    "website": "https://www.prysmcapital.com/",
+    "description": "Growth investment firm partnering with technology companies across software, consumer, and frontier markets.",
+    "aliases": [
+      "Prysm Capital and Eurazeo"
+    ]
+  },
+  "eurazeo": {
+    "name": "Eurazeo",
+    "slug": "eurazeo",
+    "short_name": "Eurazeo",
+    "website": "https://www.eurazeo.com/en",
+    "description": "European investment group backing companies across venture, growth, private equity, and real assets."
   }
 }

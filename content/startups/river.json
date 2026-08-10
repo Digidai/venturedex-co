@@ -1,0 +1,88 @@
+{
+  "slug": "river",
+  "domain": "www.rideriver.com",
+  "url": "https://www.rideriver.com/",
+  "product_name": "River",
+  "summary": "A utility-first electric scooter designed around cargo, stability, and daily work.",
+  "editor_note": "Utility-first scooter design is more coherent than another spec-sheet race. Fourteen-inch wheels, 55 liters of storage, front foot pegs, and three ride modes turn the Indie into a working vehicle rather than a styled gadget. Unlike manufacturers launching a wide model stack, River has concentrated on one product and a visible retail footprint. The test is whether rapid factory and store expansion preserves quality and unit economics.",
+  "editor_rating": 4,
+  "why_featured": "$120M C for a utility-first EV",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2021,
+  "hq_location": "Bengaluru, India",
+  "region": "China / Asia",
+  "tags": "electric vehicles,mobility,scooters,manufacturing,india",
+  "investors": "Elev8 Venture Partners,Claypond Capital",
+  "links": {
+    "product": "https://www.rideriver.com/indie",
+    "careers": "https://www.rideriver.com/careers",
+    "linkedin": "https://www.linkedin.com/company/rideriver"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$120M",
+      "stage": "Series C",
+      "lead_investor": "Elev8 Venture Partners and Claypond Capital",
+      "date": "2026-08-05",
+      "source_url": "https://techcrunch.com/2026/08/05/indian-ev-two-wheeler-startup-river-raises-120m-after-scaling-with-one-model/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "River official product site",
+        "url": "https://www.rideriver.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_indie",
+        "label": "River official Indie product page",
+        "url": "https://www.rideriver.com/indie",
+        "type": "product"
+      },
+      {
+        "id": "official_specs",
+        "label": "River official Indie specifications",
+        "url": "https://www.rideriver.com/indie/specs",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "River $120M Series C report",
+        "url": "https://techcrunch.com/2026/08/05/indian-ev-two-wheeler-startup-river-raises-120m-after-scaling-with-one-model/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The Indie combines 14-inch wheels, 55 liters of total storage, front foot pegs, and a flat utility-oriented form factor in one production scooter.",
+        "source_ids": [
+          "official_site",
+          "official_indie"
+        ]
+      },
+      {
+        "claim": "River publishes three ride modes, a 90 kilometer-per-hour top speed, and a 0-to-40 kilometer-per-hour time of 3.7 seconds in the official specifications.",
+        "source_ids": [
+          "official_specs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Urban riders and small-business operators in India who need an electric two-wheeler to carry people and goods through daily work.",
+      "category": "Utility electric two-wheelers",
+      "differentiation": "River centers cargo capacity, larger wheels, rider ergonomics, and one focused model instead of competing only on range or launching many variants.",
+      "why_now": "The August 2026 Series C follows material production and retail expansion with a single model, creating a concrete test of whether focused hardware can scale nationally."
+    },
+    "risks": [
+      {
+        "claim": "Whether River can expand production and stores while holding warranty rates, delivery quality, and vehicle gross margin can be tested in future unit economics and service disclosures.",
+        "basis": "The financing report describes rapid manufacturing and retail growth, while the company remains concentrated in a single hardware platform."
+      }
+    ]
+  }
+}

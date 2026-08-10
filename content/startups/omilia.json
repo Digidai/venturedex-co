@@ -1,0 +1,88 @@
+{
+  "slug": "omilia",
+  "domain": "omilia.com",
+  "url": "https://omilia.com/",
+  "product_name": "Omilia",
+  "summary": "Voice and chat agents that mix deterministic, agentic, and autonomous workflows.",
+  "editor_note": "Mixing deterministic and agentic systems is a sober contact-center bet. The platform pairs task-specific agents with native voice latency below 45 milliseconds and lets teams choose among controlled, agentic, and autonomous operating modes. Unlike GenAI-only support products, it selects the method by job and risk. The open question is how often its published accuracy and automation claims survive noisy production edge cases.",
+  "editor_rating": 4,
+  "why_featured": "$67M B for low-latency voice agents",
+  "product_type": "AI / ML",
+  "founded_year": 2002,
+  "hq_location": "Athens, Greece",
+  "region": "Europe",
+  "tags": "voice ai,contact center,customer support,agents,speech",
+  "investors": "Expedition Growth Capital",
+  "links": {
+    "product": "https://omilia.com/platform/voice-agents/",
+    "careers": "https://omilia.com/careers/",
+    "linkedin": "https://www.linkedin.com/company/omilia"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$67M",
+      "stage": "Series B",
+      "lead_investor": "Expedition Growth Capital",
+      "date": "2026-08-06",
+      "source_url": "https://techcrunch.com/2026/08/06/omilia-raises-67m-to-scale-its-customer-support-platform/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Omilia official platform site",
+        "url": "https://omilia.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_voice_agents",
+        "label": "Omilia official voice agents page",
+        "url": "https://omilia.com/platform/voice-agents/",
+        "type": "product"
+      },
+      {
+        "id": "official_taco_bell",
+        "label": "Omilia official Taco Bell deployment announcement",
+        "url": "https://omilia.com/resources/news/omilia-powers-taco-bells-expansion-of-voice-ai-across-890-us-drive-thrus/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Omilia $67M Series B report",
+        "url": "https://techcrunch.com/2026/08/06/omilia-raises-67m-to-scale-its-customer-support-platform/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Omilia's voice platform offers deterministic, agentic, and autonomous operating tiers with native voice latency claimed below 45 milliseconds and integrations through MCP or REST.",
+        "source_ids": [
+          "official_site",
+          "official_voice_agents"
+        ]
+      },
+      {
+        "claim": "The company documents a Taco Bell deployment across 890 US drive-thrus, providing a named, high-volume production environment beyond a generic product demo.",
+        "source_ids": [
+          "official_taco_bell"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Large contact centers and service operators that need voice automation with explicit controls for latency, workflow determinism, and escalation.",
+      "category": "Enterprise conversational AI",
+      "differentiation": "The platform combines low-latency native voice with a choice of deterministic, agentic, and autonomous execution instead of forcing every workflow into one generative mode.",
+      "why_now": "The August 2026 Series B follows a named national drive-thru deployment and funds a long-running voice vendor at the point when enterprises are evaluating agent autonomy."
+    },
+    "risks": [
+      {
+        "claim": "Whether Omilia's published understanding and automation rates remain consistent across accents, noise, and open-ended failure modes can be tested through independent task-level deployment metrics.",
+        "basis": "The strongest performance numbers are company-published, while the named Taco Bell rollout confirms scale but does not expose a full error distribution."
+      }
+    ]
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "slug": "happyrobot",
+  "domain": "www.happyrobot.ai",
+  "url": "https://www.happyrobot.ai/",
+  "product_name": "HappyRobot",
+  "summary": "Governed voice and messaging agents for operational freight workflows.",
+  "editor_note": "Evaluation and governance make this freight-agent pitch more credible than a generic voice bot. Teams can define behavioral north stars, run adversarial tests, audit production calls, and close the loop through more than 200 integrations. Unlike copilots that wait for a user, these agents operate workflows across voice and messaging. The risk is whether four-to-twelve-week deployments and field engineering can become repeatable software economics.",
+  "editor_rating": 4,
+  "why_featured": "$150M C for governed freight agents",
+  "product_type": "AI / ML",
+  "hq_location": "San Francisco",
+  "region": "US",
+  "tags": "logistics,freight,voice ai,operations,agents",
+  "investors": "Prysm Capital,Eurazeo",
+  "links": {
+    "product": "https://www.happyrobot.ai/product/platform-overview",
+    "careers": "https://www.happyrobot.ai/careers",
+    "linkedin": "https://www.linkedin.com/company/happyrobot-ai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$150M",
+      "stage": "Series C",
+      "lead_investor": "Prysm Capital and Eurazeo",
+      "date": "2026-08-04",
+      "source_url": "https://www.happyrobot.ai/blog/happyrobot-seriesc-fundraising-announcement",
+      "source_name": "HappyRobot"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "HappyRobot official product site",
+        "url": "https://www.happyrobot.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "HappyRobot official platform overview",
+        "url": "https://www.happyrobot.ai/product/platform-overview",
+        "type": "product"
+      },
+      {
+        "id": "official_technical",
+        "label": "HappyRobot official technical overview",
+        "url": "https://www.happyrobot.ai/blog/technical-overview",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "HappyRobot $150M Series C announcement",
+        "url": "https://www.happyrobot.ai/blog/happyrobot-seriesc-fundraising-announcement",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "HappyRobot runs agents across voice and messaging with deterministic workflow logic and more than 200 integrations for logistics operations.",
+        "source_ids": [
+          "official_site",
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "The technical surface includes behavioral north stars, adversarial testing, production audits, and a closed-loop feedback process rather than relying only on prompt evaluation.",
+        "source_ids": [
+          "official_technical"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Freight brokers, carriers, and logistics operators automating repetitive phone, messaging, and system workflows with auditable agents.",
+      "category": "AI operations for logistics",
+      "differentiation": "The platform combines multimodal operational agents with deterministic workflow logic, explicit behavioral evaluation, and a large integration surface built for freight systems.",
+      "why_now": "The August 2026 Series C follows a company-reported expansion to more than 150 enterprises and funds an effort to turn deployment-heavy logistics automation into a repeatable platform."
+    },
+    "risks": [
+      {
+        "claim": "Whether deployments can shrink below the published four-to-twelve-week window while maintaining resolution quality can be tested through cohort-level implementation time and services-margin disclosures.",
+        "basis": "The platform exposes meaningful evaluation controls, but its stated implementation window and field-engineering model imply substantial customer-specific work."
+      }
+    ]
+  }
+}

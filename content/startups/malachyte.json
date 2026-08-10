@@ -1,0 +1,89 @@
+{
+  "slug": "malachyte",
+  "domain": "www.malachyte.com",
+  "url": "https://www.malachyte.com/",
+  "product_name": "Malachyte",
+  "summary": "Live-vector personalization and ranking infrastructure for commerce teams.",
+  "editor_note": "Real-time behavioral vectors are a sharper commerce primitive than another campaign dashboard. Every search, hover, scroll, and cart action can update ranking immediately, and the official technology page reports a 14-day time to value. Unlike history-only recommenders, the system is designed around a shopper's changing intent. The open question is whether early enterprise gains repeat across smaller catalogs without heavy tuning.",
+  "editor_rating": 5,
+  "why_featured": "$10M Seed for live-vector commerce",
+  "product_type": "E-commerce",
+  "hq_location": "New York",
+  "region": "US",
+  "tags": "commerce,personalization,recommendations,vector search,ranking",
+  "investors": "Bessemer Venture Partners,Gradient",
+  "links": {
+    "product": "https://www.malachyte.com/technology",
+    "careers": "https://www.malachyte.com/careers",
+    "linkedin": "https://www.linkedin.com/company/malachyte"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "Bessemer Venture Partners and Gradient",
+      "date": "2026-08-06",
+      "source_url": "https://techcrunch.com/2026/08/06/ex-spotify-employees-raise-10m-to-bring-the-ai-behind-its-recommendations-to-e-commerce/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-10",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Malachyte official product site",
+        "url": "https://www.malachyte.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_technology",
+        "label": "Malachyte official technology page",
+        "url": "https://www.malachyte.com/technology",
+        "type": "product"
+      },
+      {
+        "id": "official_shopify_article",
+        "label": "Malachyte official Shopify search article",
+        "url": "https://www.malachyte.com/blog/search-limitations-what-they-re-really-costing-you",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Malachyte $10M Seed report",
+        "url": "https://techcrunch.com/2026/08/06/ex-spotify-employees-raise-10m-to-bring-the-ai-behind-its-recommendations-to-e-commerce/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Malachyte converts each search, hover, scroll, and add-to-cart event into a live shopper vector and uses a visual transformer to rank products against current intent.",
+        "source_ids": [
+          "official_site",
+          "official_technology"
+        ]
+      },
+      {
+        "claim": "The official product surface describes a plug-and-play API and live attribution, while its Shopify article says the system layers onto an existing Shopify stack without re-platforming.",
+        "source_ids": [
+          "official_site",
+          "official_technology",
+          "official_shopify_article"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Commerce and merchandising teams that need onsite ranking to respond to a shopper's current session rather than only historical segments.",
+      "category": "Real-time commerce personalization",
+      "differentiation": "Live behavioral vectors and visual-product ranking update recommendations during the session while keeping the data first-party and non-PII.",
+      "why_now": "The August 2026 Seed follows the product's Shopify general availability and gives a newly visible system capital to expand beyond its initial enterprise cohort."
+    },
+    "risks": [
+      {
+        "claim": "Whether the reported lift repeats across smaller merchants and sparse catalogs without material manual tuning can be tested through cohort-level Shopify case studies.",
+        "basis": "The official implementation promise is short, but current public evidence is concentrated in an early enterprise customer set."
+      }
+    ]
+  }
+}

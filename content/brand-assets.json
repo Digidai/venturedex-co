@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-09",
+  "verified_at": "2026-08-10",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1862,6 +1862,41 @@
       "local_path": "/logos/companies/intelligence.svg",
       "source_page": "https://www.intelligence.ai/",
       "source_url": "https://www.intelligence.ai/favicon.svg"
+    },
+    "naive": {
+      "name": "Naïve",
+      "shape": "icon",
+      "local_path": "/logos/companies/naive.svg",
+      "source_page": "https://usenaive.ai/",
+      "source_url": "https://usenaive.ai/favicon.svg"
+    },
+    "malachyte": {
+      "name": "Malachyte",
+      "shape": "icon",
+      "local_path": "/logos/companies/malachyte.png",
+      "source_page": "https://www.malachyte.com/",
+      "source_url": "https://www.malachyte.com/icon-192.png"
+    },
+    "omilia": {
+      "name": "Omilia",
+      "shape": "icon",
+      "local_path": "/logos/companies/omilia.png",
+      "source_page": "https://omilia.com/",
+      "source_url": "https://omilia.com/wp-content/themes/omilia2024/i/favicon/apple-touch-icon.png"
+    },
+    "river": {
+      "name": "River",
+      "shape": "icon",
+      "local_path": "/logos/companies/river.png",
+      "source_page": "https://www.rideriver.com/",
+      "source_url": "https://www.rideriver.com/images/icons/favicon.png"
+    },
+    "happyrobot": {
+      "name": "HappyRobot",
+      "shape": "icon",
+      "local_path": "/logos/companies/happyrobot.svg",
+      "source_page": "https://www.happyrobot.ai/",
+      "source_url": "https://happyrobot.b-cdn.net/favicon.svg"
     }
   },
   "investors": {
@@ -3389,6 +3424,50 @@
       "local_path": "/logos/investors/cloudberry-ventures.png",
       "source_page": "https://www.cloudberry.ventures/",
       "source_url": "https://cdn.prod.website-files.com/6946cbadf69c13274eace9f5/6946cbadf69c13274eacea01_Favicon.png"
+    },
+    "gradient": {
+      "name": "Gradient",
+      "shape": "icon",
+      "local_path": "/logos/investors/gradient.png",
+      "source_page": "https://gradient.com/",
+      "source_url": "https://gradient.com/gradient-favicon.png"
+    },
+    "expedition-growth-capital": {
+      "name": "Expedition Growth Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/expedition-growth-capital.png",
+      "source_page": "https://expedition.capital/",
+      "source_url": "https://expedition.capital/wp-content/uploads/2024/06/cropped-EGC-Favicon-192x192.png"
+    },
+    "elev8-venture-partners": {
+      "name": "Elev8 Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/elev8-venture-partners.png",
+      "source_page": "https://elev8vp.com/",
+      "source_url": "https://elev8vp.com/wp-content/uploads/2025/07/cropped-Group-1321314681-192x192.png"
+    },
+    "claypond-capital": {
+      "name": "Claypond Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/claypond-capital.png",
+      "source_page": "https://manipalgroup.com/claypond-capital/",
+      "source_url": "https://manipalgroup.com/wp-content/uploads/2026/03/claypond-logo.png",
+      "allow_unreachable_source": true,
+      "note": "Downloaded from the official Claypond Capital page through a bb-browser session because direct asset requests are Cloudflare challenge-gated."
+    },
+    "prysm-capital": {
+      "name": "Prysm Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/prysm-capital.png",
+      "source_page": "https://www.prysmcapital.com/",
+      "source_url": "https://www.prysmcapital.com/wp-content/themes/nmc_prysmcap/favicon.png"
+    },
+    "eurazeo": {
+      "name": "Eurazeo",
+      "shape": "icon",
+      "local_path": "/logos/investors/eurazeo.ico",
+      "source_page": "https://www.eurazeo.com/en",
+      "source_url": "https://www.eurazeo.com/themes/custom/eurazeo/favicon.ico"
     }
   }
 }
