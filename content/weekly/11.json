@@ -1,0 +1,445 @@
+{
+  "issue_number": 11,
+  "title": "TODO: Weekly research for 2026-08-03 to 2026-08-09",
+  "week_start": "2026-08-03",
+  "week_end": "2026-08-09",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "intelligence",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/intelligence.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Intelligence official site",
+          "source": "content/startups/intelligence.json research.sources.official_site",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Design Arena live product",
+          "source": "content/startups/intelligence.json research.sources.official_arena",
+          "url": "https://www.designarena.ai/"
+        },
+        {
+          "label": "Intelligence Gateway API reference",
+          "source": "content/startups/intelligence.json research.sources.official_gateway",
+          "url": "https://router.intelligence.ai/docs/reference"
+        },
+        {
+          "label": "Intelligence Seed report",
+          "source": "content/startups/intelligence.json research.sources.funding_report",
+          "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site exposes live leaderboards across code, image, video, audio, slides, SVG, and other formats, with Elo-rating and win-rate views built from human comparisons.",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Gateway API accepts standard message payloads and input/output formats, then selects the top-ranked Design Arena model without requiring the caller to specify a model.",
+          "url": "https://router.intelligence.ai/docs/reference"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "TechCrunch reports that Design Arena serves millions of users and supplies human evaluations to frontier labs, turning participation into a continuously refreshed preference dataset.",
+          "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Intelligence homepage",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether the company can reconcile Arcada-era domains and conflicting user metrics while keeping human votes resistant to bias, gaming, and sampling drift.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "antora-energy",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/antora-energy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Antora Energy official site",
+          "source": "content/startups/antora-energy.json research.sources.official_site",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Antora thermal battery technology",
+          "source": "content/startups/antora-energy.json research.sources.official_technology",
+          "url": "https://www.antora.com/technology"
+        },
+        {
+          "label": "Antora Project Big Stone",
+          "source": "content/startups/antora-energy.json research.sources.official_project",
+          "url": "https://www.antora.com/project-big-stone"
+        },
+        {
+          "label": "Antora Energy Series C announcement",
+          "source": "content/startups/antora-energy.json research.sources.official_funding",
+          "url": "https://www.antora.com/insights/series-c"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Antora says its thermal battery resistively heats solid carbon to as high as 2,400°C, stores that energy for multiple days, and can return it as industrial heat or electricity through a steam turbine.",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official technology surface says factory-built modules scale from megawatts to gigawatts and use domestic, earth-abundant solid carbon rather than supply-constrained critical minerals.",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Project Big Stone is a 5 GWh, 50 MW thermal-battery project with more than 200 modules under a POET energy offtake agreement; Antora says it advanced from an empty lot to first energy delivery in under 12 months.",
+          "url": "https://www.antora.com/project-big-stone"
+        },
+        {
+          "label": "Official product site",
+          "source": "Antora Energy homepage",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Antora Energy",
+          "url": "https://www.antora.com/insights/series-c"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Antora can repeat Project Big Stone's sub-12-month delivery pace and economics across different industrial sites and duty cycles.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "soundhealth",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/soundhealth.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "SoundHealth official site",
+          "source": "content/startups/soundhealth.json research.sources.official_site",
+          "url": "https://soundhealth.life/"
+        },
+        {
+          "label": "SONU Band product page",
+          "source": "content/startups/soundhealth.json research.sources.official_sonu",
+          "url": "https://soundhealth.life/products/sonu-band"
+        },
+        {
+          "label": "Spatial Sleep product page",
+          "source": "content/startups/soundhealth.json research.sources.official_spatial",
+          "url": "https://soundhealth.life/products/spatial-sleep"
+        },
+        {
+          "label": "SoundHealth Series A announcement",
+          "source": "content/startups/soundhealth.json research.sources.official_funding",
+          "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The SONU product page offers direct checkout and a 30-day risk-free trial, identifies SONU as FDA 510(k) cleared, and says its app creates a 3D facial and sinus map to tune acoustic resonance delivered by bone-conduction transducers.",
+          "url": "https://soundhealth.life/products/sonu-band"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Spatial Sleep product page offers direct checkout and a 45-day risk-free trial, and describes an app-generated 3D cranial map used to calculate personalized frequencies delivered through a forehead-worn bone-conduction band.",
+          "url": "https://soundhealth.life/products/spatial-sleep"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The Series A release says SONU has delivered more than 500,000 acoustic-resonance sessions and that the same craniofacial dataset underpins Spatial Sleep.",
+          "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders"
+        },
+        {
+          "label": "Official product site",
+          "source": "SoundHealth homepage",
+          "url": "https://soundhealth.life/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Wire",
+          "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether congestion and sleep outcomes replicate in independent, long-duration, real-world cohorts; FDA clearance for SONU must not be generalized to Spatial Sleep.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "discern-security",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/discern-security.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Discern Security official product site",
+          "source": "content/startups/discern-security.json research.sources.official_site",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Discern agentic platform launch",
+          "source": "content/startups/discern-security.json research.sources.official_platform_release",
+          "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform"
+        },
+        {
+          "label": "Discern Security Series A announcement",
+          "source": "content/startups/discern-security.json research.sources.official_funding",
+          "url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Atlas turns plain-English questions into dashboards, charts, and reusable queries, while Pathfinder prioritizes vulnerabilities, misconfigurations, and assets using business context.",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site says Resolve converts findings into tracked remediation actions with approvals and accountability, and Mesh aligns policy and coverage across connected security tools.",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The platform release says Scout converts vendor best practices into measurable health checks and Mesh identifies cross-stack policy and MITRE coverage gaps.",
+          "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Discern Security homepage",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether Discern can deliver safe, measurable cross-vendor remediation improvements in production instead of adding another exposure dashboard layer.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "act-security",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/act-security.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Act Security official site",
+          "source": "content/startups/act-security.json research.sources.official_site",
+          "url": "https://act.security/"
+        },
+        {
+          "label": "Act Security platform",
+          "source": "content/startups/act-security.json research.sources.official_platform",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Act Security company page",
+          "source": "content/startups/act-security.json research.sources.official_about",
+          "url": "https://act.security/about"
+        },
+        {
+          "label": "Act Security launch and funding announcement",
+          "source": "content/startups/act-security.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Act reasons across identity, network, and AI access together to identify exploitable paths and organize them into boundary-hardening campaigns.",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Teams can simulate proposed access changes before enforcing them through existing cloud-native controls and infrastructure-as-code workflows.",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Act Security homepage",
+          "url": "https://act.security/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable question is whether campaign-level access changes measurably reduce exploitable reachability without increasing blocked production traffic or emergency overrides.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "bioscan-research",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/bioscan-research.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Bioscan Research official site",
+          "source": "content/startups/bioscan-research.json research.sources.official_site",
+          "url": "https://www.bioscanresearch.com/"
+        },
+        {
+          "label": "CEREBO product page",
+          "source": "content/startups/bioscan-research.json research.sources.official_product",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Bioscan probe patent page",
+          "source": "content/startups/bioscan-research.json research.sources.official_patent",
+          "url": "https://www.bioscanresearch.com/patent.php"
+        },
+        {
+          "label": "Bioscan Research Seed report",
+          "source": "content/startups/bioscan-research.json research.sources.funding_report",
+          "url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The CEREBO page describes a portable, non-invasive intracranial-hemorrhage screening device that uses diffuse reflectance and near-infrared spectroscopy with machine-learning interpretation.",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Bioscan presents Value, Plus, and Cloud configurations, with patient-history storage in Plus and application plus web access in the Cloud tier.",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official patent surface describes passive self-alignment, safe optical switching, and multi-probe mechanisms intended to improve placement and measurement consistency.",
+          "url": "https://www.bioscanresearch.com/patent.php"
+        },
+        {
+          "label": "Official product site",
+          "source": "Bioscan Research homepage",
+          "url": "https://www.bioscanresearch.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Express Healthcare",
+          "url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether independent clinical studies show sufficient sensitivity and specificity for safe deployment across populations and care settings beyond India.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "sofab-inks",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/sofab-inks.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Sofab Inks official site",
+          "source": "content/startups/sofab-inks.json research.sources.official_site",
+          "url": "https://www.sofabinks.com/"
+        },
+        {
+          "label": "Tinfab electron transport layer",
+          "source": "content/startups/sofab-inks.json research.sources.official_tinfab",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Nicfab hole transport layer",
+          "source": "content/startups/sofab-inks.json research.sources.official_nicfab",
+          "url": "https://www.sofabinks.com/nicfab"
+        },
+        {
+          "label": "Sofab Inks Seed report",
+          "source": "content/startups/sofab-inks.json research.sources.funding_report",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f"
+        },
+        {
+          "label": "Sofab funding and materials report",
+          "source": "content/startups/sofab-inks.json research.sources.funding_corroboration",
+          "url": "https://www.pv-magazine.com/2026/07/22/sofab-inks-announces-6-million-in-funding-to-advance-novel-perovskite-etl-materials/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Sofab says Tinfab is a solution-processable SnO2 electron-transport layer that supports PIN and NIP architectures, multiple coating methods, and cells above 20% efficiency.",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Tinfab page says the ink remains stable for more than two years and is available as an orderable sample rather than only as a laboratory formulation.",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Sofab says its tunable NiOx Nicfab layer is three times more durable than PTAA and has produced an 18% efficient full-metal-oxide cell.",
+          "url": "https://www.sofabinks.com/nicfab"
+        },
+        {
+          "label": "Official product site",
+          "source": "Sofab Inks homepage",
+          "url": "https://www.sofabinks.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios Pro Rata",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is whether reported cell efficiency and durability translate into module-scale yield, customer qualification, and high-volume production economics.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
