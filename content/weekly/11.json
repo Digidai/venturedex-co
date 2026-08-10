@@ -1,0 +1,470 @@
+{
+  "issue_number": 11,
+  "title": "The Systems That Act on Their Evidence",
+  "week_start": "2026-08-03",
+  "week_end": "2026-08-09",
+  "published_at": "2026-08-10",
+  "status": "published",
+  "editorial_intro": "This week's picks cross model evaluation, industrial energy, health hardware, cloud security, emergency diagnostics, and solar manufacturing, but they share one product choice: evidence has to change the next action. A leaderboard routes a model, an optical reading informs triage, a security finding becomes an approved change, and a materials formulation has to survive a manufacturing process—the product is the closed loop, not the dashboard.",
+  "research_summary": "This issue uses published VentureDex records, their structured research, linked funding sources, and official product pages rechecked with bb-browser on 2026-08-10. Company-reported project timelines, regulatory status, and materials or clinical claims remain attributed to their publishers; this issue does not assert independent validation of user counts, clinical outcomes, reliability, benchmarks, market share, customer migration, or production economics.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Closed loops, not observation layers",
+      "summary": "Each product pairs measurement with a consequential next step: route, dispatch, personalize, remediate, triage, or qualify. The editorial question is whether that feedback loop stays accurate, reviewable, and safe when its inputs change."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "intelligence",
+      "why_this_week": "Intelligence opens this issue because its August 3 Seed round connects a human-preference signal to a production decision. Design Arena does not stop at ranking outputs: the Gateway uses those rankings to choose a model for a requested format, making it the clearest software example of evidence entering the execution path.",
+      "product_evaluation": "The official site exposes format-specific leaderboards with Elo and win-rate views across code, image, video, audio, slides, SVG, and other outputs. The Gateway reference accepts standard message payloads and input/output formats, then says it selects the top-ranked Design Arena model without a model field; that is a concrete routing surface, while the quality and representativeness of the underlying human comparisons remain unproven here.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/intelligence.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Intelligence official site",
+          "source": "content/startups/intelligence.json research.sources.official_site",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Design Arena live product",
+          "source": "content/startups/intelligence.json research.sources.official_arena",
+          "url": "https://www.designarena.ai/"
+        },
+        {
+          "label": "Intelligence Gateway API reference",
+          "source": "content/startups/intelligence.json research.sources.official_gateway",
+          "url": "https://router.intelligence.ai/docs/reference"
+        },
+        {
+          "label": "Intelligence Seed report",
+          "source": "content/startups/intelligence.json research.sources.funding_report",
+          "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site exposes live leaderboards across code, image, video, audio, slides, SVG, and other formats, with Elo-rating and win-rate views built from human comparisons.",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Gateway API accepts standard message payloads and input/output formats, then selects the top-ranked Design Arena model without requiring the caller to specify a model.",
+          "url": "https://router.intelligence.ai/docs/reference"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: the Intelligence homepage rendered format-specific Elo and win-rate leaderboards, and the Gateway reference rendered an OpenAI-compatible generate endpoint that selects a Design Arena-ranked model; neither page reported JavaScript errors.",
+          "url": "https://router.intelligence.ai/docs/reference"
+        },
+        {
+          "label": "Official product site",
+          "source": "Intelligence homepage",
+          "url": "https://www.intelligence.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/03/designarena-creators-raise-7-9-million-to-bring-taste-to-ai-models/"
+        }
+      ],
+      "risks": [
+        "Human comparisons can drift with prompt mix, voter selection, presentation order, and coordinated gaming; this issue has no independent audit of those controls.",
+        "Public surfaces still span Intelligence, Design Arena, and Arcada-era domains, so identity and methodology continuity need clearer documentation."
+      ],
+      "verdict": "Intelligence is interesting because it turns preference measurement into model routing, but its moat depends on the integrity of the comparisons behind that route."
+    },
+    {
+      "slug": "antora-energy",
+      "why_this_week": "Antora moves the issue's closed-loop thesis into industrial infrastructure. Its July 30 Series C and current Project Big Stone surface show a system that takes low-cost electricity, stores it as heat, and dispatches heat or power against an industrial load rather than treating storage as an isolated battery specification.",
+      "product_evaluation": "Antora's technology page says electricity resistively heats solid-carbon blocks to as high as 2,400°C for multi-day storage, with discharge as process heat or through a steam-turbine power path. Its Project Big Stone page describes a 5 GWh installation with more than 200 modules and says first energy arrived in under 12 months; those deployment details are company-reported evidence, not an independent cost, schedule, or reliability benchmark.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/antora-energy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Antora Energy official site",
+          "source": "content/startups/antora-energy.json research.sources.official_site",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Antora thermal battery technology",
+          "source": "content/startups/antora-energy.json research.sources.official_technology",
+          "url": "https://www.antora.com/technology"
+        },
+        {
+          "label": "Antora Project Big Stone",
+          "source": "content/startups/antora-energy.json research.sources.official_project",
+          "url": "https://www.antora.com/project-big-stone"
+        },
+        {
+          "label": "Antora Energy Series C announcement",
+          "source": "content/startups/antora-energy.json research.sources.official_funding",
+          "url": "https://www.antora.com/insights/series-c"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Antora says its thermal battery resistively heats solid carbon to as high as 2,400°C, stores that energy for multiple days, and can return it as industrial heat or electricity through a steam turbine.",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official technology surface says factory-built modules scale from megawatts to gigawatts and use domestic, earth-abundant solid carbon rather than supply-constrained critical minerals.",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "Project Big Stone is a 5 GWh, 50 MW thermal-battery project with more than 200 modules under a POET energy offtake agreement; Antora says it advanced from an empty lot to first energy delivery in under 12 months.",
+          "url": "https://www.antora.com/project-big-stone"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: the technology page rendered resistive charging, multi-day carbon storage, heat and steam-turbine delivery, while Project Big Stone rendered the company-reported 5 GWh, 200-plus-module, under-12-month project description; no JavaScript errors were reported.",
+          "url": "https://www.antora.com/project-big-stone"
+        },
+        {
+          "label": "Official product site",
+          "source": "Antora Energy homepage",
+          "url": "https://www.antora.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Antora Energy",
+          "url": "https://www.antora.com/insights/series-c"
+        }
+      ],
+      "risks": [
+        "Project Big Stone's schedule, scale, and operating claims come from Antora; this issue has no independent evidence that the same delivery pace or economics repeat across sites and duty cycles.",
+        "The technology page labels direct thermophotovoltaic conversion as a future product, so it should not be treated as part of the currently evidenced delivery path."
+      ],
+      "verdict": "Antora makes storage legible as an industrial dispatch system, with repeatable project economics still the central proof point."
+    },
+    {
+      "slug": "soundhealth",
+      "why_this_week": "SoundHealth belongs because it closes a sensing-and-action loop on the user's body rather than stopping at symptom tracking. The current product pages turn an anatomy scan into personalized acoustic settings and expose two directly purchasable wearables, while the evidence boundary differs sharply between the FDA-cleared SONU congestion indication and the separate Spatial Sleep product.",
+      "product_evaluation": "The SONU page currently offers a $299 forehead-worn acoustic device and identifies it as FDA 510(k) cleared for nasal congestion; the Spatial Sleep page offers a separate $319 acoustic sleep wearable. The structured research describes phone-generated craniofacial maps and bone-conduction output, which is a specific personalization workflow, but this issue does not adopt the vendor's clinical-effect percentages or extend SONU's clearance to Spatial Sleep.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/soundhealth.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "SoundHealth official site",
+          "source": "content/startups/soundhealth.json research.sources.official_site",
+          "url": "https://soundhealth.life/"
+        },
+        {
+          "label": "SONU Band product page",
+          "source": "content/startups/soundhealth.json research.sources.official_sonu",
+          "url": "https://soundhealth.life/products/sonu-band"
+        },
+        {
+          "label": "Spatial Sleep product page",
+          "source": "content/startups/soundhealth.json research.sources.official_spatial",
+          "url": "https://soundhealth.life/products/spatial-sleep"
+        },
+        {
+          "label": "SoundHealth Series A announcement",
+          "source": "content/startups/soundhealth.json research.sources.official_funding",
+          "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The SONU product page offers direct checkout and a 30-day risk-free trial, identifies SONU as FDA 510(k) cleared, and says its app creates a 3D facial and sinus map to tune acoustic resonance delivered by bone-conduction transducers.",
+          "url": "https://soundhealth.life/products/sonu-band"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Spatial Sleep product page offers direct checkout and a 45-day risk-free trial, and describes an app-generated 3D cranial map used to calculate personalized frequencies delivered through a forehead-worn bone-conduction band.",
+          "url": "https://soundhealth.life/products/spatial-sleep"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: both product pages returned HTTP 200 and rendered direct checkout, pricing, and distinct SONU versus Spatial Sleep positioning. Both also exposed the same malformed inline Microsoft Clarity initializer, producing a non-blocking page-level SyntaxError while core product content remained readable.",
+          "url": "https://soundhealth.life/products/sonu-band"
+        },
+        {
+          "label": "Official product site",
+          "source": "SoundHealth homepage",
+          "url": "https://soundhealth.life/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Business Wire",
+          "url": "https://www.businesswire.com/news/home/20260730536906/en/SoundHealth-Raises-%2412.25M-to-Accelerate-Growth-of-Its-AI-Enabled-Non-Invasive-Devices-for-Breathing-and-Sleep-Disorders"
+        }
+      ],
+      "risks": [
+        "Independent, long-duration evidence is needed to assess congestion and sleep outcomes in real-world use; FDA clearance for SONU must not be generalized to Spatial Sleep.",
+        "The repeated malformed Clarity script is a vendor-page implementation defect. It did not block product text or checkout in this review, but it is a reproducible browser-side quality issue."
+      ],
+      "verdict": "SoundHealth has a concrete personalization-to-device loop, but product availability and one cleared indication are not proof of broader clinical outcomes."
+    },
+    {
+      "slug": "discern-security",
+      "why_this_week": "Discern fits because its July 30 Series A centers on what happens after posture data arrives. The product organizes assessment, explanation, prioritization, and remediation into named agents, so its claim is a continuous security-control loop rather than another standalone finding feed.",
+      "product_evaluation": "The current homepage describes Atlas for queries and dashboards, Oracle for explanation, Pathfinder for business-context prioritization, Resolve for approved remediation actions, and Mesh for cross-tool policy alignment. The launch page adds Scout health checks and says Resolve can create tickets, initiate deployments, or trigger approved actions; the workflow is specific, but the public evidence is still vendor-authored and does not establish production risk reduction.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/discern-security.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Discern Security official product site",
+          "source": "content/startups/discern-security.json research.sources.official_site",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Discern agentic platform launch",
+          "source": "content/startups/discern-security.json research.sources.official_platform_release",
+          "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform"
+        },
+        {
+          "label": "Discern Security Series A announcement",
+          "source": "content/startups/discern-security.json research.sources.official_funding",
+          "url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site says Atlas turns plain-English questions into dashboards, charts, and reusable queries, while Pathfinder prioritizes vulnerabilities, misconfigurations, and assets using business context.",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official site says Resolve converts findings into tracked remediation actions with approvals and accountability, and Mesh aligns policy and coverage across connected security tools.",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The platform release says Scout converts vendor best practices into measurable health checks and Mesh identifies cross-stack policy and MITRE coverage gaps.",
+          "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: the homepage rendered Atlas, Oracle, Pathfinder, Resolve, and Mesh workflows, and the launch page rendered Scout plus ticket, deployment, approval, and remediation language; neither page reported JavaScript errors.",
+          "url": "https://www.discernsecurity.com/discern-security-launches-ai-native-agentic-platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Discern Security homepage",
+          "url": "https://www.discernsecurity.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/discern-security-raises-13-million-series-a-and-launches-agentic-loops-to-close-security-gaps-302838556.html"
+        }
+      ],
+      "risks": [
+        "Cross-vendor recommendations can become unsafe when asset context, ownership, or tool configuration is stale; the public pages do not quantify approval failures or rollback behavior.",
+        "The available product evidence is demo- and vendor-authored, with no independent measurement of production remediation quality or sustained risk reduction."
+      ],
+      "verdict": "Discern has designed a coherent route from finding to approved action, but independent production evidence will determine whether it truly closes the loop."
+    },
+    {
+      "slug": "act-security",
+      "why_this_week": "Act is the second security pick because it defines the loop at a different layer: instead of coordinating remediation across tools, it reasons across identity, network, and AI access and then changes cloud-native boundaries. That makes the unit of work an enforced access path rather than a finding or ticket.",
+      "product_evaluation": "Act's platform page presents configured, observed, and intended access as one model, groups the cloud into six contextual boundaries, and says enforcement uses native cloud controls and infrastructure-as-code without a new agent. The structured research also records a simulation step before enforcement; the public surfaces describe a concrete control path, while vendor quotes are not independent evidence that policy changes reduce exposure without operational disruption.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/act-security.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Act Security official site",
+          "source": "content/startups/act-security.json research.sources.official_site",
+          "url": "https://act.security/"
+        },
+        {
+          "label": "Act Security platform",
+          "source": "content/startups/act-security.json research.sources.official_platform",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Act Security company page",
+          "source": "content/startups/act-security.json research.sources.official_about",
+          "url": "https://act.security/about"
+        },
+        {
+          "label": "Act Security launch and funding announcement",
+          "source": "content/startups/act-security.json research.sources.funding_1",
+          "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Act reasons across identity, network, and AI access together to identify exploitable paths and organize them into boundary-hardening campaigns.",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Teams can simulate proposed access changes before enforcing them through existing cloud-native controls and infrastructure-as-code workflows.",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: the platform page rendered configured, observed, and intended access analysis; identity, network, and AI convergence; six contextual boundaries; and cloud-native infrastructure-as-code enforcement with no JavaScript errors.",
+          "url": "https://act.security/platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "Act Security homepage",
+          "url": "https://act.security/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/act-security-launches-action-centric-cloud-security-platform-with-60-million-in-funding-302836148.html"
+        }
+      ],
+      "risks": [
+        "Broad access changes can block legitimate production traffic or create emergency overrides if intent, reachability, or ownership context is wrong.",
+        "The current evidence is product description and vendor-selected customer commentary; it does not independently quantify prevented paths, false positives, or rollback frequency."
+      ],
+      "verdict": "Act makes enforcement—not alert volume—the product, with safe change selection and rollback remaining the decisive evidence gap."
+    },
+    {
+      "slug": "bioscan-research",
+      "why_this_week": "Bioscan belongs because it puts the feedback loop at the first triage decision. CEREBO combines a portable optical reading with machine-learning interpretation, aiming to turn a point-of-care scan into an actionable hemorrhage screen where stationary imaging or specialist interpretation may not be immediately available.",
+      "product_evaluation": "The CEREBO page describes diffuse reflectance and near-infrared spectroscopy for non-invasive intracranial-hemorrhage screening, with machine-learning interpretation and Value, Plus, and Cloud configurations. The patent page describes passive probe alignment, safe optical switching, and multi-probe contact mechanisms; these are concrete device-design surfaces, but they do not establish clinical sensitivity, specificity, or regulatory status across markets.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/bioscan-research.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Bioscan Research official site",
+          "source": "content/startups/bioscan-research.json research.sources.official_site",
+          "url": "https://www.bioscanresearch.com/"
+        },
+        {
+          "label": "CEREBO product page",
+          "source": "content/startups/bioscan-research.json research.sources.official_product",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Bioscan probe patent page",
+          "source": "content/startups/bioscan-research.json research.sources.official_patent",
+          "url": "https://www.bioscanresearch.com/patent.php"
+        },
+        {
+          "label": "Bioscan Research Seed report",
+          "source": "content/startups/bioscan-research.json research.sources.funding_report",
+          "url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The CEREBO page describes a portable, non-invasive intracranial-hemorrhage screening device that uses diffuse reflectance and near-infrared spectroscopy with machine-learning interpretation.",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Bioscan presents Value, Plus, and Cloud configurations, with patient-history storage in Plus and application plus web access in the Cloud tier.",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The official patent surface describes passive self-alignment, safe optical switching, and multi-probe mechanisms intended to improve placement and measurement consistency.",
+          "url": "https://www.bioscanresearch.com/patent.php"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: the product page rendered NIR and diffuse-reflectance screening, machine-learning interpretation, portability, and three configurations; the patent page rendered passive alignment and probe-protection mechanisms, with no JavaScript errors on either page.",
+          "url": "https://www.bioscanresearch.com/product.php"
+        },
+        {
+          "label": "Official product site",
+          "source": "Bioscan Research homepage",
+          "url": "https://www.bioscanresearch.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Express Healthcare",
+          "url": "https://www.expresshealthcare.in/amp/news/bioscan-research-raises-1-million-seed-funding-led-by-unicorn-india-ventures/454452/"
+        }
+      ],
+      "risks": [
+        "Independent clinical studies must establish sensitivity, specificity, and failure modes across populations and care settings before the device can safely influence triage.",
+        "The reviewed product and patent pages describe mechanism and packaging, not current regulatory clearance or comparative performance against standard imaging."
+      ],
+      "verdict": "CEREBO is a specific attempt to move brain-injury screening closer to the patient, but clinical validation—not portability—will determine its utility."
+    },
+    {
+      "slug": "sofab-inks",
+      "why_this_week": "Sofab closes the issue at the materials layer, where evidence only matters if a formulation can enter a repeatable coating process. Tinfab and Nicfab are presented as orderable transport-layer inks with named deposition methods, moving the perovskite discussion from a laboratory recipe toward customer qualification and manufacturing.",
+      "product_evaluation": "The Tinfab page describes a solution-processable SnO2 electron-transport layer for PIN and NIP architectures and lists blade, slot-die, gravure, and spin coating. The Nicfab page describes a tunable, solution-processable NiOx hole-transport layer, and both pages offer samples; those are inspectable product and process choices, while vendor-reported efficiency, durability, and cost comparisons are not treated here as independent benchmarks.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/sofab-inks.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Sofab Inks official site",
+          "source": "content/startups/sofab-inks.json research.sources.official_site",
+          "url": "https://www.sofabinks.com/"
+        },
+        {
+          "label": "Tinfab electron transport layer",
+          "source": "content/startups/sofab-inks.json research.sources.official_tinfab",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Nicfab hole transport layer",
+          "source": "content/startups/sofab-inks.json research.sources.official_nicfab",
+          "url": "https://www.sofabinks.com/nicfab"
+        },
+        {
+          "label": "Sofab Inks Seed report",
+          "source": "content/startups/sofab-inks.json research.sources.funding_report",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f"
+        },
+        {
+          "label": "Sofab funding and materials report",
+          "source": "content/startups/sofab-inks.json research.sources.funding_corroboration",
+          "url": "https://www.pv-magazine.com/2026/07/22/sofab-inks-announces-6-million-in-funding-to-advance-novel-perovskite-etl-materials/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Sofab's Tinfab page describes a solution-processable SnO2 electron-transport layer for PIN and NIP architectures and lists blade, slot-die, gravure, and spin-coating methods.",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Tinfab page offers an orderable sample rather than presenting the material only as a laboratory formulation; storage-stability language remains a vendor claim.",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Structured product evidence 3",
+          "source": "The Nicfab page describes a tunable, solution-processable NiOx hole-transport layer compatible with multiple perovskite architectures and offers a sample for evaluation.",
+          "url": "https://www.sofabinks.com/nicfab"
+        },
+        {
+          "label": "bb-browser product check",
+          "source": "2026-08-10 browser check: Tinfab rendered PIN and NIP compatibility, four deposition methods, and sample ordering; Nicfab rendered a tunable solution-processable NiOx layer and sample ordering, with no JavaScript errors on either page.",
+          "url": "https://www.sofabinks.com/tinfab"
+        },
+        {
+          "label": "Official product site",
+          "source": "Sofab Inks homepage",
+          "url": "https://www.sofabinks.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios Pro Rata",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-ab987ebd-1120-42fd-9e28-18f587df5a3f"
+        }
+      ],
+      "risks": [
+        "Vendor-reported cell efficiency and durability do not establish module-scale yield, customer qualification, field life, or high-volume production economics.",
+        "Orderable samples show commercial intent, but the reviewed sources do not identify qualified customers, repeat orders, or manufacturing volumes."
+      ],
+      "verdict": "Sofab's useful step is packaging transport-layer chemistry for process testing; module-scale qualification remains the proof that matters."
+    }
+  ]
+}
