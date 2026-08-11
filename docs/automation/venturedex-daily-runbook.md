@@ -40,6 +40,7 @@ Automation must never rewrite this section.
 - Respect the taste standard in `content/STANDARD.md`.
 - Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
 - Treat Seed-Series C as the default stage preference, not an absolute ceiling; independent private breakout companies may continue through review at Series D+, >$10B valuation, or unusually large financing when product evidence, taste, and reader relevance are strong.
+- A named Series D or later round requires a structured `research.breakout_exception` in the startup JSON: an 80-500 character reason plus at least three unique research source IDs that include official and funding sources and bind at least two product-evidence claims. This records the exception without weakening the independent-private-company or manual taste review.
 - Never fabricate amount, stage, date, investor, or source URL.
 - `stage`, `date`, and `source_url` must come from the original article or the company is not eligible.
 - Lead-investor identity must be cross-validated against the source article, the canonical directory entry in `content/investors.json`, and the official investor website before publish.
@@ -162,6 +163,14 @@ If screenshot generation fails, do not keep a half-complete startup addition.
    bash scripts/submit-gsc-direct.sh --dry-run --retry-pending
    bash scripts/submit-gsc-direct.sh --retry-pending
    ```
+
+   `post_request_confirmation_unknown` is not retryable through that backlog. After a human reviews the exact durable artifact, use the dedicated read-only reconciliation path:
+
+   ```bash
+   bash scripts/submit-gsc-direct.sh --reconcile-post-click-requested /absolute/path/to/post_request_confirmation_unknown-artifact.txt
+   ```
+
+   It may append `requested` only after the exact artifact URL is re-inspected and a route-bound `success_static` state is observed. The reconciliation path must never call the request-indexing click action; if success is not proven, the blocker and artifact remain active.
 27. Open an inbox item summarizing the full run.
 
 ## Review Passes

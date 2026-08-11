@@ -66,7 +66,7 @@ Search Console submission priority order:
 - `../../content/timestamps.json`
   The repo-managed first-seen and published timestamp sidecar. Prerendered pages and the D1 seed both read it, so new Daily additions must keep it aligned.
 - `../../scripts/submit-gsc-direct.sh`
-  The local Search Console URL Inspection submitter. It targets only VentureDex startup and weekly detail pages, writes the authoritative ledger at `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv`, can migrate the ignored repo-local legacy ledger, and depends on an authenticated local `bb-browser` + Comet CDP session because general VentureDex pages cannot use Google's Indexing API.
+  The local Search Console URL Inspection submitter. It targets only VentureDex startup and weekly detail pages, writes the authoritative ledger at `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv`, can migrate the ignored repo-local legacy ledger, and depends on an authenticated local `bb-browser` + Comet CDP session because general VentureDex pages cannot use Google's Indexing API. Its post-click reconciliation mode is read-only and may resolve an exact `post_request_confirmation_unknown` artifact to `requested` only from a route-bound existing success state.
 
 ## Edit Policy
 

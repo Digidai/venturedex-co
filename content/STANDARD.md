@@ -70,6 +70,21 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 **F3 不是"融资越多越该淘汰"。** VentureDex 默认偏早期，但可以收录突破性明星项目：即使是 Series D+、估值 > $10B、或融资金额很大，只要它仍是独立私有公司，并且产品赌注明确、公开证据充足、市场势能本身就是读者应该理解的信号，就可以继续评估。不能走例外的情况：已上市、已被收购、大公司部门、融资传闻未闭合、或者只是"融了很多钱"但产品判断站不住。
 
+凡 `funding[].stage` 为具名 `Series D` 或更晚轮次，startup JSON 必须增加结构化 `research.breakout_exception`，不能靠评语暗示例外已经通过：
+
+```json
+{
+  "research": {
+    "breakout_exception": {
+      "reason": "80-500 characters explaining why this independent private company clears the late-stage breakout bar.",
+      "source_ids": ["official_site", "funding_1", "product_1"]
+    }
+  }
+}
+```
+
+`source_ids` 至少三个且不能重复，必须引用 `research.sources` 中的官方来源和融资来源，并覆盖至少两条 `research.product_evidence`。这个字段只记录例外理由和证据绑定；它不替代 F2 独立公司核验、F3 人工判断、完整 research、品牌或发布门禁。`Growth`、`Late Stage`、`Series AA` 等模糊或非具名轮次仍不进入 schema。
+
 淘汰时记录到 `content/rejected.jsonl`：
 ```jsonl
 {"schema_version":2,"slug":"bad-example","company_url":"https://example.com/","decision_source_url":"https://parent.example.com/products/bad-example","decision_source_type":"official","rejected_at":"2026-07-26","stage":"F2","reason":"The official parent-company page identifies this as a subsidiary, not an independent company.","lifecycle":{"status":"active","revisit_triggers":["company_status_change","governance_change"]}}
@@ -405,6 +420,14 @@ bash scripts/submit-gsc-direct.sh --latest-weekly
 ```
 
 提交后检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 这一权威 ledger，确认每个目标 URL 的最新状态为 `requested`。仓库根目录的 `.gsc_submission_history.tsv` 仅是旧版兼容输入，不再作为完成证据。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和目标 URL，不要把它当作已提交；后续可用 `--retry-pending` 在安全上限内继续处理积压。
+
+如果最新状态是 `post_request_confirmation_unknown`，不得用 `--force` 或普通 retry 猜测重发。人工确认对应 artifact 后，只能使用只读恢复路径：
+
+```bash
+bash scripts/submit-gsc-direct.sh --reconcile-post-click-requested /absolute/path/to/post_request_confirmation_unknown-artifact.txt
+```
+
+该命令必须重新检查 artifact 绑定的精确 URL，且只在 Search Console 返回该 URL 的 route-bound `success_static` 状态时归档原 blocker 并写入 `requested`；它本身不得点击 **Request indexing**。没有这一证据时，原 ledger 状态和 artifact 保持不变。
 
 ---
 

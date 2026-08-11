@@ -29,7 +29,7 @@
 - 公司名
 - 公司 URL
 - 融资金额
-- 轮次 (Seed / Series A / B / C)
+- 轮次（Seed 或具名 Series A-Z；Series D+ 仅能走结构化 breakout exception）
 - Lead investor
 - 文章 URL（这就是 source_url）
 - 文章日期
@@ -56,6 +56,8 @@ F3: 阶段是否适配 VentureDex？
 F4: 不在排除品类中吗？
     淘汰: 加密/NFT、赌博、成人、SEO 工具、模板商店、VPN 评测
 ```
+
+当真实融资轮次为具名 Series D 或更晚轮次时，通过 F3 还不够：新增 startup JSON 必须写 `research.breakout_exception.reason`（80-500 字符）和至少三个唯一的 `research.breakout_exception.source_ids`。这些 ID 必须绑定同一 `research.sources` 中的 official、funding 和产品证据来源，并覆盖至少两条 `research.product_evidence`。不得把 Series D+ 错写成 Series C，也不得用 `Growth`、`Late Stage` 或 `Series AA` 绕过 validator。
 
 淘汰时写入 `content/rejected.jsonl`：
 ```jsonl
@@ -178,6 +180,15 @@ Q3: 它解决的问题具体吗？
       "source_name": "TechCrunch"
     }
   ]
+}
+```
+
+若上面记录的真实 `funding[].stage` 是 Series D 或更晚轮次，还必须在 `research` 对象内增加：
+
+```json
+"breakout_exception": {
+  "reason": "80-500 characters explaining why this independent private company clears the late-stage breakout bar.",
+  "source_ids": ["official_site", "funding_1", "product_1"]
 }
 ```
 
@@ -356,10 +367,10 @@ bash scripts/submit-gsc-direct.sh --latest-weekly
 5. 每次最多收录 5 个
 6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/brand-assets.json`、`content/rejected.jsonl`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
-8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据
+8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
-11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；未完成积压通过 `--retry-pending` 有界重试。
+11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；普通未点击积压通过 `--retry-pending` 有界重试。`post_request_confirmation_unknown` 不得普通重试；只能把精确 artifact 交给 `--reconcile-post-click-requested` 做零点击只读核验，且只有 route-bound `success_static` 才能转为 `requested`。
 
 ## 文件操作范围
 
