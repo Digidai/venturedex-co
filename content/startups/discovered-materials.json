@@ -1,0 +1,81 @@
+{
+  "slug": "discovered-materials",
+  "domain": "discoveredmaterials.com",
+  "url": "https://discoveredmaterials.com/",
+  "product_name": "Discovered Materials",
+  "summary": "AI agents and open benchmarks for finding manufacturable semiconductor materials.",
+  "editor_note": "Open benchmark data makes this materials-search product more inspectable than most AI-for-science claims. Its agents evaluated 526 thermal-interface candidates across 30–100M-token runs, while the team publishes both the dataset and benchmark. Unlike a black-box lab-service pitch, researchers can interrogate the search process and failure cases. The real test is whether more than one of 500-plus candidates can reach a plausible synthesis route.",
+  "editor_rating": 4,
+  "why_featured": "526-material benchmark for thermal AI",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "materials science,semiconductors,ai agents,benchmarks,thermal management",
+  "investors": "Lightspeed Venture Partners,Peak XV Partners,Y Combinator",
+  "links": {
+    "product": "https://discoveredmaterials.com/research/",
+    "careers": "https://www.ycombinator.com/companies/discovered-materials/jobs",
+    "linkedin": "https://www.linkedin.com/company/discoveredmaterials/",
+    "twitter": "https://x.com/discoveredmat"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9M",
+      "stage": "Seed",
+      "lead_investor": "Lightspeed India Partners",
+      "date": "2026-08-10",
+      "source_url": "https://techcrunch.com/2026/08/10/discovered-materials-is-playing-ai-whack-a-mole-to-hunt-cooler-chips/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Discovered Materials official site",
+        "url": "https://discoveredmaterials.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_research",
+        "label": "Discovered Materials official research and benchmark page",
+        "url": "https://discoveredmaterials.com/research/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Discovered Materials $9M Seed report",
+        "url": "https://techcrunch.com/2026/08/10/discovered-materials-is-playing-ai-whack-a-mole-to-hunt-cooler-chips/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Discovered Materials publishes a 526-material dataset and a benchmark for evaluating AI agents that search for thermally conductive dielectric materials.",
+        "source_ids": [
+          "official_site",
+          "official_research"
+        ]
+      },
+      {
+        "claim": "The official research page documents agent runs spanning 30–100M tokens and makes the material records downloadable instead of exposing only a promotional result.",
+        "source_ids": [
+          "official_research"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Semiconductor materials researchers and engineering teams evaluating candidate dielectrics for thermal-interface applications.",
+      "category": "AI-assisted materials discovery",
+      "differentiation": "The company pairs agentic search with a public dataset and benchmark, making the discovery process and failure modes more inspectable than a closed research service.",
+      "why_now": "The August 2026 Seed follows the release of a concrete benchmark and dataset at a time when AI-for-science claims need reproducible evidence."
+    },
+    "risks": [
+      {
+        "claim": "Whether the search process can repeatedly turn ranked candidates into plausible synthesis routes can be tested as the company publishes follow-on lab validation.",
+        "basis": "The official research page says only one of more than 500 evaluated candidates had a plausible synthesis route."
+      }
+    ]
+  }
+}

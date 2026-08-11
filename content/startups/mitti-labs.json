@@ -1,0 +1,80 @@
+{
+  "slug": "mitti-labs",
+  "domain": "www.mittilabs.earth",
+  "url": "https://www.mittilabs.earth/",
+  "product_name": "Mitti Labs",
+  "summary": "Satellite and field measurement software for water-resilient, lower-emission rice farming.",
+  "editor_note": "Combining satellite radar with field instruments is a more credible climate-measurement stack than offsets built on surveys alone. Its digital twins fuse SAR imagery, field data, and biogeochemical models to track 4 outcomes—water, methane, nitrous oxide, and yield—while flux towers and gas chromatographs ground-truth emissions. Unlike a carbon ledger, this system follows farm operations and emissions. The open question is whether validation quality holds across Asia's varied rice systems.",
+  "editor_rating": 4,
+  "why_featured": "$9.5M A for rice digital twins",
+  "product_type": "Climate / Sustainability",
+  "region": "Global / Remote",
+  "tags": "agriculture,climate,water,satellite imagery,carbon measurement",
+  "investors": "Aramco Ventures",
+  "links": {
+    "product": "https://www.mittilabs.earth/our-technology",
+    "careers": "https://apply.workable.com/mitti-labs/",
+    "linkedin": "https://www.linkedin.com/company/mitti-labs"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9.5M",
+      "stage": "Series A",
+      "lead_investor": "Aramco Ventures",
+      "date": "2026-08-05",
+      "source_url": "https://techcrunch.com/2026/08/05/saudi-aramco-backs-indias-mitti-labs-to-make-asias-rice-farming-more-water-resilient/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Mitti Labs official site",
+        "url": "https://www.mittilabs.earth/",
+        "type": "official"
+      },
+      {
+        "id": "official_technology",
+        "label": "Mitti Labs official technology page",
+        "url": "https://www.mittilabs.earth/our-technology",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Mitti Labs $9.5M Series A report",
+        "url": "https://techcrunch.com/2026/08/05/saudi-aramco-backs-indias-mitti-labs-to-make-asias-rice-farming-more-water-resilient/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Mitti Labs combines SAR satellite imagery, field observations, and biogeochemical models to build digital twins of rice-growing regions.",
+        "source_ids": [
+          "official_site",
+          "official_technology"
+        ]
+      },
+      {
+        "claim": "The official technology page describes in-field validation with flux towers, chambers, and gas chromatographs while tracking methane, nitrous oxide, water, and yield.",
+        "source_ids": [
+          "official_technology"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Rice buyers, project developers, and agricultural operators that need auditable water and greenhouse-gas measurements across farms.",
+      "category": "Agricultural climate measurement",
+      "differentiation": "The system ties satellite-scale monitoring to field instruments and agronomic outcomes rather than relying on survey-based carbon accounting alone.",
+      "why_now": "The August 2026 Series A arrives as Asian rice systems face water constraints and buyers need more defensible project-level measurement."
+    },
+    "risks": [
+      {
+        "claim": "Whether model-to-field agreement stays consistent across different rice varieties, climates, and irrigation practices can be tested through region-level validation disclosures.",
+        "basis": "The official methodology spans remote sensing, models, and local instruments, so calibration quality is central to the product's claims."
+      }
+    ]
+  }
+}

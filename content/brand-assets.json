@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-10",
+  "verified_at": "2026-08-11",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1897,6 +1897,27 @@
       "local_path": "/logos/companies/happyrobot.svg",
       "source_page": "https://www.happyrobot.ai/",
       "source_url": "https://happyrobot.b-cdn.net/favicon.svg"
+    },
+    "discovered-materials": {
+      "name": "Discovered Materials",
+      "shape": "icon",
+      "local_path": "/logos/companies/discovered-materials.svg",
+      "source_page": "https://discoveredmaterials.com/",
+      "source_url": "https://discoveredmaterials.com/icon.svg?d7bbec7f20388e81"
+    },
+    "mitti-labs": {
+      "name": "Mitti Labs",
+      "shape": "icon",
+      "local_path": "/logos/companies/mitti-labs.png",
+      "source_page": "https://www.mittilabs.earth/",
+      "source_url": "https://framerusercontent.com/images/bAUuUIlKdc5BUpwicRysifadimI.png"
+    },
+    "windborne": {
+      "name": "WindBorne",
+      "shape": "icon",
+      "local_path": "/logos/companies/windborne.png",
+      "source_page": "https://windbornesystems.com/",
+      "source_url": "https://cdn.prod.website-files.com/66182072dc26a0d014409235/677448b21c41a960b8f8aac9_WB%20Favicon.png"
     }
   },
   "investors": {
@@ -3468,6 +3489,20 @@
       "local_path": "/logos/investors/eurazeo.ico",
       "source_page": "https://www.eurazeo.com/en",
       "source_url": "https://www.eurazeo.com/themes/custom/eurazeo/favicon.ico"
+    },
+    "aramco-ventures": {
+      "name": "Aramco Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/aramco-ventures.png",
+      "source_page": "https://aramcoventures.com/",
+      "source_url": "https://aramcoventures.com/wp-content/themes/aramco/assets/images/favicons/apple-touch-icon.png?v=0.11"
+    },
+    "galvanize": {
+      "name": "Galvanize",
+      "shape": "icon",
+      "local_path": "/logos/investors/galvanize.jpg",
+      "source_page": "https://galvanizeclimate.com/",
+      "source_url": "https://cdn.prod.website-files.com/69163bb2c37430c778533c91/69164a8c4950c0340cf66e91_Galvanize-Icon.jpg"
     }
   }
 }

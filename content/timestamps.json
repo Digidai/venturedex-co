@@ -1075,5 +1075,17 @@
   "happyrobot": {
     "published_at": "2026-08-10 06:11:48",
     "first_seen_at": "2026-08-10 06:11:48"
+  },
+  "discovered-materials": {
+    "published_at": "2026-08-11 06:06:29",
+    "first_seen_at": "2026-08-11 06:06:29"
+  },
+  "mitti-labs": {
+    "published_at": "2026-08-11 06:06:29",
+    "first_seen_at": "2026-08-11 06:06:29"
+  },
+  "windborne": {
+    "published_at": "2026-08-11 06:06:29",
+    "first_seen_at": "2026-08-11 06:06:29"
   }
 }

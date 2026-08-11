@@ -80,7 +80,10 @@
     "slug": "lightspeed",
     "short_name": "Lightspeed",
     "website": "https://lsvp.com",
-    "description": "Global venture capital firm focused on enterprise, consumer, and health technology."
+    "description": "Global venture capital firm focused on enterprise, consumer, and health technology.",
+    "aliases": [
+      "Lightspeed India Partners"
+    ]
   },
   "general-catalyst": {
     "name": "General Catalyst",
@@ -120,7 +123,8 @@
     "website": "https://www.khoslaventures.com",
     "description": "Venture capital firm backing founders building bold technology companies from early stages through growth.",
     "aliases": [
-      "Khosla Ventures and Connect Ventures"
+      "Khosla Ventures and Connect Ventures",
+      "Khosla Ventures and Galvanize"
     ]
   },
   "inovo-vc": {
@@ -1664,5 +1668,19 @@
     "short_name": "Eurazeo",
     "website": "https://www.eurazeo.com/en",
     "description": "European investment group backing companies across venture, growth, private equity, and real assets."
+  },
+  "aramco-ventures": {
+    "name": "Aramco Ventures",
+    "slug": "aramco-ventures",
+    "short_name": "Aramco Ventures",
+    "website": "https://aramcoventures.com/",
+    "description": "Corporate venture investor backing strategic energy, industrial, sustainability, and diversified technology companies."
+  },
+  "galvanize": {
+    "name": "Galvanize",
+    "slug": "galvanize",
+    "short_name": "Galvanize",
+    "website": "https://galvanizeclimate.com/",
+    "description": "Climate investment firm backing technologies and companies that can accelerate the energy transition."
   }
 }

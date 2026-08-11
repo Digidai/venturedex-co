@@ -1,0 +1,94 @@
+{
+  "slug": "windborne",
+  "domain": "windbornesystems.com",
+  "url": "https://windbornesystems.com/",
+  "product_name": "WindBorne",
+  "summary": "Balloon-fed global weather observations, forecasts, benchmarks, and APIs.",
+  "editor_note": "Live global observations make this weather stack more defensible than a forecast model trained only on public archives. Long-duration balloons feed WeatherMesh, while the public API, 10-minute refresh cadence, and live benchmark expose a product surface buyers can inspect. Unlike conventional numerical forecasts that may take hours, its model produces results in seconds. The unanswered question is whether company-run accuracy benchmarks predict customer outcomes across rare extremes.",
+  "editor_rating": 5,
+  "why_featured": "$37M B for balloon-fed forecasts",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "weather,forecasting,balloons,climate data,api",
+  "investors": "Khosla Ventures,Galvanize",
+  "links": {
+    "product": "https://windbornesystems.com/products/forecasts",
+    "careers": "https://windbornesystems.com/careers",
+    "linkedin": "https://www.linkedin.com/company/windborne/",
+    "twitter": "https://twitter.com/WindBorneWx"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$37M",
+      "stage": "Series B",
+      "lead_investor": "Khosla Ventures and Galvanize",
+      "date": "2026-08-05",
+      "source_url": "https://techcrunch.com/2026/08/05/ai-makes-weather-prediction-better-can-windborne-make-it-lucrative/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-11",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "WindBorne official site",
+        "url": "https://windbornesystems.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_forecasts",
+        "label": "WindBorne official forecasts page",
+        "url": "https://windbornesystems.com/products/forecasts",
+        "type": "product"
+      },
+      {
+        "id": "official_api",
+        "label": "WindBorne official API documentation",
+        "url": "https://api.windbornesystems.com/",
+        "type": "product"
+      },
+      {
+        "id": "official_benchmarks",
+        "label": "WindBorne official forecast benchmarks",
+        "url": "https://benchmarks.windbornesystems.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "WindBorne $37M Series B report",
+        "url": "https://techcrunch.com/2026/08/05/ai-makes-weather-prediction-better-can-windborne-make-it-lucrative/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "WindBorne combines observations from its Atlas long-duration balloon constellation with WeatherMesh, a transformer-based global forecast model.",
+        "source_ids": [
+          "official_site",
+          "official_forecasts"
+        ]
+      },
+      {
+        "claim": "The company exposes forecast access through public API documentation and publishes a live benchmark surface with a ten-minute refresh cadence.",
+        "source_ids": [
+          "official_api",
+          "official_benchmarks"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Weather-sensitive operators, insurers, energy teams, and forecasters that need frequently refreshed global observations and machine-readable predictions.",
+      "category": "Commercial weather intelligence",
+      "differentiation": "A proprietary balloon observation network feeds a fast forecast model, while public API documentation and live benchmarks make the output inspectable.",
+      "why_now": "The August 2026 Series B follows broader commercial interest in AI weather models and funds an observation network that can supply data unavailable in public archives."
+    },
+    "risks": [
+      {
+        "claim": "Whether the company-run benchmark advantage predicts operational value during rare extreme events can be tested through independent, event-level customer results.",
+        "basis": "The public benchmarks improve inspectability, but the company controls both the forecast product and the displayed comparison surface."
+      }
+    ]
+  }
+}
