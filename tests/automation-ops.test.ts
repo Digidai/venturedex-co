@@ -7638,6 +7638,19 @@ test("GSC failure artifacts default to the stable automation workspace", () => {
   );
 });
 
+test("GSC defaults tolerate the observed Search Console SPA latency window", () => {
+  const script = readFileSync(
+    path.join(repoRoot, "scripts", "submit-gsc-direct.sh"),
+    "utf8",
+  );
+  assert.match(script, /NAV_WAIT_SECONDS="\$\{NAV_WAIT_SECONDS:-15\}"/);
+  assert.match(script, /INSPECT_WAIT_SECONDS="\$\{INSPECT_WAIT_SECONDS:-35\}"/);
+  assert.match(
+    script,
+    /POST_CLICK_WAIT_SECONDS="\$\{POST_CLICK_WAIT_SECONDS:-30\}"/,
+  );
+});
+
 function initCleanupFixture(
   targetParent = "venturedex-daily-test",
 ) {
