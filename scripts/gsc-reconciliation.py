@@ -22,7 +22,8 @@ TIMESTAMP = re.compile(
     r"^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}$"
 )
 FILENAME = re.compile(
-    r"^[0-9]{8}-[0-9]{6}-pre_request_success_unverified-"
+    r"^[0-9]{8}-[0-9]{6}-"
+    r"(pre_request_success_unverified|post_request_confirmation_unknown)-"
     r"(.+--sha256-[0-9a-f]{12})\.txt$"
 )
 RECONCILIATION_STATUSES = (
@@ -406,7 +407,7 @@ def read_open_file(file_fd: int) -> bytes:
         chunks.append(chunk)
 
 
-def validate_payload(payload: bytes, name: str) -> tuple[str, str]:
+def validate_payload(payload: bytes, name: str) -> tuple[str, str, str]:
     try:
         text = payload.decode("utf-8")
     except UnicodeDecodeError as error:
@@ -427,39 +428,46 @@ def validate_payload(payload: bytes, name: str) -> tuple[str, str]:
         values[field] = lines[index][len(prefix) :]
     if not TIMESTAMP.fullmatch(values["timestamp"]):
         fail(f"Reconciliation artifact timestamp is invalid: {name}")
-    if values["status"] != "pre_request_success_unverified":
-        fail(
-            "Only pre_request_success_unverified evidence can be reconciled "
-            f"for retry: {name}"
-        )
+    match = FILENAME.fullmatch(name)
+    if not match or values["status"] != match.group(1):
+        fail(f"Reconciliation artifact status and filename do not agree: {name}")
+    status_value = values["status"]
     target = values["url"].rstrip("/")
     if not CANONICAL_URL.fullmatch(target):
         fail(f"Reconciliation artifact URL is not canonical: {name}")
     if not values["message"].strip():
         fail(f"Reconciliation artifact message is empty: {name}")
-    if values["page_state"] not in {"success", "conflict"}:
-        fail(f"Reconciliation artifact page_state is not pre-click terminal: {name}")
-    match = FILENAME.fullmatch(name)
-    if not match or match.group(1) != target_key(target):
+    if match.group(2) != target_key(target):
         fail(f"Reconciliation artifact filename does not bind the exact URL: {name}")
 
     page_lines = [line.strip() for line in lines[7:] if line.strip()]
-    visible_urls = {
-        line.rstrip("/")
-        for line in page_lines
-        if CANONICAL_URL.fullmatch(line.rstrip("/"))
-    }
-    if target not in visible_urls:
-        fail(
-            "Reconciliation artifact does not contain the exact route-bound "
-            f"target as a visible URL line: {name}"
-        )
-    if not any(line.upper() in REQUEST_ACTIONS for line in page_lines):
-        fail(
-            "Reconciliation artifact does not preserve an exact visible "
-            f"request action: {name}"
-        )
-    return target, hashlib.sha256(payload).hexdigest()
+    if status_value == "pre_request_success_unverified":
+        if values["page_state"] not in {"success", "conflict"}:
+            fail(
+                "Reconciliation artifact page_state is not pre-click terminal: "
+                f"{name}"
+            )
+        visible_urls = {
+            line.rstrip("/")
+            for line in page_lines
+            if CANONICAL_URL.fullmatch(line.rstrip("/"))
+        }
+        if target not in visible_urls:
+            fail(
+                "Reconciliation artifact does not contain the exact route-bound "
+                f"target as a visible URL line: {name}"
+            )
+        if not any(line.upper() in REQUEST_ACTIONS for line in page_lines):
+            fail(
+                "Reconciliation artifact does not preserve an exact visible "
+                f"request action: {name}"
+            )
+    elif status_value == "post_request_confirmation_unknown":
+        if not values["page_state"].strip() or not page_lines:
+            fail(f"Post-click reconciliation artifact is incomplete: {name}")
+    else:  # pragma: no cover - the filename regex closes this branch.
+        fail(f"Unsupported reconciliation artifact status: {name}")
+    return target, hashlib.sha256(payload).hexdigest(), status_value
 
 
 def prepare(
@@ -531,7 +539,7 @@ def prepare(
                 artifact.name,
                 evidence_stat,
             )
-            target, digest = validate_payload(payload, artifact.name)
+            target, digest, status_value = validate_payload(payload, artifact.name)
 
             expected_key = target_key(target)
             active_matches = sorted(
@@ -567,6 +575,7 @@ def prepare(
                 identity(directory_stat),
                 state,
                 identity(resolved_stat),
+                status_value,
             )
         )
     )
@@ -679,7 +688,7 @@ def archive(
                     name,
                     source_stat,
                 )
-                _source_target, source_digest = validate_payload(
+                _source_target, source_digest, _source_status = validate_payload(
                     source_payload,
                     name,
                 )
@@ -704,7 +713,10 @@ def archive(
                 name,
                 final_stat,
             )
-            _final_target, final_digest = validate_payload(final_payload, name)
+            _final_target, final_digest, _final_status = validate_payload(
+                final_payload,
+                name,
+            )
             if final_digest != expected_digest:
                 fail("Resolved reconciliation artifact digest is not exact.")
             os.fsync(resolved_fd)
@@ -762,6 +774,7 @@ class HeldResolvedEvidence:
         expected_resolved_identity: str,
         expected_digest: str,
         expected_target: str,
+        expected_status: str,
     ) -> None:
         self.directory = directory
         self.directory_fd = directory_fd
@@ -776,6 +789,7 @@ class HeldResolvedEvidence:
         self.expected_resolved_identity = expected_resolved_identity
         self.expected_digest = expected_digest
         self.expected_target = expected_target
+        self.expected_status = expected_status
 
     def close(self) -> None:
         os.close(self.file_fd)
@@ -841,8 +855,12 @@ def verify_held_resolved_evidence(evidence: HeldResolvedEvidence) -> str:
             "Resolved reconciliation evidence changed while being read; "
             "the durable ledger transaction remains blocked."
         )
-    target, digest = validate_payload(payload, evidence.name)
-    if target != evidence.expected_target or digest != evidence.expected_digest:
+    target, digest, status_value = validate_payload(payload, evidence.name)
+    if (
+        target != evidence.expected_target
+        or digest != evidence.expected_digest
+        or status_value != evidence.expected_status
+    ):
         fail(
             "Resolved reconciliation evidence payload is not exact; "
             "the durable ledger transaction remains blocked."
@@ -889,6 +907,7 @@ def open_verified_resolved_evidence(
     expected_resolved_identity: str,
     expected_digest: str,
     expected_target: str,
+    expected_status: str = "pre_request_success_unverified",
 ) -> HeldResolvedEvidence:
     if (
         not name
@@ -898,6 +917,11 @@ def open_verified_resolved_evidence(
         or not IDENTITY.fullmatch(expected_resolved_identity)
         or not DIGEST.fullmatch(expected_digest)
         or not CANONICAL_URL.fullmatch(expected_target)
+        or expected_status
+        not in {
+            "pre_request_success_unverified",
+            "post_request_confirmation_unknown",
+        }
     ):
         fail("Invalid final reconciliation evidence arguments.")
 
@@ -962,6 +986,7 @@ def open_verified_resolved_evidence(
             expected_resolved_identity=expected_resolved_identity,
             expected_digest=expected_digest,
             expected_target=expected_target,
+            expected_status=expected_status,
         )
         verify_held_resolved_evidence(evidence)
         return evidence
@@ -991,6 +1016,7 @@ def verify_resolved(
         expected_resolved_identity,
         expected_digest,
         expected_target,
+        "pre_request_success_unverified",
     )
     try:
         print(verify_held_resolved_evidence(evidence))

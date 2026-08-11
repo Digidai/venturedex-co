@@ -140,6 +140,16 @@ function normalizeResearchRisk(value: unknown): StartupResearchRisk | null {
   };
 }
 
+function normalizeBreakoutException(
+  value: unknown,
+): StartupResearch["breakout_exception"] {
+  if (!isRecord(value)) return undefined;
+  const reason = stringValue(value.reason);
+  const sourceIds = stringArray(value.source_ids);
+  if (!reason || sourceIds.length === 0) return undefined;
+  return { reason, source_ids: sourceIds };
+}
+
 function normalizeMarketContext(value: unknown): StartupResearch["market_context"] {
   if (!isRecord(value)) return undefined;
   const context: NonNullable<StartupResearch["market_context"]> = {};
@@ -189,7 +199,9 @@ export function normalizeResearch(value: unknown): StartupResearch | null {
   };
 
   const marketContext = normalizeMarketContext(value.market_context);
+  const breakoutException = normalizeBreakoutException(value.breakout_exception);
   if (marketContext) research.market_context = marketContext;
+  if (breakoutException) research.breakout_exception = breakoutException;
   if (risks.length > 0) research.risks = risks;
 
   return research;

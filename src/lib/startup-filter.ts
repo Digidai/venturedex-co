@@ -55,9 +55,13 @@ export function filterStateToQuery(state: StartupFilterState): string {
 }
 
 export function cardMatchesFilters(card: FilterableCard, state: StartupFilterState): boolean {
+  const stageMatches =
+    !state.stage ||
+    card.stage === state.stage ||
+    (state.stage === "Series D+" && /^Series [D-Z]$/.test(card.stage ?? ""));
   return (
     (!state.type || card.type === state.type) &&
-    (!state.stage || card.stage === state.stage) &&
+    stageMatches &&
     (!state.region || card.region === state.region)
   );
 }

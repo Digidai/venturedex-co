@@ -58,6 +58,20 @@ test("cardMatchesFilters ANDs the active facets; empty facet matches all", () =>
   assert.equal(cardMatchesFilters(cards[1], state({ type: "AI / ML", stage: "Seed", region: "Europe" })), true);
 });
 
+test("cardMatchesFilters groups named Series D and later rounds under Series D+", () => {
+  const lateStage = (stage: string): FilterableCard => ({
+    name: stage,
+    type: "SaaS",
+    stage,
+    region: "US",
+    published: "2026-08-11T00:00:00Z",
+  });
+  assert.equal(cardMatchesFilters(lateStage("Series D"), state({ stage: "Series D+" })), true);
+  assert.equal(cardMatchesFilters(lateStage("Series L"), state({ stage: "Series D+" })), true);
+  assert.equal(cardMatchesFilters(lateStage("Series C"), state({ stage: "Series D+" })), false);
+  assert.equal(cardMatchesFilters(lateStage("Growth"), state({ stage: "Series D+" })), false);
+});
+
 test("activeFacetCount counts facets but not the featured sort", () => {
   assert.equal(activeFacetCount(state()), 0);
   assert.equal(activeFacetCount(state({ sort: "featured" })), 0);

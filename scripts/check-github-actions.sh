@@ -14,11 +14,6 @@ if ! command -v gh >/dev/null 2>&1; then
   exit 1
 fi
 
-if ! gh auth status >/dev/null 2>&1; then
-  echo "ERROR: github_actions check requires an authenticated gh CLI" >&2
-  exit 1
-fi
-
 GH_CHECK_ATTEMPTS="${GITHUB_ACTIONS_CHECK_ATTEMPTS:-3}"
 GH_CHECK_DELAY_SECONDS="${GITHUB_ACTIONS_CHECK_DELAY_SECONDS:-5}"
 
@@ -67,6 +62,11 @@ gh_check_retry() {
     delay=$((delay * 2))
   done
 }
+
+if ! gh_check_retry gh auth status >/dev/null; then
+  echo "ERROR: github_actions check requires an authenticated gh CLI" >&2
+  exit 1
+fi
 
 repo="$(gh_check_retry gh repo view --json nameWithOwner --jq .nameWithOwner)"
 permissions="$(gh_check_retry gh api "repos/$repo/actions/permissions" --jq '.enabled')"

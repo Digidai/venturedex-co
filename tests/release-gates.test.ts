@@ -609,6 +609,67 @@ test("GitHub Actions availability check fails closed when gh is unavailable", ()
   }
 });
 
+test("GitHub Actions availability check retries a transient auth probe", () => {
+  const root = mkdtempSync(join(tmpdir(), "vd-gh-auth-retry-"));
+  const fakeGh = join(root, "gh");
+  const stateFile = join(root, "auth-attempts");
+  try {
+    writeFileSync(
+      fakeGh,
+      `#!/bin/bash
+set -eu
+
+case "\${1:-}" in
+  auth)
+    attempts=0
+    if [ -f "$GITHUB_ACTIONS_FAKE_STATE" ]; then
+      read -r attempts < "$GITHUB_ACTIONS_FAKE_STATE"
+    fi
+    attempts=$((attempts + 1))
+    printf '%s\\n' "$attempts" > "$GITHUB_ACTIONS_FAKE_STATE"
+    if [ "$attempts" -eq 1 ]; then
+      echo "transient auth probe failure" >&2
+      exit 1
+    fi
+    ;;
+  repo)
+    echo "Digidai/venturedex-co"
+    ;;
+  api)
+    case "\${2:-}" in
+      */actions/permissions) echo "true" ;;
+      */actions/workflows) echo "active" ;;
+      *) exit 2 ;;
+    esac
+    ;;
+  *)
+    exit 2
+    ;;
+esac
+`
+    );
+    chmodSync(fakeGh, 0o755);
+
+    const result = spawnSync("/bin/bash", [checkGithubActions], {
+      cwd: repoRoot,
+      env: {
+        ...process.env,
+        PATH: `${root}:/usr/bin:/bin`,
+        GITHUB_ACTIONS_CHECK_ATTEMPTS: "2",
+        GITHUB_ACTIONS_CHECK_DELAY_SECONDS: "1",
+        GITHUB_ACTIONS_FAKE_STATE: stateFile,
+      },
+      encoding: "utf8",
+    });
+    assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.equal(readFileSync(stateFile, "utf8").trim(), "2");
+    assert.match(result.stderr, /transient auth probe failure/i);
+    assert.match(result.stdout, /github_actions: active/i);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("release refuses to trust validation from a different commit", () => {
   const result = spawnSync("bash", [manage, "release"], {
     cwd: repoRoot,

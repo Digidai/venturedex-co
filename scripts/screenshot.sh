@@ -182,13 +182,16 @@ async page => {
     },
   ];
 
-  const overlapArea = (rect, zone) => {
-    const width = Math.max(0, Math.min(rect.right, zone.right) - Math.max(rect.left, zone.left));
-    const height = Math.max(0, Math.min(rect.bottom, zone.bottom) - Math.max(rect.top, zone.top));
-    return width * height;
-  };
-
   const candidates = await page.evaluate(({ focusZones, viewport }) => {
+    // page.evaluate serializes this callback into the browser. Keep every
+    // helper it calls inside that browser-side closure; outer Node variables
+    // are not available once the callback is evaluated in the page.
+    const overlapArea = (rect, zone) => {
+      const width = Math.max(0, Math.min(rect.right, zone.right) - Math.max(rect.left, zone.left));
+      const height = Math.max(0, Math.min(rect.bottom, zone.bottom) - Math.max(rect.top, zone.top));
+      return width * height;
+    };
+
     const toRect = rect => ({
       left: rect.left,
       top: rect.top,

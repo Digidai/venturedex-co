@@ -671,6 +671,8 @@ case "$1" in
           echo "gsc_inspection_surface_blocker|||https://search.google.com/search-console/inspect"
         elif [ "$MOCK_TARGET_MODE" = "confirmation_unknown" ]; then
           echo "unknown"
+        elif [ "$MOCK_TARGET_MODE" = "reconcile_success_static" ]; then
+          echo "success_static"
         elif [ "$MOCK_TARGET_MODE" = "stale_success_current_failure" ]; then
           if [ "$state_count" -eq 1 ]; then echo "success_static"; else echo "failed"; fi
         elif [ "$MOCK_TARGET_MODE" = "conflicting_terminal" ]; then
@@ -786,6 +788,34 @@ function writePreClickReconciliationArtifact(
   return artifact;
 }
 
+function writePostClickReconciliationArtifact(
+  artifactDir: string,
+  url: string,
+): string {
+  mkdirSync(artifactDir, { recursive: true });
+  const artifact = path.join(
+    artifactDir,
+    `20260726-174233-post_request_confirmation_unknown-${gscArtifactTargetKeyForTest(url)}.txt`,
+  );
+  writeFileSync(
+    artifact,
+    [
+      "timestamp: 2026-07-26 17:42:33",
+      "status: post_request_confirmation_unknown",
+      `url: ${url}`,
+      "message: request click may have occurred; terminal confirmation was not detected",
+      "page_state: unknown",
+      "",
+      "--- page text ---",
+      url,
+      "URL is not on Google",
+      "REQUEST INDEXING",
+      "",
+    ].join("\n"),
+  );
+  return artifact;
+}
+
 function runPreClickReconciliation(
   root: string,
   history: string,
@@ -813,6 +843,247 @@ function runPreClickReconciliation(
     },
   );
 }
+
+function runPostClickReconciliation(
+  root: string,
+  history: string,
+  artifactDir: string,
+  artifact: string,
+  mock: ReturnType<typeof createGscBrowserMock>,
+  mode: string,
+  env: NodeJS.ProcessEnv = {},
+) {
+  return spawnSync(
+    "bash",
+    [
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "--reconcile-post-click-requested",
+      artifact,
+    ],
+    {
+      cwd: root,
+      env: {
+        ...process.env,
+        HISTORY_FILE: history,
+        GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+        GSC_ARTIFACT_DIR: artifactDir,
+        BB_BROWSER_CMD: mock.browser,
+        COMET_APP: mock.comet,
+        MOCK_BROWSER_LOG: mock.log,
+        MOCK_TARGET_MODE: mode,
+        MOCK_TARGET_URL: "https://venturedex.co/startups/alpha",
+        NAV_WAIT_SECONDS: "0",
+        INSPECT_WAIT_SECONDS: "0",
+        ...env,
+      },
+      encoding: "utf8",
+    },
+  );
+}
+
+test("GSC post-click reconciliation records requested only from a read-only route-bound success", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePostClickReconciliationArtifact(artifactDir, target);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpost_request_confirmation_unknown\t${target}\trequest click may have occurred; terminal confirmation was not detected\n`,
+  );
+
+  try {
+    const result = runPostClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      mock,
+      "reconcile_success_static",
+    );
+    assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.match(result.stdout, /without a duplicate click/);
+    assert.equal(gscClickCount(mock), 0);
+    assert.equal(Number.parseInt(readFileSync(mock.submitCounter, "utf8"), 10), 1);
+    assert.ok(!existsSync(artifact));
+    assert.ok(existsSync(path.join(artifactDir, "resolved", path.basename(artifact))));
+
+    let rows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.deepEqual(rows.map((row) => row[1]), [
+      "post_request_confirmation_unknown",
+      "reconciliation_archive_pending",
+      "requested",
+    ]);
+    assert.match(rows.at(-1)?.[3] ?? "", /without a request click/);
+    assert.doesNotMatch(readFileSync(mock.log, "utf8"), /VENTUREDEX_CALL:click_target/);
+
+    const second = runPostClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      mock,
+      "confirmation_unknown",
+    );
+    assert.equal(second.status, 0, `${second.stdout}\n${second.stderr}`);
+    assert.match(second.stdout, /already completed/);
+    assert.equal(gscClickCount(mock), 0);
+    assert.equal(Number.parseInt(readFileSync(mock.submitCounter, "utf8"), 10), 1);
+    rows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(rows.filter((row) => row[1] === "requested").length, 1);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC post-click reconciliation preserves the blocker when success is not proven", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePostClickReconciliationArtifact(artifactDir, target);
+  const originalLedger =
+    historyHeader +
+    `2026-07-26 17:42:34\tpost_request_confirmation_unknown\t${target}\trequest click may have occurred; terminal confirmation was not detected\n`;
+  writeFileSync(history, originalLedger);
+
+  try {
+    const result = runPostClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      mock,
+      "confirmation_unknown",
+    );
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /requires an existing route-bound success_static state/);
+    assert.equal(gscClickCount(mock), 0);
+    assert.ok(existsSync(artifact));
+    assert.ok(!existsSync(path.join(artifactDir, "resolved", path.basename(artifact))));
+    assert.equal(readFileSync(history, "utf8"), originalLedger);
+    assert.doesNotMatch(readFileSync(mock.log, "utf8"), /VENTUREDEX_CALL:click_target/);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC post-click reconciliation rejects pre-click evidence before browser startup", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  const originalLedger =
+    historyHeader +
+    `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`;
+  writeFileSync(history, originalLedger);
+
+  try {
+    const result = runPostClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+      mock,
+      "reconcile_success_static",
+    );
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /Could not parse exact post-click reconciliation metadata/);
+    assert.equal(existsSync(mock.log), false);
+    assert.ok(existsSync(artifact));
+    assert.equal(readFileSync(history, "utf8"), originalLedger);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC pre-click retry evidence still authorizes a route-bound existing success", () => {
+  const root = createGscFixture();
+  const history = path.join(root, "history.tsv");
+  const target = "https://venturedex.co/startups/alpha";
+  const artifactDirectory = path.join(root, "artifacts");
+  mkdirSync(artifactDirectory);
+  const artifactDir = realpathSync(artifactDirectory);
+  const artifact = writePreClickReconciliationArtifact(artifactDir, target);
+  writeFileSync(
+    history,
+    historyHeader +
+      `2026-07-26 17:42:34\tpre_request_success_unverified\t${target}\tpre-existing terminal state was unbound; no request click occurred\n`,
+  );
+
+  try {
+    const reconciled = runPreClickReconciliation(
+      root,
+      history,
+      artifactDir,
+      artifact,
+    );
+    assert.equal(reconciled.status, 0, `${reconciled.stdout}\n${reconciled.stderr}`);
+
+    const mock = createGscBrowserMock(root);
+    const submitted = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_TARGET_MODE: "reconcile_success_static",
+          MOCK_TARGET_URL: target,
+          NAV_WAIT_SECONDS: "0",
+          INSPECT_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+    assert.equal(submitted.status, 0, `${submitted.stdout}\n${submitted.stderr}`);
+    assert.match(submitted.stdout, /Recorded existing indexing request without a duplicate click/);
+    assert.equal(gscClickCount(mock), 0);
+    const rows = readFileSync(history, "utf8")
+      .trimEnd()
+      .split("\n")
+      .slice(1)
+      .map((row) => row.split("\t"))
+      .filter((row) => row[2] === target);
+    assert.equal(rows.at(-1)?.[1], "requested");
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test("GSC retry backlog selects only unresolved canonical detail URLs", () => {
   const root = createGscFixture();

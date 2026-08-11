@@ -66,6 +66,8 @@ ALLOWED_STAGES = {
     "Series B",
     "Series C",
 }
+SERIES_STAGE_RE = re.compile(r"^Series ([A-Z])$")
+BREAKOUT_EXCEPTION_FIELDS = {"reason", "source_ids"}
 
 REJECTED_STAGES = {
     "F1",
@@ -239,6 +241,114 @@ class FileResult:
     name: str
     errors: list[str] = field(default_factory=list)
     warnings: list[str] = field(default_factory=list)
+
+
+def is_allowed_funding_stage(stage: str) -> bool:
+    if stage in ALLOWED_STAGES:
+        return True
+    match = SERIES_STAGE_RE.fullmatch(stage)
+    return bool(match and match.group(1) >= "D")
+
+
+def is_breakout_funding_stage(stage: str) -> bool:
+    match = SERIES_STAGE_RE.fullmatch(stage)
+    return bool(match and match.group(1) >= "D")
+
+
+def validate_breakout_exception(
+    data: dict[str, object],
+    *,
+    required: bool,
+) -> list[str]:
+    errors: list[str] = []
+    research = data.get("research")
+    exception = research.get("breakout_exception") if isinstance(research, dict) else None
+    if exception is None:
+        if required:
+            errors.append(
+                "research.breakout_exception is required for Series D+ funding stages"
+            )
+        return errors
+    if not isinstance(exception, dict):
+        return ["research.breakout_exception must be an object"]
+
+    unknown_fields = sorted(set(exception) - BREAKOUT_EXCEPTION_FIELDS)
+    if unknown_fields:
+        errors.append(
+            "research.breakout_exception contains unsupported fields: "
+            + ", ".join(unknown_fields)
+        )
+
+    raw_reason = exception.get("reason")
+    if not isinstance(raw_reason, str):
+        errors.append("research.breakout_exception.reason must be a string")
+    elif raw_reason != raw_reason.strip():
+        errors.append(
+            "research.breakout_exception.reason must not contain outer whitespace"
+        )
+    elif not 80 <= len(raw_reason) <= 500:
+        errors.append("research.breakout_exception.reason must be 80-500 chars")
+
+    raw_refs = exception.get("source_ids")
+    if (
+        not isinstance(raw_refs, list)
+        or len(raw_refs) < 3
+        or not all(
+            isinstance(ref, str) and ref and ref == ref.strip()
+            for ref in raw_refs
+        )
+    ):
+        errors.append(
+            "research.breakout_exception.source_ids must contain at least three exact source ids"
+        )
+        refs: list[str] = []
+    else:
+        refs = list(raw_refs)
+        if len(set(refs)) != len(refs):
+            errors.append("research.breakout_exception.source_ids must be unique")
+
+    if not isinstance(research, dict):
+        return errors
+    sources = research.get("sources")
+    source_types: dict[str, str] = {}
+    if isinstance(sources, list):
+        for source in sources:
+            if not isinstance(source, dict):
+                continue
+            source_id = str(source.get("id", "")).strip()
+            source_type = str(source.get("type", "")).strip()
+            if source_id:
+                source_types[source_id] = source_type
+
+    unknown_refs = sorted(set(refs) - set(source_types))
+    if unknown_refs:
+        errors.append(
+            "research.breakout_exception.source_ids references unknown research sources: "
+            + ", ".join(unknown_refs)
+        )
+    referenced_types = {source_types.get(ref) for ref in refs}
+    if "official" not in referenced_types:
+        errors.append("research.breakout_exception.source_ids must include an official source")
+    if "funding" not in referenced_types:
+        errors.append("research.breakout_exception.source_ids must include a funding source")
+
+    evidence = research.get("product_evidence")
+    linked_claims = 0
+    if isinstance(evidence, list):
+        selected_refs = set(refs)
+        for item in evidence:
+            if not isinstance(item, dict):
+                continue
+            evidence_refs = item.get("source_ids")
+            if isinstance(evidence_refs, list) and selected_refs.intersection(
+                ref for ref in evidence_refs if isinstance(ref, str)
+            ):
+                linked_claims += 1
+    if linked_claims < 2:
+        errors.append(
+            "research.breakout_exception.source_ids must bind at least two product_evidence claims"
+        )
+    return errors
 
 
 def main() -> int:
@@ -511,6 +621,7 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
     if not funding:
         result.errors.append("funding must contain at least one verified round")
 
+    has_breakout_stage = False
     for index, round_data in enumerate(funding):
         prefix = f"funding[{index}]"
         for field_name in ["amount", "stage", "lead_investor", "date", "source_url", "source_name"]:
@@ -522,10 +633,14 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
             result.errors.append(f"{prefix}: amount '{amount}' has invalid format")
 
         stage = round_data.get("stage", "")
-        if stage and stage not in ALLOWED_STAGES:
+        if stage and not isinstance(stage, str):
+            result.errors.append(f"{prefix}: stage must be a string")
+        elif stage and not is_allowed_funding_stage(stage):
             result.errors.append(
-                f"{prefix}: stage '{stage}' is outside the Seed-Series C window"
+                f"{prefix}: stage '{stage}' must be Seed or a named Series A-Z round"
             )
+        elif stage and is_breakout_funding_stage(stage):
+            has_breakout_stage = True
 
         date = round_data.get("date", "")
         if date and not DATE_RE.match(date):
@@ -538,6 +653,10 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
                 result.errors.append(
                     f"{prefix}: source url check failed with HTTP {source_status} -> {source_url}"
                 )
+
+    result.errors.extend(
+        validate_breakout_exception(data, required=has_breakout_stage)
+    )
 
     link_errors, link_warnings = validate_links(data)
     result.errors.extend(link_errors)

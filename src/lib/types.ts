@@ -91,10 +91,16 @@ export interface StartupResearchRisk {
   basis: string;
 }
 
+export interface StartupResearchBreakoutException {
+  reason: string;
+  source_ids: string[];
+}
+
 export interface StartupResearch {
   verified_at: string;
   sources: StartupResearchSource[];
   product_evidence: StartupResearchEvidence[];
+  breakout_exception?: StartupResearchBreakoutException;
   market_context?: {
     primary_user?: string;
     category?: string;
@@ -168,7 +174,8 @@ export type FundingStage =
   | "Seed"
   | "Series A"
   | "Series B"
-  | "Series C";
+  | "Series C"
+  | `Series ${"D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"}`;
 
 export const PRODUCT_TYPES: ProductType[] = [
   "AI / ML", "SaaS", "DevTools", "Fintech", "HealthTech",
@@ -176,6 +183,6 @@ export const PRODUCT_TYPES: ProductType[] = [
   "Climate / Sustainability", "Other",
 ];
 
-export const FUNDING_STAGES: FundingStage[] = [
-  "Seed", "Series A", "Series B", "Series C",
+export const FUNDING_STAGES: (FundingStage | "Series D+")[] = [
+  "Seed", "Series A", "Series B", "Series C", "Series D+",
 ];

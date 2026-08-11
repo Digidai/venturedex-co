@@ -48,6 +48,7 @@ ADD_LATEST_WEEKLY=0
 ADD_RETRY_PENDING=0
 MIGRATE_LEGACY_HISTORY=0
 RECONCILE_PRE_CLICK_ARTIFACT=""
+RECONCILE_POST_CLICK_ARTIFACT=""
 DAILY_DATE=""
 WEEKLY_ISSUE=""
 EXPECT_URL=""
@@ -73,6 +74,7 @@ RECONCILE_ARTIFACT_CANONICAL=""
 RECONCILE_ARTIFACT_DIR_IDENTITY=""
 RECONCILE_RESOLVED_DIR_IDENTITY=""
 RECONCILE_ARTIFACT_STATE=""
+RECONCILE_ARTIFACT_STATUS=""
 RECONCILE_TRANSACTION_MESSAGE=""
 RECONCILE_LEDGER_SIZE=""
 RECONCILE_LEDGER_DIGEST=""
@@ -108,6 +110,7 @@ Usage:
   bash scripts/submit-gsc-direct.sh --dry-run --retry-pending --max-urls 10
   bash scripts/submit-gsc-direct.sh --url <url> [--expect-url <url>]
   bash scripts/submit-gsc-direct.sh --reconcile-pre-click-retry <artifact>
+  bash scripts/submit-gsc-direct.sh --reconcile-post-click-requested <artifact>
   bash scripts/submit-gsc-direct.sh --migrate-legacy-history
 
 Options:
@@ -125,6 +128,12 @@ Options:
                         pre_request_success_unverified artifact, then append
                         retry_pending while holding the authoritative ledger
                         lock. Post-click uncertainty is never eligible.
+  --reconcile-post-click-requested <artifact>
+                        Re-inspect the exact URL from a
+                        post_request_confirmation_unknown artifact without
+                        clicking Request indexing. Only an existing,
+                        route-bound success_static state may archive the exact
+                        blocker and append requested under the ledger lock.
   --migrate-legacy-history
                         Merge unique rows from the old repo ledger into the central ledger.
   --force               Do not skip URLs already marked requested in the ledger.
@@ -1200,7 +1209,7 @@ evidence_enabled = bool(evidence_directory)
 evidence_transition = (
     (
         expected_status == "reconciliation_archive_pending"
-        and new_status == "retry_pending"
+        and new_status in {"retry_pending", "requested"}
     )
     or (
         expected_status == "retry_pending"
@@ -1243,6 +1252,14 @@ if evidence_enabled:
         raise SystemExit("Could not load the GSC reconciliation evidence helper.")
     evidence_helper = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(evidence_helper)
+    expected_evidence_status = (
+        "post_request_confirmation_unknown"
+        if (
+            expected_status == "reconciliation_archive_pending"
+            and new_status == "requested"
+        )
+        else "pre_request_success_unverified"
+    )
     evidence = evidence_helper.open_verified_resolved_evidence(
         evidence_directory,
         evidence_name,
@@ -1251,6 +1268,7 @@ if evidence_enabled:
         evidence_resolved_identity,
         evidence_digest,
         target,
+        expected_evidence_status,
     )
 
 
@@ -1368,7 +1386,7 @@ def seal_interference(
     post_click_phase = expected_status == "request_click_pending"
     archive_final_phase = (
         expected_status == "reconciliation_archive_pending"
-        and new_status == "retry_pending"
+        and new_status in {"retry_pending", "requested"}
     )
 
     if current_status == "requested":
@@ -2505,7 +2523,8 @@ prepare_pre_click_reconciliation() {
     RECONCILE_ARTIFACT_DIGEST \
     RECONCILE_ARTIFACT_DIR_IDENTITY \
     RECONCILE_ARTIFACT_STATE \
-    RECONCILE_RESOLVED_DIR_IDENTITY <<<"$metadata"
+    RECONCILE_RESOLVED_DIR_IDENTITY \
+    RECONCILE_ARTIFACT_STATUS <<<"$metadata"
   if [ -z "$RECONCILE_TARGET_URL" ] \
     || [ -z "$RECONCILE_ARTIFACT_BASENAME" ] \
     || [ -z "$RECONCILE_ARTIFACT_IDENTITY" ] \
@@ -2514,6 +2533,7 @@ prepare_pre_click_reconciliation() {
     || [ -z "$RECONCILE_ARTIFACT_DIR_IDENTITY" ] \
     || [ "$RECONCILE_ARTIFACT_DIR_IDENTITY" != "$GSC_ARTIFACT_DIR_IDENTITY" ] \
     || [ -z "$RECONCILE_RESOLVED_DIR_IDENTITY" ] \
+    || [ "$RECONCILE_ARTIFACT_STATUS" != "pre_request_success_unverified" ] \
     || { [ "$RECONCILE_ARTIFACT_STATE" != "active" ] \
       && [ "$RECONCILE_ARTIFACT_STATE" != "archived" ]; }; then
     echo "Could not parse exact pre-click reconciliation metadata." >&2
@@ -2540,7 +2560,7 @@ prepare_pre_click_reconciliation() {
   return 0
 }
 
-archive_pre_click_reconciliation_artifact() {
+archive_reconciliation_artifact() {
   python3 \
     "${SCRIPT_DIR}/gsc-reconciliation.py" \
     archive \
@@ -2622,7 +2642,7 @@ reconcile_pre_click_retry() {
       ;;
   esac
 
-  archive_output="$(archive_pre_click_reconciliation_artifact)" || {
+  archive_output="$(archive_reconciliation_artifact)" || {
     echo "The reconciliation_archive_pending outcome is durable, but the exact artifact could not be archived." >&2
     echo "Automatic retry remains blocked; rerun the same command only after repairing the exact evidence authority." >&2
     return 1
@@ -2655,6 +2675,250 @@ reconcile_pre_click_retry() {
     return 1
   fi
   echo "Reconciled pre-click zero-click evidence for retry: ${RECONCILE_TARGET_URL}"
+  echo "Archived reconciliation artifact: ${archived_path}"
+  return 0
+}
+
+prepare_post_click_reconciliation() {
+  local metadata active_artifact active_status
+
+  metadata="$(python3 \
+    "${SCRIPT_DIR}/gsc-reconciliation.py" \
+    prepare \
+    "$GSC_ARTIFACT_DIR" \
+    "$GSC_ARTIFACT_DIR_IDENTITY" \
+    "$RECONCILE_POST_CLICK_ARTIFACT")" || return 1
+  IFS=$'\t' read -r \
+    RECONCILE_TARGET_URL \
+    RECONCILE_ARTIFACT_BASENAME \
+    RECONCILE_ARTIFACT_IDENTITY \
+    RECONCILE_ARTIFACT_CANONICAL \
+    RECONCILE_ARTIFACT_DIGEST \
+    RECONCILE_ARTIFACT_DIR_IDENTITY \
+    RECONCILE_ARTIFACT_STATE \
+    RECONCILE_RESOLVED_DIR_IDENTITY \
+    RECONCILE_ARTIFACT_STATUS <<<"$metadata"
+  if [ -z "$RECONCILE_TARGET_URL" ] \
+    || [ -z "$RECONCILE_ARTIFACT_BASENAME" ] \
+    || [ -z "$RECONCILE_ARTIFACT_IDENTITY" ] \
+    || [ -z "$RECONCILE_ARTIFACT_CANONICAL" ] \
+    || [ -z "$RECONCILE_ARTIFACT_DIGEST" ] \
+    || [ -z "$RECONCILE_ARTIFACT_DIR_IDENTITY" ] \
+    || [ "$RECONCILE_ARTIFACT_DIR_IDENTITY" != "$GSC_ARTIFACT_DIR_IDENTITY" ] \
+    || [ -z "$RECONCILE_RESOLVED_DIR_IDENTITY" ] \
+    || [ "$RECONCILE_ARTIFACT_STATUS" != "post_request_confirmation_unknown" ] \
+    || { [ "$RECONCILE_ARTIFACT_STATE" != "active" ] \
+      && [ "$RECONCILE_ARTIFACT_STATE" != "archived" ]; }; then
+    echo "Could not parse exact post-click reconciliation metadata." >&2
+    return 1
+  fi
+
+  active_artifact="$(unresolved_reconciliation_artifact "$RECONCILE_TARGET_URL")"
+  active_status=$?
+  if [ "$RECONCILE_ARTIFACT_STATE" = "active" ]; then
+    if [ "$active_status" -ne 0 ] \
+      || [ "$active_artifact" != "$RECONCILE_ARTIFACT_CANONICAL" ]; then
+      echo "The supplied artifact is not the exact active reconciliation blocker for ${RECONCILE_TARGET_URL}." >&2
+      return 1
+    fi
+  elif [ "$active_status" -ne 3 ]; then
+    echo "Resolved post-click reconciliation recovery is unsafe because another active artifact still blocks ${RECONCILE_TARGET_URL}." >&2
+    return 1
+  fi
+  if [[ ! "$RECONCILE_RESOLVED_DIR_IDENTITY" =~ ^[0-9]+:[0-9]+$ ]]; then
+    echo "Could not parse the resolved reconciliation authority identity." >&2
+    return 1
+  fi
+  RECONCILE_TRANSACTION_MESSAGE="artifact=${RECONCILE_ARTIFACT_BASENAME}; sha256=${RECONCILE_ARTIFACT_DIGEST}; file_identity=${RECONCILE_ARTIFACT_IDENTITY}; artifact_dir_identity=${RECONCILE_ARTIFACT_DIR_IDENTITY}; resolved_dir_identity=${RECONCILE_RESOLVED_DIR_IDENTITY}; read-only post-click success reconciliation archive pending"
+  return 0
+}
+
+inspect_existing_requested_state() {
+  local url="$1"
+  local escaped_url input_result input_status result inspection_route_id
+  local state state_status
+
+  escaped_url=${url//\\/\\\\}
+  escaped_url=${escaped_url//\'/\\\'}
+  input_result="$(run_gsc_browser_call \
+    "submit_input" \
+    "globalThis.__VENTUREDEX_GSC__.submitInspectionInput('${escaped_url}');" \
+    2>&1)"
+  input_status=$?
+  if [ "$input_status" -ne 0 ] || [ "$input_result" != "submitted" ]; then
+    capture_gsc_surface_blocker "$input_result" || true
+    echo "Post-click reconciliation could not submit the exact URL for read-only inspection; no request click was attempted." >&2
+    return 1
+  fi
+
+  sleep "$INSPECT_WAIT_SECONDS"
+  page_matches_inspected_url "$url"
+  result=$?
+  if [ "$result" -ne 0 ]; then
+    echo "Post-click reconciliation did not render the exact inspected URL; no request click was attempted." >&2
+    return 1
+  fi
+  inspection_route_id="$LAST_INSPECTION_ROUTE_ID"
+  state="$(page_request_state "$url" "$inspection_route_id")"
+  state_status=$?
+  if [ "$state_status" -ne 0 ]; then
+    echo "Post-click reconciliation request-state transport failed; the original blocker remains active." >&2
+    return 1
+  fi
+  if [ "$state" != "success_static" ]; then
+    capture_gsc_surface_blocker "$state" || true
+    echo "Post-click reconciliation requires an existing route-bound success_static state; observed ${state:-transport_failure}." >&2
+    echo "The original blocker remains active and Request indexing was not clicked." >&2
+    return 1
+  fi
+  if ! page_matches_inspected_url "$url" "$inspection_route_id"; then
+    echo "Post-click reconciliation lost exact target binding after the success probe; the original blocker remains active." >&2
+    return 1
+  fi
+  return 0
+}
+
+verify_post_click_requested_state() {
+  local inspect_url
+
+  if ! require_deps; then
+    echo "Post-click reconciliation browser dependencies are unavailable; the original blocker remains active." >&2
+    return 1
+  fi
+  if ! ensure_bb_browser_connected; then
+    echo "Post-click reconciliation could not connect to managed Comet; the original blocker remains active." >&2
+    return 1
+  fi
+  inspect_url="https://search.google.com/search-console/inspect?resource_id=${GSC_RESOURCE_ID}&hl=${GSC_LANG}"
+  if ! open_gsc_page "$inspect_url"; then
+    echo "Post-click reconciliation could not open Search Console; the original blocker remains active." >&2
+    return 1
+  fi
+  sleep "$NAV_WAIT_SECONDS"
+  if ! verify_gsc_inspection_surface; then
+    echo "Post-click reconciliation did not reach the authenticated VentureDex inspection surface; the original blocker remains active." >&2
+    return 1
+  fi
+  inspect_existing_requested_state "$RECONCILE_TARGET_URL"
+}
+
+reconcile_post_click_requested() {
+  local latest_snapshot latest_status latest_message archive_output
+  local archived_path archived_resolved_identity transition_output
+  local transition_size transition_digest final_message
+
+  prepare_post_click_reconciliation || return 1
+  latest_snapshot="$(latest_operational_history_snapshot "$RECONCILE_TARGET_URL")" \
+    || return 1
+  if ! parse_operational_history_snapshot "$latest_snapshot"; then
+    echo "Could not parse the exact authoritative post-click reconciliation snapshot." >&2
+    return 1
+  fi
+  latest_status="$PARSED_LEDGER_STATUS"
+  latest_message="$PARSED_LEDGER_MESSAGE"
+  RECONCILE_LEDGER_SIZE="$PARSED_LEDGER_SIZE"
+  RECONCILE_LEDGER_DIGEST="$PARSED_LEDGER_DIGEST"
+  final_message="manual post-click reconciliation observed existing route-bound Search Console success state without a request click; artifact=${RECONCILE_ARTIFACT_BASENAME}; sha256=${RECONCILE_ARTIFACT_DIGEST}; file_identity=${RECONCILE_ARTIFACT_IDENTITY}; artifact_dir_identity=${RECONCILE_ARTIFACT_DIR_IDENTITY}; resolved_dir_identity=${RECONCILE_RESOLVED_DIR_IDENTITY}"
+
+  case "$latest_status" in
+    post_request_confirmation_unknown)
+      if [ "$RECONCILE_ARTIFACT_STATE" != "active" ]; then
+        echo "Refusing an unbound archived post-click artifact without a durable reconciliation transaction." >&2
+        return 1
+      fi
+      case "$latest_message" in
+        "request click may have occurred; terminal confirmation was not detected"|\
+        "browser click outcome was not returned reliably; click may have occurred"|\
+        request\ intent\ finalization\ lost\ exact\ ledger\ authority*)
+          ;;
+        artifact="${RECONCILE_ARTIFACT_BASENAME}"\;*)
+          ;;
+        *)
+          echo "Refusing post-click reconciliation because the latest ledger message does not match recognized uncertainty provenance." >&2
+          return 1
+          ;;
+      esac
+      if ! verify_post_click_requested_state; then
+        return 1
+      fi
+      if ! transition_output="$(append_history_transition_or_block \
+        "post_request_confirmation_unknown" \
+        1 \
+        "$latest_message" \
+        "reconciliation_archive_pending" \
+        "$RECONCILE_TARGET_URL" \
+        "$RECONCILE_TRANSACTION_MESSAGE" \
+        "$RECONCILE_LEDGER_SIZE" \
+        "$RECONCILE_LEDGER_DIGEST")"; then
+        return 1
+      fi
+      if [[ "$transition_output" != *$'\t'* ]] \
+        || [[ "${transition_output#*$'\t'}" == *$'\t'* ]]; then
+        echo "The post-click reconciliation transition returned an invalid ledger token." >&2
+        return 1
+      fi
+      transition_size="${transition_output%%$'\t'*}"
+      transition_digest="${transition_output#*$'\t'}"
+      if [[ ! "$transition_size" =~ ^[0-9]+$ ]] \
+        || [[ ! "$transition_digest" =~ ^[0-9a-f]{64}$ ]]; then
+        echo "The post-click reconciliation transition returned an invalid ledger token." >&2
+        return 1
+      fi
+      RECONCILE_LEDGER_SIZE="$transition_size"
+      RECONCILE_LEDGER_DIGEST="$transition_digest"
+      ;;
+    reconciliation_archive_pending)
+      if [ "$latest_message" != "$RECONCILE_TRANSACTION_MESSAGE" ]; then
+        echo "Refusing post-click reconciliation recovery because the latest transaction provenance does not bind the exact artifact." >&2
+        return 1
+      fi
+      echo "Resuming transaction-bound post-click reconciliation archival for ${RECONCILE_TARGET_URL}."
+      ;;
+    requested)
+      if [ "$RECONCILE_ARTIFACT_STATE" = "archived" ] \
+        && [ "$latest_message" = "$final_message" ]; then
+        echo "Post-click reconciliation was already completed for ${RECONCILE_TARGET_URL}."
+        return 0
+      fi
+      echo "Refusing post-click reconciliation because requested authority is not bound to this exact archived artifact." >&2
+      return 1
+      ;;
+    *)
+      echo "Refusing post-click requested reconciliation because the latest operational status is ${latest_status:-missing}." >&2
+      return 1
+      ;;
+  esac
+
+  archive_output="$(archive_reconciliation_artifact)" || {
+    echo "The reconciliation_archive_pending outcome is durable, but the exact post-click artifact could not be archived." >&2
+    echo "The requested outcome remains blocked; rerun the same command only after repairing the exact evidence authority." >&2
+    return 1
+  }
+  IFS=$'\t' read -r archived_path archived_resolved_identity <<<"$archive_output"
+  if [ "$archived_path" != "${GSC_ARTIFACT_DIR}/resolved/${RECONCILE_ARTIFACT_BASENAME}" ] \
+    || [[ ! "$archived_resolved_identity" =~ ^[0-9]+:[0-9]+$ ]] \
+    || [ "$RECONCILE_RESOLVED_DIR_IDENTITY" != "$archived_resolved_identity" ]; then
+    echo "The post-click reconciliation archive helper returned invalid authority metadata." >&2
+    return 1
+  fi
+  if ! transition_output="$(append_history_transition_or_block \
+    "reconciliation_archive_pending" \
+    1 \
+    "$RECONCILE_TRANSACTION_MESSAGE" \
+    "requested" \
+    "$RECONCILE_TARGET_URL" \
+    "$final_message" \
+    "$RECONCILE_LEDGER_SIZE" \
+    "$RECONCILE_LEDGER_DIGEST" \
+    "$GSC_ARTIFACT_DIR" \
+    "$RECONCILE_ARTIFACT_BASENAME" \
+    "$RECONCILE_ARTIFACT_IDENTITY" \
+    "$RECONCILE_ARTIFACT_DIR_IDENTITY" \
+    "$RECONCILE_RESOLVED_DIR_IDENTITY" \
+    "$RECONCILE_ARTIFACT_DIGEST")"; then
+    return 1
+  fi
+  echo "Reconciled existing indexing request without a duplicate click: ${RECONCILE_TARGET_URL}"
   echo "Archived reconciliation artifact: ${archived_path}"
   return 0
 }
@@ -3773,6 +4037,18 @@ parse_args() {
         RECONCILE_PRE_CLICK_ARTIFACT="$2"
         shift 2
         ;;
+      --reconcile-post-click-requested)
+        if [ $# -lt 2 ]; then
+          echo "--reconcile-post-click-requested requires an artifact path" >&2
+          exit 1
+        fi
+        if [ -n "$RECONCILE_POST_CLICK_ARTIFACT" ]; then
+          echo "--reconcile-post-click-requested may be specified only once" >&2
+          exit 1
+        fi
+        RECONCILE_POST_CLICK_ARTIFACT="$2"
+        shift 2
+        ;;
       --migrate-legacy-history)
         MIGRATE_LEGACY_HISTORY=1
         shift
@@ -3838,8 +4114,21 @@ normalize_artifact_directory() {
 }
 
 validate_reconciliation_mode() {
-  if [ -z "$RECONCILE_PRE_CLICK_ARTIFACT" ]; then
+  local reconciliation_label
+
+  if [ -n "$RECONCILE_PRE_CLICK_ARTIFACT" ] \
+    && [ -n "$RECONCILE_POST_CLICK_ARTIFACT" ]; then
+    echo "Choose exactly one reconciliation mode." >&2
+    return 1
+  fi
+  if [ -z "$RECONCILE_PRE_CLICK_ARTIFACT" ] \
+    && [ -z "$RECONCILE_POST_CLICK_ARTIFACT" ]; then
     return 0
+  fi
+  if [ -n "$RECONCILE_PRE_CLICK_ARTIFACT" ]; then
+    reconciliation_label="--reconcile-pre-click-retry"
+  else
+    reconciliation_label="--reconcile-post-click-requested"
   fi
   if [ "$DRY_RUN" -ne 0 ] \
     || [ "$ADD_LATEST_DAILY" -ne 0 ] \
@@ -3852,7 +4141,11 @@ validate_reconciliation_mode() {
     || [ "$FORCE" -ne 0 ] \
     || [ "$SKIP_LIVE_CHECK" -ne 0 ] \
     || [ "${#TARGET_URLS[@]}" -ne 0 ]; then
-    echo "--reconcile-pre-click-retry is an exclusive, non-browser operation." >&2
+    if [ "$reconciliation_label" = "--reconcile-pre-click-retry" ]; then
+      echo "--reconcile-pre-click-retry is an exclusive, non-browser operation." >&2
+    else
+      echo "--reconcile-post-click-requested is an exclusive, read-only browser operation." >&2
+    fi
     echo "Do not combine it with target discovery, submission, force, migration, or dry-run options." >&2
     return 1
   fi
@@ -4557,6 +4850,11 @@ main() {
 
   if [ -n "$RECONCILE_PRE_CLICK_ARTIFACT" ]; then
     reconcile_pre_click_retry || exit 1
+    exit 0
+  fi
+
+  if [ -n "$RECONCILE_POST_CLICK_ARTIFACT" ]; then
+    reconcile_post_click_requested || exit 1
     exit 0
   fi
 
