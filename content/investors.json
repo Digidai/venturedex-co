@@ -1682,5 +1682,40 @@
     "short_name": "Galvanize",
     "website": "https://galvanizeclimate.com/",
     "description": "Climate investment firm backing technologies and companies that can accelerate the energy transition."
+  },
+  "dragonfly": {
+    "name": "Dragonfly",
+    "slug": "dragonfly",
+    "short_name": "Dragonfly",
+    "website": "https://www.dragonfly.xyz/",
+    "description": "Global investment firm focused on crypto, financial infrastructure, and related software markets."
+  },
+  "hyde-park-venture-partners": {
+    "name": "Hyde Park Venture Partners",
+    "slug": "hyde-park-venture-partners",
+    "short_name": "HPVP",
+    "website": "https://hydeparkvp.com/",
+    "description": "Early-stage venture capital firm investing in high-growth technology companies across the mid-continent."
+  },
+  "will-ventures": {
+    "name": "Will Ventures",
+    "slug": "will-ventures",
+    "short_name": "Will Ventures",
+    "website": "https://www.willventures.com/",
+    "description": "Early-stage venture firm investing at the intersection of sports, health, media, and consumer technology."
+  },
+  "south-park-commons": {
+    "name": "South Park Commons",
+    "slug": "south-park-commons",
+    "short_name": "SPC",
+    "website": "https://www.southparkcommons.com/",
+    "description": "Technical community and fund supporting founders and researchers from exploration through company formation."
+  },
+  "alleycorp": {
+    "name": "AlleyCorp",
+    "slug": "alleycorp",
+    "short_name": "AlleyCorp",
+    "website": "https://alleycorp.com/",
+    "description": "New York investment and incubation firm building and backing companies across technology, healthcare, and robotics."
   }
 }

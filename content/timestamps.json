@@ -1087,5 +1087,25 @@
   "windborne": {
     "published_at": "2026-08-11 06:06:29",
     "first_seen_at": "2026-08-11 06:06:29"
+  },
+  "sapiom": {
+    "published_at": "2026-08-12 06:11:52",
+    "first_seen_at": "2026-08-12 06:11:52"
+  },
+  "rwx": {
+    "published_at": "2026-08-12 06:11:52",
+    "first_seen_at": "2026-08-12 06:11:52"
+  },
+  "throne-science": {
+    "published_at": "2026-08-12 06:11:52",
+    "first_seen_at": "2026-08-12 06:11:52"
+  },
+  "rivo": {
+    "published_at": "2026-08-12 06:11:52",
+    "first_seen_at": "2026-08-12 06:11:52"
+  },
+  "avatar-robotics": {
+    "published_at": "2026-08-12 06:11:52",
+    "first_seen_at": "2026-08-12 06:11:52"
   }
 }

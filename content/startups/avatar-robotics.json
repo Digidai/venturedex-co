@@ -1,0 +1,74 @@
+{
+  "slug": "avatar-robotics",
+  "domain": "www.avatarrobotics.com",
+  "url": "https://www.avatarrobotics.com/",
+  "product_name": "Avatar Robotics",
+  "summary": "Humanoid warehouse robots combining remote operators with progressively learned autonomy.",
+  "editor_note": "Useful robot labor can ship before full autonomy by putting trained remote operators behind hard edge cases. The humanoid fleet targets 5 concrete workflows—sorting, packing, kitting, picking, and carting—while interventions become training data. Output-per-hour pricing is a clearer buyer proposition than a speculative robot purchase. The test is whether intervention rates fall fast enough for unit economics to improve without sacrificing throughput or safety.",
+  "editor_rating": 4,
+  "why_featured": "$6.5M seed for operator-backed robots",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "robotics,humanoid robots,warehouse automation,teleoperation,logistics",
+  "investors": "AlleyCorp",
+  "links": {
+    "product": "https://www.avatarrobotics.com/platform",
+    "careers": "https://avatarrobotics.zohorecruit.com/jobs/Careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6.5M",
+      "stage": "Seed",
+      "lead_investor": "AlleyCorp",
+      "date": "2026-08-06",
+      "source_url": "https://www.axios.com/newsletters/axios-pro-rata-67141a7b-cecf-4f59-a3e9-70d7283a1bf8",
+      "source_name": "Axios Pro Rata"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Avatar Robotics official site",
+        "url": "https://www.avatarrobotics.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Avatar Robotics platform page",
+        "url": "https://www.avatarrobotics.com/platform",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Avatar Robotics seed funding report",
+        "url": "https://www.axios.com/newsletters/axios-pro-rata-67141a7b-cecf-4f59-a3e9-70d7283a1bf8",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Avatar combines humanoid robots with trained remote operators who handle edge cases while operational data trains greater autonomy.",
+        "source_ids": ["official_site", "official_platform"]
+      },
+      {
+        "claim": "The service targets sorting, packing, kitting, picking, and carting workflows and sells output hours instead of requiring a robot purchase.",
+        "source_ids": ["official_site", "official_platform"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Warehouse and logistics operators that need flexible labor inside workflows designed for human bodies.",
+      "category": "Humanoid warehouse automation",
+      "differentiation": "Remote operators cover difficult cases so deployments can produce useful work before the robots reach full autonomy.",
+      "why_now": "The August 2026 seed round targets the deployment gap between humanoid demonstrations and reliable paid warehouse output."
+    },
+    "risks": [
+      {
+        "claim": "The business case can be tested by tracking operator intervention hours, task throughput, safety incidents, and gross margin per output hour.",
+        "basis": "The hybrid operating model starts with human support, so economics depend on autonomy improving while service quality holds."
+      }
+    ]
+  }
+}

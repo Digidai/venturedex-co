@@ -1,0 +1,84 @@
+{
+  "slug": "rwx",
+  "domain": "www.rwx.com",
+  "url": "https://www.rwx.com/",
+  "product_name": "RWX",
+  "summary": "CI/CD and persistent cloud sandboxes that share one reproducible build runtime.",
+  "editor_note": "Agent sandboxes and CI belong in the same execution graph rather than two drifting environments. Content-addressed filesystem layers, automatic cache hits, one VM per task, and SSH breakpoints make build state inspectable. Uncommitted changes can run the same validation before a push, while secrets enter individual tasks without appearing in the agent prompt. The question is whether those gains survive complex monorepos and long-lived stateful services.",
+  "editor_rating": 5,
+  "why_featured": "$12M A for agent-native CI/CD",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ci cd,developer tools,agent sandboxes,build caching,cloud runtimes",
+  "investors": "Hyde Park Venture Partners",
+  "links": {
+    "docs": "https://www.rwx.com/docs",
+    "product": "https://www.rwx.com/agent-sandboxes",
+    "careers": "https://www.rwx.com/about#careers",
+    "github": "https://github.com/rwx-cloud",
+    "linkedin": "https://www.linkedin.com/company/readwriteexecute/",
+    "twitter": "https://twitter.com/rwx_cloud"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Series A",
+      "lead_investor": "Hyde Park Venture Partners",
+      "date": "2026-08-04",
+      "source_url": "https://www.rwx.com/blog/series-a",
+      "source_name": "RWX"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "RWX official site",
+        "url": "https://www.rwx.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_ci",
+        "label": "RWX CI/CD product page",
+        "url": "https://www.rwx.com/ci-cd",
+        "type": "product"
+      },
+      {
+        "id": "official_sandboxes",
+        "label": "RWX agent sandboxes page",
+        "url": "https://www.rwx.com/agent-sandboxes",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "RWX Series A announcement",
+        "url": "https://www.rwx.com/blog/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "RWX runs each task in its own virtual machine and executes dependency graphs in parallel with automatic content-based caching.",
+        "source_ids": ["official_ci"]
+      },
+      {
+        "claim": "Agent sandboxes reuse the CI runtime and configuration, snapshot content-addressed filesystem layers, and keep processes warm across iterations.",
+        "source_ids": ["official_sandboxes"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Software teams that want coding agents and human contributors to validate changes in reproducible cloud build environments.",
+      "category": "Continuous integration and agent sandboxes",
+      "differentiation": "The same task graph, cache, and secret model powers pre-push agent sandboxes and CI instead of maintaining separate execution stacks.",
+      "why_now": "The August 2026 Series A follows rising agent-generated code volume, which increases the cost of slow or inconsistent validation."
+    },
+    "risks": [
+      {
+        "claim": "Whether shared runtimes reduce end-to-end build time and migration work can be tested on large monorepos with stateful integration services.",
+        "basis": "The official pages document caching and snapshots, but do not publish independent migration or workload-level benchmarks."
+      }
+    ]
+  }
+}

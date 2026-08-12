@@ -1,0 +1,83 @@
+{
+  "slug": "throne-science",
+  "domain": "www.thronescience.com",
+  "url": "https://www.thronescience.com/",
+  "product_name": "Throne Science",
+  "summary": "Clip-on toilet sensor and app for passive gut, hydration, and urinary tracking.",
+  "editor_note": "Passive measurement beats asking people to log a routine they rarely record consistently. The clip-on sensor feeds 12-plus AI models and an app that establishes hydration and bathroom-pattern baselines without daily manual entry. That hardware-software loop is more defensible than another wellness questionnaire, but the company positions the current product as general wellness rather than diagnosis. The test is whether independent studies show its readings lead to repeatable health decisions.",
+  "editor_rating": 4,
+  "why_featured": "$10M A for passive gut tracking",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "digital health,health sensors,gut health,hydration,computer vision",
+  "investors": "Will Ventures",
+  "links": {
+    "product": "https://www.thronescience.com/how-it-works",
+    "resources": "https://www.thronescience.com/science",
+    "careers": "https://thronescience.notion.site/Throne-Careers-1497137c215b80d89e3efc9ccdb5bc6e",
+    "linkedin": "https://www.linkedin.com/company/thronescience/",
+    "twitter": "https://x.com/ThroneScience"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "Will Ventures",
+      "date": "2026-07-28",
+      "source_url": "https://news.crunchbase.com/health-wellness-biotech/throne-science-microbiome-gut-health-toilet-camera-startup-john-capodilupo-whoop/",
+      "source_name": "Crunchbase News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Throne Science official site",
+        "url": "https://www.thronescience.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_how_it_works",
+        "label": "Throne Science how it works page",
+        "url": "https://www.thronescience.com/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_science",
+        "label": "Throne Science research page",
+        "url": "https://www.thronescience.com/science",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Throne Science Series A report",
+        "url": "https://news.crunchbase.com/health-wellness-biotech/throne-science-microbiome-gut-health-toilet-camera-startup-john-capodilupo-whoop/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The clip-on toilet sensor uses more than a dozen AI models to track stool, urine, hydration, and bathroom-pattern signals without manual logging.",
+        "source_ids": ["official_site", "official_how_it_works"]
+      },
+      {
+        "claim": "The companion app establishes personal baselines and shows longitudinal trends, while the product is explicitly labeled for general wellness rather than diagnosis.",
+        "source_ids": ["official_how_it_works", "official_science"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumers and clinicians exploring passive longitudinal signals about gut, hydration, and urinary health.",
+      "category": "At-home health monitoring",
+      "differentiation": "A dedicated bathroom sensor captures routine physiological observations passively instead of depending on questionnaires or manual diaries.",
+      "why_now": "The July 2026 Series A funds a consumer sensor category where longitudinal data quality matters more than a single wellness reading."
+    },
+    "risks": [
+      {
+        "claim": "Whether passive readings change health decisions can be tested through independent studies of repeatability and user outcomes.",
+        "basis": "The company publishes technical and study material but explicitly limits the current product to general wellness rather than diagnosis."
+      }
+    ]
+  }
+}

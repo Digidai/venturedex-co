@@ -1,0 +1,76 @@
+{
+  "slug": "rivo",
+  "domain": "www.rivofi.com",
+  "url": "https://www.rivofi.com/",
+  "product_name": "Rivo",
+  "summary": "Automatic cash management that moves idle checking balances into U.S. Treasury bills.",
+  "editor_note": "Cash management should act rather than merely nag users with yield comparisons. The service connects to an existing bank, shifts excess balance into short-term U.S. Treasury bills, and pulls funds back before bills. The no-bank-switch flow lowers adoption friction, but liquidity prediction and partner execution become the reliability boundary. The test is whether transfers preserve bill coverage through irregular spending without erasing yield through delays.",
+  "editor_rating": 4,
+  "why_featured": "$2.7M seed for self-driving cash",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "cash management,treasury bills,personal finance,banking automation,fintech",
+  "investors": "South Park Commons",
+  "links": {
+    "product": "https://www.rivofi.com/",
+    "resources": "https://www.rivofi.com/faqs",
+    "linkedin": "https://www.linkedin.com/company/tryrivo",
+    "twitter": "https://x.com/TryRivo"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$2.7M",
+      "stage": "Seed",
+      "lead_investor": "South Park Commons",
+      "date": "2026-08-05",
+      "source_url": "https://www.rivofi.com/blog/funding-announcement",
+      "source_name": "Rivo"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Rivo official site",
+        "url": "https://www.rivofi.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_faq",
+        "label": "Rivo official FAQ",
+        "url": "https://www.rivofi.com/faqs",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Rivo seed funding announcement",
+        "url": "https://www.rivofi.com/blog/funding-announcement",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Rivo connects to an existing checking account and automatically moves idle cash into short-term U.S. Treasury bills without requiring a bank switch.",
+        "source_ids": ["official_site", "official_faq"]
+      },
+      {
+        "claim": "The service forecasts upcoming bills, moves funds back before payment dates, and exposes transfer controls through its app.",
+        "source_ids": ["official_site", "official_faq"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "U.S. consumers who keep meaningful idle balances in checking accounts but need cash available for recurring bills.",
+      "category": "Automated consumer cash management",
+      "differentiation": "It automates both Treasury purchases and bill-timed withdrawals around an existing bank account instead of requiring a new primary banking relationship.",
+      "why_now": "The August 2026 seed round arrives while elevated short-term rates make idle checking balances costly but manual Treasury management remains cumbersome."
+    },
+    "risks": [
+      {
+        "claim": "Bill-coverage reliability can be measured by failed or late withdrawals during irregular spending and changing payment schedules.",
+        "basis": "Treasury bills are not FDIC-insured bank deposits, and the product depends on bank connectivity, forecasting, and partner execution."
+      }
+    ]
+  }
+}

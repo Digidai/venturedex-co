@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-11",
+  "verified_at": "2026-08-12",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1918,6 +1918,41 @@
       "local_path": "/logos/companies/windborne.png",
       "source_page": "https://windbornesystems.com/",
       "source_url": "https://cdn.prod.website-files.com/66182072dc26a0d014409235/677448b21c41a960b8f8aac9_WB%20Favicon.png"
+    },
+    "sapiom": {
+      "name": "Sapiom",
+      "shape": "icon",
+      "local_path": "/logos/companies/sapiom.svg",
+      "source_page": "https://www.sapiom.ai/",
+      "source_url": "https://www.sapiom.ai/ds/assets/sapiom-mark.svg"
+    },
+    "rwx": {
+      "name": "RWX",
+      "shape": "icon",
+      "local_path": "/logos/companies/rwx.svg",
+      "source_page": "https://www.rwx.com/",
+      "source_url": "https://www.rwx.com/build/_assets/favicon-VAQTUSDD.svg"
+    },
+    "throne-science": {
+      "name": "Throne Science",
+      "shape": "icon",
+      "local_path": "/logos/companies/throne-science.png",
+      "source_page": "https://www.thronescience.com/",
+      "source_url": "https://thronescience.com/cdn/shop/files/throne-favicon.png?crop=center&height=180&v=1784913776&width=180"
+    },
+    "rivo": {
+      "name": "Rivo",
+      "shape": "icon",
+      "local_path": "/logos/companies/rivo.png",
+      "source_page": "https://www.rivofi.com/",
+      "source_url": "https://cdn.prod.website-files.com/6969482200a58c1c3a054ce1/6a42f360c50738c55137818f_rivo-favicon-DARK-512.png"
+    },
+    "avatar-robotics": {
+      "name": "Avatar Robotics",
+      "shape": "icon",
+      "local_path": "/logos/companies/avatar-robotics.png",
+      "source_page": "https://www.avatarrobotics.com/",
+      "source_url": "https://framerusercontent.com/images/tbr4cePD0BImN3YwyERQnaJe29g.png"
     }
   },
   "investors": {
@@ -3495,7 +3530,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/aramco-ventures.png",
       "source_page": "https://aramcoventures.com/",
-      "source_url": "https://aramcoventures.com/wp-content/themes/aramco/assets/images/favicons/apple-touch-icon.png?v=0.11"
+      "source_url": "https://aramcoventures.com/wp-content/themes/aramco/assets/images/favicons/apple-touch-icon.png?v=0.11",
+      "allow_unreachable_source": true,
+      "note": "Official homepage and same-origin favicon returned HTTP 500 or timed out in curl and bb-browser on 2026-08-12; the previously downloaded local official asset is retained."
     },
     "galvanize": {
       "name": "Galvanize",
@@ -3503,6 +3540,41 @@
       "local_path": "/logos/investors/galvanize.jpg",
       "source_page": "https://galvanizeclimate.com/",
       "source_url": "https://cdn.prod.website-files.com/69163bb2c37430c778533c91/69164a8c4950c0340cf66e91_Galvanize-Icon.jpg"
+    },
+    "dragonfly": {
+      "name": "Dragonfly",
+      "shape": "icon",
+      "local_path": "/logos/investors/dragonfly.ico",
+      "source_page": "https://www.dragonfly.xyz/",
+      "source_url": "https://www.dragonfly.xyz/favicon.ico"
+    },
+    "hyde-park-venture-partners": {
+      "name": "Hyde Park Venture Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/hyde-park-venture-partners.svg",
+      "source_page": "https://hydeparkvp.com/",
+      "source_url": "https://cdn.prod.website-files.com/5f81e13a99580ba6ad0f4924/5fd8ba339677095f5f2ae4f5_HydePark_Logo-01.svg"
+    },
+    "will-ventures": {
+      "name": "Will Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/will-ventures.svg",
+      "source_page": "https://www.willventures.com/",
+      "source_url": "https://www.willventures.com/favicon/favicon.svg"
+    },
+    "south-park-commons": {
+      "name": "South Park Commons",
+      "shape": "icon",
+      "local_path": "/logos/investors/south-park-commons.png",
+      "source_page": "https://www.southparkcommons.com/",
+      "source_url": "https://www.southparkcommons.com/assets/icons/favicon-spc.png"
+    },
+    "alleycorp": {
+      "name": "AlleyCorp",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/alleycorp.png",
+      "source_page": "https://alleycorp.com/",
+      "source_url": "https://alleycorp.com/wp-content/uploads/2022/12/ac.logo_.png"
     }
   }
 }

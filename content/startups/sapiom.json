@@ -1,0 +1,77 @@
+{
+  "slug": "sapiom",
+  "domain": "www.sapiom.ai",
+  "url": "https://www.sapiom.ai/",
+  "product_name": "Sapiom",
+  "summary": "Routing, runtime, and metered capabilities for building production AI agents.",
+  "editor_note": "Model calls, tools, and spend belong in one execution layer rather than another agent framework. OpenAI-compatible routing sits beside typed step graphs, retries, recorded runs, and capabilities metered per call through code or MCP. That makes cost attribution and recovery part of the runtime instead of a dashboard afterthought. The open question is whether its three capability surfaces stay coherent as the live catalog changes.",
+  "editor_rating": 5,
+  "why_featured": "$35M A for metered agent execution",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai agents,developer tools,model routing,mcp,runtime",
+  "investors": "Dragonfly",
+  "links": {
+    "docs": "https://docs.sapiom.ai/",
+    "product": "https://docs.sapiom.ai/capabilities",
+    "careers": "https://www.sapiom.ai/careers/",
+    "github": "https://github.com/sapiom",
+    "linkedin": "https://www.linkedin.com/company/sapiom"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$35M",
+      "stage": "Series A",
+      "lead_investor": "Dragonfly",
+      "date": "2026-08-05",
+      "source_url": "https://www.sapiom.ai/resources/blog/the-next-trillion-agents/",
+      "source_name": "Sapiom"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-12",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Sapiom official site",
+        "url": "https://www.sapiom.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_capabilities",
+        "label": "Sapiom capabilities documentation",
+        "url": "https://docs.sapiom.ai/capabilities",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Sapiom Series A announcement",
+        "url": "https://www.sapiom.ai/resources/blog/the-next-trillion-agents/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Sapiom combines OpenAI-compatible model routing with typed runtime steps, retries, signals, and recorded execution history.",
+        "source_ids": ["official_site"]
+      },
+      {
+        "claim": "Capabilities can be called through its runtime context, MCP, or a tools package, with usage metered at the individual call level.",
+        "source_ids": ["official_site", "official_capabilities"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams operating production AI agents that call multiple models and external tools.",
+      "category": "Agent infrastructure",
+      "differentiation": "One runtime joins model routing, stateful execution, tool access, and per-call metering instead of leaving those concerns to separate services.",
+      "why_now": "The August 2026 Series A arrives as agent teams move from prototypes toward workloads that require repeatable execution and cost controls."
+    },
+    "risks": [
+      {
+        "claim": "Whether the code, MCP, and cloud capability surfaces stay behaviorally consistent can be checked as the live tool catalog changes.",
+        "basis": "The official documentation says the three surfaces are intentionally not identical and that the cloud toolset can change."
+      }
+    ]
+  }
+}
