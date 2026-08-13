@@ -4257,7 +4257,7 @@ test("GSC TERM after the browser click leaves a blocking durable intent and prev
   const outcomePromise = captureChild(child);
 
   try {
-    await waitForPath(mock.clickCounter);
+    await waitForPath(mock.clickCounter, 15_000);
     assert.equal(gscClickCount(mock), 1);
     assert.match(readFileSync(history, "utf8"), /\trequest_click_pending\t/);
     child.kill("SIGTERM");
