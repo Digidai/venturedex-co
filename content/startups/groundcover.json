@@ -54,12 +54,6 @@
         "type": "product"
       },
       {
-        "id": "official_playground",
-        "label": "groundcover public playground",
-        "url": "https://play.groundcover.com/",
-        "type": "product"
-      },
-      {
         "id": "official_careers",
         "label": "groundcover official careers page",
         "url": "https://www.groundcover.com/careers",
@@ -75,11 +69,10 @@
         ]
       },
       {
-        "claim": "Agent Mode can choose signals and queries from a goal, build dashboards and monitors, and use team-defined Skills on the same logs, traces, metrics, events, and entities available in the public playground.",
+        "claim": "Agent Mode can choose signals and queries from a goal, build dashboards and monitors, and use team-defined Skills on the same logs, traces, metrics, events, and entities.",
         "source_ids": [
           "official_site",
-          "official_docs",
-          "official_playground"
+          "official_docs"
         ]
       }
     ],
