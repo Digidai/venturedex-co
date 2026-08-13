@@ -1,0 +1,81 @@
+{
+  "slug": "blacksmith",
+  "domain": "www.blacksmith.sh",
+  "url": "https://www.blacksmith.sh/",
+  "product_name": "Blacksmith",
+  "summary": "Faster GitHub Actions runners, build caching, and CI observability on managed microVMs.",
+  "editor_note": "CI speed is treated as an execution problem rather than a YAML rewrite. A drop-in runs-on label moves GitHub Actions jobs onto managed microVMs, while colocated caches accelerate Docker layers and dependencies. The console then links slow or failing jobs to searchable logs instead of leaving optimization to anecdotes. The open question is how consistently the claimed gains hold across cache-cold, network-heavy, and ARM workloads.",
+  "editor_rating": 5,
+  "why_featured": "$45M B for faster GitHub Actions",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ci cd,github actions,developer tools,build caching,observability",
+  "investors": "Peak XV Partners",
+  "links": {
+    "docs": "https://docs.blacksmith.sh/introduction/why-blacksmith",
+    "pricing": "https://www.blacksmith.sh/pricing",
+    "careers": "https://www.blacksmith.sh/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$45M",
+      "stage": "Series B",
+      "lead_investor": "Peak XV Partners",
+      "date": "2026-08-12",
+      "source_url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Blacksmith official site",
+        "url": "https://www.blacksmith.sh/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Blacksmith product documentation",
+        "url": "https://docs.blacksmith.sh/introduction/why-blacksmith",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Series B report",
+        "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Teams can move GitHub Actions jobs to Blacksmith-managed runners by changing the workflow runs-on label.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "Blacksmith combines managed microVM runners with colocated dependency and Docker-layer caching plus searchable CI logs.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams running high-volume GitHub Actions workflows.",
+      "category": "Continuous integration infrastructure",
+      "differentiation": "A drop-in runner migration joins faster compute, colocated caches, and job-level observability without replacing GitHub Actions.",
+      "why_now": "AI-generated code is increasing validation volume, making CI throughput and failure diagnosis more visible operating costs."
+    },
+    "risks": [
+      {
+        "claim": "The advertised speedups can be tested across cache-cold, network-bound, ARM, and monorepo workloads before broad migration.",
+        "basis": "The official site publishes benchmark claims, but workload-level results depend on job shape and cache reuse."
+      }
+    ]
+  }
+}

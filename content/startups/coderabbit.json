@@ -1,0 +1,81 @@
+{
+  "slug": "coderabbit",
+  "domain": "www.coderabbit.ai",
+  "url": "https://www.coderabbit.ai/",
+  "product_name": "CodeRabbit",
+  "summary": "AI code reviews that rank pull requests, map change impact, and return fix-ready feedback.",
+  "editor_note": "Code review is organized around change impact rather than a flat list of lint-style comments. Triage ranks and routes GitHub pull requests, while Change Stack maps architecture and blast radius across layered diffs. Reviews can carry repo context into security findings and feed corrections back to coding agents. The question is whether teams can measure fewer escaped defects without trading away reviewer attention to high-volume, low-value findings.",
+  "editor_rating": 5,
+  "why_featured": "$143M C at a $1.5B valuation",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "code review,developer tools,ai agents,application security,pull requests",
+  "investors": "Atomico, Smash Capital",
+  "links": {
+    "docs": "https://docs.coderabbit.ai/",
+    "pricing": "https://www.coderabbit.ai/pricing",
+    "careers": "https://www.coderabbit.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$143M",
+      "stage": "Series C",
+      "lead_investor": "Atomico and Smash Capital",
+      "date": "2026-08-12",
+      "source_url": "https://www.finsmes.com/2026/08/coderabbit-raises-143m-in-series-c-funding.html",
+      "source_name": "FinSMEs"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "CodeRabbit official site",
+        "url": "https://www.coderabbit.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "CodeRabbit documentation",
+        "url": "https://docs.coderabbit.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "FinSMEs Series C report",
+        "url": "https://www.finsmes.com/2026/08/coderabbit-raises-143m-in-series-c-funding.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "CodeRabbit triages pull requests by scoring, ranking, and routing them before reviewers spend time on the full change set.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "Its Change Stack view relates layered diffs to repository architecture and blast radius, while review feedback can loop back to coding agents.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Software teams reviewing growing volumes of human- and agent-authored pull requests.",
+      "category": "AI code review",
+      "differentiation": "PR triage, change-impact context, security review, and agent feedback loops are presented as one review workflow.",
+      "why_now": "More agent-authored code increases the volume and structural complexity that human reviewers must evaluate."
+    },
+    "risks": [
+      {
+        "claim": "Teams can measure whether higher review volume reduces escaped defects without increasing low-value findings or reviewer override rates.",
+        "basis": "The official site describes workflow breadth and adoption, but does not publish independent defect-outcome data."
+      }
+    ]
+  }
+}

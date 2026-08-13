@@ -1051,7 +1051,10 @@
     "slug": "atomico",
     "short_name": "Atomico",
     "website": "https://atomico.com/",
-    "description": "European venture capital firm backing technology companies from early stage through growth."
+    "description": "European venture capital firm backing technology companies from early stage through growth.",
+    "aliases": [
+      "Atomico and Smash Capital"
+    ]
   },
   "u-ventures": {
     "name": "u.ventures",
@@ -1717,5 +1720,33 @@
     "short_name": "AlleyCorp",
     "website": "https://alleycorp.com/",
     "description": "New York investment and incubation firm building and backing companies across technology, healthcare, and robotics."
+  },
+  "asymmetric-capital-partners": {
+    "name": "Asymmetric Capital Partners",
+    "slug": "asymmetric-capital-partners",
+    "short_name": "Asymmetric",
+    "website": "https://www.acp.vc/",
+    "description": "Early-stage venture firm partnering with technology founders from company formation through scale."
+  },
+  "smash-capital": {
+    "name": "Smash Capital",
+    "slug": "smash-capital",
+    "short_name": "Smash",
+    "website": "https://smashcap.com/",
+    "description": "Growth investment firm backing consumer internet, software, and technology companies."
+  },
+  "album-vc": {
+    "name": "Album VC",
+    "slug": "album-vc",
+    "short_name": "Album",
+    "website": "https://www.album.vc/",
+    "description": "Early-stage venture firm investing in technology companies across the United States."
+  },
+  "12-flags": {
+    "name": "12 Flags",
+    "slug": "12-flags",
+    "short_name": "12 Flags",
+    "website": "https://www.12flags.com/",
+    "description": "Early-stage consumer investment firm backing brands and technology businesses in large global markets."
   }
 }

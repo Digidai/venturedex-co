@@ -1,0 +1,93 @@
+{
+  "slug": "mindgard",
+  "domain": "mindgard.ai",
+  "url": "https://mindgard.ai/",
+  "product_name": "Mindgard",
+  "summary": "AI security testing and runtime threat detection across models, agents, and applications.",
+  "editor_note": "AI security is handled as a continuous lifecycle rather than a one-off prompt-injection test. Discovery maps the exposed system, autonomous red teaming probes it before release, and runtime controls watch production behavior. CI/CD, API, and Burp integrations put the same evidence near existing security work instead of another isolated console. The open test is whether findings reproduce reliably across model updates and translate into fixes that application teams can verify.",
+  "editor_rating": 4,
+  "why_featured": "$30M A for continuous AI security",
+  "product_type": "AI / ML",
+  "region": "Global / Remote",
+  "tags": "ai security,red teaming,runtime protection,application security,model testing",
+  "investors": "Album VC",
+  "links": {
+    "docs": "https://docs.mindgard.ai/",
+    "product": "https://mindgard.ai/ai-security-platform",
+    "careers": "https://mindgard.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30M",
+      "stage": "Series A",
+      "lead_investor": "Album VC",
+      "date": "2026-08-12",
+      "source_url": "https://www.finsmes.com/2026/08/mindgard-raises-30m-in-series-a-funding.html",
+      "source_name": "FinSMEs"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Mindgard official site",
+        "url": "https://mindgard.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Mindgard AI security platform",
+        "url": "https://mindgard.ai/ai-security-platform",
+        "type": "product"
+      },
+      {
+        "id": "official_red_team",
+        "label": "Mindgard automated red-teaming page",
+        "url": "https://mindgard.ai/automated-ai-red-teaming",
+        "type": "product"
+      },
+      {
+        "id": "official_runtime",
+        "label": "Mindgard runtime detection and response page",
+        "url": "https://mindgard.ai/ai-runtime-threat-detection-and-response",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "FinSMEs Series A report",
+        "url": "https://www.finsmes.com/2026/08/mindgard-raises-30m-in-series-a-funding.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Mindgard combines AI-system discovery with autonomous red-team testing that can be integrated into CI/CD and Burp workflows.",
+        "source_ids": [
+          "official_platform",
+          "official_red_team"
+        ]
+      },
+      {
+        "claim": "Its runtime product monitors production AI behavior and adds threat detection and response after pre-release testing.",
+        "source_ids": [
+          "official_site",
+          "official_runtime"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security and engineering teams deploying models, agents, or AI-enabled applications.",
+      "category": "AI application security",
+      "differentiation": "Discovery, autonomous testing, developer integrations, and production monitoring share one AI-specific security workflow.",
+      "why_now": "Production agents expose tool and data paths that conventional application scans do not fully exercise."
+    },
+    "risks": [
+      {
+        "claim": "Finding reproducibility and remediation rates can be tracked across model, prompt, and tool updates in customer environments.",
+        "basis": "Official pages describe continuous coverage, but do not publish independent cross-version remediation results."
+      }
+    ]
+  }
+}

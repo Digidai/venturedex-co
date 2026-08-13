@@ -1,0 +1,87 @@
+{
+  "slug": "reservoir",
+  "domain": "www.reservoirhome.com",
+  "url": "https://www.reservoirhome.com/",
+  "product_name": "Reservoir",
+  "summary": "Predictive electric water heaters that shift energy use and monitor household plumbing.",
+  "editor_note": "The water heater is framed as controllable thermal storage rather than a tank that reheats on a fixed thermostat. Reservoir predicts hot-water demand, shifts heating toward useful grid windows, and watches plumbing for leaks. Its Max model adds recirculation and mixing to stretch usable capacity without a larger tank. The test is whether household savings and comfort remain measurable after 30 days of model training across different tariffs and usage patterns.",
+  "editor_rating": 4,
+  "why_featured": "$8M Seed for grid-aware hot water",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "home energy,thermal storage,electrification,smart home,water monitoring",
+  "investors": "Asymmetric Capital Partners",
+  "links": {
+    "product": "https://www.reservoirhome.com/how-it-works",
+    "docs": "https://www.reservoirhome.com/specs-and-faq",
+    "pricing": "https://www.reservoirhome.com/install-and-service"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$8M",
+      "stage": "Seed",
+      "lead_investor": "Asymmetric Capital Partners",
+      "date": "2026-08-12",
+      "source_url": "https://techcrunch.com/2026/08/12/reservoir-raises-8m-to-make-water-heaters-that-people-and-the-grid-will-actually-want/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Reservoir official site",
+        "url": "https://www.reservoirhome.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Reservoir how-it-works page",
+        "url": "https://www.reservoirhome.com/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_specs",
+        "label": "Reservoir specifications and FAQ",
+        "url": "https://www.reservoirhome.com/specs-and-faq",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Seed report",
+        "url": "https://techcrunch.com/2026/08/12/reservoir-raises-8m-to-make-water-heaters-that-people-and-the-grid-will-actually-want/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Reservoir predicts household hot-water demand and schedules electric heating while retaining stored heat for later use.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The system monitors plumbing conditions, while the Max configuration adds recirculation and mixing controls for more usable hot water.",
+        "source_ids": [
+          "official_product",
+          "official_specs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Homeowners replacing gas or conventional electric water heaters, initially in New England.",
+      "category": "Residential electrification and thermal storage",
+      "differentiation": "Predictive controls combine hot-water comfort, grid-timed heating, and plumbing monitoring in the installed appliance.",
+      "why_now": "Electrification incentives and variable power demand make flexible water heating useful to both households and the grid."
+    },
+    "risks": [
+      {
+        "claim": "Savings and comfort can be compared against conventional heaters after the first-month learning period across tariff and household profiles.",
+        "basis": "Official materials explain predictive operation, but do not publish independent field results across diverse homes."
+      }
+    ]
+  }
+}

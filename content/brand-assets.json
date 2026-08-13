@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-12",
+  "verified_at": "2026-08-13",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1953,6 +1953,41 @@
       "local_path": "/logos/companies/avatar-robotics.png",
       "source_page": "https://www.avatarrobotics.com/",
       "source_url": "https://framerusercontent.com/images/tbr4cePD0BImN3YwyERQnaJe29g.png"
+    },
+    "blacksmith": {
+      "name": "Blacksmith",
+      "shape": "icon",
+      "local_path": "/logos/companies/blacksmith.png",
+      "source_page": "https://www.blacksmith.sh/",
+      "source_url": "https://cdn.prod.website-files.com/681bfb0c9a4601bc6e288ec4/684a16c003e68ef866f5f528_logo-blacksmith-favicon-light.png"
+    },
+    "reservoir": {
+      "name": "Reservoir",
+      "shape": "icon",
+      "local_path": "/logos/companies/reservoir.png",
+      "source_page": "https://www.reservoirhome.com/",
+      "source_url": "https://framerusercontent.com/images/0azmDFYwpGXMXvWZbMRcP8zfrwQ.png"
+    },
+    "coderabbit": {
+      "name": "CodeRabbit",
+      "shape": "icon",
+      "local_path": "/logos/companies/coderabbit.png",
+      "source_page": "https://www.coderabbit.ai/",
+      "source_url": "https://www.coderabbit.ai/apple-touch-icon.png?v=4"
+    },
+    "mindgard": {
+      "name": "Mindgard",
+      "shape": "icon",
+      "local_path": "/logos/companies/mindgard.png",
+      "source_page": "https://mindgard.ai/",
+      "source_url": "https://cdn.prod.website-files.com/673f0724df990f6c96bf1867/68e4168fcbc9d725c0085da6_Favicon1.png"
+    },
+    "wippi": {
+      "name": "Wippi",
+      "shape": "icon",
+      "local_path": "/logos/companies/wippi.png",
+      "source_page": "https://wippi.com/",
+      "source_url": "https://wippi.com/cdn/shop/files/Frame_1171275313_1.png?crop=center&height=32&v=1774790530&width=32"
     }
   },
   "investors": {
@@ -3575,6 +3610,34 @@
       "local_path": "/logos/investors/alleycorp.png",
       "source_page": "https://alleycorp.com/",
       "source_url": "https://alleycorp.com/wp-content/uploads/2022/12/ac.logo_.png"
+    },
+    "asymmetric-capital-partners": {
+      "name": "Asymmetric Capital Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/asymmetric-capital-partners.png",
+      "source_page": "https://www.acp.vc/",
+      "source_url": "https://cdn.prod.website-files.com/613badf80461a5cf55ebf97c/614d05f32945630b553764d9_Favicon.png"
+    },
+    "smash-capital": {
+      "name": "Smash Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/smash-capital.png",
+      "source_page": "https://smashcap.com/",
+      "source_url": "https://smashcap.com/wp-content/uploads/2024/02/sc.png"
+    },
+    "album-vc": {
+      "name": "Album VC",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/album-vc.svg",
+      "source_page": "https://www.album.vc/",
+      "source_url": "https://www.album.vc/wp-content/uploads/2022/05/Album-logo-new.svg"
+    },
+    "12-flags": {
+      "name": "12 Flags",
+      "shape": "icon",
+      "local_path": "/logos/investors/12-flags.png",
+      "source_page": "https://www.12flags.com/",
+      "source_url": "https://framerusercontent.com/images/savMMODBf53YqgjSBwkIfcOdsQ.png"
     }
   }
 }

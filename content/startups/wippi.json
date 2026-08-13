@@ -1,0 +1,87 @@
+{
+  "slug": "wippi",
+  "domain": "wippi.com",
+  "url": "https://wippi.com/",
+  "product_name": "Wippi",
+  "summary": "A screen-free conversational player that turns cards and books into adaptive audio play.",
+  "editor_note": "The interface is a physical character and story card rather than another children's screen. Wippi uses voice conversation, adapts stories, remembers prior exchanges, and shifts into sleep-story modes, while a parent app exposes interactions and learning goals. That makes the hardware a boundary for AI play instead of a generic smart speaker. The open question is whether parents can independently control retention, review memory, and assess age-appropriate responses over sustained use.",
+  "editor_rating": 4,
+  "why_featured": "$1.2M Seed for screen-free AI play",
+  "product_type": "EdTech",
+  "region": "China / Asia",
+  "tags": "children,conversational ai,audio,screen-free learning,consumer hardware",
+  "investors": "12 Flags",
+  "links": {
+    "product": "https://wippi.com/pages/how-it-works",
+    "docs": "https://wippi.com/pages/faqs",
+    "pricing": "https://wippi.com/products/wippi-starter-kit"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$1.2M",
+      "stage": "Seed",
+      "lead_investor": "12 Flags",
+      "date": "2026-08-12",
+      "source_url": "https://entrepreneur.economictimes.indiatimes.com/news/funding/wippi-raises-1-2-mn-seed-funding-led-by-12-flags-to-build-screen-free-ai-products-for-children/133170389",
+      "source_name": "ETEntrepreneur"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Wippi official site",
+        "url": "https://wippi.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Wippi how-it-works page",
+        "url": "https://wippi.com/pages/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_faq",
+        "label": "Wippi product FAQ",
+        "url": "https://wippi.com/pages/faqs",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "ETEntrepreneur Seed report",
+        "url": "https://entrepreneur.economictimes.indiatimes.com/news/funding/wippi-raises-1-2-mn-seed-funding-led-by-12-flags-to-build-screen-free-ai-products-for-children/133170389",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Children start conversational stories by placing physical character or story cards on the screen-free Wippi player.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The product adapts stories and remembers prior conversations, with separate sleep-story modes and a companion parent experience.",
+        "source_ids": [
+          "official_product",
+          "official_faq"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Parents seeking interactive audio play for young children without handing them a general-purpose screen.",
+      "category": "Screen-free conversational learning",
+      "differentiation": "Physical story objects constrain the interaction surface while conversational AI adapts audio play over time.",
+      "why_now": "Voice models make open-ended audio play practical as families look for alternatives to children's screen time."
+    },
+    "risks": [
+      {
+        "claim": "Parents can test whether memory controls, retention visibility, and age-appropriate response quality remain adequate over repeated use.",
+        "basis": "Official materials describe adaptive memory and parent visibility, but not independent child-safety or retention audits."
+      }
+    ]
+  }
+}

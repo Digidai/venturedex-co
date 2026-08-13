@@ -1107,5 +1107,25 @@
   "avatar-robotics": {
     "published_at": "2026-08-12 06:11:52",
     "first_seen_at": "2026-08-12 06:11:52"
+  },
+  "blacksmith": {
+    "published_at": "2026-08-13 06:17:57",
+    "first_seen_at": "2026-08-13 06:17:57"
+  },
+  "reservoir": {
+    "published_at": "2026-08-13 06:17:57",
+    "first_seen_at": "2026-08-13 06:17:57"
+  },
+  "coderabbit": {
+    "published_at": "2026-08-13 06:17:57",
+    "first_seen_at": "2026-08-13 06:17:57"
+  },
+  "mindgard": {
+    "published_at": "2026-08-13 06:17:57",
+    "first_seen_at": "2026-08-13 06:17:57"
+  },
+  "wippi": {
+    "published_at": "2026-08-13 06:17:57",
+    "first_seen_at": "2026-08-13 06:17:57"
   }
 }
