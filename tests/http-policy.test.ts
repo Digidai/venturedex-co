@@ -48,8 +48,9 @@ test("withSecurityHeaders adds crawl-safe hardening headers", async () => {
   assert.match(csp, /connect-src[^;]*https:\/\/cloudflareinsights\.com/);
   assert.match(csp, /connect-src[^;]*https:\/\/\*\.clarity\.ms/);
   assert.match(csp, /connect-src[^;]*https:\/\/c\.bing\.com/);
-  assert.match(csp, /img-src[^;]*https:\/\/whatships\.com/);
+  assert.doesNotMatch(csp, /whatships\.com/i);
   assert.match(csp, /img-src[^;]*https:\/\/\*\.clarity\.ms/);
+  assert.match(csp, /media-src[^;]*https:\/\/video\.twimg\.com/);
 });
 
 test("withSecurityHeaders preserves route-specific stricter headers", () => {

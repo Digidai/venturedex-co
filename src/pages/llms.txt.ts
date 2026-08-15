@@ -116,9 +116,9 @@ Weekly issues summarize evidence-bound VentureDex picks and should be cited for 
 
 ${weeklyIssues.join("\n")}
 
-## Product Launch Index
+## Product Launch Pages
 
-The [Product Launches](${absoluteUrl("/launches", siteUrl)}) channel contains ${whatShipsSnapshot.item_count} reference-metadata entries synchronized from whatships.com through upstream revision ${whatShipsSnapshot.source.commit.slice(0, 12)}. Entries link to both the WhatShips detail page and the original X post. They are external launch signals, not VentureDex startup endorsements, funding research, or mirrored media.
+The [Product Launches](${absoluteUrl("/launches", siteUrl)}) channel contains ${whatShipsSnapshot.item_count} canonical VentureDex launch pages. Each page organizes the original product video, time-stamped post, product identity, focus areas, and a concise VentureDex evidence note. Launch inclusion is a product signal, not a VentureDex endorsement, funding claim, or adoption claim.
 
 ## Collections
 

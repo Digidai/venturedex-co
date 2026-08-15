@@ -22,7 +22,7 @@ Weekly research digest priority order:
 3. `docs/automation/venturedex-weekly-runbook.md`
 4. `.github/workflows/weekly-draft.yml`
 
-WhatShips channel sync priority order:
+Launch discovery sync priority order:
 
 1. `docs/automation/venturedex-whatships-runbook.md`
 2. `content/whatships.json`
@@ -65,17 +65,17 @@ Search Console submission priority order:
 - `venturedex-weekly-runbook.md`
   The operational contract for each weekly research digest run. It keeps weekly draft generation separate from daily curation.
 - `venturedex-whatships-runbook.md`
-  The operational contract for the WhatShips channel sync. It defines source boundaries, normalization and deduplication rules, mutation scope, and the validation and release gates for scheduled updates.
+  The operational contract for the launch discovery sync. It defines source boundaries, normalization and deduplication rules, mutation scope, and the validation and release gates for scheduled updates.
 - `venturedex-feedback-loop.md`
   The reward-guided iteration rules. This is RL-style closed-loop optimization, not a full online RL system.
 - `venturedex-learning-log.md`
   Append-only run memory: outcomes, failures, reward, and accepted or rejected heuristic changes.
 - `../../content/whatships.json`
-  The version-controlled canonical snapshot rendered by the WhatShips channel after a successful sync.
+  The version-controlled canonical snapshot rendered by the VentureDex launch channel after a successful sync.
 - `../../scripts/sync-whatships.ts`
-  The deterministic sync implementation. It fetches, normalizes, deduplicates, validates, and writes the WhatShips snapshot; scheduling remains outside this script.
+  The deterministic sync implementation. It fetches, normalizes, deduplicates, validates, and writes the launch snapshot; scheduling remains outside this script.
 - `../../.github/workflows/sync-whatships.yml`
-  The scheduled and manual GitHub Actions wrapper for the WhatShips sync. It invokes the sync implementation and repository gates without duplicating synchronization policy.
+  The scheduled and manual GitHub Actions wrapper for the launch discovery sync. It invokes the sync implementation and repository gates without duplicating synchronization policy.
 - `../../scripts/automation-run-state.py`
   Atomic lease and checkpoint manager for Daily recovery. It stores the rendered checkpoint in `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, keeps the corresponding lease in `run-state.lease.json`, and serializes updates through `.run-state.lock`. The authority files contain only a one-way owner fingerprint, epoch/revision counters, routing fields, and blocker summaries; they must never contain credentials, the raw thread identity, or copied source content.
 - `../newsletter.md`

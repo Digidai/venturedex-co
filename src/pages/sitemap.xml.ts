@@ -135,6 +135,11 @@ export const GET: APIRoute = () => {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   urls = urls.concat(
+    whatShipsSnapshot.items.map((item) => ({
+      loc: `/launches/${item.slug}`,
+      lastmod: item.published_at,
+      priority: "0.7",
+    })),
     startups.map((startup) => ({
       loc: `/startups/${startup.slug}`,
       lastmod: startup.updated_at ?? startup.published_at,
