@@ -151,7 +151,7 @@ Transport failures are operational interruptions, not evidence that the content,
 
 ## Durable Run Checkpoint
 
-The current Daily run keeps a small mutable checkpoint at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`.
+The current Daily run uses `scripts/automation-run-state.py` to keep an atomic checkpoint at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md` and its authority lease at `run-state.lease.json`. `.run-state.lock` serializes each acquire, checkpoint, and release transaction.
 
 Required fields:
 
@@ -161,8 +161,11 @@ Required fields:
 - exact `RUN_WORKTREE`, base SHA, and current/pushed SHA when available
 - phase (`preflight`, `discovery`, `content_prepared`, `local_gates_passed`, `pushed`, `deployed`, `gsc`, or `closeout`)
 - accepted slugs and latest blocker summary
+- lease epoch and monotonically increasing checkpoint revision
 
-Update it after each phase boundary and before any long external wait. Do not store credentials, full page text, private data, or mutable browser identifiers. The checkpoint is routing evidence, not permission to bypass a gate. A later turn must cross-check it against live state before resuming, and ambiguous or conflicting ownership remains a blocker.
+Acquire or renew the lease in the selected exact-origin worktree before bootstrap or discovery, then update the checkpoint after each phase boundary and before any long external wait. The raw owner identity is never persisted; the helper derives a one-way fingerprint from `CODEX_THREAD_ID`. A different active owner fails closed. After six hours without a heartbeat, a different owner may take over only the same run id with the exact expected epoch and independent evidence that no matching process is still mutating the recorded worktree. Every checkpoint uses owner, epoch, and revision compare-and-swap; never hand-edit either authority file to bypass a conflict.
+
+Do not store credentials, full page text, private data, or mutable browser identifiers. The checkpoint is routing evidence, not permission to bypass a gate. A later turn must cross-check it against live state before resuming, and ambiguous or conflicting ownership remains a blocker. Release the lease only after a terminal `complete` or `blocked` checkpoint. For a successful run, `complete` is written only after guarded cleanup proves the run worktree is absent and unregistered.
 
 If the blocker remains after evidence-backed iterations, record the root cause, attempted fixes, stable `failure_tags`, and any deferred policy change instead of summarizing it as a generic error.
 

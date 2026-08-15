@@ -31,6 +31,7 @@ Automation must never rewrite this section.
 - Sync with `origin/main` before doing content work.
 - Before creating a new worktree or starting discovery, inspect the durable run-state file at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered VentureDex Daily worktrees, active processes, and recent `origin/main` commits. If exactly one interrupted run is recoverable, resume that run at its last evidenced phase and do not start a second curation cycle. If ownership is ambiguous, stop and report every exact path instead of guessing.
 - Create or enter a detached Daily worktree at the exact current `origin/main` SHA, record it as `RUN_WORKTREE`, and keep the main checkout read-only even when it is dirty, ahead, or behind.
+- Before bootstrap or discovery, run `python3 scripts/automation-run-state.py acquire --run-id "$RUN_ID"` in the selected worktree and retain the returned lease epoch and checkpoint revision. `CODEX_THREAD_ID` is the normal owner identity and only its one-way fingerprint is persisted. Do not use a run id, PID, or invented shared value as an owner fallback. An active different-owner lease is a hard blocker. A stale lease may be taken over only for the same run id, with its exact expected epoch, after the six-hour stale threshold and read-only evidence show that no matching actor is still mutating the recorded worktree.
 - Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` inside that detached worktree before discovery. Bootstrap failure is a hard stop; do not continue with a rejected-only or no-op fallback.
 - If fetch, worktree creation, pull, rebase, or conflict resolution fails, stop.
 - If unrelated dirty files exist in the selected Daily worktree at run start, stop. Unrelated dirtiness in the main checkout must be preserved and reported, not cleaned or ported automatically.
@@ -38,7 +39,7 @@ Automation must never rewrite this section.
 
 ### Content Safety
 
-- Search recent funding news broadly and collect 10-20 candidates, matching the higher-priority content contract. Twenty recorded decisions are sufficient for the maximum five additions while preserving the 3:1 rejection bar.
+- Search recent funding news broadly and collect 10-20 fresh candidates after accepted/rejected deduplication, matching the higher-priority content contract. Duplicate source hits do not count toward this bound. Twenty recorded decisions are sufficient for the maximum five additions while preserving the 3:1 rejection bar.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
 - Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
@@ -99,7 +100,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 - Rerun the failed step and every downstream gate that depends on it.
 - Do not blind-retry; each iteration must add new evidence, a narrower hypothesis, or a concrete fix.
 - If the blocker survives evidence-backed iterations, record the root cause, attempts, and deferred next step in the learning log and inbox item.
-- Do not treat an exec cell id, tool-call id, PID, or buffered command handle as a durable checkpoint. After bootstrap, discovery, content preparation, local gates, push, deploy, GSC, and closeout, rewrite the external run-state file with the run id, UTC timestamp, exact worktree, base/current SHA, phase, accepted slugs, and latest blocker. Never store credentials or source-page contents there.
+- Do not treat an exec cell id, tool-call id, PID, or buffered command handle as a durable checkpoint. After bootstrap, discovery, content preparation, local gates, push, deploy, GSC, and closeout, call `scripts/automation-run-state.py checkpoint` with the retained lease epoch and exact expected revision. Carry the returned revision forward; an owner, epoch, or revision mismatch is a concurrent-writer blocker, not permission to overwrite the authority files. Never edit `run-state.md` or `run-state.lease.json` by hand during a managed run, and never store credentials or source-page contents there.
 - If a turn or transport stream is interrupted, resume from filesystem, Git, CI, ledger, and run-state evidence. Re-run only the incomplete phase and its downstream gates; do not repeat discovery or browser clicks merely because an in-memory handle disappeared.
 
 ### Staging and Release Scope
@@ -130,9 +131,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 5. Read the template/header and last 10 entries in `docs/automation/venturedex-learning-log.md`; search older entries only for a specific repeated error. Do not load the entire append-only history into each run's context.
 6. Inspect `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered Daily worktrees, active processes, recent commits, and the central GSC ledger. Resume one recoverable interrupted run before considering a new cycle; stop on ambiguous ownership.
 7. Sync the Git refs with `origin/main` without modifying the main checkout.
-8. Create or enter a detached worktree at exact `origin/main`, record `RUN_WORKTREE`, verify that selected worktree is clean, and write the `preflight` run-state checkpoint.
+8. Create or enter a detached worktree at exact `origin/main`, record `RUN_WORKTREE`, and verify that selected worktree is clean. Acquire or renew the run lease for the exact `RUN_ID`, then atomically write the `preflight` checkpoint with the returned epoch/revision. Stop on an active-owner conflict; stale takeover must preserve the run id and pass the evidence rules above.
 9. Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` in `RUN_WORKTREE`. Stop immediately on failure and persist the exact blocker; discovery must not begin.
-10. Discover 10-20 recent funding candidates.
+10. Discover and deduplicate until 10-20 fresh recent-funding candidates remain; duplicate source hits do not count toward the bound.
 11. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`; schema-less legacy rows and v2 `active` rows suppress repeat review unless an allowed trigger is present.
 12. Run F1-F4 screening and write every new rejection as a complete v2 row.
 13. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
@@ -179,7 +180,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
    It may append `requested` only after the exact artifact URL is re-inspected and a route-bound `success_static` state is observed. The reconciliation path must never call the request-indexing click action; if success is not proven, the blocker and artifact remain active.
 28. Append the learning-log entry and update automation memory from the final evidence. Keep content and docs commits separate and persist the resulting docs SHA when one is pushed.
 29. Open an inbox item summarizing the full run, including any transport interruption and the exact recovery phase.
-30. Close run-owned browser tabs. After commit/push, deploy/GSC evidence, learning log, automation memory, and inbox evidence are durable, switch back to the main checkout and run guarded cleanup for exact `RUN_WORKTREE`. Mark run-state `complete` only after the worktree is absent and unregistered; otherwise mark it `blocked` with the exact dirty files or ownership conflict.
+30. Close run-owned browser tabs. After commit/push, deploy/GSC evidence, learning log, automation memory, and inbox evidence are durable, persist an `active` `closeout` checkpoint, switch back to the main checkout, and run guarded cleanup for exact `RUN_WORKTREE`. Only after the path is absent and unregistered may the same owner atomically checkpoint `complete` and release the lease with the exact epoch/revision. Because the run worktree is then gone, load the helper from the exact pushed Git SHA rather than from the stale main checkout; first verify that blob exists and fail closed if it cannot be executed. If cleanup fails, the worktree still exists: checkpoint `blocked` there with the exact dirty files or ownership conflict, then release only that terminal blocked lease. Never mark complete before cleanup or leave an authority-file mismatch unreported.
 
 ## Review Passes
 

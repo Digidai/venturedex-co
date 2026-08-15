@@ -61,8 +61,8 @@ Search Console submission priority order:
   The reward-guided iteration rules. This is RL-style closed-loop optimization, not a full online RL system.
 - `venturedex-learning-log.md`
   Append-only run memory: outcomes, failures, reward, and accepted or rejected heuristic changes.
-- `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`
-  Small mutable operational checkpoint for the currently active or most recently closed Daily run. It records only run identity, exact worktree/SHA, phase, accepted slugs, and blockers so a new turn can resume without replaying discovery. It must never contain credentials or copied source content.
+- `../../scripts/automation-run-state.py`
+  Atomic lease and checkpoint manager for Daily recovery. It stores the rendered checkpoint in `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, keeps the corresponding lease in `run-state.lease.json`, and serializes updates through `.run-state.lock`. The authority files contain only a one-way owner fingerprint, epoch/revision counters, routing fields, and blocker summaries; they must never contain credentials, the raw thread identity, or copied source content.
 - `../newsletter.md`
   The delivery contract for Daily additions and Weekly research email sends, including delay gates, compliance configuration, module review notes, and test cases.
 - `../../content/timestamps.json`
@@ -137,7 +137,7 @@ For human-directed governance changes:
 The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` and `$CODEX_HOME/automations/venturedex-weekly-curator/automation.toml` should stay aligned with this control plane.
 
 - Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
-- Before starting a new Daily cycle, reconcile the external run-state checkpoint with registered worktrees, active processes, recent commits, and the central GSC ledger. Resume one clearly owned interrupted run; never create a second cycle merely because a prior response stream ended.
+- Before starting a new Daily cycle, reconcile the external run-state checkpoint and lease with registered worktrees, active processes, recent commits, and the central GSC ledger. In the selected exact-origin worktree, acquire or renew `scripts/automation-run-state.py`'s lease before bootstrap or discovery. Resume one clearly owned interrupted run; never create a second cycle merely because a prior response stream ended.
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
 - For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
 - Current code architecture is JSON-first and mostly prerendered on Astro 7 with Cloudflare adapter 14: `content/*.json` is transformed through `src/lib/content-transform.ts` for Astro pages, while `scripts/build-db.sh` emits the D1 seed used by the newsletter/runtime path. `tests/content-parity.test.ts` guards those two transforms from drifting.
