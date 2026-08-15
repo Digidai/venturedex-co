@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { spawn, spawnSync } from "node:child_process";
+import { spawn, spawnSync, type SpawnSyncReturns } from "node:child_process";
 import {
   mkdtempSync,
   linkSync,
@@ -35,7 +35,7 @@ function invoke(
   directory: string,
   owner: string | undefined,
   args: string[],
-): ReturnType<typeof spawnSync> {
+): SpawnSyncReturns<string> {
   return spawnSync(
     "python3",
     [helper, ...args, "--automation-dir", directory],
@@ -48,7 +48,7 @@ function invoke(
   );
 }
 
-function outputJson(result: ReturnType<typeof spawnSync>): Record<string, unknown> {
+function outputJson(result: SpawnSyncReturns<string>): Record<string, unknown> {
   assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
   return JSON.parse(result.stdout.trim());
 }

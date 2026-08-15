@@ -272,6 +272,12 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
   for (const [mode, expectedStatus] of [["timeout", 124], ["fail", 74]] as const) {
     const fixture = createBootstrapFixture();
     try {
+      // Model a partially linked install before the failed recovery starts.
+      // Depending on a one-second timeout child to run far enough to create
+      // this file makes the invariant test race with the full parallel suite.
+      const earlyAstro = path.join(fixture.root, "node_modules", ".bin", "astro");
+      mkdirSync(path.dirname(earlyAstro), { recursive: true });
+      writeExecutable(earlyAstro, "#!/bin/sh\nexit 0\n");
       const failed = spawnSync(
         "bash",
         [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
@@ -284,7 +290,7 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
       );
       assert.equal(failed.status, expectedStatus, `${failed.stdout}\n${failed.stderr}`);
       assert.match(`${failed.stdout}\n${failed.stderr}`, /refusing to continue/i);
-      assert.equal(existsSync(path.join(fixture.root, "node_modules", ".bin", "astro")), true);
+      assert.equal(existsSync(earlyAstro), true, `${mode} fixture must retain the partial Astro link`);
       assert.equal(existsSync(fixture.successMarker), false);
       assert.equal(existsSync(fixture.githubMarker), false);
       assert.equal(existsSync(fixture.lock), false);
