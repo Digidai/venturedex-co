@@ -929,6 +929,7 @@ test("ordinary validation isolates and cleans its seed on downstream failure or 
   const seedPathRecord = join(root, "seed-path");
   const seed = join(fixtureRepo, "d1", "generated-seed.sql");
   const draft = join(fixtureRepo, "content", "user-draft.json");
+  const inheritedSeed = join(root, "inherited-seed.sql");
 
   for (const directory of [
     join(fixtureRepo, "scripts"),
@@ -994,6 +995,7 @@ esac
   execFileSync("git", ["-C", fixtureRepo, "commit", "-qm", "fixture"]);
   writeFileSync(seed, "user-owned dirty seed\n");
   writeFileSync(draft, "user-owned dirty draft\n");
+  writeFileSync(inheritedSeed, "inherited seed sentinel\n");
   const statusBefore = execFileSync(
     "git",
     ["-C", fixtureRepo, "status", "--porcelain=v1"],
@@ -1013,7 +1015,7 @@ esac
             PATH: `${bin}:${process.env.PATH}`,
             TMPDIR: tempRoot,
             VENTUREDEX_LOCAL_ENV_LOADED: "1",
-            VENTUREDEX_SEED_OUTPUT: "",
+            VENTUREDEX_SEED_OUTPUT: inheritedSeed,
             MOCK_GATE_MODE: mode,
             MOCK_SEED_PATH_RECORD: seedPathRecord,
           },
@@ -1023,10 +1025,12 @@ esac
       assert.equal(result.status, expectedStatus, `${result.stdout}\n${result.stderr}`);
       const runSeed = readFileSync(seedPathRecord, "utf8").trim();
       assert.notEqual(runSeed, seed);
+      assert.notEqual(runSeed, inheritedSeed);
       assert.equal(existsSync(runSeed), false);
       assert.equal(existsSync(dirname(runSeed)), false);
       assert.equal(readFileSync(seed, "utf8"), "user-owned dirty seed\n");
       assert.equal(readFileSync(draft, "utf8"), "user-owned dirty draft\n");
+      assert.equal(readFileSync(inheritedSeed, "utf8"), "inherited seed sentinel\n");
       assert.equal(
         execFileSync("git", ["-C", fixtureRepo, "status", "--porcelain=v1"], {
           encoding: "utf8",
@@ -1278,13 +1282,17 @@ test("release workflow deploys only a successfully validated SHA", () => {
   assert.match(deploy, /^concurrency:/m);
   assert.match(deploy, /cancel-in-progress: false/);
   assert.match(deploy, /VENTUREDEX_VALIDATED_SHA/);
-  assert.match(manager, /cmd_validate\(\)[\s\S]*npm audit --audit-level=high/);
+  assert.match(manager, /run_validation_gate\(\)[\s\S]*npm audit --audit-level=high/);
   assert.equal(
     urlExtractor.split("sys.stdin.read()").length - 1,
     1,
     "deploy URL extraction must consume Wrangler output exactly once"
   );
   const validate = manager.slice(
+    manager.indexOf("run_validation_gate()"),
+    manager.indexOf("\ncmd_validate()")
+  );
+  const publicValidate = manager.slice(
     manager.indexOf("cmd_validate()"),
     manager.indexOf("\nassert_release_expected_sha_matches_head()")
   );
@@ -1294,8 +1302,8 @@ test("release workflow deploys only a successfully validated SHA", () => {
     "the unified release gate must include Astro diagnostics"
   );
   assert.match(
-    validate,
-    /mktemp -d[\s\S]*VENTUREDEX_SEED_OUTPUT=.*generated-seed\.sql/,
+    publicValidate,
+    /mktemp -d[\s\S]*run_validation_gate "\$validation_seed_dir\/generated-seed\.sql"/,
     "ordinary validation must generate its D1 seed in a run-owned temp directory"
   );
   const releasePreparation = manager.slice(
@@ -1304,8 +1312,18 @@ test("release workflow deploys only a successfully validated SHA", () => {
   );
   assert.match(
     releasePreparation,
-    /VENTUREDEX_SEED_OUTPUT="\$REPO_ROOT\/d1\/generated-seed\.sql" cmd_validate/,
+    /validate_release_artifacts/,
     "release validation must explicitly generate the repository seed for locking"
+  );
+  assert.match(
+    publicValidate,
+    /run_validation_gate "\$validation_seed_dir\/generated-seed\.sql"/,
+    "public validation must ignore inherited seed output and use only its run-owned path"
+  );
+  assert.match(
+    manager,
+    /validate_release_artifacts\(\)[\s\S]*run_validation_gate "\$REPO_ROOT\/d1\/generated-seed\.sql"/,
+    "the private release mode must explicitly target the tracked seed"
   );
 
   const sync = manager.slice(

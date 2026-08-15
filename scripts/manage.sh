@@ -1243,6 +1243,20 @@ cmd_screenshot() {
   "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"
 }
 
+run_validation_gate() (
+  local seed_output="${1:?validation seed output is required}"
+
+  export VENTUREDEX_SEED_OUTPUT="$seed_output"
+  cd "$REPO_ROOT"
+  npm audit --audit-level=high
+  ./scripts/validate.sh
+  ./scripts/build-db.sh
+  npm run test:newsletter
+  npx astro sync
+  npm run typecheck
+  npm run build
+)
+
 cmd_validate() (
   local validation_seed_dir=""
   local validation_seed_parent=""
@@ -1263,30 +1277,22 @@ cmd_validate() (
     esac
   }
 
-  # Ordinary validation owns an isolated seed artifact so a successful build,
-  # a downstream gate failure, or a signal cannot overwrite a user's tracked
-  # d1/generated-seed.sql state. Release passes the repository seed explicitly.
-  if [ -z "${VENTUREDEX_SEED_OUTPUT:-}" ]; then
-    validation_seed_parent="${TMPDIR:-/tmp}"
-    validation_seed_parent="${validation_seed_parent%/}"
-    validation_seed_dir="$(mktemp -d "$validation_seed_parent/venturedex-validate-seed.XXXXXX")"
-    VENTUREDEX_SEED_OUTPUT="$validation_seed_dir/generated-seed.sql"
-    trap cleanup_validation_seed EXIT
-    trap 'exit 129' HUP
-    trap 'exit 130' INT
-    trap 'exit 143' TERM
-  fi
-  export VENTUREDEX_SEED_OUTPUT
+  # Public validation always owns an isolated seed artifact. Inherited caller
+  # state cannot redirect this command back to the tracked release seed.
+  validation_seed_parent="${TMPDIR:-/tmp}"
+  validation_seed_parent="${validation_seed_parent%/}"
+  validation_seed_dir="$(mktemp -d "$validation_seed_parent/venturedex-validate-seed.XXXXXX")"
+  trap cleanup_validation_seed EXIT
+  trap 'exit 129' HUP
+  trap 'exit 130' INT
+  trap 'exit 143' TERM
 
-  cd "$REPO_ROOT"
-  npm audit --audit-level=high
-  ./scripts/validate.sh
-  ./scripts/build-db.sh
-  npm run test:newsletter
-  npx astro sync
-  npm run typecheck
-  npm run build
+  run_validation_gate "$validation_seed_dir/generated-seed.sql"
 )
+
+validate_release_artifacts() {
+  run_validation_gate "$REPO_ROOT/d1/generated-seed.sql"
+}
 
 assert_release_expected_sha_matches_head() {
   local release_sha="${VENTUREDEX_RELEASE_SHA:-}"
@@ -1557,7 +1563,7 @@ prepare_release_artifacts() {
   local current_sha
 
   if [ -z "$validated_sha" ]; then
-    VENTUREDEX_SEED_OUTPUT="$REPO_ROOT/d1/generated-seed.sql" cmd_validate
+    validate_release_artifacts
     return 0
   fi
 

@@ -79,6 +79,7 @@ function createBootstrapFixture(): {
   npmRelease: string;
   npmLog: string;
   githubMarker: string;
+  successMarker: string;
 } {
   const root = tempDir("venturedex-bootstrap-test-");
   const bin = path.join(root, "bin");
@@ -96,6 +97,7 @@ function createBootstrapFixture(): {
     path.join(root, ".env"),
     "CLOUDFLARE_API_TOKEN=test-token\nCLOUDFLARE_ACCOUNT_ID=test-account\n",
   );
+  writeFileSync(path.join(root, "package-lock.json"), '{"lockfileVersion":3}\n');
   writeFileSync(
     path.join(fakePython, "requests.py"),
     `class Response:
@@ -117,6 +119,9 @@ def get(*args, **kwargs):
 set -euo pipefail
 printf '%s\n' "$*" >> "$MOCK_NPM_LOG"
 : > "$MOCK_NPM_STARTED"
+mkdir -p "$MOCK_REPO_ROOT/node_modules/.bin"
+printf '#!/bin/sh\nexit 0\n' > "$MOCK_REPO_ROOT/node_modules/.bin/astro"
+chmod +x "$MOCK_REPO_ROOT/node_modules/.bin/astro"
 case "\${MOCK_NPM_MODE:-success}" in
   hold)
     while [ ! -e "$MOCK_NPM_RELEASE" ]; do sleep 0.05; done
@@ -124,10 +129,10 @@ case "\${MOCK_NPM_MODE:-success}" in
   timeout)
     while true; do sleep 0.1; done
     ;;
+  fail)
+    exit 74
+    ;;
 esac
-mkdir -p "$MOCK_REPO_ROOT/node_modules/.bin"
-printf '#!/bin/sh\nexit 0\n' > "$MOCK_REPO_ROOT/node_modules/.bin/astro"
-chmod +x "$MOCK_REPO_ROOT/node_modules/.bin/astro"
 `,
   );
   execFileSync("git", ["init", "-q", root]);
@@ -139,12 +144,13 @@ chmod +x "$MOCK_REPO_ROOT/node_modules/.bin/astro"
     npmRelease: path.join(root, "npm-release"),
     npmLog: path.join(root, "npm.log"),
     githubMarker: path.join(root, "github-called"),
+    successMarker: path.join(root, "node_modules", ".venturedex-npm-ci-success"),
   };
 }
 
 function bootstrapFixtureEnv(
   fixture: ReturnType<typeof createBootstrapFixture>,
-  mode: "success" | "hold" | "timeout",
+  mode: "success" | "hold" | "timeout" | "fail",
   timeoutSeconds = "20",
 ): NodeJS.ProcessEnv {
   return {
@@ -162,6 +168,13 @@ function bootstrapFixtureEnv(
     MOCK_REPO_ROOT: fixture.root,
     MOCK_GITHUB_MARKER: fixture.githubMarker,
   };
+}
+
+function expectedBootstrapMarker(fixture: ReturnType<typeof createBootstrapFixture>): string {
+  const digest = createHash("sha256")
+    .update(readFileSync(path.join(fixture.root, "package-lock.json")))
+    .digest("hex");
+  return `sha256:${digest}\n`;
 }
 
 test("bootstrap serializes npm recovery per worktree with owner PID diagnostics", async () => {
@@ -190,6 +203,8 @@ test("bootstrap serializes npm recovery per worktree with owner PID diagnostics"
     assert.equal(outcome.code, 0, `${outcome.stdout}\n${outcome.stderr}`);
     assert.equal(existsSync(fixture.lock), false);
     assert.equal(existsSync(fixture.githubMarker), true);
+    assert.equal(existsSync(fixture.successMarker), true);
+    assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
   } finally {
     writeFileSync(fixture.npmRelease, "release\n");
     if (child.exitCode === null && child.signalCode === null) {
@@ -219,31 +234,80 @@ test("bootstrap recovers a dead-owner lock and completes", () => {
     assert.match(result.stdout, /recovering stale owner pid 2147483647/i);
     assert.equal(existsSync(fixture.lock), false);
     assert.equal(existsSync(fixture.githubMarker), true);
+    assert.equal(existsSync(fixture.successMarker), true);
+    assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
   }
 });
 
-test("bootstrap times out npm ci and fails closed before GitHub checks", () => {
+test("bootstrap reruns npm ci when the package-lock hash changes", () => {
   const fixture = createBootstrapFixture();
   try {
-    const result = spawnSync(
+    const first = spawnSync(
       "bash",
       [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
-      {
-        cwd: fixture.root,
-        env: bootstrapFixtureEnv(fixture, "timeout", "1"),
-        encoding: "utf8",
-        timeout: 15_000,
-      },
+      { cwd: fixture.root, env: bootstrapFixtureEnv(fixture, "success"), encoding: "utf8" },
     );
-    assert.equal(result.status, 124, `${result.stdout}\n${result.stderr}`);
-    assert.match(`${result.stdout}\n${result.stderr}`, /npm ci timed out after 1 seconds/i);
-    assert.match(`${result.stdout}\n${result.stderr}`, /refusing to continue/i);
-    assert.equal(existsSync(fixture.githubMarker), false);
-    assert.equal(existsSync(fixture.lock), false);
+    assert.equal(first.status, 0, `${first.stdout}\n${first.stderr}`);
+    assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
+
+    writeFileSync(path.join(fixture.root, "package-lock.json"), '{"lockfileVersion":3,"changed":true}\n');
+    rmSync(fixture.githubMarker, { force: true });
+    const second = spawnSync(
+      "bash",
+      [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+      { cwd: fixture.root, env: bootstrapFixtureEnv(fixture, "success"), encoding: "utf8" },
+    );
+    assert.equal(second.status, 0, `${second.stdout}\n${second.stderr}`);
+    assert.match(second.stdout, /running npm ci/i);
+    assert.equal(readFileSync(fixture.npmLog, "utf8").trim().split("\n").length, 2);
+    assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap failure or timeout cannot bless an early Astro link", () => {
+  for (const [mode, expectedStatus] of [["timeout", 124], ["fail", 74]] as const) {
+    const fixture = createBootstrapFixture();
+    try {
+      const failed = spawnSync(
+        "bash",
+        [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+        {
+          cwd: fixture.root,
+          env: bootstrapFixtureEnv(fixture, mode, "1"),
+          encoding: "utf8",
+          timeout: 15_000,
+        },
+      );
+      assert.equal(failed.status, expectedStatus, `${failed.stdout}\n${failed.stderr}`);
+      assert.match(`${failed.stdout}\n${failed.stderr}`, /refusing to continue/i);
+      assert.equal(existsSync(path.join(fixture.root, "node_modules", ".bin", "astro")), true);
+      assert.equal(existsSync(fixture.successMarker), false);
+      assert.equal(existsSync(fixture.githubMarker), false);
+      assert.equal(existsSync(fixture.lock), false);
+
+      rmSync(fixture.npmStarted, { force: true });
+      const recovered = spawnSync(
+        "bash",
+        [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+        {
+          cwd: fixture.root,
+          env: bootstrapFixtureEnv(fixture, "success"),
+          encoding: "utf8",
+        },
+      );
+      assert.equal(recovered.status, 0, `${recovered.stdout}\n${recovered.stderr}`);
+      assert.match(recovered.stdout, /running npm ci/i);
+      assert.equal(readFileSync(fixture.npmLog, "utf8").trim().split("\n").length, 2);
+      assert.equal(existsSync(fixture.successMarker), true);
+      assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
+      assert.equal(existsSync(fixture.githubMarker), true);
+    } finally {
+      rmSync(fixture.root, { recursive: true, force: true });
+    }
   }
 });
 

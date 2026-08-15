@@ -6,6 +6,9 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 AUTOMATION_ID="${1:-venturedex-daily-curator}"
 BOOTSTRAP_LOCK_DIR=""
+NPM_CI_SUCCESS_MARKER="$REPO_ROOT/node_modules/.venturedex-npm-ci-success"
+NPM_CI_SUCCESS_MARKER_TMP=""
+PACKAGE_LOCK_SHA256=""
 
 export REPO_ROOT
 export VENTUREDEX_AUTOMATION_ID="$AUTOMATION_ID"
@@ -13,6 +16,10 @@ export VENTUREDEX_AUTOMATION_ID="$AUTOMATION_ID"
 bootstrap_lock_cleanup() {
   local recorded_pid=""
 
+  if [ -n "$NPM_CI_SUCCESS_MARKER_TMP" ]; then
+    unlink "$NPM_CI_SUCCESS_MARKER_TMP" 2>/dev/null || true
+    NPM_CI_SUCCESS_MARKER_TMP=""
+  fi
   if [ -z "$BOOTSTRAP_LOCK_DIR" ]; then
     return 0
   fi
@@ -31,6 +38,49 @@ bootstrap_lock_cleanup() {
     echo "WARNING: Bootstrap lock directory could not be removed cleanly: $BOOTSTRAP_LOCK_DIR" >&2
   fi
   BOOTSTRAP_LOCK_DIR=""
+}
+
+resolve_package_lock_sha256() {
+  python3 - "$REPO_ROOT/package-lock.json" <<'PY'
+import hashlib
+from pathlib import Path
+import sys
+
+path = Path(sys.argv[1])
+if not path.is_file():
+    print(f"ERROR: Missing dependency lockfile: {path}", file=sys.stderr)
+    raise SystemExit(1)
+print(hashlib.sha256(path.read_bytes()).hexdigest())
+PY
+}
+
+npm_dependencies_ready() {
+  local recorded_hash=""
+
+  if [ ! -x "$REPO_ROOT/node_modules/.bin/astro" ] || [ ! -f "$NPM_CI_SUCCESS_MARKER" ]; then
+    return 1
+  fi
+  recorded_hash="$(sed -n '1p' "$NPM_CI_SUCCESS_MARKER")"
+  [ "$recorded_hash" = "sha256:$PACKAGE_LOCK_SHA256" ]
+}
+
+record_npm_ci_success() {
+  local current_lock_sha256
+
+  if [ ! -x "$REPO_ROOT/node_modules/.bin/astro" ]; then
+    echo "ERROR: npm ci exited successfully but Astro is still unavailable; refusing to mark dependencies ready." >&2
+    return 1
+  fi
+  current_lock_sha256="$(resolve_package_lock_sha256)" || return 1
+  if [ "$current_lock_sha256" != "$PACKAGE_LOCK_SHA256" ]; then
+    echo "ERROR: package-lock.json changed during npm ci; refusing to mark dependencies ready." >&2
+    return 1
+  fi
+
+  NPM_CI_SUCCESS_MARKER_TMP="$NPM_CI_SUCCESS_MARKER.$$.tmp"
+  printf 'sha256:%s\n' "$PACKAGE_LOCK_SHA256" > "$NPM_CI_SUCCESS_MARKER_TMP"
+  mv -f "$NPM_CI_SUCCESS_MARKER_TMP" "$NPM_CI_SUCCESS_MARKER"
+  NPM_CI_SUCCESS_MARKER_TMP=""
 }
 
 acquire_bootstrap_lock() {
@@ -159,6 +209,7 @@ PY
 }
 
 acquire_bootstrap_lock
+PACKAGE_LOCK_SHA256="$(resolve_package_lock_sha256)"
 
 # shellcheck disable=SC1091
 . "$SCRIPT_DIR/load-local-env.sh"
@@ -214,10 +265,11 @@ else:
     print(f"r2_access: unknown (HTTP {r2.status_code})")
 PY
 
-if [ ! -x "$REPO_ROOT/node_modules/.bin/astro" ]; then
-  echo "node_modules missing or incomplete; running npm ci"
+if ! npm_dependencies_ready; then
+  echo "node_modules missing, incomplete, or unverified for package-lock; running npm ci"
+  unlink "$NPM_CI_SUCCESS_MARKER" 2>/dev/null || true
   if run_npm_ci_with_timeout; then
-    :
+    record_npm_ci_success
   else
     npm_ci_status=$?
     echo "ERROR: npm ci failed during automation bootstrap (exit $npm_ci_status); refusing to continue." >&2
