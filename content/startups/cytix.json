@@ -1,0 +1,91 @@
+{
+  "slug": "cytix",
+  "domain": "www.cytix.io",
+  "url": "https://www.cytix.io/",
+  "product_name": "Cytix",
+  "summary": "Change-risk platform that turns tickets, pull requests, and releases into security decisions.",
+  "editor_note": "Change security is moved into the delivery stream rather than left for a periodic audit. The platform reads tickets, pull requests, and releases, builds persistent context, assigns proportional action, validates high-risk changes, and records the decision. Jira, Azure DevOps, and GitHub Issues keep that evidence near existing work. The open test is whether its risk calls reduce reviewer load without creating false confidence or noisy escalation.",
+  "editor_rating": 4,
+  "why_featured": "$7M A for change-risk security",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "application security,change risk,devsecops,audit evidence,software delivery",
+  "investors": "Northern Gritstone",
+  "links": {
+    "product": "https://www.cytix.io/solutions/platform"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$7M",
+      "stage": "Series A",
+      "lead_investor": "Northern Gritstone",
+      "date": "2026-08-12",
+      "source_url": "https://www.cytix.io/resources/cytix-announces-7-million-series-a-funding-round",
+      "source_name": "Cytix"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Cytix official site",
+        "url": "https://www.cytix.io/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Cytix platform overview",
+        "url": "https://www.cytix.io/solutions/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_risk",
+        "label": "Cytix instant risk assessment workflow",
+        "url": "https://www.cytix.io/solutions/instant-risk-assessment",
+        "type": "product"
+      },
+      {
+        "id": "official_audit",
+        "label": "Cytix audit-ready change record workflow",
+        "url": "https://www.cytix.io/solutions/audit-ready-change-record",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cytix Series A announcement",
+        "url": "https://www.cytix.io/resources/cytix-announces-7-million-series-a-funding-round",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Cytix reads delivery artifacts such as tickets, pull requests, and releases, maintains context, and assigns a security action to each change.",
+        "source_ids": [
+          "official_platform",
+          "official_risk"
+        ]
+      },
+      {
+        "claim": "The platform validates higher-risk changes and records the decision and action as audit evidence inside Jira, Azure DevOps, or GitHub Issues workflows.",
+        "source_ids": [
+          "official_platform",
+          "official_audit"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Security, engineering, and compliance teams governing frequent software changes.",
+      "category": "Software change-risk management",
+      "differentiation": "Persistent delivery context drives proportional security action and creates an audit record without a separate review queue.",
+      "why_now": "Faster AI-assisted software delivery increases change volume, while the Series A coincides with general availability of the platform."
+    },
+    "risks": [
+      {
+        "claim": "Teams may not see lower review effort if automated risk decisions produce too many escalations or miss material context.",
+        "basis": "The official workflow explains decisioning and validation, but publishes no independent false-positive or miss-rate benchmark."
+      }
+    ]
+  }
+}

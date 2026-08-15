@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-13",
+  "verified_at": "2026-08-14",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1988,6 +1988,41 @@
       "local_path": "/logos/companies/wippi.png",
       "source_page": "https://wippi.com/",
       "source_url": "https://wippi.com/cdn/shop/files/Frame_1171275313_1.png?crop=center&height=32&v=1774790530&width=32"
+    },
+    "silicon-data": {
+      "name": "Silicon Data",
+      "shape": "icon",
+      "local_path": "/logos/companies/silicon-data.png",
+      "source_page": "https://www.silicondata.com/",
+      "source_url": "https://www.silicondata.com/assets/brand/logo-mark-filled.png"
+    },
+    "cytix": {
+      "name": "Cytix",
+      "shape": "icon",
+      "local_path": "/logos/companies/cytix.png",
+      "source_page": "https://www.cytix.io/",
+      "source_url": "https://framerusercontent.com/images/4cCHPk4ZiriYyddpMiIpNDssyg.png"
+    },
+    "agent-energy": {
+      "name": "AGent Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/agent-energy.png",
+      "source_page": "https://www.agentenergy.com/",
+      "source_url": "https://cdn.prod.website-files.com/69ab6a1fba172f6021963891/69ab99586596b1eea81c8261_Favicon.png"
+    },
+    "form-energy": {
+      "name": "Form Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/form-energy.png",
+      "source_page": "https://formenergy.com/",
+      "source_url": "https://formenergy.com/wp-content/uploads/2021/04/cropped-Form-favicon-1-192x192.png"
+    },
+    "remepy": {
+      "name": "Remepy",
+      "shape": "icon",
+      "local_path": "/logos/companies/remepy.png",
+      "source_page": "https://www.remepy.com/",
+      "source_url": "https://cdn.prod.website-files.com/640896ce6d94fe8ab42f7fca/6613a68d314a5278735fcec4_256x256.png"
     }
   },
   "investors": {
@@ -2010,7 +2045,7 @@
       "shape": "icon",
       "local_path": "/logos/investors/sequoia.png",
       "source_page": "https://www.sequoiacap.com",
-      "source_url": "https://sequoiacap.com/wp-content/uploads/sites/6/2021/11/cropped-cropped-android-chrome-512x512-1.png?w=180"
+      "source_url": "https://framerusercontent.com/images/BjlCZkZ0WlX5JcURORpeyljjCmM.png"
     },
     "yc": {
       "name": "Y Combinator",
@@ -3638,6 +3673,56 @@
       "local_path": "/logos/investors/12-flags.png",
       "source_page": "https://www.12flags.com/",
       "source_url": "https://framerusercontent.com/images/savMMODBf53YqgjSBwkIfcOdsQ.png"
+    },
+    "valor-atreides-ai-fund": {
+      "name": "Valor Atreides AI Fund",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/valor-atreides-ai-fund.png",
+      "source_page": "https://www.valorep.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5bbd0e6fe666693fac5b7c04/269cb316-0feb-4c15-aa4e-640f0202ceaf/Valor_Primary0.png",
+      "note": "Official Valor Equity Partners wordmark; Valor is one manager of the jointly managed Valor Atreides AI Fund."
+    },
+    "northern-gritstone": {
+      "name": "Northern Gritstone",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/northern-gritstone.png",
+      "source_page": "https://www.northern-gritstone.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/646de93004d1997ec858f7de/d8749099-2f02-4038-9c11-6f7cf9086216/NG+Light+Background+RGB+PROFIT+WITH+PURPOSE.png?format=1500w"
+    },
+    "spero-ventures": {
+      "name": "Spero Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/spero-ventures.png",
+      "source_page": "https://spero.vc/",
+      "source_url": "https://spero.vc/favicon.png"
+    },
+    "massmutual-ventures": {
+      "name": "MassMutual Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/massmutual-ventures.svg",
+      "source_page": "https://massmutualventures.com/",
+      "source_url": "https://massmutualventures.com/wp-content/uploads/MMV_Logo.svg"
+    },
+    "t-rowe-price": {
+      "name": "T. Rowe Price",
+      "shape": "icon",
+      "local_path": "/logos/investors/t-rowe-price.png",
+      "source_page": "https://www.troweprice.com/",
+      "source_url": "https://www.troweprice.com/content/dam/public/enterprise/apple-touch-icon.png"
+    },
+    "og-venture-partners": {
+      "name": "O.G. Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/og-venture-partners.png",
+      "source_page": "https://www.og-vp.com/",
+      "source_url": "https://framerusercontent.com/images/a6s28MPBURP6jiTcij4JQy0UM0.png"
+    },
+    "m-ventures": {
+      "name": "M Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/m-ventures.png",
+      "source_page": "https://www.m-ventures.com/",
+      "source_url": "https://www.m-ventures.com/favicons/apple-touch-icon.png"
     }
   }
 }

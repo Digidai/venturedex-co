@@ -1748,5 +1748,60 @@
     "short_name": "12 Flags",
     "website": "https://www.12flags.com/",
     "description": "Early-stage consumer investment firm backing brands and technology businesses in large global markets."
+  },
+  "valor-atreides-ai-fund": {
+    "name": "Valor Atreides AI Fund",
+    "slug": "valor-atreides-ai-fund",
+    "short_name": "Valor Atreides AI Fund",
+    "website": "https://www.valorep.com/",
+    "description": "Joint AI investment fund managed by Valor Equity Partners and Atreides Management."
+  },
+  "northern-gritstone": {
+    "name": "Northern Gritstone",
+    "slug": "northern-gritstone",
+    "short_name": "Northern Gritstone",
+    "website": "https://www.northern-gritstone.com/",
+    "description": "UK investment company backing science and technology businesses rooted in the North of England."
+  },
+  "spero-ventures": {
+    "name": "Spero Ventures",
+    "slug": "spero-ventures",
+    "short_name": "Spero",
+    "website": "https://spero.vc/",
+    "description": "Early-stage venture firm investing in technology that supports wellbeing, sustainability, and learning.",
+    "aliases": [
+      "Spero Ventures and MassMutual Ventures"
+    ]
+  },
+  "massmutual-ventures": {
+    "name": "MassMutual Ventures",
+    "slug": "massmutual-ventures",
+    "short_name": "MMV",
+    "website": "https://massmutualventures.com/",
+    "description": "Venture capital firm backed by MassMutual investing in technology companies across North America, Europe, and Asia."
+  },
+  "t-rowe-price": {
+    "name": "T. Rowe Price",
+    "slug": "t-rowe-price",
+    "short_name": "T. Rowe Price",
+    "website": "https://www.troweprice.com/",
+    "description": "Global investment management firm that invests across public and private markets."
+  },
+  "og-venture-partners": {
+    "name": "O.G. Venture Partners",
+    "slug": "og-venture-partners",
+    "short_name": "O.G. Venture Partners",
+    "website": "https://www.og-vp.com/",
+    "description": "Multi-stage venture firm backed by Ofer Global and focused on fast-growing technology companies.",
+    "aliases": [
+      "O.G. Venture Partners and M Ventures"
+    ]
+  },
+  "m-ventures": {
+    "name": "M Ventures",
+    "slug": "m-ventures",
+    "short_name": "M Ventures",
+    "website": "https://www.m-ventures.com/",
+    "description": "Strategic corporate venture fund of Merck KGaA investing in biotechnology and technology."
   }
 }

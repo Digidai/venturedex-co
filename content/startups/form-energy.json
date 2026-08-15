@@ -1,0 +1,95 @@
+{
+  "slug": "form-energy",
+  "domain": "formenergy.com",
+  "url": "https://formenergy.com/",
+  "product_name": "Form Energy",
+  "summary": "Iron-air battery systems and grid modeling for multi-day energy storage.",
+  "editor_note": "Grid storage is designed for prolonged stress rather than another four-hour lithium window. The first commercial iron-air system stores energy for up to 100 hours using iron, water, and air, while Formware models multi-year hourly grid portfolios before deployment. A 550,000-square-foot factory makes the scaling bet tangible. The open test is whether manufacturing yield, installed cost, and field reliability preserve the modeled advantage at backlog scale.",
+  "editor_rating": 5,
+  "why_featured": "$750M G scales 100-hour batteries",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "energy storage,iron-air batteries,grid reliability,grid modeling,climate infrastructure",
+  "investors": "T. Rowe Price",
+  "links": {
+    "product": "https://formenergy.com/technology/battery-technology/",
+    "press": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/",
+    "careers": "https://formenergy.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$750M",
+      "stage": "Series G",
+      "lead_investor": "T. Rowe Price",
+      "date": "2026-08-12",
+      "source_url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/",
+      "source_name": "Form Energy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Form Energy official site",
+        "url": "https://formenergy.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_battery",
+        "label": "Form Energy battery technology page",
+        "url": "https://formenergy.com/technology/battery-technology/",
+        "type": "product"
+      },
+      {
+        "id": "official_formware",
+        "label": "Formware grid modeling software page",
+        "url": "https://formenergy.com/technology/grid-modeling-software/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Form Energy Series G announcement",
+        "url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Form Energy's first commercial iron-air battery system is designed to store and discharge energy for up to 100 hours using iron, water, and air.",
+        "source_ids": [
+          "official_site",
+          "official_battery"
+        ]
+      },
+      {
+        "claim": "Formware is presented as a technology-neutral resource-adequacy, investment, and operations model that optimizes multi-year hourly grid portfolios.",
+        "source_ids": [
+          "official_formware"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Utilities, grid planners, project developers, and large power buyers planning for multi-day reliability events.",
+      "category": "Multi-day grid energy storage",
+      "differentiation": "A 100-hour iron-air system is paired with grid-planning software and a dedicated high-volume manufacturing footprint.",
+      "why_now": "The Series G funds manufacturing scale and commercial deployments as power demand and prolonged grid stress increase."
+    },
+    "risks": [
+      {
+        "claim": "Factory yield, installed system cost, and field reliability may not sustain the modeled advantage as commercial deployments expand.",
+        "basis": "The official sources describe a 100-hour design and manufacturing scale-up, but not independent fleet-level reliability data."
+      }
+    ],
+    "breakout_exception": {
+      "reason": "The independent private company clears the Series G bar because a commercial 100-hour iron-air system, a fully described grid-modeling product, a 550,000-square-foot factory, and an official closed financing source make the product and scale inflection directly evaluable rather than relying on funding size alone.",
+      "source_ids": [
+        "official_site",
+        "official_battery",
+        "official_formware",
+        "funding_1"
+      ]
+    }
+  }
+}

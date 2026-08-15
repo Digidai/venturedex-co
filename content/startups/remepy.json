@@ -1,0 +1,91 @@
+{
+  "slug": "remepy",
+  "domain": "www.remepy.com",
+  "url": "https://www.remepy.com/",
+  "product_name": "Remepy",
+  "summary": "Hybrid drug platform pairing medicines with adaptive app-delivered treatment protocols.",
+  "editor_note": "Digital therapy is packaged with a medicine rather than sold as a standalone wellness app. Hybridopa pairs levodopa/carbidopa with DopApp protocols that adapt motor, speech, cognitive, and behavioral exercises to patient performance. The prescription, validation, and reimbursement path is deliberately pharmaceutical. The decisive open test is Phase 3: the combined treatment remains investigational and must reproduce its reported Phase IIa signal at larger scale.",
+  "editor_rating": 5,
+  "why_featured": "$36M A for drug-plus-software therapy",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "digital therapeutics,drug software,parkinsons,clinical trials,adaptive care",
+  "investors": "O.G. Venture Partners, M Ventures",
+  "links": {
+    "product": "https://www.remepy.com/hybrid-drugs",
+    "careers": "https://www.remepy.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$36M",
+      "stage": "Series A",
+      "lead_investor": "O.G. Venture Partners and M Ventures",
+      "date": "2026-08-12",
+      "source_url": "https://www.axios.com/newsletters/axios-pro-rata-71fbbf4b-e5f7-4b9a-9d0c-cac71a4187e1",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Remepy official site",
+        "url": "https://www.remepy.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_hybrid_drugs",
+        "label": "Remepy hybrid drugs product page",
+        "url": "https://www.remepy.com/hybrid-drugs",
+        "type": "product"
+      },
+      {
+        "id": "official_parkinsons",
+        "label": "Remepy Hybridopa product page",
+        "url": "https://www.remepy.com/parkinsons-disease",
+        "type": "product"
+      },
+      {
+        "id": "official_trial",
+        "label": "Remepy Phase IIa results announcement",
+        "url": "https://www.remepy.com/news/remepy-reports-strong-clinical-phase-iia-results-for-hybridopa-tm-a-first-in-class-hybrid-drug-for-parkinsons-disease",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Axios Series A report",
+        "url": "https://www.axios.com/newsletters/axios-pro-rata-71fbbf4b-e5f7-4b9a-9d0c-cac71a4187e1",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Hybridopa combines immediate-release levodopa/carbidopa with DopApp, an adaptive mobile protocol targeting motor, speech, cognitive, and behavioral function.",
+        "source_ids": [
+          "official_hybrid_drugs",
+          "official_parkinsons"
+        ]
+      },
+      {
+        "claim": "Remepy reports a completed Phase IIa study and labels Hybridopa investigational, with a larger Phase 3 program planned for the second half of 2026.",
+        "source_ids": [
+          "official_trial"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Patients, clinicians, and pharmaceutical partners evaluating regulated drug-software combinations.",
+      "category": "Prescription digital therapeutics and drug-software combinations",
+      "differentiation": "Medication and an adaptive digital protocol are developed, validated, prescribed, and reimbursed as one regulated treatment.",
+      "why_now": "A Series A and the move from a reported Phase IIa result toward Phase 3 create a falsifiable product milestone."
+    },
+    "risks": [
+      {
+        "claim": "The combined treatment may fail to reproduce its reported Phase IIa benefit or clear the required regulatory pathway in Phase 3.",
+        "basis": "Remepy's own announcement states that Hybridopa is investigational and not approved by the FDA or another regulator."
+      }
+    ]
+  }
+}

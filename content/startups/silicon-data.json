@@ -1,0 +1,93 @@
+{
+  "slug": "silicon-data",
+  "domain": "www.silicondata.com",
+  "url": "https://www.silicondata.com/",
+  "product_name": "Silicon Data",
+  "summary": "Daily price benchmarks and market intelligence for GPU and LLM compute.",
+  "editor_note": "Compute pricing is treated as a market-data problem rather than another cloud marketplace. Daily indices cover H100, H200, A100, B200, and MI300X rentals, while the portal adds history, forward curves, raw datasets, and an API. That creates a reference layer buyers can use across providers. The open test is whether reported coverage and methodology stay representative when thin transactions and provider terms move faster than the benchmark.",
+  "editor_rating": 5,
+  "why_featured": "$30.5M A for compute benchmarks",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "gpu compute,market data,pricing benchmarks,ai infrastructure,cloud economics",
+  "investors": "Valor Atreides AI Fund",
+  "links": {
+    "product": "https://www.silicondata.com/products/silicon-index",
+    "docs": "https://docs.silicondata.com/introduction",
+    "pricing": "https://www.silicondata.com/pricing",
+    "careers": "https://www.silicondata.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$30.5M",
+      "stage": "Series A",
+      "lead_investor": "Valor Atreides AI Fund",
+      "date": "2026-08-11",
+      "source_url": "https://www.silicondata.com/news-room/silicon-data-raises-30-5-million-series-a",
+      "source_name": "Silicon Data"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Silicon Data official site",
+        "url": "https://www.silicondata.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_index",
+        "label": "Silicon Index product page",
+        "url": "https://www.silicondata.com/products/silicon-index",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Silicon Data pricing and plan details",
+        "url": "https://www.silicondata.com/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Silicon Data documentation",
+        "url": "https://docs.silicondata.com/introduction",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Silicon Data Series A announcement",
+        "url": "https://www.silicondata.com/news-room/silicon-data-raises-30-5-million-series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Silicon Index publishes daily rental benchmarks for H100, H200, A100, B200, and MI300X GPUs alongside LLM token and RAM price indices.",
+        "source_ids": [
+          "official_index"
+        ]
+      },
+      {
+        "claim": "Paid plans expose historical pricing, forward curves, raw datasets, and API access rather than only a public spot-price page.",
+        "source_ids": [
+          "official_pricing",
+          "official_docs"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI infrastructure buyers, finance teams, and market participants comparing compute costs across providers.",
+      "category": "Compute market data and pricing benchmarks",
+      "differentiation": "Daily normalized indices, forward curves, datasets, and API delivery turn fragmented GPU quotes into a reference layer.",
+      "why_now": "AI compute is spreading across hyperscalers and specialist clouds while a fresh Series A funds broader benchmark coverage."
+    },
+    "risks": [
+      {
+        "claim": "Published coverage and index methodology may fail to track executable prices when transactions are thin or provider terms change quickly.",
+        "basis": "The official product describes broad daily coverage, but does not publish independent error rates against completed transactions."
+      }
+    ]
+  }
+}

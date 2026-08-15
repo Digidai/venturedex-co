@@ -1,0 +1,86 @@
+{
+  "slug": "agent-energy",
+  "domain": "www.agentenergy.com",
+  "url": "https://www.agentenergy.com/",
+  "product_name": "AGent Energy",
+  "summary": "Remote-management platform that turns backup generators into dispatchable grid capacity.",
+  "editor_note": "Idle backup generators become a coordinated grid resource rather than stranded insurance. AGent installs hardware and software at no upfront cost, monitors each generator, and dispatches the fleet during grid emergencies while the facility earns program revenue. A live platform login and dashboard make the operating loop inspectable. The open test is whether program economics, generator maintenance, and emissions constraints remain attractive at larger scale.",
+  "editor_rating": 4,
+  "why_featured": "$11M Seed for grid-ready backup power",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "grid reliability,distributed energy,backup generators,energy software,demand response",
+  "investors": "Spero Ventures, MassMutual Ventures",
+  "links": {
+    "product": "https://www.agentenergy.com/how-it-works",
+    "careers": "https://ats.rippling.com/aigent-energy/jobs"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$11M",
+      "stage": "Seed",
+      "lead_investor": "Spero Ventures and MassMutual Ventures",
+      "date": "2026-08-13",
+      "source_url": "https://www.axios.com/2026/08/13/agent-energy-seed-funding-grid-backup",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "AGent Energy official site",
+        "url": "https://www.agentenergy.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_workflow",
+        "label": "AGent Energy how-it-works page",
+        "url": "https://www.agentenergy.com/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "official_platform",
+        "label": "AGent Energy platform login",
+        "url": "https://platform.agentenergy.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Axios seed funding report",
+        "url": "https://www.axios.com/2026/08/13/agent-energy-seed-funding-grid-backup",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "AGent installs hardware and software at no upfront cost, monitors onsite generators, and remotely dispatches them during grid emergencies.",
+        "source_ids": [
+          "official_site",
+          "official_workflow"
+        ]
+      },
+      {
+        "claim": "Its public platform login and dashboard imagery expose continuous fleet visibility and real-time generator diagnostics rather than only a project brochure.",
+        "source_ids": [
+          "official_site",
+          "official_platform"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Commercial and industrial facility operators with installed backup generators.",
+      "category": "Distributed energy resource orchestration",
+      "differentiation": "A managed hardware-and-software layer converts idle backup generation into dispatchable grid capacity and facility revenue.",
+      "why_now": "Grid reliability pressure and an $11M seed round create a measurable expansion point for an already inspectable operating model."
+    },
+    "risks": [
+      {
+        "claim": "Unit economics may weaken if grid-program payments do not cover field hardware, maintenance, fuel, and emissions constraints at scale.",
+        "basis": "The official workflow promises no-cost installation and facility revenue, but does not disclose program-level economics."
+      }
+    ]
+  }
+}
