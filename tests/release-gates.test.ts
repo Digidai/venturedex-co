@@ -14,7 +14,7 @@ import {
   writeFileSync,
 } from "node:fs";
 import { tmpdir } from "node:os";
-import { basename, join } from "node:path";
+import { basename, dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
@@ -921,6 +921,124 @@ test("release lock preserves another owner and cleans up on exit or signal", () 
   }
 });
 
+test("ordinary validation isolates and cleans its seed on downstream failure or TERM", () => {
+  const root = mkdtempSync(join(tmpdir(), "vd-validate-seed-isolation-"));
+  const fixtureRepo = join(root, "repo");
+  const bin = join(root, "bin");
+  const tempRoot = join(root, "tmp");
+  const seedPathRecord = join(root, "seed-path");
+  const seed = join(fixtureRepo, "d1", "generated-seed.sql");
+  const draft = join(fixtureRepo, "content", "user-draft.json");
+
+  for (const directory of [
+    join(fixtureRepo, "scripts"),
+    join(fixtureRepo, "d1"),
+    join(fixtureRepo, "content"),
+    bin,
+    tempRoot,
+  ]) {
+    mkdirSync(directory, { recursive: true });
+  }
+  copyFileSync(manage, join(fixtureRepo, "scripts", "manage.sh"));
+  copyFileSync(
+    join(repoRoot, "scripts", "load-local-env.sh"),
+    join(fixtureRepo, "scripts", "load-local-env.sh")
+  );
+  writeFileSync(join(fixtureRepo, "scripts", "validate.sh"), "#!/bin/sh\nexit 0\n");
+  writeFileSync(
+    join(fixtureRepo, "scripts", "build-db.sh"),
+    `#!/bin/bash
+set -euo pipefail
+: "\${VENTUREDEX_SEED_OUTPUT:?}"
+printf '%s\n' "$VENTUREDEX_SEED_OUTPUT" > "$MOCK_SEED_PATH_RECORD"
+printf '%s\n' 'run-owned validation seed' > "$VENTUREDEX_SEED_OUTPUT"
+`
+  );
+  writeFileSync(
+    join(bin, "npm"),
+    `#!/bin/bash
+set -euo pipefail
+case "$*" in
+  "audit --audit-level=high") exit 0 ;;
+  "run test:newsletter")
+    case "\${MOCK_GATE_MODE:-pass}" in
+      fail) exit 73 ;;
+      term) kill -TERM "$PPID"; exit 0 ;;
+    esac
+    ;;
+  "run typecheck"|"run build") exit 0 ;;
+  *) printf 'unexpected npm command: %s\n' "$*" >&2; exit 91 ;;
+esac
+`
+  );
+  writeFileSync(
+    join(bin, "npx"),
+    "#!/bin/sh\n[ \"$*\" = \"astro sync\" ] || exit 92\n"
+  );
+  for (const executable of [
+    join(fixtureRepo, "scripts", "manage.sh"),
+    join(fixtureRepo, "scripts", "validate.sh"),
+    join(fixtureRepo, "scripts", "build-db.sh"),
+    join(bin, "npm"),
+    join(bin, "npx"),
+  ]) {
+    chmodSync(executable, 0o755);
+  }
+
+  writeFileSync(seed, "tracked seed baseline\n");
+  writeFileSync(draft, "tracked draft baseline\n");
+  execFileSync("git", ["init", "-q", fixtureRepo]);
+  execFileSync("git", ["-C", fixtureRepo, "config", "user.email", "tests@example.com"]);
+  execFileSync("git", ["-C", fixtureRepo, "config", "user.name", "Tests"]);
+  execFileSync("git", ["-C", fixtureRepo, "add", "."]);
+  execFileSync("git", ["-C", fixtureRepo, "commit", "-qm", "fixture"]);
+  writeFileSync(seed, "user-owned dirty seed\n");
+  writeFileSync(draft, "user-owned dirty draft\n");
+  const statusBefore = execFileSync(
+    "git",
+    ["-C", fixtureRepo, "status", "--porcelain=v1"],
+    { encoding: "utf8" }
+  );
+
+  try {
+    for (const [mode, expectedStatus] of [["fail", 73], ["term", 143]] as const) {
+      rmSync(seedPathRecord, { force: true });
+      const result = spawnSync(
+        "bash",
+        [join(fixtureRepo, "scripts", "manage.sh"), "validate"],
+        {
+          cwd: fixtureRepo,
+          env: {
+            ...process.env,
+            PATH: `${bin}:${process.env.PATH}`,
+            TMPDIR: tempRoot,
+            VENTUREDEX_LOCAL_ENV_LOADED: "1",
+            VENTUREDEX_SEED_OUTPUT: "",
+            MOCK_GATE_MODE: mode,
+            MOCK_SEED_PATH_RECORD: seedPathRecord,
+          },
+          encoding: "utf8",
+        }
+      );
+      assert.equal(result.status, expectedStatus, `${result.stdout}\n${result.stderr}`);
+      const runSeed = readFileSync(seedPathRecord, "utf8").trim();
+      assert.notEqual(runSeed, seed);
+      assert.equal(existsSync(runSeed), false);
+      assert.equal(existsSync(dirname(runSeed)), false);
+      assert.equal(readFileSync(seed, "utf8"), "user-owned dirty seed\n");
+      assert.equal(readFileSync(draft, "utf8"), "user-owned dirty draft\n");
+      assert.equal(
+        execFileSync("git", ["-C", fixtureRepo, "status", "--porcelain=v1"], {
+          encoding: "utf8",
+        }),
+        statusBefore
+      );
+    }
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
 test("dirty current-main source fails before remote lookup or the audited gate", () => {
   const root = mkdtempSync(join(tmpdir(), "vd-dirty-main-release-"));
   const fixtureRepo = join(root, "repo");
@@ -1174,6 +1292,20 @@ test("release workflow deploys only a successfully validated SHA", () => {
     validate,
     /npm run typecheck/,
     "the unified release gate must include Astro diagnostics"
+  );
+  assert.match(
+    validate,
+    /mktemp -d[\s\S]*VENTUREDEX_SEED_OUTPUT=.*generated-seed\.sql/,
+    "ordinary validation must generate its D1 seed in a run-owned temp directory"
+  );
+  const releasePreparation = manager.slice(
+    manager.indexOf("prepare_release_artifacts()"),
+    manager.indexOf("\nremote_sync_preflight()")
+  );
+  assert.match(
+    releasePreparation,
+    /VENTUREDEX_SEED_OUTPUT="\$REPO_ROOT\/d1\/generated-seed\.sql" cmd_validate/,
+    "release validation must explicitly generate the repository seed for locking"
   );
 
   const sync = manager.slice(

@@ -1243,18 +1243,50 @@ cmd_screenshot() {
   "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"
 }
 
-cmd_validate() {
-  (
-    cd "$REPO_ROOT"
-    npm audit --audit-level=high
-    ./scripts/validate.sh
-    ./scripts/build-db.sh
-    npm run test:newsletter
-    npx astro sync
-    npm run typecheck
-    npm run build
-  )
-}
+cmd_validate() (
+  local validation_seed_dir=""
+  local validation_seed_parent=""
+
+  cleanup_validation_seed() {
+    if [ -z "$validation_seed_dir" ]; then
+      return 0
+    fi
+
+    case "$validation_seed_dir" in
+      "$validation_seed_parent"/venturedex-validate-seed.*)
+        rm -rf -- "$validation_seed_dir"
+        ;;
+      *)
+        echo "WARNING: Refusing to clean unexpected validation seed path: $validation_seed_dir" >&2
+        return 1
+        ;;
+    esac
+  }
+
+  # Ordinary validation owns an isolated seed artifact so a successful build,
+  # a downstream gate failure, or a signal cannot overwrite a user's tracked
+  # d1/generated-seed.sql state. Release passes the repository seed explicitly.
+  if [ -z "${VENTUREDEX_SEED_OUTPUT:-}" ]; then
+    validation_seed_parent="${TMPDIR:-/tmp}"
+    validation_seed_parent="${validation_seed_parent%/}"
+    validation_seed_dir="$(mktemp -d "$validation_seed_parent/venturedex-validate-seed.XXXXXX")"
+    VENTUREDEX_SEED_OUTPUT="$validation_seed_dir/generated-seed.sql"
+    trap cleanup_validation_seed EXIT
+    trap 'exit 129' HUP
+    trap 'exit 130' INT
+    trap 'exit 143' TERM
+  fi
+  export VENTUREDEX_SEED_OUTPUT
+
+  cd "$REPO_ROOT"
+  npm audit --audit-level=high
+  ./scripts/validate.sh
+  ./scripts/build-db.sh
+  npm run test:newsletter
+  npx astro sync
+  npm run typecheck
+  npm run build
+)
 
 assert_release_expected_sha_matches_head() {
   local release_sha="${VENTUREDEX_RELEASE_SHA:-}"
@@ -1525,7 +1557,7 @@ prepare_release_artifacts() {
   local current_sha
 
   if [ -z "$validated_sha" ]; then
-    cmd_validate
+    VENTUREDEX_SEED_OUTPUT="$REPO_ROOT/d1/generated-seed.sql" cmd_validate
     return 0
   fi
 
@@ -1543,6 +1575,7 @@ prepare_release_artifacts() {
   echo "Using successful Validate result for exact SHA $current_sha."
   (
     cd "$REPO_ROOT"
+    export VENTUREDEX_SEED_OUTPUT="$REPO_ROOT/d1/generated-seed.sql"
     ./scripts/build-db.sh
     assert_generated_seed_fresh
     npx astro sync

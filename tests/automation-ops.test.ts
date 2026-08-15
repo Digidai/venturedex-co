@@ -24,6 +24,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const bootstrapAutomation = path.join(repoRoot, "scripts", "bootstrap-automation.sh");
 const realPython3 = execFileSync("sh", ["-c", "command -v python3"], {
   encoding: "utf8",
 }).trim();
@@ -69,6 +70,182 @@ function captureChild(child: ReturnType<typeof spawn>): Promise<{
     });
   });
 }
+
+function createBootstrapFixture(): {
+  root: string;
+  bin: string;
+  lock: string;
+  npmStarted: string;
+  npmRelease: string;
+  npmLog: string;
+  githubMarker: string;
+} {
+  const root = tempDir("venturedex-bootstrap-test-");
+  const bin = path.join(root, "bin");
+  const fakePython = path.join(root, "fake-python");
+  mkdirSync(path.join(root, "scripts"), { recursive: true });
+  mkdirSync(bin);
+  mkdirSync(fakePython);
+  cpSync(bootstrapAutomation, path.join(root, "scripts", "bootstrap-automation.sh"));
+  cpSync(path.join(repoRoot, "scripts", "load-local-env.sh"), path.join(root, "scripts", "load-local-env.sh"));
+  writeExecutable(
+    path.join(root, "scripts", "check-github-actions.sh"),
+    "#!/bin/sh\n: > \"$MOCK_GITHUB_MARKER\"\n",
+  );
+  writeFileSync(
+    path.join(root, ".env"),
+    "CLOUDFLARE_API_TOKEN=test-token\nCLOUDFLARE_ACCOUNT_ID=test-account\n",
+  );
+  writeFileSync(
+    path.join(fakePython, "requests.py"),
+    `class Response:
+    def __init__(self, status_code=200):
+        self.status_code = status_code
+    def raise_for_status(self):
+        if self.status_code >= 400:
+            raise RuntimeError(self.status_code)
+    def json(self):
+        return {"success": True, "result": {"status": "active"}}
+
+def get(*args, **kwargs):
+    return Response(200)
+`,
+  );
+  writeExecutable(
+    path.join(bin, "npm"),
+    `#!/bin/bash
+set -euo pipefail
+printf '%s\n' "$*" >> "$MOCK_NPM_LOG"
+: > "$MOCK_NPM_STARTED"
+case "\${MOCK_NPM_MODE:-success}" in
+  hold)
+    while [ ! -e "$MOCK_NPM_RELEASE" ]; do sleep 0.05; done
+    ;;
+  timeout)
+    while true; do sleep 0.1; done
+    ;;
+esac
+mkdir -p "$MOCK_REPO_ROOT/node_modules/.bin"
+printf '#!/bin/sh\nexit 0\n' > "$MOCK_REPO_ROOT/node_modules/.bin/astro"
+chmod +x "$MOCK_REPO_ROOT/node_modules/.bin/astro"
+`,
+  );
+  execFileSync("git", ["init", "-q", root]);
+  return {
+    root,
+    bin,
+    lock: path.join(root, ".git", "venturedex-bootstrap.lock"),
+    npmStarted: path.join(root, "npm-started"),
+    npmRelease: path.join(root, "npm-release"),
+    npmLog: path.join(root, "npm.log"),
+    githubMarker: path.join(root, "github-called"),
+  };
+}
+
+function bootstrapFixtureEnv(
+  fixture: ReturnType<typeof createBootstrapFixture>,
+  mode: "success" | "hold" | "timeout",
+  timeoutSeconds = "20",
+): NodeJS.ProcessEnv {
+  return {
+    ...process.env,
+    PATH: `${fixture.bin}:${process.env.PATH}`,
+    PYTHONPATH: `${path.join(fixture.root, "fake-python")}${path.delimiter}${process.env.PYTHONPATH ?? ""}`,
+    VENTUREDEX_LOCAL_ENV_LOADED: "",
+    CLOUDFLARE_API_TOKEN: "",
+    CLOUDFLARE_ACCOUNT_ID: "",
+    VENTUREDEX_BOOTSTRAP_NPM_CI_TIMEOUT_SECONDS: timeoutSeconds,
+    MOCK_NPM_MODE: mode,
+    MOCK_NPM_STARTED: fixture.npmStarted,
+    MOCK_NPM_RELEASE: fixture.npmRelease,
+    MOCK_NPM_LOG: fixture.npmLog,
+    MOCK_REPO_ROOT: fixture.root,
+    MOCK_GITHUB_MARKER: fixture.githubMarker,
+  };
+}
+
+test("bootstrap serializes npm recovery per worktree with owner PID diagnostics", async () => {
+  const fixture = createBootstrapFixture();
+  const env = bootstrapFixtureEnv(fixture, "hold");
+  const child = spawn("bash", [path.join(fixture.root, "scripts", "bootstrap-automation.sh")], {
+    cwd: fixture.root,
+    env,
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+  const outcomePromise = captureChild(child);
+
+  try {
+    await waitForPath(fixture.npmStarted, 15_000);
+    const blocked = spawnSync(
+      "bash",
+      [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+      { cwd: fixture.root, env, encoding: "utf8" },
+    );
+    assert.notEqual(blocked.status, 0);
+    assert.match(`${blocked.stdout}\n${blocked.stderr}`, /another automation bootstrap owns.*pid/i);
+    assert.equal(readFileSync(fixture.npmLog, "utf8").trim().split("\n").length, 1);
+
+    writeFileSync(fixture.npmRelease, "release\n");
+    const outcome = await outcomePromise;
+    assert.equal(outcome.code, 0, `${outcome.stdout}\n${outcome.stderr}`);
+    assert.equal(existsSync(fixture.lock), false);
+    assert.equal(existsSync(fixture.githubMarker), true);
+  } finally {
+    writeFileSync(fixture.npmRelease, "release\n");
+    if (child.exitCode === null && child.signalCode === null) {
+      child.kill("SIGTERM");
+      await outcomePromise;
+    }
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap recovers a dead-owner lock and completes", () => {
+  const fixture = createBootstrapFixture();
+  mkdirSync(fixture.lock);
+  writeFileSync(path.join(fixture.lock, "pid"), "2147483647\n");
+  writeFileSync(path.join(fixture.lock, "context"), "stale fixture\n");
+  try {
+    const result = spawnSync(
+      "bash",
+      [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+      {
+        cwd: fixture.root,
+        env: bootstrapFixtureEnv(fixture, "success"),
+        encoding: "utf8",
+      },
+    );
+    assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+    assert.match(result.stdout, /recovering stale owner pid 2147483647/i);
+    assert.equal(existsSync(fixture.lock), false);
+    assert.equal(existsSync(fixture.githubMarker), true);
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap times out npm ci and fails closed before GitHub checks", () => {
+  const fixture = createBootstrapFixture();
+  try {
+    const result = spawnSync(
+      "bash",
+      [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
+      {
+        cwd: fixture.root,
+        env: bootstrapFixtureEnv(fixture, "timeout", "1"),
+        encoding: "utf8",
+        timeout: 15_000,
+      },
+    );
+    assert.equal(result.status, 124, `${result.stdout}\n${result.stderr}`);
+    assert.match(`${result.stdout}\n${result.stderr}`, /npm ci timed out after 1 seconds/i);
+    assert.match(`${result.stdout}\n${result.stderr}`, /refusing to continue/i);
+    assert.equal(existsSync(fixture.githubMarker), false);
+    assert.equal(existsSync(fixture.lock), false);
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
 
 function createWeeklyFixture(openPullRequests: unknown[]): string {
   const root = tempDir("venturedex-weekly-test-");
@@ -4693,7 +4870,7 @@ test("GSC history lock is released on TERM without appending or clicking", async
   const outcomePromise = captureChild(child);
 
   try {
-    await waitForPath(heldMarker);
+    await waitForPath(heldMarker, 15_000);
     assert.equal(existsSync(lockPath), true);
     child.kill("SIGTERM");
     writeFileSync(releaseMarker, "release\n");

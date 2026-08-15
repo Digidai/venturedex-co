@@ -5,9 +5,160 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 AUTOMATION_ID="${1:-venturedex-daily-curator}"
+BOOTSTRAP_LOCK_DIR=""
 
 export REPO_ROOT
 export VENTUREDEX_AUTOMATION_ID="$AUTOMATION_ID"
+
+bootstrap_lock_cleanup() {
+  local recorded_pid=""
+
+  if [ -z "$BOOTSTRAP_LOCK_DIR" ]; then
+    return 0
+  fi
+  if [ -f "$BOOTSTRAP_LOCK_DIR/pid" ]; then
+    recorded_pid="$(sed -n '1p' "$BOOTSTRAP_LOCK_DIR/pid")"
+  fi
+  if [ "$recorded_pid" != "$$" ]; then
+    echo "WARNING: Bootstrap lock ownership changed; preserving $BOOTSTRAP_LOCK_DIR." >&2
+    BOOTSTRAP_LOCK_DIR=""
+    return 0
+  fi
+
+  unlink "$BOOTSTRAP_LOCK_DIR/context" 2>/dev/null || true
+  unlink "$BOOTSTRAP_LOCK_DIR/pid" 2>/dev/null || true
+  if ! rmdir "$BOOTSTRAP_LOCK_DIR" 2>/dev/null; then
+    echo "WARNING: Bootstrap lock directory could not be removed cleanly: $BOOTSTRAP_LOCK_DIR" >&2
+  fi
+  BOOTSTRAP_LOCK_DIR=""
+}
+
+acquire_bootstrap_lock() {
+  local git_dir lock_owner="" lock_command=""
+
+  if ! git_dir="$(git -C "$REPO_ROOT" rev-parse --absolute-git-dir 2>/dev/null)"; then
+    echo "ERROR: Could not resolve this worktree's Git directory for the bootstrap lock." >&2
+    return 1
+  fi
+  BOOTSTRAP_LOCK_DIR="$git_dir/venturedex-bootstrap.lock"
+
+  if ! mkdir "$BOOTSTRAP_LOCK_DIR" 2>/dev/null; then
+    if [ -f "$BOOTSTRAP_LOCK_DIR/pid" ]; then
+      lock_owner="$(sed -n '1p' "$BOOTSTRAP_LOCK_DIR/pid")"
+    fi
+
+    if [[ "$lock_owner" =~ ^[1-9][0-9]*$ ]] && kill -0 "$lock_owner" 2>/dev/null; then
+      lock_command="$(ps -p "$lock_owner" -o command= 2>/dev/null || true)"
+      echo "ERROR: Another automation bootstrap owns this worktree lock: $BOOTSTRAP_LOCK_DIR (pid $lock_owner)." >&2
+      if [ -n "$lock_command" ]; then
+        echo "owner_command: $lock_command" >&2
+      fi
+      BOOTSTRAP_LOCK_DIR=""
+      return 1
+    fi
+
+    if ! [[ "$lock_owner" =~ ^[1-9][0-9]*$ ]]; then
+      echo "ERROR: Bootstrap lock has no valid owner PID; inspect before removing: $BOOTSTRAP_LOCK_DIR" >&2
+      BOOTSTRAP_LOCK_DIR=""
+      return 1
+    fi
+
+    echo "bootstrap_lock: recovering stale owner pid $lock_owner"
+    unlink "$BOOTSTRAP_LOCK_DIR/context" 2>/dev/null || true
+    unlink "$BOOTSTRAP_LOCK_DIR/pid" 2>/dev/null || true
+    if ! rmdir "$BOOTSTRAP_LOCK_DIR" 2>/dev/null; then
+      echo "ERROR: Stale bootstrap lock contains unexpected state; refusing to remove it: $BOOTSTRAP_LOCK_DIR" >&2
+      BOOTSTRAP_LOCK_DIR=""
+      return 1
+    fi
+    if ! mkdir "$BOOTSTRAP_LOCK_DIR" 2>/dev/null; then
+      echo "ERROR: Bootstrap lock was acquired by another process during stale-lock recovery: $BOOTSTRAP_LOCK_DIR" >&2
+      BOOTSTRAP_LOCK_DIR=""
+      return 1
+    fi
+  fi
+
+  printf '%s\n' "$$" > "$BOOTSTRAP_LOCK_DIR/pid"
+  {
+    printf 'repo=%s\n' "$REPO_ROOT"
+    printf 'automation_id=%s\n' "$AUTOMATION_ID"
+    printf 'started_at=%s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+  } > "$BOOTSTRAP_LOCK_DIR/context"
+  trap bootstrap_lock_cleanup EXIT
+  trap 'exit 129' HUP
+  trap 'exit 130' INT
+  trap 'exit 143' TERM
+}
+
+run_npm_ci_with_timeout() {
+  local timeout_seconds="${VENTUREDEX_BOOTSTRAP_NPM_CI_TIMEOUT_SECONDS:-900}"
+
+  if ! [[ "$timeout_seconds" =~ ^[1-9][0-9]*$ ]]; then
+    echo "ERROR: VENTUREDEX_BOOTSTRAP_NPM_CI_TIMEOUT_SECONDS must be a positive integer." >&2
+    return 2
+  fi
+
+  echo "npm_ci_timeout_seconds: $timeout_seconds"
+  python3 - "$timeout_seconds" "$REPO_ROOT" <<'PY'
+import os
+import signal
+import subprocess
+import sys
+
+timeout_seconds = int(sys.argv[1])
+repo_root = sys.argv[2]
+process = None
+
+
+def terminate_group(sig: int, grace_seconds: int = 5) -> None:
+    if process is None or process.poll() is not None:
+        return
+    try:
+        os.killpg(process.pid, sig)
+    except ProcessLookupError:
+        return
+    try:
+        process.wait(timeout=grace_seconds)
+    except subprocess.TimeoutExpired:
+        os.killpg(process.pid, signal.SIGKILL)
+        process.wait()
+
+
+def forward_signal(sig: int, _frame: object) -> None:
+    terminate_group(sig)
+    raise SystemExit(128 + sig)
+
+
+signal.signal(signal.SIGHUP, forward_signal)
+signal.signal(signal.SIGINT, forward_signal)
+signal.signal(signal.SIGTERM, forward_signal)
+
+try:
+    process = subprocess.Popen(
+        ["npm", "ci"],
+        cwd=repo_root,
+        env=os.environ.copy(),
+        start_new_session=True,
+    )
+except OSError as exc:
+    print(f"ERROR: Could not start npm ci: {exc}", file=sys.stderr)
+    raise SystemExit(127)
+
+try:
+    status = process.wait(timeout=timeout_seconds)
+except subprocess.TimeoutExpired:
+    print(
+        f"ERROR: npm ci timed out after {timeout_seconds} seconds; terminating its process group.",
+        file=sys.stderr,
+    )
+    terminate_group(signal.SIGTERM)
+    raise SystemExit(124)
+
+raise SystemExit(status)
+PY
+}
+
+acquire_bootstrap_lock
 
 # shellcheck disable=SC1091
 . "$SCRIPT_DIR/load-local-env.sh"
@@ -65,7 +216,13 @@ PY
 
 if [ ! -x "$REPO_ROOT/node_modules/.bin/astro" ]; then
   echo "node_modules missing or incomplete; running npm ci"
-  (cd "$REPO_ROOT" && npm ci)
+  if run_npm_ci_with_timeout; then
+    :
+  else
+    npm_ci_status=$?
+    echo "ERROR: npm ci failed during automation bootstrap (exit $npm_ci_status); refusing to continue." >&2
+    exit "$npm_ci_status"
+  fi
 else
   echo "node_modules ready"
 fi
