@@ -1803,5 +1803,33 @@
     "short_name": "M Ventures",
     "website": "https://www.m-ventures.com/",
     "description": "Strategic corporate venture fund of Merck KGaA investing in biotechnology and technology."
+  },
+  "global-paytech-ventures": {
+    "name": "Global PayTech Ventures",
+    "slug": "global-paytech-ventures",
+    "short_name": "GPT Ventures",
+    "website": "https://gptventures.com/",
+    "description": "Venture firm focused on payments technology and founded by operators with global payments experience."
+  },
+  "lewis-clark-partners": {
+    "name": "Lewis & Clark Partners",
+    "slug": "lewis-clark-partners",
+    "short_name": "Lewis & Clark",
+    "website": "https://lewisandclarkpartners.com/",
+    "description": "Growth-capital firm investing in food, agriculture, and related applied technology."
+  },
+  "scout-ventures": {
+    "name": "Scout Ventures",
+    "slug": "scout-ventures",
+    "short_name": "Scout VC",
+    "website": "https://www.scout.vc/",
+    "description": "Seed-stage venture firm investing in dual-use national-security and critical technologies."
+  },
+  "radius-capital": {
+    "name": "Radius Capital",
+    "slug": "radius-capital",
+    "short_name": "Radius Capital",
+    "website": "https://www.radius.capital/",
+    "description": "Early-stage venture firm investing in aerospace, robotics, mobility, and related physical-AI systems."
   }
 }

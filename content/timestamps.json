@@ -1147,5 +1147,17 @@
   "remepy": {
     "published_at": "2026-08-14 06:32:27",
     "first_seen_at": "2026-08-14 06:32:27"
+  },
+  "yuno": {
+    "published_at": "2026-08-15 05:53:44",
+    "first_seen_at": "2026-08-15 05:53:44"
+  },
+  "ranchbot": {
+    "published_at": "2026-08-15 05:53:44",
+    "first_seen_at": "2026-08-15 05:53:44"
+  },
+  "worldscape": {
+    "published_at": "2026-08-15 05:53:44",
+    "first_seen_at": "2026-08-15 05:53:44"
   }
 }

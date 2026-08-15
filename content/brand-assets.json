@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-14",
+  "verified_at": "2026-08-15",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2023,6 +2023,27 @@
       "local_path": "/logos/companies/remepy.png",
       "source_page": "https://www.remepy.com/",
       "source_url": "https://cdn.prod.website-files.com/640896ce6d94fe8ab42f7fca/6613a68d314a5278735fcec4_256x256.png"
+    },
+    "yuno": {
+      "name": "Yuno",
+      "shape": "icon",
+      "local_path": "/logos/companies/yuno.png",
+      "source_page": "https://www.y.uno/en",
+      "source_url": "https://www.y.uno/apple-icon.png"
+    },
+    "ranchbot": {
+      "name": "Ranchbot",
+      "shape": "icon",
+      "local_path": "/logos/companies/ranchbot.png",
+      "source_page": "https://ranch-bot.com/",
+      "source_url": "https://i0.wp.com/ranch-bot.com/wp-content/uploads/2024/06/cropped-Favicon.png?fit=192%2C192&ssl=1"
+    },
+    "worldscape": {
+      "name": "Worldscape",
+      "shape": "icon",
+      "local_path": "/logos/companies/worldscape.svg",
+      "source_page": "https://worldscape.ai/",
+      "source_url": "https://worldscape.ai/dist/img/meta/logo-mark.svg"
     }
   },
   "investors": {
@@ -3723,6 +3744,37 @@
       "local_path": "/logos/investors/m-ventures.png",
       "source_page": "https://www.m-ventures.com/",
       "source_url": "https://www.m-ventures.com/favicons/apple-touch-icon.png"
+    },
+    "global-paytech-ventures": {
+      "name": "Global PayTech Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/global-paytech-ventures.svg",
+      "source_page": "https://gptventures.com/",
+      "source_url": "https://gptventures.com/wp-content/uploads/2021/05/Global-PayTech-Logo-Final-For-Black-Background.svg",
+      "tile_background": "dark"
+    },
+    "lewis-clark-partners": {
+      "name": "Lewis & Clark Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/lewis-clark-partners.webp",
+      "source_page": "https://lewisandclarkpartners.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/6478e5ef3e8dd46a94cba5af/9fb4ee44-1e81-43b0-a8bd-e0df621b9a40/LACP+Logo-+WHITE+High+Res.png?format=1500w",
+      "tile_background": "dark"
+    },
+    "scout-ventures": {
+      "name": "Scout Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/scout-ventures.png",
+      "source_page": "https://www.scout.vc/",
+      "source_url": "https://cdn.prod.website-files.com/610a3d8b918aa51db91b71c6/64d6b087b50504cc81d6adf8_Scout-Grey.png"
+    },
+    "radius-capital": {
+      "name": "Radius Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/radius-capital.png",
+      "source_page": "https://www.radius.capital/",
+      "source_url": "https://static.wixstatic.com/media/752c30_6b4e62c5e752478c9a559c24f1f18391~mv2.png",
+      "tile_background": "dark"
     }
   }
 }

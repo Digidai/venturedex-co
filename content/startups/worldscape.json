@@ -1,0 +1,94 @@
+{
+  "slug": "worldscape",
+  "domain": "worldscape.ai",
+  "url": "https://worldscape.ai/",
+  "product_name": "Worldscape",
+  "summary": "Live-data, agentic-simulation, and digital-twin platform for complex operations.",
+  "editor_note": "Planning moves from disconnected models into one environment where data, simulations, and agents can be evaluated together. Worldscape exposes an SDK preview, API documentation, marketplace, and four logistics, data-center, telecom, and mission-planning workflows. That gives the decision-fabric pitch a product surface. The open test is whether customers can build and validate reusable simulations quickly enough for the platform to become infrastructure rather than bespoke mission engineering.",
+  "editor_rating": 4,
+  "why_featured": "$10M Seed for mission engineering",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "simulation,digital twins,decision intelligence,agentic ai,mission engineering",
+  "investors": "Scout Ventures, Radius Capital",
+  "links": {
+    "product": "https://worldscape.ai/platform",
+    "careers": "https://worldscape.ai/company/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Seed",
+      "lead_investor": "Scout Ventures",
+      "date": "2026-08-14",
+      "source_url": "https://pulse2.com/worldscape-raises-10-million-seed-extension-to-advance-ai-native-mission-engineering/",
+      "source_name": "Pulse 2.0"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Worldscape official site",
+        "url": "https://worldscape.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_platform",
+        "label": "Worldscape platform overview",
+        "url": "https://worldscape.ai/platform",
+        "type": "product"
+      },
+      {
+        "id": "official_developers",
+        "label": "Worldscape developer and SDK overview",
+        "url": "https://worldscape.ai/developers",
+        "type": "product"
+      },
+      {
+        "id": "official_quickstart",
+        "label": "Worldscape developer quick start",
+        "url": "https://worldscape.ai/developers/quick-start",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Pulse 2.0 seed-extension report",
+        "url": "https://pulse2.com/worldscape-raises-10-million-seed-extension-to-advance-ai-native-mission-engineering/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Worldscape publicly exposes a platform, SDK preview, developer quick start, documentation, marketplace, pricing, and security surfaces for building applications on its data fabric.",
+        "source_ids": [
+          "official_site",
+          "official_platform",
+          "official_developers",
+          "official_quickstart"
+        ]
+      },
+      {
+        "claim": "The site describes concrete workflows spanning supplier and schedule visibility, data-center digital twins, telecom disruption planning, and mission-course simulation.",
+        "source_ids": [
+          "official_site",
+          "official_platform"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Government and enterprise teams planning complex, data-intensive operations.",
+      "category": "Simulation and decision-intelligence infrastructure",
+      "differentiation": "A single environment joins distributed live data, digital engineering, large-scale simulation, and agentic decision workflows with a developer layer.",
+      "why_now": "The $10M seed extension accompanies a visible SDK and marketplace push beyond project-specific mission engineering."
+    },
+    "risks": [
+      {
+        "claim": "The platform may remain dependent on high-touch mission engineering if customers cannot independently build, validate, and reuse simulations through the SDK.",
+        "basis": "The official site exposes developer surfaces and use cases, but does not publish time-to-production or independent simulation-accuracy benchmarks."
+      }
+    ]
+  }
+}

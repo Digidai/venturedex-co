@@ -1,0 +1,93 @@
+{
+  "slug": "yuno",
+  "domain": "www.y.uno",
+  "url": "https://www.y.uno/en",
+  "product_name": "Yuno",
+  "summary": "One API for global payment methods, routing, fraud controls, and reconciliation.",
+  "editor_note": "Cross-border payments become one operating layer rather than a patchwork of local integrations. Yuno connects payment methods and processors behind a single API, then adds smart routing, retries, risk rules, reconciliation, and a dashboard demo teams can inspect. Its Payments Concierge also brings recovery workflows into Slack and WhatsApp. The open test is whether that breadth produces better authorization and operating cost after merchants account for another platform in the payment path.",
+  "editor_rating": 4,
+  "why_featured": "$45M B for payment orchestration",
+  "product_type": "Fintech",
+  "region": "Latin America",
+  "tags": "payment orchestration,payment routing,cross-border payments,fraud prevention,reconciliation",
+  "investors": "Global PayTech Ventures",
+  "links": {
+    "product": "https://www.y.uno/en/product/smart-routing",
+    "careers": "https://www.y.uno/en/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$45M",
+      "stage": "Series B",
+      "lead_investor": "Global PayTech Ventures",
+      "date": "2026-08-12",
+      "source_url": "https://www.pymnts.com/news/b2b-payments/2026/yuno-raises-45-million-to-drive-global-payments-push/",
+      "source_name": "PYMNTS"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Yuno official site",
+        "url": "https://www.y.uno/en",
+        "type": "official"
+      },
+      {
+        "id": "official_routing",
+        "label": "Yuno smart routing product page",
+        "url": "https://www.y.uno/en/product/smart-routing",
+        "type": "product"
+      },
+      {
+        "id": "official_demo",
+        "label": "Yuno dashboard demo",
+        "url": "https://dashboard-demo.y.uno/",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Yuno developer documentation",
+        "url": "https://docs.y.uno/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "PYMNTS Series B report",
+        "url": "https://www.pymnts.com/news/b2b-payments/2026/yuno-raises-45-million-to-drive-global-payments-push/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Yuno exposes more than 1,000 payment methods and hundreds of processor integrations through a single API, with public integration listings and developer documentation.",
+        "source_ids": [
+          "official_site",
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The product surface combines smart routing and retries with risk rules, subscriptions, reconciliation, analytics, and a public dashboard demo rather than presenting only a payment gateway landing page.",
+        "source_ids": [
+          "official_site",
+          "official_routing",
+          "official_demo"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise merchants, banks, and digital wallets operating across multiple countries and processors.",
+      "category": "Payment orchestration infrastructure",
+      "differentiation": "One API coordinates local payment access, routing, recovery, fraud controls, and back-office payment operations across a global processor network.",
+      "why_now": "The $45M Series B arrives as Yuno extends an already inspectable global platform into in-person and agentic payment workflows."
+    },
+    "risks": [
+      {
+        "claim": "Adding an orchestration layer may not improve net authorization or operating cost for merchants whose processor mix is already optimized.",
+        "basis": "The official product explains routing and integration breadth, but publishes no independently comparable merchant-level lift after platform fees and migration costs."
+      }
+    ]
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "ranchbot",
+  "domain": "ranch-bot.com",
+  "url": "https://ranch-bot.com/",
+  "product_name": "Ranchbot",
+  "summary": "Satellite-connected monitoring and control system for remote ranch water infrastructure.",
+  "editor_note": "A daily truck roll to a distant tank becomes an alert on a phone. Ranchbot pairs satellite-connected field hardware with an app for monitoring tanks, troughs, rainfall, flow, pressure, and pumps across large properties. The public catalog, platform login, and 12,000-customer footprint make the system tangible rather than aspirational. The open test is whether its broader ranch operating-system ambition can preserve the simple payback and reliability of the original water-monitoring wedge.",
+  "editor_rating": 4,
+  "why_featured": "$15M B for remote ranch operations",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "agriculture,remote monitoring,satellite connectivity,water management,industrial iot",
+  "investors": "Lewis & Clark Partners",
+  "links": {
+    "product": "https://ranch-bot.com/products/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series B",
+      "lead_investor": "Lewis & Clark Partners",
+      "date": "2026-08-10",
+      "source_url": "https://www.citybiz.co/article/886522/ranchbot-raises-15-million-series-b-to-accelerate-u-s-and-global-growth/",
+      "source_name": "citybiz"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Ranchbot official site",
+        "url": "https://ranch-bot.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_products",
+        "label": "Ranchbot product catalog",
+        "url": "https://ranch-bot.com/products/",
+        "type": "product"
+      },
+      {
+        "id": "official_pump",
+        "label": "Ranchbot pump control page",
+        "url": "https://ranch-bot.com/pump-control/",
+        "type": "product"
+      },
+      {
+        "id": "official_app",
+        "label": "Ranchbot platform login",
+        "url": "https://app.ranch-bot.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "citybiz Series B report",
+        "url": "https://www.citybiz.co/article/886522/ranchbot-raises-15-million-series-b-to-accelerate-u-s-and-global-growth/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Ranchbot sells distinct field devices for tank and trough levels, rainfall, flow and pressure, weather, and remote pump control, with public installation and support material.",
+        "source_ids": [
+          "official_site",
+          "official_products",
+          "official_pump"
+        ]
+      },
+      {
+        "claim": "Its public platform entry and product workflows show remote readings, alerts, and control tied to deployed hardware rather than a generic farm analytics promise.",
+        "source_ids": [
+          "official_site",
+          "official_app"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Livestock producers and managers of geographically dispersed ranch infrastructure.",
+      "category": "Agricultural remote monitoring and control",
+      "differentiation": "Satellite-connected field devices turn remote water and ranch assets into observable and controllable infrastructure without relying on local cellular coverage.",
+      "why_now": "The $15M Series B funds a move from the proven water-monitoring wedge toward a broader ranch asset operating layer."
+    },
+    "risks": [
+      {
+        "claim": "Expansion into a broader ranch platform may increase hardware, support, and integration complexity faster than recurring software value grows.",
+        "basis": "The official catalog shows multiple specialized devices, while the funding report frames the next phase as a wider operating system for ranch assets."
+      }
+    ]
+  }
+}
