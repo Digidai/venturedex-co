@@ -589,6 +589,24 @@ case "$1" in
       echo "CDP connected: yes"
     fi
     ;;
+  daemon)
+    case "$2" in
+      status)
+        if [ "$MOCK_DAEMON_MODE" = "unowned_disconnected" ]; then
+          echo "Daemon running: yes"
+          echo "CDP connected:  no"
+        else
+          echo "Daemon not running"
+        fi
+        ;;
+      stop|shutdown)
+        echo "mock daemon stop invoked"
+        ;;
+      *)
+        echo "mock daemon launch invoked"
+        ;;
+    esac
+    ;;
   open)
     if [ "$MOCK_OPEN_MODE" = "exit_failure" ]; then
       echo "mock open failed" >&2
@@ -3921,8 +3939,6 @@ test("GSC CDP connection failure persists a bounded browser blocker for every un
           MOCK_CDP_MODE: "disconnected",
           COMET_CDP_PORT: "1",
           COMET_START_WAIT_SECONDS: "0",
-          BB_BROWSER_CONNECT_MAX_ATTEMPTS: "1",
-          BB_BROWSER_CONNECT_RETRY_SLEEP: "0",
         },
         encoding: "utf8",
       },
@@ -3933,7 +3949,7 @@ test("GSC CDP connection failure persists a bounded browser blocker for every un
     for (const target of targets) {
       assert.match(
         ledger,
-        new RegExp(`\\tretry_pending\\t${target}\\tgsc_browser_session_blocker:`),
+        new RegExp(`\\tretry_pending\\t${target}\\tgsc_browser_cdp_blocker:`),
       );
     }
     const browserLog = readFileSync(mock.log, "utf8");
@@ -3941,6 +3957,78 @@ test("GSC CDP connection failure persists a bounded browser blocker for every un
     assert.doesNotMatch(browserLog, /^eval /m);
     assert.equal(gscClickCount(mock), 0);
     assert.equal(readdirSync(artifactDir).length, 2);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test("GSC never stops or replaces an unowned daemon on a reachable shared CDP endpoint", () => {
+  const root = createGscFixture();
+  const mock = createGscBrowserMock(root);
+  const history = path.join(root, "history.tsv");
+  const artifactDir = path.join(root, "artifacts");
+  const bin = path.join(root, "bin");
+  const target = "https://venturedex.co/startups/alpha";
+  mkdirSync(bin);
+  writeExecutable(path.join(bin, "curl"), "#!/bin/sh\nexit 0\n");
+  writeFileSync(history, historyHeader);
+
+  try {
+    const result = spawnSync(
+      "bash",
+      [
+        path.join(root, "scripts", "submit-gsc-direct.sh"),
+        "--url",
+        target,
+        "--expect-url",
+        target,
+        "--skip-live-check",
+      ],
+      {
+        cwd: root,
+        env: {
+          ...process.env,
+          PATH: `${bin}:${process.env.PATH}`,
+          HISTORY_FILE: history,
+          GSC_LEGACY_HISTORY_FILE: path.join(root, "missing-legacy.tsv"),
+          GSC_ARTIFACT_DIR: artifactDir,
+          BB_BROWSER_CMD: mock.browser,
+          BB_BROWSER_DAEMON_STATE_FILE: path.join(root, "missing-daemon.json"),
+          BB_BROWSER_DAEMON_LOG_FILE: path.join(root, "missing-daemon.log"),
+          COMET_APP: mock.comet,
+          MOCK_BROWSER_LOG: mock.log,
+          MOCK_CDP_MODE: "disconnected",
+          MOCK_DAEMON_MODE: "unowned_disconnected",
+          MOCK_TARGET_URL: target,
+          COMET_START_WAIT_SECONDS: "0",
+        },
+        encoding: "utf8",
+      },
+    );
+
+    const output = `${result.stdout}\n${result.stderr}`;
+    assert.notEqual(result.status, 0);
+    assert.match(output, /existing daemon is not owned by this run/);
+    assert.equal(gscClickCount(mock), 0);
+    const browserLog = readFileSync(mock.log, "utf8");
+    assert.match(browserLog, /^daemon status$/m);
+    assert.doesNotMatch(browserLog, /^daemon (?:stop|shutdown|--cdp-host)/m);
+    assert.doesNotMatch(browserLog, /^(?:open|eval) /m);
+    assert.match(
+      readFileSync(history, "utf8"),
+      new RegExp(
+        `\\tretry_pending\\t${target}\\tgsc_browser_unowned_daemon_blocker:.*no daemon was stopped, restarted, or replaced before any Search Console interaction`,
+      ),
+    );
+    const script = readFileSync(
+      path.join(root, "scripts", "submit-gsc-direct.sh"),
+      "utf8",
+    );
+    assert.doesNotMatch(script, /pkill[^\n]*bb-browser/);
+    assert.doesNotMatch(
+      script,
+      /BB_BROWSER_CMD[^\n]*daemon (?:stop|shutdown|start|--cdp-host)/,
+    );
   } finally {
     rmSync(root, { recursive: true, force: true });
   }

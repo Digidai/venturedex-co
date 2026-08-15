@@ -29,8 +29,6 @@ INSPECT_WAIT_SECONDS="${INSPECT_WAIT_SECONDS:-35}"
 POST_CLICK_WAIT_SECONDS="${POST_CLICK_WAIT_SECONDS:-30}"
 POST_MODAL_WAIT_SECONDS="${POST_MODAL_WAIT_SECONDS:-5}"
 REQUEST_RESULT_WAIT_SECONDS="${REQUEST_RESULT_WAIT_SECONDS:-3}"
-BB_BROWSER_CONNECT_MAX_ATTEMPTS="${BB_BROWSER_CONNECT_MAX_ATTEMPTS:-6}"
-BB_BROWSER_CONNECT_RETRY_SLEEP="${BB_BROWSER_CONNECT_RETRY_SLEEP:-2}"
 MAX_URLS="${MAX_URLS:-10}"
 
 CODEX_HOME_DEFAULT="${CODEX_HOME:-${HOME}/.codex}"
@@ -42,6 +40,8 @@ BB_BROWSER_CMD="${BB_BROWSER_CMD:-bb-browser}"
 COMET_APP="${COMET_APP:-/Applications/Comet.app/Contents/MacOS/Comet}"
 COMET_LOG_FILE="${COMET_LOG_FILE:-/tmp/venturedex-gsc-comet.log}"
 BB_BROWSER_DAEMON_LOG_FILE="${BB_BROWSER_DAEMON_LOG_FILE:-/tmp/venturedex-gsc-bb-browser-daemon.log}"
+BB_BROWSER_HOME_DEFAULT="${BB_BROWSER_HOME:-${HOME}/.bb-browser}"
+BB_BROWSER_DAEMON_STATE_FILE="${BB_BROWSER_DAEMON_STATE_FILE:-${BB_BROWSER_HOME_DEFAULT}/daemon.json}"
 COMET_CDP_HOST="${COMET_CDP_HOST:-127.0.0.1}"
 COMET_CDP_PORT="${COMET_CDP_PORT:-19825}"
 
@@ -59,6 +59,7 @@ FORCE=0
 SKIP_LIVE_CHECK=0
 BB_BROWSER_TAB_OPENED=0
 BB_BROWSER_TAB_ID=""
+BB_BROWSER_CONNECTION_BLOCKER=""
 HISTORY_LOCK_PATH=""
 HISTORY_LOCK_OWNER_CANDIDATE=""
 HISTORY_LOCK_TOKEN=""
@@ -3419,7 +3420,7 @@ check_live_url() {
 
 require_deps() {
   local missing=0 cmd
-  for cmd in "$BB_BROWSER_CMD" curl tail sed grep pkill python3; do
+  for cmd in "$BB_BROWSER_CMD" curl tail sed grep python3; do
     if ! command -v "$cmd" >/dev/null 2>&1; then
       echo "Missing dependency: $cmd" >&2
       missing=1
@@ -3453,25 +3454,23 @@ comet_cdp_reachable() {
   curl -fsS "http://${COMET_CDP_HOST}:${COMET_CDP_PORT}/json/version" >/dev/null 2>&1
 }
 
-wait_for_bb_browser_connection() {
-  local attempt=1
-  while [ "$attempt" -le "$BB_BROWSER_CONNECT_MAX_ATTEMPTS" ]; do
-    if bb_browser_connected; then
-      return 0
-    fi
-    sleep "$BB_BROWSER_CONNECT_RETRY_SLEEP"
-    attempt=$((attempt + 1))
-  done
-  return 1
+daemon_state_present() {
+  [ -e "$BB_BROWSER_DAEMON_STATE_FILE" ] || [ -L "$BB_BROWSER_DAEMON_STATE_FILE" ]
 }
 
-stop_bb_browser_daemon() {
-  "$BB_BROWSER_CMD" daemon stop >/dev/null 2>&1 || true
-  pkill -f '[/]bb-browser/dist/daemon.js' >/dev/null 2>&1 || true
-}
-
-start_bb_browser_daemon() {
-  nohup "$BB_BROWSER_CMD" daemon --cdp-host "$COMET_CDP_HOST" --cdp-port "$COMET_CDP_PORT" >"$BB_BROWSER_DAEMON_LOG_FILE" 2>&1 &
+bb_browser_daemon_presence() {
+  local daemon_status
+  if daemon_state_present; then
+    return 0
+  fi
+  daemon_status="$(bb_browser_daemon_status)"
+  if printf '%s\n' "$daemon_status" | grep -Eq 'Daemon running:[[:space:]]+yes'; then
+    return 0
+  fi
+  if printf '%s\n' "$daemon_status" | grep -Eq 'Daemon not running'; then
+    return 1
+  fi
+  return 2
 }
 
 print_bb_browser_debug() {
@@ -3512,33 +3511,39 @@ ensure_comet_cdp_ready() {
 }
 
 ensure_bb_browser_connected() {
+  local daemon_presence_status
+  BB_BROWSER_CONNECTION_BLOCKER=""
   if bb_browser_connected; then
     return 0
   fi
 
-  ensure_comet_cdp_ready || return 1
-
-  echo "bb-browser is not connected to Comet; restarting daemon..."
-  stop_bb_browser_daemon
-  sleep 1
-  start_bb_browser_daemon
-
-  if wait_for_bb_browser_connection; then
-    return 0
+  if ! ensure_comet_cdp_ready; then
+    BB_BROWSER_CONNECTION_BLOCKER="gsc_browser_cdp_blocker: managed Comet CDP ${COMET_CDP_HOST}:${COMET_CDP_PORT} was unavailable; no daemon lifecycle action or Search Console interaction occurred"
+    return 1
   fi
 
-  echo "First daemon restart did not recover CDP; retrying once..."
-  stop_bb_browser_daemon
-  sleep 1
-  start_bb_browser_daemon
-
-  if wait_for_bb_browser_connection; then
-    return 0
-  fi
-
-  echo "bb-browser is still not connected to Comet (CDP ${COMET_CDP_HOST}:${COMET_CDP_PORT})." >&2
-  print_bb_browser_debug
-  return 1
+  bb_browser_daemon_presence
+  daemon_presence_status=$?
+  case "$daemon_presence_status" in
+    0)
+      BB_BROWSER_CONNECTION_BLOCKER="gsc_browser_unowned_daemon_blocker: an existing bb-browser daemon or daemon state is not owned by this run while managed Comet CDP is reachable; no daemon was stopped, restarted, or replaced before any Search Console interaction"
+      echo "bb-browser is disconnected, but an existing daemon is not owned by this run; refusing to stop or replace it." >&2
+      print_bb_browser_debug
+      return 1
+      ;;
+    1)
+      BB_BROWSER_CONNECTION_BLOCKER="gsc_browser_daemon_unavailable_blocker: managed Comet CDP is reachable but no bb-browser daemon is running; this submitter does not start, stop, or replace daemons on the shared browser endpoint before Search Console interaction"
+      echo "bb-browser is disconnected and no daemon is running; automatic daemon startup is disabled for shared-browser safety." >&2
+      print_bb_browser_debug
+      return 1
+      ;;
+    *)
+      BB_BROWSER_CONNECTION_BLOCKER="gsc_browser_shared_cdp_blocker: managed Comet CDP is reachable but bb-browser daemon ownership is ambiguous; no daemon was stopped, restarted, or replaced before any Search Console interaction"
+      echo "bb-browser daemon state is ambiguous; refusing to start, stop, or replace a daemon on the shared CDP endpoint." >&2
+      print_bb_browser_debug
+      return 1
+      ;;
+  esac
 }
 
 open_gsc_page() {
@@ -4500,7 +4505,7 @@ submit_targets() {
   if ! ensure_bb_browser_connected; then
     record_retry_pending_targets \
       "" \
-      "gsc_browser_session_blocker: bb-browser could not connect to managed Comet CDP before any Search Console interaction" \
+      "${BB_BROWSER_CONNECTION_BLOCKER:-gsc_browser_session_blocker: bb-browser could not connect to managed Comet CDP before any Search Console interaction}" \
       1 \
       || return 1
     return 1
