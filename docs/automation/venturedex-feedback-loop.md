@@ -88,6 +88,7 @@ Use stable tags in the learning log so repeated issues can be detected without g
 - `gsc_auth_session_blocker`
 - `worktree_cleanup`
 - `external_dependency`
+- `transport_interruption`
 - `other`
 
 Use the narrowest stable tag above. Put provider names, command output, URL lists, and one-off error strings in the evidence text instead of inventing a new tag for every incident. Historical entries are append-only and are not rewritten merely because their older tags predate this vocabulary.
@@ -145,6 +146,23 @@ When a run hits an operational or policy error, the automation should:
 6. apply the smallest allowed fix or heuristic adjustment supported by evidence
 7. rerun the failed step and any downstream gates that depend on it
 8. repeat only when the previous iteration produced new evidence; do not blind-retry
+
+Transport failures are operational interruptions, not evidence that the content, validation, release, or GSC phase failed. Record `transport_interruption`, discard ephemeral exec/process handles, and resume from the durable run-state file plus filesystem, Git, CI, deploy, ledger, and artifact evidence. If a content commit already exists, do not repeat discovery; if a GSC click may have occurred, preserve the existing fail-closed state and do not click again.
+
+## Durable Run Checkpoint
+
+The current Daily run keeps a small mutable checkpoint at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`.
+
+Required fields:
+
+- schema version and automation id
+- run id and status (`active`, `blocked`, or `complete`)
+- UTC `started_at` and `updated_at`
+- exact `RUN_WORKTREE`, base SHA, and current/pushed SHA when available
+- phase (`preflight`, `discovery`, `content_prepared`, `local_gates_passed`, `pushed`, `deployed`, `gsc`, or `closeout`)
+- accepted slugs and latest blocker summary
+
+Update it after each phase boundary and before any long external wait. Do not store credentials, full page text, private data, or mutable browser identifiers. The checkpoint is routing evidence, not permission to bypass a gate. A later turn must cross-check it against live state before resuming, and ambiguous or conflicting ownership remains a blocker.
 
 If the blocker remains after evidence-backed iterations, record the root cause, attempted fixes, stable `failure_tags`, and any deferred policy change instead of summarizing it as a generic error.
 

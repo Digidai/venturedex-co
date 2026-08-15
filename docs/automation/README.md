@@ -61,6 +61,8 @@ Search Console submission priority order:
   The reward-guided iteration rules. This is RL-style closed-loop optimization, not a full online RL system.
 - `venturedex-learning-log.md`
   Append-only run memory: outcomes, failures, reward, and accepted or rejected heuristic changes.
+- `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`
+  Small mutable operational checkpoint for the currently active or most recently closed Daily run. It records only run identity, exact worktree/SHA, phase, accepted slugs, and blockers so a new turn can resume without replaying discovery. It must never contain credentials or copied source content.
 - `../newsletter.md`
   The delivery contract for Daily additions and Weekly research email sends, including delay gates, compliance configuration, module review notes, and test cases.
 - `../../content/timestamps.json`
@@ -135,9 +137,11 @@ For human-directed governance changes:
 The local automation prompts under `$CODEX_HOME/automations/venturedex-daily-curator/automation.toml` and `$CODEX_HOME/automations/venturedex-weekly-curator/automation.toml` should stay aligned with this control plane.
 
 - Keep bootstrap, source-of-truth order, and error-investigation instructions consistent with the repo docs.
+- Before starting a new Daily cycle, reconcile the external run-state checkpoint with registered worktrees, active processes, recent commits, and the central GSC ledger. Resume one clearly owned interrupted run; never create a second cycle merely because a prior response stream ended.
 - If the prompt tells the automation to investigate and iterate on failures, the runbook and feedback loop must describe the same behavior in auditable terms.
 - For browser-driven product trials, page verification, and browser-side debugging, prefer the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow instead of direct Chrome usage.
 - Current code architecture is JSON-first and mostly prerendered on Astro 7 with Cloudflare adapter 14: `content/*.json` is transformed through `src/lib/content-transform.ts` for Astro pages, while `scripts/build-db.sh` emits the D1 seed used by the newsletter/runtime path. `tests/content-parity.test.ts` guards those two transforms from drifting.
+- The Daily prompt should read the learning-log template plus the latest 10 entries named by the feedback loop, then search older history only for a concrete error. Replaying the entire append-only log on every run adds context and latency without changing the governing state.
 - Local pre-publish validation should use `./scripts/manage.sh validate` plus `git diff --check`. The complete gate includes the high-severity dependency audit, content validation, deterministic D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and Astro build. The individual commands remain useful for isolating failures, but they are not the final gate.
 - Daily automation must add or confirm `content/timestamps.json` entries for newly accepted slugs before publishing so prerendered sort order, sitemap dates, RSS dates, and the D1 seed agree.
 - Daily automation must require structured startup `research` before publishing; weekly automation must consume that `research` when producing source-bound issue evaluations.

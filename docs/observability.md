@@ -2,6 +2,32 @@
 
 How to see what the deployed site and worker are doing.
 
+## Daily automation execution
+
+The Codex Daily curator has an execution surface separate from the deployed Worker. Its small durable checkpoint is:
+
+```text
+$CODEX_HOME/automations/venturedex-daily-curator/run-state.md
+```
+
+It records the current run id, status, exact worktree/SHA, phase, accepted slugs, last update time, and latest blocker. It contains no credentials or copied source-page content. Treat it as routing evidence and reconcile it with these read-only sources before starting or resuming work:
+
+```bash
+git worktree list --porcelain
+git fetch origin main --prune
+git log --oneline -n 10 origin/main
+ps -axo pid,ppid,lstart,command
+tail -n 30 "$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv"
+```
+
+Interpretation:
+
+- `active` plus one registered, owned Daily worktree means resume the recorded phase; do not start a new discovery cycle.
+- `pushed` or later means prove exact-SHA CI/deploy/GSC state before doing more content work.
+- a missing worktree, conflicting SHA, multiple plausible dirty Daily worktrees, or an unowned process means `blocked` until ownership is resolved.
+- `complete` is valid only after learning log, automation memory, inbox closeout, release/GSC evidence, and guarded worktree cleanup are durable.
+- `request timed out` or `stream disconnected before completion` is a `transport_interruption`; it does not prove a repository gate failed. Resume from durable evidence and never reuse stale exec cell ids or PIDs.
+
 ## Web analytics (Cloudflare Web Analytics)
 
 The layout (`src/layouts/Base.astro`) renders the Cloudflare Web Analytics beacon

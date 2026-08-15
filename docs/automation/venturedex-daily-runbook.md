@@ -29,13 +29,16 @@ Automation must never rewrite this section.
 
 - Start from `main`.
 - Sync with `origin/main` before doing content work.
-- If pull, rebase, or conflict resolution fails, stop.
-- If unrelated dirty files exist at run start, stop.
+- Before creating a new worktree or starting discovery, inspect the durable run-state file at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered VentureDex Daily worktrees, active processes, and recent `origin/main` commits. If exactly one interrupted run is recoverable, resume that run at its last evidenced phase and do not start a second curation cycle. If ownership is ambiguous, stop and report every exact path instead of guessing.
+- Create or enter a detached Daily worktree at the exact current `origin/main` SHA, record it as `RUN_WORKTREE`, and keep the main checkout read-only even when it is dirty, ahead, or behind.
+- Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` inside that detached worktree before discovery. Bootstrap failure is a hard stop; do not continue with a rejected-only or no-op fallback.
+- If fetch, worktree creation, pull, rebase, or conflict resolution fails, stop.
+- If unrelated dirty files exist in the selected Daily worktree at run start, stop. Unrelated dirtiness in the main checkout must be preserved and reported, not cleaned or ported automatically.
 - Never force-push.
 
 ### Content Safety
 
-- Search recent funding news broadly and collect 20-40 candidates when evidence exists.
+- Search recent funding news broadly and collect 10-20 candidates, matching the higher-priority content contract. Twenty recorded decisions are sufficient for the maximum five additions while preserving the 3:1 rejection bar.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
 - Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
@@ -80,7 +83,7 @@ Before commit and push, all must pass:
 - `./scripts/manage.sh validate`
 - `git diff --check`
 
-`./scripts/manage.sh validate` is the current full local gate. It runs the high-severity dependency audit, content validation, deterministic D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. `d1/generated-seed.sql` is verification output only. If it changes locally, restore it before commit.
+`./scripts/manage.sh validate` is the current full local gate. It runs the high-severity dependency audit, content validation, deterministic D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. Ordinary validation writes its seed to a run-owned temporary directory so interruption cannot dirty or overwrite tracked `d1/generated-seed.sql`; the release path explicitly regenerates and locks the tracked seed. A normal validation run that changes the tracked seed is therefore a blocker to investigate, not expected cleanup work.
 
 If screenshot generation fails, do not keep a half-complete startup addition.
 
@@ -96,6 +99,8 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 - Rerun the failed step and every downstream gate that depends on it.
 - Do not blind-retry; each iteration must add new evidence, a narrower hypothesis, or a concrete fix.
 - If the blocker survives evidence-backed iterations, record the root cause, attempts, and deferred next step in the learning log and inbox item.
+- Do not treat an exec cell id, tool-call id, PID, or buffered command handle as a durable checkpoint. After bootstrap, discovery, content preparation, local gates, push, deploy, GSC, and closeout, rewrite the external run-state file with the run id, UTC timestamp, exact worktree, base/current SHA, phase, accepted slugs, and latest blocker. Never store credentials or source-page contents there.
+- If a turn or transport stream is interrupted, resume from filesystem, Git, CI, ledger, and run-state evidence. Re-run only the incomplete phase and its downstream gates; do not repeat discovery or browser clicks merely because an in-memory handle disappeared.
 
 ### Staging and Release Scope
 
@@ -122,14 +127,16 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 2. Read `content/CODEX_TASK.md`.
 3. Read this file.
 4. Read `docs/automation/venturedex-feedback-loop.md`.
-5. Read `docs/automation/venturedex-learning-log.md`.
-6. Sync `main` with `origin/main`.
-7. Check for a clean worktree.
-8. Discover 20-40 recent funding candidates.
-9. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`; schema-less legacy rows and v2 `active` rows suppress repeat review unless an allowed trigger is present.
-10. Run F1-F4 screening and write every new rejection as a complete v2 row.
-11. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
-12. Write structured `research` for every accepted startup:
+5. Read the template/header and last 10 entries in `docs/automation/venturedex-learning-log.md`; search older entries only for a specific repeated error. Do not load the entire append-only history into each run's context.
+6. Inspect `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered Daily worktrees, active processes, recent commits, and the central GSC ledger. Resume one recoverable interrupted run before considering a new cycle; stop on ambiguous ownership.
+7. Sync the Git refs with `origin/main` without modifying the main checkout.
+8. Create or enter a detached worktree at exact `origin/main`, record `RUN_WORKTREE`, verify that selected worktree is clean, and write the `preflight` run-state checkpoint.
+9. Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` in `RUN_WORKTREE`. Stop immediately on failure and persist the exact blocker; discovery must not begin.
+10. Discover 10-20 recent funding candidates.
+11. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`; schema-less legacy rows and v2 `active` rows suppress repeat review unless an allowed trigger is present.
+12. Run F1-F4 screening and write every new rejection as a complete v2 row.
+13. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) when browser interaction is needed.
+14. Write structured `research` for every accepted startup:
     - `sources` must include the official product site and the funding source; add GitHub, docs, LinkedIn, Product Hunt, or other official sources only when they were checked.
     - `product_evidence` must contain at least two concrete, source-backed claims about the product surface, workflow, docs, pricing, customers, integrations, metrics, or other visible evidence.
     - `market_context` must identify the primary user, category, differentiation, and why the current funding/product signal makes the company worth tracking now.
@@ -137,20 +144,19 @@ If screenshot generation fails, do not keep a half-complete startup addition.
     - Do not write private revenue, usage, customer, valuation, or hiring claims unless the exact source is cited.
     - If a claim cannot be traced to a listed source or the existing VentureDex editorial assessment, remove it.
     - If a company exposes a high-confidence official Careers/Jobs/Open Roles entry, add it to `links.careers` as a static detail-page link only.
-13. Run the taste review.
-14. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
-15. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
-16. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
-17. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap.
-18. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
-19. Generate screenshot if and only if the environment is ready.
-20. Run the GitHub Actions preflight and the full local validation gate.
-21. Perform the review passes.
-22. Update the learning log.
-23. Apply a heuristic update only if the feedback-loop gate permits it.
-24. Commit and push only if the final staged files are allowed and local gates pass.
-25. Wait for deploy when observable and verify live smoke against the deployed site.
-26. Submit the new Daily startup detail pages to Search Console:
+15. Run the taste review.
+16. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
+17. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
+18. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
+19. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap. Persist the `content_prepared` checkpoint before the full gate.
+20. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
+21. Generate screenshot if and only if the environment is ready.
+22. Run the GitHub Actions preflight and the full local validation gate, then persist `local_gates_passed`.
+23. Perform the review passes.
+24. Apply a heuristic update only if the feedback-loop gate permits it.
+25. Commit and push only if the final staged files are allowed and local gates pass; persist the exact pushed SHA.
+26. Wait for deploy when observable, verify live smoke against the deployed site, and persist the release evidence.
+27. Submit the new Daily startup detail pages to Search Console:
 
    ```bash
    bash scripts/submit-gsc-direct.sh --dry-run --latest-daily
@@ -171,7 +177,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
    ```
 
    It may append `requested` only after the exact artifact URL is re-inspected and a route-bound `success_static` state is observed. The reconciliation path must never call the request-indexing click action; if success is not proven, the blocker and artifact remain active.
-27. Open an inbox item summarizing the full run.
+28. Append the learning-log entry and update automation memory from the final evidence. Keep content and docs commits separate and persist the resulting docs SHA when one is pushed.
+29. Open an inbox item summarizing the full run, including any transport interruption and the exact recovery phase.
+30. Close run-owned browser tabs. After commit/push, deploy/GSC evidence, learning log, automation memory, and inbox evidence are durable, switch back to the main checkout and run guarded cleanup for exact `RUN_WORKTREE`. Mark run-state `complete` only after the worktree is absent and unregistered; otherwise mark it `blocked` with the exact dirty files or ownership conflict.
 
 ## Review Passes
 
@@ -259,9 +267,9 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - Prefer a precise rejection reason over a vague acceptance.
 - When the run's addition cap is above one, widen discovery enough to satisfy the rejection bar without lowering the acceptance threshold.
 - Preflight local build dependencies before deep discovery work; if `./scripts/manage.sh validate` or its `npm run build` substep cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
-- Check for `CLOUDFLARE_API_TOKEN` or a repo-local `.env` before promoting finalists into brand-asset and screenshot work; if credentials are absent, stop at rejected-only or no-op after documenting any viable survivors.
+- Treat the mandatory bootstrap as the only pre-discovery environment gate. If credentials, GitHub Actions, dependencies, or another bootstrap check fail, stop immediately and persist the blocker; do not continue into discovery, rejected-only, or no-op work.
 - When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.
-- Before browser-based product trials, preflight `bb-browser daemon status`; if it reports no running daemon while `ps` still shows a `bb-browser/dist/daemon.js --cdp-port 19825` process, terminate only that stale daemon process, confirm CDP still responds, and rerun the failed `bb-browser` step once.
+- Before browser-based product trials, preflight `bb-browser daemon status`. Reuse an existing healthy connection, but do not start, stop, restart, or `pkill` a daemon from a scheduled run: the browser runtime may be shared, and ambiguous ownership is a fail-closed blocker rather than permission to mutate its lifecycle.
 - For TechCrunch WordPress API parsing, first extract date, title, excerpt, and link with simple `jq` fields; avoid shell-embedded entity rewrites for apostrophes or smart quotes unless a separate safe normalization step is required.
 - For `bb-browser` tab cleanup, list tabs first and close automation-opened tabs by visible short index in descending order; avoid `--tab current` and full CDP tab IDs unless the installed CLI has just accepted that form.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
@@ -270,6 +278,6 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - For official investor brand assets on WordPress-hosted sites, prefer the site's declared favicon/apple-touch icon or another direct static asset from the same official host over a homepage/SVG wordmark when reachability has already failed or looks brittle; keep `source_page` and `source_url` on the official host so validator host matching still holds.
 - When immediate post-deploy smoke sees remote D1 or collection-index counts from the new release but stale root, news, or collection-detail counts, classify it as a propagation hypothesis rather than a deploy failure: first rerun independent smoke on both `workers.dev` and the custom domain, and only after both pass rerun the failed Deploy job at most once to restore green observable release evidence.
 - Before a formal GSC submit, open the Search Console inspection route through `bb-browser` and confirm it stays on an authenticated `search.google.com` URL Inspection surface instead of redirecting to `accounts.google.com`; if authentication is missing, close the automation tab, record `gsc_auth_session_blocker` plus every exact target URL, and do not substitute longer wait retries for the missing login state.
-- When a detached automation worktree publishes or repairs Daily content while the main checkout is dirty, ahead, or behind, finish the run with a main-checkout cleanup audit before final closeout: fetch `origin/main`, compare each dirty or untracked Daily file against remote, preserve or port only independently verified improvements, discard stale generated/duplicate drafts from the working tree, and leave the main checkout either clean and aligned to `origin/main` or explicitly reported as blocked.
+- When a detached automation worktree publishes or repairs Daily content while the main checkout is dirty, ahead, or behind, finish with a read-only main-checkout audit: fetch refs, report divergence and exact dirty paths, and preserve every pre-existing tracked or untracked file. The automation must not port, restore, delete, or rewrite main-checkout drafts during closeout.
 - When a main-checkout cleanup audit finds stale detached VentureDex automation worktrees, start with `bash scripts/cleanup-automation-worktrees.sh --all` as a dry run. Use `--execute --path <worktree>` only after required commits, GSC evidence, learning-log entries, and automation-memory updates are preserved. Execution refreshes `origin`, requires the worktree HEAD to be reachable from an explicit `refs/remotes/origin/*` ref, and rereads the exact reachable HEAD immediately before removal. Dirty, concurrently changed, unreachable, and unregistered targets return a nonzero blocker; unregistered Git directories are never recursively deleted because they may contain recoverable commits.
 <!-- END AUTO-EDIT: ADAPTIVE_HEURISTICS -->
