@@ -474,7 +474,9 @@ async page => {
   await page.waitForTimeout(250);
 }
 JS
-  cleanup_code="${cleanup_code/__VENTUREDEX_TARGET_URL__/$(js_quote "$url")}"
+  local target_url_js
+  target_url_js="$(js_quote "$url")"
+  cleanup_code="${cleanup_code%%__VENTUREDEX_TARGET_URL__*}${target_url_js}${cleanup_code#*__VENTUREDEX_TARGET_URL__}"
 
   local screenshot_code
   IFS= read -r -d '' screenshot_code <<'JS' || true

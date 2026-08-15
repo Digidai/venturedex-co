@@ -26,6 +26,7 @@ function writeExecutable(file: string, body: string): void {
 function createScreenshotFixture(): {
   root: string;
   log: string;
+  codeLog: string;
   script: string;
   codexHome: string;
   bin: string;
@@ -37,6 +38,7 @@ function createScreenshotFixture(): {
   const wrapperDir = path.join(codexHome, "skills", "playwright", "scripts");
   const bin = path.join(root, "bin");
   const log = path.join(root, "playwright-commands.log");
+  const codeLog = path.join(root, "playwright-run-code.js");
   mkdirSync(scripts, { recursive: true });
   mkdirSync(screenshots, { recursive: true });
   mkdirSync(wrapperDir, { recursive: true });
@@ -60,6 +62,13 @@ done
 printf '%s\n' "$command_name" >> "$SCREENSHOT_TEST_LOG"
 if [ "$command_name" = "open" ] && [ "\${SCREENSHOT_TEST_OPEN_STATUS:-0}" -ne 0 ]; then
   exit "$SCREENSHOT_TEST_OPEN_STATUS"
+fi
+if [ "$command_name" = "run-code" ] && [ -n "\${SCREENSHOT_TEST_CODE_LOG:-}" ]; then
+  for arg in "$@"; do
+    case "$arg" in
+      *"const targetUrl ="*) printf '%s' "$arg" > "$SCREENSHOT_TEST_CODE_LOG" ;;
+    esac
+  done
 fi
 if [ "$command_name" = "run-code" ] && [ "\${SCREENSHOT_TEST_WRITE_PNG:-0}" = "1" ]; then
   for arg in "$@"; do
@@ -93,6 +102,7 @@ printf 'fake-webp' > "$output"
   return {
     root,
     log,
+    codeLog,
     script: path.join(scripts, "screenshot.sh"),
     codexHome,
     bin,
@@ -103,8 +113,9 @@ function runFixture(
   fixture: ReturnType<typeof createScreenshotFixture>,
   slug: string,
   extraEnv: NodeJS.ProcessEnv = {},
+  url = "https://example.test",
 ) {
-  return spawnSync("bash", [fixture.script, slug, "https://example.test"], {
+  return spawnSync("bash", [fixture.script, slug, url], {
     cwd: fixture.root,
     env: {
       ...process.env,
@@ -116,6 +127,7 @@ function runFixture(
       PLAYWRIGHT_STEP_TIMEOUT_SECONDS: "5",
       PLAYWRIGHT_CLOSE_TIMEOUT_SECONDS: "5",
       SCREENSHOT_TEST_LOG: fixture.log,
+      SCREENSHOT_TEST_CODE_LOG: fixture.codeLog,
       ...extraEnv,
     },
     encoding: "utf8",
@@ -369,6 +381,39 @@ test("successful capture survives session cleanup and emits a nonempty WebP", ()
       "run-code",
       "close",
     ]);
+  } finally {
+    rmSync(fixture.root, { recursive: true, force: true });
+    rmSync(tmpPng, { force: true });
+    rmSync(`/tmp/venturedex-screenshot-${slug}.webp`, { force: true });
+  }
+});
+
+test("target URL injection preserves ampersands, quotes, and Unicode without pattern replacement", () => {
+  const fixture = createScreenshotFixture();
+  const slug = `url-literal-${path.basename(fixture.root).replace(/\W/g, "")}`;
+  const tmpPng = `/tmp/venturedex-screenshot-${slug}.png`;
+  const targetUrl = "https://example.test/路径/'single'/\"double\"?first=一&second=二";
+  try {
+    const result = runFixture(
+      fixture,
+      slug,
+      {
+        SCREENSHOT_TEST_WRITE_PNG: "1",
+        SCREENSHOT_TEST_TMP_PNG: tmpPng,
+      },
+      targetUrl,
+    );
+    assert.equal(result.status, 0, result.stdout + result.stderr);
+    const runCode = readFileSync(fixture.codeLog, "utf8");
+    const targetLiteral = runCode.match(/const targetUrl = ([^\n]+);/)?.[1];
+    assert.ok(targetLiteral, runCode);
+    assert.equal(JSON.parse(targetLiteral), targetUrl);
+    assert.match(targetLiteral, /&/);
+    assert.doesNotMatch(runCode, /__VENTUREDEX_TARGET_URL__/);
+    assert.doesNotMatch(
+      readFileSync(screenshotScript, "utf8"),
+      /cleanup_code="\$\{cleanup_code\/__VENTUREDEX_TARGET_URL__\//,
+    );
   } finally {
     rmSync(fixture.root, { recursive: true, force: true });
     rmSync(tmpPng, { force: true });
