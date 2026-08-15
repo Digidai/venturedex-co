@@ -189,14 +189,6 @@ const schema = {
     return element;
   }
 
-  function pageLink(label: string, href: string, className = ""): any {
-    const link = document.createElement("a") as any;
-    link.href = href;
-    link.className = className;
-    link.textContent = label;
-    return link;
-  }
-
   const detailPath = (item: LaunchItem): string => `/launches/${item.slug}`;
 
   function formatDuration(seconds: number | null): string {
@@ -213,10 +205,13 @@ const schema = {
     const card = document.createElement("article") as any;
     card.className = "launch-card";
 
-    const media = document.createElement("a") as any;
+    const cardLink = document.createElement("a") as any;
+    cardLink.className = "launch-card__link";
+    cardLink.href = detailPath(item);
+    cardLink.setAttribute("aria-label", `View VentureDex launch page for ${item.title}`);
+
+    const media = document.createElement("div") as any;
     media.className = "launch-card__media";
-    media.href = detailPath(item);
-    media.setAttribute("aria-label", `View VentureDex launch page for ${item.title}`);
     media.dataset.launchMedia = "";
     appendText(media, "span", "launch-card__preview-fallback", item.product.slice(0, 1))
       .setAttribute("aria-hidden", "true");
@@ -234,7 +229,7 @@ const schema = {
     if (item.duration_seconds) {
       appendText(media, "span", "launch-card__duration", formatDuration(item.duration_seconds));
     }
-    card.appendChild(media);
+    cardLink.appendChild(media);
 
     const content = document.createElement("div") as any;
     content.className = "launch-card__content";
@@ -251,8 +246,7 @@ const schema = {
     content.appendChild(meta);
 
     const heading = document.createElement("h2");
-    const headingLink = pageLink(item.title, detailPath(item));
-    heading.appendChild(headingLink);
+    heading.textContent = item.title;
     content.appendChild(heading);
 
     const identity = document.createElement("p");
@@ -265,15 +259,18 @@ const schema = {
       const tags = document.createElement("ul");
       tags.className = "launch-card__tags";
       tags.setAttribute("aria-label", "Tags");
-      for (const tag of item.tags.slice(0, 5)) appendText(tags, "li", "", tag);
+      for (const tag of item.tags.slice(0, 3)) appendText(tags, "li", "", tag);
       content.appendChild(tags);
     }
 
     const footer = document.createElement("div");
     footer.className = "launch-card__footer";
-    footer.appendChild(pageLink("Open launch brief →", detailPath(item), "launch-card__detail-link"));
+    footer.setAttribute("aria-hidden", "true");
+    appendText(footer, "span", "launch-card__detail-link", "View launch");
+    appendText(footer, "span", "launch-card__arrow", "→");
     content.appendChild(footer);
-    card.appendChild(content);
+    cardLink.appendChild(content);
+    card.appendChild(cardLink);
     return card;
   }
 
@@ -510,22 +507,37 @@ const schema = {
 
   .launch-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1px;
-    padding: 1px;
-    background: var(--color-border);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.8rem, 1.5vw, 1.25rem);
+    align-items: stretch;
   }
   .launch-card {
     position: relative;
-    display: flex;
     min-width: 0;
-    min-height: 31rem;
-    flex-direction: column;
     overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 13px;
     background: var(--color-bg);
-    transition: background 0.16s ease;
+    box-shadow: 0 1px 0 rgb(0 0 0 / 3%);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
-  .launch-card:hover { background: var(--color-card-bg); }
+  .launch-card:hover {
+    border-color: color-mix(in srgb, var(--launch-ink) 32%, var(--color-border));
+    box-shadow: 0 14px 30px rgb(0 0 0 / 8%);
+    transform: translateY(-3px);
+  }
+  .launch-card__link {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    color: inherit;
+    text-decoration: none;
+  }
+  .launch-card__link:hover { text-decoration: none; }
+  .launch-card__link:focus-visible {
+    outline: none;
+    box-shadow: inset 0 0 0 2px var(--launch-ink);
+  }
   .launch-card__media {
     position: relative;
     display: block;
@@ -559,7 +571,7 @@ const schema = {
     transition: opacity 0.2s ease, transform 0.35s ease, filter 0.35s ease;
   }
   .launch-card__media.is-ready .launch-card__preview { opacity: 1; }
-  .launch-card__media:hover .launch-card__preview { transform: scale(1.025); filter: saturate(1.06); }
+  .launch-card:hover .launch-card__preview { transform: scale(1.03); filter: saturate(1.06); }
   .launch-card__media.is-unavailable .launch-card__preview { display: none; }
   .launch-card__play {
     position: absolute;
@@ -567,8 +579,8 @@ const schema = {
     left: 50%;
     z-index: 2;
     display: grid;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 2.35rem;
+    height: 2.35rem;
     place-items: center;
     border: 1px solid rgb(255 255 255 / 38%);
     border-radius: 999px;
@@ -581,7 +593,7 @@ const schema = {
     transition: transform 0.18s ease, background 0.18s ease;
   }
   .launch-card__play svg { margin-left: 0.12rem; }
-  .launch-card__media:hover .launch-card__play {
+  .launch-card:hover .launch-card__play {
     background: rgb(10 10 10 / 84%);
     transform: translate(-50%, -50%) scale(1.08);
   }
@@ -602,8 +614,9 @@ const schema = {
   .launch-card__content {
     display: flex;
     flex: 1;
+    min-height: 12rem;
     flex-direction: column;
-    padding: clamp(1.25rem, 2.4vw, 2rem);
+    padding: 0.95rem 1rem 0.9rem;
   }
   .launch-card__meta {
     display: flex;
@@ -611,49 +624,90 @@ const schema = {
     gap: var(--space-3);
     color: var(--launch-muted);
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.04em;
+    font-size: 0.6rem;
+    letter-spacing: 0.055em;
     text-transform: uppercase;
   }
   .launch-card__category { color: var(--launch-ink); font-weight: 600; }
   .launch-card h2,
   .launch-card h3 {
-    margin: clamp(1.5rem, 2.8vw, 2.4rem) 0 var(--space-4);
-    font-size: clamp(1.35rem, 2.1vw, 1.8rem);
-    line-height: 1.12;
-    letter-spacing: -0.025em;
+    display: -webkit-box;
+    min-height: 2.4em;
+    margin: 0.75rem 0 0.55rem;
+    overflow: hidden;
+    font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
-  .launch-card h2 a,
-  .launch-card h3 a { color: inherit; text-decoration: none; }
-  .launch-card h2 a:hover,
-  .launch-card h3 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
-  .launch-card__identity { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; color: var(--launch-muted); font-size: 0.88rem; }
+  .launch-card__identity {
+    display: flex;
+    min-width: 0;
+    gap: 0.3rem;
+    margin: 0;
+    overflow: hidden;
+    color: var(--launch-muted);
+    font-size: 0.77rem;
+    line-height: 1.35;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
   .launch-card__identity strong { color: var(--launch-ink); font-weight: 600; }
   .launch-card__tags {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    margin: var(--space-5) 0 0;
+    min-height: 1.45rem;
+    gap: 0.3rem;
+    margin: 0.8rem 0 0;
+    overflow: hidden;
     padding: 0;
     list-style: none;
   }
   .launch-card__tags li {
-    padding: 0.25rem 0.42rem;
+    min-width: 0;
+    max-width: 8rem;
+    padding: 0.2rem 0.38rem;
+    overflow: hidden;
     border: 1px solid var(--color-border);
     border-radius: 999px;
     color: var(--launch-muted);
     font-family: var(--font-mono);
-    font-size: 0.62rem;
+    font-size: 0.56rem;
+    line-height: 1.2;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .launch-card__footer {
     display: flex;
-    justify-content: flex-end;
-    gap: var(--space-4);
-    align-items: end;
+    justify-content: space-between;
+    align-items: center;
     margin-top: auto;
-    padding-top: var(--space-8);
+    padding-top: 0.85rem;
   }
-  .launch-card__detail-link { color: var(--launch-ink); font-size: 0.75rem; font-weight: 600; }
+  .launch-card__detail-link {
+    color: var(--launch-muted);
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .launch-card__arrow {
+    display: grid;
+    width: 1.55rem;
+    height: 1.55rem;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--launch-ink);
+    font-size: 0.78rem;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .launch-card:hover .launch-card__arrow {
+    background: var(--launch-ink);
+    color: var(--color-bg);
+    transform: translateX(2px);
+  }
 
   .launch-empty { padding: var(--space-16) var(--space-4); text-align: center; }
   .launch-empty h2 { margin-bottom: var(--space-2); }
@@ -680,9 +734,14 @@ const schema = {
   .launch-pagination span { color: var(--launch-muted); font-family: var(--font-mono); font-size: 0.72rem; }
   .launch-noscript { margin-top: var(--space-8); color: var(--launch-muted); font-size: 0.85rem; text-align: center; }
 
+  @media (max-width: 1180px) {
+    .launch-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
   @media (max-width: 900px) {
     .launch-hero__grid { grid-template-columns: 1fr; }
     .launch-stats { max-width: 34rem; }
+  }
+  @media (max-width: 760px) {
     .launch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
@@ -690,12 +749,15 @@ const schema = {
     .launch-directory__heading { display: grid; }
     .launch-controls { grid-template-columns: 1fr; }
     .launch-grid { grid-template-columns: 1fr; }
-    .launch-card { min-height: 0; }
+    .launch-card__content { min-height: 11rem; }
     .launch-pagination { gap: var(--space-3); }
     .launch-pagination button { min-width: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
+    .launch-card,
     .launch-card__preview,
-    .launch-card__play { transition: none; }
+    .launch-card__play,
+    .launch-card__arrow { transition: none; }
+    .launch-card:hover { transform: none; }
   }
 </style>
