@@ -13,8 +13,7 @@ export interface WhatShipsItem {
   published_at: string;
   duration_seconds: number | null;
   featured: boolean;
-  poster_url: string;
-  source_url: string;
+  video_url: string;
   original_post_url: string;
 }
 
@@ -35,9 +34,9 @@ export interface WhatShipsSnapshot {
     raw_sha256: string;
   };
   content_policy: {
-    mode: "reference-metadata";
+    mode: "original-video-index";
     media_mirrored: false;
-    poster_delivery: "remote-source";
+    video_delivery: "remote-original";
     descriptions_mirrored: false;
     attribution: string;
   };
@@ -56,6 +55,13 @@ const CATEGORY_LABELS: Record<string, string> = {
   other: "Other",
   productivity: "Productivity",
 };
+
+const INTERNAL_DISCOVERY_TAGS = new Set([
+  "auto-discovery",
+  "imported",
+  "launchgallery",
+  "manual-x-search",
+]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return Boolean(value) && typeof value === "object" && !Array.isArray(value);
@@ -82,11 +88,11 @@ export function parseWhatShipsSnapshot(value: unknown): WhatShipsSnapshot {
   if (!isRecord(value.source) || !isRecord(value.content_policy) || !Array.isArray(value.items)) {
     throw new Error("Invalid WhatShips snapshot structure");
   }
-  if (value.content_policy.mode !== "reference-metadata" ||
+  if (value.content_policy.mode !== "original-video-index" ||
       value.content_policy.media_mirrored !== false ||
-      value.content_policy.poster_delivery !== "remote-source" ||
+      value.content_policy.video_delivery !== "remote-original" ||
       value.content_policy.descriptions_mirrored !== false) {
-    throw new Error("WhatShips snapshot must use source-hosted posters without mirroring media");
+    throw new Error("Launch snapshot must use original remote videos without mirroring media");
   }
   requireNonEmptyString(value.title, "WhatShips title");
   requireNonEmptyString(value.description, "WhatShips description");
@@ -142,25 +148,18 @@ export function parseWhatShipsSnapshot(value: unknown): WhatShipsSnapshot {
       throw new Error(`WhatShips item ${index}.duration_seconds is invalid`);
     }
     if (typeof rawItem.featured !== "boolean") throw new Error(`WhatShips item ${index}.featured is invalid`);
-    const sourceUrl = requireHttpsUrl(
-      rawItem.source_url,
-      `WhatShips item ${index}.source_url`,
-      new Set(["whatships.com"]),
-    );
     const originalPostUrl = requireHttpsUrl(
       rawItem.original_post_url,
       `WhatShips item ${index}.original_post_url`,
       new Set(["x.com"]),
     );
-    const posterUrl = requireHttpsUrl(
-      rawItem.poster_url,
-      `WhatShips item ${index}.poster_url`,
-      new Set(["whatships.com"]),
+    const videoUrl = requireHttpsUrl(
+      rawItem.video_url,
+      `WhatShips item ${index}.video_url`,
+      new Set(["video.twimg.com"]),
     );
-    if (sourceUrl !== `https://whatships.com/videos/${slug}/` ||
-        !new RegExp(`^https://x\\.com/[A-Za-z0-9_]{1,32}/status/${tweetId}$`).test(originalPostUrl) ||
-        !/^https:\/\/whatships\.com\/posters\/[a-z0-9][a-z0-9._-]*\.webp$/.test(posterUrl) ||
-        posterUrl.slice("https://whatships.com/posters/".length).includes("..")) {
+    if (!new RegExp(`^https://x\\.com/[A-Za-z0-9_]{1,32}/status/${tweetId}$`).test(originalPostUrl) ||
+        !/^https:\/\/video\.twimg\.com\/.+\.mp4(?:\?.*)?$/i.test(videoUrl)) {
       throw new Error(`WhatShips item ${index} has a non-canonical source URL`);
     }
     if (!Number.isFinite(Date.parse(publishedAt))) {
@@ -193,6 +192,14 @@ export function whatShipsCategoryLabel(category: string): string {
     .filter(Boolean)
     .map((word) => word[0]?.toUpperCase() + word.slice(1))
     .join(" ");
+}
+
+export function getPublicLaunchTags(item: Pick<WhatShipsItem, "tags" | "product" | "company">): string[] {
+  const identityTags = new Set([item.product.toLowerCase(), item.company.toLowerCase()]);
+  return item.tags.filter((tag) => {
+    const normalized = tag.toLowerCase();
+    return !INTERNAL_DISCOVERY_TAGS.has(normalized) && !identityTags.has(normalized);
+  });
 }
 
 export function getWhatShipsCategoryCounts(items = whatShipsSnapshot.items): Array<{

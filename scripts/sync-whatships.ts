@@ -40,8 +40,7 @@ export interface WhatShipsItem {
   published_at: string;
   duration_seconds: number | null;
   featured: boolean;
-  poster_url: string;
-  source_url: string;
+  video_url: string;
   original_post_url: string;
 }
 
@@ -62,9 +61,9 @@ export interface WhatShipsSnapshot {
     raw_sha256: string;
   };
   content_policy: {
-    mode: "reference-metadata";
+    mode: "original-video-index";
     media_mirrored: false;
-    poster_delivery: "remote-source";
+    video_delivery: "remote-original";
     descriptions_mirrored: false;
     attribution: string;
   };
@@ -170,13 +169,25 @@ function normalizeTweetUrl(value: unknown, tweetId: string, label: string): stri
   return `https://x.com/${match[1]}/status/${tweetId}`;
 }
 
-function normalizePosterUrl(value: unknown, label: string): string {
-  const path = cleanText(value, `${label}.poster`, 240);
-  const filename = path.slice("/posters/".length);
-  if (!/^\/posters\/[a-z0-9][a-z0-9._-]*\.webp$/.test(path) || filename.includes("..")) {
-    throw new Error(`${label}.poster must be a local WhatShips WebP poster path`);
+function normalizeVideoUrl(value: unknown, label: string): string {
+  const input = cleanText(value, `${label}.videoUrl`, 2_048);
+  let url: URL;
+  try {
+    url = new URL(input);
+  } catch {
+    throw new Error(`${label}.videoUrl is not a valid URL`);
   }
-  return `https://whatships.com${path}`;
+  if (
+    url.protocol !== "https:" ||
+    url.hostname.toLowerCase() !== "video.twimg.com" ||
+    url.username ||
+    url.password ||
+    url.port ||
+    !/\.mp4$/i.test(url.pathname)
+  ) {
+    throw new Error(`${label}.videoUrl must be an https video.twimg.com MP4 URL`);
+  }
+  return url.toString();
 }
 
 function normalizeItem(value: unknown, index: number): WhatShipsItem | null {
@@ -205,8 +216,7 @@ function normalizeItem(value: unknown, index: number): WhatShipsItem | null {
     published_at: normalizePublishedAt(value.publishedAt, label),
     duration_seconds: normalizeDuration(value.durationSeconds, label),
     featured: value.featured === true,
-    poster_url: normalizePosterUrl(value.poster, label),
-    source_url: `https://whatships.com/videos/${slug}/`,
+    video_url: normalizeVideoUrl(value.videoUrl, label),
     original_post_url: normalizeTweetUrl(value.tweetUrl, tweetId, label),
   };
   if (sourceCategory) item.source_category = sourceCategory;
@@ -247,8 +257,8 @@ export function buildSnapshot(value: unknown, source: SourceProvenance): WhatShi
   return {
     schema_version: 1,
     channel: "whatships",
-    title: "WhatShips Launches",
-    description: "A source-linked index of reviewed product launch videos, demos, and walkthroughs from whatships.com.",
+    title: "VentureDex Launches",
+    description: "A VentureDex catalog of product launch videos, demos, and walkthroughs backed by their original posts.",
     source: {
       name: "whatships.com",
       homepage_url: "https://whatships.com/",
@@ -261,11 +271,11 @@ export function buildSnapshot(value: unknown, source: SourceProvenance): WhatShi
       raw_sha256: source.rawSha256,
     },
     content_policy: {
-      mode: "reference-metadata",
+      mode: "original-video-index",
       media_mirrored: false,
-      poster_delivery: "remote-source",
+      video_delivery: "remote-original",
       descriptions_mirrored: false,
-      attribution: "Launch metadata and source-hosted poster URLs from whatships.com; videos and trademarks remain with their respective owners.",
+      attribution: "Original videos, posts, product names, and trademarks remain with their respective publishers and owners.",
     },
     source_published_through: items[0]?.published_at ?? source.commitAt,
     item_count: items.length,
@@ -510,7 +520,7 @@ function writeGithubEvidence(
   const summaryPath = process.env.GITHUB_STEP_SUMMARY;
   if (summaryPath) {
     appendFileSync(summaryPath, [
-      "## WhatShips source snapshot",
+      "## VentureDex launch discovery snapshot",
       "",
       `- State: \`${state}\``,
       `- Published items: ${snapshot.item_count}`,
@@ -519,7 +529,7 @@ function writeGithubEvidence(
       `- Raw SHA-256: \`${snapshot.source.raw_sha256}\``,
       `- Canonical output SHA-256: \`${outputHash}\``,
       `- Source category drift: ${sourceCategoryDrift.length > 0 ? sourceCategoryDrift.map((value) => `\`${value}\``).join(", ") : "none"}`,
-      "- Content boundary: reference metadata plus source-hosted poster URLs; no video, poster-file, avatar, or description mirroring",
+      "- Content boundary: original X video and post URLs plus factual launch metadata; no video, avatar, poster, or source-description mirroring",
       "",
     ].join("\n"));
   }
@@ -534,12 +544,12 @@ async function main(): Promise<void> {
 
   if (samePublishedMetadata(previous, snapshot)) {
     writeGithubEvidence(snapshot, transition, "no_change");
-    console.log(`WhatShips snapshot unchanged (${snapshot.item_count} published items).`);
+    console.log(`Launch snapshot unchanged (${snapshot.item_count} published items).`);
     return;
   }
 
   console.log(
-    `WhatShips snapshot: ${snapshot.item_count} published items, +${transition.additions}, ` +
+    `Launch snapshot: ${snapshot.item_count} published items, +${transition.additions}, ` +
     `~${transition.updates}, -${transition.removals}, source ${snapshot.source.commit.slice(0, 12)}.`
   );
   writeGithubEvidence(snapshot, transition, "changed");
@@ -558,7 +568,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     console.error(message);
     if (process.env.GITHUB_STEP_SUMMARY) {
       appendFileSync(process.env.GITHUB_STEP_SUMMARY, [
-        "## WhatShips sync blocked",
+        "## Launch discovery sync blocked",
         "",
         `- State: \`failed_before_commit\``,
         `- Reason: ${message.replace(/[\r\n]+/g, " ")}`,

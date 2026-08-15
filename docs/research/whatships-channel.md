@@ -10,7 +10,13 @@ WhatShips upstream head observed: `5c622317fd2353eb2fcf6f994801399dc40ecd9d`
 
 ## Decision Summary
 
-VentureDex should add WhatShips as a separate launch-video discovery channel backed by a small, version-controlled reference snapshot. It must not convert WhatShips entries into `content/startups/*.json` records and must not mirror WhatShips or X video assets.
+### Updated public-product decision — 2026-08-15
+
+The discovery catalog is an internal ingestion input only. VentureDex publishes its own canonical `/launches/{slug}` pages; cards never redirect to the catalog, and no public HTML, JSON, structured data, sitemap, AI-navigation text, or page attribution names or links to it. The original X-hosted video and original X post are the public evidence.
+
+VentureDex retains the allowlisted original `video.twimg.com` MP4 URL so list cards can show the video's first frame and detail pages can play it without copying or proxying the media. It does not ingest source descriptions, posters, avatars, HTML, or source detail-page URLs. This updated decision supersedes the earlier index-only and source-poster conclusions in the point-in-time research below.
+
+VentureDex should add a separate launch-video channel backed by a version-controlled discovery snapshot. It must not convert launch entries into `content/startups/*.json` records or mirror X video assets.
 
 The scheduled integration should fetch the public upstream JSON at an immutable Git commit, normalize an allowlisted subset of factual metadata, run its focused snapshot checks, and commit only `content/whatships.json` directly to the current `main` tip. The push uses the built-in `GITHUB_TOKEN`; because GitHub intentionally does not create ordinary recursive workflow runs for that push, the sync workflow must then explicitly dispatch the existing `deploy.yml` through its `workflow_dispatch` trigger. GitHub documents `workflow_dispatch` as an exception that still creates a workflow run when invoked with `GITHUB_TOKEN`. The manual-dispatch path leaves `VENTUREDEX_VALIDATED_SHA` empty, so `scripts/manage.sh release` reruns the complete repository gate for the exact current `main` SHA before publishing. The snapshot is rendered statically, just like the rest of VentureDex content.
 
@@ -18,9 +24,9 @@ This design was selected because it:
 
 - preserves VentureDex's commit-addressed, reproducible static build;
 - keeps imported launch signals distinct from researched startup profiles and funding claims;
-- gives every displayed item an explicit WhatShips entry link and original X post link;
+- gives every displayed item a canonical VentureDex detail page plus an original X post link;
 - supports deterministic deduplication and rollback in Git;
-- avoids copying third-party videos, poster files, avatars, and long descriptions whose reuse is not clearly licensed; list covers use source-hosted WhatShips poster URLs and fail to a local placeholder; and
+- avoids copying third-party videos, poster files, avatars, and long descriptions; list covers use the first frame of the original remote video and fail without breaking layout; and
 - reuses the repository's exact-current-main Deploy and release gate without adding another runtime database writer.
 
 The automatic push is only the content-update boundary. `sync_validated`, `main_pushed`, `deploy_dispatched`, `release_gate_passed`, `deploy_passed`, and `live_verified` remain distinct states. A workflow file or cron declaration in Git is not evidence that the schedule is enabled remotely or that any content reached production.
@@ -33,14 +39,14 @@ The following observations were verified directly on 2026-08-15. They are a poin
 | --- | --- | --- |
 | [Home](https://whatships.com/) | Describes the site as a curated directory of product launch videos, demos, and walkthroughs shared on X/Twitter. | Treat WhatShips as a discovery/index source, not as the owner of the underlying product or media. |
 | [About](https://whatships.com/about/) | Says approved records are added to `src/data/videos.json` and published on the next build. It also says names, trademarks, and video content remain the property of their respective owners. | The public GitHub JSON is the best structured discovery input, but its media fields are not a grant to republish the media. |
-| [LLM navigation](https://whatships.com/llms.txt) | Instructs readers to cite the product name, link the original X post, and link WhatShips for the directory entry. | Every VentureDex card should retain both links and visible source attribution. |
+| [LLM navigation](https://whatships.com/llms.txt) | Instructs readers to cite the product name, link the original X post, and link WhatShips for the directory entry. | This is an upstream-site request, not the VentureDex public-page contract. VentureDex retains the original X evidence and keeps the catalog private to ingestion. |
 | [robots.txt](https://whatships.com/robots.txt) | Advertises `search=yes`, `ai-train=no`, and `use=reference`; several named AI crawlers are disallowed. | A linked directory/reference view is aligned with the signal. Model training and broad content replication are not. Robots signals are not a copyright licence. |
 | [Sitemap](https://whatships.com/sitemap.xml) | Listed 1,287 `/videos/{slug}/` pages, matching the number of published records in the upstream JSON at the observed commit. | Use it as a parity/diagnostic surface, not as the primary parser input. A brief deployment lag must not cause an automatic deletion. |
 | [Public repository](https://github.com/dingyi/whatships.com) | The repository is public. `README.md` says MIT applies to original source code and documentation, while third-party video content remains with its owners. `package.json` declares MIT, but the repository root exposed no standalone `LICENSE` file at the observed commit. | Do not infer a blanket licence for the curated dataset, descriptions, posters, avatars, or videos. |
 | [Creator Tools](https://whatships.com/tools/) | Lists eight launch-video creation tools through a separate static model with no publish status, timestamp, or per-tool detail route. | Do not mix this ancillary catalog into the scheduled launch-event stream. It can become a separately reviewed static subsection later. |
 | RSS/API probes | `/rss.xml`, `/feed.xml`, and `/api` returned 404 during the snapshot. | Do not build around an undocumented RSS or API contract. Fetch the versioned GitHub file at a resolved commit. |
 
-The public repository also exposes a self-hosted proxy for X video playback. That implementation exists because direct `video.twimg.com` playback rejects ordinary browser referrers. VentureDex must not copy the proxy pattern or proxy the same third-party media as part of this channel.
+The public repository also exposes a self-hosted proxy for X video playback. VentureDex does not copy that proxy pattern. A sampled original `video.twimg.com` MP4 returned byte-range video with permissive cross-origin headers, so the implementation uses the original remote URL and requires browser playback verification before release.
 
 ## Data Snapshot
 
@@ -124,26 +130,26 @@ The canonical snapshot is `content/whatships.json`. The exact schema is enforced
 | `tags`, `featured` | Retain bounded plain-text tags and the upstream boolean; neither is a VentureDex endorsement. |
 | `published_at` | Valid upstream ISO timestamp, normalized to UTC. This is the launch-post time, not the VentureDex sync time. |
 | `duration_seconds` | Nullable non-negative integer. |
-| `poster_url` | Derive only from a validated `/posters/{safe-name}.webp` source path as `https://whatships.com/posters/{safe-name}.webp`. The browser loads it from WhatShips; VentureDex does not download or proxy it. |
-| `source_url` | Derive as `https://whatships.com/videos/{slug}/`; do not accept an arbitrary host from upstream data. |
 | `original_post_url` | Normalize to `https://x.com/{handle}/status/{tweet_id}` and require the path id to equal `tweet_id`. |
+| `video_url` | Require the original HTTPS MP4 on the exact `video.twimg.com` host. VentureDex may stream it in the browser but must not download, proxy, or cache it. |
 | Provenance | Record the upstream Git commit, data blob/hash, and deterministic source commit time at snapshot level. A wall-clock `last_checked_at` belongs in the Action summary, not in a no-op content diff. |
 
 The snapshot must not contain or render these upstream fields by default:
 
 - `description` or other long-form copied prose;
-- `videoUrl`, `streamUrl`, or any proxy URL;
-- copied, proxied, or locally cached `poster` files; only the derived source-hosted `poster_url` is allowed;
+- `streamUrl` or any proxy URL;
+- copied, proxied, or locally cached `poster` files and poster URLs;
+- source detail-page URLs;
 - `authorAvatar` or cached X profile media; or
 - arbitrary upstream HTML.
 
-This is an intentionally conservative reference implementation, not a legal conclusion. If the relevant owners provide written permission for richer reuse, expand the allowlist in a separately reviewed change and retain the original X and WhatShips attribution.
+This is an intentionally conservative implementation, not a legal conclusion. If the relevant owners provide written permission for richer reuse, expand the allowlist in a separately reviewed change and retain the original X attribution.
 
 ## Product and SEO Boundary
 
 - The channel should have one VentureDex hub route and a homepage navigation entry.
-- Cards should open the WhatShips detail page and offer a separate original-X link. They should not pretend the launch metadata is VentureDex funding research.
-- Do not generate 1,287 thin VentureDex detail pages by copying upstream titles or descriptions. The hub may be indexable, but filtered/search states should follow the repository's existing crawl policy.
+- Cards should open canonical VentureDex detail pages and offer the original-X evidence link. They should not pretend the launch metadata is VentureDex funding research.
+- Generate one VentureDex page per launch from factual metadata and the original video. Do not copy upstream descriptions. The hub and detail pages may be indexable, while filtered/search states follow the repository's existing crawl policy.
 - Keep launch time, upstream sync time, and VentureDex publication time distinct.
 - A WhatShips item matching an existing VentureDex startup may link to that VentureDex profile, but the match must use an explicit reviewed mapping. Name similarity alone is not enough.
 
@@ -154,7 +160,7 @@ This is an intentionally conservative reference implementation, not a legal conc
 | Upstream schema changes silently corrupt the channel | Strict parser, explicit category aliases, URL/id invariants, size/count guards, and fail-closed writes. |
 | One transient/partial response deletes most records | Fetch an immutable commit, require a complete JSON array, compare exact id sets, and prohibit scheduled deletions. |
 | Repeated schedules create duplicate records or commits | Key by `tweetId`, canonicalize and sort output, compare a content hash, and make no commit on an identical snapshot. |
-| Source or media rights are overstated | Keep only minimal reference metadata; load covers from WhatShips without copying or proxying them; show attribution; retain both outbound links; require separate permission for video or richer reuse. |
+| Source or media rights are overstated | Keep only factual metadata and original-X evidence; stream the original video without copying or proxying it; do not copy descriptions, posters, avatars, or source pages; require separate permission for richer reuse. |
 | External data makes releases non-reproducible | Fetch only in the snapshot workflow, never in Astro build, Worker requests, or the production release job. |
 | An automation push does not start normal CI/deploy | This is expected for a built-in `GITHUB_TOKEN` push. After verifying remote `main` equals the pushed SHA, call the existing Deploy workflow's `workflow_dispatch` endpoint with Actions write permission; that path reruns the full gate before release. |
 | Branch protection or a concurrent writer rejects the update | Fetch and compare the current remote tip immediately before a non-force push. Fail closed on a protected-branch rejection or non-fast-forward and retry from fresh `main` on the next schedule. |

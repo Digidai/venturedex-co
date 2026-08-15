@@ -1,4 +1,4 @@
-name: Sync WhatShips channel
+name: Sync VentureDex launches
 
 on:
   schedule:
@@ -29,7 +29,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Fetch and validate published WhatShips metadata
+      - name: Fetch and validate published launch metadata
         id: source
         run: npm run whatships:sync
         env:
@@ -55,7 +55,7 @@ jobs:
         run: |
           set -euo pipefail
           if git diff --quiet -- content/whatships.json; then
-            echo "WhatShips snapshot is already current."
+            echo "Launch snapshot is already current."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -75,9 +75,9 @@ jobs:
             "Canonical output SHA-256: $OUTPUT_HASH" \
             "Published items: $ITEM_COUNT" \
             "Changes: +$ADDITIONS, ~$UPDATES, -$REMOVALS" \
-            "Reference metadata only; no media or descriptions mirrored.")"
+            "Original X video/post URLs and factual metadata only; no media or source descriptions mirrored.")"
           git commit \
-            -m "content(whatships): sync launch channel" \
+            -m "content(launches): sync launch channel" \
             -m "$commit_body"
           git push origin HEAD:main
           echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -100,7 +100,7 @@ jobs:
           set -euo pipefail
           remote_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
           if [ -z "$remote_sha" ] || [ "$remote_sha" != "${{ steps.commit.outputs.pushed_sha }}" ]; then
-            echo "main_pushed_dispatch_failed: current main ${remote_sha:-unknown} no longer matches the pushed WhatShips SHA." >&2
+            echo "main_pushed_dispatch_failed: current main ${remote_sha:-unknown} no longer matches the pushed launch SHA." >&2
             exit 1
           fi
           gh workflow run deploy.yml --ref main

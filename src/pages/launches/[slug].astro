@@ -1,0 +1,393 @@
+---
+export const prerender = true;
+
+import Base from "../../layouts/Base.astro";
+import {
+  getPublicLaunchTags,
+  whatShipsCategoryLabel,
+  whatShipsSnapshot,
+  type WhatShipsItem,
+} from "../../lib/whatships";
+
+export function getStaticPaths() {
+  return whatShipsSnapshot.items.map((item) => ({
+    params: { slug: item.slug },
+    props: { item },
+  }));
+}
+
+interface Props {
+  item: WhatShipsItem;
+}
+
+const { item } = Astro.props;
+const items = whatShipsSnapshot.items;
+const currentIndex = items.findIndex((candidate) => candidate.slug === item.slug);
+const previousItem = currentIndex > 0 ? items[currentIndex - 1] : null;
+const nextItem = currentIndex >= 0 && currentIndex < items.length - 1 ? items[currentIndex + 1] : null;
+const related = items
+  .filter((candidate) => candidate.slug !== item.slug && candidate.category === item.category)
+  .slice(0, 4);
+const categoryLabel = whatShipsCategoryLabel(item.category);
+const publishedLabel = new Intl.DateTimeFormat("en", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+}).format(new Date(item.published_at));
+
+function formatDuration(seconds: number | null): string {
+  if (!seconds) return "Not listed";
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const remainder = seconds % 60;
+  return hours > 0
+    ? `${hours}:${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`
+    : `${minutes}:${String(remainder).padStart(2, "0")}`;
+}
+
+function readableTag(tag: string): string {
+  return tag
+    .split("-")
+    .filter(Boolean)
+    .map((word) => word[0]?.toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+const focusTags = getPublicLaunchTags(item)
+  .slice(0, 5)
+  .map(readableTag);
+const focusText = focusTags.length > 0
+  ? focusTags.length === 1
+    ? focusTags[0]
+    : `${focusTags.slice(0, -1).join(", ")} and ${focusTags.at(-1)}`
+  : `${categoryLabel.toLowerCase()} product development`;
+const companyText = item.company === item.product ? item.product : `${item.product} by ${item.company}`;
+const summary = `${companyText} published “${item.title},” a ${categoryLabel.toLowerCase()} launch video focused on ${focusText}. VentureDex preserves the release as a durable, time-stamped product record.`;
+const pageTitle = item.title.length <= 58 ? item.title : `${item.product} launch video`;
+const durationIso = item.duration_seconds
+  ? `PT${Math.floor(item.duration_seconds / 3600) ? `${Math.floor(item.duration_seconds / 3600)}H` : ""}${Math.floor((item.duration_seconds % 3600) / 60)}M${item.duration_seconds % 60}S`
+  : undefined;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: item.title,
+  description: summary,
+  url: `https://venturedex.co/launches/${item.slug}`,
+  datePublished: item.published_at,
+  publisher: {
+    "@type": "Organization",
+    name: "VentureDex",
+    url: "https://venturedex.co/",
+  },
+  about: {
+    "@type": "Product",
+    name: item.product,
+    brand: item.company,
+    category: categoryLabel,
+  },
+  subjectOf: {
+    "@type": "VideoObject",
+    name: item.title,
+    description: summary,
+    uploadDate: item.published_at,
+    ...(durationIso ? { duration: durationIso } : {}),
+    contentUrl: item.video_url,
+    sameAs: item.original_post_url,
+  },
+};
+---
+
+<Base
+  title={pageTitle}
+  description={summary}
+  canonicalPath={`/launches/${item.slug}`}
+  ogType="article"
+  publishedTime={item.published_at}
+  modifiedTime={item.published_at}
+  schema={schema}
+  referrerPolicy="no-referrer"
+>
+  <article class="launch-detail">
+    <div class="container launch-detail__container">
+      <nav class="launch-detail__breadcrumb" aria-label="Breadcrumb">
+        <a href="/launches">Launches</a>
+        <span aria-hidden="true">/</span>
+        <span>{item.product}</span>
+      </nav>
+
+      <header class="launch-detail__header">
+        <div class="launch-detail__heading">
+          <p class="launch-detail__eyebrow">{categoryLabel} · Product launch</p>
+          <h1>{item.title}</h1>
+          <p class="launch-detail__dek">{summary}</p>
+        </div>
+        <dl class="launch-detail__quick-facts">
+          <div><dt>Product</dt><dd>{item.product}</dd></div>
+          {item.company !== item.product && <div><dt>Company</dt><dd>{item.company}</dd></div>}
+          <div><dt>Published</dt><dd>{publishedLabel}</dd></div>
+          <div><dt>Runtime</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
+        </dl>
+      </header>
+
+      <section class="launch-player" aria-labelledby="launch-video-heading">
+        <div class="launch-player__label">
+          <p>Primary evidence</p>
+          <h2 id="launch-video-heading">Watch the original launch video</h2>
+        </div>
+        <video
+          class="launch-player__video"
+          src={item.video_url}
+          controls
+          preload="metadata"
+          playsinline
+          controlslist="nodownload"
+          aria-label={`Original launch video: ${item.title}`}
+        >
+          Your browser does not support video playback.
+        </video>
+      </section>
+
+      <div class="launch-detail__body">
+        <div class="launch-detail__editorial">
+          <section>
+            <p class="launch-detail__section-label">VentureDex brief</p>
+            <h2>What shipped</h2>
+            <p>{summary}</p>
+          </section>
+
+          <section>
+            <p class="launch-detail__section-label">Reading the signal</p>
+            <h2>What the video can tell us</h2>
+            <p>
+              The useful evidence is what the team chose to demonstrate publicly: the workflow, interface,
+              and capability boundary visible at launch. It is evidence of product positioning and a shipped
+              interaction—not proof of adoption, performance, funding, or long-term execution.
+            </p>
+          </section>
+
+          {focusTags.length > 0 && (
+            <section>
+              <p class="launch-detail__section-label">Signal map</p>
+              <h2>Focus areas</h2>
+              <ul class="launch-detail__tags" aria-label="Launch focus areas">
+                {focusTags.map((tag) => <li>{tag}</li>)}
+              </ul>
+            </section>
+          )}
+        </div>
+
+        <aside class="launch-evidence" aria-label="Launch evidence">
+          <p class="launch-detail__section-label">Evidence record</p>
+          <h2>Trace it to the publisher</h2>
+          <p>
+            This VentureDex page is organized around the original product video and its time-stamped post.
+          </p>
+          <dl>
+            <div><dt>Publisher</dt><dd>{item.company}</dd></div>
+            <div><dt>Category</dt><dd>{categoryLabel}</dd></div>
+            <div><dt>Posted</dt><dd>{publishedLabel}</dd></div>
+            <div><dt>Video</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
+          </dl>
+          <a href={item.original_post_url} target="_blank" rel="noopener noreferrer" class="launch-evidence__button">
+            Open original post <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
+      </div>
+
+      {related.length > 0 && (
+        <section class="related-launches" aria-labelledby="related-launches-title">
+          <div class="related-launches__heading">
+            <div>
+              <p class="launch-detail__section-label">Continue exploring</p>
+              <h2 id="related-launches-title">More in {categoryLabel}</h2>
+            </div>
+            <a href={`/launches?category=${encodeURIComponent(item.category)}`}>View category →</a>
+          </div>
+          <div class="related-launches__grid">
+            {related.map((candidate) => (
+              <a href={`/launches/${candidate.slug}`} class="related-launch">
+                <span class="related-launch__index" aria-hidden="true">{candidate.product.slice(0, 1)}</span>
+                <span class="related-launch__copy">
+                  <span>{candidate.product}</span>
+                  <strong>{candidate.title}</strong>
+                </span>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <nav class="launch-detail__pagination" aria-label="Adjacent launch pages">
+        {previousItem ? (
+          <a href={`/launches/${previousItem.slug}`} rel="prev">
+            <span>Newer launch</span>
+            <strong>← {previousItem.product}</strong>
+          </a>
+        ) : <span></span>}
+        {nextItem ? (
+          <a href={`/launches/${nextItem.slug}`} rel="next">
+            <span>Older launch</span>
+            <strong>{nextItem.product} →</strong>
+          </a>
+        ) : <span></span>}
+      </nav>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .launch-detail {
+    --detail-ink: var(--color-text);
+    --detail-muted: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at 84% 5%, color-mix(in srgb, var(--color-badge-bg) 70%, transparent), transparent 24rem),
+      var(--color-bg);
+  }
+  .launch-detail__container { padding-top: var(--space-8); padding-bottom: var(--space-16); }
+  .launch-detail__breadcrumb {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    color: var(--detail-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .launch-detail__breadcrumb a { color: var(--detail-ink); }
+  .launch-detail__header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.32fr);
+    gap: clamp(2rem, 8vw, 8rem);
+    align-items: end;
+    padding: clamp(3.5rem, 9vw, 8rem) 0 clamp(2.5rem, 6vw, 5rem);
+  }
+  .launch-detail__eyebrow,
+  .launch-detail__section-label,
+  .launch-player__label p {
+    margin: 0 0 var(--space-3);
+    color: var(--detail-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .launch-detail__header h1 {
+    max-width: 15ch;
+    margin: 0;
+    font-size: clamp(3rem, 8vw, 7.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.055em;
+  }
+  .launch-detail__dek {
+    max-width: 62rem;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    color: var(--detail-muted);
+    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+    line-height: 1.65;
+  }
+  .launch-detail__quick-facts { margin: 0; border-top: 1px solid var(--color-border); }
+  .launch-detail__quick-facts div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-4) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .launch-detail__quick-facts dt { color: var(--detail-muted); }
+  .launch-detail__quick-facts dd { margin: 0; font-family: var(--font-mono); font-size: 0.74rem; text-align: right; }
+  .launch-player {
+    display: grid;
+    grid-template-columns: minmax(12rem, 0.25fr) minmax(0, 1fr);
+    gap: var(--space-6);
+    padding: var(--space-6);
+    border: 1px solid var(--color-border);
+    background: #080808;
+    color: #f8f8f4;
+  }
+  .launch-player__label { align-self: end; padding: var(--space-4); }
+  .launch-player__label p { color: #a7a7a2; }
+  .launch-player__label h2 { max-width: 9ch; margin: 0; color: inherit; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1; }
+  .launch-player__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; object-fit: contain; }
+  .launch-detail__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.34fr);
+    gap: clamp(3rem, 8vw, 8rem);
+    padding: clamp(4rem, 9vw, 8rem) 0;
+  }
+  .launch-detail__editorial { display: grid; gap: clamp(3rem, 7vw, 6rem); }
+  .launch-detail__editorial section { max-width: 54rem; }
+  .launch-detail__editorial h2,
+  .launch-evidence h2,
+  .related-launches h2 { margin: 0 0 var(--space-4); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; }
+  .launch-detail__editorial section > p:last-child,
+  .launch-evidence > p { margin: 0; color: var(--detail-muted); font-size: 1.05rem; line-height: 1.8; }
+  .launch-detail__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
+  .launch-detail__tags li { padding: 0.55rem 0.75rem; border: 1px solid var(--color-border); border-radius: 999px; font-family: var(--font-mono); font-size: 0.7rem; }
+  .launch-evidence {
+    align-self: start;
+    position: sticky;
+    top: var(--space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+  }
+  .launch-evidence dl { margin: var(--space-8) 0; border-top: 1px solid var(--color-border); }
+  .launch-evidence dl div { display: flex; justify-content: space-between; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--color-border); }
+  .launch-evidence dt { color: var(--detail-muted); }
+  .launch-evidence dd { margin: 0; text-align: right; }
+  .launch-evidence__button {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: 0.9rem 1rem;
+    background: var(--detail-ink);
+    color: var(--color-bg);
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .related-launches { padding: clamp(3rem, 7vw, 6rem) 0; border-top: 1px solid var(--color-border); }
+  .related-launches__heading { display: flex; justify-content: space-between; gap: var(--space-6); align-items: end; margin-bottom: var(--space-8); }
+  .related-launches__heading > a { color: var(--detail-ink); font-weight: 600; }
+  .related-launches__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; background: var(--color-border); }
+  .related-launch {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: var(--space-4);
+    align-items: center;
+    min-height: 10rem;
+    padding: var(--space-5);
+    background: var(--color-bg);
+    color: var(--detail-ink);
+    text-decoration: none;
+  }
+  .related-launch:hover { background: var(--color-card-bg); }
+  .related-launch__index { display: grid; width: 3.2rem; height: 3.2rem; place-items: center; border: 1px solid var(--color-border); border-radius: 50%; font-family: var(--font-heading); font-size: 1.35rem; }
+  .related-launch__copy { display: grid; gap: 0.35rem; min-width: 0; }
+  .related-launch__copy > span { color: var(--detail-muted); font-family: var(--font-mono); font-size: 0.66rem; text-transform: uppercase; }
+  .related-launch__copy strong { line-height: 1.25; }
+  .launch-detail__pagination { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); padding-top: var(--space-8); border-top: 1px solid var(--color-border); }
+  .launch-detail__pagination a { display: grid; gap: 0.35rem; color: var(--detail-ink); text-decoration: none; }
+  .launch-detail__pagination a:last-child { text-align: right; }
+  .launch-detail__pagination span { color: var(--detail-muted); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; }
+  @media (max-width: 800px) {
+    .launch-detail__header,
+    .launch-player,
+    .launch-detail__body { grid-template-columns: 1fr; }
+    .launch-detail__header { gap: var(--space-8); }
+    .launch-player { padding: var(--space-3); }
+    .launch-player__label { padding: var(--space-3); }
+    .launch-player__label h2 { max-width: none; }
+    .launch-evidence { position: static; }
+    .related-launches__grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .launch-detail__header h1 { font-size: clamp(2.7rem, 15vw, 4.5rem); }
+    .related-launches__heading { display: grid; }
+    .launch-detail__pagination { grid-template-columns: 1fr; }
+    .launch-detail__pagination a:last-child { text-align: left; }
+  }
+</style>

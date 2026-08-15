@@ -1,5 +1,6 @@
 ---
 import {
+  getPublicLaunchTags,
   whatShipsCategoryLabel,
   type WhatShipsItem,
 } from "../lib/whatships";
@@ -7,9 +8,13 @@ import {
 interface Props {
   item: WhatShipsItem;
   eager?: boolean;
+  headingLevel?: "h2" | "h3";
 }
 
-const { item, eager = false } = Astro.props;
+const { item, eager = false, headingLevel = "h2" } = Astro.props;
+const Heading = headingLevel;
+const detailPath = `/launches/${item.slug}`;
+const visibleTags = getPublicLaunchTags(item).slice(0, 5);
 const publishedLabel = new Intl.DateTimeFormat("en", {
   month: "short",
   day: "numeric",
@@ -31,25 +36,21 @@ function formatDuration(seconds: number | null): string {
 <article class="launch-card">
   <a
     class="launch-card__media"
-    href={item.source_url}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label={`Open the video page for ${item.title} on WhatShips`}
+    href={detailPath}
+    aria-label={`View VentureDex launch page for ${item.title}`}
     data-launch-media
   >
-    <span class="launch-card__poster-fallback" aria-hidden="true">{item.product.slice(0, 1)}</span>
-    <img
-      class="launch-card__poster"
-      src={item.poster_url}
-      alt={`Video cover for ${item.title}`}
-      width="640"
-      height="360"
-      loading={eager ? "eager" : "lazy"}
-      fetchpriority={eager ? "high" : "auto"}
-      decoding="async"
-      referrerpolicy="no-referrer"
-      data-launch-poster
-    />
+    <span class="launch-card__preview-fallback" aria-hidden="true">{item.product.slice(0, 1)}</span>
+    <video
+      class="launch-card__preview"
+      src={eager ? item.video_url : undefined}
+      data-video-src={item.video_url}
+      preload={eager ? "metadata" : "none"}
+      muted
+      playsinline
+      aria-hidden="true"
+      data-launch-preview
+    ></video>
     <span class="launch-card__play" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
     </span>
@@ -62,21 +63,18 @@ function formatDuration(seconds: number | null): string {
       <span class="launch-card__category">{whatShipsCategoryLabel(item.category)}</span>
       <time datetime={item.published_at}>{publishedLabel}</time>
     </div>
-    <h2><a href={item.source_url} target="_blank" rel="noopener noreferrer">{item.title}</a></h2>
+    <Heading><a href={detailPath}>{item.title}</a></Heading>
     <p class="launch-card__identity">
       <strong>{item.product}</strong>
       {item.company !== item.product && <span>by {item.company}</span>}
     </p>
-    {item.tags.length > 0 && (
+    {visibleTags.length > 0 && (
       <ul class="launch-card__tags" aria-label="Tags">
-        {item.tags.slice(0, 5).map((tag) => <li>{tag}</li>)}
+        {visibleTags.map((tag) => <li>{tag}</li>)}
       </ul>
     )}
     <div class="launch-card__footer">
-      <div class="launch-card__links">
-        <a href={item.source_url} target="_blank" rel="noopener noreferrer">WhatShips <span aria-hidden="true">↗</span></a>
-        <a href={item.original_post_url} target="_blank" rel="noopener noreferrer">Original post <span aria-hidden="true">↗</span></a>
-      </div>
+      <a class="launch-card__detail-link" href={detailPath}>Open launch brief <span aria-hidden="true">→</span></a>
     </div>
   </div>
 </article>

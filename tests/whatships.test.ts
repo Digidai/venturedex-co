@@ -81,30 +81,30 @@ test("scheduled transitions reject removals and bulk additions", () => {
   );
 });
 
-test("normalization keeps source-hosted posters and strips mirrored media, prose, and tracking parameters", () => {
+test("normalization keeps original X video evidence and strips source prose and tracking parameters", () => {
   const items = normalizeUpstreamVideos(bootstrap({ category: "devtools", durationSeconds: 0 }));
   const normalized = items.find((item) => item.slug === "test-launch-0");
   assert.ok(normalized);
   assert.equal(normalized.category, "developer-tools");
   assert.equal(normalized.source_category, "devtools");
   assert.equal(normalized.duration_seconds, null);
-  assert.equal(normalized.poster_url, "https://whatships.com/posters/test-launch-0.webp");
+  assert.equal(normalized.video_url, "https://video.twimg.com/test.mp4");
   assert.match(normalized.original_post_url, /^https:\/\/x\.com\/tester\/status\/\d+$/);
   assert.deepEqual(normalized.tags, ["AI", "demo"]);
-  for (const forbidden of ["description", "poster", "videoUrl", "authorAvatar"]) {
+  for (const forbidden of ["description", "poster", "poster_url", "source_url", "videoUrl", "authorAvatar"]) {
     assert.equal(forbidden in normalized, false, `${forbidden} must not enter normalized output`);
   }
 });
 
-test("poster normalization rejects arbitrary hosts, traversal, and non-WebP paths", () => {
-  for (const poster of [
-    "https://example.com/poster.webp",
-    "/posters/../secret.webp",
-    "/posters/test-launch.jpg",
+test("video normalization rejects arbitrary hosts and non-MP4 paths", () => {
+  for (const videoUrl of [
+    "https://example.com/video.mp4",
+    "https://video.twimg.com/not-a-video.jpg",
+    "http://video.twimg.com/test.mp4",
   ]) {
     assert.throws(
-      () => normalizeUpstreamVideos(bootstrap({ poster })),
-      /must be a local WhatShips WebP poster path/,
+      () => normalizeUpstreamVideos(bootstrap({ videoUrl })),
+      /must be an https video\.twimg\.com MP4 URL/,
     );
   }
 });
@@ -156,7 +156,7 @@ test("snapshot output is deterministic and records immutable provenance", () => 
   assert.equal(first.source.commit, provenance.commit);
   assert.equal(first.item_count, 500);
   assert.equal(first.content_policy.media_mirrored, false);
-  assert.equal(first.content_policy.poster_delivery, "remote-source");
+  assert.equal(first.content_policy.video_delivery, "remote-original");
   assert.equal(first.content_policy.descriptions_mirrored, false);
 });
 
@@ -165,7 +165,7 @@ test("the generated file contains only the allowlisted item keys", () => {
   const allowed = new Set([
     "id", "tweet_id", "slug", "title", "product", "company", "category",
     "source_category", "tags", "published_at", "duration_seconds", "featured",
-    "poster_url", "source_url", "original_post_url",
+    "video_url", "original_post_url",
   ]);
   for (const item of snapshot.items) {
     for (const key of Object.keys(item)) assert.ok(allowed.has(key), `unexpected item key ${key}`);
@@ -189,19 +189,37 @@ test("the scheduled workflow commits only a changed snapshot and explicitly disp
 test("the Launches channel is discoverable without joining startup or newsletter models", () => {
   const layout = readFileSync("src/layouts/Base.astro", "utf8");
   const page = readFileSync("src/pages/launches.astro", "utf8");
-  const card = readFileSync("src/components/WhatShipsCard.astro", "utf8");
+  const card = readFileSync("src/components/LaunchCard.astro", "utf8");
+  const detail = readFileSync("src/pages/launches/[slug].astro", "utf8");
+  const api = readFileSync("src/pages/launches.json.ts", "utf8");
   const sitemap = readFileSync("src/pages/sitemap.xml.ts", "utf8");
   const llms = readFileSync("src/pages/llms.txt.ts", "utf8");
   const content = readFileSync("src/lib/content.ts", "utf8");
   const newsletter = readFileSync("src/lib/newsletter.ts", "utf8");
 
   assert.match(layout, /href="\/launches"[^>]*>Launches</);
-  assert.match(page, /fetch\("\/whatships\.json"/);
-  assert.match(page, /Cover images load from WhatShips/);
-  assert.match(card, /data-launch-poster/);
-  assert.match(card, /item\.poster_url/);
+  assert.match(layout, /meta name="referrer" content=\{referrerPolicy\}/);
+  assert.match(page, /fetch\("\/launches\.json"/);
+  assert.match(page, /referrerPolicy="no-referrer"/);
+  assert.match(page, /detailPath\(item\)/);
+  assert.match(card, /href=\{detailPath\}/);
+  assert.match(card, /data-launch-preview/);
+  assert.match(card, /item\.video_url/);
+  assert.match(card, /getPublicLaunchTags\(item\)/);
+  assert.match(detail, /class="launch-player__video"/);
+  assert.match(detail, /referrerPolicy="no-referrer"/);
+  assert.match(detail, /src=\{item\.video_url\}/);
+  assert.match(detail, /item\.original_post_url/);
+  assert.match(api, /url: `\/launches\/\$\{item\.slug\}`/);
+  assert.match(api, /tags: getPublicLaunchTags\(item\)/);
+  assert.doesNotMatch(api, /source: whatShipsSnapshot\.source/);
   assert.match(sitemap, /loc: "\/launches"/);
-  assert.match(llms, /Product Launch Index/);
+  assert.match(sitemap, /`\/launches\/\$\{item\.slug\}`/);
+  assert.match(llms, /Product Launch Pages/);
+  for (const publicSurface of [page, card, detail, api, llms]) {
+    assert.doesNotMatch(publicSurface, /whatships\.com/i);
+    assert.doesNotMatch(publicSurface, /href=\{item\.source_url\}/);
+  }
   assert.doesNotMatch(content, /whatships/i);
   assert.doesNotMatch(newsletter, /whatships/i);
 });

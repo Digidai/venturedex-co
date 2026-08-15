@@ -2,7 +2,7 @@
 export const prerender = true;
 
 import Base from "../layouts/Base.astro";
-import WhatShipsCard from "../components/WhatShipsCard.astro";
+import LaunchCard from "../components/LaunchCard.astro";
 import {
   getWhatShipsCategoryCounts,
   whatShipsSnapshot,
@@ -18,14 +18,13 @@ const latestDate = new Intl.DateTimeFormat("en", {
   timeZone: "UTC",
 }).format(new Date(whatShipsSnapshot.source_published_through));
 const countLabel = new Intl.NumberFormat("en").format(whatShipsSnapshot.item_count);
-const description = `Browse ${countLabel} source-linked product launch videos, demos, and walkthroughs indexed from whatships.com.`;
+const description = `Browse ${countLabel} product launch videos, demos, and walkthroughs on VentureDex, each organized around its original video evidence.`;
 const schema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   name: "Product Launches",
   description,
   url: "https://venturedex.co/launches",
-  isBasedOn: whatShipsSnapshot.source.homepage_url,
   mainEntity: {
     "@type": "ItemList",
     numberOfItems: whatShipsSnapshot.item_count,
@@ -33,7 +32,7 @@ const schema = {
       "@type": "ListItem",
       position: index + 1,
       name: item.title,
-      url: item.source_url,
+      url: `https://venturedex.co/launches/${item.slug}`,
     })),
   },
 };
@@ -45,28 +44,29 @@ const schema = {
   canonicalPath="/launches"
   modifiedTime={whatShipsSnapshot.source.commit_at}
   schema={schema}
+  referrerPolicy="no-referrer"
 >
-  <div class="whatships-page" data-launches-root>
+  <div class="launches-page" data-launches-root>
     <section class="launch-hero">
       <div class="container launch-hero__inner">
-        <p class="launch-eyebrow">VentureDex channel · indexed from WhatShips</p>
+        <p class="launch-eyebrow">VentureDex launch channel · original video evidence</p>
         <div class="launch-hero__grid">
           <div>
             <h1>Watch what’s shipping</h1>
             <p class="launch-hero__lead">
-              Product launches, demos, and walkthroughs that would otherwise disappear into the timeline.
-              Search the full source-linked index without turning launch signals into VentureDex endorsements.
+              Product launches, demos, and walkthroughs organized into durable VentureDex pages.
+              Every entry opens in this channel and keeps the original product video at the center.
             </p>
           </div>
           <dl class="launch-stats">
             <div><dt>Published entries</dt><dd>{countLabel}</dd></div>
             <div><dt>Latest source post</dt><dd>{latestDate}</dd></div>
-            <div><dt>Source revision</dt><dd><a href={whatShipsSnapshot.source.commit_url} target="_blank" rel="noopener noreferrer">{whatShipsSnapshot.source.commit.slice(0, 8)} ↗</a></dd></div>
+            <div><dt>Primary evidence</dt><dd>Original video + post</dd></div>
           </dl>
         </div>
         <p class="launch-source-note">
-          Reference metadata is synchronized from <a href="https://whatships.com/" target="_blank" rel="noopener noreferrer">whatships.com</a>.
-          Cover images load from WhatShips; VentureDex does not mirror the videos or descriptions.
+          VentureDex turns transient launch posts into browsable product records. Videos stream from their original publisher;
+          launch inclusion is a product signal, not an endorsement.
         </p>
       </div>
     </section>
@@ -100,7 +100,7 @@ const schema = {
         </form>
 
         <div class="launch-grid" data-launch-grid>
-          {initialItems.map((item, index) => <WhatShipsCard item={item} eager={index < 6} />)}
+          {initialItems.map((item, index) => <LaunchCard item={item} eager={index < 6} />)}
         </div>
 
         <div class="launch-empty" data-launch-empty hidden>
@@ -116,8 +116,7 @@ const schema = {
 
         <noscript>
           <p class="launch-noscript">
-            JavaScript is off, so this page shows the latest {initialItems.length} entries.
-            <a href="https://whatships.com/" target="_blank" rel="noopener noreferrer">Browse the complete source directory ↗</a>
+            JavaScript is off, so this page shows the latest {initialItems.length} VentureDex launch pages.
           </p>
         </noscript>
       </div>
@@ -137,8 +136,7 @@ const schema = {
     tags: string[];
     published_at: string;
     duration_seconds: number | null;
-    poster_url: string;
-    source_url: string;
+    video_url: string;
     original_post_url: string;
   };
 
@@ -191,14 +189,15 @@ const schema = {
     return element;
   }
 
-  function externalLink(label: string, href: string): any {
+  function pageLink(label: string, href: string, className = ""): any {
     const link = document.createElement("a") as any;
     link.href = href;
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = `${label} ↗`;
+    link.className = className;
+    link.textContent = label;
     return link;
   }
+
+  const detailPath = (item: LaunchItem): string => `/launches/${item.slug}`;
 
   function formatDuration(seconds: number | null): string {
     if (!seconds) return "Duration unavailable";
@@ -216,25 +215,20 @@ const schema = {
 
     const media = document.createElement("a") as any;
     media.className = "launch-card__media";
-    media.href = item.source_url;
-    media.target = "_blank";
-    media.rel = "noopener noreferrer";
-    media.setAttribute("aria-label", `Open the video page for ${item.title} on WhatShips`);
+    media.href = detailPath(item);
+    media.setAttribute("aria-label", `View VentureDex launch page for ${item.title}`);
     media.dataset.launchMedia = "";
-    appendText(media, "span", "launch-card__poster-fallback", item.product.slice(0, 1))
+    appendText(media, "span", "launch-card__preview-fallback", item.product.slice(0, 1))
       .setAttribute("aria-hidden", "true");
-    const poster = document.createElement("img") as any;
-    poster.className = "launch-card__poster";
-    poster.src = item.poster_url;
-    poster.alt = `Video cover for ${item.title}`;
-    poster.width = 640;
-    poster.height = 360;
-    poster.loading = "lazy";
-    poster.decoding = "async";
-    poster.referrerPolicy = "no-referrer";
-    poster.dataset.launchPoster = "";
-    poster.addEventListener("error", () => media.classList.add("is-unavailable"), { once: true });
-    media.appendChild(poster);
+    const preview = document.createElement("video") as any;
+    preview.className = "launch-card__preview";
+    preview.dataset.videoSrc = item.video_url;
+    preview.dataset.launchPreview = "";
+    preview.preload = "none";
+    preview.muted = true;
+    preview.playsInline = true;
+    preview.setAttribute("aria-hidden", "true");
+    media.appendChild(preview);
     const play = appendText(media, "span", "launch-card__play", "▶");
     play.setAttribute("aria-hidden", "true");
     if (item.duration_seconds) {
@@ -257,8 +251,7 @@ const schema = {
     content.appendChild(meta);
 
     const heading = document.createElement("h2");
-    const headingLink = externalLink(item.title, item.source_url);
-    headingLink.textContent = item.title;
+    const headingLink = pageLink(item.title, detailPath(item));
     heading.appendChild(headingLink);
     content.appendChild(heading);
 
@@ -278,14 +271,45 @@ const schema = {
 
     const footer = document.createElement("div");
     footer.className = "launch-card__footer";
-    const links = document.createElement("div");
-    links.className = "launch-card__links";
-    links.appendChild(externalLink("WhatShips", item.source_url));
-    links.appendChild(externalLink("Original post", item.original_post_url));
-    footer.appendChild(links);
+    footer.appendChild(pageLink("Open launch brief →", detailPath(item), "launch-card__detail-link"));
     content.appendChild(footer);
     card.appendChild(content);
     return card;
+  }
+
+  const previewObserver = typeof IntersectionObserver === "undefined"
+    ? null
+    : new IntersectionObserver((entries: any[]) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          loadPreview(entry.target);
+          previewObserver?.unobserve(entry.target);
+        }
+      }, { rootMargin: "240px 0px" });
+
+  function loadPreview(preview: any): void {
+    if (preview.src) return;
+    const source = preview.dataset.videoSrc;
+    if (!source) return;
+    preview.preload = "metadata";
+    preview.src = source;
+    preview.load();
+  }
+
+  function bindPreviews(scope: any): void {
+    for (const preview of scope?.querySelectorAll?.("[data-launch-preview]") ?? []) {
+      if (preview.dataset.previewBound === "true") continue;
+      preview.dataset.previewBound = "true";
+      const media = preview.closest("[data-launch-media]");
+      const markReady = () => media?.classList.add("is-ready");
+      const markUnavailable = () => media?.classList.add("is-unavailable");
+      preview.addEventListener("loadeddata", markReady, { once: true });
+      preview.addEventListener("error", markUnavailable, { once: true });
+      if (preview.readyState >= 2) markReady();
+      if (preview.src) preview.load();
+      else if (previewObserver) previewObserver.observe(preview);
+      else loadPreview(preview);
+    }
   }
 
   function normalizedQuery(): string[] {
@@ -317,6 +341,7 @@ const schema = {
     const start = (currentPage - 1) * PAGE_SIZE;
     const visible = filtered.slice(start, start + PAGE_SIZE);
     grid.replaceChildren(...visible.map(renderCard));
+    bindPreviews(grid);
     if (empty) empty.hidden = visible.length > 0;
     if (results) {
       const formatted = new Intl.NumberFormat("en").format(filtered.length);
@@ -341,14 +366,9 @@ const schema = {
   }
 
   if (root && grid) {
-    for (const poster of root.querySelectorAll("[data-launch-poster]")) {
-      const media = poster.closest("[data-launch-media]");
-      const markUnavailable = () => media?.classList.add("is-unavailable");
-      poster.addEventListener("error", markUnavailable, { once: true });
-      if (poster.complete && poster.naturalWidth === 0) markUnavailable();
-    }
+    bindPreviews(root);
     restoreState();
-    fetch("/whatships.json", { headers: { Accept: "application/json" } })
+    fetch("/launches.json", { headers: { Accept: "application/json" } })
       .then((response) => {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         return response.json() as Promise<LaunchPayload>;
@@ -376,7 +396,7 @@ const schema = {
 </script>
 
 <style is:global>
-  .whatships-page {
+  .launches-page {
     --launch-ink: var(--color-text);
     --launch-muted: var(--color-text-secondary);
   }
@@ -517,7 +537,7 @@ const schema = {
     color: var(--color-text);
     isolation: isolate;
   }
-  .launch-card__poster-fallback {
+  .launch-card__preview-fallback {
     position: absolute;
     inset: 0;
     display: grid;
@@ -527,17 +547,20 @@ const schema = {
     font-weight: 700;
     text-transform: uppercase;
   }
-  .launch-card__poster {
+  .launch-card__preview {
     position: absolute;
     inset: 0;
     z-index: 1;
     width: 100%;
     height: 100%;
+    opacity: 0;
     object-fit: cover;
-    transition: transform 0.35s ease, filter 0.35s ease;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.35s ease, filter 0.35s ease;
   }
-  .launch-card__media:hover .launch-card__poster { transform: scale(1.025); filter: saturate(1.06); }
-  .launch-card__media.is-unavailable .launch-card__poster { display: none; }
+  .launch-card__media.is-ready .launch-card__preview { opacity: 1; }
+  .launch-card__media:hover .launch-card__preview { transform: scale(1.025); filter: saturate(1.06); }
+  .launch-card__media.is-unavailable .launch-card__preview { display: none; }
   .launch-card__play {
     position: absolute;
     top: 50%;
@@ -593,14 +616,17 @@ const schema = {
     text-transform: uppercase;
   }
   .launch-card__category { color: var(--launch-ink); font-weight: 600; }
-  .launch-card h2 {
+  .launch-card h2,
+  .launch-card h3 {
     margin: clamp(1.5rem, 2.8vw, 2.4rem) 0 var(--space-4);
     font-size: clamp(1.35rem, 2.1vw, 1.8rem);
     line-height: 1.12;
     letter-spacing: -0.025em;
   }
-  .launch-card h2 a { color: inherit; text-decoration: none; }
-  .launch-card h2 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+  .launch-card h2 a,
+  .launch-card h3 a { color: inherit; text-decoration: none; }
+  .launch-card h2 a:hover,
+  .launch-card h3 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
   .launch-card__identity { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; color: var(--launch-muted); font-size: 0.88rem; }
   .launch-card__identity strong { color: var(--launch-ink); font-weight: 600; }
   .launch-card__tags {
@@ -627,8 +653,7 @@ const schema = {
     margin-top: auto;
     padding-top: var(--space-8);
   }
-  .launch-card__links { display: grid; gap: 0.35rem; text-align: right; }
-  .launch-card__links a { color: var(--launch-ink); font-size: 0.75rem; font-weight: 600; }
+  .launch-card__detail-link { color: var(--launch-ink); font-size: 0.75rem; font-weight: 600; }
 
   .launch-empty { padding: var(--space-16) var(--space-4); text-align: center; }
   .launch-empty h2 { margin-bottom: var(--space-2); }
@@ -670,7 +695,7 @@ const schema = {
     .launch-pagination button { min-width: 0; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .launch-card__poster,
+    .launch-card__preview,
     .launch-card__play { transition: none; }
   }
 </style>

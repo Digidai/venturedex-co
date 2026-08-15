@@ -1,4 +1,4 @@
-# VentureDex WhatShips Sync Runbook
+# VentureDex Launch Discovery Sync Runbook
 
 Status: operational contract
 
@@ -8,13 +8,13 @@ Research basis: [`docs/research/whatships-channel.md`](../research/whatships-cha
 
 ## Objective
 
-Refresh the VentureDex WhatShips channel from the public WhatShips catalog every six hours while preserving these invariants:
+Refresh the VentureDex launch discovery snapshot from the internal catalog input every six hours while preserving these invariants:
 
 1. The production channel is rendered only from a version-controlled snapshot.
-2. The same VentureDex Git SHA always builds from the same WhatShips input.
+2. The same VentureDex Git SHA always builds from the same pinned discovery input.
 3. A scheduled run may add or safely update reference metadata, but it may not delete published items.
-4. Every record retains a WhatShips detail link and the original X post link.
-5. The workflow never copies or serves upstream videos, poster files, avatars, or long descriptions. It may retain only a validated WhatShips-hosted poster URL for list-card display.
+4. Every record retains the original X post URL and the original X-hosted video URL; public routes are VentureDex canonical pages.
+5. The workflow never copies source descriptions, poster files, avatars, HTML, or media files. Videos stream from an allowlisted original `video.twimg.com` MP4 URL; VentureDex does not proxy or store them.
 6. A pre-push fetch, parse, validation, or rate-limit failure leaves the committed snapshot and live site unchanged; a post-push dispatch or publication failure leaves production at the last known-good release and records the pushed-but-unreleased state.
 7. After all focused sync gates pass, one non-force commit is pushed to the exact current `main` tip and the existing Deploy workflow is explicitly dispatched; Deploy then owns the complete release gate.
 8. Sync validation, the `main` push, Deploy dispatch, release-gate success, and live verification remain separate evidence boundaries.
@@ -30,7 +30,7 @@ When implementation details conflict, use this order:
 4. `.github/workflows/sync-whatships.yml`.
 5. The upstream WhatShips repository and website.
 
-The upstream public file is a discovery input, not a production runtime dependency and not permission to expand the copied-field allowlist.
+The upstream public file is an internal discovery input, not a production runtime dependency, public attribution target, or permission to expand the copied-field allowlist.
 
 ## Scheduled Workflow Contract
 
@@ -115,10 +115,11 @@ The sitemap is a diagnostic only. A mismatch can result from deployment propagat
 
 Require a complete top-level array, filter to `status === "published"`, and fully validate every published candidate. Every published candidate must have:
 
-- non-empty `id`, `slug`, `title`, `product`, `company`, `category`, `tweetUrl`, `tweetId`, and `publishedAt`;
+- non-empty `id`, `slug`, `title`, `product`, `company`, `category`, `tweetUrl`, `tweetId`, `videoUrl`, and `publishedAt`;
 - a slug matching the accepted lower-case slug pattern;
 - a decimal `tweetId` whose value exactly matches the `/status/{id}` segment in `tweetUrl`;
 - an `https://x.com/.../status/{tweetId}` or explicitly normalized legacy Twitter URL;
+- an HTTPS MP4 URL on the exact `video.twimg.com` host, with no credentials or custom port;
 - a parseable ISO timestamp;
 - a nullable, zero, or positive numeric duration that normalizes to a positive integer or `null`; and
 - a unique upstream `id`, `slug`, and `tweetId` across the full array.
@@ -162,13 +163,13 @@ Failing the whole run is preferable to publishing a partial snapshot whose missi
 The output must be a deterministic transformation. For each published record:
 
 1. Preserve the upstream `id` verbatim after plain-text validation and store the canonical `tweet_id` separately.
-2. Normalize the source slug and derive `https://whatships.com/videos/{slug}/` locally.
+2. Normalize the source slug for the canonical VentureDex route `/launches/{slug}`.
 3. Normalize the original post to `https://x.com/{handle}/status/{tweetId}` with no query string or fragment.
-4. Trim plain-text labels without rewriting their meaning.
-5. Apply the explicit category alias table; map any other unknown source category to `other` and retain `source_category`.
-6. Normalize `publishedAt` to an ISO UTC instant.
-7. Preserve a valid duration or store `null`.
-8. Validate the source poster as `/posters/{safe-name}.webp` and derive its canonical `https://whatships.com/posters/{safe-name}.webp` URL.
+4. Validate and retain the original HTTPS `video.twimg.com` MP4 URL as `video_url`.
+5. Trim plain-text labels without rewriting their meaning.
+6. Apply the explicit category alias table; map any other unknown source category to `other` and retain `source_category`.
+7. Normalize `publishedAt` to an ISO UTC instant.
+8. Preserve a valid duration or store `null`.
 9. Omit every non-allowlisted source field.
 10. Sort records by `published_at` descending, then slug ascending.
 11. Serialize with stable key order, two-space indentation, and one trailing newline.
@@ -185,17 +186,17 @@ Allowed per-item content is limited to:
 - bounded plain-text tags and the upstream featured boolean;
 - source publish time;
 - nullable duration;
-- derived WhatShips-hosted poster URL;
-- derived WhatShips detail URL; and
-- normalized original X URL.
+- normalized original X post URL; and
+- validated original X-hosted `video_url`.
 
 Forbidden fields include:
 
 - upstream `description`;
-- `videoUrl` and `streamUrl`;
-- copied, proxied, or arbitrary poster files/URLs; the canonical WhatShips-hosted `poster_url` is the only exception;
+- source descriptions and `streamUrl` or proxy URLs;
+- source detail-page URLs;
+- copied, proxied, or arbitrary poster files/URLs;
 - author avatars;
-- cached video, image, or profile assets; and
+- cached or proxied video, image, or profile assets; and
 - arbitrary source HTML.
 
 The snapshot-level provenance must include the upstream repository, commit SHA, blob/content hash, schema version, and a deterministic upstream commit timestamp. Do not rewrite a wall-clock `checked_at` value into the content file on every no-op run; put it in the Action summary instead.
@@ -242,7 +243,7 @@ Scheduled runs are additive and update-safe, not deletion-authorized.
 - If the set is non-empty, stop without changing `content/whatships.json`.
 - Report the missing-id count and a bounded id sample without copying the raw source payload into logs.
 - Do not infer that a transient fetch, upstream draft transition, slug change, or repository rewrite authorizes deletion.
-- Handle an intentional removal through a separate human-reviewed change after checking the WhatShips entry, original X post, upstream Git history, and any rights/takedown context.
+- Handle an intentional removal through a separate human-reviewed change after checking the original X post, upstream Git history, and any rights/takedown context.
 
 This fail-closed rule also prevents a partial upstream response from replacing a full snapshot. The last known-good snapshot remains the live source until the deletion is resolved.
 
@@ -252,7 +253,7 @@ Before creating or pushing the scheduled commit, run in this order:
 
 1. Restore the exact lockfile dependencies with `npm ci`.
 2. Fetch, normalize, and write the candidate snapshot atomically.
-3. Run the WhatShips parser/snapshot contract tests, including forbidden-field and output-order checks.
+3. Run the launch snapshot parser/contract tests, including original-video, forbidden-field, and output-order checks.
 4. Run `git diff --check`.
 5. Prove that the only changed path is `content/whatships.json`.
 6. Fetch `origin/main` and prove the local parent SHA still equals the current remote `main` SHA.
@@ -278,7 +279,7 @@ Create a commit only after the focused sync gates pass. The Action summary and c
 Use the deterministic commit subject:
 
 ```text
-content(whatships): sync launch channel
+content(launches): sync launch channel
 ```
 
 Push with this sequence:
@@ -331,16 +332,17 @@ For an initial enablement, large-import exception, incident recovery, or sampled
 - [ ] Confirm only `content/whatships.json` changed in the data commit.
 - [ ] Confirm additions, updates, and missing counts are plausible.
 - [ ] Confirm there are no scheduled deletions and no large-import override.
-- [ ] Search the snapshot for `videoUrl`, `streamUrl`, raw `poster`, `authorAvatar`, HTML tags, X media hosts, or poster hosts other than `whatships.com`; all must be absent.
-- [ ] Confirm sampled `poster_url` values use `https://whatships.com/posters/{safe-name}.webp`, render in list cards, lazy-load below the fold, and fall back without breaking layout.
-- [ ] Check at least the newest five records and five deterministic samples against their WhatShips and original X URLs.
-- [ ] Confirm title, company, category, source time, duration, and links render as reference metadata rather than VentureDex funding claims.
-- [ ] Confirm the WhatShips channel shows visible attribution and both outbound-link types use safe external-link attributes.
+- [ ] Search item records for copied descriptions, `streamUrl`, raw `poster`, `poster_url`, `source_url`, `authorAvatar`, proxy URLs, or HTML; all must be absent.
+- [ ] Confirm sampled `video_url` values use HTTPS `video.twimg.com` MP4 URLs, render their first frame in list cards, lazy-load below the fold, and play on VentureDex detail pages.
+- [ ] Check at least the newest five records and five deterministic samples against their original X posts and video URLs.
+- [ ] Confirm every card and title opens `/launches/{slug}`, while the only external evidence link opens the original X post.
+- [ ] Confirm public HTML, JSON, structured data, sitemap, `llms.txt`, and response headers contain no discovery-catalog domain or attribution.
+- [ ] Confirm title, company, category, original post time, duration, and evidence links render as launch metadata rather than VentureDex funding claims.
 - [ ] Confirm the sync workflow's parser/snapshot tests and whitespace/diff-scope checks passed before the push.
 - [ ] Record the pushed SHA and verify it became the exact remote `main` SHA.
 - [ ] Verify the explicit Deploy dispatch created a run for that exact-current-main state; do not expect a Validate run from the built-in-token push.
 - [ ] Verify the dispatched Deploy path reran the complete release gate and passed its normal live smoke checks.
-- [ ] Verify the live channel, homepage navigation entry, source links, responsive layout, and client-side filtering/pagination.
+- [ ] Verify the live channel, canonical detail pages, homepage navigation entry, original-video playback, responsive layout, and client-side filtering/pagination.
 
 A successful local preview, focused sync gate, `main` push, Deploy dispatch, release gate, remote publication, or live HTTP response proves only its own layer.
 
@@ -384,8 +386,8 @@ Do not edit remote D1, manually upload a Worker, or force-push `main` as a subst
 
 Reconsider this architecture only when at least one of these is true:
 
-- a documented WhatShips API/feed and explicit reuse licence becomes available;
-- written permission allows copied posters, video embeds, or richer descriptions;
+- a documented stable discovery API/feed becomes available;
+- written permission allows copied media or richer source descriptions;
 - measured product requirements need sub-hour freshness;
 - the channel needs server-side personalization that cannot be served from a static snapshot; or
 - the snapshot becomes too large for acceptable static/client performance after measured pagination and compression work.
