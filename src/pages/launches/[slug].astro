@@ -116,36 +116,38 @@ const schema = {
         <span>{item.product}</span>
       </nav>
 
-      <header class="launch-detail__header">
-        <div class="launch-detail__heading">
+      <section class="launch-detail__hero" aria-labelledby="launch-detail-title">
+        <header class="launch-detail__header">
           <p class="launch-detail__eyebrow">{categoryLabel} · Product launch</p>
-          <h1>{item.title}</h1>
-          <p class="launch-detail__dek">{summary}</p>
-        </div>
-        <dl class="launch-detail__quick-facts">
-          <div><dt>Product</dt><dd>{item.product}</dd></div>
-          {item.company !== item.product && <div><dt>Company</dt><dd>{item.company}</dd></div>}
-          <div><dt>Published</dt><dd>{publishedLabel}</dd></div>
-          <div><dt>Runtime</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
-        </dl>
-      </header>
+          <h1 id="launch-detail-title">{item.title}</h1>
+          <dl class="launch-detail__quick-facts">
+            <div><dt>Product</dt><dd>{item.product}</dd></div>
+            {item.company !== item.product && <div><dt>Company</dt><dd>{item.company}</dd></div>}
+            <div><dt>Published</dt><dd>{publishedLabel}</dd></div>
+            <div><dt>Runtime</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
+          </dl>
+        </header>
 
-      <section class="launch-player" aria-labelledby="launch-video-heading">
-        <div class="launch-player__label">
-          <p>Primary evidence</p>
-          <h2 id="launch-video-heading">Watch the original launch video</h2>
-        </div>
-        <video
-          class="launch-player__video"
-          src={item.video_url}
-          controls
-          preload="metadata"
-          playsinline
-          controlslist="nodownload"
-          aria-label={`Original launch video: ${item.title}`}
-        >
-          Your browser does not support video playback.
-        </video>
+        <section class="launch-player" aria-labelledby="launch-video-heading">
+          <div class="launch-player__label">
+            <div>
+              <p>Primary evidence</p>
+              <h2 id="launch-video-heading">Watch the launch</h2>
+            </div>
+            <span>{formatDuration(item.duration_seconds)}</span>
+          </div>
+          <video
+            class="launch-player__video"
+            src={item.video_url}
+            controls
+            preload="metadata"
+            playsinline
+            controlslist="nodownload"
+            aria-label={`Original launch video: ${item.title}`}
+          >
+            Your browser does not support video playback.
+          </video>
+        </section>
       </section>
 
       <div class="launch-detail__body">
@@ -246,7 +248,7 @@ const schema = {
       radial-gradient(circle at 84% 5%, color-mix(in srgb, var(--color-badge-bg) 70%, transparent), transparent 24rem),
       var(--color-bg);
   }
-  .launch-detail__container { padding-top: var(--space-8); padding-bottom: var(--space-16); }
+  .launch-detail__container { padding-top: var(--space-5); padding-bottom: var(--space-16); }
   .launch-detail__breadcrumb {
     display: flex;
     gap: var(--space-2);
@@ -258,12 +260,12 @@ const schema = {
     text-transform: uppercase;
   }
   .launch-detail__breadcrumb a { color: var(--detail-ink); }
-  .launch-detail__header {
+  .launch-detail__hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.32fr);
-    gap: clamp(2rem, 8vw, 8rem);
-    align-items: end;
-    padding: clamp(3.5rem, 9vw, 8rem) 0 clamp(2.5rem, 6vw, 5rem);
+    grid-template-columns: minmax(17rem, 0.56fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    align-items: start;
+    padding: clamp(1.4rem, 2.8vw, 2.25rem) 0 clamp(2.5rem, 5vw, 4rem);
   }
   .launch-detail__eyebrow,
   .launch-detail__section-label,
@@ -276,41 +278,53 @@ const schema = {
     text-transform: uppercase;
   }
   .launch-detail__header h1 {
-    max-width: 15ch;
+    max-width: 16ch;
     margin: 0;
-    font-size: clamp(3rem, 8vw, 7.4rem);
-    line-height: 0.92;
-    letter-spacing: -0.055em;
+    font-size: clamp(2.35rem, 4vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
   }
-  .launch-detail__dek {
-    max-width: 62rem;
+  .launch-detail__quick-facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 var(--space-4);
     margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
-    color: var(--detail-muted);
-    font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-    line-height: 1.65;
+    border-top: 1px solid var(--color-border);
   }
-  .launch-detail__quick-facts { margin: 0; border-top: 1px solid var(--color-border); }
   .launch-detail__quick-facts div {
+    min-width: 0;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .launch-detail__quick-facts dt { margin-bottom: 0.15rem; color: var(--detail-muted); font-size: 0.68rem; }
+  .launch-detail__quick-facts dd {
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .launch-player {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: #080808;
+    color: #f8f8f4;
+    box-shadow: 0 18px 45px rgb(0 0 0 / 12%);
+  }
+  .launch-player__label {
     display: flex;
     justify-content: space-between;
     gap: var(--space-4);
-    padding: var(--space-4) 0;
-    border-bottom: 1px solid var(--color-border);
+    align-items: end;
+    padding: 0.7rem 0.9rem;
   }
-  .launch-detail__quick-facts dt { color: var(--detail-muted); }
-  .launch-detail__quick-facts dd { margin: 0; font-family: var(--font-mono); font-size: 0.74rem; text-align: right; }
-  .launch-player {
-    display: grid;
-    grid-template-columns: minmax(12rem, 0.25fr) minmax(0, 1fr);
-    gap: var(--space-6);
-    padding: var(--space-6);
-    border: 1px solid var(--color-border);
-    background: #080808;
-    color: #f8f8f4;
-  }
-  .launch-player__label { align-self: end; padding: var(--space-4); }
-  .launch-player__label p { color: #a7a7a2; }
-  .launch-player__label h2 { max-width: 9ch; margin: 0; color: inherit; font-size: clamp(1.8rem, 3.2vw, 3rem); line-height: 1; }
+  .launch-player__label p { margin-bottom: 0.1rem; color: #a7a7a2; font-size: 0.58rem; }
+  .launch-player__label h2 { margin: 0; color: inherit; font-family: var(--font-body); font-size: 0.92rem; line-height: 1.2; }
+  .launch-player__label > span { color: #a7a7a2; font-family: var(--font-mono); font-size: 0.68rem; }
   .launch-player__video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; object-fit: contain; }
   .launch-detail__body {
     display: grid;
@@ -322,7 +336,7 @@ const schema = {
   .launch-detail__editorial section { max-width: 54rem; }
   .launch-detail__editorial h2,
   .launch-evidence h2,
-  .related-launches h2 { margin: 0 0 var(--space-4); font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1; }
+  .related-launches h2 { margin: 0 0 var(--space-4); font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1; }
   .launch-detail__editorial section > p:last-child,
   .launch-evidence > p { margin: 0; color: var(--detail-muted); font-size: 1.05rem; line-height: 1.8; }
   .launch-detail__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
@@ -374,18 +388,18 @@ const schema = {
   .launch-detail__pagination a:last-child { text-align: right; }
   .launch-detail__pagination span { color: var(--detail-muted); font-family: var(--font-mono); font-size: 0.65rem; text-transform: uppercase; }
   @media (max-width: 800px) {
-    .launch-detail__header,
-    .launch-player,
     .launch-detail__body { grid-template-columns: 1fr; }
-    .launch-detail__header { gap: var(--space-8); }
-    .launch-player { padding: var(--space-3); }
-    .launch-player__label { padding: var(--space-3); }
-    .launch-player__label h2 { max-width: none; }
     .launch-evidence { position: static; }
     .related-launches__grid { grid-template-columns: 1fr; }
   }
+  @media (max-width: 720px) {
+    .launch-detail__hero { grid-template-columns: 1fr; }
+    .launch-detail__header h1 { max-width: 18ch; }
+  }
   @media (max-width: 560px) {
-    .launch-detail__header h1 { font-size: clamp(2.7rem, 15vw, 4.5rem); }
+    .launch-detail__container { padding-top: var(--space-4); }
+    .launch-detail__hero { gap: var(--space-5); padding-top: var(--space-5); }
+    .launch-detail__header h1 { font-size: clamp(2.1rem, 10.5vw, 3rem); }
     .related-launches__heading { display: grid; }
     .launch-detail__pagination { grid-template-columns: 1fr; }
     .launch-detail__pagination a:last-child { text-align: left; }

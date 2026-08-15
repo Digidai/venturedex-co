@@ -47,36 +47,26 @@ const schema = {
   referrerPolicy="no-referrer"
 >
   <div class="launches-page" data-launches-root>
-    <section class="launch-hero">
-      <div class="container launch-hero__inner">
-        <p class="launch-eyebrow">VentureDex launch channel · original video evidence</p>
-        <div class="launch-hero__grid">
-          <div>
-            <h1>Watch what’s shipping</h1>
-            <p class="launch-hero__lead">
-              Product launches, demos, and walkthroughs organized into durable VentureDex pages.
-              Every entry opens in this channel and keeps the original product video at the center.
-            </p>
-          </div>
-          <dl class="launch-stats">
-            <div><dt>Published entries</dt><dd>{countLabel}</dd></div>
-            <div><dt>Latest source post</dt><dd>{latestDate}</dd></div>
-            <div><dt>Primary evidence</dt><dd>Original video + post</dd></div>
-          </dl>
-        </div>
-        <p class="launch-source-note">
-          VentureDex turns transient launch posts into browsable product records. Videos stream from their original publisher;
-          launch inclusion is a product signal, not an endorsement.
-        </p>
-      </div>
-    </section>
-
     <section class="launch-directory" aria-labelledby="launch-directory-title" data-launch-directory>
       <div class="container">
+        <header class="launch-directory__intro">
+          <div class="launch-directory__copy">
+            <p class="section-label">VentureDex launch channel</p>
+            <h1>Product launch videos</h1>
+            <p>
+              Demos and walkthroughs, organized as durable VentureDex pages with the original video and post.
+            </p>
+          </div>
+          <dl class="launch-directory__stats">
+            <div><dt>Videos</dt><dd>{countLabel}</dd></div>
+            <div><dt>Latest post</dt><dd>{latestDate}</dd></div>
+          </dl>
+        </header>
+
         <div class="launch-directory__heading">
           <div>
-            <p class="section-label">Launch index</p>
-            <h2 id="launch-directory-title">Browse the catalog</h2>
+            <p class="section-label">Video index</p>
+            <h2 id="launch-directory-title">Latest launches</h2>
           </div>
           <p class="launch-results" data-launch-results aria-live="polite">
             Latest {initialItems.length} of {countLabel} entries
@@ -398,98 +388,104 @@ const schema = {
     --launch-muted: var(--color-text-secondary);
   }
 
-  .launch-hero {
-    border-bottom: 1px solid var(--color-border);
+  .launch-directory {
+    padding-block: clamp(1.75rem, 3vw, 2.75rem) clamp(3.5rem, 7vw, 6rem);
     background:
-      radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-text) 5%, transparent), transparent 32%),
-      linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-badge-bg) 45%, var(--color-bg)) 100%);
+      radial-gradient(circle at 88% 0%, color-mix(in srgb, var(--color-text) 4%, transparent), transparent 26rem),
+      var(--color-bg);
   }
 
-  .launch-hero__inner { padding-block: clamp(3.5rem, 8vw, 7rem); }
-  .launch-eyebrow,
   .section-label {
-    margin: 0 0 var(--space-4);
+    margin: 0 0 0.4rem;
     color: var(--launch-muted);
     font-family: var(--font-mono);
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     font-weight: 600;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .launch-hero__grid {
+  .launch-directory__intro {
     display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 0.7fr);
-    gap: clamp(2.5rem, 8vw, 7rem);
-    align-items: end;
-  }
-
-  .launch-hero h1 {
-    max-width: 12ch;
-    margin: 0;
-    font-size: clamp(3rem, 7vw, 6.4rem);
-    line-height: 0.94;
-    letter-spacing: -0.055em;
-  }
-
-  .launch-hero__lead {
-    max-width: 48rem;
-    margin: var(--space-6) 0 0;
-    color: var(--launch-muted);
-    font-size: clamp(1rem, 1.8vw, 1.22rem);
-    line-height: 1.65;
-  }
-
-  .launch-stats { margin: 0; border-top: 1px solid var(--color-border); }
-  .launch-stats div {
-    display: flex;
-    justify-content: space-between;
-    gap: var(--space-4);
-    padding: var(--space-3) 0;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.36fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: center;
+    padding-bottom: clamp(1.4rem, 2.5vw, 2rem);
     border-bottom: 1px solid var(--color-border);
   }
-  .launch-stats dt { color: var(--launch-muted); font-size: 0.8rem; }
-  .launch-stats dd { margin: 0; font-family: var(--font-mono); font-size: 0.76rem; text-align: right; }
-  .launch-stats a { color: inherit; }
-
-  .launch-source-note {
-    max-width: 64rem;
-    margin: var(--space-8) 0 0;
-    padding-left: var(--space-4);
-    border-left: 2px solid var(--color-text);
+  .launch-directory__intro h1 {
+    margin: 0;
+    font-size: clamp(2.35rem, 3.8vw, 3.75rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-wrap: balance;
+  }
+  .launch-directory__copy > p:last-child {
+    max-width: 46rem;
+    margin: 0.65rem 0 0;
     color: var(--launch-muted);
-    font-size: 0.8rem;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .launch-directory__stats {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .launch-directory__stats div {
+    min-width: 0;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .launch-directory__stats div + div { padding-left: var(--space-4); }
+  .launch-directory__stats dt {
+    margin-bottom: 0.2rem;
+    color: var(--launch-muted);
+    font-size: 0.68rem;
+  }
+  .launch-directory__stats dd {
+    margin: 0;
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .launch-directory { padding-block: clamp(3.5rem, 7vw, 6rem); }
   .launch-directory__heading {
     display: flex;
     justify-content: space-between;
     gap: var(--space-6);
     align-items: end;
-    margin-bottom: var(--space-8);
+    margin: clamp(1.25rem, 2.5vw, 2rem) 0 0.8rem;
   }
-  .launch-directory__heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.4rem); }
-  .launch-results { margin: 0; color: var(--launch-muted); font-family: var(--font-mono); font-size: 0.76rem; }
+  .launch-directory__heading h2 {
+    margin: 0;
+    font-size: clamp(1.45rem, 2vw, 1.9rem);
+    line-height: 1.05;
+  }
+  .launch-results { margin: 0; color: var(--launch-muted); font-family: var(--font-mono); font-size: 0.7rem; }
 
   .launch-controls {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.32fr);
-    gap: var(--space-4);
-    margin-bottom: var(--space-8);
-    padding: var(--space-4);
+    gap: var(--space-3);
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+    padding: var(--space-3);
     border: 1px solid var(--color-border);
     border-radius: 10px;
     background: var(--color-card-bg);
   }
-  .launch-controls label { display: grid; gap: var(--space-2); }
+  .launch-controls label { position: relative; display: block; }
   .launch-controls label > span {
-    color: var(--launch-muted);
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
   }
   .launch-controls input,
   .launch-controls select {
@@ -737,15 +733,17 @@ const schema = {
   @media (max-width: 1180px) {
     .launch-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   }
-  @media (max-width: 900px) {
-    .launch-hero__grid { grid-template-columns: 1fr; }
-    .launch-stats { max-width: 34rem; }
+  @media (max-width: 820px) {
+    .launch-directory__intro { grid-template-columns: 1fr; gap: var(--space-4); }
+    .launch-directory__stats { max-width: 34rem; }
   }
   @media (max-width: 760px) {
     .launch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .launch-hero h1 { font-size: clamp(2.8rem, 16vw, 4.2rem); }
+    .launch-directory { padding-top: var(--space-5); }
+    .launch-directory__intro h1 { font-size: clamp(2.15rem, 11vw, 3rem); }
+    .launch-directory__copy > p:last-child { font-size: 0.88rem; }
     .launch-directory__heading { display: grid; }
     .launch-controls { grid-template-columns: 1fr; }
     .launch-grid { grid-template-columns: 1fr; }
