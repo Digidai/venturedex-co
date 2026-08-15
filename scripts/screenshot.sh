@@ -135,206 +135,66 @@ take_screenshot_via_playwright() {
   local session
   session="$(make_playwright_session "$slug")"
 
+  rm -f "$tmp_png" "$tmp_webp"
+
   local cleanup_code
-  cleanup_code=$(cat <<JS
+  IFS= read -r -d '' cleanup_code <<'JS' || true
 async page => {
-  const targetUrl = $(js_quote "$url");
-  await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 45000 }).catch(() => {});
+  const targetUrl = __VENTUREDEX_TARGET_URL__;
+  await page.goto(targetUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
   await page.waitForLoadState('domcontentloaded').catch(() => {});
   await page.waitForTimeout(1200);
-
-  const dismissPatterns = [
-    /reject all/i,
-    /reject/i,
-    /decline/i,
-    /dismiss/i,
-    /close/i,
-    /no thanks/i,
-    /not now/i,
-    /only necessary/i,
-    /only essential/i,
-    /continue without/i,
-    /skip/i,
-    /拒绝/,
-    /关闭/,
-    /仅必要/,
-    /不同意/,
-    /稍后再说/,
-    /跳过/,
-  ];
-
-  const viewport = {
-    width: page.viewportSize()?.width ?? 1440,
-    height: page.viewportSize()?.height ?? 900,
-  };
-  const focusZones = [
-    {
-      left: viewport.width * 0.18,
-      right: viewport.width * 0.82,
-      top: viewport.height * 0.16,
-      bottom: viewport.height * 0.84,
-    },
-    {
-      left: viewport.width * 0.05,
-      right: viewport.width * 0.95,
-      top: viewport.height * 0.64,
-      bottom: viewport.height * 0.98,
-    },
-  ];
-
-  const candidates = await page.evaluate(({ focusZones, viewport }) => {
-    // page.evaluate serializes this callback into the browser. Keep every
-    // helper it calls inside that browser-side closure; outer Node variables
-    // are not available once the callback is evaluated in the page.
-    const overlapArea = (rect, zone) => {
-      const width = Math.max(0, Math.min(rect.right, zone.right) - Math.max(rect.left, zone.left));
-      const height = Math.max(0, Math.min(rect.bottom, zone.bottom) - Math.max(rect.top, zone.top));
-      return width * height;
-    };
-
-    const toRect = rect => ({
-      left: rect.left,
-      top: rect.top,
-      right: rect.right,
-      bottom: rect.bottom,
-      width: rect.width,
-      height: rect.height,
-    });
-
-    const isVisible = el => {
-      const s = getComputedStyle(el);
-      const r = el.getBoundingClientRect();
-      return (
-        s.display !== 'none' &&
-        s.visibility !== 'hidden' &&
-        s.opacity !== '0' &&
-        r.width >= 120 &&
-        r.height >= 60
-      );
-    };
-
-    const isLikelyHeader = (el, rect, style) => {
-      const tag = el.tagName.toLowerCase();
-      return (
-        (tag === 'header' || tag === 'nav') &&
-        rect.top <= 24 &&
-        rect.height <= 140 &&
-        rect.width >= viewport.width * 0.55 &&
-        (style.position === 'fixed' || style.position === 'sticky')
-      );
-    };
-
-    const textFor = el =>
-      [el.innerText || '', el.id || '', el.className || '', el.getAttribute('aria-label') || '']
-        .join(' ')
-        .toLowerCase()
-        .replace(/\s+/g, ' ')
-        .trim();
-
-    const scoreFor = el => {
-      const style = getComputedStyle(el);
-      const rect = el.getBoundingClientRect();
-      if (!isVisible(el) || isLikelyHeader(el, rect, style)) {
-        return null;
-      }
-
-      const text = textFor(el);
-      const area = rect.width * rect.height;
-      const overlapsFocus = focusZones.some(zone => overlapArea(toRect(rect), zone) >= Math.min(area * 0.22, 60000));
-      const nearCenter =
-        rect.left < viewport.width * 0.82 &&
-        rect.right > viewport.width * 0.18 &&
-        rect.top < viewport.height * 0.82 &&
-        rect.bottom > viewport.height * 0.18;
-      const isFixedish = style.position === 'fixed' || style.position === 'sticky';
-      const role = (el.getAttribute('role') || '').toLowerCase();
-      const ariaModal = (el.getAttribute('aria-modal') || '').toLowerCase() === 'true';
-      const zIndex = Number.parseInt(style.zIndex, 10);
-      const zIndexHigh = Number.isFinite(zIndex) && zIndex >= 20;
-      const hasBackdropLikePaint =
-        (style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)' && style.backgroundColor !== 'transparent') ||
-        style.backdropFilter !== 'none';
-      const nuisanceText = /cookie|consent|privacy|gdpr|intercom|hubspot|crisp|drift|newsletter|subscribe|sign up|book a demo|contact sales|accept all|allow all|preferences|live chat|message us/.test(text);
-      const isAbsoluteOverlay = style.position === 'absolute' && zIndexHigh && nearCenter;
-      const hasOverlayTrait =
-        role === 'dialog' ||
-        role === 'alertdialog' ||
-        ariaModal ||
-        el.tagName.toLowerCase() === 'dialog' ||
-        isFixedish ||
-        isAbsoluteOverlay ||
-        (zIndexHigh && hasBackdropLikePaint && overlapsFocus);
-
-      if (!hasOverlayTrait) {
-        return null;
-      }
-
-      let score = 0;
-      if (role === 'dialog' || role === 'alertdialog' || ariaModal || el.tagName.toLowerCase() === 'dialog') score += 4;
-      if (isFixedish) score += 2;
-      if (zIndexHigh) score += 1;
-      if (area >= viewport.width * viewport.height * 0.11) score += 1;
-      if (overlapsFocus) score += 3;
-      if (nearCenter) score += 1;
-      if (hasBackdropLikePaint) score += 1;
-      if (nuisanceText) score += 2;
-
-      if (score < 5) {
-        return null;
-      }
-
-      return {
-        text,
-        score,
-        rect: toRect(rect),
-      };
-    };
-
-    const all = Array.from(document.querySelectorAll('body *'))
-      .filter(el => el instanceof HTMLElement)
-      .map(el => ({ el, candidate: scoreFor(el) }))
-      .filter(item => item.candidate !== null)
-      .sort((a, b) => (b.candidate.score - a.candidate.score) || ((b.candidate.rect.width * b.candidate.rect.height) - (a.candidate.rect.width * a.candidate.rect.height)));
-
-    const roots = [];
-    for (const item of all) {
-      if (roots.some(root => root.el.contains(item.el))) {
-        continue;
-      }
-      roots.push(item);
-    }
-
-    return roots.slice(0, 12).map(item => ({
-      text: item.candidate.text,
-      score: item.candidate.score,
-      rect: item.candidate.rect,
-    }));
-  }, { focusZones, viewport });
-
-  for (const candidate of candidates) {
-    for (const pattern of dismissPatterns) {
-      const locator = page.locator('*').filter({ hasText: pattern }).first();
-      try {
-        if (await locator.isVisible({ timeout: 250 })) {
-          const box = await locator.boundingBox();
-          if (
-            box &&
-            box.x >= candidate.rect.left - 24 &&
-            box.x + box.width <= candidate.rect.right + 24 &&
-            box.y >= candidate.rect.top - 24 &&
-            box.y + box.height <= candidate.rect.bottom + 24
-          ) {
-            await locator.click({ timeout: 1000 });
-            await page.waitForTimeout(250);
-          }
-        }
-      } catch {}
-    }
-  }
-
   await page.keyboard.press('Escape').catch(() => {});
 
-  await page.evaluate(() => {
+  const remainingOverlays = await page.evaluate(async () => {
+    // These caps are the large-DOM safety contract. Discovery uses one
+    // semantic selector and fixed viewport hit-tests, never a body-wide scan.
+    const MAX_SEMANTIC_CANDIDATES = 48;
+    const MAX_VIEWPORT_STACK = 8;
+    const MAX_ANCESTOR_DEPTH = 7;
+    const MAX_CANDIDATE_ELEMENTS = 96;
+    const MAX_CANDIDATE_ROOTS = 16;
+    const MAX_CONTROLS_PER_ROOT = 48;
+    const MAX_DISMISS_CLICKS = 8;
+    const OVERLAY_SEMANTIC_SELECTOR = [
+      '[role="dialog"]',
+      '[role="alertdialog"]',
+      'dialog[open]',
+      '[aria-modal="true"]',
+      '[aria-label*="cookie" i]',
+      '[aria-label*="consent" i]',
+      '[data-testid*="cookie" i]',
+      '[data-testid*="consent" i]',
+      '[data-cookie-banner]',
+      '[data-consent-banner]',
+    ].join(',');
+    const CONTROL_SELECTOR = [
+      'button',
+      '[role="button"]',
+      'input[type="button"]',
+      'input[type="submit"]',
+      'a[href]',
+    ].join(',');
+    const dismissPatterns = [
+      /reject all/i,
+      /reject/i,
+      /decline/i,
+      /only necessary/i,
+      /only essential/i,
+      /continue without/i,
+      /no thanks/i,
+      /not now/i,
+      /dismiss/i,
+      /close/i,
+      /skip/i,
+      /拒绝/,
+      /不同意/,
+      /仅必要/,
+      /稍后再说/,
+      /关闭/,
+      /跳过/,
+    ];
+
     const viewport = {
       width: window.innerWidth,
       height: window.innerHeight,
@@ -354,46 +214,64 @@ async page => {
       },
     ];
 
+    // page.evaluate serializes this callback. Keep all helpers in this closure.
     const overlapArea = (rect, zone) => {
       const width = Math.max(0, Math.min(rect.right, zone.right) - Math.max(rect.left, zone.left));
       const height = Math.max(0, Math.min(rect.bottom, zone.bottom) - Math.max(rect.top, zone.top));
       return width * height;
     };
 
-    const isVisible = el => {
-      const s = getComputedStyle(el);
-      const r = el.getBoundingClientRect();
-      return s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0' && r.width >= 120 && r.height >= 60;
-    };
-
     const textFor = el =>
-      [el.innerText || '', el.id || '', el.className || '', el.getAttribute('aria-label') || '']
+      [
+        (el.textContent || '').slice(0, 1800),
+        el.id || '',
+        typeof el.className === 'string' ? el.className : '',
+        el.getAttribute('aria-label') || '',
+      ]
         .join(' ')
         .toLowerCase()
         .replace(/\s+/g, ' ')
         .trim();
 
-    const isLikelyHeader = (el, rect, style) => {
-      const tag = el.tagName.toLowerCase();
+    const hasVisibleColor = value => {
+      if (!value || value === 'transparent' || value === 'rgba(0, 0, 0, 0)') return false;
+      const legacyRgba = value.match(/^rgba\([^)]*,\s*([\d.]+)\s*\)$/);
+      if (legacyRgba) return Number.parseFloat(legacyRgba[1]) > 0.04;
+      const modernAlpha = value.match(/\/\s*([\d.]+)(%)?\s*\)$/);
+      if (!modernAlpha) return true;
+      const alpha = Number.parseFloat(modernAlpha[1]);
+      return modernAlpha[2] ? alpha > 4 : alpha > 0.04;
+    };
+
+    const isVisible = (style, rect) => {
+      const opacity = Number.parseFloat(style.opacity || '1');
       return (
-        (tag === 'header' || tag === 'nav') &&
-        rect.top <= 24 &&
-        rect.height <= 140 &&
-        rect.width >= viewport.width * 0.55 &&
-        (style.position === 'fixed' || style.position === 'sticky')
+        style.display !== 'none' &&
+        style.visibility !== 'hidden' &&
+        (!Number.isFinite(opacity) || opacity > 0.04) &&
+        rect.width >= 100 &&
+        rect.height >= 48 &&
+        rect.right > 0 &&
+        rect.bottom > 0 &&
+        rect.left < viewport.width &&
+        rect.top < viewport.height
       );
     };
 
     const scoreFor = el => {
-      const style = getComputedStyle(el);
-      const rect = el.getBoundingClientRect();
-      if (!isVisible(el) || isLikelyHeader(el, rect, style)) {
+      if (!(el instanceof HTMLElement) || el === document.body || el === document.documentElement) {
         return null;
       }
 
+      const style = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      if (!isVisible(style, rect)) return null;
+
       const text = textFor(el);
       const area = rect.width * rect.height;
-      const overlapsFocus = focusZones.some(zone => overlapArea(rect, zone) >= Math.min(area * 0.22, 60000));
+      const overlapsFocus = focusZones.some(
+        zone => overlapArea(rect, zone) >= Math.min(area * 0.22, 60000),
+      );
       const nearCenter =
         rect.left < viewport.width * 0.82 &&
         rect.right > viewport.width * 0.18 &&
@@ -401,216 +279,273 @@ async page => {
         rect.bottom > viewport.height * 0.18;
       const role = (el.getAttribute('role') || '').toLowerCase();
       const ariaModal = (el.getAttribute('aria-modal') || '').toLowerCase() === 'true';
-      const zIndex = Number.parseInt(style.zIndex, 10);
-      const zIndexHigh = Number.isFinite(zIndex) && zIndex >= 20;
-      const hasBackdropLikePaint =
-        (style.backgroundColor && style.backgroundColor !== 'rgba(0, 0, 0, 0)' && style.backgroundColor !== 'transparent') ||
-        style.backdropFilter !== 'none';
-      const nuisanceText = /cookie|consent|privacy|gdpr|intercom|hubspot|crisp|drift|newsletter|subscribe|sign up|book a demo|contact sales|accept all|allow all|preferences|live chat|message us/.test(text);
-      const isFixedish = style.position === 'fixed' || style.position === 'sticky';
-      const isAbsoluteOverlay = style.position === 'absolute' && zIndexHigh && nearCenter;
-      const hasOverlayTrait =
+      const semanticModal =
         role === 'dialog' ||
         role === 'alertdialog' ||
         ariaModal ||
-        el.tagName.toLowerCase() === 'dialog' ||
-        isFixedish ||
-        isAbsoluteOverlay ||
-        (zIndexHigh && hasBackdropLikePaint && overlapsFocus);
+        (el.tagName === 'DIALOG' && el.hasAttribute('open'));
+      const zIndex = Number.parseInt(style.zIndex, 10);
+      const zIndexHigh = Number.isFinite(zIndex) && zIndex >= 20;
+      const hasBackdropLikePaint =
+        hasVisibleColor(style.backgroundColor) ||
+        style.backgroundImage !== 'none' ||
+        style.boxShadow !== 'none' ||
+        style.backdropFilter !== 'none';
+      const nuisanceText =
+        /cookie|consent|privacy|gdpr|intercom|hubspot|crisp|drift|newsletter|subscribe|sign up|book a demo|contact sales|accept all|allow all|preferences|live chat|message us/.test(text);
+      const isFixedish = style.position === 'fixed' || style.position === 'sticky';
+      const isAbsoluteOverlay = style.position === 'absolute' && zIndexHigh && nearCenter;
+      const isLikelyHeader =
+        isFixedish &&
+        rect.top <= 24 &&
+        rect.height <= 150 &&
+        rect.width >= viewport.width * 0.55 &&
+        !semanticModal &&
+        !nuisanceText;
 
-      if (!hasOverlayTrait) {
+      // Transparent pass-through layers and ordinary sticky headers are not
+      // blockers. A visible semantic modal remains fail-closed.
+      if (
+        isLikelyHeader ||
+        (!hasBackdropLikePaint && !nuisanceText && style.pointerEvents === 'none')
+      ) {
         return null;
       }
 
+      const hasOverlayTrait =
+        semanticModal ||
+        (nuisanceText && isFixedish) ||
+        (isAbsoluteOverlay && hasBackdropLikePaint) ||
+        (zIndexHigh && hasBackdropLikePaint && overlapsFocus);
+      if (!hasOverlayTrait) return null;
+
       let score = 0;
-      if (role === 'dialog' || role === 'alertdialog' || ariaModal || el.tagName.toLowerCase() === 'dialog') score += 4;
+      if (semanticModal) score += 7;
       if (isFixedish) score += 2;
       if (zIndexHigh) score += 1;
       if (area >= viewport.width * viewport.height * 0.11) score += 1;
       if (overlapsFocus) score += 3;
       if (nearCenter) score += 1;
+      if (hasBackdropLikePaint) score += 1;
       if (nuisanceText) score += 2;
+      if (score < 6) return null;
 
-      if (score < 5) {
-        return null;
-      }
-
-      return { text, score };
+      return { el, score, text, semanticModal, rect };
     };
 
-    const overlayCandidates = Array.from(document.querySelectorAll('body *'))
-      .filter(el => el instanceof HTMLElement)
-      .map(el => ({ el, candidate: scoreFor(el) }))
-      .filter(item => item.candidate !== null)
-      .sort((a, b) => (b.candidate.score - a.candidate.score));
+    const collectCandidateElements = () => {
+      const elements = [];
+      const seen = new Set();
+      const add = el => {
+        if (
+          elements.length >= MAX_CANDIDATE_ELEMENTS ||
+          !(el instanceof HTMLElement) ||
+          el === document.body ||
+          el === document.documentElement ||
+          seen.has(el)
+        ) {
+          return;
+        }
+        seen.add(el);
+        elements.push(el);
+      };
 
-    const roots = [];
-    for (const item of overlayCandidates) {
-      if (roots.some(root => root.el.contains(item.el))) continue;
-      roots.push(item);
-    }
+      let semanticCount = 0;
+      for (const el of document.querySelectorAll(OVERLAY_SEMANTIC_SELECTOR)) {
+        add(el);
+        semanticCount += 1;
+        if (semanticCount >= MAX_SEMANTIC_CANDIDATES) break;
+      }
 
-    for (const { el } of roots) {
-      el.remove();
-    }
+      const viewportPoints = [
+        [0.5, 0.5],
+        [0.2, 0.2],
+        [0.8, 0.2],
+        [0.2, 0.8],
+        [0.5, 0.8],
+        [0.8, 0.8],
+        [0.04, 0.5],
+        [0.96, 0.5],
+        [0.5, 0.96],
+      ];
+      for (const [xRatio, yRatio] of viewportPoints) {
+        const stack = document
+          .elementsFromPoint(
+            Math.max(0, Math.min(viewport.width - 1, viewport.width * xRatio)),
+            Math.max(0, Math.min(viewport.height - 1, viewport.height * yRatio)),
+          )
+          .slice(0, MAX_VIEWPORT_STACK);
+        for (const hit of stack) {
+          let current = hit;
+          for (let depth = 0; current && depth < MAX_ANCESTOR_DEPTH; depth += 1) {
+            add(current);
+            current = current.parentElement;
+          }
+        }
+      }
+      return elements;
+    };
 
-    window.scrollTo(0, 0);
-  });
+    const findOverlayRoots = () => {
+      const candidates = collectCandidateElements()
+        .map(scoreFor)
+        .filter(Boolean)
+        .sort(
+          (a, b) =>
+            b.score - a.score ||
+            b.rect.width * b.rect.height - a.rect.width * a.rect.height,
+        );
+      const roots = [];
+      for (const candidate of candidates) {
+        if (
+          roots.some(
+            root => root.el.contains(candidate.el) || candidate.el.contains(root.el),
+          )
+        ) {
+          continue;
+        }
+        roots.push(candidate);
+        if (roots.length >= MAX_CANDIDATE_ROOTS) break;
+      }
+      return roots;
+    };
 
-  await page.waitForTimeout(300);
-}
-JS
-)
-
-  local analysis_code
-  analysis_code=$(cat <<'JS'
-() => JSON.stringify(
-  Array.from(document.querySelectorAll('body *'))
-    .filter(el => {
-      if (!(el instanceof HTMLElement)) return false;
-      const s = getComputedStyle(el);
-      const r = el.getBoundingClientRect();
-      const text = [el.innerText || '', el.id || '', el.className || '', el.getAttribute('aria-label') || '']
+    const controlText = el =>
+      [
+        el.getAttribute('aria-label') || '',
+        el.getAttribute('title') || '',
+        el.getAttribute('value') || '',
+        (el.textContent || '').slice(0, 240),
+      ]
         .join(' ')
-        .toLowerCase()
         .replace(/\s+/g, ' ')
         .trim();
-      const visible = s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0' && r.width >= 120 && r.height >= 60;
-      if (!visible) return false;
-      const likelyHeader =
-        (el.tagName === 'HEADER' || el.tagName === 'NAV') &&
-        r.top <= 24 &&
-        r.height <= 140 &&
-        r.width >= window.innerWidth * 0.55 &&
-        (s.position === 'fixed' || s.position === 'sticky');
-      if (likelyHeader) return false;
-      const role = (el.getAttribute('role') || '').toLowerCase();
-      const ariaModal = (el.getAttribute('aria-modal') || '').toLowerCase() === 'true';
-      const zIndex = Number.parseInt(s.zIndex, 10);
-      const zIndexHigh = Number.isFinite(zIndex) && zIndex >= 20;
-      const area = r.width * r.height;
-      const overlap = (zone) => {
-        const width = Math.max(0, Math.min(r.right, zone.right) - Math.max(r.left, zone.left));
-        const height = Math.max(0, Math.min(r.bottom, zone.bottom) - Math.max(r.top, zone.top));
-        return width * height;
-      };
-      const focusZones = [
-        {
-          left: window.innerWidth * 0.18,
-          right: window.innerWidth * 0.82,
-          top: window.innerHeight * 0.16,
-          bottom: window.innerHeight * 0.84,
-        },
-        {
-          left: window.innerWidth * 0.05,
-          right: window.innerWidth * 0.95,
-          top: window.innerHeight * 0.64,
-          bottom: window.innerHeight * 0.98,
-        },
-      ];
-      const overlapsFocus = focusZones.some(zone => overlap(zone) >= Math.min(area * 0.22, 60000));
-      const nearCenter =
-        r.left < window.innerWidth * 0.82 &&
-        r.right > window.innerWidth * 0.18 &&
-        r.top < window.innerHeight * 0.82 &&
-        r.bottom > window.innerHeight * 0.18;
-      const hasBackdropLikePaint =
-        (s.backgroundColor && s.backgroundColor !== 'rgba(0, 0, 0, 0)' && s.backgroundColor !== 'transparent') ||
-        s.backdropFilter !== 'none';
-      const nuisanceText = /cookie|consent|privacy|gdpr|intercom|hubspot|crisp|drift|newsletter|subscribe|sign up|book a demo|contact sales|accept all|allow all|preferences|live chat|message us/.test(text);
-      const isFixedish = s.position === 'fixed' || s.position === 'sticky';
-      const isAbsoluteOverlay = s.position === 'absolute' && zIndexHigh && nearCenter;
-      const hasOverlayTrait =
-        role === 'dialog' ||
-        role === 'alertdialog' ||
-        ariaModal ||
-        el.tagName === 'DIALOG' ||
-        isFixedish ||
-        isAbsoluteOverlay ||
-        (zIndexHigh && hasBackdropLikePaint && overlapsFocus);
-      if (!hasOverlayTrait) return false;
-      let score = 0;
-      if (role === 'dialog' || role === 'alertdialog' || ariaModal || el.tagName === 'DIALOG') score += 4;
-      if (isFixedish) score += 2;
-      if (zIndexHigh) score += 1;
-      if (area >= window.innerWidth * window.innerHeight * 0.11) score += 1;
-      if (overlapsFocus) score += 3;
-      if (nearCenter) score += 1;
-      if (nuisanceText) score += 2;
-      return score >= 5;
-    })
-    .slice(0, 10)
-    .map(el => ({
-      tag: el.tagName,
-      text: (el.innerText || '').trim().slice(0, 120),
-      role: el.getAttribute('role') || '',
-    }))
-)
-JS
-)
 
-  local screenshot_code
-  screenshot_code=$(cat <<JS
-async page => {
-  await page.screenshot({ path: $(js_quote "$tmp_png"), type: 'png' });
-}
-JS
-)
+    const isVisibleControl = el => {
+      const style = getComputedStyle(el);
+      const rect = el.getBoundingClientRect();
+      const opacity = Number.parseFloat(style.opacity || '1');
+      return (
+        style.display !== 'none' &&
+        style.visibility !== 'hidden' &&
+        (!Number.isFinite(opacity) || opacity > 0.04) &&
+        rect.width > 0 &&
+        rect.height > 0 &&
+        !el.hasAttribute('disabled') &&
+        el.getAttribute('aria-disabled') !== 'true'
+      );
+    };
 
-  local analysis_json=""
+    let clickCount = 0;
+    for (const candidate of findOverlayRoots()) {
+      if (clickCount >= MAX_DISMISS_CLICKS) break;
+      // Exactly one semantic control scan per bounded candidate root.
+      const controls = Array.from(candidate.el.querySelectorAll(CONTROL_SELECTOR))
+        .slice(0, MAX_CONTROLS_PER_ROOT)
+        .map(el => ({
+          el,
+          rank: dismissPatterns.findIndex(pattern => pattern.test(controlText(el))),
+        }))
+        .filter(item => item.rank >= 0 && isVisibleControl(item.el))
+        .sort((a, b) => a.rank - b.rank);
+      const chosen = controls[0]?.el;
+      if (!chosen) continue;
+      try {
+        chosen.click();
+        clickCount += 1;
+      } catch {}
+    }
 
-  cleanup() {
-    cleanup_playwright_session "$session"
+    await new Promise(resolve => setTimeout(resolve, 500));
+    window.scrollTo(0, 0);
+    return findOverlayRoots().slice(0, 10).map(candidate => ({
+      tag: candidate.el.tagName,
+      text: candidate.text.slice(0, 120),
+      role: candidate.el.getAttribute('role') || '',
+      semantic_modal: candidate.semanticModal,
+      score: candidate.score,
+    }));
+  });
+
+  if (remainingOverlays.length > 0) {
+    throw new Error('popup_detected:' + JSON.stringify(remainingOverlays));
   }
 
-  trap cleanup RETURN
+  await page.waitForTimeout(250);
+}
+JS
+  cleanup_code="${cleanup_code/__VENTUREDEX_TARGET_URL__/$(js_quote "$url")}"
 
-  if ! playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" open "about:blank" >/dev/null; then
+  local screenshot_code
+  IFS= read -r -d '' screenshot_code <<'JS' || true
+async page => {
+  await page.screenshot({ path: __VENTUREDEX_SCREENSHOT_PATH__, type: 'png' });
+}
+JS
+  screenshot_code="${screenshot_code/__VENTUREDEX_SCREENSHOT_PATH__/$(js_quote "$tmp_png")}"
+
+  local capture_status=0
+
+  if playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" open "about:blank" >/dev/null; then
+    :
+  else
+    capture_status=$?
     echo "FAILED (Playwright open timed out or errored)" >&2
-    return 1
-  fi
-  if ! playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" resize 1440 900 >/dev/null; then
-    echo "FAILED (Playwright resize errored)" >&2
-    return 1
-  fi
-  if ! playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" run-code "$cleanup_code" >/dev/null; then
-    echo "FAILED (overlay cleanup step errored)" >&2
-    return 1
-  fi
-  if ! analysis_json=$(playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --raw --session "$session" eval "$analysis_code"); then
-    echo "FAILED (overlay analysis step errored)" >&2
-    return 1
-  fi
-  if [ -z "$analysis_json" ]; then
-    echo "FAILED (overlay analysis returned no data)" >&2
-    return 1
   fi
 
-  if ! python3 - "$analysis_json" <<'PY'
-import json
-import sys
-
-payload = json.loads(sys.argv[1])
-if isinstance(payload, str):
-    payload = json.loads(payload)
-if payload:
-    print("popup_detected")
-    for item in payload:
-        print(json.dumps(item, ensure_ascii=False))
-    raise SystemExit(1)
-PY
-  then
-    return 1
+  if [ "$capture_status" -eq 0 ]; then
+    if playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" resize 1440 900 >/dev/null; then
+      :
+    else
+      capture_status=$?
+      echo "FAILED (Playwright resize errored)" >&2
+    fi
   fi
 
-  if ! playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" run-code "$screenshot_code" >/dev/null; then
-    echo "FAILED (Playwright screenshot step errored)" >&2
-    return 1
+  if [ "$capture_status" -eq 0 ]; then
+    if playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" run-code "$cleanup_code" >/dev/null; then
+      :
+    else
+      capture_status=$?
+      echo "FAILED (overlay cleanup or fail-closed analysis errored)" >&2
+    fi
   fi
 
-  if ! cwebp -quiet -q 92 "$tmp_png" -o "$tmp_webp" >/dev/null 2>&1; then
-    echo "FAILED (could not convert screenshot to webp)" >&2
-    return 1
+  if [ "$capture_status" -eq 0 ]; then
+    if playwright_cli "$PLAYWRIGHT_STEP_TIMEOUT_SECONDS" --session "$session" run-code "$screenshot_code" >/dev/null; then
+      :
+    else
+      capture_status=$?
+      echo "FAILED (Playwright screenshot step errored)" >&2
+    fi
+  fi
+
+  if [ "$capture_status" -eq 0 ] && [ ! -s "$tmp_png" ]; then
+    capture_status=1
+    echo "FAILED (Playwright screenshot produced no PNG)" >&2
+  fi
+
+  if [ "$capture_status" -eq 0 ]; then
+    if cwebp -quiet -q 92 "$tmp_png" -o "$tmp_webp" >/dev/null 2>&1; then
+      :
+    else
+      capture_status=$?
+      echo "FAILED (could not convert screenshot to webp)" >&2
+    fi
+  fi
+
+  if [ "$capture_status" -eq 0 ] && [ ! -s "$tmp_webp" ]; then
+    capture_status=1
+    echo "FAILED (screenshot conversion produced no WebP)" >&2
+  fi
+
+  # RETURN traps fire at surprising boundaries inside command substitutions.
+  # One explicit cleanup point preserves both output and failure status.
+  cleanup_playwright_session "$session"
+
+  if [ "$capture_status" -ne 0 ]; then
+    rm -f "$tmp_png" "$tmp_webp"
+    return "$capture_status"
   fi
 
   rm -f "$tmp_png"
@@ -647,7 +582,12 @@ take_screenshot() {
     fi
   fi
 
-  mv "$captured_file" "$local_output"
+  if [ -z "$captured_file" ] || [ ! -s "$captured_file" ]; then
+    echo "FAILED (capture returned no WebP)"
+    return 1
+  fi
+
+  mv -- "$captured_file" "$local_output"
 
   local size
   size=$(wc -c < "$local_output" | tr -d ' ')
@@ -656,8 +596,12 @@ take_screenshot() {
 }
 
 if [ $# -ge 2 ]; then
-  take_screenshot "$1" "$2"
-  exit 0
+  if take_screenshot "$1" "$2"; then
+    exit 0
+  else
+    status=$?
+    exit "$status"
+  fi
 fi
 
 echo "VentureDex Screenshot Tool (Playwright popup-safe capture -> public/screenshots)"
