@@ -181,7 +181,10 @@ HTTP_OK = {"200", "301", "302", "307", "308", "403"}
 # These are connection-level/ambiguous results, not dead links, so they must not block CI.
 HTTP_FALLBACK = {"000", "405", "415"}
 HTTP_NON_BLOCKING = HTTP_OK | HTTP_FALLBACK
-HTTP_GET_RETRY_AFTER_HEAD = HTTP_FALLBACK | {"404", "406"}
+# Some bot-protected sites return 202 to HEAD even though a browser-style GET
+# resolves to a stable page or an explicit 403. Retry with GET, but do not
+# classify a repeated 202 as reachable.
+HTTP_GET_RETRY_AFTER_HEAD = HTTP_FALLBACK | {"202", "404", "406"}
 CURL_HEAD_HEADERS = [
     "-A",
     "Mozilla/5.0",
@@ -754,8 +757,12 @@ def validate_research(data: dict[str, object], *, url_cache: dict[str, str]) -> 
         if source_type != "editorial":
             if not source_url:
                 errors.append(f"{prefix} missing url")
-            elif check_url(source_url, cache=url_cache) not in HTTP_NON_BLOCKING:
-                errors.append(f"{prefix} url is not reachable: {source_url}")
+            else:
+                source_status = check_url(source_url, cache=url_cache)
+                if source_status not in HTTP_NON_BLOCKING:
+                    errors.append(
+                        f"{prefix} url check failed with HTTP {source_status}: {source_url}"
+                    )
 
     if "official" not in source_types:
         errors.append("research.sources must include an official source")

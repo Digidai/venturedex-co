@@ -317,6 +317,67 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
   }
 });
 
+test("content URL validation retries HEAD 202 with GET without accepting a repeated 202", () => {
+  const validator = path.join(repoRoot, "scripts", "validate.py");
+  const probe = String.raw`
+import importlib.util
+import json
+from pathlib import Path
+import sys
+from types import SimpleNamespace
+
+validator_path = Path(sys.argv[1]).resolve()
+sys.path.insert(0, str(validator_path.parent))
+spec = importlib.util.spec_from_file_location("venturedex_validate", validator_path)
+module = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = module
+spec.loader.exec_module(module)
+
+def resolve(statuses):
+    calls = []
+    values = iter(statuses)
+    def fake_run(command, **_kwargs):
+        calls.append(command)
+        return SimpleNamespace(stdout=next(values), stderr="", returncode=0)
+    module.subprocess.run = fake_run
+    status = module.fetch_url_status("https://example.com/source")
+    return {
+        "status": status,
+        "call_count": len(calls),
+        "head_first": "-I" in calls[0],
+        "get_second": "-I" not in calls[1],
+        "browser_get": "--http1.1" in calls[1],
+    }
+
+print(json.dumps({
+    "resolved": resolve(["202", "403"]),
+    "still_pending": resolve(["202", "202"]),
+}))
+`;
+  const result = spawnSync(realPython3, ["-c", probe, validator], {
+    cwd: repoRoot,
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 0, `${result.stdout}\n${result.stderr}`);
+  const payload = JSON.parse(result.stdout) as {
+    resolved: Record<string, unknown>;
+    still_pending: Record<string, unknown>;
+  };
+  assert.deepEqual(payload.resolved, {
+    status: "403",
+    call_count: 2,
+    head_first: true,
+    get_second: true,
+    browser_get: true,
+  });
+  assert.equal(payload.still_pending.status, "202");
+  assert.equal(payload.still_pending.call_count, 2);
+  assert.match(
+    readFileSync(validator, "utf8"),
+    /url check failed with HTTP \{source_status\}/,
+  );
+});
+
 function createWeeklyFixture(openPullRequests: unknown[]): string {
   const root = tempDir("venturedex-weekly-test-");
   mkdirSync(path.join(root, "scripts"), { recursive: true });
