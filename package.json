@@ -31,6 +31,8 @@
     "seo:indexnow:all-content": "tsx scripts/promotion/indexnow.ts --all-startups --all-weekly --topics --hubs --collections --ai-surfaces",
     "geo:indexnow": "tsx scripts/promotion/indexnow.ts --ai-surfaces",
     "weekly:og": "tsx scripts/weekly-og.ts --all --write",
+    "whatships:sync": "tsx scripts/sync-whatships.ts",
+    "whatships:check": "tsx scripts/sync-whatships.ts --check",
     "promotion:pack": "tsx scripts/promotion/build-pack.ts --latest-daily --latest-weekly --write",
     "growth:report": "tsx scripts/promotion/growth-report.ts --write"
   },

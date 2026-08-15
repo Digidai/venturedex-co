@@ -9,7 +9,7 @@ export const CONTENT_SECURITY_POLICY = [
   "base-uri 'self'",
   "script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com https://*.clarity.ms",
   "connect-src 'self' https://cloudflareinsights.com https://*.clarity.ms https://c.bing.com",
-  "img-src 'self' data: https://*.clarity.ms https://c.bing.com",
+  "img-src 'self' data: https://whatships.com https://*.clarity.ms https://c.bing.com",
 ].join("; ");
 
 export function canonicalRedirectUrl(input: string | URL, method = "GET"): string | null {

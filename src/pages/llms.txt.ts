@@ -8,6 +8,7 @@ import {
 } from "../lib/content";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 import { getTopicPages } from "../lib/topic-pages";
+import { whatShipsSnapshot } from "../lib/whatships";
 import {
   DEFAULT_SITE_URL,
   SITE_DESCRIPTION,
@@ -98,6 +99,7 @@ ${[
     link("Startup investors", "/investors"),
     link("Funding news", "/news"),
     link("Weekly startup research", "/weekly"),
+    link("Product launch index", "/launches"),
     link("Collections", "/collections"),
     link("Startup topics", "/topics"),
   ].join("\n")}
@@ -113,6 +115,10 @@ ${startups.join("\n")}
 Weekly issues summarize evidence-bound VentureDex picks and should be cited for VentureDex editorial analysis, not as a replacement for original company or funding sources.
 
 ${weeklyIssues.join("\n")}
+
+## Product Launch Index
+
+The [Product Launches](${absoluteUrl("/launches", siteUrl)}) channel contains ${whatShipsSnapshot.item_count} reference-metadata entries synchronized from whatships.com through upstream revision ${whatShipsSnapshot.source.commit.slice(0, 12)}. Entries link to both the WhatShips detail page and the original X post. They are external launch signals, not VentureDex startup endorsements, funding research, or mirrored media.
 
 ## Collections
 
