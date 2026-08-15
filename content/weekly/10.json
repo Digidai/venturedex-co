@@ -1,0 +1,455 @@
+{
+  "issue_number": 10,
+  "title": "TODO: Weekly research for 2026-07-27 to 2026-08-02",
+  "week_start": "2026-07-27",
+  "week_end": "2026-08-02",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "dili",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/dili.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Dili official product site",
+          "source": "content/startups/dili.json research.sources.official_site",
+          "url": "https://www.dili.com/"
+        },
+        {
+          "label": "Dili Series A report",
+          "source": "content/startups/dili.json research.sources.funding_source",
+          "url": "https://techcrunch.com/2026/07/30/dili-raises-15-million-to-bring-ai-compliance-to-the-infrastructure-boom/"
+        },
+        {
+          "label": "Dili solar portfolio case study",
+          "source": "content/startups/dili.json research.sources.official_case_study",
+          "url": "https://www.dili.com/case-studies/"
+        },
+        {
+          "label": "Dili official company page",
+          "source": "content/startups/dili.json research.sources.official_about",
+          "url": "https://www.dili.com/about/"
+        },
+        {
+          "label": "Dili Y Combinator company profile",
+          "source": "content/startups/dili.json research.sources.yc_profile",
+          "url": "https://www.ycombinator.com/companies/dili"
+        },
+        {
+          "label": "Dili official careers page",
+          "source": "content/startups/dili.json research.sources.official_careers",
+          "url": "https://www.dili.com/careers/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Dili ingests certified payroll from PDF, Excel, CSV, and state forms, cross-checks wages and classifications against applicable rules, calculates fringe benefits, and tracks underpayment remediation.",
+          "url": "https://www.dili.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "In its published solar-portfolio case, Dili processed 606 payroll reports and more than 83,000 labor hours across 14 projects in about one week, surfacing wage, apprenticeship, and data-quality exceptions.",
+          "url": "https://www.dili.com/case-studies/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Dili homepage",
+          "url": "https://www.dili.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/30/dili-raises-15-million-to-bring-ai-compliance-to-the-infrastructure-boom/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable question is whether independent audits show low false-negative and false-positive rates for wage, fringe-benefit, apprenticeship, and backpay exceptions as federal and state rules change.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "databahn",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/databahn.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "DataBahn official site",
+          "source": "content/startups/databahn.json research.sources.official_site",
+          "url": "https://www.databahn.ai/"
+        },
+        {
+          "label": "DataBahn Series B announcement",
+          "source": "content/startups/databahn.json research.sources.funding_source",
+          "url": "https://www.prnewswire.com/news-releases/databahn-raises-40-million-series-b-led-by-insight-partners-to-accelerate-innovation-across-the-agentic-data-control-plane-302838690.html"
+        },
+        {
+          "label": "DataBahn platform overview",
+          "source": "content/startups/databahn.json research.sources.official_platform",
+          "url": "https://www.databahn.ai/platform"
+        },
+        {
+          "label": "DataBahn integrations catalog",
+          "source": "content/startups/databahn.json research.sources.official_integrations",
+          "url": "https://www.databahn.ai/integrations"
+        },
+        {
+          "label": "DataBahn official careers page",
+          "source": "content/startups/databahn.json research.sources.official_careers",
+          "url": "https://www.databahn.ai/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Smart Edge collects telemetry without host agents and can analyze data at the edge, while Highway filters, enriches, normalizes, and routes data before it reaches downstream platforms.",
+          "url": "https://www.databahn.ai/platform"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Cruz automates parsing and pipeline monitoring, and Reef connects enterprise data into contextual graphs; the company states that the platform supports more than 600 sources without destination or model lock-in.",
+          "url": "https://www.databahn.ai/platform"
+        },
+        {
+          "label": "Official product site",
+          "source": "DataBahn homepage",
+          "url": "https://www.databahn.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/databahn-raises-40-million-series-b-led-by-insight-partners-to-accelerate-innovation-across-the-agentic-data-control-plane-302838690.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is that autonomous filtering or normalization drops forensic detail as source schemas and security policies change across large deployments.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "terminal",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/terminal.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Terminal official product site",
+          "source": "content/startups/terminal.json research.sources.official_site",
+          "url": "https://www.withterminal.com/"
+        },
+        {
+          "label": "Terminal Series A report",
+          "source": "content/startups/terminal.json research.sources.funding_source",
+          "url": "https://www.axios.com/pro/supply-chain-deals/2026/07/29/terminal-20m-commercial-fleet-telematics-data"
+        },
+        {
+          "label": "Terminal developer documentation",
+          "source": "content/startups/terminal.json research.sources.official_docs",
+          "url": "https://docs.withterminal.com/home"
+        },
+        {
+          "label": "Terminal supported-provider explorer",
+          "source": "content/startups/terminal.json research.sources.official_providers",
+          "url": "https://docs.withterminal.com/providers/explorer"
+        },
+        {
+          "label": "Terminal official careers page",
+          "source": "content/startups/terminal.json research.sources.official_careers",
+          "url": "https://www.withterminal.com/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Terminal presents one white-labeled connection layer across 336 aftermarket telematics providers and positions itself as a data subprocessor that does not resell data or disintermediate customers.",
+          "url": "https://www.withterminal.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The documentation exposes unified models for vehicle location, driving events, hours of service, drivers, and fleets, plus a sandbox, link component, webhooks, raw payloads, and connection-health monitoring.",
+          "url": "https://docs.withterminal.com/home"
+        },
+        {
+          "label": "Official product site",
+          "source": "Terminal homepage",
+          "url": "https://www.withterminal.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios",
+          "url": "https://www.axios.com/pro/supply-chain-deals/2026/07/29/terminal-20m-commercial-fleet-telematics-data"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is that normalized fields, historical depth, and connection reliability degrade as 336 upstream providers change schemas, authentication, and polling limits.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "provable-markets",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/provable-markets.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Provable Markets official site",
+          "source": "content/startups/provable-markets.json research.sources.official_site",
+          "url": "https://provablemarkets.com/"
+        },
+        {
+          "label": "Provable Markets Series B announcement",
+          "source": "content/startups/provable-markets.json research.sources.funding_source",
+          "url": "https://www.prnewswire.com/news-releases/provable-markets-raises-series-b-funding-round-led-by-charles-schwab-with-additional-participation-by-dtcc-302837256.html"
+        },
+        {
+          "label": "Provable Markets Marketplace",
+          "source": "content/startups/provable-markets.json research.sources.official_marketplace",
+          "url": "https://provablemarkets.com/marketplace"
+        },
+        {
+          "label": "Provable Markets Trade Manager",
+          "source": "content/startups/provable-markets.json research.sources.official_trade_manager",
+          "url": "https://provablemarkets.com/trademanager"
+        },
+        {
+          "label": "Provable Markets official careers page",
+          "source": "content/startups/provable-markets.json research.sources.official_careers",
+          "url": "https://provablemarkets.com/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Aurora operates an SEC-registered alternative trading system with neutral order matching, multi-counterparty visibility, and FIX, REST, and gRPC APIs for automated securities-lending order flow.",
+          "url": "https://provablemarkets.com/marketplace"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Trade Manager automates lifecycle events such as returns, recalls, marks, and rate changes, while the platform connects to NSCC, DTC, OCC, and tri-party market infrastructure for cleared and uncleared transactions.",
+          "url": "https://provablemarkets.com/trademanager"
+        },
+        {
+          "label": "Official product site",
+          "source": "Provable Markets homepage",
+          "url": "https://provablemarkets.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "PR Newswire",
+          "url": "https://www.prnewswire.com/news-releases/provable-markets-raises-series-b-funding-round-led-by-charles-schwab-with-additional-participation-by-dtcc-302837256.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is that dependence on U.S. clearing and regulatory infrastructure constrains geographic expansion or concentrates operational failure modes.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "polar",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/polar.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Polar official product site",
+          "source": "content/startups/polar.json research.sources.official_site",
+          "url": "https://polarbrowser.com/"
+        },
+        {
+          "label": "Polar Seed report",
+          "source": "content/startups/polar.json research.sources.funding_source",
+          "url": "https://techcrunch.com/2026/07/29/perplexity-employee-who-worked-on-comet-launches-an-ai-browser-aimed-at-knowledge-work/"
+        },
+        {
+          "label": "Polar launch announcement",
+          "source": "content/startups/polar.json research.sources.official_announcement",
+          "url": "https://polarbrowser.com/blog/introducing-polar"
+        },
+        {
+          "label": "Polar pricing and usage tiers",
+          "source": "content/startups/polar.json research.sources.official_pricing",
+          "url": "https://polarbrowser.com/pricing"
+        },
+        {
+          "label": "Polar privacy policy",
+          "source": "content/startups/polar.json research.sources.official_privacy",
+          "url": "https://polarbrowser.com/privacy"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Polar is a Chromium-based browser that operates inside existing authenticated sessions, exposes its actions for observation or takeover, and can continue multi-site tasks for hours.",
+          "url": "https://polarbrowser.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Users can save prompts as workflows, schedule them hourly, daily, weekly, or on custom intervals, and hand tasks off from the current tab; the public tiers include free daily credits and paid individual and team plans.",
+          "url": "https://polarbrowser.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Polar homepage",
+          "url": "https://polarbrowser.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/07/29/perplexity-employee-who-worked-on-comet-launches-an-ai-browser-aimed-at-knowledge-work/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is that harmful-action and task-error rates remain too high for authenticated long-running workflows, or that enterprise adoption stalls before Polar completes SOC 2 controls.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "lemonedge",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/lemonedge.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "LemonEdge official product site",
+          "source": "content/startups/lemonedge.json research.sources.official_site",
+          "url": "https://www.lemonedge.com/"
+        },
+        {
+          "label": "LemonEdge Series A announcement",
+          "source": "content/startups/lemonedge.json research.sources.official_funding",
+          "url": "https://www.lemonedge.com/news/lemonedge-raises-21m-series-a-led-by-blackstone-joined-by-bny"
+        },
+        {
+          "label": "LemonEdge API product page",
+          "source": "content/startups/lemonedge.json research.sources.official_api",
+          "url": "https://www.lemonedge.com/innovations/api"
+        },
+        {
+          "label": "LemonEdge technical architecture",
+          "source": "content/startups/lemonedge.json research.sources.official_architecture",
+          "url": "https://www.lemonedge.com/technical-architecture"
+        },
+        {
+          "label": "LemonEdge official careers page",
+          "source": "content/startups/lemonedge.json research.sources.official_careers",
+          "url": "https://www.lemonedge.com/about/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "LemonEdge records fund activity as event-driven transactions, automates multi-entry and multi-ledger bookkeeping, and retains detailed audit history while replacing offline spreadsheet calculations.",
+          "url": "https://www.lemonedge.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Its API layer can connect bidirectionally to CRMs, banks, data warehouses, valuation systems, and files, while separate Design, Context, and UI APIs expose data models, transactions, validation, and client interfaces.",
+          "url": "https://www.lemonedge.com/innovations/api"
+        },
+        {
+          "label": "Official product site",
+          "source": "LemonEdge homepage",
+          "url": "https://www.lemonedge.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "LemonEdge",
+          "url": "https://www.lemonedge.com/news/lemonedge-raises-21m-series-a-led-by-blackstone-joined-by-bny"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable risk is that implementation time, close-cycle improvement, and configuration maintenance fail to outperform incumbent platforms once complex client-specific allocation logic is migrated.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "groundcover",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/groundcover.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "groundcover official product site",
+          "source": "content/startups/groundcover.json research.sources.official_site",
+          "url": "https://www.groundcover.com/"
+        },
+        {
+          "label": "groundcover Series C announcement",
+          "source": "content/startups/groundcover.json research.sources.official_funding",
+          "url": "https://www.groundcover.com/news/groundcover-raises-100-million-series-c"
+        },
+        {
+          "label": "groundcover documentation",
+          "source": "content/startups/groundcover.json research.sources.official_docs",
+          "url": "https://docs.groundcover.com/"
+        },
+        {
+          "label": "groundcover public playground",
+          "source": "content/startups/groundcover.json research.sources.official_playground",
+          "url": "https://play.groundcover.com/"
+        },
+        {
+          "label": "groundcover official careers page",
+          "source": "content/startups/groundcover.json research.sources.official_careers",
+          "url": "https://www.groundcover.com/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "groundcover deploys its data plane inside the customer's cloud and uses an adaptive eBPF sensor to capture unsampled telemetry across infrastructure, applications, and AI workloads without code changes.",
+          "url": "https://www.groundcover.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Agent Mode can choose signals and queries from a goal, build dashboards and monitors, and use team-defined Skills on the same logs, traces, metrics, events, and entities available in the public playground.",
+          "url": "https://www.groundcover.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "groundcover homepage",
+          "url": "https://www.groundcover.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "groundcover",
+          "url": "https://www.groundcover.com/news/groundcover-raises-100-million-series-c"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The falsifiable question is whether BYOC onboarding, query performance, and migration coverage remain simple for heterogeneous non-Kubernetes environments and deeply customized incumbent deployments.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
