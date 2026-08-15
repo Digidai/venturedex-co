@@ -1,0 +1,134 @@
+name: Sync WhatShips channel
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: venturedex-whatships-sync
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  sync:
+    if: github.repository == 'Digidai/venturedex-co'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Fetch and validate published WhatShips metadata
+        id: source
+        run: npm run whatships:sync
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
+      - name: Verify the channel contract
+        run: npx tsx --test tests/whatships.test.ts
+
+      - name: Check generated diff
+        run: |
+          set -euo pipefail
+          git diff --check
+          unexpected="$(git diff --name-only | grep -v '^content/whatships.json$' || true)"
+          untracked="$(git ls-files --others --exclude-standard)"
+          if [ -n "$unexpected" ] || [ -n "$untracked" ]; then
+            echo "Sync changed a path outside content/whatships.json." >&2
+            printf '%s\n%s\n' "$unexpected" "$untracked" >&2
+            exit 1
+          fi
+
+      - name: Commit a changed snapshot
+        id: commit
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- content/whatships.json; then
+            echo "WhatShips snapshot is already current."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git fetch --no-tags origin main
+          local_parent="$(git rev-parse HEAD)"
+          remote_parent="$(git rev-parse refs/remotes/origin/main)"
+          if [ "$local_parent" != "$remote_parent" ]; then
+            echo "Remote main advanced from $local_parent to $remote_parent; refusing to rebase or overwrite it." >&2
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/whatships.json
+          commit_body="$(printf '%s\n%s\n%s\n%s\n%s\n%s' \
+            "Upstream commit: $UPSTREAM_COMMIT" \
+            "Raw SHA-256: $UPSTREAM_HASH" \
+            "Canonical output SHA-256: $OUTPUT_HASH" \
+            "Published items: $ITEM_COUNT" \
+            "Changes: +$ADDITIONS, ~$UPDATES, -$REMOVALS" \
+            "Reference metadata only; no media or descriptions mirrored.")"
+          git commit \
+            -m "content(whatships): sync launch channel" \
+            -m "$commit_body"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "pushed_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+        env:
+          UPSTREAM_COMMIT: ${{ steps.source.outputs.source_commit }}
+          UPSTREAM_HASH: ${{ steps.source.outputs.source_hash }}
+          OUTPUT_HASH: ${{ steps.source.outputs.output_hash }}
+          ITEM_COUNT: ${{ steps.source.outputs.item_count }}
+          ADDITIONS: ${{ steps.source.outputs.additions }}
+          UPDATES: ${{ steps.source.outputs.updates }}
+          REMOVALS: ${{ steps.source.outputs.removals }}
+
+      # A push authenticated with GITHUB_TOKEN intentionally does not recurse
+      # into on:push workflows. workflow_dispatch is GitHub's documented
+      # exception, so explicitly enter the existing exact-main release path.
+      - name: Dispatch the audited release workflow
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          remote_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
+          if [ -z "$remote_sha" ] || [ "$remote_sha" != "${{ steps.commit.outputs.pushed_sha }}" ]; then
+            echo "main_pushed_dispatch_failed: current main ${remote_sha:-unknown} no longer matches the pushed WhatShips SHA." >&2
+            exit 1
+          fi
+          gh workflow run deploy.yml --ref main
+          run_json=""
+          for attempt in $(seq 1 10); do
+            run_json="$(gh run list \
+              --workflow deploy.yml \
+              --event workflow_dispatch \
+              --commit "${{ steps.commit.outputs.pushed_sha }}" \
+              --limit 1 \
+              --json databaseId,headSha,status,url \
+              --jq '.[0] // empty')"
+            if [ -n "$run_json" ]; then break; fi
+            sleep 3
+          done
+          if [ -z "$run_json" ]; then
+            echo "main_pushed_dispatch_failed: dispatch was accepted but no exact-SHA Deploy run was observed within 30 seconds." >&2
+            exit 1
+          fi
+          run_id="$(jq -r '.databaseId' <<< "$run_json")"
+          run_url="$(jq -r '.url' <<< "$run_json")"
+          run_status="$(jq -r '.status' <<< "$run_json")"
+          {
+            echo "## Deploy dispatch"
+            echo
+            echo "- Pushed SHA: \`${{ steps.commit.outputs.pushed_sha }}\`"
+            echo "- Deploy run: [$run_id]($run_url)"
+            echo "- Observed state: \`$run_status\` (dispatch evidence, not publication evidence)"
+          } >> "$GITHUB_STEP_SUMMARY"
+        env:
+          GH_TOKEN: ${{ github.token }}

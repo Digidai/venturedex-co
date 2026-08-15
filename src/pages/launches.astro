@@ -1,0 +1,676 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+import WhatShipsCard from "../components/WhatShipsCard.astro";
+import {
+  getWhatShipsCategoryCounts,
+  whatShipsSnapshot,
+} from "../lib/whatships";
+
+const INITIAL_PAGE_SIZE = 24;
+const initialItems = whatShipsSnapshot.items.slice(0, INITIAL_PAGE_SIZE);
+const categories = getWhatShipsCategoryCounts();
+const latestDate = new Intl.DateTimeFormat("en", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+  timeZone: "UTC",
+}).format(new Date(whatShipsSnapshot.source_published_through));
+const countLabel = new Intl.NumberFormat("en").format(whatShipsSnapshot.item_count);
+const description = `Browse ${countLabel} source-linked product launch videos, demos, and walkthroughs indexed from whatships.com.`;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Product Launches",
+  description,
+  url: "https://venturedex.co/launches",
+  isBasedOn: whatShipsSnapshot.source.homepage_url,
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: whatShipsSnapshot.item_count,
+    itemListElement: initialItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.title,
+      url: item.source_url,
+    })),
+  },
+};
+---
+
+<Base
+  title="Product Launches"
+  description={description}
+  canonicalPath="/launches"
+  modifiedTime={whatShipsSnapshot.source.commit_at}
+  schema={schema}
+>
+  <div class="whatships-page" data-launches-root>
+    <section class="launch-hero">
+      <div class="container launch-hero__inner">
+        <p class="launch-eyebrow">VentureDex channel · indexed from WhatShips</p>
+        <div class="launch-hero__grid">
+          <div>
+            <h1>Watch what’s shipping</h1>
+            <p class="launch-hero__lead">
+              Product launches, demos, and walkthroughs that would otherwise disappear into the timeline.
+              Search the full source-linked index without turning launch signals into VentureDex endorsements.
+            </p>
+          </div>
+          <dl class="launch-stats">
+            <div><dt>Published entries</dt><dd>{countLabel}</dd></div>
+            <div><dt>Latest source post</dt><dd>{latestDate}</dd></div>
+            <div><dt>Source revision</dt><dd><a href={whatShipsSnapshot.source.commit_url} target="_blank" rel="noopener noreferrer">{whatShipsSnapshot.source.commit.slice(0, 8)} ↗</a></dd></div>
+          </dl>
+        </div>
+        <p class="launch-source-note">
+          Reference metadata is synchronized from <a href="https://whatships.com/" target="_blank" rel="noopener noreferrer">whatships.com</a>.
+          Cover images load from WhatShips; VentureDex does not mirror the videos or descriptions.
+        </p>
+      </div>
+    </section>
+
+    <section class="launch-directory" aria-labelledby="launch-directory-title" data-launch-directory>
+      <div class="container">
+        <div class="launch-directory__heading">
+          <div>
+            <p class="section-label">Launch index</p>
+            <h2 id="launch-directory-title">Browse the catalog</h2>
+          </div>
+          <p class="launch-results" data-launch-results aria-live="polite">
+            Latest {initialItems.length} of {countLabel} entries
+          </p>
+        </div>
+
+        <form class="launch-controls" data-launch-controls>
+          <label class="launch-search">
+            <span>Search launches</span>
+            <input type="search" name="q" placeholder="Product, company, title, or tag" autocomplete="off" data-launch-search />
+          </label>
+          <label class="launch-category">
+            <span>Category</span>
+            <select name="category" data-launch-category>
+              <option value="">All categories</option>
+              {categories.map((category) => (
+                <option value={category.id}>{category.label} ({category.count})</option>
+              ))}
+            </select>
+          </label>
+        </form>
+
+        <div class="launch-grid" data-launch-grid>
+          {initialItems.map((item, index) => <WhatShipsCard item={item} eager={index < 6} />)}
+        </div>
+
+        <div class="launch-empty" data-launch-empty hidden>
+          <h2>No matching launches.</h2>
+          <p>Try a broader search or another category.</p>
+        </div>
+
+        <nav class="launch-pagination" aria-label="Launch index pages" data-launch-pagination hidden>
+          <button type="button" data-launch-prev>Previous</button>
+          <span data-launch-page>Page 1</span>
+          <button type="button" data-launch-next>Next</button>
+        </nav>
+
+        <noscript>
+          <p class="launch-noscript">
+            JavaScript is off, so this page shows the latest {initialItems.length} entries.
+            <a href="https://whatships.com/" target="_blank" rel="noopener noreferrer">Browse the complete source directory ↗</a>
+          </p>
+        </noscript>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script>
+  type LaunchItem = {
+    id: string;
+    tweet_id: string;
+    slug: string;
+    title: string;
+    product: string;
+    company: string;
+    category: string;
+    tags: string[];
+    published_at: string;
+    duration_seconds: number | null;
+    poster_url: string;
+    source_url: string;
+    original_post_url: string;
+  };
+
+  type LaunchPayload = {
+    item_count: number;
+    items: LaunchItem[];
+  };
+
+  const PAGE_SIZE = 24;
+  // @cloudflare/workers-types is global and its DOM-lite declarations shadow
+  // lib.dom inside Astro client scripts. Use the same narrow adapter pattern as
+  // the homepage filter script so runtime values remain ordinary DOM elements.
+  const query = <T,>(selector: string, scope: any = document): T | null =>
+    scope ? ((scope.querySelector(selector) as T) ?? null) : null;
+  const root = query<any>("[data-launches-root]");
+  const directory = query<any>("[data-launch-directory]", root);
+  const grid = query<any>("[data-launch-grid]", root);
+  const search = query<any>("[data-launch-search]", root);
+  const category = query<any>("[data-launch-category]", root);
+  const results = query<any>("[data-launch-results]", root);
+  const empty = query<any>("[data-launch-empty]", root);
+  const pagination = query<any>("[data-launch-pagination]", root);
+  const previous = query<any>("[data-launch-prev]", root);
+  const next = query<any>("[data-launch-next]", root);
+  const pageLabel = query<any>("[data-launch-page]", root);
+  let items: LaunchItem[] = [];
+  let currentPage = 1;
+
+  const categoryLabels: Record<string, string> = {
+    ai: "AI",
+    consumer: "Consumer",
+    design: "Design",
+    "developer-tools": "Developer tools",
+    hardware: "Hardware",
+    motion: "Motion",
+    other: "Other",
+    productivity: "Productivity",
+  };
+
+  function appendText<K extends keyof HTMLElementTagNameMap>(
+    parent: any,
+    tag: K,
+    className: string,
+    value: string,
+  ): any {
+    const element = document.createElement(tag) as any;
+    element.className = className;
+    element.textContent = value;
+    parent.appendChild(element);
+    return element;
+  }
+
+  function externalLink(label: string, href: string): any {
+    const link = document.createElement("a") as any;
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = `${label} ↗`;
+    return link;
+  }
+
+  function formatDuration(seconds: number | null): string {
+    if (!seconds) return "Duration unavailable";
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainder = seconds % 60;
+    return hours > 0
+      ? `${hours}:${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`
+      : `${minutes}:${String(remainder).padStart(2, "0")}`;
+  }
+
+  function renderCard(item: LaunchItem): any {
+    const card = document.createElement("article") as any;
+    card.className = "launch-card";
+
+    const media = document.createElement("a") as any;
+    media.className = "launch-card__media";
+    media.href = item.source_url;
+    media.target = "_blank";
+    media.rel = "noopener noreferrer";
+    media.setAttribute("aria-label", `Open the video page for ${item.title} on WhatShips`);
+    media.dataset.launchMedia = "";
+    appendText(media, "span", "launch-card__poster-fallback", item.product.slice(0, 1))
+      .setAttribute("aria-hidden", "true");
+    const poster = document.createElement("img") as any;
+    poster.className = "launch-card__poster";
+    poster.src = item.poster_url;
+    poster.alt = `Video cover for ${item.title}`;
+    poster.width = 640;
+    poster.height = 360;
+    poster.loading = "lazy";
+    poster.decoding = "async";
+    poster.referrerPolicy = "no-referrer";
+    poster.dataset.launchPoster = "";
+    poster.addEventListener("error", () => media.classList.add("is-unavailable"), { once: true });
+    media.appendChild(poster);
+    const play = appendText(media, "span", "launch-card__play", "▶");
+    play.setAttribute("aria-hidden", "true");
+    if (item.duration_seconds) {
+      appendText(media, "span", "launch-card__duration", formatDuration(item.duration_seconds));
+    }
+    card.appendChild(media);
+
+    const content = document.createElement("div") as any;
+    content.className = "launch-card__content";
+
+    const meta = document.createElement("div");
+    meta.className = "launch-card__meta";
+    appendText(meta, "span", "launch-card__category", categoryLabels[item.category] ?? item.category);
+    const time = document.createElement("time");
+    time.dateTime = item.published_at;
+    time.textContent = new Intl.DateTimeFormat("en", {
+      month: "short", day: "numeric", year: "numeric", timeZone: "UTC",
+    }).format(new Date(item.published_at));
+    meta.appendChild(time);
+    content.appendChild(meta);
+
+    const heading = document.createElement("h2");
+    const headingLink = externalLink(item.title, item.source_url);
+    headingLink.textContent = item.title;
+    heading.appendChild(headingLink);
+    content.appendChild(heading);
+
+    const identity = document.createElement("p");
+    identity.className = "launch-card__identity";
+    appendText(identity, "strong", "", item.product);
+    if (item.company !== item.product) appendText(identity, "span", "", `by ${item.company}`);
+    content.appendChild(identity);
+
+    if (item.tags.length > 0) {
+      const tags = document.createElement("ul");
+      tags.className = "launch-card__tags";
+      tags.setAttribute("aria-label", "Tags");
+      for (const tag of item.tags.slice(0, 5)) appendText(tags, "li", "", tag);
+      content.appendChild(tags);
+    }
+
+    const footer = document.createElement("div");
+    footer.className = "launch-card__footer";
+    const links = document.createElement("div");
+    links.className = "launch-card__links";
+    links.appendChild(externalLink("WhatShips", item.source_url));
+    links.appendChild(externalLink("Original post", item.original_post_url));
+    footer.appendChild(links);
+    content.appendChild(footer);
+    card.appendChild(content);
+    return card;
+  }
+
+  function normalizedQuery(): string[] {
+    return (search?.value ?? "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+  }
+
+  function updateUrl(): void {
+    const params = new URLSearchParams();
+    const query = (search?.value ?? "").trim();
+    const selectedCategory = category?.value ?? "";
+    if (query) params.set("q", query);
+    if (selectedCategory) params.set("category", selectedCategory);
+    if (currentPage > 1) params.set("page", String(currentPage));
+    history.replaceState(null, "", `${location.pathname}${params.size ? `?${params}` : ""}`);
+  }
+
+  function apply(): void {
+    if (!grid) return;
+    const query = normalizedQuery();
+    const selectedCategory = category?.value ?? "";
+    const filtered = items.filter((item) => {
+      if (selectedCategory && item.category !== selectedCategory) return false;
+      if (query.length === 0) return true;
+      const text = [item.title, item.product, item.company, ...item.tags].join(" ").toLowerCase();
+      return query.every((term) => text.includes(term));
+    });
+    const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+    currentPage = Math.min(Math.max(1, currentPage), totalPages);
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const visible = filtered.slice(start, start + PAGE_SIZE);
+    grid.replaceChildren(...visible.map(renderCard));
+    if (empty) empty.hidden = visible.length > 0;
+    if (results) {
+      const formatted = new Intl.NumberFormat("en").format(filtered.length);
+      results.textContent = `${formatted} matching ${filtered.length === 1 ? "entry" : "entries"}`;
+    }
+    if (pagination) pagination.hidden = filtered.length <= PAGE_SIZE;
+    if (previous) previous.disabled = currentPage <= 1;
+    if (next) next.disabled = currentPage >= totalPages;
+    if (pageLabel) pageLabel.textContent = `Page ${currentPage} of ${totalPages}`;
+    updateUrl();
+  }
+
+  function restoreState(): void {
+    const params = new URLSearchParams(location.search);
+    if (search) search.value = params.get("q") ?? "";
+    if (category) {
+      const requested = params.get("category") ?? "";
+      category.value = [...category.options].some((option) => option.value === requested) ? requested : "";
+    }
+    const requestedPage = Number(params.get("page") ?? "1");
+    currentPage = Number.isInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1;
+  }
+
+  if (root && grid) {
+    for (const poster of root.querySelectorAll("[data-launch-poster]")) {
+      const media = poster.closest("[data-launch-media]");
+      const markUnavailable = () => media?.classList.add("is-unavailable");
+      poster.addEventListener("error", markUnavailable, { once: true });
+      if (poster.complete && poster.naturalWidth === 0) markUnavailable();
+    }
+    restoreState();
+    fetch("/whatships.json", { headers: { Accept: "application/json" } })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json() as Promise<LaunchPayload>;
+      })
+      .then((payload) => {
+        if (!Array.isArray(payload.items) || payload.item_count !== payload.items.length) {
+          throw new Error("Invalid launch index payload");
+        }
+        items = payload.items;
+        apply();
+      })
+      .catch(() => {
+        if (results) results.textContent = "Showing the latest cached entries; full index unavailable.";
+      });
+
+    let timer = 0;
+    search?.addEventListener("input", () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => { currentPage = 1; apply(); }, 120);
+    });
+    category?.addEventListener("change", () => { currentPage = 1; apply(); });
+    previous?.addEventListener("click", () => { currentPage -= 1; apply(); directory?.scrollIntoView({ behavior: "smooth" }); });
+    next?.addEventListener("click", () => { currentPage += 1; apply(); directory?.scrollIntoView({ behavior: "smooth" }); });
+  }
+</script>
+
+<style is:global>
+  .whatships-page {
+    --launch-ink: var(--color-text);
+    --launch-muted: var(--color-text-secondary);
+  }
+
+  .launch-hero {
+    border-bottom: 1px solid var(--color-border);
+    background:
+      radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-text) 5%, transparent), transparent 32%),
+      linear-gradient(180deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-badge-bg) 45%, var(--color-bg)) 100%);
+  }
+
+  .launch-hero__inner { padding-block: clamp(3.5rem, 8vw, 7rem); }
+  .launch-eyebrow,
+  .section-label {
+    margin: 0 0 var(--space-4);
+    color: var(--launch-muted);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .launch-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(16rem, 0.7fr);
+    gap: clamp(2.5rem, 8vw, 7rem);
+    align-items: end;
+  }
+
+  .launch-hero h1 {
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(3rem, 7vw, 6.4rem);
+    line-height: 0.94;
+    letter-spacing: -0.055em;
+  }
+
+  .launch-hero__lead {
+    max-width: 48rem;
+    margin: var(--space-6) 0 0;
+    color: var(--launch-muted);
+    font-size: clamp(1rem, 1.8vw, 1.22rem);
+    line-height: 1.65;
+  }
+
+  .launch-stats { margin: 0; border-top: 1px solid var(--color-border); }
+  .launch-stats div {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .launch-stats dt { color: var(--launch-muted); font-size: 0.8rem; }
+  .launch-stats dd { margin: 0; font-family: var(--font-mono); font-size: 0.76rem; text-align: right; }
+  .launch-stats a { color: inherit; }
+
+  .launch-source-note {
+    max-width: 64rem;
+    margin: var(--space-8) 0 0;
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-text);
+    color: var(--launch-muted);
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .launch-directory { padding-block: clamp(3.5rem, 7vw, 6rem); }
+  .launch-directory__heading {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-6);
+    align-items: end;
+    margin-bottom: var(--space-8);
+  }
+  .launch-directory__heading h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.4rem); }
+  .launch-results { margin: 0; color: var(--launch-muted); font-family: var(--font-mono); font-size: 0.76rem; }
+
+  .launch-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(13rem, 0.32fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-8);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-card-bg);
+  }
+  .launch-controls label { display: grid; gap: var(--space-2); }
+  .launch-controls label > span {
+    color: var(--launch-muted);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .launch-controls input,
+  .launch-controls select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+  }
+  .launch-controls input:focus,
+  .launch-controls select:focus { outline: 2px solid var(--color-text); outline-offset: 2px; }
+
+  .launch-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1px;
+    padding: 1px;
+    background: var(--color-border);
+  }
+  .launch-card {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    min-height: 31rem;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--color-bg);
+    transition: background 0.16s ease;
+  }
+  .launch-card:hover { background: var(--color-card-bg); }
+  .launch-card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--color-badge-bg) 82%, var(--color-bg)), var(--color-bg));
+    color: var(--color-text);
+    isolation: isolate;
+  }
+  .launch-card__poster-fallback {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: color-mix(in srgb, var(--launch-muted) 32%, transparent);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .launch-card__poster {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease, filter 0.35s ease;
+  }
+  .launch-card__media:hover .launch-card__poster { transform: scale(1.025); filter: saturate(1.06); }
+  .launch-card__media.is-unavailable .launch-card__poster { display: none; }
+  .launch-card__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    display: grid;
+    width: 2.8rem;
+    height: 2.8rem;
+    place-items: center;
+    border: 1px solid rgb(255 255 255 / 38%);
+    border-radius: 999px;
+    background: rgb(10 10 10 / 70%);
+    color: white;
+    font-size: 0.85rem;
+    line-height: 1;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(5px);
+    transition: transform 0.18s ease, background 0.18s ease;
+  }
+  .launch-card__play svg { margin-left: 0.12rem; }
+  .launch-card__media:hover .launch-card__play {
+    background: rgb(10 10 10 / 84%);
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  .launch-card__duration {
+    position: absolute;
+    right: 0.65rem;
+    bottom: 0.65rem;
+    z-index: 2;
+    padding: 0.24rem 0.38rem;
+    border-radius: 3px;
+    background: rgb(10 10 10 / 82%);
+    color: white;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+  .launch-card__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: clamp(1.25rem, 2.4vw, 2rem);
+  }
+  .launch-card__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--space-3);
+    color: var(--launch-muted);
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .launch-card__category { color: var(--launch-ink); font-weight: 600; }
+  .launch-card h2 {
+    margin: clamp(1.5rem, 2.8vw, 2.4rem) 0 var(--space-4);
+    font-size: clamp(1.35rem, 2.1vw, 1.8rem);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .launch-card h2 a { color: inherit; text-decoration: none; }
+  .launch-card h2 a:hover { text-decoration: underline; text-underline-offset: 0.15em; }
+  .launch-card__identity { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; color: var(--launch-muted); font-size: 0.88rem; }
+  .launch-card__identity strong { color: var(--launch-ink); font-weight: 600; }
+  .launch-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: var(--space-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .launch-card__tags li {
+    padding: 0.25rem 0.42rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    color: var(--launch-muted);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+  }
+  .launch-card__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-4);
+    align-items: end;
+    margin-top: auto;
+    padding-top: var(--space-8);
+  }
+  .launch-card__links { display: grid; gap: 0.35rem; text-align: right; }
+  .launch-card__links a { color: var(--launch-ink); font-size: 0.75rem; font-weight: 600; }
+
+  .launch-empty { padding: var(--space-16) var(--space-4); text-align: center; }
+  .launch-empty h2 { margin-bottom: var(--space-2); }
+  .launch-empty p { color: var(--launch-muted); }
+  .launch-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-5);
+    margin-top: var(--space-10);
+  }
+  .launch-pagination button {
+    min-width: 7rem;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 7px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+  }
+  .launch-pagination button:hover:not(:disabled) { background: var(--color-card-bg); }
+  .launch-pagination button:disabled { cursor: not-allowed; opacity: 0.4; }
+  .launch-pagination span { color: var(--launch-muted); font-family: var(--font-mono); font-size: 0.72rem; }
+  .launch-noscript { margin-top: var(--space-8); color: var(--launch-muted); font-size: 0.85rem; text-align: center; }
+
+  @media (max-width: 900px) {
+    .launch-hero__grid { grid-template-columns: 1fr; }
+    .launch-stats { max-width: 34rem; }
+    .launch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .launch-hero h1 { font-size: clamp(2.8rem, 16vw, 4.2rem); }
+    .launch-directory__heading { display: grid; }
+    .launch-controls { grid-template-columns: 1fr; }
+    .launch-grid { grid-template-columns: 1fr; }
+    .launch-card { min-height: 0; }
+    .launch-pagination { gap: var(--space-3); }
+    .launch-pagination button { min-width: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .launch-card__poster,
+    .launch-card__play { transition: none; }
+  }
+</style>

@@ -16,6 +16,7 @@ import {
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLastmod, sitemapLastmodDate } from "../lib/seo";
 import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
+import { whatShipsSnapshot } from "../lib/whatships";
 
 interface SitemapUrl {
   loc: string;
@@ -69,6 +70,7 @@ export const GET: APIRoute = () => {
     { loc: "/investors", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/news", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
+    { loc: "/launches", lastmod: whatShipsSnapshot.source.commit_at, priority: "0.8" },
     { loc: "/collections", lastmod: latestStartupLastmod, priority: "0.7" },
     { loc: "/topics", lastmod: latestTopicLastmod, priority: "0.8" },
     { loc: "/about", priority: "0.6" },
