@@ -223,3 +223,23 @@ test("the Launches channel is discoverable without joining startup or newsletter
   assert.doesNotMatch(content, /whatships/i);
   assert.doesNotMatch(newsletter, /whatships/i);
 });
+
+test("launch pages prioritize video discovery before supporting editorial content", () => {
+  const page = readFileSync("src/pages/launches.astro", "utf8");
+  const detail = readFileSync("src/pages/launches/[slug].astro", "utf8");
+
+  const directoryIntro = page.indexOf('class="launch-directory__intro"');
+  const controls = page.indexOf('class="launch-controls"');
+  const grid = page.indexOf('class="launch-grid"');
+  assert.ok(directoryIntro >= 0 && directoryIntro < controls && controls < grid);
+  assert.doesNotMatch(page, /class="launch-hero"/);
+  assert.doesNotMatch(page, /font-size:\s*clamp\(3rem,\s*7vw,\s*6\.4rem\)/);
+
+  const detailHero = detail.indexOf('class="launch-detail__hero"');
+  const detailHeader = detail.indexOf('class="launch-detail__header"', detailHero);
+  const detailPlayer = detail.indexOf('class="launch-player"', detailHero);
+  const detailBody = detail.indexOf('class="launch-detail__body"', detailHero);
+  assert.ok(detailHero >= 0 && detailHeader < detailPlayer && detailPlayer < detailBody);
+  assert.doesNotMatch(detail, /class="launch-detail__dek"/);
+  assert.doesNotMatch(detail, /font-size:\s*clamp\(3rem,\s*8vw,\s*7\.4rem\)/);
+});
