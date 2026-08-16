@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "1c65108c954e94d0e7eeeff46105a8650cb79f54",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/1c65108c954e94d0e7eeeff46105a8650cb79f54",
-    "commit_at": "2026-08-14T14:00:58.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/1c65108c954e94d0e7eeeff46105a8650cb79f54/src/data/videos.json",
-    "raw_sha256": "65fcba1e8b50976c586bd016feccb5e79ae23f587997037b181b147bfa4feb71"
+    "commit": "cfc26e51046f83ecb2c7c440699a2c9e61b9141f",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/cfc26e51046f83ecb2c7c440699a2c9e61b9141f",
+    "commit_at": "2026-08-16T13:03:36.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/cfc26e51046f83ecb2c7c440699a2c9e61b9141f/src/data/videos.json",
+    "raw_sha256": "f7d746b3c88ea292570ef54dee28fc422fe4fc676a354140032b5252f8df737d"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,237 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-13T22:55:46.000Z",
-  "item_count": 1287,
+  "source_published_through": "2026-08-15T16:16:37.000Z",
+  "item_count": 1304,
   "items": [
+    {
+      "id": "plv-aitraceroot-v2",
+      "tweet_id": "2088661148724080717",
+      "slug": "aitraceroot-v2",
+      "title": "AiTraceRoot V2 — AI-native Web3 intelligence OS",
+      "product": "AiTraceRoot V2",
+      "company": "AiTraceRoot",
+      "category": "ai",
+      "tags": [
+        "aitraceroot",
+        "web3",
+        "ai"
+      ],
+      "published_at": "2026-08-15T16:16:37.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088660941965758464/vid/avc1/1280x720/0HqLeoOOM7hMRWE0.mp4",
+      "original_post_url": "https://x.com/AiTraceRoot_Ai/status/2088661148724080717"
+    },
+    {
+      "id": "plv-homura-30b",
+      "tweet_id": "2088619288366379464",
+      "slug": "homura-30b",
+      "title": "HOMURA 30B — uncensored model that still calls tools",
+      "product": "HOMURA 30B",
+      "company": "Hyre",
+      "category": "ai",
+      "tags": [
+        "homura",
+        "hyre",
+        "open-weights"
+      ],
+      "published_at": "2026-08-15T13:30:17.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088619022925631488/vid/avc1/3444x1964/RwzOjrniSspMM0HW.mp4",
+      "original_post_url": "https://x.com/Hyre_agent/status/2088619288366379464"
+    },
+    {
+      "id": "plv-mono-charts",
+      "tweet_id": "2088599468698751328",
+      "slug": "mono-charts",
+      "title": "Mono Charts — minimal animated React chart components",
+      "product": "Mono Charts",
+      "company": "Amicro",
+      "category": "developer-tools",
+      "tags": [
+        "mono-charts",
+        "react",
+        "charts"
+      ],
+      "published_at": "2026-08-15T12:11:32.000Z",
+      "duration_seconds": 43,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088597999190749184/vid/avc1/2528x1336/7EWl4-eQtSd8a2Pu.mp4",
+      "original_post_url": "https://x.com/SubhanHQ/status/2088599468698751328"
+    },
+    {
+      "id": "plv-runway-seedance-2-5-1080p",
+      "tweet_id": "2088510581120647272",
+      "slug": "runway-seedance-2-5-1080p",
+      "title": "Runway Seedance 2.5 — now live in 1080p",
+      "product": "Seedance 2.5",
+      "company": "Runway",
+      "category": "ai",
+      "tags": [
+        "runway",
+        "seedance",
+        "video"
+      ],
+      "published_at": "2026-08-15T06:18:19.000Z",
+      "duration_seconds": 57,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088509884211896320/vid/avc1/1920x1080/CHKlDzuhyWqOf33Q.mp4",
+      "original_post_url": "https://x.com/runwayml/status/2088510581120647272"
+    },
+    {
+      "id": "plv-stanley-studio-updates",
+      "tweet_id": "2088393113286869258",
+      "slug": "stanley-studio-updates",
+      "title": "Stanley Studio — cloud export, teams, Prompt Wand",
+      "product": "Stanley Studio",
+      "company": "Stanley",
+      "category": "ai",
+      "tags": [
+        "stanley",
+        "studio",
+        "video-editor"
+      ],
+      "published_at": "2026-08-14T22:31:33.000Z",
+      "duration_seconds": 54,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088385082620817408/vid/avc1/1440x1080/Ye__t1Df6CayVni8.mp4",
+      "original_post_url": "https://x.com/d4nielpark/status/2088393113286869258"
+    },
+    {
+      "id": "plv-telos-evm-3-0-beta",
+      "tweet_id": "2088363546153230727",
+      "slug": "telos-evm-3-0-beta",
+      "title": "Telos EVM 3.0 Beta — now live",
+      "product": "Telos EVM 3.0",
+      "company": "Telos",
+      "category": "other",
+      "tags": [
+        "telos",
+        "evm",
+        "crypto"
+      ],
+      "published_at": "2026-08-14T20:34:03.000Z",
+      "duration_seconds": 103,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088361442592387072/vid/avc1/1920x1080/40jDIJOUiuJ5ZHaj.mp4",
+      "original_post_url": "https://x.com/HelloTelos/status/2088363546153230727"
+    },
+    {
+      "id": "plv-pika-audio-models",
+      "tweet_id": "2088351507167289515",
+      "slug": "pika-audio-models",
+      "title": "Pika Audio — four generative sound models",
+      "product": "Pika Audio",
+      "company": "Pika",
+      "category": "ai",
+      "tags": [
+        "pika",
+        "audio",
+        "generative"
+      ],
+      "published_at": "2026-08-14T19:46:13.000Z",
+      "duration_seconds": 75,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088337317996204032/vid/avc1/1920x1440/Lo6OiH1iktQ9SM15.mp4",
+      "original_post_url": "https://x.com/pika_labs/status/2088351507167289515"
+    },
+    {
+      "id": "plv-pegfinity-steam",
+      "tweet_id": "2088299763439440166",
+      "slug": "pegfinity-steam",
+      "title": "Pegfinity — first commercial Steam game, $5",
+      "product": "Pegfinity",
+      "company": "Pegfinity",
+      "category": "consumer",
+      "tags": [
+        "pegfinity",
+        "steam",
+        "indie"
+      ],
+      "published_at": "2026-08-14T16:20:36.000Z",
+      "duration_seconds": 34,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088299608434679811/vid/avc1/1280x720/SofBHDU-k7o_KX4d.mp4?tag=14",
+      "original_post_url": "https://x.com/FragmentLasse/status/2088299763439440166"
+    },
+    {
+      "id": "plv-magnific-minimax-h3-2k",
+      "tweet_id": "2088284609825874046",
+      "slug": "magnific-minimax-h3-2k",
+      "title": "MiniMax H3 on Magnific — 2K at half price",
+      "product": "MiniMax H3",
+      "company": "Magnific",
+      "category": "ai",
+      "tags": [
+        "magnific",
+        "minimax",
+        "h3"
+      ],
+      "published_at": "2026-08-14T15:20:24.000Z",
+      "duration_seconds": 13,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088284587482816512/vid/avc1/960x720/KgqJwVSDudvVmPMf.mp4",
+      "original_post_url": "https://x.com/NovaIAHQ/status/2088284609825874046"
+    },
+    {
+      "id": "plv-divvlaunches",
+      "tweet_id": "2088243153845506158",
+      "slug": "divvlaunches",
+      "title": "DivvLaunches — an airport for indie products",
+      "product": "DivvLaunches",
+      "company": "DivvLaunches",
+      "category": "developer-tools",
+      "tags": [
+        "divvlaunches",
+        "indie",
+        "launch"
+      ],
+      "published_at": "2026-08-14T12:35:40.000Z",
+      "duration_seconds": 50,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088239908683227138/vid/avc1/1920x1080/6zMA7k_AgE2c7jjm.mp4",
+      "original_post_url": "https://x.com/divvsaxena/status/2088243153845506158"
+    },
+    {
+      "id": "plv-siftq-minimax-h3",
+      "tweet_id": "2088168616659472424",
+      "slug": "siftq-minimax-h3",
+      "title": "SiftQ — cheaper MiniMax H3 video generation",
+      "product": "SiftQ",
+      "company": "SiftQ",
+      "category": "ai",
+      "tags": [
+        "siftq",
+        "minimax",
+        "video"
+      ],
+      "published_at": "2026-08-14T07:39:29.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088167406711791616/vid/avc1/1344x768/k9PAZ-1v1E86b7xX.mp4",
+      "original_post_url": "https://x.com/SiftQ_AI/status/2088168616659472424"
+    },
+    {
+      "id": "plv-dobot-lumo",
+      "tweet_id": "2088038577464574440",
+      "slug": "dobot-lumo",
+      "title": "DOBOT LUMO — all-terrain humanoid robot",
+      "product": "LUMO",
+      "company": "DOBOT",
+      "category": "hardware",
+      "tags": [
+        "dobot",
+        "robotics",
+        "humanoid"
+      ],
+      "published_at": "2026-08-13T23:02:45.000Z",
+      "duration_seconds": 143,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088037925304909824/vid/avc1/720x1280/o3zw6jcVAWC1eEmU.mp4?tag=14",
+      "original_post_url": "https://x.com/IntEngineering/status/2088038577464574440"
+    },
     {
       "id": "plv-disc-2088036818768032224",
       "tweet_id": "2088036818768032224",
@@ -86,6 +314,25 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2087996446595485696/vid/avc1/3840x2160/2iL13PIzQoVpntqE.mp4",
       "original_post_url": "https://x.com/OpenAI/status/2087996496088297746"
+    },
+    {
+      "id": "plv-matic-cues",
+      "tweet_id": "2087962897267990915",
+      "slug": "matic-cues",
+      "title": "Matic Cues — voice and gesture for the home robot",
+      "product": "Cues",
+      "company": "Matic Robots",
+      "category": "hardware",
+      "tags": [
+        "matic",
+        "cues",
+        "robotics"
+      ],
+      "published_at": "2026-08-13T18:02:01.000Z",
+      "duration_seconds": 125,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087962757044015104/vid/avc1/1280x720/9u6NpT8MCGwHOqUV.mp4?tag=14",
+      "original_post_url": "https://x.com/maticrobots/status/2087962897267990915"
     },
     {
       "id": "plv-disc-2087947721936359705",
@@ -151,6 +398,25 @@
       "original_post_url": "https://x.com/figma/status/2087944862272459214"
     },
     {
+      "id": "plv-nuphos-product-hunt",
+      "tweet_id": "2087944637491318932",
+      "slug": "nuphos-product-hunt",
+      "title": "Nuphos — now live on Product Hunt",
+      "product": "Nuphos",
+      "company": "Nuphos",
+      "category": "developer-tools",
+      "tags": [
+        "nuphos",
+        "devops",
+        "product-hunt"
+      ],
+      "published_at": "2026-08-13T16:49:28.000Z",
+      "duration_seconds": 68,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087944526141042688/vid/avc1/1920x1080/tcEZWoyPuse6O-IA.mp4",
+      "original_post_url": "https://x.com/yuaan1in/status/2087944637491318932"
+    },
+    {
       "id": "plv-disc-2087941307624980753",
       "tweet_id": "2087941307624980753",
       "slug": "cursor-cloud-agent-builds",
@@ -169,6 +435,44 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2087940772037529601/vid/avc1/1920x1080/c7nX3-FfK-MUkDb8.mp4",
       "original_post_url": "https://x.com/cursor_ai/status/2087941307624980753"
+    },
+    {
+      "id": "plv-crit-figma",
+      "tweet_id": "2087940717054476396",
+      "slug": "crit-figma",
+      "title": "Crit — design review agent in Figma Community",
+      "product": "Crit",
+      "company": "Crit",
+      "category": "design",
+      "tags": [
+        "crit",
+        "figma",
+        "design-review"
+      ],
+      "published_at": "2026-08-13T16:33:53.000Z",
+      "duration_seconds": 36,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087940676474507264/vid/avc1/2256x2160/Vpw7TDuEJ_L3aJTt.mp4",
+      "original_post_url": "https://x.com/jp/status/2087940717054476396"
+    },
+    {
+      "id": "plv-xona-tiktok-shop",
+      "tweet_id": "2087886977870028835",
+      "slug": "xona-tiktok-shop",
+      "title": "Xona — TikTok Shop discovery for AI agents",
+      "product": "Xona",
+      "company": "Xona",
+      "category": "ai",
+      "tags": [
+        "xona",
+        "agents",
+        "commerce"
+      ],
+      "published_at": "2026-08-13T13:00:21.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087886933280309248/vid/avc1/1920x1080/F25KdYDP2dlapTek.mp4",
+      "original_post_url": "https://x.com/xona_agent/status/2087886977870028835"
     },
     {
       "id": "plv-kitbitz-illustrations",
@@ -497,6 +801,25 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2087174761277538304/vid/avc1/3840x2160/G9D_hqKshFiR5ERW.mp4",
       "original_post_url": "https://x.com/UnslothAI/status/2087177146662072546"
+    },
+    {
+      "id": "plv-addifect-lens",
+      "tweet_id": "2087113119084765285",
+      "slug": "addifect-lens",
+      "title": "Addifect Lens — paint WebGL shaders on any photo",
+      "product": "Addifect Lens",
+      "company": "Addifect",
+      "category": "design",
+      "tags": [
+        "addifect",
+        "webgl",
+        "shaders"
+      ],
+      "published_at": "2026-08-11T09:45:18.000Z",
+      "duration_seconds": 71,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087112802016378880/vid/avc1/1280x720/VCZKtAfUInhNo-YJ.mp4?tag=14",
+      "original_post_url": "https://x.com/lahirunayak/status/2087113119084765285"
     },
     {
       "id": "plv-disc-2086910382569066807",
