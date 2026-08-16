@@ -242,4 +242,7 @@ test("launch pages prioritize video discovery before supporting editorial conten
   assert.ok(detailHero >= 0 && detailHeader < detailPlayer && detailPlayer < detailBody);
   assert.doesNotMatch(detail, /class="launch-detail__dek"/);
   assert.doesNotMatch(detail, /font-size:\s*clamp\(3rem,\s*8vw,\s*7\.4rem\)/);
+  assert.match(detail, /font-size:\s*clamp\(2rem,\s*2\.9vw,\s*2\.75rem\)/);
+  assert.match(detail, /font-size:\s*clamp\(1\.9rem,\s*8vw,\s*2\.25rem\)/);
+  assert.doesNotMatch(detail, /font-size:\s*clamp\(2\.35rem,\s*4vw,\s*4rem\)/);
 });
