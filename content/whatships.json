@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "cfc26e51046f83ecb2c7c440699a2c9e61b9141f",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/cfc26e51046f83ecb2c7c440699a2c9e61b9141f",
-    "commit_at": "2026-08-16T13:03:36.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/cfc26e51046f83ecb2c7c440699a2c9e61b9141f/src/data/videos.json",
-    "raw_sha256": "f7d746b3c88ea292570ef54dee28fc422fe4fc676a354140032b5252f8df737d"
+    "commit": "043c8af61651f43f9c230604fe5bb55a54d12291",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/043c8af61651f43f9c230604fe5bb55a54d12291",
+    "commit_at": "2026-08-16T15:07:13.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/043c8af61651f43f9c230604fe5bb55a54d12291/src/data/videos.json",
+    "raw_sha256": "82fa2747a885cc457344b691a6c9cfcd2aaea42bab93e1d861d18ddfc3d2ccd1"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -22,7 +22,7 @@
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
   "source_published_through": "2026-08-15T16:16:37.000Z",
-  "item_count": 1304,
+  "item_count": 1305,
   "items": [
     {
       "id": "plv-aitraceroot-v2",
@@ -656,6 +656,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2087497347144249344/vid/avc1/3840x2160/5uKFoc8aXq5fF4_t.mp4",
       "original_post_url": "https://x.com/flowith/status/2087497430455693316"
+    },
+    {
+      "id": "plv-rxlingo",
+      "tweet_id": "2087383696445735182",
+      "slug": "rxlingo",
+      "title": "RXlingo — turn scrolling X into English practice",
+      "product": "RXlingo",
+      "company": "RXlingo",
+      "category": "productivity",
+      "tags": [
+        "rxlingo",
+        "chrome",
+        "english",
+        "extension"
+      ],
+      "published_at": "2026-08-12T03:40:29.000Z",
+      "duration_seconds": 77,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087382895329488896/vid/avc1/1440x1080/ZiU4Z5VBpoPxv0cd.mp4",
+      "original_post_url": "https://x.com/83dwn/status/2087383696445735182"
     },
     {
       "id": "plv-disc-2087310458206199832",
