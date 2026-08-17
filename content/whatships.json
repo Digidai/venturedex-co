@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "043c8af61651f43f9c230604fe5bb55a54d12291",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/043c8af61651f43f9c230604fe5bb55a54d12291",
-    "commit_at": "2026-08-16T15:07:13.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/043c8af61651f43f9c230604fe5bb55a54d12291/src/data/videos.json",
-    "raw_sha256": "82fa2747a885cc457344b691a6c9cfcd2aaea42bab93e1d861d18ddfc3d2ccd1"
+    "commit": "03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad",
+    "commit_at": "2026-08-17T05:29:38.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad/src/data/videos.json",
+    "raw_sha256": "4b333fd603a546508ee28c325ef741cd0f08bbe3644b6a50c5970d90de5ddf80"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,66 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-15T16:16:37.000Z",
-  "item_count": 1305,
+  "source_published_through": "2026-08-16T20:05:00.000Z",
+  "item_count": 1308,
   "items": [
+    {
+      "id": "plv-draftedai-v2",
+      "tweet_id": "2089081008423645680",
+      "slug": "draftedai-v2",
+      "title": "DraftedAI V2 — rough idea to a floor plan in seconds",
+      "product": "DraftedAI V2",
+      "company": "DraftedAI",
+      "category": "design",
+      "tags": [
+        "draftedai",
+        "floor-plan",
+        "ai"
+      ],
+      "published_at": "2026-08-16T20:05:00.000Z",
+      "duration_seconds": 17,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089063926591860736/vid/avc1/3228x2160/QtYEiUsFS4K14j1a.mp4",
+      "original_post_url": "https://x.com/kirillk_web3/status/2089081008423645680"
+    },
+    {
+      "id": "plv-github-copilot-balanced-depth",
+      "tweet_id": "2089057545998479457",
+      "slug": "github-copilot-balanced-depth",
+      "title": "GitHub Copilot — Balanced review depth is now GA",
+      "product": "GitHub Copilot",
+      "company": "GitHub",
+      "category": "developer-tools",
+      "tags": [
+        "github",
+        "copilot",
+        "code-review"
+      ],
+      "published_at": "2026-08-16T18:31:46.000Z",
+      "duration_seconds": 106,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089057356449464321/vid/avc1/1280x720/EwTICiQVnsJjg2Cb.mp4?tag=14",
+      "original_post_url": "https://x.com/github/status/2089057545998479457"
+    },
+    {
+      "id": "plv-warp-agent-cli-sessions",
+      "tweet_id": "2088970738275365360",
+      "slug": "warp-agent-cli-sessions",
+      "title": "Warp Agent CLI — invite agents into a live terminal",
+      "product": "Warp Agent CLI",
+      "company": "Warp",
+      "category": "developer-tools",
+      "tags": [
+        "warp",
+        "cli",
+        "agents"
+      ],
+      "published_at": "2026-08-16T12:46:49.000Z",
+      "duration_seconds": 114,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088970498075955200/vid/avc1/3840x2160/JZWhOIeXgH8A1n6w.mp4",
+      "original_post_url": "https://x.com/warpdotdev/status/2088970738275365360"
+    },
     {
       "id": "plv-aitraceroot-v2",
       "tweet_id": "2088661148724080717",
