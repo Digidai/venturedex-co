@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad",
-    "commit_at": "2026-08-17T05:29:38.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/03dc3db1c1cb56aeb7a10b0a2d224c8e33f4a4ad/src/data/videos.json",
-    "raw_sha256": "4b333fd603a546508ee28c325ef741cd0f08bbe3644b6a50c5970d90de5ddf80"
+    "commit": "645606b03373ee8e9e4fcdf83903f140659cf1da",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/645606b03373ee8e9e4fcdf83903f140659cf1da",
+    "commit_at": "2026-08-18T01:25:24.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/645606b03373ee8e9e4fcdf83903f140659cf1da/src/data/videos.json",
+    "raw_sha256": "4973fee18f86db4841bf5d549de6195e9c072c0a003cc0b8ef3e74dbeda30fb6"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,332 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-16T20:05:00.000Z",
-  "item_count": 1308,
+  "source_published_through": "2026-08-18T00:16:50.000Z",
+  "item_count": 1325,
   "items": [
+    {
+      "id": "plv-browser-use-macos-harness",
+      "tweet_id": "2089506774676291815",
+      "slug": "browser-use-macos-harness",
+      "title": "browser-use macOS Harness — control the whole Mac",
+      "product": "macOS Harness",
+      "company": "browser-use",
+      "category": "developer-tools",
+      "tags": [
+        "browser-use",
+        "macos",
+        "agents"
+      ],
+      "published_at": "2026-08-18T00:16:50.000Z",
+      "duration_seconds": 65,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089506499240607744/vid/avc1/1920x1080/ihfGMv2EG2HygTb7.mp4",
+      "original_post_url": "https://x.com/gregpr07/status/2089506774676291815"
+    },
+    {
+      "id": "plv-quotient-dev-portal",
+      "tweet_id": "2089469112808546346",
+      "slug": "quotient-dev-portal",
+      "title": "Quotient Dev Portal — trade signals as an API",
+      "product": "Quotient Dev Portal",
+      "company": "Quotient",
+      "category": "developer-tools",
+      "tags": [
+        "quotient",
+        "signals",
+        "api"
+      ],
+      "published_at": "2026-08-17T21:47:11.000Z",
+      "duration_seconds": 45,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089468987759591424/vid/avc1/2912x1916/ii8wuzKn1YUMqOhr.mp4",
+      "original_post_url": "https://x.com/amphib0ly/status/2089469112808546346"
+    },
+    {
+      "id": "plv-coinbase-us500-perps",
+      "tweet_id": "2089467756051628474",
+      "slug": "coinbase-us500-perps",
+      "title": "Coinbase — US500 perps now live",
+      "product": "US500 Perps",
+      "company": "Coinbase",
+      "category": "consumer",
+      "tags": [
+        "coinbase",
+        "perps",
+        "us500"
+      ],
+      "published_at": "2026-08-17T21:41:48.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089467624040091648/vid/avc1/1920x1080/aMJg41OIktjMZni9.mp4",
+      "original_post_url": "https://x.com/coinbase/status/2089467756051628474"
+    },
+    {
+      "id": "plv-telos-x402-v2",
+      "tweet_id": "2089442060319236360",
+      "slug": "telos-x402-v2",
+      "title": "Telos x402 v2 — agents pay APIs per request",
+      "product": "x402 v2",
+      "company": "Telos",
+      "category": "other",
+      "tags": [
+        "telos",
+        "x402",
+        "payments"
+      ],
+      "published_at": "2026-08-17T19:59:41.000Z",
+      "duration_seconds": 27,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089441803447541761/vid/avc1/1080x1080/MmhKyO5cTCNvd097.mp4",
+      "original_post_url": "https://x.com/HelloTelos/status/2089442060319236360"
+    },
+    {
+      "id": "plv-lato-ai",
+      "tweet_id": "2089436604008181865",
+      "slug": "lato-ai",
+      "title": "lato_ai — AI commercial due diligence, YC S26",
+      "product": "lato_ai",
+      "company": "lato_ai",
+      "category": "ai",
+      "tags": [
+        "lato",
+        "due-diligence",
+        "yc"
+      ],
+      "published_at": "2026-08-17T19:38:00.000Z",
+      "duration_seconds": 51,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089427433527373824/vid/avc1/3840x2160/BwycTqYnHnBMOzvB.mp4",
+      "original_post_url": "https://x.com/tymek_st/status/2089436604008181865"
+    },
+    {
+      "id": "plv-hermes-desktop-bot-mode",
+      "tweet_id": "2089429432612147572",
+      "slug": "hermes-desktop-bot-mode",
+      "title": "Hermes Desktop — Bot Mode for named specialist agents",
+      "product": "Hermes Bot Mode",
+      "company": "Nous Research",
+      "category": "ai",
+      "tags": [
+        "hermes",
+        "nous",
+        "bots"
+      ],
+      "published_at": "2026-08-17T19:09:31.000Z",
+      "duration_seconds": 90,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089388284455649281/vid/avc1/3842x2160/4u0Z2dQDcIob_L9Z.mp4",
+      "original_post_url": "https://x.com/NousResearch/status/2089429432612147572"
+    },
+    {
+      "id": "plv-replit-black-box-pentest",
+      "tweet_id": "2089427187162083785",
+      "slug": "replit-black-box-pentest",
+      "title": "Replit — black-box pen tests for your apps",
+      "product": "Replit Pen Tests",
+      "company": "Replit",
+      "category": "developer-tools",
+      "tags": [
+        "replit",
+        "security",
+        "pentest"
+      ],
+      "published_at": "2026-08-17T19:00:35.000Z",
+      "duration_seconds": 42,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2089427160696082432/pu/vid/avc1/1280x720/GHuGViEKqI_yDp4h.mp4?tag=12",
+      "original_post_url": "https://x.com/Replit/status/2089427187162083785"
+    },
+    {
+      "id": "plv-monid-discover",
+      "tweet_id": "2089419739970077058",
+      "slug": "monid-discover",
+      "title": "Monid Discover — agents find and pay for tools",
+      "product": "Monid Discover",
+      "company": "Monid",
+      "category": "ai",
+      "tags": [
+        "monid",
+        "tools",
+        "agents"
+      ],
+      "published_at": "2026-08-17T18:31:00.000Z",
+      "duration_seconds": 72,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089251170942644224/vid/avc1/1920x1080/AFa0CS1SGxhxOXyw.mp4",
+      "original_post_url": "https://x.com/shengkunye/status/2089419739970077058"
+    },
+    {
+      "id": "plv-raindrop-pii-guard-2-0",
+      "tweet_id": "2089409649485463561",
+      "slug": "raindrop-pii-guard-2-0",
+      "title": "Raindrop PII Guard 2.0 — privacy with observability",
+      "product": "PII Guard 2.0",
+      "company": "Raindrop",
+      "category": "developer-tools",
+      "tags": [
+        "raindrop",
+        "pii",
+        "privacy"
+      ],
+      "published_at": "2026-08-17T17:50:54.000Z",
+      "duration_seconds": 34,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089404430676594688/vid/avc1/3840x2160/GGKwDRBE8qERczfM.mp4",
+      "original_post_url": "https://x.com/benhylak/status/2089409649485463561"
+    },
+    {
+      "id": "plv-jupiter-portfolio-v2",
+      "tweet_id": "2089399210781159777",
+      "slug": "jupiter-portfolio-v2",
+      "title": "Jupiter Portfolio v2 — manage DeFi from one place",
+      "product": "Portfolio v2",
+      "company": "Jupiter",
+      "category": "other",
+      "tags": [
+        "jupiter",
+        "defi",
+        "portfolio"
+      ],
+      "published_at": "2026-08-17T17:09:25.000Z",
+      "duration_seconds": 41,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089362802834051072/vid/avc1/1920x1080/RACc9IXv-b8m977T.mp4",
+      "original_post_url": "https://x.com/JupiterExchange/status/2089399210781159777"
+    },
+    {
+      "id": "plv-cursor-origin",
+      "tweet_id": "2089399057659596847",
+      "slug": "cursor-origin",
+      "title": "Cursor Origin — code hosting, now live",
+      "product": "Origin",
+      "company": "Cursor",
+      "category": "developer-tools",
+      "tags": [
+        "cursor",
+        "origin",
+        "git"
+      ],
+      "published_at": "2026-08-17T17:08:49.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089397451237036032/vid/avc1/1920x1080/Jnd_JeoePIL98VLX.mp4",
+      "original_post_url": "https://x.com/cursor_ai/status/2089399057659596847"
+    },
+    {
+      "id": "plv-openart-seedance-2-5-1080p",
+      "tweet_id": "2089398873248706694",
+      "slug": "openart-seedance-2-5-1080p",
+      "title": "OpenArt — Seedance 2.5 now in 1080p",
+      "product": "Seedance 2.5",
+      "company": "OpenArt",
+      "category": "ai",
+      "tags": [
+        "openart",
+        "seedance",
+        "video"
+      ],
+      "published_at": "2026-08-17T17:08:05.000Z",
+      "duration_seconds": 26,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089398767489634304/vid/avc1/1920x1080/UAypHnPh5cWDksh-.mp4",
+      "original_post_url": "https://x.com/openart_ai/status/2089398873248706694"
+    },
+    {
+      "id": "plv-straitly",
+      "tweet_id": "2089385271896822197",
+      "slug": "straitly",
+      "title": "Straitly — AI gateway with 0% token markup",
+      "product": "Straitly",
+      "company": "Straitly",
+      "category": "ai",
+      "tags": [
+        "straitly",
+        "gateway",
+        "llm"
+      ],
+      "published_at": "2026-08-17T16:14:02.000Z",
+      "duration_seconds": 80,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089383991623155713/vid/avc1/1920x1080/YR1libFkZyd--EHG.mp4",
+      "original_post_url": "https://x.com/Mutchtaba2/status/2089385271896822197"
+    },
+    {
+      "id": "plv-interfaze-openwebsearch",
+      "tweet_id": "2089384159525670980",
+      "slug": "interfaze-openwebsearch",
+      "title": "Interfaze OpenWebSearch — one router for web search",
+      "product": "OpenWebSearch",
+      "company": "Interfaze",
+      "category": "developer-tools",
+      "tags": [
+        "interfaze",
+        "search",
+        "router"
+      ],
+      "published_at": "2026-08-17T16:09:37.000Z",
+      "duration_seconds": 358,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089383568955056128/vid/avc1/1800x1168/tg_eHINnpCC_Uqeg.mp4",
+      "original_post_url": "https://x.com/interfaze_ai/status/2089384159525670980"
+    },
+    {
+      "id": "plv-public-agents-marketplace",
+      "tweet_id": "2089382171291070550",
+      "slug": "public-agents-marketplace",
+      "title": "Public — marketplace of portfolio AI agents",
+      "product": "Public Agents",
+      "company": "Public",
+      "category": "consumer",
+      "tags": [
+        "public",
+        "agents",
+        "investing"
+      ],
+      "published_at": "2026-08-17T16:01:43.000Z",
+      "duration_seconds": 148,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089380922604789760/vid/avc1/1920x1080/_HrIDXI1YaM9p_0n.mp4",
+      "original_post_url": "https://x.com/public/status/2089382171291070550"
+    },
+    {
+      "id": "plv-okara-ai-cmo-v2",
+      "tweet_id": "2089366669613531602",
+      "slug": "okara-ai-cmo-v2",
+      "title": "Okara AI CMO v2 — drop in a site, deploy agents",
+      "product": "Okara AI CMO v2",
+      "company": "Okara",
+      "category": "ai",
+      "tags": [
+        "okara",
+        "cmo",
+        "agents"
+      ],
+      "published_at": "2026-08-17T15:00:07.000Z",
+      "duration_seconds": 67,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089362765085556736/vid/avc1/1920x1080/ep8cX8y70edy0ALG.mp4",
+      "original_post_url": "https://x.com/askOkara/status/2089366669613531602"
+    },
+    {
+      "id": "plv-warp-ssh-agent",
+      "tweet_id": "2089349275956195329",
+      "slug": "warp-ssh-agent",
+      "title": "Warp — a coding agent built for SSH",
+      "product": "Warp Agent",
+      "company": "Warp",
+      "category": "developer-tools",
+      "tags": [
+        "warp",
+        "ssh",
+        "agents"
+      ],
+      "published_at": "2026-08-17T13:51:00.000Z",
+      "duration_seconds": 84,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2088970799541542913/vid/avc1/3840x2160/AWbYU13m8TcQ2zIJ.mp4",
+      "original_post_url": "https://x.com/warpdotdev/status/2089349275956195329"
+    },
     {
       "id": "plv-draftedai-v2",
       "tweet_id": "2089081008423645680",
