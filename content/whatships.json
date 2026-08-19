@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "645606b03373ee8e9e4fcdf83903f140659cf1da",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/645606b03373ee8e9e4fcdf83903f140659cf1da",
-    "commit_at": "2026-08-18T01:25:24.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/645606b03373ee8e9e4fcdf83903f140659cf1da/src/data/videos.json",
-    "raw_sha256": "4973fee18f86db4841bf5d549de6195e9c072c0a003cc0b8ef3e74dbeda30fb6"
+    "commit": "1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a",
+    "commit_at": "2026-08-19T13:01:57.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a/src/data/videos.json",
+    "raw_sha256": "cc7a5283cbf35849f56445c782b6ecc0c832c3fe18de5ce69d28f313edb3abd9"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,488 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-18T00:16:50.000Z",
-  "item_count": 1325,
+  "source_published_through": "2026-08-18T21:59:15.000Z",
+  "item_count": 1350,
   "items": [
+    {
+      "id": "plv-mentlio",
+      "tweet_id": "2089834536280694937",
+      "slug": "mentlio",
+      "title": "Mentlio — measure what AI coding actually costs",
+      "product": "Mentlio",
+      "company": "Mentlio",
+      "category": "developer-tools",
+      "tags": [
+        "mentlio",
+        "coding",
+        "cost",
+        "yc"
+      ],
+      "published_at": "2026-08-18T21:59:15.000Z",
+      "duration_seconds": 53,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089832658662813696/vid/avc1/1920x1080/FjW7VKLU6sX3bupq.mp4",
+      "original_post_url": "https://x.com/ashankshah_x/status/2089834536280694937"
+    },
+    {
+      "id": "plv-respanai-live-demo",
+      "tweet_id": "2089833921353818398",
+      "slug": "respanai-live-demo",
+      "title": "RespanAI — live demo of gateway to evals",
+      "product": "RespanAI",
+      "company": "RespanAI",
+      "category": "developer-tools",
+      "tags": [
+        "respan",
+        "observability",
+        "evals",
+        "gateway"
+      ],
+      "published_at": "2026-08-18T21:56:48.000Z",
+      "duration_seconds": 59,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089833307714510849/vid/avc1/3840x2160/tZu_vZKk72f0olHa.mp4",
+      "original_post_url": "https://x.com/francchen/status/2089833921353818398"
+    },
+    {
+      "id": "plv-vercel-fx",
+      "tweet_id": "2089828083415355806",
+      "slug": "vercel-fx",
+      "title": "fx — tiny open coding agent from Vercel Labs",
+      "product": "fx",
+      "company": "Vercel Labs",
+      "category": "developer-tools",
+      "tags": [
+        "vercel",
+        "fx",
+        "coding-agent",
+        "open-source"
+      ],
+      "published_at": "2026-08-18T21:33:36.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089828069897093121/vid/avc1/1280x720/WFSiIOJxApGiFyOs.mp4?tag=14",
+      "original_post_url": "https://x.com/vercel_dev/status/2089828083415355806"
+    },
+    {
+      "id": "plv-nori-humanoid",
+      "tweet_id": "2089815326720704960",
+      "slug": "nori-humanoid",
+      "title": "Nori — $1,688 humanoid robot from YC S26",
+      "product": "Nori",
+      "company": "Nori Robotics",
+      "category": "hardware",
+      "tags": [
+        "nori",
+        "robotics",
+        "humanoid",
+        "yc"
+      ],
+      "published_at": "2026-08-18T20:42:55.000Z",
+      "duration_seconds": 197,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089814602112798720/vid/avc1/3840x2160/2y0phaX3iV-az1xw.mp4",
+      "original_post_url": "https://x.com/AntonioSitongLi/status/2089815326720704960"
+    },
+    {
+      "id": "plv-paper-snapshot",
+      "tweet_id": "2089814744949719501",
+      "slug": "paper-snapshot",
+      "title": "Paper Snapshot — paste your live site as layers",
+      "product": "Paper Snapshot",
+      "company": "Paper",
+      "category": "design",
+      "tags": [
+        "paper",
+        "snapshot",
+        "design",
+        "layers"
+      ],
+      "published_at": "2026-08-18T20:40:36.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089814203968421888/vid/avc1/1920x1080/lvheHzl_b9cEVSIS.mp4",
+      "original_post_url": "https://x.com/stephenhaney/status/2089814744949719501"
+    },
+    {
+      "id": "plv-horizonx",
+      "tweet_id": "2089798247988523027",
+      "slug": "horizonx",
+      "title": "HorizonX — design library for agents and teams",
+      "product": "HorizonX",
+      "company": "HorizonX",
+      "category": "design",
+      "tags": [
+        "horizonx",
+        "components",
+        "figma",
+        "tailwind"
+      ],
+      "published_at": "2026-08-18T19:35:03.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089795614355668992/vid/avc1/1920x1080/8ODqueSkA84Pfx6X.mp4",
+      "original_post_url": "https://x.com/HorizonxSo/status/2089798247988523027"
+    },
+    {
+      "id": "plv-twisted-tower",
+      "tweet_id": "2089792028498354566",
+      "slug": "twisted-tower",
+      "title": "Twisted Tower — Thomas Brush ships his 3D game",
+      "product": "Twisted Tower",
+      "company": "Thomas Brush",
+      "category": "consumer",
+      "tags": [
+        "twisted-tower",
+        "indie-game",
+        "launch"
+      ],
+      "published_at": "2026-08-18T19:10:20.000Z",
+      "duration_seconds": 69,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089790671473258496/vid/avc1/1920x1080/nLU9SBCkfpDAnEIb.mp4",
+      "original_post_url": "https://x.com/IndieGameJoe/status/2089792028498354566"
+    },
+    {
+      "id": "plv-matic-universal-design-process",
+      "tweet_id": "2089784603737575470",
+      "slug": "matic-universal-design-process",
+      "title": "Matic — the universal design process",
+      "product": "Matic",
+      "company": "Matic",
+      "category": "hardware",
+      "tags": [
+        "matic",
+        "robotics",
+        "design-process",
+        "home-robot"
+      ],
+      "published_at": "2026-08-18T18:40:50.000Z",
+      "duration_seconds": 361,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089784320668086272/vid/avc1/1280x720/8IcsGtPJUXnYXpJr.mp4?tag=14",
+      "original_post_url": "https://x.com/mehul/status/2089784603737575470"
+    },
+    {
+      "id": "plv-code-storage-signups",
+      "tweet_id": "2089760972387000387",
+      "slug": "code-storage-signups",
+      "title": "Code Storage — signups are now open",
+      "product": "Code Storage",
+      "company": "Code Storage",
+      "category": "developer-tools",
+      "tags": [
+        "code-storage",
+        "git",
+        "agents",
+        "infrastructure"
+      ],
+      "published_at": "2026-08-18T17:06:56.000Z",
+      "duration_seconds": 50,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089759088460824576/vid/avc1/2842x2160/8pqGyKcRm9ds-haL.mp4",
+      "original_post_url": "https://x.com/fat/status/2089760972387000387"
+    },
+    {
+      "id": "plv-moi-generative-workspace",
+      "tweet_id": "2089759680025211381",
+      "slug": "moi-generative-workspace",
+      "title": "moi — a generative workspace for agents",
+      "product": "moi",
+      "company": "moi",
+      "category": "developer-tools",
+      "tags": [
+        "moi",
+        "agents",
+        "workspace",
+        "ui"
+      ],
+      "published_at": "2026-08-18T17:01:48.000Z",
+      "duration_seconds": 73,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089758336661028864/vid/avc1/2880x2160/DnocjrBdxcNmyYm6.mp4",
+      "original_post_url": "https://x.com/mlfrg/status/2089759680025211381"
+    },
+    {
+      "id": "plv-zomma",
+      "tweet_id": "2089754434633191850",
+      "slug": "zomma",
+      "title": "Zomma — AI ops agents for financial compliance",
+      "product": "Zomma",
+      "company": "Zomma",
+      "category": "ai",
+      "tags": [
+        "zomma",
+        "compliance",
+        "fintech",
+        "agents"
+      ],
+      "published_at": "2026-08-18T16:40:57.000Z",
+      "duration_seconds": 93,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089751897209184256/vid/avc1/3840x2160/LAESkkUF8SBb0q1j.mp4",
+      "original_post_url": "https://x.com/ZommaLabs/status/2089754434633191850"
+    },
+    {
+      "id": "plv-rox-teams",
+      "tweet_id": "2089748526553333884",
+      "slug": "rox-teams",
+      "title": "Rox Teams — revenue agents for every team",
+      "product": "Rox Teams",
+      "company": "Rox",
+      "category": "ai",
+      "tags": [
+        "rox",
+        "revenue-agents",
+        "crm",
+        "self-serve"
+      ],
+      "published_at": "2026-08-18T16:17:29.000Z",
+      "duration_seconds": 72,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089747274578673664/vid/avc1/1920x1080/p81Osj7JAKJV7QCQ.mp4",
+      "original_post_url": "https://x.com/ishanmkh/status/2089748526553333884"
+    },
+    {
+      "id": "plv-opacity-pen-tool",
+      "tweet_id": "2089745364681163120",
+      "slug": "opacity-pen-tool",
+      "title": "Opacity — rebuilding the pen tool since 1987",
+      "product": "Opacity",
+      "company": "Opacity",
+      "category": "design",
+      "tags": [
+        "opacity",
+        "pen-tool",
+        "design",
+        "vector"
+      ],
+      "published_at": "2026-08-18T16:04:55.000Z",
+      "duration_seconds": 119,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2089745283747913728/pu/vid/avc1/1280x720/SvI-jjyRXCkvn3VF.mp4?tag=12",
+      "original_post_url": "https://x.com/OpacityHQ/status/2089745364681163120"
+    },
+    {
+      "id": "plv-perplexity-computer-email",
+      "tweet_id": "2089744150229131651",
+      "slug": "perplexity-computer-email",
+      "title": "Perplexity Computer now works in email",
+      "product": "Perplexity Computer",
+      "company": "Perplexity",
+      "category": "ai",
+      "tags": [
+        "perplexity",
+        "computer",
+        "email",
+        "agents"
+      ],
+      "published_at": "2026-08-18T16:00:05.000Z",
+      "duration_seconds": 42,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089744108294426624/vid/avc1/1280x720/Jq7fBYECJybll2KQ.mp4?tag=14",
+      "original_post_url": "https://x.com/perplexity_ai/status/2089744150229131651"
+    },
+    {
+      "id": "plv-firecrawl-claude-connector",
+      "tweet_id": "2089743044778115228",
+      "slug": "firecrawl-claude-connector",
+      "title": "Firecrawl — official Claude connector",
+      "product": "Firecrawl",
+      "company": "Firecrawl",
+      "category": "developer-tools",
+      "tags": [
+        "firecrawl",
+        "claude",
+        "search",
+        "mcp"
+      ],
+      "published_at": "2026-08-18T15:55:42.000Z",
+      "duration_seconds": 14,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2089743027388514305/pu/vid/avc1/1280x720/1X-0cL7scxzvoU7u.mp4?tag=12",
+      "original_post_url": "https://x.com/firecrawl/status/2089743044778115228"
+    },
+    {
+      "id": "plv-ai-passport",
+      "tweet_id": "2089740614514733145",
+      "slug": "ai-passport",
+      "title": "AI Passport — portable context for consumer AI",
+      "product": "AI Passport",
+      "company": "Egoist Machines",
+      "category": "ai",
+      "tags": [
+        "ai-passport",
+        "oauth",
+        "consumer",
+        "yc"
+      ],
+      "published_at": "2026-08-18T15:46:02.000Z",
+      "duration_seconds": 82,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089737716452007936/vid/avc1/3840x2160/9-AqWjgjPs5WkBo5.mp4",
+      "original_post_url": "https://x.com/EgoistMachines/status/2089740614514733145"
+    },
+    {
+      "id": "plv-ojo-design-agent-workspace",
+      "tweet_id": "2089731834095489430",
+      "slug": "ojo-design-agent-workspace",
+      "title": "OJO — the first Design Agent team workspace",
+      "product": "OJO",
+      "company": "OJO",
+      "category": "design",
+      "tags": [
+        "ojo",
+        "design-agents",
+        "workspace",
+        "prototyping"
+      ],
+      "published_at": "2026-08-18T15:11:09.000Z",
+      "duration_seconds": 83,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089722826442072064/vid/avc1/3840x2160/gBUSCMZseWGkR60F.mp4",
+      "original_post_url": "https://x.com/OJOaidesign/status/2089731834095489430"
+    },
+    {
+      "id": "plv-topaz-hyperion-2-5",
+      "tweet_id": "2089730550235820466",
+      "slug": "topaz-hyperion-2-5",
+      "title": "Hyperion 2.5 — convert AI video to true HDR",
+      "product": "Hyperion 2.5",
+      "company": "Topaz Labs",
+      "category": "ai",
+      "tags": [
+        "topaz",
+        "hyperion",
+        "hdr",
+        "video"
+      ],
+      "published_at": "2026-08-18T15:06:03.000Z",
+      "duration_seconds": 89,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089727797681872896/vid/avc1/1920x1080/iiptjkaRewvEIaAt.mp4",
+      "original_post_url": "https://x.com/topazlabs/status/2089730550235820466"
+    },
+    {
+      "id": "plv-crowdreply-superagent",
+      "tweet_id": "2089729369644417171",
+      "slug": "crowdreply-superagent",
+      "title": "CrowdReply SuperAgent — rank in AI answers",
+      "product": "CrowdReply SuperAgent",
+      "company": "CrowdReply",
+      "category": "ai",
+      "tags": [
+        "crowdreply",
+        "seo",
+        "geo",
+        "agents"
+      ],
+      "published_at": "2026-08-18T15:01:21.000Z",
+      "duration_seconds": 53,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089729285812875264/vid/avc1/1280x720/TJakmfjc1HM8SK-e.mp4?tag=14",
+      "original_post_url": "https://x.com/Crowdreply_io/status/2089729369644417171"
+    },
+    {
+      "id": "plv-merge-for-workforce",
+      "tweet_id": "2089729036948013191",
+      "slug": "merge-for-workforce",
+      "title": "Merge for Workforce — cut team AI spend 75%",
+      "product": "Merge for Workforce",
+      "company": "Merge",
+      "category": "developer-tools",
+      "tags": [
+        "merge",
+        "routing",
+        "cost",
+        "enterprise"
+      ],
+      "published_at": "2026-08-18T15:00:02.000Z",
+      "duration_seconds": 33,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089726155008204800/vid/avc1/1920x1080/Xme9VWlJ_SZGigrL.mp4",
+      "original_post_url": "https://x.com/shensi/status/2089729036948013191"
+    },
+    {
+      "id": "plv-warp-factories",
+      "tweet_id": "2089727695852548451",
+      "slug": "warp-factories",
+      "title": "Warp Factories — cloud software factory infra",
+      "product": "Warp Factories",
+      "company": "Warp",
+      "category": "developer-tools",
+      "tags": [
+        "warp",
+        "factories",
+        "agents",
+        "infra"
+      ],
+      "published_at": "2026-08-18T14:54:42.000Z",
+      "duration_seconds": 536,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089720112643194880/vid/avc1/3840x2160/Ljmvh_jvH8b_ucSp.mp4",
+      "original_post_url": "https://x.com/warpdotdev/status/2089727695852548451"
+    },
+    {
+      "id": "plv-kaito-pulse",
+      "tweet_id": "2089721729895841925",
+      "slug": "kaito-pulse",
+      "title": "Kaito Pulse — a social layer starting on X",
+      "product": "Kaito Pulse",
+      "company": "Kaito AI",
+      "category": "consumer",
+      "tags": [
+        "kaito",
+        "pulse",
+        "social",
+        "x"
+      ],
+      "published_at": "2026-08-18T14:31:00.000Z",
+      "duration_seconds": 51,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089721633418420224/vid/avc1/1280x720/xAKR6g1mop1QuY3_.mp4?tag=14",
+      "original_post_url": "https://x.com/KaitoAI/status/2089721729895841925"
+    },
+    {
+      "id": "plv-serplens",
+      "tweet_id": "2089710583851696132",
+      "slug": "serplens",
+      "title": "serplens — free AI browser built for SEO",
+      "product": "serplens",
+      "company": "serplens",
+      "category": "productivity",
+      "tags": [
+        "serplens",
+        "seo",
+        "browser",
+        "agents"
+      ],
+      "published_at": "2026-08-18T13:46:42.000Z",
+      "duration_seconds": 48,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089639323788558336/vid/avc1/3840x2160/-ciNl-mX9sflnlJN.mp4",
+      "original_post_url": "https://x.com/brodieseo/status/2089710583851696132"
+    },
+    {
+      "id": "plv-lightyear-agentic-telecom",
+      "tweet_id": "2089703575576519136",
+      "slug": "lightyear-agentic-telecom",
+      "title": "Lightyear — agentic platform for telecom",
+      "product": "Lightyear",
+      "company": "Lightyear",
+      "category": "ai",
+      "tags": [
+        "lightyear",
+        "telecom",
+        "agents",
+        "enterprise"
+      ],
+      "published_at": "2026-08-18T13:18:51.000Z",
+      "duration_seconds": 47,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089702070236647425/vid/avc1/1280x720/a7RXvLdAmfj7YFho.mp4?tag=14",
+      "original_post_url": "https://x.com/lightyearai/status/2089703575576519136"
+    },
     {
       "id": "plv-browser-use-macos-harness",
       "tweet_id": "2089506774676291815",
@@ -289,6 +768,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2089383568955056128/vid/avc1/1800x1168/tg_eHINnpCC_Uqeg.mp4",
       "original_post_url": "https://x.com/interfaze_ai/status/2089384159525670980"
+    },
+    {
+      "id": "plv-motion-claude-launch-videos",
+      "tweet_id": "2089383062584828047",
+      "slug": "motion-claude-launch-videos",
+      "title": "Motion — Claude for launch videos",
+      "product": "Motion",
+      "company": "Motion",
+      "category": "ai",
+      "tags": [
+        "motion",
+        "launch-video",
+        "claude",
+        "generative"
+      ],
+      "published_at": "2026-08-17T16:05:15.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089383001956270080/vid/avc1/2160x2160/mpA_S38kRnN_lQ9B.mp4",
+      "original_post_url": "https://x.com/motion_so/status/2089383062584828047"
     },
     {
       "id": "plv-public-agents-marketplace",
