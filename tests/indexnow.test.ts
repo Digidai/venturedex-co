@@ -1,19 +1,48 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { collectUrls, parseArgs, validateUrl } from "../scripts/promotion/indexnow";
-import { loadPublishedWeeklyIssues, loadStartups, startupUrl, weeklyUrl } from "../scripts/promotion/content";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { collectUrls, parseArgs, submitIndexNow, validateUrl } from "../scripts/promotion/indexnow";
+import { launchUrl, loadLaunches, loadPublishedWeeklyIssues, loadStartups, startupUrl, weeklyUrl } from "../scripts/promotion/content";
 import { getTopicPageConfigs } from "../src/lib/topic-pages";
 
 test("parseArgs accepts all-content flags and keeps the safety cap", () => {
-  const options = parseArgs(["--all-startups", "--all-weekly", "--topics", "--hubs", "--collections", "--ai-surfaces", "--max-urls", "300"]);
+  const options = parseArgs(["--all-startups", "--all-weekly", "--all-launches", "--topics", "--hubs", "--collections", "--ai-surfaces", "--max-urls", "300"]);
   assert.equal(parseArgs([]).maxUrls, 250);
   assert.equal(options.allStartups, true);
   assert.equal(options.allWeekly, true);
+  assert.equal(options.allLaunches, true);
   assert.equal(options.topics, true);
   assert.equal(options.hubs, true);
   assert.equal(options.collections, true);
   assert.equal(options.aiSurfaces, true);
   assert.equal(options.maxUrls, 300);
+});
+
+test("collectUrls includes every canonical launch page", () => {
+  const launches = loadLaunches();
+  const urls = collectUrls(parseArgs(["--all-launches", "--max-urls", String(launches.length)]));
+
+  assert.equal(urls.length, launches.length);
+  assert.ok(urls.includes(launchUrl(launches[0].slug)));
+});
+
+test("collectUrls reads an exact URL change set from JSON", () => {
+  const directory = mkdtempSync(join(tmpdir(), "venturedex-indexnow-"));
+  const urlsFile = join(directory, "urls.json");
+  writeFileSync(urlsFile, JSON.stringify([
+    "https://venturedex.co/launches",
+    "https://venturedex.co/launches/example-launch",
+    "https://venturedex.co/launches.json",
+  ]));
+
+  const urls = collectUrls(parseArgs(["--urls-file", urlsFile]));
+  assert.deepEqual(urls, [
+    "https://venturedex.co/launches",
+    "https://venturedex.co/launches/example-launch",
+    "https://venturedex.co/launches.json",
+  ]);
 });
 
 test("collectUrls includes all startup, weekly, and topic canonical URLs", () => {
@@ -94,6 +123,34 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms.txt"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms-full.txt"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/ai-index.json"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/launches"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/launches/example-launch"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/launches.json"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/investors/a16z"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/topics/ai-agent-startups"));
+});
+
+test("submitIndexNow retries a rate limit and records the accepted receipt", async () => {
+  const directory = mkdtempSync(join(tmpdir(), "venturedex-indexnow-history-"));
+  const historyFile = join(directory, "history.jsonl");
+  const options = parseArgs([
+    "--url", "https://venturedex.co/launches/example-launch",
+    "--skip-key-check",
+    "--history-file", historyFile,
+  ]);
+  const responses = [
+    new Response("slow down", { status: 429, headers: { "Retry-After": "1" } }),
+    new Response("", { status: 200 }),
+  ];
+  const delays: number[] = [];
+
+  await submitIndexNow(options, ["https://venturedex.co/launches/example-launch"], {
+    fetchFn: async () => responses.shift()!,
+    sleep: async (milliseconds) => { delays.push(milliseconds); },
+  });
+
+  assert.deepEqual(delays, [1_000]);
+  const row = JSON.parse(readFileSync(historyFile, "utf8").trim());
+  assert.equal(row.status, "submitted");
+  assert.equal(row.message, "HTTP 200");
 });

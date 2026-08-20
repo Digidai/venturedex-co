@@ -64,6 +64,7 @@ export const GET: APIRoute = () => {
   const latestFundingLastmod = latestSitemapLastmod(rounds.map((round) => round.date));
   const latestWeeklyLastmod = latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end ?? null;
   const latestTopicLastmod = latestSitemapLastmod([latestStartupLastmod, latestWeeklyLastmod]);
+  const latestDiscoveryLastmod = latestSitemapLastmod([latestTopicLastmod, whatShipsSnapshot.source.commit_at]);
 
   let urls: SitemapUrl[] = [
     { loc: "/", lastmod: latestStartupLastmod, priority: "1.0" },
@@ -77,9 +78,9 @@ export const GET: APIRoute = () => {
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },
     { loc: "/sponsor", priority: "0.4" },
-    { loc: "/llms.txt", lastmod: latestTopicLastmod, priority: "0.5" },
-    { loc: "/llms-full.txt", lastmod: latestTopicLastmod, priority: "0.5" },
-    { loc: "/ai-index.json", lastmod: latestTopicLastmod, priority: "0.5" },
+    { loc: "/llms.txt", lastmod: latestDiscoveryLastmod, priority: "0.5" },
+    { loc: "/llms-full.txt", lastmod: latestDiscoveryLastmod, priority: "0.5" },
+    { loc: "/ai-index.json", lastmod: latestDiscoveryLastmod, priority: "0.5" },
   ].concat(
     weeklyIssues.map((issue) => ({
       loc: `/weekly/${issue.issue_number}`,
@@ -137,7 +138,7 @@ export const GET: APIRoute = () => {
   urls = urls.concat(
     whatShipsSnapshot.items.map((item) => ({
       loc: `/launches/${item.slug}`,
-      lastmod: item.published_at,
+      lastmod: item.last_changed_at ?? item.published_at,
       priority: "0.7",
     })),
     startups.map((startup) => ({

@@ -7,6 +7,7 @@ import {
 import { DEFAULT_SITE_URL } from "./seo";
 import { getTopicPages } from "./topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "./weekly";
+import { whatShipsSnapshot } from "./whatships";
 
 export function buildVentureDexAiIndexFromContent(siteUrl = DEFAULT_SITE_URL) {
   const startups = getContentStartups();
@@ -18,5 +19,7 @@ export function buildVentureDexAiIndexFromContent(siteUrl = DEFAULT_SITE_URL) {
     weeklyIssues,
     topics: getTopicPages(startups, weeklyIssues),
     collections: getContentCollections(),
+    launches: whatShipsSnapshot.items,
+    launchesUpdatedAt: whatShipsSnapshot.source.commit_at,
   });
 }

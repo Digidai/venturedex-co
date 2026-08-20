@@ -22,8 +22,8 @@
       "stage": "Series A",
       "lead_investor": "Menlo Ventures",
       "date": "2026-04-28",
-      "source_url": "https://natlawreview.com/press-releases/manifest-os-raises-60m-scale-worlds-first-ai-native-law-firm-model",
-      "source_name": "Business Wire"
+      "source_url": "https://manifestos.com/series-a",
+      "source_name": "Manifest OS"
     }
   ],
   "research": {
@@ -37,8 +37,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Business Wire",
-        "url": "https://natlawreview.com/press-releases/manifest-os-raises-60m-scale-worlds-first-ai-native-law-firm-model",
+        "label": "Manifest OS Series A announcement",
+        "url": "https://manifestos.com/series-a",
         "type": "funding"
       }
     ],

@@ -4788,3 +4788,20 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: deferred; the current stage, screenshot evidence, and quota guards produced the correct fail-closed outcome. Only source-backed Daily content, the append-only learning entry, central GSC ledger/artifact evidence, and automation memory are in scope.
 - affected_file: three new startup JSON files; `content/rejected.jsonl`; `content/investors.json`; `content/brand-assets.json`; `content/timestamps.json`; official company/investor assets; three screenshots; this learning log; the central GSC ledger and Ranchbot quota artifact; and automation memory.
 - affected_section: bounded Daily discovery and scoring, structured research, official brand/Careers evidence, screenshot/browser evidence, JSON/D1 parity, local-gate investigation, exact-SHA release, live observability, GSC state authority, Newsletter delay boundary, and detached-worktree closeout.
+
+### 2026-08-20 12:25 CST — Launch discovery notification and AI inventory hardening
+
+- candidate_count: 0; this was an explicitly requested Launches indexing control-plane change, not a Daily or Weekly curation cycle.
+- accepted: 0.
+- rejected: 0.
+- rejection_bar_met: n/a.
+- outcome: implemented deterministic per-sync changed URL sets, exact-Deploy-success gating before IndexNow, bounded retry/receipt evidence, a reviewed 1,355-URL launch backfill path, launch records in `ai-index.json` and `llms-full.txt`, and sitemap `lastmod` support for local material changes. Public discovery output continues to omit the internal catalog domain and copied poster/source prose.
+- validation: 28 focused Launch/IndexNow/AI tests passed; the complete 397-test suite passed; Astro typecheck reported zero diagnostics; the production build completed with 1,350 matching launch detail records in the sitemap, launch JSON, and AI index. `actionlint`, GitHub Actions availability checks, `git diff --check`, and a live-source no-op sync also passed. The first build exposed an empty-public-tag rendering contract bug; preserving `tags: []` and adding a regression test resolved it without weakening the public tag filter.
+- release: pending at write time. A commit, PR, exact-SHA CI/deployment, live parity check, and provider backfill receipt remain separate required evidence and must not be inferred from these local gates.
+- failure_tags: [schema_contract, indexing_evidence, release_pending]
+- reward: 0; this engineering session is outside the Daily candidate reward model.
+- dominant_failure_mode: the previous scheduled sync stopped at Deploy dispatch and the AI-readable global surfaces omitted launch detail records. Sitemap exposure alone did not provide prompt IndexNow notification or complete answer-engine inventory.
+- proposed_change: applied under explicit user direction. The scheduled workflow now waits for the exact pushed SHA to deploy successfully before submitting only the affected canonical URLs; an IndexNow failure preserves the published release and exact receipt artifact while failing the notification stage.
+- decision: applied without adding Google Indexing API usage, Search Console credentials, copied media, source-site attribution, runtime fetching, D1 coupling, or newsletter side effects. IndexNow receipt, sitemap availability, crawl, and indexing remain distinct states.
+- affected_file: launch sync/parser, IndexNow client and package commands, AI discovery builders and routes, sitemap, scheduled workflow, focused tests, design/implementation plans, automation README/runbook, and this append-only learning entry.
+- affected_section: launch sync idempotency, post-deploy search notification, AI/LLM discovery inventory, sitemap modification signals, evidence boundaries, retries, and release observability.

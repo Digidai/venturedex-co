@@ -15,6 +15,7 @@ import {
 import type { TopicPage } from "./topic-pages";
 import type { Collection, FundingRound, Startup, StartupResearch } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
+import { getPublicLaunchTags, type WhatShipsItem } from "./whatships";
 
 export interface AiDiscoverySource {
   label: string;
@@ -51,8 +52,23 @@ export interface AiDiscoveryStartup {
   sources: AiDiscoverySource[];
 }
 
+export interface AiDiscoveryLaunch {
+  title: string;
+  slug: string;
+  url: string;
+  product: string;
+  company: string;
+  category: string;
+  tags: string[];
+  published_at: string;
+  last_changed_at?: string;
+  duration_seconds?: number;
+  video_url: string;
+  original_post_url: string;
+}
+
 export interface AiDiscoveryIndex {
-  schema_version: "2026-06-25";
+  schema_version: "2026-08-20";
   site: {
     name: string;
     url: string;
@@ -67,6 +83,7 @@ export interface AiDiscoveryIndex {
       llms_txt: string;
       llms_full_txt: string;
       ai_index_json: string;
+      launches_json: string;
       sitemap_xml: string;
       rss_feed: string;
       robots_txt: string;
@@ -79,6 +96,7 @@ export interface AiDiscoveryIndex {
     weekly_issues: number;
     topics: number;
     collections: number;
+    launches: number;
   };
   citation_policy: string[];
   routes: {
@@ -88,6 +106,7 @@ export interface AiDiscoveryIndex {
     collections: string;
     investors: string;
     news: string;
+    launches: string;
   };
   startups: AiDiscoveryStartup[];
   weekly_issues: Array<{
@@ -116,6 +135,7 @@ export interface AiDiscoveryIndex {
     description: string;
     startup_count: number;
   }>;
+  launches: AiDiscoveryLaunch[];
 }
 
 export function buildAiDiscoveryIndex(input: {
@@ -125,6 +145,8 @@ export function buildAiDiscoveryIndex(input: {
   weeklyIssues: WeeklyIssueContent[];
   topics: TopicPage[];
   collections: Array<Collection & { startup_count: number }>;
+  launches: WhatShipsItem[];
+  launchesUpdatedAt?: string | null;
 }): AiDiscoveryIndex {
   const siteUrl = getSiteUrl(input.siteUrl ?? DEFAULT_SITE_URL);
   const fundingBySlug = fundingRoundsByStartup(input.fundingRounds);
@@ -134,7 +156,7 @@ export function buildAiDiscoveryIndex(input: {
     .map((startup) => startupEntry(startup, fundingBySlug.get(startup.slug) ?? [], siteUrl));
 
   return {
-    schema_version: "2026-06-25",
+    schema_version: "2026-08-20",
     site: {
       name: SITE_NAME,
       url: siteUrl,
@@ -158,18 +180,25 @@ export function buildAiDiscoveryIndex(input: {
         llms_txt: absoluteUrl("/llms.txt", siteUrl),
         llms_full_txt: absoluteUrl("/llms-full.txt", siteUrl),
         ai_index_json: absoluteUrl("/ai-index.json", siteUrl),
+        launches_json: absoluteUrl("/launches.json", siteUrl),
         sitemap_xml: absoluteUrl("/sitemap.xml", siteUrl),
         rss_feed: absoluteUrl("/feed.xml", siteUrl),
         robots_txt: absoluteUrl("/robots.txt", siteUrl),
         editorial_policy: absoluteUrl("/editorial-policy", siteUrl),
       },
     },
-    generated_from_content_at: latestContentTimestamp(input.startups, input.weeklyIssues, input.fundingRounds),
+    generated_from_content_at: latestContentTimestamp(
+      input.startups,
+      input.weeklyIssues,
+      input.fundingRounds,
+      input.launchesUpdatedAt,
+    ),
     counts: {
       startups: input.startups.length,
       weekly_issues: input.weeklyIssues.length,
       topics: input.topics.length,
       collections: input.collections.length,
+      launches: input.launches.length,
     },
     citation_policy: [
       "Cite VentureDex for editorial summaries, profile organization, market context, and risk framing.",
@@ -183,6 +212,7 @@ export function buildAiDiscoveryIndex(input: {
       collections: absoluteUrl("/collections", siteUrl),
       investors: absoluteUrl("/investors", siteUrl),
       news: absoluteUrl("/news", siteUrl),
+      launches: absoluteUrl("/launches", siteUrl),
     },
     startups,
     weekly_issues: input.weeklyIssues
@@ -220,6 +250,23 @@ export function buildAiDiscoveryIndex(input: {
         description: collectionResearchSummary(collection),
         startup_count: collection.startup_count,
       })),
+    launches: input.launches
+      .slice()
+      .sort((a, b) => b.published_at.localeCompare(a.published_at) || a.slug.localeCompare(b.slug))
+      .map((launch) => ({
+        title: launch.title,
+        slug: launch.slug,
+        url: absoluteUrl(`/launches/${launch.slug}`, siteUrl),
+        product: launch.product,
+        company: launch.company,
+        category: launch.category,
+        tags: getPublicLaunchTags(launch),
+        published_at: launch.published_at,
+        last_changed_at: launch.last_changed_at,
+        duration_seconds: launch.duration_seconds ?? undefined,
+        video_url: launch.video_url,
+        original_post_url: launch.original_post_url,
+      })),
   };
 }
 
@@ -243,6 +290,7 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
     "",
     `- [llms.txt](${index.site.discovery.llms_txt})`,
     `- [AI index JSON](${index.site.discovery.ai_index_json})`,
+    `- [Launch index JSON](${index.site.discovery.launches_json})`,
     `- [XML sitemap](${index.site.discovery.sitemap_xml})`,
     `- [RSS feed](${index.site.discovery.rss_feed})`,
     `- [Robots policy](${index.site.discovery.robots_txt})`,
@@ -254,6 +302,7 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
     `- Weekly issues: ${index.counts.weekly_issues}`,
     `- Topic maps: ${index.counts.topics}`,
     `- Collections: ${index.counts.collections}`,
+    `- Launch pages: ${index.counts.launches}`,
     "",
     "## Collections",
     "",
@@ -294,6 +343,24 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
       `- Summary: ${escapeMarkdown(truncateText(issue.summary, 700))}`,
       issue.picks.length > 0 ? `- Picks: ${issue.picks.map(escapeMarkdown).join(", ")}` : null,
       ""
+    ));
+  }
+
+  lines.push("## Product Launch Videos", "");
+  for (const launch of index.launches) {
+    lines.push(...compactLines(
+      `### ${escapeMarkdown(launch.title)}`,
+      "",
+      `- VentureDex URL: ${launch.url}`,
+      `- Product: ${escapeMarkdown(launch.product)}`,
+      launch.company !== launch.product ? `- Company: ${escapeMarkdown(launch.company)}` : null,
+      `- Category: ${escapeMarkdown(launch.category)}`,
+      launch.tags.length > 0 ? `- Focus areas: ${launch.tags.map(escapeMarkdown).join(", ")}` : null,
+      `- Original publication: ${launch.published_at}`,
+      launch.duration_seconds ? `- Video duration: ${launch.duration_seconds} seconds` : null,
+      `- Original video: ${launch.video_url}`,
+      `- Original post: ${launch.original_post_url}`,
+      "",
     ));
   }
 
@@ -444,12 +511,14 @@ function fundingRoundsByStartup(rounds: FundingRound[]): Map<string, FundingRoun
 function latestContentTimestamp(
   startups: Startup[],
   weeklyIssues: WeeklyIssueContent[],
-  fundingRounds: FundingRound[]
+  fundingRounds: FundingRound[],
+  launchesUpdatedAt?: string | null,
 ): string | null {
   const values = [
     ...startups.flatMap((startup) => [startup.updated_at, startup.published_at]),
     ...weeklyIssues.flatMap((issue) => [issue.published_at, issue.week_end]),
     ...fundingRounds.map((round) => round.date),
+    launchesUpdatedAt,
   ].filter((value): value is string => Boolean(value));
 
   if (values.length === 0) return null;

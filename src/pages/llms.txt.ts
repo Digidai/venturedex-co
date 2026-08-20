@@ -133,6 +133,7 @@ ${topics.join("\n")}
 ${[
     link("Full LLM context", "/llms-full.txt"),
     link("Structured AI index", "/ai-index.json"),
+    link("Structured product launch index", "/launches.json"),
     link("XML sitemap", "/sitemap.xml"),
     link("RSS feed", "/feed.xml"),
     link("Robots policy", "/robots.txt"),
