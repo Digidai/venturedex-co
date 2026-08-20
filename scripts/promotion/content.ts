@@ -45,6 +45,10 @@ export interface PromotionCollection {
   description?: string;
 }
 
+export interface PromotionLaunch {
+  slug: string;
+}
+
 interface TimestampEntry {
   published_at?: string | null;
   first_seen_at?: string | null;
@@ -86,12 +90,28 @@ export function collectionUrl(slug: string): string {
   return `${SITE_BASE_URL}/collections/${slug}`;
 }
 
+export function launchUrl(slug: string): string {
+  return `${SITE_BASE_URL}/launches/${slug}`;
+}
+
 export function aiSurfaceUrls(): string[] {
   return [
     `${SITE_BASE_URL}/llms.txt`,
     `${SITE_BASE_URL}/llms-full.txt`,
     `${SITE_BASE_URL}/ai-index.json`,
+    `${SITE_BASE_URL}/launches.json`,
   ];
+}
+
+export function loadLaunches(): PromotionLaunch[] {
+  const snapshot = readJson<unknown>(join(ROOT_DIR, "content", "whatships.json"));
+  if (!isRecord(snapshot) || !Array.isArray(snapshot.items)) {
+    throw new Error("content/whatships.json is not a valid launch snapshot");
+  }
+  return snapshot.items
+    .filter(isRecord)
+    .filter((item) => typeof item.slug === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(item.slug))
+    .map((item) => ({ slug: item.slug as string }));
 }
 
 export function utmUrl(url: string, source: string, medium: string, campaign: string): string {

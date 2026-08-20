@@ -2944,7 +2944,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/caesar-ventures.jpg",
       "source_page": "https://www.caesar.vc/",
-      "source_url": "https://www.caesar.vc/wp-content/uploads/2023/05/favicon@2x-300x300.jpg"
+      "source_url": "https://www.caesar.vc/wp-content/uploads/2023/05/favicon@2x-300x300.jpg",
+      "allow_unreachable_source": true,
+      "note": "Official Caesar Ventures homepage and same-origin favicon remained the recorded provenance on 2026-08-20; automated validation received HTTP 500 from the official WordPress site."
     },
     "fcvc": {
       "name": "FCVC",
@@ -3242,7 +3244,9 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/tlv-partners.svg",
       "source_page": "https://www.tlv.partners/",
-      "source_url": "https://www.tlv.partners/wp-content/uploads/2021/04/TLV-logo.svg"
+      "source_url": "https://www.tlv.partners/wp-content/uploads/2021/04/TLV-logo.svg",
+      "allow_unreachable_source": true,
+      "note": "Official TLV Partners homepage and same-origin logo remained the recorded provenance on 2026-08-20; automated validation received HTTP 500 from the official WordPress site."
     },
     "merlin-ventures": {
       "name": "Merlin Ventures",

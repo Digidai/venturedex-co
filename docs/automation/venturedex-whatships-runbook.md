@@ -2,7 +2,7 @@
 
 Status: operational contract
 
-Applies to: `content/whatships.json`, `scripts/sync-whatships.ts`, `.github/workflows/sync-whatships.yml`
+Applies to: `content/whatships.json`, `scripts/sync-whatships.ts`, `.github/workflows/sync-whatships.yml`, `scripts/promotion/indexnow.ts`
 
 Research basis: [`docs/research/whatships-channel.md`](../research/whatships-channel.md)
 
@@ -17,8 +17,9 @@ Refresh the VentureDex launch discovery snapshot from the internal catalog input
 5. The workflow never copies source descriptions, poster files, avatars, HTML, or media files. Videos stream from an allowlisted original `video.twimg.com` MP4 URL; VentureDex does not proxy or store them.
 6. A pre-push fetch, parse, validation, or rate-limit failure leaves the committed snapshot and live site unchanged; a post-push dispatch or publication failure leaves production at the last known-good release and records the pushed-but-unreleased state.
 7. After all focused sync gates pass, one non-force commit is pushed to the exact current `main` tip and the existing Deploy workflow is explicitly dispatched; Deploy then owns the complete release gate.
-8. Sync validation, the `main` push, Deploy dispatch, release-gate success, and live verification remain separate evidence boundaries.
-9. A workflow file or cron declaration in Git is not evidence that the remote schedule is enabled or that production changed.
+8. The sync waits for that exact Deploy run to complete successfully before sending the deterministic changed-URL set to IndexNow. A provider receipt is discovery evidence, never proof of indexing.
+9. Sync validation, the `main` push, Deploy dispatch, release-gate success, live verification, IndexNow receipt, and observed indexing remain separate evidence boundaries.
+10. A workflow file or cron declaration in Git is not evidence that the remote schedule is enabled or that production changed.
 
 ## Authority Order
 
@@ -28,7 +29,8 @@ When implementation details conflict, use this order:
 2. `content/whatships.json` schema version and provenance block.
 3. `scripts/sync-whatships.ts`.
 4. `.github/workflows/sync-whatships.yml`.
-5. The upstream WhatShips repository and website.
+5. `scripts/promotion/indexnow.ts`.
+6. The upstream WhatShips repository and website.
 
 The upstream public file is an internal discovery input, not a production runtime dependency, public attribution target, or permission to expand the copied-field allowlist.
 
@@ -75,10 +77,11 @@ The scheduled wrapper may create only:
 
 - one normal commit whose sole file change is `content/whatships.json`;
 - one non-force update to `refs/heads/main`;
-- one explicit dispatch of `.github/workflows/deploy.yml` at the pushed `main` state; and
+- one explicit dispatch of `.github/workflows/deploy.yml` at the pushed `main` state;
+- one post-deploy IndexNow request containing only the exact changed canonical VentureDex URLs; and
 - its own Action logs and job summary.
 
-It must not change startup records, timestamps, investor data, rejected-candidate history, screenshots, brand assets, D1 seed files, Daily/Weekly run state, learning logs, or release configuration. The sync job itself must never write remote D1, upload a Worker, submit URLs to Search Console, or send a newsletter. Only the separately dispatched, existing Deploy workflow may perform the normal release mutations after its own complete gate.
+It must not change startup records, timestamps, investor data, rejected-candidate history, screenshots, brand assets, D1 seed files, Daily/Weekly run state, learning logs, or release configuration. The sync job itself must never write remote D1, upload a Worker, use Google Search Console URL Inspection, or send a newsletter. Only the separately dispatched, existing Deploy workflow may perform the normal release mutations after its own complete gate. IndexNow notification is allowed only after that exact Deploy run succeeds.
 
 If implementation or schema files need a change, make that change through the normal human-reviewed engineering process. A scheduled data run must not self-modify its parser, workflow, tests, or policy.
 
@@ -216,6 +219,8 @@ The implementation must satisfy:
 - a duplicate `tweetId`, even under a different slug, blocks the run; and
 - snapshot comparison uses canonical content, not wall-clock metadata.
 
+`last_changed_at` is local change metadata, not source prose. New or materially changed records receive the immutable source commit timestamp; unchanged records retain their existing value. It is excluded from transition equality so a missing legacy timestamp never creates a catalog-wide synthetic update.
+
 Store or report a SHA-256 of the canonical output. If the normalized published items equal the committed snapshot items, exit successfully as `no_change` before creating a commit or dispatching Deploy. A source-provenance-only change must not create a timestamp/hash churn commit when the published metadata is identical.
 
 Do not create an empty commit, timestamp-only diff, tag, or release for a no-op run.
@@ -293,13 +298,22 @@ Push with this sequence:
 7. If remote `main` advanced after the push but before dispatch, fail closed. Do not silently return success or dispatch a newer unrelated SHA.
 8. Call `workflow_dispatch` for `.github/workflows/deploy.yml` with `ref: main` using the same `GITHUB_TOKEN` and `actions: write` permission.
 9. Treat an API rejection, disabled workflow, missing permission, or unexpected dispatch response as a failed run.
-10. Observe, with a bounded wait when tooling permits, that a Deploy run started for the exact pushed/current `main` SHA.
+10. Observe the exact Deploy run through completion and require `status=completed`, `conclusion=success`, and `headSha` equal to the pushed SHA.
+11. Submit the deterministic changed-URL artifact to IndexNow only after step 10 passes, record its receipt in an Action artifact, and label the result as notification rather than indexing proof.
 
 GitHub's recursion protection is part of this design: the built-in-token push does not start the `on: push` Validate workflow, while an explicit `workflow_dispatch` is a documented exception that does create a run. Do not wait for or claim a Validate run from the push. The dispatched Deploy path performs its own complete release gate.
 
 If branch protection, a ruleset, token scope, a concurrent writer, non-fast-forward, or dispatch permission blocks any step, do not bypass protection, overwrite `main`, or deploy manually inside the sync job. Report the exact layer and let the next scheduled run recompute from fresh `main`.
 
-`sync_checked`, `main_pushed`, `deploy_dispatched`, `release_gate_passed`, `worker_published`, `d1_synced`, and `live_verified` are separate states. Never collapse them into “published.” The presence of `.github/workflows/sync-whatships.yml` in Git is not proof that GitHub has enabled or executed its schedule.
+`sync_checked`, `main_pushed`, `deploy_dispatched`, `release_gate_passed`, `worker_published`, `d1_synced`, `live_verified`, `indexnow_submitted`, and `indexed` are separate states. Never collapse them into “published” or “indexed.” The presence of `.github/workflows/sync-whatships.yml` in Git is not proof that GitHub has enabled or executed its schedule.
+
+## Search Discovery Notification
+
+The sync emits a JSON array under `RUNNER_TEMP`; it must never be committed. A material change includes the hub, `/launches.json`, `llms.txt`, `llms-full.txt`, `ai-index.json`, and every added or updated detail page. Slug changes include both old and new canonical URLs so engines can revisit the removed path. A no-op emits an empty array and does not dispatch Deploy or IndexNow.
+
+The scheduled path uses `--urls-file` and a 500-URL safety cap. The reviewed one-time bootstrap uses `--all-launches`, the launch hub, AI surfaces, and an explicit 2,000-URL cap; this remains below IndexNow's 10,000-URL protocol limit. The client retries network errors, HTTP 429, and HTTP 5xx at most three times, honoring a numeric `Retry-After` up to 60 seconds.
+
+Google discovery continues through the canonical XML sitemap declared in `robots.txt`; do not use Google's Indexing API for general launch pages. Search Console sitemap registration, crawl, and indexing are separate observations and must not be inferred from sitemap presence or an IndexNow receipt.
 
 ## Failure Handling Matrix
 
@@ -320,6 +334,7 @@ If branch protection, a ruleset, token scope, a concurrent writer, non-fast-forw
 | Deploy dispatch is rejected, disabled, or unauthorized | Keep the pushed snapshot commit, record `main_pushed_dispatch_failed`, and do not claim release. | Retry dispatch only while the exact pushed SHA is still current `main`; otherwise fail for human review. |
 | Schedule is delayed or dropped | No mutation and no synthetic backfill timestamps. | The next six-hour run catches up by id set. |
 | Dispatched Deploy release gate or publication fails | The snapshot commit remains on `main`, while production stays at the last known-good release boundary. Do not auto-revert or claim publication. | Diagnose and recover through the existing exact-main release path. |
+| IndexNow fails after a successful deployment | Keep the published release, fail at the notification stage, and preserve the exact URL set plus response receipt artifact. | Retry the exact URL artifact or let the next material sync notify the surfaces again. |
 
 Do not fall back to the previous upstream commit and label it current. The last committed VentureDex snapshot is the explicit fallback and must be reported as stale when the newest sync fails.
 
@@ -342,6 +357,8 @@ For an initial enablement, large-import exception, incident recovery, or sampled
 - [ ] Record the pushed SHA and verify it became the exact remote `main` SHA.
 - [ ] Verify the explicit Deploy dispatch created a run for that exact-current-main state; do not expect a Validate run from the built-in-token push.
 - [ ] Verify the dispatched Deploy path reran the complete release gate and passed its normal live smoke checks.
+- [ ] Verify IndexNow ran only after exact-SHA Deploy success and preserve the URL/receipt artifact without calling it indexing proof.
+- [ ] Verify the XML sitemap, `/launches.json`, `/ai-index.json`, and `/llms-full.txt` expose the same live launch inventory.
 - [ ] Verify the live channel, canonical detail pages, homepage navigation entry, original-video playback, responsive layout, and client-side filtering/pagination.
 
 A successful local preview, focused sync gate, `main` push, Deploy dispatch, release gate, remote publication, or live HTTP response proves only its own layer.

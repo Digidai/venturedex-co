@@ -28,6 +28,7 @@ Launch discovery sync priority order:
 2. `content/whatships.json`
 3. `scripts/sync-whatships.ts`
 4. `.github/workflows/sync-whatships.yml`
+5. `scripts/promotion/indexnow.ts`
 
 Validation and release architecture priority order:
 
@@ -75,7 +76,9 @@ Search Console submission priority order:
 - `../../scripts/sync-whatships.ts`
   The deterministic sync implementation. It fetches, normalizes, deduplicates, validates, and writes the launch snapshot; scheduling remains outside this script.
 - `../../.github/workflows/sync-whatships.yml`
-  The scheduled and manual GitHub Actions wrapper for the launch discovery sync. It invokes the sync implementation and repository gates without duplicating synchronization policy.
+  The scheduled and manual GitHub Actions wrapper for the launch discovery sync. It invokes the sync implementation, waits for the exact dispatched deployment to succeed, and only then sends the exact changed URL set to IndexNow.
+- `../../scripts/promotion/indexnow.ts`
+  The canonical IndexNow client. It validates VentureDex URL scope, supports bounded launch backfills and file-based incremental URL sets, retries transient responses, and records provider receipts without claiming that a submitted URL is indexed.
 - `../../scripts/automation-run-state.py`
   Atomic lease and checkpoint manager for Daily recovery. It stores the rendered checkpoint in `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, keeps the corresponding lease in `run-state.lease.json`, and serializes updates through `.run-state.lock`. The authority files contain only a one-way owner fingerprint, epoch/revision counters, routing fields, and blocker summaries; they must never contain credentials, the raw thread identity, or copied source content.
 - `../newsletter.md`

@@ -17,6 +17,7 @@ jobs:
   sync:
     if: github.repository == 'Digidai/venturedex-co'
     runs-on: ubuntu-latest
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v5
         with:
@@ -31,7 +32,7 @@ jobs:
 
       - name: Fetch and validate published launch metadata
         id: source
-        run: npm run whatships:sync
+        run: npm run whatships:sync -- --changed-urls-output "$RUNNER_TEMP/launch-indexnow-urls.json"
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
@@ -95,6 +96,7 @@ jobs:
       # into on:push workflows. workflow_dispatch is GitHub's documented
       # exception, so explicitly enter the existing exact-main release path.
       - name: Dispatch the audited release workflow
+        id: deploy
         if: steps.commit.outputs.changed == 'true'
         run: |
           set -euo pipefail
@@ -123,6 +125,8 @@ jobs:
           run_id="$(jq -r '.databaseId' <<< "$run_json")"
           run_url="$(jq -r '.url' <<< "$run_json")"
           run_status="$(jq -r '.status' <<< "$run_json")"
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+          echo "run_url=$run_url" >> "$GITHUB_OUTPUT"
           {
             echo "## Deploy dispatch"
             echo
@@ -130,5 +134,51 @@ jobs:
             echo "- Deploy run: [$run_id]($run_url)"
             echo "- Observed state: \`$run_status\` (dispatch evidence, not publication evidence)"
           } >> "$GITHUB_STEP_SUMMARY"
+
+          watch_status=0
+          gh run watch "$run_id" --exit-status || watch_status=$?
+          completed_json="$(gh run view "$run_id" --json conclusion,headSha,status,url)"
+          completed_sha="$(jq -r '.headSha' <<< "$completed_json")"
+          completed_status="$(jq -r '.status' <<< "$completed_json")"
+          conclusion="$(jq -r '.conclusion' <<< "$completed_json")"
+          {
+            echo "- Completed state: \`$completed_status\`"
+            echo "- Conclusion: \`$conclusion\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ "$completed_sha" != "${{ steps.commit.outputs.pushed_sha }}" ] || \
+             [ "$completed_status" != "completed" ] || [ "$conclusion" != "success" ] || \
+             [ "$watch_status" -ne 0 ]; then
+            echo "deploy_not_published: exact launch SHA did not complete successfully." >&2
+            exit 1
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
+
+      - name: Notify IndexNow after exact deployment succeeds
+        id: indexnow
+        if: steps.commit.outputs.changed == 'true'
+        run: |
+          set -euo pipefail
+          npx tsx scripts/promotion/indexnow.ts \
+            --urls-file "$RUNNER_TEMP/launch-indexnow-urls.json" \
+            --history-file "$RUNNER_TEMP/launch-indexnow-history.jsonl" \
+            --max-urls 500
+          url_count="$(jq 'length' "$RUNNER_TEMP/launch-indexnow-urls.json")"
+          {
+            echo "## IndexNow notification"
+            echo
+            echo "- Boundary: exact Deploy run ${{ steps.deploy.outputs.run_id }} completed successfully before submission"
+            echo "- Submitted canonical URLs: $url_count"
+            echo "- Receipt: accepted by IndexNow; this is discovery evidence, not indexing proof"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve the IndexNow receipt
+        if: always() && steps.indexnow.outcome != 'skipped'
+        uses: actions/upload-artifact@v4
+        with:
+          name: launch-indexnow-${{ steps.commit.outputs.pushed_sha }}
+          path: |
+            ${{ runner.temp }}/launch-indexnow-urls.json
+            ${{ runner.temp }}/launch-indexnow-history.jsonl
+          if-no-files-found: error
+          retention-days: 30

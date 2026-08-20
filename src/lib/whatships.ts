@@ -15,6 +15,7 @@ export interface WhatShipsItem {
   featured: boolean;
   video_url: string;
   original_post_url: string;
+  last_changed_at?: string;
 }
 
 export interface WhatShipsSnapshot {
@@ -128,6 +129,10 @@ export function parseWhatShipsSnapshot(value: unknown): WhatShipsSnapshot {
     const slug = rawItem.slug as string;
     const itemCategory = rawItem.category as string;
     const publishedAt = rawItem.published_at as string;
+    if (rawItem.last_changed_at !== undefined &&
+        (typeof rawItem.last_changed_at !== "string" || !Number.isFinite(Date.parse(rawItem.last_changed_at)))) {
+      throw new Error(`WhatShips item ${index}.last_changed_at is invalid`);
+    }
     if (!/^\d+$/.test(tweetId) || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) {
       throw new Error(`WhatShips item ${index} has an invalid tweet_id or slug`);
     }

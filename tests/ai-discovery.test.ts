@@ -7,6 +7,7 @@ import {
 import type { TopicPage } from "../src/lib/topic-pages";
 import type { Collection, FundingRound, Startup } from "../src/lib/types";
 import type { WeeklyIssueContent } from "../src/lib/weekly";
+import type { WhatShipsItem } from "../src/lib/whatships";
 
 const SITE_URL = "https://venturedex.co";
 
@@ -137,6 +138,23 @@ const collection: Collection & { startup_count: number } = {
   startup_count: 1,
 };
 
+const launch: WhatShipsItem = {
+  id: "launch-example",
+  tweet_id: "2000000000000000000",
+  slug: "example-launch",
+  title: "Example AI ships a governed workflow",
+  product: "Example AI",
+  company: "Example AI",
+  category: "ai",
+  tags: ["AI", "workflow"],
+  published_at: "2026-08-19T10:00:00.000Z",
+  last_changed_at: "2026-08-20T01:00:00.000Z",
+  duration_seconds: 42,
+  featured: false,
+  video_url: "https://video.twimg.com/example.mp4",
+  original_post_url: "https://x.com/example/status/2000000000000000000",
+};
+
 function buildFixtureIndex() {
   return buildAiDiscoveryIndex({
     siteUrl: SITE_URL,
@@ -145,19 +163,25 @@ function buildFixtureIndex() {
     weeklyIssues: [weeklyIssue],
     topics: [topic],
     collections: [collection],
+    launches: [launch],
+    launchesUpdatedAt: "2026-08-20T01:00:00.000Z",
   });
 }
 
 test("buildAiDiscoveryIndex exposes canonical AI discovery surfaces", () => {
   const index = buildFixtureIndex();
 
-  assert.equal(index.schema_version, "2026-06-25");
+  assert.equal(index.schema_version, "2026-08-20");
   assert.equal(index.site.discovery.llms_txt, `${SITE_URL}/llms.txt`);
   assert.equal(index.site.discovery.llms_full_txt, `${SITE_URL}/llms-full.txt`);
   assert.equal(index.site.discovery.ai_index_json, `${SITE_URL}/ai-index.json`);
+  assert.equal(index.site.discovery.launches_json, `${SITE_URL}/launches.json`);
   assert.equal(index.counts.startups, 1);
   assert.equal(index.startups[0]?.url, `${SITE_URL}/startups/example-ai`);
   assert.equal(index.startups[0]?.official_url, "https://example.ai/");
+  assert.equal(index.counts.launches, 1);
+  assert.equal(index.launches[0]?.url, `${SITE_URL}/launches/example-launch`);
+  assert.equal(index.launches[0]?.original_post_url, launch.original_post_url);
 });
 
 test("AI index carries source trails and citation policy for retrieval apps", () => {
@@ -181,5 +205,24 @@ test("renderLlmsFullText produces a markdown context file without undefined leak
   assert.match(body, /This file does not grant model training rights/);
   assert.match(body, /Startup profiles: 1/);
   assert.match(body, /Product evidence/);
+  assert.match(body, /Launch pages: 1/);
+  assert.match(body, /## Product Launch Videos/);
+  assert.match(body, /https:\/\/venturedex\.co\/launches\/example-launch/);
   assert.doesNotMatch(body, /undefined/);
+});
+
+test("launch records retain an empty public tag array for deterministic rendering", () => {
+  const index = buildAiDiscoveryIndex({
+    siteUrl: SITE_URL,
+    startups: [startup],
+    fundingRounds: [fundingRound],
+    weeklyIssues: [weeklyIssue],
+    topics: [topic],
+    collections: [collection],
+    launches: [{ ...launch, tags: ["imported", "Example AI"] }],
+    launchesUpdatedAt: launch.last_changed_at,
+  });
+
+  assert.deepEqual(index.launches[0].tags, []);
+  assert.doesNotThrow(() => renderLlmsFullText(index));
 });

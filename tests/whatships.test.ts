@@ -3,7 +3,9 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 import {
   assertSafeTransition,
+  buildChangedLaunchUrls,
   buildSnapshot,
+  reconcileLaunchChangeTimes,
   normalizeUpstreamVideos,
   type WhatShipsSnapshot,
 } from "../scripts/sync-whatships";
@@ -160,12 +162,36 @@ test("snapshot output is deterministic and records immutable provenance", () => 
   assert.equal(first.content_policy.descriptions_mirrored, false);
 });
 
+test("launch changes retain stable change times and emit only affected canonical URLs", () => {
+  const previous = buildSnapshot(bootstrap(), provenance);
+  previous.items = previous.items.map((item) => ({ ...item, last_changed_at: "2026-08-14T00:00:00.000Z" }));
+  const nextSource = bootstrap();
+  nextSource[0] = upstreamVideo(0, { title: "A refined launch title", slug: "refined-launch" });
+  const next = buildSnapshot(nextSource, { ...provenance, commitAt: "2026-08-20T01:02:03.000Z" });
+  const reconciled = reconcileLaunchChangeTimes(previous, next);
+  const changedTweetId = previous.items.find((item) => item.slug === "test-launch-0")!.tweet_id;
+  const unchanged = reconciled.items.find((item) => item.slug === "test-launch-1")!;
+  const changed = reconciled.items.find((item) => item.tweet_id === changedTweetId)!;
+
+  assert.equal(unchanged.last_changed_at, "2026-08-14T00:00:00.000Z");
+  assert.equal(changed.last_changed_at, "2026-08-20T01:02:03.000Z");
+  assert.deepEqual(buildChangedLaunchUrls(previous, reconciled), [
+    "https://venturedex.co/launches",
+    "https://venturedex.co/launches.json",
+    "https://venturedex.co/llms.txt",
+    "https://venturedex.co/llms-full.txt",
+    "https://venturedex.co/ai-index.json",
+    "https://venturedex.co/launches/refined-launch",
+    "https://venturedex.co/launches/test-launch-0",
+  ]);
+});
+
 test("the generated file contains only the allowlisted item keys", () => {
   const snapshot = JSON.parse(readFileSync("content/whatships.json", "utf8")) as WhatShipsSnapshot;
   const allowed = new Set([
     "id", "tweet_id", "slug", "title", "product", "company", "category",
     "source_category", "tags", "published_at", "duration_seconds", "featured",
-    "video_url", "original_post_url",
+    "video_url", "original_post_url", "last_changed_at",
   ]);
   for (const item of snapshot.items) {
     for (const key of Object.keys(item)) assert.ok(allowed.has(key), `unexpected item key ${key}`);
@@ -183,6 +209,11 @@ test("the scheduled workflow commits only a changed snapshot and explicitly disp
   assert.match(workflow, /--commit "\$\{\{ steps\.commit\.outputs\.pushed_sha \}\}"/);
   assert.match(workflow, /GITHUB_STEP_SUMMARY/);
   assert.match(workflow, /main_pushed_dispatch_failed/);
+  assert.match(workflow, /gh run watch/);
+  assert.match(workflow, /conclusion/);
+  assert.match(workflow, /--urls-file/);
+  assert.match(workflow, /IndexNow/);
+  assert.ok(workflow.indexOf("gh run watch") < workflow.indexOf("--urls-file"));
   assert.doesNotMatch(workflow, /pull-requests: write/);
 });
 

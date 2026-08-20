@@ -42,6 +42,7 @@ export interface WhatShipsItem {
   featured: boolean;
   video_url: string;
   original_post_url: string;
+  last_changed_at?: string;
 }
 
 export interface WhatShipsSnapshot {
@@ -89,6 +90,7 @@ interface CliOptions {
   maxAdditions: number;
   check: boolean;
   dryRun: boolean;
+  changedUrlsOutput?: string;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -312,6 +314,8 @@ function parseOptions(argv: string[]): CliOptions {
     else if (arg === "--allow-removals") options.allowRemovals = true;
     else if (arg === "--check") options.check = true;
     else if (arg === "--dry-run") options.dryRun = true;
+    else if (arg === "--changed-urls-output") options.changedUrlsOutput = resolve(nextValue());
+    else if (arg.startsWith("--changed-urls-output=")) options.changedUrlsOutput = resolve(arg.slice(22));
     else throw new Error(`Unknown argument: ${arg}`);
   }
   if (!Number.isInteger(options.maxAdditions) || options.maxAdditions < 0) {
@@ -463,7 +467,7 @@ export function assertSafeTransition(
   const previousById = new Map(previous.items.map((item) => [item.tweet_id, item]));
   const updates = next.items.filter((item) => {
     const oldItem = previousById.get(item.tweet_id);
-    return oldItem !== undefined && JSON.stringify(oldItem) !== JSON.stringify(item);
+    return oldItem !== undefined && !sameLaunchContent(oldItem, item);
   }).length;
   if (removals > 0 && !options.allowRemovals) {
     const sample = removedIds.slice(0, 20).join(", ");
@@ -481,8 +485,70 @@ export function assertSafeTransition(
   return { additions, removals, updates };
 }
 
+function canonicalLaunchItem(item: WhatShipsItem): Omit<WhatShipsItem, "last_changed_at"> {
+  const { last_changed_at: _lastChangedAt, ...content } = item;
+  return content;
+}
+
+function sameLaunchContent(left: WhatShipsItem, right: WhatShipsItem): boolean {
+  return JSON.stringify(canonicalLaunchItem(left)) === JSON.stringify(canonicalLaunchItem(right));
+}
+
+export function reconcileLaunchChangeTimes(
+  previous: WhatShipsSnapshot | null,
+  next: WhatShipsSnapshot,
+): WhatShipsSnapshot {
+  const previousById = new Map(previous?.items.map((item) => [item.tweet_id, item]) ?? []);
+  return {
+    ...next,
+    items: next.items.map((item) => {
+      const oldItem = previousById.get(item.tweet_id);
+      if (oldItem && sameLaunchContent(oldItem, item)) {
+        return oldItem.last_changed_at ? { ...item, last_changed_at: oldItem.last_changed_at } : item;
+      }
+      return { ...item, last_changed_at: next.source.commit_at };
+    }),
+  };
+}
+
+export function buildChangedLaunchUrls(
+  previous: WhatShipsSnapshot | null,
+  next: WhatShipsSnapshot,
+): string[] {
+  const previousById = new Map(previous?.items.map((item) => [item.tweet_id, item]) ?? []);
+  const nextById = new Map(next.items.map((item) => [item.tweet_id, item]));
+  const detailUrls = new Set<string>();
+  for (const item of next.items) {
+    const oldItem = previousById.get(item.tweet_id);
+    if (!oldItem || !sameLaunchContent(oldItem, item)) {
+      detailUrls.add(`https://venturedex.co/launches/${item.slug}`);
+      if (oldItem?.slug !== undefined && oldItem.slug !== item.slug) {
+        detailUrls.add(`https://venturedex.co/launches/${oldItem.slug}`);
+      }
+    }
+  }
+  for (const item of previous?.items ?? []) {
+    if (!nextById.has(item.tweet_id)) detailUrls.add(`https://venturedex.co/launches/${item.slug}`);
+  }
+  if (detailUrls.size === 0) return [];
+  return [
+    "https://venturedex.co/launches",
+    "https://venturedex.co/launches.json",
+    "https://venturedex.co/llms.txt",
+    "https://venturedex.co/llms-full.txt",
+    "https://venturedex.co/ai-index.json",
+    ...[...detailUrls].sort(),
+  ];
+}
+
 function samePublishedMetadata(previous: WhatShipsSnapshot | null, next: WhatShipsSnapshot): boolean {
-  return Boolean(previous) && JSON.stringify(previous?.items) === JSON.stringify(next.items);
+  return Boolean(previous) && previous?.items.length === next.items.length &&
+    previous.items.every((item, index) => sameLaunchContent(item, next.items[index]));
+}
+
+function writeChangedUrls(output: string | undefined, urls: string[]): void {
+  if (!output) return;
+  writeFileSync(output, `${JSON.stringify(urls, null, 2)}\n`, "utf8");
 }
 
 function writeSnapshot(output: string, snapshot: WhatShipsSnapshot): void {
@@ -539,10 +605,13 @@ async function main(): Promise<void> {
   const options = parseOptions(process.argv.slice(2));
   const previous = loadExisting(options.output);
   const { value, source } = await loadUpstream(options);
-  const snapshot = buildSnapshot(value, source);
-  const transition = assertSafeTransition(previous, snapshot, options);
+  const candidate = buildSnapshot(value, source);
+  const transition = assertSafeTransition(previous, candidate, options);
+  const snapshot = reconcileLaunchChangeTimes(previous, candidate);
+  const changedUrls = buildChangedLaunchUrls(previous, snapshot);
 
   if (samePublishedMetadata(previous, snapshot)) {
+    writeChangedUrls(options.changedUrlsOutput, []);
     writeGithubEvidence(snapshot, transition, "no_change");
     console.log(`Launch snapshot unchanged (${snapshot.item_count} published items).`);
     return;
@@ -553,6 +622,7 @@ async function main(): Promise<void> {
     `~${transition.updates}, -${transition.removals}, source ${snapshot.source.commit.slice(0, 12)}.`
   );
   writeGithubEvidence(snapshot, transition, "changed");
+  writeChangedUrls(options.changedUrlsOutput, changedUrls);
   if (options.check) {
     process.exitCode = 1;
     return;
