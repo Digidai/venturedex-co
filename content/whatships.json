@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a",
-    "commit_at": "2026-08-19T13:01:57.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/1c0d463ad9fc4c6592fce0fcdd72d7c9ec05155a/src/data/videos.json",
-    "raw_sha256": "cc7a5283cbf35849f56445c782b6ecc0c832c3fe18de5ce69d28f313edb3abd9"
+    "commit": "4da913b09f590178a08ca286c504998e7826c41b",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/4da913b09f590178a08ca286c504998e7826c41b",
+    "commit_at": "2026-08-20T12:45:34.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/4da913b09f590178a08ca286c504998e7826c41b/src/data/videos.json",
+    "raw_sha256": "4195fc56e0ba812841871e16d6ee8baff8e20322ffac32e046c7c973a66a9b70"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,303 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-18T21:59:15.000Z",
-  "item_count": 1350,
+  "source_published_through": "2026-08-20T07:39:13.000Z",
+  "item_count": 1365,
   "items": [
+    {
+      "id": "plv-mesurer-0-0-11",
+      "tweet_id": "2090342880082526246",
+      "slug": "mesurer-0-0-11",
+      "title": "mesurer 0.0.11 — color picker and settings",
+      "product": "mesurer",
+      "company": "Ibelick",
+      "category": "design",
+      "tags": [
+        "mesurer",
+        "chrome-extension",
+        "design",
+        "devtools"
+      ],
+      "published_at": "2026-08-20T07:39:13.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090340069555023872/vid/avc1/1920x1080/fRsaLWJoYg_fJkP1.mp4",
+      "original_post_url": "https://x.com/Ibelick/status/2090342880082526246",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-ultramock-mobile-update",
+      "tweet_id": "2090218323170488597",
+      "slug": "ultramock-mobile-update",
+      "title": "ultramock — massive mobile update",
+      "product": "ultramock",
+      "company": "ultramock",
+      "category": "design",
+      "tags": [
+        "ultramock",
+        "mobile",
+        "mockup",
+        "design"
+      ],
+      "published_at": "2026-08-19T23:24:17.000Z",
+      "duration_seconds": 14,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090217897343819776/vid/avc1/2880x1920/B8gQE8OIb18CdEdl.mp4",
+      "original_post_url": "https://x.com/joshmillgate/status/2090218323170488597",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-spectrum-agent-specter",
+      "tweet_id": "2090216742601556044",
+      "slug": "spectrum-agent-specter",
+      "title": "Spectrum — Agent Specter and MCP",
+      "product": "Agent Specter",
+      "company": "Spectrum",
+      "category": "other",
+      "tags": [
+        "spectrum",
+        "agents",
+        "mcp",
+        "crypto"
+      ],
+      "published_at": "2026-08-19T23:18:00.000Z",
+      "duration_seconds": 39,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090215464928518144/vid/avc1/1920x1080/N5IASOcKznrP_Jp3.mp4",
+      "original_post_url": "https://x.com/spectrumindexes/status/2090216742601556044",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-before-click-featured-apps",
+      "tweet_id": "2090196143351202105",
+      "slug": "before-click-featured-apps",
+      "title": "before.click — featured apps, starting with Clucky",
+      "product": "before.click",
+      "company": "before.click",
+      "category": "design",
+      "tags": [
+        "before-click",
+        "featured",
+        "clucky",
+        "design"
+      ],
+      "published_at": "2026-08-19T21:56:09.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090195533096734721/vid/avc1/3436x2160/rSzmz8l628AAksvd.mp4",
+      "original_post_url": "https://x.com/aliszu/status/2090196143351202105",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-coinbase-agents-derivatives",
+      "tweet_id": "2090181920563052895",
+      "slug": "coinbase-agents-derivatives",
+      "title": "Coinbase — derivatives for Agents",
+      "product": "Coinbase for Agents",
+      "company": "Coinbase",
+      "category": "developer-tools",
+      "tags": [
+        "coinbase",
+        "agents",
+        "derivatives",
+        "crypto"
+      ],
+      "published_at": "2026-08-19T20:59:38.000Z",
+      "duration_seconds": 27,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090181903269986305/vid/avc1/1280x720/Kyh2Ph8uK6ki4Im8.mp4?tag=14",
+      "original_post_url": "https://x.com/CoinbaseDev/status/2090181920563052895",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-bankr-stock-tokens-base",
+      "tweet_id": "2090167292521066843",
+      "slug": "bankr-stock-tokens-base",
+      "title": "Bankr — first stock tokens on Base",
+      "product": "Bankr",
+      "company": "Bankr",
+      "category": "other",
+      "tags": [
+        "bankr",
+        "crypto",
+        "tokens",
+        "agents"
+      ],
+      "published_at": "2026-08-19T20:01:30.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090167030968434688/vid/avc1/1080x1080/DwQceCqiEYIV0yTT.mp4",
+      "original_post_url": "https://x.com/bankrbot/status/2090167292521066843",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-meta-ai-macos-app",
+      "tweet_id": "2090164939105476969",
+      "slug": "meta-ai-macos-app",
+      "title": "Meta AI — macOS app with dictation",
+      "product": "Meta AI",
+      "company": "Meta",
+      "category": "ai",
+      "tags": [
+        "meta",
+        "macos",
+        "dictation",
+        "desktop"
+      ],
+      "published_at": "2026-08-19T19:52:09.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090162325710159872/vid/avc1/3024x1964/3036Tn2q6h35zEK1.mp4",
+      "original_post_url": "https://x.com/spencerbarnett/status/2090164939105476969",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-generalist-gen-1-5",
+      "tweet_id": "2090161945307664621",
+      "slug": "generalist-gen-1-5",
+      "title": "GEN-1.5 — a one-shot physical learner",
+      "product": "GEN-1.5",
+      "company": "Generalist",
+      "category": "hardware",
+      "tags": [
+        "generalist",
+        "robotics",
+        "one-shot",
+        "hardware"
+      ],
+      "published_at": "2026-08-19T19:40:15.000Z",
+      "duration_seconds": 213,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090159530621693952/vid/avc1/3840x2160/GPYM-K7hl7Kv547e.mp4",
+      "original_post_url": "https://x.com/GeneralistAI/status/2090161945307664621",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-krea-seedance-studio",
+      "tweet_id": "2090155543566659916",
+      "slug": "krea-seedance-studio",
+      "title": "Krea Seedance Studio — create with Seedance 2.5",
+      "product": "Seedance Studio",
+      "company": "Krea",
+      "category": "ai",
+      "tags": [
+        "krea",
+        "seedance",
+        "studio",
+        "video"
+      ],
+      "published_at": "2026-08-19T19:14:49.000Z",
+      "duration_seconds": 38,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090149828340973568/vid/avc1/1920x1080/dRGr-ZWd1_QUAZCT.mp4",
+      "original_post_url": "https://x.com/krea_ai/status/2090155543566659916",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-idler-frontier-data-lab",
+      "tweet_id": "2090153772672754012",
+      "slug": "idler-frontier-data-lab",
+      "title": "idler — frontier data research lab",
+      "product": "idler",
+      "company": "idler",
+      "category": "ai",
+      "tags": [
+        "idler",
+        "evals",
+        "benchmarks",
+        "data"
+      ],
+      "published_at": "2026-08-19T19:07:47.000Z",
+      "duration_seconds": 10,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090153405159530496/vid/avc1/960x540/N_OojZ3plcwHKfFM.mp4",
+      "original_post_url": "https://x.com/idler_ai/status/2090153772672754012",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-offprint",
+      "tweet_id": "2090134913366319115",
+      "slug": "offprint",
+      "title": "Offprint — print your unread saves as a magazine",
+      "product": "Offprint",
+      "company": "Offprint",
+      "category": "consumer",
+      "tags": [
+        "offprint",
+        "print",
+        "magazine",
+        "reading"
+      ],
+      "published_at": "2026-08-19T17:52:50.000Z",
+      "duration_seconds": 93,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090133873405382659/vid/avc1/1920x1080/v0yC1fJXqbUqsHPe.mp4",
+      "original_post_url": "https://x.com/danielbelfort/status/2090134913366319115",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-tasklet-kimi-k3",
+      "tweet_id": "2090117876552503459",
+      "slug": "tasklet-kimi-k3",
+      "title": "Tasklet — Kimi K3 now available",
+      "product": "Kimi K3",
+      "company": "Tasklet",
+      "category": "ai",
+      "tags": [
+        "tasklet",
+        "kimi",
+        "k3",
+        "agents"
+      ],
+      "published_at": "2026-08-19T16:45:08.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090107616748068865/vid/avc1/1920x1120/3iUtFPO85R_n-be8.mp4",
+      "original_post_url": "https://x.com/TaskletAI/status/2090117876552503459",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-1k-papers",
+      "tweet_id": "2090117811527889317",
+      "slug": "1k-papers",
+      "title": "1k Papers — last year's top papers, visualized",
+      "product": "1k Papers",
+      "company": "Hassan El Mghari",
+      "category": "ai",
+      "tags": [
+        "papers",
+        "research",
+        "visualization",
+        "deepseek"
+      ],
+      "published_at": "2026-08-19T16:44:53.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090116715128492032/vid/avc1/3036x2160/oGia_wD6Uov6-7X_.mp4",
+      "original_post_url": "https://x.com/nutlope/status/2090117811527889317",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-metalterm",
+      "tweet_id": "2090071886713524555",
+      "slug": "metalterm",
+      "title": "Metalterm — GPU-rendered terminal for macOS",
+      "product": "Metalterm",
+      "company": "Metalterm",
+      "category": "developer-tools",
+      "tags": [
+        "metalterm",
+        "terminal",
+        "macos",
+        "rust"
+      ],
+      "published_at": "2026-08-19T13:42:24.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090071670966865920/vid/avc1/3840x2160/gkVTn85bjYrVAkxN.mp4",
+      "original_post_url": "https://x.com/pioner_dev/status/2090071886713524555",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
     {
       "id": "plv-mentlio",
       "tweet_id": "2089834536280694937",
@@ -1455,6 +1749,27 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2087540948037435392/vid/avc1/2560x1440/poV1oZNUmTjMH5mQ.mp4",
       "original_post_url": "https://x.com/Jarvixdotlive/status/2087652849702641848"
+    },
+    {
+      "id": "plv-open-analytics",
+      "tweet_id": "2087580062593823004",
+      "slug": "open-analytics",
+      "title": "Open Analytics — open-source web analytics you own",
+      "product": "Open Analytics",
+      "company": "Open Analytics",
+      "category": "developer-tools",
+      "tags": [
+        "analytics",
+        "open-source",
+        "privacy",
+        "ai"
+      ],
+      "published_at": "2026-08-12T16:40:46.000Z",
+      "duration_seconds": 21,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087579319660843008/vid/avc1/1920x1080/r3RwxW9usEzFlhes.mp4",
+      "original_post_url": "https://x.com/uaghazadae/status/2087580062593823004",
+      "last_changed_at": "2026-08-20T12:45:34.000Z"
     },
     {
       "id": "plv-ref-open-beta",
