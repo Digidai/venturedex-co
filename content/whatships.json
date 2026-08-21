@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "a56c92860186b550b70d4e2f89e42ded04eb6ac6",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/a56c92860186b550b70d4e2f89e42ded04eb6ac6",
-    "commit_at": "2026-08-21T02:52:03.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/a56c92860186b550b70d4e2f89e42ded04eb6ac6/src/data/videos.json",
-    "raw_sha256": "9b145066c6fca6db7e636fb030a8fb2269d995a31261db64977f651cdd4ca0a9"
+    "commit": "6aacc14ffd7eb295877cd551ccb2232ddcd3c58b",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/6aacc14ffd7eb295877cd551ccb2232ddcd3c58b",
+    "commit_at": "2026-08-21T14:31:34.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/6aacc14ffd7eb295877cd551ccb2232ddcd3c58b/src/data/videos.json",
+    "raw_sha256": "0dbd4599f036c3b5f0f3ddbce0b9fa10947e449cbe5ef632143db02603a12826"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,71 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-21T00:01:29.000Z",
-  "item_count": 1379,
+  "source_published_through": "2026-08-21T14:24:27.000Z",
+  "item_count": 1390,
   "items": [
+    {
+      "id": "plv-runway-ruby",
+      "tweet_id": "2090807248402682101",
+      "slug": "runway-ruby",
+      "title": "Runway Ruby — SDR to 16-bit HDR in ProRes and EXR",
+      "product": "Runway Ruby",
+      "company": "Runway",
+      "category": "ai",
+      "tags": [
+        "runway",
+        "hdr",
+        "video",
+        "color"
+      ],
+      "published_at": "2026-08-21T14:24:27.000Z",
+      "duration_seconds": 50,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090807171781136384/vid/avc1/1280x720/yji6M3x6pSdM-Sq5.mp4?tag=14",
+      "original_post_url": "https://x.com/runwayml/status/2090807248402682101",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
+      "id": "plv-axiom-partner-program",
+      "tweet_id": "2090798520836227539",
+      "slug": "axiom-partner-program",
+      "title": "Axiom Partner Program — earn 5% for 12 months",
+      "product": "Axiom Partner Program",
+      "company": "Axiom",
+      "category": "developer-tools",
+      "tags": [
+        "axiom",
+        "partners",
+        "observability"
+      ],
+      "published_at": "2026-08-21T13:49:47.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090798500082860032/vid/avc1/1280x720/MEmiEDOTwyXpb_Of.mp4?tag=14",
+      "original_post_url": "https://x.com/axiomhq/status/2090798520836227539",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
+      "id": "plv-minimax-design",
+      "tweet_id": "2090613786046779485",
+      "slug": "minimax-design",
+      "title": "MiniMax Design — agent-driven commercial content",
+      "product": "MiniMax Design",
+      "company": "MiniMax",
+      "category": "ai",
+      "tags": [
+        "minimax",
+        "design",
+        "agents",
+        "video"
+      ],
+      "published_at": "2026-08-21T01:35:42.000Z",
+      "duration_seconds": 87,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090488277426171904/vid/avc1/2560x1440/vGiS-57LEEDdZoL0.mp4",
+      "original_post_url": "https://x.com/Hailuo_AI/status/2090613786046779485",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
     {
       "id": "plv-flora-agents-on-canvas",
       "tweet_id": "2090590073540481107",
@@ -126,6 +188,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2090533398515228672/vid/avc1/1440x1080/JeE3aRPTxz7bNnTT.mp4",
       "original_post_url": "https://x.com/rameez_rishard/status/2090539558647500801",
       "last_changed_at": "2026-08-21T02:52:03.000Z"
+    },
+    {
+      "id": "plv-anything-skydive",
+      "tweet_id": "2090539079888674849",
+      "slug": "anything-skydive",
+      "title": "Skydive — AI teammates across every channel",
+      "product": "Skydive",
+      "company": "Anything",
+      "category": "ai",
+      "tags": [
+        "anything",
+        "skydive",
+        "agents",
+        "teammates"
+      ],
+      "published_at": "2026-08-20T20:38:51.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090538569555152896/vid/avc1/1920x1080/rHkv9e8VsfxPyHtS.mp4",
+      "original_post_url": "https://x.com/anything/status/2090539079888674849",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
     },
     {
       "id": "plv-gpt-image-2-transparent-bg",
@@ -251,6 +334,27 @@
       "last_changed_at": "2026-08-21T02:52:03.000Z"
     },
     {
+      "id": "plv-figmatrace",
+      "tweet_id": "2090499988833107978",
+      "slug": "figmatrace",
+      "title": "FigmaTrace — computer-use dataset for design",
+      "product": "FigmaTrace",
+      "company": "Patronus AI",
+      "category": "design",
+      "tags": [
+        "figma",
+        "dataset",
+        "computer-use",
+        "patronus"
+      ],
+      "published_at": "2026-08-20T18:03:31.000Z",
+      "duration_seconds": 19,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090496255806029824/vid/avc1/1920x1080/CYebkdXLDUqce5Dm.mp4",
+      "original_post_url": "https://x.com/anandnk24/status/2090499988833107978",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
       "id": "plv-linear-coding-sessions",
       "tweet_id": "2090485855395738077",
       "slug": "linear-coding-sessions",
@@ -293,6 +397,69 @@
       "last_changed_at": "2026-08-21T02:52:03.000Z"
     },
     {
+      "id": "plv-variate",
+      "tweet_id": "2090476277190836710",
+      "slug": "variate",
+      "title": "variate — generate multiple UI design variations",
+      "product": "variate",
+      "company": "Hassan El Mghari",
+      "category": "design",
+      "tags": [
+        "variate",
+        "design",
+        "open-source",
+        "skills"
+      ],
+      "published_at": "2026-08-20T16:29:18.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090472496805883904/vid/avc1/1920x1080/-VRUcnZe0IUf_od0.mp4",
+      "original_post_url": "https://x.com/nutlope/status/2090476277190836710",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
+      "id": "plv-onecli",
+      "tweet_id": "2090453046698647596",
+      "slug": "onecli",
+      "title": "OneCLI — open-source pro assistant for teams",
+      "product": "OneCLI",
+      "company": "OneCLI",
+      "category": "developer-tools",
+      "tags": [
+        "onecli",
+        "agents",
+        "open-source",
+        "yc"
+      ],
+      "published_at": "2026-08-20T14:56:59.000Z",
+      "duration_seconds": 67,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090452050886950912/vid/avc1/1920x1080/QaK58EWqsBeBO6HZ.mp4",
+      "original_post_url": "https://x.com/jonathanfishner/status/2090453046698647596",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
+      "id": "plv-hycreator",
+      "tweet_id": "2090439771634250009",
+      "slug": "hycreator",
+      "title": "HyCreator — agent harness for long video",
+      "product": "HyCreator",
+      "company": "Tencent",
+      "category": "ai",
+      "tags": [
+        "hycreator",
+        "tencent",
+        "video",
+        "agents"
+      ],
+      "published_at": "2026-08-20T14:04:14.000Z",
+      "duration_seconds": 241,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090439577161039872/vid/avc1/1920x1080/1QMvdnzN9Xt60Jik.mp4",
+      "original_post_url": "https://x.com/TianyuPang1/status/2090439771634250009",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
       "id": "plv-mesurer-0-0-11",
       "tweet_id": "2090342880082526246",
       "slug": "mesurer-0-0-11",
@@ -312,6 +479,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2090340069555023872/vid/avc1/1920x1080/fRsaLWJoYg_fJkP1.mp4",
       "original_post_url": "https://x.com/Ibelick/status/2090342880082526246",
       "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-cmf-buds-neo",
+      "tweet_id": "2090325459590578572",
+      "slug": "cmf-buds-neo",
+      "title": "CMF Buds Neo — pretty perfect",
+      "product": "Buds Neo",
+      "company": "CMF by Nothing",
+      "category": "hardware",
+      "tags": [
+        "cmf",
+        "nothing",
+        "buds",
+        "audio"
+      ],
+      "published_at": "2026-08-20T06:30:00.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090069167915573248/vid/avc1/3840x2160/reAFYq1-F7fXsDQY.mp4",
+      "original_post_url": "https://x.com/cmfbynothing/status/2090325459590578572",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
     },
     {
       "id": "plv-ultramock-mobile-update",
@@ -461,6 +649,27 @@
       "last_changed_at": "2026-08-20T12:45:34.000Z"
     },
     {
+      "id": "plv-clucky",
+      "tweet_id": "2090157707429093391",
+      "slug": "clucky",
+      "title": "Clucky — loud rooster alarm, no snooze",
+      "product": "Clucky",
+      "company": "Clucky",
+      "category": "consumer",
+      "tags": [
+        "clucky",
+        "alarm",
+        "mobile",
+        "consumer"
+      ],
+      "published_at": "2026-08-19T19:23:25.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090157654136295424/vid/avc1/1920x1200/YNIJP9f55Lz3mMKK.mp4",
+      "original_post_url": "https://x.com/tryclucky/status/2090157707429093391",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
+    },
+    {
       "id": "plv-krea-seedance-studio",
       "tweet_id": "2090155543566659916",
       "slug": "krea-seedance-studio",
@@ -522,6 +731,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2090133873405382659/vid/avc1/1920x1080/v0yC1fJXqbUqsHPe.mp4",
       "original_post_url": "https://x.com/danielbelfort/status/2090134913366319115",
       "last_changed_at": "2026-08-20T12:45:34.000Z"
+    },
+    {
+      "id": "plv-apodex-traces",
+      "tweet_id": "2090126841478811789",
+      "slug": "apodex-traces",
+      "title": "TRACES — a benchmark for discoverative AI",
+      "product": "TRACES",
+      "company": "Apodex",
+      "category": "ai",
+      "tags": [
+        "apodex",
+        "traces",
+        "benchmark",
+        "research"
+      ],
+      "published_at": "2026-08-19T17:20:46.000Z",
+      "duration_seconds": 78,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090126038697492480/vid/avc1/1920x1080/ViRcdAfWDv8NkCKV.mp4",
+      "original_post_url": "https://x.com/Apodex_AI/status/2090126841478811789",
+      "last_changed_at": "2026-08-21T14:31:34.000Z"
     },
     {
       "id": "plv-tasklet-kimi-k3",
