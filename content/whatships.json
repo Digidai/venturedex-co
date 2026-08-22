@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "6aacc14ffd7eb295877cd551ccb2232ddcd3c58b",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/6aacc14ffd7eb295877cd551ccb2232ddcd3c58b",
-    "commit_at": "2026-08-21T14:31:34.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/6aacc14ffd7eb295877cd551ccb2232ddcd3c58b/src/data/videos.json",
-    "raw_sha256": "0dbd4599f036c3b5f0f3ddbce0b9fa10947e449cbe5ef632143db02603a12826"
+    "commit": "6cd8e144fbf553816b5a1cadced73d232ae50e13",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/6cd8e144fbf553816b5a1cadced73d232ae50e13",
+    "commit_at": "2026-08-22T04:53:33.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/6cd8e144fbf553816b5a1cadced73d232ae50e13/src/data/videos.json",
+    "raw_sha256": "62769498c444ef2c2e201c83b937095641c8b92397352a0cf36a3fc9ca958f1b"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,258 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-08-21T14:24:27.000Z",
-  "item_count": 1390,
+  "source_published_through": "2026-08-21T23:48:57.000Z",
+  "item_count": 1402,
   "items": [
+    {
+      "id": "plv-unison",
+      "tweet_id": "2090949307683742021",
+      "slug": "unison",
+      "title": "Unison — scored contract review with validators",
+      "product": "Unison",
+      "company": "InferNode",
+      "category": "developer-tools",
+      "tags": [
+        "unison",
+        "contracts",
+        "validators",
+        "web3"
+      ],
+      "published_at": "2026-08-21T23:48:57.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090943554738618368/vid/avc1/1920x1080/AvB1Ri6IVYe3wAkd.mp4",
+      "original_post_url": "https://x.com/Infer_node/status/2090949307683742021",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-chatgpt-feature-drop-aug-21",
+      "tweet_id": "2090943146683400555",
+      "slug": "chatgpt-feature-drop-aug-21",
+      "title": "ChatGPT — this week's Friday feature drop",
+      "product": "ChatGPT",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "chatgpt",
+        "openai",
+        "feature-drop",
+        "ios"
+      ],
+      "published_at": "2026-08-21T23:24:28.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090939776472096768/vid/avc1/3840x2160/Ji8aAvVUHJ0QcuP8.mp4",
+      "original_post_url": "https://x.com/adamhfry/status/2090943146683400555",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-bidyourapp-outbid",
+      "tweet_id": "2090913630447714694",
+      "slug": "bidyourapp-outbid",
+      "title": "BidYourApp — outbid for the #1 app slot",
+      "product": "BidYourApp",
+      "company": "BidYourApp",
+      "category": "consumer",
+      "tags": [
+        "bidyourapp",
+        "growth",
+        "apps"
+      ],
+      "published_at": "2026-08-21T21:27:11.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090913536046432256/vid/avc1/1440x1920/eNs0VkdRKnnpzPRj.mp4",
+      "original_post_url": "https://x.com/heysatya_/status/2090913630447714694",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-manifestos-tech",
+      "tweet_id": "2090907997551943831",
+      "slug": "manifestos-tech",
+      "title": "Manifestos.tech — influential product manifestos",
+      "product": "Manifestos.tech",
+      "company": "Nicholas Chua",
+      "category": "other",
+      "tags": [
+        "manifestos",
+        "product",
+        "curation"
+      ],
+      "published_at": "2026-08-21T21:04:48.000Z",
+      "duration_seconds": 17,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090906329435283456/vid/avc1/2016x1080/yTTy7-Gldptx28w9.mp4",
+      "original_post_url": "https://x.com/nicholaschua/status/2090907997551943831",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-x-ads-mcp-benji",
+      "tweet_id": "2090903345733210260",
+      "slug": "x-ads-mcp-benji",
+      "title": "X Ads MCP — agents that build your ads",
+      "product": "X Ads MCP",
+      "company": "X",
+      "category": "developer-tools",
+      "tags": [
+        "x-ads",
+        "mcp",
+        "agents",
+        "advertising"
+      ],
+      "published_at": "2026-08-21T20:46:19.000Z",
+      "duration_seconds": 47,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090892073150902272/vid/avc1/1920x1080/iL963pPqcR7GDvYy.mp4",
+      "original_post_url": "https://x.com/benjitaylor/status/2090903345733210260",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-bidyourapp",
+      "tweet_id": "2090898440784089516",
+      "slug": "bidyourapp",
+      "title": "BidYourApp — put your app on the bid board",
+      "product": "BidYourApp",
+      "company": "BidYourApp",
+      "category": "consumer",
+      "tags": [
+        "bidyourapp",
+        "growth",
+        "apps"
+      ],
+      "published_at": "2026-08-21T20:26:49.000Z",
+      "duration_seconds": 7,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090898376699289600/vid/avc1/3840x1964/2MD1pShLqu4YLI9a.mp4",
+      "original_post_url": "https://x.com/heysatya_/status/2090898440784089516",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-x-ads-mcp",
+      "tweet_id": "2090892103077278141",
+      "slug": "x-ads-mcp",
+      "title": "X Ads MCP — create and optimize campaigns",
+      "product": "X Ads MCP",
+      "company": "X",
+      "category": "developer-tools",
+      "tags": [
+        "x-ads",
+        "mcp",
+        "agents",
+        "advertising"
+      ],
+      "published_at": "2026-08-21T20:01:38.000Z",
+      "duration_seconds": 47,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090892073150902272/vid/avc1/1920x1080/iL963pPqcR7GDvYy.mp4",
+      "original_post_url": "https://x.com/XBusiness/status/2090892103077278141",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-gemini-notebook-all-users",
+      "tweet_id": "2090881518784897289",
+      "slug": "gemini-notebook-all-users",
+      "title": "Gemini Notebook — upgraded for every user",
+      "product": "Gemini Notebook",
+      "company": "Google",
+      "category": "ai",
+      "tags": [
+        "gemini",
+        "notebook",
+        "google",
+        "productivity"
+      ],
+      "published_at": "2026-08-21T19:19:35.000Z",
+      "duration_seconds": 54,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090881398282518528/vid/avc1/1920x1080/uCXl75ImC1G-ZeG8.mp4",
+      "original_post_url": "https://x.com/Gemini_Notebook/status/2090881518784897289",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-traces-mcp",
+      "tweet_id": "2090864211509276704",
+      "slug": "traces-mcp",
+      "title": "Traces MCP — multiplayer team memory",
+      "product": "Traces MCP",
+      "company": "Traces",
+      "category": "developer-tools",
+      "tags": [
+        "traces",
+        "mcp",
+        "memory",
+        "agents"
+      ],
+      "published_at": "2026-08-21T18:10:49.000Z",
+      "duration_seconds": 8,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090862341445341184/vid/avc1/1528x1080/2eiA16wuyLq4omVj.mp4",
+      "original_post_url": "https://x.com/tarunsachdeva/status/2090864211509276704",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-notion-skills-local-agents",
+      "tweet_id": "2090829567451861122",
+      "slug": "notion-skills-local-agents",
+      "title": "Notion Skills — export to local coding agents",
+      "product": "Notion Skills",
+      "company": "Notion",
+      "category": "productivity",
+      "tags": [
+        "notion",
+        "skills",
+        "agents",
+        "mcp"
+      ],
+      "published_at": "2026-08-21T15:53:09.000Z",
+      "duration_seconds": 32,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090829404775849984/vid/avc1/3024x1912/y4Lt-UGxqYTR3YNT.mp4",
+      "original_post_url": "https://x.com/NotionHQ/status/2090829567451861122",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-utapp",
+      "tweet_id": "2090828917049270645",
+      "slug": "utapp",
+      "title": "Utapp — new iOS wallet and card app",
+      "product": "Utapp",
+      "company": "Utorg",
+      "category": "consumer",
+      "tags": [
+        "utapp",
+        "wallet",
+        "ios",
+        "crypto"
+      ],
+      "published_at": "2026-08-21T15:50:34.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090828403213467648/vid/avc1/1080x1920/dH-aArjXLpM4UdVu.mp4",
+      "original_post_url": "https://x.com/utorgcom/status/2090828917049270645",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
+    {
+      "id": "plv-stripe-mcp",
+      "tweet_id": "2090823536466141570",
+      "slug": "stripe-mcp",
+      "title": "Stripe MCP — analyze payments data with agents",
+      "product": "Stripe MCP",
+      "company": "Stripe",
+      "category": "developer-tools",
+      "tags": [
+        "stripe",
+        "mcp",
+        "payments",
+        "agents"
+      ],
+      "published_at": "2026-08-21T15:29:11.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090823252578861056/vid/avc1/1080x1080/8HK0puDYD_h_QFu8.mp4",
+      "original_post_url": "https://x.com/stripe/status/2090823536466141570",
+      "last_changed_at": "2026-08-22T04:53:33.000Z"
+    },
     {
       "id": "plv-runway-ruby",
       "tweet_id": "2090807248402682101",
