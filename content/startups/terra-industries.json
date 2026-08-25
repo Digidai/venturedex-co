@@ -1,0 +1,73 @@
+{
+  "slug": "terra-industries",
+  "domain": "www.terraindustries.co",
+  "url": "https://www.terraindustries.co/",
+  "product_name": "Terra Industries",
+  "summary": "Autonomous drones, ground vehicles, sentries, and command software for African infrastructure.",
+  "editor_note": "The product is one regional operating stack rather than imported standalone hardware. ArtemisOS coordinates missions across Archer and Iroko aircraft, the Duma ground vehicle, and the solar-powered Kallon sentry. Published specifications include a 1,000-kilometer Archer range, 24-hour Duma endurance, and a five-kilometer Kallon observation range. The open test is how field reliability, procurement, and training hold across different infrastructure environments.",
+  "editor_rating": 5,
+  "why_featured": "$52M Seed for African autonomy",
+  "product_type": "Other",
+  "region": "Africa",
+  "tags": "defense technology,autonomous systems,drones,critical infrastructure,geospatial intelligence",
+  "investors": "8VC",
+  "links": {
+    "product": "https://www.terraindustries.co/artemis"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$52M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-08-17",
+      "source_url": "https://techcrunch.com/2026/08/17/terra-industries-closes-52m-seed-round-to-build-defense-infrastructure-for-the-global-south/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Terra Industries official site",
+        "url": "https://www.terraindustries.co/",
+        "type": "official"
+      },
+      {
+        "id": "official_artemis",
+        "label": "ArtemisOS product page",
+        "url": "https://www.terraindustries.co/artemis",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Seed report",
+        "url": "https://techcrunch.com/2026/08/17/terra-industries-closes-52m-seed-round-to-build-defense-infrastructure-for-the-global-south/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Terra publishes mission and operating specifications for Archer and Iroko aerial systems, the Duma ground vehicle, and the Kallon sentry tower.",
+        "source_ids": ["official_site"]
+      },
+      {
+        "claim": "ArtemisOS provides geospatial intelligence, detection and tracking, and autonomous mission planning across Terra's deployed systems.",
+        "source_ids": ["official_site", "official_artemis"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Governments and critical-infrastructure operators securing mines, energy sites, borders, and remote facilities across Africa.",
+      "category": "Autonomous security systems",
+      "differentiation": "Regionally manufactured air, ground, and fixed systems share one command and intelligence layer built for local infrastructure conditions.",
+      "why_now": "The Seed round supports manufacturing and deployment as African infrastructure owners seek locally controlled surveillance and response capacity."
+    },
+    "risks": [
+      {
+        "claim": "Field reliability, operator training, and procurement cycles may differ materially across the countries and infrastructure types Terra targets.",
+        "basis": "The official site publishes system specifications, but not fleet-level uptime, deployment outcomes, or procurement timelines."
+      }
+    ]
+  }
+}

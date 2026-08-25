@@ -1,0 +1,82 @@
+{
+  "slug": "synthefy",
+  "domain": "www.synthefy.com",
+  "url": "https://www.synthefy.com/",
+  "product_name": "Synthefy",
+  "summary": "Open structured-data foundation model for zero-shot regression and tabular prediction.",
+  "editor_note": "The bet is that one pretrained model can replace a pipeline of task-specific tabular models. Nori runs zero-shot regression rather than requiring a fresh training run, ships as downloadable weights and code, and also runs behind a managed API. Its Python package, benchmarks, GitHub repository, and model hub make the claim inspectable. The open question is how benchmark leadership transfers to noisy enterprise tables and classification-heavy work.",
+  "editor_rating": 5,
+  "why_featured": "$6.5M Seed for tabular foundation models",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "structured data,foundation models,tabular machine learning,open source,developer tools",
+  "investors": "Wing Venture Capital",
+  "links": {
+    "docs": "https://docs.synthefy.com/nori/",
+    "product": "https://docs.synthefy.com/nori/quickstart#api",
+    "github": "https://github.com/Synthefy/synthefy-nori",
+    "careers": "https://www.synthefy.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6.5M",
+      "stage": "Seed",
+      "lead_investor": "Wing Venture Capital",
+      "date": "2026-08-18",
+      "source_url": "https://www.synthefy.com/blog/synthefy-raises-6-5m-for-structured-data-foundation-models",
+      "source_name": "Synthefy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Synthefy official site",
+        "url": "https://www.synthefy.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Nori documentation",
+        "url": "https://docs.synthefy.com/nori/",
+        "type": "product"
+      },
+      {
+        "id": "official_github",
+        "label": "Nori GitHub repository",
+        "url": "https://github.com/Synthefy/synthefy-nori",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Synthefy Seed announcement",
+        "url": "https://www.synthefy.com/blog/synthefy-raises-6-5m-for-structured-data-foundation-models",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Nori runs zero-shot regression over structured datasets through a Python package or managed API without task-specific training.",
+        "source_ids": ["official_site", "official_docs"]
+      },
+      {
+        "claim": "Synthefy publishes Nori model weights, training code, installation instructions, and benchmark material through its documentation and GitHub repository.",
+        "source_ids": ["official_docs", "official_github", "funding_1"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Data scientists and ML engineers forecasting or estimating values from business and scientific tables.",
+      "category": "Structured-data foundation models",
+      "differentiation": "A compact pretrained model offers zero-shot tabular prediction through open weights, local Python, and a managed API rather than requiring a new training pipeline per dataset.",
+      "why_now": "The Seed round follows wider adoption of foundation-model workflows in modalities where structured enterprise data still depends on bespoke training."
+    },
+    "risks": [
+      {
+        "claim": "Benchmark gains may narrow on noisy proprietary schemas, distribution shifts, and classification tasks outside Nori's current regression emphasis.",
+        "basis": "The official evidence is strongest on public regression benchmarks and does not establish performance across every production table or task type."
+      }
+    ]
+  }
+}

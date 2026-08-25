@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-15",
+  "verified_at": "2026-08-25",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2044,6 +2044,41 @@
       "local_path": "/logos/companies/worldscape.svg",
       "source_page": "https://worldscape.ai/",
       "source_url": "https://worldscape.ai/dist/img/meta/logo-mark.svg"
+    },
+    "grounded": {
+      "name": "Grounded",
+      "shape": "icon",
+      "local_path": "/logos/companies/grounded.png",
+      "source_page": "https://groundedevs.com/",
+      "source_url": "https://groundedevs.com/favicon.png"
+    },
+    "higgsfield": {
+      "name": "Higgsfield",
+      "shape": "icon",
+      "local_path": "/logos/companies/higgsfield.png",
+      "source_page": "https://higgsfield.ai/",
+      "source_url": "https://higgsfield.ai/icon.png"
+    },
+    "groq": {
+      "name": "Groq",
+      "shape": "icon",
+      "local_path": "/logos/companies/groq.svg",
+      "source_page": "https://groq.com/",
+      "source_url": "https://groq.com/favicon.svg"
+    },
+    "terra-industries": {
+      "name": "Terra Industries",
+      "shape": "icon",
+      "local_path": "/logos/companies/terra-industries.ico",
+      "source_page": "https://www.terraindustries.co/",
+      "source_url": "https://www.terraindustries.co/favicon.ico"
+    },
+    "synthefy": {
+      "name": "Synthefy",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/synthefy.svg",
+      "source_page": "https://www.synthefy.com/",
+      "source_url": "https://www.synthefy.com/_next/static/media/logo.f96bd2bf.svg"
     }
   },
   "investors": {
@@ -3779,6 +3814,20 @@
       "source_page": "https://www.radius.capital/",
       "source_url": "https://static.wixstatic.com/media/752c30_6b4e62c5e752478c9a559c24f1f18391~mv2.png",
       "tile_background": "dark"
+    },
+    "dst-global": {
+      "name": "DST Global",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/dst-global.svg",
+      "source_page": "https://dst-global.com/",
+      "source_url": "https://dst-global.com/i/logo.svg"
+    },
+    "disruptive": {
+      "name": "Disruptive",
+      "shape": "icon",
+      "local_path": "/logos/investors/disruptive.png",
+      "source_page": "https://www.disruptive.tech/",
+      "source_url": "https://static.wixstatic.com/media/ab32b9_b3f8e414696543ea9225bb1be61def34%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/ab32b9_b3f8e414696543ea9225bb1be61def34%7Emv2.png"
     }
   }
 }

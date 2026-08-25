@@ -1,0 +1,75 @@
+{
+  "slug": "groq",
+  "domain": "groq.com",
+  "url": "https://groq.com/",
+  "product_name": "Groq",
+  "summary": "Globally distributed AI inference cloud spanning LPUs, NVIDIA clusters, and APIs.",
+  "editor_note": "The second-act Groq is a neocloud built around inference latency rather than a chip company with a hosted demo. Its platform combines LPU-based serving, NVIDIA clusters, developer APIs, and globally distributed capacity under one operating surface. The console makes the product directly testable even as the physical footprint expands. The open question is how price-performance and service consistency compare across LPU and GPU-backed workloads at much larger scale.",
+  "editor_rating": 5,
+  "why_featured": "$350M A for inference at cloud scale",
+  "product_type": "DevTools",
+  "region": "Global / Remote",
+  "tags": "ai inference,cloud infrastructure,lpu,gpu cloud,developer api",
+  "investors": "Disruptive",
+  "links": {
+    "docs": "https://console.groq.com/docs/",
+    "product": "https://console.groq.com/home",
+    "careers": "https://groq.com/careers-at-groq"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$350M",
+      "stage": "Series A",
+      "lead_investor": "Disruptive",
+      "date": "2026-08-17",
+      "source_url": "https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud",
+      "source_name": "Groq"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Groq official platform",
+        "url": "https://groq.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_docs",
+        "label": "Groq developer documentation",
+        "url": "https://console.groq.com/docs/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Groq Series A announcement",
+        "url": "https://groq.com/newsroom/groq-closes-usd350-million-series-a-building-the-world-s-leading-ai-inference-cloud",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Groq exposes hosted inference through a developer console and documented APIs while operating a globally distributed cloud platform.",
+        "source_ids": ["official_site", "official_docs"]
+      },
+      {
+        "claim": "The current platform combines Groq LPU infrastructure with NVIDIA accelerated clusters for inference and related AI compute workloads.",
+        "source_ids": ["official_site", "funding_1"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI engineering teams that need low-latency hosted inference and larger managed compute clusters.",
+      "category": "AI inference cloud",
+      "differentiation": "A global neocloud joins LPU-based inference, NVIDIA capacity, and developer APIs instead of selling accelerator hardware alone.",
+      "why_now": "The Series A funds a major capacity expansion as inference workloads move from prototype APIs to sustained production demand."
+    },
+    "risks": [
+      {
+        "claim": "Price-performance and reliability may vary between LPU-native serving and the broader GPU-backed cloud as capacity scales.",
+        "basis": "The official announcement describes a combined infrastructure strategy and aggressive expansion target, but not comparable workload-level economics across both surfaces."
+      }
+    ]
+  }
+}

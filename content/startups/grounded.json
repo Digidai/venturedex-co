@@ -1,0 +1,74 @@
+{
+  "slug": "grounded",
+  "domain": "groundedevs.com",
+  "url": "https://groundedevs.com/",
+  "product_name": "Grounded",
+  "summary": "Modular electric and gas specialty vans with integrated fleet-control software.",
+  "editor_note": "The vehicle starts as a configurable operating platform rather than a finished RV floor plan. Grounded combines modular interiors for clinics, field service, food, outreach, and camping with batteries, Starlink, and Grounded+ fleet controls. That makes the software, power system, and physical build one deployment surface. The open test is whether customization economics and service capacity hold as fleets move beyond one-off builds.",
+  "editor_rating": 5,
+  "why_featured": "$5M Seed for modular mission vans",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "electric vehicles,specialty vehicles,fleet software,modular hardware,mobility",
+  "investors": "undisclosed",
+  "links": {
+    "product": "https://groundedevs.com/groundedplus",
+    "careers": "https://jobs.ashbyhq.com/grounded"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "undisclosed",
+      "date": "2026-08-18",
+      "source_url": "https://techcrunch.com/2026/08/18/detroit-startup-grounded-raises-5m-to-customize-electric-and-gas-powered-vans/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Grounded official site",
+        "url": "https://groundedevs.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_technology",
+        "label": "Grounded+ technology page",
+        "url": "https://groundedevs.com/groundedplus",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Seed report",
+        "url": "https://techcrunch.com/2026/08/18/detroit-startup-grounded-raises-5m-to-customize-electric-and-gas-powered-vans/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Grounded presents modular specialty-vehicle layouts for mobile health, field services, food, outreach, command, and camping missions.",
+        "source_ids": ["official_site"]
+      },
+      {
+        "claim": "Grounded+ connects battery, climate, location, and fleet controls through the vehicle's integrated software layer.",
+        "source_ids": ["official_site", "official_technology"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Organizations deploying mobile clinics, field-service fleets, outreach vehicles, and compact recreational vehicles.",
+      "category": "Specialty vehicle platform",
+      "differentiation": "A modular physical build is paired with onboard power, connectivity, and fleet software instead of being delivered as an isolated custom conversion.",
+      "why_now": "The Seed round arrives as operators want mobile facilities without committing every mission to a bespoke vehicle architecture."
+    },
+    "risks": [
+      {
+        "claim": "Customization cost, delivery time, and service capacity may become harder to control as fleet configurations diversify.",
+        "basis": "The official surface demonstrates a wide modular catalog, but does not publish fleet-scale delivery or maintenance economics."
+      }
+    ]
+  }
+}

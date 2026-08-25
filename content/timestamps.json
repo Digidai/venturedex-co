@@ -1159,5 +1159,25 @@
   "worldscape": {
     "published_at": "2026-08-15 05:53:44",
     "first_seen_at": "2026-08-15 05:53:44"
+  },
+  "grounded": {
+    "published_at": "2026-08-25 06:03:01",
+    "first_seen_at": "2026-08-25 06:03:01"
+  },
+  "higgsfield": {
+    "published_at": "2026-08-25 06:03:01",
+    "first_seen_at": "2026-08-25 06:03:01"
+  },
+  "groq": {
+    "published_at": "2026-08-25 06:03:01",
+    "first_seen_at": "2026-08-25 06:03:01"
+  },
+  "terra-industries": {
+    "published_at": "2026-08-25 06:03:01",
+    "first_seen_at": "2026-08-25 06:03:01"
+  },
+  "synthefy": {
+    "published_at": "2026-08-25 06:03:01",
+    "first_seen_at": "2026-08-25 06:03:01"
   }
 }

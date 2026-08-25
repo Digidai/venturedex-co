@@ -1831,5 +1831,19 @@
     "short_name": "Radius Capital",
     "website": "https://www.radius.capital/",
     "description": "Early-stage venture firm investing in aerospace, robotics, mobility, and related physical-AI systems."
+  },
+  "dst-global": {
+    "name": "DST Global",
+    "slug": "dst-global",
+    "short_name": "DST Global",
+    "website": "https://dst-global.com/",
+    "description": "Global investment firm backing private internet and technology companies through large growth-stage investments."
+  },
+  "disruptive": {
+    "name": "Disruptive",
+    "slug": "disruptive",
+    "short_name": "Disruptive",
+    "website": "https://www.disruptive.tech/",
+    "description": "Global technology investment firm founded by Alex Davis and focused on private growth-stage companies."
   }
 }

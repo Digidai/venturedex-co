@@ -1,0 +1,81 @@
+{
+  "slug": "higgsfield",
+  "domain": "higgsfield.ai",
+  "url": "https://higgsfield.ai/",
+  "product_name": "Higgsfield",
+  "summary": "AI image, video, audio, and campaign production organized into cinematic studios.",
+  "editor_note": "The bet is that generative media needs a director's workspace, not a prompt box. Cinema Studio groups shot design and video generation, while Marketing Studio turns briefs into multi-format campaign assets and public projects expose finished work. Image, video, audio, editing, and layers stay inside one production surface. The open question is whether the studio abstractions remain coherent as underlying models and licensing terms change.",
+  "editor_rating": 5,
+  "why_featured": "$400M B for directed AI media",
+  "product_type": "Creator Tools",
+  "region": "US",
+  "tags": "generative video,ai images,creative production,marketing automation,creator tools",
+  "investors": "DST Global",
+  "links": {
+    "product": "https://higgsfield.ai/cinematic-video-generator",
+    "docs": "https://higgsfield.ai/creator-hub/help-center",
+    "careers": "https://jobs.ashbyhq.com/higgsfieldai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$400M",
+      "stage": "Series B",
+      "lead_investor": "DST Global",
+      "date": "2026-08-17",
+      "source_url": "https://techcrunch.com/2026/08/17/higgsfield-raises-400m-series-b-quadrupling-its-valuation-in-8-months-to-5-4b/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-08-25",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Higgsfield official product",
+        "url": "https://higgsfield.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_cinema",
+        "label": "Higgsfield Cinema Studio",
+        "url": "https://higgsfield.ai/cinematic-video-generator",
+        "type": "product"
+      },
+      {
+        "id": "official_marketing",
+        "label": "Higgsfield Marketing Studio",
+        "url": "https://higgsfield.ai/marketing-studio-intro",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "TechCrunch Series B report",
+        "url": "https://techcrunch.com/2026/08/17/higgsfield-raises-400m-series-b-quadrupling-its-valuation-in-8-months-to-5-4b/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Cinema Studio combines cinematic scene creation with camera-oriented controls and a browsable gallery of public projects.",
+        "source_ids": ["official_site", "official_cinema"]
+      },
+      {
+        "claim": "Marketing Studio turns a campaign workflow into coordinated image and video asset generation rather than exposing only a single media model.",
+        "source_ids": ["official_site", "official_marketing"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Creative teams, filmmakers, and marketers producing repeatable visual campaigns with generative media.",
+      "category": "AI creative production",
+      "differentiation": "Model access is organized into directed cinema and campaign workflows with editing, layers, audio, and public project surfaces.",
+      "why_now": "The Series B follows rapid model proliferation that makes production workflow and creative control more valuable than access to one generator."
+    },
+    "risks": [
+      {
+        "claim": "Workflow consistency and rights management may shift as Higgsfield changes the third-party and first-party models available inside each studio.",
+        "basis": "The live product exposes a changing model catalog, while the reviewed public surfaces do not establish stable cross-model behavior or licensing terms."
+      }
+    ]
+  }
+}
