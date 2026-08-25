@@ -8068,8 +8068,13 @@ function initCleanupFixture(
   execFileSync("git", ["init", "-q", main]);
   execFileSync("git", ["-C", main, "config", "user.email", "tests@example.com"]);
   execFileSync("git", ["-C", main, "config", "user.name", "Tests"]);
+  mkdirSync(path.join(main, "docs", "automation"), { recursive: true });
   writeFileSync(path.join(main, "README.md"), "fixture\n");
-  execFileSync("git", ["-C", main, "add", "README.md"]);
+  writeFileSync(
+    path.join(main, "docs", "automation", "venturedex-learning-log.md"),
+    "# Learning log\n",
+  );
+  execFileSync("git", ["-C", main, "add", "README.md", "docs/automation/venturedex-learning-log.md"]);
   execFileSync("git", ["-C", main, "commit", "-qm", "fixture"]);
   execFileSync("git", ["-C", main, "branch", "-M", "main"]);
   execFileSync("git", [
@@ -8098,6 +8103,183 @@ function initCleanupFixture(
   execFileSync("git", ["-C", main, "worktree", "add", "-q", "-b", "test-worktree", target]);
   return { root, main, origin, automationRoot, target };
 }
+
+function writeDailyArchiveAuthority(
+  directory: string,
+  target: string,
+  head: string,
+  status: "blocked" | "active" = "blocked",
+): void {
+  mkdirSync(directory, { recursive: true });
+  const runId = "venturedex-daily-test";
+  const state = {
+    schema_version: 1,
+    automation_id: "venturedex-daily-curator",
+    run_id: runId,
+    status,
+    phase: status === "blocked" ? "closeout" : "discovery",
+    run_worktree: target,
+    base_sha: head,
+    current_sha: head,
+    pushed_sha: "",
+    accepted_slugs: [],
+    latest_blocker: status === "blocked" ? "evidence-only test blocker" : "",
+    lease_epoch: 1,
+    checkpoint_revision: 1,
+  };
+  writeFileSync(
+    path.join(directory, "run-state.md"),
+    `# VentureDex Daily Run State\n\n\`\`\`json\n${JSON.stringify(state, null, 2)}\n\`\`\`\n`,
+  );
+  writeFileSync(
+    path.join(directory, "run-state.lease.json"),
+    JSON.stringify({
+      schema_version: 1,
+      automation_id: "venturedex-daily-curator",
+      run_id: runId,
+      epoch: 1,
+      status: status === "blocked" ? "released" : "active",
+    }),
+  );
+}
+
+test("evidence archive uses HEAD and status CAS before cleaning a terminal Daily log", () => {
+  const fixture = initCleanupFixture();
+  const script = path.join(repoRoot, "scripts", "archive-automation-worktree-evidence.sh");
+  const archiveRoot = path.join(fixture.root, "archives");
+  const dailyDirectory = path.join(fixture.root, "daily-authority");
+  const log = path.join(fixture.target, "docs", "automation", "venturedex-learning-log.md");
+  appendFileSync(log, "terminal blocker evidence\n");
+  const head = execFileSync("git", ["-C", fixture.target, "rev-parse", "HEAD"], {
+    encoding: "utf8",
+  }).trim();
+  writeDailyArchiveAuthority(dailyDirectory, fixture.target, head);
+  const env = {
+    ...process.env,
+    VENTUREDEX_AUTOMATION_WORKTREE_ROOT: fixture.automationRoot,
+    VENTUREDEX_DAILY_AUTOMATION_DIR: dailyDirectory,
+    VENTUREDEX_EVIDENCE_ARCHIVE_ROOT: archiveRoot,
+  };
+
+  try {
+    const dryRun = spawnSync(
+      "bash",
+      [script, "--main", fixture.main, "--path", fixture.target],
+      { env, encoding: "utf8" },
+    );
+    assert.equal(dryRun.status, 0, `${dryRun.stdout}\n${dryRun.stderr}`);
+    assert.match(dryRun.stdout, /DRY-RUN: no archive or worktree mutation performed/);
+    assert.equal(readFileSync(log, "utf8").includes("terminal blocker evidence"), true);
+    const observedHead = dryRun.stdout.match(/^head=([0-9a-f]{40})$/m)?.[1];
+    const statusDigest = dryRun.stdout.match(/^status_sha256=([0-9a-f]{64})$/m)?.[1];
+    assert.equal(observedHead, head);
+    assert.ok(statusDigest);
+
+    const archived = spawnSync(
+      "bash",
+      [
+        script,
+        "--main",
+        fixture.main,
+        "--path",
+        fixture.target,
+        "--execute",
+        "--expected-head",
+        observedHead!,
+        "--expected-status-sha256",
+        statusDigest!,
+      ],
+      { env, encoding: "utf8" },
+    );
+    assert.equal(archived.status, 0, `${archived.stdout}\n${archived.stderr}`);
+    assert.match(archived.stdout, /worktree_clean=true/);
+    assert.equal(execFileSync("git", ["-C", fixture.target, "status", "--porcelain"], { encoding: "utf8" }), "");
+
+    const files = readdirSync(archiveRoot);
+    const bundle = path.join(archiveRoot, files.find((name) => name.endsWith(".bundle"))!);
+    const manifest = JSON.parse(
+      readFileSync(path.join(archiveRoot, files.find((name) => name.endsWith(".json"))!), "utf8"),
+    ) as { archive_commit: string; changed_paths: string[] };
+    execFileSync("git", ["-C", fixture.main, "bundle", "verify", bundle]);
+    assert.deepEqual(manifest.changed_paths, ["docs/automation/venturedex-learning-log.md"]);
+    assert.match(
+      execFileSync(
+        "git",
+        ["-C", fixture.main, "show", `${manifest.archive_commit}:docs/automation/venturedex-learning-log.md`],
+        { encoding: "utf8" },
+      ),
+      /terminal blocker evidence/,
+    );
+  } finally {
+    if (existsSync(fixture.target)) {
+      execFileSync("git", ["-C", fixture.main, "worktree", "remove", "--force", fixture.target]);
+    }
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("evidence archive refuses active Daily ownership and non-evidence content", () => {
+  const fixture = initCleanupFixture();
+  const script = path.join(repoRoot, "scripts", "archive-automation-worktree-evidence.sh");
+  const dailyDirectory = path.join(fixture.root, "daily-authority");
+  const log = path.join(fixture.target, "docs", "automation", "venturedex-learning-log.md");
+  appendFileSync(log, "active evidence\n");
+  const head = execFileSync("git", ["-C", fixture.target, "rev-parse", "HEAD"], {
+    encoding: "utf8",
+  }).trim();
+  writeDailyArchiveAuthority(dailyDirectory, fixture.target, head, "active");
+  const env = {
+    ...process.env,
+    VENTUREDEX_AUTOMATION_WORKTREE_ROOT: fixture.automationRoot,
+    VENTUREDEX_DAILY_AUTOMATION_DIR: dailyDirectory,
+    VENTUREDEX_EVIDENCE_ARCHIVE_ROOT: path.join(fixture.root, "archives"),
+  };
+
+  try {
+    const dryRun = spawnSync(
+      "bash",
+      [script, "--main", fixture.main, "--path", fixture.target],
+      { env, encoding: "utf8" },
+    );
+    const observedHead = dryRun.stdout.match(/^head=([0-9a-f]{40})$/m)?.[1];
+    const statusDigest = dryRun.stdout.match(/^status_sha256=([0-9a-f]{64})$/m)?.[1];
+    const active = spawnSync(
+      "bash",
+      [
+        script,
+        "--main",
+        fixture.main,
+        "--path",
+        fixture.target,
+        "--execute",
+        "--expected-head",
+        observedHead!,
+        "--expected-status-sha256",
+        statusDigest!,
+      ],
+      { env, encoding: "utf8" },
+    );
+    assert.notEqual(active.status, 0);
+    assert.match(`${active.stdout}\n${active.stderr}`, /not terminal blocked\/closeout/i);
+    assert.match(readFileSync(log, "utf8"), /active evidence/);
+
+    mkdirSync(path.join(fixture.target, "content", "startups"), { recursive: true });
+    writeFileSync(path.join(fixture.target, "content", "startups", "unsafe.json"), "{}\n");
+    const extraContent = spawnSync(
+      "bash",
+      [script, "--main", fixture.main, "--path", fixture.target],
+      { env, encoding: "utf8" },
+    );
+    assert.notEqual(extraContent.status, 0);
+    assert.match(`${extraContent.stdout}\n${extraContent.stderr}`, /outside the evidence-only allowlist/i);
+    assert.equal(existsSync(path.join(fixture.target, "content", "startups", "unsafe.json")), true);
+  } finally {
+    if (existsSync(fixture.target)) {
+      execFileSync("git", ["-C", fixture.main, "worktree", "remove", "--force", fixture.target]);
+    }
+    rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
 
 test("cleanup blocks a safe automation path with broken Git metadata", () => {
   const fixture = initCleanupFixture();
