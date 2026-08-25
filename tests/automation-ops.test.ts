@@ -295,6 +295,10 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
       assert.equal(existsSync(fixture.githubMarker), false);
       assert.equal(existsSync(fixture.lock), false);
 
+      const attemptsBeforeRecovery = existsSync(fixture.npmLog)
+        ? readFileSync(fixture.npmLog, "utf8").trim().split("\n").filter(Boolean).length
+        : 0;
+
       rmSync(fixture.npmStarted, { force: true });
       const recovered = spawnSync(
         "bash",
@@ -307,7 +311,10 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
       );
       assert.equal(recovered.status, 0, `${recovered.stdout}\n${recovered.stderr}`);
       assert.match(recovered.stdout, /running npm ci/i);
-      assert.equal(readFileSync(fixture.npmLog, "utf8").trim().split("\n").length, 2);
+      assert.equal(
+        readFileSync(fixture.npmLog, "utf8").trim().split("\n").filter(Boolean).length,
+        attemptsBeforeRecovery + 1,
+      );
       assert.equal(existsSync(fixture.successMarker), true);
       assert.equal(readFileSync(fixture.successMarker, "utf8"), expectedBootstrapMarker(fixture));
       assert.equal(existsSync(fixture.githubMarker), true);
