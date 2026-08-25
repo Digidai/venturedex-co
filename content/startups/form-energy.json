@@ -23,43 +23,36 @@
       "stage": "Series G",
       "lead_investor": "T. Rowe Price",
       "date": "2026-08-12",
-      "source_url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/",
-      "source_name": "Form Energy"
+      "source_url": "https://techcrunch.com/2026/08/12/form-energy-raises-750m-to-build-more-100-hour-batteries-for-the-grid/",
+      "source_name": "TechCrunch"
     }
   ],
   "research": {
-    "verified_at": "2026-08-14",
+    "verified_at": "2026-08-25",
     "sources": [
       {
-        "id": "official_site",
-        "label": "Form Energy official site",
-        "url": "https://formenergy.com/",
+        "id": "official_battery",
+        "label": "Form Energy official LinkedIn post on its 100-hour iron-air battery system",
+        "url": "https://www.linkedin.com/posts/form-energy_form-energy-is-on-the-cusp-of-making-the-activity-7077631336382935040-NKlY",
         "type": "official"
       },
       {
-        "id": "official_battery",
-        "label": "Form Energy battery technology page",
-        "url": "https://formenergy.com/technology/battery-technology/",
-        "type": "product"
-      },
-      {
         "id": "official_formware",
-        "label": "Formware grid modeling software page",
-        "url": "https://formenergy.com/technology/grid-modeling-software/",
+        "label": "The Engine report describing Formware",
+        "url": "https://the-engine.files.svdcdn.com/production/Reports-and-Publications/2019-2020/The-Engine-Report.pdf?dm=1667329965",
         "type": "product"
       },
       {
         "id": "funding_1",
-        "label": "Form Energy Series G announcement",
-        "url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/",
+        "label": "TechCrunch report on Form Energy's Series G",
+        "url": "https://techcrunch.com/2026/08/12/form-energy-raises-750m-to-build-more-100-hour-batteries-for-the-grid/",
         "type": "funding"
       }
     ],
     "product_evidence": [
       {
-        "claim": "Form Energy's first commercial iron-air battery system is designed to store and discharge energy for up to 100 hours using iron, water, and air.",
+        "claim": "Form Energy describes its iron-air battery system as a 100-hour storage product moving from pilot production toward scaled manufacturing.",
         "source_ids": [
-          "official_site",
           "official_battery"
         ]
       },
@@ -83,9 +76,8 @@
       }
     ],
     "breakout_exception": {
-      "reason": "The independent private company clears the Series G bar because a commercial 100-hour iron-air system, a fully described grid-modeling product, a 550,000-square-foot factory, and an official closed financing source make the product and scale inflection directly evaluable rather than relying on funding size alone.",
+      "reason": "The independent private company clears the Series G bar because a commercial 100-hour iron-air system, a described grid-modeling product, and a reported closed financing for factory scale-up make the product and execution inflection directly evaluable rather than relying on funding size alone.",
       "source_ids": [
-        "official_site",
         "official_battery",
         "official_formware",
         "funding_1"
