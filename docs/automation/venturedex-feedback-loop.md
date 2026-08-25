@@ -167,6 +167,8 @@ Acquire or renew the lease in the selected exact-origin worktree before bootstra
 
 Do not store credentials, full page text, private data, or mutable browser identifiers. The checkpoint is routing evidence, not permission to bypass a gate. A later turn must cross-check it against live state before resuming, and ambiguous or conflicting ownership remains a blocker. Release the lease only after a terminal `complete` or `blocked` checkpoint. For a successful run, `complete` is written only after guarded cleanup proves the run worktree is absent and unregistered.
 
+For an unsuccessful terminal `blocked/closeout` run, an append-only learning-log change must not become permanent dirty-worktree debt. After the exact lease is released and learning/memory/inbox evidence plus a zero-process check are durable, `scripts/archive-automation-worktree-evidence.sh` may archive only that learning-log change using exact HEAD/status compare-and-swap. A verified external Git bundle and manifest must exist before the helper cleans the file and ordinary worktree cleanup runs without force. The historical checkpoint remains blocked. Any additional content path, active lease, process, ownership mismatch, or CAS drift remains a hard blocker and is not eligible for this path.
+
 If the blocker remains after evidence-backed iterations, record the root cause, attempted fixes, stable `failure_tags`, and any deferred policy change instead of summarizing it as a generic error.
 
 ## Learning-Log Protocol

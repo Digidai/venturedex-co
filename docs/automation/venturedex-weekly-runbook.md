@@ -80,6 +80,7 @@ Automation must never rewrite this section.
    ```
 
    Then verify the authoritative `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` contains a latest `requested` row for `/weekly/{N}`. The ignored repo-local ledger is a legacy migration source only. If the authenticated browser, Search Console UI, or quota blocks submission, preserve a `retry_pending` row and the exact target URL; later process unresolved canonical detail URLs with bounded `--retry-pending` dry-run and submit commands.
+13. A blocked Weekly draft must not remain indefinitely as an uncommitted worktree. After its learning entry, Weekly automation memory, and inbox closeout are durable, prove no exact matching process owns the path. Dry-run `scripts/archive-automation-worktree-evidence.sh` for the exact worktree, then execute with its printed HEAD and status SHA-256. This route accepts only the learning log plus at most one numeric `content/weekly/N.json`, writes and verifies an external Git bundle/manifest, and cleans only those archived paths. Then use ordinary `cleanup-automation-worktrees.sh` without force. Any additional path, active process, unreachable HEAD, registration problem, or CAS drift stays blocked for manual recovery.
 
 ## Review Passes
 
