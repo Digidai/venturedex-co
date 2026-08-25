@@ -5,12 +5,17 @@ import {
   formatRumDimensionRows,
   formatRumMetric,
   formatSitemapSummary,
+  hubUrls,
   latestSubmittedIndexNowRow,
   missingFromLatestSubmittedIndexNow,
   parseIndexNowHistoryText,
   summarizeLatestIndexNow,
   summarizeSitemapUrls,
 } from "../scripts/promotion/growth-report";
+
+test("hub coverage includes the citation-ready research index", () => {
+  assert.ok(hubUrls().includes("https://venturedex.co/research"));
+});
 
 test("parseIndexNowHistoryText ignores malformed JSONL rows", () => {
   const rows = parseIndexNowHistoryText([

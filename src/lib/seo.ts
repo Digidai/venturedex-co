@@ -4,6 +4,7 @@ import type {
   Investor,
   Startup,
 } from "./types";
+import type { EvidenceIndex } from "./evidence-index";
 import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
 import type { TopicPage } from "./topic-pages";
@@ -464,6 +465,7 @@ export function topicPageJsonLd(topic: TopicPage, siteUrl = DEFAULT_SITE_URL): J
 
 export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
   const url = getSiteUrl(siteUrl);
+  const researchUrl = absoluteUrl("/research", siteUrl);
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
     siteWebSite(siteUrl),
@@ -484,15 +486,15 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
     ),
     stripUndefined({
       "@type": "Dataset",
-      "@id": `${url}/#startup-research-dataset`,
+      "@id": `${researchUrl}#dataset`,
       name: "VentureDex startup research index",
       description: "Source-backed startup profiles, editorial notes, funding signals, investor context, topic maps, and collection metadata published by VentureDex.",
-      url,
+      url: researchUrl,
       inLanguage: "en",
       isAccessibleForFree: true,
       creator: { "@id": `${url}/#organization` },
       publisher: { "@id": `${url}/#organization` },
-      mainEntityOfPage: { "@id": `${url}/#webpage` },
+      mainEntityOfPage: { "@id": `${researchUrl}#webpage` },
       conditionsOfAccess: "Public editorial pages may be used for search, answer-engine retrieval, and citation. Model training permission is governed by robots.txt.",
       distribution: [
         {
@@ -516,6 +518,99 @@ export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): Jso
       ],
     }),
   ]);
+}
+
+export function researchIndexJsonLd(index: EvidenceIndex, siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+  const url = getSiteUrl(siteUrl);
+  const pagePath = "/research";
+  const pageUrl = absoluteUrl(pagePath, siteUrl);
+  const datasetId = `${pageUrl}#dataset`;
+  const title = "VentureDex Startup Evidence Index";
+  const description = "A citation-ready view of VentureDex startup research coverage, source composition, funding stages, editorial evidence, and explicit methodology.";
+  const citation = [
+    "VentureDex.",
+    `\"${title}.\"`,
+    index.asOf ? `Updated ${index.asOf}.` : null,
+    pageUrl,
+  ].filter(Boolean).join(" ");
+
+  return buildJsonLdGraph([
+    siteOrganization(siteUrl),
+    siteWebSite(siteUrl),
+    webPageNode({
+      path: pagePath,
+      title,
+      description,
+      type: "CollectionPage",
+      dateModified: index.asOf,
+      mainEntityId: datasetId,
+      siteUrl,
+    }),
+    breadcrumbList(
+      [
+        { name: "Home", path: "/" },
+        { name: "Research", path: pagePath },
+      ],
+      siteUrl
+    ),
+    stripUndefined({
+      "@type": "Dataset",
+      "@id": datasetId,
+      name: title,
+      description,
+      url: pageUrl,
+      inLanguage: "en",
+      isAccessibleForFree: true,
+      creator: { "@id": `${url}/#organization` },
+      publisher: { "@id": `${url}/#organization` },
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      dateModified: toIsoDateTime(index.asOf),
+      version: index.asOf ?? undefined,
+      citation,
+      keywords: index.topThemes.map((theme) => theme.label),
+      measurementTechnique: "Editorial review of public official product pages, company announcements, repositories, and attributed funding sources. See the VentureDex Editorial Policy.",
+      conditionsOfAccess: "Public editorial pages may be used for search, answer-engine retrieval, and citation. Model training permission is governed by robots.txt. Public access does not grant an open-data license.",
+      variableMeasured: [
+        propertyValue("Startup profiles", index.counts.startups),
+        propertyValue("Investor records", index.counts.investors),
+        propertyValue("Launch records", index.counts.launches),
+        propertyValue("Published weekly issues", index.counts.weeklyIssues),
+        propertyValue("Research source records", index.counts.sourceRecords),
+        propertyValue("Unique source URLs", index.counts.uniqueSourceUrls),
+        propertyValue("Source domains", index.counts.sourceDomains),
+        propertyValue("Product evidence statements", index.counts.evidenceStatements),
+        propertyValue("Editorial risk notes", index.counts.riskNotes),
+      ],
+      distribution: [
+        {
+          "@type": "DataDownload",
+          name: "VentureDex structured AI index",
+          encodingFormat: "application/json",
+          contentUrl: absoluteUrl("/ai-index.json", siteUrl),
+        },
+        {
+          "@type": "DataDownload",
+          name: "VentureDex full LLM context",
+          encodingFormat: "text/markdown",
+          contentUrl: absoluteUrl("/llms-full.txt", siteUrl),
+        },
+        {
+          "@type": "DataDownload",
+          name: "VentureDex RSS feed",
+          encodingFormat: "application/rss+xml",
+          contentUrl: absoluteUrl("/feed.xml", siteUrl),
+        },
+      ],
+    }),
+  ]);
+}
+
+function propertyValue(name: string, value: number): JsonLdNode {
+  return {
+    "@type": "PropertyValue",
+    name,
+    value,
+  };
 }
 
 export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {

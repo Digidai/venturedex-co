@@ -433,7 +433,7 @@ export function missingFromLatestSubmittedIndexNow(rows: IndexNowHistoryRow[], u
   return urls.filter((url) => !submittedUrls.has(url));
 }
 
-function hubUrls(): string[] {
+export function hubUrls(): string[] {
   return [
     "https://venturedex.co/",
     "https://venturedex.co/topics",
@@ -441,6 +441,7 @@ function hubUrls(): string[] {
     "https://venturedex.co/weekly",
     "https://venturedex.co/investors",
     "https://venturedex.co/news",
+    "https://venturedex.co/research",
   ];
 }
 

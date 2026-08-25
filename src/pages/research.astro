@@ -1,0 +1,464 @@
+---
+export const prerender = true;
+
+import Base from "../layouts/Base.astro";
+import {
+  getContentInvestors,
+  getContentStartups,
+} from "../lib/content";
+import { buildEvidenceIndex } from "../lib/evidence-index";
+import { researchIndexJsonLd } from "../lib/seo";
+import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
+import { whatShipsSnapshot } from "../lib/whatships";
+
+const startups = getContentStartups();
+const index = buildEvidenceIndex({
+  startups,
+  investorCount: getContentInvestors().length,
+  launchCount: whatShipsSnapshot.items.length,
+  weeklyIssueCount: getPublishedWeeklyIssuesFromContent(Infinity).length,
+  launchesUpdatedAt: whatShipsSnapshot.source.commit_at,
+});
+
+const title = "Startup Evidence Index and Research Data";
+const description =
+  "Cite VentureDex startup research coverage, source composition, funding stages, evidence statements, limitations, methodology, and machine-readable data.";
+const schema = researchIndexJsonLd(index, Astro.site?.toString());
+const sourceMax = Math.max(1, ...index.sourceTypes.map((item) => item.count));
+const stageMax = Math.max(1, ...index.fundingStages.map((item) => item.count));
+const citation = `VentureDex. “VentureDex Startup Evidence Index.”${index.asOf ? ` Updated ${index.asOf}.` : ""} https://venturedex.co/research`;
+const coverage = index.counts.startups > 0
+  ? Math.round((index.counts.profilesWithSources / index.counts.startups) * 100)
+  : 0;
+
+function number(value: number): string {
+  return new Intl.NumberFormat("en-US").format(value);
+}
+
+function date(value: string | null): string {
+  if (!value) return "Current build";
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(`${value}T00:00:00Z`));
+}
+---
+
+<Base
+  title={title}
+  description={description}
+  modifiedTime={index.asOf}
+  schema={schema}
+>
+  <article class="research-page">
+    <header class="research-hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Public research ledger <span>VDX / {index.asOf ?? "live"}</span></p>
+          <h1>Startup evidence,<br /><em>counted.</em></h1>
+          <p class="lede">
+            VentureDex tracks selected startups through public product evidence, attributed funding sources,
+            investor context, and explicit editorial risk notes. This page makes the coverage citable—and the
+            limits visible.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#cite">Cite this index</a>
+            <a class="secondary-action" href="/ai-index.json">Open structured data</a>
+          </div>
+        </div>
+        <dl class="edition-card">
+          <div>
+            <dt>Snapshot through</dt>
+            <dd><time datetime={index.asOf ?? undefined}>{date(index.asOf)}</time></dd>
+          </div>
+          <div>
+            <dt>Profile source coverage</dt>
+            <dd>{coverage}% <small>{number(index.counts.profilesWithSources)} / {number(index.counts.startups)}</small></dd>
+          </div>
+          <div>
+            <dt>Scope</dt>
+            <dd>Selective <small>not exhaustive</small></dd>
+          </div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="container research-body">
+      <section class="ledger" aria-labelledby="ledger-title">
+        <div class="section-heading">
+          <p class="section-number">01</p>
+          <div>
+            <h2 id="ledger-title">The evidence ledger</h2>
+            <p>Build-time counts from the current published VentureDex inventory.</p>
+          </div>
+        </div>
+
+        <dl class="primary-metrics">
+          <div>
+            <dt>Startup profiles</dt>
+            <dd>{number(index.counts.startups)}</dd>
+          </div>
+          <div>
+            <dt>Research sources</dt>
+            <dd>{number(index.counts.sourceRecords)}</dd>
+          </div>
+          <div>
+            <dt>Source domains</dt>
+            <dd>{number(index.counts.sourceDomains)}</dd>
+          </div>
+          <div>
+            <dt>Evidence statements</dt>
+            <dd>{number(index.counts.evidenceStatements)}</dd>
+          </div>
+        </dl>
+
+        <dl class="secondary-metrics">
+          <div><dt>Investor records</dt><dd>{number(index.counts.investors)}</dd></div>
+          <div><dt>Launch records</dt><dd>{number(index.counts.launches)}</dd></div>
+          <div><dt>Risk notes</dt><dd>{number(index.counts.riskNotes)}</dd></div>
+          <div><dt>Weekly issues</dt><dd>{number(index.counts.weeklyIssues)}</dd></div>
+          <div><dt>Unique source URLs</dt><dd>{number(index.counts.uniqueSourceUrls)}</dd></div>
+        </dl>
+      </section>
+
+      <section class="distribution-section" aria-labelledby="composition-title">
+        <div class="section-heading">
+          <p class="section-number">02</p>
+          <div>
+            <h2 id="composition-title">What sits behind the profiles</h2>
+            <p>Counts describe this editorial index. They are not estimates of the whole venture market.</p>
+          </div>
+        </div>
+
+        <div class="distribution-grid">
+          <div class="chart-panel">
+            <div class="chart-title">
+              <h3>Source composition</h3>
+              <span>{number(index.counts.sourceRecords)} records</span>
+            </div>
+            <div class="bars">
+              {index.sourceTypes.map((item) => (
+                <div class="bar-row">
+                  <div class="bar-label"><span>{item.label}</span><strong>{number(item.count)}</strong></div>
+                  <div class="bar-track" aria-label={`${item.label}: ${number(item.count)} source records`}>
+                    <span style={`--bar-width:${(item.count / sourceMax) * 100}%`}></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="chart-panel">
+            <div class="chart-title">
+              <h3>Profiles by tracked stage</h3>
+              <span>{number(index.counts.startups)} profiles</span>
+            </div>
+            <div class="bars stage-bars">
+              {index.fundingStages.map((item) => (
+                <div class="bar-row">
+                  <div class="bar-label"><span>{item.label}</span><strong>{number(item.count)}</strong></div>
+                  <div class="bar-track" aria-label={`${item.label}: ${number(item.count)} profiles`}>
+                    <span style={`--bar-width:${(item.count / stageMax) * 100}%`}></span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="themes-panel">
+          <h3>Most represented editorial themes</h3>
+          <div class="theme-list">
+            {index.topThemes.map((theme, position) => (
+              <span><small>{String(position + 1).padStart(2, "0")}</small>{theme.label}<strong>{number(theme.count)}</strong></span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="method-section" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="section-number">03</p>
+          <div>
+            <h2 id="method-title">Method and limits</h2>
+            <p>The rules that make these numbers interpretable.</p>
+          </div>
+        </div>
+
+        <div class="method-grid">
+          <article>
+            <p class="method-index">A</p>
+            <h3>Selection</h3>
+            <p>VentureDex is curated. A company enters when public evidence supports a useful product profile; inclusion is not paid and coverage is not exhaustive.</p>
+          </article>
+          <article>
+            <p class="method-index">B</p>
+            <h3>Verification</h3>
+            <p>Research records connect product claims to official pages, company announcements, repositories, or attributed funding coverage. Every profile carries a visible source trail.</p>
+          </article>
+          <article>
+            <p class="method-index">C</p>
+            <h3>Interpretation</h3>
+            <p>Stage and theme counts describe VentureDex coverage—not market share, quality rankings, investment performance, or advice. Funding facts should be checked against the linked primary source.</p>
+          </article>
+          <article>
+            <p class="method-index">D</p>
+            <h3>Updates and corrections</h3>
+            <p>Counts are recalculated when the site builds from version-controlled content. Subjects and readers can send a canonical correction with supporting evidence.</p>
+          </article>
+        </div>
+        <p class="policy-link">
+          Read the full <a href="/editorial-policy">editorial and source policy</a>, or
+          <a href="mailto:hi@venturedex.co?subject=VentureDex%20research%20correction">send a correction</a>.
+        </p>
+      </section>
+
+      <section class="citation-section" id="cite" aria-labelledby="cite-title">
+        <div class="section-heading light-heading">
+          <p class="section-number">04</p>
+          <div>
+            <h2 id="cite-title">Cite or inspect the work</h2>
+            <p>Use VentureDex for its editorial synthesis; use the linked original source for underlying funding facts.</p>
+          </div>
+        </div>
+
+        <div class="citation-grid">
+          <div>
+            <p class="citation-label">Suggested citation</p>
+            <blockquote>{citation}</blockquote>
+            <p class="editorial-lead">
+              Editorial lead: <a href="https://genedai.md" target="_blank" rel="noopener noreferrer">Gene Dai</a>.
+            </p>
+            <p class="rights-note">
+              Public access supports search, answer-engine retrieval, and citation. It does not grant an open-data
+              license or model-training permission; crawler policy remains in <a href="/robots.txt">robots.txt</a>.
+            </p>
+          </div>
+          <nav class="data-links" aria-label="Research data formats">
+            <a href="/ai-index.json"><span>JSON</span><strong>Structured AI index</strong><small>Typed records and source trails &rarr;</small></a>
+            <a href="/llms-full.txt"><span>MD</span><strong>Full research context</strong><small>Plain-text evidence corpus &rarr;</small></a>
+            <a href="/feed.xml"><span>RSS</span><strong>Recent publications</strong><small>Latest profiles and research &rarr;</small></a>
+            <a href="https://github.com/Digidai/venturedex-co" target="_blank" rel="noopener noreferrer"><span>GIT</span><strong>Version history</strong><small>Code and citation metadata &nearr;</small></a>
+          </nav>
+        </div>
+      </section>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .research-page {
+    --ledger-blue: var(--color-accent);
+    --ledger-ink: var(--color-text);
+  }
+
+  .research-hero {
+    border-bottom: 1px solid var(--color-border);
+    background:
+      linear-gradient(90deg, transparent 0, transparent calc(50% - .5px), color-mix(in srgb, var(--color-border) 65%, transparent) 50%, transparent calc(50% + .5px)),
+      repeating-linear-gradient(0deg, transparent 0, transparent 31px, color-mix(in srgb, var(--color-border) 28%, transparent) 32px);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(280px, .65fr);
+    gap: clamp(48px, 8vw, 112px);
+    align-items: end;
+    padding-block: clamp(64px, 10vw, 120px) clamp(48px, 8vw, 88px);
+  }
+
+  .eyebrow,
+  .section-number,
+  .citation-label,
+  .method-index {
+    font-family: var(--font-mono);
+    font-size: .7rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    display: flex;
+    gap: var(--space-3);
+    color: var(--ledger-blue);
+    margin-bottom: var(--space-6);
+  }
+
+  .eyebrow span { color: var(--color-text-secondary); }
+
+  h1 {
+    max-width: 790px;
+    font-size: clamp(3.1rem, 8vw, 7.4rem);
+    line-height: .88;
+    letter-spacing: -.055em;
+  }
+
+  h1 em {
+    color: var(--ledger-blue);
+    font-weight: 350;
+  }
+
+  .lede {
+    max-width: 680px;
+    margin-top: var(--space-8);
+    color: var(--color-text-secondary);
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.75;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-top: var(--space-8);
+  }
+
+  .hero-actions a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: var(--space-3) var(--space-5);
+    border: 1px solid var(--ledger-ink);
+    font-size: .82rem;
+    font-weight: 650;
+    text-decoration: none;
+  }
+
+  .primary-action { background: var(--ledger-ink); color: var(--color-bg); }
+  .secondary-action { color: var(--ledger-ink); background: var(--color-bg); }
+  .hero-actions a:hover { transform: translateY(-1px); }
+
+  .edition-card {
+    border-top: 4px solid var(--ledger-blue);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .edition-card > div {
+    display: grid;
+    gap: var(--space-1);
+    padding: var(--space-4) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .edition-card > div:first-child { border-top: none; }
+  .edition-card dt { color: var(--color-text-secondary); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; }
+  .edition-card dd { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 600; }
+  .edition-card small { display: block; color: var(--color-text-secondary); font-family: var(--font-body); font-size: .72rem; font-weight: 400; }
+
+  .research-body { padding-block: clamp(56px, 8vw, 104px); }
+  .research-body > section + section { margin-top: clamp(72px, 10vw, 128px); }
+
+  .section-heading {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: var(--space-4);
+    align-items: start;
+    max-width: 760px;
+    margin-bottom: var(--space-10);
+  }
+
+  .section-number { color: var(--ledger-blue); padding-top: .42rem; }
+  .section-heading h2 { font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.035em; }
+  .section-heading p:not(.section-number) { margin-top: var(--space-2); color: var(--color-text-secondary); }
+
+  .primary-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--ledger-ink);
+    border-bottom: 1px solid var(--ledger-ink);
+  }
+
+  .primary-metrics > div {
+    padding: var(--space-6) var(--space-4) var(--space-8);
+    border-left: 1px solid var(--color-border);
+  }
+
+  .primary-metrics > div:first-child { border-left: none; }
+  .primary-metrics dt,
+  .secondary-metrics dt { color: var(--color-text-secondary); font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; }
+  .primary-metrics dd { margin-top: var(--space-4); font-family: var(--font-heading); font-size: clamp(2.6rem, 6vw, 5.6rem); line-height: .9; letter-spacing: -.055em; }
+
+  .secondary-metrics {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1px;
+    margin-top: 1px;
+    background: var(--color-border);
+  }
+
+  .secondary-metrics > div { padding: var(--space-4); background: var(--color-bg-card); }
+  .secondary-metrics dd { margin-top: var(--space-2); font-family: var(--font-mono); font-size: 1.05rem; }
+
+  .distribution-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-6); }
+  .chart-panel, .themes-panel { border: 1px solid var(--color-border); background: var(--color-bg-card); padding: clamp(20px, 3vw, 36px); }
+  .chart-title { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); padding-bottom: var(--space-5); border-bottom: 1px solid var(--color-border); }
+  .chart-title h3, .themes-panel h3 { font-size: 1.2rem; }
+  .chart-title span { color: var(--color-text-secondary); font-family: var(--font-mono); font-size: .7rem; }
+  .bars { display: grid; gap: var(--space-4); margin-top: var(--space-6); }
+  .bar-label { display: flex; justify-content: space-between; gap: var(--space-3); margin-bottom: var(--space-2); font-size: .8rem; }
+  .bar-label strong { font-family: var(--font-mono); font-weight: 400; }
+  .bar-track { height: 7px; background: var(--color-badge-bg); overflow: hidden; }
+  .bar-track span { display: block; width: var(--bar-width); min-width: 2px; height: 100%; background: var(--ledger-blue); }
+  .stage-bars .bar-track span { background: var(--ledger-ink); }
+
+  .themes-panel { margin-top: var(--space-6); }
+  .theme-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .theme-list > span { display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-2); align-items: baseline; padding: var(--space-4) var(--space-3); border-bottom: 1px solid var(--color-border); text-transform: capitalize; font-size: .82rem; }
+  .theme-list small, .theme-list strong { font-family: var(--font-mono); font-size: .65rem; color: var(--color-text-secondary); }
+
+  .method-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ledger-ink); }
+  .method-grid article { position: relative; padding: var(--space-8) var(--space-6) var(--space-10) 52px; border-bottom: 1px solid var(--color-border); }
+  .method-grid article:nth-child(odd) { border-right: 1px solid var(--color-border); }
+  .method-index { position: absolute; left: 0; top: 35px; color: var(--ledger-blue); }
+  .method-grid h3 { font-size: 1.3rem; margin-bottom: var(--space-3); }
+  .method-grid article > p:last-child { color: var(--color-text-secondary); line-height: 1.75; }
+  .policy-link { margin-top: var(--space-6); color: var(--color-text-secondary); font-size: .9rem; }
+
+  .citation-section {
+    margin-inline: calc(var(--space-6) * -1);
+    padding: clamp(36px, 6vw, 72px) var(--space-6);
+    background: #111927;
+    color: #f8fafc;
+  }
+
+  .light-heading p:not(.section-number) { color: #9ca8ba; }
+  .citation-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 7vw, 88px); }
+  .citation-label { color: #7ca9ff; margin-bottom: var(--space-4); }
+  blockquote { font-family: var(--font-heading); font-size: clamp(1.35rem, 2.5vw, 2.2rem); line-height: 1.4; }
+  .editorial-lead { margin-top: var(--space-4); color: #c5cedb; font-size: .82rem; }
+  .editorial-lead a { color: #b9d2ff; }
+  .rights-note { margin-top: var(--space-6); color: #9ca8ba; font-size: .82rem; line-height: 1.7; }
+  .rights-note a { color: #b9d2ff; }
+  .data-links { display: grid; border-top: 1px solid #334155; }
+  .data-links a { display: grid; grid-template-columns: 48px 1fr; gap: 0 var(--space-4); padding: var(--space-4) 0; color: #f8fafc; border-bottom: 1px solid #334155; text-decoration: none; }
+  .data-links span { grid-row: 1 / 3; font-family: var(--font-mono); color: #7ca9ff; font-size: .7rem; }
+  .data-links strong { font-size: .9rem; }
+  .data-links small { color: #9ca8ba; font-size: .72rem; }
+  .data-links a:hover strong { color: #9fc0ff; }
+
+  @media (max-width: 900px) {
+    .hero-grid, .citation-grid { grid-template-columns: 1fr; }
+    .edition-card { max-width: 520px; }
+    .primary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .primary-metrics > div:nth-child(3) { border-left: none; border-top: 1px solid var(--color-border); }
+    .primary-metrics > div:nth-child(4) { border-top: 1px solid var(--color-border); }
+    .secondary-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .theme-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .hero-grid { padding-block: var(--space-12); gap: var(--space-10); }
+    h1 { font-size: clamp(3.2rem, 17vw, 5.2rem); }
+    .research-body { padding-inline: var(--space-4); }
+    .section-heading { grid-template-columns: 36px 1fr; }
+    .primary-metrics, .distribution-grid, .method-grid { grid-template-columns: 1fr; }
+    .primary-metrics > div { border-left: none; border-top: 1px solid var(--color-border); }
+    .primary-metrics > div:first-child { border-top: none; }
+    .secondary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .method-grid article:nth-child(odd) { border-right: none; }
+    .theme-list { grid-template-columns: 1fr; }
+    .citation-section { margin-inline: calc(var(--space-4) * -1); padding-inline: var(--space-4); }
+  }
+</style>

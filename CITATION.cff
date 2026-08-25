@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+type: dataset
+message: "If you use VentureDex editorial research, please cite the research index and the original sources for underlying factual claims."
+title: "VentureDex Startup Evidence Index"
+version: 0.1.0
+authors:
+  - family-names: "Dai"
+    given-names: "Gene"
+repository-code: "https://github.com/Digidai/venturedex-co"
+url: "https://venturedex.co/research"
+date-released: 2026-08-25
+keywords:
+  - startups
+  - venture capital
+  - market intelligence
+  - research data
+abstract: >-
+  A selective startup research index connecting public product evidence,
+  attributed funding sources, investor context, launch records, and editorial
+  risk notes.
