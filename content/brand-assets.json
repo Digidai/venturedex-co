@@ -2015,7 +2015,9 @@
       "shape": "icon",
       "local_path": "/logos/companies/form-energy.png",
       "source_page": "https://formenergy.com/",
-      "source_url": "https://formenergy.com/wp-content/uploads/2021/04/cropped-Form-favicon-1-192x192.png"
+      "source_url": "https://formenergy.com/wp-content/uploads/2021/04/cropped-Form-favicon-1-192x192.png",
+      "allow_unreachable_source": true,
+      "note": "The official Form Energy homepage and its same-origin 192px favicon remain the recorded source; GitHub Actions received repeated HTTP 202 responses on 2026-08-25 while the nonempty local PNG remained available."
     },
     "remepy": {
       "name": "Remepy",
@@ -3718,7 +3720,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/smash-capital.png",
       "source_page": "https://smashcap.com/",
-      "source_url": "https://smashcap.com/wp-content/uploads/2024/02/sc.png"
+      "source_url": "https://smashcap.com/wp-content/uploads/2024/02/sc.png",
+      "allow_unreachable_source": true,
+      "note": "The official Smash Capital homepage and its same-origin icon remain the recorded source; GitHub Actions received repeated HTTP 202 responses on 2026-08-25 while the nonempty local PNG remained available."
     },
     "album-vc": {
       "name": "Album VC",
