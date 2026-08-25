@@ -74,6 +74,7 @@ export const GET: APIRoute = () => {
     { loc: "/launches", lastmod: whatShipsSnapshot.source.commit_at, priority: "0.8" },
     { loc: "/collections", lastmod: latestStartupLastmod, priority: "0.7" },
     { loc: "/topics", lastmod: latestTopicLastmod, priority: "0.8" },
+    { loc: "/research", lastmod: latestDiscoveryLastmod, priority: "0.9" },
     { loc: "/about", priority: "0.6" },
     { loc: "/editorial-policy", priority: "0.6" },
     { loc: "/subscribe", priority: "0.4" },

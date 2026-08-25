@@ -236,7 +236,8 @@ export function collectUrls(options: Options): string[] {
       `${INDEXNOW_HOST_URL}/collections`,
       `${INDEXNOW_HOST_URL}/weekly`,
       `${INDEXNOW_HOST_URL}/investors`,
-      `${INDEXNOW_HOST_URL}/news`
+      `${INDEXNOW_HOST_URL}/news`,
+      `${INDEXNOW_HOST_URL}/research`
     );
   }
   if (options.collections) {
@@ -285,7 +286,7 @@ export function validateUrl(url: string): void {
   if (parsed.search || parsed.hash) {
     throw new Error(`IndexNow URL must be canonical without query strings or fragments: ${url}`);
   }
-  const hubPaths = new Set(["/", "/topics", "/collections", "/weekly", "/investors", "/news", "/launches"]);
+  const hubPaths = new Set(["/", "/topics", "/collections", "/weekly", "/investors", "/news", "/launches", "/research"]);
   const aiSurfacePaths = new Set(["/llms.txt", "/llms-full.txt", "/ai-index.json", "/launches.json"]);
   const contentPath = /^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*|collections\/[a-z0-9][a-z0-9-]*|investors\/[a-z0-9][a-z0-9-]*|launches\/[a-z0-9][a-z0-9-]*)$/;
   if (!hubPaths.has(parsed.pathname) && !aiSurfacePaths.has(parsed.pathname) && !contentPath.test(parsed.pathname)) {

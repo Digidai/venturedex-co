@@ -85,6 +85,7 @@ test("collectUrls supports hub pages without stripping homepage slash", () => {
   assert.ok(urls.includes("https://venturedex.co/"));
   assert.ok(urls.includes("https://venturedex.co/topics"));
   assert.ok(urls.includes("https://venturedex.co/collections"));
+  assert.ok(urls.includes("https://venturedex.co/research"));
   assert.equal(urls.filter((url) => url === "https://venturedex.co/").length, 1);
 });
 
@@ -119,6 +120,7 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
 
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/research"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections/ai-agents"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms.txt"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/llms-full.txt"));

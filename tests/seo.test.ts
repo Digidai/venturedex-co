@@ -6,10 +6,12 @@ import {
   homeJsonLd,
   investorJsonLd,
   latestSitemapLastmod,
+  researchIndexJsonLd,
   sitemapLastmodDate,
   siteWebSite,
   startupJsonLd,
 } from "../src/lib/seo";
+import type { EvidenceIndex } from "../src/lib/evidence-index";
 import type { FundingRound, Investor, Startup } from "../src/lib/types";
 
 const SITE_URL = "https://venturedex.co";
@@ -100,6 +102,35 @@ const rounds: FundingRound[] = [
     source_name: null,
   },
 ];
+
+const evidenceIndex: EvidenceIndex = {
+  asOf: "2026-08-23",
+  counts: {
+    startups: 290,
+    investors: 241,
+    launches: 1402,
+    weeklyIssues: 9,
+    profilesWithSources: 290,
+    sourceRecords: 921,
+    uniqueSourceUrls: 921,
+    sourceDomains: 414,
+    evidenceStatements: 755,
+    riskNotes: 301,
+  },
+  sourceTypes: [
+    { id: "official", label: "Official", count: 394 },
+    { id: "product", label: "Product", count: 217 },
+    { id: "funding", label: "Funding", count: 303 },
+    { id: "repository", label: "Repository", count: 7 },
+    { id: "social", label: "Social", count: 0 },
+    { id: "editorial", label: "Editorial", count: 0 },
+  ],
+  fundingStages: [
+    { id: "seed", label: "Seed", count: 100 },
+    { id: "series-a", label: "Series A", count: 123 },
+  ],
+  topThemes: [{ label: "ai agents", count: 93 }],
+};
 
 interface JsonLdGraph {
   "@context": unknown;
@@ -237,6 +268,9 @@ test("homeJsonLd exposes the machine-readable startup dataset distributions", ()
   const dataset = graph["@graph"].find((node) => node["@type"] === "Dataset");
 
   assert.ok(dataset, "home graph should contain a Dataset node for AI consumers");
+  assert.equal(dataset?.["@id"], `${SITE_URL}/research#dataset`);
+  assert.equal(dataset?.url, `${SITE_URL}/research`);
+  assert.deepEqual(dataset?.mainEntityOfPage, { "@id": `${SITE_URL}/research#webpage` });
   assert.equal(dataset?.isAccessibleForFree, true);
   assert.equal(dataset?.conditionsOfAccess, "Public editorial pages may be used for search, answer-engine retrieval, and citation. Model training permission is governed by robots.txt.");
 
@@ -248,9 +282,37 @@ test("homeJsonLd exposes the machine-readable startup dataset distributions", ()
   assert.ok(contentUrls.includes(`${SITE_URL}/feed.xml`));
 });
 
+test("researchIndexJsonLd describes a citable Dataset without inventing a license", () => {
+  const graph = researchIndexJsonLd(evidenceIndex, SITE_URL) as unknown as JsonLdGraph;
+  const dataset = graph["@graph"].find((node) => node["@id"] === `${SITE_URL}/research#dataset`);
+  const page = graph["@graph"].find((node) => node["@id"] === `${SITE_URL}/research#webpage`);
+
+  assert.ok(dataset, "research graph should define its canonical Dataset node");
+  assert.ok(page, "research graph should define its canonical WebPage node");
+  assert.equal(dataset?.url, `${SITE_URL}/research`);
+  assert.equal(dataset?.dateModified, "2026-08-23T00:00:00.000Z");
+  assert.equal(dataset?.isAccessibleForFree, true);
+  assert.equal("license" in dataset!, false, "no open-data license has been granted");
+  assert.match(String(dataset?.citation), /VentureDex Startup Evidence Index/);
+
+  const variables = dataset?.variableMeasured;
+  assert.ok(Array.isArray(variables));
+  assert.ok((variables as Array<Record<string, unknown>>).some((item) => item.name === "Research source records" && item.value === 921));
+
+  const distributions = dataset?.distribution;
+  assert.ok(Array.isArray(distributions));
+  const contentUrls = (distributions as Array<Record<string, unknown>>).map((item) => item.contentUrl);
+  assert.deepEqual(contentUrls, [
+    `${SITE_URL}/ai-index.json`,
+    `${SITE_URL}/llms-full.txt`,
+    `${SITE_URL}/feed.xml`,
+  ]);
+});
+
 test("sitemap source includes AI discovery surfaces", () => {
   const source = readFileSync("src/pages/sitemap.xml.ts", "utf8");
 
+  assert.ok(source.includes('loc: "/research"'));
   assert.ok(source.includes('loc: "/llms.txt"'));
   assert.ok(source.includes('loc: "/llms-full.txt"'));
   assert.ok(source.includes('loc: "/ai-index.json"'));

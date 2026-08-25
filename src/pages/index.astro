@@ -6,10 +6,14 @@ import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
 import {
+  getContentInvestors,
   getContentStartups,
   getContentNewsEligibleFundingRounds,
 } from "../lib/content";
+import { buildEvidenceIndex } from "../lib/evidence-index";
 import { homeJsonLd } from "../lib/seo";
+import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
+import { whatShipsSnapshot } from "../lib/whatships";
 
 // Prerendered at build time from version-controlled content (no per-request D1).
 // Default order mirrors the old D1 "featured" sort (is_featured DESC, then
@@ -21,6 +25,13 @@ const startups = getContentStartups().sort((a, b) => {
 const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
 
 const startupCount = startups.length;
+const evidenceIndex = buildEvidenceIndex({
+  startups,
+  investorCount: getContentInvestors().length,
+  launchCount: whatShipsSnapshot.items.length,
+  weeklyIssueCount: getPublishedWeeklyIssuesFromContent(Infinity).length,
+  launchesUpdatedAt: whatShipsSnapshot.source.commit_at,
+});
 const countLabel = startupCount === 1 ? "company" : "companies";
 const description =
   "Explore source-backed startup profiles with product evidence, funding signals, investor context, editorial notes, and canonical company links.";
@@ -39,6 +50,20 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
           Profiles include product context, funding signals, investor links, and source-backed notes.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section class="research-route" aria-labelledby="research-route-title">
+    <div class="container research-route-inner">
+      <p class="research-kicker">Public research ledger</p>
+      <div>
+        <h2 id="research-route-title">
+          {evidenceIndex.counts.startups} profiles. {evidenceIndex.counts.sourceRecords} linked sources.
+          <em>One citable index.</em>
+        </h2>
+        <p>Inspect the methodology, evidence coverage, source mix, funding-stage distribution, and machine-readable data behind VentureDex.</p>
+      </div>
+      <a href="/research">Open the Evidence Index <span aria-hidden="true">&rarr;</span></a>
     </div>
   </section>
 
@@ -241,6 +266,54 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
     padding: var(--space-8) 0 var(--space-16);
   }
 
+  .research-route {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-card);
+  }
+
+  .research-route-inner {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr) auto;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-block: var(--space-6);
+  }
+
+  .research-kicker {
+    font-family: var(--font-mono);
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .research-route h2 {
+    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+    letter-spacing: -.025em;
+  }
+
+  .research-route h2 em {
+    color: var(--color-accent);
+    font-weight: 400;
+  }
+
+  .research-route div > p:last-child {
+    margin-top: var(--space-1);
+    color: var(--color-text-secondary);
+    font-size: .78rem;
+  }
+
+  .research-route a {
+    display: inline-flex;
+    gap: var(--space-2);
+    align-items: center;
+    color: var(--color-text);
+    font-size: .78rem;
+    font-weight: 650;
+    white-space: nowrap;
+    text-underline-offset: 4px;
+  }
+
   .result-count {
     font-size: 0.8rem;
     color: var(--color-text-secondary);
@@ -308,6 +381,12 @@ const schema = homeJsonLd(startups, Astro.site?.toString());
 
     .card-grid {
       grid-template-columns: 1fr;
+    }
+
+    .research-route-inner {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+      padding-block: var(--space-5);
     }
   }
 </style>
