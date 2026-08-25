@@ -4846,3 +4846,90 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - reward_epoch4: 0; primary-source browser evaluation corrected one funding-stage error and preserved content integrity, but the inherited pool size made a compliant publishable batch impossible.
 - root_cause_epoch4: The original discovery stopped at the minimum pool size before knowing how many candidates would clear. With a 3:1 per-run rejection requirement and up to five accepted items, a pool of 11 has insufficient decision capacity whenever more than two candidates qualify.
 - proposed_change_epoch4: deferred. Future runs should size the single bounded discovery pool near 20 whenever early signals suggest multiple strong candidates, while still performing discovery exactly once. Changing the current fixed pool or weakening the ratio/taste contracts would exceed this resumed run's authority.
+### 2026-08-21 13:49 CST — Daily preflight stopped on cross-provider TLS instability
+
+- candidate_count: 0; the run stopped before discovery.
+- accepted: 0.
+- rejected: 0.
+- rejection_bar_met: n/a; no candidate decision was made.
+- outcome: stopped before discovery. No startup, rejection, timestamp, brand asset, screenshot, Weekly, commit, push, deploy, live smoke, GSC, or Newsletter side effect occurred.
+- run_state: run `venturedex-daily-20260821T054414Z`, detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260821T054414Z/venturedex.co`, exact `origin/main` baseline `903d113c1ac6e77acc6342a941f19e6d8b6860f4`, lease epoch 6. Preflight blocker was persisted at checkpoint revision 22 before this append.
+- docs_preflight: pass. The required Daily control-plane documents were read in trusted order; the learning-log template and latest ten entries were reviewed. Repository truth is JSON-first Astro 7 / Cloudflare adapter 14, and no Markdown conflict or missing file was found.
+- dependency_audit: pass. Credential-free `npm audit --audit-level=high --json` reported zero vulnerabilities, with no package, lockfile, script, config, or environment mutation.
+- bootstrap: fail before discovery after one evidence-backed recovery iteration. The first required bootstrap verified the Cloudflare token active, confirmed missing R2 scope as non-blocking, restored 351 packages with zero vulnerabilities, then exhausted its bounded GitHub Actions checks on `unexpected EOF` and `TLS handshake timeout`. A target-scoped `./scripts/check-github-actions.sh` diagnostic subsequently proved both CI and Deploy workflows active after bounded retries, ruling out disabled workflows or invalid repository configuration. The single bootstrap rerun then failed earlier on `api.cloudflare.com` with an SSL handshake/read timeout. Cross-provider TLS instability therefore remained the concrete external blocker; no third or blind retry was attempted.
+- validation: not run; bootstrap is a mandatory hard gate before discovery and downstream validation.
+- build_db: not run.
+- build_app: not run.
+- screenshot: n/a.
+- commit_push: n/a; full local gates were not eligible after bootstrap failure.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not_checked; no commit exists.
+- gsc: n/a; there are no current-run startup URLs and no Search Console action or retry occurred.
+- newsletter: not manually triggered; no publication timestamp or delay window was created.
+- transport_recovery: the first bootstrap process was resumed only through its current command session. The diagnostic and rerun used fresh commands; no prior exec cell, tool-call id, PID, browser action, or previous-run process was reused.
+- worktree_cleanup: blocked by the required uncommitted learning evidence. The exact detached worktree remains registered and must not be force-removed; the dirty main checkout and every unrelated worktree remain read-only and unchanged.
+- failure_tags: [external_dependency]
+- reward: 0.
+- dominant_failure_mode: unstable outbound TLS connectivity across GitHub and Cloudflare prevented the mandatory bootstrap from reaching a clean terminal success.
+- proposed_change: none. Existing bounded retry, hard-stop, CAS checkpoint, and dirty-worktree preservation rules produced the correct fail-closed outcome.
+- decision: none; no Adaptive Heuristic or automation self-edit was made.
+- affected_file: this append-only learning log, the external Daily run-state/lease files, and automation memory.
+- affected_section: Daily preflight, bootstrap transport evidence, terminal blocked closeout, and worktree preservation.
+- closeout: at 2026-08-21 13:50:57 CST (+0800) / 2026-08-21T05:50:57Z, CAS revision 23 persisted terminal `blocked/closeout` with the exact dirty worktree path and file, then epoch 6 was released. Cleanup was not attempted because the required learning evidence is uncommitted; the worktree remains registered and recoverable.
+
+### 2026-08-23 10:47 CST — Interrupted Daily received a bounded recovery closeout
+
+- candidate_count: 0; this recovery reused no candidate pool and performed no discovery.
+- accepted: 0.
+- rejected: 0.
+- rejection_bar_met: n/a; bootstrap never passed in the interrupted run, so no editorial decision was eligible.
+- outcome: recovery closeout only for `venturedex-daily-20260821T054414Z`. Refreshed refs place current `origin/main` at `de5816da0b6caa2ff31c78b7a2dfc8d63645338e`; the recorded base/HEAD `903d113c1ac6e77acc6342a941f19e6d8b6860f4` remains its ancestor. Exact run-id/worktree process filtering found no matching process. No bootstrap, discovery, content, Weekly, screenshot, validation, commit, push, deploy, live smoke, GSC action, or Newsletter trigger was repeated.
+- run_state: acquired the released same-run lease with the real `CODEX_THREAD_ID` as epoch 7 at checkpoint revision 23, then CAS-checkpointed `active/closeout` at revision 24. The final terminal checkpoint records the same exact worktree and only dirty file before releasing the lease.
+- validation: not run; this is a closeout of a pre-discovery bootstrap failure, not permission to restart downstream gates. `git diff --check` is the only applicable repository check and passes.
+- build_db: not run.
+- build_app: not run.
+- screenshot: n/a.
+- commit_push: n/a; no content or docs commit is eligible because the original mandatory bootstrap never reached a clean success.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not_checked; no current-run commit exists.
+- gsc: n/a; the authoritative central ledger contains no row or URL for this run, and no browser or request-indexing action occurred.
+- newsletter: not manually triggered; no publication timestamp or delay window exists for this run, so D1 send/delivery state is unaffected.
+- transport_recovery: all evidence came from run-state, lease, filesystem, Git refs/worktrees, filtered process inspection, and the central GSC ledger. No prior exec cell, tool-call id, PID, browser tab, or click was reused.
+- worktree_cleanup: blocked. `/Users/dai/.codex/worktrees/venturedex-daily-20260821T054414Z/venturedex.co` is registered and dirty only at `docs/automation/venturedex-learning-log.md`; guarded cleanup must not remove it. The dirty main checkout and unrelated worktrees remain read-only.
+- failure_tags: [external_dependency, worktree_cleanup]
+- reward: 0.
+- dominant_failure_mode: the prior external TLS bootstrap blocker is terminal for this run; uncommitted required learning evidence prevents guarded cleanup.
+- proposed_change: none. The existing one-cycle, CAS, process-filtering, and dirty-worktree preservation guards produced the intended fail-closed result.
+- decision: none; no heuristic or automation self-edit was made.
+- affected_file: this append-only learning log, the external Daily run-state/lease files, and automation memory.
+- affected_section: exact-run recovery routing, terminal blocked closeout, and worktree preservation.
+
+### 2026-08-23 13:44 CST — Interrupted Daily closeout remained fail-closed on preserved evidence
+
+- candidate_count: 0; this was one recovery closeout for the existing run and did not start discovery.
+- accepted: 0.
+- rejected: 0.
+- rejection_bar_met: n/a; the original mandatory bootstrap never passed, so no editorial decision was eligible.
+- outcome: recovery closeout only for `venturedex-daily-20260821T054414Z`. The exact detached worktree remains at `903d113c1ac6e77acc6342a941f19e6d8b6860f4`; live `refs/heads/main` is `de5816da0b6caa2ff31c78b7a2dfc8d63645338e`, and the recorded HEAD remains its ancestor. Exact run-id/path filtering found no matching process. No bootstrap, discovery, candidate review, content, Weekly, screenshot, full gate, commit, push, deploy, live smoke, GSC action, browser action, or Newsletter trigger was repeated.
+- run_state: acquired the released same-run lease with the real `CODEX_THREAD_ID` as epoch 8 from checkpoint revision 25 and CAS-checkpointed `active/closeout` at revision 26. Terminal state is persisted only after this entry and automation memory are durable.
+- validation: not run; a pre-discovery bootstrap failure is not eligible for downstream gates. The applicable `git diff --check` passes.
+- build_db: not run.
+- build_app: not run.
+- screenshot: n/a.
+- commit_push: n/a; no content or docs commit is eligible because the mandatory bootstrap never reached a clean success.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not_checked; no current-run commit or pushed SHA exists.
+- gsc: n/a; the central ledger contains no current-run URL/action, and no click, retry, dry-run, or browser mutation occurred.
+- newsletter: not manually triggered; no publication timestamp or delivery window exists for this run, so `newsletter_sends` and `newsletter_deliveries` remain unaffected.
+- transport_recovery: no transport interruption occurred in this closeout. All evidence came from current run-state/lease, exact filesystem and Git state, live remote-ref inspection, filtered process inspection, and the central GSC ledger; no stale exec cell, tool-call id, PID, tab, or click was reused.
+- worktree_cleanup: blocked. `/Users/dai/.codex/worktrees/venturedex-daily-20260821T054414Z/venturedex.co` is registered and dirty only at this append-only learning log, which contains required original blocker and recovery evidence. Guarded cleanup must not remove it; the dirty main checkout and unrelated historical Daily/Weekly worktrees remain read-only.
+- failure_tags: [external_dependency, worktree_cleanup]
+- reward: 0.
+- dominant_failure_mode: the original cross-provider TLS bootstrap failure remains terminal for this run, and required uncommitted append-only evidence keeps guarded cleanup ineligible.
+- proposed_change: none. Existing CAS ownership, one-cycle recovery, exact process filtering, and dirty-worktree cleanup guards continue to produce the intended fail-closed outcome.
+- decision: none; no Adaptive Heuristic or automation self-edit was made.
+- affected_file: this append-only learning log, the external Daily run-state/lease files, and automation memory.
+- affected_section: exact-run recovery routing, terminal blocked closeout, evidence preservation, and worktree cleanup.
