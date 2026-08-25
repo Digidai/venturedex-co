@@ -4805,3 +4805,44 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: applied without adding Google Indexing API usage, Search Console credentials, copied media, source-site attribution, runtime fetching, D1 coupling, or newsletter side effects. IndexNow receipt, sitemap availability, crawl, and indexing remain distinct states.
 - affected_file: launch sync/parser, IndexNow client and package commands, AI discovery builders and routes, sitemap, scheduled workflow, focused tests, design/implementation plans, automation README/runbook, and this append-only learning entry.
 - affected_section: launch sync idempotency, post-deploy search notification, AI/LLM discovery inventory, sitemap modification signals, evidence boundaries, retries, and release observability.
+### 2026-08-20 12:04 CST — Daily discovery stopped on unavailable shared browser CDP
+
+- candidate_count: 11 fresh candidates in one bounded discovery pool after exact startup/rejection deduplication — Rillet, Grounded, Higgsfield, Sonic Fire Tech, Terra Industries, Groq, Wispr, Gravis Robotics, Vals AI, amber, and Astute.
+- accepted: 0; product evaluation did not begin, so no candidate was promoted.
+- rejected: 0 persisted decisions. Sonic Fire Tech's current article lacks a named round stage, but the run stopped before the full decision set was completed and therefore did not append a partial rejection batch.
+- rejection_bar_met: n/a; the run stopped before F1-F4/taste decisions were finalized.
+- outcome: stopped after discovery and before content preparation because the required shared-browser preflight could not prove an owned, connected Comet CDP session.
+- bootstrap: pass in detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260820T033554Z/venturedex.co` from exact `origin/main` baseline `7dcc9feba94120f8be85b66ca2bfa92a12c17df9`. Cloudflare token and both GitHub Actions workflows were active, `npm ci` restored 351 packages, the audit reported zero vulnerabilities, and the known R2 HTTP 401 remained non-blocking.
+- discovery: one bounded pool only. Six duplicate decisions were suppressed before the 11 fresh candidates were fixed: Smallest.ai, Inforcer, Encore AI, and Pangram were already rejected; Dili and Polar were already published. No second discovery cycle was started.
+- validation: n/a; no content decision or allowed content file changed, so the authoritative publish gate was not started.
+- build_db: n/a.
+- build_app: n/a.
+- screenshot: n/a; no screenshot command ran.
+- commit_push: n/a; no commit or push occurred.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: n/a; no release was requested or observed.
+- gsc: n/a; no startup page was published, no dry-run or live submission ran, and no prior pending URL was retried.
+- newsletter: not manually triggered. No content was published, so no new delay window or delivery state exists.
+- transport_recovery: none. All commands completed or were polled through their current session handle; no stale exec cell, PID, tool-call id, or browser action was reused.
+- browser_blocker: `bb-browser` 0.14.2 reported `Daemon running: yes`, `CDP connected: no`, and no managed tabs. A separate read-only request to `http://127.0.0.1:19825/json/version` failed to connect, and no process was listening on TCP 19825. The runbook forbids starting, stopping, restarting, or killing an ambiguously owned shared daemon, so no browser lifecycle mutation or Chrome fallback was attempted.
+- worktree_cleanup: blocked by durable evidence preservation. This append-only learning entry is the only repository change; the exact dirty worktree remains registered and must not be force-removed.
+- failure_tags: [screenshot_env, external_dependency, worktree_cleanup]
+- reward: 0; the run preserved content quality and side-effect boundaries but produced no completed candidate decisions or publication.
+- dominant_failure_mode: browser environment ownership/availability. Bootstrap and repository state were healthy, but the mandatory product-evaluation browser surface was unavailable and could not be repaired within scheduled-run authority.
+- proposed_change: none. The existing daemon-ownership and fail-closed heuristics produced the intended result; no policy, script, validator, package, lockfile, Weekly content, deployment guard, GSC guard, or newsletter behavior should change from this event alone.
+- decision: none; only this append-only learning entry and automation memory were updated.
+- affected_file: `docs/automation/venturedex-learning-log.md`, central run-state/lease files, and automation memory.
+- affected_section: bounded discovery, shared-browser ownership, interruption-safe checkpointing, and blocked worktree closeout.
+- resume_attempt: At 2026-08-20 12:13 CST, a human-requested same-run continuation acquired epoch 3 and preserved the original 11-candidate pool without repeating discovery or bootstrap.
+- resume_browser_evidence: The second read-only preflight again found `CDP connected: no`, no TCP listener on `127.0.0.1:19825`, and no usable Comet target. The sole `about:blank` target created by the status/list probe was closed with the installed CLI's required explicit `--tab 0` form; no shared daemon or browser process was started, stopped, restarted, or killed.
+- final_resume_outcome: blocked again before F1-F4, taste review, content decisions, screenshots, gates, commit/push, deploy, GSC, or Newsletter actions. The existing browser-ownership heuristic remains sufficient; no policy or code change is proposed.
+- authorized_browser_resume: At 2026-08-20 12:24 CST, the human explicitly authorized starting Comet. Direct executable starts exited without a CDP listener, while a macOS `open -na` launch using the run-owned profile `/tmp/venturedex-daily-20260820T033554Z-comet-profile-openna` produced exact PID 15747 and a healthy Chrome 151 CDP endpoint on `127.0.0.1:19825`. The pre-existing user Comet process was not stopped or modified.
+- corrected_source_evidence: The resumed browser review found Sonic Fire Tech's official August 19 announcement, which explicitly says the O.H.I.O. Fund led the financing, Khosla Ventures reinvested, and the round capped Seed funding at $15M. This supersedes the earlier provisional statement that the current article lacked a named stage; no historical line was rewritten.
+- scored_pool_outcome: Seven candidates had current canonical Seed-through-Series-C financing plus sufficient public product evidence to clear the hard gates and taste review: Rillet, Higgsfield, Sonic Fire Tech, Groq, Wispr, Gravis Robotics, and Vals AI. Grounded and Terra Industries were outside the 30-day discovery window; amber's euro-denominated financing could not satisfy the immutable exact-dollar field without conversion; Astute was pre-seed.
+- ratio_blocker: The fixed 11-candidate pool cannot satisfy the Daily contracts simultaneously. Accepting every qualifying startup up to the five-item cap requires five additions, but only six candidates remain available as complete v2 rejections, below the required 15 rejections. Limiting additions to two would meet the arithmetic ratio but would require falsely rejecting five products that independently cleared the stated bar. A second discovery cycle could enlarge the pool but is explicitly forbidden for this run.
+- final_epoch4_outcome: fail-closed before content preparation. No startup, rejection, brand asset, timestamp, screenshot, commit, push, deploy, GSC request, or Newsletter action was created. The exact dirty worktree is preserved because this learning evidence is uncommitted, and the terminal blocked lease is released after checkpointing.
+- failure_tags_epoch4: [discovery_pool_underfilled, content_contract, worktree_cleanup]
+- reward_epoch4: 0; primary-source browser evaluation corrected one funding-stage error and preserved content integrity, but the inherited pool size made a compliant publishable batch impossible.
+- root_cause_epoch4: The original discovery stopped at the minimum pool size before knowing how many candidates would clear. With a 3:1 per-run rejection requirement and up to five accepted items, a pool of 11 has insufficient decision capacity whenever more than two candidates qualify.
+- proposed_change_epoch4: deferred. Future runs should size the single bounded discovery pool near 20 whenever early signals suggest multiple strong candidates, while still performing discovery exactly once. Changing the current fixed pool or weakening the ratio/taste contracts would exceed this resumed run's authority.
