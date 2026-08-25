@@ -319,6 +319,15 @@ Path(manifest).write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n")
 PY
 chmod 600 "$BUNDLE_TMP" "$MANIFEST_TMP"
 
+FINAL_BUNDLE="$ARCHIVE_ROOT/${RUN_LABEL}-${ARCHIVE_COMMIT}.bundle"
+FINAL_MANIFEST="$ARCHIVE_ROOT/${RUN_LABEL}-${ARCHIVE_COMMIT}.json"
+[ ! -e "$FINAL_BUNDLE" ] && [ ! -e "$FINAL_MANIFEST" ] \
+  || die "archive destination already exists for commit $ARCHIVE_COMMIT"
+mv "$BUNDLE_TMP" "$FINAL_BUNDLE"
+mv "$MANIFEST_TMP" "$FINAL_MANIFEST"
+git -C "$MAIN_REPO" update-ref -d "$TEMP_REF"
+TEMP_REF=""
+
 STATUS_BEFORE_CLEAN="$(git -C "$TARGET" status --porcelain=v1 --untracked-files=all)"
 HEAD_BEFORE_CLEAN="$(git -C "$TARGET" rev-parse HEAD)"
 [ "$HEAD_BEFORE_CLEAN" = "$HEAD_SHA" ] || die "worktree HEAD changed before archived cleanup"
@@ -341,15 +350,6 @@ if [ "${#UNTRACKED_PATHS[@]}" -gt 0 ]; then
 fi
 [ -z "$(git -C "$TARGET" status --porcelain=v1 --untracked-files=all)" ] \
   || die "worktree changed while archived paths were being cleaned; preserve and inspect it"
-
-FINAL_BUNDLE="$ARCHIVE_ROOT/${RUN_LABEL}-${ARCHIVE_COMMIT}.bundle"
-FINAL_MANIFEST="$ARCHIVE_ROOT/${RUN_LABEL}-${ARCHIVE_COMMIT}.json"
-[ ! -e "$FINAL_BUNDLE" ] && [ ! -e "$FINAL_MANIFEST" ] \
-  || die "archive destination already exists for commit $ARCHIVE_COMMIT"
-mv "$BUNDLE_TMP" "$FINAL_BUNDLE"
-mv "$MANIFEST_TMP" "$FINAL_MANIFEST"
-git -C "$MAIN_REPO" update-ref -d "$TEMP_REF"
-TEMP_REF=""
 
 echo "archived_commit=$ARCHIVE_COMMIT"
 echo "bundle=$FINAL_BUNDLE"
