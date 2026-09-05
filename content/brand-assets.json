@@ -442,7 +442,7 @@
       "shape": "icon",
       "local_path": "/logos/companies/moment.svg",
       "source_page": "https://moment.com",
-      "source_url": "https://moment.com/favicon.svg"
+      "source_url": "https://moment.com/icon.svg?icon.2raxy1qfzhynf.svg"
     },
     "pivot": {
       "name": "Pivot",
@@ -2566,7 +2566,7 @@
       "shape": "icon",
       "local_path": "/logos/investors/capitalg.png",
       "source_page": "https://capitalg.com",
-      "source_url": "https://capitalg.com/assets/favicon/favicon-192.png"
+      "source_url": "https://capitalg.com/favicon/favicon-192.png"
     },
     "base10-partners": {
       "name": "Base10 Partners",
