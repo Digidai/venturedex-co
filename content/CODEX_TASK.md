@@ -253,9 +253,15 @@ N6: 去掉产品名，这段话本身值得读吗？
 
 **4.5 截图**
 
+先用本次任务的 Codex 内置浏览器标签页打开官网，通过可见页面操作关闭真实遮挡产品的 consent/聊天浮层，等待产品内容可读，保存截图到绝对路径并做视觉复核。不得把空白页、加载中页面或被遮挡的页面标为已复核，也不通过脚本删除真实产品内容。
+
+取实际文件路径的方法见 `content/STANDARD.md` 4.6：在 CUA 会话中先用 `var productCapture = await taskTab.getScreenshot()` 显示并保留原生捕获字节，视觉复核后用该会话的 `node:fs/promises.writeFile` 将字节原样保存到本次任务独占的绝对路径；不需要另一套浏览器工具。
+
 ```bash
-./scripts/screenshot.sh {slug} {url}
+./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed
 ```
+
+该命令只导入已复核的 Codex 截图并生成本地 `public/screenshots/{slug}.webp`，以 contain 方式适配 1440x900；不启动其他浏览器、不上传 R2。转换后再目检文字可读、画面完整，随后随静态站点发布。
 
 ### Step 5: 验证和提交
 
@@ -345,8 +351,8 @@ git add content/weekly/
 git commit -m "content: weekly #N - {title}"
 git push
 # after deploy and live smoke:
-bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
-bash scripts/submit-gsc-direct.sh --latest-weekly
+python3 scripts/gsc-codex.py plan --latest-weekly
+# Follow docs/automation/gsc-codex-browser.md for intent -> single click -> evidence.
 ```
 
 规则：
@@ -370,7 +376,12 @@ bash scripts/submit-gsc-direct.sh --latest-weekly
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
-11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先 dry-run 再通过 `scripts/submit-gsc-direct.sh` 提交对应详情页到 Google Search Console，并检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；普通未点击积压通过 `--retry-pending` 有界重试。`post_request_confirmation_unknown` 不得普通重试；只能把精确 artifact 交给 `--reconcile-post-click-requested` 做零点击只读核验，且只有 route-bound `success_static` 才能转为 `requested`。
+11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先用 `python3 scripts/gsc-codex.py plan --latest-daily` 或 `--latest-weekly` 只读确认目标，再通过 Codex 内置浏览器的 CUA 工具完成 Google Search Console URL Inspection。点击前用 `begin` 持久化精确 URL 的意图，至多点击一次，观察结果后用 `finish` 记录证据；不能把浏览器计划、按钮点击或通用成功提示当作完成。必须检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录，且 `requested` 不等于已收录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；普通未点击积压先用 `plan --retry-pending` 选择有界批次。`post_request_confirmation_unknown` 不得普通重试或再次点击，只能做精确 URL 绑定的零点击证据核对；不能证明已有成功状态时保留 blocker。
+12. 产品试用、页面核验、截图、登录态和 GSC 全程使用 Codex 内置浏览器的 CUA 工具，只操作本次创建的标签页；每次动作以新读取的可见页面为依据。不再依赖 `bb-browser`、Comet/Chrome CDP 或共享 daemon，也不得把旧浏览器当作失败 fallback。Codex 浏览器或登录态不可用时记录具体 blocker；不操作用户标签页，不启动、重启或终止其他浏览器进程。
+
+GSC 若在 immutable receipt 写入后、终态 ledger 追加前中断，可用 `python3 scripts/gsc-codex.py recover --attempt ID` 从权威目录重放同一 attempt 已存在的 receipt。该命令不操作浏览器、不接受新 evidence；原 receipt 可超过五分钟，但普通 `finish` 新鲜度限制不变。只允许补记同一 pending attempt 的原终态或对已一致终态返回 no-op；unknown receipt 仍为未知，不获得新的点击授权。完整协议见 `docs/automation/gsc-codex-browser.md`。
+
+登录/浏览器在点击前阻塞，或 quota 后仍有从未点击的 URL 时，用 `python3 scripts/gsc-codex.py defer --url URL --reason "实际 blocker；目标从未点击"` 逐个写入安全积压，下次由 `plan --retry-pending` 发现。reason 限单行、非敏感、最多 500 字符；`defer` 不操作浏览器、不做 live check，也不授权点击。不得把任何已点击、pending、requested、unknown、orphan intent 或旧 reconciliation 目标重置成 `retry_pending`。
 
 ## 文件操作范围
 

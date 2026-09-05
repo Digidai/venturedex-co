@@ -140,7 +140,7 @@ When a run hits an operational or policy error, the automation should:
 
 1. capture the exact failing step, command, artifact, and observed error
 2. inspect the local script, validator, config, and recent learning-log evidence most likely tied to that failure
-3. when browser interaction is needed for investigation, use the [`bb-browser`](/Users/dai/.codex/skills/bb-browser/SKILL.md) workflow rather than direct Chrome-driven steps
+3. when browser interaction is needed for investigation, use task-owned Codex in-app browser tabs through the CUA browser tool, act only from fresh visible page state, and leave user tabs and other browser processes untouched; do not fall back to `bb-browser`, Comet/Chrome CDP, or daemon lifecycle commands
 4. consult official or other primary external sources only when the failure depends on current external behavior or a referenced system outside the repo
 5. classify the blocker as content, environment, policy, external dependency, or unknown
 6. apply the smallest allowed fix or heuristic adjustment supported by evidence

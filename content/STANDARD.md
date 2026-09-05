@@ -352,11 +352,29 @@ editor_note 是 VentureDex 的核心价值。每一条都应该让读者觉得"�
 
 #### 4.6 截图
 
-```bash
-./scripts/screenshot.sh {slug} {url}
+使用本次任务的 Codex 内置浏览器标签页打开产品官网，依据可见页面操作处理 consent/聊天浮层，确认产品内容可读后保存截图到绝对路径。先视觉复核原图，再导入；空白、加载未完成或产品被遮挡的截图不能标记为已复核。不得通过脚本删除真实产品内容来制造干净画面。
+
+在 CUA 工具的持久 JavaScript 会话中，`taskTab` 必须是本次创建并已核验页面状态的标签页句柄。原生截图会显示图像并返回原始字节：
+
+```javascript
+var productCapture = await taskTab.getScreenshot();
 ```
 
-截图上传到 R2，同时保存 `public/screenshots/{slug}.webp` 到 git。
+先检查工具显示的图像，再在同一 CUA 会话中将原始字节保存到本次任务独占的绝对路径；目录须已存在，`wx` 防止覆盖已有文件：
+
+```javascript
+await (await import("node:fs/promises")).writeFile(
+  "/absolute/run-artifacts/product.png", productCapture, { flag: "wx" }
+);
+```
+
+这只是保存 Codex 原生捕获结果，不是启动或控制外部浏览器；不要把捕获字节序列化为 JSON 或改造成另一张图片。之后用该实际路径导入：
+
+```bash
+./scripts/screenshot.sh {slug} {url} --from-codex /absolute/run-artifacts/product.png --reviewed
+```
+
+导入工具以 contain 方式生成 1440x900 WebP，保留产品内容，不启动浏览器或上传 R2。转换后再次目检画面与文字，将 `public/screenshots/{slug}.webp` 保存到 git，随站点静态资源发布。
 
 ### Stage 5: 验证与发布
 
@@ -403,31 +421,36 @@ git push
 
 GitHub Actions 先对同一个 main commit 执行完整 Validate；只有 clean checkout 的该 SHA 仍是 `origin/main` 且验证成功时才进入串行 Deploy，手动触发也只能发布精确的当前 `origin/main` SHA。`scripts/manage.sh sync` 和 `scripts/manage.sh deploy` 不再直接修改生产；唯一允许发布 Worker 或写入 D1 的 CLI 路径是统一的 `scripts/manage.sh release`。当前站点页面主要由 `content/` 在 build 阶段 prerender；D1 继续支撑 newsletter、订阅和运行时发送状态。Release 流程执行 newsletter preflight、adapter v14 Worker 部署、远端 D1 同步和带界限的 live smoke 重试。D1 同步必须比较远端与本地完整的 published/manual startup slug 集合及 published Weekly issue_number 集合；任何远端条目缺失都默认阻塞，只有人工复核后才可用精确集合覆盖，Daily 自动化不得自行设置删除覆盖变量。
 
-**5.4 Search Console 直提**
+**5.4 Codex 浏览器与 Search Console 直提**
 
-部署和 live smoke 通过后，新增 Daily startup 详情页必须进入 Google Search Console 的 URL Inspection 请求流程。先 dry-run，确认目标 URL，之后再正式提交：
+产品试用、页面核验、截图、登录态检查和 GSC 操作统一使用 Codex 内置浏览器的 CUA 工具。只创建和操作本次任务自己的 Codex 标签页，每次动作都依据新读取的可见页面；结束时只关闭这些标签页。不得依赖或退回 `bb-browser`、Comet/Chrome CDP 或共享 daemon，不操作用户标签页或其他浏览器进程。Codex 浏览器不可用时记录明确 blocker，不更换浏览器绕过。
+
+部署和 live smoke 通过后，新增 Daily startup 详情页必须进入 Google Search Console 的 URL Inspection 请求流程。先执行只读计划，确认精确目标 URL：
 
 ```bash
-bash scripts/submit-gsc-direct.sh --dry-run --latest-daily
-bash scripts/submit-gsc-direct.sh --latest-daily
+python3 scripts/gsc-codex.py plan --latest-daily
 ```
 
 新增 Weekly issue 发布后，对应 `/weekly/{N}` 详情页使用同一流程：
 
 ```bash
-bash scripts/submit-gsc-direct.sh --dry-run --latest-weekly
-bash scripts/submit-gsc-direct.sh --latest-weekly
+python3 scripts/gsc-codex.py plan --latest-weekly
 ```
 
-提交后检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 这一权威 ledger，确认每个目标 URL 的最新状态为 `requested`。仓库根目录的 `.gsc_submission_history.tsv` 仅是旧版兼容输入，不再作为完成证据。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和目标 URL，不要把它当作已提交；后续可用 `--retry-pending` 在安全上限内继续处理积压。
+计划不会控制浏览器、点击按钮或写入提交成功记录。[Codex GSC 操作协议](../docs/automation/gsc-codex-browser.md) 定义了精确命令、证据 schema 和恢复边界。之后逐个处理计划允许的 URL：
 
-如果最新状态是 `post_request_confirmation_unknown`，不得用 `--force` 或普通 retry 猜测重发。人工确认对应 artifact 后，只能使用只读恢复路径：
+1. 在本次创建的 Codex 标签页打开 Search Console，确认 VentureDex property 的登录态，再进入目标 URL 的 Inspection 结果。必须看见结果绑定的精确目标 URL 和可用的 **Request indexing** 按钮，不能仅凭输入框内容判断。
+2. 把本次实际可见状态的最小脱敏证据保存到工作树外的 durable artifacts 目录，按 `scripts/gsc-codex.py` 的证据 schema 执行 `begin --url URL --evidence FILE`。只有该命令成功并返回 attempt ID 后才允许下一步；它在点击前持久化意图，防止中断后重复提交。
+3. 使用 CUA 工具至多点击一次 **Request indexing**，读取新的页面状态直到得到明确结果或有界等待结束。成功证据必须通过同一已观察的 tab 和完整 inspection route 绑定原 intent 的精确 URL，并含明确的请求成功标记。原生 modal 的 AX 只显示对话框时，post-click excerpt 可以没有 URL，必须忠实保存实际观察内容；禁止补写未显示的 URL 或拼接旧 AX 行，不能为凑 URL 文本而关闭成功 modal。若 excerpt 出现 VentureDex startup/weekly 详情 URL，只能是预期 URL，混入其他详情 URL 必须阻塞。没有 intent/tab/route 绑定的通用成功消息、按钮消失、输入框值或历史 ledger 仍不够。
+4. 用同一 attempt ID 执行 `finish --attempt ID --evidence FILE`，让验证过的结果写入中央 ledger。不能伪造证据、直接编辑 ledger 或把未确认点击降级为可重试。如果工具或页面在点击后中断，保留 durable intent，结果按未知处理，不得再次点击。
 
-```bash
-bash scripts/submit-gsc-direct.sh --reconcile-post-click-requested /absolute/path/to/post_request_confirmation_unknown-artifact.txt
-```
+提交后检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 这一权威 ledger，确认每个目标 URL 的最新状态为 `requested`；这只表示已请求，不等于 Google 已收录。仓库根目录的 `.gsc_submission_history.tsv` 仅是旧版兼容输入，不再作为完成证据。证据和失败诊断存放在 `$CODEX_HOME/automations/venturedex-daily-curator/gsc-artifacts/`，避免工作树清理丢失。如果登录态、Search Console UI 或配额阻塞，记录 blocker 和精确目标 URL，不要把它当作已提交。普通未点击积压先用 `python3 scripts/gsc-codex.py plan --retry-pending` 选择安全上限内的批次，再走同一流程。
 
-该命令必须重新检查 artifact 绑定的精确 URL，且只在 Search Console 返回该 URL 的 route-bound `success_static` 状态时归档原 blocker 并写入 `requested`；它本身不得点击 **Request indexing**。没有这一证据时，原 ledger 状态和 artifact 保持不变。
+登录/浏览器在 `begin` 前阻塞，或配额结果导致本批停止时，对其余从未点击的 URL 逐一执行 `python3 scripts/gsc-codex.py defer --url URL --reason "实际 blocker；目标从未点击"`。该命令不操作浏览器、不做 live check，在 authority 锁内只把未点击且无冲突 blocker 的目标写为 `retry_pending`，便于下次计划发现；property 全局配额 cooldown 不妨碍保留这些未点击目标。reason 必须单行、非敏感且不超过 500 字符。不得用 `defer` 重置已 requested、已点击、pending、unknown、orphan intent 或旧 reconciliation 状态，也不能把刚触发 quota 的 URL当作未点击目标。命令阻塞时保留错误，不手改 ledger。
+
+如果写入 immutable receipt 后、追加终态 ledger 前中断，执行 `python3 scripts/gsc-codex.py recover --attempt ID`。它不操作浏览器、不接受新 evidence，只从权威目录读取该 attempt 已存在的 intent/receipt，核验精确 URL、终态及可见标记、同标签页/route 和观察晚于 intent 后，向仍由该 attempt 持有的 `request_click_pending` 补记原终态。原 receipt 可以超过五分钟；普通 `finish` 的五分钟新鲜度限制不变。重复恢复已一致的终态不追加记录。缺失或无效 receipt、authority 不匹配时继续保留 blocker，不得伪造或修改证据。
+
+如果最新状态或 durable attempt 是 `post_request_confirmation_unknown`，不得用 `--force`、普通 retry 或新 attempt 猜测重发。`recover` 只是重放已有 receipt，unknown receipt 只能恢复为 `post_request_confirmation_unknown`，不能升级成成功或获得新的点击授权。零点击人工核对可以保留新观察，但不得修改原终态 ledger/artifact。对仍处于 `request_click_pending` 且尚无 receipt 的原 attempt，只能用符合协议的同标签页、同 route 新结果执行 `finish`；始终不能重复点击或借旧浏览器提交器恢复。
 
 ---
 
