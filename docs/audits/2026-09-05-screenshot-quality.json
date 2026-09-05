@@ -62,7 +62,8 @@
       "reviewed_by": "codex-root",
       "reviewed_at": "2026-09-05T08:06:37Z",
       "passed": true,
-      "scope": "Native Codex iab rendering of frozen production shared card CSS at 320px for six representative mixed-ratio images; full images visible without destructive cropping. Isolated frame gallery, not a complete production route or 299 individual browser reviews."
+      "scope": "Native Codex iab rendering of frozen production shared card CSS at 320px for six representative mixed-ratio images; full images visible without destructive cropping. Isolated frame gallery, not a complete production route or 299 individual browser reviews.",
+      "actual_format": "jpeg"
     },
     {
       "kind": "card-360",
@@ -71,7 +72,8 @@
       "reviewed_by": "codex-root",
       "reviewed_at": "2026-09-05T08:06:37Z",
       "passed": true,
-      "scope": "Native Codex iab rendering of frozen production shared card CSS at 360px for six representative mixed-ratio images; primary headings and subjects visible. Isolated frame gallery, not a complete production route or 299 individual browser reviews."
+      "scope": "Native Codex iab rendering of frozen production shared card CSS at 360px for six representative mixed-ratio images; primary headings and subjects visible. Isolated frame gallery, not a complete production route or 299 individual browser reviews.",
+      "actual_format": "jpeg"
     },
     {
       "kind": "detail",
@@ -80,7 +82,8 @@
       "reviewed_by": "codex-root",
       "reviewed_at": "2026-09-05T08:06:37Z",
       "passed": true,
-      "scope": "Native Codex iab isolated detail image rendering at natural ratio and 1000px width for Grounded. Entire meaningful vehicle diagram and copy retained without max-height crop. Full production route and full-size-link interaction remain required before publication."
+      "scope": "Native Codex iab isolated detail image rendering at natural ratio and 1000px width for Grounded. Entire meaningful vehicle diagram and copy retained without max-height crop. Full production route and full-size-link interaction remain required before publication.",
+      "actual_format": "jpeg"
     }
   ],
   "rendering_contract": {
@@ -222,7 +225,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Complete loaded cloud-security hero with centered product promise, supporting statement, recognizable Act brand and two intact CTAs. Native illustrated background is fully visible; no modal or partial loading state. Source PNG and final WebP retain identical framing. Thin white headline is readable at source resolution but card-scale contrast requires separate rendering inspection.",
-        "source_png_sha256": "01fa7ac53ef9c33dd0526ff67f9eb58ec6883e8fcf8c1bfea313e30e1726b828"
+        "source_capture_sha256": "01fa7ac53ef9c33dd0526ff67f9eb58ec6883e8fcf8c1bfea313e30e1726b828",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -901,7 +905,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Loaded hero clearly presents the Energy's Foundation Model headline over an oil-platform scene, with intact Applied Computing brand and Watch Demo action. High-contrast headline is readable and fully framed. Source PNG and final WebP match without padding, unexpected clipping, consent UI or loading artifacts. Background motion is a chosen rendered video frame; product identity does not depend on reading the background.",
-        "source_png_sha256": "27994ca9bbae39db9b322ebd65bd2eb4f9e7d0754ea05bb0d9375828e647de37"
+        "source_capture_sha256": "27994ca9bbae39db9b322ebd65bd2eb4f9e7d0754ea05bb0d9375828e647de37",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -956,7 +961,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Full high-contrast AI reliability headline, explanatory subheading, demo action and risk categories are visible in a coherent hero. Brand and customer-logo strip anchor product identity. No modal, blank animation state or cut primary content.",
-        "source_png_sha256": "a850472514e9bd249027774f16827ca94f9e4b83dc90c62cbdd466a9d06231f2"
+        "source_capture_sha256": "a850472514e9bd249027774f16827ca94f9e4b83dc90c62cbdd466a9d06231f2",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -1583,7 +1589,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete agent-environment headline, RL infrastructure explanation and both actions are readable and centered; branded navigation and research-team metrics are fully visible. No cookie wall, loading surface or decorative padding added by conversion.",
-        "source_png_sha256": "761b7135446d1ae905b0c801eddffe81b28f65599c2f87b0a77449f0edefff3e"
+        "source_capture_sha256": "761b7135446d1ae905b0c801eddffe81b28f65599c2f87b0a77449f0edefff3e",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -1846,7 +1853,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete Voice AI for insurance headline, readable use-case explanation and booking action are framed beside loaded interactive demo cards. The primary yellow demo card is fully visible and branded Bland; no loading veil or consent modal obscures it. Large upper whitespace belongs to the captured page layout, not conversion padding.",
-        "source_png_sha256": "0961c24ff3b3227a3a60bf35399bb9a36b3d1a4e5c94e55a7333cf2dcb132958"
+        "source_capture_sha256": "0961c24ff3b3227a3a60bf35399bb9a36b3d1a4e5c94e55a7333cf2dcb132958",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -2109,7 +2117,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete AI Agents for Modern Health Systems headline and supporting explanation are clearly readable over a loaded medical-imaging video frame. Branded navigation and demo action remain intact and visible. Background video softness does not affect sharp product text; no overlay or partial hero text.",
-        "source_png_sha256": "78be2b9ae39de5605e60ee143cd73cfa574d13d04f6ff9c0b463b26b44b48a71"
+        "source_capture_sha256": "78be2b9ae39de5605e60ee143cd73cfa574d13d04f6ff9c0b463b26b44b48a71",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -2216,7 +2225,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Full wire-harness quoting headline, explanatory paragraph and actions are readable at strong contrast, paired with a loaded illustrative quoting interface. The interface perspective belongs to the source website; screenshot conversion does not skew it. Closed chat launcher occupies otherwise empty lower-right margin without covering product content.",
-        "source_png_sha256": "5093896721f198d9966dc67bf6a8084d1d88741f5ea140514cabb8e13da64da1"
+        "source_capture_sha256": "5093896721f198d9966dc67bf6a8084d1d88741f5ea140514cabb8e13da64da1",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -2843,7 +2853,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete AI-transformation label, operating-systems product statement and luminous emblem are sharp and fully framed on a loaded black product section, without overlays or placeholders. The native condensed single-line lettering is readable at full size but especially requires the separate 320px card check; this record does not approve thumbnail legibility.",
-        "source_png_sha256": "46e5cdb37d1497473e87d710ee9ab500249cd046f21b7f49822116e6f97f9da3"
+        "source_capture_sha256": "46e5cdb37d1497473e87d710ee9ab500249cd046f21b7f49822116e6f97f9da3",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -3314,7 +3325,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Very large complete commercial-AI-content headline, readable IP-risk explanation, CopySight brand and both actions fit inside the viewport. High-contrast text is sharp against the pale background, without cookie UI, loading artifacts or cut primary wording.",
-        "source_png_sha256": "f224e7e131bb0fc7b9d77b645a6c209fc793b830f1bd8f9f234ae30dc9a60493"
+        "source_capture_sha256": "f224e7e131bb0fc7b9d77b645a6c209fc793b830f1bd8f9f234ae30dc9a60493",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -3473,7 +3485,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete large Make your data Credible headline and AI-analytics explanation establish the product with clear brand and access/demo actions. The lower product illustration begins below the complete hero and continues beyond the viewport; no primary content or navigation is missing and no overlay is present.",
-        "source_png_sha256": "2b772121a15d4683d25040909771893ce904f31aeaecfc7ebffef37e12ff28e9"
+        "source_capture_sha256": "2b772121a15d4683d25040909771893ce904f31aeaecfc7ebffef37e12ff28e9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -3788,7 +3801,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Intact high-contrast public-equity-platform headline and financial-data description are visible with Daloopa branding, navigation and two actions. The burgundy graphic background is loaded; small closed cookie launcher stays on unused lower-left margin and does not obscure the product promise.",
-        "source_png_sha256": "b50b1602d08569b8f101036ece8dd051ce8496db0bdb11aba30130e9490c2fba"
+        "source_capture_sha256": "b50b1602d08569b8f101036ece8dd051ce8496db0bdb11aba30130e9490c2fba",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -4051,7 +4065,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete identity-and-fraud infrastructure headline, explanatory paragraph, brand, backing strip and start/docs actions are readable. Lower illustrative product section naturally continues outside the viewport. Closed chat launcher stays in the right margin; no consent wall or partial hero load is visible.",
-        "source_png_sha256": "0e5279eb1a733a401b2cb708b74c48911aa40069a39c26af84c7480f0d30db39"
+        "source_capture_sha256": "0e5279eb1a733a401b2cb708b74c48911aa40069a39c26af84c7480f0d30db39",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -4158,7 +4173,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete security-decision headline, supporting line, actions and branded agentic-loop diagram are loaded and fully framed. Dark green accents are native site styling, not a loading overlay, and remain readable at source resolution; this lower-contrast treatment requires particular attention in the pending card-size check. No consent panel blocks content.",
-        "source_png_sha256": "31f4bd208eecf254920ba803dcbf462f0e57385a157e98b2d23b4ad579ad64ce"
+        "source_capture_sha256": "31f4bd208eecf254920ba803dcbf462f0e57385a157e98b2d23b4ad579ad64ce",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -4473,7 +4489,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete infrastructure-change headline, readable supporting explanation and demo/how-it-works actions are visible beside a fully populated public terminal-style product example. Brand and hero container are intact, with no animation skeleton, modal or conversion-added padding.",
-        "source_png_sha256": "d86ecdf8a65a3e3b4ff9496f0f4f5f898badda1f8ceddedaee0bb4d1b9fdbfbc"
+        "source_capture_sha256": "d86ecdf8a65a3e3b4ff9496f0f4f5f898badda1f8ceddedaee0bb4d1b9fdbfbc",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -4580,7 +4597,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The complete large high-contrast robotics-foundation-model vision statement identifies the product, with the Enigma logo unobstructed above. The following robot media panel begins below the intact statement and continues beyond the viewport. No modal, unfinished text or loading placeholders are visible.",
-        "source_png_sha256": "7a1cc9e7dcd64b713a58bde4e5dbc38cb1fb76614188bff7b478d8112e35943a"
+        "source_capture_sha256": "7a1cc9e7dcd64b713a58bde4e5dbc38cb1fb76614188bff7b478d8112e35943a",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -4635,7 +4653,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete, bright Protect work as it happens headline and readable supporting text establish the security product over a deliberately dark patterned background. Ent branding and demo action remain visible; no loading or consent layer. Dark background is not a blank capture.",
-        "source_png_sha256": "fb6f677da7b67747da6628f84359c39764e70d1c2ad8ea8b0e1e615cf2d57d6f"
+        "source_capture_sha256": "fb6f677da7b67747da6628f84359c39764e70d1c2ad8ea8b0e1e615cf2d57d6f",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -5158,7 +5177,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete large operations-and-decisions headline, financial-workflow description and demo button are clearly framed on the coral hero with the brand and navigation. The next media panel begins at the bottom but the primary hero is intact. Top announcement is native page content, not an overlay.",
-        "source_png_sha256": "0280ba714e8c1cd41e618810de43861568c9e8deb1d813879091d558f473d7fa"
+        "source_capture_sha256": "0280ba714e8c1cd41e618810de43861568c9e8deb1d813879091d558f473d7fa",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -5213,7 +5233,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete resident-application headline, description, demo action, navigation and loaded building illustration establish the product. Closed launcher is confined to the lower-right customer strip, leaving primary content unobstructed. The visual is populated rather than a blank video frame.",
-        "source_png_sha256": "4b6e9ff3bfd7a1087ff60d9e32998615381d34a0542c3590f6562e017e4d7de5"
+        "source_capture_sha256": "4b6e9ff3bfd7a1087ff60d9e32998615381d34a0542c3590f6562e017e4d7de5",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -5736,7 +5757,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete AI-native marketing headline, supporting explanation, brand and demo action are large and readable on the loaded gradient hero. Announcement is in-flow page content; lower feature tabs naturally continue below the viewport. No loading skeleton, modal or missing primary wording.",
-        "source_png_sha256": "1eb03483e78e3fa697a0150f43c6a428ce7a9ad2d49513684ad82338ab7c51a1"
+        "source_capture_sha256": "1eb03483e78e3fa697a0150f43c6a428ce7a9ad2d49513684ad82338ab7c51a1",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -5947,7 +5969,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete AI-notepad headline, supporting copy, download action, platform line and navigation are readable beside a populated public note-taking illustration. The illustration continues beyond the viewport at bottom, but product promise and primary action are intact; no overlay or unloaded blank section is present.",
-        "source_png_sha256": "4d8a599b1c33b66ad3d23d37d10f20493520701a2ace6eca9ab21d3d565ac544"
+        "source_capture_sha256": "4d8a599b1c33b66ad3d23d37d10f20493520701a2ace6eca9ab21d3d565ac544",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6106,7 +6129,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete utility-scale project headline, explanatory paragraph, logos and Explore action are framed beside a fully loaded energy-storage photograph; Gridcog branding and navigation remain visible. Closed privacy launcher stays in the unused lower-left margin without covering wording. Purple title is clear at source size; card-scale assessment remains separate.",
-        "source_png_sha256": "e9b29f4b57933419f3d8f6ec0260e9db7f7cb460e5a6a8ac3db43bd891a1a3d9"
+        "source_capture_sha256": "e9b29f4b57933419f3d8f6ec0260e9db7f7cb460e5a6a8ac3db43bd891a1a3d9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6213,7 +6237,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "High-contrast fully rendered Groq Platform headline and intact explanatory copy identify the product. Navigation, logo and CTA are visible; no consent dialog, loading layer or error. Source PNG and final WebP match; generous whitespace is part of the observed layout rather than a blank frame. Actual small-card readability must still be checked.",
-        "source_png_sha256": "a8e2b51b3737b05d69ed71a6b8b8c33bd7dfd3c63e3085b4946b234b7d8a85c8"
+        "source_capture_sha256": "a8e2b51b3737b05d69ed71a6b8b8c33bd7dfd3c63e3085b4946b234b7d8a85c8",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6268,7 +6293,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete full-stack observability headline, explanatory copy and playground/free actions are readable with full navigation and brand. Loaded plant artwork and the start of a populated public product illustration provide context; the lower illustration continues naturally beyond the viewport. No consent modal or loading placeholder.",
-        "source_png_sha256": "dd046a7a35ca5f02b050273757b1a5c9bfe7b3c1be79410492e59724adb0e337"
+        "source_capture_sha256": "dd046a7a35ca5f02b050273757b1a5c9bfe7b3c1be79410492e59724adb0e337",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6323,7 +6349,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Loaded product section clearly shows all-electric vehicle interior diagram, meaningful power/software/modular-interior labels and readable explanatory headline. Source PNG and final WebP preserve the same framing without added padding. Sticky navigation clips only the adjacent trust-section label; bottom edge clips only the next press-logo strip. Closed chat launcher does not obstruct the product diagram or headline.",
-        "source_png_sha256": "b6405ad862d1a08bc59239629f78a719491df8b225a5fa884f197d2693d802ce"
+        "source_capture_sha256": "b6405ad862d1a08bc59239629f78a719491df8b225a5fa884f197d2693d802ce",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6378,7 +6405,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The full inspection-intelligence headline and audience label are readable over a loaded, intentionally darkened photographic video frame. Logo, navigation and demo/platform actions are intact. Background softness does not affect the sharp primary lettering; no empty video frame, obstruction or cut headline is visible.",
-        "source_png_sha256": "2fa50b92005bf8789279476d89f08d25ccca16e7366e062879d05f0386b5a0b9"
+        "source_capture_sha256": "2fa50b92005bf8789279476d89f08d25ccca16e7366e062879d05f0386b5a0b9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -6641,7 +6669,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Full large homebuilding-AI headline, readable design-to-construction explanation and both actions are intact with the brand and navigation. The populated product workspace illustration starts below the complete hero and continues beyond the viewport. Announcement is in-flow content, not an obscuring overlay.",
-        "source_png_sha256": "7a7baec6160b17e36b99d79fea57fddaaa15d3089e158ce76b8cb54dbc44e616"
+        "source_capture_sha256": "7a7baec6160b17e36b99d79fea57fddaaa15d3089e158ce76b8cb54dbc44e616",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -7320,7 +7349,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete large life-sciences infrastructure headline, supporting line, demo/video actions and navigation are visible on the loaded page. Colorful lower media is rendered rather than a blank placeholder; it continues below the intact hero. No modal or clipped primary wording is visible. Numeric site claims are depicted, not independently endorsed.",
-        "source_png_sha256": "2c6ca6f1972b0c20cc93c5f8a0b2e9196d318ee0672d8f15173f3f9d00e18e9b"
+        "source_capture_sha256": "2c6ca6f1972b0c20cc93c5f8a0b2e9196d318ee0672d8f15173f3f9d00e18e9b",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -7895,7 +7925,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete large fund-accounting headline, readable explanatory copy and demo action are framed against a loaded meeting photograph with the LemonEdge brand and navigation intact. Text remains crisp and high contrast; no cookie panel, empty media frame or clipped primary wording is visible.",
-        "source_png_sha256": "eff3d967985bde53be5617ad982091cdf0f8e4ab87fe1c2d0f8a328a8641c453"
+        "source_capture_sha256": "eff3d967985bde53be5617ad982091cdf0f8e4ab87fe1c2d0f8a328a8641c453",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -8886,7 +8917,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete two-line investment-management headline and supporting wealth-firm statement are legible over a loaded dark particle visual, with navigation, announcement and customer strip intact. No modal or blank animation frame is present. Main title is modest in size, so its pending 320px card check must be evaluated separately rather than inferred from this source view.",
-        "source_png_sha256": "06a5d6716d38547f1753c4128af31ad602ab5f99fe743482fec0ef23388b6952"
+        "source_capture_sha256": "06a5d6716d38547f1753c4128af31ad602ab5f99fe743482fec0ef23388b6952",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -9201,7 +9233,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The official wallet section contains a populated public product mockup with wallet labels, balances, account cards and navigation readable at full size. The embedded browser frame belongs to the website illustration, not captured browser chrome; no error, modal or loading blank is present. This UI-focused composition has small labels and requires its separate card-size review rather than presumed thumbnail legibility.",
-        "source_png_sha256": "a19491fa603eaeedc03be5e2544f3144119d915c98d3c1ff9695949506203de6"
+        "source_capture_sha256": "a19491fa603eaeedc03be5e2544f3144119d915c98d3c1ff9695949506203de6",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -9516,7 +9549,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete large full-stack-cloud-for-coding-agents headline, supporting environment description, agent logos and both actions are readable with brand and navigation. The dark patterned background and populated lower product workspace are loaded; lower content naturally continues beyond the viewport, without obstructing or clipping the primary hero.",
-        "source_png_sha256": "8c5183e453816f400bcaf49e013a52a540854e5f6c26d4e9dfbe803ea495b634"
+        "source_capture_sha256": "8c5183e453816f400bcaf49e013a52a540854e5f6c26d4e9dfbe803ea495b634",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -9935,7 +9969,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Two complete hardware product views show a machine sensor and portable lab, with readable purpose headings and Omen navigation. The thin red scanning line is an observed product-page animation, not a modal, and does not hide the device shape or headline. No incomplete image loading.",
-        "source_png_sha256": "3494ed38e7a2177cf7ec8fddfdd21c719c029c28a79fbb629bee08230afcfdd9"
+        "source_capture_sha256": "3494ed38e7a2177cf7ec8fddfdd21c719c029c28a79fbb629bee08230afcfdd9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -9990,7 +10025,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete conversational-AI headline, supporting copy, branding and loaded portrait illustration are readable. The small closed About cookies on this site launcher occupies only the white lower margin and does not obstruct headline, product copy or portrait; no consent dialog remains.",
-        "source_png_sha256": "8ae4568cd8239220ab2863001398c6aa79d883928075e020c4e80d0011ac4530"
+        "source_capture_sha256": "8ae4568cd8239220ab2863001398c6aa79d883928075e020c4e80d0011ac4530",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -10253,7 +10289,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Full insurance-operations product headline and explanation are intact beside the native paper-like visual. Brand, contact action and fully loaded product-demo thumbnail remain visible. The thumbnail is illustrative, not expected to expose tiny application text; primary product promise is readable.",
-        "source_png_sha256": "c5af4c8b094467728ec0b2e0e47fe6b915046e2ac3a65b67684e9996b699afba"
+        "source_capture_sha256": "c5af4c8b094467728ec0b2e0e47fe6b915046e2ac3a65b67684e9996b699afba",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -10360,7 +10397,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete Where agents find answers headline and infrastructure explanation clearly identify the product, with brand and actions unobstructed. Lower demo illustration naturally continues below the viewport; no primary heading is clipped. The cookie dialog has disappeared and the visible research example is loaded.",
-        "source_png_sha256": "39dd888f115520493e4bb0ec640cfa4e4f28e64224c01e9abb8c1a0b8948fd96"
+        "source_capture_sha256": "39dd888f115520493e4bb0ec640cfa4e4f28e64224c01e9abb8c1a0b8948fd96",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -10519,7 +10557,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The logged-out product home displays the complete search composer, Search/Computer modes, readable task options, sidebar controls and recognizable brand mark. This is a legitimate empty-query product state, not a loading skeleton or login wall. No personal session data or blocking dialog is visible.",
-        "source_png_sha256": "3a03ea91e53992b26d6a4edbcda1454aa2c1fbe5f177f03902ef0936c9746f6b"
+        "source_capture_sha256": "3a03ea91e53992b26d6a4edbcda1454aa2c1fbe5f177f03902ef0936c9746f6b",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -11302,7 +11341,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Large complete securities-lending market headline and trading-management explanation are readable over a dark green hero, with clear Provable Markets branding. Source viewport contains white space below the hero but conversion adds no padding. No loading, popup or cropped primary statement.",
-        "source_png_sha256": "294b0ba82e5b1c71d5cb9f3f1745f27819665324818d3765e477cc7cdf51b3b9"
+        "source_capture_sha256": "294b0ba82e5b1c71d5cb9f3f1745f27819665324818d3765e477cc7cdf51b3b9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -11929,7 +11969,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete conversation-growth headline, supporting paragraph and active Convert explanation are readable beside a loaded customer-routing diagram. Inactive accordion labels are intentionally dimmed; the next Retain label continues below the viewport, not the primary content. Closed chat/accessibility launchers stay outside the main text and routing flow.",
-        "source_png_sha256": "babc78ddabe68a081d80eeca6874dc57b653f5db4feb4b7fd363feed88acde3a"
+        "source_capture_sha256": "babc78ddabe68a081d80eeca6874dc57b653f5db4feb4b7fd363feed88acde3a",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -12140,7 +12181,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Fully loaded landscape supports a complete large banking-product headline, brand and readable supporting explanation. White text is visible against darker mountain regions rather than an unloaded white background. No overlay, blank image placeholder or clipped headline.",
-        "source_png_sha256": "386a59a45abe387f03b21772b8db1e4cdba6775fcfcf399e2e58ca69f54e73e8"
+        "source_capture_sha256": "386a59a45abe387f03b21772b8db1e4cdba6775fcfcf399e2e58ca69f54e73e8",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -12195,7 +12237,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete three-line spend/margin/profit headline, supporting explanation, two actions and four metric cards are visible with branded navigation. Native gray/orange text treatment is retained and readable at source size over the darkened background. No loading curtain or consent UI is present; this inspection does not validate the site's numeric claims.",
-        "source_png_sha256": "d324aa051fe8f75af90ea0682918c527bfb6281ca896b561f028d513f8725d08"
+        "source_capture_sha256": "d324aa051fe8f75af90ea0682918c527bfb6281ca896b561f028d513f8725d08",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -12458,7 +12501,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Loaded legal-work hero shows an intact large headline, supporting product sentence, Sandstone brand and navigation over the native landscape scene. No skeleton elements or blocked content remain. White headline is legible at source resolution; actual small-card presentation remains separately pending.",
-        "source_png_sha256": "4e2e12c6303ede8341084f2d03a9e6f9a73f2124fcba03b9b726ac002e8cc571"
+        "source_capture_sha256": "4e2e12c6303ede8341084f2d03a9e6f9a73f2124fcba03b9b726ac002e8cc571",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -12877,7 +12921,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete Orbital Intelligence at Scale headline contrasts against dark space and a loaded satellite frame. Scout brand, contact action and product-focused About Us panel are visible. The lower-right panel is native page content, not a popup, and the hero is neither washed out nor in a loading state.",
-        "source_png_sha256": "8401b22f19554714d3d0bbe3e0777c90970eb5e7b64a5ac2b39d224a0156ac64"
+        "source_capture_sha256": "8401b22f19554714d3d0bbe3e0777c90970eb5e7b64a5ac2b39d224a0156ac64",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -13972,7 +14017,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete AI decisioning headline, onboarding/underwriting/claims description, demo action, ratings strip and full navigation are readable on the loaded page. The next illustration begins below the hero and naturally continues beyond the viewport. Small closed privacy launcher does not obscure primary content; no loading or consent panel.",
-        "source_png_sha256": "3cb121a7ca847b0982d9f6fa0dc1c3186c3673c0d2cfb7aad94e9a391c65ea1a"
+        "source_capture_sha256": "3cb121a7ca847b0982d9f6fa0dc1c3186c3673c0d2cfb7aad94e9a391c65ea1a",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -14027,7 +14073,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Entire commercial-fleet telematics headline, explanatory statement, documentation/demo actions and Terminal branding are clear and high contrast. Vehicle/data infrastructure illustration is loaded below the complete hero, with only its continuation outside the viewport. No missing navigation, modal or loading wash obscures the product.",
-        "source_png_sha256": "bd0893e4da0ee636d5d8f34a67104b765687bceb113a4f8e79903e42c0264be9"
+        "source_capture_sha256": "bd0893e4da0ee636d5d8f34a67104b765687bceb113a4f8e79903e42c0264be9",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -14498,7 +14545,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Large complete cancer-care headline, Triomics branding and loaded public product-demo visualization are visible, including the chart-state controls. Typography remains crisp and primary heading is not cut. No cookie modal, skeleton or partial font rendering is apparent; no clinical claim is validated by this image review.",
-        "source_png_sha256": "724b78f86fff929c9d19707b2130b27e61b650930e5f13a8d81188d51ab0f8b8"
+        "source_capture_sha256": "724b78f86fff929c9d19707b2130b27e61b650930e5f13a8d81188d51ab0f8b8",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -15177,7 +15225,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. Complete transfer-agent headline for public companies, supporting lines, contact action and brand are readable over a dark loaded hero. The lower network illustration is visibly populated rather than empty. Closed accessibility launcher remains in the corner outside primary content; this is not a blocking overlay or feature-panel loading frame.",
-        "source_png_sha256": "52fe89249dd574d105b2f8d3902e6335fcbae347119c7f8025579f6345acc1ef"
+        "source_capture_sha256": "52fe89249dd574d105b2f8d3902e6335fcbae347119c7f8025579f6345acc1ef",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -15544,7 +15593,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The ALLEX product hero has a complete large title and readable humanoid description over a loaded robot photograph, plus brand and full navigation. Dark photographic areas are intentional and preserve clear primary white text; no loading panel or modal is visible.",
-        "source_png_sha256": "2295b517fdfa1db838939ba836b8b1e4a554c4a14d5e8e74be321e8a03b2e899"
+        "source_capture_sha256": "2295b517fdfa1db838939ba836b8b1e4a554c4a14d5e8e74be321e8a03b2e899",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -15703,7 +15753,8 @@
         "review_process": "visual_agent_review",
         "reviewer": "codex-quality-gate",
         "reason": "Source and final match. The full blue branded hero, complete large payments headline, explanatory line, navigation and both actions fit inside the viewport. High-contrast lettering remains sharp; no consent or marketing panel obscures content.",
-        "source_png_sha256": "cd74f50dfd3927bdbb23a098e80628b92918ef417d14a4785f0e6e4c51922e57"
+        "source_capture_sha256": "cd74f50dfd3927bdbb23a098e80628b92918ef417d14a4785f0e6e4c51922e57",
+        "source_capture_format": "jpeg"
       },
       "card": {
         "review_process": "visual_agent_review_of_sharp_simulated_card",
@@ -15797,5 +15848,11 @@
         "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
       }
     }
-  ]
+  ],
+  "capture_format_clarification": {
+    "checked_at": "2026-09-05T08:27:54.350Z",
+    "native_captures_checked": 48,
+    "actual_format": "jpeg",
+    "note": "Codex returned unaltered JPEG bytes. Native source and UI evidence retained the initial .png filenames; these extensions do not describe the bytes. Legacy source PNG wording inside preserved reviewer attestations refers to those filenames, not verified PNG encoding. Source hashes, visual approvals, final WebP images and review ledger are unchanged. The importer decodes file headers and already accepts JPEG/PNG/WebP; no image re-encoding was performed for this correction."
+  }
 }
