@@ -1,0 +1,87 @@
+{
+  "slug": "wafer",
+  "domain": "www.wafer.ai",
+  "url": "https://www.wafer.ai/",
+  "product_name": "Wafer",
+  "summary": "Inference platform that continuously tunes models, engines, kernels, and hardware.",
+  "editor_note": "Inference optimization becomes a continuous loop: agents learn traffic and constraints, search across models, engines, kernels, and accelerators, then deploy the best performance-per-dollar configuration. A live app and published AMD work make this more concrete than a one-off benchmark service. The cross-hardware bet grows stronger as silicon fragments; the risk is that clouds or chip vendors bundle similar automation.",
+  "editor_rating": 5,
+  "why_featured": "$40M A for continuous inference tuning",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "ai inference,performance engineering,gpu,model serving,ai infrastructure",
+  "investors": "Marathon Management Partners,Chemistry",
+  "links": {
+    "product": "https://app.wafer.ai/",
+    "careers": "https://jobs.ashbyhq.com/wafer"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Marathon and Chemistry",
+      "date": "2026-09-01",
+      "source_url": "https://www.wafer.ai/blog/series-a",
+      "source_name": "Wafer"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Wafer official product site",
+        "url": "https://www.wafer.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_app",
+        "label": "Wafer application",
+        "url": "https://app.wafer.ai/",
+        "type": "product"
+      },
+      {
+        "id": "official_series_a",
+        "label": "Wafer Series A announcement",
+        "url": "https://www.wafer.ai/blog/series-a",
+        "type": "funding"
+      },
+      {
+        "id": "investor_product_review",
+        "label": "Wing review of Wafer's multi-silicon platform",
+        "url": "https://www.wing.vc/content/investing-in-wafer",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Wafer continuously searches across the model, inference engine, kernels, and hardware for a deployment matched to a workload's traffic and constraints.",
+        "source_ids": [
+          "official_site",
+          "official_series_a"
+        ]
+      },
+      {
+        "claim": "The product exposes a live application and publishes workload-specific optimization evidence across AMD and other inference infrastructure.",
+        "source_ids": [
+          "official_app",
+          "official_site",
+          "investor_product_review"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "AI infrastructure teams operating latency- and cost-sensitive production inference workloads.",
+      "category": "AI inference optimization",
+      "differentiation": "Autonomous performance engineers continually retune the full serving stack across heterogeneous accelerators instead of optimizing one deployment once.",
+      "why_now": "Inference demand is rising while AMD, TPUs, Trainium, Cerebras, and custom chips make hardware selection more workload-specific."
+    },
+    "risks": [
+      {
+        "claim": "Clouds, chip vendors, or serving platforms may bundle similar optimization and reduce room for an independent layer.",
+        "basis": "Wafer's advantage depends on cross-hardware neutrality and accumulated optimization traces remaining more valuable than vendor-native tooling."
+      }
+    ]
+  }
+}

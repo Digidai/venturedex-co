@@ -1179,5 +1179,21 @@
   "synthefy": {
     "published_at": "2026-08-25 06:03:01",
     "first_seen_at": "2026-08-25 06:03:01"
+  },
+  "catch-ai": {
+    "published_at": "2026-09-05 03:57:00",
+    "first_seen_at": "2026-09-05 03:57:00"
+  },
+  "empirik": {
+    "published_at": "2026-09-05 03:57:00",
+    "first_seen_at": "2026-09-05 03:57:00"
+  },
+  "wafer": {
+    "published_at": "2026-09-05 03:57:00",
+    "first_seen_at": "2026-09-05 03:57:00"
+  },
+  "light": {
+    "published_at": "2026-09-05 03:57:00",
+    "first_seen_at": "2026-09-05 03:57:00"
   }
 }

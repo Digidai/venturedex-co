@@ -1,0 +1,92 @@
+{
+  "slug": "catch-ai",
+  "domain": "www.catchagent.ai",
+  "url": "https://www.catchagent.ai/",
+  "product_name": "Catch",
+  "summary": "AI executive assistant that handles scheduling, inbox work, travel, and follow-ups.",
+  "editor_note": "Delegated work becomes concrete here: the live onboarding accepts Google, Microsoft, or work email, while the $99 monthly plan covers calendar conflicts, inbox triage, travel, calls, and follow-ups. Unlike a generic chat assistant, consequential actions require approval. The focused role and visible entry path earn the feature; the risk is whether judgment and permission boundaries stay dependable across many connected systems.",
+  "editor_rating": 5,
+  "why_featured": "$5M Seed for an AI executive assistant",
+  "product_type": "SaaS",
+  "region": "Global / Remote",
+  "tags": "ai assistant,executive productivity,calendar,email,agentic workflow",
+  "investors": "Entrée Capital,Pitango",
+  "links": {
+    "product": "https://app.catchagent.ai/login",
+    "security": "https://www.catchagent.ai/security"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5M",
+      "stage": "Seed",
+      "lead_investor": "Entrée Capital and Pitango",
+      "date": "2026-09-02",
+      "source_url": "https://seedcamp.com/views/catch-ai-raises-5m-to-build-the-ai-agent-for-busy-executives/",
+      "source_name": "Seedcamp"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Catch official product site",
+        "url": "https://www.catchagent.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_login",
+        "label": "Catch product onboarding",
+        "url": "https://app.catchagent.ai/login",
+        "type": "product"
+      },
+      {
+        "id": "official_security",
+        "label": "Catch security overview",
+        "url": "https://www.catchagent.ai/security",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Seedcamp Catch Seed announcement",
+        "url": "https://seedcamp.com/views/catch-ai-raises-5m-to-build-the-ai-agent-for-busy-executives/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Catch offers a live onboarding path through Google, Microsoft, or a work email and advertises a 10-day trial on a $99 monthly plan.",
+        "source_ids": [
+          "official_site",
+          "product_login"
+        ]
+      },
+      {
+        "claim": "The product handles scheduling, inbox triage, travel, reminders, and follow-ups while requiring user approval before consequential actions.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "Catch publishes security controls for the sensitive calendars, messages, and connected services used by its assistant workflow.",
+        "source_ids": [
+          "official_security"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Executives and operators who delegate calendar, inbox, travel, and follow-up work.",
+      "category": "AI executive assistant",
+      "differentiation": "A role-specific assistant acts across communications and calendars while preserving an explicit approval boundary for consequential actions.",
+      "why_now": "The Seed round arrives as agent products move from drafting suggestions toward completing multi-system administrative work."
+    },
+    "risks": [
+      {
+        "claim": "Reliability and permission mistakes become more costly as Catch connects to more personal and company systems.",
+        "basis": "The product's value depends on broad integrations and proactive action, so safe escalation and approval behavior must hold across edge cases."
+      }
+    ]
+  }
+}

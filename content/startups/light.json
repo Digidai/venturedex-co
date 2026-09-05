@@ -1,0 +1,94 @@
+{
+  "slug": "light",
+  "domain": "www.poweredbylight.com",
+  "url": "https://www.poweredbylight.com/",
+  "product_name": "Light",
+  "summary": "Infrastructure for businesses to launch branded retail electricity plans.",
+  "editor_note": "Retail electricity becomes embedded infrastructure: the platform combines enrollment, billing, power procurement, market operations, and regulatory work behind a brand-owned plan. Public product pages, developer docs, and a live dashboard make the operating layer inspectable. The bet is sharper than a utility referral, but expansion may resist repeatable software because regulation, grid economics, and failure modes vary by territory.",
+  "editor_rating": 5,
+  "why_featured": "$46M A for embedded electricity",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "energy infrastructure,embedded finance,electricity,climate,utility software",
+  "investors": "Matrix",
+  "links": {
+    "product": "https://www.poweredbylight.com/product",
+    "docs": "https://docs.light.dev/",
+    "careers": "https://www.poweredbylight.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$46M",
+      "stage": "Series A",
+      "lead_investor": "Matrix",
+      "date": "2026-09-01",
+      "source_url": "https://www.poweredbylight.com/press/light-raises-46-million-to-scale-the-power-company-for-embedded-electricity",
+      "source_name": "Light"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Light official site",
+        "url": "https://www.poweredbylight.com/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "Light product overview",
+        "url": "https://www.poweredbylight.com/product",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Light developer documentation",
+        "url": "https://docs.light.dev/",
+        "type": "product"
+      },
+      {
+        "id": "official_dashboard",
+        "label": "Light dashboard login",
+        "url": "https://dashboard.light.dev/login/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Light Series A announcement",
+        "url": "https://www.poweredbylight.com/press/light-raises-46-million-to-scale-the-power-company-for-embedded-electricity",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Light combines enrollment, billing, wholesale power procurement, market operations, and regulatory support for businesses launching branded electricity plans.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The public product surface includes developer documentation and a live dashboard login in addition to the operating-model overview.",
+        "source_ids": [
+          "official_product",
+          "official_docs",
+          "official_dashboard"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumer brands and energy companies that want to offer retail electricity under their own customer relationship.",
+      "category": "Embedded electricity infrastructure",
+      "differentiation": "A full operating layer absorbs regulated supplier, billing, procurement, and market complexity behind a brand-owned electricity plan.",
+      "why_now": "Load growth, electrification, and volatile power markets are increasing the value of software that lets new brands participate without rebuilding utility operations."
+    },
+    "risks": [
+      {
+        "claim": "Market-by-market regulation and grid economics may make expansion slower and less repeatable than the software packaging suggests.",
+        "basis": "The platform owns operational and regulatory functions whose rules and failure modes vary by electricity territory."
+      }
+    ]
+  }
+}

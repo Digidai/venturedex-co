@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-08-25",
+  "verified_at": "2026-09-05",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2081,6 +2081,34 @@
       "local_path": "/logos/companies/synthefy.svg",
       "source_page": "https://www.synthefy.com/",
       "source_url": "https://www.synthefy.com/_next/static/media/logo.f96bd2bf.svg"
+    },
+    "catch-ai": {
+      "name": "Catch",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/catch-ai.svg",
+      "source_page": "https://www.catchagent.ai/",
+      "source_url": "https://www.catchagent.ai/favicon.svg"
+    },
+    "empirik": {
+      "name": "empirik",
+      "shape": "icon",
+      "local_path": "/logos/companies/empirik.ico",
+      "source_page": "https://empirik.ai/",
+      "source_url": "https://empirik.ai/images/v4/favicon.ico"
+    },
+    "wafer": {
+      "name": "Wafer",
+      "shape": "icon",
+      "local_path": "/logos/companies/wafer.png",
+      "source_page": "https://www.wafer.ai/",
+      "source_url": "https://www.wafer.ai/favicon-36.png"
+    },
+    "light": {
+      "name": "Light",
+      "shape": "icon",
+      "local_path": "/logos/companies/light.png",
+      "source_page": "https://www.poweredbylight.com/",
+      "source_url": "https://www.poweredbylight.com/icon.png?icon.3ouxr3qiwepas.png"
     }
   },
   "investors": {
@@ -3832,6 +3860,50 @@
       "local_path": "/logos/investors/disruptive.png",
       "source_page": "https://www.disruptive.tech/",
       "source_url": "https://static.wixstatic.com/media/ab32b9_b3f8e414696543ea9225bb1be61def34%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/ab32b9_b3f8e414696543ea9225bb1be61def34%7Emv2.png"
+    },
+    "entree-capital": {
+      "name": "Entrée Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/entree-capital.png",
+      "source_page": "https://entreecap.com/",
+      "source_url": "https://entreecap.com/wp-content/uploads/2025/11/cropped-favicon-192x192.png"
+    },
+    "pitango": {
+      "name": "Pitango",
+      "shape": "icon",
+      "local_path": "/logos/investors/pitango.png",
+      "source_page": "https://www.pitango.com/",
+      "source_url": "https://www.pitango.com/wp-content/themes/pitango-new/assets/favicon/apple-touch-icon.png"
+    },
+    "s32": {
+      "name": "S32",
+      "shape": "icon",
+      "local_path": "/logos/investors/s32.png",
+      "source_page": "https://www.s32.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a03653681ac1f8c65eae17b/6a11d37adf85c993b69d2ab6_s32%20logo.png"
+    },
+    "marathon-management-partners": {
+      "name": "Marathon Management Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/marathon-management-partners.png",
+      "source_page": "https://marathonmp.com/",
+      "source_url": "https://img1.wsimg.com/isteam/ip/020bd5a7-d418-4b9d-8fe9-b912d21b7bed/favicon/e6aa9fe8-3451-41e5-a183-33f4b043b0ed/972a8b9a-803a-45da-aeed-594e91499f38.png/:/rs=w:120,h:120,m",
+      "allow_unreachable_source": true,
+      "note": "Official live-site favicon verified in browser; the GoDaddy CDN intermittently returns HTTP 204 to automated validation."
+    },
+    "chemistry": {
+      "name": "Chemistry",
+      "shape": "icon",
+      "local_path": "/logos/investors/chemistry.png",
+      "source_page": "https://www.chemistry.vc/",
+      "source_url": "https://cdn.prod.website-files.com/66e1661badaebb2f264fce96/670531ccce041b579ba67336_Favicon.png"
+    },
+    "matrix": {
+      "name": "Matrix",
+      "shape": "icon",
+      "local_path": "/logos/investors/matrix.png",
+      "source_page": "https://matrix.vc/",
+      "source_url": "https://cdn.prod.website-files.com/663b79ad4731f5c7c99029dd/664fb4457c162ee164044406_matrix-favicon.png"
     }
   }
 }

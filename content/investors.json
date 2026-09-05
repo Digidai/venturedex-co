@@ -20,7 +20,8 @@
     "website": "https://www.sequoiacap.com",
     "description": "Helps daring founders build legendary companies from idea to IPO and beyond.",
     "aliases": [
-      "Sequoia Capital Scout"
+      "Sequoia Capital Scout",
+      "Sequoia Capital and S32"
     ]
   },
   "yc": {
@@ -1845,5 +1846,53 @@
     "short_name": "Disruptive",
     "website": "https://www.disruptive.tech/",
     "description": "Global technology investment firm founded by Alex Davis and focused on private growth-stage companies."
+  },
+  "entree-capital": {
+    "name": "Entrée Capital",
+    "slug": "entree-capital",
+    "short_name": "Entrée",
+    "website": "https://entreecap.com/",
+    "description": "Venture firm with offices in Tel Aviv, London, and New York investing across software, fintech, deep tech, AI, and blockchain.",
+    "aliases": [
+      "Entrée Capital and Pitango"
+    ]
+  },
+  "pitango": {
+    "name": "Pitango",
+    "slug": "pitango",
+    "short_name": "Pitango",
+    "website": "https://www.pitango.com/",
+    "description": "Israeli venture capital firm investing in technology companies from seed through late growth."
+  },
+  "s32": {
+    "name": "S32",
+    "slug": "s32",
+    "short_name": "S32",
+    "website": "https://www.s32.com/",
+    "description": "High-conviction venture firm investing in AI, infrastructure, cybersecurity, enterprise software, and computational biology."
+  },
+  "marathon-management-partners": {
+    "name": "Marathon Management Partners",
+    "slug": "marathon-management-partners",
+    "short_name": "Marathon",
+    "website": "https://marathonmp.com/",
+    "description": "Investment firm with offices in New York, Menlo Park, and Los Angeles that partners with category-defining founders.",
+    "aliases": [
+      "Marathon and Chemistry"
+    ]
+  },
+  "chemistry": {
+    "name": "Chemistry",
+    "slug": "chemistry",
+    "short_name": "Chemistry",
+    "website": "https://www.chemistry.vc/",
+    "description": "Early-stage venture firm investing in software companies from the first check through Series B."
+  },
+  "matrix": {
+    "name": "Matrix",
+    "slug": "matrix",
+    "short_name": "Matrix",
+    "website": "https://matrix.vc/",
+    "description": "Early-stage venture capital firm investing from idea through Series A across software, infrastructure, fintech, and frontier technology."
   }
 }

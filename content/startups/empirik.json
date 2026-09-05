@@ -1,0 +1,88 @@
+{
+  "slug": "empirik",
+  "domain": "empirik.ai",
+  "url": "https://empirik.ai/",
+  "product_name": "empirik",
+  "summary": "Change-observability agent that models infrastructure dependencies before changes ship.",
+  "editor_note": "Infrastructure review moves before deployment: an agent builds a live model across code, cloud, CI/CD, and on-premises systems, then evaluates the blast radius of a proposed change. Unlike postmortem copilots, it intervenes before production, and more than sixty named integrations make the scope inspectable. The bet is timely as coding agents raise change volume; stale dependency models could still block safe work or miss real risk.",
+  "editor_rating": 4,
+  "why_featured": "$21M Seed for pre-change infra AI",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "infrastructure,change observability,devops,ai agent,dependency graph",
+  "investors": "Sequoia Capital,S32",
+  "links": {
+    "product": "https://empirik.ai/product",
+    "docs": "https://empirik.ai/integrations",
+    "security": "https://empirik.ai/security-and-trust",
+    "careers": "https://empirik.ai/company/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$21M",
+      "stage": "Seed",
+      "lead_investor": "Sequoia Capital and S32",
+      "date": "2026-09-01",
+      "source_url": "https://empirik.ai/blog/introducing-empirik-the-autonomous-infrastructure-engineer",
+      "source_name": "empirik"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-05",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "empirik official site",
+        "url": "https://empirik.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_product",
+        "label": "empirik product overview",
+        "url": "https://empirik.ai/product",
+        "type": "product"
+      },
+      {
+        "id": "official_integrations",
+        "label": "empirik integration catalog",
+        "url": "https://empirik.ai/integrations",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "empirik launch and funding announcement",
+        "url": "https://empirik.ai/blog/introducing-empirik-the-autonomous-infrastructure-engineer",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "empirik models dependencies across code, cloud, delivery, and on-premises systems so teams can assess blast radius before infrastructure changes ship.",
+        "source_ids": [
+          "official_site",
+          "official_product"
+        ]
+      },
+      {
+        "claim": "The public integration catalog spans more than sixty infrastructure systems and the launch announcement says the product is already running in enterprise environments.",
+        "source_ids": [
+          "official_integrations",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Platform, SRE, security, and infrastructure teams reviewing machine-speed software changes.",
+      "category": "Infrastructure change intelligence",
+      "differentiation": "A continuously updated system model evaluates intent and dependencies before change, rather than accelerating diagnosis after an outage.",
+      "why_now": "Coding agents are increasing change volume faster than ticket queues and manual review boards can assess infrastructure impact."
+    },
+    "risks": [
+      {
+        "claim": "An incomplete or stale dependency model could either miss blast radius or add friction to safe routine changes.",
+        "basis": "The product's value depends on the operational graph remaining synchronized across a large and heterogeneous integration surface."
+      }
+    ]
+  }
+}
