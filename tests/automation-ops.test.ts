@@ -626,7 +626,7 @@ function createGscFixture(): string {
   mkdirSync(path.join(root, "scripts"), { recursive: true });
   const submitterPath = path.join(root, "scripts", "submit-gsc-direct.sh");
   cpSync(
-    path.join(repoRoot, "scripts", "submit-gsc-direct.sh"),
+    path.join(repoRoot, "tests", "fixtures", "gsc-legacy-submit.sh"),
     submitterPath,
   );
   const productionArtifactDefault =
@@ -639,10 +639,12 @@ function createGscFixture(): string {
   ));
   writeFileSync(
     submitterPath,
-    submitter.replace(productionArtifactDefault, fixtureArtifactDefault),
+    submitter
+      .replace("LEGACY_GSC_TEST_FIXTURE=0", "LEGACY_GSC_TEST_FIXTURE=1")
+      .replace(productionArtifactDefault, fixtureArtifactDefault),
   );
   cpSync(
-    path.join(repoRoot, "scripts", "gsc-browser-runtime.js"),
+    path.join(repoRoot, "tests", "fixtures", "gsc-legacy-browser-runtime.js"),
     path.join(root, "scripts", "gsc-browser-runtime.js"),
   );
   cpSync(
@@ -8026,9 +8028,9 @@ exec "${realPython3}" "$@"
   }
 });
 
-test("GSC failure artifacts default to the stable automation workspace", () => {
+test("legacy GSC failure artifacts defaulted to the stable automation workspace", () => {
   const script = readFileSync(
-    path.join(repoRoot, "scripts", "submit-gsc-direct.sh"),
+    path.join(repoRoot, "tests", "fixtures", "gsc-legacy-submit.sh"),
     "utf8",
   );
   assert.match(
@@ -8041,9 +8043,9 @@ test("GSC failure artifacts default to the stable automation workspace", () => {
   );
 });
 
-test("GSC defaults tolerate the observed Search Console SPA latency window", () => {
+test("legacy GSC defaults tolerated the observed Search Console SPA latency window", () => {
   const script = readFileSync(
-    path.join(repoRoot, "scripts", "submit-gsc-direct.sh"),
+    path.join(repoRoot, "tests", "fixtures", "gsc-legacy-submit.sh"),
     "utf8",
   );
   assert.match(script, /NAV_WAIT_SECONDS="\$\{NAV_WAIT_SECONDS:-15\}"/);

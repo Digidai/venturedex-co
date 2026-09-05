@@ -1,3 +1,5 @@
+/* HISTORICAL TEST FIXTURE ONLY. Retired browser-injected runtime; never load
+ * into a production browser. Codex uses its native observed UI controls. */
 (function installVentureDexGscRuntime(global) {
   "use strict";
 

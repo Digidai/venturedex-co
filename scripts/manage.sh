@@ -25,8 +25,10 @@ usage() {
 VentureDex Content Manager
 
 Usage:
-  ./scripts/manage.sh add                              Scaffold a new startup entry
-  ./scripts/manage.sh screenshot <slug> [url]          Capture screenshot via CF API
+  ./scripts/manage.sh add --from-codex <capture> --reviewed
+                                                       Scaffold using a reviewed native Codex capture
+  ./scripts/manage.sh screenshot <slug> [url] --from-codex <capture> --reviewed
+                                                       Import a reviewed native Codex capture offline
   ./scripts/manage.sh list                             List startups from content/startups
   ./scripts/manage.sh validate                         Run validate + build-db + app build
   ./scripts/manage.sh check-seed                       Verify generated seed matches all source content
@@ -1225,9 +1227,14 @@ cmd_list() {
 }
 
 cmd_screenshot() {
-  local slug="${1:?Usage: manage.sh screenshot <slug> [url]}"
+  local slug="${1:?Usage: manage.sh screenshot <slug> [url] --from-codex <capture> --reviewed}"
   local startup_file="$CONTENT_DIR/$slug.json"
-  local url="${2:-}"
+  local url=""
+  shift
+  if [ "$#" -gt 0 ] && [[ "$1" != --* ]]; then
+    url="$1"
+    shift
+  fi
 
   if [ -z "$url" ]; then
     require_file "$startup_file"
@@ -1239,8 +1246,7 @@ cmd_screenshot() {
     exit 1
   fi
 
-  require_token
-  "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"
+  "$SCRIPT_DIR/screenshot.sh" "$slug" "$url" "$@"
 }
 
 run_validation_gate() (
@@ -1793,7 +1799,27 @@ cmd_release() {
 }
 
 cmd_add() {
-  mkdir -p "$COMPANY_LOGO_DIR" "$INVESTOR_LOGO_DIR"
+  local native_capture="" capture_reviewed=0
+  while [ "$#" -gt 0 ]; do
+    case "$1" in
+      --from-codex)
+        if [ "$#" -lt 2 ] || [ -n "$native_capture" ]; then
+          echo "ERROR: --from-codex requires exactly one local capture path." >&2
+          return 2
+        fi
+        native_capture="$2"
+        shift 2
+        ;;
+      --reviewed) capture_reviewed=1; shift ;;
+      *) echo "ERROR: Unknown add argument: $1" >&2; return 2 ;;
+    esac
+  done
+  if [ "$capture_reviewed" -ne 1 ] || [[ "$native_capture" != /* ]] \
+    || [ ! -s "$native_capture" ] || [ ! -f "$native_capture" ] || [ -L "$native_capture" ]; then
+    echo "BLOCKED: Before adding content, capture and visually review the product in Codex's in-app browser." >&2
+    echo "Usage: manage.sh add --from-codex /absolute/capture.png --reviewed" >&2
+    return 2
+  fi
 
   echo "=== Add New Startup ==="
   echo "This writes a new content/startups/<slug>.json entry and updates company + investor brand assets."
@@ -1818,6 +1844,9 @@ cmd_add() {
     echo "ERROR: $startup_file already exists." >&2
     exit 1
   fi
+  # Validate the complete native capture before writing any content or assets.
+  "$SCRIPT_DIR/screenshot.sh" "$slug" "$url" --from-codex "$native_capture" --reviewed --check-only
+  mkdir -p "$COMPANY_LOGO_DIR" "$INVESTOR_LOGO_DIR"
 
   summary="$(prompt_required "Summary (<=100 chars)")"
   note="$(prompt_required "Editor note (150-500 chars)")"
@@ -2013,8 +2042,7 @@ PY
   write_startup_json "$startup_file" "$payload_json"
   python3 "$SCRIPT_DIR/backfill-research.py" "$slug"
 
-  require_token
-  "$SCRIPT_DIR/screenshot.sh" "$slug" "$url"
+  "$SCRIPT_DIR/screenshot.sh" "$slug" "$url" --from-codex "$native_capture" --reviewed
   cmd_validate
 
   echo
@@ -2025,7 +2053,7 @@ PY
 }
 
 case "${1:-help}" in
-  add) cmd_add ;;
+  add) shift; cmd_add "$@" ;;
   screenshot) shift; cmd_screenshot "$@" ;;
   list) cmd_list ;;
   validate) cmd_validate ;;

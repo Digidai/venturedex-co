@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const runtimeSource = readFileSync(
-  path.join(repoRoot, "scripts", "gsc-browser-runtime.js"),
+  path.join(repoRoot, "tests", "fixtures", "gsc-legacy-browser-runtime.js"),
   "utf8",
 ).replace(/\r?\n/g, " ");
 
@@ -294,7 +294,7 @@ function loadRuntime(
     location,
   });
   vm.runInContext(runtimeSource, context, {
-    filename: "scripts/gsc-browser-runtime.js",
+    filename: "tests/fixtures/gsc-legacy-browser-runtime.js",
   });
   const api = (context as vm.Context & {
     __VENTUREDEX_GSC__: RuntimeApi;
