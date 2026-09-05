@@ -15,7 +15,7 @@ product sections were selected where a homepage hero was unsuitable.
 
 ## Evidence and coverage
 
-- Every final image received visual review; the 48 native source PNGs and final
+- Every final image received visual review; the 48 native source captures and final
   WebPs were checked by a reviewer different from their capture operator.
 - Every image received a 320px contained-card visual review. These are explicitly
   labelled simulations, not browser screenshots. Primary content must be readable
@@ -28,6 +28,11 @@ product sections were selected where a homepage hero was unsuitable.
   not a claim that all 299 individual routes were browsed.
 
 All visual reviews were performed by AI agents; no human review is claimed.
+File-header checks confirm all 48 native captures are unaltered JPEG bytes. Their
+initial `.png` evidence filenames were retained for traceability; the extension
+does not describe the actual encoding. Preserved reviewer references to "source
+PNG" refer to those filenames. The audit records the actual format; hashes and
+approved final WebPs are unchanged. The importer already decodes real file headers.
 The [machine-readable audit](2026-09-05-screenshot-quality.json) includes per-image
 before/after SHA-256, reasons, provenance, rendering coverage, and evidence hashes.
 The [publication ledger](../../content/screenshot-reviews.json) binds approval to

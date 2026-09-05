@@ -7,7 +7,7 @@ The Codex in-app browser is the only capture runtime. The importer is offline an
 1. Create a task-owned `iab` tab, verify the official URL, and use a desktop viewport at default zoom (native 1280x720 is supported). Do not stretch a browser image or shrink a full-page screenshot.
 2. Wait for fonts, product graphics, and text to settle. Dismiss only actual consent/chat overlays using visible controls. Do not delete DOM nodes or conceal real product UI.
 3. Inspect the returned native screenshot. Reject blank/error/loading screens, animation residue, obstructed text, unreadable/tiny subjects, and badly cut framing. A meaningful product section is valid; a homepage hero is not compulsory. Compare a second candidate when the first is doubtful.
-4. Save native bytes, without alteration, to an absolute task-owned path. Import with `scripts/screenshot.sh SLUG URL --from-codex ABS --reviewed`. Import success is provisional. Conversion never upscales, crops, or adds padding.
+4. Save native bytes, without alteration, to an absolute task-owned path. Inspect the actual file header before choosing the extension: Codex may return JPEG bytes, so do not assume PNG. Import with `scripts/screenshot.sh SLUG URL --from-codex ABS --reviewed`. The importer decodes actual headers, not filename extensions. Import success is provisional. Conversion never upscales, crops, or adds padding.
 
 ## Independent final review
 
