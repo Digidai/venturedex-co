@@ -374,7 +374,25 @@ await (await import("node:fs/promises")).writeFile(
 ./scripts/screenshot.sh {slug} {url} --from-codex /absolute/run-artifacts/product.png --reviewed
 ```
 
-导入工具以 contain 方式生成 1440x900 WebP，保留产品内容，不启动浏览器或上传 R2。转换后再次目检画面与文字，将 `public/screenshots/{slug}.webp` 保存到 git，随站点静态资源发布。
+截图应采用桌面视口（Codex 默认 1280x720 可直接使用）、默认缩放，不能用全页长图缩成缩略图。等待字体、图片与文字动画稳定；如果首页主视觉不适合静态截图，选择可读、完整的产品区域。至少比较一个稳定候选，不得将加载框、错误页、遮挡层、模糊动画残帧或极小主体当成成品。
+
+导入工具只向下缩放并生成 WebP，保留原比例，不裁切、不补白、不放大，不启动浏览器或上传 R2。`--reviewed` 仅说明捕获原图已检查，导入后仍为 **UNREVIEWED**，不是发布批准。
+
+必须由不同于捕获操作者的复核者检查最终 WebP、实际卡片和详情页：产品已加载（loaded）、无遮挡（unobstructed）、主要文字可读（legible）、主体完整（framing）、卡片展示完整（card）、详情展示完整（detail）。桌面和窄布局均不得裁掉主体；真实产品控件不能误判成弹窗。不能单凭尺寸、熵或工具退出码宣称视觉合格。
+
+读取最终文件摘要，复核后逐项明确批准：
+
+```bash
+node scripts/screenshot-quality.mjs inspect {slug}
+node scripts/screenshot-quality.mjs approve {slug} \
+  --sha256 {实际已复核文件的摘要} --source-url {实际官方截图页面URL} \
+  --capture-method codex-iab --capture-operator {捕获操作者} \
+  --reviewer {独立复核者} --notes "具体看到的主体、可读性与展示结果" \
+  --loaded --unobstructed --legible --framing --card --detail
+node scripts/screenshot-quality.mjs validate
+```
+
+审批写入 `content/screenshot-reviews.json` 并绑定最终图片 SHA-256；图片任何字节变化都必须重新复核。`historical-reviewed` 仅用于真实审核后保留的历史图，不代表曾用 Codex 重拍，也不是新增截图的捷径。审批是可追溯的审阅声明，不是自动视觉模型评分或身份认证。将图片和审批清单一同提交；缺少审批、哈希不符、任一项目未通过、无效图片均阻止统一验证与站点构建。不合格时重新拍摄并复核，不能填假检查值来绕过门禁。操作细节见 `docs/automation/screenshot-quality.md`。
 
 ### Stage 5: 验证与发布
 

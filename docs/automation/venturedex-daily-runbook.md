@@ -66,6 +66,7 @@ Allowed persistent content changes:
 - `content/timestamps.json`
 - `content/investors.json`
 - `content/brand-assets.json`
+- `content/screenshot-reviews.json`
 - `content/rejected.jsonl`
 - `public/logos/companies/{slug}.*`
 - `public/logos/investors/{slug}.*`
@@ -110,6 +111,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
   - `content/timestamps.json`
   - `content/investors.json`
   - `content/brand-assets.json`
+  - `content/screenshot-reviews.json`
   - `content/rejected.jsonl`
   - `public/logos/companies/{slug}.*`
   - `public/logos/investors/{slug}.*`
@@ -151,7 +153,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 18. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
 19. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap. Persist the `content_prepared` checkpoint before the full gate.
 20. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
-21. Capture the product through the run-owned Codex in-app browser tab, visually review the capture, and import it with `./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed`. Review the resulting local 1440x900 WebP again; it is published as a static asset, not uploaded to R2 by the import tool.
+21. Capture a stable desktop product viewport through the run-owned Codex in-app browser tab (at least 1280x720, default zoom; no full-page image). Visually review the source and import with `./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed`. This creates an UNREVIEWED final WebP without upscaling, crop, or padding. Follow `docs/automation/screenshot-quality.md`: an independent reviewer checks the final asset, card, and detail rendering, then explicitly records all six checks with `screenshot-quality.mjs approve` bound to the inspected SHA-256. Commit `content/screenshot-reviews.json` together with the image. Missing/stale approval blocks both validation and build; `--reviewed` alone is never publication approval. Static asset publication does not use R2 upload.
 22. Run the GitHub Actions preflight and the full local validation gate, then persist `local_gates_passed`.
 23. Perform the review passes.
 24. Apply a heuristic update only if the feedback-loop gate permits it.
@@ -272,8 +274,8 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 - For TechCrunch WordPress API parsing, first extract date, title, excerpt, and link with simple `jq` fields; avoid shell-embedded entity rewrites for apostrophes or smart quotes unless a separate safe normalization step is required.
 - Keep the handles of Codex tabs created by this run and close only those tabs. After an interruption, verify ownership from current tool state before closing anything; do not reuse stale handles, infer ownership from a matching title, or close user tabs.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
-- The screenshot importer never opens a browser. Capture through the Codex in-app browser, dismiss visible consent/chat overlays with normal UI actions, and visually review the source before passing `--from-codex /absolute/path/capture.png --reviewed`. Do not delete DOM layers or hide real product UI to create a cleaner image. Inspect the imported 1440x900 contain WebP again before accepting it.
-- Treat screenshot success as provisional until visual review: if the generated image is blank, mostly empty, stuck on an animation/loading surface, or still contains a consent layer over product content, verify the product page in the Codex in-app browser, then recapture a clean 1440x900 WebP from the nearest product-visible section without removing real product wrappers.
+- The screenshot importer never opens a browser. Capture through the Codex in-app browser, dismiss visible consent/chat overlays with normal UI actions, and visually review the source before passing `--from-codex /absolute/path/capture.png --reviewed`. Do not delete DOM layers or hide real product UI. The importer preserves ratio with no enlargement/padding; an independent final review must be recorded against the exact hash.
+- Treat screenshot success as provisional until all six visual checks pass: if blank, mostly empty, stuck on animation/loading, illegible, or obscured by consent, recapture the nearest meaningful product section. A clear product section is allowed without the homepage hero. Do not confuse actual product UI with popups, and do not set unchecked approval flags to unblock publication.
 - For official investor brand assets on WordPress-hosted sites, prefer the site's declared favicon/apple-touch icon or another direct static asset from the same official host over a homepage/SVG wordmark when reachability has already failed or looks brittle; keep `source_page` and `source_url` on the official host so validator host matching still holds.
 - When immediate post-deploy smoke sees remote D1 or collection-index counts from the new release but stale root, news, or collection-detail counts, classify it as a propagation hypothesis rather than a deploy failure: first rerun independent smoke on both `workers.dev` and the custom domain, and only after both pass rerun the failed Deploy job at most once to restore green observable release evidence.
 - Before a formal GSC submit, open the Search Console inspection route in a task-owned Codex in-app browser tab and confirm it stays on an authenticated `search.google.com` URL Inspection surface instead of redirecting to `accounts.google.com`; if authentication is missing, close the automation tab, record `gsc_auth_session_blocker` plus every exact target URL, and do not substitute longer wait retries or another browser's session for the missing login state.

@@ -261,7 +261,7 @@ N6: 去掉产品名，这段话本身值得读吗？
 ./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed
 ```
 
-该命令只导入已复核的 Codex 截图并生成本地 `public/screenshots/{slug}.webp`，以 contain 方式适配 1440x900；不启动其他浏览器、不上传 R2。转换后再目检文字可读、画面完整，随后随静态站点发布。
+该命令只生成本地待验收 `public/screenshots/{slug}.webp`：保留比例、只向下缩放、不补白或放大，不启动其他浏览器、不上传 R2。采用至少 1280x720 的桌面视口，不能导入全页长图。然后按 `content/STANDARD.md` 4.6 / `docs/automation/screenshot-quality.md`，让独立复核者检查最终图片、卡片和详情展示，使用 `screenshot-quality.mjs approve` 将六项检查绑定最终 SHA-256；捕获操作者不能自批。审批清单 `content/screenshot-reviews.json` 和图片必须一起提交。`--reviewed` 不是最终审批，图片改动后旧审批失效。
 
 ### Step 5: 验证和提交
 
@@ -273,7 +273,7 @@ git diff --check
 # 如果报错，修复后重试
 
 # 提交（单个新增用单项目 commit；2-5 个新增可在逐项通过门禁后批量 commit）
-git add content/startups/{slug}.json content/timestamps.json content/brand-assets.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
+git add content/startups/{slug}.json content/timestamps.json content/brand-assets.json content/screenshot-reviews.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
 git commit -m "content: add {Product Name}
 
 Funding: {amount} {stage} from {lead} ({source_name})
@@ -371,7 +371,7 @@ python3 scripts/gsc-codex.py plan --latest-weekly
 3. 不收录自己没评估过的产品；不能直接试用的 ToB/API/基础设施产品必须有公开产品证据
 4. 不用禁用词列表里的任何词
 5. 每次最多收录 5 个
-6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/brand-assets.json`、`content/rejected.jsonl`、`public/screenshots/`、`public/logos/`
+6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/brand-assets.json`、`content/screenshot-reviews.json`、`content/rejected.jsonl`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`
 9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
@@ -392,6 +392,7 @@ GSC 若在 immutable receipt 写入后、终态 ledger 追加前中断，可用 
   content/timestamps.json
   content/investors.json
   content/brand-assets.json
+  content/screenshot-reviews.json
   content/rejected.jsonl
   public/screenshots/*.webp
   public/logos/companies/*
