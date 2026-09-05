@@ -33,10 +33,12 @@ async function fixture(width = 1280, height = 720) {
     `module.exports = require(${JSON.stringify(require.resolve("sharp"))});\n`);
   const script = path.join(root, "scripts", "screenshot.sh");
   cpSync(screenshotScript, script);
+  cpSync(path.join(repoRoot, "scripts", "screenshot-quality.mjs"), path.join(root, "scripts", "screenshot-quality.mjs"));
   cpSync(path.join(repoRoot, "scripts", "manage.sh"), path.join(root, "scripts", "manage.sh"));
   cpSync(path.join(repoRoot, "scripts", "load-local-env.sh"), path.join(root, "scripts", "load-local-env.sh"));
   const source = path.join(root, "Codex capture.png");
-  await sharp({ create: { width, height, channels: 3, background: "#2255aa" } }).png().toFile(source);
+  // Geometric image tests conversion only; it is never asserted to be a product screenshot.
+  await sharp(Buffer.from(`<svg width="${width}" height="${height}"><rect width="100%" height="100%" fill="#2255aa"/><rect x="40" y="40" width="${width / 2}" height="${height / 2}" fill="#ffffff"/><circle cx="${width * .7}" cy="${height * .7}" r="80" fill="#ee7755"/></svg>`)).png().toFile(source);
   const output = path.join(root, "public", "screenshots", "example.webp");
   return { root, script, source, output };
 }
@@ -69,21 +71,22 @@ test("Codex capture import requires explicit visual review", async () => {
   } finally { rmSync(f.root, { recursive: true, force: true }); }
 });
 
-test("reviewed capture imports offline as a real 1440x900 WebP without stretching", async () => {
+test("source-reviewed capture imports unapproved, without cropping, padding, or upscaling", async () => {
   const f = await fixture();
   try {
     const original = readFileSync(f.source);
     const result = run(f);
     assert.equal(result.status, 0, result.stdout + result.stderr);
-    assert.match(result.stdout, /imported reviewed Codex browser capture/);
+    assert.match(result.stdout, /UNREVIEWED final asset/);
     assert.match(result.stdout, /Local static asset only/);
     const metadata = await sharp(f.output).metadata();
     assert.equal(metadata.format, "webp");
-    assert.equal(metadata.width, 1440);
-    assert.equal(metadata.height, 900);
-    // 16:9 source is contained in the 8:5 canvas: white padding, not cropping.
+    assert.equal(metadata.width, 1280);
+    assert.equal(metadata.height, 720);
+    // The source corner is preserved instead of being padded with white.
     const edge = await sharp(f.output).extract({ left: 0, top: 0, width: 1, height: 1 }).raw().toBuffer();
-    assert.ok(edge[0] > 245 && edge[1] > 245 && edge[2] > 245);
+    assert.ok(edge[0] < 80 && edge[1] < 120 && edge[2] > 120);
+    assert.equal(existsSync(path.join(f.root, "content", "screenshot-reviews.json")), false);
     assert.deepEqual(readFileSync(f.source), original);
     assert.deepEqual(readdirSync(path.dirname(f.output)), ["example.webp"]);
   } finally { rmSync(f.root, { recursive: true, force: true }); }
@@ -158,6 +161,34 @@ test("small captures must be recaptured instead of silently enlarged", async () 
   } finally { rmSync(f.root, { recursive: true, force: true }); }
 });
 
+test("full-page and blank source captures cannot be imported with --reviewed", async () => {
+  const f = await fixture(1280, 4000);
+  try {
+    const fullPage = run(f);
+    assert.notEqual(fullPage.status, 0);
+    assert.match(fullPage.stderr, /viewport framing/);
+    await sharp({ create: { width: 1280, height: 720, channels: 3, background: "#ffffff" } }).png().toFile(f.source);
+    const blank = run(f);
+    assert.notEqual(blank.status, 0);
+    assert.match(blank.stderr, /Blank or near-uniform/);
+    assert.equal(existsSync(f.output), false);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test("large native viewports only downsize, preserving their aspect ratio and minimum readable height", async () => {
+  for (const [width, height, expectedWidth, expectedHeight] of [[2560, 1440, 1440, 810], [1920, 920, 1503, 720]]) {
+    const f = await fixture(width, height);
+    try {
+      const result = run(f);
+      assert.equal(result.status, 0, result.stderr);
+      const metadata = await sharp(f.output).metadata();
+      assert.equal(metadata.width, expectedWidth);
+      assert.equal(metadata.height, expectedHeight);
+      assert.ok(Math.abs(metadata.width! / metadata.height! - width / height) < .002);
+    } finally { rmSync(f.root, { recursive: true, force: true }); }
+  }
+});
+
 test("unsafe slug, credential URL, relative path, and unknown options fail without writes", async () => {
   const f = await fixture();
   try {
@@ -195,6 +226,6 @@ test("screenshot importer has no external browser or network execution path", ()
   const script = readFileSync(screenshotScript, "utf8");
   assert.doesNotMatch(script, /bb-browser|Comet|playwright_cli|remote-debugging|pkill|curl|fetch\(|https\.request/);
   assert.doesNotMatch(script, /load-local-env|CLOUDFLARE_API_TOKEN/);
-  assert.match(script, /fit: 'contain'/);
+  assert.match(script, /fit: 'inside', withoutEnlargement: true/);
   assert.match(script, /fs\.renameSync\(temporaryPath, destination\)/);
 });

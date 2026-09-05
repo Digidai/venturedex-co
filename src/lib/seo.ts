@@ -9,6 +9,7 @@ import { getCompanyBrandAsset, getInvestorBrandAsset } from "./brand-assets";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
 import type { TopicPage } from "./topic-pages";
 import type { WeeklyIssueContent } from "./weekly";
+import { versionedScreenshotUrl } from "./screenshots";
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
 export const SITE_NAME = "VentureDex";
@@ -272,7 +273,7 @@ export function startupJsonLd(startup: Startup, siteUrl = DEFAULT_SITE_URL): Jso
     .filter((url): url is string => Boolean(url));
   const tags = splitCsv(startup.tags);
   const investors = splitCsv(startup.investors);
-  const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+  const screenshotUrl = versionedScreenshotUrl(startup.screenshot_r2_key);
   const logoUrl = getCompanyBrandAsset(startup.slug)?.local_path ?? null;
   const officialUrl = normalizeExternalUrl(startup.canonical_url) ?? normalizeExternalUrl(startup.domain);
   const citationUrls = Array.from(new Set([

@@ -372,6 +372,23 @@ def main() -> int:
         print("\nBUILD BLOCKED. Fix all timestamp errors before validating external sources.")
         return 1
 
+    # Fail early, before external URL checks: an existing filename is not proof
+    # of usable pixels or an up-to-date, hash-bound visual review.
+    try:
+        screenshot_check = subprocess.run(
+            ["node", str(REPO_ROOT / "scripts" / "screenshot-quality.mjs"), "validate"],
+            cwd=REPO_ROOT, capture_output=True, text=True, timeout=120,
+        )
+    except (OSError, subprocess.TimeoutExpired) as error:
+        print(f"FAIL: Screenshot quality gate could not run: {error}")
+        print("\nBUILD BLOCKED. Restore screenshot validation dependencies.")
+        return 1
+    print(screenshot_check.stdout, end="")
+    if screenshot_check.returncode:
+        print(screenshot_check.stderr, end="")
+        print("\nBUILD BLOCKED. Repair screenshots and record current visual reviews.")
+        return 1
+
     url_cache: dict[str, str] = {}
     prime_url_cache(startup_files, url_cache)
     results: list[FileResult] = []

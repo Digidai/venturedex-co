@@ -3,6 +3,7 @@ export const prerender = true;
 import type { APIRoute } from "astro";
 import { getContentStartups } from "../lib/content";
 import { buildSearchEntries } from "../lib/search-index";
+import { versionedScreenshotUrl } from "../lib/screenshots";
 
 // Static, separately-cacheable search index (name/domain/type/tags for scoring,
 // plus display fields so the client can render result cards). The /search page
@@ -13,7 +14,10 @@ export const GET: APIRoute = () => {
     getContentStartups().sort((a, b) =>
       a.product_name.toLowerCase().localeCompare(b.product_name.toLowerCase())
     )
-  );
+  ).map((entry) => ({
+    ...entry,
+    screenshotUrl: versionedScreenshotUrl(`${entry.slug}.webp`) ?? undefined,
+  }));
   return new Response(JSON.stringify(entries), {
     headers: {
       "Content-Type": "application/json; charset=utf-8",

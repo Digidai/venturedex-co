@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run weekly:og && astro build",
+    "build": "npm run screenshots:validate && npm run weekly:og && astro build",
+    "screenshots:validate": "node scripts/screenshot-quality.mjs validate",
     "preview": "astro preview",
     "astro": "astro",
     "typecheck": "astro check",

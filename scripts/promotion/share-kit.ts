@@ -7,6 +7,7 @@ import {
   type PromotionStartup,
   type PromotionWeeklyIssue,
 } from "./content";
+import { versionedScreenshotUrl } from "../../src/lib/screenshots";
 
 export interface PromotionPackInput {
   dailyDate: string | null;
@@ -77,7 +78,8 @@ function appendDailyAdditions(lines: string[], startups: PromotionStartup[], cam
     if (startup.summary) lines.push(`- Summary: ${oneLine(startup.summary)}`);
     if (startup.why_featured) lines.push(`- Why VentureDex is watching: ${oneLine(startup.why_featured)}`);
     if (startup.investors) lines.push(`- Investors: ${startup.investors}`);
-    lines.push(`- Share image: https://venturedex.co/screenshots/${startup.slug}.webp`);
+    const screenshotUrl = versionedScreenshotUrl(`${startup.slug}.webp`);
+    if (screenshotUrl) lines.push(`- Share image: https://venturedex.co${screenshotUrl}`);
     lines.push("");
   }
 }

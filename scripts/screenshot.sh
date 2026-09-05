@@ -16,8 +16,11 @@ usage() {
     '3. Visually review the actual image: no blank/loading/consent surface.' \
     '4. Import that local PNG, JPEG, or WebP with --from-codex and --reviewed.' \
     '' \
-    'The importer runs offline, preserves aspect ratio, and writes a 1440x900 WebP.' \
-    'Review the final WebP too. No browser, daemon, Cloudflare request, or upload is started.'
+    'The importer runs offline: no padding, cropping, stretching, or upscaling.' \
+    'Input must be a landscape viewport of at least 1280x720; output normally caps width at 1440.' \
+    '--reviewed confirms source inspection only. The final asset remains UNREVIEWED.' \
+    'Inspect the final image, card, and detail page; then use screenshot-quality.mjs approve.' \
+    'No browser, daemon, Cloudflare request, or upload is started.'
 }
 
 if [ "${1:-}" = '--help' ] || [ "${1:-}" = '-h' ]; then
@@ -72,6 +75,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
 import { randomUUID } from 'node:crypto';
+import { pathToFileURL } from 'node:url';
 
 const [root, slug, rawUrl, capture, checkOnly] = process.argv.slice(2);
 let temporaryPath;
@@ -98,24 +102,22 @@ try {
 
   const source = fs.readFileSync(capture);
   const options = { limitInputPixels: 50_000_000, failOn: 'warning' };
-  const metadata = await sharp(source, options).metadata();
-  if (!['png', 'jpeg', 'webp'].includes(metadata.format) || (metadata.pages ?? 1) !== 1) {
-    throw new Error('Capture must be a single-frame PNG, JPEG, or WebP.');
-  }
-  if (metadata.width < 720 || metadata.height < 450) {
-    throw new Error('Capture is too small; recapture a desktop viewport, preferably 1440x900.');
-  }
+  const { inspectImage } = await import(pathToFileURL(path.join(root, 'scripts', 'screenshot-quality.mjs')).href);
+  const metadata = await inspectImage(source, { nativeCapture: true });
+  // A wider viewport may need slightly more than 1440px to retain 720px height.
+  // This never enlarges a source or adds pixels around its original framing.
+  const targetWidth = Math.max(1440, Math.ceil(720 * metadata.width / metadata.height));
   const output = await sharp(source, options)
     .rotate()
-    .resize(1440, 900, { fit: 'contain', background: '#ffffff' })
+    .resize({ width: targetWidth, fit: 'inside', withoutEnlargement: true })
     .webp({ quality: 92 })
     .toBuffer();
-  const verified = await sharp(output, options).metadata();
-  if (verified.format !== 'webp' || verified.width !== 1440 || verified.height !== 900 || output.length === 0) {
+  const verified = await inspectImage(output, { webpOnly: true });
+  if (verified.width > metadata.width || verified.height > metadata.height || output.length === 0) {
     throw new Error('Converted screenshot did not pass WebP format/dimension validation.');
   }
   if (checkOnly === '1') {
-    console.log('OK: reviewed Codex capture passed offline preflight; no screenshot was written.');
+    console.log('OK: source-reviewed Codex capture passed offline preflight; no screenshot was written or approved.');
     process.exit(0);
   }
 
@@ -138,9 +140,10 @@ try {
   } finally { fs.closeSync(fd); }
   fs.renameSync(temporaryPath, destination);
   temporaryPath = undefined;
-  console.log(`OK: imported reviewed Codex browser capture for ${rawUrl}`);
-  console.log(`${destination} (1440x900 WebP, ${output.length} bytes; aspect ratio preserved)`);
-  console.log('Local static asset only; visually review the final WebP before publishing.');
+  console.log(`OK: imported Codex capture for ${rawUrl}; UNREVIEWED final asset.`);
+  console.log(`${destination} (${verified.width}x${verified.height} WebP, ${output.length} bytes; aspect ratio preserved)`);
+  console.log(`SHA-256: ${verified.sha256}`);
+  console.log('Local static asset only. Publication blocked until final image, card, and detail review is recorded with screenshot-quality.mjs approve.');
 } catch (error) {
   if (temporaryPath) {
     try { fs.unlinkSync(temporaryPath); } catch {}

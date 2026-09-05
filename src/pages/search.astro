@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import Base from "../layouts/Base.astro";
+import "../styles/screenshots.css";
 
 // /search is noindex and JS-driven. Instead of prerendering every startup card
 // into the page (which would bloat to multiple MB as the directory grows), the
@@ -78,7 +79,7 @@ import Base from "../layouts/Base.astro";
     function cardHtml(e: SearchEntry): string {
       const meta = [e.type, e.stage, e.region].filter(Boolean).join(" · ");
       return `<article class="s-card"><a href="/startups/${esc(e.slug)}" class="s-card-link">
-        <div class="s-card-shot"><img src="/screenshots/${esc(e.slug)}.webp" alt="${esc(e.name)} screenshot" width="1440" height="900" loading="lazy" decoding="async"></div>
+        <div class="s-card-shot startup-screenshot-frame"><img src="${esc(e.screenshotUrl ?? `/screenshots/${e.slug}.webp`)}" alt="${esc(e.name)} screenshot" loading="lazy" decoding="async"></div>
         <div class="s-card-body">
           <div class="s-card-titles"><h3 class="s-card-name">${esc(e.name)}</h3><span class="s-card-domain">${esc(e.domain)}</span></div>
           ${e.summary ? `<p class="s-card-summary">${esc(e.summary)}</p>` : ""}
@@ -274,19 +275,6 @@ import Base from "../layouts/Base.astro";
     display: block;
     text-decoration: none;
     color: inherit;
-  }
-  [data-search-results] .s-card-shot {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: var(--color-badge-bg);
-    border-bottom: 1px solid var(--color-border);
-  }
-  [data-search-results] .s-card-shot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    display: block;
   }
   [data-search-results] .s-card-body {
     padding: var(--space-3) var(--space-4) var(--space-4);

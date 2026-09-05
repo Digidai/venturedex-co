@@ -17,6 +17,7 @@ import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLast
 import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 import { whatShipsSnapshot } from "../lib/whatships";
+import { versionedScreenshotUrl } from "../lib/screenshots";
 
 interface SitemapUrl {
   loc: string;
@@ -149,7 +150,7 @@ export const GET: APIRoute = () => {
       images: startup.screenshot_r2_key
         ? [
             {
-              loc: `/screenshots/${startup.screenshot_r2_key}`,
+              loc: versionedScreenshotUrl(startup.screenshot_r2_key)!,
               title: `${startup.product_name} screenshot`,
               caption: startup.summary,
             },

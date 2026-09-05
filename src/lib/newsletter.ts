@@ -1,6 +1,7 @@
 import { normalizeResearch, safeJsonParse } from "./json";
 import type { FundingRound, Startup, StartupResearch } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
+import { versionedScreenshotUrl } from "./screenshots";
 
 export type NewsletterType = "daily" | "weekly";
 
@@ -2669,7 +2670,9 @@ function evidenceHtml(
 function screenshotHtml(startup: Startup, siteUrl: string): string {
   if (startup.screenshot_status !== "ready" || !startup.screenshot_r2_key) return "";
 
-  const screenshotUrl = absoluteUrl(siteUrl, `/screenshots/${startup.screenshot_r2_key}`);
+  const screenshotPath = versionedScreenshotUrl(startup.screenshot_r2_key);
+  if (!screenshotPath) return "";
+  const screenshotUrl = absoluteUrl(siteUrl, screenshotPath);
   const startupUrl = absoluteUrl(siteUrl, `/startups/${startup.slug}`);
   const alt = `${startup.product_name} website screenshot`;
 

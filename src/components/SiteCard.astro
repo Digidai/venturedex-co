@@ -2,6 +2,8 @@
 import BrandLogo from "./BrandLogo.astro";
 import { getCompanyBrandAsset } from "../lib/brand-assets";
 import type { StartupCard } from "../lib/types";
+import { getScreenshotMetadata, versionedScreenshotUrl } from "../lib/screenshots";
+import "../styles/screenshots.css";
 
 interface Props {
   // Only the card fields are needed; full Startup objects are assignable too.
@@ -22,7 +24,8 @@ interface Props {
 }
 
 const { startup, size = "default", priority = false, index = null } = Astro.props;
-const screenshotUrl = startup.screenshot_r2_key ? `/screenshots/${startup.screenshot_r2_key}` : null;
+const screenshotUrl = versionedScreenshotUrl(startup.screenshot_r2_key);
+const screenshotMetadata = getScreenshotMetadata(startup.screenshot_r2_key);
 const companyBrand = getCompanyBrandAsset(startup.slug);
 
 const metaLine = [startup.product_type, startup.funding_stage, startup.region]
@@ -42,13 +45,13 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
   data-featured={index ? (index.featured ? "1" : "0") : undefined}
 >
   <a href={`/startups/${startup.slug}`} class="card-link">
-    <div class="card-screenshot">
+    <div class="card-screenshot startup-screenshot-frame">
       {screenshotUrl ? (
         <img
           src={screenshotUrl}
+          width={screenshotMetadata?.width}
+          height={screenshotMetadata?.height}
           alt={`${startup.product_name} screenshot`}
-          width="1440"
-          height="900"
           loading={priority ? "eager" : "lazy"}
           fetchpriority={priority ? "high" : undefined}
           decoding="async"
@@ -98,29 +101,6 @@ const metaLine = [startup.product_type, startup.funding_stage, startup.region]
 
   .card-link:hover {
     text-decoration: none;
-  }
-
-  .card-screenshot {
-    aspect-ratio: 16 / 9;
-    overflow: hidden;
-    background: var(--color-badge-bg);
-  }
-
-  .site-card--large .card-screenshot {
-    aspect-ratio: 16 / 10;
-  }
-
-  .card-screenshot img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top;
-    transition: transform 0.3s;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .site-card:hover .card-screenshot img {
-    transform: scale(1.02);
   }
 
   .card-placeholder {

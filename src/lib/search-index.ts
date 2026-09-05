@@ -28,6 +28,8 @@ export interface SearchEntry {
   stage?: string;
   region?: string;
   whyFeatured?: string;
+  // Resolved server-side from the reviewed asset hash; no manifest in client JS.
+  screenshotUrl?: string;
 }
 
 const WEIGHTS = { name: 100, domain: 80, tag: 50, type: 30 } as const;

@@ -26,9 +26,10 @@ VentureDex Content Manager
 
 Usage:
   ./scripts/manage.sh add --from-codex <capture> --reviewed
-                                                       Scaffold using a reviewed native Codex capture
+                                                       Scaffold a draft using a source-reviewed native Codex capture
   ./scripts/manage.sh screenshot <slug> [url] --from-codex <capture> --reviewed
-                                                       Import a reviewed native Codex capture offline
+                                                       Import an UNREVIEWED final asset offline (not publication approval)
+  node scripts/screenshot-quality.mjs --help             Record final image + card + detail visual approval
   ./scripts/manage.sh list                             List startups from content/startups
   ./scripts/manage.sh validate                         Run validate + build-db + app build
   ./scripts/manage.sh check-seed                       Verify generated seed matches all source content
@@ -2043,13 +2044,13 @@ PY
   python3 "$SCRIPT_DIR/backfill-research.py" "$slug"
 
   "$SCRIPT_DIR/screenshot.sh" "$slug" "$url" --from-codex "$native_capture" --reviewed
-  cmd_validate
 
   echo
   echo "Created $startup_file"
   echo "Company logo saved to $company_logo_path"
   echo "Screenshot saved to $screenshot_path"
-  echo "Validation/build passed. Review the diff, then commit + push."
+  echo "Draft only; validation/build has NOT passed. Inspect final WebP + card + detail, then record hash-bound approval with screenshot-quality.mjs approve."
+  echo "After approval, run ./scripts/manage.sh validate. Do not publish an unreviewed draft."
 }
 
 case "${1:-help}" in

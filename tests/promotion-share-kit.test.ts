@@ -7,6 +7,8 @@ import {
   xDraft,
 } from "../scripts/promotion/share-kit";
 import type { PromotionStartup, PromotionWeeklyIssue } from "../scripts/promotion/content";
+import reviewManifest from "../content/screenshot-reviews.json";
+import type { ScreenshotMetadata } from "../src/lib/screenshots";
 
 const startup: PromotionStartup = {
   slug: "billables-ai",
@@ -61,6 +63,22 @@ test("buildPromotionPackMarkdown includes share kit sections and accurate UTM li
 
 test("weekly-only promotion uses weekly published date for campaign", () => {
   assert.equal(campaignName({ dailyDate: null, dailyStartups: [], weeklyIssue: weekly }), "venturedex_20260608");
+});
+
+test("promotion share image uses the reviewed hash and changes when that reviewed hash changes", () => {
+  // Isolated in-memory dependency fixture only: never write fake reviews to disk.
+  const reviews = reviewManifest.reviews as Record<string, ScreenshotMetadata>;
+  const original = reviews[startup.slug];
+  try {
+    const pack = () => buildPromotionPackMarkdown({ dailyDate: "2026-06-11", dailyStartups: [startup], weeklyIssue: null });
+    reviews[startup.slug] = { sha256: "a".repeat(64), width: 1280, height: 720 };
+    assert.match(pack(), /Share image: https:\/\/venturedex\.co\/screenshots\/billables-ai\.webp\?v=aaaaaaaaaaaaaaaa/);
+    reviews[startup.slug] = { ...reviews[startup.slug], sha256: "b".repeat(64) };
+    assert.match(pack(), /Share image: https:\/\/venturedex\.co\/screenshots\/billables-ai\.webp\?v=bbbbbbbbbbbbbbbb/);
+  } finally {
+    if (original) reviews[startup.slug] = original;
+    else delete reviews[startup.slug];
+  }
 });
 
 test("oneLine and xDraft normalize outreach text safely", () => {
