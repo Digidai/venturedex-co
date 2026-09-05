@@ -4986,3 +4986,24 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: archive-before-cleanup is mandatory; auto-push, silent ignore, force removal, and process killing remain prohibited.
 - affected_file: archive helper, automation operation tests, design record, Daily/Weekly automation documentation, active Daily/Weekly prompt definitions, this append-only learning log, Weekly automation memory, and the central evidence archive.
 - affected_section: terminal blocked closeout, CAS ownership, evidence durability, process guards, worktree cleanup, and scheduled-run preflight.
+
+### 2026-09-05 13:14 CST — Browser control restored and four Daily profiles cleared the full gate
+
+- candidate_count: 19 fresh, deduplicated candidates in one bounded discovery pool; no second discovery cycle ran.
+- accepted: 4 — Catch, empirik, Wafer, and Light.
+- rejected: 15 complete v2 decisions — Aitan, Aslan, TrustedRouter, Easy Aerial, Fambot, Conveo, Guardio, Ultrahuman, Emberos, Chariot Claims, Elm AI, AI Score, Prevalent AI, Senticell, and Zeit AI.
+- rejection_bar_met: yes; 15 complete rejections for 4 additions exceeds the required 3:1 ratio.
+- outcome: accepted; release evidence was pending when this append-only entry was written.
+- browser_recovery: repaired the shared Comet CDP endpoint on port 19825 and started bb-browser with the port as a global option; a wrong-port 9222 process was stopped only after exact ownership was verified. User tabs were preserved.
+- maintenance: dependency and official brand-source repairs were committed separately as `69264bc863ce5f1459edd31771bea2a78110e31c`; exact-SHA Validate and Deploy passed and live HTTP checks returned 200.
+- screenshot: pass for all four accepted slugs. Isolated Playwright received `ERR_CONNECTION_CLOSED` for Catch, so the documented Cloudflare rendering fallback was used after direct browser product verification; all four 1440x900 WebP files were visually reviewed.
+- validation: pass after evidence-backed iterations. The content validator reported 299/299 with zero errors, deterministic 299-startup/299-round seed parity, all 405 tests passed, Astro check reported zero diagnostics, Astro build completed, and `git diff --check` passed.
+- environment_recovery: `npm ci --ignore-scripts` aligned the upgraded lockfile but intentionally omitted the better-sqlite3 native binding; `npm rebuild better-sqlite3` restored it and a direct in-memory database load succeeded before the final full gate.
+- transport_recovery: GitHub Actions preflight recovered after two bounded TLS handshake timeouts. No discovery, deploy, or GSC side effect was repeated.
+- failure_tags: [browser_control, screenshot_transport, local_dependency, external_transport]
+- reward: 1 (`+4` for four qualified additions with complete rejection accounting, research, assets, screenshots, and final gates; `-3` for browser, screenshot, dependency, and transport recovery friction).
+- dominant_failure_mode: environment drift across the browser endpoint and native dependency state, both recovered without weakening publication gates.
+- proposed_change: none. Existing global-port bb-browser invocation, screenshot fallback, CAS checkpoints, and dependency rebuild paths were sufficient.
+- decision: AI Score was moved from provisional acceptance to taste rejection because its public book-a-demo surface did not expose enough concrete workflow; Light took the fourth slot, preserving both editorial quality and the 3:1 rejection ratio.
+- affected_file: four startup profiles, fifteen rejection rows, timestamps, investor directory and brand manifest, company/investor assets, four screenshots, this learning log, run-state, and automation memory.
+- affected_section: browser ownership, bounded discovery, taste review, brand evidence, screenshot fallback, full validation, release, GSC, and closeout.
