@@ -5023,3 +5023,57 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - failure_tags: [browser_backend_migration, control_plane_drift]
 - reward: 0; maintenance and completion of the existing Daily GSC backlog, not another curation cycle.
 - decision: Codex-only browser interaction is the production contract. An unavailable native browser is an explicit blocker, never permission to revive the retired backend. Historical observations remain historical and do not override this contract.
+
+### 2026-09-06 13:52 CST — Five native captures preserved; independent review gate blocked publication
+
+- candidate_count: 20 fresh, deduplicated candidates in one bounded discovery pool; no second discovery cycle ran.
+- accepted: 5 editorially qualified candidates pending publication — Airbound, iPronics, Vessev, Cradlewise, and REGENT Craft.
+- rejected: 15 complete decisions were reached — Runable, HiddenLayer, Healthplus.ai, PeopleX, Hazen.ai, ALSO, Yardstik, Socure, Teragen Energy, Science4Beauty, Oddpool, Diameter Pay, HyImpulse, AIRBILITY, and xorlab.
+- rejection_bar_met: yes; 15 decisions for 5 qualified candidates meets the required 3:1 ratio.
+- outcome: stopped. Five official product surfaces were inspected through one task-owned Codex in-app browser tab, and five native 1280x720 captures were imported offline. The final assets remain intentionally UNREVIEWED because no distinct final reviewer was available.
+- bootstrap: pass in detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260906T054202Z/venturedex.co` from exact `origin/main` base `3a67bc0261b6b9bdd0622d003159454937b4a41e`. Cloudflare and GitHub Actions preflight passed; the known non-blocking R2 permission limitation remained.
+- validation: not run; the independent screenshot-review prerequisite was unavailable, so the content set was not authored or advanced to full gates. `git diff --check` passes for the durable append-only evidence.
+- build_db: not run.
+- build_app: not run.
+- screenshot: fail closed. Capture operator and final reviewer must differ; no second reviewer identity was available, and no attestation or checkbox was invented. Imported hashes are Airbound `790160581d7aaaa3ca98cd25cee9db4d6823025bc880aa5cebe92b9ef88c2e60`, iPronics `e2462d23e876da45ce0c7361010f53c5c927d9cf5576e7924f0fd4586e52ddeb`, Vessev `54b083079d8a0131c4ff91f0bae650efa11f311956385bd5175179a99c80b168`, Cradlewise `70e821fc9c8eead65c10fdbd0d2142f099359bd6282d8af75786623d92c0128d`, and REGENT Craft `10dc68860ed2ef2e6dcd23e3ebc54c6de96faf225c1b3439286e5e764e6ce554`.
+- commit_push: n/a; no commit or remote mutation was eligible.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not_checked; no current-run pushed SHA exists.
+- gsc: n/a; no startup URL was published, so no dry-run, live request, retry, browser click, or ledger mutation was permitted.
+- newsletter: not manually triggered; no publication timestamp or delivery window exists.
+- browser_closeout: pass. The sole task-owned Codex in-app browser tab was closed; no user tab, shared browser, or unrelated process was touched.
+- worktree_cleanup: blocked by design. The isolated worktree contains five unreviewed screenshot assets plus this required learning entry, so neither evidence-only archival nor guarded cleanup is eligible. The main checkout remained read-only.
+- failure_tags: [screenshot_env, policy_conflict, worktree_cleanup]
+- reward: 0; discovery and capture completed, but publication correctly stopped at the independent-review boundary.
+- dominant_failure_mode: the run had a real capture operator but no distinct final screenshot reviewer, and the repository explicitly forbids self-review or fabricated identities for new native captures.
+- proposed_change: none. A human or otherwise genuinely independent reviewer can inspect the fixed hashes in card, detail, and narrow layouts, then resume this exact run without repeating discovery or capture.
+- decision: fail closed at the screenshot-review gate; preserve the exact worktree and candidate pool for a bounded continuation.
+- affected_file: five unreviewed screenshot WebP files, this append-only learning log, central run-state/lease files, and automation memory.
+- affected_section: single-pool discovery, Codex-native capture, independent screenshot review, release eligibility, browser closeout, and guarded worktree preservation.
+
+### 2026-09-07 14:34 CST — Exact Daily run resumed, reviewed, and published
+
+- candidate_count: 20 from the preserved 2026-09-06 bounded discovery pool; no second discovery cycle ran during this continuation.
+- accepted: 5 — Airbound, iPronics, Vessev, Cradlewise, and REGENT Craft.
+- rejected: 15 complete v2 decisions — Runable, HiddenLayer, Healthplus.ai, PeopleX, Hazen.ai, ALSO, Yardstik, Socure, Teragen Energy, Science4Beauty, Oddpool, Diameter Pay, HyImpulse, AIRBILITY, and xorlab.
+- rejection_bar_met: yes; 15 complete rejections for 5 additions meets the required 3:1 ratio.
+- outcome: accepted and deployed. The exact preserved run `venturedex-daily-20260906T054202Z` resumed at epoch 18 without repeating discovery or capture.
+- screenshot: pass. A final reviewer distinct from the recorded capture operator inspected all five fixed 1280x720 assets, approved their exact SHA-256 values, and verified card, detail, and 390px narrow rendering with natural 16:9 geometry, `object-fit: contain`, loaded pixels, and no horizontal overflow.
+- research: official product and Careers surfaces were rechecked in the task-owned Codex in-app browser. Each profile includes official product evidence, funding context, market context, and an explicit execution risk.
+- validation: pass. GitHub Actions availability check passed; the final local release gate reported 304/304 content entries with zero errors, deterministic 304-startup/304-round D1 parity, 467/467 tests, Astro check with zero diagnostics, a successful Astro 7 / Cloudflare adapter 14 build, screenshot validation for 304 assets, and a clean `git diff --check`.
+- maintenance: the same full gate exposed one pre-existing 404 in Naive's official documentation link. The URL was minimally updated from the retired quickstart path to the current official docs root, then the complete gate was rerun from the beginning and passed.
+- commit_push: pass. Content commit `a47586aac1c9e82e6eb8ed5e66e7badcfa7cfef8` fast-forwarded `origin/main`; this append-only evidence is committed separately afterward.
+- ci_deploy: pass for the exact content SHA. Validate run `34089985023` succeeded, then workflow-run Deploy `34090376322` succeeded for the same SHA. The release job recorded Cloudflare deployment and first-attempt full live smoke passes on both `https://venturedex.genedai.workers.dev` and `https://venturedex.co` with 304 published startups.
+- live_routes: pass. Airbound, iPronics, Vessev, Cradlewise, and REGENT Craft each returned HTTP 200 with the expected title and exact canonical startup URL. Two additional local Python smoke attempts encountered incomplete chunked responses from the large homepage, while the exact-SHA GitHub release smoke and direct HTTP checks remained green; no deploy or D1 mutation was repeated.
+- gsc: complete request submission for this batch. Exactly one authorized click per URL produced a fresh native `Indexing requested` confirmation for all five canonical startup URLs. The authoritative follow-up plan reports all five as `already_requested`. This is request acceptance, not verified indexing.
+- newsletter: not manually triggered. The five profiles use `published_at` `2026-09-07 05:56:41` UTC, become delay-eligible after 11:56:41 UTC, and remain assigned to the normal Daily Cron path; D1 delivery state remains authoritative.
+- browser_closeout: pending until the final documentation release and central closeout evidence are durable. Only the task-owned in-app browser tab is eligible to close.
+- worktree_cleanup: pending until this separate documentation commit passes exact-SHA Validate, Deploy, live smoke, terminal CAS closeout, and automation-memory persistence.
+- failure_tags: [screenshot_review_recovery, external_source_drift, live_smoke_transport]
+- reward: 4 (`+5` for five independently reviewed, fully qualified additions with complete rejection accounting, validation, deployment, live proof, and five confirmed GSC requests; `-1` for the bounded source-drift and local HTTP transport recovery).
+- dominant_failure_mode: the prior run stopped correctly at the independent-review boundary; resuming the exact fixed hashes cleared that gate without repeating discovery or weakening evidence requirements.
+- proposed_change: none. Existing screenshot review, exact-SHA release, GSC intent, and fail-closed continuation controls were sufficient.
+- decision: publish the five-profile set, preserve the 15 complete rejection decisions, keep GSC request acceptance distinct from actual indexing, and leave Newsletter delivery to the normal delayed Cron path.
+- affected_file: five startup profiles, fifteen rejection rows, timestamps, investor directory and brand manifest, company/investor assets, five screenshots and review attestations, the repaired Naive documentation URL, this append-only learning log, central run-state/lease files, central GSC ledger and artifacts, and automation memory.
+- affected_section: exact-run recovery, independent screenshot review, structured content, full release gates, exact-SHA CI/deploy, live verification, GSC transaction safety, Newsletter passivity, and guarded cleanup.
