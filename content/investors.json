@@ -937,7 +937,10 @@
     "slug": "3one4-capital",
     "short_name": "3one4",
     "website": "https://www.3one4capital.com",
-    "description": "Early-stage venture capital firm backing companies in India's new economy."
+    "description": "Early-stage venture capital firm backing companies in India's new economy.",
+    "aliases": [
+      "3one4 Capital and Prudent Investment Managers"
+    ]
   },
   "prosus-ventures": {
     "name": "Prosus Ventures",
@@ -1894,5 +1897,60 @@
     "short_name": "Matrix",
     "website": "https://matrix.vc/",
     "description": "Early-stage venture capital firm investing from idea through Series A across software, infrastructure, fintech, and frontier technology."
+  },
+  "greenoaks": {
+    "name": "Greenoaks",
+    "slug": "greenoaks",
+    "short_name": "Greenoaks",
+    "website": "https://greenoaks.com/",
+    "description": "Global investment firm backing enduring technology companies across stages."
+  },
+  "maverick-silicon": {
+    "name": "Maverick Silicon",
+    "slug": "maverick-silicon",
+    "short_name": "Maverick Silicon",
+    "website": "https://www.maverickcapital.com/silicon",
+    "description": "Maverick Capital investment strategy focused on semiconductors and enabling computing infrastructure.",
+    "aliases": [
+      "Maverick Silicon and Light Street Capital"
+    ]
+  },
+  "light-street-capital": {
+    "name": "Light Street Capital",
+    "slug": "light-street-capital",
+    "short_name": "Light Street",
+    "website": "https://www.lightstreet.com/",
+    "description": "Technology-focused investment firm investing in public and private growth companies."
+  },
+  "blackbird-ventures": {
+    "name": "Blackbird Ventures",
+    "slug": "blackbird-ventures",
+    "short_name": "Blackbird",
+    "website": "https://www.blackbird.vc/",
+    "description": "Australasian venture capital firm backing founders from early stage through growth."
+  },
+  "prudent-investment-managers": {
+    "name": "Prudent Investment Managers",
+    "slug": "prudent-investment-managers",
+    "short_name": "Prudent",
+    "website": "https://prudentim.com/",
+    "description": "India-focused investment management firm backing public and private growth companies."
+  },
+  "mare-liberum": {
+    "name": "Mare Liberum",
+    "slug": "mare-liberum",
+    "short_name": "Mare Liberum",
+    "website": "https://www.mareliberum.com/",
+    "description": "Investment platform focused on maritime, transportation, and industrial opportunities.",
+    "aliases": [
+      "Mare Liberum and AE Ventures"
+    ]
+  },
+  "ae-ventures": {
+    "name": "AE Ventures",
+    "slug": "ae-ventures",
+    "short_name": "AE Ventures",
+    "website": "https://www.aeroequity.com/ventures/",
+    "description": "AE Industrial Partners venture strategy investing in aerospace, defense, and industrial technology."
   }
 }

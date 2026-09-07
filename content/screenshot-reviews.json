@@ -110,6 +110,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "airbound": {
+      "sha256": "790160581d7aaaa3ca98cd25cee9db4d6823025bc880aa5cebe92b9ef88c2e60",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.airbound.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-capture-run-20260906",
+      "reviewed_at": "2026-09-07T06:02:04.480Z",
+      "reviewer": "codex-review-run-20260907",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Airbound hero shows the complete aircraft, readable headline and navigation, no overlays; 1280x720 asset renders at 16:9 with contain on desktop, card, detail, and 390px narrow layouts."
+    },
     "airspeed": {
       "sha256": "5505a4d651a9d4d8261bd2a530107ab4e567f3df89c475e05644d4fec719b423",
       "width": 1440,
@@ -1161,6 +1180,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "cradlewise": {
+      "sha256": "70e821fc9c8eead65c10fdbd0d2142f099359bd6282d8af75786623d92c0128d",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://cradlewise.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-capture-run-20260906",
+      "reviewed_at": "2026-09-07T06:02:04.625Z",
+      "reviewer": "codex-review-run-20260907",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Cradlewise hero shows the smart crib and baby with readable campaign copy; small accessibility control does not cover the subject, and 1280x720 renders correctly on card, detail, and 390px narrow layouts."
     },
     "credible-data": {
       "sha256": "9fd3a509beb800a0b0cf8e4f1b23fd4b3ed4b16b74dab8b02bc36469c805fc58",
@@ -2384,6 +2422,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "ipronics": {
+      "sha256": "e2462d23e876da45ce0c7361010f53c5c927d9cf5576e7924f0fd4586e52ddeb",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://ipronics.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-capture-run-20260906",
+      "reviewed_at": "2026-09-07T06:02:04.775Z",
+      "reviewer": "codex-review-run-20260907",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official iPronics hero clearly presents the optical-network product, AI data-center headline and navigation with no obstruction; 1280x720 asset renders at 16:9 on card, detail, and 390px narrow layouts."
     },
     "isometric": {
       "sha256": "3e0cd4d7ee0589afce251964d56074b10795885b2cc043e93ce56e0b53475d22",
@@ -4016,6 +4073,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "regent-craft": {
+      "sha256": "10dc68860ed2ef2e6dcd23e3ebc54c6de96faf225c1b3439286e5e764e6ce554",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.regentcraft.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-capture-run-20260906",
+      "reviewed_at": "2026-09-07T06:02:04.932Z",
+      "reviewer": "codex-review-run-20260907",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official REGENT hero shows the seaglider underway with a readable maritime-mobility headline and full navigation, no overlays; 1280x720 asset renders correctly on card, detail, and 390px narrow layouts."
+    },
     "rely": {
       "sha256": "39d3a656cb38912ad46f857947e9623fdcf2516442750196cf43ada9e2297d41",
       "width": 1440,
@@ -5211,6 +5287,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "vessev": {
+      "sha256": "54b083079d8a0131c4ff91f0bae650efa11f311956385bd5175179a99c80b168",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.vessev.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-capture-run-20260906",
+      "reviewed_at": "2026-09-07T06:02:05.107Z",
+      "reviewer": "codex-review-run-20260907",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Vessev hero shows the vessel control in use with readable clean-marine messaging and navigation, no obstruction; 1280x720 asset renders at 16:9 on card, detail, and 390px narrow layouts."
     },
     "vinyl-equity": {
       "sha256": "9877bfe49f8772c601eee3350fca2152117b8df639fb6a2bdb04af4cf8a1baec",

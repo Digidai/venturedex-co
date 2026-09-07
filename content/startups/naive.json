@@ -12,7 +12,7 @@
   "tags": "ai agents,agent infrastructure,identity,payments,developer tools",
   "investors": "Nexus Venture Partners",
   "links": {
-    "product": "https://usenaive.ai/docs/getting-started/quickstart",
+    "product": "https://usenaive.ai/docs",
     "github": "https://github.com/usenaive",
     "twitter": "https://x.com/usenaive"
   },
@@ -38,8 +38,8 @@
       },
       {
         "id": "official_quickstart",
-        "label": "Naïve official quickstart",
-        "url": "https://usenaive.ai/docs/getting-started/quickstart",
+      "label": "Naïve official documentation",
+      "url": "https://usenaive.ai/docs",
         "type": "product"
       },
       {

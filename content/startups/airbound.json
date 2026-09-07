@@ -1,0 +1,50 @@
+{
+  "slug": "airbound",
+  "domain": "www.airbound.com",
+  "url": "https://www.airbound.com/",
+  "product_name": "Airbound",
+  "summary": "Autonomous blended-wing-body delivery aircraft built around one-kilogram payloads.",
+  "editor_note": "Small-package delivery is treated as an aircraft-efficiency problem: a 1.5 kg blended-wing-body vehicle carries roughly 1 kg for up to 40 km, launches vertically, and docks autonomously. Unlike adapting a quadcopter or road fleet, the narrow payload bet drives the whole airframe. The craft and operating loop earn the feature; certification and dense daily operations remain the hard proof points.",
+  "editor_rating": 5,
+  "why_featured": "$37M A for one-kilogram air delivery",
+  "product_type": "Other",
+  "region": "China / Asia",
+  "tags": "autonomous aircraft,delivery drones,robotics,logistics,aerospace",
+  "investors": "Greenoaks",
+  "links": {
+    "product": "https://www.airbound.com/technology",
+    "careers": "https://www.airbound.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$37M",
+      "stage": "Series A",
+      "lead_investor": "Greenoaks",
+      "date": "2026-08-24",
+      "source_url": "https://techcrunch.com/2026/08/24/indias-airbound-bags-37m-to-take-on-trucks-with-rocket-like-drones/",
+      "source_name": "TechCrunch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-07",
+    "sources": [
+      {"id": "official_site", "label": "Airbound official site", "url": "https://www.airbound.com/", "type": "official"},
+      {"id": "official_technology", "label": "Airbound aircraft technology", "url": "https://www.airbound.com/technology", "type": "product"},
+      {"id": "funding_1", "label": "Airbound Series A report", "url": "https://techcrunch.com/2026/08/24/indias-airbound-bags-37m-to-take-on-trucks-with-rocket-like-drones/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Airbound describes a blended-wing-body tailsitter weighing about 1.5 kg, carrying roughly 1 kg, and targeting a 40 km range at 60 km/h.", "source_ids": ["official_site", "official_technology"]},
+      {"claim": "The aircraft is designed for autonomous vertical launch, flight, and docking rather than requiring a runway or manual recovery.", "source_ids": ["official_site", "official_technology"]}
+    ],
+    "market_context": {
+      "primary_user": "Logistics and commerce operators moving lightweight parcels across congested or road-poor routes.",
+      "category": "Autonomous aerial delivery",
+      "differentiation": "A lightweight fixed-wing airframe is optimized around the dominant one-kilogram delivery payload rather than a general-purpose drone.",
+      "why_now": "Autonomy, battery performance, and rising last-mile costs make purpose-built small-package aircraft commercially testable."
+    },
+    "risks": [
+      {"claim": "Unit economics still depend on certification, reliability, and operating many aircraft per day in real airspace.", "basis": "The Series A funds scale-up while the company moves from flight demonstrations toward dense commercial operations."}
+    ]
+  }
+}

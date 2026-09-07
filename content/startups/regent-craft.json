@@ -1,0 +1,51 @@
+{
+  "slug": "regent-craft",
+  "domain": "www.regentcraft.com",
+  "url": "https://www.regentcraft.com/",
+  "product_name": "REGENT Viceroy",
+  "summary": "All-electric seaglider for fast coastal passenger transport over water.",
+  "editor_note": "Regional coastal travel is recast as a vessel that floats, foils, then flies in ground effect: the 12-passenger Viceroy targets 180 mph and 180 miles on existing batteries. Compared to a ferry, it prioritizes speed; unlike an aircraft, it stays over water and uses maritime infrastructure. A human-crewed flight and explicit operating sequence earn the feature, while certification and production remain formidable.",
+  "editor_rating": 5,
+  "why_featured": "$240M B for coastal electric flight",
+  "product_type": "Climate / Sustainability",
+  "region": "US",
+  "tags": "seaglider,electric aviation,maritime mobility,clean transport,aerospace",
+  "investors": "Mare Liberum,AE Ventures",
+  "links": {
+    "product": "https://www.regentcraft.com/seagliders/viceroy",
+    "careers": "https://www.regentcraft.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$240M",
+      "stage": "Series B",
+      "lead_investor": "Mare Liberum and AE Ventures",
+      "date": "2026-08-27",
+      "source_url": "https://www.regentcraft.com/news/regent-secures-240-million-series-b-funding-to-scale-seaglider-manufacturing-and-transform-maritime-mobility",
+      "source_name": "REGENT"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-07",
+    "sources": [
+      {"id": "official_site", "label": "REGENT official site", "url": "https://www.regentcraft.com/", "type": "official"},
+      {"id": "official_viceroy", "label": "REGENT Viceroy product page", "url": "https://www.regentcraft.com/seagliders/viceroy", "type": "product"},
+      {"id": "official_faq", "label": "REGENT seaglider FAQ", "url": "https://www.regentcraft.com/faq", "type": "product"},
+      {"id": "funding_1", "label": "REGENT Series B announcement", "url": "https://www.regentcraft.com/news/regent-secures-240-million-series-b-funding-to-scale-seaglider-manufacturing-and-transform-maritime-mobility", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The Viceroy is a 12-passenger all-electric seaglider designed to float, hydrofoil, and then fly in wing-in-ground effect over water.", "source_ids": ["official_site", "official_viceroy", "official_faq"]},
+      {"claim": "REGENT states a 180 mph speed and 180-mile range with existing battery technology and has completed a human-crewed flight.", "source_ids": ["official_site", "official_viceroy"]}
+    ],
+    "market_context": {
+      "primary_user": "Ferry, airline, logistics, and defense operators serving regional coastal routes.",
+      "category": "Electric regional transportation",
+      "differentiation": "A maritime-certified craft combines dock access and hydrofoiling with wing-in-ground-effect cruise.",
+      "why_now": "Existing batteries can support meaningful coastal range when the craft avoids the energy demands of conventional high-altitude flight."
+    },
+    "risks": [
+      {"claim": "Certification, passenger operations, and repeatable manufacturing remain much harder than a successful crewed demonstration.", "basis": "The financing is explicitly directed toward scaling manufacturing after the first human-crewed flight milestone."}
+    ]
+  }
+}

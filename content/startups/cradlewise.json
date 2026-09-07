@@ -1,0 +1,50 @@
+{
+  "slug": "cradlewise",
+  "domain": "cradlewise.com",
+  "url": "https://cradlewise.com/",
+  "product_name": "Cradlewise Smart Crib",
+  "summary": "Connected crib that monitors sleep and begins soothing before a baby fully wakes.",
+  "editor_note": "A crib, 1080p monitor, and soothing loop are designed as one product: embedded sensing watches movement, sound, sleep, and context, then starts a gentle bounce before a baby fully wakes. Unlike a passive monitor or add-on rocker, the feedback loop is built into the sleep surface and app. The integrated hardware-software experience earns the feature; false triggers, safety trust, and a premium purchase cycle remain material risks.",
+  "editor_rating": 4,
+  "why_featured": "$12M Series A for an adaptive smart crib",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "baby tech,sleep,computer vision,consumer hardware,parenting",
+  "investors": "3one4 Capital,Prudent Investment Managers",
+  "links": {
+    "product": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech",
+    "careers": "https://cradlewise.com/en-US/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$12M",
+      "stage": "Series A",
+      "lead_investor": "3one4 Capital and Prudent Investment Managers",
+      "date": "2026-09-03",
+      "source_url": "https://www.business-standard.com/companies/news/cradlewise-raises-12-million-in-series-a-round-led-by-3one4-capital-126090300830_1.html",
+      "source_name": "Business Standard"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-07",
+    "sources": [
+      {"id": "official_site", "label": "Cradlewise official site", "url": "https://cradlewise.com/", "type": "official"},
+      {"id": "official_product", "label": "Cradlewise smart crib product page", "url": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech", "type": "product"},
+      {"id": "funding_1", "label": "Cradlewise Series A report", "url": "https://www.business-standard.com/companies/news/cradlewise-raises-12-million-in-series-a-round-led-by-3one4-capital-126090300830_1.html", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Cradlewise combines a bassinet and crib, a baby monitor, sleep sensing, and automated bouncing in one connected product.", "source_ids": ["official_site", "official_product"]},
+      {"claim": "The system interprets movement, sound, sleep, and room context and can begin soothing before the baby fully wakes.", "source_ids": ["official_product", "funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Parents seeking longer infant sleep and fewer manual nighttime interventions.",
+      "category": "Connected nursery hardware",
+      "differentiation": "Monitoring and responsive soothing are integrated into the crib rather than sold as separate passive devices.",
+      "why_now": "Better edge sensing and consumer acceptance of connected nursery devices make adaptive sleep hardware practical."
+    },
+    "risks": [
+      {"claim": "Parents must trust automated behavior and sensing around an infant, while the premium price narrows the market.", "basis": "The product acts in the sleep environment and competes with simpler cribs, monitors, and manual soothing routines."}
+    ]
+  }
+}

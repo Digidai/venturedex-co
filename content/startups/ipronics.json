@@ -1,0 +1,50 @@
+{
+  "slug": "ipronics",
+  "domain": "ipronics.com",
+  "url": "https://ipronics.com/",
+  "product_name": "iPronics ONE",
+  "summary": "Programmable optical circuit switching for high-density AI data-center networks.",
+  "editor_note": "AI-cluster networking is reworked at the physical layer: a rack-mounted optical circuit switch provides programmable links within and across racks, with integrated control, telemetry, and APIs. Compared to adding more copper switching, the design targets bandwidth, latency, power, and failover together. The focused silicon-photonics product earns the feature; qualification cycles and incumbent networking vendors are the main execution risks.",
+  "editor_rating": 5,
+  "why_featured": "$125M B for optical AI networks",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "silicon photonics,optical networking,ai infrastructure,data centers,hardware",
+  "investors": "Maverick Silicon,Light Street Capital",
+  "links": {
+    "product": "https://ipronics.com/product/",
+    "careers": "https://ipronics.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$125M",
+      "stage": "Series B",
+      "lead_investor": "Maverick Silicon and Light Street Capital",
+      "date": "2026-09-02",
+      "source_url": "https://ipronics.com/ipronics-raises-125-million-to-scale-programmable-optical-networking-for-ai-data-centers/",
+      "source_name": "iPronics"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-07",
+    "sources": [
+      {"id": "official_site", "label": "iPronics official site", "url": "https://ipronics.com/", "type": "official"},
+      {"id": "official_product", "label": "iPronics ONE product page", "url": "https://ipronics.com/product/", "type": "product"},
+      {"id": "funding_1", "label": "iPronics Series B announcement", "url": "https://ipronics.com/ipronics-raises-125-million-to-scale-programmable-optical-networking-for-ai-data-centers/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "iPronics ONE is a rack-mounted optical circuit-switching platform with programmable optical connectivity within and across racks.", "source_ids": ["official_site", "official_product"]},
+      {"claim": "The platform combines an optical switch, control and telemetry, and API-driven integration for training, inference, and GPU failover workloads.", "source_ids": ["official_site", "official_product"]}
+    ],
+    "market_context": {
+      "primary_user": "AI infrastructure architects and operators scaling dense GPU clusters.",
+      "category": "Optical data-center networking",
+      "differentiation": "Programmable optical circuit switching changes physical connectivity on demand instead of routing every workload through fixed copper fabrics.",
+      "why_now": "GPU domains now span more racks while copper reach, power, and network complexity constrain cluster scale."
+    },
+    "risks": [
+      {"claim": "Large networking suppliers can bundle optical switching into established data-center platforms.", "basis": "Adoption requires qualification inside critical AI infrastructure and integration with existing control planes."}
+    ]
+  }
+}

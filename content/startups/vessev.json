@@ -1,0 +1,50 @@
+{
+  "slug": "vessev",
+  "domain": "www.vessev.com",
+  "url": "https://www.vessev.com/",
+  "product_name": "Vessev",
+  "summary": "Electric hydrofoiling vessels for passenger, hospitality, and tourism routes.",
+  "editor_note": "Short marine routes get a purpose-built electric vessel: Vessev designs, builds, and assembles hydrofoils in-house, while the VS-9 pairs an 8.95 m hull with quiet, low-wake passenger operation. Compared to electrifying a conventional ferry, lifting above the water attacks drag and ride quality together. The coherent vessel-and-route bet earns the feature; certification, charging, and fleet utilization will determine the economics.",
+  "editor_rating": 5,
+  "why_featured": "$19M A for electric hydrofoils",
+  "product_type": "Climate / Sustainability",
+  "region": "China / Asia",
+  "tags": "electric vessels,hydrofoils,maritime mobility,clean transport,hardware",
+  "investors": "Blackbird Ventures",
+  "links": {
+    "product": "https://www.vessev.com/vessels/vs-9",
+    "careers": "https://www.vessev.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$19M",
+      "stage": "Series A",
+      "lead_investor": "Blackbird Ventures",
+      "date": "2026-08-20",
+      "source_url": "https://www.prnewswire.com/news-releases/vessev-enters-us-market-with-19-million-series-a-names-first-us-customer-and-launches-multi-city-us-showcase-302856533.html",
+      "source_name": "PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-07",
+    "sources": [
+      {"id": "official_site", "label": "Vessev official site", "url": "https://www.vessev.com/", "type": "official"},
+      {"id": "official_vessel", "label": "Vessev VS-9 vessel page", "url": "https://www.vessev.com/vessels/vs-9", "type": "product"},
+      {"id": "funding_1", "label": "Vessev Series A announcement", "url": "https://www.prnewswire.com/news-releases/vessev-enters-us-market-with-19-million-series-a-names-first-us-customer-and-launches-multi-city-us-showcase-302856533.html", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Vessev designs, builds, and assembles its electric hydrofoiling vessels in-house for passenger, hospitality, waterfront, and tourism routes.", "source_ids": ["official_site", "official_vessel"]},
+      {"claim": "The VS-9 is an 8.95 m by 3.1 m electric hydrofoil intended to reduce wake, noise, energy use, and ride motion on commercial routes.", "source_ids": ["official_vessel"]}
+    ],
+    "market_context": {
+      "primary_user": "Ferry, hospitality, tourism, and waterfront operators serving short coastal routes.",
+      "category": "Electric maritime transportation",
+      "differentiation": "Hydrofoiling reduces hydrodynamic drag and wake while the company controls vessel design and assembly in-house.",
+      "why_now": "Battery improvements and waterfront decarbonization create room for smaller electric vessels on routes poorly served by conventional ferries."
+    },
+    "risks": [
+      {"claim": "Commercial economics depend on certification, charging access, maintenance, and consistently high vessel utilization.", "basis": "The company is moving from a first certified vessel toward multi-market fleet deployments."}
+    ]
+  }
+}

@@ -2109,6 +2109,41 @@
       "local_path": "/logos/companies/light.png",
       "source_page": "https://www.poweredbylight.com/",
       "source_url": "https://www.poweredbylight.com/icon.png?icon.3ouxr3qiwepas.png"
+    },
+    "airbound": {
+      "name": "Airbound",
+      "shape": "icon",
+      "local_path": "/logos/companies/airbound.png",
+      "source_page": "https://www.airbound.com/",
+      "source_url": "https://cdn.prod.website-files.com/68c2a094d221a98d7fd068c9/68e8be65ab62c9a685245f90_webclip_airbound-wesbsite.png"
+    },
+    "ipronics": {
+      "name": "iPronics ONE",
+      "shape": "icon",
+      "local_path": "/logos/companies/ipronics.png",
+      "source_page": "https://ipronics.com/",
+      "source_url": "https://ipronics.com/wp-content/uploads/2026/07/favicon-ipronics.png"
+    },
+    "vessev": {
+      "name": "Vessev",
+      "shape": "icon",
+      "local_path": "/logos/companies/vessev.png",
+      "source_page": "https://www.vessev.com/",
+      "source_url": "https://www.vessev.com/icon/medium?56ebe3eb0f852c06"
+    },
+    "cradlewise": {
+      "name": "Cradlewise Smart Crib",
+      "shape": "icon",
+      "local_path": "/logos/companies/cradlewise.png",
+      "source_page": "https://cradlewise.com/",
+      "source_url": "https://cradlewise.com/Cradlewise-192x192.png"
+    },
+    "regent-craft": {
+      "name": "REGENT Viceroy",
+      "shape": "icon",
+      "local_path": "/logos/companies/regent-craft.png",
+      "source_page": "https://www.regentcraft.com/",
+      "source_url": "https://cdn.prod.website-files.com/602ad05d28b6c66eb7baa871/664e75d2f1d73c60b6f4491f_Clip.png"
     }
   },
   "investors": {
@@ -3904,6 +3939,55 @@
       "local_path": "/logos/investors/matrix.png",
       "source_page": "https://matrix.vc/",
       "source_url": "https://cdn.prod.website-files.com/663b79ad4731f5c7c99029dd/664fb4457c162ee164044406_matrix-favicon.png"
+    },
+    "greenoaks": {
+      "name": "Greenoaks",
+      "shape": "icon",
+      "local_path": "/logos/investors/greenoaks.png",
+      "source_page": "https://greenoaks.com/",
+      "source_url": "https://greenoaks.com/favicon.png"
+    },
+    "maverick-silicon": {
+      "name": "Maverick Silicon",
+      "shape": "icon",
+      "local_path": "/logos/investors/maverick-silicon.png",
+      "source_page": "https://www.maverickcapital.com/silicon",
+      "source_url": "https://www.maverickcapital.com/apple-touch-icon.png"
+    },
+    "light-street-capital": {
+      "name": "Light Street Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/light-street-capital.ico",
+      "source_page": "https://www.lightstreet.com/",
+      "source_url": "https://www.lightstreet.com/favicon.ico"
+    },
+    "blackbird-ventures": {
+      "name": "Blackbird Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/blackbird-ventures.png",
+      "source_page": "https://www.blackbird.vc/",
+      "source_url": "https://cdn.prod.website-files.com/62d67952134ba00982cbd56b/62d67952134ba0a919cbd665_Webclip.png"
+    },
+    "prudent-investment-managers": {
+      "name": "Prudent Investment Managers",
+      "shape": "icon",
+      "local_path": "/logos/investors/prudent-investment-managers.png",
+      "source_page": "https://prudentim.com/",
+      "source_url": "https://prudentim.com/wp-content/uploads/2025/07/Prudent-fevicon-300x300.png"
+    },
+    "mare-liberum": {
+      "name": "Mare Liberum",
+      "shape": "icon",
+      "local_path": "/logos/investors/mare-liberum.png",
+      "source_page": "https://www.mareliberum.com/",
+      "source_url": "https://framerusercontent.com/images/Oav26yi375ifZeuNI8KurSDHulo.png"
+    },
+    "ae-ventures": {
+      "name": "AE Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/ae-ventures.png",
+      "source_page": "https://www.aeroequity.com/ventures/",
+      "source_url": "https://www.aeroequity.com/wp-content/themes/aeindustrial/assets/img/touch.png"
     }
   }
 }
