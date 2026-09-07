@@ -1,0 +1,314 @@
+{
+  "issue_number": 13,
+  "title": "Products Are Taking Control of the Next Step",
+  "week_start": "2026-08-31",
+  "week_end": "2026-09-06",
+  "published_at": "2026-09-07",
+  "status": "published",
+  "editorial_intro": "Six companies funded between September 1 and September 3 share a product choice: they move past analysis into a constrained action. Catch handles administrative work behind approvals, Wafer retunes inference, Light absorbs electricity operations, empirik evaluates infrastructure changes, Cradlewise senses and soothes, and iPronics makes optical paths programmable. The common bet is that value sits in the next step, while trust depends on permissions, rollback, and evidence.",
+  "research_summary": "This issue uses published VentureDex records, their structured research, linked funding sources, and task-owned Codex in-app browser checks of every official product surface and funding page on 2026-09-07. Product capabilities and financing details remain attributed to their publishers; this issue does not independently validate user counts, revenue, retention, cost savings, reliability, benchmarks, market share, clinical benefit, customer migration, regulatory availability across markets, or production-scale outcomes.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "From analysis to bounded action",
+      "summary": "Each product closes a different control loop: delegate and approve, profile and retune, enroll and operate, map and govern, sense and soothe, or observe and reconfigure. The editorial question is whether those actions stay reviewable and safe as the system, workload, or physical environment changes."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "catch-ai",
+      "why_this_week": "Catch opens the issue because its September 2 Seed round arrives with a visible execution boundary, not just another assistant promise. The product handles email, scheduling, travel, calls, and follow-ups, but presents approval as the checkpoint before consequential action.",
+      "product_evaluation": "The current homepage exposes named administrative workflows, an interactive scenario menu, a live onboarding path, and a $99 monthly plan with a 10-day trial. It also says Catch asks when context or permission is insufficient; that is a concrete operating model, while this issue has no independent evidence for judgment quality across every connected calendar, inbox, messaging tool, or transaction edge case.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/catch-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Catch official product site",
+          "source": "content/startups/catch-ai.json research.sources.official_site",
+          "url": "https://www.catchagent.ai/"
+        },
+        {
+          "label": "Catch product onboarding",
+          "source": "content/startups/catch-ai.json research.sources.product_login",
+          "url": "https://app.catchagent.ai/login"
+        },
+        {
+          "label": "Catch security overview",
+          "source": "content/startups/catch-ai.json research.sources.official_security",
+          "url": "https://www.catchagent.ai/security"
+        },
+        {
+          "label": "Seedcamp Catch Seed announcement",
+          "source": "content/startups/catch-ai.json research.sources.funding_1",
+          "url": "https://seedcamp.com/views/catch-ai-raises-5m-to-build-the-ai-agent-for-busy-executives/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Catch offers a live onboarding path through Google, Microsoft, or a work email and advertises a 10-day trial on a $99 monthly plan.",
+          "url": "https://www.catchagent.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product handles scheduling, inbox triage, travel, reminders, and follow-ups while requiring user approval before consequential actions.",
+          "url": "https://www.catchagent.ai/"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the homepage rendered scheduling, email triage, travel, phone calls, follow-ups, form filling, the $99 monthly plan with a 10-day trial, and explicit context-and-permission language.",
+          "url": "https://www.catchagent.ai/"
+        }
+      ],
+      "risks": [
+        "Reliability and permission mistakes become more costly as Catch connects to more personal and company systems.",
+        "The public pages describe approval and escalation behavior, but this issue has no independent audit of missed context, mistaken actions, or recovery from a bad handoff."
+      ],
+      "verdict": "Catch is most interesting as role-specific execution with an explicit approval boundary; its durability depends on that boundary holding across messy administrative edge cases."
+    },
+    {
+      "slug": "wafer",
+      "why_this_week": "Wafer's September 1 Series A makes the issue's control-loop thesis measurable at the inference layer. Instead of treating optimization as a benchmark before launch, the product profiles a workload and keeps revisiting the serving configuration as traffic, models, and hardware change.",
+      "product_evaluation": "The official surface asks for a model, traffic shape, and service-level objective, then describes joint search across model, engine, kernels, and hardware. It also exposes a live application and workload case pages. That is more concrete than a static benchmark catalog, but performance, correctness, and savings claims remain vendor-authored and are not independently validated here.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/wafer.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Wafer official product site",
+          "source": "content/startups/wafer.json research.sources.official_site",
+          "url": "https://www.wafer.ai/"
+        },
+        {
+          "label": "Wafer application",
+          "source": "content/startups/wafer.json research.sources.official_app",
+          "url": "https://app.wafer.ai/"
+        },
+        {
+          "label": "Wafer Series A announcement",
+          "source": "content/startups/wafer.json research.sources.official_series_a",
+          "url": "https://www.wafer.ai/blog/series-a"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Wafer continuously searches across the model, inference engine, kernels, and hardware for a deployment matched to a workload's traffic and constraints.",
+          "url": "https://www.wafer.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product exposes a live application and publishes workload-specific optimization evidence across AMD and other inference infrastructure.",
+          "url": "https://app.wafer.ai/"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the homepage rendered workload-specific traffic and SLO inputs, search across the model, engine, kernels, and hardware, and repeated measurement when traffic or infrastructure changes.",
+          "url": "https://www.wafer.ai/"
+        }
+      ],
+      "risks": [
+        "Clouds, chip vendors, or serving platforms may bundle similar optimization and reduce room for an independent layer.",
+        "The reviewed performance and reliability language comes from Wafer and its selected cases; this issue has no independent cross-hardware benchmark or long-running production audit."
+      ],
+      "verdict": "Wafer makes inference optimization a continuing operational loop, with cross-hardware neutrality and independently repeatable gains still the proof points that matter."
+    },
+    {
+      "slug": "light",
+      "why_this_week": "Light belongs because its September 1 Series A attaches software to a regulated operating role. The product does not stop at an electricity-plan API: it packages enrollment, billing, procurement, market operations, support, and regulatory work behind a brand-owned customer experience.",
+      "product_evaluation": "The official product page shows three integration paths—a no-code web app, prebuilt UI, and REST API—while Light acts as the electricity provider behind the plan. That makes the handoff between interface and operations inspectable. Claims about launch speed, enrollment, market reach, or partner economics remain vendor statements and are excluded from this evaluation.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/light.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Light official site",
+          "source": "content/startups/light.json research.sources.official_site",
+          "url": "https://www.poweredbylight.com/"
+        },
+        {
+          "label": "Light product overview",
+          "source": "content/startups/light.json research.sources.official_product",
+          "url": "https://www.poweredbylight.com/product"
+        },
+        {
+          "label": "Light developer documentation",
+          "source": "content/startups/light.json research.sources.official_docs",
+          "url": "https://docs.light.dev/"
+        },
+        {
+          "label": "Light dashboard login",
+          "source": "content/startups/light.json research.sources.official_dashboard",
+          "url": "https://dashboard.light.dev/login/"
+        },
+        {
+          "label": "Light Series A announcement",
+          "source": "content/startups/light.json research.sources.funding_1",
+          "url": "https://www.poweredbylight.com/press/light-raises-46-million-to-scale-the-power-company-for-embedded-electricity"
+        },
+        {
+          "label": "Structured product evidence",
+          "source": "Light combines enrollment, billing, wholesale power procurement, market operations, and regulatory support for businesses launching branded electricity plans.",
+          "url": "https://www.poweredbylight.com/product"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the product page rendered API-first and white-label positioning, regulated-provider responsibilities, and no-code, embedded-UI, and REST API integration paths.",
+          "url": "https://www.poweredbylight.com/product"
+        }
+      ],
+      "risks": [
+        "Market-by-market regulation and grid economics may make expansion slower and less repeatable than the software packaging suggests.",
+        "The reviewed claims about launch timing, enrollment, market reach, and economics are company-published; this issue has no independent partner or territory-level operating data."
+      ],
+      "verdict": "Light turns embedded electricity into an operating service rather than a referral widget, but repeatability across regulatory territories remains the central test."
+    },
+    {
+      "slug": "empirik",
+      "why_this_week": "empirik's September 1 launch and funding announcement puts the control boundary directly in the product. It captures the intended infrastructure change, maps affected resources, and routes the result into a governed plan, approval, execution, and verification workflow.",
+      "product_evaluation": "The product page shows change inputs from pull requests, tickets, pipelines, consoles, and agent calls; a live application graph spans code, cloud, delivery, on-premises systems, identity, and runtime state. It then separates planning, approval, execution, and verification. The workflow is specific, but the accuracy and freshness of its dependency model are not independently measured here.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/empirik.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "empirik official site",
+          "source": "content/startups/empirik.json research.sources.official_site",
+          "url": "https://empirik.ai/"
+        },
+        {
+          "label": "empirik product overview",
+          "source": "content/startups/empirik.json research.sources.official_product",
+          "url": "https://empirik.ai/product"
+        },
+        {
+          "label": "empirik integration catalog",
+          "source": "content/startups/empirik.json research.sources.official_integrations",
+          "url": "https://empirik.ai/integrations"
+        },
+        {
+          "label": "empirik launch and funding announcement",
+          "source": "content/startups/empirik.json research.sources.funding_1",
+          "url": "https://empirik.ai/blog/introducing-empirik-the-autonomous-infrastructure-engineer"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "empirik models dependencies across code, cloud, delivery, and on-premises systems so teams can assess blast radius before infrastructure changes ship.",
+          "url": "https://empirik.ai/product"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The public integration catalog spans more than sixty infrastructure systems across cloud, on-premises, code, delivery, and SaaS categories.",
+          "url": "https://empirik.ai/integrations"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the product page rendered change-origin inputs, a live application graph, blast-radius analysis, and separate plan, approve, execute, and verify stages with stop-on-divergence language.",
+          "url": "https://empirik.ai/product"
+        }
+      ],
+      "risks": [
+        "An incomplete or stale dependency model could either miss blast radius or add friction to safe routine changes.",
+        "The public pages provide worked examples and company-authored deployment claims, but no independent measurement of graph freshness, missed dependencies, false blocks, or rollback success."
+      ],
+      "verdict": "empirik has designed a legible path from change intent to governed execution; the product succeeds only if its operational graph stays current enough to deserve that authority."
+    },
+    {
+      "slug": "cradlewise",
+      "why_this_week": "Cradlewise moves the issue's thesis into a safety-sensitive consumer product after its September 3 Series A. The crib combines sensing, sleep-state interpretation, soothing motion, and app feedback, so the next action happens in the physical sleep environment rather than in a dashboard.",
+      "product_evaluation": "The current product page shows a built-in monitor detecting early stirring, automated bouncing, app notifications, and a bassinet-to-crib conversion for use from birth to 24 months. Those are inspectable hardware-software choices. The page's sleep-duration benefit is a vendor claim and is not treated here as independent clinical or real-world outcome evidence.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/cradlewise.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Cradlewise official site",
+          "source": "content/startups/cradlewise.json research.sources.official_site",
+          "url": "https://cradlewise.com/"
+        },
+        {
+          "label": "Cradlewise smart crib product page",
+          "source": "content/startups/cradlewise.json research.sources.official_product",
+          "url": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech"
+        },
+        {
+          "label": "Cradlewise Series A report",
+          "source": "content/startups/cradlewise.json research.sources.funding_1",
+          "url": "https://www.business-standard.com/companies/news/cradlewise-raises-12-million-in-series-a-round-led-by-3one4-capital-126090300830_1.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Cradlewise combines a bassinet and crib, a baby monitor, sleep sensing, and automated bouncing in one connected product.",
+          "url": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The system interprets movement, sound, sleep, and room context and can begin soothing before the baby fully wakes.",
+          "url": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the product page rendered early-stir detection, automatic bouncing, app sleep-status notifications, and conversion from bassinet to crib; vendor sleep-benefit claims were not adopted as independent outcomes.",
+          "url": "https://cradlewise.com/en-US/smart-crib-bassinet-baby-monitor-how-it-works-tech"
+        }
+      ],
+      "risks": [
+        "Parents must trust automated behavior and sensing around an infant, while the premium price narrows the market.",
+        "The reviewed pages do not independently establish false-trigger rates, safety outcomes, or sleep improvement across children and home environments."
+      ],
+      "verdict": "Cradlewise makes the sensing-to-soothing loop the product, but trust depends on safety and outcome evidence beyond the company's own product claims."
+    },
+    {
+      "slug": "ipronics",
+      "why_this_week": "iPronics closes the issue at the physical network layer after its September 2 Series B. ONE replaces fixed optical connections with software-configurable circuits, turning path selection, telemetry, and reconfiguration into an operating surface for dense AI infrastructure.",
+      "product_evaluation": "The official product page describes a rack-mounted optical circuit switch with integrated control and telemetry, plus gNMI/YANG and Python APIs for provisioning and querying paths. It identifies within- and across-rack connectivity for training, inference, and data movement. Those interfaces are concrete; scale, reliability, and efficiency claims remain vendor-authored without an independent deployment benchmark here.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/ipronics.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "iPronics official site",
+          "source": "content/startups/ipronics.json research.sources.official_site",
+          "url": "https://ipronics.com/"
+        },
+        {
+          "label": "iPronics ONE product page",
+          "source": "content/startups/ipronics.json research.sources.official_product",
+          "url": "https://ipronics.com/product/"
+        },
+        {
+          "label": "iPronics Series B announcement",
+          "source": "content/startups/ipronics.json research.sources.funding_1",
+          "url": "https://ipronics.com/ipronics-raises-125-million-to-scale-programmable-optical-networking-for-ai-data-centers/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "iPronics ONE is a rack-mounted optical circuit-switching platform with programmable optical connectivity within and across racks.",
+          "url": "https://ipronics.com/product/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The platform combines an optical switch, control and telemetry, and API-driven integration for training, inference, and GPU failover workloads.",
+          "url": "https://ipronics.com/product/"
+        },
+        {
+          "label": "Codex in-app browser product check",
+          "source": "2026-09-07 CUA check: the product page rendered a rack-mounted OCS, software path provisioning, gNMI/YANG and Python interfaces, streaming telemetry, and within- and across-rack connectivity scenarios.",
+          "url": "https://ipronics.com/product/"
+        }
+      ],
+      "risks": [
+        "Large networking suppliers can bundle optical switching into established data-center platforms.",
+        "The reviewed scale, reliability, and efficiency statements are company-published; this issue has no independent evidence from a qualified large-cluster deployment."
+      ],
+      "verdict": "iPronics makes the optical layer programmable and observable; qualification inside production AI fabrics will determine whether that control surface becomes durable infrastructure."
+    }
+  ]
+}
