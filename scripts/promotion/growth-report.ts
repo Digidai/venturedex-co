@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import {
+  agentResourceUrls,
   aiSurfaceUrls,
   latestDailyDate,
   latestDailyStartups,
@@ -22,6 +23,7 @@ interface FetchSnapshot {
   ok: boolean;
   bytes: number;
   body: string;
+  contentType?: string;
   error?: string;
 }
 
@@ -119,7 +121,14 @@ async function fetchText(url: string): Promise<FetchSnapshot> {
     try {
       const response = await fetch(url, { headers: { "User-Agent": "VentureDexGrowthReport/1.0" } });
       const body = await response.text();
-      return { url, status: response.status, ok: response.ok, bytes: body.length, body };
+      return {
+        url,
+        status: response.status,
+        ok: response.ok,
+        bytes: Buffer.byteLength(body, "utf8"),
+        body,
+        contentType: response.headers.get("Content-Type") ?? undefined,
+      };
     } catch (error) {
       if (attempt === LIVE_FETCH_ATTEMPTS) {
         return {
@@ -436,12 +445,24 @@ export function missingFromLatestSubmittedIndexNow(rows: IndexNowHistoryRow[], u
 export function hubUrls(): string[] {
   return [
     "https://venturedex.co/",
+    "https://venturedex.co/directory",
     "https://venturedex.co/topics",
     "https://venturedex.co/collections",
     "https://venturedex.co/weekly",
     "https://venturedex.co/investors",
     "https://venturedex.co/news",
     "https://venturedex.co/research",
+  ];
+}
+
+export function liveDiscoveryUrls(): string[] {
+  return [
+    "https://venturedex.co/sitemap.xml",
+    "https://venturedex.co/feed.xml",
+    "https://venturedex.co/llms.txt",
+    "https://venturedex.co/robots.txt",
+    "https://venturedex.co/directory",
+    ...agentResourceUrls(),
   ];
 }
 
@@ -468,12 +489,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   const [snapshots, rumSnapshot] = offline
     ? [[], { status: "skipped", message: "offline mode" } satisfies RumSnapshot]
     : await Promise.all([
-        Promise.all([
-          fetchText("https://venturedex.co/sitemap.xml"),
-          fetchText("https://venturedex.co/feed.xml"),
-          fetchText("https://venturedex.co/llms.txt"),
-          fetchText("https://venturedex.co/robots.txt"),
-        ]),
+        Promise.all(liveDiscoveryUrls().map(fetchText)),
         fetchRumSnapshot(),
       ]);
   const byUrl = new Map(snapshots.map((snapshot) => [snapshot.url, snapshot]));
@@ -516,6 +532,10 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     lines.push(`- feed.xml: ${statusLabel(feed)} / ${feed?.body.match(/<item>/g)?.length ?? 0} items`);
     lines.push(`- llms.txt: ${statusLabel(llms)} / ${lineCount(llms?.body)} lines`);
     lines.push(`- robots.txt: ${statusLabel(robots)} / ${robots?.body.includes("Content-Signal") ? "Cloudflare content signals present" : "content signals not detected"}`);
+    for (const url of ["https://venturedex.co/directory", ...agentResourceUrls()]) {
+      const snapshot = byUrl.get(url);
+      lines.push(`- ${new URL(url).pathname}: ${statusLabel(snapshot)} / ${snapshot?.contentType ?? "MIME unavailable"} / ${snapshot?.bytes ?? 0} bytes`);
+    }
     if (sitemapSummary.startups > 0 && sitemapSummary.startups !== startups.length) {
       const delta = sitemapSummary.startups - startups.length;
       const deltaLabel = delta > 0 ? `+${delta}` : String(delta);

@@ -39,10 +39,12 @@ The previous audit's launch URL share and word counts do not establish a crawl-b
 
 ## Release evidence
 
-Local implementation: 500/500 repository tests passed; content validation 304/304 passed (0 errors, 137 non-blocking editorial/external-source warnings); dependency audit reported 0 vulnerabilities. Final type/build/release checks are tracked below.
+Local implementation: `manage.sh validate` completed successfully: 500/500 repository tests, content validation 304/304 (0 errors, 137 non-blocking editorial/external-source warnings), zero Astro errors/warnings/hints, production build complete. Dependency audit reported 0 vulnerabilities.
 
 First production build: home 75,066 bytes (about 86% less than the Sep 7 live baseline), news page one 131,250 bytes (about 76% less). The full filterable catalog remains deliberately complete at `/directory` (535,399 bytes); this is not a claim that every route is lightweight or that Core Web Vitals improved. New resources: llms.txt 3,149 bytes, compact index 111,436 bytes, changes snapshot 20,348 bytes, Shapes JSON 4,859 bytes / Markdown 3,730 bytes.
 
 Browser checks against the production build: old homepage `type=DevTools&sort=newest` link reaches `/directory` and displays 61/304 companies; Clear filters restores 304; home and news have no whole-page overflow at 390px. Seven news pages preserve all 304 rounds; four grouped sitemaps partition all 1,968 URLs exactly once. Local asset bindings differ from production; real deployed images still require live checks.
 
-GitHub CLI currently returns HTTP 401. The connected GitHub integration reports repository push/admin permissions; use its normal PR path if CLI credentials remain unavailable. No traffic uplift or deployment is claimed by these local checks.
+GitHub CLI currently returns HTTP 401. The existing authorized GitHub integration created [PR #21](https://github.com/Digidai/venturedex-co/pull/21); its initial tree SHA exactly matched the validated local tree. No traffic uplift or deployment is claimed by these local checks.
+
+At 2026-09-08 06:02 UTC, the six current batch URLs absent from the local IndexNow ledger were individually checked (200 HTML, self-canonical, indexable) and submitted. IndexNow returned HTTP 200; the actual receipt was appended to `docs/promotion/metrics/indexnow-history.jsonl`. URLs: airbound, cradlewise, ipronics, regent-craft, vessev, weekly/13. This proves accepted notification only. Future deployment receipts live in the 90-day GitHub Actions artifact; local history is a partial view until those receipts are incorporated, so a local history gap alone is not a submission failure.

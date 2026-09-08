@@ -103,6 +103,15 @@ export function aiSurfaceUrls(): string[] {
   ];
 }
 
+// Retrieval health checks only. These alternate representations are not
+// IndexNow submission targets; canonical HTML pages remain the content URLs.
+export function agentResourceUrls(): string[] {
+  return [
+    `${SITE_BASE_URL}/startup-index.json`,
+    `${SITE_BASE_URL}/changes.json`,
+  ];
+}
+
 export function loadLaunches(): PromotionLaunch[] {
   const snapshot = readJson<unknown>(join(ROOT_DIR, "content", "whatships.json"));
   if (!isRecord(snapshot) || !Array.isArray(snapshot.items)) {
