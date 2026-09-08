@@ -471,7 +471,7 @@ function appendIndexNowCoverage(lines: string[], label: string, rows: IndexNowHi
   const missing = missingFromLatestSubmittedIndexNow(rows, urls);
   lines.push(`- ${label}: ${urls.length - missing.length}/${urls.length} covered by submitted history`);
   for (const url of missing) {
-    lines.push(`  - pending IndexNow: ${url}`);
+    lines.push(`  - not observed in local IndexNow history: ${url}`);
   }
 }
 
@@ -587,13 +587,14 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   appendIndexNowCoverage(lines, "Hub IndexNow coverage", indexNowRows, hubTargetUrls);
   appendIndexNowCoverage(lines, "Collection IndexNow coverage", indexNowRows, collectionTargetUrls);
   appendIndexNowCoverage(lines, "AI surface IndexNow coverage", indexNowRows, aiTargetUrls);
+  lines.push("- Local history is a partial receipt view. Check the deployment's discovery artifact before treating a gap as a missed submission. Accepted notifications do not prove indexing or traffic.");
   lines.push("");
 
   lines.push("## Next Actions");
-  lines.push("- Run `npm run promotion:pack` after each content publish and post only the strongest channel drafts.");
-  lines.push("- Run `npm run seo:indexnow:latest` after new daily/weekly content is deployed and live.");
-  lines.push("- Run `npm run seo:indexnow:structure` after homepage, hub, topic, or collection route changes are deployed.");
-  lines.push("- Run `npm run geo:indexnow` after llms.txt, llms-full.txt, ai-index.json, or crawler policy changes are deployed.");
+  lines.push("- Prioritize source-backed improvements to existing high-impression profiles and topic comparisons; measure comparable query cohorts over 28 days.");
+  lines.push("- Normal Deploy now checks and notifies changed HTML URLs automatically. Inspect its discovery receipt before retrying a notification.");
+  lines.push("- For a confirmed discovery gap, use a reviewed URL batch with `scripts/promotion/deploy-discovery.ts --urls-file <file>` after verifying the intended production release.");
+  lines.push("- Agent JSON health is retrieval readiness, not a ranking signal or an IndexNow submission requirement. Track observed AI citations separately from referrer visits.");
   lines.push("- Keep `npm run seo:gsc:latest:dry` as the manual Google queue preview before authenticated browser submission.");
   lines.push("");
 
