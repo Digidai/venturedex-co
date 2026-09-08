@@ -5102,3 +5102,60 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: publish a six-pick issue whose financing dates all fall inside the target week; keep observable product surfaces separate from vendor performance claims, and leave Newsletter delivery to the normal delayed Cron path.
 - affected_file: `content/weekly/13.json`, this append-only learning log, Weekly automation memory, central GSC artifacts and ledger if eligible after release, and the final inbox closeout.
 - affected_section: exact-origin preflight, Weekly issue allocation, source-bound research, Codex browser verification, local release gates, exact-SHA deployment, GSC transaction safety, Newsletter passivity, and guarded cleanup.
+
+### 2026-09-08 13:51 CST — Eleven fresh candidates rejected; GitHub authentication blocked the release gate
+
+- candidate_count: 11 fresh, deduplicated recent-funding candidates in one bounded discovery pool; no second discovery cycle ran.
+- accepted: 0.
+- rejected: 11 complete v2 decisions — Cato, Jaipur Robotics, Fluencify, Octave.energy, MOA Foodtech, Backbone, HydroSight, MineWatch, Fundly.ai, Leinao.ai, and Megawave Fusion.
+- rejection_bar_met: yes; all 11 candidates received a specific terminal decision and there were no accepted additions requiring a 3:1 minimum.
+- outcome: blocked before the full local gate. Ten candidates failed F3 on source-stated currency, unsupported pre-seed stage, missing canonical stage, or mixed equity/debt ambiguity. HydroSight failed F1 after its claimed official domain redirected in the task-owned Codex browser to unrelated parked-domain editorial content instead of a product surface.
+- bootstrap: pass in detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260908T054135Z/venturedex.co` from exact `origin/main` base `2dfa5c3d553c9be5bd2a896f2c0ccec8de2a73ee`; Cloudflare token and workflow-file checks passed, dependencies installed with zero audit vulnerabilities, and the known non-blocking R2 permission limitation remained.
+- validation: not run. The required first gate `./scripts/check-github-actions.sh` exhausted its three bounded probes because the configured `gh` account token is invalid; sequencing rules prohibited continuing to `./scripts/manage.sh validate` after that hard stop. `git diff --check` passed before this learning entry.
+- build_db: not run.
+- build_app: not run.
+- screenshot: n/a; no candidate cleared the acceptance bar, so no capture, import, review, or screenshot-ledger mutation occurred.
+- commit_push: not attempted; the GitHub Actions gate did not pass.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not observed; no current-run pushed SHA exists.
+- live_smoke: n/a; nothing was deployed.
+- gsc: n/a; no startup detail URL was published, and no plan, begin, click, finish, recover, defer, artifact, or central-ledger mutation occurred.
+- newsletter: not manually triggered; no publication occurred and no delay window started.
+- transport_recovery: none. The failure was a stable authentication error across all bounded checks, not a transient stream or transport interruption.
+- browser_closeout: the sole task-owned HydroSight tab is closed during closeout; no user tab or other browser process is touched.
+- worktree_cleanup: blocked by design. The exact worktree contains `content/rejected.jsonl` plus this learning entry; rejection content is not eligible for evidence-only archival or force cleanup and must remain for authenticated recovery.
+- failure_tags: [external_dependency, worktree_cleanup]
+- reward: 1 (`+2` for a specific eleven-candidate rejection set and `-1` for the external authentication hard stop before the full local gate).
+- dominant_failure_mode: the bootstrap's repository-file workflow check did not establish live GitHub CLI authentication, and the final gate proved the configured account token invalid.
+- proposed_change: none. Authentication repair is an external operator action, and the current hard-stop behavior correctly prevented validation, commit, push, deploy, GSC, or newsletter side effects.
+- decision: preserve the exact worktree and resume this run at the failed GitHub Actions preflight after the `gh` account is reauthenticated; do not repeat discovery or browser evaluation.
+- affected_file: `content/rejected.jsonl`, this append-only learning log, central run-state/lease files, and automation memory.
+- affected_section: one-pool discovery, v2 rejection accounting, Codex product evaluation, GitHub Actions preflight, fail-closed release, and guarded worktree preservation.
+
+### 2026-09-08 15:33 CST — Exact Daily run recovered after transient GitHub authentication failure
+
+- candidate_count: unchanged at 11 from the preserved bounded discovery pool; no second discovery cycle or browser evaluation ran.
+- accepted: 0.
+- rejected: 11 complete v2 decisions — Cato, Jaipur Robotics, Fluencify, Octave.energy, MOA Foodtech, Backbone, HydroSight, MineWatch, Fundly.ai, Leinao.ai, and Megawave Fusion.
+- rejection_bar_met: yes; all 11 candidates have specific terminal decisions and there were no accepted additions requiring a 3:1 minimum.
+- auth_recovery: pass without credential rotation. Live `gh auth status`, `gh api user`, repository ADMIN permission, workflow state, and three-probe Actions checks all succeeded for the existing Digidai keyring OAuth credential. No token value was printed, copied, replaced, or newly created; the earlier invalid-token result was transient control-plane or keyring state, not a confirmed revocation.
+- exact_run_resume: the same `venturedex-daily-20260908T054135Z` worktree resumed at epoch 20. `origin/main` had advanced to `9a900d51f4baf6df4fc0a7321f2a08984c8be2b4`; an overlap check showed neither preserved dirty path changed upstream, so the worktree fast-forwarded safely before validation.
+- validation: pass. The full local gate checked 1,783 external URLs, validated 304/304 startup records with zero errors, generated deterministic 304-startup/304-round D1 parity, passed 512/512 tests, reported zero Astro diagnostics, validated 304 screenshot assets, completed the Astro 7 / Cloudflare adapter 14 build, and passed `git diff --check`.
+- build_transport: the local build logged a bounded Cloudflare `Request.cf` setup timeout and used its documented placeholder fallback; the build still completed successfully.
+- commit_push: pass. Content commit `709299c5be191f937b5216e109eafd7f8e064cec`, containing only the 11 rejection rows, fast-forwarded `origin/main`. This recovery evidence is committed separately afterward.
+- ci_deploy: pass for the exact content SHA. Validate run `34199093737` succeeded, followed by workflow-run Deploy `34199554223` for the same SHA.
+- live_smoke: pass in the exact-SHA release job on attempt 1 for both `https://venturedex.genedai.workers.dev` and `https://venturedex.co`, each reporting 304 published startups. Direct local curl checks also returned HTTP 200 HTML for the homepage and directory.
+- transport_recovery: two additional local Python smoke attempts encountered a remote disconnect and an incomplete chunked homepage response. Because the exact-SHA GitHub release smoke and direct HTTP checks were green, no deployment or D1 mutation was repeated.
+- discovery_transport: Deploy selected 0 changed canonical HTML URLs and correctly performed no IndexNow submission.
+- gsc: no current-run target exists because no startup was published. The required read-only latest-Daily plan listed the prior five startup URLs as `already_requested`; no browser tab, click, receipt, retry, or ledger mutation was performed. Request acceptance remains distinct from actual indexing.
+- newsletter: not manually triggered. No startup was published, so no new publication timestamp, delay window, or Daily newsletter delivery was created.
+- browser_closeout: no browser was opened during recovery; the prior task-owned HydroSight tab was already closed.
+- worktree_cleanup: pending until this separate documentation commit passes exact-SHA Validate, Deploy, live smoke, central terminal CAS closeout, and automation-memory persistence.
+- failure_tags: [transient_auth_state, live_smoke_transport]
+- reward: 1; the original bounded discovery reward is retained because recovery completed the release path without a new accepted addition or repeated discovery.
+- dominant_failure_mode: a transient GitHub CLI authentication reading was treated correctly as a hard stop, but live rechecks later proved the existing credential healthy and allowed exact-run continuation without rotation.
+- proposed_change: none. Existing fail-closed authentication checks, exact-run continuation, SHA-bound CI/deploy, and transport cross-checks handled the recovery safely.
+- decision: keep the existing GitHub credential, publish only the durable rejection registry, and preserve the original 11 decisions without weakening the funding schema.
+- affected_file: 11 rejection rows, this append-only learning log, central run-state/lease files, automation memory, and post-deploy discovery evidence.
+- affected_section: GitHub authentication recovery, exact-worktree continuation, full local gates, exact-SHA CI/deploy, live verification, passive GSC/newsletter handling, and guarded cleanup.
