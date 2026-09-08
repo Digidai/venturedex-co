@@ -4,7 +4,7 @@
   "url": "https://www.scaledcognition.com/",
   "product_name": "Scaled Cognition",
   "summary": "Enterprise AI agent platform built around reliable customer-experience workflows.",
-  "editor_note": "The useful bet is that customer-service agents need correctness more than another fluent chat layer. APT validates function parameters, enforces business rules, confirms API execution, and offers VPC or on-prem deployment. Unlike wrapper platforms that hide policy logic in prompts, Scaled Cognition makes reliability the architecture. The risk is whether its claims survive messy enterprise edge cases.",
+  "editor_note": "Customer-service agents need correctness more than another fluent chat layer. Scaled Cognition describes schema-checked actions and simulated backend tests. AgentTwin turns past support conversations into draft behaviors for human policy review. That is more inspectable than a blanket promise of no hallucinations. Whether the controls survive conflicting policies and failing enterprise systems remains untested here.",
   "editor_rating": 4,
   "why_featured": "$100M Series A for APT agents",
   "product_type": "AI / ML",
@@ -48,6 +48,18 @@
         "type": "product"
       },
       {
+        "id": "official_agenttwin",
+        "label": "Scaled Cognition AgentTwin workflow",
+        "url": "https://www.scaledcognition.com/product/agenttwin",
+        "type": "product"
+      },
+      {
+        "id": "partner_genesys",
+        "label": "Genesys partnership announcement",
+        "url": "https://www.genesys.com/company/newsroom/announcements/genesys-and-scaled-cognition-partner-to-advance-responsible-agentic-ai-customer-experience-orchestration",
+        "type": "product"
+      },
+      {
         "id": "funding_1",
         "label": "Scaled Cognition official Series A announcement",
         "url": "https://www.scaledcognition.com/series-a",
@@ -62,28 +74,44 @@
         ]
       },
       {
-        "claim": "The product surface describes Spec, Sim, Ship, and Scale as a lifecycle for defining, testing, deploying, and operating CX agents.",
+        "claim": "AgentTwin describes importing historical voice, chat, or email conversations to draft agent behaviors, followed by human review of policies and constraints before validation.",
         "source_ids": [
-          "official_apt"
+          "official_agenttwin"
         ]
       },
       {
-        "claim": "Scaled Cognition states that APT supports SOC 2 Type II controls plus VPC and on-prem deployment for enterprise data boundaries.",
+        "claim": "The platform offers a browser-based builder and Python SDK; GenAPI simulates backend responses and customer scenarios so teams can evaluate correctness and policy adherence before connecting live systems.",
         "source_ids": [
-          "official_apt"
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "Scaled Cognition lists hosted, customer VPC, and on-premises deployment options, with action and policy-check logs for reviewing agent behavior.",
+        "source_ids": [
+          "official_platform"
+        ]
+      },
+      {
+        "claim": "Genesys announced a partnership to combine its Cloud platform with Scaled Cognition's action models for virtual agents; the announcement describes planned capabilities, not measured customer results.",
+        "source_ids": [
+          "partner_genesys"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Enterprise customer-experience teams and product owners replacing brittle support workflows with AI agents.",
+      "primary_user": "Enterprise CX engineering and operations teams defining support policies, connecting transactional APIs, and testing voice or chat agents before customer-facing deployment.",
       "category": "Enterprise AI agents",
-      "differentiation": "Scaled Cognition focuses on transactional correctness, policy constraints, verified execution, and deployment sovereignty rather than general chat orchestration.",
-      "why_now": "Enterprise AI budgets are moving from demos toward workflow ownership, making reliability and auditability a more important buying criterion."
+      "differentiation": "Its documented workflow connects transcript-derived behavior specifications, schema-constrained actions, simulated backend tests, and deployment controls in one CX agent stack.",
+      "why_now": "The June 2026 Series A and the published AgentTwin and GenAPI workflows provide milestones for assessing whether its reliability approach can move beyond product demonstrations."
     },
     "risks": [
       {
-        "claim": "The open question is whether the reliability architecture keeps working across long-tail enterprise policies, integrations, and exception handling.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "Schema checks and simulations do not by themselves establish reliability under conflicting policies, partial API failures, or long-tail customer requests.",
+        "basis": "VentureDex editorial assessment; no API integration, independent benchmark reproduction, or production customer evaluation was performed."
+      },
+      {
+        "claim": "Implementation effort, commercial pricing, and the scope of any contractual reliability guarantees require a vendor evaluation.",
+        "basis": "The public product and demo surfaces describe capabilities but do not establish these terms for a particular deployment."
       }
     ]
   }

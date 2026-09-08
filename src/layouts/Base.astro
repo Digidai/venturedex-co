@@ -21,6 +21,7 @@ interface Props {
   ogImageHeight?: number;
   ogImageType?: string;
   canonicalPath?: string;
+  agentResourcePath?: string;
   robots?: string;
   ogType?: string;
   publishedTime?: string | null;
@@ -38,6 +39,7 @@ const {
   ogImageHeight,
   ogImageType,
   canonicalPath,
+  agentResourcePath,
   robots = "index,follow,max-image-preview:large",
   ogType = "website",
   publishedTime,
@@ -49,9 +51,9 @@ const {
 
 const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
 const canonicalURL = absoluteUrl(normalizeCanonicalPath(canonicalPath ?? Astro.url.pathname), siteUrl);
-const startupResourcePath = /^\/startups\/[a-z0-9-]+$/.test(normalizeCanonicalPath(Astro.url.pathname))
+const startupResourcePath = agentResourcePath ?? (/^\/startups\/[a-z0-9-]+$/.test(normalizeCanonicalPath(Astro.url.pathname))
   ? normalizeCanonicalPath(Astro.url.pathname)
-  : null;
+  : null);
 const metaDescription = truncateText(description);
 const pageTitle = `${title} | ${SITE_NAME}`;
 const social = resolveSocialPreviewMeta({

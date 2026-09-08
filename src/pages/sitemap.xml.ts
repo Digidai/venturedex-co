@@ -15,10 +15,12 @@ import {
 } from "../lib/investor-indexing";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLastmod, sitemapLastmodDate } from "../lib/seo";
 import { getTopicPages } from "../lib/topic-pages";
+import { getTopicResearch } from "../lib/topic-research";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 import { whatShipsSnapshot } from "../lib/whatships";
 import { versionedScreenshotUrl } from "../lib/screenshots";
 import { paginateFundingRounds, fundingPagePath } from "../lib/funding-pagination";
+import { getResearchBriefs, researchBriefPath } from "../lib/research-briefs";
 
 export interface SitemapUrl {
   loc: string;
@@ -60,12 +62,13 @@ export function getSitemapUrls(): SitemapUrl[] {
   const latestWeeklyIssue = weeklyIssues[0] ?? null;
   const allStartups = getContentStartups();
   const topics = getTopicPages(allStartups, weeklyIssues);
+  const briefs = getResearchBriefs(new Set(allStartups.map((startup) => startup.slug)));
   const rounds = getContentNewsEligibleFundingRounds();
   const latestStartupLastmod = latestSitemapLastmod(allStartups.map((startup) => startup.updated_at || startup.published_at));
   const latestFundingLastmod = latestSitemapLastmod(rounds.map((round) => round.date));
   const latestWeeklyLastmod = latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end ?? null;
-  const latestTopicLastmod = latestSitemapLastmod([latestStartupLastmod, latestWeeklyLastmod]);
-  const latestDiscoveryLastmod = latestSitemapLastmod([latestTopicLastmod, whatShipsSnapshot.source.commit_at]);
+  const latestTopicLastmod = latestSitemapLastmod([latestStartupLastmod, latestWeeklyLastmod, ...topics.map((topic) => getTopicResearch(topic)?.checked_at)]);
+  const latestDiscoveryLastmod = latestSitemapLastmod([latestTopicLastmod, whatShipsSnapshot.source.commit_at, ...briefs.map((brief) => brief.reviewed_at)]);
 
   let urls: SitemapUrl[] = [
     { loc: "/", lastmod: latestStartupLastmod, priority: "1.0" },
@@ -139,6 +142,7 @@ export function getSitemapUrls(): SitemapUrl[] {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   urls = urls.concat(
+    briefs.map((brief) => ({ loc: researchBriefPath(brief), lastmod: brief.reviewed_at, priority: "0.8" })),
     Array.from({ length: paginateFundingRounds(rounds).totalPages - 1 }, (_, index) => ({
       loc: fundingPagePath(index + 2),
       // Funding event dates are not page-edit dates. Membership can move when
@@ -176,7 +180,7 @@ export function getSitemapUrls(): SitemapUrl[] {
     })),
     topics.map((topic) => ({
       loc: topic.path,
-      lastmod: topic.latestStartups[0]?.published_at ?? latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end,
+      lastmod: latestSitemapLastmod([getTopicResearch(topic)?.checked_at, ...topic.startups.map((startup) => startup.updated_at || startup.published_at), latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end]),
       priority: "0.8",
     }))
   );

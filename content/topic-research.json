@@ -1,0 +1,131 @@
+[
+  {
+    "topic_slug": "ai-agent-startups",
+    "checked_at": "2026-09-08",
+    "selection_note": "Four existing profiles illustrate different buying decisions: an internal knowledge assistant, voice infrastructure, an authorization layer, and a customer-service execution platform. They are not interchangeable or ranked. Selection reflects documented workflow differences, not funding size or measured market share.",
+    "decision_steps": [
+      { "title": "Decide where the agent works", "text": "Start with Dust for an internal knowledge workflow, Vapi for a phone or web voice experience, and Scaled Cognition for a customer-service workflow with specified business actions. A shared agent label does not make these the same product.", "startup_slugs": ["dust", "vapi", "scaled-cognition"] },
+      { "title": "Separate the application from its permissions", "text": "If you already have an agent and need it to act through users' accounts, examine Arcade's authorization and tool layer. First identify which actions are allowed, whose identity authorizes them, and how revoked access will be handled.", "startup_slugs": ["arcade"] },
+      { "title": "Budget for the complete workflow", "text": "Compare seats and credits, call minutes plus providers, or authorization events plus tool calls. Use your own representative task volume; the published units cannot establish a cheapest product across these different jobs.", "startup_slugs": ["dust", "vapi", "arcade"] }
+    ],
+    "products": [
+      {
+        "startup_slug": "dust",
+        "workflow": { "text": "Configure an agent with instructions, selected company knowledge, and tools; preview answers, then share it for use in the web app or Slack.", "source_ids": ["agent"] },
+        "access": { "text": "An administrator connects data sources, selects folders or channels, and shares them through Spaces. Agent visibility and usable knowledge depend on those permissions.", "source_ids": ["admin", "agent"] },
+        "pricing": { "text": "Business offers free, Pro, and Max seats; paid seats can be monthly or annual. Usage consumes token and action credits, including sub-agent work. Exact paid-seat rates were not confirmed in the reviewed billing docs.", "source_ids": ["billing", "credits"] },
+        "fit": { "text": "Consider for teams that want to configure shared assistants over existing knowledge without building their own agent interface.", "source_ids": ["agent", "admin"] },
+        "limitations": { "text": "Test retrieval with a narrow, permissioned sample first. The agent guide calls for iteration; access to more documents is not evidence of more accurate answers.", "source_ids": ["agent"] },
+        "sources": [
+          { "id": "agent", "title": "Dust: create your first agent", "url": "https://docs.dust.tt/docs/user-documentation/agents/create-your-first-agent", "checked_at": "2026-09-08" },
+          { "id": "admin", "title": "Dust: administrator quickstart", "url": "https://docs.dust.tt/docs/user-documentation/admins/quickstart", "checked_at": "2026-09-08" },
+          { "id": "billing", "title": "Dust: subscriptions and payments", "url": "https://docs.dust.tt/docs/user-documentation/admins/billing/subscriptions-and-payments", "checked_at": "2026-09-08" },
+          { "id": "credits", "title": "Dust: credits", "url": "https://docs.dust.tt/docs/user-documentation/admins/usage-seats-and-credits/credits", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "vapi",
+        "workflow": { "text": "Build agents for phone or web conversations by combining speech recognition, a language model, voice output, and tools. Squads coordinate specialist assistants with handoffs.", "source_ids": ["intro"] },
+        "access": { "text": "Use the dashboard for phone-call setup or SDKs for embedded web calls. Choose the voice and model providers and connect the APIs the assistant needs.", "source_ids": ["intro"] },
+        "pricing": { "text": "Build lists $0.05 per call minute for Vapi hosting, excluding model-provider charges. Provider costs pass through or are paid through your own keys. Scale uses an annual contract with committed volume; concurrency and optional controls can add cost.", "source_ids": ["pricing"] },
+        "fit": { "text": "Consider when the product requirement is a voice channel and your team wants control over the model, speech components, and tool integrations.", "source_ids": ["intro"] },
+        "limitations": { "text": "The hosting rate is not an all-in cost per successful call. Test interruptions, failed tool calls, and human handoffs on your own scenarios; no latency or completion benchmark was run for this comparison.", "source_ids": ["intro", "pricing"] },
+        "sources": [
+          { "id": "intro", "title": "Vapi: voice-agent introduction", "url": "https://docs.vapi.ai/quickstart/introduction", "checked_at": "2026-09-08" },
+          { "id": "pricing", "title": "Vapi: pricing", "url": "https://vapi.ai/pricing", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "arcade",
+        "workflow": { "text": "Add authorized tool execution to an existing agent. The quickstart connects a client, identifies the user, requests OAuth when needed, and calls tools to search, create a document, and send its link.", "source_ids": ["quickstart"] },
+        "access": { "text": "Requires an Arcade account, API key, and client integration. Arcade Cloud is managed; separate options deploy the platform in your infrastructure, including Helm on Kubernetes. Confirm the commercial tier for private deployment.", "source_ids": ["quickstart", "deployment", "pricing"] },
+        "pricing": { "text": "Free includes 2,000 auth events and 2,000 tool calls per month. Team lists $25/month plus $0.10 per auth event and $0.01 per tool call. Enterprise uses custom bundles and deployment terms.", "source_ids": ["pricing"] },
+        "fit": { "text": "Consider when an agent already exists but needs actions tied to individual users' accounts. This is an integration layer, not a finished customer-support or knowledge application.", "source_ids": ["quickstart"] },
+        "limitations": { "text": "A tool being authorized does not establish that the agent chose the correct action. Test revoked credentials, denied scopes, duplicate writes, and application-level approval rules before production.", "source_ids": ["quickstart", "deployment"] },
+        "sources": [
+          { "id": "quickstart", "title": "Arcade: calling tools in your agent", "url": "https://docs.arcade.dev/en/get-started/quickstarts/call-tool-agent", "checked_at": "2026-09-08" },
+          { "id": "deployment", "title": "Arcade: hosting options", "url": "https://docs.arcade.dev/en/operate/deploy", "checked_at": "2026-09-08" },
+          { "id": "pricing", "title": "Arcade: pricing", "url": "https://www.arcade.dev/pricing/", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "scaled-cognition",
+        "workflow": { "text": "The vendor describes a customer-service platform that specifies allowed actions, connects API schemas, simulates conversations, and monitors execution. APT is its action-oriented model, not a general-purpose chat workspace.", "source_ids": ["platform", "apt"] },
+        "access": { "text": "The platform page describes a browser builder and Python SDK, with hosted, VPC, and on-premises options. Public access is demo-led; validate the required backend schemas and deployment scope with the vendor.", "source_ids": ["platform"] },
+        "pricing": { "text": "No numerical rate or billing unit was established by the reviewed platform and APT pages. Request terms covering deployment, usage, integrations, and implementation support.", "source_ids": ["platform", "apt"] },
+        "fit": { "text": "Consider for customer-service operations with explicit policies and system actions, where engineering and operations teams can define and test the permitted workflow together.", "source_ids": ["platform"] },
+        "limitations": { "text": "Claims of deterministic execution and no hallucinations are vendor assertions, not independently established results here. Require tests against your real APIs, failure cases, and policies before relying on them.", "source_ids": ["apt"] },
+        "sources": [
+          { "id": "platform", "title": "Scaled Cognition: platform", "url": "https://www.scaledcognition.com/product/explore-platform", "checked_at": "2026-09-08" },
+          { "id": "apt", "title": "Scaled Cognition: APT", "url": "https://www.scaledcognition.com/product/meet-apt-1", "checked_at": "2026-09-08" }
+        ]
+      }
+    ]
+  },
+  {
+    "topic_slug": "developer-tools-startups",
+    "checked_at": "2026-09-08",
+    "selection_note": "Four existing profiles cover distinct engineering jobs: a coding-agent environment, frontend regression replay, engineering observation, and data-pipeline operations. This is a workflow map, not a head-to-head ranking. Products may complement each other; neither funding nor vendor metrics establish quality.",
+    "decision_steps": [
+      { "title": "Locate the blocked step", "text": "If the coding agent cannot reproduce your development environment, inspect Niteshift. If you need to review changed frontend behavior on a pull request, inspect Meticulous. Running code and checking behavior are different jobs.", "startup_slugs": ["niteshift", "meticulous"] },
+      { "title": "Separate observation from acceptance", "text": "Weave addresses how engineering and AI work are observed. A change in activity or output metrics is not a release gate. Define the product behavior you must accept independently of the measurement system.", "startup_slugs": ["weave"] },
+      { "title": "Treat data workflows as their own infrastructure", "text": "Mage addresses building and operating data pipelines. Compare its deployment and compute requirements against your data estate, not against the price of a coding-agent seat or frontend test service.", "startup_slugs": ["mage"] }
+    ],
+    "products": [
+      {
+        "startup_slug": "niteshift",
+        "workflow": { "text": "Each coding task gets a cloud environment with the repository and configured services. The agent edits files and runs commands; the documented handoff is a branch and pull request with a live preview.", "source_ids": ["intro"] },
+        "access": { "text": "Commit setup, service, and environment settings under .niteshift/ in the repository. Configure secrets by scope. Preview URLs normally require organization authentication; setup changes take effect after their configuration PR is merged.", "source_ids": ["config"] },
+        "pricing": { "text": "Plans use credits for active agent time: 0.1 credits per minute. Individual is $50/month with $50 credits; Team is $250/month with $250 credits. Overage is usage-based, idle sandboxes are not charged, and model tokens use your own provider account.", "source_ids": ["pricing"] },
+        "fit": { "text": "Consider for asynchronous coding work that needs a reproducible dev server, dependencies, and a preview someone can inspect.", "source_ids": ["intro", "config"] },
+        "limitations": { "text": "A running preview or opened PR is not proof of a correct release. Pilot a representative repository and check setup failures, secret exposure, test results, and the final diff; this comparison did not run a task.", "source_ids": ["intro", "config"] },
+        "sources": [
+          { "id": "intro", "title": "Niteshift: introduction", "url": "https://docs.niteshift.dev/introduction", "checked_at": "2026-09-08" },
+          { "id": "config", "title": "Niteshift: environment configuration", "url": "https://docs.niteshift.dev/environment-configuration/overview", "checked_at": "2026-09-08" },
+          { "id": "pricing", "title": "Niteshift: pricing", "url": "https://niteshift.dev/pricing", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "meticulous",
+        "workflow": { "text": "Record browser interactions, select recorded sessions, replay them against the old and new application on a PR, and review the visual differences. The report helps a reviewer approve or investigate changes.", "source_ids": ["architecture"] },
+        "access": { "text": "Install the recorder and connect the repository and CI workflow. The architecture describes static-asset uploads, Docker for server-rendered applications, or existing preview URLs as replay targets.", "source_ids": ["getting-started", "architecture"] },
+        "pricing": { "text": "A public numerical rate was not confirmed in the reviewed homepage and setup documentation. Confirm billing units, included replay volume, retention, and support directly before estimating cost.", "source_ids": ["home", "getting-started"] },
+        "fit": { "text": "Consider for frontend teams that want recorded user flows to reveal behavioral changes on pull requests, including changes authored by coding agents.", "source_ids": ["architecture"] },
+        "limitations": { "text": "Default recorded-response replay does not establish live-backend correctness. Request stubbing can be configured, and server-rendered requests can behave differently; inspect that setup explicitly. A clean replay is not complete application coverage or an acceptance decision.", "source_ids": ["network"] },
+        "sources": [
+          { "id": "architecture", "title": "Meticulous: architecture overview", "url": "https://app.meticulous.ai/docs/concepts/architecture-overview", "checked_at": "2026-09-08" },
+          { "id": "getting-started", "title": "Meticulous: getting started", "url": "https://app.meticulous.ai/docs", "checked_at": "2026-09-08" },
+          { "id": "home", "title": "Meticulous: product and access", "url": "https://www.meticulous.ai/", "checked_at": "2026-09-08" },
+          { "id": "network", "title": "Meticulous: network recording and patching", "url": "https://app.meticulous.ai/docs/concepts/network-recording-and-patching", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "weave",
+        "workflow": { "text": "The vendor describes observing interactive and background AI work, linking agent activity to engineering cost and output metrics, and exposing engineering context through an MCP server.", "source_ids": ["observability"] },
+        "access": { "text": "There is a hosted web-app signup; the vendor also describes enterprise self-hosted deployments. Confirm connector permissions, telemetry coverage, and deployment terms. The separate Prompt Router documents hosted or local self-hosted proxy setup; do not confuse that setup with deploying analytics.", "source_ids": ["home", "enterprise", "router"] },
+        "pricing": { "text": "Engineering-intelligence plans include a free Starter tier, per-engineer Pro pricing, and custom Enterprise terms. Confirm the billing cadence and included features. Prompt Router separately directs buyers to sales; do not apply the analytics plan price to routing.", "source_ids": ["pricing"] },
+        "fit": { "text": "Consider when the question is how AI work, engineering activity, and spend relate across a team, rather than whether one change passes its functional tests.", "source_ids": ["observability"] },
+        "limitations": { "text": "Output or attribution metrics are not independent proof of business value or correct software. Validate data coverage and metric definitions against your own records before using them for decisions about people or tools.", "source_ids": ["observability", "home"] },
+        "sources": [
+          { "id": "observability", "title": "Weave: agent observability", "url": "https://weaveos.com/product-pages/agent-observability", "checked_at": "2026-09-08" },
+          { "id": "home", "title": "Weave: engineering intelligence and access", "url": "https://weaveos.com/", "checked_at": "2026-09-08" },
+          { "id": "router", "title": "Weave: router repository and setup", "url": "https://github.com/weave-os/router", "checked_at": "2026-09-08" },
+          { "id": "pricing", "title": "Weave: pricing", "url": "https://weaveos.com/pricing", "checked_at": "2026-09-08" },
+          { "id": "enterprise", "title": "Weave: company announcement describing enterprise deployments", "url": "https://weaveos.com/blog/weave-raises-13.5m-series-a-to-build-engineering-and-token-intelligence", "checked_at": "2026-09-08" }
+        ]
+      },
+      {
+        "startup_slug": "mage",
+        "workflow": { "text": "Mage Pro provides a workspace for building, running, and monitoring data pipelines, with separate development, staging, and production environments and Git synchronization.", "source_ids": ["pro"] },
+        "access": { "text": "Choose managed hosting or a private, hybrid, or on-premises arrangement. The pricing page distinguishes where the control plane and data-processing plane run; select that boundary before sizing resources.", "source_ids": ["pro", "pricing"] },
+        "pricing": { "text": "The public page lists $100/month plus infrastructure usage, with one development environment and unlimited users. Listed compute rates include $0.50 per CPU-core hour and $0.50 per 4 GB RAM hour. Private deployment terms need confirmation.", "source_ids": ["pricing"] },
+        "fit": { "text": "Consider for data teams whose bottleneck is authoring and operating pipelines, especially when environment separation and control over data processing matter.", "source_ids": ["pro", "pricing"] },
+        "limitations": { "text": "These commercial terms describe Mage Pro, not the cost of running the open-source project yourself. No throughput or reliability benchmark was run; test your connectors, resource sizing, and recovery behavior.", "source_ids": ["pro", "pricing"] },
+        "sources": [
+          { "id": "pro", "title": "Mage: Pro deployment and capabilities", "url": "https://docs.mage.ai/production/mage/pro", "checked_at": "2026-09-08" },
+          { "id": "pricing", "title": "Mage: pricing and deployment choices", "url": "https://www.mage.ai/pricing", "checked_at": "2026-09-08" }
+        ]
+      }
+    ]
+  }
+]

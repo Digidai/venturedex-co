@@ -3,8 +3,8 @@
   "domain": "verse.inc",
   "url": "https://verse.inc/",
   "product_name": "Verse",
-  "summary": "Energy intelligence platform accelerating data-center grid connection.",
-  "editor_note": "Power has become the bottleneck AI companies cannot hide behind software. Verse's Aria reads market prices, weather and live asset telemetry, while Dispatch Intelligence uses on-site batteries and solar so data centers can flex the grid without slowing GPUs. Unlike curtailment tools, the product sells speed-to-power and up to 3 years faster connection. The risk is that utility approvals may still move slower than the software.",
+  "summary": "Energy software for data-center storage planning, dispatch, and portfolio oversight.",
+  "editor_note": "The useful distinction is controlling energy rather than moving compute workloads. Verse describes sizing on-site storage against a data center's load profile, then dispatching it for grid flexibility. Calibrant finances and operates the hardware; Verse supplies software. Portfolio Insights checks bills against meters and contracts. Faster interconnection remains site-dependent, not something a dashboard can guarantee.",
   "research": {
     "verified_at": "2026-06-19",
     "sources": [
@@ -25,38 +25,66 @@
         "label": "Official founders letter",
         "url": "https://verse.inc/company/founders-letter",
         "type": "official"
+      },
+      {
+        "id": "official_dispatch",
+        "label": "Verse Dispatch Intelligence workflow",
+        "url": "https://verse.inc/platform/dispatch-intelligence",
+        "type": "product"
+      },
+      {
+        "id": "official_portfolio",
+        "label": "Verse Portfolio Insights workflow",
+        "url": "https://verse.inc/platform/portfolio-insights",
+        "type": "product"
+      },
+      {
+        "id": "official_storage_explainer",
+        "label": "Verse behind-the-meter storage explanation",
+        "url": "https://verse.inc/blog/behind-the-meter-energy-storage-faster-data-center-interconnection",
+        "type": "official"
       }
     ],
     "product_evidence": [
       {
-        "claim": "The homepage says Verse gets data centers online up to three years faster and uses Aria to read market prices, weather, and live telemetry.",
+        "claim": "Dispatch Intelligence shows a planning workflow that compares site load requirements and grid capacity, then evaluates storage configurations against load profiles and projected returns.",
         "source_ids": [
-          "official_site"
+          "official_dispatch"
         ]
       },
       {
-        "claim": "The Series B announcement says Dispatch Intelligence orchestrates on-site energy resources alongside existing grid infrastructure.",
+        "claim": "Verse describes Dispatch Intelligence as controlling battery storage, flexible generation, and load flexibility after assets are live; its public interface includes fleet monitoring and load-mitigation simulations.",
         "source_ids": [
-          "funding_1"
+          "official_dispatch"
         ]
       },
       {
-        "claim": "The founders letter says Aria grew from contract management, PPA tools, risk management, and utility bill management for large energy users.",
+        "claim": "The founders letter assigns software orchestration and battery dispatch to Verse, while Calibrant finances, builds, owns, and operates the on-site energy hardware.",
         "source_ids": [
           "official_letter"
+        ]
+      },
+      {
+        "claim": "Portfolio Insights describes reconciling meter data, contract terms, and invoices to flag discrepancies, alongside asset-availability checks against contractual guarantees and generation forecasts.",
+        "source_ids": [
+          "official_portfolio"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Data-center developers, AI infrastructure operators, and large energy buyers waiting on grid interconnection or power capacity.",
+      "primary_user": "Data-center energy and development teams evaluating on-site flexibility, plus energy procurement and asset managers reconciling contracts, meters, and bills across a portfolio.",
       "category": "Energy infrastructure software",
-      "differentiation": "Verse links energy market intelligence, asset telemetry, contracts, and dispatch control to shorten the path to power.",
-      "why_now": "AI data-center demand is turning power access into a revenue bottleneck for compute-heavy companies."
+      "differentiation": "Verse connects pre-construction storage sizing with operating dispatch and portfolio accounting; its disclosed partner handles the physical infrastructure rather than Verse selling the software as a substitute for it.",
+      "why_now": "The June 2026 Dispatch Intelligence and Calibrant announcements extend the existing portfolio software into on-site energy control, creating a concrete execution milestone to follow."
     },
     "risks": [
       {
-        "claim": "The open question is whether software-driven dispatch can overcome slow utility approvals, grid constraints, and site-specific energy economics.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "A storage-sizing simulation or dispatch dashboard does not establish a utility-approved interconnection date, realized savings, or unchanged compute performance at a particular site.",
+        "basis": "VentureDex editorial assessment; the reviewed pages show vendor-described workflows and example interfaces, not independently verified site outcomes."
+      },
+      {
+        "claim": "Public speed-to-power, deployment-count, and latency claims need dated site-level evidence before they can be treated as measured results across customers.",
+        "basis": "The Series B release projects site onboarding; product and blog pages show differing deployment and latency figures. These metrics are not independently verified here."
       }
     ]
   },
@@ -68,7 +96,8 @@
   "tags": "energy,data centers,grid,ai infrastructure",
   "investors": "Bessemer Venture Partners",
   "links": {
-    "careers": "https://verse.inc/company/careers"
+    "careers": "https://verse.inc/company/careers",
+    "product": "https://verse.inc/platform/dispatch-intelligence"
   },
   "is_featured": true,
   "funding": [

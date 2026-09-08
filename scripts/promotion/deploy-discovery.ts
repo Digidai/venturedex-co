@@ -57,14 +57,14 @@ function record(value: unknown): Record<string, unknown> | null {
   return value && typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : null;
 }
 
-function changedEntries(current: unknown, previous: unknown): Record<string, unknown>[] {
+function changedEntries(current: unknown, previous: unknown, key = "slug"): Record<string, unknown>[] {
   const before = new Map((Array.isArray(previous) ? previous : []).flatMap((entry) => {
     const row = record(entry);
-    return row && typeof row.slug === "string" ? [[row.slug, JSON.stringify(row)] as const] : [];
+    return row && typeof row[key] === "string" ? [[row[key], JSON.stringify(row)] as const] : [];
   }));
   return (Array.isArray(current) ? current : []).flatMap((entry) => {
     const row = record(entry);
-    return row && typeof row.slug === "string" && before.get(row.slug) !== JSON.stringify(row) ? [row] : [];
+    return row && typeof row[key] === "string" && before.get(row[key]) !== JSON.stringify(row) ? [row] : [];
   });
 }
 
@@ -110,6 +110,29 @@ export function selectChangedUrls(files: string[], current: JsonReader, previous
         paths.add("/weekly");
         paths.add("/research");
       }
+    } else if (file === "content/research-briefs.json") {
+      if (JSON.stringify(current(file)) !== JSON.stringify(previous(file))) {
+        paths.add("/research");
+        for (const row of changedEntries(current(file), previous(file))) {
+          if (row.status === "published") paths.add(`/research/${row.slug}`);
+        }
+      }
+    } else if (file.startsWith("src/pages/research/") || file === "src/lib/research-briefs.ts") {
+      paths.add("/research");
+      for (const row of changedEntries(current("content/research-briefs.json"), [])) {
+        if (row.status === "published") paths.add(`/research/${row.slug}`);
+      }
+    } else if (file === "content/topic-research.json") {
+      if (JSON.stringify(current(file)) !== JSON.stringify(previous(file))) {
+        paths.add("/topics");
+        // Removing a guide also changes its still-existing topic HTML page.
+        const changed = [...changedEntries(current(file), previous(file), "topic_slug"), ...changedEntries(previous(file), current(file), "topic_slug")];
+        const known = new Set(changedEntries(current("content/topic-pages.json"), []).map((row) => row.slug));
+        for (const row of changed) if (known.has(row.topic_slug)) paths.add(`/topics/${row.topic_slug}`);
+      }
+    } else if (file === "src/lib/topic-research.ts") {
+      paths.add("/topics");
+      for (const row of changedEntries(current("content/topic-pages.json"), [])) paths.add(`/topics/${row.slug}`);
     } else if (file === "content/topic-pages.json" || file === "content/collections.json") {
       const prefix = file === "content/topic-pages.json" ? "/topics" : "/collections";
       for (const row of changedEntries(current(file), previous(file))) paths.add(`${prefix}/${row.slug}`);

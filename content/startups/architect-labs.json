@@ -4,7 +4,7 @@
   "url": "https://architectlabs.com/",
   "product_name": "Architect Labs",
   "summary": "AI design partner for custom silicon and end-to-end chip verification.",
-  "editor_note": "The useful bet is that chip design needs a co-designer, not another EDA plug-in. Architect Labs says its AI flow designs and provably verifies chips end-to-end, and the founding team has taped out 80+ production chips. Unlike agent wrappers around brittle toolchains, it wants to work as a design partner for AI labs and fabless teams. The risk is whether a service-led model can scale past a few hard tapeouts.",
+  "editor_note": "A chip-design claim gets more interesting when the hardware runs a workload. Architect Labs reports Redwood Nano running Qwen3-0.6B on an FPGA, with RTL, verification, and software generated from a human specification. Unlike an EDA plug-in, it sells a design partnership across the program. Its ASIC efficiency figures are projections, not measured production silicon; tapeout and independent replication remain the harder tests.",
   "research": {
     "verified_at": "2026-06-19",
     "sources": [
@@ -19,43 +19,72 @@
         "label": "Official seed funding announcement",
         "url": "https://architectlabs.com/blog/seed",
         "type": "funding"
+      },
+      {
+        "id": "design_partner",
+        "label": "Architect Labs custom-silicon design partnership",
+        "url": "https://architectlabs.com/about",
+        "type": "product"
+      },
+      {
+        "id": "redwood_update",
+        "label": "Redwood FPGA demonstration and ASIC projection boundaries",
+        "url": "https://architectlabs.com/blog/redwood",
+        "type": "product"
+      },
+      {
+        "id": "redwood_paper",
+        "label": "Architect Labs Redwood preprint abstract, version 2",
+        "url": "https://arxiv.org/abs/2608.26418v2",
+        "type": "product"
       }
     ],
     "product_evidence": [
       {
-        "claim": "The homepage says Architect Labs is building an AI system that explores, designs and provably verifies chips for demanding workloads.",
+        "claim": "Architect Labs describes partnering with chip companies and workload owners on custom ASIC programs, spanning architecture, RTL, verification, physical design, and tapeout rather than selling a standalone EDA tool.",
         "source_ids": [
-          "official_site"
-        ]
-      },
-      {
-        "claim": "The seed announcement says the system is intended to design and provably verify chips end-to-end for custom silicon programs.",
-        "source_ids": [
+          "design_partner",
           "funding_1"
         ]
       },
       {
-        "claim": "The announcement says Architect is not building EDA tools or wrappers, but a design partner that reasons about hardware, software, and manufacturing constraints.",
+        "claim": "The Redwood preprint reports generating a performance model, RTL, UVM environments, formal proofs, firmware, and kernels from two architects' high-level specification in under two weeks; this is the company's reported demonstration.",
         "source_ids": [
-          "funding_1"
+          "redwood_paper"
+        ]
+      },
+      {
+        "claim": "The August Redwood post reports a 2x2-tile Nano design on an AMD Versal VPK180 FPGA at 250 MHz, running Qwen3-0.6B at 12.1 tokens per second. These are company-reported FPGA measurements, not a fabricated ASIC result.",
+        "source_ids": [
+          "redwood_update"
+        ]
+      },
+      {
+        "claim": "The same post labels its Samsung 8 nm performance-per-watt comparison as an ASIC projection and says full GDSII and a TSMC tapeout are further work. It does not establish volume production of Redwood silicon.",
+        "source_ids": [
+          "redwood_update"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Frontier AI labs, hyperscalers, OEMs, and fabless chip teams trying to build custom silicon faster.",
-      "category": "AI silicon design infrastructure",
-      "differentiation": "Architect aims to automate design and formal verification together, rather than adding an agent beside existing EDA workflows.",
-      "why_now": "AI workloads are changing faster than traditional chip-design programs can safely predict and tape out new architectures."
+      "primary_user": "Semiconductor companies and workload owners, including AI labs and physical-AI teams, seeking a partner for an existing ASIC program or a new custom-chip design.",
+      "category": "AI-assisted custom-silicon design partnership",
+      "differentiation": "Its proposed unit of work is the chip program: human architects specify a workload while an integrated system generates and checks hardware and software artifacts together, instead of optimizing one EDA step.",
+      "why_now": "The August Redwood disclosure adds an inspectable FPGA demonstration and a technical preprint to the earlier design-partner proposition, while explicitly leaving ASIC realization as further work."
     },
     "risks": [
       {
-        "claim": "The open question is whether end-to-end chip design can scale beyond high-touch expert engagements and still reach tapeout-quality reliability.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "FPGA inference and process-node projections do not establish ASIC power, yield, timing closure, or production readiness. The reviewed disclosure leaves GDSII completion and a TSMC tapeout ahead.",
+        "basis": "VentureDex assessment of the Redwood post and company-authored preprint abstract; no independent replication or foundry acceptance evidence reviewed."
+      },
+      {
+        "claim": "The public materials do not disclose named customer tapeout results, contract pricing, or how much expert work each engagement requires. A single demonstrated design does not establish repeatability across ASIC programs.",
+        "basis": "VentureDex assessment of the design-partner offer and published demonstration; no customer contracts, design files, or product trial reviewed."
       }
     ]
   },
   "editor_rating": 4,
-  "why_featured": "AI silicon design partner",
+  "why_featured": "Redwood FPGA inference demonstration",
   "product_type": "AI / ML",
   "region": "US",
   "tags": "ai chips,eda,formal verification,semiconductors",

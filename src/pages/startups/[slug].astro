@@ -21,6 +21,7 @@ import { getIndexableInvestorSlugs } from "../../lib/investor-indexing";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import { getTopicPagesForStartup } from "../../lib/topic-pages";
+import { getResearchBriefs, researchBriefPath } from "../../lib/research-briefs";
 import type { StartupLinks, StartupResearch, StartupResearchSource } from "../../lib/types";
 import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 import { getScreenshotMetadata, versionedScreenshotUrl } from "../../lib/screenshots";
@@ -36,6 +37,7 @@ const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
 
 const related = getContentRelatedStartups(startup);
 const topicLinks = getTopicPagesForStartup(startup, allStartups, weeklyIssues);
+const researchBriefs = getResearchBriefs().filter((brief) => brief.companies.some((company) => company.startup_slug === startup.slug));
 const fundingRounds = getContentFundingRoundsForStartup(startup.slug);
 const screenshotUrl = versionedScreenshotUrl(startup.screenshot_r2_key);
 const screenshotMetadata = getScreenshotMetadata(startup.screenshot_r2_key);
@@ -482,6 +484,21 @@ function sourceLabel(source?: StartupResearchSource) {
               <span>{topic.kicker}</span>
               <strong>{topic.title}</strong>
               <small>{topic.startups.length} tracked profiles</small>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {researchBriefs.length > 0 && (
+      <section class="topics-section" aria-label="Related research briefs">
+        <h2>Read the research brief</h2>
+        <div class="topic-link-grid">
+          {researchBriefs.map((brief) => (
+            <a href={researchBriefPath(brief)} class="topic-link-card">
+              <span>Source-led comparison · {brief.reviewed_at}</span>
+              <strong>{brief.title}</strong>
+              <small>{brief.description}</small>
             </a>
           ))}
         </div>

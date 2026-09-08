@@ -1,0 +1,103 @@
+[
+  {
+    "slug": "coding-agent-verification-stack",
+    "status": "published",
+    "title": "Coding-agent verification: runtime, replay, and measurement",
+    "description": "Compare Niteshift, Meticulous, and Weave by the evidence each produces, what it cannot prove, and how to evaluate it before trusting agent-written code.",
+    "published_at": "2026-09-08",
+    "reviewed_at": "2026-09-08",
+    "summary": "A runnable environment, a clean frontend replay, and an engineering-output metric answer different questions. Niteshift, Meticulous, and Weave illustrate three layers around coding agents. Our conclusion: choose the missing evidence in your release process before choosing another tool. None of these layers, alone, establishes that a change is safe to ship.",
+    "scope": "A purposive sample of three existing VentureDex profiles, chosen for distinct documented workflows. This is an editorial comparison, not a benchmark, buying endorsement, complete market map, or estimate of market growth. Public documentation and attributed funding sources were reviewed on September 8, 2026; no customer deployment or paid trial was performed.",
+    "method": [
+      "Start with companies already covered by VentureDex and inspect current official product documentation. Use funding sources as dated company context, not as evidence of product quality.",
+      "Compare the unit of evidence: a running task and its checks, a replay difference, or an attributed engineering metric. Separate these from vendor promises about speed, coverage, or return on spend.",
+      "Keep the brief's review date separate from each underlying profile's review date. The funding figures below are individual reported rounds, not cumulative funding or a comparable valuation signal.",
+      "Treat the evaluation questions as VentureDex's proposed procedure. They are not results from experiments we ran. Check current vendor terms, access and pricing before deploying any tool."
+    ],
+    "companies": [
+      {
+        "startup_slug": "niteshift",
+        "name": "Niteshift",
+        "layer": "A place to run and inspect the change",
+        "documented_workflow": "A task clones repositories into a cloud environment, runs the committed setup, starts the dev server, and lets the coding agent use a preview, terminal and browser. The docs describe Docker services and branched databases as environment capabilities.",
+        "evidence_unit": "The task's running application, command output and browser evidence attached to a proposed change.",
+        "boundary": "A production-like environment is not the production system. Test-data quality, service configuration and the chosen assertions still determine what a passing task establishes.",
+        "evaluation_question": "Can the same failing user journey be reproduced before the patch and pass afterwards, against the same recorded dependency and data setup?",
+        "funding_context": "$7M Seed announced June 10, 2026, led by Greylock.",
+        "source_ids": ["niteshift_docs", "niteshift_product", "niteshift_seed"]
+      },
+      {
+        "startup_slug": "meticulous",
+        "name": "Meticulous",
+        "layer": "A record of frontend behavior that changed",
+        "documented_workflow": "Recorded sessions are replayed against base and head frontend builds, normally using recorded network responses. Stubbing is configurable, with Next.js App Router exceptions. MCP exposes test-run, screenshot-diff and DOM-diff reads for agents.",
+        "evidence_unit": "Differences between selected recorded sessions on two frontend builds, plus the reported test status.",
+        "boundary": "Default recorded-response replay does not establish live-backend correctness. Inspect stubbing and server-rendering configuration. Important roles need representative recordings; reviewers must decide whether differences are intended.",
+        "evaluation_question": "Does a recorded session cover the role and state affected by this patch, and who reviews the difference before the required check becomes green?",
+        "funding_context": "$15M Series A reported July 15, 2026, led by Chemistry. Funding details are visible in Sifted's public introduction; the rest of the article is access-limited.",
+        "source_ids": ["meticulous_docs", "meticulous_network", "meticulous_mcp", "meticulous_gate", "meticulous_funding"]
+      },
+      {
+        "startup_slug": "weave",
+        "name": "Weave",
+        "layer": "A way to inspect engineering activity and cost",
+        "documented_workflow": "Weave describes separate attribution for interactive AI tools and background agents. Its product page connects agent activity with cost and output metrics; its funding announcement describes a model-derived estimate of equivalent human work.",
+        "evidence_unit": "Attributed contributions, cost records and derived engineering metrics across connected work.",
+        "boundary": "An output score is a model-based measure, not proof of correct code or causal ROI. Attribution and comparison require checking the inputs, work mix and unresolved failures.",
+        "evaluation_question": "Can a reviewer trace a sampled metric back to the PR and cost records, including reverted work, before comparing repositories or teams?",
+        "funding_context": "$13.5M Series A announced July 28, 2026, led by Standard Capital.",
+        "source_ids": ["weave_observability", "weave_funding"]
+      }
+    ],
+    "findings": [
+      {
+        "id": "different-evidence",
+        "title": "1. These are different evidence layers, not three substitutes",
+        "text": "The useful distinction is where uncertainty remains. If an agent cannot run the application, inspect environment setup. If reviewers cannot see behavioral changes, inspect replay and coverage. If leaders cannot explain agent spend, inspect attribution and measurement. Buying an adjacent layer will not necessarily solve the missing one. A team may need several layers, or may already have an adequate internal tool for one of them.",
+        "source_ids": ["niteshift_docs", "meticulous_network", "weave_observability"]
+      },
+      {
+        "id": "green-status",
+        "title": "2. A green status needs an explicit meaning",
+        "text": "Meticulous documents an optional required check that stays red until visual differences are approved. That is a useful reminder: a system can report what changed without deciding that the change is acceptable. Define which checks must pass, which evidence a human inspects, and which operations require separate authorization. Do not let an agent treat the existence of a diff, a screenshot, or a successful command as a release decision.",
+        "source_ids": ["meticulous_gate", "meticulous_mcp"]
+      },
+      {
+        "id": "backend-gap",
+        "title": "3. Keep a live integration check outside the replay boundary",
+        "text": "Recorded-response replay makes frontend comparisons more controlled; it also changes what is being tested. For a change involving persistence, permissions, billing or external services, require a separate check of the relevant backend outcome in an authorized test environment. The editorial point is not that replay is weak. It is that coverage has a boundary, and the release checklist must name it.",
+        "source_ids": ["meticulous_network", "niteshift_docs"]
+      },
+      {
+        "id": "measurement-gap",
+        "title": "4. Measure accepted work without hiding the cost of failure",
+        "text": "Our proposed evaluation keeps accepted changes, reviewer time, rework, reversions and total tool cost separate. A rise in generated code or a vendor output score should not silently become a productivity claim. Use the same kinds of tasks and an explicit observation window; inspect examples behind the aggregate. This brief supplies a research procedure, not a measured improvement from any of the three products.",
+        "source_ids": ["weave_funding", "weave_observability"]
+      }
+    ],
+    "checklist": [
+      "Select a small fixed set of representative tasks, including a known regression, a permissions-sensitive path and a backend state change. Do not test with real customer secrets or transactions.",
+      "Record the repository commit, environment, role, input state and expected outcome before the agent starts. Make the acceptance criteria independent of the agent's own completion message.",
+      "Collect reproducible commands, relevant replay or browser evidence, and the exact review decision. Keep tests against recorded responses distinct from tests of live dependencies.",
+      "Inspect a sample of reported costs and output metrics against underlying work. Include unsuccessful attempts and human review time; report missing data instead of filling it in.",
+      "Decide what to adopt only after checking the failure cases. Leave existing release approval and access controls in place throughout the evaluation."
+    ],
+    "questions": [
+      {"question": "Which tool verifies that coding-agent output is correct?", "answer": "There is no universal answer in this comparison. Niteshift documents a runtime for running checks, Meticulous documents frontend replay and differences, and Weave documents attribution and metrics. Correctness depends on the specific acceptance test and its coverage. We did not benchmark these products."},
+      {"question": "Does Meticulous replay test the live backend?", "answer": "Default replay uses recorded responses. Project settings can change which requests are stubbed; Next.js App Router has exceptions. Inspect the actual configuration and require an appropriate backend-outcome check rather than inferring correctness from a frontend replay."},
+      {"question": "Does more funding or a higher output score identify the best product?", "answer": "No. Funding is dated company context, and an output score reflects a measurement method. Neither establishes fit, correctness, reliability or return on investment for your workflow."}
+    ],
+    "sources": [
+      {"id":"niteshift_docs","label":"Niteshift documentation: task and environment model","url":"https://docs.niteshift.dev/introduction","type":"official-documentation","checked_at":"2026-09-08"},
+      {"id":"niteshift_product","label":"Niteshift product: verification capabilities","url":"https://niteshift.dev/","type":"vendor-product","checked_at":"2026-09-08"},
+      {"id":"niteshift_seed","label":"Niteshift seed announcement","url":"https://niteshift.dev/blog/introducing-niteshift","type":"company-announcement","checked_at":"2026-09-08"},
+      {"id":"meticulous_docs","label":"Meticulous documentation: getting started","url":"https://app.meticulous.ai/docs","type":"official-documentation","checked_at":"2026-09-08"},
+      {"id":"meticulous_network","label":"Meticulous: network recording and patching","url":"https://app.meticulous.ai/docs/concepts/network-recording-and-patching","type":"official-documentation","checked_at":"2026-09-08"},
+      {"id":"meticulous_mcp","label":"Meticulous: MCP tools and their access scope","url":"https://app.meticulous.ai/docs/agents/mcp-server","type":"official-documentation","checked_at":"2026-09-08"},
+      {"id":"meticulous_gate","label":"Meticulous: require approving diffs before merge","url":"https://app.meticulous.ai/docs/make-check-blocking","type":"official-documentation","checked_at":"2026-09-08"},
+      {"id":"meticulous_funding","label":"Sifted: Meticulous Series A, public introduction","url":"https://sifted.eu/articles/ex-palantir-dropbox-elevenlabs-notion-wiz-ship-ai-generated-code","type":"original-reporting","checked_at":"2026-09-08"},
+      {"id":"weave_observability","label":"Weave: agent attribution and observability","url":"https://weaveos.com/product-pages/agent-observability","type":"vendor-product","checked_at":"2026-09-08"},
+      {"id":"weave_funding","label":"Weave Series A and its measurement model","url":"https://weaveos.com/blog/weave-raises-13.5m-series-a-to-build-engineering-and-token-intelligence","type":"company-announcement","checked_at":"2026-09-08"}
+    ]
+  }
+]

@@ -32,8 +32,8 @@ function datesForStartup(startup: Startup) {
   const updatedAt = recordedTimestamp(startup.updated_at);
   return {
     published_at: publishedAt,
-    // The build-time reader currently sets updated_at to published_at. An equal
-    // timestamp is not evidence of a separate update, and build time is not one.
+    // Without an authored update the build-time reader falls back to publication.
+    // An equal timestamp or build time is not evidence of a separate update.
     updated_at: publishedAt && updatedAt && updatedAt > publishedAt ? updatedAt : null,
   };
 }

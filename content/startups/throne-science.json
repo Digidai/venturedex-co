@@ -3,8 +3,8 @@
   "domain": "www.thronescience.com",
   "url": "https://www.thronescience.com/",
   "product_name": "Throne Science",
-  "summary": "Clip-on toilet sensor and app for passive gut, hydration, and urinary tracking.",
-  "editor_note": "Passive measurement beats asking people to log a routine they rarely record consistently. The clip-on sensor feeds 12-plus AI models and an app that establishes hydration and bathroom-pattern baselines without daily manual entry. That hardware-software loop is more defensible than another wellness questionnaire, but the company positions the current product as general wellness rather than diagnosis. The test is whether independent studies show its readings lead to repeatable health decisions.",
+  "summary": "Clip-on toilet sensor and subscription app for digestive and urinary wellness tracking.",
+  "editor_note": "Passive measurement is an alternative to keeping a bathroom diary. Throne describes a clip-on sensor that recognizes a paired phone, captures a session, and sends analysis to a paid app. Practical questions precede the charts: toilet fit, user identification, and cloud processing of sensitive observations. This is a general-wellness product, not a diagnostic test. Independent validation matters more than the number of AI models behind it.",
   "editor_rating": 4,
   "why_featured": "$10M A for passive gut tracking",
   "product_type": "HealthTech",
@@ -12,8 +12,8 @@
   "tags": "digital health,health sensors,gut health,hydration,computer vision",
   "investors": "Will Ventures",
   "links": {
-    "product": "https://www.thronescience.com/how-it-works",
-    "resources": "https://www.thronescience.com/science",
+    "product": "https://pages.thronescience.com/how-it-works",
+    "resources": "https://pages.thronescience.com/science",
     "careers": "https://thronescience.notion.site/Throne-Careers-1497137c215b80d89e3efc9ccdb5bc6e",
     "linkedin": "https://www.linkedin.com/company/thronescience/",
     "twitter": "https://x.com/ThroneScience"
@@ -41,13 +41,19 @@
       {
         "id": "official_how_it_works",
         "label": "Throne Science how it works page",
-        "url": "https://www.thronescience.com/how-it-works",
+        "url": "https://pages.thronescience.com/how-it-works",
         "type": "product"
       },
       {
         "id": "official_science",
         "label": "Throne Science research page",
-        "url": "https://www.thronescience.com/science",
+        "url": "https://pages.thronescience.com/science",
+        "type": "product"
+      },
+      {
+        "id": "official_membership",
+        "label": "Throne membership and ongoing costs",
+        "url": "https://support.thronescience.com/en/articles/12786000-is-there-a-subscription-or-ongoing-cost",
         "type": "product"
       },
       {
@@ -59,24 +65,40 @@
     ],
     "product_evidence": [
       {
-        "claim": "The clip-on toilet sensor uses more than a dozen AI models to track stool, urine, hydration, and bathroom-pattern signals without manual logging.",
-        "source_ids": ["official_site", "official_how_it_works"]
+        "claim": "Throne describes motion-triggered activation followed by Bluetooth recognition of a paired phone, camera and acoustic capture of the session, and cloud processing before results appear in the app.",
+        "source_ids": ["official_how_it_works"]
       },
       {
-        "claim": "The companion app establishes personal baselines and shows longitudinal trends, while the product is explicitly labeled for general wellness rather than diagnosis.",
-        "source_ids": ["official_how_it_works", "official_science"]
+        "claim": "The setup guide specifies Wi-Fi connectivity and compatibility with white toilets whose rims are up to 2.25 inches thick; it also documents manual session-start buttons when a phone is absent.",
+        "source_ids": ["official_how_it_works"]
+      },
+      {
+        "claim": "The science page describes stool-form classification, optical urine-color estimates, session timing, and acoustic urinary-flow analysis; it labels the product for general wellness, not disease diagnosis or treatment.",
+        "source_ids": ["official_science"]
+      },
+      {
+        "claim": "Throne's support page says a paid membership is required for full functionality, including app analysis and cloud history; canceling membership stops analysis and app syncing.",
+        "source_ids": ["official_membership"]
       }
     ],
     "market_context": {
-      "primary_user": "Consumers and clinicians exploring passive longitudinal signals about gut, hydration, and urinary health.",
-      "category": "At-home health monitoring",
-      "differentiation": "A dedicated bathroom sensor captures routine physiological observations passively instead of depending on questionnaires or manual diaries.",
-      "why_now": "The July 2026 Series A funds a consumer sensor category where longitudinal data quality matters more than a single wellness reading."
+      "primary_user": "Consumers who want an at-home record of digestive and urinary patterns and are willing to use compatible hardware, a phone, Wi-Fi, and an ongoing membership.",
+      "category": "At-home wellness tracking",
+      "differentiation": "A toilet-mounted sensor automates routine session capture and combines it with longitudinal app analysis, rather than relying entirely on self-entered diaries or mailed samples.",
+      "why_now": "The July 2026 Series A and public setup and membership documentation make practical household use and retention observable questions, separate from future clinical applications."
     },
     "risks": [
       {
-        "claim": "Whether passive readings change health decisions can be tested through independent studies of repeatability and user outcomes.",
-        "basis": "The company publishes technical and study material but explicitly limits the current product to general wellness rather than diagnosis."
+        "claim": "Vendor accuracy claims, physician endorsements, and general research about bathroom habits do not by themselves establish independent validation of this device or improved health outcomes.",
+        "basis": "The science page pairs performance claims with a general-wellness disclaimer. This review did not reproduce tests or assess a complete independent device-validation study."
+      },
+      {
+        "claim": "Household identification reliability, fit, and sensitive-data handling require testing beyond public documentation; clinician endorsements are not evidence of routine clinical deployment.",
+        "basis": "VentureDex editorial assessment of the paired-phone workflow, compatibility requirements, cloud processing, and physician material. No hardware was installed or tested."
+      },
+      {
+        "claim": "The homepage and support article show slightly different hardware and monthly prices, so this profile states the membership requirement without asserting a single current checkout total.",
+        "basis": "Both official pages were reviewed; an actual checkout, regional taxes, shipping, and final subscription terms were not verified."
       }
     ]
   }

@@ -4,9 +4,9 @@
   "url": "https://niteshift.dev/",
   "product_name": "Niteshift",
   "summary": "Full-stack cloud runtimes where coding agents can verify PRs.",
-  "editor_note": "The bet is that coding agents need production-like environments, not another chat box. Niteshift reads repo docs, CI, Docker, secrets, and services, then runs agents against browsers, APIs, DB state, logs, and eval scripts before attaching PR evidence. Unlike laptop worktrees or single-vendor agents, it treats verification capacity as cloud infrastructure. The risk is whether teams will trust long-running agents with broad repo access.",
+  "editor_note": "A coding agent is only as useful as the environment it can test. Niteshift puts setup and services in committed .niteshift files, runs a browser against previews, and sends screenshots or demos to PRs. Unlike a local worktree, the runtime can be shared without sharing a laptop. Ambrook's case shows engineers splitting a large migration into reviewable tasks; credentials, test coverage, and merge decisions still need human ownership.",
   "editor_rating": 4,
-  "why_featured": "Agent verification cloud",
+  "why_featured": "Committed setup, browser-to-PR evidence",
   "product_type": "DevTools",
   "region": "US",
   "tags": "devtools,coding agents,cloud sandboxes,agent infrastructure,developer productivity",
@@ -40,38 +40,90 @@
         "label": "Niteshift seed announcement",
         "url": "https://niteshift.dev/blog/introducing-niteshift",
         "type": "funding"
+      },
+      {
+        "id": "environment_docs",
+        "label": "Niteshift committed configuration and secret scopes",
+        "url": "https://docs.niteshift.dev/environment-configuration/overview",
+        "type": "product"
+      },
+      {
+        "id": "browser_docs",
+        "label": "Niteshift browser verification and PR artifacts",
+        "url": "https://docs.niteshift.dev/browser-automation",
+        "type": "product"
+      },
+      {
+        "id": "database_docs",
+        "label": "Niteshift per-task Neon database branches",
+        "url": "https://docs.niteshift.dev/environment-configuration/database-branches",
+        "type": "product"
+      },
+      {
+        "id": "pricing",
+        "label": "Niteshift active-agent-time pricing, checked September 2026",
+        "url": "https://niteshift.dev/pricing",
+        "type": "product"
+      },
+      {
+        "id": "ambrook_case",
+        "label": "Ambrook component migration workflow, company-published case",
+        "url": "https://niteshift.dev/customers/ambrook",
+        "type": "product"
       }
     ],
     "product_evidence": [
       {
-        "claim": "The official site positions Niteshift as a full-stack cloud for coding agents, with setup generated from repo docs, CI, Docker, secrets, and services.",
+        "claim": "Niteshift's setup agent opens a PR with committed .niteshift configuration for setup, resume, and services. Other tasks use the new configuration after merge; secrets are stored separately with setup and agent scopes.",
         "source_ids": [
-          "official_site"
+          "environment_docs"
         ]
       },
       {
-        "claim": "The product surface says agents can verify browser, API, database, log, and eval-script evidence before attaching PR proof.",
+        "claim": "The browser docs describe a persistent Chromium against the app preview; /browser checks flows, /screenshots adds images to the PR description, and /demo records a walkthrough. Instructions can require these checks.",
         "source_ids": [
-          "official_site"
+          "browser_docs"
         ]
       },
       {
-        "claim": "Niteshift lists Claude Code, Codex, OpenCode, and Pi as supported agent choices rather than tying users to one model workflow.",
+        "claim": "With Neon connected, each task receives a Postgres branch from a selected parent. Branches persist through resume but may be deleted at archival or expiry; this isolation is a configured integration, not an automatic copy of every database.",
+        "source_ids": [
+          "database_docs"
+        ]
+      },
+      {
+        "claim": "The pricing page bills 0.1 credits per active agent minute, with no idle-sandbox charge. Individual is $50/month and Team $250/month in matching credits; model tokens come from the user's API key or subscription.",
+        "source_ids": [
+          "pricing"
+        ]
+      },
+      {
+        "claim": "The Ambrook case describes splitting a Material UI-to-BaseUI migration into a component graph, adding Storybook and visual tests, then using Claude Code and Codex tasks. It reports 58 tasks and 29 merged PRs for that project.",
+        "source_ids": [
+          "ambrook_case"
+        ]
+      },
+      {
+        "claim": "The homepage lists Claude Code, Codex, OpenCode, and Pi and supports starting work from GitHub comments, Slack mentions, and assigned Linear issues.",
         "source_ids": [
           "official_site"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Engineering teams adopting coding agents across production codebases.",
-      "category": "DevTools",
-      "differentiation": "Niteshift moves verification and full-stack runtime setup into managed cloud sandboxes rather than leaving agents inside local worktrees.",
-      "why_now": "Coding agents can make larger changes, but teams still need repeatable environments and merge-ready evidence."
+      "primary_user": "Engineering and platform leads configuring shared agent runtimes, plus developers and designers working through repository-backed tasks and pull requests.",
+      "category": "Managed full-stack runtimes for coding agents",
+      "differentiation": "It combines versioned environment configuration, app services, authenticated previews, and browser-to-PR artifacts while allowing different coding agents in the same stack.",
+      "why_now": "The committed configuration docs and Ambrook migration case show how teams can turn isolated agent sessions into repeatable, reviewable development work."
     },
     "risks": [
       {
-        "claim": "The open question is whether engineering teams will grant long-running agents enough repo and runtime access to make the cloud model useful.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "Teams still need test credentials, representative data, and review rules; a browser artifact does not prove correctness. Actual isolation and permissions were not tested in a connected repository.",
+        "basis": "VentureDex assessment of configuration/browser docs and Ambrook's iterative test setup; public documentation review, not a hands-on trial."
+      },
+      {
+        "claim": "Long parallel runs consume active-time credits and separately supplied model tokens. Database branch expiry can also change task state, so cost and retention need testing against the team's workload.",
+        "basis": "VentureDex assessment of current pricing and Neon branch lifecycle docs; no billing account or long-running task benchmark reviewed."
       }
     ]
   }

@@ -3,10 +3,10 @@
   "domain": "www.becvrd.com",
   "url": "https://www.becvrd.com",
   "product_name": "CVRD Health",
-  "summary": "Fringe benefit optimization and ICHRA compliance platform for government contractors.",
-  "editor_note": "Someone finally treated fringe benefits for federal contractors as an operating system, not a broker spreadsheet. CVRD models SCA/DBRA obligations, tracks H&W dollars in real time, manages ICHRAs, and shows an Aptive case with $536,870 annual savings across 151 enrolled employees. Unlike generic benefits software, the bet is owning the narrow compliance math where margins leak. The risk is whether service-heavy advocacy scales beyond early GovCon accounts.",
+  "summary": "Payroll-linked fringe tracking and ICHRA benefits administration for government contractors.",
+  "editor_note": "Fringe benefits are a payroll reconciliation problem before they are a plan-shopping problem. CVRD tracks obligations by employee and contract, allocates benefits, and gives workers a Wallet view. Unlike a generic benefits portal, its workflow connects payroll inputs to carrier payments and compliance records. The Aptive case is useful context, but its published savings tables need clarification before buyers use them to model their own costs.",
   "editor_rating": 5,
-  "why_featured": "151-enrollee GovCon case study",
+  "why_featured": "Payroll-to-fringe tracking workflow",
   "product_type": "SaaS",
   "region": "US",
   "tags": "benefits,govcon,compliance,healthcare,hr tech",
@@ -40,32 +40,72 @@
         "label": "PR Newswire",
         "url": "https://www.prnewswire.com/news-releases/cvrd-health-announces-5m-seed-round-led-by-upfront-ventures-to-modernize-benefits-compliance-for-federal-government-contractors-302779218.html",
         "type": "funding"
+      },
+      {
+        "id": "payroll_workflow",
+        "label": "CVRD payroll-to-benefits workflow",
+        "url": "https://www.becvrd.com/how-cvrd-works",
+        "type": "product"
+      },
+      {
+        "id": "fringe_tracking",
+        "label": "CVRD employee and contract-level fringe tracking",
+        "url": "https://www.becvrd.com/compliance-tracking",
+        "type": "product"
+      },
+      {
+        "id": "ichra_govcon",
+        "label": "CVRD ICHRA implementation requirements",
+        "url": "https://www.becvrd.com/ichra-for-govcon",
+        "type": "product"
+      },
+      {
+        "id": "aptive_case",
+        "label": "Aptive Resources 2026 ICHRA comparison, company-reported",
+        "url": "https://www.becvrd.com/case-study/aptive-resources",
+        "type": "product"
       }
     ],
     "product_evidence": [
       {
-        "claim": "Official product positioning describes CVRD Health: Fringe benefit optimization and ICHRA compliance platform for government contractors.",
+        "claim": "CVRD's workflow imports payroll data, tracks fringe by employee and contract, distributes benefit allocations, shows workers a Wallet, and maintains compliance records. It names UKG and Paylocity as payroll integrations.",
         "source_ids": [
-          "official_site"
+          "payroll_workflow"
         ]
       },
       {
-        "claim": "CVRD models SCA/DBRA obligations, tracks H&W dollars in real time, manages ICHRAs, and shows an Aptive case with $536,870 annual savings across 151 enrolled employees.",
+        "claim": "The tracking page describes employee-, contract-, and wage-determination-level obligations, H&W allocation/spend, and reserve balances. CVRD says it does not hold employer funds before carrier or retirement payments.",
         "source_ids": [
-          "official_site"
+          "fringe_tracking"
+        ]
+      },
+      {
+        "claim": "The ICHRA page identifies implementation tasks including employee notices, coverage substantiation, affordability testing, opt-outs, class rules, and ACA reporting; these are not a guarantee of compliance for an individual contractor.",
+        "source_ids": [
+          "ichra_govcon"
+        ]
+      },
+      {
+        "claim": "CVRD's Aptive Resources case describes a multi-state federal contractor moving from group coverage to ICHRA and lists 151 enrollees for plan year 2026. Its cost results are company-reported, not independently audited here.",
+        "source_ids": [
+          "aptive_case"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Business teams evaluating workflow software for a specific operating function.",
-      "category": "SaaS",
-      "differentiation": "151-enrollee GovCon case study",
-      "why_now": "Recent source-backed funding and public product evidence make benefits, govcon, compliance worth tracking."
+      "primary_user": "HR and benefits directors, payroll teams, CFOs/controllers, and brokers serving federal contractors with SCA or DBA fringe-benefit obligations.",
+      "category": "Government-contractor fringe and benefits administration",
+      "differentiation": "The workflow combines payroll-linked contract-level fringe accounting, employee benefit visibility, and ICHRA administration rather than treating health-plan enrollment as a separate portal.",
+      "why_now": "Published payroll integration details and the Aptive implementation give contractors a concrete workflow to evaluate against their manual reconciliation process."
     },
     "risks": [
       {
-        "claim": "The risk is whether service-heavy advocacy scales beyond early GovCon accounts.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "Aptive's case has differing enrollment breakdowns in repeated sections and different headline/table premium savings percentages. Its savings figures need reconciliation before use in a buyer's forecast.",
+        "basis": "VentureDex comparison of the public Aptive case tables and summary; no underlying payroll, carrier invoices, or independent audit reviewed."
+      },
+      {
+        "claim": "Buyers need to verify their payroll connector, wage determinations, ICHRA setup, and support scope. Software-generated records alone do not establish that a contractor meets every applicable obligation.",
+        "basis": "VentureDex assessment of the payroll workflow and listed ICHRA implementation requirements; not a legal or benefits-compliance opinion."
       }
     ]
   }

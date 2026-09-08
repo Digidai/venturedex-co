@@ -111,6 +111,11 @@ test("per-startup facets match the seed", () => {
     assert.equal(nn(ts.hq_location), nn(py.hq_location), `${ctx} hq_location`);
     assert.equal(epoch(ts.published_at), epoch(py.published_at), `${ctx} published_at`);
     assert.equal(epoch(ts.first_seen_at), epoch(py.first_seen_at), `${ctx} first_seen_at`);
+    assert.equal(
+      epoch(ts.updated_at),
+      epoch(py.updated_at ?? py.published_at),
+      `${ctx} authored updated_at or legacy prerender fallback`
+    );
   }
 });
 
