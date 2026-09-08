@@ -1,0 +1,296 @@
+---
+import BrandLogo from "../components/BrandLogo.astro";
+import Base from "../layouts/Base.astro";
+import {
+  getCompanyBrandAsset,
+  getInvestorBrandAsset,
+  resolveInvestorByName,
+  resolveInvestorSlugByName,
+} from "../lib/brand-assets";
+import { getContentNewsEligibleFundingRounds } from "../lib/content";
+import { getIndexableInvestorSlugs } from "../lib/investor-indexing";
+import { newsJsonLd } from "../lib/seo";
+import { paginateFundingRounds, formatFundingDate } from "../lib/funding-pagination";
+
+interface Props { page?: number; }
+const allRounds = getContentNewsEligibleFundingRounds();
+const pagination = paginateFundingRounds(allRounds, Astro.props.page ?? 1);
+const { rounds, page, path, previous, next, totalPages, totalRounds } = pagination;
+const indexableInvestorSlugs = getIndexableInvestorSlugs(allRounds, resolveInvestorSlugByName);
+
+const dateRange = rounds.length ? `${formatFundingDate(rounds[rounds.length - 1].date)} – ${formatFundingDate(rounds[0].date)}` : "";
+const description = `Startup funding rounds${dateRange ? ` from ${dateRange}` : ""}, with reported amounts, investors, company profiles, and original sources. Page ${page} of ${totalPages}.`;
+const title = page === 1 ? "Startup Funding News: Rounds & Investors" : `Startup Funding News — Page ${page}`;
+const schema = newsJsonLd(rounds, Astro.site?.toString(), path);
+---
+
+<Base title={title} description={description} canonicalPath={path} schema={schema}>
+  <div class="container news-page">
+    <header class="news-header">
+      <h1>{page === 1 ? "Latest startup funding news" : `Startup funding news — page ${page}`}</h1>
+      <p class="subtitle">Follow reported funding rounds, lead investors, and the original announcements. Every company links to its research profile.</p>
+      {dateRange && <p class="date-range">{dateRange} · {totalRounds} source-linked rounds across {totalPages} pages</p>}
+    </header>
+
+    {rounds.length > 0 ? (
+      <section class="funding-section" aria-labelledby="funding-rounds-heading">
+        <div class="section-heading">
+          <h2 id="funding-rounds-heading">Source-linked funding rounds</h2>
+          <p>Amounts describe individual reported rounds, not total company funding. This is VentureDex's research coverage, not an exhaustive market database.</p>
+        </div>
+        <div class="table-wrap" tabindex="0" role="region" aria-label="Funding rounds table; scroll horizontally on small screens">
+          <table class="funding-table">
+            <colgroup>
+              <col class="col-company" />
+              <col class="col-round" />
+              <col class="col-date" />
+              <col class="col-investor" />
+              <col class="col-press" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Round</th>
+                <th>Date</th>
+                <th>Lead Investor</th>
+                <th>Press</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rounds.map((r) => {
+                const companyBrand = getCompanyBrandAsset(r.company_slug);
+                const investor = resolveInvestorByName(r.lead_investor);
+                const investorBrand = investor ? getInvestorBrandAsset(investor.slug) : null;
+
+                return (
+                  <tr>
+                    <td class="cell-company">
+                      <div class="company-info">
+                        <BrandLogo asset={companyBrand} name={r.company_name} size={20} />
+                        {r.company_slug ? (
+                          <a href={`/startups/${r.company_slug}`} class="company-link">
+                            {r.company_name}
+                          </a>
+                        ) : (
+                          <span>{r.company_name}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="cell-round">
+                      {r.amount && <span class="round-amount">{r.amount}</span>}
+                      <span class="round-stage">{r.stage}</span>
+                    </td>
+                    <td class="cell-date">
+                      <time datetime={r.date}>{formatFundingDate(r.date)}</time>
+                    </td>
+                    <td class="cell-investor">
+                      <div class="investor-info">
+                        <BrandLogo asset={investorBrand} name={r.lead_investor || "Investor"} size={20} />
+                        {investor && indexableInvestorSlugs.has(investor.slug) ? (
+                          <a href={`/investors/${investor.slug}`} class="investor-link">
+                            {r.lead_investor}
+                          </a>
+                        ) : (
+                          <span>{r.lead_investor || "—"}</span>
+                        )}
+                      </div>
+                    </td>
+                    <td class="cell-source">
+                      <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
+                        {r.source_name || "Press"} ↗
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    ) : (
+      <div class="empty-state">
+        <h2>No funding data yet.</h2>
+        <p>We only show published startups with a source-linked funding round. Check back soon.</p>
+      </div>
+    )}
+    {totalPages > 1 && <nav class="pagination" aria-label="Funding news pages">
+      {previous ? <a href={previous} rel="prev">← Newer rounds</a> : <span />}
+      <span>Page {page} of {totalPages}</span>
+      {next ? <a href={next} rel="next">Older rounds →</a> : <span />}
+    </nav>}
+    <p class="research-follow">Need product context? <a href="/topics">Compare companies by topic</a> or <a href="/subscribe?source=funding-news">get the weekly digest</a>.</p>
+  </div>
+</Base>
+
+<style>
+  .date-range { margin-top: var(--space-4); font-size: .78rem; color: var(--color-text-secondary); }
+  .pagination { display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); margin-top: var(--space-8); font-size: .85rem; }
+  .pagination a { font-weight: 600; text-underline-offset: 4px; }
+  .research-follow { margin-top: var(--space-8); font-size: .85rem; line-height: 1.7; color: var(--color-text-secondary); }
+  .news-page {
+    max-width: 1120px;
+    padding: var(--space-12) var(--space-6) var(--space-16);
+  }
+
+  .news-header {
+    text-align: center;
+    margin-bottom: var(--space-12);
+  }
+
+  .news-header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    margin-bottom: var(--space-2);
+  }
+
+  .subtitle {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .funding-section {
+    display: grid;
+    gap: var(--space-4);
+  }
+
+  .section-heading h2 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .section-heading p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  .funding-table {
+    width: 100%;
+    min-width: 980px;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+
+  .col-company {
+    width: 22%;
+  }
+
+  .col-round {
+    width: 10%;
+  }
+
+  .col-date {
+    width: 13%;
+  }
+
+  .col-investor {
+    width: 34%;
+  }
+
+  .col-press {
+    width: 21%;
+  }
+
+  .funding-table thead th {
+    text-align: left;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-text-secondary);
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .funding-table tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.1s;
+  }
+
+  .funding-table tbody tr:hover {
+    background: var(--color-badge-bg);
+  }
+
+  .funding-table td {
+    padding: var(--space-4);
+    font-size: 0.85rem;
+    vertical-align: middle;
+  }
+
+  .cell-company,
+  .cell-investor {
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .company-info,
+  .investor-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .company-link,
+  .investor-link {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .company-link:hover,
+  .investor-link:hover {
+    color: var(--color-accent);
+  }
+
+  .round-amount {
+    display: block;
+    color: var(--color-accent);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .round-stage {
+    display: block;
+    color: var(--color-text-secondary);
+    line-height: 1.35;
+  }
+
+  .cell-date {
+    color: var(--color-text-secondary);
+  }
+
+  .cell-date {
+    white-space: nowrap;
+  }
+
+  .source-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: var(--color-text-secondary);
+    font-size: 0.8rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .source-link:hover {
+    color: var(--color-accent);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: var(--space-16) 0;
+  }
+
+  .empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--space-3);
+  }
+
+  .empty-state p {
+    color: var(--color-text-secondary);
+  }
+</style>

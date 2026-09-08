@@ -18,8 +18,9 @@ import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 import { whatShipsSnapshot } from "../lib/whatships";
 import { versionedScreenshotUrl } from "../lib/screenshots";
+import { paginateFundingRounds, fundingPagePath } from "../lib/funding-pagination";
 
-interface SitemapUrl {
+export interface SitemapUrl {
   loc: string;
   lastmod?: string | null;
   priority?: string;
@@ -52,10 +53,9 @@ interface CollectionSitemapRow {
   created_at: string | null;
 }
 
-export const GET: APIRoute = () => {
+export function getSitemapUrls(): SitemapUrl[] {
   // Prerendered at build time: the site URL is fixed (astro.config `site`), so
   // there's no runtime SITE_URL binding to read here.
-  const siteUrl = getSiteUrl(DEFAULT_SITE_URL);
   const weeklyIssues = getPublishedWeeklyIssuesFromContent(50);
   const latestWeeklyIssue = weeklyIssues[0] ?? null;
   const allStartups = getContentStartups();
@@ -69,6 +69,7 @@ export const GET: APIRoute = () => {
 
   let urls: SitemapUrl[] = [
     { loc: "/", lastmod: latestStartupLastmod, priority: "1.0" },
+    { loc: "/directory", lastmod: latestStartupLastmod, priority: "0.8" },
     { loc: "/investors", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/news", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
@@ -138,6 +139,12 @@ export const GET: APIRoute = () => {
     .sort((a, b) => a.slug.localeCompare(b.slug));
 
   urls = urls.concat(
+    Array.from({ length: paginateFundingRounds(rounds).totalPages - 1 }, (_, index) => ({
+      loc: fundingPagePath(index + 2),
+      // Funding event dates are not page-edit dates. Membership can move when
+      // newer rounds arrive, so omit lastmod without a reliable change record.
+      priority: "0.6",
+    })),
     whatShipsSnapshot.items.map((item) => ({
       loc: `/launches/${item.slug}`,
       lastmod: item.last_changed_at ?? item.published_at,
@@ -174,12 +181,18 @@ export const GET: APIRoute = () => {
     }))
   );
 
-  const body = `<?xml version="1.0" encoding="UTF-8"?>
+  return urls;
+}
+
+export function renderSitemap(urls: SitemapUrl[], siteUrl = getSiteUrl(DEFAULT_SITE_URL)): string {
+  return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 ${urls.map((url) => renderUrl(url, siteUrl)).join("\n")}
 </urlset>`;
+}
 
-  return new Response(body, {
+export const GET: APIRoute = () => {
+  return new Response(renderSitemap(getSitemapUrls()), {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600",

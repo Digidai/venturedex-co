@@ -52,14 +52,14 @@
         ]
       },
       {
-        "claim": "Most AI companion apps trap users in one-on-one confession booths; this points the format back toward messy group chat.",
+        "claim": "The official product page describes creating AI characters with a chosen personality and supplied knowledge.",
         "source_ids": [
           "official_site"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "AI builders and operators evaluating model, automation, or data workflows.",
+      "primary_user": "Consumers who want to chat with friends and AI characters in social group conversations.",
       "category": "AI / ML",
       "differentiation": "AI companions in group chat",
       "why_now": "Recent source-backed funding and public product evidence make social ai, chat, consumer worth tracking."

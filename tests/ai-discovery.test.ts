@@ -111,6 +111,8 @@ const topic: TopicPage = {
   description: "Startups using AI inside operational workflows.",
   intro: "A source-backed map of workflow AI companies.",
   searchIntent: "Compare AI workflow startups by use case and funding signal.",
+  comparisonFocus: "Compare the workflow, integrations, and supporting sources.",
+  collectionPath: "/collections/ai-workflow",
   path: "/topics/ai-workflow-startups",
   startups: [startup],
   latestStartups: [startup],
@@ -122,6 +124,7 @@ const topic: TopicPage = {
   generatedFrom: {
     productTypes: ["SaaS"],
     tags: ["workflow"],
+    requiredTerms: ["ai"],
   },
 };
 
@@ -182,6 +185,7 @@ test("buildAiDiscoveryIndex exposes canonical AI discovery surfaces", () => {
   assert.equal(index.counts.launches, 1);
   assert.equal(index.launches[0]?.url, `${SITE_URL}/launches/example-launch`);
   assert.equal(index.launches[0]?.original_post_url, launch.original_post_url);
+  assert.deepEqual(index.topics[0]?.generated_from.require_any_terms, ["ai"]);
 });
 
 test("AI index carries source trails and citation policy for retrieval apps", () => {
@@ -207,6 +211,7 @@ test("renderLlmsFullText produces a markdown context file without undefined leak
   assert.match(body, /Product evidence/);
   assert.match(body, /Launch pages: 1/);
   assert.match(body, /## Product Launch Videos/);
+  assert.match(body, /Additionally requires at least one term in the product summary or tags: ai/);
   assert.match(body, /https:\/\/venturedex\.co\/launches\/example-launch/);
   assert.doesNotMatch(body, /undefined/);
 });

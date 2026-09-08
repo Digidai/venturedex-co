@@ -464,15 +464,15 @@ export function topicPageJsonLd(topic: TopicPage, siteUrl = DEFAULT_SITE_URL): J
   ]);
 }
 
-export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+export function homeJsonLd(startups: Startup[], siteUrl = DEFAULT_SITE_URL, path = "/"): JsonLdNode {
   const url = getSiteUrl(siteUrl);
   const researchUrl = absoluteUrl("/research", siteUrl);
   return buildJsonLdGraph([
     siteOrganization(siteUrl),
     siteWebSite(siteUrl),
     webPageNode({
-      path: "/",
-      title: "Explore",
+      path,
+      title: path === "/" ? "Startup Research, Funding & Investor Intelligence" : "Startup Directory",
       description: "Explore source-backed startup profiles with product evidence, funding signals, investor context, editorial notes, and canonical company links.",
       type: "CollectionPage",
       siteUrl,
@@ -614,7 +614,7 @@ function propertyValue(name: string, value: number): JsonLdNode {
   };
 }
 
-export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): JsonLdNode {
+export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL, path = "/news"): JsonLdNode {
   const articleNodes = rounds.slice(0, 25).map((round) =>
     stripUndefined({
       "@type": "NewsArticle",
@@ -626,9 +626,9 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): 
         round.lead_investor ? `led by ${round.lead_investor}` : null,
       ].filter(Boolean).join(" "),
       datePublished: toIsoDateTime(round.date),
-      mainEntityOfPage: { "@id": `${absoluteUrl("/news", siteUrl)}#webpage` },
+      mainEntityOfPage: { "@id": `${absoluteUrl(path, siteUrl)}#webpage` },
       url: round.source_url ? absoluteUrl(round.source_url, siteUrl) : absoluteUrl("/news", siteUrl),
-      isPartOf: { "@id": `${absoluteUrl("/news", siteUrl)}#webpage` },
+      isPartOf: { "@id": `${absoluteUrl(path, siteUrl)}#webpage` },
       publisher: round.source_name ? { "@type": "Organization", name: round.source_name } : { "@id": `${getSiteUrl(siteUrl)}/#organization` },
       about: { "@type": "Organization", name: round.company_name },
       funder: round.lead_investor ? { "@type": "Organization", name: round.lead_investor } : undefined,
@@ -640,7 +640,7 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL): 
     siteOrganization(siteUrl),
     siteWebSite(siteUrl),
     webPageNode({
-      path: "/news",
+      path,
       title: "News",
       description: "Track source-linked startup funding rounds with VentureDex company profiles, investor context, press citations, and daily discovery signals.",
       type: "CollectionPage",

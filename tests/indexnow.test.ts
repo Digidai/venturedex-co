@@ -83,6 +83,7 @@ test("collectUrls supports hub pages without stripping homepage slash", () => {
   const urls = collectUrls(parseArgs(["--hubs", "--url", "https://venturedex.co/"]));
 
   assert.ok(urls.includes("https://venturedex.co/"));
+  assert.ok(urls.includes("https://venturedex.co/directory"));
   assert.ok(urls.includes("https://venturedex.co/topics"));
   assert.ok(urls.includes("https://venturedex.co/collections"));
   assert.ok(urls.includes("https://venturedex.co/research"));
@@ -114,11 +115,19 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
     "https://venturedex.co/startups/dapple?utm_source=test",
     "https://venturedex.co/startups/dapple#section",
     "https://venturedex.co/search",
+    "https://venturedex.co/news/page/0",
+    "https://venturedex.co/news/page/1",
+    "https://venturedex.co/news/page/02",
+    "https://venturedex.co/news/page/2?sort=oldest",
+    "https://venturedex.co/directory?page=2",
   ]) {
     assert.throws(() => validateUrl(invalid), /IndexNow/);
   }
 
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/directory"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/2"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/12"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/research"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections/ai-agents"));

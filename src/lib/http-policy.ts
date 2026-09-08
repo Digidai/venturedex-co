@@ -70,6 +70,18 @@ export function withSecurityHeaders(response: Response): Response {
 }
 
 export function setStaticAssetCacheHeaders(headers: Headers, pathname: string): void {
+  const startupResource = pathname.match(/^\/startups\/([a-z0-9-]+)\.(json|md)$/);
+  if (startupResource || pathname === "/startup-index.json" || pathname === "/changes.json") {
+    headers.set("Cache-Control", "public, max-age=300, s-maxage=3600, stale-while-revalidate=86400");
+    headers.set("Content-Type", startupResource?.[2] === "md"
+      ? "text/markdown; charset=utf-8"
+      : "application/json; charset=utf-8");
+    if (startupResource) {
+      setDefaultHeader(headers, "Link", `<https://${CANONICAL_HOST}/startups/${startupResource[1]}>; rel="canonical"`);
+    }
+    return;
+  }
+
   if (pathname.startsWith("/_astro/") || pathname.startsWith("/fonts/")) {
     headers.set("Cache-Control", `public, max-age=${ONE_YEAR_SECONDS}, immutable`);
     return;
@@ -82,6 +94,8 @@ export function setStaticAssetCacheHeaders(headers: Headers, pathname: string): 
 
   if (
     pathname === "/sitemap.xml" ||
+    pathname === "/sitemap-index.xml" ||
+    /^\/sitemaps\/[a-z0-9-]+\.xml$/.test(pathname) ||
     pathname === "/feed.xml" ||
     pathname === "/llms.txt" ||
     pathname === "/llms-full.txt" ||

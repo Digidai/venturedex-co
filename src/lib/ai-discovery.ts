@@ -126,6 +126,7 @@ export interface AiDiscoveryIndex {
     generated_from: {
       product_types: string[];
       tags: string[];
+      require_any_terms: string[];
     };
   }>;
   collections: Array<{
@@ -238,6 +239,7 @@ export function buildAiDiscoveryIndex(input: {
         generated_from: {
           product_types: topic.generatedFrom.productTypes,
           tags: topic.generatedFrom.tags,
+          require_any_terms: topic.generatedFrom.requiredTerms ?? [],
         },
       })),
     collections: input.collections
@@ -329,6 +331,7 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
       `- Context: ${escapeMarkdown(truncateText(topic.description, 500))}`,
       `- Generated from product types: ${topic.generated_from.product_types.map(escapeMarkdown).join(", ") || "none"}`,
       `- Generated from tags: ${topic.generated_from.tags.map(escapeMarkdown).join(", ") || "none"}`,
+      `- Additionally requires at least one term in the product summary or tags: ${topic.generated_from.require_any_terms.map(escapeMarkdown).join(", ") || "no additional requirement"}`,
       ""
     );
   }
