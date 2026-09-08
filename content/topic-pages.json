@@ -6,6 +6,8 @@
     "description": "A source-backed map of AI agent startups building systems that plan, execute, and close workflow loops.",
     "intro": "This topic tracks AI agent companies where the product evidence points beyond chat assistance into task execution, workflow automation, orchestration, and operational handoffs. VentureDex uses public product pages, funding sources, and weekly research picks to keep the list grounded in visible market signals.",
     "search_intent": "For investors, operators, and builders researching AI agent startups by product signal, funding context, and workflow category.",
+    "comparison_focus": "Start with the work the agent performs: customer calls, engineering tasks, research, or internal operations. Compare the tools it can use, approval points, integration requirements, and evidence of completed work. An agent application and the infrastructure it runs on solve different buying problems.",
+    "collection_slug": "ai-agents",
     "match": {
       "product_types": [],
       "tags": ["ai agents", "agentic", "agents", "workflow automation"]
@@ -19,6 +21,8 @@
     "description": "Developer tools startups across coding agents, APIs, observability, open source infrastructure, and engineering workflows.",
     "intro": "This topic groups startups that sell directly into engineering workflows: coding copilots, API platforms, observability systems, open-source infrastructure, and tools that shorten the path from prototype to production. Each profile links back to the VentureDex source trail rather than treating the page as a generic directory.",
     "search_intent": "For engineering leaders, founders, and investors comparing new developer tools startups and infrastructure bets.",
+    "comparison_focus": "Compare tools at the same step in the engineering workflow: writing code, reviewing changes, storing data, deploying, or observing production. Check supported languages and environments, the public docs or repository, and the work required to integrate the tool into an existing stack.",
+    "collection_slug": "developer-tools",
     "match": {
       "product_types": ["DevTools"],
       "tags": ["developer tools", "devtools", "api", "open source", "mcp", "serverless", "database"]
@@ -32,6 +36,8 @@
     "description": "AI infrastructure startups for inference, model serving, GPU clouds, search, data layers, and production AI operations.",
     "intro": "This topic follows the systems layer underneath applied AI products: inference and serving, search and retrieval, data infrastructure, GPU access, monitoring, and developer-facing deployment tools. The page is intentionally selective so the company list reflects concrete product and funding evidence.",
     "search_intent": "For readers mapping the AI infrastructure stack and finding companies with visible product or funding traction.",
+    "comparison_focus": "Identify the layer first: compute and power, inference, training data, retrieval, or model operations. Then compare deployment options, workload support, pricing units, and source-backed performance claims. Funding size alone does not establish lower latency, lower cost, or production reliability.",
+    "collection_slug": "ai-infrastructure",
     "match": {
       "product_types": [],
       "tags": ["ai infrastructure", "inference", "gpu cloud", "data infrastructure", "ai search", "web search", "synthetic data"]
@@ -43,38 +49,44 @@
     "title": "Legal AI Startups",
     "kicker": "Legal workflows",
     "description": "Legal AI and legaltech startups using automation, drafting, timekeeping, and research workflows to change legal operations.",
-    "intro": "This topic tracks legal AI companies where the public signal shows a real workflow wedge: timekeeping, drafting, case work, research, compliance, or firm operations. VentureDex keeps the list tied to official pages and funding evidence so readers can separate product claims from durable adoption signals.",
+    "intro": "This topic tracks companies explicitly described as legal AI or legaltech, including litigation, timekeeping, drafting, research, and law-firm operations. A general compliance product is not included solely because it serves a regulated industry. Profiles link to public product and funding sources.",
     "search_intent": "For legal operators, investors, and founders comparing legal AI startups by product use case and market signal.",
+    "comparison_focus": "Compare the legal task, jurisdiction and source coverage, citation traceability, and the points where a lawyer reviews the output. Drafting, litigation research, patent work, and timekeeping require different evidence. A product claim or funding announcement does not establish legal accuracy.",
     "match": {
       "product_types": [],
-      "tags": ["legal ai", "legaltech", "legal tech", "litigation", "compliance"]
+      "tags": ["legal ai", "legaltech", "legal tech", "litigation"]
     },
-    "featured_slugs": ["billables-ai", "fearn", "lexroom", "lexful"]
+    "featured_slugs": ["billables-ai", "fearn", "lexroom"]
   },
   {
     "slug": "fintech-infrastructure-startups",
     "title": "Fintech Infrastructure Startups",
     "kicker": "Financial plumbing",
     "description": "Fintech infrastructure startups across payments, banking, lending, compliance, fraud, and financial operations.",
-    "intro": "This topic focuses on fintech companies rebuilding the operational layer behind money movement, risk, identity, financial workflows, and embedded banking. The page emphasizes what VentureDex can verify from product, funding, and investor context.",
+    "intro": "This topic covers financial infrastructure and operations: payment routing, banking systems, lending workflows, fund accounting, identity checks, financial data, and receivables. The focus is on business systems and operating workflows. Consumer-only investing apps belong in the broader Fintech collection.",
     "search_intent": "For fintech builders, investors, and business-development teams researching infrastructure-oriented fintech startups.",
+    "comparison_focus": "Separate money movement and ledger infrastructure from software for financial operations. Compare the institutions and payment rails supported, integration model, workflow controls, and evidence behind each product claim. A consumer investing app is not a substitute for banking or payment infrastructure.",
+    "collection_slug": "fintech",
     "match": {
-      "product_types": ["Fintech"],
-      "tags": ["fintech", "payments", "banking", "lending", "fraud", "financial services", "wealthtech"]
+      "product_types": [],
+      "tags": ["payments infrastructure", "payment orchestration", "payment routing", "banking", "lending", "financial infrastructure", "open banking", "securities lending", "transfer agency", "financial data", "fund accounting", "financial services", "kyc", "regtech", "accounts receivable", "finance ops", "loan origination", "core banking", "ledgers"]
     },
-    "featured_slugs": ["equipifi", "basata", "canals", "pivot", "trackk"]
+    "featured_slugs": ["equipifi", "stitch", "grailpay", "lemonedge", "didit"]
   },
   {
     "slug": "healthcare-ai-startups",
     "title": "Healthcare AI Startups",
     "kicker": "Care operations",
-    "description": "Healthcare AI and healthtech startups applying AI to care delivery, diagnostics, clinical workflow, and patient operations.",
-    "intro": "This topic tracks healthtech companies where AI or software workflow appears in care delivery, diagnostics, clinical operations, patient intake, or specialty care. The intent is to show the operational surface and evidence trail, not to make clinical claims.",
+    "description": "Compare healthcare AI startups by care workflow, product evidence, recorded funding, location, and research-review date.",
+    "intro": "This topic covers healthcare products explicitly described as using AI, machine learning, or computer vision in care delivery, diagnostics, clinical or administrative workflows. General healthtech and virtual-care services without an explicit AI description remain in the broader HealthTech collection. Inclusion does not establish clinical effectiveness.",
     "search_intent": "For healthcare operators, investors, and product teams tracking AI-enabled healthtech startups.",
+    "comparison_focus": "Separate clinical decision support and imaging from scheduling, documentation, billing, and other administrative work. Compare the intended users, data and EHR integrations, human-review steps, and available validation evidence. Product claims and source-review dates do not establish clinical safety or effectiveness.",
+    "collection_slug": "healthtech",
     "match": {
       "product_types": ["HealthTech"],
-      "tags": ["healthcare ai", "healthcare", "virtual care", "diagnostics", "clinical"]
+      "tags": ["healthcare ai", "healthcare", "virtual care", "diagnostics", "clinical"],
+      "require_any_terms": ["ai", "artificial intelligence", "machine learning", "computer vision"]
     },
-    "featured_slugs": ["9amhealth", "triomics", "subtle-medical", "gridcare", "cvrd-health"]
+    "featured_slugs": ["triomics", "subtle-medical", "bunkerhill-health", "enzo-health", "basata"]
   }
 ]

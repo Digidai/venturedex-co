@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import fs from "node:fs";
 import {
   assertValidTopicConfigs,
   buildTopicPage,
+  buildTopicAnswer,
   buildTopicPages,
   getTopicPageConfigs,
   getTopicMatchesForStartups,
@@ -12,6 +14,8 @@ import {
 } from "../src/lib/topic-pages";
 import { topicPageJsonLd } from "../src/lib/seo";
 import type { Startup } from "../src/lib/types";
+import type { FundingRound } from "../src/lib/types";
+import { createContentReaders } from "../src/lib/content-transform";
 import type { WeeklyIssueContent } from "../src/lib/weekly";
 
 const baseStartup: Startup = {
@@ -192,4 +196,95 @@ test("topicPageJsonLd exposes CollectionPage and ItemList count", () => {
   const itemList = graph["@graph"].find((node) => node["@type"] === "ItemList");
   assert.ok(collection, "expected CollectionPage node");
   assert.equal(itemList?.numberOfItems, 1);
+});
+
+test("featured entries never bypass topic matching", () => {
+  const page = buildTopicPage({
+    ...config,
+    match: { tags: ["healthcare ai"] },
+    featured_slugs: ["gridcare"],
+  }, [startup({ slug: "gridcare", tags: "energy,ai infrastructure", product_type: "Climate / Sustainability" })], []);
+  assert.deepEqual(page.startups, []);
+  assert.deepEqual(page.featuredStartups, []);
+});
+
+test("required topic terms are additional conditions and match whole words", () => {
+  const health = startup({ product_type: "HealthTech", tags: "healthcare", summary: "AI-personalized care workflows." });
+  assert.equal(startupMatchesTopic(health, ["HealthTech"], [], ["ai"]), true);
+  assert.equal(startupMatchesTopic({ ...health, summary: "Paid online care plans." }, ["HealthTech"], [], ["ai"]), false);
+  assert.equal(startupMatchesTopic({ ...health, product_type: "DevTools", tags: "developer tools" }, ["HealthTech"], [], ["ai"]), false);
+});
+
+test("comparison answers keep funding dates separate from profile and review dates", () => {
+  const reviewedStartup = startup({
+    published_at: "2026-06-09T00:00:00Z",
+    research_json: JSON.stringify({
+      verified_at: "2026-06-08",
+      sources: [
+        { id: "official", label: "Official", type: "official", url: "https://agent-a.com" },
+        { id: "duplicate", label: "Same source", type: "product", url: "https://agent-a.com/" },
+      ],
+      product_evidence: [],
+    }),
+  });
+  const older: FundingRound = {
+    id: "round-1", company_name: "Agent A", company_slug: "agent-a", company_url: null,
+    amount: "$4M", stage: "Seed", date: "2025-05-01", lead_investor: null,
+    source_url: "https://example.com/seed", source_name: "Company announcement",
+  };
+  const latest = { ...older, id: "round-2", amount: "€7M", stage: "Series A", date: "2026-04-02", source_url: "https://example.com/series-a" };
+  const page = buildTopicPage(config, [reviewedStartup], []);
+  const answer = buildTopicAnswer(page, [older, latest]);
+  assert.equal(answer.comparisonRows[0].latestFunding?.date, "2026-04-02");
+  assert.equal(answer.comparisonRows[0].latestFunding?.amount, "€7M");
+  assert.equal(answer.latestProfileDate, "2026-06-09T00:00:00.000Z");
+  assert.equal(answer.latestReviewDate, "2026-06-08T00:00:00.000Z");
+  assert.equal(answer.comparisonRows[0].sourceCount, 1);
+  assert.equal(answer.withFundingSourceCount, 1);
+  assert.equal(answer.withVerificationDateCount, 1);
+  assert.match(answer.questions[1].answer, /not a complete market census or a ranking/);
+  assert.match(answer.questions[2].answer, /separate from funding dates/);
+  const missingLatestSource = buildTopicAnswer(page, [older, { ...latest, source_url: null }]);
+  assert.equal(missingLatestSource.withFundingSourceCount, 0);
+  assert.equal(missingLatestSource.comparisonRows[0].fundingSourceUrl, null);
+  assert.equal(missingLatestSource.comparisonRows[0].latestFunding?.date, "2026-04-02");
+});
+
+test("coverage counts all profiles while the comparison remains bounded", () => {
+  const startups = Array.from({ length: 15 }, (_, index) => startup({
+    slug: `agent-${index}`, product_name: `Agent ${index}`, published_at: `2026-06-${String(index + 1).padStart(2, "0")}T00:00:00Z`,
+  }));
+  const answer = buildTopicAnswer(buildTopicPage(config, startups, []), []);
+  assert.equal(answer.profileCount, 15);
+  assert.equal(answer.comparisonRows.length, 12);
+  assert.equal(answer.comparisonRows[0].startup.slug, "agent-14");
+  assert.equal(answer.withFundingSourceCount, 0);
+  assert.equal(answer.withVerificationDateCount, 0);
+  assert.equal(answer.latestReviewDate, null);
+  assert.equal(answer.comparisonRows[0].latestFunding, null);
+});
+
+test("missing review evidence and funding sources are not inferred from publication dates", () => {
+  const unreviewed = startup({ research_json: "{invalid", published_at: "2026-09-08T00:00:00Z" });
+  const round: FundingRound = {
+    id: "unknown", company_name: "Agent A", company_slug: "agent-a", company_url: null,
+    amount: null, stage: "Seed", date: "", lead_investor: null, source_url: null, source_name: null,
+  };
+  const answer = buildTopicAnswer(buildTopicPage(config, [unreviewed], []), [round]);
+  assert.equal(answer.latestReviewDate, null);
+  assert.equal(answer.withFundingSourceCount, 0);
+  assert.equal(answer.comparisonRows[0].latestFunding?.date, "");
+});
+
+test("real topic definitions distinguish AI healthcare and infrastructure from broad collections", () => {
+  const records = ["triomics", "subtle-medical", "enzo-health", "9amhealth", "bioscan-research", "gridcare", "lexroom", "qiz-security", "stitch", "trackk", "canals"]
+    .map((slug) => JSON.parse(fs.readFileSync(new URL(`../content/startups/${slug}.json`, import.meta.url), "utf8")));
+  const readers = createContentReaders({ records, timestamps: {}, investorDirectory: {}, collectionConfigs: [] });
+  const topics = new Map(buildTopicPages(getTopicPageConfigs(), readers.getContentStartups(), []).map((topic) => [topic.slug, topic]));
+  const healthcare = topics.get("healthcare-ai-startups")!;
+  assert.deepEqual(new Set(healthcare.startups.map((entry) => entry.slug)), new Set(["triomics", "subtle-medical", "enzo-health"]));
+  assert.equal(healthcare.collectionPath, "/collections/healthtech");
+  assert.deepEqual(topics.get("legal-ai-startups")?.startups.map((entry) => entry.slug), ["lexroom"]);
+  assert.deepEqual(topics.get("fintech-infrastructure-startups")?.startups.map((entry) => entry.slug), ["stitch"]);
+  assert.equal(getTopicPageConfigs().some((topic) => topic.slug === "healthcare-ai-startups" && topic.featured_slugs?.includes("gridcare")), false);
 });

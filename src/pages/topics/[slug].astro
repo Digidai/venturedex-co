@@ -3,9 +3,9 @@ export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
-import { getContentStartups } from "../../lib/content";
+import { getContentFundingRoundsForStartup, getContentStartups } from "../../lib/content";
 import { expandSeoDescription, topicPageJsonLd } from "../../lib/seo";
-import { getTopicPageBySlug, getTopicPages } from "../../lib/topic-pages";
+import { buildTopicAnswer, getTopicPageBySlug, getTopicPages } from "../../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
 export function getStaticPaths() {
@@ -16,12 +16,13 @@ export function getStaticPaths() {
 const allStartups = getContentStartups();
 const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
 const topic = getTopicPageBySlug(Astro.params.slug!, allStartups, weeklyIssues)!;
+const answer = buildTopicAnswer(topic, topic.startups.flatMap((startup) => getContentFundingRoundsForStartup(startup.slug)));
 const description = expandSeoDescription(topic.description, topic.searchIntent, `${topic.title} on VentureDex.`);
 const schema = topicPageJsonLd(topic, Astro.site?.toString());
 const subscribeUrl = `/subscribe?source=${encodeURIComponent(`topic:${topic.slug}`)}`;
 
 function formatDate(value: string | null | undefined) {
-  if (!value) return "";
+  if (!value || Number.isNaN(Date.parse(value))) return "Date not recorded";
   return new Date(value).toLocaleDateString("en-US", {
     year: "numeric",
     month: "short",
@@ -38,45 +39,96 @@ function formatDate(value: string | null | undefined) {
       <p class="eyebrow">{topic.kicker}</p>
       <h1>{topic.title}</h1>
       <p class="description">{topic.description}</p>
+      <nav class="topic-jump-links" aria-label="On this page">
+        <a href="#compare">Compare companies</a>
+        <a href="#coverage">Coverage</a>
+        <a href="#questions">Research questions</a>
+        <a href="#profiles">All profiles</a>
+      </nav>
     </header>
 
     <section class="topic-summary" aria-label="Topic summary">
       <div>
         <h2>What this topic tracks</h2>
         <p>{topic.intro}</p>
-        <p>{topic.searchIntent}</p>
+        <p>{topic.comparisonFocus}</p>
+        {topic.collectionPath && <p>Prefer to browse company cards? <a href={topic.collectionPath}>Explore the related collection</a>.</p>}
       </div>
       <dl>
         <div>
-          <dt>Profiles</dt>
-          <dd>{topic.startups.length}</dd>
+          <dt>Profiles in this list</dt>
+          <dd>{answer.profileCount}</dd>
         </div>
-        {topic.latestStartups[0]?.published_at && (
+        {answer.latestProfileDate && (
           <div>
-            <dt>Latest signal</dt>
-            <dd>{formatDate(topic.latestStartups[0].published_at)}</dd>
+            <dt>Latest profile added</dt>
+            <dd><time datetime={answer.latestProfileDate}>{formatDate(answer.latestProfileDate)}</time></dd>
           </div>
         )}
-        {topic.topInvestors[0] && (
+        {answer.latestReviewDate && (
           <div>
-            <dt>Frequent investor</dt>
-            <dd>{topic.topInvestors[0].term}</dd>
+            <dt>Most recent source review</dt>
+            <dd><time datetime={answer.latestReviewDate}>{formatDate(answer.latestReviewDate)}</time></dd>
           </div>
         )}
       </dl>
     </section>
 
-    <section class="evidence-section" aria-label="Topic evidence">
+    <section class="comparison-section" id="compare" aria-labelledby="comparison-heading">
+      <h2 id="comparison-heading">Compare {topic.title.toLowerCase()}</h2>
+      <p class="section-note">{answer.comparisonRows.length} most recently added of {answer.profileCount} tracked profiles. Funding is the latest round recorded for each company, not total capital raised. Review dates apply to each profile's public sources.</p>
+      <div class="comparison-scroll" tabindex="0" role="region" aria-label="Company comparison table; scroll horizontally on small screens">
+        <table>
+          <caption>Product, funding, location, and source-review details</caption>
+          <thead>
+            <tr><th scope="col">Company</th><th scope="col">Product / use case</th><th scope="col">Latest recorded funding</th><th scope="col">Location</th><th scope="col">Source review</th></tr>
+          </thead>
+          <tbody>
+            {answer.comparisonRows.map((row) => (
+              <tr>
+                <th scope="row"><a href={`/startups/${row.startup.slug}`}>{row.startup.product_name}</a></th>
+                <td>{row.useCase}</td>
+                <td>
+                  {row.latestFunding ? <>
+                    <strong>{[row.latestFunding.amount, row.latestFunding.stage].filter(Boolean).join(" · ") || "Amount and stage not recorded"}</strong>
+                    <span>{formatDate(row.latestFunding.date)}</span>
+                    {row.fundingSourceUrl
+                      ? <a href={row.fundingSourceUrl} target="_blank" rel="noopener noreferrer">{row.latestFunding.source_name || "Funding source"}</a>
+                      : <span>Source not recorded</span>}
+                  </> : <span>No round recorded</span>}
+                </td>
+                <td>{row.region}</td>
+                <td>
+                  {row.verifiedAt
+                    ? <time datetime={row.verifiedAt}>{formatDate(row.verifiedAt)}</time>
+                    : <span>Review date not recorded</span>}
+                  <a href={`/startups/${row.startup.slug}`}>{row.sourceCount} {row.sourceCount === 1 ? "source" : "sources"} in review</a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="section-note"><a href="#profiles">Browse all {answer.profileCount} profiles</a> for editorial notes, evidence, and stated risks.</p>
+    </section>
+
+    <section class="coverage-section" id="coverage" aria-labelledby="coverage-heading">
+      <h2 id="coverage-heading">Coverage of this list</h2>
+      <p class="section-note">A selective view of VentureDex research, not a census of the market. Counts below refer only to the {answer.profileCount} profiles on this page.</p>
+      <dl class="coverage-stats">
+        <div><dt>Latest round has a source link</dt><dd>{answer.withFundingSourceCount} / {answer.profileCount}</dd></div>
+        <div><dt>Research-review date recorded</dt><dd>{answer.withVerificationDateCount} / {answer.profileCount}</dd></div>
+      </dl>
+    <div class="evidence-section">
       <div>
-        <h2>Topic evidence</h2>
+        <h3>Topic coverage</h3>
         <div class="term-list">
-          {topic.generatedFrom.productTypes.map((term) => <span>{term}</span>)}
-          {topic.generatedFrom.tags.map((term) => <span>{term}</span>)}
+          {topic.topTags.map((tag) => <span>{tag.term}<small>{tag.count}</small></span>)}
         </div>
       </div>
       {topic.fundingStages.length > 0 && (
         <div>
-          <h2>Funding stages</h2>
+          <h3>Recorded funding stages</h3>
           <div class="term-list">
             {topic.fundingStages.map((stage) => (
               <span>{stage.term}<small>{stage.count}</small></span>
@@ -84,19 +136,19 @@ function formatDate(value: string | null | undefined) {
           </div>
         </div>
       )}
-      {topic.topTags.length > 0 && (
+      {answer.regions.length > 0 && (
         <div>
-          <h2>Common tags</h2>
+          <h3>Recorded regions</h3>
           <div class="term-list">
-            {topic.topTags.map((tag) => (
-              <a href={`/search?q=${encodeURIComponent(tag.term)}`} rel="nofollow">{tag.term}<small>{tag.count}</small></a>
+            {answer.regions.map((region) => (
+              <span>{region.term}<small>{region.count}</small></span>
             ))}
           </div>
         </div>
       )}
       {topic.topInvestors.length > 0 && (
         <div>
-          <h2>Frequent investors</h2>
+          <h3>Investors named in these profiles</h3>
           <div class="term-list">
             {topic.topInvestors.map((investor) => (
               <span>{investor.term}<small>{investor.count}</small></span>
@@ -104,6 +156,7 @@ function formatDate(value: string | null | undefined) {
           </div>
         </div>
       )}
+    </div>
     </section>
 
     {topic.latestStartups.length > 0 && (
@@ -139,7 +192,15 @@ function formatDate(value: string | null | undefined) {
       </section>
     )}
 
-    <section class="profile-section" aria-label="Startup profiles">
+    <section class="question-section" id="questions" aria-labelledby="questions-heading">
+      <h2 id="questions-heading">Research questions</h2>
+      {answer.questions.map(({ question, answer: response }) => (
+        <article><h3>{question}</h3><p>{response}</p></article>
+      ))}
+      <p><a href="/editorial-policy">Read the editorial policy</a> for how VentureDex handles sources and company claims.</p>
+    </section>
+
+    <section class="profile-section" id="profiles" aria-label="Startup profiles">
       <h2>All {topic.title.toLowerCase()}</h2>
       <div class="card-grid">
         {topic.startups.map((startup) => <SiteCard startup={startup} />)}
@@ -193,7 +254,10 @@ function formatDate(value: string | null | undefined) {
   }
 
   .topic-summary h2,
-  .evidence-section h2,
+  .comparison-section h2,
+  .coverage-section h2,
+  .question-section h2,
+  .evidence-section h3,
   .latest-section h2,
   .weekly-section h2,
   .profile-section h2 {
@@ -234,11 +298,119 @@ function formatDate(value: string | null | undefined) {
     line-height: 1.4;
   }
 
+  .topic-jump-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3) var(--space-6);
+    margin-top: var(--space-6);
+    font-size: 0.85rem;
+  }
+
+  .comparison-section,
+  .coverage-section,
+  .question-section {
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-10);
+    border-bottom: 1px solid var(--color-border);
+    scroll-margin-top: var(--space-8);
+  }
+
+  .section-note,
+  .question-section p {
+    max-width: 850px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: var(--space-4);
+  }
+
+  .comparison-scroll {
+    overflow-x: auto;
+    margin: var(--space-6) 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+  }
+
+  .comparison-scroll:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  table {
+    width: 100%;
+    min-width: 820px;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  caption {
+    text-align: left;
+    padding: var(--space-4);
+    color: var(--color-text-secondary);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th,
+  td {
+    padding: var(--space-4);
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  thead th {
+    background: var(--color-bg-card);
+    font-size: 0.78rem;
+  }
+
+  tbody th { width: 16%; }
+  td:nth-child(2) { width: 32%; }
+  td:nth-child(3) { width: 23%; }
+  tr:last-child th,
+  tr:last-child td { border-bottom: 0; }
+
+  td span,
+  td time,
+  td strong,
+  td a {
+    display: block;
+  }
+
+  td span,
+  td time { color: var(--color-text-secondary); }
+  td a { margin-top: var(--space-1); }
+
+  .coverage-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6) var(--space-12);
+    margin: var(--space-6) 0 var(--space-8);
+  }
+
+  .coverage-stats dt {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: var(--space-2);
+  }
+
+  .coverage-stats dd {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .question-section article { margin-bottom: var(--space-6); }
+  .question-section h3 {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+  }
+
   .evidence-section {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-8) var(--space-12);
-    margin-bottom: var(--space-10);
+    margin-bottom: 0;
   }
 
   .term-list {

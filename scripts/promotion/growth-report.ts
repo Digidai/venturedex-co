@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { pathToFileURL } from "node:url";
 import {
+  agentResourceUrls,
   aiSurfaceUrls,
   latestDailyDate,
   latestDailyStartups,
@@ -22,6 +23,7 @@ interface FetchSnapshot {
   ok: boolean;
   bytes: number;
   body: string;
+  contentType?: string;
   error?: string;
 }
 
@@ -119,7 +121,14 @@ async function fetchText(url: string): Promise<FetchSnapshot> {
     try {
       const response = await fetch(url, { headers: { "User-Agent": "VentureDexGrowthReport/1.0" } });
       const body = await response.text();
-      return { url, status: response.status, ok: response.ok, bytes: body.length, body };
+      return {
+        url,
+        status: response.status,
+        ok: response.ok,
+        bytes: Buffer.byteLength(body, "utf8"),
+        body,
+        contentType: response.headers.get("Content-Type") ?? undefined,
+      };
     } catch (error) {
       if (attempt === LIVE_FETCH_ATTEMPTS) {
         return {
@@ -436,6 +445,7 @@ export function missingFromLatestSubmittedIndexNow(rows: IndexNowHistoryRow[], u
 export function hubUrls(): string[] {
   return [
     "https://venturedex.co/",
+    "https://venturedex.co/directory",
     "https://venturedex.co/topics",
     "https://venturedex.co/collections",
     "https://venturedex.co/weekly",
@@ -445,12 +455,23 @@ export function hubUrls(): string[] {
   ];
 }
 
+export function liveDiscoveryUrls(): string[] {
+  return [
+    "https://venturedex.co/sitemap.xml",
+    "https://venturedex.co/feed.xml",
+    "https://venturedex.co/llms.txt",
+    "https://venturedex.co/robots.txt",
+    "https://venturedex.co/directory",
+    ...agentResourceUrls(),
+  ];
+}
+
 function appendIndexNowCoverage(lines: string[], label: string, rows: IndexNowHistoryRow[], urls: string[]): void {
   if (urls.length === 0) return;
   const missing = missingFromLatestSubmittedIndexNow(rows, urls);
   lines.push(`- ${label}: ${urls.length - missing.length}/${urls.length} covered by submitted history`);
   for (const url of missing) {
-    lines.push(`  - pending IndexNow: ${url}`);
+    lines.push(`  - not observed in local IndexNow history: ${url}`);
   }
 }
 
@@ -468,12 +489,7 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   const [snapshots, rumSnapshot] = offline
     ? [[], { status: "skipped", message: "offline mode" } satisfies RumSnapshot]
     : await Promise.all([
-        Promise.all([
-          fetchText("https://venturedex.co/sitemap.xml"),
-          fetchText("https://venturedex.co/feed.xml"),
-          fetchText("https://venturedex.co/llms.txt"),
-          fetchText("https://venturedex.co/robots.txt"),
-        ]),
+        Promise.all(liveDiscoveryUrls().map(fetchText)),
         fetchRumSnapshot(),
       ]);
   const byUrl = new Map(snapshots.map((snapshot) => [snapshot.url, snapshot]));
@@ -516,6 +532,10 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
     lines.push(`- feed.xml: ${statusLabel(feed)} / ${feed?.body.match(/<item>/g)?.length ?? 0} items`);
     lines.push(`- llms.txt: ${statusLabel(llms)} / ${lineCount(llms?.body)} lines`);
     lines.push(`- robots.txt: ${statusLabel(robots)} / ${robots?.body.includes("Content-Signal") ? "Cloudflare content signals present" : "content signals not detected"}`);
+    for (const url of ["https://venturedex.co/directory", ...agentResourceUrls()]) {
+      const snapshot = byUrl.get(url);
+      lines.push(`- ${new URL(url).pathname}: ${statusLabel(snapshot)} / ${snapshot?.contentType ?? "MIME unavailable"} / ${snapshot?.bytes ?? 0} bytes`);
+    }
     if (sitemapSummary.startups > 0 && sitemapSummary.startups !== startups.length) {
       const delta = sitemapSummary.startups - startups.length;
       const deltaLabel = delta > 0 ? `+${delta}` : String(delta);
@@ -567,13 +587,14 @@ export async function main(argv = process.argv.slice(2)): Promise<void> {
   appendIndexNowCoverage(lines, "Hub IndexNow coverage", indexNowRows, hubTargetUrls);
   appendIndexNowCoverage(lines, "Collection IndexNow coverage", indexNowRows, collectionTargetUrls);
   appendIndexNowCoverage(lines, "AI surface IndexNow coverage", indexNowRows, aiTargetUrls);
+  lines.push("- Local history is a partial receipt view. Check the deployment's discovery artifact before treating a gap as a missed submission. Accepted notifications do not prove indexing or traffic.");
   lines.push("");
 
   lines.push("## Next Actions");
-  lines.push("- Run `npm run promotion:pack` after each content publish and post only the strongest channel drafts.");
-  lines.push("- Run `npm run seo:indexnow:latest` after new daily/weekly content is deployed and live.");
-  lines.push("- Run `npm run seo:indexnow:structure` after homepage, hub, topic, or collection route changes are deployed.");
-  lines.push("- Run `npm run geo:indexnow` after llms.txt, llms-full.txt, ai-index.json, or crawler policy changes are deployed.");
+  lines.push("- Prioritize source-backed improvements to existing high-impression profiles and topic comparisons; measure comparable query cohorts over 28 days.");
+  lines.push("- Normal Deploy now checks and notifies changed HTML URLs automatically. Inspect its discovery receipt before retrying a notification.");
+  lines.push("- For a confirmed discovery gap, use a reviewed URL batch with `scripts/promotion/deploy-discovery.ts --urls-file <file>` after verifying the intended production release.");
+  lines.push("- Agent JSON health is retrieval readiness, not a ranking signal or an IndexNow submission requirement. Track observed AI citations separately from referrer visits.");
   lines.push("- Keep `npm run seo:gsc:latest:dry` as the manual Google queue preview before authenticated browser submission.");
   lines.push("");
 

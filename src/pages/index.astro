@@ -3,390 +3,116 @@ export const prerender = true;
 
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
-import FilterBar from "../components/FilterBar.astro";
 import FundingTicker from "../components/FundingTicker.astro";
-import {
-  getContentInvestors,
-  getContentStartups,
-  getContentNewsEligibleFundingRounds,
-} from "../lib/content";
-import { buildEvidenceIndex } from "../lib/evidence-index";
+import { getContentStartups, getContentNewsEligibleFundingRounds } from "../lib/content";
 import { homeJsonLd } from "../lib/seo";
+import { getTopicPages } from "../lib/topic-pages";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
-import { whatShipsSnapshot } from "../lib/whatships";
 
-// Prerendered at build time from version-controlled content (no per-request D1).
-// Default order mirrors the old D1 "featured" sort (is_featured DESC, then
-// published_at DESC); the client script re-sorts/filters in place on demand.
-const startups = getContentStartups().sort((a, b) => {
-  if (b.is_featured !== a.is_featured) return b.is_featured - a.is_featured;
-  return (b.published_at ?? "").localeCompare(a.published_at ?? "");
-});
-const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
-
-const startupCount = startups.length;
-const evidenceIndex = buildEvidenceIndex({
-  startups,
-  investorCount: getContentInvestors().length,
-  launchCount: whatShipsSnapshot.items.length,
-  weeklyIssueCount: getPublishedWeeklyIssuesFromContent(Infinity).length,
-  launchesUpdatedAt: whatShipsSnapshot.source.commit_at,
-});
-const countLabel = startupCount === 1 ? "company" : "companies";
-const description =
-  "Explore source-backed startup profiles with product evidence, funding signals, investor context, editorial notes, and canonical company links.";
-const schema = homeJsonLd(startups, Astro.site?.toString());
+const startups = getContentStartups();
+const latest = [...startups].sort((a, b) =>
+  (b.published_at ?? "").localeCompare(a.published_at ?? "") || a.slug.localeCompare(b.slug)
+).slice(0, 18);
+const weekly = getPublishedWeeklyIssuesFromContent(Infinity);
+const topics = getTopicPages(startups, weekly);
+const rounds = getContentNewsEligibleFundingRounds().slice(0, 12);
+const description = "Research startups by product, funding, investors, and sources. Compare companies across AI agents, developer tools, healthcare, and other emerging markets.";
+const schema = homeJsonLd(latest, Astro.site?.toString());
 ---
 
-<Base title="Curated Startup Directory" description={description} schema={schema}>
+<Base title="Startup Research, Funding & Investor Intelligence" description={description} schema={schema}>
   <FundingTicker rounds={rounds} />
-
-  <section class="hero">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <h1>Discover startups worth tracking</h1>
-        <p class="hero-sub">
-          A thoughtful gallery of {startupCount > 0 ? startupCount : ""} outstanding early-stage companies.
-          Profiles include product context, funding signals, investor links, and source-backed notes.
-        </p>
+  <div class="container discovery-home">
+    <header class="home-hero">
+      <p class="eyebrow">Independent startup research</p>
+      <h1>Find the companies.<br /><em>Follow the evidence.</em></h1>
+      <p class="hero-copy">Explore what startups build, who funds them, and what the sources actually say. Start with a market, compare products, or browse all {startups.length} company profiles.</p>
+      <div class="hero-actions">
+        <a class="primary-link" href="/directory">Browse all startups <span aria-hidden="true">→</span></a>
+        <a href="/news">Latest funding rounds</a>
+        <a href="/research">Research methodology</a>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <section class="research-route" aria-labelledby="research-route-title">
-    <div class="container research-route-inner">
-      <p class="research-kicker">Public research ledger</p>
+    <section class="home-section" aria-labelledby="markets-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">Compare by market</p><h2 id="markets-heading">Choose a research starting point</h2></div>
+        <a href="/topics">All research topics →</a>
+      </div>
+      <div class="topic-grid">
+        {topics.map((topic) => (
+          <a class="topic-link" href={topic.path}>
+            <h3>{topic.title}</h3>
+            <p>{topic.startups.length} profiles with product context, funding details, and linked sources.</p>
+            <span>Compare companies <span aria-hidden="true">→</span></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="latest-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">Recently added to VentureDex</p><h2 id="latest-heading">New research profiles</h2></div>
+        <a href="/directory?sort=newest">Browse all {startups.length} companies →</a>
+      </div>
+      <div class="card-grid">{latest.map((startup) => <SiteCard startup={startup} />)}</div>
+    </section>
+
+    <section class="follow-research" aria-labelledby="follow-heading">
       <div>
-        <h2 id="research-route-title">
-          {evidenceIndex.counts.startups} profiles. {evidenceIndex.counts.sourceRecords} linked sources.
-          <em>One citable index.</em>
-        </h2>
-        <p>Inspect the methodology, evidence coverage, source mix, funding-stage distribution, and machine-readable data behind VentureDex.</p>
-      </div>
-      <a href="/research">Open the Evidence Index <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
-  <section class="explore">
-    <div class="container">
-      <FilterBar />
-
-      {startups.length > 0 ? (
-        <>
-          <p class="result-count" data-result-count>{startupCount} {countLabel}</p>
-          <div class="card-grid" data-card-grid data-total={startupCount}>
-            <h2 class="visually-hidden">Startup profiles</h2>
-            {startups.map((startup, position) => (
-              <SiteCard
-                startup={startup}
-                priority={position < 3}
-                index={{
-                  name: startup.product_name,
-                  type: startup.product_type,
-                  stage: startup.funding_stage,
-                  region: startup.region,
-                  published: startup.published_at,
-                  featured: startup.is_featured === 1,
-                }}
-              />
-            ))}
-          </div>
-          <div class="empty-state" data-empty-state hidden>
-            <h2>No matches.</h2>
-            <p>Try adjusting your filters, or <button type="button" class="link-button" data-clear-inline>view all startups</button>.</p>
-          </div>
-        </>
-      ) : (
-        <div class="empty-state">
-          <h2>Coming soon.</h2>
-          <p>We're curating the first batch of startups. Subscribe to get notified.</p>
-          <a href="/subscribe" class="cta-button">Get notified</a>
+        <p class="eyebrow">Keep your research current</p>
+        <h2 id="follow-heading">A weekly view of what is changing</h2>
+        <p>Read the latest editorial selection, then inspect the company profiles and original sources behind it.</p>
+        <div class="hero-actions">
+          <a class="primary-link" href={weekly[0] ? `/weekly/${weekly[0].issue_number}` : "/weekly"}>Read the latest issue →</a>
+          <a href="/subscribe?source=homepage">Get the weekly digest</a>
         </div>
-      )}
-    </div>
-  </section>
+      </div>
+      <aside>
+        <h3>Research with an AI assistant?</h3>
+        <p>Retrieve one company at a time, with source references and research dates.</p>
+        <a href="/llms.txt">Agent reading guide →</a>
+      </aside>
+    </section>
+  </div>
 </Base>
 
-<script>
-  // Client-side filtering/sorting over the prerendered card grid. Progressive
-  // enhancement: with JS off, every card stays visible in the default (featured)
-  // order and the filter panel never opens (its toggle is JS-only), so the page
-  // degrades to a complete, browsable directory. The filter/sort semantics live
-  // in src/lib/startup-filter.ts (unit-tested); this is just the DOM adapter.
-  import {
-    readFilterState,
-    filterStateToQuery,
-    cardMatchesFilters,
-    orderVisibleCards,
-    activeFacetCount,
-    normalizeSort,
-    type FilterableCard,
-    type StartupFilterState,
-  } from "../lib/startup-filter";
-
-  // Typed DOM lookups. `@cloudflare/workers-types` is global (for the Worker), so
-  // its DOM-lite shadows lib.dom inside client scripts; cast through `any` to get
-  // the real browser element types back.
-  const q = <T,>(sel: string, root: any = document): T | null => (root.querySelector(sel) as T) ?? null;
-  const qa = <T,>(sel: string, root: any = document): T[] => Array.from(root.querySelectorAll(sel)) as T[];
-
-  const grid = q<HTMLElement>("[data-card-grid]");
-  if (grid) {
-    type Entry = FilterableCard & { el: HTMLElement };
-    let entries: Entry[] | null = null;
-    const total = Number(grid.dataset.total ?? "0");
-
-    function getEntries(): Entry[] {
-      if (!entries) {
-        entries = qa<HTMLElement>("[data-card]", grid).map((el) => ({
-          el,
-          name: el.dataset.name ?? "",
-          type: el.dataset.type ?? null,
-          stage: el.dataset.stage ?? null,
-          region: el.dataset.region ?? null,
-          published: el.dataset.published ?? null,
-        }));
-      }
-      return entries;
-    }
-
-    const typeSel = q<HTMLSelectElement>("#filter-type");
-    const stageSel = q<HTMLSelectElement>("#filter-stage");
-    const regionSel = q<HTMLSelectElement>("#filter-region");
-    const sortSel = q<HTMLSelectElement>("#filter-sort");
-    const form = q<HTMLFormElement>(".filter-form");
-    const clearBtn = q<HTMLElement>(".filter-clear");
-    const countBadge = q<HTMLElement>(".filter-count");
-    const resultCount = q<HTMLElement>("[data-result-count]");
-    const emptyState = q<HTMLElement>("[data-empty-state]");
-    const inlineClear = q<HTMLElement>("[data-clear-inline]");
-
-    function readState(): StartupFilterState {
-      return {
-        type: (typeSel?.value ?? "").trim(),
-        stage: (stageSel?.value ?? "").trim(),
-        region: (regionSel?.value ?? "").trim(),
-        sort: normalizeSort(sortSel?.value),
-      };
-    }
-
-    function apply(updateUrl = true) {
-      const state = readState();
-      const entries = getEntries();
-      for (const entry of entries) entry.el.hidden = !cardMatchesFilters(entry, state);
-      const ordered = orderVisibleCards(entries, state);
-      for (const entry of ordered) grid!.appendChild(entry.el);
-
-      if (resultCount) {
-        resultCount.textContent =
-          ordered.length === total
-            ? `${total} ${total === 1 ? "company" : "companies"}`
-            : `${ordered.length} of ${total} companies`;
-      }
-      if (emptyState) emptyState.hidden = ordered.length !== 0;
-
-      const facets = activeFacetCount(state);
-      if (countBadge) {
-        countBadge.textContent = String(facets);
-        countBadge.hidden = facets === 0;
-      }
-      if (clearBtn) clearBtn.hidden = facets === 0;
-
-      if (updateUrl) {
-        const qs = filterStateToQuery(state);
-        history.replaceState(null, "", qs ? `/?${qs}` : "/");
-      }
-    }
-
-    function reset() {
-      if (typeSel) typeSel.value = "";
-      if (stageSel) stageSel.value = "";
-      if (regionSel) regionSel.value = "";
-      if (sortSel) sortSel.value = "featured";
-      apply();
-    }
-
-    function hydrateFromUrl() {
-      const state = readFilterState(new URLSearchParams(location.search));
-      if (typeSel) typeSel.value = state.type;
-      if (stageSel) stageSel.value = state.stage;
-      if (regionSel) regionSel.value = state.region;
-      if (sortSel) sortSel.value = state.sort;
-    }
-
-    [typeSel, stageSel, regionSel, sortSel].forEach((el) => el?.addEventListener("change", () => apply()));
-    form?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      apply();
-    });
-    clearBtn?.addEventListener("click", (e) => {
-      e.preventDefault();
-      reset();
-    });
-    inlineClear?.addEventListener("click", (e) => {
-      e.preventDefault();
-      reset();
-    });
-
-    const initialParams = new URLSearchParams(location.search);
-    const hasActiveParams = Boolean(
-      initialParams.get("type") ||
-      initialParams.get("stage") ||
-      initialParams.get("region") ||
-      (initialParams.get("sort") && initialParams.get("sort") !== "featured")
-    );
-    if (hasActiveParams) {
-      hydrateFromUrl();
-      apply(false);
-    }
+<script is:inline>
+  // Keep previously shared homepage filter links useful after moving the full
+  // catalog. Normal home visits and campaign parameters stay on the homepage.
+  const parameters = new URLSearchParams(location.search);
+  if (["type", "stage", "region", "sort"].some((key) => parameters.has(key))) {
+    location.replace(`/directory${location.search}${location.hash}`);
   }
 </script>
 
 <style>
-  .hero {
-    padding: var(--space-8) 0;
-    text-align: center;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .hero h1 {
-    font-size: clamp(1.5rem, 4vw, 2.25rem);
-    margin-bottom: var(--space-2);
-  }
-
-  .hero-sub {
-    color: var(--color-text-secondary);
-    font-size: 0.9rem;
-    max-width: 500px;
-    margin: 0 auto;
-    line-height: 1.5;
-  }
-
-  .explore {
-    padding: var(--space-8) 0 var(--space-16);
-  }
-
-  .research-route {
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg-card);
-  }
-
-  .research-route-inner {
-    display: grid;
-    grid-template-columns: 160px minmax(0, 1fr) auto;
-    gap: clamp(24px, 4vw, 64px);
-    align-items: center;
-    padding-block: var(--space-6);
-  }
-
-  .research-kicker {
-    font-family: var(--font-mono);
-    font-size: .68rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-  }
-
-  .research-route h2 {
-    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
-    letter-spacing: -.025em;
-  }
-
-  .research-route h2 em {
-    color: var(--color-accent);
-    font-weight: 400;
-  }
-
-  .research-route div > p:last-child {
-    margin-top: var(--space-1);
-    color: var(--color-text-secondary);
-    font-size: .78rem;
-  }
-
-  .research-route a {
-    display: inline-flex;
-    gap: var(--space-2);
-    align-items: center;
-    color: var(--color-text);
-    font-size: .78rem;
-    font-weight: 650;
-    white-space: nowrap;
-    text-underline-offset: 4px;
-  }
-
-  .result-count {
-    font-size: 0.8rem;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-4);
-  }
-
-  .card-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-6);
-  }
-
-  .empty-state {
-    text-align: center;
-    padding: var(--space-16) 0;
-  }
-
-  .empty-state h2 {
-    font-size: 1.5rem;
-    margin-bottom: var(--space-3);
-  }
-
-  .empty-state p {
-    color: var(--color-text-secondary);
-    margin-bottom: var(--space-6);
-  }
-
-  .link-button {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    color: var(--color-accent);
-    cursor: pointer;
-    text-decoration: underline;
-  }
-
-  .cta-button {
-    display: inline-block;
-    padding: var(--space-3) var(--space-6);
-    background: var(--color-text);
-    color: var(--color-bg);
-    border-radius: var(--radius);
-    font-weight: 500;
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: opacity 0.15s;
-  }
-
-  .cta-button:hover {
-    opacity: 0.85;
-    text-decoration: none;
-  }
-
-  @media (max-width: 900px) {
-    .card-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
+  .discovery-home { padding-block: var(--space-12) var(--space-16); }
+  .home-hero { max-width: 820px; padding-bottom: var(--space-12); }
+  .eyebrow { color: var(--color-accent); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; margin-bottom: var(--space-3); }
+  .home-hero h1 { font-size: clamp(2.3rem, 5.5vw, 4.1rem); line-height: 1.1; letter-spacing: -.035em; }
+  .home-hero em { font-weight: 400; color: var(--color-accent); }
+  .hero-copy { max-width: 680px; margin-top: var(--space-5); color: var(--color-text-secondary); line-height: 1.75; }
+  .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); margin-top: var(--space-6); }
+  .hero-actions a, .section-heading > a, aside a { font-size: .82rem; font-weight: 600; text-underline-offset: 4px; }
+  .primary-link { padding: var(--space-3) var(--space-5); background: var(--color-text); color: var(--color-bg); border-radius: var(--radius); text-decoration: none; }
+  .home-section { border-top: 1px solid var(--color-border); padding-top: var(--space-8); margin-bottom: var(--space-12); }
+  .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-4); margin-bottom: var(--space-6); }
+  .section-heading h2, .follow-research h2 { font-size: clamp(1.35rem, 3vw, 1.9rem); letter-spacing: -.02em; }
+  .topic-grid, .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+  .topic-link { display: grid; gap: var(--space-3); padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius); color: inherit; text-decoration: none; background: var(--color-bg-card); }
+  .topic-link:hover { border-color: var(--color-accent); }
+  .topic-link h3 { font-size: 1.1rem; }
+  .topic-link p, .follow-research p { color: var(--color-text-secondary); font-size: .85rem; line-height: 1.65; }
+  .topic-link span { font-size: .78rem; color: var(--color-accent); }
+  .follow-research { display: grid; grid-template-columns: 2fr 1fr; gap: var(--space-8); padding-top: var(--space-8); border-top: 1px solid var(--color-border); }
+  .follow-research h2, aside h3 { margin-bottom: var(--space-3); }
+  .follow-research aside { padding: var(--space-5); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  aside a { display: inline-block; margin-top: var(--space-4); }
+  @media (max-width: 900px) { .topic-grid, .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) {
-    .hero {
-      padding: var(--space-6) 0;
-    }
-
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .research-route-inner {
-      grid-template-columns: 1fr;
-      gap: var(--space-3);
-      padding-block: var(--space-5);
-    }
+    .discovery-home { padding-top: var(--space-8); }
+    .topic-grid, .card-grid, .follow-research { grid-template-columns: minmax(0, 1fr); }
+    .hero-actions { gap: var(--space-4); }
   }
 </style>

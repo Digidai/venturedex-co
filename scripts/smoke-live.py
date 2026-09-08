@@ -12,7 +12,7 @@ import urllib.error
 import urllib.request
 from dataclasses import dataclass
 from html.parser import HTMLParser
-from urllib.parse import quote, urljoin
+from urllib.parse import quote, urljoin, urlsplit
 
 
 class PageParser(HTMLParser):
@@ -20,7 +20,14 @@ class PageParser(HTMLParser):
         super().__init__()
         self.text_parts: list[str] = []
         self.startup_card_links = 0
+        self.startup_card_paths: list[str] = []
         self.news_company_cells = 0
+        self.links: list[str] = []
+        self.next_links: list[str] = []
+        self.canonicals: list[str] = []
+        self.news_rows: list[tuple[str, str, str, str]] = []
+        self._row: dict[str, str] | None = None
+        self._cell = ""
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         attr = {name: value or "" for name, value in attrs}
@@ -28,13 +35,41 @@ class PageParser(HTMLParser):
 
         if tag == "a" and "card-link" in classes and attr.get("href", "").startswith("/startups/"):
             self.startup_card_links += 1
+            self.startup_card_paths.append(attr["href"])
         if tag == "td" and "cell-company" in classes:
             self.news_company_cells += 1
+        if tag == "a":
+            self.links.append(attr.get("href", ""))
+            if "next" in attr.get("rel", "").split():
+                self.next_links.append(attr.get("href", ""))
+        if tag == "link" and "canonical" in attr.get("rel", "").split():
+            self.canonicals.append(attr.get("href", ""))
+        if tag == "tr":
+            self._row = {"company": "", "round": "", "date": "", "source": ""}
+        if tag == "td":
+            self._cell = next((name for name in classes if name.startswith("cell-")), "")
+        if self._row is not None:
+            if tag == "a" and self._cell == "cell-company":
+                self._row["company"] = attr.get("href", "")
+            if tag == "a" and self._cell == "cell-source":
+                self._row["source"] = attr.get("href", "")
+            if tag == "time" and self._cell == "cell-date":
+                self._row["date"] = attr.get("datetime", "")
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "td":
+            self._cell = ""
+        if tag == "tr" and self._row is not None:
+            if self._row["company"]:
+                self.news_rows.append(tuple(self._row[key].strip() for key in ("company", "round", "date", "source")))
+            self._row = None
 
     def handle_data(self, data: str) -> None:
         text = data.strip()
         if text:
             self.text_parts.append(text)
+            if self._row is not None and self._cell == "cell-round":
+                self._row["round"] += f" {text}"
 
     @property
     def text(self) -> str:
@@ -131,42 +166,105 @@ def assert_text_count_matches_cards(page: Page, errors: list[str]) -> None:
             )
 
 
-def assert_home(base_url: str, expected_startups: int, errors: list[str]) -> None:
-    paths = [
-        "/",
+FILTER_QUERIES = [
         "/?sort=newest",
         "/?sort=name-az",
         f"/?type={quote('DevTools')}",
         f"/?type={quote('AI / ML')}",
         f"/?stage={quote('Series B')}",
         f"/?region={quote('Europe')}",
-    ]
+]
 
-    for path in paths:
+
+def assert_home(base_url: str, expected_startups: int, errors: list[str]) -> None:
+    expected_cards = min(18, expected_startups)
+    for path in ["/", *FILTER_QUERIES]:
         page = load_page(base_url, path)
         if "VentureDex" not in page.text:
             fail(errors, f"{page.url} does not look like a VentureDex page")
         assert_text_count_matches_cards(page, errors)
+        if page.parser.startup_card_links != expected_cards:
+            fail(errors, f"{page.url} renders {page.parser.startup_card_links} homepage cards, expected {expected_cards}")
+        if len(set(page.parser.startup_card_paths)) != expected_cards:
+            fail(errors, f"{page.url} has duplicate or missing homepage startup links")
+        if "/directory" not in page.parser.links:
+            fail(errors, f"{page.url} has no full-directory entrance")
+        totals = re.findall(r"browse all\s+(\d+)\s+company profiles", page.text, flags=re.IGNORECASE)
+        if not totals or any(int(total) != expected_startups for total in totals):
+            fail(errors, f"{page.url} does not state the expected {expected_startups} total company profiles")
 
-    home = load_page(base_url, "/")
-    if expected_startups > 0 and "Coming soon" in home.text:
-        fail(errors, f"{home.url} shows Coming soon while remote D1 has {expected_startups} startups")
-    if expected_startups > 0 and home.parser.startup_card_links != expected_startups:
-        fail(
-            errors,
-            f"{home.url} renders {home.parser.startup_card_links} startup cards, "
-            f"expected {expected_startups}",
-        )
+
+def assert_directory(base_url: str, expected_startups: int, errors: list[str]) -> None:
+    for path in ["/directory", *(f"/directory{query[1:]}" for query in FILTER_QUERIES)]:
+        page = load_page(base_url, path)
+        # Filters are progressive enhancement: raw HTML must retain the complete
+        # catalog, including when a previously shared filter URL is requested.
+        if page.parser.startup_card_links != expected_startups:
+            fail(errors, f"{page.url} renders {page.parser.startup_card_links} directory cards, expected {expected_startups}")
+        if len(set(page.parser.startup_card_paths)) != expected_startups:
+            fail(errors, f"{page.url} has duplicate or missing directory startup links")
+        counts = re.findall(r"Browse\s+(\d+)\s+company profiles", page.text)
+        if not counts or any(int(count) != expected_startups for count in counts):
+            fail(errors, f"{page.url} has an incorrect or missing directory coverage count")
+        if not re.search(rf"\b{expected_startups}\s+compan(?:y|ies)\b", page.text):
+            fail(errors, f"{page.url} is missing its {expected_startups}-company results count")
+        assert_text_count_matches_cards(page, errors)
 
 
-def assert_news(base_url: str, expected_startups: int, errors: list[str]) -> None:
-    page = load_page(base_url, "/news")
-    if expected_startups > 0 and page.parser.news_company_cells != expected_startups:
-        fail(
-            errors,
-            f"{page.url} renders {page.parser.news_company_cells} news rows, "
-            f"expected {expected_startups}",
-        )
+def assert_news(base_url: str, expected_startups: int, errors: list[str], expected_funding_rounds: int | None = None) -> None:
+    # Backwards-compatible with manage.sh's historical one-round-per-company
+    # assumption. Callers with multiple rounds can supply an independent total.
+    expected_rounds = expected_startups if expected_funding_rounds is None else expected_funding_rounds
+    origin = urlsplit(base_url)
+    path = "/news"
+    visited: set[str] = set()
+    all_rows: set[tuple[str, str, str]] = set()
+    all_companies: set[str] = set()
+    total_rows = 0
+    # A valid page contributes at least one row; this bounds even a malicious
+    # next-link chain without hardcoding today's seven-page inventory.
+    max_pages = max(1, expected_rounds)
+    while True:
+        if path in visited or len(visited) >= max_pages:
+            fail(errors, f"funding pagination loops or exceeds {max_pages} pages at {path}")
+            break
+        visited.add(path)
+        page = load_page(base_url, path)
+        canonical_paths = [urlsplit(value) for value in page.parser.canonicals]
+        if len(canonical_paths) != 1 or canonical_paths[0].path != path or canonical_paths[0].query or canonical_paths[0].fragment or canonical_paths[0].scheme not in {"http", "https"} or canonical_paths[0].netloc not in {origin.netloc, "venturedex.co"}:
+            fail(errors, f"{page.url} must have one absolute canonical for {path}")
+        rows = page.parser.news_rows
+        if len(rows) != page.parser.news_company_cells:
+            fail(errors, f"{page.url} contains funding rows without company profile links")
+        if expected_rounds > 0 and not rows:
+            fail(errors, f"{page.url} has no funding rows")
+        for row in rows:
+            if not re.fullmatch(r"/startups/[a-z0-9-]+", row[0]) or not all(row[1:]):
+                fail(errors, f"{page.url} has an incomplete funding row for {row[0]}")
+            round_key = row[:3]
+            if round_key in all_rows:
+                fail(errors, f"{page.url} repeats funding row for {row[0]} ({row[2]})")
+            all_rows.add(round_key)
+            all_companies.add(row[0])
+        total_rows += len(rows)
+        if not page.parser.next_links:
+            break
+        if len(page.parser.next_links) != 1:
+            fail(errors, f"{page.url} has multiple funding next links")
+            break
+        target = urlsplit(urljoin(page.url, page.parser.next_links[0]))
+        if (target.scheme, target.netloc) != (origin.scheme, origin.netloc) or target.query or target.fragment or not re.fullmatch(r"/news/page/[1-9][0-9]*", target.path):
+            fail(errors, f"{page.url} has an unsafe or invalid funding next link")
+            break
+        expected_page = len(visited) + 1
+        if target.path != f"/news/page/{expected_page}":
+            fail(errors, f"{page.url} has a skipped or looping funding next page: {target.path}")
+            break
+        path = target.path
+    if total_rows != expected_rounds or len(all_rows) != expected_rounds:
+        fail(errors, f"funding pages render {total_rows} rows / {len(all_rows)} unique rounds, expected {expected_rounds}")
+    if len(all_companies) != expected_startups:
+        fail(errors, f"funding pages cover {len(all_companies)} unique companies, expected {expected_startups}")
 
 
 def collection_links(page: Page) -> list[tuple[str, int]]:
@@ -208,13 +306,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Smoke-check live VentureDex pages.")
     parser.add_argument("url", help="Base deployment URL")
     parser.add_argument("--expected-startups", type=int, required=True)
+    parser.add_argument("--expected-funding-rounds", type=int, help="Independent news round count; defaults to the historical one-round-per-startup expectation")
     args = parser.parse_args()
 
     errors: list[str] = []
     base_url = args.url.rstrip("/")
 
     assert_home(base_url, args.expected_startups, errors)
-    assert_news(base_url, args.expected_startups, errors)
+    assert_directory(base_url, args.expected_startups, errors)
+    assert_news(base_url, args.expected_startups, errors, args.expected_funding_rounds)
     assert_collections(base_url, errors)
     assert_search(base_url, errors)
 

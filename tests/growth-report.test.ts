@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import { agentResourceUrls, aiSurfaceUrls } from "../scripts/promotion/content";
 import {
   fetchRumSnapshot,
   formatRumDimensionRows,
   formatRumMetric,
   formatSitemapSummary,
   hubUrls,
+  liveDiscoveryUrls,
   latestSubmittedIndexNowRow,
   missingFromLatestSubmittedIndexNow,
   parseIndexNowHistoryText,
@@ -13,8 +15,27 @@ import {
   summarizeSitemapUrls,
 } from "../scripts/promotion/growth-report";
 
-test("hub coverage includes the citation-ready research index", () => {
+test("hub coverage includes the research index and complete startup directory", () => {
   assert.ok(hubUrls().includes("https://venturedex.co/research"));
+  assert.ok(hubUrls().includes("https://venturedex.co/directory"));
+});
+
+test("live discovery checks include Agent resources without expanding IndexNow targets", () => {
+  const agentUrls = ["https://venturedex.co/startup-index.json", "https://venturedex.co/changes.json"];
+  assert.deepEqual(agentResourceUrls(), agentUrls);
+  for (const url of ["https://venturedex.co/directory", ...agentUrls]) {
+    assert.ok(liveDiscoveryUrls().includes(url));
+  }
+  for (const path of ["sitemap.xml", "feed.xml", "llms.txt", "robots.txt"]) {
+    assert.ok(liveDiscoveryUrls().includes(`https://venturedex.co/${path}`));
+  }
+  assert.equal(new Set(liveDiscoveryUrls()).size, liveDiscoveryUrls().length);
+  assert.deepEqual(aiSurfaceUrls(), [
+    "https://venturedex.co/llms.txt",
+    "https://venturedex.co/llms-full.txt",
+    "https://venturedex.co/ai-index.json",
+    "https://venturedex.co/launches.json",
+  ]);
 });
 
 test("parseIndexNowHistoryText ignores malformed JSONL rows", () => {

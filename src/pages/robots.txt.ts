@@ -58,6 +58,7 @@ ${allowCrawlerGroups}
 ${trainingCrawlerGroups}
 
 Sitemap: ${absoluteUrl("/sitemap.xml", siteUrl)}
+Sitemap: ${absoluteUrl("/sitemap-index.xml", siteUrl)}
 `;
 
   return new Response(body, {

@@ -49,6 +49,9 @@ const {
 
 const siteUrl = Astro.site?.toString() ?? DEFAULT_SITE_URL;
 const canonicalURL = absoluteUrl(normalizeCanonicalPath(canonicalPath ?? Astro.url.pathname), siteUrl);
+const startupResourcePath = /^\/startups\/[a-z0-9-]+$/.test(normalizeCanonicalPath(Astro.url.pathname))
+  ? normalizeCanonicalPath(Astro.url.pathname)
+  : null;
 const metaDescription = truncateText(description);
 const pageTitle = `${title} | ${SITE_NAME}`;
 const social = resolveSocialPreviewMeta({
@@ -113,6 +116,11 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <link rel="alternate" type="text/plain" title="VentureDex LLM navigation" href="/llms.txt" />
     <link rel="alternate" type="text/plain" title="VentureDex full LLM context" href="/llms-full.txt" />
     <link rel="alternate" type="application/json" title="VentureDex AI index" href="/ai-index.json" />
+    <link rel="describedby" type="text/plain" title="Agent reading guide" href="/llms.txt" />
+    <link rel="alternate" type="application/json" title="Compact startup index" href="/startup-index.json" />
+    <link rel="alternate" type="application/json" title="Research change snapshot" href="/changes.json" />
+    {startupResourcePath && <link rel="alternate" type="text/markdown" href={`${startupResourcePath}.md`} />}
+    {startupResourcePath && <link rel="alternate" type="application/json" href={`${startupResourcePath}.json`} />}
     {schemaJson.map((json) => (
       <script is:inline type="application/ld+json" set:html={json} />
     ))}
@@ -152,7 +160,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         <a href="/" class="logo">VentureDex</a>
         <nav aria-label="Main navigation">
           <div class="nav-tabs">
-            <a href="/" class="nav-tab">Explore</a>
+            <a href="/directory" class="nav-tab">Directory</a>
             <a href="/collections" class="nav-tab">Collections</a>
             <a href="/topics" class="nav-tab">Topics</a>
             <a href="/weekly" class="nav-tab">Weekly</a>
