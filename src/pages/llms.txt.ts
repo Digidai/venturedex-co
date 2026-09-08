@@ -2,6 +2,7 @@ export const prerender = true;
 
 import type { APIRoute } from "astro";
 import { DEFAULT_SITE_URL, SITE_DESCRIPTION, SITE_NAME, absoluteUrl, getSiteUrl } from "../lib/seo";
+import { getResearchBriefs, researchBriefPath } from "../lib/research-briefs";
 
 export const GET: APIRoute = ({ site }) => {
   const siteUrl = getSiteUrl(site ?? DEFAULT_SITE_URL);
@@ -33,6 +34,12 @@ ${[
     link("Weekly startup research", "/weekly"),
     link("Research methodology", "/research"),
   ].join("\n")}
+
+## Original Research Briefs
+
+${getResearchBriefs().map((brief) => link(brief.title, researchBriefPath(brief))).join("\n")}
+
+Append .json or .md to a brief URL for a single-document representation with the same source ledger. Findings and proposed evaluation questions are editorial analysis, not independently measured product outcomes. Brief review dates do not reset company-profile review dates.
 
 ## Product Launch Pages
 

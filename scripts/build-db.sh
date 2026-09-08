@@ -124,8 +124,9 @@ if not published_weekly_documents:
             "checked again before D1 sync."
         )
 
-# Version-controlled per-slug publish/first-seen timestamps are mandatory. The
-# JSON/prerender and D1/runtime paths must never substitute seed-time now().
+# Version-controlled per-slug publish/first-seen timestamps are mandatory. An
+# optional authored updated_at records real content revisions, not seed time.
+# The JSON/prerender and D1/runtime publish dates never use seed-time now().
 try:
     _timestamps_raw = json.loads(TIMESTAMPS_FILE.read_text())
 except FileNotFoundError as exc:
@@ -144,18 +145,28 @@ for path in startup_files:
     if not isinstance(entry, dict):
         timestamp_errors.append(f"missing timestamp entry for startup '{slug}'")
         continue
-    for field in ("published_at", "first_seen_at"):
+    parsed_timestamps: dict[str, datetime] = {}
+    fields = ["published_at", "first_seen_at"]
+    if "updated_at" in entry:
+        fields.append("updated_at")
+    for field in fields:
         value = entry.get(field)
         valid = isinstance(value, str) and bool(UTC_TIMESTAMP_RE.fullmatch(value))
         if valid:
             try:
-                datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+                parsed_timestamps[field] = datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
             except ValueError:
                 valid = False
         if not valid:
             timestamp_errors.append(
                 f"{slug}.{field} must be UTC YYYY-MM-DD HH:MM:SS"
             )
+    if (
+        "updated_at" in parsed_timestamps
+        and "published_at" in parsed_timestamps
+        and parsed_timestamps["updated_at"] < parsed_timestamps["published_at"]
+    ):
+        timestamp_errors.append(f"{slug}.updated_at must not be earlier than published_at")
 
 if timestamp_errors:
     rendered = "\n  - ".join(timestamp_errors)
@@ -226,13 +237,21 @@ for path in startup_files:
         if funding
         else {}
     )
+    has_authored_update = "updated_at" in timestamps[slug]
+    updated_at_insert = timestamp_sql(slug, "updated_at") if has_authored_update else "datetime('now')"
+    # Without an authored value, preserve the pre-existing D1 clock semantics:
+    # initialize on insert, but do not refresh an existing row on every seed.
+    updated_at_update = (
+        "excluded.updated_at" if has_authored_update
+        else "COALESCE(startups.updated_at, datetime('now'))"
+    )
 
     startup_rows.append(
         "INSERT INTO startups ("
         "id, slug, domain, canonical_url, product_name, summary, editor_note, research_json, editor_rating, "
         "why_featured, product_type, funding_stage, funding_display, founded_year, team_size, "
         "hq_location, region, tags, investors, links_json, is_featured, screenshot_r2_key, "
-        "screenshot_status, workflow_status, codex_stage, first_seen_at, published_at"
+        "screenshot_status, workflow_status, codex_stage, first_seen_at, published_at, updated_at"
         ") VALUES ("
         f"{sql(startup_id)}, {sql(slug)}, {sql(domain)}, {sql(url)}, {sql(data['product_name'])}, "
         f"{sql(data.get('summary'))}, {sql(data.get('editor_note'))}, "
@@ -244,7 +263,7 @@ for path in startup_files:
         f"{sql(data.get('tags'))}, {sql(data.get('investors'))}, "
         f"{sql(json.dumps(data.get('links', {})) if data.get('links') else None)}, "
         f"{1 if data.get('is_featured') else 0}, {sql(f'{slug}.webp')}, 'ready', 'published', "
-        f"'manual', {timestamp_sql(slug, 'first_seen_at')}, {timestamp_sql(slug, 'published_at')}"
+        f"'manual', {timestamp_sql(slug, 'first_seen_at')}, {timestamp_sql(slug, 'published_at')}, {updated_at_insert}"
         ") ON CONFLICT(slug) DO UPDATE SET "
         "id = excluded.id, "
         "domain = excluded.domain, "
@@ -273,7 +292,7 @@ for path in startup_files:
         "first_seen_at = excluded.first_seen_at, "
         "published_at = excluded.published_at, "
         "created_at = COALESCE(startups.created_at, datetime('now')), "
-        "updated_at = COALESCE(startups.updated_at, datetime('now'));"
+        f"updated_at = {updated_at_update};"
     )
 
     for round_data in funding:
@@ -358,6 +377,9 @@ for path in startup_files:
         "hq_location": data.get("hq_location"),
         "published_at": timestamps.get(slug, {}).get("published_at"),
         "first_seen_at": timestamps.get(slug, {}).get("first_seen_at"),
+        # Only explicit values have parity with deterministic prerender dates;
+        # a missing value deliberately preserves legacy D1 seed-clock behavior.
+        "updated_at": timestamps.get(slug, {}).get("updated_at"),
     }
     canonical_funding[slug] = [
         {

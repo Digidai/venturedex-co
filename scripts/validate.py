@@ -527,12 +527,16 @@ def validate_timestamps(startup_slugs: set[str]) -> list[str]:
         if not isinstance(entry, dict):
             errors.append(f"content/timestamps.json missing timestamp entry for startup '{slug}'")
             continue
-        for field_name in ("published_at", "first_seen_at"):
+        parsed_timestamps: dict[str, datetime] = {}
+        fields = ["published_at", "first_seen_at"]
+        if "updated_at" in entry:
+            fields.append("updated_at")
+        for field_name in fields:
             value = entry.get(field_name)
             valid = isinstance(value, str) and bool(UTC_TIMESTAMP_RE.fullmatch(value))
             if valid:
                 try:
-                    datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
+                    parsed_timestamps[field_name] = datetime.strptime(value, "%Y-%m-%d %H:%M:%S")
                 except ValueError:
                     valid = False
             if not valid:
@@ -540,6 +544,14 @@ def validate_timestamps(startup_slugs: set[str]) -> list[str]:
                     f"content/timestamps.json {slug}.{field_name} must be UTC "
                     "YYYY-MM-DD HH:MM:SS"
                 )
+        if (
+            "updated_at" in parsed_timestamps
+            and "published_at" in parsed_timestamps
+            and parsed_timestamps["updated_at"] < parsed_timestamps["published_at"]
+        ):
+            errors.append(
+                f"content/timestamps.json {slug}.updated_at must not be earlier than published_at"
+            )
 
     return errors
 

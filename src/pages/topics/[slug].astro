@@ -6,6 +6,7 @@ import SiteCard from "../../components/SiteCard.astro";
 import { getContentFundingRoundsForStartup, getContentStartups } from "../../lib/content";
 import { expandSeoDescription, topicPageJsonLd } from "../../lib/seo";
 import { buildTopicAnswer, getTopicPageBySlug, getTopicPages } from "../../lib/topic-pages";
+import { getTopicResearch, type TopicResearchFieldName } from "../../lib/topic-research";
 import { getPublishedWeeklyIssuesFromContent } from "../../lib/weekly";
 
 export function getStaticPaths() {
@@ -17,6 +18,14 @@ const allStartups = getContentStartups();
 const weeklyIssues = getPublishedWeeklyIssuesFromContent(Infinity);
 const topic = getTopicPageBySlug(Astro.params.slug!, allStartups, weeklyIssues)!;
 const answer = buildTopicAnswer(topic, topic.startups.flatMap((startup) => getContentFundingRoundsForStartup(startup.slug)));
+const research = getTopicResearch(topic);
+const researchColumns: Array<{ key: TopicResearchFieldName; label: string }> = [
+  { key: "workflow", label: "Documented workflow" },
+  { key: "access", label: "Access and deployment" },
+  { key: "pricing", label: "Pricing basis" },
+  { key: "fit", label: "When to consider it" },
+  { key: "limitations", label: "Limits and what to confirm" },
+];
 const description = expandSeoDescription(topic.description, topic.searchIntent, `${topic.title} on VentureDex.`);
 const schema = topicPageJsonLd(topic, Astro.site?.toString());
 const subscribeUrl = `/subscribe?source=${encodeURIComponent(`topic:${topic.slug}`)}`;
@@ -40,6 +49,7 @@ function formatDate(value: string | null | undefined) {
       <h1>{topic.title}</h1>
       <p class="description">{topic.description}</p>
       <nav class="topic-jump-links" aria-label="On this page">
+        {research && <a href="#selection">Workflow selection guide</a>}
         <a href="#compare">Compare companies</a>
         <a href="#coverage">Coverage</a>
         <a href="#questions">Research questions</a>
@@ -73,6 +83,74 @@ function formatDate(value: string | null | undefined) {
         )}
       </dl>
     </section>
+
+    {research && (
+      <section class="selection-section" id="selection" aria-labelledby="selection-heading">
+        <h2 id="selection-heading">Choose by the job you need done</h2>
+        <p class="section-note">{research.selection_note}</p>
+        <p class="section-note">
+          {research.products.length} selected examples from {answer.profileCount} tracked profiles.
+          Comparison sources checked <time datetime={research.checked_at}>{formatDate(research.checked_at)}</time>.
+          This is a public-document review, not a hands-on test or independent validation of vendor results.
+          Fit and suggested checks are VentureDex editorial judgments based on the cited material. Pricing can change.
+        </p>
+        <ol class="decision-steps">
+          {research.decision_steps.map((step) => (
+            <li>
+              <h3>{step.title}</h3>
+              <p>{step.text}</p>
+              <div class="decision-links">
+                {step.startup_slugs.map((slug) => <a href={`#selected-${slug}`}>{research.products.find((product) => product.startup.slug === slug)!.startup.product_name}</a>)}
+              </div>
+            </li>
+          ))}
+        </ol>
+        <div class="comparison-scroll" tabindex="0" role="region" aria-label="Workflow selection table; scroll horizontally on small screens">
+          <table class="selection-table">
+            <caption>Documented workflows and purchasing questions — selected examples, not a ranking</caption>
+            <thead><tr><th scope="col">Product</th>{researchColumns.map((column) => <th scope="col">{column.label}</th>)}</tr></thead>
+            <tbody>
+              {research.products.map((product) => (
+                <tr id={`selected-${product.startup.slug}`}>
+                  <th scope="row">
+                    <a href={`/startups/${product.startup.slug}`}>{product.startup.product_name}</a>
+                    <small>Profile source review: {product.profileReviewedAt
+                      ? <time datetime={product.profileReviewedAt}>{formatDate(product.profileReviewedAt)}</time>
+                      : "not recorded"}</small>
+                  </th>
+                  {researchColumns.map((column) => (
+                    <td>
+                      <p>{product[column.key].text}</p>
+                      <span class="claim-sources" aria-label={`${column.label} sources for ${product.startup.product_name}`}>
+                        {product[column.key].sources.map((source) => (
+                          <a href={source.url} target="_blank" rel="noopener noreferrer" title={source.title} aria-label={`${product.startup.product_name} source ${source.number}: ${source.title}`}>[{source.number}]</a>
+                        ))}
+                      </span>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <details class="selection-sources">
+          <summary>Official sources and check dates for this comparison</summary>
+          <div class="source-groups">
+            {research.products.map((product) => (
+              <div>
+                <h3>{product.startup.product_name}</h3>
+                <ul>
+                  {product.sources.map((source) => (
+                    <li><a href={source.url} target="_blank" rel="noopener noreferrer">[{source.number}] {source.title}</a> — checked <time datetime={source.checked_at}>{formatDate(source.checked_at)}</time></li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </details>
+        <p class="section-note related-brief">For coding-agent workflows, read <a href="/research/coding-agent-verification-stack">the coding-agent verification stack</a>: why a runnable environment, behavior checks, and engineering observation answer different questions.</p>
+      </section>
+    )}
 
     <section class="comparison-section" id="compare" aria-labelledby="comparison-heading">
       <h2 id="comparison-heading">Compare {topic.title.toLowerCase()}</h2>
@@ -211,6 +289,7 @@ function formatDate(value: string | null | undefined) {
 
 <style>
   .topic-detail {
+    min-width: 0;
     max-width: 1200px;
     padding: var(--space-12) var(--space-6) var(--space-16);
   }
@@ -254,6 +333,7 @@ function formatDate(value: string | null | undefined) {
   }
 
   .topic-summary h2,
+  .selection-section h2,
   .comparison-section h2,
   .coverage-section h2,
   .question-section h2,
@@ -307,6 +387,7 @@ function formatDate(value: string | null | undefined) {
   }
 
   .comparison-section,
+  .selection-section,
   .coverage-section,
   .question-section {
     margin-bottom: var(--space-10);
@@ -325,6 +406,7 @@ function formatDate(value: string | null | undefined) {
   }
 
   .comparison-scroll {
+    max-width: 100%;
     overflow-x: auto;
     margin: var(--space-6) 0;
     border: 1px solid var(--color-border);
@@ -380,6 +462,42 @@ function formatDate(value: string | null | undefined) {
   td span,
   td time { color: var(--color-text-secondary); }
   td a { margin-top: var(--space-1); }
+
+  .selection-table { min-width: 1250px; table-layout: fixed; }
+  .selection-table th,
+  .selection-table td { width: auto; overflow-wrap: anywhere; }
+  .selection-table th:first-child { width: 140px; }
+  .selection-table tbody th small {
+    display: block;
+    margin-top: var(--space-3);
+    color: var(--color-text-secondary);
+    font-size: 0.72rem;
+    font-weight: 400;
+  }
+  .selection-table tbody tr { scroll-margin-top: var(--space-8); }
+  .selection-table .claim-sources { display: flex; gap: var(--space-2); }
+  .selection-table .claim-sources a { display: inline; }
+  .decision-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+    padding-left: var(--space-5);
+    margin: var(--space-6) 0;
+  }
+  .decision-steps h3,
+  .source-groups h3 { font-size: 0.95rem; margin-bottom: var(--space-2); }
+  .decision-steps p { color: var(--color-text-secondary); font-size: 0.88rem; line-height: 1.7; }
+  .decision-links { display: flex; flex-wrap: wrap; gap: var(--space-2) var(--space-4); margin-top: var(--space-3); font-size: 0.8rem; }
+  .selection-sources { font-size: 0.82rem; line-height: 1.7; }
+  .selection-sources summary { cursor: pointer; color: var(--color-text-secondary); }
+  .source-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); margin-top: var(--space-4); }
+  .source-groups ul { padding-left: var(--space-5); overflow-wrap: anywhere; }
+  .related-brief { margin-top: var(--space-6); }
+
+  @media (max-width: 760px) {
+    .decision-steps,
+    .source-groups { grid-template-columns: 1fr; }
+  }
 
   .coverage-stats {
     display: flex;

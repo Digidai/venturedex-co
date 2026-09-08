@@ -4,9 +4,9 @@
   "url": "https://www.antora.com/",
   "product_name": "Antora Energy",
   "summary": "Solid-carbon thermal batteries for round-the-clock industrial heat and power.",
-  "editor_note": "Industrial storage gets more interesting when the battery is a hot block, not a scarce-mineral chemistry. Antora resistively heats solid carbon to 2,400°C, stores energy for multiple days, and began delivering energy from a 5 GWh POET project in under 12 months. Unlike lithium-ion systems optimized for shorter electrical cycles, this bet targets continuous factory heat and firm power with factory-built modules. The risk is whether those project economics repeat beyond the flagship site.",
+  "editor_note": "Industrial storage gets interesting when the battery is a hot block, not another electrochemical cell. Antora stores electricity as heat in carbon for process heat or steam-turbine power. POET confirms first energy delivery at Big Stone, but describes a 5 GWh project still being commissioned, not a completed system. The next test is repeatable heat economics and operating performance beyond this first large project.",
   "editor_rating": 5,
-  "why_featured": "$550M after a 5 GWh deployment",
+  "why_featured": "$550M and Big Stone first energy",
   "product_type": "Climate / Sustainability",
   "hq_location": "San Jose, California",
   "region": "US",
@@ -51,6 +51,18 @@
         "type": "product"
       },
       {
+        "id": "official_solutions",
+        "label": "Antora delivery products and project workflow",
+        "url": "https://www.antora.com/solutions",
+        "type": "product"
+      },
+      {
+        "id": "customer_poet",
+        "label": "POET Big Stone commissioning announcement",
+        "url": "https://poet.com/pr/antora-and-poet-commission-5-gigawatt-hour-thermal-battery-project",
+        "type": "product"
+      },
+      {
         "id": "official_funding",
         "label": "Antora Energy Series C announcement",
         "url": "https://www.antora.com/insights/series-c",
@@ -59,37 +71,51 @@
     ],
     "product_evidence": [
       {
-        "claim": "Antora says its thermal battery resistively heats solid carbon to as high as 2,400°C, stores that energy for multiple days, and can return it as industrial heat or electricity through a steam turbine.",
+        "claim": "Antora describes charging by resistively heating insulated solid carbon up to 2,400°C, storing the heat for multiple days, and discharging to industrial processes or steam turbines.",
         "source_ids": [
-          "official_site",
           "official_technology"
         ]
       },
       {
-        "claim": "The official technology surface says factory-built modules scale from megawatts to gigawatts and use domestic, earth-abundant solid carbon rather than supply-constrained critical minerals.",
+        "claim": "The solutions page lists HeatCore process-heat delivery up to 375°C and a steam-turbine power block as available products; the technology page describes direct thermophotovoltaic conversion as a future product.",
         "source_ids": [
-          "official_site",
+          "official_solutions",
           "official_technology"
         ]
       },
       {
-        "claim": "Project Big Stone is a 5 GWh, 50 MW thermal-battery project with more than 200 modules under a POET energy offtake agreement; Antora says it advanced from an empty lot to first energy delivery in under 12 months.",
+        "claim": "POET's May 2026 announcement describes Big Stone as a 5 GWh project entering commissioning after reaching first energy delivery in under 12 months, with full operation expected later in 2026.",
         "source_ids": [
-          "official_project",
-          "official_funding"
+          "customer_poet"
+        ]
+      },
+      {
+        "claim": "The Big Stone customer announcement describes a long-term heat offtake agreement and an electricity rate enabling charging during surplus local energy production.",
+        "source_ids": [
+          "customer_poet"
+        ]
+      },
+      {
+        "claim": "Antora's project offering includes site screening, electricity procurement, financing, installation, controls integration, and ongoing operation and maintenance.",
+        "source_ids": [
+          "official_solutions"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Industrial operators, data-center developers, utilities, and energy project teams that need firm heat or power at large scale.",
+      "primary_user": "Industrial plant energy and project teams buying continuous process heat; Antora also markets steam-turbine power systems to data-center and grid customers.",
       "category": "Industrial thermal energy storage",
-      "differentiation": "Antora stores electricity in abundant solid carbon and ships modular systems that can deliver both process heat and power, instead of relying on lithium electrochemistry for every load.",
-      "why_now": "Industrial electrification and data-center growth are increasing demand for firm energy that can be deployed faster than new generation and transmission infrastructure."
+      "differentiation": "The offering combines modular carbon heat storage with heat-delivery equipment, power procurement, financing, and operations; the POET reference is a heat offtake project, not evidence of every marketed power application.",
+      "why_now": "POET's first-energy and commissioning announcement, followed by the July 2026 Series C, makes construction completion and repeat-site operating results the next observable milestones."
     },
     "risks": [
       {
-        "claim": "The falsifiable risk is whether Antora can repeat Project Big Stone's sub-12-month delivery pace and economics across different industrial sites and duty cycles.",
-        "basis": "VentureDex editorial assessment based on the official technology, project, and Series C surfaces."
+        "claim": "First energy delivery is not full project commissioning. The reviewed announcements do not establish final completion, sustained output, or independently audited operating economics for Big Stone.",
+        "basis": "Antora's project page and POET's May 2026 announcement distinguish first energy from planned full operation later in 2026."
+      },
+      {
+        "claim": "Repeat-site economics depend on local electricity rates, financing, integration, and heat demand; a published carbon storage temperature is not the delivered process temperature or proof of universal cost savings.",
+        "basis": "VentureDex editorial assessment of the technology specifications, delivery products, and the site-specific POET offtake arrangement."
       }
     ]
   }

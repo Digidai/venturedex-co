@@ -4,18 +4,18 @@
   "url": "https://talk.shapes.inc",
   "product_name": "Shapes",
   "summary": "Social AI chat app where people and bots share group conversations.",
-  "editor_note": "Most AI companion apps trap users in one-on-one confession booths; this points the format back toward messy group chat. The public surface shows 300+ models, message counts like 86.8K on individual characters, and mobile app links instead of a blank waitlist. That choice makes AI feel closer to Discord roleplay than a therapist clone. The hard part is moderation: social AI gets more interesting exactly where it gets harder to keep safe.",
+  "editor_note": "The interesting choice is putting AI inside a shared conversation, not asking everyone to open a private chatbot. Shapes documents a simple loop: start a chat, invite friends, and add characters with their own backstories and response styles. Free engines coexist with credit-funded premium engines, so the model catalog is not an all-free promise. The hard part is moderation: social AI gets more interesting exactly where it gets harder to keep safe.",
   "editor_rating": 4,
   "why_featured": "AI companions in group chat",
   "product_type": "AI / ML",
-  "founded_year": 2023,
   "team_size": "10-30",
   "hq_location": "San Francisco",
   "region": "US",
   "tags": "social ai,chat,consumer,ai companions",
-  "investors": "Lightspeed Venture Partners, Betaworks, Hartbeat Ventures, The Games Fund",
+  "investors": "Lightspeed Venture Partners",
   "links": {
-    "careers": "https://shapes.inc/jobs"
+    "careers": "https://shapes.inc/jobs",
+    "docs": "https://docs.shapes.inc/introduction"
   },
   "is_featured": true,
   "funding": [
@@ -38,6 +38,30 @@
         "type": "official"
       },
       {
+        "id": "official_chat_guide",
+        "label": "Shapes group chat setup guide",
+        "url": "https://docs.shapes.inc/create-a-chat",
+        "type": "product"
+      },
+      {
+        "id": "official_character_guide",
+        "label": "Shapes character creation guide",
+        "url": "https://docs.shapes.inc/how-to-make-a-shape",
+        "type": "product"
+      },
+      {
+        "id": "official_docs",
+        "label": "Shapes introduction and engine pricing boundaries",
+        "url": "https://docs.shapes.inc/introduction",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Shapes official seed funding announcement",
+        "url": "https://shapes.inc/blog/ai-enters-the-group-chat",
+        "type": "funding"
+      },
+      {
         "id": "funding_1",
         "label": "TechCrunch",
         "url": "https://techcrunch.com/2026/04/29/meet-shapes-the-app-bringing-humans-and-ai-into-the-same-group-chats/",
@@ -46,28 +70,48 @@
     ],
     "product_evidence": [
       {
-        "claim": "Official product positioning describes Shapes: Social AI chat app where people and bots share group conversations.",
+        "claim": "The chat guide shows users starting a conversation from New Chat, then using Members / Invite to add people, add AI characters, or share an invitation link.",
         "source_ids": [
-          "official_site"
+          "official_chat_guide"
         ]
       },
       {
-        "claim": "The official product page describes creating AI characters with a chosen personality and supplied knowledge.",
+        "claim": "The character creation guide exposes backstory and response-style settings, with optional personality traits, tone, and example conversations before publishing a Shape.",
         "source_ids": [
-          "official_site"
+          "official_character_guide"
+        ]
+      },
+      {
+        "claim": "Shapes documents chats containing humans and AI characters together, with up to five Shapes active at once.",
+        "source_ids": [
+          "official_docs"
+        ]
+      },
+      {
+        "claim": "The documentation distinguishes free engines from premium engines that consume Shape Credits; credits can be purchased or earned, and a free engine remains available for chatting.",
+        "source_ids": [
+          "official_docs"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Consumers who want to chat with friends and AI characters in social group conversations.",
+      "primary_user": "Consumers and character creators who want shared chats with friends and AI personalities, including fandom and roleplay groups.",
       "category": "AI / ML",
-      "differentiation": "AI companions in group chat",
-      "why_now": "Recent source-backed funding and public product evidence make social ai, chat, consumer worth tracking."
+      "differentiation": "Human participants and configurable AI characters share the same conversation; invitations and character creation are part of the chat workflow rather than separate chatbot sessions.",
+      "why_now": "The April 2026 seed announcement and published chat, character, and credit guides give concrete checkpoints for tracking how the social AI format develops."
     },
     "risks": [
       {
         "claim": "The hard part is moderation: social AI gets more interesting exactly where it gets harder to keep safe.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "basis": "VentureDex editorial assessment of mixed human-AI group conversations; this review did not test moderation or safety outcomes."
+      },
+      {
+        "claim": "Actual premium-engine costs and safe behavior across different characters remain questions for account-level testing; public documentation alone does not establish either.",
+        "basis": "The documentation describes credit-funded engines and user-configured characters; no account, paid credits, or live group chat was tested in this review."
+      },
+      {
+        "claim": "Founding-year accounts conflict, so this profile does not assert a year. Its investor list is limited to the verified lead investor, not a complete cap table.",
+        "basis": "Official launch and TechCrunch founding years differ; the official seed announcement confirms Lightspeed as lead but not all investors previously listed here."
       }
     ]
   }

@@ -1,0 +1,294 @@
+{
+  "schema_version": "2026-09-08",
+  "checked_at": "2026-09-08T08:59:50.697Z",
+  "origin": "https://venturedex.co",
+  "purpose": "Fixed 20-question evaluation set. The runner checks retrieval readiness only. Answer rubrics require a separately recorded human or model answer review; passing transport and marker checks is not answer accuracy, search indexing, or AI citation share.",
+  "retrieval_ready": 4,
+  "total": 20,
+  "answer_accuracy": null,
+  "external_ai_citation_rate": null,
+  "results": [
+    {
+      "id": "E01",
+      "question": "Is Shapes free, and what founding year can I safely cite?",
+      "path": "/startups/shapes.json",
+      "status": 200,
+      "bytes": 4859,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Shape Credits",
+        "Missing retrieval marker: Founding-year accounts conflict",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E02",
+      "question": "What does implementing Scaled Cognition involve, and is reliability proven?",
+      "path": "/startups/scaled-cognition.json",
+      "status": 200,
+      "bytes": 6044,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: AgentTwin",
+        "Missing retrieval marker: human review",
+        "Missing retrieval marker: planned capabilities",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E03",
+      "question": "Has Antora's entire Big Stone project completed commissioning?",
+      "path": "/startups/antora-energy.json",
+      "status": 200,
+      "bytes": 6592,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: commissioning",
+        "Missing retrieval marker: future product",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E04",
+      "question": "Which parts of a data-center energy project does Verse do?",
+      "path": "/startups/verse.json",
+      "status": 200,
+      "bytes": 5526,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Calibrant",
+        "Missing retrieval marker: invoices",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E05",
+      "question": "Is Throne a diagnostic device, and what is required to use it?",
+      "path": "/startups/throne-science.json",
+      "status": 200,
+      "bytes": 6077,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Bluetooth",
+        "Missing retrieval marker: paid membership",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E06",
+      "question": "What has Venus Aerospace demonstrated versus what remains planned?",
+      "path": "/startups/venus-aerospace.json",
+      "status": 200,
+      "bytes": 6316,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: CycloRP",
+        "Missing retrieval marker: coolant testing",
+        "Missing retrieval marker: future application",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E07",
+      "question": "Does Enzo replace the agency EHR, and was its Series A $20M or $26M?",
+      "path": "/startups/enzo-health.json",
+      "status": 200,
+      "bytes": 4936,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: EHR",
+        "Missing retrieval marker: Clinicians",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E08",
+      "question": "Can a federal contractor rely on CVRD's Aptive savings rate as a forecast?",
+      "path": "/startups/cvrd-health.json",
+      "status": 200,
+      "bytes": 5065,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: different headline/table premium savings percentages",
+        "Missing retrieval marker: reconciliation",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E09",
+      "question": "What does Niteshift isolate, and what costs remain outside its active-time credits?",
+      "path": "/startups/niteshift.json",
+      "status": 200,
+      "bytes": 5383,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Neon",
+        "Missing retrieval marker: tokens",
+        "Missing retrieval marker: active",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "E10",
+      "question": "Are Architect Labs Redwood numbers from a production ASIC?",
+      "path": "/startups/architect-labs.json",
+      "status": 200,
+      "bytes": 5432,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: FPGA",
+        "Missing retrieval marker: projection",
+        "No distinct authored update"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T01",
+      "question": "How should I choose between a workspace assistant, voice agent, tool-access layer and CX action platform?",
+      "path": "/topics/ai-agent-startups",
+      "status": 200,
+      "bytes": 215445,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Documented workflow",
+        "Missing retrieval marker: Pricing basis"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T02",
+      "question": "Which engineering problem do Niteshift, Meticulous, Weave and Mage address?",
+      "path": "/topics/developer-tools-startups",
+      "status": 200,
+      "bytes": 178321,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: Documented workflow",
+        "Missing retrieval marker: Pricing basis"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T03",
+      "question": "What does VentureDex include in AI infrastructure, and is this a market census?",
+      "path": "/topics/ai-infrastructure-startups",
+      "status": 200,
+      "bytes": 90370,
+      "retrieval_ready": true,
+      "failures": [],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T04",
+      "question": "Which legal AI workflows are represented, and how current is the evidence?",
+      "path": "/topics/legal-ai-startups",
+      "status": 200,
+      "bytes": 56901,
+      "retrieval_ready": true,
+      "failures": [],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T05",
+      "question": "How is fintech infrastructure coverage different from generic finance AI?",
+      "path": "/topics/fintech-infrastructure-startups",
+      "status": 200,
+      "bytes": 72926,
+      "retrieval_ready": true,
+      "failures": [],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "T06",
+      "question": "Why is Enzo included in healthcare AI, and does that imply clinical efficacy?",
+      "path": "/topics/healthcare-ai-startups",
+      "status": 200,
+      "bytes": 72031,
+      "retrieval_ready": true,
+      "failures": [],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "X01",
+      "question": "Can one of the three coding-agent tools prove a change is safe to ship?",
+      "path": "/research/coding-agent-verification-stack.json",
+      "status": 404,
+      "bytes": 9869,
+      "retrieval_ready": false,
+      "failures": [
+        "HTTP 404, expected 200 without redirect",
+        "Expected application/json",
+        "Missing retrieval marker: editorial-research",
+        "Missing retrieval marker: Niteshift",
+        "Missing retrieval marker: Meticulous",
+        "Missing retrieval marker: Weave",
+        "Missing retrieval marker: not an independent product benchmark",
+        "Missing retrieval marker: Stubbing is configurable",
+        "Missing exact canonical response header",
+        "Invalid JSON representation"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "X02",
+      "question": "Give a source-linked coding-agent evaluation checklist and say whether VentureDex ran it.",
+      "path": "/research/coding-agent-verification-stack.md",
+      "status": 404,
+      "bytes": 9869,
+      "retrieval_ready": false,
+      "failures": [
+        "HTTP 404, expected 200 without redirect",
+        "Expected text/markdown",
+        "Missing retrieval marker: proposed, not tested",
+        "Missing retrieval marker: https://app.meticulous.ai/docs",
+        "Missing retrieval marker: https://weaveos.com/",
+        "Missing retrieval marker: https://niteshift.dev/",
+        "Missing exact canonical response header"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "X03",
+      "question": "How can an agent retrieve a single company or research brief without downloading the entire corpus?",
+      "path": "/llms.txt",
+      "status": 200,
+      "bytes": 3149,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: /research/coding-agent-verification-stack"
+      ],
+      "answer_review": "not-run"
+    },
+    {
+      "id": "X04",
+      "question": "Which of the ten reviewed profiles have a distinct authored update, and does that reset publication or full verification?",
+      "path": "/changes.json",
+      "status": 200,
+      "bytes": 20348,
+      "retrieval_ready": false,
+      "failures": [
+        "Missing retrieval marker: updated",
+        "No bounded-feed update for shapes",
+        "No bounded-feed update for scaled-cognition",
+        "No bounded-feed update for antora-energy",
+        "No bounded-feed update for verse",
+        "No bounded-feed update for throne-science",
+        "No bounded-feed update for venus-aerospace",
+        "No bounded-feed update for enzo-health",
+        "No bounded-feed update for cvrd-health",
+        "No bounded-feed update for niteshift",
+        "No bounded-feed update for architect-labs"
+      ],
+      "answer_review": "not-run"
+    }
+  ]
+}

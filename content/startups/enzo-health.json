@@ -3,13 +3,13 @@
   "domain": "www.enzo.health",
   "url": "https://www.enzo.health",
   "product_name": "Enzo Health",
-  "summary": "Home health intake, scribe, and QA workflows with AI.",
-  "editor_note": "Home health software often treats the nurse as the data-entry layer; this pushes the paperwork into the visit itself. Enzo shows Intake, Scribe, and QA modules with OASIS validation, referral checks, secure messaging, and 5-minute intake-to-admission claims. Unlike generic medical scribes, the bet is one thread from bedside note to reimbursement. The risk is integrating deeply enough with fragmented agency systems.",
+  "summary": "Home health EHR with referral intake, visit-note drafting, scheduling, and coding review.",
+  "editor_note": "Home health documentation needs a handoff, not just a transcript. Enzo brings eFax and portal referrals into intake, drafts OASIS-ready visit notes, and lets clinicians edit and sign before submission. Unlike a standalone scribe, it connects that work to coding review and now markets an EHR. Its module pages still promise existing-EHR integration, so agencies need to confirm the deployment scope and retain clinical judgment.",
   "editor_rating": 4,
-  "why_featured": "$20M Series A for home health AI",
+  "why_featured": "OASIS notes with clinician sign-off",
   "product_type": "HealthTech",
   "region": "US",
-  "tags": "home health,clinical documentation,intake,quality assurance",
+  "tags": "home health,clinical documentation,intake,quality assurance,ai scribe",
   "investors": "N47, Gradient, Tandem Ventures, Rigby Watts",
   "links": {
     "careers": "https://www.enzo.health/careers"
@@ -39,32 +39,78 @@
         "label": "PR Newswire",
         "url": "https://www.prnewswire.com/news-releases/enzo-health-raises-26m-to-deploy-ai-across-home-health-to-meet-unprecedented-nationwide-demand-for-post-acute-care-302760538.html",
         "type": "funding"
+      },
+      {
+        "id": "intake_workflow",
+        "label": "Enzo Intake referral workflow",
+        "url": "https://www.enzo.health/intake",
+        "type": "product"
+      },
+      {
+        "id": "scribe_workflow",
+        "label": "Enzo Scribe and clinician sign-off",
+        "url": "https://www.enzo.health/scribe",
+        "type": "product"
+      },
+      {
+        "id": "qa_workflow",
+        "label": "Enzo QA review and override workflow",
+        "url": "https://www.enzo.health/qa",
+        "type": "product"
+      },
+      {
+        "id": "commonwealth_case",
+        "label": "Commonwealth Home Care coding workflow and scope",
+        "url": "https://www.enzo.health/customers/commonwealth-home-care",
+        "type": "product"
       }
     ],
     "product_evidence": [
       {
-        "claim": "Official product positioning describes Enzo Health: Home health intake, scribe, and QA workflows with AI.",
+        "claim": "The current homepage offers a home health EHR spanning referral intake, scheduling, visit notes, coding, and claims, with agency staff reviewing and approving its work.",
         "source_ids": [
           "official_site"
         ]
       },
       {
-        "claim": "Enzo shows Intake, Scribe, and QA modules with OASIS validation, referral checks, secure messaging, and 5-minute intake-to-admission claims.",
+        "claim": "Intake collects referrals from eFax, hospital portals, and uploads; it checks package information and tracks an owner, status, and activity history before handing accepted referrals to scheduling.",
         "source_ids": [
-          "official_site"
+          "intake_workflow"
+        ]
+      },
+      {
+        "claim": "Scribe describes drafting OASIS-ready notes from visit conversations and capturing medication-label information. Clinicians review, edit, and sign off before notes are submitted.",
+        "source_ids": [
+          "scribe_workflow"
+        ]
+      },
+      {
+        "claim": "QA checks documentation and coding consistency, explains flagged issues, and allows coders or clinical reviewers to confirm, adjust, or override suggestions before submission.",
+        "source_ids": [
+          "qa_workflow"
+        ]
+      },
+      {
+        "claim": "The Commonwealth case describes AI-assisted ICD coding backed by certified coding reviewers; OASIS review remains with the agency's own team. Unsupported codes trigger requests for clinician clarification.",
+        "source_ids": [
+          "commonwealth_case"
         ]
       }
     ],
     "market_context": {
-      "primary_user": "Healthcare, benefits, or life-sciences teams evaluating regulated operational workflows.",
-      "category": "HealthTech",
-      "differentiation": "$20M Series A for home health AI",
-      "why_now": "Recent source-backed funding and public product evidence make home health, clinical documentation, intake worth tracking."
+      "primary_user": "Home health agency administrators, intake coordinators, visiting clinicians, and coding/QA staff managing referrals through documentation and billing review.",
+      "category": "Home health EHR and clinical documentation workflows",
+      "differentiation": "It joins referral intake, OASIS-oriented note drafting, and human coding review in a home-health-specific workflow rather than supplying a general-purpose visit transcript.",
+      "why_now": "The public offer now includes an EHR alongside existing-EHR modules; agencies can evaluate workflow consolidation, but must establish which integration or replacement path is actually offered."
     },
     "risks": [
       {
-        "claim": "The risk is integrating deeply enough with fragmented agency systems.",
-        "basis": "VentureDex editorial assessment based on official product evidence and funding-source review."
+        "claim": "The homepage proposes replacing a legacy EHR, while module pages promise integration. Supported EHRs, migration effort, pricing, and contractual scope need confirmation for each agency.",
+        "basis": "VentureDex assessment of the homepage and Intake, Scribe, and QA pages; no agency implementation or commercial quote reviewed."
+      },
+      {
+        "claim": "Generated notes and code suggestions still need qualified human review. The reviewed pages do not establish diagnostic accuracy, clinical efficacy, or guaranteed reimbursement improvements.",
+        "basis": "Scribe requires clinician sign-off; QA permits overrides; the Commonwealth case uses coding reviewers. Public workflow review, not clinical validation."
       }
     ]
   }

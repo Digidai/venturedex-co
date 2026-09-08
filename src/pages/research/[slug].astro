@@ -1,0 +1,90 @@
+---
+export const prerender = true;
+import Base from "../../layouts/Base.astro";
+import { getContentStartups } from "../../lib/content";
+import { getResearchBriefs, researchBriefPath, type ResearchBrief } from "../../lib/research-briefs";
+
+export function getStaticPaths() {
+  return getResearchBriefs(new Set(getContentStartups().map((startup) => startup.slug))).map((brief) => ({ params: { slug: brief.slug }, props: { brief } }));
+}
+const { brief } = Astro.props as { brief: ResearchBrief };
+const path = researchBriefPath(brief);
+const canonical = `https://venturedex.co${path}`;
+const sourcesFor = (ids: string[]) => brief.sources.filter((source) => ids.includes(source.id));
+const schema = {
+  "@context": "https://schema.org", "@type": "Article", headline: brief.title, description: brief.description,
+  datePublished: brief.published_at, dateModified: brief.reviewed_at, mainEntityOfPage: canonical,
+  author: { "@type": "Organization", name: "VentureDex Research", url: "https://venturedex.co/about" },
+  publisher: { "@type": "Organization", name: "VentureDex", url: "https://venturedex.co/" },
+  citation: brief.sources.map((source) => source.url),
+};
+---
+<Base title={brief.title} description={brief.description} canonicalPath={path} agentResourcePath={path}
+  ogType="article" publishedTime={brief.published_at} modifiedTime={brief.reviewed_at} schema={schema}>
+  <article class="container brief">
+    <header>
+      <a href="/research">← Research and evidence index</a>
+      <p class="eyebrow">Research brief · VentureDex Research</p>
+      <h1>{brief.title}</h1>
+      <p class="summary">{brief.summary}</p>
+      <p class="dates">Published <time datetime={brief.published_at}>{brief.published_at}</time> · Sources reviewed <time datetime={brief.reviewed_at}>{brief.reviewed_at}</time></p>
+      <nav aria-label="Brief sections"><a href="#comparison">Compare the layers</a><a href="#findings">Our findings</a><a href="#checklist">Evaluation checklist</a><a href="#sources">Sources</a><a href={`${path}.md`}>Markdown</a><a href={`${path}.json`}>JSON</a></nav>
+    </header>
+    <aside class="scope"><h2>What this brief does—and does not—establish</h2><p>{brief.scope}</p></aside>
+    <section id="comparison" aria-labelledby="comparison-title">
+      <h2 id="comparison-title">Three layers, three different kinds of evidence</h2>
+      <p>Product workflows below summarize public sources. Layer names, evidence units, boundaries and evaluation questions are VentureDex editorial analysis.</p>
+      <div class="table-scroll" role="region" aria-label="Verification layers comparison" tabindex="0">
+        <table><caption>A selected comparison, not a ranking</caption><thead><tr><th scope="col">Company / layer</th><th scope="col">Documented workflow</th><th scope="col">Evidence unit</th><th scope="col">Boundary to check</th></tr></thead>
+          <tbody>{brief.companies.map((company) => <tr>
+            <th scope="row"><a href={`/startups/${company.startup_slug}`}>{company.name}</a><span>{company.layer}</span></th>
+            <td>{company.documented_workflow}</td><td>{company.evidence_unit}</td><td>{company.boundary}</td>
+          </tr>)}</tbody>
+        </table>
+      </div>
+      <div class="company-notes">{brief.companies.map((company) => <article>
+        <h3>{company.name}: ask this in an evaluation</h3><p>{company.evaluation_question}</p>
+        <p class="funding"><strong>Dated funding context.</strong> {company.funding_context}</p>
+        <p class="references">{sourcesFor(company.source_ids).map((source) => <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</p>
+      </article>)}</div>
+    </section>
+    <section id="findings"><p class="eyebrow">VentureDex editorial analysis</p><h2>What the comparison changes</h2>
+      {brief.findings.map((finding) => <section class="finding" id={finding.id}><h3>{finding.title}</h3><p>{finding.text}</p>
+        <p class="references">{sourcesFor(finding.source_ids).map((source) => <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>)}</p>
+      </section>)}
+    </section>
+    <section id="checklist"><h2>A small evaluation you can actually review</h2><p>Proposed procedure—not an experiment conducted for this brief.</p><ol>{brief.checklist.map((item) => <li>{item}</li>)}</ol></section>
+    <section><h2>Questions this comparison can answer</h2>{brief.questions.map((item) => <section class="finding"><h3>{item.question}</h3><p>{item.answer}</p></section>)}</section>
+    <section><h2>Method and limitations</h2><ul>{brief.method.map((item) => <li>{item}</li>)}</ul></section>
+    <section id="sources"><h2>Checked source ledger</h2><p>Company statements describe the vendor's position. A checked source is not independent verification of performance.</p><ol>{brief.sources.map((source) => <li id={`source-${source.id}`}><a href={source.url} target="_blank" rel="noopener noreferrer">{source.label}</a><span class="source-meta">{source.type} · checked {source.checked_at}</span></li>)}</ol></section>
+    <footer class="follow"><h2>Keep the comparison useful</h2><p>Explore the broader <a href="/topics/developer-tools-startups">developer tools comparison</a> or the <a href="/topics/ai-agent-startups">AI agent research</a>. Follow new research through the weekly digest.</p><a class="subscribe" href="/subscribe?source=research-brief">Get the weekly digest →</a>
+      <p class="citation">Cite: VentureDex Research. “{brief.title}.” {brief.published_at}. <a href={canonical}>{canonical}</a></p>
+      <p class="source-meta">Cite original sources for underlying product and funding facts. Public access does not grant an open-data or model-training license. <a href="/editorial-policy">Editorial policy</a>.</p>
+    </footer>
+  </article>
+</Base>
+<style>
+  .brief { max-width: 1100px; padding-block: var(--space-10) var(--space-16); }
+  header { max-width: 850px; margin-bottom: var(--space-8); }
+  .eyebrow { margin-top: var(--space-6); color: var(--color-accent); font: .7rem var(--font-mono); text-transform: uppercase; letter-spacing: .06em; }
+  h1 { font-size: clamp(2rem, 4.8vw, 3.5rem); line-height: 1.15; letter-spacing: -.03em; margin-block: var(--space-4); }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.9rem); line-height: 1.3; margin-bottom: var(--space-4); }
+  h3 { font-size: 1.1rem; line-height: 1.4; margin-bottom: var(--space-3); }
+  p, li { font-size: .96rem; line-height: 1.8; color: var(--color-text-secondary); }
+  .summary { font-size: 1.12rem; } .dates, .source-meta { font: .74rem/1.7 var(--font-mono); }
+  nav { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-top: var(--space-5); font-size: .8rem; }
+  .scope { padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg-card); }
+  .scope h2 { font-size: 1.05rem; } article.brief > section, .follow { margin-top: var(--space-10); padding-top: var(--space-8); border-top: 1px solid var(--color-border); scroll-margin-top: 100px; }
+  .table-scroll { overflow-x: auto; margin-block: var(--space-5); border: 1px solid var(--color-border); }
+  table { width: 100%; min-width: 850px; border-collapse: collapse; font-size: .85rem; line-height: 1.7; }
+  caption { text-align: left; padding: var(--space-3); color: var(--color-text-secondary); }
+  th, td { padding: var(--space-4); text-align: left; vertical-align: top; border-top: 1px solid var(--color-border); }
+  thead { background: var(--color-bg-card); } tbody th { width: 18%; } tbody td { width: 27%; color: var(--color-text-secondary); }
+  tbody th span { display: block; margin-top: var(--space-2); font-weight: 400; color: var(--color-text-secondary); }
+  .company-notes { display: grid; gap: var(--space-5); } .company-notes article, .finding { max-width: 850px; margin-top: var(--space-6); }
+  .funding { font-size: .82rem; } .references { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .74rem; margin-top: var(--space-3); }
+  ol, ul { padding-left: 1.4rem; max-width: 850px; } li { margin-bottom: var(--space-4); } .source-meta { display: block; }
+  .subscribe { display: inline-block; padding: var(--space-3) var(--space-5); margin-block: var(--space-4); background: var(--color-text); color: var(--color-bg); border-radius: var(--radius); text-decoration: none; }
+  .citation { font-size: .8rem; overflow-wrap: anywhere; } #sources a { overflow-wrap: anywhere; }
+  @media (max-width: 640px) { .brief { padding-top: var(--space-6); } .scope { padding: var(--space-4); } }
+</style>

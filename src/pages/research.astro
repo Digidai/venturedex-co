@@ -10,8 +10,10 @@ import { buildEvidenceIndex } from "../lib/evidence-index";
 import { researchIndexJsonLd } from "../lib/seo";
 import { getPublishedWeeklyIssuesFromContent } from "../lib/weekly";
 import { whatShipsSnapshot } from "../lib/whatships";
+import { getResearchBriefs, researchBriefPath } from "../lib/research-briefs";
 
 const startups = getContentStartups();
+const briefs = getResearchBriefs();
 const index = buildEvidenceIndex({
   startups,
   investorCount: getContentInvestors().length,
@@ -86,6 +88,16 @@ function date(value: string | null): string {
     </header>
 
     <div class="container research-body">
+      <section class="research-briefs" aria-labelledby="briefs-title">
+        <h2 id="briefs-title">Research briefs</h2>
+        <p>Source-led comparisons with explicit boundaries. These are editorial analyses, not product benchmarks.</p>
+        {briefs.map((brief) => <article>
+          <p class="eyebrow">Sources reviewed {brief.reviewed_at}</p>
+          <h3><a href={researchBriefPath(brief)}>{brief.title}</a></h3>
+          <p>{brief.description}</p>
+          <a href={researchBriefPath(brief)}>Read the comparison and source ledger →</a>
+        </article>)}
+      </section>
       <section class="ledger" aria-labelledby="ledger-title">
         <div class="section-heading">
           <p class="section-number">01</p>
@@ -249,6 +261,10 @@ function date(value: string | null): string {
 </Base>
 
 <style>
+  .research-briefs { margin-bottom: var(--space-10); padding: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .research-briefs h2 { font-size: 1.6rem; margin-bottom: var(--space-3); }
+  .research-briefs h3 { font-size: 1.3rem; margin-block: var(--space-3); }
+  .research-briefs p { color: var(--color-text-secondary); line-height: 1.7; margin-bottom: var(--space-3); }
   .research-page {
     --ledger-blue: var(--color-accent);
     --ledger-ink: var(--color-text);

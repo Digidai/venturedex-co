@@ -289,7 +289,7 @@ export function validateUrl(url: string): void {
   }
   const hubPaths = new Set(["/", "/directory", "/topics", "/collections", "/weekly", "/investors", "/news", "/launches", "/research"]);
   const aiSurfacePaths = new Set(["/llms.txt", "/llms-full.txt", "/ai-index.json", "/launches.json"]);
-  const contentPath = /^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*|collections\/[a-z0-9][a-z0-9-]*|investors\/[a-z0-9][a-z0-9-]*|launches\/[a-z0-9][a-z0-9-]*|news\/page\/(?:[2-9]|[1-9][0-9]+))$/;
+  const contentPath = /^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*|collections\/[a-z0-9][a-z0-9-]*|investors\/[a-z0-9][a-z0-9-]*|launches\/[a-z0-9][a-z0-9-]*|research\/[a-z0-9][a-z0-9-]*|news\/page\/(?:[2-9]|[1-9][0-9]+))$/;
   if (!hubPaths.has(parsed.pathname) && !aiSurfacePaths.has(parsed.pathname) && !contentPath.test(parsed.pathname)) {
     throw new Error(`IndexNow target path is outside the canonical content set: ${url}`);
   }

@@ -29,6 +29,8 @@ export interface InvestorDirectoryEntry {
 export interface TimestampEntry {
   published_at?: string | null;
   first_seen_at?: string | null;
+  // Authored content revision time, never a build clock or a research-check date.
+  updated_at?: string;
 }
 
 export interface CollectionConfig {
@@ -63,6 +65,30 @@ function toUtcIso(value: string | null | undefined): string | null {
   return /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(trimmed)
     ? `${trimmed.replace(" ", "T")}Z`
     : trimmed;
+}
+
+function isUtcSidecarTimestamp(value: unknown): value is string {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$/.test(value)) return false;
+  if (value.startsWith("0000-")) return false;
+  const iso = `${value.replace(" ", "T")}Z`;
+  const epoch = Date.parse(iso);
+  // Date.parse can normalize impossible dates (for example February 30).
+  return Number.isFinite(epoch) && new Date(epoch).toISOString().slice(0, 19) === iso.slice(0, 19);
+}
+
+function authoredUpdatedAt(slug: string, ts: TimestampEntry): string | null {
+  if (ts.updated_at === undefined) return null;
+  if (!isUtcSidecarTimestamp(ts.updated_at)) {
+    throw new Error(`${slug}.updated_at must be UTC YYYY-MM-DD HH:MM:SS`);
+  }
+  if (!isUtcSidecarTimestamp(ts.published_at)) {
+    throw new Error(`${slug}.published_at must be UTC YYYY-MM-DD HH:MM:SS when updated_at is set`);
+  }
+  // Fixed-width UTC values have the same lexical and chronological order.
+  if (ts.updated_at < ts.published_at) {
+    throw new Error(`${slug}.updated_at must not be earlier than published_at`);
+  }
+  return toUtcIso(ts.updated_at);
 }
 
 export function isRecord(value: unknown): value is JsonRecord {
@@ -219,6 +245,7 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
     const ts = timestamps[slug] ?? {};
     const publishedAt = toUtcIso(ts.published_at);
     const firstSeenAt = toUtcIso(ts.first_seen_at);
+    const updatedAt = authoredUpdatedAt(slug, ts);
 
     return {
       id: `startup-${slug}`,
@@ -266,12 +293,11 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
       links_json: Object.keys(links).length ? JSON.stringify(links) : null,
       tags: stringValue(data.tags) || null,
       is_featured: data.is_featured ? 1 : 0,
-      // Content has no created_at/updated_at; the deployed D1 seeds them to the
-      // seed-time now() on first insert. For deterministic prerender output we use
-      // published_at, so JSON-LD dateModified and sitemap lastmod resolve to the
-      // (version-controlled) publish date rather than a build-time clock.
+      // An explicit authored revision time is shared with D1. Legacy content
+      // without one retains the deterministic publish-date fallback here; D1
+      // retains its historical seed-time created_at/updated_at semantics.
       created_at: publishedAt ?? "",
-      updated_at: publishedAt ?? "",
+      updated_at: updatedAt ?? publishedAt ?? "",
     };
   }
 
