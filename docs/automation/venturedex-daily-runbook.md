@@ -39,22 +39,22 @@ Automation must never rewrite this section.
 
 ### Content Safety
 
-- Search recent funding news broadly and collect 10-20 fresh candidates after accepted/rejected deduplication, matching the higher-priority content contract. Duplicate source hits do not count toward this bound. Twenty recorded decisions are sufficient for the maximum five additions while preserving the 3:1 rejection bar.
+- Run `npm run curation:plan` and select at most three due reviews, then fill one fixed pool of 10-20 unique companies using funding announcements from the last 30 days. Reviews and fresh candidates share this bound. Search at least three complementary non-aggregator source families, recording queries and no-results; avoid language/currency/US-media-only selection. Follow `curation-decisions.md`, save the identity-hashed pool before evaluation, and never expand it to manufacture negative decisions.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
 - Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
-- Treat Seed-Series C as the default stage preference, not an absolute ceiling; independent private breakout companies may continue through review at Series D+, >$10B valuation, or unusually large financing when product evidence, taste, and reader relevance are strong.
+- Treat Pre-Seed, Seed, Pre-Series A through Series C as the default stage preference, not an absolute ceiling; independent private breakout companies may continue through review at Series D+, >$10B valuation, or unusually large financing when product evidence, taste, and reader relevance are strong.
 - A named Series D or later round requires a structured `research.breakout_exception` in the startup JSON: an 80-500 character reason plus at least three unique research source IDs that include official and funding sources and bind at least two product-evidence claims. This records the exception without weakening the independent-private-company or manual taste review.
 - Never fabricate amount, stage, date, investor, or source URL.
-- `stage`, `date`, and `source_url` must come from the original article or the company is not eligible.
+- Named stage, date and source must be supported by an original announcement or original reporting. Missing evidence is `evidence_pending`, not quality rejection. Follow `funding-terms.md`: preserve native currency, explicit extension labels and equity/debt/mixed/grant distinctions; never infer FX, stage, allocation or lead investor.
 - Lead-investor identity must be cross-validated against the source article, the canonical directory entry in `content/investors.json`, and the official investor website before publish.
 - If the source article naming, resolved directory slug, and official website branding do not converge on the same investor, stop the startup addition instead of guessing.
 - Company and investor logos must come from official sources only and be recorded in `content/brand-assets.json`.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
 - If the official site, official ATS page, or clearly official company jobs page exposes a Careers/Jobs/Open Roles entry, record it as `links.careers`. Do not scrape job lists, role counts, locations, salaries, or hiring claims into startup records.
-- Rejected companies stay rejected unless there is a later funding round, new product evidence, or an explicit human-governance change makes the original rejection reason obsolete.
+- Consult the validated review overlay before the historical rejection ledger. Revisit only on a documented funding/product/company/governance trigger or a due pending review, within the same fixed pool. Preserve historical rows and hashes; append actual attempts, not inferred research. Access failures, missing evidence, format limitations and publication blocks are separate pending states. Industry-appropriate product evidence, not landing-page polish or self-serve access, determines craft.
 - Accept every startup that clears the bar in this run, up to 5 additions.
-- Rejections in a run must be at least 3x accepted additions.
+- No rejection-count, rejection-ratio or acceptance-rate target applies. Keep every qualified overflow as `qualified_pending`; retain publication blockers as `publication_blocked`, never relabel them as low quality.
 - Treat the 5-addition cap as a ceiling, not a quota.
 - A clean no-op run is valid.
 
@@ -65,9 +65,12 @@ Allowed persistent content changes:
 - `content/startups/{slug}.json`
 - `content/timestamps.json`
 - `content/investors.json`
+- `content/investor-profiles.json` (only run-associated firms; follow `investor-research.md`)
 - `content/brand-assets.json`
 - `content/screenshot-reviews.json`
-- `content/rejected.jsonl`
+- `content/rejected.jsonl` (confirmed negative decisions only; preserve existing rows)
+- `content/curation-reviews.json` (run-scoped decisions and due reviews)
+- `content/curation-runs/{run_id}.json` (the single fixed-pool manifest)
 - `public/logos/companies/{slug}.*`
 - `public/logos/investors/{slug}.*`
 - `public/screenshots/{slug}.webp`
@@ -110,9 +113,12 @@ If screenshot generation fails, do not keep a half-complete startup addition.
   - `content/startups/{slug}.json`
   - `content/timestamps.json`
   - `content/investors.json`
+  - `content/investor-profiles.json`
   - `content/brand-assets.json`
   - `content/screenshot-reviews.json`
   - `content/rejected.jsonl`
+  - `content/curation-reviews.json`
+  - `content/curation-runs/{run_id}.json`
   - `public/logos/companies/{slug}.*`
   - `public/logos/investors/{slug}.*`
   - `public/screenshots/{slug}.webp`
@@ -135,9 +141,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 7. Sync the Git refs with `origin/main` without modifying the main checkout.
 8. Create or enter a detached worktree at exact `origin/main`, record `RUN_WORKTREE`, and verify that selected worktree is clean. Acquire or renew the run lease for the exact `RUN_ID`, then atomically write the `preflight` checkpoint with the returned epoch/revision. Stop on an active-owner conflict; stale takeover must preserve the run id and pass the evidence rules above.
 9. Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` in `RUN_WORKTREE`. Stop immediately on failure and persist the exact blocker; discovery must not begin.
-10. Discover and deduplicate until 10-20 fresh recent-funding candidates remain; duplicate source hits do not count toward the bound.
-11. Deduplicate against `content/startups/*.json` and `content/rejected.jsonl`; schema-less legacy rows and v2 `active` rows suppress repeat review unless an allowed trigger is present.
-12. Run F1-F4 screening and write every new rejection as a complete v2 row.
+10. Select at most three due reviews with `curation:plan`, then discover enough recent-funding companies for one pool of 10-20 unique candidates. Record at least three complementary source-family attempts.
+11. Deduplicate against startups and `curation:lookup` (validated overlay before legacy/v2 history). Save `content/curation-runs/{run_id}.json` with fixed identities and pool hash before screening. A resumed run uses its existing pool, not a new cycle.
+12. Run F1-F4 screening and record explicit outcomes in the manifest and review overlay. Pending evidence/access/schema/qualification/publication is not rejection. Append a v2 historical row only for a confirmed quality or policy negative decision. Preserve any prior row and bind the overlay to its exact hash.
 13. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using task-owned Codex in-app browser tabs through the CUA browser tool when browser interaction is needed.
 14. Write structured `research` for every accepted startup:
     - `sources` must include the official product site and the funding source; add GitHub, docs, LinkedIn, Product Hunt, or other official sources only when they were checked.
@@ -149,7 +155,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
     - If a company exposes a high-confidence official Careers/Jobs/Open Roles entry, add it to `links.careers` as a static detail-page link only.
 15. Run the taste review.
 16. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
-17. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`.
+17. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`. Follow `docs/automation/investor-research.md` for all named participants and leads: plan the deduplicated associated scope, skip profiles reviewed less than 90 days ago, research missing/stale/materially changed profiles, and record failed attempts without refreshing verified dates. New investors need a sourced profile; do not expand the legacy exemption. No disclosed lead means `undisclosed`, not an invented name or a new F3 failure.
 18. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
 19. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap. Persist the `content_prepared` checkpoint before the full gate.
 20. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
@@ -185,7 +191,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 ## Review Passes
 
 1. Facts: source, amount, stage, date, investor, source URL, lead-investor naming from the article, and any breakout-stage exception
-2. Dedup: prior acceptance, frozen legacy block digests, v2-active rejection, allowed revisit trigger, one row per slug, and complete v2 superseded resolution when a revisit becomes accepted
+2. Dedup and correction: prior acceptance, frozen legacy digests, exact original-row hash, effective overlay state, documented revisit trigger, one review per slug, validated startup and qualification evidence for an accepted resolution
 3. Brand: company logo, investor logo, investor website, official source trace, local asset presence
 4. Research: structured `research.sources`, `product_evidence`, `market_context`, and `risks`; every concrete claim has a listed source or a clear VentureDex editorial basis
 5. Links: official `links.careers` is present when discoverable; no dynamic job-list, role-count, location, salary, or hiring-claim data is added
@@ -196,7 +202,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 ### Content Commits
 
-If only `content/rejected.jsonl` changed:
+If only decision/review/manifest content changed and no company was published:
 
 `content: update rejected candidates`
 
@@ -239,21 +245,21 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 
 ### Search Source Priority
 
-- Prefer TechCrunch for explicit round and investor details.
-- Use Bloomberg when the company page and funding narrative are clearer than the press release trail.
-- Use The Information when the product is strong and other reporting is thin.
-- Deprioritize news items that only repeat a press release with no product evidence.
+- Use company and investor announcements for original terms and identity; distinguish their product claims from independent verification.
+- Add original reporting, regional and sector-specific media, and research sources to reduce geography and industry blind spots. Log no-results without forcing representation.
+- Use aggregators only as discovery pointers and inspect the original source before writing facts. Do not count syndicated copies as independent corroboration.
+- Judge source usefulness by traceable details, not by a fixed publisher whitelist or USD/English query.
 
 ### Candidate Ranking
 
-- Prefer companies whose product can be tried in under five minutes.
-- Prefer companies where the bet is visible in the first screen or onboarding path.
-- Prefer categories where craft and specificity can be judged directly from the product.
+- Rank by concrete product evidence, distinct bet, reader relevance and evidence freshness. Use industry-appropriate materials, including enterprise integrations, hardware tests and disclosed medical validation.
+- A quick trial is useful evidence, not a ranking requirement. Sales-led access and a plain website are not negative product judgments.
+- Include due high-priority correction cases within the same pool, but do not automatically accept them.
 - Do not downgrade an otherwise publishable startup just because its lead investor is new; add the canonical investor directory entry and official brand asset in the same content change.
 - Reuse an existing investor slug when the source-article name, current directory entry, and official investor website clearly refer to the same firm.
 - Mint a new investor slug only after cross-checking the canonical name on the investor's official website; default to a normalized canonical name unless the repo already uses a durable short brand such as `a16z`, `yc`, or `776`.
 - If investor naming is materially ambiguous after those checks, defer the startup instead of inventing an alias.
-- Deprioritize products whose differentiation depends mainly on sales motion or enterprise access.
+- Separate insufficient public differentiation evidence from access friction; use a bounded evidence follow-up rather than a permanent negative based on enterprise access.
 
 ### Writing Heuristics
 
@@ -265,8 +271,8 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 ### Operational Heuristics
 
 - Treat a justified no-op run as better than a weak addition.
-- Prefer a precise rejection reason over a vague acceptance.
-- When the run's addition cap is above one, widen discovery enough to satisfy the rejection bar without lowering the acceptance threshold.
+- Prefer an evidence-specific decision over any unsupported positive or negative conclusion.
+- Keep the locked 10-20-company pool and five-addition ceiling regardless of the observed acceptance rate; qualified overflow stays pending.
 - Preflight local build dependencies before deep discovery work; if `./scripts/manage.sh validate` or its `npm run build` substep cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
 - Treat the mandatory bootstrap as the only pre-discovery environment gate. If credentials, GitHub Actions, dependencies, or another bootstrap check fail, stop immediately and persist the blocker; do not continue into discovery, rejected-only, or no-op work.
 - When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.

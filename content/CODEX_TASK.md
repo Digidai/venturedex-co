@@ -8,7 +8,7 @@
 
 你的品味标准：偏爱做了明确赌注的产品，偏爱有工艺感的产品，偏爱解决具体问题的产品。对"正确但无趣"的产品没有兴趣。
 
-**核心数字：每次运行收录不超过 5 个，拒绝至少 3 倍于收录数。**
+**核心边界：每轮固定 10-20 个唯一候选（含最多 3 个到期复审），最多发布 5 个。不设拒绝数、比例或收录数目标。**
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### Step 1: 搜索融资新闻
 
-搜索近 30 天的融资新闻，收集 10-20 个候选：
+先运行 `npm run curation:plan` 选最多 3 个到期复审，再搜索近 30 天融资新闻补足同一固定池。按 `docs/automation/curation-decisions.md` 记录至少三类互补来源的查询与结果；覆盖公司/投资机构公告、原创、地区、行业或研究来源，不限英语或美元。聚合器只提供线索。下列仅为部分查询示例，不是来源白名单：
 
 ```
 搜索查询:
@@ -29,29 +29,31 @@
 - 公司名
 - 公司 URL
 - 融资金额
-- 轮次（Seed 或具名 Series A-Z；Series D+ 仅能走结构化 breakout exception）
+- 轮次（Pre-Seed、Seed、Pre-Series A 或具名 Series A-Z；Series D+ 仍需结构化 breakout exception；扩展原词保存到 stage_raw）
+- 原币种与融资工具（不猜测汇率或股债分配）
 - Lead investor
 - 文章 URL（这就是 source_url）
 - 文章日期
 
-把结果列成表，然后进入 Step 2。
+先用 `curation:lookup -- --slug {slug}` 检查历史与有效复审，再把去重后的固定池及身份摘要保存到 `content/curation-runs/{run_id}.json`，然后进入 Step 2。不得为凑拒绝比例继续加人；合格溢出保留 qualified_pending。
 
 ### Step 2: 初筛（每个候选 60 秒）
 
-对每个候选，检查 4 个硬性条件。**第一个不通过就停止，记录到 rejected.jsonl，看下一个。**
+60 秒用于分流，不能代替深度评估。确证政策排除才停止；访问或证据不确定写 decision overlay，不直接记质量拒绝。
 
 ```
 F1: 打开公司 URL 和公开产品证据 → 能评估真实产品吗？
     通过: 可试用产品、docs/API、SDK/GitHub、demo/录屏、真实 UI 截图、应用商店页、benchmark、定价/用量页、客户案例 workflow
-    淘汰: 404、coming soon、纯 waitlist、纯概念页、只有泛泛营销文案且没有任何可检查的产品证据
+    待复审: 403/404/超时记 access_blocked；材料不足记 evidence_pending
+    质量否决: 完成行业适配的多来源检查后仍确认没有可评估产品；不能仅凭 landing page 或登录墙
     
 F2: 这是独立公司吗？
     淘汰: 大公司子产品、内部工具外部化
     
 F3: 阶段是否适配 VentureDex？
-    默认通过: Seed 到 Series C
+    默认通过: Pre-Seed、Seed、Pre-Series A 到 Series C
     明星项目例外: 独立私有公司即使 Series D+、估值 > $10B、或融资金额很大，也可继续评估
-    淘汰: 已上市、已被收购、大公司部门、融资传闻未闭合，或只是融了很多钱但产品判断站不住
+    淘汰: 已上市、已被收购、大公司部门、或只是融了很多钱但产品判断站不住
     
 F4: 不在排除品类中吗？
     淘汰: 加密/NFT、赌博、成人、SEO 工具、模板商店、VPN 评测
@@ -59,12 +61,12 @@ F4: 不在排除品类中吗？
 
 当真实融资轮次为具名 Series D 或更晚轮次时，通过 F3 还不够：新增 startup JSON 必须写 `research.breakout_exception.reason`（80-500 字符）和至少三个唯一的 `research.breakout_exception.source_ids`。这些 ID 必须绑定同一 `research.sources` 中的 official、funding 和产品证据来源，并覆盖至少两条 `research.product_evidence`。不得把 Series D+ 错写成 Series C，也不得用 `Growth`、`Late Stage` 或 `Series AA` 绕过 validator。
 
-淘汰时写入 `content/rejected.jsonl`：
+新状态写入 `content/curation-reviews.json`；只有确证质量/政策否决才可另写 v2 历史记录，不能把访问、证据、格式、截图或发布问题计作淘汰。历史格式示例：
 ```jsonl
 {"schema_version":2,"slug":"example","company_url":"https://example.com/","decision_source_url":"https://parent.example.com/products/example","decision_source_type":"official","rejected_at":"2026-07-26","stage":"F2","reason":"The official parent-company page identifies this as a subsidiary, not an independent company.","lifecycle":{"status":"active","revisit_triggers":["company_status_change","governance_change"]}}
 ```
 
-新增拒绝记录只使用 `content/STANDARD.md` 定义的 v2 合同。`company_url` 必须是核验过的官方公司/产品主页，`decision_source_url` 必须是实际支撑决定的官方、融资或发现来源，不能再用一个 `url` 字段混装两种角色。`lifecycle.revisit_triggers` 必须明确列出允许复审的事件。现有第 1-872 行无 `schema_version` 的五字段记录是冻结的 legacy v1 区块，验证器固定其有序 slug 和完整区块摘要；不要插入、删除、重排、改名或改写历史字段。真实复审需要原位升级 v2 时，必须作为可审查的治理变更同步更新验证器摘要，不能只改数据行。
+新增拒绝记录只使用 `content/STANDARD.md` 定义的 v2 合同。`company_url` 必须是核验过的官方公司/产品主页，`decision_source_url` 必须是实际支撑决定的官方、融资或发现来源，不能再用一个 `url` 字段混装两种角色。`lifecycle.revisit_triggers` 必须明确列出允许复审的事件。现有第 1-872 行无 `schema_version` 的五字段记录是冻结的 legacy v1 区块，验证器固定其有序 slug 和完整区块摘要；不要插入、删除、重排、改名或改写历史字段。复审以原始行 SHA-256 建立 overlay，禁止改旧行或冻结摘要。新 overlay 优先于历史去重；每次实际复查更新 attempts 和下一日期。
 
 ### Step 3: 深度评估（通过初筛的每个候选 5-10 分钟）
 
@@ -93,17 +95,17 @@ Q1: 这个产品做了什么赌注？
     否 = 找不到明确取舍，在做所有人都在做的事
 
 Q2: 它有工艺感吗？
-    是 = 前 10 秒感觉"这个人在意"（字体、间距、文案、交互）
-    否 = 默认字体、默认颜色、"Empowering teams to..."
+    是 = 有行业适配的具体产品证据：软件流程、开发接口/文档、企业集成、硬件测试/规格、医疗公开验证流程
+    否 = 已检查的关键产品细节粗糙且没有合理解释；网站模板或销售门槛本身不是否决证据
 
 Q3: 它解决的问题具体吗？
     是 = 你能说出一个人的角色和他的具体痛点
     否 = "帮助企业提升效率" 级别的泛泛
 ```
 
-0-1 个"是" → 淘汰，记录到 rejected.jsonl：
+材料不足 → evidence_pending；充分评估后仅 0-1 个"是" → quality_rejected，保留每项判断及来源。历史记录示例：
 ```jsonl
-{"schema_version":2,"slug":"boring","company_url":"https://boring.example/","decision_source_url":"https://boring.example/","decision_source_type":"official","rejected_at":"2026-07-26","stage":"taste","reason":"Q1=no (no discernible bet), Q2=no (template landing page), Q3=yes.","lifecycle":{"status":"active","revisit_triggers":["new_product_evidence","governance_change"]}}
+{"schema_version":2,"slug":"boring","company_url":"https://boring.example/","decision_source_url":"https://boring.example/","decision_source_type":"official","rejected_at":"2026-07-26","stage":"taste","reason":"Q1=no (no discernible bet in checked product workflow), Q2=no (documented workflow lacks basic error handling), Q3=yes.","lifecycle":{"status":"active","revisit_triggers":["new_product_evidence","governance_change"]}}
 ```
 
 **3.3 验证融资信息**
@@ -113,10 +115,12 @@ Q3: 它解决的问题具体吗？
 | 字段 | 从文章中确认 | 文章里找不到就 |
 |------|-------------|---------------|
 | amount | 文章明确写的金额 | 写 "undisclosed" |
-| stage | 文章标注的轮次 | 必须有，否则不收录 |
+| stage | 来源具名轮次，按 funding-terms.md 标准化 | 未具名进入 evidence_pending，不能猜测 |
 | lead_investor | 文章提到的 lead | 写 "undisclosed" |
 | date | 文章发布日期 | 必须有 |
 | source_url | 文章 URL | 必须有，否则不收录 |
+
+按 `docs/automation/funding-terms.md` 保留原币种与扩展轮次：非美元金额必须带 ISO 4217 `currency`，`stage_raw` 必须与 canonical stage 一致；用 `instrument` 区分股权、债务、混合、补助或未披露。不自动换汇，不把参投方推断为 lead。
 
 ### Step 4: 创建内容
 
@@ -229,7 +233,7 @@ N6: 去掉产品名，这段话本身值得读吗？
 产品完成度: ___ (核心功能可用，或公开证据足够完整?)
 市场验证:   ___ (有用户/付费/增长?)
 差异化:     ___ (品类内某维度最好?)
-工艺品味:   ___ (前 10 秒感觉"在意"?)
+工艺品味:   ___ (行业适配的产品流程、接口、测试或实物证据?)
 势能:       ___ (近期被讨论/增长/融资?)
 总分:       ___/5
 ```
@@ -253,6 +257,8 @@ N6: 去掉产品名，这段话本身值得读吗？
 
 **4.5 截图**
 
+品牌确认后，按 `docs/automation/investor-research.md` 维护关联投资机构档案：使用 `npm run investors:plan -- --startup {slug}`，对多家公司重复 `--startup`。90 天内完整核验的资料保持不变；过期或实质变化时复查；新机构补齐 `content/investor-profiles.json` 中的来源、结构化事实和复查日期。失败只记录短期重试，不冒充已更新。未知 lead 使用既有 `undisclosed`，不额外加一道淘汰条件。投资机构档案校验已包含在完整 gate 中。
+
 先用本次任务的 Codex 内置浏览器标签页打开官网，通过可见页面操作关闭真实遮挡产品的 consent/聊天浮层，等待产品内容可读，保存截图到绝对路径并做视觉复核。不得把空白页、加载中页面或被遮挡的页面标为已复核，也不通过脚本删除真实产品内容。
 
 取实际文件路径的方法见 `content/STANDARD.md` 4.6：在 CUA 会话中先用 `var productCapture = await taskTab.getScreenshot()` 显示并保留原生捕获字节，视觉复核后用该会话的 `node:fs/promises.writeFile` 将字节原样保存到本次任务独占的绝对路径；不需要另一套浏览器工具。
@@ -273,7 +279,7 @@ git diff --check
 # 如果报错，修复后重试
 
 # 提交（单个新增用单项目 commit；2-5 个新增可在逐项通过门禁后批量 commit）
-git add content/startups/{slug}.json content/timestamps.json content/brand-assets.json content/screenshot-reviews.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl
+git add content/startups/{slug}.json content/timestamps.json content/investors.json content/investor-profiles.json content/brand-assets.json content/screenshot-reviews.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl content/curation-reviews.json content/curation-runs/{run_id}.json
 git commit -m "content: add {Product Name}
 
 Funding: {amount} {stage} from {lead} ({source_name})
@@ -371,10 +377,10 @@ python3 scripts/gsc-codex.py plan --latest-weekly
 3. 不收录自己没评估过的产品；不能直接试用的 ToB/API/基础设施产品必须有公开产品证据
 4. 不用禁用词列表里的任何词
 5. 每次最多收录 5 个
-6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/brand-assets.json`、`content/screenshot-reviews.json`、`content/rejected.jsonl`、`public/screenshots/`、`public/logos/`
-7. 不重复收录（先查 content/startups/ 和 rejected.jsonl）
+6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/investor-profiles.json`、`content/brand-assets.json`、`content/screenshot-reviews.json`、`content/rejected.jsonl`、`content/curation-reviews.json`、`content/curation-runs/`、`public/screenshots/`、`public/logos/`
+7. 不重复收录（先查 content/startups/，再通过 curation:lookup 查有效复审及旧拒绝）
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`
-9. 已在 rejected.jsonl 中的默认不再评估（除非有新融资轮次、新产品证据，或人类明确修改了使原拒绝理由失效的治理规则）
+9. 先查有效复审 overlay，再查旧拒绝；有明确新融资/产品/公司状态/治理变化或已排期的复审才进入同一固定池。不得把审核阻塞当拒绝，也不得自动收录待复审项目。
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
 11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先用 `python3 scripts/gsc-codex.py plan --latest-daily` 或 `--latest-weekly` 只读确认目标，再通过 Codex 内置浏览器的 CUA 工具完成 Google Search Console URL Inspection。点击前用 `begin` 持久化精确 URL 的意图，至多点击一次，观察结果后用 `finish` 记录证据；不能把浏览器计划、按钮点击或通用成功提示当作完成。必须检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录，且 `requested` 不等于已收录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；普通未点击积压先用 `plan --retry-pending` 选择有界批次。`post_request_confirmation_unknown` 不得普通重试或再次点击，只能做精确 URL 绑定的零点击证据核对；不能证明已有成功状态时保留 blocker。
 12. 产品试用、页面核验、截图、登录态和 GSC 全程使用 Codex 内置浏览器的 CUA 工具，只操作本次创建的标签页；每次动作以新读取的可见页面为依据。不再依赖 `bb-browser`、Comet/Chrome CDP 或共享 daemon，也不得把旧浏览器当作失败 fallback。Codex 浏览器或登录态不可用时记录具体 blocker；不操作用户标签页，不启动、重启或终止其他浏览器进程。
@@ -391,9 +397,12 @@ GSC 若在 immutable receipt 写入后、终态 ledger 追加前中断，可用 
   content/weekly/*.json
   content/timestamps.json
   content/investors.json
+  content/investor-profiles.json
   content/brand-assets.json
   content/screenshot-reviews.json
   content/rejected.jsonl
+  content/curation-reviews.json
+  content/curation-runs/{run_id}.json
   public/screenshots/*.webp
   public/logos/companies/*
   public/logos/investors/*

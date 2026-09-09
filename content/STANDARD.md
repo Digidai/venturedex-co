@@ -17,22 +17,22 @@ VentureDex 是一个有观点的创业项目目录。我们不追求全面，追
 这个判断基于三个维度：
 
 1. **这个产品做了一个有意思的赌注。** 它放弃了什么来换取什么？如果你找不到它的赌注，它要么没有主见，要么在做所有人都在做的事。
-2. **这个产品有工艺感。** 打开网站的前 10 秒你能感受到。字体、间距、文案、交互。粗糙的 landing page 背后几乎不会有精致的产品。
+2. **这个产品有工艺感。** 用适合行业的产品证据判断：软件看真实流程、信息架构和交互；开发工具看 API、文档与错误处理；企业服务看集成和部署流程；硬件看规格、测试与现场演示；医疗看已披露的验证方法和使用流程。官网美观是辅助信号，不能用模板、字体或注册门槛推断产品质量。
 3. **这个产品解决了一个真实的、具体的问题。** 不是"让团队更高效"。是"让开发者在 issue tracker 里不再等 3 秒刷新"。越具体越好。
 
-如果三个维度一个都不满足，不收录。即使它融了 $100M。
+三个维度至少两个有具体证据支持才通过。证据不足先待复审；证据充分但仅 0-1 个通过才是质量淘汰。融资金额不替代产品判断。
 
 ---
 
 ## 第二章：策展流程
 
-每个收录从一条融资新闻开始，经过 5 个阶段到达发布。每个阶段都可能淘汰候选。
+每个收录从可核验的融资信号或有明确触发条件的复审开始，经过 5 个阶段到达发布。各阶段区分证据待补、访问受阻、合格待发布、质量拒绝与政策排除，不把尚未发布都称为淘汰。
 
 ```
 Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──→ Stage 4: 内容创作 ──→ Stage 5: 验证发布
    │                  │                    │                     │                    │
    │                  ↓                    ↓                     ↓                    ↓
-   │              rejected.jsonl       rejected.jsonl         重写直到通过          自动验证
+   │             decision overlay     decision overlay      重写直到通过          自动验证
    │              (记录原因)           (记录原因)                                  build-db.sh
    ↓
  融资新闻
@@ -45,30 +45,24 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 **输入**: 近 30 天的创业融资新闻。
 
-**搜索方式**:
-```
-"raises" "seed" OR "series" site:techcrunch.com
-"funding" "startup" site:bloomberg.com
-```
+**搜索方式**：先运行 `npm run curation:plan`，最多选 3 个到期复审；再补充新发现，与复审合计固定为 10-20 个唯一公司。至少尝试三类互补来源：公司/投资机构原始公告、原创媒体、地区媒体、行业媒体或研究机构。记录查询和结果，未找到也如实记录；不强制每类入选。聚合器只作发现线索，融资事实回到原始报道或公告。不要只用英文、美元金额或少数美国科技媒体构造查询。
 
-**产出**: 10-20 个候选 URL。
-
-**这个阶段不做判断**，只做收集。
+**产出**：按 `docs/automation/curation-decisions.md` 保存 `content/curation-runs/{run_id}.json`。锁定公司和发现来源的身份摘要，再逐个评估；不能为凑拒绝数追加候选。固定池所有候选都必须有明确结果，最多发布 5 个，合格溢出记 `qualified_pending`。无拒绝或无收录都可以是正常结果。
 
 ### Stage 2: 初筛（60 秒/项目）
 
-对每个候选，快速检查 4 个硬性条件。**任何一条不满足，立即淘汰并记录。**
+60 秒是初步分流时间，不是完成尽调的期限。确定违反 F2/F4 才作政策排除；身份、融资或产品证据尚不明确进入待补队列，不能直接判为低质量。
 
 | # | 条件 | 怎么检查 | 淘汰标准 |
 |---|------|---------|---------|
-| F1 | 产品可评估 | 打开官网、文档、demo、产品截图、API、SDK、案例或应用商店页 | 404、coming soon、纯 waitlist、纯概念页、只有泛泛营销文案且没有任何可检查的产品证据 |
+| F1 | 产品可评估 | 检查官网及适合行业的原始产品材料 | 403/404/超时或暂时无法查看记 access_blocked；证据不完整记 evidence_pending；完成多来源核查仍确认没有可评估产品才可给出具体质量否决 |
 | F2 | 独立公司 | 查公司背景 | 大公司子产品、内部工具、白标 |
-| F3 | 阶段适配 | 看融资轮次、估值、公司状态 | 已上市、已被收购、非独立公司；普通项目优先 Seed-Series C，明星项目可走突破性项目例外 |
+| F3 | 阶段适配 | 看融资轮次、估值、公司状态 | 已上市、已被收购、非独立公司；普通项目覆盖 Pre-Seed、Seed、Pre-Series A 至 Series C，明星项目可走突破性项目例外 |
 | F4 | 非排除品类 | 看产品内容 | 加密货币/NFT、赌博、成人、SEO 工具、模板商店、VPN 评测 |
 
-**F1 不是"必须能无登录试用"。** ToB、API、基础设施、医疗、防务、金融等产品常常需要登录、SSO、合规审核或销售流程。只要有足够公开证据能判断产品本身，就可以进入深度评估。公开证据包括但不限于：开发者文档、API reference、SDK/GitHub、可运行 playground、录屏 demo、真实 UI 截图、应用商店页、benchmark、定价/用量页、客户案例中具体 workflow。登录墙或 demo CTA 本身不是淘汰理由；没有任何可检查的产品证据才淘汰。
+**F1 不是"必须能无登录试用"。** ToB、API、基础设施、医疗、防务、金融等产品常常需要登录、SSO、合规审核或销售流程。只要有足够公开证据能判断产品本身，就可以进入深度评估。公开证据包括但不限于：开发者文档、API reference、SDK/GitHub、可运行 playground、录屏 demo、真实 UI 截图、应用商店页、benchmark、定价/用量页、客户案例中具体 workflow。登录墙或 demo CTA 本身不是淘汰理由。硬件与医疗可以用规格、现场测试、试点流程及公开验证材料建立证据；厂商性能和临床主张标记为厂商披露，不能写成独立验证。无法取得材料与确认没有产品是不同结论。
 
-**F3 不是"融资越多越该淘汰"。** VentureDex 默认偏早期，但可以收录突破性明星项目：即使是 Series D+、估值 > $10B、或融资金额很大，只要它仍是独立私有公司，并且产品赌注明确、公开证据充足、市场势能本身就是读者应该理解的信号，就可以继续评估。不能走例外的情况：已上市、已被收购、大公司部门、融资传闻未闭合、或者只是"融了很多钱"但产品判断站不住。
+**F3 不是"融资越多越该淘汰"。** VentureDex 默认偏早期，但可以收录突破性明星项目：即使是 Series D+、估值 > $10B、或融资金额很大，只要它仍是独立私有公司，并且产品赌注明确、公开证据充足、市场势能本身就是读者应该理解的信号，就可以继续评估。不能走例外的情况：已上市、已被收购、大公司部门、或者只是"融了很多钱"但产品判断站不住。
 
 凡 `funding[].stage` 为具名 `Series D` 或更晚轮次，startup JSON 必须增加结构化 `research.breakout_exception`，不能靠评语暗示例外已经通过：
 
@@ -85,7 +79,7 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 `source_ids` 至少三个且不能重复，必须引用 `research.sources` 中的官方来源和融资来源，并覆盖至少两条 `research.product_evidence`。这个字段只记录例外理由和证据绑定；它不替代 F2 独立公司核验、F3 人工判断、完整 research、品牌或发布门禁。`Growth`、`Late Stage`、`Series AA` 等模糊或非具名轮次仍不进入 schema。
 
-淘汰时记录到 `content/rejected.jsonl`：
+新决策首先记到 `content/curation-reviews.json`。只有确证质量否决或政策排除才可另写 v2 历史记录到 `content/rejected.jsonl`；访问、证据、格式或发布阻塞不写拒绝行：
 ```jsonl
 {"schema_version":2,"slug":"bad-example","company_url":"https://example.com/","decision_source_url":"https://parent.example.com/products/bad-example","decision_source_type":"official","rejected_at":"2026-07-26","stage":"F2","reason":"The official parent-company page identifies this as a subsidiary, not an independent company.","lifecycle":{"status":"active","revisit_triggers":["company_status_change","governance_change"]}}
 ```
@@ -95,10 +89,10 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 - `company_url` 只保存已核验的官方公司或产品主页。
 - `decision_source_url` 保存实际支撑拒绝决定的页面；`decision_source_type` 只能是 `official`、`funding` 或 `discovery`。
 - `lifecycle.status` 新增时必须是 `active`；`revisit_triggers` 至少列出一个可复审条件，只能使用 `later_funding_round`、`new_product_evidence`、`company_status_change` 或 `governance_change`。
-- 触发复审但仍拒绝时，用新核验的事实更新同一行，保持 `active`。触发复审并收录时，把同一行改为 `superseded`，并增加 `resolution`：`resolved_at`、已列入 `revisit_triggers` 的 `trigger`、固定值 `outcome: "accepted"` 和非空 `note`；对应 slug 必须同时存在于 `content/startups/`。`superseded` 行保留审计历史，但不计入 3:1 拒绝比例。
-- 不批量迁移或猜测 legacy v1 的 URL 角色。只有在真实复审时重新核验公司官网和决定来源，才把对应旧行原位升级为 v2；该升级必须作为显式治理变更同步更新验证器中的冻结区块摘要。v2 缺字段、混入旧 `url`/`date` 字段、使用未知字段或生命周期不完整都会阻断验证。
+- 新的复审结论写入独立 decision overlay，引用原始行 SHA-256；不改写旧行或冻结摘要。有效 overlay 优先于旧拒绝用于去重，`accepted` 仅在对应 startup 和全部门禁通过时成立。既有 v2 `superseded` 记录仍兼容，但新的复审统一走 overlay。
+- 不迁移或猜测 legacy v1 的 URL 角色，不升级或修改冻结区块摘要。复审重新核验公司官网，以准确来源和原行摘要建立 overlay；v2 缺字段、混用旧字段或生命周期不完整仍阻断验证。
 
-通过初筛的候选进入 Stage 3。预期：10-20 个候选中，约 5-8 个通过初筛。
+通过初筛进入 Stage 3。没有预设通过率；按状态报告真实结果。
 
 ### Stage 3: 深度评估（5-10 分钟/项目）
 
@@ -118,10 +112,10 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 | 问题 | 通过标准 | 淘汰标准 |
 |------|---------|---------|
 | **这个产品做了什么赌注？** | 你能用一句话说出"它选择了 X 放弃了 Y" | 你找不到它的取舍，它在做所有人都在做的事 |
-| **它有工艺感吗？** | 打开网站前 10 秒感觉"这个人在意" | 默认字体、默认颜色、"Empowering teams to..." |
+| **它有工艺感吗？** | 同行业可检查的流程、接口、测试或实物细节体现明确取舍 | 已检查的产品证据显示关键流程粗糙且缺乏解释；不能仅凭官网样式否定 |
 | **它解决的问题具体吗？** | 你能说出一个人的名字（或角色）和他的痛点 | "帮助企业提升效率" — 无具体性 |
 
-三问中至少 2 个通过才继续。0-1 个通过 → 淘汰。
+三问逐项记录证据，至少 2 个通过才继续。材料不足 → evidence_pending；完成相应行业评估后仅 0-1 个通过 → quality_rejected。
 
 淘汰时记录：
 ```jsonl
@@ -134,15 +128,19 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 
 | 字段 | 来源要求 | 如果找不到 |
 |------|---------|-----------|
-| 融资金额 | 原文明确提到的数字 | 不填 amount，标注 "undisclosed" |
-| 融资轮次 | 原文明确标注 (Seed/Series A 等) | 必须有，否则不收录 |
-| Lead investor | 原文提到的 lead 或第一个提及的投资方 | 不填，写 "undisclosed" |
+| 融资金额 | 原文明确提到的数字 | 保留必填 amount 键，值写 "undisclosed" |
+| 融资轮次 | 原文明确标注，按 funding-terms.md 保留原词并标准化 | 未具名先 evidence_pending，不猜测或永久拒绝 |
+| Lead investor | 原文明示的 lead/co-lead；不能把首个提及的参投方推断为领投 | 保留必填 lead_investor 键，值写 "undisclosed" |
 | 日期 | 文章发布日期 | 必须有 |
 | 来源 URL | 文章 URL | 必须有，没有来源不收录 |
 
-**绝对规则：不编造。不确定的留空。来源不存在的不收录。**
+金额保留来源币种，非美元使用 `EUR 6.5M` 等格式及 `currency`；不自动换汇。`stage_raw` 保留 `Series A+` 等原始扩展轮次；`instrument` 区分 equity/debt/mixed/grant/undisclosed，不把混合融资总额写成股权金额。原币种、扩展轮次和未披露 lead 都不是淘汰条件。详见 `docs/automation/funding-terms.md`。
 
-通过 Stage 3 的项目进入 Stage 4。预期：5-8 个候选中，约 2-4 个通过。
+**绝对规则：不编造。不确定的非必填信息省略；amount / lead_investor 未披露时使用已有的 "undisclosed" 值，不省略必填键。来源不存在的不收录。缺少已披露的领投方名称本身不是 F3 淘汰条件。**
+
+**投资机构资料维护：** 每个准备新增或更新的 startup 涉及的明确参投方和领投方，都先按 canonical directory 精确去重。结构化资料存放在 `content/investor-profiles.json`，按 `docs/automation/investor-research.md` 执行：90 天内已完整核验的机构跳过；满 90 天复查；实质变化或事实错误提前复查；新机构必须补充有官方来源的档案。未披露字段省略，不以来源访问失败刷新 `reviewed_at`。历史缺档案机构按本次关联范围逐步补齐，不扫描整个目录。这里的 90 天规则不改变 startup 的融资时间窗和收录标准。
+
+通过 Stage 3 进入 Stage 4；超过本轮发布容量的合格项目保留 qualified_pending，不降低其评价。
 
 ### Stage 4: 内容创作
 
@@ -298,7 +296,7 @@ editor_note 是 VentureDex 的核心价值。每一条都应该让读者觉得"�
 | 产品完成度 | 核心功能已经被真实使用或公开证据足够完整 | 明显半成品 | 试用 3 分钟或检查公开产品证据 |
 | 市场验证 | 有付费用户或可观的免费用户 | 只有 landing page | 看定价页/用户数 |
 | 差异化 | 品类内某个维度明显最好 | 和竞品无明显区别 | 和前 3 竞品对比 |
-| 工艺品味 | 前 10 秒感觉"这个人在意" | 粗糙或模板化 | 看字体/间距/文案/交互 |
+| 工艺品味 | 有适合行业的可检查产品细节 | 产品证据显示关键流程粗糙 | 看真实流程、接口、测试或实物，不只看 landing page |
 | 势能 | 近期被讨论/增长/融资 | 无明显动态 | 看 HN/Twitter/新闻 |
 
 **is_featured 规则**: 总分 ≥ 4 且工艺品味 = 1。
@@ -563,8 +561,8 @@ git diff --check
 4. **不用营销语言。** 禁用词列表里的词一个都不能出现。
 5. **不批量收录。** 每次运行最多收录 5 个。宁缺毋滥。
 6. **不越界修改。** 只操作 `content/`、`content/brand-assets.json`、`public/screenshots/`、`public/logos/`。
-7. **不重复收录。** 先查 content/startups/ 和 rejected.jsonl。
-8. **不重复消耗旧候选。** rejected.jsonl 中 legacy v1 或 v2 `active` 条目默认不再评估，除非出现 v2 合同允许的复审触发条件；复审时核验并原位升级/更新同一行，不追加重复 slug。
+7. **不重复收录。** 先查 content/startups/，再用 `curation:lookup` 联合查询有效复审与历史拒绝。
+8. **不重复消耗旧候选。** 历史拒绝只有明确触发才复审；到期 overlay 每轮最多选 3 个进入同一个固定池。每次实际尝试记录证据、结果及下一日期；不改写历史或同日无变化重试。
 9. **不用第三方 Logo 服务。** 品牌素材必须能追溯到官网。
 
 ---
@@ -583,13 +581,11 @@ git diff --check
 
 每一个选择都是一个信号。VentureDex 的 editor_note 应该让读者看到这些选择。
 
-### 品味 = 你拒绝了什么
+### 品味 = 你能解释自己的判断
 
-VentureDex 的品味不体现在收录了什么。体现在拒绝了什么。
+没有拒绝数量、比例或接受率目标。目录不是全市场样本，历史拒绝行数也不是质量指标。质量体现在具体证据、行业适配的判断，以及发现错漏后能否纠正。
 
-如果 rejected.jsonl 的条目数少于 content/startups/ 的条目数，说明标准不够高。
-
-目标比例：**每收录 1 个项目，至少拒绝 3 个。**
+每轮分别报告质量拒绝、政策排除、证据待补、访问受阻、格式待处理、合格待发布、发布受阻和已发布；公布分母与待复审积压。定期检查来源覆盖和复审纠正率，而不是奖励多拒绝或多收录。
 
 ### 品味 = 你怎么说
 
