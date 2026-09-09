@@ -2,6 +2,7 @@
 import BrandLogo from "./BrandLogo.astro";
 import { getCompanyBrandAsset } from "../lib/brand-assets";
 import type { FundingRound } from "../lib/types";
+import { fundingAmountLabel, fundingStageLabel } from "../lib/funding-terms";
 
 interface Props {
   rounds: FundingRound[];
@@ -17,8 +18,8 @@ const items = rounds
     name: round.company_name,
     slug: round.company_slug!,
     logo: getCompanyBrandAsset(round.company_slug),
-    amount: round.amount,
-    stage: round.stage,
+    amount: round.amount ? fundingAmountLabel(round) : null,
+    stage: fundingStageLabel(round),
     date: new Date(`${round.date}T00:00:00`).toLocaleDateString("en-US", {
       month: "short",
       day: "numeric",

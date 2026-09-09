@@ -132,10 +132,13 @@ test("non-null source terms survive both the generated D1 seed and content reade
     writeFileSync(join(startupDir, "kodesage.json"), JSON.stringify(record));
     const canonical = join(temp, "canonical.json"), seed = join(temp, "seed.sql");
     execFileSync("bash", ["scripts/build-db.sh"], { cwd: root, env: { ...process.env, VENTUREDEX_STARTUPS_DIR: startupDir, VENTUREDEX_WEEKLY_DIR: weeklyDir, VENTUREDEX_SEED_OUTPUT: seed, EMIT_CANONICAL_JSON: canonical }, stdio: "pipe" });
-    const pythonRound = JSON.parse(readFileSync(canonical, "utf8")).funding.kodesage[0];
+    const canonicalData = JSON.parse(readFileSync(canonical, "utf8"));
+    const pythonRound = canonicalData.funding.kodesage[0];
     const readers = createContentReaders({ records: [record], timestamps: {}, investorDirectory: {}, collectionConfigs: [] });
     const tsRound = readers.getContentFundingRoundsForStartup("kodesage")[0];
     assert.ok(tsRound);
+    assert.equal(canonicalData.startups.kodesage.funding_display, "EUR 6.5M (mixed financing)");
+    assert.equal(readers.getContentStartups()[0].funding_display, canonicalData.startups.kodesage.funding_display);
     for (const key of ["currency", "stage_raw", "instrument"] as const) assert.equal(tsRound[key], pythonRound[key]);
     const sql = readFileSync(seed, "utf8");
     assert.match(sql, /INSERT INTO funding_rounds \([^\n]*currency, stage_raw, instrument/);

@@ -139,6 +139,16 @@ if not isinstance(_timestamps_raw, dict):
 timestamps = {k: v for k, v in _timestamps_raw.items() if not k.startswith("__")}
 
 timestamp_errors: list[str] = []
+def funding_display(round_data):
+    # Keep this standalone seed fixture compatible and lock it to TS via parity tests.
+    amount = round_data.get("amount", "")
+    if not amount:
+        return ""
+    amount = "Undisclosed amount" if amount == "undisclosed" else amount
+    instrument = {"debt": "debt", "mixed": "mixed financing", "grant": "grant"}.get(round_data.get("instrument"))
+    return f"{amount} ({instrument})" if instrument else amount
+
+
 for path in startup_files:
     slug = path.stem
     entry = timestamps.get(slug)
@@ -258,7 +268,7 @@ for path in startup_files:
         f"{sql(json.dumps(data.get('research'), ensure_ascii=False) if data.get('research') else None)}, "
         f"{data.get('editor_rating') if data.get('editor_rating') is not None else 'NULL'}, {sql(data.get('why_featured'))}, "
         f"{sql(data.get('product_type'))}, {sql(latest_round.get('stage', ''))}, "
-        f"{sql(latest_round.get('amount', ''))}, {data.get('founded_year') if data.get('founded_year') is not None else 'NULL'}, "
+        f"{sql(funding_display(latest_round))}, {data.get('founded_year') if data.get('founded_year') is not None else 'NULL'}, "
         f"{sql(data.get('team_size'))}, {sql(data.get('hq_location'))}, {sql(data.get('region'))}, "
         f"{sql(data.get('tags'))}, {sql(data.get('investors'))}, "
         f"{sql(json.dumps(data.get('links', {})) if data.get('links') else None)}, "
@@ -365,7 +375,7 @@ for path in startup_files:
         "product_name": data["product_name"],
         "product_type": data.get("product_type"),
         "funding_stage": latest_round.get("stage", ""),
-        "funding_display": latest_round.get("amount", ""),
+        "funding_display": funding_display(latest_round),
         "region": data.get("region"),
         "is_featured": 1 if data.get("is_featured") else 0,
         "editor_rating": data.get("editor_rating"),

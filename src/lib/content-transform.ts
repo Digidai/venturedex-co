@@ -1,6 +1,6 @@
 import type { Collection, FundingRound, Investor, Startup } from "./types";
 import { resolveInvestorSlugByName } from "./brand-assets";
-import type { FundingInstrument } from "./funding-terms";
+import { fundingAmountLabel, type FundingInstrument } from "./funding-terms";
 
 /**
  * Pure content transform — the single source of the content -> Startup/Funding/
@@ -271,10 +271,10 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
       curator: "dai",
       product_type: stringValue(data.product_type) || null,
       // Funding stage/display come from the latest round (by date desc).
-      // build-db.sh seeds these as latest_round.get(...,'') (empty string when the
-      // round omits them), so mirror that literal rather than coercing to null.
+      // Empty when absent; source amounts retain debt/mixed/grant annotations.
+      // Keep the pure display formatter equivalent to build-db.sh funding_display.
       funding_stage: stringValue(funding.stage),
-      funding_display: stringValue(funding.amount),
+      funding_display: funding.amount ? fundingAmountLabel({ amount: stringValue(funding.amount), instrument: stringValue(funding.instrument) as FundingInstrument }) : "",
       founded_year: typeof data.founded_year === "number" ? data.founded_year : null,
       team_size: stringValue(data.team_size) || null,
       hq_location: stringValue(data.hq_location) || null,
