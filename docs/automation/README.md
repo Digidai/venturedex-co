@@ -79,6 +79,10 @@ Search Console submission priority order:
   The deterministic sync implementation. It fetches, normalizes, deduplicates, validates, and writes the launch snapshot; scheduling remains outside this script.
 - `../../.github/workflows/sync-whatships.yml`
   The scheduled and manual GitHub Actions wrapper for the launch discovery sync. It invokes the sync implementation, waits for the exact dispatched deployment to succeed, and only then sends the exact changed URL set to IndexNow.
+- `../../scripts/launch-covers.ts` and `../../content/launch-covers.json`
+  Generate and validate small original-video-derived stills, served as first-party immutable assets. Normal site builds never fetch media; the list never downloads MP4s.
+- `../../scripts/launch-sync-state.ts`
+  Compare with the last successful publication/notification checkpoint, recover interrupted no-op runs, and verify the live catalog/cover fingerprint before notification. The six-hour importer uses bounded addition batches so backlog can drain without disabling deletion guards.
 - `../../scripts/promotion/indexnow.ts`
   The canonical IndexNow client. It validates VentureDex URL scope, supports bounded launch backfills and file-based incremental URL sets, retries transient responses, and records provider receipts without claiming that a submitted URL is indexed.
 - `../../scripts/automation-run-state.py`

@@ -2,11 +2,14 @@ export const prerender = true;
 
 import type { APIRoute } from "astro";
 import { getPublicLaunchTags, whatShipsSnapshot } from "../lib/whatships";
+import { getLaunchCover } from "../lib/launch-covers";
+import { launchCatalogFingerprint } from "../lib/launch-fingerprint";
 
 export const GET: APIRoute = () => {
   const body = JSON.stringify({
     schema_version: 1,
     channel: "launches",
+    fingerprint: launchCatalogFingerprint,
     updated_at: whatShipsSnapshot.source.commit_at,
     item_count: whatShipsSnapshot.item_count,
     items: whatShipsSnapshot.items.map((item) => ({
@@ -21,6 +24,7 @@ export const GET: APIRoute = () => {
       tags: getPublicLaunchTags(item),
       published_at: item.published_at,
       duration_seconds: item.duration_seconds,
+      cover: getLaunchCover(item),
       video_url: item.video_url,
       original_post_url: item.original_post_url,
     })),
@@ -29,7 +33,7 @@ export const GET: APIRoute = () => {
   return new Response(body, {
     headers: {
       "Content-Type": "application/json; charset=utf-8",
-      "Cache-Control": "public, max-age=300, s-maxage=3600",
+      "Cache-Control": "public, max-age=60, s-maxage=300, must-revalidate",
     },
   });
 };

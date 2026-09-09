@@ -7,6 +7,7 @@ import {
   buildSnapshot,
   reconcileLaunchChangeTimes,
   normalizeUpstreamVideos,
+  selectAdditionBatch,
   type WhatShipsSnapshot,
 } from "../scripts/sync-whatships";
 import {
@@ -198,12 +199,18 @@ test("the generated file contains only the allowlisted item keys", () => {
   }
 });
 
-test("the scheduled workflow commits only a changed snapshot and explicitly dispatches the release", () => {
+test("the scheduled workflow commits scoped data, recovers no-op deploys, and checkpoints only after notification", () => {
   const workflow = readFileSync(".github/workflows/sync-whatships.yml", "utf8");
   assert.match(workflow, /cron: "17 \*\/6 \* \* \*"/);
   assert.match(workflow, /contents: write/);
   assert.match(workflow, /actions: write/);
   assert.match(workflow, /git diff --quiet -- content\/whatships\.json/);
+  assert.match(workflow, /whatships:sync -- --batch/);
+  assert.match(workflow, /launches:covers/);
+  assert.match(workflow, /launch-sync-state\.ts verify-live/);
+  assert.match(workflow, /actions\/cache\/restore/);
+  assert.ok(workflow.indexOf("--urls-file") < workflow.indexOf("launch-sync-state.ts checkpoint"));
+  assert.doesNotMatch(workflow, /if: steps\.commit\.outputs\.changed == 'true'/);
   assert.match(workflow, /git push origin HEAD:main/);
   assert.match(workflow, /gh workflow run deploy\.yml --ref main/);
   assert.match(workflow, /--commit "\$\{\{ steps\.commit\.outputs\.pushed_sha \}\}"/);
@@ -230,12 +237,15 @@ test("the Launches channel is discoverable without joining startup or newsletter
 
   assert.match(layout, /href="\/launches"[^>]*>Launches</);
   assert.match(layout, /meta name="referrer" content=\{referrerPolicy\}/);
-  assert.match(page, /fetch\("\/launches\.json"/);
+  assert.match(page, /fetch\(indexUrl/);
+  assert.match(page, /\/launches\.json\?v=/);
   assert.match(page, /referrerPolicy="no-referrer"/);
   assert.match(page, /detailPath\(item\)/);
   assert.match(card, /href=\{detailPath\}/);
   assert.match(card, /data-launch-preview/);
-  assert.match(card, /item\.video_url/);
+  assert.match(card, /getLaunchCover\(item\)/);
+  assert.doesNotMatch(card, /<video/);
+  assert.match(card, /loading=\{eager \? "eager" : "lazy"\}/);
   assert.match(card, /getPublicLaunchTags\(item\)/);
   assert.match(detail, /class="launch-player__video"/);
   assert.match(detail, /referrerPolicy="no-referrer"/);
@@ -273,7 +283,33 @@ test("launch pages prioritize video discovery before supporting editorial conten
   assert.ok(detailHero >= 0 && detailHeader < detailPlayer && detailPlayer < detailBody);
   assert.doesNotMatch(detail, /class="launch-detail__dek"/);
   assert.doesNotMatch(detail, /font-size:\s*clamp\(3rem,\s*8vw,\s*7\.4rem\)/);
-  assert.match(detail, /font-size:\s*clamp\(2rem,\s*2\.9vw,\s*2\.75rem\)/);
-  assert.match(detail, /font-size:\s*clamp\(1\.9rem,\s*8vw,\s*2\.25rem\)/);
+  assert.match(detail, /poster=\{cover\?\.path\}/);
+  assert.match(detail, /preload="none"/);
   assert.doesNotMatch(detail, /font-size:\s*clamp\(2\.35rem,\s*4vw,\s*4rem\)/);
+});
+
+test("601-item backlog drains in bounded batches without duplicates or lost updates", () => {
+  let previous = buildSnapshot(bootstrap(), provenance);
+  const source = Array.from({ length: 1101 }, (_, index) => upstreamVideo(index, index === 0 ? { title: "Updated existing title" } : {}));
+  const candidate = buildSnapshot(source, provenance);
+  const pendingCounts: number[] = [];
+  for (let run = 0; run < 4; run++) {
+    const batch = selectAdditionBatch(previous, candidate, 200);
+    const transition = assertSafeTransition(previous, batch.snapshot, { maxAdditions: 200, allowRemovals: false });
+    assert.ok(transition.additions <= 200);
+    assert.equal(new Set(batch.snapshot.items.map((item) => item.tweet_id)).size, batch.snapshot.item_count);
+    previous = batch.snapshot;
+    pendingCounts.push(batch.pending);
+  }
+  assert.deepEqual(pendingCounts, [401, 201, 1, 0]);
+  assert.deepEqual(previous.items, candidate.items);
+  assert.deepEqual(selectAdditionBatch(previous, candidate, 200).snapshot, candidate);
+});
+
+test("batch mode validates full input and cannot hide upstream deletions", () => {
+  const previous = buildSnapshot(bootstrap(), provenance);
+  const candidate = buildSnapshot(Array.from({ length: 1101 }, (_, index) => upstreamVideo(index + 1)), provenance);
+  assert.throws(() => selectAdditionBatch(previous, candidate, 200), /refusing automatic deletion/);
+  assert.throws(() => selectAdditionBatch(null, candidate, 200), /reviewed snapshot/);
+  assert.throws(() => selectAdditionBatch(previous, previous, 0), /positive integer/);
 });

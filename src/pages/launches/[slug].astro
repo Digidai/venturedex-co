@@ -2,6 +2,7 @@
 export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
+import { getLaunchCover } from "../../lib/launch-covers";
 import {
   getPublicLaunchTags,
   whatShipsCategoryLabel,
@@ -21,6 +22,8 @@ interface Props {
 }
 
 const { item } = Astro.props;
+const cover = getLaunchCover(item);
+const coverUrl = cover ? `https://venturedex.co${cover.path}` : undefined;
 const items = whatShipsSnapshot.items;
 const currentIndex = items.findIndex((candidate) => candidate.slug === item.slug);
 const previousItem = currentIndex > 0 ? items[currentIndex - 1] : null;
@@ -93,6 +96,7 @@ const schema = {
     uploadDate: item.published_at,
     ...(durationIso ? { duration: durationIso } : {}),
     contentUrl: item.video_url,
+    ...(coverUrl ? { thumbnailUrl: coverUrl } : {}),
     sameAs: item.original_post_url,
   },
 };
@@ -104,7 +108,11 @@ const schema = {
   canonicalPath={`/launches/${item.slug}`}
   ogType="article"
   publishedTime={item.published_at}
-  modifiedTime={item.published_at}
+  modifiedTime={item.last_changed_at ?? item.published_at}
+  ogImage={coverUrl}
+  ogImageWidth={cover?.width}
+  ogImageHeight={cover?.height}
+  ogImageType={cover ? "image/webp" : undefined}
   schema={schema}
   referrerPolicy="no-referrer"
 >
@@ -120,13 +128,13 @@ const schema = {
         <header class="launch-detail__header">
           <p class="launch-detail__eyebrow">{categoryLabel} · Product launch</p>
           <h1 id="launch-detail-title">{item.title}</h1>
-          <dl class="launch-detail__quick-facts">
-            <div><dt>Product</dt><dd>{item.product}</dd></div>
-            {item.company !== item.product && <div><dt>Company</dt><dd>{item.company}</dd></div>}
-            <div><dt>Published</dt><dd>{publishedLabel}</dd></div>
-            <div><dt>Runtime</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
-          </dl>
         </header>
+        <dl class="launch-detail__quick-facts">
+          <div><dt>Product</dt><dd>{item.product}</dd></div>
+          {item.company !== item.product && <div><dt>Company</dt><dd>{item.company}</dd></div>}
+          <div><dt>Published</dt><dd>{publishedLabel}</dd></div>
+          <div><dt>Runtime</dt><dd>{formatDuration(item.duration_seconds)}</dd></div>
+        </dl>
 
         <section class="launch-player" aria-labelledby="launch-video-heading">
           <div class="launch-player__label">
@@ -136,17 +144,24 @@ const schema = {
             </div>
             <span>{formatDuration(item.duration_seconds)}</span>
           </div>
-          <video
-            class="launch-player__video"
-            src={item.video_url}
-            controls
-            preload="metadata"
-            playsinline
-            controlslist="nodownload"
-            aria-label={`Original launch video: ${item.title}`}
-          >
-            Your browser does not support video playback.
-          </video>
+          <div class="launch-player__surface" data-launch-player>
+            <video
+              class="launch-player__video"
+              src={item.video_url}
+              poster={cover?.path}
+              controls
+              preload="none"
+              playsinline
+              controlslist="nodownload"
+              aria-label={`Original launch video: ${item.title}`}
+            >
+              Your browser does not support video playback.
+            </video>
+            <button class="launch-player__start" type="button" aria-label={`Play launch video: ${item.title}`} data-launch-play hidden>
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            </button>
+          </div>
+          <p class="launch-player__error" role="status" data-launch-error hidden>The original video could not be loaded. Try again or open the original post below.</p>
         </section>
       </section>
 
@@ -239,6 +254,23 @@ const schema = {
   </article>
 </Base>
 
+<script>
+  const surface = document.querySelector("[data-launch-player]") as any;
+  const video = surface?.querySelector("video") as any;
+  const play = surface?.querySelector("[data-launch-play]") as any;
+  const error = document.querySelector("[data-launch-error]") as any;
+  if (video && play) {
+    play.hidden = false;
+    video.addEventListener("play", () => { play.hidden = true; if (error) error.hidden = true; });
+    play.addEventListener("click", async () => {
+      play.hidden = true;
+      if (error) error.hidden = true;
+      try { await video.play(); }
+      catch { play.hidden = false; if (error) error.hidden = false; }
+    });
+  }
+</script>
+
 <style>
   .launch-detail {
     --detail-ink: var(--color-text);
@@ -263,10 +295,13 @@ const schema = {
   .launch-detail__hero {
     display: grid;
     grid-template-columns: minmax(17rem, 0.56fr) minmax(0, 1fr);
-    gap: clamp(1.5rem, 4vw, 3.5rem);
+    grid-template-areas: "heading player" "facts player";
+    grid-template-rows: auto 1fr;
+    gap: 1.25rem clamp(1.5rem, 4vw, 3.5rem);
     align-items: start;
-    padding: clamp(1.4rem, 2.8vw, 2.25rem) 0 clamp(2.5rem, 5vw, 4rem);
+    padding: clamp(1.4rem, 2.8vw, 2.25rem) 0 1.5rem;
   }
+  .launch-detail__header { grid-area: heading; }
   .launch-detail__eyebrow,
   .launch-detail__section-label,
   .launch-player__label p {
@@ -278,18 +313,19 @@ const schema = {
     text-transform: uppercase;
   }
   .launch-detail__header h1 {
-    max-width: 16ch;
+    max-width: 24ch;
     margin: 0;
-    font-size: clamp(2rem, 2.9vw, 2.75rem);
-    line-height: 1.03;
+    font-size: clamp(1.55rem, 2.3vw, 2rem);
+    line-height: 1.18;
     letter-spacing: -0.035em;
     text-wrap: balance;
   }
   .launch-detail__quick-facts {
+    grid-area: facts;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0 var(--space-4);
-    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    margin: 0;
     border-top: 1px solid var(--color-border);
   }
   .launch-detail__quick-facts div {
@@ -307,6 +343,7 @@ const schema = {
     white-space: nowrap;
   }
   .launch-player {
+    grid-area: player;
     min-width: 0;
     overflow: hidden;
     border: 1px solid var(--color-border);
@@ -315,6 +352,26 @@ const schema = {
     color: #f8f8f4;
     box-shadow: 0 18px 45px rgb(0 0 0 / 12%);
   }
+  .launch-player__surface { position: relative; }
+  .launch-player__start {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgb(255 255 255 / 65%);
+    border-radius: 50%;
+    color: white;
+    background: rgb(10 10 10 / 78%);
+    cursor: pointer;
+  }
+  .launch-player__start[hidden], .launch-player__error[hidden] { display: none; }
+  .launch-player__start:focus-visible { outline: 3px solid white; outline-offset: 4px; }
+  .launch-player__start svg { margin-left: 0.15rem; }
+  .launch-player__error { margin: 0; padding: 0.8rem 1rem; font-size: 0.8rem; }
   .launch-player__label {
     display: flex;
     justify-content: space-between;
@@ -329,14 +386,14 @@ const schema = {
   .launch-detail__body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.34fr);
-    gap: clamp(3rem, 8vw, 8rem);
-    padding: clamp(4rem, 9vw, 8rem) 0;
+    gap: clamp(2rem, 5vw, 4rem);
+    padding: 1.5rem 0 2.5rem;
   }
-  .launch-detail__editorial { display: grid; gap: clamp(3rem, 7vw, 6rem); }
+  .launch-detail__editorial { display: grid; gap: 2rem; }
   .launch-detail__editorial section { max-width: 54rem; }
   .launch-detail__editorial h2,
   .launch-evidence h2,
-  .related-launches h2 { margin: 0 0 var(--space-4); font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1; }
+  .related-launches h2 { margin: 0 0 var(--space-3); font-size: 1.4rem; line-height: 1.2; }
   .launch-detail__editorial section > p:last-child,
   .launch-evidence > p { margin: 0; color: var(--detail-muted); font-size: 1.05rem; line-height: 1.8; }
   .launch-detail__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin: 0; padding: 0; list-style: none; }
@@ -345,7 +402,7 @@ const schema = {
     align-self: start;
     position: sticky;
     top: var(--space-6);
-    padding: clamp(1.5rem, 3vw, 2.5rem);
+    padding: 1.25rem;
     border: 1px solid var(--color-border);
     background: var(--color-card-bg);
   }
@@ -363,7 +420,7 @@ const schema = {
     font-weight: 600;
     text-decoration: none;
   }
-  .related-launches { padding: clamp(3rem, 7vw, 6rem) 0; border-top: 1px solid var(--color-border); }
+  .related-launches { padding: 2rem 0; border-top: 1px solid var(--color-border); }
   .related-launches__heading { display: flex; justify-content: space-between; gap: var(--space-6); align-items: end; margin-bottom: var(--space-8); }
   .related-launches__heading > a { color: var(--detail-ink); font-weight: 600; }
   .related-launches__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; padding: 1px; background: var(--color-border); }
@@ -372,7 +429,7 @@ const schema = {
     grid-template-columns: auto minmax(0, 1fr) auto;
     gap: var(--space-4);
     align-items: center;
-    min-height: 10rem;
+    min-height: 7rem;
     padding: var(--space-5);
     background: var(--color-bg);
     color: var(--detail-ink);
@@ -393,13 +450,13 @@ const schema = {
     .related-launches__grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 720px) {
-    .launch-detail__hero { grid-template-columns: 1fr; }
-    .launch-detail__header h1 { max-width: 18ch; }
+    .launch-detail__hero { grid-template-columns: 1fr; grid-template-areas: "heading" "player" "facts"; grid-template-rows: auto; }
+    .launch-detail__header h1 { max-width: none; }
   }
   @media (max-width: 560px) {
     .launch-detail__container { padding-top: var(--space-4); }
     .launch-detail__hero { gap: var(--space-5); padding-top: var(--space-5); }
-    .launch-detail__header h1 { font-size: clamp(1.9rem, 8vw, 2.25rem); }
+    .launch-detail__header h1 { font-size: 1.5rem; }
     .related-launches__heading { display: grid; }
     .launch-detail__pagination { grid-template-columns: 1fr; }
     .launch-detail__pagination a:last-child { text-align: left; }
