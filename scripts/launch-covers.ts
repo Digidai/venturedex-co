@@ -1,4 +1,5 @@
 import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
 import { appendFileSync, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { promisify } from "node:util";
@@ -12,6 +13,13 @@ const manifestPath = resolve("content/launch-covers.json");
 export async function isBlankFrame(bytes: Buffer): Promise<boolean> {
   const stats = await sharp(bytes).stats();
   return stats.channels.slice(0, 3).every((channel) => channel.stdev < 2);
+}
+
+export async function encodeUsableCover(frame: Buffer): Promise<Buffer | null> {
+  const encoded = await sharp(frame).webp({ quality: 72, effort: 4 }).toBuffer();
+  // Lossy compression can erase a faint opening fade. Judge the actual asset,
+  // not its uncompressed intermediate, before choosing this timestamp.
+  return await isBlankFrame(encoded) ? null : encoded;
 }
 
 export async function fetchVideoPrefix(url: string, limit: number, fetchImpl: typeof fetch = fetch): Promise<Buffer> {
@@ -66,9 +74,11 @@ export function decodeFrame(bytes: Buffer, seconds: number): Promise<Buffer> {
  */
 async function main() {
   const check = process.argv.includes("--check");
-  // Reviewed bootstrap cleanup only: never overwrite already-published covers
-  // during a scheduled run. Bump the recipe for later editorial replacements.
+  // Reviewed repair only. New derivatives use their byte hash as the filename,
+  // so a replacement can never overwrite an already-cached published asset.
   const repairBlank = process.argv.includes("--repair-blank");
+  const recordedOnly = process.argv.includes("--recorded-only");
+  if (recordedOnly && !repairBlank) throw new Error("Recorded-only mode requires an explicit blank-cover repair");
   const remoteFallback = process.argv.includes("--remote-fallback");
   const concurrency = Number(process.argv.find((arg) => arg.startsWith("--concurrency="))?.split("=")[1] ?? 6);
   if (!Number.isInteger(concurrency) || concurrency < 1 || concurrency > 12) throw new Error("Cover concurrency must be 1-12");
@@ -78,7 +88,7 @@ async function main() {
   const manifest: LaunchCoverManifest = { ...prior, covers: { ...prior.covers } };
   const unique = [...new Map<string, {video_url: string; duration_seconds: number | null}>(snapshot.items.map((item: any) => [launchCoverKey(item.video_url), item])).entries()];
   const maxUnavailable = Math.max(10, Math.ceil(unique.length * 0.02));
-  const initiallyMissing = unique.filter(([key]) => !existsSync(resolve(`public/launch-covers/${key}.webp`))).length;
+  const initiallyMissing = unique.filter(([key]) => !prior.covers[key] || !existsSync(resolve(`public${prior.covers[key].path}`))).length;
   let cursor = 0;
   let generated = 0;
   let failures = 0;
@@ -98,8 +108,10 @@ async function main() {
   await Promise.all(Array.from({ length: check ? 1 : concurrency }, async () => {
     while (!stopped && cursor < unique.length) {
       const [key, item] = unique[cursor++];
-      const path = `/launch-covers/${key}.webp`;
-      const file = resolve(`public${path}`);
+      if (recordedOnly && !prior.covers[key]) continue;
+      let path = manifest.covers[key]?.path ?? `/launch-covers/${key}.webp`;
+      if (!/^\/launch-covers\/[a-f0-9]{24}\.webp$/.test(path)) throw new Error(`Invalid cover path: ${key}`);
+      let file = resolve(`public${path}`);
       // Unreferenced files are not published covers (for example a rejected
       // bootstrap frame). Check mode must not silently adopt those files.
       if (check && !manifest.covers[key]) continue;
@@ -121,7 +133,8 @@ async function main() {
               for (const seconds of limit === 256 * 1024 ? [0.15] : [1, 0.15]) {
                 try {
                   const frame = await decodeFrame(bytes, Math.min(seconds, (item.duration_seconds ?? 4) / 4));
-                  if (!await isBlankFrame(frame)) { stdout = frame; break; }
+                  const encoded = await encodeUsableCover(frame);
+                  if (encoded) { stdout = encoded; break; }
                 } catch { /* Try the alternate early timestamp in the same bytes. */ }
               }
               if (stdout) break;
@@ -138,14 +151,21 @@ async function main() {
                 `scale=${COVER_WIDTH}:${COVER_HEIGHT}:force_original_aspect_ratio=decrease,pad=${COVER_WIDTH}:${COVER_HEIGHT}:(ow-iw)/2:(oh-ih)/2:color=0x161817`,
                 "-c:v", "png", "-threads", "1", "-f", "image2pipe", "pipe:1",
               ], { encoding: "buffer", timeout: 30_000, maxBuffer: 2 * 1024 * 1024 });
-              if (!await isBlankFrame(frame.stdout)) stdout = frame.stdout;
+              stdout = await encodeUsableCover(frame.stdout) ?? undefined;
             } catch { /* No video file is stored; retain fallback if inaccessible. */ }
           }
           if (!stdout) throw new Error("Could not derive original frame within bounded fetch attempts");
-          const frame = await sharp(stdout).webp({ quality: 72, effort: 4 }).toBuffer();
+          const frame = stdout;
           const metadata = await sharp(frame).metadata();
           if (metadata.format !== "webp" || metadata.width !== COVER_WIDTH || metadata.height !== COVER_HEIGHT || frame.length > 150_000) {
             throw new Error("Invalid generated frame");
+          }
+          const assetKey = createHash("sha256").update(frame).digest("hex").slice(0, 24);
+          path = `/launch-covers/${assetKey}.webp`;
+          file = resolve(`public${path}`);
+          if (existsSync(file)) {
+            const existing = readFileSync(file);
+            if (existing.length !== frame.length || existing.some((byte, index) => byte !== frame[index])) throw new Error("Cover content-hash collision");
           }
           const temporary = `${file}.tmp-${process.pid}`;
           writeFileSync(temporary, frame);
@@ -155,6 +175,7 @@ async function main() {
         const bytes = readFileSync(file);
         const metadata = await sharp(bytes).metadata();
         if (metadata.format !== "webp" || metadata.width !== COVER_WIDTH || metadata.height !== COVER_HEIGHT || bytes.length > 150_000) throw new Error(`Invalid cover ${key}`);
+        if (check && await isBlankFrame(bytes)) throw new Error(`Blank encoded cover: ${key}`);
         const cover = { path, width: COVER_WIDTH, height: COVER_HEIGHT, bytes: bytes.length };
         if (check && JSON.stringify(manifest.covers[key]) !== JSON.stringify(cover)) throw new Error(`Cover manifest mismatch: ${key}`);
         manifest.covers[key] = cover;

@@ -1,17 +1,19 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync, existsSync } from "node:fs";
+import { createHash } from "node:crypto";
 import { COVER_RECIPE, launchCoverKey, type LaunchCoverManifest } from "../src/lib/launch-cover-key";
 import { whatShipsSnapshot } from "../src/lib/whatships";
 import { matchesLiveCatalog, pendingLaunchUrls, type LaunchCheckpoint } from "../scripts/launch-sync-state";
 import { withHttpPolicy } from "../src/lib/http-policy";
-import { fetchVideoPrefix, isBlankFrame } from "../scripts/launch-covers";
+import { encodeUsableCover, fetchVideoPrefix, isBlankFrame } from "../scripts/launch-covers";
 import sharp from "sharp";
 
 test("solid video opening frames are rejected instead of becoming blank covers", async () => {
   for (const background of ["black", "white"]) {
     const frame = await sharp({ create: { width: 64, height: 36, channels: 3, background } }).png().toBuffer();
     assert.equal(await isBlankFrame(frame), true);
+    assert.equal(await encodeUsableCover(frame), null);
   }
   const pixels = Buffer.from(Array.from({ length: 64 * 36 * 3 }, (_, index) => index % 256));
   assert.equal(await isBlankFrame(await sharp(pixels, { raw: { width: 64, height: 36, channels: 3 } }).png().toBuffer()), false);
@@ -44,7 +46,7 @@ test("cover keys are deterministic, recipe-versioned, and restricted to original
   }
 });
 
-test("versioned cover records point at real bounded WebP files", () => {
+test("versioned cover records point at real bounded WebP files", async () => {
   const manifest: LaunchCoverManifest = JSON.parse(readFileSync("content/launch-covers.json", "utf8"));
   assert.equal(manifest.schema_version, 1);
   assert.equal(manifest.recipe, COVER_RECIPE);
@@ -53,15 +55,24 @@ test("versioned cover records point at real bounded WebP files", () => {
   assert.ok(missing.length <= Math.max(10, Math.ceil(uniqueKeys.size * 0.02)), "cover coverage must pass the ingestion gate");
   for (const [key, cover] of Object.entries(manifest.covers)) {
     assert.match(key, /^[a-f0-9]{24}$/);
-    assert.equal(cover.path, `/launch-covers/${key}.webp`);
+    assert.match(cover.path, /^\/launch-covers\/[a-f0-9]{24}\.webp$/);
     assert.ok(existsSync(`public${cover.path}`));
     const file = readFileSync(`public${cover.path}`);
     assert.equal(file.subarray(0, 4).toString(), "RIFF");
     assert.equal(file.subarray(8, 12).toString(), "WEBP");
     assert.equal(cover.bytes, file.length);
+    if (cover.path !== `/launch-covers/${key}.webp`) {
+      assert.equal(cover.path, `/launch-covers/${createHash("sha256").update(file).digest("hex").slice(0, 24)}.webp`);
+    }
     assert.ok(file.length > 0 && file.length <= 150_000);
     assert.equal(cover.width, 640);
     assert.equal(cover.height, 360);
+  }
+  const rows = Object.values(manifest.covers);
+  for (let index = 0; index < rows.length; index += 12) {
+    await Promise.all(rows.slice(index, index + 12).map(async (cover) => {
+      assert.equal(await isBlankFrame(readFileSync(`public${cover.path}`)), false, cover.path);
+    }));
   }
 });
 
