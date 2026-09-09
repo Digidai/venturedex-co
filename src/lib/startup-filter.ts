@@ -11,6 +11,8 @@
  * published_at DESC), so featured-sort is a no-op that preserves that order.
  */
 
+import { normalizeFundingStage } from "./funding-terms";
+
 export const SORT_OPTIONS = ["featured", "newest", "name-az"] as const;
 export type SortValue = (typeof SORT_OPTIONS)[number];
 
@@ -58,7 +60,8 @@ export function cardMatchesFilters(card: FilterableCard, state: StartupFilterSta
   const stageMatches =
     !state.stage ||
     card.stage === state.stage ||
-    (state.stage === "Series D+" && /^Series [D-Z]$/.test(card.stage ?? ""));
+    normalizeFundingStage(card.stage) === state.stage ||
+    (state.stage === "Series D+" && /^Series [D-Z]$/.test(normalizeFundingStage(card.stage) ?? ""));
   return (
     (!state.type || card.type === state.type) &&
     stageMatches &&

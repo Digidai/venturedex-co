@@ -14,6 +14,8 @@ from dataclasses import dataclass, field
 from datetime import date as calendar_date, datetime
 from pathlib import Path
 from urllib.parse import urlparse
+from funding_terms import normalize_funding_stage, validate_funding_terms
+from curation import load_reviews
 
 from investor_utils import (
     build_investor_lookup,
@@ -61,6 +63,8 @@ ALLOWED_REGIONS = {
 }
 
 ALLOWED_STAGES = {
+    "Pre-Seed",
+    "Pre-Series A",
     "Seed",
     "Series A",
     "Series B",
@@ -171,7 +175,6 @@ FACT_MARKER_RE = re.compile(
     re.IGNORECASE,
 )
 
-AMOUNT_RE = re.compile(r"^\$[0-9]+(?:\.[0-9]+)?(?:[MBK])?\+?$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 SLUG_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 UTC_TIMESTAMP_RE = re.compile(r"^\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}$")
@@ -247,10 +250,7 @@ class FileResult:
 
 
 def is_allowed_funding_stage(stage: str) -> bool:
-    if stage in ALLOWED_STAGES:
-        return True
-    match = SERIES_STAGE_RE.fullmatch(stage)
-    return bool(match and match.group(1) >= "D")
+    return isinstance(stage, str) and normalize_funding_stage(stage) == stage
 
 
 def is_breakout_funding_stage(stage: str) -> bool:
@@ -422,7 +422,15 @@ def main() -> int:
                 startup_domains[domain] = path
 
     weekly_errors, weekly_warnings = validate_weekly_files(startup_slugs)
-    rejected_entries, rejected_errors, rejected_warnings = validate_rejected_file(startup_slugs)
+    review_errors = []
+    accepted_overrides = set()
+    try:
+        reviews = load_reviews()
+        accepted_overrides = {row["slug"] for row in reviews if row["state"] == "accepted"}
+    except (ValueError, OSError, KeyError, TypeError) as exc:
+        review_errors.append(f"curation review validation: {exc}")
+    rejected_entries, rejected_errors, rejected_warnings = validate_rejected_file(startup_slugs, accepted_overrides=accepted_overrides)
+    rejected_errors.extend(review_errors)
     brand_errors, brand_warnings = validate_brand_assets(startup_index, url_cache)
 
     passed = 0
@@ -483,12 +491,7 @@ def main() -> int:
         print(f"    WARN: {warning}")
         total_warnings += 1
 
-    if rejected_entries < len(startup_files) * 3:
-        total_warnings += 1
-        print(
-            "    WARN: rejected.jsonl is below the target rejection bar "
-            f"({rejected_entries} rejected vs {len(startup_files)} published; target is 3:1)."
-        )
+    print(f"    Historical active rejection records: {rejected_entries} (not a quality target).")
 
     print(
         f"\n=== {passed}/{len(startup_files)} passed, {total_errors} errors, "
@@ -656,27 +659,17 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
     has_breakout_stage = False
     for index, round_data in enumerate(funding):
         prefix = f"funding[{index}]"
+        if not isinstance(round_data, dict):
+            result.errors.append(f"{prefix}: round must be an object")
+            continue
         for field_name in ["amount", "stage", "lead_investor", "date", "source_url", "source_name"]:
             if not round_data.get(field_name):
                 result.errors.append(f"{prefix}: missing {field_name}")
 
-        amount = round_data.get("amount", "")
-        if amount and amount != "undisclosed" and not AMOUNT_RE.match(amount):
-            result.errors.append(f"{prefix}: amount '{amount}' has invalid format")
-
+        result.errors.extend(f"{prefix}: {error}" for error in validate_funding_terms(round_data))
         stage = round_data.get("stage", "")
-        if stage and not isinstance(stage, str):
-            result.errors.append(f"{prefix}: stage must be a string")
-        elif stage and not is_allowed_funding_stage(stage):
-            result.errors.append(
-                f"{prefix}: stage '{stage}' must be Seed or a named Series A-Z round"
-            )
-        elif stage and is_breakout_funding_stage(stage):
+        if isinstance(stage, str) and stage and is_breakout_funding_stage(stage):
             has_breakout_stage = True
-
-        date = round_data.get("date", "")
-        if date and not DATE_RE.match(date):
-            result.errors.append(f"{prefix}: date '{date}' is not YYYY-MM-DD")
 
         source_url = round_data.get("source_url", "")
         if source_url:
@@ -1364,6 +1357,7 @@ def _validate_v2_rejected_entry(
 def validate_rejected_file(
     startup_slugs: set[str],
     rejected_file: Path = REJECTED_FILE,
+    accepted_overrides: set[str] | None = None,
 ) -> tuple[int, list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
@@ -1433,7 +1427,7 @@ def validate_rejected_file(
             seen.add(slug)
 
             if slug in startup_slugs:
-                if lifecycle_status != "superseded":
+                if lifecycle_status != "superseded" and slug not in (accepted_overrides or set()):
                     errors.append(
                         _rejected_error(
                             line_number,

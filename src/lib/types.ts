@@ -155,6 +155,9 @@ export interface FundingRound {
   date: string;
   source_url: string | null;
   source_name: string | null;
+  currency?: string | null;
+  stage_raw?: string | null;
+  instrument?: import("./funding-terms").FundingInstrument | null;
 }
 
 export type ProductType =
@@ -171,6 +174,8 @@ export type ProductType =
   | "Other";
 
 export type FundingStage =
+  | "Pre-Seed"
+  | "Pre-Series A"
   | "Seed"
   | "Series A"
   | "Series B"
@@ -184,5 +189,5 @@ export const PRODUCT_TYPES: ProductType[] = [
 ];
 
 export const FUNDING_STAGES: (FundingStage | "Series D+")[] = [
-  "Seed", "Series A", "Series B", "Series C", "Series D+",
+  "Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+",
 ];

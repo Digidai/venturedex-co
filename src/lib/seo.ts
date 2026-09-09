@@ -10,6 +10,7 @@ import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
 import type { TopicPage } from "./topic-pages";
 import type { WeeklyIssueContent } from "./weekly";
 import { versionedScreenshotUrl } from "./screenshots";
+import { fundingAmountLabel, fundingLeadName, fundingStageLabel } from "./funding-terms";
 
 export const DEFAULT_SITE_URL = "https://venturedex.co";
 export const SITE_NAME = "VentureDex";
@@ -370,8 +371,8 @@ export function investorJsonLd(
         "@type": "NewsArticle",
         headline: [
           round.company_name,
-          round.amount,
-          round.stage,
+          fundingAmountLabel(round),
+          fundingStageLabel(round),
           investor.name,
         ].filter(Boolean).join(" "),
         datePublished: toIsoDateTime(round.date),
@@ -384,7 +385,7 @@ export function investorJsonLd(
       rounds.slice(0, 50).map((round) => ({
         name: round.company_name,
         path: round.company_slug ? `/startups/${round.company_slug}` : pagePath,
-        description: [round.amount, round.stage, round.date, round.source_name].filter(Boolean).join(" - "),
+        description: [fundingAmountLabel(round), fundingStageLabel(round), round.date, round.source_name].filter(Boolean).join(" - "),
       })),
       siteUrl
     ),
@@ -621,9 +622,9 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL, p
       "@id": `${absoluteUrl(round.company_slug ? `/startups/${round.company_slug}` : "/news", siteUrl)}#funding-${round.id}`,
       headline: [
         round.company_name,
-        round.amount,
-        round.stage,
-        round.lead_investor ? `led by ${round.lead_investor}` : null,
+        fundingAmountLabel(round),
+        fundingStageLabel(round),
+        fundingLeadName(round) ? `led by ${fundingLeadName(round)}` : null,
       ].filter(Boolean).join(" "),
       datePublished: toIsoDateTime(round.date),
       mainEntityOfPage: { "@id": `${absoluteUrl(path, siteUrl)}#webpage` },
@@ -631,8 +632,8 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL, p
       isPartOf: { "@id": `${absoluteUrl(path, siteUrl)}#webpage` },
       publisher: round.source_name ? { "@type": "Organization", name: round.source_name } : { "@id": `${getSiteUrl(siteUrl)}/#organization` },
       about: { "@type": "Organization", name: round.company_name },
-      funder: round.lead_investor ? { "@type": "Organization", name: round.lead_investor } : undefined,
-      description: [round.amount, round.stage, round.lead_investor, round.source_name].filter(Boolean).join(" - "),
+      funder: fundingLeadName(round) ? { "@type": "Organization", name: fundingLeadName(round) } : undefined,
+      description: [fundingAmountLabel(round), fundingStageLabel(round), round.lead_investor, round.source_name].filter(Boolean).join(" - "),
     })
   );
 
@@ -648,9 +649,9 @@ export function newsJsonLd(rounds: FundingRound[], siteUrl = DEFAULT_SITE_URL, p
     }),
     itemListNode(
       rounds.slice(0, 50).map((round) => ({
-        name: `${round.company_name} ${round.stage}`,
+        name: `${round.company_name} ${fundingStageLabel(round)}`,
         path: round.company_slug ? `/startups/${round.company_slug}` : "/news",
-        description: [round.amount, round.lead_investor, round.source_name].filter(Boolean).join(" - "),
+        description: [fundingAmountLabel(round), round.lead_investor, round.source_name].filter(Boolean).join(" - "),
       })),
       siteUrl
     ),

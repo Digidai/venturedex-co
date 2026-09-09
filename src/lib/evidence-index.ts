@@ -1,6 +1,7 @@
 import { normalizeResearch, safeJsonParse } from "./json";
 import { normalizeExternalUrl, sitemapLastmodDate, splitCsv } from "./seo";
 import type { Startup, StartupResearchSource } from "./types";
+import { normalizeFundingStage as canonicalFundingStage } from "./funding-terms";
 
 const SOURCE_TYPES: Array<{
   id: StartupResearchSource["type"];
@@ -14,7 +15,7 @@ const SOURCE_TYPES: Array<{
   { id: "editorial", label: "Editorial" },
 ];
 
-const FUNDING_STAGE_ORDER = ["Seed", "Series A", "Series B", "Series C", "Series D+"];
+const FUNDING_STAGE_ORDER = ["Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+"];
 
 export interface EvidenceIndexInput {
   startups: Startup[];
@@ -154,7 +155,7 @@ function addDate(target: string[], value: string | null | undefined): void {
 }
 
 function normalizeFundingStage(value: string | null | undefined): string | null {
-  const stage = value?.trim();
+  const stage = canonicalFundingStage(value) ?? value?.trim();
   if (!stage) return null;
   if (/^series [d-z]$/i.test(stage)) return "Series D+";
   const known = FUNDING_STAGE_ORDER.find((item) => item.toLowerCase() === stage.toLowerCase());

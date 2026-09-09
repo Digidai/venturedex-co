@@ -1,5 +1,6 @@
 ---
 export const prerender = true;
+import { fundingAmountLabel, fundingStageLabel } from "../../lib/funding-terms";
 
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
@@ -168,7 +169,7 @@ function formatDate(value: string | null | undefined) {
                 <td>{row.useCase}</td>
                 <td>
                   {row.latestFunding ? <>
-                    <strong>{[row.latestFunding.amount, row.latestFunding.stage].filter(Boolean).join(" · ") || "Amount and stage not recorded"}</strong>
+                    <strong>{[fundingAmountLabel(row.latestFunding), fundingStageLabel(row.latestFunding)].join(" · ")}</strong>
                     <span>{formatDate(row.latestFunding.date)}</span>
                     {row.fundingSourceUrl
                       ? <a href={row.fundingSourceUrl} target="_blank" rel="noopener noreferrer">{row.latestFunding.source_name || "Funding source"}</a>

@@ -301,6 +301,9 @@ CREATE TABLE IF NOT EXISTS funding_rounds (
   date TEXT NOT NULL,
   source_url TEXT,
   source_name TEXT DEFAULT 'TechCrunch',
+  currency TEXT,
+  stage_raw TEXT,
+  instrument TEXT,
   created_at TEXT DEFAULT (datetime('now'))
 );
 

@@ -1,5 +1,6 @@
 import type { Collection, FundingRound, Investor, Startup } from "./types";
 import { resolveInvestorSlugByName } from "./brand-assets";
+import type { FundingInstrument } from "./funding-terms";
 
 /**
  * Pure content transform — the single source of the content -> Startup/Funding/
@@ -171,6 +172,9 @@ function toFundingRound(slug: string, data: JsonRecord, round: JsonRecord): Fund
     date: stringValue(round.date),
     source_url: stringValue(round.source_url) || null,
     source_name: stringValue(round.source_name) || null,
+    currency: stringValue(round.currency) || null,
+    stage_raw: stringValue(round.stage_raw) || null,
+    instrument: (stringValue(round.instrument) || null) as FundingInstrument | null,
   };
 }
 

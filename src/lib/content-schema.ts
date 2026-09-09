@@ -20,6 +20,9 @@ const fundingRoundSchema = z.looseObject({
     date: z.string().optional(),
     source_url: z.string().optional(),
     source_name: z.string().optional(),
+    currency: z.string().optional(),
+    stage_raw: z.string().optional(),
+    instrument: z.enum(["equity", "debt", "mixed", "grant", "undisclosed"]).optional(),
   });
 
 export const startupSchema = z.looseObject({

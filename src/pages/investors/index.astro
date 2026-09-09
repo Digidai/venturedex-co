@@ -17,6 +17,7 @@ import {
   webPageNode,
 } from "../../lib/seo";
 import type { Investor } from "../../lib/types";
+import { getInvestorProfile } from "../../lib/investor-profile-content";
 
 interface InvestorIndexRow extends Investor {
   company_count: number;
@@ -84,6 +85,7 @@ const schema = buildJsonLdGraph([
       <div class="investor-grid">
         {investors.map((investor) => {
           const brand = getInvestorBrandAsset(investor.slug);
+          const profile = getInvestorProfile(investor.slug);
           return (
             <a href={`/investors/${investor.slug}`} class="investor-card">
               <div class="card-top">
@@ -93,7 +95,8 @@ const schema = buildJsonLdGraph([
                   {investor.short_name && <p class="short-name">{investor.short_name}</p>}
                 </div>
               </div>
-              {investor.description && <p class="description">{investor.description}</p>}
+              {(profile?.summary.value || investor.description) && <p class="description">{profile?.summary.value ?? investor.description}</p>}
+              {profile && <p class="research-label">Firm profile · Reviewed {profile.reviewed_at}</p>}
               <p class="meta">
                 {investor.company_count} tracked portfolio compan{investor.company_count === 1 ? "y" : "ies"}
                 {investor.last_round_at && ` · Latest ${new Date(`${investor.last_round_at}T00:00:00`).toLocaleDateString("en-US", {
@@ -116,6 +119,7 @@ const schema = buildJsonLdGraph([
 </Base>
 
 <style>
+  .research-label { font-size: .7rem; color: var(--color-text-secondary); margin-bottom: var(--space-3); }
   .investors-page {
     max-width: 1200px;
     padding-block: var(--space-12) var(--space-16);

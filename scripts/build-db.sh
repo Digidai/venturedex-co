@@ -302,12 +302,13 @@ for path in startup_files:
         funding_rows.append(
             "INSERT INTO funding_rounds ("
             "id, company_name, company_slug, company_url, amount, stage, lead_investor, "
-            "date, source_url, source_name"
+            "date, source_url, source_name, currency, stage_raw, instrument"
             ") VALUES ("
             f"{sql(round_id)}, {sql(data['product_name'])}, {sql(slug)}, {sql(url)}, "
             f"{sql(round_data.get('amount'))}, {sql(round_data.get('stage'))}, "
             f"{sql(round_data.get('lead_investor'))}, {sql(round_data.get('date'))}, "
-            f"{sql(round_data.get('source_url'))}, {sql(round_data.get('source_name'))}"
+            f"{sql(round_data.get('source_url'))}, {sql(round_data.get('source_name'))}, "
+            f"{sql(round_data.get('currency'))}, {sql(round_data.get('stage_raw'))}, {sql(round_data.get('instrument'))}"
             ") ON CONFLICT(id) DO UPDATE SET "
             "company_name = excluded.company_name, "
             "company_slug = excluded.company_slug, "
@@ -317,7 +318,8 @@ for path in startup_files:
             "lead_investor = excluded.lead_investor, "
             "date = excluded.date, "
             "source_url = excluded.source_url, "
-            "source_name = excluded.source_name;"
+            "source_name = excluded.source_name, "
+            "currency = excluded.currency, stage_raw = excluded.stage_raw, instrument = excluded.instrument;"
         )
 
     terms = [
@@ -389,6 +391,9 @@ for path in startup_files:
             "date": r.get("date"),
             "source_url": r.get("source_url"),
             "source_name": r.get("source_name"),
+            "currency": r.get("currency"),
+            "stage_raw": r.get("stage_raw"),
+            "instrument": r.get("instrument"),
         }
         for r in funding
     ]
