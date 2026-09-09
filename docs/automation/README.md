@@ -61,6 +61,18 @@ Search Console submission priority order:
 
 ## File Roles
 
+- `curation-decisions.md`
+  Fixed-pool accounting, source coverage, eight-state decision overlay, hash-bound historical corrections and bounded re-review planning. No rejection quota.
+- `venturedex-daily-prompt.md`
+  Versioned human-authorized prompt to install into the existing Daily automation after the corresponding main release. The app config is read back for exact equality; this file alone does not prove scheduler activation.
+- `funding-terms.md`
+  Native currencies, named early/extension stages, financing instruments, backward-compatible data contracts and additive D1 migration.
+
+- `investor-research.md`
+  Source-bound investor profiles, 90-day associated-firm refresh, event-driven early review, new-firm supplementation and bounded failed-attempt retries.
+- `../research/2026-09-09-curation-review.md`
+  Human-requested audit of source coverage, false-negative risks, recent rejection reasons and the investor-profile rollout. The initial findings are preserved; the authorized repair and release are tracked in `../plans/2026-09-09-curation-repair-design.md`.
+
 - `venturedex-daily-runbook.md`
   The operational contract for each daily run. It contains immutable guards and adaptive heuristics.
 - `venturedex-weekly-runbook.md`

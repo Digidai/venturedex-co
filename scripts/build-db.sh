@@ -139,6 +139,16 @@ if not isinstance(_timestamps_raw, dict):
 timestamps = {k: v for k, v in _timestamps_raw.items() if not k.startswith("__")}
 
 timestamp_errors: list[str] = []
+def funding_display(round_data):
+    # Keep this standalone seed fixture compatible and lock it to TS via parity tests.
+    amount = round_data.get("amount", "")
+    if not amount:
+        return ""
+    amount = "Undisclosed amount" if amount == "undisclosed" else amount
+    instrument = {"debt": "debt", "mixed": "mixed financing", "grant": "grant"}.get(round_data.get("instrument"))
+    return f"{amount} ({instrument})" if instrument else amount
+
+
 for path in startup_files:
     slug = path.stem
     entry = timestamps.get(slug)
@@ -258,7 +268,7 @@ for path in startup_files:
         f"{sql(json.dumps(data.get('research'), ensure_ascii=False) if data.get('research') else None)}, "
         f"{data.get('editor_rating') if data.get('editor_rating') is not None else 'NULL'}, {sql(data.get('why_featured'))}, "
         f"{sql(data.get('product_type'))}, {sql(latest_round.get('stage', ''))}, "
-        f"{sql(latest_round.get('amount', ''))}, {data.get('founded_year') if data.get('founded_year') is not None else 'NULL'}, "
+        f"{sql(funding_display(latest_round))}, {data.get('founded_year') if data.get('founded_year') is not None else 'NULL'}, "
         f"{sql(data.get('team_size'))}, {sql(data.get('hq_location'))}, {sql(data.get('region'))}, "
         f"{sql(data.get('tags'))}, {sql(data.get('investors'))}, "
         f"{sql(json.dumps(data.get('links', {})) if data.get('links') else None)}, "
@@ -302,12 +312,13 @@ for path in startup_files:
         funding_rows.append(
             "INSERT INTO funding_rounds ("
             "id, company_name, company_slug, company_url, amount, stage, lead_investor, "
-            "date, source_url, source_name"
+            "date, source_url, source_name, currency, stage_raw, instrument"
             ") VALUES ("
             f"{sql(round_id)}, {sql(data['product_name'])}, {sql(slug)}, {sql(url)}, "
             f"{sql(round_data.get('amount'))}, {sql(round_data.get('stage'))}, "
             f"{sql(round_data.get('lead_investor'))}, {sql(round_data.get('date'))}, "
-            f"{sql(round_data.get('source_url'))}, {sql(round_data.get('source_name'))}"
+            f"{sql(round_data.get('source_url'))}, {sql(round_data.get('source_name'))}, "
+            f"{sql(round_data.get('currency'))}, {sql(round_data.get('stage_raw'))}, {sql(round_data.get('instrument'))}"
             ") ON CONFLICT(id) DO UPDATE SET "
             "company_name = excluded.company_name, "
             "company_slug = excluded.company_slug, "
@@ -317,7 +328,8 @@ for path in startup_files:
             "lead_investor = excluded.lead_investor, "
             "date = excluded.date, "
             "source_url = excluded.source_url, "
-            "source_name = excluded.source_name;"
+            "source_name = excluded.source_name, "
+            "currency = excluded.currency, stage_raw = excluded.stage_raw, instrument = excluded.instrument;"
         )
 
     terms = [
@@ -363,7 +375,7 @@ for path in startup_files:
         "product_name": data["product_name"],
         "product_type": data.get("product_type"),
         "funding_stage": latest_round.get("stage", ""),
-        "funding_display": latest_round.get("amount", ""),
+        "funding_display": funding_display(latest_round),
         "region": data.get("region"),
         "is_featured": 1 if data.get("is_featured") else 0,
         "editor_rating": data.get("editor_rating"),
@@ -389,6 +401,9 @@ for path in startup_files:
             "date": r.get("date"),
             "source_url": r.get("source_url"),
             "source_name": r.get("source_name"),
+            "currency": r.get("currency"),
+            "stage_raw": r.get("stage_raw"),
+            "instrument": r.get("instrument"),
         }
         for r in funding
     ]

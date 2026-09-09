@@ -9,7 +9,12 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - candidate_count: 0
 - accepted: 0
 - rejected: 0
-- rejection_bar_met: yes|no
+- decision_states: {evidence_pending: 0, access_blocked: 0, schema_deferred: 0, qualified_pending: 0, publication_blocked: 0, quality_rejected: 0, policy_excluded: 0, accepted: 0}
+- source_families: []
+- due_backlog_count: 0
+- oldest_due_date: n/a
+- review_corrections: n/a
+- re_reviews_completed: 0
 - outcome: no-op|accepted|rejected-only|stopped
 - validation: pass|fail
 - build_db: pass|fail
@@ -5159,3 +5164,32 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: keep the existing GitHub credential, publish only the durable rejection registry, and preserve the original 11 decisions without weakening the funding schema.
 - affected_file: 11 rejection rows, this append-only learning log, central run-state/lease files, automation memory, and post-deploy discovery evidence.
 - affected_section: GitHub authentication recovery, exact-worktree continuation, full local gates, exact-SHA CI/deploy, live verification, passive GSC/newsletter handling, and guarded cleanup.
+
+### 2026-09-09 19:06 CST — Human-requested curation audit and investor-profile implementation
+
+- scope: explicit user-directed research and investor-page/workflow maintenance, not a new Daily discovery or a resumption of the screenshot-blocked run.
+- audit: four fixed pools contain 70 candidates, 54 rejections, 9 published, 4 editorially provisional and 3 governance-deferred. Rejection shares are 77.1% of all candidates / 80.6% of recorded decisions. Four sole missing-lead objections conflict with the existing undisclosed convention; 35/54 rejections are classified F3. Preserve the distinction between an invalid rejection reason and a company actually qualifying for publication.
+- artifacts: `docs/research/2026-09-09-curation-review.md` and its JSON audit snapshot preserve source URLs, raw reasons, committed/draft status, counterevidence, limitations and proposed changes. No original rejection, startup or screenshot was rewritten.
+- implementation: source-bound investor sidecar, 7 researched firms, 247 pending legacy profiles, a frozen legacy exemption boundary, 90-day explicit-scope planner, event-triggered review, bounded failed-attempt retries, unresolved/composite-identity warnings and structured investor pages. Existing indexability and D1 schemas remain unchanged.
+- governance: clarified existing unknown amount/lead values without relaxing stage, taste, ratio or publishing policy. Removing the 3:1 quota, native-currency/stage support and formal decision-state separation remain recommendations, not automatic changes.
+- validation: complete test suite 584/584 passed; final legacy-boundary hardening passed 16/16 focused investor tests. Final typecheck reports zero diagnostics across 161 files; final build passes investor validation and 304 screenshot checks. Dependency audit has zero vulnerabilities. Desktop/mobile built-page checks pass, including source anchors, 214 eligible investor cards, 7 research markers, loaded logos and intentional noindex fallback.
+- full_gate_blocker: two existing SiliconANGLE funding URLs return HTTP 503, affecting Kodesage and SkyPilot and cascading to the weekly/9 valid-startup check. Five reported errors represent two unavailable sources, not missing files or five new defects. No reachability exception or old-content rewrite was introduced.
+- implementation_iterations: fixed the test fixture's narrow directory type, preserved screenshot-first build ordering and existing validation-shell mocks, and reverted the exploratory a16z website-parent change to preserve its existing exact brand source-page mapping. Astro dev served public logos as 404; final visual checks instead used the actual built static bundle, whose images loaded correctly. This is local visual evidence, not a live Cloudflare acceptance.
+- automation: updated the existing Daily app prompt and read it back exactly. Schedule, model, effort, project, ACTIVE status and existing run/release/GSC guards were preserved. A compatibility branch prevents writing unsupported profile schema before the code is released.
+- release: no commit, push, merge, production deployment, GSC request or manual newsletter send. The maintenance branch is `codex/curation-investor-review-20260909` at base `64c5dab426a7f3e65df2386f0f2b46c5da57d27a`.
+- preservation: main checkout stays clean/read-only. Original run `venturedex-daily-20260909T054150Z` remains blocked/closeout revision 96 with its 13 draft rejections and four unreviewed images untouched. Its lease/checkpoint was not changed by this audit.
+- cleanup: task-owned browser tab closed and viewport reset; local dev/static preview services stopped. Generated untracked Weekly OG files were moved to a dedicated temporary evidence directory, not committed. The uncommitted maintenance worktree is retained for review.
+- reward: 0; maintenance/research, not curation output. Failure tags: [external_dependency]. Detailed evidence and remaining actions are in the audit report.
+
+### 2026-09-09 20:19 CST — Human-authorized curation repair, pre-release verification
+
+- scope: explicit comprehensive repair and activation request; maintenance, not another Daily discovery. The original screenshot-blocked run and its 13 draft decisions remain preserved.
+- policy: removed rejection quota/reward from all active standards and runbook; complementary source coverage, industry-appropriate product evidence, fixed 10-20 pool including up to three due reviews, five-publication ceiling, and eight distinct decision states.
+- correction_layer: 57 evidence-bound audit routes, 46 pending; exact historical-row hashes, real retry dates, bounded attempts and qualification proofs. No original rejection line or frozen digest changed, and no queued company was automatically accepted.
+- funding: native ISO currency, source-stated early and extension stages, and financing instruments preserved across validator, D1, seed, readers, HTML, JSON/Markdown, filters and newsletter. Missing lead remains undisclosed. Remote/local schema migration is additive and fails closed on unsuccessful/incomplete probes.
+- investor_profiles: seven researched institutions with field citations and review date; 247 legacy profiles remain explicitly pending, supplemented only when associated with a reviewed company. Ninety-day skip/refresh and event-triggered review, no failed-attempt freshness reset, no new-firm legacy exemption.
+- historical_source_repair: SkyPilot source refreshed to its official announcement; Kodesage to Tech.eu original reporting plus the official company announcement. Source date, amount, stage and initial publication timestamps retained; authored updated_at records this factual-source maintenance.
+- verification: full local gate passed 304/304 startups, 1,814 external URL checks, 601 tests, zero type diagnostics, screenshot validation and production build. Fifty focused tests passed after final logic hardening. Existing 134 warnings remain visible. Browser QA covered 1280/390 widths, loaded assets and working field-source anchors; dark-mode link contrast was corrected and rebuilt.
+- control_plane: versioned prompt prepared in venturedex-daily-prompt.md; actual automation installation/readback follows the exact-main release, preserving model/effort/schedule/project/status. Repo text alone does not prove scheduler activation.
+- release: pending PR/main CI/Deploy/live verification at this commit. Final receipt will be recorded in the user task and automation memory; no newsletter/GSC action or new startup publication is part of this repair.
+- decision: applied under human authority, not an autonomous immutable-rule edit. No acceptance/rejection reward claimed for maintenance.

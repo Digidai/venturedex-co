@@ -3,12 +3,15 @@ export const prerender = true;
 
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
+import InvestorProfile from "../../components/InvestorProfile.astro";
 import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
 import { getContentInvestorBySlug, getContentInvestors } from "../../lib/content";
 import { evaluateInvestorIndexEligibility } from "../../lib/investor-indexing";
+import { getInvestorProfile } from "../../lib/investor-profile-content";
+import { fundingAmountLabel, fundingStageLabel } from "../../lib/funding-terms";
 import { expandSeoDescription, investorJsonLd, normalizeExternalUrl } from "../../lib/seo";
 
 export function getStaticPaths() {
@@ -18,13 +21,16 @@ export function getStaticPaths() {
 const { slug } = Astro.params;
 const { investor, rounds } = getContentInvestorBySlug(slug!)!;
 const eligibility = evaluateInvestorIndexEligibility(rounds);
+const profile = getInvestorProfile(investor.slug);
+const roundDates = rounds.map((round) => round.date).filter(Boolean).sort();
+const trackedStages = [...new Set(rounds.map((round) => round.stage))];
 const investorBrand = getInvestorBrandAsset(investor.slug);
 const description = expandSeoDescription(
-  investor.description,
+  profile?.summary.value ?? investor.description,
   "Browse VentureDex-tracked startup funding activity, portfolio companies, and source-backed company context.",
   `${investor.name} portfolio on VentureDex.`
 );
-const schema = investorJsonLd(investor, rounds, Astro.site?.toString());
+const schema = investorJsonLd({ ...investor, description: profile?.summary.value ?? investor.description }, rounds, Astro.site?.toString());
 const investorWebsiteUrl = normalizeExternalUrl(investor.website);
 const investorWebsiteHost = investorWebsiteUrl ? displayHostname(investorWebsiteUrl) : null;
 // Keep the full <title> (Base appends " | VentureDex", 13 chars) under ~60 for Google.
@@ -53,7 +59,7 @@ function displayHostname(value: string): string {
   schema={schema}
 >
   <div class="container investor-page">
-    <a href="/news" class="back-link">&larr; Back to news</a>
+    <a href="/investors" class="back-link">&larr; All investors</a>
 
     <header class="investor-header">
       <div class="investor-identity">
@@ -67,11 +73,22 @@ function displayHostname(value: string): string {
           )}
         </div>
       </div>
-      {investor.description && <p class="investor-desc">{investor.description}</p>}
+      {!profile && investor.description && <p class="investor-desc">{investor.description}</p>}
     </header>
 
+    {profile && <InvestorProfile profile={profile} />}
+
     <section class="portfolio">
-      <h2>Portfolio on VentureDex <span class="count">({rounds.length})</span></h2>
+      <h2>Tracked funding activity</h2>
+      <p class="coverage-note">A partial view of VentureDex-covered rounds linked through reported lead-investor names, including historical aliases. Not the firm's complete portfolio. Amounts are company round totals, not this investor's contribution.</p>
+      {rounds.length > 0 && (
+        <dl class="activity-stats">
+          <div><dt>Companies</dt><dd>{eligibility.distinctCompanyCount}</dd></div>
+          <div><dt>Funding rounds</dt><dd>{rounds.length}</dd></div>
+          <div><dt>Latest tracked round</dt><dd class="stat-date"><time datetime={roundDates.at(-1)}>{roundDates.at(-1)}</time></dd></div>
+        </dl>
+        <p class="tracked-stages">Stages in this dataset: {trackedStages.join(" · ")}. These do not define the firm's mandate.</p>
+      )}
 
       {rounds.length > 0 ? (
         <div class="portfolio-table-wrap">
@@ -79,7 +96,7 @@ function displayHostname(value: string): string {
             <thead>
               <tr>
                 <th>Company</th>
-                <th>Round</th>
+                <th>Company round</th>
                 <th>Date</th>
                 <th>Source</th>
               </tr>
@@ -102,8 +119,8 @@ function displayHostname(value: string): string {
                       </div>
                     </td>
                     <td class="cell-round">
-                      {r.amount && <span class="round-amount">{r.amount}</span>}
-                      <span class="round-stage">· {r.stage}</span>
+                      <span class="round-amount">{fundingAmountLabel(r)}</span>
+                      <span class="round-stage">· {fundingStageLabel(r)}</span>
                     </td>
                     <td class="cell-date">
                       {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
@@ -171,7 +188,7 @@ function displayHostname(value: string): string {
   }
 
   .investor-url:hover {
-    color: var(--color-accent);
+    color: var(--color-editor-line);
   }
 
   .investor-desc {
@@ -183,7 +200,29 @@ function displayHostname(value: string): string {
 
   .portfolio h2 {
     font-size: 1.1rem;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-3);
+  }
+
+  .coverage-note, .tracked-stages {
+    color: var(--color-text-secondary);
+    font-size: .8rem;
+    line-height: 1.65;
+    margin-bottom: var(--space-5);
+  }
+  .activity-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.4fr;
+    gap: var(--space-4);
+    border-block: 1px solid var(--color-border);
+    padding-block: var(--space-5);
+    margin: 0 0 var(--space-4);
+  }
+  .activity-stats dt { font-size: .7rem; color: var(--color-text-secondary); margin-bottom: var(--space-2); }
+  .activity-stats dd { margin: 0; font-size: 1.4rem; font-weight: 600; }
+  .activity-stats .stat-date { font-size: 1rem; padding-top: .25rem; }
+  @media (max-width: 420px) {
+    .activity-stats { grid-template-columns: 1fr 1fr; }
+    .activity-stats > div:last-child { grid-column: 1 / -1; }
   }
 
   .count {
@@ -242,11 +281,11 @@ function displayHostname(value: string): string {
   }
 
   .company-link:hover {
-    color: var(--color-accent);
+    color: var(--color-editor-line);
   }
 
   .round-amount {
-    color: var(--color-accent);
+    color: var(--color-editor-line);
     font-weight: 600;
   }
 
@@ -266,7 +305,7 @@ function displayHostname(value: string): string {
   }
 
   .source-link:hover {
-    color: var(--color-accent);
+    color: var(--color-editor-line);
   }
 
   .empty {

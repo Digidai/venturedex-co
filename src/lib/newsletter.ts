@@ -1,5 +1,6 @@
 import { normalizeResearch, safeJsonParse } from "./json";
 import type { FundingRound, Startup, StartupResearch } from "./types";
+import { fundingSummary } from "./funding-terms";
 import type { WeeklyIssueContent } from "./weekly";
 import { versionedScreenshotUrl } from "./screenshots";
 
@@ -2553,7 +2554,7 @@ function startupCardHtml(input: {
   const { startup, funding, research, siteUrl } = input;
   const startupUrl = absoluteUrl(siteUrl, `/startups/${startup.slug}`);
   const fundingText = funding
-    ? `${funding.amount ? `${funding.amount} ` : ""}${funding.stage}${funding.lead_investor ? ` led by ${funding.lead_investor}` : ""}`
+    ? fundingSummary(funding)
     : startup.funding_stage;
   const evidence = research?.product_evidence?.slice(0, 2) ?? [];
   const risks = research?.risks?.slice(0, 2) ?? [];
@@ -2585,7 +2586,7 @@ function startupText(input: {
     `${input.index + 1}. ${input.startup.product_name}`,
     input.startup.summary,
     input.funding
-      ? `Funding: ${input.funding.amount ? `${input.funding.amount} ` : ""}${input.funding.stage}${input.funding.lead_investor ? ` led by ${input.funding.lead_investor}` : ""}`
+      ? `Funding: ${fundingSummary(input.funding)}`
       : null,
     input.startup.editor_note ? `Product evaluation: ${input.startup.editor_note}` : null,
     input.research?.product_evidence?.[0]?.claim

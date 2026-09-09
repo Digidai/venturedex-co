@@ -37,7 +37,7 @@ test("content validator accepts named Series D+ rounds but not ambiguous stage l
     "Series L": true,
     Growth: false,
     "Series AA": false,
-    "Pre-Seed": false,
+    "Pre-Seed": true,
   });
 });
 

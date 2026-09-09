@@ -1,0 +1,984 @@
+{
+  "schema_version": 1,
+  "reviews": [
+    {
+      "slug": "aitan",
+      "company_url": "https://www.aitansystems.com/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.aitansystems.com/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "2a2094b4985a32618e3d1dbc96b39065d91e702aa0fac82fd3a31ce686c0845e"
+      }
+    },
+    {
+      "slug": "aslan",
+      "company_url": "https://aslanprotects.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "5f9e49e744d3b0ffe7359d3930bb1752115e155a106fa3b10d97c05d754a8575"
+      }
+    },
+    {
+      "slug": "trustedrouter",
+      "company_url": "https://trustedrouter.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Re-review product/taste under existing undisclosed-lead rule; not automatic acceptance.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://trustedrouter.com/blog/we-raised-1-25m-seed"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "a48b57f738dfc69794ed0f4fe35c9953d4c338c78ee1d6063f3ca72fa173d53a"
+      }
+    },
+    {
+      "slug": "easy-aerial",
+      "company_url": "https://www.easyaerial.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. The sole recorded lead-field objection is invalid; verify funding and product independently.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "e746bf554e19c4f7d5092bc1b3d1d2533238b3ed85d797896d03d0ce0d48c8ef"
+      }
+    },
+    {
+      "slug": "fambot",
+      "company_url": "https://fambot.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://fambot.com/press"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "08e76ec08b330f3ba83d3f4fd496aee337b9cc1bbf0e17faeca04bf4644d66cc"
+      }
+    },
+    {
+      "slug": "conveo",
+      "company_url": "https://conveo.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Re-review product/taste; explicitly listed participants do not need an inferred lead.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://conveo.ai/mediakit/series-a"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "097a15b2d449696265031a19030d3b95b79f230373890e7819ee87bdd1f3383f"
+      }
+    },
+    {
+      "slug": "guardio",
+      "company_url": "https://guard.io/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://site.guard.io/blog/a-note-from-amos-our-ceo"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "a842e85eb3f013f25ec870ba71f8e08b907dd4e04e2bd3b85d0db52c28adcb03"
+      }
+    },
+    {
+      "slug": "ultrahuman",
+      "company_url": "https://www.ultrahuman.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://techcrunch.com/2026/09/03/qualcomm-backs-ultrahuman-in-70m-round-on-bet-to-turn-smart-rings-into-computers/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "28f93d2074244da578e5b5e74a510c1a4b9f3c3cde907e6c287a9cbb2a3d762a"
+      }
+    },
+    {
+      "slug": "emberos",
+      "company_url": "https://www.emberos.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Lead-only rejection invalid; separately evaluate SEO/GEO exclusion.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://www.emberos.ai/knowledge-hub/emberos-raises-5.5-million-seed-round"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "d12b778f4241652e87c22dbea080c5fd9872f7aa9ad3ef0d76b222b869e60bc5"
+      }
+    },
+    {
+      "slug": "chariot-claims",
+      "company_url": "https://www.chariotclaims.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "caa9bd2d6f298c79c54ce58653c5133078bfe8202dd73945dc02c131efe62107"
+      }
+    },
+    {
+      "slug": "elm-ai",
+      "company_url": "https://www.elm-ai.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "273bade6259ad02eedd6820918309003532c4d5247ac312c379d84ecd10b7407"
+      }
+    },
+    {
+      "slug": "ai-score",
+      "company_url": "https://aiscore.ai/",
+      "state": "quality_rejected",
+      "reason_code": "taste_failed",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: AI Score presents a broad AI-governance control plane and a book-a-demo sales path, but its public surface does not expose enough concrete workflow or craft to distinguish the product from an already crowded governance category.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://tech.eu/2026/09/04/uk-startup-ai-score-raises-54m-to-scale-its-enterprise-ai-governance-platform/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "bd41cd84c631c84bdc510a805d7458b8cc47f7d3a83112b158d34a1bccab8f4d"
+      }
+    },
+    {
+      "slug": "prevalent-ai",
+      "company_url": "https://prevalent.ai/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "1c63cbe7bf6bff205c227acb4e45aa68836cfb2ac0003393d9a08a00e652e50a"
+      }
+    },
+    {
+      "slug": "senticell",
+      "company_url": "https://www.senticell.bio/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "905eeab0c39c6be89cbec6379fedbfe0824c6dcfec05067dc55ad0671d8bd43f"
+      }
+    },
+    {
+      "slug": "zeit-ai",
+      "company_url": "https://www.zeit-ai.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "62511333acc34e93f1008fa926b983dc821726eeff608eadd0497ba49d719828"
+      }
+    },
+    {
+      "slug": "runable",
+      "company_url": "https://runable.com/",
+      "state": "quality_rejected",
+      "reason_code": "taste_failed",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: Runable exposes a working business-agent product, but its broad all-in-one scope does not reveal a sharp tradeoff or a specific workflow that distinguishes it from the crowded general-purpose agent category.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://runable.com/blogs/runable-grow"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "387e6a87072c0811a582319eb9f2f6a8daca93de8b95fdaf0fb68f10b358a9a2"
+      }
+    },
+    {
+      "slug": "hiddenlayer",
+      "company_url": "https://www.hiddenlayer.com/",
+      "state": "quality_rejected",
+      "reason_code": "taste_failed",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: HiddenLayer presents a broad enterprise AI-security platform, but the public surface does not expose a distinct operator workflow or product craft that separates it from an increasingly crowded platform category.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.prnewswire.com/news-releases/hiddenlayer-raises-100m-series-b-to-advance-trustworthy-ai-302867783.html"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "5fc2af7b15f90f4e20fa6d91fb7f48c71f8a36e00e0ba9b90781032f8a6a811e"
+      }
+    },
+    {
+      "slug": "healthplus-ai",
+      "company_url": "https://www.healthplus.ai/",
+      "state": "policy_excluded",
+      "reason_code": "outside_discovery_window",
+      "reason": "Original F3 decision retained from the audit snapshot, not a new product review: Healthplus.ai's official Seed announcement is dated November 27, 2025, outside this Daily run's current financing window, with no newer qualifying round found in the fixed discovery pool.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.healthplus.ai/resources/news/healthplus.ai-raises-seed-round"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "5d9c893677af60553f85a7a8b875dfe2a8574ad8ddf1487b3c525b0fd4a3053f"
+      }
+    },
+    {
+      "slug": "peoplex",
+      "company_url": "https://peoplex.jp/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://prtimes.jp/main/html/rd/p/000000290.000139786.html"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "b638bc4dcf744bf51f5f6ad98cec9fa396a80c9895651439d3480ed1e9dcd0ac"
+      }
+    },
+    {
+      "slug": "hazen-ai",
+      "company_url": "https://hazen.ai/",
+      "state": "policy_excluded",
+      "reason_code": "outside_discovery_window",
+      "reason": "Original F3 decision retained from the audit snapshot, not a new product review: Hazen.ai has an inspectable road-safety product, but no recent qualifying Seed-Series C financing was found in the fixed discovery pool; the available funding references predate the current window.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://hazen.ai/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "7a5edfe2df573c540efd1eefb7e8cc5b4b1c0d0571243d3e9de3da11391e67ff"
+      }
+    },
+    {
+      "slug": "also",
+      "company_url": "https://also.com/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://also.com/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "c8cb2a5d09b6f1ba871347d2df72ea0b011eb490bf0c8a10dd14ca635a19b416"
+      }
+    },
+    {
+      "slug": "yardstik",
+      "company_url": "https://yardstik.com/",
+      "state": "quality_rejected",
+      "reason_code": "taste_failed",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: Yardstik addresses a real workforce-trust workflow, but the public background-screening platform follows established category conventions and shows no sufficiently sharp product tradeoff or craft signal.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://yardstik.com/news-articles/yardstik-raises-30m-in-series-b/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "0d1d0bf46a8350709b0d47d851faf2022951a29ca4985720f95c43af5519e072"
+      }
+    },
+    {
+      "slug": "socure",
+      "company_url": "https://www.socure.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.socure.com/news-and-press/strategic-growth-investment-fravity-acquisition"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "004b4b586502fba16e6773a92c241da570213aa71bb5332bb3038e182bbbec52"
+      }
+    },
+    {
+      "slug": "teragen-energy",
+      "company_url": "https://www.teragenenergy.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "04c411411a225cfb471386f0e04b9e24ed5fa4ac21c455c300b766191e9858e2"
+      }
+    },
+    {
+      "slug": "science4beauty",
+      "company_url": "https://science4beauty.net/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://4growthvc.pl/2026/09/03/7-mln-pln-dla-science4beauty-na-skalowanie-innowacyjnej-konotoksyny-dla-branzy-beauty/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "fce6c45f2529806df0c0b46c43ded0388798647736fa5577462546433a89c765"
+      }
+    },
+    {
+      "slug": "oddpool",
+      "company_url": "https://www.oddpool.com/",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "Original F4 decision retained from the audit snapshot, not a new product review: Oddpool provides institutional infrastructure for prediction markets, an excluded gambling-adjacent category under the Daily content policy.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.ycombinator.com/companies/oddpool"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "b7f48522c6258e0e97a2cdfd45b072df84330f5261a203162055b746faa6671a"
+      }
+    },
+    {
+      "slug": "diameter-pay",
+      "company_url": "https://diameterpay.com/",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "Original F4 decision retained from the audit snapshot, not a new product review: Diameter Pay builds stablecoin payment infrastructure, which falls inside the Daily policy's excluded crypto category regardless of the financing quality.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.theblock.co/news/deals/2026-09-03-diameter-pay-funding-stablecoin-payments-infrastructure-413454"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "02dcdc244a549bb0c743cf210e73e0753fcee1805049c6971d50681fa1b85a96"
+      }
+    },
+    {
+      "slug": "hyimpulse",
+      "company_url": "https://www.hyimpulse.de/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.hyimpulse.de/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "9e75e11ceaca16b336d7bc9f1f79c0f69940bbb099852dbf00bd6eb305bc03ab"
+      }
+    },
+    {
+      "slug": "airbility",
+      "company_url": "https://airbility.co.kr/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "4dced4f519912642461945d17b64de7af489282b56ce61c576c0b5442dd58506"
+      }
+    },
+    {
+      "slug": "xorlab",
+      "company_url": "https://www.xorlab.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "be5ad2e18a8ffb7f28dfdd4bda5a965ef1b332de61f0c1389031f67a50b6aaa0"
+      }
+    },
+    {
+      "slug": "cato",
+      "company_url": "https://www.get-cato.com/en",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "84f21c9527e560b2493cbf4fc334d7f283184927211eb0f482cb32aa2bb14039"
+      }
+    },
+    {
+      "slug": "jaipur-robotics",
+      "company_url": "https://www.jaipurrobotics.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Native EUR amount and named seed stage exist; queue currency-schema proposal, then product review.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://www.htgf.de/en/jaipur-robotics-seed/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "7dfb73eed5845d6f8a65673f8b82d69935b75e720852276cdbbc2007d0c869e4"
+      }
+    },
+    {
+      "slug": "fluencify",
+      "company_url": "https://fluencify.io/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://tech.eu/2026/09/07/fluencify-secures-43m-to-scale-its-creator-campaign-platform/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "a8bb4ffda5bba2a369177a2466368b550b58ee61d1a5368686fdd88d57fa9021"
+      }
+    },
+    {
+      "slug": "octave-energy",
+      "company_url": "https://octave.energy/en/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Review equity/debt components and exact announcement date; do not convert or invent USD amount.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://octave.energy/en/octave-in-the-news/octaveenergy-raises-10-million-to-accelerate-european-expansion/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "2295659dc0c1bf49a8ecad2a7f912f869d0c52aabcb4e63e70248197df71b33f"
+      }
+    },
+    {
+      "slug": "moa-foodtech",
+      "company_url": "https://www.moafoodtech.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://seedtable.com/companies/moa-foodtech/funding-rounds/series-a-2026-09"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "66ba10271a8d1da299934d1aadc10b3d52fa4c8d22fb6bc121da137767fe21fb"
+      }
+    },
+    {
+      "slug": "backbone",
+      "company_url": "https://www.usebackbone.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Pre-seed exclusion is current schema/policy, not an established quality failure.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "5b4cacdcaaf41fd0104d703d37d573fe2098fafdcf32ad0451f7456cbe8301b9"
+      }
+    },
+    {
+      "slug": "hydrosight",
+      "company_url": "https://hydrosight-ai.com/",
+      "state": "evidence_pending",
+      "reason_code": "source_identity_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://hydrosight-ai.com/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "27026823393b2776db0c985dc72de49a23dcd252a4b12134f7726b55655ad220"
+      }
+    },
+    {
+      "slug": "minewatch",
+      "company_url": "https://vigalab.com/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "363064b6be1548e95c199cd0ba476a4552106aec5a06d2da3e0f91187c078cb8"
+      }
+    },
+    {
+      "slug": "fundly-ai",
+      "company_url": "https://fundly.ai/",
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "dfbf168f714f00f911a7412ba8ce546de76370b20ec3afedad8a0dce79cdba5b"
+      }
+    },
+    {
+      "slug": "leinao-ai",
+      "company_url": "https://www.leinao.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://app.dealroom.co/news/note/leinao-ai-raises-15m-series-b-to-build-out-inference-scheduling-tools"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "62ed23340dfcad33356e5a89b23b3ae0b3700dafb7c53f278d9be13b0b594120"
+      }
+    },
+    {
+      "slug": "megawave-fusion",
+      "company_url": "https://www.megawavefusion.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://app.dealroom.co/news/note/fusion-heating-startup-megawave-raises-45m-series-a"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "57206d5856c1e697759ce43c82b0124b21f6f0ca4be723c65a0346636b29aa0e"
+      }
+    },
+    {
+      "slug": "split-pay",
+      "company_url": "https://splitpay.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Correct source identity and separate reported rounds; inspect financing finality without equating an expandable round to no financing.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.axios.com/pro/fintech-deals/2026/09/08/split-pay-raises-series-b",
+        "https://www.axios.com/2026/09/08/split-pay-khosla-125-million"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "moonwalk-biosciences",
+      "company_url": "https://www.moonwalk.bio/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Use the current article path, assess preclinical evidence appropriately; no automatic acceptance.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.biopharmadive.com/news/moonwalk-biosciences-series-b-epigenetic-medicine-obesity/759556/",
+        "https://www.biopharmadive.com/news/moonwalk-series-b-obesity-rna-interference/829784/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "outline",
+      "company_url": "https://www.outlineapp.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Official page has role-specific workflows and named customer accounts; assess actual UI/evidence and taste before deciding.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
+        "https://www.outlineapp.ai/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "brightplan",
+      "company_url": "https://www.brightplan.com/",
+      "state": "quality_rejected",
+      "reason_code": "taste_failed",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: BrightPlan is a broad enterprise financial-wellness suite built from familiar coaching, planning, benefits, and advisor components; its taste answers are Q1 no, Q2 no, and Q3 yes, with no distinctive contrarian bet or memorable product craft visible on the public surface.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.brightplan.com/press-release/series-c-abs-capital/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "brainchild-bio",
+      "company_url": "https://brainchildbio.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Official pipeline/publications link a published phase 1 trial; assess investigational evidence without implying approval.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 1,
+      "sources": [
+        "https://rss.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
+        "https://brainchildbio.com/press/",
+        "https://www.nature.com/articles/s41591-024-03451-3"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "keep-converting",
+      "company_url": "https://keepconverting.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.wamda.com/2026/09/converting-closes-2-million-pre-seed-led-nuwa-capital-cotu-ventures"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "lightsage",
+      "company_url": "https://lightsage.com/",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "Original F4 decision retained from the audit snapshot, not a new product review: Lightsage centers on making products discoverable, visible, and optimized for AI agents, placing its core workflow inside the Daily exclusion for SEO and closely related discoverability-optimization tools.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.globenewswire.com/news-release/2026/09/08/3357801/0/en/lightsage-raises-4m-to-build-the-growth-stack-for-internet-software-s-newest-customer-ai-agents.html"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "celero-communications",
+      "company_url": "https://celero.inc/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Preserve access failure and retry/seek official alternative evidence; do not interpret a challenge as absent product.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://celero.inc/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "dawraty",
+      "company_url": "https://joindawraty.com/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Recorded unreadable page warrants evidence-access deferral, not proof of product absence.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://joindawraty.com/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "openreserve",
+      "company_url": "https://www.openreserve.ai/",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "Original F4 decision retained from the audit snapshot, not a new product review: OpenReserve's official product is explicitly blockchain-native and built around onchain, tokenized financial infrastructure, which falls inside the Daily crypto exclusion.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.openreserve.ai/blog/the-continuous-bank/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "digitalpaani",
+      "company_url": "https://www.digitalpaani.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://theindiabizz.com/startup-funding-news-india/navam-capital-leads-rs-22-cr-round-in-digitalpaani/"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "circolife",
+      "company_url": "https://circolife.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://www.dealstreetasia.com/stories/circolife-funding-india-494483"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "veridue",
+      "company_url": "https://veridue.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://veridue.ai/blog/veridue-launches-4m-pre-seed"
+      ],
+      "attempts": []
+    },
+    {
+      "slug": "bluecore-energy",
+      "company_url": "https://www.bluecore.energy/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://techcrunch.com/2026/07/21/this-uber-alumn-just-raised-a-10m-pre-seed-to-build-portable-nuclear-enegry/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "8118594e962b6710f5a303cf8c0a2c484e10b723acba5f340fbdee3e4b71a5ce"
+      }
+    },
+    {
+      "slug": "antioch",
+      "company_url": "https://antioch.com/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://antioch.com/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "a844a99d7f686755045a721f71cd480604b007782c252fb61c55f9f51b97c820"
+      }
+    },
+    {
+      "slug": "mistral-ai",
+      "company_url": "https://mistral.ai/",
+      "state": "evidence_pending",
+      "reason_code": "governance_revisit",
+      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
+      "reviewed_at": "2026-09-09",
+      "next_review_at": "2026-09-10",
+      "priority": 2,
+      "sources": [
+        "https://mistral.ai/"
+      ],
+      "attempts": [],
+      "original": {
+        "ledger": "rejected.jsonl",
+        "sha256": "5955084741d355035075a7f4815d2230fa3ceb86baeaa4612efd68f500924261"
+      }
+    }
+  ]
+}

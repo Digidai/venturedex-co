@@ -1,0 +1,885 @@
+{
+  "schema_version": 1,
+  "legacy_unresearched": [
+    "11-tribes-ventures",
+    "12-flags",
+    "2048-ventures",
+    "3one4-capital",
+    "6-degrees-capital",
+    "776",
+    "8vc",
+    "abb",
+    "accel",
+    "acrew-capital",
+    "ae-ventures",
+    "ai2-incubator",
+    "album-vc",
+    "alleycorp",
+    "alstin-capital",
+    "amd-ventures",
+    "aramco-ventures",
+    "asymmetric-capital-partners",
+    "atomico",
+    "aulis-capital",
+    "avenue-growth-partners",
+    "avp",
+    "b-capital",
+    "bain-capital-ventures",
+    "balderton-capital",
+    "ballistic-ventures",
+    "baring-private-equity-partners-india",
+    "base10-partners",
+    "basharsoft-group",
+    "basis-set-ventures",
+    "blackbird-ventures",
+    "blackpeak-capital",
+    "blackrock",
+    "blackstone-innovations-investments",
+    "blue-heron-capital",
+    "bmw-i-ventures",
+    "boldstart-ventures",
+    "bonfire-ventures",
+    "brightmind-partners",
+    "brighton-park-capital",
+    "burda-principal-investments",
+    "burnt-island-ventures",
+    "caesar-ventures",
+    "caffeinated-capital",
+    "camber-partners",
+    "capital-today",
+    "capitalg",
+    "catalyst-investors",
+    "charles-schwab",
+    "chemistry",
+    "chingona-ventures",
+    "claypond-capital",
+    "cloud9-capital",
+    "cloudberry-ventures",
+    "commerzventures",
+    "connect-ventures",
+    "conviction",
+    "copper-sky-capital",
+    "coreline-ventures",
+    "creaegis",
+    "creandum",
+    "crosslink-capital",
+    "crv",
+    "daphni",
+    "decibel",
+    "define-ventures",
+    "dell-technologies-capital",
+    "disruptive",
+    "distributed-ventures",
+    "dn-capital",
+    "dogwood-ventures",
+    "dorilton-ventures",
+    "dragonfly",
+    "dst-global",
+    "earlybird",
+    "ebay-ventures",
+    "eclipse",
+    "elev8-venture-partners",
+    "energize-capital",
+    "entree-capital",
+    "equal-ventures",
+    "eurazeo",
+    "evok-innovations",
+    "expedition-growth-capital",
+    "f-prime-capital",
+    "fcvc",
+    "felicis",
+    "felix-capital",
+    "fin-capital",
+    "fine-structure-ventures",
+    "fintop-capital",
+    "first-round-capital",
+    "firstmark",
+    "footwork",
+    "forerunner-ventures",
+    "forestay-capital",
+    "forgepoint-capital",
+    "g2-venture-partners",
+    "galvanize",
+    "general-catalyst",
+    "glilot-capital",
+    "global-paytech-ventures",
+    "goldman-sachs-alternatives",
+    "google-ai-futures-fund",
+    "gradient",
+    "greenfield-partners",
+    "greenoaks",
+    "greylock",
+    "gv",
+    "haun-ventures",
+    "hetz-ventures",
+    "hpi-ventures",
+    "hubspot-ventures",
+    "hyde-park-venture-partners",
+    "ibex-investors",
+    "impression-ventures",
+    "in-venture",
+    "innovation-endeavors",
+    "innovius-capital",
+    "inovo-vc",
+    "insight-partners",
+    "intel-capital",
+    "ion-pacific",
+    "ivp",
+    "j2-ventures",
+    "jb-investment",
+    "jre-ventures",
+    "jt-ventures",
+    "jump-capital",
+    "kbr",
+    "keysight-technologies",
+    "kindred-ventures",
+    "kleiner-perkins",
+    "las-olas-venture-capital",
+    "leaps-by-bayer",
+    "left-lane-capital",
+    "lewis-clark-partners",
+    "light-street-capital",
+    "m-ventures",
+    "m13-ventures",
+    "madrona",
+    "magarac-venture-partners",
+    "marathon-management-partners",
+    "mare-liberum",
+    "marlinspike",
+    "massmutual-ventures",
+    "matrix",
+    "maverick-silicon",
+    "maveron",
+    "mckesson-ventures",
+    "menlo-ventures",
+    "mercury-fund",
+    "merlin-ventures",
+    "missionog",
+    "morgan-stanley-expansion-capital",
+    "mucker-capital",
+    "n47",
+    "nato-innovation-fund",
+    "nava-ventures",
+    "newion",
+    "nexus-venture-partners",
+    "northern-gritstone",
+    "norwest",
+    "notable-capital",
+    "notion-capital",
+    "obvious-ventures",
+    "octopus-ventures",
+    "og-venture-partners",
+    "one-peak",
+    "paladin-capital-group",
+    "pathlight",
+    "peak-xv-partners",
+    "permanent-capital-ventures",
+    "pitango",
+    "pitchdrive",
+    "pivot-investment-partners",
+    "portage-ventures",
+    "preface-ventures",
+    "prosus-ventures",
+    "prudent-investment-managers",
+    "prysm-capital",
+    "qic-ventures",
+    "quiet-capital",
+    "qumra-capital",
+    "radical-ventures",
+    "radius-capital",
+    "redpoint-ventures",
+    "reimann-investors",
+    "revaia",
+    "revo-capital",
+    "ribbit-capital",
+    "rpm-ventures",
+    "rsquared-investment",
+    "rtp-global",
+    "s3-ventures",
+    "s32",
+    "s4s-ventures",
+    "salesforce-ventures",
+    "samsung-venture-investment",
+    "scout-ventures",
+    "sequoia",
+    "shangbay-capital",
+    "shastra-vc",
+    "shine-capital",
+    "signalfire",
+    "silverton-partners",
+    "sinewave-ventures",
+    "singular",
+    "sitara-capital",
+    "sky9-capital",
+    "skywell-capital-partners",
+    "smash-capital",
+    "south-park-commons",
+    "spark",
+    "spero-ventures",
+    "square-peg",
+    "standard-capital",
+    "sutter-hill-ventures",
+    "syn-ventures",
+    "t-rowe-price",
+    "tcv",
+    "team8",
+    "the-raptor-group",
+    "theory-ventures",
+    "thrive",
+    "tlv-partners",
+    "top-down-ventures",
+    "touring-capital",
+    "tribeca-venture-partners",
+    "tx-ventures",
+    "u-ventures",
+    "unicorn-india-ventures",
+    "upfront-ventures",
+    "valley-capital-partners",
+    "valor-atreides-ai-fund",
+    "veredas-partners",
+    "village-global",
+    "vmg-partners",
+    "volo-earth-ventures",
+    "washington-harbour",
+    "will-ventures",
+    "wing-venture-capital",
+    "york-ie",
+    "z3partners",
+    "zigg-capital"
+  ],
+  "profiles": {
+    "a16z": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Andreessen Horowitz backs technology companies from seed through growth. Its platform model pairs investing with operator support for founders.",
+        "source_ids": [
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2009",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Venture",
+            "Growth"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "AI",
+            "Bio & healthcare",
+            "Consumer",
+            "Crypto",
+            "Enterprise",
+            "Fintech",
+            "Games",
+            "Infrastructure",
+            "American Dynamism"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Investing teams include former founders and operators; the firm works with companies across multiple stages.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Operator resources in marketing, talent, legal and policy.",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "About a16z",
+          "url": "https://a16z.com/about/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "portfolio",
+          "label": "Official portfolio",
+          "url": "https://a16z.com/portfolio/",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "battery-ventures": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Battery is a technology-focused investor spanning venture capital and private equity. Its sector teams work across early-stage, growth and buyout investments.",
+        "source_ids": [
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital & private equity",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "1983",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage",
+            "Growth",
+            "Buyout"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Application software",
+            "Infrastructure software",
+            "Consumer",
+            "Industrial technology & life science tools"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "Boston",
+            "San Francisco",
+            "Menlo Park",
+            "Tel Aviv",
+            "London",
+            "New York"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Research-led sector investing across different company stages.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Recruiting, go-to-market, business development, communications, finance and analytics.",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "About Battery",
+          "url": "https://www.battery.com/about/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "services",
+          "label": "Portfolio services",
+          "url": "https://www.battery.com/services/",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "bessemer-venture-partners": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Bessemer works with founders before product-market fit and supports companies from concept and seed through later growth.",
+        "source_ids": [
+          "early-stage"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "early-stage"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Concept",
+            "Seed",
+            "Series A",
+            "Growth"
+          ],
+          "source_ids": [
+            "early-stage"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Early investments can precede product-market fit, traction or a finished product; follow-on support extends into growth.",
+          "source_ids": [
+            "early-stage"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Early-stage resources cover product-market fit, security, developer platforms and company building.",
+          "source_ids": [
+            "early-stage"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "early-stage",
+          "label": "Early-stage investing and resources",
+          "url": "https://www.bvp.com/early-stage",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "index-ventures": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Index is a multi-stage venture investor. Its stated approach emphasizes long-term relationships with founders across sectors.",
+        "source_ids": [
+          "philosophy"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "philosophy"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Venture",
+            "Growth"
+          ],
+          "source_ids": [
+            "philosophy"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Cross-sector"
+          ],
+          "source_ids": [
+            "philosophy"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "San Francisco",
+            "New York",
+            "London"
+          ],
+          "source_ids": [
+            "philosophy"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Founder relationships, long-term conviction and support across successive company stages.",
+          "source_ids": [
+            "philosophy"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Public founder resources cover stock options, US expansion and organizational scaling.",
+          "source_ids": [
+            "philosophy"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "philosophy",
+          "label": "Investment philosophy",
+          "url": "https://www.indexventures.com/philosophy/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "resources",
+          "label": "Index Press: founder resources",
+          "url": "https://www.indexventures.com/index-press/",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "khosla-ventures": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Khosla Ventures emphasizes early conviction in ambitious technology companies and practical help with building the business.",
+        "source_ids": [
+          "firm"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "firm"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Backs technology that can create new categories; its official portfolio includes seed, early and growth investments.",
+          "source_ids": [
+            "firm"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Company-building resources cover hiring, product-market fit, pricing, growth and fundraising; operator office hours supplement recruiting support.",
+          "source_ids": [
+            "assistance"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "firm",
+          "label": "Khosla Ventures: approach and portfolio",
+          "url": "https://www.khoslaventures.com/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "assistance",
+          "label": "Venture Assistance",
+          "url": "https://www.khoslaventures.com/entrepreneurs",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "lightspeed": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Lightspeed backs companies from seed into later rounds. Its official site presents a global network while distinguishing independent advisory entities.",
+        "source_ids": [
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Series A–F and beyond"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Seeks opportunities based on the company and founder, regardless of where the founder resides.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "United States",
+            "Europe",
+            "Israel"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "LSVP and Lightspeed India Partners (LSIP) are separate, independently operated investment advisers. LSVP lists US, Europe and Israel offices; India and Southeast Asia offices belong to LSIP. Historical VentureDex aliases may group the brand and should not be read as legal-entity attribution.",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "About Lightspeed and advisory-entity disclosure",
+          "url": "https://lsvp.com/about/",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "lux-capital": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Lux Capital invests in companies built around emerging science and technology, with a focus on technically difficult opportunities and long-term company building.",
+        "source_ids": [
+          "contact",
+          "strategy"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "contact"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2000",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Across company-building stages, from initial financing to later expansion",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "AI and computing",
+            "Biotechnology",
+            "Aerospace",
+            "Defense",
+            "Industrial technology",
+            "Transportation"
+          ],
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "New York City",
+            "Silicon Valley"
+          ],
+          "source_ids": [
+            "contact"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Backs technically challenging science and technology businesses and works with founders through successive stages of company development.",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Its Platform team helps portfolio companies connect with early customers, hires, strategic partners and operating resources.",
+          "source_ids": [
+            "platform"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "contact",
+          "label": "Lux Capital: firm description and locations",
+          "url": "https://www.luxcapital.com/contact",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "strategy",
+          "label": "Lux Ventures IX: investment approach and firm history",
+          "url": "https://www.luxcapital.com/news/announcing-lux-ventures-ix",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "platform",
+          "label": "Lux Platform: portfolio support",
+          "url": "https://www.luxcapital.com/people/tracie-rotter",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "venturefriends": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "VentureFriends is an early-stage venture firm backing founders primarily at pre-seed and seed. Its stated geographic focus spans Europe and the Middle East and North Africa.",
+        "source_ids": [
+          "overview",
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "overview"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United Kingdom",
+            "Europe, including Central and Eastern Europe",
+            "Middle East and North Africa"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Invests across sectors; recurring themes include fintech, B2B software, consumer businesses, cybersecurity, property technology and climate technology.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Launched its first fund in 2016 after founder and angel-investing activity. It favors a concentrated set of companies with follow-on support.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Practical help with fundraising, go-to-market and hiring, drawing on the wider team and its operator and founder network.",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "label": "VentureFriends: firm overview",
+          "url": "https://www.venturefriends.vc/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "about",
+          "label": "VentureFriends: history, investment criteria and founder support",
+          "url": "https://www.venturefriends.vc/about",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "yc": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Y Combinator combines startup funding with a three-month program, partner office hours and an ongoing founder community.",
+        "source_ids": [
+          "program"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Startup accelerator & seed investor",
+          "source_ids": [
+            "program"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "The program helps founders improve their product, grow usage and prepare for fundraising; companies enter at different levels of progress.",
+          "source_ids": [
+            "program"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Partner office hours",
+            "Founder and alumni community",
+            "Demo Day"
+          ],
+          "source_ids": [
+            "program"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage"
+          ],
+          "source_ids": [
+            "program"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "program",
+          "label": "What happens at YC",
+          "url": "https://www.ycombinator.com/about/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "faq",
+          "label": "Founder FAQ",
+          "url": "https://www.ycombinator.com/faq",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    }
+  },
+  "attempts": {}
+}

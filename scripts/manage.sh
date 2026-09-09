@@ -529,6 +529,7 @@ optional_table_columns = {
 }
 supported_additions = {
     "startups": {"research_json"},
+    "funding_rounds": {"currency", "stage_raw", "instrument"},
     "newsletter_subscriptions": {
         "preferences_json", "unsubscribe_token", "unsubscribed_at", "updated_at",
     },
@@ -625,6 +626,39 @@ EOF
 
 ensure_current_remote_schema() {
   local output parsed missing_startup_columns=() missing_newsletter_columns=()
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+      "PRAGMA table_info(funding_rounds);" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  # A failed/incomplete schema probe must not become permission to ALTER.
+  local missing_funding
+  if ! missing_funding="$(python3 -c '
+import json, sys
+payload = json.load(sys.stdin)
+if not isinstance(payload, list) or len(payload) != 1 or payload[0].get("success") is not True:
+    raise SystemExit("ERROR: unsuccessful funding schema probe")
+columns = {row["name"] for row in payload[0]["results"]}
+if not {"id", "amount", "stage", "source_url"}.issubset(columns):
+    raise SystemExit("ERROR: incomplete funding schema probe")
+print("\n".join(column for column in ["currency", "stage_raw", "instrument"] if column not in columns))
+' <<<"$parsed")"; then
+    return 1
+  fi
+  while IFS= read -r column; do
+    [ -n "$column" ] || continue
+    case "$column" in
+      currency|stage_raw|instrument)
+        echo "Adding remote funding_rounds.$column column..."
+        (cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+          "ALTER TABLE funding_rounds ADD COLUMN $column TEXT;" >/dev/null) || return 1
+        ;;
+      *) echo "ERROR: Unsupported funding migration" >&2; return 1 ;;
+    esac
+  done <<<"$missing_funding"
   if ! output="$(
     cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
       "PRAGMA table_info(startups);" 2>&1
@@ -1872,7 +1906,7 @@ cmd_add() {
   echo
   echo "Funding:"
   funding_amount="$(prompt_required "Amount (e.g. \$20M or undisclosed)")"
-  funding_stage="$(prompt_required "Stage (Seed / named Series A-Z; Series D+ requires research.breakout_exception)")"
+  funding_stage="$(prompt_required "Stage (Pre-Seed / Seed / Pre-Series A / named Series A-Z; preserve extensions in stage_raw; D+ requires research.breakout_exception)")"
   lead_investor="$(prompt_required "Lead investor")"
   funding_date="$(prompt_required "Funding date (YYYY-MM-DD)")"
   source_url="$(prompt_required "Source article URL")"

@@ -24,8 +24,8 @@
       "stage": "Seed",
       "lead_investor": "Lux Capital",
       "date": "2026-07-21",
-      "source_url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/",
-      "source_name": "SiliconANGLE"
+      "source_url": "https://skypilot.ai/blog/skypilot-the-company",
+      "source_name": "SkyPilot"
     }
   ],
   "research": {
@@ -57,8 +57,8 @@
       },
       {
         "id": "funding_1",
-        "label": "SkyPilot seed coverage",
-        "url": "https://siliconangle.com/2026/07/21/skypilot-nabs-20m-ease-ai-infrastructure-management/",
+        "label": "SkyPilot official Seed announcement; source refreshed September 9, 2026",
+        "url": "https://skypilot.ai/blog/skypilot-the-company",
         "type": "funding"
       }
     ],

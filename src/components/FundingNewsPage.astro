@@ -11,6 +11,7 @@ import { getContentNewsEligibleFundingRounds } from "../lib/content";
 import { getIndexableInvestorSlugs } from "../lib/investor-indexing";
 import { newsJsonLd } from "../lib/seo";
 import { paginateFundingRounds, formatFundingDate } from "../lib/funding-pagination";
+import { fundingAmountLabel, fundingStageLabel } from "../lib/funding-terms";
 
 interface Props { page?: number; }
 const allRounds = getContentNewsEligibleFundingRounds();
@@ -36,7 +37,7 @@ const schema = newsJsonLd(rounds, Astro.site?.toString(), path);
       <section class="funding-section" aria-labelledby="funding-rounds-heading">
         <div class="section-heading">
           <h2 id="funding-rounds-heading">Source-linked funding rounds</h2>
-          <p>Amounts describe individual reported rounds, not total company funding. This is VentureDex's research coverage, not an exhaustive market database.</p>
+          <p>Amounts describe reported rounds in their stated currency, not total company funding or investor contributions. Debt, grants and mixed financing are labelled separately; no currency conversion is implied. This is VentureDex's research coverage, not an exhaustive market database.</p>
         </div>
         <div class="table-wrap" tabindex="0" role="region" aria-label="Funding rounds table; scroll horizontally on small screens">
           <table class="funding-table">
@@ -77,8 +78,8 @@ const schema = newsJsonLd(rounds, Astro.site?.toString(), path);
                       </div>
                     </td>
                     <td class="cell-round">
-                      {r.amount && <span class="round-amount">{r.amount}</span>}
-                      <span class="round-stage">{r.stage}</span>
+                      <span class="round-amount">{fundingAmountLabel(r)}</span>
+                      <span class="round-stage">{fundingStageLabel(r)}</span>
                     </td>
                     <td class="cell-date">
                       <time datetime={r.date}>{formatFundingDate(r.date)}</time>

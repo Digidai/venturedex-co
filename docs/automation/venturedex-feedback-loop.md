@@ -97,10 +97,10 @@ Use the narrowest stable tag above. Put provider names, command output, URL list
 
 Score each run with a simple additive reward:
 
-- `+3` one accepted startup, all five reviews pass, all local checks pass, push succeeds, no cleanup needed
-- `+4` two to five accepted startups, all five reviews pass, all local checks pass, push succeeds, and every addition independently clears the bar
-- `+2` no accepted startup, but candidate search and rejection set are specific, justified, and meet the 3:1 bar
-- `+1` clean no-op run with clear reasons and no process drift
+- `+2` one fixed, completely accounted pool with complementary source attempts and source-specific decisions, regardless of accepted/rejected counts
+- `+2` all applicable content, independent screenshot, local, release and live checks pass, or a clean no-op truthfully records why publication was not needed
+- `+1` a scheduled re-review adds new evidence and resolves an old uncertainty or corrects an error, regardless of whether the outcome is positive or negative
+- `+1` pending items have justified future review dates and truthful attempt histories, with no same-day blind retry
 - `0` neutral run with no major learning and no regressions
 - `-1` operational friction that required retry but did not threaten content quality
 - `-2` local validation or build failure during the run, even if fixed later
@@ -180,8 +180,10 @@ Each entry must include:
 - run timestamp
 - candidate count
 - accepted count
-- rejected count
-- whether the 3:1 bar was met
+- counts by all eight decision states, summing to the unique locked-pool denominator
+- source-family coverage, fresh/revisit counts, due backlog count and oldest due date
+- review corrections / actual completed re-reviews (report n/a, not zero, when the denominator is zero)
+- rejection ratio only as a descriptive diagnostic with its denominator; never a target or reward
 - validation/build/push outcome
 - stable `failure_tags`
 - reward
@@ -209,7 +211,7 @@ If any answer is no, do not apply the heuristic change.
 If a human-directed governance change is being applied, run these checks:
 
 1. Does the new wording distinguish human overrides from automation self-edits?
-2. If intake capacity changed, do candidate-discovery targets still comfortably satisfy the rejection bar?
+2. Do the fixed-pool and five-addition ceilings remain coherent without incentives to manufacture rejections or acceptances?
 3. Do commit rules still describe both single-addition and multi-addition runs?
 4. Is the learning-log trail sufficient for a future automation run to understand why the policy changed?
 5. Is the resulting policy stricter or clearer about quality, even if throughput increased?

@@ -121,7 +121,7 @@ test("per-startup facets match the seed", () => {
 
 test("per-startup funding rounds match the seed (as multisets)", () => {
   const roundKey = (r: Record<string, unknown>) =>
-    JSON.stringify([nn(r.amount), nn(r.stage), nn(r.lead_investor), nn(r.date), nn(r.source_url), nn(r.source_name)]);
+    JSON.stringify([nn(r.amount), nn(r.stage), nn(r.lead_investor), nn(r.date), nn(r.source_url), nn(r.source_name), nn(r.currency), nn(r.stage_raw), nn(r.instrument)]);
   for (const [slug, pyRounds] of Object.entries(canonical.funding)) {
     const tsRounds = readers.getContentFundingRoundsForStartup(slug);
     assert.deepEqual(

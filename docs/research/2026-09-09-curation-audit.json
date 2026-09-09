@@ -1,0 +1,1315 @@
+{
+  "audit_date": "2026-09-09",
+  "repository_base_sha": "64c5dab426a7f3e65df2386f0f2b46c5da57d27a",
+  "canonical_ledger_path": "content/rejected.jsonl",
+  "draft_worktree": "/Users/dai/.codex/worktrees/venturedex-daily-20260909T054150Z/venturedex.co",
+  "scope_note": "Committed September 5-8 rejection rows plus September 9 draft-only rows. Recovery runs counted once. Assessments do not supersede the rejection ledger or authorize publication.",
+  "pools": [
+    {
+      "run_id": "venturedex-daily-20260905T032102Z",
+      "candidates": 19,
+      "rejected": 15,
+      "published": 4,
+      "provisional": 0,
+      "deferred": 0
+    },
+    {
+      "run_id": "venturedex-daily-20260906T054202Z",
+      "candidates": 20,
+      "rejected": 15,
+      "published": 5,
+      "provisional": 0,
+      "deferred": 0
+    },
+    {
+      "run_id": "venturedex-daily-20260908T054135Z",
+      "candidates": 11,
+      "rejected": 11,
+      "published": 0,
+      "provisional": 0,
+      "deferred": 0
+    },
+    {
+      "run_id": "venturedex-daily-20260909T054150Z",
+      "candidates": 20,
+      "rejected": 13,
+      "published": 0,
+      "provisional": 4,
+      "deferred": 3
+    }
+  ],
+  "totals": {
+    "candidates": 70,
+    "rejected": 54,
+    "published": 9,
+    "provisional": 4,
+    "deferred": 3,
+    "rejection_share_all_candidates": 0.7714285714285715,
+    "rejection_share_recorded_decisions": 0.8059701492537313,
+    "stages": {
+      "F1": 10,
+      "F3": 35,
+      "taste": 5,
+      "F4": 4
+    }
+  },
+  "rejections": [
+    {
+      "schema_version": 2,
+      "slug": "aitan",
+      "company_url": "https://www.aitansystems.com/",
+      "decision_source_url": "https://www.aitansystems.com/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-05",
+      "stage": "F1",
+      "reason": "Aitan's public launch describes an AI-enabled industrial operations platform and customer deployments, but exposes no documentation, demo, interface, benchmark, or inspectable workflow sufficient to evaluate the product itself.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "company_status_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "aslan",
+      "company_url": "https://aslanprotects.com/",
+      "decision_source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Axios confirms $20.8M in financing for Aslan's national-security agents but does not identify a conventional Seed-Series C stage, so the round cannot clear the current funding record without guessing.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "trustedrouter",
+      "company_url": "https://trustedrouter.com/",
+      "decision_source_url": "https://trustedrouter.com/blog/we-raised-1-25m-seed",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "TrustedRouter publishes a concrete product and confirms a $1.25M Seed, but its announcement names an investor group without identifying a lead investor, leaving the required lead field unverified.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "rejection_reason_invalid",
+        "action": "Re-review product/taste under existing undisclosed-lead rule; not automatic acceptance.",
+        "sources": [
+          "https://trustedrouter.com/blog/we-raised-1-25m-seed"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "easy-aerial",
+      "company_url": "https://www.easyaerial.com/",
+      "decision_source_url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Axios confirms a $20M Series B from Insight Partners and Entrée Capital but does not identify either firm as the lead investor, so the current funding record remains incomplete for Daily publication.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "rejection_rule_invalid_source_not_reaudited",
+        "action": "The sole recorded lead-field objection is invalid; verify funding and product independently.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "fambot",
+      "company_url": "https://fambot.com/",
+      "decision_source_url": "https://fambot.com/press",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Fambot's family logistics assistant has a visible beta, but the announced $3.5M financing is explicitly pre-seed and does not present an exceptional product signal that warrants departing from the Daily Seed-Series C preference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "conveo",
+      "company_url": "https://conveo.ai/",
+      "decision_source_url": "https://conveo.ai/mediakit/series-a",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Conveo's official $50M Series A announcement lists five participating investors but does not identify a lead; the product clears evaluability, but the required lead investor cannot be inferred from ordering.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "rejection_reason_invalid",
+        "action": "Re-review product/taste; explicitly listed participants do not need an inferred lead.",
+        "sources": [
+          "https://conveo.ai/mediakit/series-a"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "guardio",
+      "company_url": "https://guard.io/",
+      "decision_source_url": "https://site.guard.io/blog/a-note-from-amos-our-ceo",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Guardio's official announcement confirms a $40M financing and participating investors but does not name the round stage, leaving a required funding field unresolved.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "ultrahuman",
+      "company_url": "https://www.ultrahuman.com/",
+      "decision_source_url": "https://techcrunch.com/2026/09/03/qualcomm-backs-ultrahuman-in-70m-round-on-bet-to-turn-smart-rings-into-computers/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "The reported $70M financing combines $65M of equity with $5M of debt but does not identify a named Seed-Series C stage, so it cannot be normalized into the Daily funding schema without inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "emberos",
+      "company_url": "https://www.emberos.ai/",
+      "decision_source_url": "https://www.emberos.ai/knowledge-hub/emberos-raises-5.5-million-seed-round",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Emberos confirms a $5.5M Seed backed by a private investor consortium, but the announcement does not name a lead investor, leaving the financing incomplete for publication.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "rejection_reason_invalid_category_still_uncertain",
+        "action": "Lead-only rejection invalid; separately evaluate SEO/GEO exclusion.",
+        "sources": [
+          "https://www.emberos.ai/knowledge-hub/emberos-raises-5.5-million-seed-round"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "chariot-claims",
+      "company_url": "https://www.chariotclaims.com/",
+      "decision_source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Chariot Claims appears in a $9.46M SEC filing, but the available record does not identify a financing stage or lead investor, so the round lacks two required publication fields.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "elm-ai",
+      "company_url": "https://www.elm-ai.com/",
+      "decision_source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Elm AI appears in a $3.84M SEC filing, but the available record does not identify the round stage or a lead investor, leaving the financing unsuitable for the Daily schema.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "ai-score",
+      "company_url": "https://aiscore.ai/",
+      "decision_source_url": "https://tech.eu/2026/09/04/uk-startup-ai-score-raises-54m-to-scale-its-enterprise-ai-governance-platform/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "taste",
+      "reason": "AI Score presents a broad AI-governance control plane and a book-a-demo sales path, but its public surface does not expose enough concrete workflow or craft to distinguish the product from an already crowded governance category.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "prevalent-ai",
+      "company_url": "https://prevalent.ai/",
+      "decision_source_url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "Prevalent AI describes its financing only as a growth investment and does not provide a named round stage, so the funding record cannot be mapped to the Daily stage requirement.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "senticell",
+      "company_url": "https://www.senticell.bio/",
+      "decision_source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F1",
+      "reason": "Senticell's red-blood-cell liquid-biopsy platform remains in clinical-study development, with no commercial workflow, validation package, or inspectable product surface sufficient for Daily product evaluation.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "company_status_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "zeit-ai",
+      "company_url": "https://www.zeit-ai.com/",
+      "decision_source_url": "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-05",
+      "stage": "F3",
+      "reason": "The reported €5M financing for Zeit AI names investors but does not label a Seed-Series C stage, so the round cannot clear the Daily funding schema without relying on an inferred stage.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "runable",
+      "company_url": "https://runable.com/",
+      "decision_source_url": "https://runable.com/blogs/runable-grow",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "taste",
+      "reason": "Runable exposes a working business-agent product, but its broad all-in-one scope does not reveal a sharp tradeoff or a specific workflow that distinguishes it from the crowded general-purpose agent category.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "hiddenlayer",
+      "company_url": "https://www.hiddenlayer.com/",
+      "decision_source_url": "https://www.prnewswire.com/news-releases/hiddenlayer-raises-100m-series-b-to-advance-trustworthy-ai-302867783.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "taste",
+      "reason": "HiddenLayer presents a broad enterprise AI-security platform, but the public surface does not expose a distinct operator workflow or product craft that separates it from an increasingly crowded platform category.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "healthplus-ai",
+      "company_url": "https://www.healthplus.ai/",
+      "decision_source_url": "https://www.healthplus.ai/resources/news/healthplus.ai-raises-seed-round",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "Healthplus.ai's official Seed announcement is dated November 27, 2025, outside this Daily run's current financing window, with no newer qualifying round found in the fixed discovery pool.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "peoplex",
+      "company_url": "https://peoplex.jp/",
+      "decision_source_url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "PeopleX's announced Series A combines equity and debt in Japanese yen; the Daily amount contract requires a source-stated US-dollar amount and does not permit currency conversion or mixed-financing inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "hazen-ai",
+      "company_url": "https://hazen.ai/",
+      "decision_source_url": "https://hazen.ai/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "Hazen.ai has an inspectable road-safety product, but no recent qualifying Seed-Series C financing was found in the fixed discovery pool; the available funding references predate the current window.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "also",
+      "company_url": "https://also.com/",
+      "decision_source_url": "https://also.com/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-06",
+      "stage": "F1",
+      "reason": "ALSO's new electric-mobility company has disclosed financing and a category direction, but its current public surface does not expose a specific production product, documentation, or operator workflow for independent evaluation.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "company_status_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "yardstik",
+      "company_url": "https://yardstik.com/",
+      "decision_source_url": "https://yardstik.com/news-articles/yardstik-raises-30m-in-series-b/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "taste",
+      "reason": "Yardstik addresses a real workforce-trust workflow, but the public background-screening platform follows established category conventions and shows no sufficiently sharp product tradeoff or craft signal.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "socure",
+      "company_url": "https://www.socure.com/",
+      "decision_source_url": "https://www.socure.com/news-and-press/strategic-growth-investment-fravity-acquisition",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "Socure describes the transaction as a strategic growth investment tied to an acquisition rather than a named Seed-Series C round, so the stage cannot be normalized without inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "teragen-energy",
+      "company_url": "https://www.teragenenergy.com/",
+      "decision_source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "Teragen Energy's $6M financing is explicitly pre-seed, and the public evidence does not establish an exceptional product breakout that warrants departing from the Daily Seed-Series C preference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "science4beauty",
+      "company_url": "https://science4beauty.net/",
+      "decision_source_url": "https://4growthvc.pl/2026/09/03/7-mln-pln-dla-science4beauty-na-skalowanie-innowacyjnej-konotoksyny-dla-branzy-beauty/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "Science4Beauty's financing is reported in Polish złoty without a named Seed-Series C stage; the Daily contract forbids currency conversion and stage inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "oddpool",
+      "company_url": "https://www.oddpool.com/",
+      "decision_source_url": "https://www.ycombinator.com/companies/oddpool",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-06",
+      "stage": "F4",
+      "reason": "Oddpool provides institutional infrastructure for prediction markets, an excluded gambling-adjacent category under the Daily content policy.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "diameter-pay",
+      "company_url": "https://diameterpay.com/",
+      "decision_source_url": "https://www.theblock.co/news/deals/2026-09-03-diameter-pay-funding-stablecoin-payments-infrastructure-413454",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F4",
+      "reason": "Diameter Pay builds stablecoin payment infrastructure, which falls inside the Daily policy's excluded crypto category regardless of the financing quality.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "hyimpulse",
+      "company_url": "https://www.hyimpulse.de/",
+      "decision_source_url": "https://www.hyimpulse.de/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "HyImpulse's current financing announcement is denominated in euros and described as additional Series A funding, so the exact US-dollar amount required by the Daily schema cannot be stated without conversion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "airbility",
+      "company_url": "https://airbility.co.kr/",
+      "decision_source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F1",
+      "reason": "AIRBILITY's financing is verifiable, but the current public product surface exposes no detailed documentation, benchmark, interface, flight evidence, or inspectable operating workflow for independent evaluation.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "xorlab",
+      "company_url": "https://www.xorlab.com/",
+      "decision_source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-06",
+      "stage": "F3",
+      "reason": "xorlab labels the €5M financing as Series A+, which is not a supported named round in the immutable Daily schema, and the source does not state a US-dollar amount.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "cato",
+      "company_url": "https://www.get-cato.com/en",
+      "decision_source_url": "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Cato's Seed round is reported as €6M, while the Daily funding schema accepts a source-stated US-dollar amount and does not permit currency conversion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "jaipur-robotics",
+      "company_url": "https://www.jaipurrobotics.com/",
+      "decision_source_url": "https://www.htgf.de/en/jaipur-robotics-seed/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Jaipur Robotics' official investor announcement states a €4.3M Seed round; the Daily schema requires a source-stated US-dollar amount and forbids unsupported conversion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "schema_barrier_not_product_quality",
+        "action": "Native EUR amount and named seed stage exist; queue currency-schema proposal, then product review.",
+        "sources": [
+          "https://www.htgf.de/en/jaipur-robotics-seed/"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "fluencify",
+      "company_url": "https://fluencify.io/",
+      "decision_source_url": "https://tech.eu/2026/09/07/fluencify-secures-43m-to-scale-its-creator-campaign-platform/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Fluencify's $4.3M financing is explicitly pre-seed, and the public product signal does not justify departing from the Daily Seed-Series C preference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "new_product_evidence"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "octave-energy",
+      "company_url": "https://octave.energy/en/",
+      "decision_source_url": "https://octave.energy/en/octave-in-the-news/octaveenergy-raises-10-million-to-accelerate-european-expansion/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Octave.energy's official announcement describes a €10M Series A combining equity and flexible debt, so no single source-stated US-dollar equity amount can be recorded without conversion or allocation inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "schema_barrier_and_date_gap",
+        "action": "Review equity/debt components and exact announcement date; do not convert or invent USD amount.",
+        "sources": [
+          "https://octave.energy/en/octave-in-the-news/octaveenergy-raises-10-million-to-accelerate-european-expansion/"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "moa-foodtech",
+      "company_url": "https://www.moafoodtech.com/",
+      "decision_source_url": "https://seedtable.com/companies/moa-foodtech/funding-rounds/series-a-2026-09",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "MOA Foodtech's underlying financing is €3.3M and the displayed $3.8M figure is explicitly a currency conversion, which the Daily amount contract does not allow.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "backbone",
+      "company_url": "https://www.usebackbone.ai/",
+      "decision_source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Backbone's official announcement identifies a €4M pre-seed round, outside the Daily Seed-Series C preference and without a source-stated US-dollar amount.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "new_product_evidence",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "stage_policy_exclusion",
+        "action": "Pre-seed exclusion is current schema/policy, not an established quality failure.",
+        "sources": [
+          "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "hydrosight",
+      "company_url": "https://hydrosight-ai.com/",
+      "decision_source_url": "https://hydrosight-ai.com/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-08",
+      "stage": "F1",
+      "reason": "HydroSight's claimed official domain redirects to unrelated parked-domain editorial content and exposes no product, documentation, demo, interface, or other company-controlled evidence that can be evaluated.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "company_status_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "minewatch",
+      "company_url": "https://vigalab.com/",
+      "decision_source_url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "MineWatch's financing source confirms a US$900K round led by Alza Mining Tech but does not name it Seed or a canonical Series stage, so the required stage cannot be inferred.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "fundly-ai",
+      "company_url": "https://fundly.ai/",
+      "decision_source_url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Fundly.ai's current report describes a $4M round plus $0.9M of venture debt but does not state a Seed or named Series stage, so the financing cannot enter the Daily schema without inference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "leinao-ai",
+      "company_url": "https://www.leinao.ai/",
+      "decision_source_url": "https://app.dealroom.co/news/note/leinao-ai-raises-15m-series-b-to-build-out-inference-scheduling-tools",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Leinao.ai's Series B is stated as CNY 100M and only approximated as $15M, while the Daily schema requires a source-stated US-dollar amount rather than a conversion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "megawave-fusion",
+      "company_url": "https://www.megawavefusion.com/",
+      "decision_source_url": "https://app.dealroom.co/news/note/fusion-heating-startup-megawave-raises-45m-series-a",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-08",
+      "stage": "F3",
+      "reason": "Megawave Fusion's Series A is stated as CNY 300M and only approximated as $45M, so the Daily amount cannot be recorded without an unsupported currency conversion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "committed_at_audit_base",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "split-pay",
+      "company_url": "https://splitpay.com/",
+      "decision_source_url": "https://www.axios.com/pro/fintech-deals/2026/09/08/split-pay-raises-series-b",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F3",
+      "reason": "Split Pay's report combines a completed Series A with a Series B described as roughly $100M and still able to grow, so the current round amount is not final enough for the Daily financing schema.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "recorded_source_url_mismatch",
+        "action": "Correct source identity and separate reported rounds; inspect financing finality without equating an expandable round to no financing.",
+        "sources": [
+          "https://www.axios.com/2026/09/08/split-pay-khosla-125-million"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "moonwalk-biosciences",
+      "company_url": "https://www.moonwalk.bio/",
+      "decision_source_url": "https://www.biopharmadive.com/news/moonwalk-biosciences-series-b-epigenetic-medicine-obesity/759556/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F1",
+      "reason": "Moonwalk Biosciences remains preclinical and its public surface provides target and pipeline claims but no current clinical readout, benchmark, demo, or other inspectable product evidence sufficient for Daily product assessment.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "recorded_source_url_mismatch_and_stage_specific_review",
+        "action": "Use the current article path, assess preclinical evidence appropriately; no automatic acceptance.",
+        "sources": [
+          "https://www.biopharmadive.com/news/moonwalk-series-b-obesity-rna-interference/829784/"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "outline",
+      "company_url": "https://www.outlineapp.ai/",
+      "decision_source_url": "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F1",
+      "reason": "Outline's public site offers a booked demo and marketing illustrations, but no open product demo, documentation, real interface, or customer workflow evidence that can independently substantiate the product claims.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "incomplete_evidence_search",
+        "action": "Official page has role-specific workflows and named customer accounts; assess actual UI/evidence and taste before deciding.",
+        "sources": [
+          "https://www.outlineapp.ai/"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "brightplan",
+      "company_url": "https://www.brightplan.com/",
+      "decision_source_url": "https://www.brightplan.com/press-release/series-c-abs-capital/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "taste",
+      "reason": "BrightPlan is a broad enterprise financial-wellness suite built from familiar coaching, planning, benefits, and advisor components; its taste answers are Q1 no, Q2 no, and Q3 yes, with no distinctive contrarian bet or memorable product craft visible on the public surface.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "brainchild-bio",
+      "company_url": "https://brainchildbio.com/",
+      "decision_source_url": "https://rss.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F1",
+      "reason": "BrainChild Bio's public surface presents an investigational CAR-T pipeline and company mission but no current clinical result set or other directly assessable product evidence sufficient for Daily publication.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "material_counterevidence_requires_review",
+        "action": "Official pipeline/publications link a published phase 1 trial; assess investigational evidence without implying approval.",
+        "sources": [
+          "https://brainchildbio.com/press/",
+          "https://www.nature.com/articles/s41591-024-03451-3"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "keep-converting",
+      "company_url": "https://keepconverting.ai/",
+      "decision_source_url": "https://www.wamda.com/2026/09/converting-closes-2-million-pre-seed-led-nuwa-capital-cotu-ventures",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F3",
+      "reason": "Keep Converting's financing source explicitly identifies the $2M round as pre-seed, outside the Daily Seed-Series C financing preference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "lightsage",
+      "company_url": "https://lightsage.com/",
+      "decision_source_url": "https://www.globenewswire.com/news-release/2026/09/08/3357801/0/en/lightsage-raises-4m-to-build-the-growth-stack-for-internet-software-s-newest-customer-ai-agents.html",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F4",
+      "reason": "Lightsage centers on making products discoverable, visible, and optimized for AI agents, placing its core workflow inside the Daily exclusion for SEO and closely related discoverability-optimization tools.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "celero-communications",
+      "company_url": "https://celero.inc/",
+      "decision_source_url": "https://celero.inc/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-09",
+      "stage": "F1",
+      "reason": "Celero Communications' official site exposed only a security-verification surface in the task-owned Codex browser, leaving no inspectable product page, data sheet, benchmark, documentation, or interface for Daily assessment.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "access_block_not_quality_rejection",
+        "action": "Preserve access failure and retry/seek official alternative evidence; do not interpret a challenge as absent product.",
+        "sources": [
+          "https://celero.inc/"
+        ]
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "dawraty",
+      "company_url": "https://joindawraty.com/",
+      "decision_source_url": "https://joindawraty.com/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-09",
+      "stage": "F1",
+      "reason": "Dawraty's official site rendered no readable public product evidence in the task-owned Codex browser, so the learning experience, workflow, and claimed outcomes could not be independently assessed.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "new_product_evidence",
+          "later_funding_round"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "access_block_not_quality_rejection",
+        "action": "Recorded unreadable page warrants evidence-access deferral, not proof of product absence.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "openreserve",
+      "company_url": "https://www.openreserve.ai/",
+      "decision_source_url": "https://www.openreserve.ai/blog/the-continuous-bank/",
+      "decision_source_type": "official",
+      "rejected_at": "2026-09-09",
+      "stage": "F4",
+      "reason": "OpenReserve's official product is explicitly blockchain-native and built around onchain, tokenized financial infrastructure, which falls inside the Daily crypto exclusion.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "company_status_change",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "digitalpaani",
+      "company_url": "https://www.digitalpaani.com/",
+      "decision_source_url": "https://theindiabizz.com/startup-funding-news-india/navam-capital-leads-rs-22-cr-round-in-digitalpaani/",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F3",
+      "reason": "DigitalPaani's financing source calls the INR 22 crore transaction a fresh funding round without naming Seed or a canonical Series stage, so the required stage cannot be inferred.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "circolife",
+      "company_url": "https://circolife.com/",
+      "decision_source_url": "https://www.dealstreetasia.com/stories/circolife-funding-india-494483",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F3",
+      "reason": "Circolife's source explicitly identifies the $4.5M financing as pre-Series A, outside the Daily Seed-Series C stage contract.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    },
+    {
+      "schema_version": 2,
+      "slug": "veridue",
+      "company_url": "https://veridue.ai/",
+      "decision_source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+      "decision_source_type": "funding",
+      "rejected_at": "2026-09-09",
+      "stage": "F3",
+      "reason": "Veridue's official announcement explicitly identifies the $4M financing as pre-seed, outside the Daily Seed-Series C financing preference.",
+      "lifecycle": {
+        "status": "active",
+        "revisit_triggers": [
+          "later_funding_round",
+          "governance_change"
+        ]
+      },
+      "ledger_state": "uncommitted_daily_worktree",
+      "audit": {
+        "assessment": "not_individually_researched",
+        "action": "Original reason preserved; no new acceptance or rejection conclusion in this audit.",
+        "sources": []
+      }
+    }
+  ]
+}

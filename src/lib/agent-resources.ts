@@ -69,6 +69,9 @@ export function buildStartupAgentResource(input: {
         id: `${representations.html}#funding-${digest(round.id)}`,
         amount: round.amount,
         stage: round.stage,
+        stage_raw: round.stage_raw ?? null,
+        currency: round.currency ?? null,
+        instrument: round.instrument ?? null,
         date: round.date || null,
         lead_investor: round.lead_investor,
         source_ids: sourceIds,
@@ -171,7 +174,7 @@ export function renderStartupAgentMarkdown(resource: StartupAgentResource): stri
   ];
   for (const round of resource.funding_rounds) {
     lines.push(
-      `- ${text(round.amount)}; ${text(round.stage)}; ${text(round.date)}; lead investor: ${text(round.lead_investor)}`,
+      `- ${text(round.amount)}; ${text(round.stage_raw ?? round.stage)}; ${text(round.date)}; lead investor: ${text(round.lead_investor)}; currency: ${text(round.currency)}; instrument: ${text(round.instrument)}`,
       `  - ID: ${round.id}`,
       `  - Source IDs: ${round.source_ids.map(escapeMarkdown).join(", ") || "Not recorded"}`,
     );

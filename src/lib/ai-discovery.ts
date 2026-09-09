@@ -37,6 +37,9 @@ export interface AiDiscoveryStartup {
   latest_funding?: {
     amount?: string;
     stage: string;
+    stage_raw?: string;
+    currency?: string;
+    instrument?: string;
     date?: string;
     lead_investor?: string;
     source_url?: string;
@@ -437,6 +440,9 @@ function startupEntry(startup: Startup, fundingRounds: FundingRound[], siteUrl: 
       ? stripEmpty({
           amount: latestFunding.amount ?? undefined,
           stage: latestFunding.stage,
+          stage_raw: latestFunding.stage_raw ?? undefined,
+          currency: latestFunding.currency ?? undefined,
+          instrument: latestFunding.instrument ?? undefined,
           date: latestFunding.date,
           lead_investor: latestFunding.lead_investor ?? undefined,
           source_url: normalizeExternalUrl(latestFunding.source_url) ?? undefined,
@@ -568,7 +574,9 @@ function stripEmpty<T extends Record<string, unknown>>(value: T): T {
 function formatFunding(funding: NonNullable<AiDiscoveryStartup["latest_funding"]>): string {
   return [
     funding.amount,
-    funding.stage,
+    funding.stage_raw ?? funding.stage,
+    funding.currency ? `currency: ${funding.currency}` : null,
+    funding.instrument ? `instrument: ${funding.instrument}` : null,
     funding.date,
     funding.lead_investor ? `lead investor: ${funding.lead_investor}` : null,
     funding.source_url ? `source: ${funding.source_url}` : null,

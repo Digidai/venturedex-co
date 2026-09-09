@@ -1,5 +1,6 @@
 ---
 export const prerender = true;
+import { fundingAmountLabel, fundingStageLabel, fundingSummary } from "../../lib/funding-terms";
 
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
@@ -212,7 +213,7 @@ function sourceLabel(source?: StartupResearchSource) {
         <div class="score-item">
           <dt>Latest funding</dt>
           <dd>
-            {latestFunding.amount ? `${latestFunding.amount} ` : ""}{latestFunding.stage}
+            {fundingAmountLabel(latestFunding)} {fundingStageLabel(latestFunding)}
             {latestFunding.lead_investor ? ` · ${latestFunding.lead_investor}` : ""}
           </dd>
         </div>
@@ -255,8 +256,7 @@ function sourceLabel(source?: StartupResearchSource) {
           )}
         </div>
         <p>
-          {startup.product_name} raised {latestFunding.amount ?? "an undisclosed amount"} at {latestFunding.stage}
-          {latestFunding.lead_investor ? ` led by ${latestFunding.lead_investor}` : ""}
+          {startup.product_name}: {fundingSummary(latestFunding)}
           {latestFunding.date ? ` on ${formatDate(latestFunding.date)}` : ""}.
         </p>
       </section>

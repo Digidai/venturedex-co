@@ -24,8 +24,8 @@
       "stage": "Seed",
       "lead_investor": "VentureFriends",
       "date": "2026-06-04",
-      "source_url": "https://siliconangle.com/2026/06/04/startup-kodesage-secures-seed-funding-accelerate-premises-app-modernization-ai/",
-      "source_name": "SiliconANGLE"
+      "source_url": "https://tech.eu/2026/06/04/kodesage-raises-66m-for-ai-powered-legacy-software-modernisation/",
+      "source_name": "Tech.eu"
     }
   ],
   "research": {
@@ -63,8 +63,14 @@
       },
       {
         "id": "funding_1",
-        "label": "Kodesage seed funding article",
-        "url": "https://siliconangle.com/2026/06/04/startup-kodesage-secures-seed-funding-accelerate-premises-app-modernization-ai/",
+        "label": "Tech.eu original Seed reporting; source refreshed September 9, 2026",
+        "url": "https://tech.eu/2026/06/04/kodesage-raises-66m-for-ai-powered-legacy-software-modernisation/",
+        "type": "funding"
+      },
+      {
+        "id": "company_seed_announcement",
+        "label": "Kodesage official Seed announcement; checked September 9, 2026",
+        "url": "https://www.linkedin.com/posts/kodesage_big-news-kodesage-has-raised-66m-in-activity-7468226322935275520-CSPj",
         "type": "funding"
       }
     ],
