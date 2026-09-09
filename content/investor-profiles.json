@@ -139,7 +139,6 @@
     "left-lane-capital",
     "lewis-clark-partners",
     "light-street-capital",
-    "lux-capital",
     "m-ventures",
     "m13-ventures",
     "madrona",
@@ -237,7 +236,6 @@
     "upfront-ventures",
     "valley-capital-partners",
     "valor-atreides-ai-fund",
-    "venturefriends",
     "veredas-partners",
     "village-global",
     "vmg-partners",
@@ -653,6 +651,172 @@
           "id": "about",
           "label": "About Lightspeed and advisory-entity disclosure",
           "url": "https://lsvp.com/about/",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "lux-capital": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "Lux Capital invests in companies built around emerging science and technology, with a focus on technically difficult opportunities and long-term company building.",
+        "source_ids": [
+          "contact",
+          "strategy"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "contact"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2000",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Across company-building stages, from initial financing to later expansion",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "AI and computing",
+            "Biotechnology",
+            "Aerospace",
+            "Defense",
+            "Industrial technology",
+            "Transportation"
+          ],
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "New York City",
+            "Silicon Valley"
+          ],
+          "source_ids": [
+            "contact"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Backs technically challenging science and technology businesses and works with founders through successive stages of company development.",
+          "source_ids": [
+            "strategy"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Its Platform team helps portfolio companies connect with early customers, hires, strategic partners and operating resources.",
+          "source_ids": [
+            "platform"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "contact",
+          "label": "Lux Capital: firm description and locations",
+          "url": "https://www.luxcapital.com/contact",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "strategy",
+          "label": "Lux Ventures IX: investment approach and firm history",
+          "url": "https://www.luxcapital.com/news/announcing-lux-ventures-ix",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "platform",
+          "label": "Lux Platform: portfolio support",
+          "url": "https://www.luxcapital.com/people/tracie-rotter",
+          "checked_at": "2026-09-09"
+        }
+      ]
+    },
+    "venturefriends": {
+      "reviewed_at": "2026-09-09",
+      "summary": {
+        "value": "VentureFriends is an early-stage venture firm backing founders primarily at pre-seed and seed. Its stated geographic focus spans Europe and the Middle East and North Africa.",
+        "source_ids": [
+          "overview",
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "overview"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United Kingdom",
+            "Europe, including Central and Eastern Europe",
+            "Middle East and North Africa"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Invests across sectors; recurring themes include fintech, B2B software, consumer businesses, cybersecurity, property technology and climate technology.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Launched its first fund in 2016 after founder and angel-investing activity. It favors a concentrated set of companies with follow-on support.",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Practical help with fundraising, go-to-market and hiring, drawing on the wider team and its operator and founder network.",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "overview",
+          "label": "VentureFriends: firm overview",
+          "url": "https://www.venturefriends.vc/",
+          "checked_at": "2026-09-09"
+        },
+        {
+          "id": "about",
+          "label": "VentureFriends: history, investment criteria and founder support",
+          "url": "https://www.venturefriends.vc/about",
           "checked_at": "2026-09-09"
         }
       ]
