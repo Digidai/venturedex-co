@@ -1,4 +1,5 @@
 ---
+import { getLaunchCover } from "../lib/launch-covers";
 import {
   getPublicLaunchTags,
   whatShipsCategoryLabel,
@@ -13,6 +14,7 @@ interface Props {
 
 const { item, eager = false, headingLevel = "h2" } = Astro.props;
 const Heading = headingLevel;
+const cover = getLaunchCover(item);
 const detailPath = `/launches/${item.slug}`;
 const visibleTags = getPublicLaunchTags(item).slice(0, 3);
 const publishedLabel = new Intl.DateTimeFormat("en", {
@@ -33,7 +35,7 @@ function formatDuration(seconds: number | null): string {
 }
 ---
 
-<article class="launch-card">
+<article class="launch-card" data-launch-slug={item.slug}>
   <a
     class="launch-card__link"
     href={detailPath}
@@ -41,16 +43,17 @@ function formatDuration(seconds: number | null): string {
   >
     <div class="launch-card__media" data-launch-media>
       <span class="launch-card__preview-fallback" aria-hidden="true">{item.product.slice(0, 1)}</span>
-      <video
+      {cover && <img
         class="launch-card__preview"
-        src={eager ? item.video_url : undefined}
-        data-video-src={item.video_url}
-        preload={eager ? "metadata" : "none"}
-        muted
-        playsinline
-        aria-hidden="true"
+        src={cover.path}
+        width={cover.width}
+        height={cover.height}
+        alt=""
+        loading={eager ? "eager" : "lazy"}
+        fetchpriority={eager ? "high" : "auto"}
+        decoding="async"
         data-launch-preview
-      ></video>
+      />}
       <span class="launch-card__play" aria-hidden="true">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
       </span>
@@ -73,10 +76,6 @@ function formatDuration(seconds: number | null): string {
           {visibleTags.map((tag) => <li>{tag}</li>)}
         </ul>
       )}
-      <div class="launch-card__footer" aria-hidden="true">
-        <span class="launch-card__detail-link">View launch</span>
-        <span class="launch-card__arrow">→</span>
-      </div>
     </div>
   </a>
 </article>

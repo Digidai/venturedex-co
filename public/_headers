@@ -13,6 +13,12 @@
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
+/launch-covers/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/launches.json
+  Cache-Control: public, max-age=60, s-maxage=300, must-revalidate
+
 # Static search index fetched by /search. Short browser TTL, long edge TTL with
 # stale-while-revalidate so it refreshes after a deploy without a blocking fetch.
 /search-index.json

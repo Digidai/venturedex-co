@@ -17,7 +17,7 @@ jobs:
   sync:
     if: github.repository == 'Digidai/venturedex-co'
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v5
         with:
@@ -30,24 +30,45 @@ jobs:
 
       - run: npm ci
 
+      - name: Verify thumbnail tooling
+        run: |
+          if ! command -v ffmpeg >/dev/null; then
+            sudo apt-get update -qq
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Restore successful launch checkpoint
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/launch-sync-state
+          key: launch-sync-v2-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: launch-sync-v2-
+
       - name: Fetch and validate published launch metadata
         id: source
-        run: npm run whatships:sync -- --changed-urls-output "$RUNNER_TEMP/launch-indexnow-urls.json"
+        run: npm run whatships:sync -- --batch
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: Generate missing original-video covers
+        run: npm run launches:covers
+
+      - name: Plan pending notifications including interrupted prior runs
+        run: npx tsx scripts/launch-sync-state.ts plan "$RUNNER_TEMP/launch-sync-state/completed.json" "$RUNNER_TEMP/launch-indexnow-urls.json"
+
       - name: Verify the channel contract
-        run: npx tsx --test tests/whatships.test.ts
+        run: |
+          npx tsx --test tests/whatships.test.ts tests/launch-covers.test.ts
+          npm run launches:covers:check
 
       - name: Check generated diff
         run: |
           set -euo pipefail
           git diff --check
-          unexpected="$(git diff --name-only | grep -v '^content/whatships.json$' || true)"
-          untracked="$(git ls-files --others --exclude-standard)"
-          if [ -n "$unexpected" ] || [ -n "$untracked" ]; then
-            echo "Sync changed a path outside content/whatships.json." >&2
-            printf '%s\n%s\n' "$unexpected" "$untracked" >&2
+          unexpected="$( { git diff --name-only; git ls-files --others --exclude-standard; } | grep -Ev '^(content/(whatships|launch-covers)\.json|public/launch-covers/[a-f0-9]{24}\.webp)$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Sync changed a path outside the launch snapshot/derived cover allowlist." >&2
+            printf '%s\n' "$unexpected" >&2
             exit 1
           fi
 
@@ -55,9 +76,10 @@ jobs:
         id: commit
         run: |
           set -euo pipefail
-          if git diff --quiet -- content/whatships.json; then
+          if git diff --quiet -- content/whatships.json content/launch-covers.json && [ -z "$(git ls-files --others --exclude-standard public/launch-covers)" ]; then
             echo "Launch snapshot is already current."
             echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "pushed_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           git fetch --no-tags origin main
@@ -69,14 +91,14 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add content/whatships.json
+          git add content/whatships.json content/launch-covers.json public/launch-covers
           commit_body="$(printf '%s\n%s\n%s\n%s\n%s\n%s' \
             "Upstream commit: $UPSTREAM_COMMIT" \
             "Raw SHA-256: $UPSTREAM_HASH" \
             "Canonical output SHA-256: $OUTPUT_HASH" \
             "Published items: $ITEM_COUNT" \
             "Changes: +$ADDITIONS, ~$UPDATES, -$REMOVALS" \
-            "Original X video/post URLs and factual metadata only; no media or source descriptions mirrored.")"
+            "Original X video/post URLs, factual metadata, and derived stills only; no videos or catalog descriptions/posters mirrored.")"
           git commit \
             -m "content(launches): sync launch channel" \
             -m "$commit_body"
@@ -97,7 +119,6 @@ jobs:
       # exception, so explicitly enter the existing exact-main release path.
       - name: Dispatch the audited release workflow
         id: deploy
-        if: steps.commit.outputs.changed == 'true'
         run: |
           set -euo pipefail
           remote_sha="$(git ls-remote origin refs/heads/main | awk '{print $1}')"
@@ -105,19 +126,30 @@ jobs:
             echo "main_pushed_dispatch_failed: current main ${remote_sha:-unknown} no longer matches the pushed launch SHA." >&2
             exit 1
           fi
-          gh workflow run deploy.yml --ref main
-          run_json=""
-          for attempt in $(seq 1 10); do
-            run_json="$(gh run list \
-              --workflow deploy.yml \
-              --event workflow_dispatch \
-              --commit "${{ steps.commit.outputs.pushed_sha }}" \
-              --limit 1 \
-              --json databaseId,headSha,status,url \
-              --jq '.[0] // empty')"
-            if [ -n "$run_json" ]; then break; fi
-            sleep 3
-          done
+          # Recover a previous pushed-but-unreleased snapshot even on no-op.
+          # Reuse only a successful exact-SHA release; never infer live from Git.
+          completed_run="$(gh run list --workflow deploy.yml --commit "${{ steps.commit.outputs.pushed_sha }}" --limit 30 --json databaseId,conclusion --jq '[.[] | select(.conclusion == "success")][0].databaseId // empty')"
+          if [ -n "$completed_run" ]; then
+            echo "run_id=$completed_run" >> "$GITHUB_OUTPUT"
+            echo "Exact-SHA Deploy already succeeded: $completed_run" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          run_json="$(gh run list --workflow deploy.yml --commit "${{ steps.commit.outputs.pushed_sha }}" --limit 30 --json databaseId,headSha,status,url --jq '[.[] | select(.status != "completed")][0] // empty')"
+          if [ -z "$run_json" ]; then
+            dispatch_started="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            gh workflow run deploy.yml --ref main
+            for attempt in $(seq 1 10); do
+              run_json="$(gh run list \
+                --workflow deploy.yml \
+                --event workflow_dispatch \
+                --commit "${{ steps.commit.outputs.pushed_sha }}" \
+                --limit 20 \
+                --json databaseId,headSha,status,url,createdAt \
+                --jq "[.[] | select(.createdAt >= \"$dispatch_started\")][0] // empty")"
+              if [ -n "$run_json" ]; then break; fi
+              sleep 3
+            done
+          fi
           if [ -z "$run_json" ]; then
             echo "main_pushed_dispatch_failed: dispatch was accepted but no exact-SHA Deploy run was observed within 30 seconds." >&2
             exit 1
@@ -154,16 +186,25 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Notify IndexNow after exact deployment succeeds
-        id: indexnow
-        if: steps.commit.outputs.changed == 'true'
+      - name: Verify live inventory and cover fingerprint
         run: |
           set -euo pipefail
+          test "$(git ls-remote origin refs/heads/main | awk '{print $1}')" = "${{ steps.commit.outputs.pushed_sha }}"
+          npx tsx scripts/launch-sync-state.ts verify-live
+
+      - name: Notify IndexNow after exact deployment succeeds
+        id: indexnow
+        run: |
+          set -euo pipefail
+          url_count="$(jq 'length' "$RUNNER_TEMP/launch-indexnow-urls.json")"
+          if [ "$url_count" -eq 0 ]; then
+            echo "No pending notification; live inventory verified." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
           npx tsx scripts/promotion/indexnow.ts \
             --urls-file "$RUNNER_TEMP/launch-indexnow-urls.json" \
             --history-file "$RUNNER_TEMP/launch-indexnow-history.jsonl" \
-            --max-urls 500
-          url_count="$(jq 'length' "$RUNNER_TEMP/launch-indexnow-urls.json")"
+            --max-urls 10000
           {
             echo "## IndexNow notification"
             echo
@@ -171,6 +212,15 @@ jobs:
             echo "- Submitted canonical URLs: $url_count"
             echo "- Receipt: accepted by IndexNow; this is discovery evidence, not indexing proof"
           } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Record completed publication and notification
+        run: npx tsx scripts/launch-sync-state.ts checkpoint "$RUNNER_TEMP/launch-sync-state/completed.json"
+
+      - name: Save successful launch checkpoint
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/launch-sync-state
+          key: launch-sync-v2-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Preserve the IndexNow receipt
         if: always() && steps.indexnow.outcome != 'skipped'

@@ -82,8 +82,13 @@ export function setStaticAssetCacheHeaders(headers: Headers, pathname: string): 
     return;
   }
 
-  if (pathname.startsWith("/_astro/") || pathname.startsWith("/fonts/")) {
+  if (pathname.startsWith("/_astro/") || pathname.startsWith("/fonts/") || /^\/launch-covers\/[a-f0-9]{24}\.webp$/.test(pathname)) {
     headers.set("Cache-Control", `public, max-age=${ONE_YEAR_SECONDS}, immutable`);
+    return;
+  }
+
+  if (pathname === "/launches.json") {
+    headers.set("Cache-Control", "public, max-age=60, s-maxage=300, must-revalidate");
     return;
   }
 

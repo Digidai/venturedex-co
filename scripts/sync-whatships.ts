@@ -88,6 +88,7 @@ interface CliOptions {
   sourceCommitAt?: string;
   allowRemovals: boolean;
   maxAdditions: number;
+  batch: boolean;
   check: boolean;
   dryRun: boolean;
   changedUrlsOutput?: string;
@@ -290,6 +291,7 @@ function parseOptions(argv: string[]): CliOptions {
     output: DEFAULT_OUTPUT,
     allowRemovals: false,
     maxAdditions: DEFAULT_MAX_ADDITIONS,
+    batch: false,
     check: false,
     dryRun: false,
   };
@@ -312,6 +314,7 @@ function parseOptions(argv: string[]): CliOptions {
     else if (arg === "--max-additions") options.maxAdditions = Number(nextValue());
     else if (arg.startsWith("--max-additions=")) options.maxAdditions = Number(arg.slice(16));
     else if (arg === "--allow-removals") options.allowRemovals = true;
+    else if (arg === "--batch") options.batch = true;
     else if (arg === "--check") options.check = true;
     else if (arg === "--dry-run") options.dryRun = true;
     else if (arg === "--changed-urls-output") options.changedUrlsOutput = resolve(nextValue());
@@ -485,6 +488,32 @@ export function assertSafeTransition(
   return { additions, removals, updates };
 }
 
+/** Validate the entire source before choosing a bounded, newest-first batch.
+ * Never mistake omitted backlog rows for deletions of already-published rows.
+ */
+export function selectAdditionBatch(
+  previous: WhatShipsSnapshot | null,
+  candidate: WhatShipsSnapshot,
+  maxAdditions: number,
+): { snapshot: WhatShipsSnapshot; pending: number } {
+  if (!Number.isInteger(maxAdditions) || maxAdditions < 1) throw new Error("Batch size must be a positive integer");
+  if (!previous) throw new Error("Automatic batching requires an existing reviewed snapshot");
+  assertSafeTransition(previous, candidate, { allowRemovals: false, maxAdditions: MAX_BOOTSTRAP_ITEMS });
+  const known = new Set(previous.items.map((item) => item.tweet_id));
+  let added = 0;
+  let pending = 0;
+  const items = candidate.items.filter((item) => {
+    if (known.has(item.tweet_id)) return true;
+    if (added < maxAdditions) { added += 1; return true; }
+    pending += 1;
+    return false;
+  });
+  return {
+    snapshot: { ...candidate, items, item_count: items.length, source_published_through: items[0].published_at },
+    pending,
+  };
+}
+
 function canonicalLaunchItem(item: WhatShipsItem): Omit<WhatShipsItem, "last_changed_at"> {
   const { last_changed_at: _lastChangedAt, ...content } = item;
   return content;
@@ -605,7 +634,13 @@ async function main(): Promise<void> {
   const options = parseOptions(process.argv.slice(2));
   const previous = loadExisting(options.output);
   const { value, source } = await loadUpstream(options);
-  const candidate = buildSnapshot(value, source);
+  const fullCandidate = buildSnapshot(value, source);
+  const { snapshot: candidate, pending } = options.batch
+    ? selectAdditionBatch(previous, fullCandidate, options.maxAdditions)
+    : { snapshot: fullCandidate, pending: 0 };
+  console.log(`Validated ${fullCandidate.item_count} upstream items; ${pending} additions pending after this batch.`);
+  if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `pending_additions=${pending}\n`);
+  if (process.env.GITHUB_STEP_SUMMARY) appendFileSync(process.env.GITHUB_STEP_SUMMARY, `Upstream inventory: ${fullCandidate.item_count}; pending additions after this run: ${pending}.\n\n`);
   const transition = assertSafeTransition(previous, candidate, options);
   const snapshot = reconcileLaunchChangeTimes(previous, candidate);
   const changedUrls = buildChangedLaunchUrls(previous, snapshot);
