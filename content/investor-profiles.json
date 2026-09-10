@@ -9,7 +9,6 @@
     "776",
     "8vc",
     "abb",
-    "accel",
     "acrew-capital",
     "ae-ventures",
     "ai2-incubator",
@@ -100,7 +99,6 @@
     "forgepoint-capital",
     "g2-venture-partners",
     "galvanize",
-    "general-catalyst",
     "glilot-capital",
     "global-paytech-ventures",
     "goldman-sachs-alternatives",
@@ -108,7 +106,6 @@
     "gradient",
     "greenfield-partners",
     "greenoaks",
-    "greylock",
     "gv",
     "haun-ventures",
     "hetz-ventures",
@@ -201,7 +198,6 @@
     "salesforce-ventures",
     "samsung-venture-investment",
     "scout-ventures",
-    "sequoia",
     "shangbay-capital",
     "shastra-vc",
     "shine-capital",
@@ -248,6 +244,76 @@
     "zigg-capital"
   ],
   "profiles": {
+    "accel": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "Accel partners with technology founders from the earliest stages and continues supporting companies as they develop. Its current early-stage strategies cover the US, Europe, Israel and India.",
+        "source_ids": ["early-stage"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["early-stage", "history"] },
+        { "key": "founded", "value": "1983", "source_ids": ["history"] },
+        { "key": "stages", "value": "Early-stage initial investments and follow-on financing", "source_ids": ["early-stage"] },
+        { "key": "geographies", "value": ["United States", "Europe", "Israel", "India"], "source_ids": ["early-stage"] },
+        { "key": "approach", "value": "Forms relationships at the beginning of a company and works closely with founders over the long term.", "source_ids": ["early-stage"] }
+      ],
+      "sources": [
+        { "id": "early-stage", "label": "Accel: August 2026 early-stage strategy update", "url": "https://www.accel.com/news/our-enduring-commitment-to-investing-at-the-earliest-stages", "checked_at": "2026-09-10" },
+        { "id": "history", "label": "Accel: co-founder Arthur Patterson and firm founding", "url": "https://www.accel.com/team/arthur-patterson", "checked_at": "2026-09-10" }
+      ]
+    },
+    "general-catalyst": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "General Catalyst combines investing and company building. Its stated strategy applies AI to healthcare, defense, industrials, energy and financial services, with operating businesses and policy expertise supporting portfolio companies.",
+        "source_ids": ["strategy", "overview"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Investment and company-building firm", "source_ids": ["strategy", "overview"] },
+        { "key": "sectors", "value": ["Healthcare", "Defense", "Industrials", "Energy", "Financial services", "Applied AI"], "source_ids": ["strategy"] },
+        { "key": "approach", "value": "Uses investment, company creation and operating partnerships to modernize essential industries through applied AI.", "source_ids": ["strategy", "overview"] },
+        { "key": "support", "value": "Describes support through flexible financing, operating businesses including HATCo and Percepta, policy expertise via the GC Institute, and its founder and industry network.", "source_ids": ["strategy"] }
+      ],
+      "sources": [
+        { "id": "strategy", "label": "General Catalyst: CEO's description of investment strategy and portfolio support", "url": "https://www.generalcatalyst.com/team/hemant-taneja", "checked_at": "2026-09-10" },
+        { "id": "overview", "label": "General Catalyst: investment and company-building overview", "url": "https://www.generalcatalyst.com/", "checked_at": "2026-09-10" }
+      ]
+    },
+    "greylock": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "Greylock is an early-stage technology investor that works with founders from initial concept through company growth. Its specialist teams help with customer development, recruiting, executive hiring and marketing.",
+        "source_ids": ["firm", "specialists"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["firm"] },
+        { "key": "stages", "value": "Early-stage entry, including pre-product company formation", "source_ids": ["firm"] },
+        { "key": "approach", "value": "Works with founders on product definition, initial customers and team building, with continued support as companies grow toward public markets.", "source_ids": ["firm"] },
+        { "key": "support", "value": ["Customer introductions and product feedback", "Technical and executive recruiting", "Go-to-market and marketing strategy", "Board candidate introductions"], "source_ids": ["specialists"] }
+      ],
+      "sources": [
+        { "id": "firm", "label": "Greylock: investment approach and early-stage focus", "url": "https://greylock.com/firm/", "checked_at": "2026-09-10" },
+        { "id": "specialists", "label": "Greylock: customer, talent and marketing support", "url": "https://greylock.com/specialists/", "checked_at": "2026-09-10" }
+      ]
+    },
+    "sequoia": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "Sequoia Capital backs founders from the idea stage and describes its role as a long-term company-building partner. Founded in 1972, it emphasizes close teamwork and a network of founders helping other founders.",
+        "source_ids": ["ethos", "history"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["ethos", "history"] },
+        { "key": "founded", "value": "1972", "source_ids": ["history"] },
+        { "key": "stages", "value": "Idea stage through IPO and beyond", "source_ids": ["ethos"] },
+        { "key": "approach", "value": "Partners early with a concentrated set of founders and emphasizes long-term involvement rather than a transaction-focused relationship.", "source_ids": ["ethos"] },
+        { "key": "support", "value": "Team-based company support and access to an experienced founder network.", "source_ids": ["ethos"] }
+      ],
+      "sources": [
+        { "id": "ethos", "label": "Sequoia Capital: founder partnership and investment ethos", "url": "https://sequoiacap.com/our-ethos", "checked_at": "2026-09-10" },
+        { "id": "history", "label": "Sequoia Capital: firm history", "url": "https://sequoiacap.com/our-history", "checked_at": "2026-09-10" }
+      ]
+    },
     "a16z": {
       "reviewed_at": "2026-09-09",
       "summary": {
