@@ -173,6 +173,8 @@ test("investor page explains tracking coverage and keeps the existing indexabili
   assert.match(page, /eligibility.indexable \? undefined : "noindex,follow"/);
   assert.match(page, /eligibility.distinctCompanyCount/);
   assert.match(page, /not this investor's contribution/);
+  assert.match(page, /No lead-investor rounds tracked yet/);
+  assert.doesNotMatch(page, /No investments tracked yet/);
   assert.match(page, /profile && <InvestorProfile/);
   const pkg = JSON.parse(readFileSync(root + "/package.json", "utf8"));
   assert.match(pkg.scripts.build, /screenshots:validate && npm run investors:validate &&/);
