@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5",
-    "commit_at": "2026-09-10T11:09:30.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5/src/data/videos.json",
-    "raw_sha256": "3c14aba1a1df98ebd99d03deb1a5cb14c9c2156a1f523905540ff8035d137f71"
+    "commit": "fc3a652d06fa524c828b1d77d8ad5c68003ac49d",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/fc3a652d06fa524c828b1d77d8ad5c68003ac49d",
+    "commit_at": "2026-09-10T12:04:02.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/fc3a652d06fa524c828b1d77d8ad5c68003ac49d/src/data/videos.json",
+    "raw_sha256": "20729a28b7d2ab1be75239610c444bcab30eb62b3edd3ea998f0c22f7af1dedc"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -22,7 +22,7 @@
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
   "source_published_through": "2026-09-09T15:50:31.000Z",
-  "item_count": 2004,
+  "item_count": 2008,
   "items": [
     {
       "id": "plv-suno-v6",
@@ -43,6 +43,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097713845657911296/vid/avc1/1080x1920/0cBDgry6kRV9aEMK.mp4",
       "original_post_url": "https://x.com/suno/status/2097714273942163823",
       "last_changed_at": "2026-09-10T11:09:30.000Z"
+    },
+    {
+      "id": "plv-openshaders",
+      "tweet_id": "2097609187526062436",
+      "slug": "openshaders",
+      "title": "OpenShaders — discover, build, and ship shaders",
+      "product": "OpenShaders",
+      "company": "OpenShaders",
+      "category": "design",
+      "tags": [
+        "openshaders",
+        "webgl",
+        "shaders"
+      ],
+      "published_at": "2026-09-09T08:52:56.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097607342334656512/vid/avc1/1920x1080/VbKE506vIEUnW1n-.mp4",
+      "original_post_url": "https://x.com/davidhaz/status/2097609187526062436",
+      "last_changed_at": "2026-09-10T12:04:02.000Z"
     },
     {
       "id": "plv-lapis-one",
@@ -85,6 +105,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-cube-type",
+      "tweet_id": "2097469304929484831",
+      "slug": "cube-type",
+      "title": "CUBE Type — isometric block letters in the browser",
+      "product": "CUBE Type",
+      "company": "Bear Liu",
+      "category": "design",
+      "tags": [
+        "cube-type",
+        "type",
+        "web"
+      ],
+      "published_at": "2026-09-08T23:37:06.000Z",
+      "duration_seconds": 48,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097468983595388928/vid/avc1/1920x1080/1-XsNExREVc5BNuG.mp4",
+      "original_post_url": "https://x.com/bearliu/status/2097469304929484831",
+      "last_changed_at": "2026-09-10T12:04:02.000Z"
+    },
+    {
       "id": "plv-minara-harness",
       "tweet_id": "2097413018510618899",
       "slug": "minara-harness",
@@ -103,6 +143,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097412841372565504/vid/avc1/1920x1080/45srYDveXyEFdTUB.mp4?tag=16",
       "original_post_url": "https://x.com/minara/status/2097413018510618899",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-muse",
+      "tweet_id": "2097399178376671666",
+      "slug": "muse",
+      "title": "Muse — Meta's personal AI agent",
+      "product": "Muse",
+      "company": "Meta",
+      "category": "ai",
+      "tags": [
+        "muse",
+        "meta",
+        "agent"
+      ],
+      "published_at": "2026-09-08T18:58:26.000Z",
+      "duration_seconds": 83,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097399096252243968/vid/avc1/1920x1080/xZq-w3nY4HDpQfda.mp4",
+      "original_post_url": "https://x.com/Muse/status/2097399178376671666",
+      "last_changed_at": "2026-09-10T12:04:02.000Z"
     },
     {
       "id": "plv-chatgpt-images-2-5",
@@ -203,6 +263,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097355237875204096/vid/avc1/1920x1080/1R-2PaguFygYY4Jw.mp4",
       "original_post_url": "https://x.com/statemachineshq/status/2097355365071368567",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-tldraw-flash-demo",
+      "tweet_id": "2097330001334989060",
+      "slug": "tldraw-flash-demo",
+      "title": "tldraw Flash — what you can do on canvas",
+      "product": "tldraw Flash",
+      "company": "tldraw",
+      "category": "design",
+      "tags": [
+        "tldraw",
+        "flash",
+        "canvas"
+      ],
+      "published_at": "2026-09-08T14:23:33.000Z",
+      "duration_seconds": 218,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097329530843353088/vid/avc1/1920x1080/2xtnF7P__nrHsGCU.mp4",
+      "original_post_url": "https://x.com/tldraw/status/2097330001334989060",
+      "last_changed_at": "2026-09-10T12:04:02.000Z"
     },
     {
       "id": "plv-trancy-air",
