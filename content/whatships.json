@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "2e3157c9630531259c7e4c3777c6741d35d75776",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/2e3157c9630531259c7e4c3777c6741d35d75776",
-    "commit_at": "2026-09-09T03:05:04.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/2e3157c9630531259c7e4c3777c6741d35d75776/src/data/videos.json",
-    "raw_sha256": "c768ec1160ca3cf2daed762c1163e339e2d9543127e39cd0ff6f729823e1cf2e"
+    "commit": "4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5",
+    "commit_at": "2026-09-10T11:09:30.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/4fbe9a6f7b9f3120acab95614b2da5f0a494d9c5/src/data/videos.json",
+    "raw_sha256": "3c14aba1a1df98ebd99d03deb1a5cb14c9c2156a1f523905540ff8035d137f71"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,29 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-09T01:47:21.000Z",
-  "item_count": 2003,
+  "source_published_through": "2026-09-09T15:50:31.000Z",
+  "item_count": 2004,
   "items": [
+    {
+      "id": "plv-suno-v6",
+      "tweet_id": "2097714273942163823",
+      "slug": "suno-v6",
+      "title": "Suno v6 — our best models yet",
+      "product": "Suno v6",
+      "company": "Suno",
+      "category": "ai",
+      "tags": [
+        "suno",
+        "music",
+        "v6"
+      ],
+      "published_at": "2026-09-09T15:50:31.000Z",
+      "duration_seconds": 63,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097713845657911296/vid/avc1/1080x1920/0cBDgry6kRV9aEMK.mp4",
+      "original_post_url": "https://x.com/suno/status/2097714273942163823",
+      "last_changed_at": "2026-09-10T11:09:30.000Z"
+    },
     {
       "id": "plv-lapis-one",
       "tweet_id": "2097502085269131407",
