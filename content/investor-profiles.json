@@ -945,6 +945,153 @@
           "checked_at": "2026-09-09"
         }
       ]
+    },
+    "tq-ventures": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "TQ Ventures is an early-stage venture firm investing globally from New York City and San Francisco, with a first-principles approach and hands-on customer, strategy, and go-to-market support.",
+        "source_ids": ["about", "brand"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["about"]},
+        {"key": "founded", "value": "2018", "source_ids": ["about"]},
+        {"key": "stages", "value": "Early stage", "source_ids": ["brand"]},
+        {"key": "geographies", "value": "Global", "source_ids": ["brand"]},
+        {"key": "support", "value": ["Customer and strategic introductions", "Go-to-market and brand support", "Positioning and narrative development"], "source_ids": ["about"]}
+      ],
+      "sources": [
+        {"id": "about", "label": "TQ Ventures: firm history and founder support", "url": "https://tq.vc/about", "checked_at": "2026-09-10"},
+        {"id": "brand", "label": "TQ Ventures: official firm description", "url": "https://tq.vc/brand-kit", "checked_at": "2026-09-10"}
+      ]
+    },
+    "gungnir-capital": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "Gungnir Capital is a specialized European defense-technology venture fund investing from pre-seed through Series A across autonomous systems, cybersecurity, AI, sensors, communications, and space.",
+        "source_ids": ["firm", "legal"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["firm"]},
+        {"key": "stages", "value": "Pre-Seed through Series A", "source_ids": ["firm"]},
+        {"key": "geographies", "value": ["Nordics", "Europe", "Ukraine"], "source_ids": ["firm"]},
+        {"key": "sectors", "value": ["Autonomous systems", "Cybersecurity", "AI-driven warfare", "Advanced sensors and communications", "Space technology"], "source_ids": ["firm"]},
+        {"key": "entity_scope", "value": "Gungnir Capital AB, Stockholm, Sweden", "source_ids": ["legal"]}
+      ],
+      "sources": [
+        {"id": "firm", "label": "Gungnir Capital: investment scope and process", "url": "https://gungnir.vc/", "checked_at": "2026-09-10"},
+        {"id": "legal", "label": "Gungnir Capital: legal identity", "url": "https://gungnir.vc/legal", "checked_at": "2026-09-10"}
+      ]
+    },
+    "iberis-capital": {
+      "reviewed_at": "2026-09-10",
+      "summary": {
+        "value": "Iberis Capital is a Portuguese private equity and venture capital manager whose venture team supports technology founders with strategy, operating processes, team development, and network introductions.",
+        "source_ids": ["about", "venture"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Private equity and venture capital fund manager", "source_ids": ["about"]},
+        {"key": "founded", "value": "2017", "source_ids": ["about"]},
+        {"key": "offices", "value": ["Lisbon, Portugal", "Porto, Portugal"], "source_ids": ["about"]},
+        {"key": "approach", "value": "Operates growth and buyout, venture capital, yielding-investment, and sustainable-investment strategies.", "source_ids": ["about"]},
+        {"key": "support", "value": ["Strategy and operating-process support", "Team development", "Introductions to investors, founders, executives, and industry experts"], "source_ids": ["venture"]}
+      ],
+      "sources": [
+        {"id": "about", "label": "Iberis Capital: firm overview", "url": "https://iberiscapital.com/about-iberis/", "checked_at": "2026-09-10"},
+        {"id": "venture", "label": "Iberis Capital: venture investment philosophy", "url": "https://iberiscapital.com/venture-capital/", "checked_at": "2026-09-10"}
+      ]
+    },
+    "jaws": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "JAWS is Barry Sternlicht's family office and describes itself as a long-duration investor with permanent capital, investing across public and private companies, sectors, and stages.", "source_ids": ["about"]},
+      "facts": [
+        {"key": "firm_type", "value": "Family office", "source_ids": ["about"]},
+        {"key": "stages", "value": "All stages, from public to private companies", "source_ids": ["about"]},
+        {"key": "sectors", "value": "All sectors, with stated expertise in consumer and technology companies", "source_ids": ["about"]},
+        {"key": "offices", "value": "Miami Beach, Florida, United States", "source_ids": ["about"]}
+      ],
+      "sources": [{"id": "about", "label": "JAWS: official family-office overview", "url": "https://www.jawsvc.com/about", "checked_at": "2026-09-10"}]
+    },
+    "g-squared": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "G Squared invests in private technology companies through primary growth capital, direct secondary purchases, and structured liquidity programs developed with management teams.", "source_ids": ["about", "focus"]},
+      "facts": [
+        {"key": "firm_type", "value": "Technology investment firm", "source_ids": ["about"]},
+        {"key": "founded", "value": "2011", "source_ids": ["about"]},
+        {"key": "approach", "value": ["Primary growth capital", "Direct secondaries", "Tender offers and shareholder liquidity"], "source_ids": ["about"]},
+        {"key": "sectors", "value": ["AI", "Data infrastructure", "Security", "Application software", "Fintech", "Consumer", "Mobility", "Frontier technology"], "source_ids": ["focus"]},
+        {"key": "offices", "value": ["Chicago", "San Francisco", "Miami", "Zurich"], "source_ids": ["about"]}
+      ],
+      "sources": [
+        {"id": "about", "label": "G Squared: firm and investment approach", "url": "https://gsquared.com/about/", "checked_at": "2026-09-10"},
+        {"id": "focus", "label": "G Squared: investment focus", "url": "https://gsquared.com/", "checked_at": "2026-09-10"}
+      ]
+    },
+    "hanwha-asset-management-usa": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "Hanwha Asset Management USA is a US investment adviser whose venture platform makes direct investments, advises on defense and frontier technology, and partners with emerging private-capital managers.", "source_ids": ["venture", "terms"]},
+      "facts": [
+        {"key": "firm_type", "value": "Investment adviser and venture-capital platform", "source_ids": ["venture", "terms"]},
+        {"key": "approach", "value": ["Direct investments", "Defense and frontier-technology investment advisory", "Emerging fund manager partnerships"], "source_ids": ["venture"]},
+        {"key": "offices", "value": "San Francisco, California, United States", "source_ids": ["venture"]},
+        {"key": "entity_scope", "value": "Hanwha Asset Management (USA) Ltd.", "source_ids": ["terms"]}
+      ],
+      "sources": [
+        {"id": "venture", "label": "Hanwha Asset Management USA: venture platform", "url": "https://www.hamventuresusa.com/", "checked_at": "2026-09-10"},
+        {"id": "terms", "label": "Hanwha Asset Management USA: website legal identity", "url": "https://www.hamventuresusa.com/terms-of-use", "checked_at": "2026-09-10"}
+      ]
+    },
+    "starship-ventures": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "Starship Ventures is a deep-technology venture firm backing companies across physical systems, software and networks, and engineered biology.", "source_ids": ["firm", "portfolio"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["firm"]},
+        {"key": "sectors", "value": ["Hardware, robotics, energy, space and advanced manufacturing", "AI infrastructure, software and networks", "Biotechnology platforms, tools and therapeutics"], "source_ids": ["firm"]},
+        {"key": "approach", "value": "Partners with contrarian technical founders building technologies intended to compound over long time horizons.", "source_ids": ["firm"]},
+        {"key": "entity_scope", "value": "The official portfolio includes Poseidon Aerospace among its deep-technology companies.", "source_ids": ["portfolio"]}
+      ],
+      "sources": [
+        {"id": "firm", "label": "Starship Ventures: investment thesis", "url": "https://www.starship.vc/", "checked_at": "2026-09-10"},
+        {"id": "portfolio", "label": "Starship Ventures: official portfolio", "url": "https://www.starship.vc/portfolio", "checked_at": "2026-09-10"}
+      ]
+    },
+    "drover-ventures": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "Drover Ventures is a Dallas-based investment firm whose website describes it as built by a Texas family office; its published investment list includes Poseidon Aerospace.", "source_ids": ["firm", "investments"]},
+      "facts": [
+        {"key": "firm_type", "value": "Investment firm", "source_ids": ["firm"]},
+        {"key": "offices", "value": "Dallas, Texas, United States", "source_ids": ["firm"]},
+        {"key": "entity_scope", "value": "The official site describes the firm as built by a Texas family office.", "source_ids": ["firm"]}
+      ],
+      "sources": [
+        {"id": "firm", "label": "Drover Ventures: official firm page", "url": "https://www.droverventures.com/", "checked_at": "2026-09-10"},
+        {"id": "investments", "label": "Drover Ventures: official investment list", "url": "https://www.droverventures.com/investments", "checked_at": "2026-09-10"}
+      ]
+    },
+    "draper-associates": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "Draper Associates is a global venture capital firm that primarily invests from pre-seed through Series A across a broad set of frontier and unconventional technologies.", "source_ids": ["firm", "philosophy"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["firm"]},
+        {"key": "stages", "value": "Primarily Pre-Seed through Series A, without an exclusive stage restriction", "source_ids": ["philosophy"]},
+        {"key": "geographies", "value": "Global", "source_ids": ["philosophy"]},
+        {"key": "sectors", "value": ["AI and robotics", "Healthcare and biotechnology", "Aerospace and space", "Unconventional technology"], "source_ids": ["philosophy"]},
+        {"key": "offices", "value": "San Mateo, California, United States", "source_ids": ["firm"]}
+      ],
+      "sources": [
+        {"id": "firm", "label": "Draper Associates: official firm page", "url": "https://www.draper.vc/", "checked_at": "2026-09-10"},
+        {"id": "philosophy", "label": "Draper Associates: investment philosophy", "url": "https://www.draper.vc/investment-philosophy", "checked_at": "2026-09-10"}
+      ]
+    },
+    "buenavista-equity-partners": {
+      "reviewed_at": "2026-09-10",
+      "summary": {"value": "Buenavista Equity Partners is an independent Spanish private-capital manager operating across private equity, venture capital, and infrastructure in Europe.", "source_ids": ["firm"]},
+      "facts": [
+        {"key": "firm_type", "value": "Private equity, venture capital and infrastructure manager", "source_ids": ["firm"]},
+        {"key": "founded", "value": "1996", "source_ids": ["firm"]},
+        {"key": "geographies", "value": "Europe, with offices in Madrid and Lisbon", "source_ids": ["firm"]},
+        {"key": "sectors", "value": "Technology startups using proprietary technologies or disruptive business models to transform traditional sectors", "source_ids": ["firm"]}
+      ],
+      "sources": [{"id": "firm", "label": "Buenavista Equity Partners: firm and investment areas", "url": "https://www.buenavistaequity.com/", "checked_at": "2026-09-10"}]
     }
   },
   "attempts": {}

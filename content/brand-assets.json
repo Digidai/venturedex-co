@@ -2144,6 +2144,41 @@
       "local_path": "/logos/companies/regent-craft.png",
       "source_page": "https://www.regentcraft.com/",
       "source_url": "https://cdn.prod.website-files.com/602ad05d28b6c66eb7baa871/664e75d2f1d73c60b6f4491f_Clip.png"
+    },
+    "poseidon-aerospace": {
+      "name": "Poseidon Aerospace",
+      "shape": "icon",
+      "local_path": "/logos/companies/poseidon-aerospace.png",
+      "source_page": "https://www.poseidonaero.com/",
+      "source_url": "https://framerusercontent.com/images/vylPAbiHOgZBBlILaIoMtpdv4.png"
+    },
+    "creoir": {
+      "name": "Creoir",
+      "shape": "icon",
+      "local_path": "/logos/companies/creoir.png",
+      "source_page": "https://creoir.com/",
+      "source_url": "https://creoir.com/wp-content/uploads/2023/10/cropped-Group9-192x192.png"
+    },
+    "hope-care": {
+      "name": "Hope Care",
+      "shape": "icon",
+      "local_path": "/logos/companies/hope-care.png",
+      "source_page": "https://hopecarehealth.com/",
+      "source_url": "https://hopecarehealth.com/wp-content/uploads/2025/11/Favicon-300x300.png"
+    },
+    "haystack-robotics": {
+      "name": "Haystack Robotics",
+      "shape": "icon",
+      "local_path": "/logos/companies/haystack-robotics.svg",
+      "source_page": "https://haystackrobotics.com/",
+      "source_url": "https://staging.haystackrobotics.com/wp-content/uploads/2025/07/Asset-2.svg"
+    },
+    "antioch": {
+      "name": "Antioch",
+      "shape": "icon",
+      "local_path": "/logos/companies/antioch.svg",
+      "source_page": "https://antioch.com/",
+      "source_url": "https://antioch.com/favicon.svg"
     }
   },
   "investors": {
@@ -3988,6 +4023,76 @@
       "local_path": "/logos/investors/ae-ventures.png",
       "source_page": "https://www.aeroequity.com/ventures/",
       "source_url": "https://www.aeroequity.com/wp-content/themes/aeindustrial/assets/img/touch.png"
+    },
+    "tq-ventures": {
+      "name": "TQ Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/tq-ventures.png",
+      "source_page": "https://tq.vc/",
+      "source_url": "https://tq.vc/apple-icon.png?apple-icon.0y3k8g1vnbf.b.png"
+    },
+    "gungnir-capital": {
+      "name": "Gungnir Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/gungnir-capital.png",
+      "source_page": "https://gungnir.vc/",
+      "source_url": "https://gungnir.vc/apple-touch-icon.png?v=4"
+    },
+    "iberis-capital": {
+      "name": "Iberis Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/iberis-capital.png",
+      "source_page": "https://iberiscapital.com/",
+      "source_url": "https://iberiscapital.com/wp-content/uploads/2021/09/cropped-cropped-Favicon-Iberis-32x32-1-192x192.png"
+    },
+    "jaws": {
+      "name": "JAWS",
+      "shape": "icon",
+      "local_path": "/logos/investors/jaws.png",
+      "source_page": "https://www.jawsvc.com/",
+      "source_url": "https://cdn.prod.website-files.com/6294e7335b813d3ba1fc3d52/62ffbed253bbb863944dc2d2_jaws-webclip.png"
+    },
+    "g-squared": {
+      "name": "G Squared",
+      "shape": "icon",
+      "local_path": "/logos/investors/g-squared.png",
+      "source_page": "https://gsquared.com/",
+      "source_url": "https://gsquared.com/wp-content/uploads/2026/07/cropped-icon-gsquared-192x192.png"
+    },
+    "hanwha-asset-management-usa": {
+      "name": "Hanwha Asset Management USA",
+      "shape": "icon",
+      "local_path": "/logos/investors/hanwha-asset-management-usa.webp",
+      "source_page": "https://www.hamventuresusa.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/6a613bf2f136152556c00fca/0cc453b6-0cff-4517-b0f3-8adb7270ad86/favicon.ico"
+    },
+    "starship-ventures": {
+      "name": "Starship Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/starship-ventures.png",
+      "source_page": "https://www.starship.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6913b5e6a2303a3666c8531a/695f8cfd55e506a283009a66_sv-icon1.png"
+    },
+    "drover-ventures": {
+      "name": "Drover Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/drover-ventures.png",
+      "source_page": "https://www.droverventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/67cb44c84f0fd44e1d6d6323/67d08aaa6bb3606693c13cb9_256.png"
+    },
+    "draper-associates": {
+      "name": "Draper Associates",
+      "shape": "icon",
+      "local_path": "/logos/investors/draper-associates.png",
+      "source_page": "https://www.draper.vc/",
+      "source_url": "https://cdn.prod.website-files.com/685d0b665285d997249a13fb/6877cbf104b45a2cc21bace0_256.png"
+    },
+    "buenavista-equity-partners": {
+      "name": "Buenavista Equity Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/buenavista-equity-partners.png",
+      "source_page": "https://www.buenavistaequity.com/",
+      "source_url": "https://www.buenavistaequity.com/wp-content/uploads/2024/10/cropped-favicon-new-192x192.png"
     }
   }
 }

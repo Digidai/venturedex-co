@@ -1952,5 +1952,75 @@
     "short_name": "AE Ventures",
     "website": "https://www.aeroequity.com/ventures/",
     "description": "AE Industrial Partners venture strategy investing in aerospace, defense, and industrial technology."
+  },
+  "tq-ventures": {
+    "name": "TQ Ventures",
+    "slug": "tq-ventures",
+    "short_name": "TQ",
+    "website": "https://tq.vc/",
+    "description": "Early-stage venture firm investing globally from New York City and San Francisco."
+  },
+  "gungnir-capital": {
+    "name": "Gungnir Capital",
+    "slug": "gungnir-capital",
+    "short_name": "Gungnir",
+    "website": "https://gungnir.vc/",
+    "description": "European early-stage venture fund focused on defense and dual-use technology."
+  },
+  "iberis-capital": {
+    "name": "Iberis Capital",
+    "slug": "iberis-capital",
+    "short_name": "Iberis",
+    "website": "https://iberiscapital.com/",
+    "description": "Portuguese private equity and venture capital manager investing across innovation and growth."
+  },
+  "jaws": {
+    "name": "JAWS",
+    "slug": "jaws",
+    "short_name": "JAWS",
+    "website": "https://www.jawsvc.com/",
+    "description": "Barry Sternlicht family office investing across public and private companies, sectors, and stages."
+  },
+  "g-squared": {
+    "name": "G Squared",
+    "slug": "g-squared",
+    "short_name": "G Squared",
+    "website": "https://gsquared.com/",
+    "description": "Technology investment firm providing growth capital and structured liquidity to private companies."
+  },
+  "hanwha-asset-management-usa": {
+    "name": "Hanwha Asset Management USA",
+    "slug": "hanwha-asset-management-usa",
+    "short_name": "Hanwha USA",
+    "website": "https://www.hamventuresusa.com/",
+    "description": "US investment adviser and venture platform making direct and defense or frontier-technology investments."
+  },
+  "starship-ventures": {
+    "name": "Starship Ventures",
+    "slug": "starship-ventures",
+    "short_name": "Starship",
+    "website": "https://www.starship.vc/",
+    "description": "Deep-technology venture firm investing across atoms, bits, and biology."
+  },
+  "drover-ventures": {
+    "name": "Drover Ventures",
+    "slug": "drover-ventures",
+    "short_name": "Drover",
+    "website": "https://www.droverventures.com/",
+    "description": "Dallas-based investment firm built by a Texas family office."
+  },
+  "draper-associates": {
+    "name": "Draper Associates",
+    "slug": "draper-associates",
+    "short_name": "Draper",
+    "website": "https://www.draper.vc/",
+    "description": "Global venture capital firm primarily investing from pre-seed through Series A."
+  },
+  "buenavista-equity-partners": {
+    "name": "Buenavista Equity Partners",
+    "slug": "buenavista-equity-partners",
+    "short_name": "Buenavista",
+    "website": "https://www.buenavistaequity.com/",
+    "description": "Independent Spanish private-capital manager active in private equity, venture capital, and infrastructure."
   }
 }

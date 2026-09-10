@@ -1,0 +1,54 @@
+{
+  "slug": "haystack-robotics",
+  "domain": "haystackrobotics.com",
+  "url": "https://haystackrobotics.com/",
+  "product_name": "Haystack Robotics",
+  "summary": "Autonomous UV-C disinfection robot for healthcare and shared facilities.",
+  "editor_note": "Violet makes disinfection a mapped, repeatable robot workflow instead of a manually positioned lamp. It navigates without pre-mapping, detects high-touch objects, shuts its lamps off when a person enters, and generates coverage reports for compliance. The product is unusually inspectable for a young robotics company. Its hardest test is whether facility deployments reproduce the lab and company-reported pathogen reductions.",
+  "editor_rating": 4,
+  "why_featured": "Autonomous room disinfection",
+  "product_type": "HealthTech",
+  "founded_year": 2020,
+  "hq_location": "Portland, Oregon",
+  "region": "US",
+  "tags": "robotics,healthcare,uv-c,disinfection,autonomous navigation",
+  "investors": "undisclosed",
+  "links": {
+    "product": "https://haystackrobotics.com/violet-gen4/",
+    "linkedin": "https://www.linkedin.com/company/haystackrobotics/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.95M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-04",
+      "source_url": "https://www.prlog.org/13168763-haystack-robotics-raises-3-95m-to-expand-ai-powered-disinfection-technology-globally.html",
+      "source_name": "Haystack Robotics via PRLog"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-10",
+    "sources": [
+      {"id": "official_site", "label": "Haystack Robotics official site", "url": "https://haystackrobotics.com/", "type": "official"},
+      {"id": "violet", "label": "Violet Gen4 product page", "url": "https://haystackrobotics.com/violet-gen4/", "type": "product"},
+      {"id": "funding_1", "label": "Haystack Series A announcement", "url": "https://www.prlog.org/13168763-haystack-robotics-raises-3-95m-to-expand-ai-powered-disinfection-technology-globally.html", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The Violet Gen4 page shows autonomous navigation without pre-mapping, high-touch-object detection, person-triggered lamp shutoff, and mobile coverage reporting.", "source_ids": ["violet"]},
+      {"claim": "The official product surface specifies eight UV-C lamps, selectable disinfection cycles, replaceable components, and downloadable room-cleaning reports.", "source_ids": ["official_site", "violet"]},
+      {"claim": "The company-issued financing announcement attributes the round to an unnamed investment entity associated with Agadia Systems; it does not establish Agadia Systems itself as the lead investor.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Hospitals, senior-care facilities, schools, laboratories, hotels, and other operators with repeatable room-disinfection workflows.",
+      "category": "Healthcare service robotics",
+      "differentiation": "Autonomous navigation and object-aware UV-C coverage with an auditable room report.",
+      "why_now": "Facilities face labor constraints and infection-control requirements that favor repeatable automation with visible safety controls."
+    },
+    "risks": [
+      {"claim": "The open question is whether field deployments reproduce company-reported microbial reduction and room-turnover benefits across varied layouts.", "basis": "VentureDex assessment based on the official product page and company-issued financing release."}
+    ]
+  }
+}

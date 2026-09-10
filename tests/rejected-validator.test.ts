@@ -15,6 +15,7 @@ import { fileURLToPath } from "node:url";
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 const scriptsDir = join(repoRoot, "scripts");
 const rejectedPath = join(repoRoot, "content", "rejected.jsonl");
+const curationReviewsPath = join(repoRoot, "content", "curation-reviews.json");
 const startupsDir = join(repoRoot, "content", "startups");
 const LEGACY_V1_LINE_LIMIT = 872;
 const rejectedLines = readFileSync(rejectedPath, "utf8").trim().split("\n");
@@ -30,6 +31,11 @@ const startupSlugs = readdirSync(startupsDir)
     ) as { slug: string };
     return entry.slug;
   });
+const acceptedOverrideSlugs = (
+  JSON.parse(readFileSync(curationReviewsPath, "utf8")) as {
+    reviews: Array<{ slug: string; state: string }>;
+  }
+).reviews.filter((review) => review.state === "accepted").map((review) => review.slug);
 const pythonProgram = [
   "import json",
   "import sys",
@@ -37,7 +43,7 @@ const pythonProgram = [
   "sys.path.insert(0, sys.argv[1])",
   "import validate",
   "active, errors, warnings = validate.validate_rejected_file(",
-  "    set(json.loads(sys.argv[3])), Path(sys.argv[2])",
+  "    set(json.loads(sys.argv[3])), Path(sys.argv[2]), accepted_overrides=set(json.loads(sys.argv[4]))",
   ")",
   "print(json.dumps({'active': active, 'errors': errors, 'warnings': warnings}))",
 ].join("\n");
@@ -48,11 +54,22 @@ interface ValidationResult {
   warnings: string[];
 }
 
-function validateFile(path: string, startupSlugs: string[] = []): ValidationResult {
+function validateFile(
+  path: string,
+  startupSlugs: string[] = [],
+  acceptedOverrides: string[] = []
+): ValidationResult {
   return JSON.parse(
     execFileSync(
       "python3",
-      ["-c", pythonProgram, scriptsDir, path, JSON.stringify(startupSlugs)],
+      [
+        "-c",
+        pythonProgram,
+        scriptsDir,
+        path,
+        JSON.stringify(startupSlugs),
+        JSON.stringify(acceptedOverrides),
+      ],
       {
         encoding: "utf8",
         env: { ...process.env, PYTHONDONTWRITEBYTECODE: "1" },
@@ -112,7 +129,7 @@ test("the 872 schema-less rows remain valid legacy v1 entries", () => {
 });
 
 test("the complete append-only rejection registry remains valid", () => {
-  const result = validateFile(rejectedPath, startupSlugs);
+  const result = validateFile(rejectedPath, startupSlugs, acceptedOverrideSlugs);
   const v2Entries = rejectedEntries.slice(LEGACY_V1_LINE_LIMIT);
   const expectedActive = rejectedEntries.filter((entry) => {
     if (entry.schema_version !== 2) return true;

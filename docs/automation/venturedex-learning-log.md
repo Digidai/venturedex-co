@@ -5193,3 +5193,76 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - control_plane: versioned prompt prepared in venturedex-daily-prompt.md; actual automation installation/readback follows the exact-main release, preserving model/effort/schedule/project/status. Repo text alone does not prove scheduler activation.
 - release: pending PR/main CI/Deploy/live verification at this commit. Final receipt will be recorded in the user task and automation memory; no newsletter/GSC action or new startup publication is part of this repair.
 - decision: applied under human authority, not an autonomous immutable-rule edit. No acceptance/rejection reward claimed for maintenance.
+
+### 2026-09-09 14:07 CST — Four Daily candidates stopped at independent screenshot review
+
+- candidate_count: 20 candidates in one bounded pool — 17 fresh, deduplicated companies plus three legacy rechecks with allowed later-funding or new-product triggers; no second discovery cycle ran.
+- qualified_pending_review: 4 — Poseidon Aerospace, Creoir, Hope Care, and Haystack Robotics. Each cleared the product and taste review, but none is accepted for publication until independent screenshot review succeeds.
+- rejected: 13 complete v2 decisions — Split Pay, Moonwalk Biosciences, Outline, BrightPlan, BrainChild Bio, Keep Converting, Lightsage, Celero Communications, Dawraty, OpenReserve, DigitalPaani, Circolife, and Veridue.
+- governance_deferred: 3 — Bluecore Energy, Antioch, and Mistral AI. Their legacy rows have qualifying revisit signals, but resolving or upgrading the frozen legacy block requires governance-bound validator digest work outside the Daily content scope; no duplicate or fabricated v2 row was appended.
+- rejection_bar_met: yes; 13 complete rejections for four potential additions exceeds the required 3:1 ratio.
+- outcome: blocked before content preparation. The four qualified candidates have native screenshots but no startup JSON, timestamp, company logo, investor asset, or manifest mutation. This preserves a clean resume boundary after an independent reviewer checks the final assets, card crops, and detail rendering.
+- bootstrap: pass in detached worktree `/Users/dai/.codex/worktrees/venturedex-daily-20260909T054150Z/venturedex.co` from exact `origin/main` base `9854f4eb0373619b34962d0d8d0be1ae096d5aa4`. Cloudflare token and both workflow checks passed; dependencies installed. npm reported seven high and one critical audit vulnerabilities, while the known non-blocking R2 scope limitation remained unchanged.
+- browser: one task-owned Codex in-app browser tab inspected all 20 official product surfaces and was closed during closeout. No Chrome, Comet, bb-browser, login, form submission, or user-owned tab was used. Celero exposed a security-verification page and Dawraty exposed no readable product surface; the other decisions remain bound to their cited official or financing pages.
+- screenshot: blocked after offline import. Four native JPEG captures were verified at 1280x720 and imported without crop, padding, stretching, or upscaling. Final WebP hashes are Poseidon Aerospace `678f61073500ab29bdce0e4cbb1fe0097f245e8b2fe6277f6d519656a5b553dd`, Creoir `edb15675f587a2ec2fe45f1982395588b9c17b7c13c8f52ae40169c00be4ea32`, Hope Care `1ff41d139797b097a5c65c2d3ab0d830bc243aaa720ab343367bb95bf3f0908e`, and Haystack Robotics `cab27ee9da20cbdd8789c29c790cc79e591c32cde7ba316b69d330072f38faea`. All remain `UNREVIEWED`; the capture operator did not self-approve or fabricate the required independent six-check attestation.
+- validation: the targeted v2 rejection-registry validator passes with 1,177 active rows and zero errors, and `git diff --check` passes. The GitHub Actions preflight, full `./scripts/manage.sh validate`, database generation, application build, and route checks were not eligible after the screenshot-review hard stop.
+- build_db: not run.
+- build_app: not run.
+- commit_push: not attempted; unreviewed screenshots are not publishable.
+- commit_sha: n/a.
+- pushed_branch: n/a.
+- ci_deploy: not_checked; no current-run commit or pushed SHA exists.
+- live_smoke: n/a; nothing was deployed.
+- gsc: n/a; no startup URL was published, so no plan, intent, browser click, receipt, retry, defer, artifact, or central-ledger mutation occurred.
+- newsletter: not manually triggered. No publication timestamp or delay window exists for this run.
+- transport_recovery: the Hope Care navigation crossed one bounded page-load timeout but the same task-owned tab subsequently exposed the official product surface; no discovery cycle, decision, capture, deploy, GSC action, or other side effect was repeated. One unsupported local CUA wait helper and one earlier scripting typo failed before mutation.
+- browser_closeout: pass; the sole task-owned in-app browser tab is closed, with no other tab or browser process touched.
+- worktree_cleanup: blocked by design. The exact worktree contains 13 v2 rejection rows, four unreviewed screenshots, and this required learning entry. Those content files are not eligible for evidence-only archival or guarded cleanup, so the registered dirty worktree must remain for exact-run recovery.
+- failure_tags: [screenshot_review, policy_conflict, worktree_cleanup]
+- reward: 1 (`+2` for a specific one-pool decision set with 13 durable rejections and four evidence-backed candidates; `-1` for the independent-review hard stop before content and release gates).
+- dominant_failure_mode: no reviewer independent from the screenshot capture operator was available to inspect the final WebP, card crop, and detail rendering and record all six hash-bound checks.
+- proposed_change: none. The independent-review and unreviewed-asset guards correctly prevented content preparation, validation, commit, deployment, GSC, and newsletter side effects.
+- decision: preserve the exact worktree and resume this run at screenshot review with the four fixed hashes; do not repeat discovery or recapture unless the independent reviewer rejects a specific asset.
+- affected_file: `content/rejected.jsonl`, four unreviewed screenshot WebPs, this append-only learning log, central run-state/lease files, external native-capture artifacts, and automation memory.
+- affected_section: one-pool discovery, legacy-revisit governance, v2 rejection accounting, Codex-only product verification, independent screenshot review, fail-closed release, and guarded worktree preservation.
+
+### 2026-09-10 13:43 CST — Recovery closeout remains blocked at independent screenshot review
+
+- candidate_count: unchanged fixed pool of 20 — 17 fresh candidates and three legacy rechecks; no discovery, planning, research, or same-day retry ran.
+- decision_states: four `qualified_pending` candidates (Poseidon Aerospace, Creoir, Hope Care, and Haystack Robotics), 13 preserved draft rejection rows that require governance-era re-review before publication, and three governance-deferred legacy cases; no candidate was newly accepted, rejected, or corrected in this closeout.
+- source_coverage: unchanged from the prior run evidence; no source was fetched or reclassified during this preflight-only closeout.
+- review_backlog: no `curation:plan` was run because recovery stopped at the already persisted independent-review boundary; due-review count and oldest due date were not recomputed.
+- investor_maintenance: researched 0, fresh-skipped 0, retry-deferred 0, identity-unresolved 0 new; `investors:plan` was not eligible before content preparation and governance reconciliation.
+- exact_run_resume: preflight selected only `venturedex-daily-20260909T054150Z`. The detached worktree remains at `9854f4eb0373619b34962d0d8d0be1ae096d5aa4`, which is reachable from current `origin/main` `c88c7ed0880ca086fb0953ad0e0c9bf39ae4b0c5`; no matching external process was found.
+- preserved_evidence: the 13 draft rejection rows and four WebP screenshots remain in the exact worktree. Screenshot hashes still match the prior receipt: Poseidon `678f61073500ab29bdce0e4cbb1fe0097f245e8b2fe6277f6d519656a5b553dd`, Creoir `edb15675f587a2ec2fe45f1982395588b9c17b7c13c8f52ae40169c00be4ea32`, Hope Care `1ff41d139797b097a5c65c2d3ab0d830bc243aaa720ab343367bb95bf3f0908e`, and Haystack `cab27ee9da20cbdd8789c29c790cc79e591c32cde7ba316b69d330072f38faea`.
+- blocker: no reviewer independent from the capture operator is available to perform the required six-check, hash-bound screenshot approval. The worktree also predates the released curation manifest, funding-term, and investor-profile governance, so its draft decisions cannot be published unchanged.
+- validation: not run. The existing content and screenshot dirty paths make this run ineligible for evidence-only archival, and the screenshot hard stop makes content preparation, investor planning, full gates, commit, push, deploy, live smoke, GSC, and cleanup ineligible.
+- newsletter: not manually triggered; no publication or new delay window exists.
+- transport_recovery: none; this was a deterministic policy/ownership closeout, not a transport failure.
+- worktree_cleanup: blocked by design. Preserve `/Users/dai/.codex/worktrees/venturedex-daily-20260909T054150Z/venturedex.co`; do not force-clean, self-approve, repeat discovery, or re-submit the old draft decisions.
+- failure_tags: [screenshot_review, governance_reconciliation, worktree_cleanup]
+- reward: 1, retained from the original bounded pool; this closeout created no new reward event and made no heuristic change.
+- proposed_change: none. Resume only when an independent reviewer can inspect the four exact screenshot hashes; after review, preserve the old pool evidence and reconcile the worktree to current governance before any content preparation or investor maintenance.
+- affected_file: this append-only learning log, central run-state/lease files, automation memory, 13 preserved draft rejection rows, and four unreviewed screenshot assets.
+- affected_section: exact-run recovery routing, independent screenshot review, governance-version boundary, investor-maintenance deferral, and fail-closed cleanup.
+
+### 2026-09-10 14:10 CST — Governance migration succeeded; GitHub reauthentication blocks bootstrap
+
+- candidate_count: unchanged fixed pool of 20 — 17 fresh candidates and three legacy rechecks; no second discovery or new candidate research ran.
+- decision_states: four `qualified_pending` candidates, 13 preserved draft rejection rows requiring current-policy re-review, and three governance-deferred legacy cases; no acceptance or rejection was finalized in this attempt.
+- governance_reconciliation: the exact worktree fast-forwarded from `9854f4eb0373619b34962d0d8d0be1ae096d5aa4` to current `origin/main` `c88c7ed0880ca086fb0953ad0e0c9bf39ae4b0c5`. Before migration, all six dirty content paths were archived at `/Users/dai/.codex/automations/venturedex-daily-curator/recovery-artifacts/venturedex-daily-20260909T054150Z-pre-governance-epoch23.tgz`, SHA-256 `7f5984a664726f12ee8fe5b8e5264087ad59f48586d9d01d2512d043bf82553a`; the original rejection rows, screenshots, and learning evidence remain available and the active worktree retained the content paths.
+- screenshot_review: independent reviewer task `01a084ae-b988-7952-a1ea-a6ebda5480cc`, which did not capture the images, inspected the exact WebPs. Poseidon and Hope Care passed loaded/unobstructed/legible/framing preliminarily. Creoir failed framing because of a top gray strip and stray semicolon; Haystack failed framing because the robots were cut off. Card/detail checks remain pending. No review ledger approval was written.
+- bootstrap: failed before content preparation. The current Cloudflare/dependency setup reached GitHub checks, then two bounded requests timed out and the third reported the keyring token invalid. Direct diagnosis separated transport from authentication: Git remote reads succeeded, while `gh auth status` and `gh api user` returned a stable 401 and no alternate `GH_TOKEN` or Git credential was available.
+- auth_attempt: the official GitHub device flow opened only a task-owned Codex in-app browser tab. The existing passkey path returned `Authentication failed`; no password, token, OTP, or new key was entered, exposed, or stored. The user must complete GitHub login before bootstrap can pass.
+- source_coverage: unchanged from preserved run evidence; no source query was repeated.
+- review_backlog: not recomputed because bootstrap is a hard stop. Actual re-review count 0; corrected count 0.
+- investor_maintenance: researched 0, fresh-skipped 0, retry-deferred 0, identity-unresolved 0 new; planning remains ineligible until bootstrap and content preparation.
+- validation: not run after the bootstrap hard stop. No content validation, D1 seed, tests, Astro check/build, commit, push, CI/deploy, live smoke, GSC operation, or cleanup ran.
+- newsletter: not manually triggered; no publication or new delay window exists.
+- transport_recovery: the initial timeouts were investigated rather than blindly retried; the follow-up 401 established a credential blocker.
+- worktree_cleanup: blocked by design. Preserve the exact worktree and resume this same run after GitHub CLI reauthentication, then recapture only Creoir and Haystack, obtain the independent six-check review, and continue current-governance content/investor preparation.
+- failure_tags: [github_authentication, screenshot_review, worktree_cleanup]
+- reward: 1 retained from the original bounded pool; no new reward event or heuristic change.
+- proposed_change: none. Existing bootstrap, screenshot-review, governance-preservation, and fail-closed release controls behaved as intended.
+- affected_file: preserved recovery archive, 13 draft rejection rows, four screenshot assets, this append-only learning log, central run-state/lease files, and automation memory.
+- affected_section: exact-run governance migration, independent screenshot review, GitHub bootstrap authentication, and fail-closed continuation.

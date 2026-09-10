@@ -930,15 +930,18 @@
       "slug": "bluecore-energy",
       "company_url": "https://www.bluecore.energy/",
       "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
-      "priority": 2,
+      "reason_code": "product_evidence_gap",
+      "reason": "The September 10 re-review verified a new $50M Seed report, existing barges and a reactor, and an official design for a compact 10 MWe maritime system, but the design remains under NRC and Coast Guard review and no fueled or operating power demonstration was disclosed. Keep the hardware candidate pending rather than treating design specifications as delivered performance.",
+      "reviewed_at": "2026-09-10",
+      "next_review_at": "2026-09-24",
+      "priority": 1,
       "sources": [
-        "https://techcrunch.com/2026/07/21/this-uber-alumn-just-raised-a-10m-pre-seed-to-build-portable-nuclear-enegry/"
+        "https://techcrunch.com/2026/09/08/nuclear-startup-bluecore-energy-raises-50m-seed-round-just-two-months-after-launch/",
+        "https://www.bluecore.energy/"
       ],
-      "attempts": [],
+      "attempts": [
+        {"date": "2026-09-10", "outcome": "evidence_pending", "note": "Verified the Seed round, existing barges and reactor, and official design; regulatory review is ongoing and no fueled or operating power demonstration was disclosed."}
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "8118594e962b6710f5a303cf8c0a2c484e10b723acba5f340fbdee3e4b71a5ce"
@@ -947,16 +950,34 @@
     {
       "slug": "antioch",
       "company_url": "https://antioch.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
-      "priority": 2,
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The September 10 re-review verified the $32M Series A led by Greylock, a concrete simulation and evaluation workflow, customer-specific physical-system integration, official identity, brand asset, and an independently reviewed screenshot. The company now occupies the fifth and final publication slot in the fixed pool.",
+      "reviewed_at": "2026-09-10",
+      "next_review_at": null,
+      "priority": 1,
       "sources": [
-        "https://antioch.com/"
+        "https://antioch.com/",
+        "https://antioch.com/blog/series-a",
+        "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/"
       ],
-      "attempts": [],
+      "attempts": [
+        {"date": "2026-09-10", "outcome": "accepted", "note": "Funding, independence, product workflow, customer evidence, taste, brand and publication capacity cleared; a startup record and exact native screenshot were prepared in the same release."}
+      ],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://antioch.com/blog/series-a", "note": "The official announcement describes customer-specific hardware, sensor, software and model integration with cloud-scale scenarios and regression analysis."},
+          {"url": "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/", "note": "Greylock describes real-world calibration, parallel simulation evaluation and a named use case with Amazon Ring."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Treating simulation as the verifier for physical AI is a clear, consequential infrastructure bet."},
+          "craft": {"pass": true, "note": "The product surface exposes concrete scenario, evaluation, failure-analysis and sim-to-real workflows."},
+          "specificity": {"pass": true, "note": "The platform targets physical-AI engineering teams with customer hardware and sensor stacks, not a generic AI audience."}
+        }
+      },
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "a844a99d7f686755045a721f71cd480604b007782c252fb61c55f9f51b97c820"
@@ -965,16 +986,18 @@
     {
       "slug": "mistral-ai",
       "company_url": "https://mistral.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Preserved September 9 Daily candidate requires a current evidence-bound review. The original frozen rejection remains intact; this overlay permits bounded reconsideration without rewriting the legacy digest or treating it as accepted.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "policy_excluded",
+      "reason_code": "late_stage_exception_failed",
+      "reason": "The September 10 re-review found a EUR 3B Series D announcement at a reported valuation above EUR 21B. The Daily default ends at Series C, and this mature financing does not need a breakout exception to preserve a newly discoverable early-stage company, so it is excluded from this pool without judging product quality.",
+      "reviewed_at": "2026-09-10",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
-        "https://mistral.ai/"
+        "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/"
       ],
-      "attempts": [],
+      "attempts": [
+        {"date": "2026-09-10", "outcome": "policy_excluded", "note": "Verified the official Series D announcement and applied the Daily late-stage boundary; this is not a product-quality rejection."}
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "5955084741d355035075a7f4815d2230fa3ceb86baeaa4612efd68f500924261"

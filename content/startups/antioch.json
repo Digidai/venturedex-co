@@ -1,0 +1,52 @@
+{
+  "slug": "antioch",
+  "domain": "antioch.com",
+  "url": "https://antioch.com/",
+  "product_name": "Antioch",
+  "summary": "Cloud-scale simulation and evaluation infrastructure for physical AI systems.",
+  "editor_note": "Thousands of repeatable scenarios turn simulation into a continuous verifier, not a final demo environment. Teams connect their own hardware, sensors, software and models, then inspect failures and feed real-world results back into calibration. The practical edge is the workflow: local Isaac Sim or Isaac Lab authoring, cloud execution and regression analysis around one physical system. Customer results are company and investor statements, not VentureDex-reproduced benchmarks.",
+  "editor_rating": 5,
+  "why_featured": "Continuous verification for physical AI",
+  "product_type": "AI / ML",
+  "hq_location": "New York City, New York",
+  "region": "US",
+  "tags": "physical AI,simulation,robotics,autonomy,evaluation,synthetic data",
+  "investors": "Greylock",
+  "links": {
+    "product": "https://antioch.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$32M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "Greylock",
+      "date": "2026-09-08",
+      "source_url": "https://antioch.com/blog/series-a",
+      "source_name": "Antioch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-10",
+    "sources": [
+      {"id": "official_site", "label": "Antioch official product site", "url": "https://antioch.com/", "type": "official"},
+      {"id": "funding_1", "label": "Antioch Series A announcement", "url": "https://antioch.com/blog/series-a", "type": "funding"},
+      {"id": "investor_1", "label": "Greylock Series A thesis", "url": "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The product site exposes local Isaac Sim and Isaac Lab authoring, cloud dispatch across repeatable scenarios, CI/CD integration, failure analysis, digital-twin calibration and an agent-assisted workflow.", "source_ids": ["official_site"]},
+      {"claim": "Antioch says its platform integrates customer hardware, sensors, software, models and constraints, then runs cloud-scale evaluations and uses real-world outcomes to recalibrate the simulator.", "source_ids": ["funding_1"]},
+      {"claim": "Greylock says it led the Series A and describes high-fidelity simulations calibrated to customer hardware, thousands of parallel evaluations and a named customer relationship with Amazon Ring.", "source_ids": ["investor_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams building robots, drones, autonomous vehicles, intelligent perception and automated manufacturing systems.",
+      "category": "Physical AI simulation and evaluation infrastructure",
+      "differentiation": "A continuously calibrated environment that joins customer-specific hardware and software with cloud-scale scenario evaluation and regression analysis.",
+      "why_now": "Physical systems are improving faster than physical test programs can cheaply reproduce rare failures, hardware changes and deployment conditions."
+    },
+    "risks": [
+      {"claim": "The published accuracy and development-speed benefits come from company, investor and customer statements; VentureDex did not independently reproduce them.", "basis": "Source-bound VentureDex assessment of Antioch and Greylock announcements."}
+    ]
+  }
+}

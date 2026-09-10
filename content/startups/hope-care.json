@@ -1,0 +1,49 @@
+{
+  "slug": "hope-care",
+  "domain": "hopecarehealth.com",
+  "url": "https://hopecarehealth.com/",
+  "product_name": "Hope Care",
+  "summary": "Regulated remote-patient-monitoring platform for clinical care programs.",
+  "editor_note": "Remote monitoring becomes useful when it is part of clinical work, not another stream of device data. Hope Care's OpMA combines medical-device readings, patient-reported outcomes, and care-team workflows in one regulated environment. The company reports deployments across 15 Portuguese local health units and expansion into France, Germany, Switzerland, and Romania. The risk is preserving evidence quality across markets and conditions.",
+  "editor_rating": 4,
+  "why_featured": "Monitoring built into care",
+  "product_type": "HealthTech",
+  "founded_year": 2012,
+  "hq_location": "Obidos, Portugal",
+  "region": "Europe",
+  "tags": "healthtech,remote patient monitoring,telehealth,clinical workflows,chronic care",
+  "investors": "Iberis Capital, Vieira de Matos - VDM Capital, Buenavista Equity Partners",
+  "links": {},
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 6M",
+      "currency": "EUR",
+      "stage": "Series A",
+      "lead_investor": "Iberis Capital",
+      "date": "2026-09-08",
+      "source_url": "https://hopecarehealth.com/fr/linkedin-post/hope-care-cloture-une-serie-a-menee-par-iberis-capital-pour-accelerer-son-expansion-europeenne/",
+      "source_name": "Hope Care"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-10",
+    "sources": [
+      {"id": "official_site", "label": "Hope Care official site", "url": "https://hopecarehealth.com/", "type": "official"},
+      {"id": "funding_1", "label": "Hope Care Series A announcement", "url": "https://hopecarehealth.com/fr/linkedin-post/hope-care-cloture-une-serie-a-menee-par-iberis-capital-pour-accelerer-son-expansion-europeenne/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Hope Care describes OpMA as a regulated platform combining medical-device data, patient-reported information, and clinical workflows for remote monitoring programs.", "source_ids": ["funding_1"]},
+      {"claim": "The announcement reports current programs in Portugal and France, additional development in Switzerland, and planned launches in Germany and Romania.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Health systems and care providers operating chronic-disease and hospital-at-home programs.",
+      "category": "Remote patient monitoring",
+      "differentiation": "A regulated operational layer that joins device data and patient reports to clinical workflows.",
+      "why_now": "European health systems need scalable chronic-care programs while procurement and regulation favor platforms with existing public-system deployments."
+    },
+    "risks": [
+      {"claim": "Reported utilization and outcome improvements are company-issued figures and need condition-specific independent validation as deployments expand.", "basis": "VentureDex assessment based on Hope Care's official Series A announcement."}
+    ]
+  }
+}

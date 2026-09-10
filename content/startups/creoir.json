@@ -1,0 +1,53 @@
+{
+  "slug": "creoir",
+  "domain": "creoir.com",
+  "url": "https://creoir.com/",
+  "product_name": "Creoir",
+  "summary": "Offline, on-device voice AI for defense and mission-critical systems.",
+  "editor_note": "Voice control matters most when hands, eyes, and connectivity are all constrained. Creoir's EdgeVUI combines embedded speech recognition, text-to-speech, noise reduction, and domain-specific vocabulary without sending audio to the cloud. That is a much sharper product than a generic voice assistant. The open question is how quickly validated pilots become fielded capability across defense primes.",
+  "editor_rating": 4,
+  "why_featured": "Voice AI without the cloud",
+  "product_type": "AI / ML",
+  "founded_year": 2012,
+  "hq_location": "Oulu, Finland",
+  "region": "Europe",
+  "tags": "voice ai,defense,on-device ai,embedded systems,speech recognition",
+  "investors": "Gungnir Capital",
+  "links": {
+    "product": "https://creoir.com/edgevui/",
+    "linkedin": "https://www.linkedin.com/company/creoir-ltd"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "stage": "Seed",
+      "lead_investor": "Gungnir Capital",
+      "date": "2026-09-03",
+      "source_url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/",
+      "source_name": "Creoir"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-10",
+    "sources": [
+      {"id": "official_site", "label": "Creoir official site", "url": "https://creoir.com/", "type": "official"},
+      {"id": "edgevui", "label": "Creoir EdgeVUI product page", "url": "https://creoir.com/edgevui/", "type": "product"},
+      {"id": "funding_1", "label": "Creoir seed announcement", "url": "https://creoir.com/creoir-raises-investment-from-gungnir-capital/", "type": "funding"},
+      {"id": "investor_portfolio", "label": "Gungnir Capital Creoir portfolio entry", "url": "https://gungnir.vc/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The EdgeVUI page lists embedded ASR, TTS, speech-signal enhancement, domain-specific vocabulary, and Linux, Windows, and Android interfaces.", "source_ids": ["edgevui"]},
+      {"claim": "The funding announcement says EdgeVUI and Operator Assistant run on-device and offline, with projects at Saab, Leidos, and TKMS among the named customers.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Defense-system integrators and operators working in noisy, security-critical environments.",
+      "category": "Embedded voice AI",
+      "differentiation": "Hands-free, native-language interaction that stays on-device instead of depending on a cloud voice stack.",
+      "why_now": "European defense programs are seeking operator interfaces that remain usable under cognitive load and disconnected conditions."
+    },
+    "risks": [
+      {"claim": "Commercial scale depends on moving validated pilots into repeatable field deployments across long defense procurement cycles.", "basis": "VentureDex assessment based on Creoir's product and financing announcement."}
+    ]
+  }
+}

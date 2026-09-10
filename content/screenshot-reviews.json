@@ -255,6 +255,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "antioch": {
+      "sha256": "72ec2cc02d63f8523cd297cddbde91678a29aad1249b506a3a125a5d9178c2fc",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://antioch.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root-01a089d5-3874-7163-a4d2-cc0ec33803c4",
+      "reviewed_at": "2026-09-10T08:01:24.382Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Independent reviewer opened the exact final WebP and verified desktop 1280x720 and mobile 390x844 card, detail and original-image views; natural 1280x720, complete hero title and robot frame, unobstructed, legible, 16:9 contain layout, no horizontal overflow, proxy bytes matched local SHA."
+    },
     "antora-energy": {
       "sha256": "34ffc8927849e586cebd0a87811091a77fc06a9fdd4ac58250842c344823f2b7",
       "width": 1440,
@@ -1218,6 +1237,25 @@
         "detail": true
       },
       "notes": "Source and final match. Complete large Make your data Credible headline and AI-analytics explanation establish the product with clear brand and access/demo actions. The lower product illustration begins below the complete hero and continues beyond the viewport; no primary content or navigation is missing and no overlay is present. Card observation: The complete Make your data Credible headline is prominent and readable; the next illustration starts below an intact hero rather than replacing the subject. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "creoir": {
+      "sha256": "c5d724522d67e0229dd98f7daa9990883197553370d39b6eb3b609bd46b6bc7b",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://creoir.com/edgevui/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root-01a089d5-3874-7163-a4d2-cc0ec33803c4",
+      "reviewed_at": "2026-09-10T07:43:37.882Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Independent reviewer opened exact final WebP and verified desktop 1280x720 and mobile 390x844 card/detail layouts; natural 1280x720, unobstructed UI, legible copy, 16:9 framing, no horizontal overflow, proxy bytes matched local SHA."
     },
     "crew-carbon": {
       "sha256": "91c404fbd3671c9349c7962a93e522a6d5b1ed20f1aaf128d34f067763b13530",
@@ -2260,6 +2298,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "haystack-robotics": {
+      "sha256": "f56550764cea1ce8739137df4c855a834e3ffb6a4cbb6f7f53ccf2046c0f1ba3",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://haystackrobotics.com/violet-gen4/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root-01a089d5-3874-7163-a4d2-cc0ec33803c4",
+      "reviewed_at": "2026-09-10T07:43:38.159Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Independent reviewer opened exact final WebP and verified the complete robot and finished dynamic text in desktop and mobile card/detail layouts; natural 1280x720, unobstructed, legible, 16:9 framing, no horizontal overflow, proxy bytes matched local SHA."
+    },
     "hellbender": {
       "sha256": "82d60fa3d7657e9aad2296ac83e1d38e949c5dfe7b36beee275d24b63e9a8cd3",
       "width": 1440,
@@ -2332,6 +2389,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "hope-care": {
+      "sha256": "1ff41d139797b097a5c65c2d3ab0d830bc243aaa720ab343367bb95bf3f0908e",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://hopecarehealth.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root-01a089d5-3874-7163-a4d2-cc0ec33803c4",
+      "reviewed_at": "2026-09-10T07:43:38.483Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Independent reviewer opened exact final WebP and verified desktop and scrolled mobile card/detail layouts for the correct Hope Care identity at hopecarehealth.com; natural 1280x720, unobstructed, legible, 16:9 framing, no horizontal overflow, proxy bytes matched local SHA."
     },
     "hostie": {
       "sha256": "3047b3df926ac00961e0f14e8ac72b1249f35efd8f93427286b2be28b608ca20",
@@ -3837,6 +3913,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "poseidon-aerospace": {
+      "sha256": "678f61073500ab29bdce0e4cbb1fe0097f245e8b2fe6277f6d519656a5b553dd",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.poseidonaero.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root-01a089d5-3874-7163-a4d2-cc0ec33803c4",
+      "reviewed_at": "2026-09-10T07:43:38.803Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Independent reviewer opened exact final WebP and verified desktop and scrolled mobile card/detail layouts; natural 1280x720, unobstructed aircraft imagery, legible copy, 16:9 framing, no horizontal overflow, proxy bytes matched local SHA."
     },
     "pramaana-labs": {
       "sha256": "4d828c64aab4a86a9a68761f200615d18fb957f729ea8cf2c0235be5a25e2e37",

@@ -1,0 +1,53 @@
+{
+  "slug": "poseidon-aerospace",
+  "domain": "www.poseidonaero.com",
+  "url": "https://www.poseidonaero.com/",
+  "product_name": "Poseidon Aerospace",
+  "summary": "Unmanned cargo aircraft designed around payload, cost, and utilization.",
+  "editor_note": "Cargo aircraft are usually passenger designs with freight added later. Poseidon starts with the payload and builds the aircraft and operating model around it. Egret is a roughly 50-foot-span unmanned regional freighter, while the quarter-scale Seagull demonstrator has already flown. The hard gate is still ahead: the company expects Egret's first uncrewed flight by the end of 2026.",
+  "editor_rating": 5,
+  "why_featured": "Cargo-first aircraft design",
+  "product_type": "Other",
+  "founded_year": 2024,
+  "hq_location": "Alameda, California",
+  "region": "US",
+  "tags": "aerospace,autonomous aircraft,air cargo,defense logistics",
+  "investors": "TQ Ventures, JAWS, G Squared, Hanwha Asset Management USA, Starship Ventures, Drover Ventures, Draper Associates",
+  "links": {
+    "careers": "https://www.poseidonaero.com/careers",
+    "product": "https://www.poseidonaero.com/aircraft"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$60M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "TQ Ventures",
+      "date": "2026-09-08",
+      "source_url": "https://www.poseidonaero.com/news/poseidon-aerospace-raises-60-million-series-a-to-build-unmanned-cargo-aircraft",
+      "source_name": "Poseidon Aerospace"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-10",
+    "sources": [
+      {"id": "official_site", "label": "Poseidon Aerospace official site", "url": "https://www.poseidonaero.com/", "type": "official"},
+      {"id": "aircraft", "label": "Poseidon aircraft specifications", "url": "https://www.poseidonaero.com/aircraft", "type": "product"},
+      {"id": "funding_1", "label": "Poseidon Series A announcement", "url": "https://www.poseidonaero.com/news/poseidon-aerospace-raises-60-million-series-a-to-build-unmanned-cargo-aircraft", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The official aircraft page lists remote-pilot, autonomy-capable cargo aircraft with 4,000-pound payloads and published range, runway, and water-operating specifications.", "source_ids": ["aircraft"]},
+      {"claim": "The Series A announcement says a quarter-scale Seagull demonstrator flew in 2025 and the full-scale Egret is expected to begin uncrewed flight testing by the end of 2026.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Regional cargo operators and defense logistics organizations serving remote or infrastructure-constrained routes.",
+      "category": "Autonomous cargo aviation",
+      "differentiation": "Aircraft and operations designed from the start around freight rather than a passenger airframe.",
+      "why_now": "The new financing funds full-scale flight testing and a first production line after the quarter-scale demonstrator flight."
+    },
+    "risks": [
+      {"claim": "The central execution risk is whether full-scale flight tests and certification support the cost and utilization thesis.", "basis": "VentureDex assessment based on the official aircraft specifications and financing announcement."}
+    ]
+  }
+}
