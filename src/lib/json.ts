@@ -140,9 +140,9 @@ function normalizeResearchRisk(value: unknown): StartupResearchRisk | null {
   };
 }
 
-function normalizeBreakoutException(
+function normalizeEvidenceBoundAssessment(
   value: unknown,
-): StartupResearch["breakout_exception"] {
+): { reason: string; source_ids: string[] } | undefined {
   if (!isRecord(value)) return undefined;
   const reason = stringValue(value.reason);
   const sourceIds = stringArray(value.source_ids);
@@ -199,9 +199,11 @@ export function normalizeResearch(value: unknown): StartupResearch | null {
   };
 
   const marketContext = normalizeMarketContext(value.market_context);
-  const breakoutException = normalizeBreakoutException(value.breakout_exception);
+  const breakoutException = normalizeEvidenceBoundAssessment(value.breakout_exception);
+  const unnamedRoundAssessment = normalizeEvidenceBoundAssessment(value.unnamed_round_assessment);
   if (marketContext) research.market_context = marketContext;
   if (breakoutException) research.breakout_exception = breakoutException;
+  if (unnamedRoundAssessment) research.unnamed_round_assessment = unnamedRoundAssessment;
   if (risks.length > 0) research.risks = risks;
 
   return research;

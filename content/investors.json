@@ -98,7 +98,7 @@
     "slug": "thrive",
     "short_name": "Thrive",
     "website": "https://www.thrivecap.com",
-    "description": "Investment firm built to support the best technology companies at every stage.",
+    "description": "Investment firm that builds and invests in internet, software, and technology-enabled companies.",
     "aliases": [
       "Thrive Capital and Sequoia Capital"
     ]
@@ -167,7 +167,7 @@
     "name": "BlackPeak Capital",
     "slug": "blackpeak-capital",
     "short_name": "BlackPeak",
-    "website": "https://esg.blackpeak-capital.com",
+    "website": "https://www.blackpeak-capital.com/",
     "description": "Growth equity investor focused on Southeast and Central European companies with global potential."
   },
   "amd-ventures": {
@@ -405,7 +405,19 @@
     "slug": "veredas-partners",
     "short_name": "Veredas",
     "website": "https://veredaspartners.com",
-    "description": "Early-stage venture investment firm backing technology companies in physical AI, industrial systems, and deep technology."
+    "description": "Venture investor publicly identified as co-leading Hellbender's 2026 Seed round; its own site currently provides only firm identity."
+  },
+  "vdm-capital": {
+    "name": "Vieira de Matos - VDM Capital",
+    "slug": "vdm-capital",
+    "short_name": "VDM Capital",
+    "website": "https://www.vdmcapital.pt/",
+    "description": "Portuguese investment participant named in Hope Care's 2026 Series A; no broader public investment mandate is currently disclosed.",
+    "aliases": [
+      "Vieira de Matos – VDM Capital",
+      "Vieira de Matos - VDM Capital, S.A.",
+      "Vieira de Matos – VDM Capital, S.A."
+    ]
   },
   "forestay-capital": {
     "name": "Forestay Capital",
@@ -480,7 +492,7 @@
     "slug": "upfront-ventures",
     "short_name": "Upfront",
     "website": "https://upfront.com",
-    "description": "Los Angeles-based venture capital firm backing early-stage technology companies across software, consumer, health, and frontier markets."
+    "description": "Los Angeles venture capital firm investing in technology businesses across digital media, SaaS, consumer internet, and retail innovation."
   },
   "shastra-vc": {
     "name": "Shastra VC",
@@ -734,7 +746,7 @@
     "slug": "sutter-hill-ventures",
     "short_name": "Sutter Hill",
     "website": "https://shv.com/",
-    "description": "Silicon Valley venture capital firm backing technology companies from early stages.",
+    "description": "Palo Alto venture firm founded in 1962; SHV Labs works with portfolio companies and incubations on emerging technologies.",
     "aliases": [
       "Sutter Hill Ventures and John Doerr"
     ]
@@ -784,7 +796,7 @@
     "name": "Z3Partners",
     "slug": "z3partners",
     "short_name": "Z3Partners",
-    "website": "https://www.z3partners.com/",
+    "website": "https://z3partnersglobal.com/",
     "description": "India-focused technology and digital investing firm backing quality-at-scale businesses."
   },
   "define-ventures": {
@@ -850,7 +862,7 @@
     "name": "Norwest",
     "slug": "norwest",
     "short_name": "Norwest",
-    "website": "https://www.nvp.com/",
+    "website": "https://www.norwest.com/",
     "description": "Global venture capital and growth equity firm investing across enterprise, consumer, healthcare, and technology companies."
   },
   "jump-capital": {
@@ -927,7 +939,7 @@
     "slug": "sitara-capital",
     "short_name": "Sitara",
     "website": "https://www.sitaracap.com",
-    "description": "Investment firm backing technology founders and category-building companies.",
+    "description": "Early-growth investment fund backing category leaders across developed Asia-Pacific.",
     "aliases": [
       "Sitara Capital and 3one4 Capital"
     ]
@@ -998,7 +1010,7 @@
     "name": "Camber Partners",
     "slug": "camber-partners",
     "short_name": "Camber",
-    "website": "https://www.camberpartners.com/",
+    "website": "https://www.camber.io/",
     "description": "Growth equity firm backing software companies with efficient go-to-market models and durable customer demand."
   },
   "ballistic-ventures": {
@@ -1044,11 +1056,14 @@
     "description": "Early-stage venture firm backing scientific and technological innovation, advised by F-Prime."
   },
   "ai2-incubator": {
-    "name": "AI2 Incubator",
+    "name": "AI House",
     "slug": "ai2-incubator",
-    "short_name": "AI2 Incubator",
-    "website": "https://www.ai2incubator.com/",
-    "description": "Seattle-based AI startup incubator and seed investor now operating as AI House."
+    "short_name": "AI House",
+    "website": "https://aihouse.vc/",
+    "description": "Seattle applied-AI incubator and pre-seed investor, renamed from AI2 Incubator in June 2026.",
+    "aliases": [
+      "AI2 Incubator"
+    ]
   },
   "atomico": {
     "name": "Atomico",
@@ -1105,8 +1120,8 @@
     "name": "B Capital",
     "slug": "b-capital",
     "short_name": "B Capital",
-    "website": "https://www.bcapital.com",
-    "description": "Global multi-stage investment firm backing technology companies across enterprise software, AI, fintech, and other large markets."
+    "website": "https://b.capital/",
+    "description": "Global multi-stage investment firm backing early-stage through late-stage companies across technology, healthcare, and energy or resilience."
   },
   "goldman-sachs-alternatives": {
     "name": "Goldman Sachs Alternatives",
@@ -1362,7 +1377,7 @@
     "name": "ABB",
     "slug": "abb",
     "short_name": "ABB",
-    "website": "https://global.abb/",
+    "website": "https://www.abb.com/global/en/company/ventures",
     "description": "Global electrification and automation company with strategic venture activity across energy and industrial technology."
   },
   "chingona-ventures": {
@@ -1418,7 +1433,7 @@
     "name": "Rsquared Investment",
     "slug": "rsquared-investment",
     "short_name": "Rsquared",
-    "website": "https://bossjob.com/",
+    "website": "https://bossjob.us/en-us",
     "description": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed round.",
     "aliases": [
       "Rsquared Investment Pte. Ltd."
@@ -1512,7 +1527,7 @@
     "slug": "standard-capital",
     "short_name": "Standard",
     "website": "https://www.standardcap.com/",
-    "description": "Early-stage venture firm partnering with technical founders building software and technology companies."
+    "description": "AI-native Series A venture firm that leads rounds, takes no board seat, and publishes its terms up front."
   },
   "notable-capital": {
     "name": "Notable Capital",
@@ -1903,7 +1918,7 @@
     "slug": "greenoaks",
     "short_name": "Greenoaks",
     "website": "https://greenoaks.com/",
-    "description": "Global investment firm backing enduring technology companies across stages."
+    "description": "Investment firm describing itself as a concentrated, long-term partner to founders building generational businesses."
   },
   "maverick-silicon": {
     "name": "Maverick Silicon",

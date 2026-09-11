@@ -98,6 +98,22 @@ test("URLs reject unsafe schemes, credentials, IPs and unrelated hosts", () => {
   assert.deepEqual(validate(data), []);
 });
 
+test("cross-domain primary sources are explicit and remain anchored to the investor's official site", () => {
+  const data = fixture();
+  data.profiles.firm.sources.push({
+    id: "portfolio",
+    label: "Official portfolio-company financing announcement",
+    url: "https://portfolio.example/funding",
+    checked_at: "2026-06-11",
+    source_type: "official_portfolio_company",
+  });
+  assert.deepEqual(validate(data), []);
+  data.profiles.firm.sources[0].source_type = "official_portfolio_company";
+  assert.match(validate(data).join(" "), /anchored by a canonical official_firm/);
+  data.profiles.firm.sources[0].source_type = "unverified_media" as never;
+  assert.match(validate(data).join(" "), /unknown source_type/);
+});
+
 test("freshness has an exact 90-day boundary, independent of a new funding reference", () => {
   const profile = fixture().profiles.firm;
   assert.equal(addDays("2026-06-11", 90), "2026-09-09");

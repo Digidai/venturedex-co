@@ -1,6 +1,7 @@
 ---
 import BrandLogo from "./BrandLogo.astro";
 import { getCompanyBrandAsset } from "../lib/brand-assets";
+import { fundingStageDisplayLabel } from "../lib/funding-terms";
 import type { StartupCard } from "../lib/types";
 import { getScreenshotMetadata, versionedScreenshotUrl } from "../lib/screenshots";
 import "../styles/screenshots.css";
@@ -28,7 +29,7 @@ const screenshotUrl = versionedScreenshotUrl(startup.screenshot_r2_key);
 const screenshotMetadata = getScreenshotMetadata(startup.screenshot_r2_key);
 const companyBrand = getCompanyBrandAsset(startup.slug);
 
-const metaLine = [startup.product_type, startup.funding_stage, startup.region]
+const metaLine = [startup.product_type, fundingStageDisplayLabel(startup.funding_stage), startup.region]
   .filter(Boolean)
   .join(" · ");
 ---

@@ -72,6 +72,18 @@ test("cardMatchesFilters groups named Series D and later rounds under Series D+"
   assert.equal(cardMatchesFilters(lateStage("Growth"), state({ stage: "Series D+" })), false);
 });
 
+test("cardMatchesFilters exposes source-unnamed rounds without grouping them into late stage", () => {
+  const unnamed: FilterableCard = {
+    name: "Unnamed round",
+    type: "SaaS",
+    stage: "Unspecified",
+    region: "US",
+    published: "2026-09-11T00:00:00Z",
+  };
+  assert.equal(cardMatchesFilters(unnamed, state({ stage: "Unspecified" })), true);
+  assert.equal(cardMatchesFilters(unnamed, state({ stage: "Series D+" })), false);
+});
+
 test("activeFacetCount counts facets but not the featured sort", () => {
   assert.equal(activeFacetCount(state()), 0);
   assert.equal(activeFacetCount(state({ sort: "featured" })), 0);

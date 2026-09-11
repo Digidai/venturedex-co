@@ -72,6 +72,7 @@ ALLOWED_STAGES = {
 }
 SERIES_STAGE_RE = re.compile(r"^Series ([A-Z])$")
 BREAKOUT_EXCEPTION_FIELDS = {"reason", "source_ids"}
+UNNAMED_ROUND_ASSESSMENT_FIELDS = {"reason", "source_ids"}
 
 REJECTED_STAGES = {
     "F1",
@@ -258,41 +259,41 @@ def is_breakout_funding_stage(stage: str) -> bool:
     return bool(match and match.group(1) >= "D")
 
 
-def validate_breakout_exception(
+def _validate_source_bound_assessment(
     data: dict[str, object],
     *,
+    field_name: str,
+    allowed_fields: set[str],
     required: bool,
+    required_message: str,
 ) -> list[str]:
     errors: list[str] = []
     research = data.get("research")
-    exception = research.get("breakout_exception") if isinstance(research, dict) else None
-    if exception is None:
+    assessment = research.get(field_name) if isinstance(research, dict) else None
+    prefix = f"research.{field_name}"
+    if assessment is None:
         if required:
-            errors.append(
-                "research.breakout_exception is required for Series D+ funding stages"
-            )
+            errors.append(required_message)
         return errors
-    if not isinstance(exception, dict):
-        return ["research.breakout_exception must be an object"]
+    if not isinstance(assessment, dict):
+        return [f"{prefix} must be an object"]
 
-    unknown_fields = sorted(set(exception) - BREAKOUT_EXCEPTION_FIELDS)
+    unknown_fields = sorted(set(assessment) - allowed_fields)
     if unknown_fields:
         errors.append(
-            "research.breakout_exception contains unsupported fields: "
+            f"{prefix} contains unsupported fields: "
             + ", ".join(unknown_fields)
         )
 
-    raw_reason = exception.get("reason")
+    raw_reason = assessment.get("reason")
     if not isinstance(raw_reason, str):
-        errors.append("research.breakout_exception.reason must be a string")
+        errors.append(f"{prefix}.reason must be a string")
     elif raw_reason != raw_reason.strip():
-        errors.append(
-            "research.breakout_exception.reason must not contain outer whitespace"
-        )
+        errors.append(f"{prefix}.reason must not contain outer whitespace")
     elif not 80 <= len(raw_reason) <= 500:
-        errors.append("research.breakout_exception.reason must be 80-500 chars")
+        errors.append(f"{prefix}.reason must be 80-500 chars")
 
-    raw_refs = exception.get("source_ids")
+    raw_refs = assessment.get("source_ids")
     if (
         not isinstance(raw_refs, list)
         or len(raw_refs) < 3
@@ -302,13 +303,13 @@ def validate_breakout_exception(
         )
     ):
         errors.append(
-            "research.breakout_exception.source_ids must contain at least three exact source ids"
+            f"{prefix}.source_ids must contain at least three exact source ids"
         )
         refs: list[str] = []
     else:
         refs = list(raw_refs)
         if len(set(refs)) != len(refs):
-            errors.append("research.breakout_exception.source_ids must be unique")
+            errors.append(f"{prefix}.source_ids must be unique")
 
     if not isinstance(research, dict):
         return errors
@@ -326,14 +327,14 @@ def validate_breakout_exception(
     unknown_refs = sorted(set(refs) - set(source_types))
     if unknown_refs:
         errors.append(
-            "research.breakout_exception.source_ids references unknown research sources: "
+            f"{prefix}.source_ids references unknown research sources: "
             + ", ".join(unknown_refs)
         )
     referenced_types = {source_types.get(ref) for ref in refs}
     if "official" not in referenced_types:
-        errors.append("research.breakout_exception.source_ids must include an official source")
+        errors.append(f"{prefix}.source_ids must include an official source")
     if "funding" not in referenced_types:
-        errors.append("research.breakout_exception.source_ids must include a funding source")
+        errors.append(f"{prefix}.source_ids must include a funding source")
 
     evidence = research.get("product_evidence")
     linked_claims = 0
@@ -349,9 +350,37 @@ def validate_breakout_exception(
                 linked_claims += 1
     if linked_claims < 2:
         errors.append(
-            "research.breakout_exception.source_ids must bind at least two product_evidence claims"
+            f"{prefix}.source_ids must bind at least two product_evidence claims"
         )
     return errors
+
+
+def validate_breakout_exception(
+    data: dict[str, object],
+    *,
+    required: bool,
+) -> list[str]:
+    return _validate_source_bound_assessment(
+        data,
+        field_name="breakout_exception",
+        allowed_fields=BREAKOUT_EXCEPTION_FIELDS,
+        required=required,
+        required_message="research.breakout_exception is required for Series D+ funding stages",
+    )
+
+
+def validate_unnamed_round_assessment(
+    data: dict[str, object],
+    *,
+    required: bool,
+) -> list[str]:
+    return _validate_source_bound_assessment(
+        data,
+        field_name="unnamed_round_assessment",
+        allowed_fields=UNNAMED_ROUND_ASSESSMENT_FIELDS,
+        required=required,
+        required_message="research.unnamed_round_assessment is required for funding with no source-stated stage",
+    )
 
 
 def main() -> int:
@@ -657,6 +686,7 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         result.errors.append("funding must contain at least one verified round")
 
     has_breakout_stage = False
+    has_unnamed_stage = False
     for index, round_data in enumerate(funding):
         prefix = f"funding[{index}]"
         if not isinstance(round_data, dict):
@@ -670,6 +700,8 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
         stage = round_data.get("stage", "")
         if isinstance(stage, str) and stage and is_breakout_funding_stage(stage):
             has_breakout_stage = True
+        if stage == "Unspecified":
+            has_unnamed_stage = True
 
         source_url = round_data.get("source_url", "")
         if source_url:
@@ -681,6 +713,9 @@ def validate_startup(path: Path, url_cache: dict[str, str]) -> FileResult:
 
     result.errors.extend(
         validate_breakout_exception(data, required=has_breakout_stage)
+    )
+    result.errors.extend(
+        validate_unnamed_round_assessment(data, required=has_unnamed_stage)
     )
 
     link_errors, link_warnings = validate_links(data)

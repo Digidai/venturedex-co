@@ -15,7 +15,7 @@ const SOURCE_TYPES: Array<{
   { id: "editorial", label: "Editorial" },
 ];
 
-const FUNDING_STAGE_ORDER = ["Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+"];
+const FUNDING_STAGE_ORDER = ["Unspecified", "Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+"];
 
 export interface EvidenceIndexInput {
   startups: Startup[];
@@ -118,7 +118,11 @@ export function buildEvidenceIndex(input: EvidenceIndexInput): EvidenceIndex {
       }
       return left.localeCompare(right);
     })
-    .map(([label, count]) => ({ id: slugify(label), label, count }));
+    .map(([label, count]) => ({
+      id: slugify(label),
+      label: label === "Unspecified" ? "Stage undisclosed" : label,
+      count,
+    }));
 
   const topThemes = [...themeCounts.entries()]
     .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))

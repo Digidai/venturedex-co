@@ -82,6 +82,15 @@ test("buildEvidenceIndex derives deterministic evidence and coverage metrics", (
           risks: [],
         }),
       }),
+      startup({
+        id: "startup-unnamed",
+        slug: "unnamed-ai",
+        product_name: "Unnamed AI",
+        domain: "unnamed.ai",
+        funding_stage: "Unspecified",
+        tags: null,
+        updated_at: "2026-08-21T00:00:00Z",
+      }),
     ],
     investorCount: 3,
     launchCount: 7,
@@ -91,26 +100,27 @@ test("buildEvidenceIndex derives deterministic evidence and coverage metrics", (
 
   assert.equal(result.asOf, "2026-08-23");
   assert.deepEqual(result.counts, {
-    startups: 2,
+    startups: 3,
     investors: 3,
     launches: 7,
     weeklyIssues: 2,
-    profilesWithSources: 2,
-    sourceRecords: 4,
+    profilesWithSources: 3,
+    sourceRecords: 7,
     uniqueSourceUrls: 3,
     sourceDomains: 2,
-    evidenceStatements: 3,
-    riskNotes: 1,
+    evidenceStatements: 5,
+    riskNotes: 2,
   });
   assert.deepEqual(result.sourceTypes, [
-    { id: "official", label: "Official", count: 1 },
-    { id: "product", label: "Product", count: 2 },
+    { id: "official", label: "Official", count: 2 },
+    { id: "product", label: "Product", count: 4 },
     { id: "funding", label: "Funding", count: 1 },
     { id: "repository", label: "Repository", count: 0 },
     { id: "social", label: "Social", count: 0 },
     { id: "editorial", label: "Editorial", count: 0 },
   ]);
   assert.deepEqual(result.fundingStages, [
+    { id: "unspecified", label: "Stage undisclosed", count: 1 },
     { id: "seed", label: "Seed", count: 1 },
     { id: "series-a", label: "Series A", count: 1 },
   ]);

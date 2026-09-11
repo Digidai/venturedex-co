@@ -9,12 +9,19 @@ export function normalizeFundingStage(value: string | null | undefined): string 
   if (/^pre[- ]seed$/i.test(stage)) return "Pre-Seed";
   if (/^pre[- ]series a$/i.test(stage)) return "Pre-Series A";
   if (/^seed(?:\+| extension)?$/i.test(stage)) return "Seed";
+  if (/^unspecified$/i.test(stage)) return "Unspecified";
   const series = /^series ([a-z])(?:\+| extension)?$/i.exec(stage);
   return series ? `Series ${series[1].toUpperCase()}` : null;
 }
 
+export function fundingStageDisplayLabel(value: string | null | undefined): string | null {
+  const stage = value?.trim();
+  if (!stage) return null;
+  return normalizeFundingStage(stage) === "Unspecified" ? "Stage undisclosed" : stage;
+}
+
 export function fundingStageLabel(round: Pick<FundingRound, "stage" | "stage_raw">): string {
-  return round.stage_raw || round.stage;
+  return round.stage_raw || fundingStageDisplayLabel(round.stage) || round.stage;
 }
 
 export function fundingInstrumentLabel(value: string | null | undefined): string | null {

@@ -3,6 +3,7 @@ import type { FundingRound, Startup } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
 import { cleanText, normalizeExternalUrl, splitCsv, truncateText } from "./seo";
 import { normalizeResearch, safeJsonParse } from "./json";
+import { fundingStageDisplayLabel } from "./funding-terms";
 
 export interface TopicPageConfig {
   slug: string;
@@ -178,7 +179,7 @@ export function buildTopicPage(
     featuredStartups: matched.filter((startup) => featuredOrder.has(startup.slug)).slice(0, 5),
     topTags: countTerms(matched.flatMap((startup) => splitCsv(startup.tags))).slice(0, 10),
     topInvestors: countTerms(matched.flatMap((startup) => splitCsv(startup.investors))).slice(0, 8),
-    fundingStages: countTerms(matched.map((startup) => startup.funding_stage ?? "").filter(Boolean)).slice(0, 6),
+    fundingStages: countTerms(matched.map((startup) => fundingStageDisplayLabel(startup.funding_stage) ?? "").filter(Boolean)).slice(0, 6),
     relatedIssues,
     generatedFrom: { productTypes, tags, requiredTerms: uniqueTerms(config.match.require_any_terms ?? []) },
   };

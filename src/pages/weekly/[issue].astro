@@ -4,6 +4,7 @@ export const prerender = true;
 import Base from "../../layouts/Base.astro";
 import SiteCard from "../../components/SiteCard.astro";
 import { getContentStartupBySlug, getContentStartups } from "../../lib/content";
+import { fundingStageDisplayLabel } from "../../lib/funding-terms";
 import { truncateText, weeklyIssueJsonLd } from "../../lib/seo";
 import { getTopicMatchesForStartups } from "../../lib/topic-pages";
 import {
@@ -139,7 +140,7 @@ const topicMatches = getTopicMatchesForStartups(pickRows.map(({ startup }) => st
             </div>
             <div class="pick-copy">
               <p class="pick-kicker">
-                #{index + 1} {startup.product_type}{startup.funding_stage ? ` · ${startup.funding_stage}` : ""}
+                #{index + 1} {startup.product_type}{startup.funding_stage ? ` · ${fundingStageDisplayLabel(startup.funding_stage)}` : ""}
               </p>
               <h3>
                 <a href={`/startups/${startup.slug}`}>{startup.product_name}</a>

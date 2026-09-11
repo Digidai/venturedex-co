@@ -29,7 +29,7 @@
 - 公司名
 - 公司 URL
 - 融资金额
-- 轮次（Pre-Seed、Seed、Pre-Series A 或具名 Series A-Z；Series D+ 仍需结构化 breakout exception；扩展原词保存到 stage_raw）
+- 轮次（`Unspecified`、Pre-Seed、Seed、Pre-Series A 或具名 Series A-Z；Series D+ 仍需结构化 breakout exception；扩展原词保存到 stage_raw）
 - 原币种与融资工具（不猜测汇率或股债分配）
 - Lead investor
 - 文章 URL（这就是 source_url）
@@ -115,12 +115,14 @@ Q3: 它解决的问题具体吗？
 | 字段 | 从文章中确认 | 文章里找不到就 |
 |------|-------------|---------------|
 | amount | 文章明确写的金额 | 写 "undisclosed" |
-| stage | 来源具名轮次，按 funding-terms.md 标准化 | 未具名进入 evidence_pending，不能猜测 |
+| stage | 来源具名轮次，按 funding-terms.md 标准化 | 融资本身已核验但未具名写 `Unspecified`；融资未核验才 evidence_pending |
 | lead_investor | 文章提到的 lead | 写 "undisclosed" |
 | date | 文章发布日期 | 必须有 |
 | source_url | 文章 URL | 必须有，否则不收录 |
 
 按 `docs/automation/funding-terms.md` 保留原币种与扩展轮次：非美元金额必须带 ISO 4217 `currency`，`stage_raw` 必须与 canonical stage 一致；用 `instrument` 区分股权、债务、混合、补助或未披露。不自动换汇，不把参投方推断为 lead。
+
+使用 `Unspecified` 时不得写 `stage_raw`，并必须在 `research.unnamed_round_assessment` 写 80-500 字符的判断理由和至少三个唯一 source_ids；这些来源必须含 official 与 funding，并绑定至少两条 `product_evidence`。这是“不猜轮次”的证据门禁，不是降低产品、品味、独立性或发布要求。
 
 ### Step 4: 创建内容
 
@@ -192,6 +194,15 @@ Q3: 它解决的问题具体吗？
 ```json
 "breakout_exception": {
   "reason": "80-500 characters explaining why this independent private company clears the late-stage breakout bar.",
+  "source_ids": ["official_site", "funding_1", "product_1"]
+}
+```
+
+若融资来源没有给出轮次名称，则写 `funding[].stage: "Unspecified"`，并在 `research` 对象内增加：
+
+```json
+"unnamed_round_assessment": {
+  "reason": "80-500 characters explaining why product and funding evidence are sufficient to review this company without inventing a round stage.",
   "source_ids": ["official_site", "funding_1", "product_1"]
 }
 ```
@@ -379,7 +390,7 @@ python3 scripts/gsc-codex.py plan --latest-weekly
 5. 每次最多收录 5 个
 6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/investor-profiles.json`、`content/brand-assets.json`、`content/screenshot-reviews.json`、`content/rejected.jsonl`、`content/curation-reviews.json`、`content/curation-runs/`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/，再通过 curation:lookup 查有效复审及旧拒绝）
-8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`
+8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`；`Unspecified` 轮次必须写 `research.unnamed_round_assessment`
 9. 先查有效复审 overlay，再查旧拒绝；有明确新融资/产品/公司状态/治理变化或已排期的复审才进入同一固定池。不得把审核阻塞当拒绝，也不得自动收录待复审项目。
 10. 不使用第三方 favicon / logo 服务；品牌素材必须可追溯到官网
 11. 新增 Daily startup 或 Weekly issue 部署并 live smoke 后，必须先用 `python3 scripts/gsc-codex.py plan --latest-daily` 或 `--latest-weekly` 只读确认目标，再通过 Codex 内置浏览器的 CUA 工具完成 Google Search Console URL Inspection。点击前用 `begin` 持久化精确 URL 的意图，至多点击一次，观察结果后用 `finish` 记录证据；不能把浏览器计划、按钮点击或通用成功提示当作完成。必须检查 `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv` 权威 ledger 的 `requested` 记录，且 `requested` 不等于已收录。仓库根目录同名文件是旧版兼容输入，不是当前完成证据；普通未点击积压先用 `plan --retry-pending` 选择有界批次。`post_request_confirmation_unknown` 不得普通重试或再次点击，只能做精确 URL 绑定的零点击证据核对；不能证明已有成功状态时保留 blocker。

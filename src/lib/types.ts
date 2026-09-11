@@ -96,11 +96,17 @@ export interface StartupResearchBreakoutException {
   source_ids: string[];
 }
 
+export interface StartupResearchUnnamedRoundAssessment {
+  reason: string;
+  source_ids: string[];
+}
+
 export interface StartupResearch {
   verified_at: string;
   sources: StartupResearchSource[];
   product_evidence: StartupResearchEvidence[];
   breakout_exception?: StartupResearchBreakoutException;
+  unnamed_round_assessment?: StartupResearchUnnamedRoundAssessment;
   market_context?: {
     primary_user?: string;
     category?: string;
@@ -174,6 +180,7 @@ export type ProductType =
   | "Other";
 
 export type FundingStage =
+  | "Unspecified"
   | "Pre-Seed"
   | "Pre-Series A"
   | "Seed"
@@ -189,5 +196,5 @@ export const PRODUCT_TYPES: ProductType[] = [
 ];
 
 export const FUNDING_STAGES: (FundingStage | "Series D+")[] = [
-  "Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+",
+  "Unspecified", "Pre-Seed", "Seed", "Pre-Series A", "Series A", "Series B", "Series C", "Series D+",
 ];

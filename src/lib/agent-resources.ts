@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
+import { fundingStageLabel } from "./funding-terms";
 import {
   DEFAULT_SITE_URL,
   absoluteUrl,
@@ -10,7 +11,7 @@ import {
 } from "./seo";
 import type { FundingRound, Startup } from "./types";
 
-const SCHEMA_VERSION = "2026-09-08";
+const SCHEMA_VERSION = "2026-09-11";
 
 function digest(value: string): string {
   return createHash("sha256").update(value).digest("hex").slice(0, 24);
@@ -126,6 +127,7 @@ export function buildStartupAgentResource(input: {
         basis: risk.basis,
       })),
       breakout_exception: research?.breakout_exception ?? null,
+      unnamed_round_assessment: research?.unnamed_round_assessment ?? null,
     },
     sources,
     interpretation_notes: [
@@ -174,7 +176,7 @@ export function renderStartupAgentMarkdown(resource: StartupAgentResource): stri
   ];
   for (const round of resource.funding_rounds) {
     lines.push(
-      `- ${text(round.amount)}; ${text(round.stage_raw ?? round.stage)}; ${text(round.date)}; lead investor: ${text(round.lead_investor)}; currency: ${text(round.currency)}; instrument: ${text(round.instrument)}`,
+      `- ${text(round.amount)}; ${text(fundingStageLabel(round))}; ${text(round.date)}; lead investor: ${text(round.lead_investor)}; currency: ${text(round.currency)}; instrument: ${text(round.instrument)}`,
       `  - ID: ${round.id}`,
       `  - Source IDs: ${round.source_ids.map(escapeMarkdown).join(", ") || "Not recorded"}`,
     );
@@ -208,6 +210,12 @@ export function renderStartupAgentMarkdown(resource: StartupAgentResource): stri
     lines.push(
       "", `Selection exception: ${escapeMarkdown(resource.editorial.breakout_exception.reason)}`,
       `Source IDs: ${resource.editorial.breakout_exception.source_ids.map(escapeMarkdown).join(", ")}`,
+    );
+  }
+  if (resource.editorial.unnamed_round_assessment) {
+    lines.push(
+      "", `Unnamed-round assessment: ${escapeMarkdown(resource.editorial.unnamed_round_assessment.reason)}`,
+      `Source IDs: ${resource.editorial.unnamed_round_assessment.source_ids.map(escapeMarkdown).join(", ")}`,
     );
   }
   lines.push("", "## Source registry", "");
