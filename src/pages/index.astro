@@ -24,7 +24,7 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
   <div class="container discovery-home">
     <header class="home-hero">
       <h1>Startups worth a <em>closer look.</em></h1>
-      <p class="hero-copy">Explore products, funding, and the sources behind {startups.length} company profiles.</p>
+      <p class="hero-copy">Browse all {startups.length} company profiles, with products, funding, and original sources.</p>
       <form class="discovery-search" action="/directory" method="get" role="search">
         <label class="visually-hidden" for="home-query">Search companies and products</label>
         <input id="home-query" type="search" name="q" placeholder="Search companies, products, or markets" maxlength="160" />

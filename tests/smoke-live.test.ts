@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
@@ -70,6 +71,18 @@ test("smoke accepts the 18-card homepage, full directory, and all 304 rounds acr
   assert.ok(result.requested.includes(`${base}/?type=DevTools`));
   assert.ok(result.requested.includes(`${base}/directory?type=DevTools`));
   assert.ok(result.requested.includes(`${base}/directory?sort=newest`));
+});
+
+test("the actual homepage coverage copy satisfies the unchanged release smoke contract", () => {
+  const source = readFileSync(new URL("../src/pages/index.astro", import.meta.url), "utf8");
+  const copy = source.match(/<p class="hero-copy">([\s\S]*?)<\/p>/)?.[1];
+  assert.ok(copy, "homepage must have its reader-visible coverage statement");
+  const documents = fixture();
+  const home = (count: number) => `VentureDex ${copy.replace("{startups.length}", String(count))}<a href="/directory">All companies</a>${cards(18)}`;
+  documents["/"] = home(304);
+  assert.deepEqual(runSmoke(documents, ["home"]).errors, []);
+  documents["/"] = home(303);
+  assert.ok(runSmoke(documents, ["home"]).errors.some(error => error.includes("expected 304 total company profiles")));
 });
 
 test("smoke rejects full-catalog homepage regressions and a missing directory entrance", () => {
