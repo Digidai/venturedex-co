@@ -1,0 +1,55 @@
+{
+  "slug": "brainchild-bio",
+  "domain": "brainchildbio.com",
+  "url": "https://brainchildbio.com/",
+  "product_name": "BrainChild Bio",
+  "summary": "Clinical-stage CAR T programs for pediatric and adult central-nervous-system tumors.",
+  "editor_note": "Most oncology startups lead with a target; this one is built around a delivery constraint: repeat-dose CAR T therapy inside the central nervous system. BCB-276 targets B7-H3 in diffuse intrinsic pontine glioma and is moving into the ILLUMINATE pivotal study, while BCB-214 uses a three-target design. The peer-reviewed Phase 1 result is meaningful but early: both programs remain investigational, and financing does not establish safety or efficacy.",
+  "editor_rating": 5,
+  "why_featured": "A kids-first CNS cell-therapy pipeline",
+  "product_type": "HealthTech",
+  "founded_year": 2023,
+  "hq_location": "Seattle, Washington and Cambridge, Massachusetts",
+  "region": "US",
+  "tags": "biotechnology,cell therapy,CAR T,pediatric oncology,brain tumors",
+  "investors": "Seattle Children's, WRF Capital",
+  "links": {
+    "product": "https://brainchildbio.com/pipeline/",
+    "careers": "https://brainchildbio.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$116M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-08",
+      "source_url": "https://www.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
+      "source_name": "BrainChild Bio via GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-11",
+    "sources": [
+      {"id": "official_site", "label": "BrainChild Bio official site", "url": "https://brainchildbio.com/", "type": "official"},
+      {"id": "pipeline", "label": "BrainChild Bio pipeline", "url": "https://brainchildbio.com/pipeline/", "type": "product"},
+      {"id": "funding_1", "label": "BrainChild Bio Series A announcement", "url": "https://www.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html", "type": "funding"},
+      {"id": "phase_1", "label": "Nature Medicine phase 1 publication", "url": "https://www.nature.com/articles/s41591-024-03451-3", "type": "editorial"}
+    ],
+    "product_evidence": [
+      {"claim": "The official pipeline identifies BCB-276 as a B7-H3-targeted autologous CAR T program for DIPG and describes the planned ILLUMINATE pivotal study.", "source_ids": ["pipeline"]},
+      {"claim": "The pipeline also describes BCB-214 as a triple-targeting CAR T design for glioblastoma and pediatric brain tumors, with initial clinical testing still ahead.", "source_ids": ["pipeline"]},
+      {"claim": "A peer-reviewed Phase 1 report covers intracerebroventricular B7-H3 CAR T dosing in children and young adults; it is early clinical evidence, not proof of approval or definitive efficacy.", "source_ids": ["phase_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Pediatric and adult neuro-oncology centers conducting trials and, if approved, delivering specialized cellular therapy.",
+      "category": "CNS cellular therapeutics",
+      "differentiation": "A CNS-focused CAR T platform combining locoregional repeat dosing with single- and multi-target program designs.",
+      "why_now": "The Series A funds a pivotal study for the lead pediatric program and initial clinical work for the next pipeline asset."
+    },
+    "risks": [
+      {"claim": "The programs remain investigational; small early studies cannot establish broad safety, efficacy, manufacturability, regulatory approval, or commercial adoption.", "basis": "VentureDex assessment based on the official pipeline, financing announcement and Phase 1 publication."}
+    ]
+  }
+}

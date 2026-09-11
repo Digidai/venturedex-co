@@ -1,0 +1,55 @@
+{
+  "slug": "jaipur-robotics",
+  "domain": "www.jaipurrobotics.com",
+  "url": "https://www.jaipurrobotics.com/",
+  "product_name": "Jaipur Robotics",
+  "summary": "Computer-vision operating system for safer, more efficient waste-to-energy plants.",
+  "editor_note": "Rather than applying vision to a clean factory line, the system works inside messy waste bunkers where poor visibility creates shutdowns, unsafe crane work and uneven combustion. Jaipur Intelligence detects dangerous objects, maps calorific value and tracks crane movement, then turns those signals into operator guidance. The workflow is concrete; accuracy, savings and shutdown-reduction figures still come from company and investor sources and need cross-plant validation.",
+  "editor_rating": 5,
+  "why_featured": "Computer vision inside waste plants",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2024,
+  "hq_location": "Manno, Switzerland",
+  "region": "Europe",
+  "tags": "computer vision,waste-to-energy,industrial AI,plant operations,climate technology",
+  "investors": "EquityPitcher Ventures, High-Tech Gründerfonds",
+  "links": {
+    "product": "https://jaipurrobotics.com/products/",
+    "careers": "https://www.jaipurrobotics.com/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 4.3M",
+      "currency": "EUR",
+      "stage": "Seed",
+      "lead_investor": "EquityPitcher Ventures and High-Tech Gründerfonds",
+      "date": "2026-09-07",
+      "source_url": "https://www.htgf.de/en/jaipur-robotics-seed/",
+      "source_name": "High-Tech Gründerfonds"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-11",
+    "sources": [
+      {"id": "official_site", "label": "Jaipur Robotics official site", "url": "https://jaipurrobotics.com/", "type": "official"},
+      {"id": "products", "label": "Jaipur Intelligence product page", "url": "https://jaipurrobotics.com/products/", "type": "product"},
+      {"id": "funding_1", "label": "HTGF Jaipur Robotics Seed announcement", "url": "https://www.htgf.de/en/jaipur-robotics-seed/", "type": "funding"},
+      {"id": "company_funding", "label": "Jaipur Robotics Seed announcement", "url": "https://jaipurrobotics.com/2026/09/07/waste-to-energy-ai-jaipur-robotics-raises-eur-4-3m-to-bring-computer-vision-to-waste-plants-worldwide/", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The product page shows dangerous-item detection, calorific-value mapping and crane tracking as connected workflows for waste bunker operations.", "source_ids": ["products"]},
+      {"claim": "The financing announcement says the system processes waste-plant imagery and operating data across customer sites; its accuracy and savings figures are company-reported.", "source_ids": ["funding_1", "company_funding"]},
+      {"claim": "The official site connects camera-based detection to operator guidance, historical reporting and plant decisions rather than presenting a generic vision API.", "source_ids": ["official_site", "products"]}
+    ],
+    "market_context": {
+      "primary_user": "Operators and engineering teams at waste-to-energy, cement and biomass plants.",
+      "category": "Industrial computer vision",
+      "differentiation": "A waste-specific visual data layer that links hazardous-item detection, fuel-quality mapping and crane operations.",
+      "why_now": "The Seed round funds expansion across new plant types and regions after initial European deployments."
+    },
+    "risks": [
+      {"claim": "Published accuracy, avoided shutdowns and plant-value figures are supplied by the company and investors; performance may vary with waste streams and facility conditions.", "basis": "VentureDex assessment based on official product pages and the co-lead investor announcement."}
+    ]
+  }
+}

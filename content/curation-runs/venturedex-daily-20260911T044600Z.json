@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260911T044600Z",
+  "locked_at": "2026-09-11",
+  "pool_sha256": "0b85200af766b8576921a6afd4aa6b583e1b3d704c7af30c35817a3b4d69cff0",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Retained official company funding and product sources for the September 11 qualified queue",
+      "outcome": "Reopened the existing reviewed records under explicit human early-review authorization; no new candidate was added."
+    },
+    {
+      "type": "investor",
+      "query": "Retained lead-investor announcements and identity evidence for qualified hardware and enterprise candidates",
+      "outcome": "Used source-bound investor evidence for round terms and identity planning; no investor order was interpreted as lead status."
+    },
+    {
+      "type": "original_media",
+      "query": "Retained original reporting for financing terms not fully specified by company pages",
+      "outcome": "Cross-checked the locked queue against original reporting while preserving undisclosed leads and source-native currencies."
+    },
+    {
+      "type": "research",
+      "query": "Retained product documentation and peer-reviewed evidence attached to the qualified queue",
+      "outcome": "Used the prior source-by-source qualification review as the bounded revisit trigger and did not run a second discovery cycle."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "brainchild-bio",
+      "company_url": "https://brainchildbio.com/",
+      "source_url": "https://www.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "Biotechnology",
+      "state": "accepted",
+      "reason": "Human-authorized early review completed: financing, independent clinical evidence, startup content, investors, official brand assets and hash-bound screenshot gates passed within the five-company publication cap.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://brainchildbio.com/pipeline/",
+            "note": "The official pipeline lists defined cellular-therapy programs for pediatric brain tumors and their development status."
+          },
+          {
+            "url": "https://www.nature.com/articles/s41591-024-03451-3",
+            "note": "A peer-reviewed phase 1 publication provides independent clinical evidence relevant to the underlying program."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "BrainChild bets on locoregional cellular therapy for difficult pediatric brain tumors."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A defined pipeline plus peer-reviewed early clinical work gives the program unusual evidentiary depth."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The indication and intervention are specific, while small early studies cannot establish efficacy."
+          }
+        }
+      }
+    },
+    {
+      "slug": "conveo",
+      "company_url": "https://conveo.ai/",
+      "source_url": "https://conveo.ai/mediakit",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "Europe",
+      "industry": "Consumer research software",
+      "state": "accepted",
+      "reason": "Human-authorized early review completed: Series A evidence, end-to-end product workflow, startup content, investors, official brand assets and hash-bound screenshot gates passed within the five-company publication cap.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://conveo.ai/product",
+            "note": "The product page exposes study setup, AI-moderated video interviews, synthesis and research deliverables as a connected workflow."
+          },
+          {
+            "url": "https://engineering.conveo.ai/engineering-at-conveo",
+            "note": "The engineering material describes the technical operating context behind the research platform rather than only campaign claims."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Conveo makes a specific bet that asynchronous AI moderation can expand qualitative research without removing video context."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The end-to-end study workflow and engineering account show meaningful product construction."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer, research job and generated outputs are concrete enough to assess."
+          }
+        }
+      }
+    },
+    {
+      "slug": "easy-aerial",
+      "company_url": "https://www.easyaerial.com/",
+      "source_url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests",
+      "source_type": "original_media",
+      "announced_at": "2026-09-01",
+      "region": "US",
+      "industry": "Autonomous aerial systems",
+      "state": "accepted",
+      "reason": "Human-authorized early review completed: Series B evidence, current official product paths, startup content, investors, official brand assets and hash-bound screenshot gates passed within the five-company publication cap.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.easyaerial.com/",
+            "note": "The official site exposes tethered UAS and drone-in-a-box configurations with specific surveillance and deployment roles."
+          },
+          {
+            "url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests",
+            "note": "Original reporting describes operational deployments and the current financing signal rather than only a concept render."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The system-level bet combines persistent tethered flight with autonomous field deployment."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named configurations, certifications and deployment evidence make the hardware integration inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The mission profile is specific, while performance and deployment claims still need vendor attribution."
+          }
+        }
+      }
+    },
+    {
+      "slug": "jaipur-robotics",
+      "company_url": "https://www.jaipurrobotics.com/",
+      "source_url": "https://www.htgf.de/en/jaipur-robotics-seed/",
+      "source_type": "investor",
+      "announced_at": "2026-09-07",
+      "region": "Europe",
+      "industry": "Industrial computer vision",
+      "state": "accepted",
+      "reason": "Human-authorized early review completed: Seed evidence, concrete waste-plant workflow, startup content, both co-leads, official brand assets and hash-bound screenshot gates passed within the five-company publication cap.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.jaipurrobotics.com/",
+            "note": "The official site describes computer-vision monitoring and operating decisions inside material-recovery and waste-processing plants."
+          },
+          {
+            "url": "https://www.htgf.de/en/jaipur-robotics-seed/",
+            "note": "The lead investor's announcement records deployed image volume, processed material and a claimed reduction in shutdowns."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Jaipur Robotics bets on a plant-level visual intelligence layer for messy physical material streams."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment metrics and the connection from cameras to operating actions expose real industrial craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The plant user and workflow are specific, while performance figures remain investor and company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "outline",
+      "company_url": "https://www.outlineapp.ai/",
+      "source_url": "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "Europe",
+      "industry": "Financial planning software",
+      "state": "accepted",
+      "reason": "Human-authorized early review completed: the $3M amount and lead are verified while conflicting stage labels are retained as Unspecified; product, startup, investor, brand and hash-bound screenshot gates passed within the five-company publication cap.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.outlineapp.ai/",
+            "note": "The official site describes financial-model ingestion, variance analysis and recurring planning workflows for finance teams."
+          },
+          {
+            "url": "https://www.outlineapp.ai/manifesto",
+            "note": "The manifesto describes a versioned financial system of record and finance-specific product primitives rather than a generic assistant surface."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Outline bets on an operating workspace for finance teams rather than a standalone narrative generator."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The model, variance and planning workflow shows deliberate domain packaging."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and finance job are specific, while public integration and customer evidence remain early."
+          }
+        }
+      }
+    },
+    {
+      "slug": "trustedrouter",
+      "company_url": "https://trustedrouter.com/",
+      "source_url": "https://trustedrouter.com/blog/we-raised-1-25m-seed",
+      "source_type": "company",
+      "announced_at": "2026-08-31",
+      "region": "US",
+      "industry": "AI infrastructure",
+      "state": "qualified_pending",
+      "reason": "Human-authorized early review of the verified September 11 qualified queue; publication remains subject to startup, investor, brand, screenshot, release and live gates.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://trustedrouter.com/docs",
+            "note": "The public documentation exposes routing setup, provider integration and concrete developer-facing operating instructions."
+          },
+          {
+            "url": "https://trust.trustedrouter.com/",
+            "note": "The trust center publishes a dedicated security and assurance surface for teams evaluating production deployment."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The product bets on trustworthy routing as a control layer rather than another undifferentiated model wrapper."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Documentation and security material show attention to production integration and operational assurance."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Its developer, workflow and deployment boundary are unusually concrete for an early product."
+          }
+        }
+      }
+    },
+    {
+      "slug": "aitan",
+      "company_url": "https://www.aitansystems.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "US",
+      "industry": "Defense robotics",
+      "state": "qualified_pending",
+      "reason": "Human-authorized early review of the verified September 11 qualified queue; publication remains subject to startup, investor, brand, screenshot, release and live gates.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.aitansystems.com/",
+            "note": "The official site describes a software-defined autonomy layer for operating heterogeneous robotic fleets in contested environments."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+            "note": "The company-issued announcement describes battle deployments, fleet interoperability and the operating model behind the platform."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The company makes a concrete infrastructure bet on portable autonomy across mixed robotic fleets."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment and interoperability details expose more craft than a generic defense-AI landing page."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The operating user, environment and system boundary are specific enough for an evidence-led profile."
+          }
+        }
+      }
+    },
+    {
+      "slug": "airbility",
+      "company_url": "https://airbility.co.kr/",
+      "source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+      "source_type": "company",
+      "announced_at": "2026-09-01",
+      "region": "China / Asia",
+      "industry": "Electric aviation",
+      "state": "qualified_pending",
+      "reason": "Human-authorized early review of the verified September 11 qualified queue; publication remains subject to startup, investor, brand, screenshot, release and live gates.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://airbility.co.kr/",
+            "note": "The official product surface identifies the AB vehicle program and its electric vertical-flight configuration."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+            "note": "The company-issued release describes prototype and transition-flight progress alongside the financing."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Airbility bets on a specific compact electric-flight architecture and transition profile."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and transition-flight disclosures provide more substance than render-only advanced-air-mobility projects."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The vehicle program is specific, while certification and production remain significant execution risks."
+          }
+        }
+      }
+    },
+    {
+      "slug": "also",
+      "company_url": "https://ridealso.com/",
+      "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "US",
+      "industry": "Electric mobility",
+      "state": "qualified_pending",
+      "reason": "Human-authorized early review of the verified September 11 qualified queue; publication remains subject to startup, investor, brand, screenshot, release and live gates.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://ridealso.com/",
+            "note": "The corrected official site exposes the TM-B and TM-Q electric vehicles and a connected mobility platform."
+          },
+          {
+            "url": "https://ridealso.com/pages/company",
+            "note": "The company page establishes the distinct mobility entity, product roadmap and autonomy direction at the corrected domain."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "ALSO bets on a lightweight connected vehicle class rather than a conventional e-bike catalog."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named vehicle systems and a coherent hardware-software roadmap provide evidence of integrated product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and company identity are now specific, although later autonomy claims remain forward looking."
+          }
+        }
+      }
+    },
+    {
+      "slug": "aslan",
+      "company_url": "https://aslanprotects.com/",
+      "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+      "source_type": "original_media",
+      "announced_at": "2026-09-01",
+      "region": "US",
+      "industry": "National security software",
+      "state": "qualified_pending",
+      "reason": "Human-authorized early review of the verified September 11 qualified queue; publication remains subject to startup, investor, brand, screenshot, release and live gates.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://aslanprotects.com/",
+            "note": "The official site presents a defined digital-domain operations platform for national-security teams rather than a general AI consultancy."
+          },
+          {
+            "url": "https://aslanprotects.com/about",
+            "note": "The company background and use-case material identify the mission users, operating context and product boundary."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Aslan bets on agentic operations in a narrowly defined national-security domain."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Its public use cases and operating context give the enterprise workflow an inspectable shape."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product is specific about buyer and mission even though implementation claims remain company reported."
+          }
+        }
+      }
+    }
+  ]
+}

@@ -674,6 +674,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "brainchild-bio": {
+      "sha256": "f4ebf5c7b90563e8d926df5ec0e53de5207e8fe0b0932447395e1e51f402c187",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://brainchildbio.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-tab-2-run-venturedex-daily-20260911T044600Z",
+      "reviewed_at": "2026-09-11T05:18:44.717Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Native 1280x720 homepage hero shows BrainChild Bio logo, complete CAR T headline, child imagery and CTA; final WebP remained readable in the 320px contain card and complete at natural ratio on the 375px detail view; full-size asset returned HTTP 200."
+    },
     "brainsmingle": {
       "sha256": "370ac49f8add43df3bcef76632d476c3d66cc197bd5c0d61240eb3fc2f03fb06",
       "width": 1440,
@@ -1109,6 +1128,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "conveo": {
+      "sha256": "ec968520280f19bf43e244cb042d1e4dab675e97e717a61adfb0e7b0c267d4d2",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://conveo.ai/product",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-tab-2-run-venturedex-daily-20260911T044600Z",
+      "reviewed_at": "2026-09-11T05:18:44.861Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Native 1280x720 product hero shows Conveo branding, the complete AI-led video interviews headline, supporting explanation and CTA without overlays; the 320px contain card and 375px natural-ratio detail preserved the full frame; full-size asset returned HTTP 200."
+    },
     "convey": {
       "sha256": "45ef0a3c29b85b519805ed767bc8467aaaf9a660c62fac6564504ba2f63446f3",
       "width": 1440,
@@ -1529,6 +1567,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "easy-aerial": {
+      "sha256": "21296641c816663a0c4a75851b077281cdf0d7935885b0f253a72243f4ac2020",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.easyaerial.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-tab-2-run-venturedex-daily-20260911T044600Z",
+      "reviewed_at": "2026-09-11T05:18:44.999Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Native 1280x720 loaded hero shows Easy Aerial branding, a complete tethered drone subject and the Persistent Tethered Flight payload message; the initial challenge and 404 candidates were rejected; final 320px card and 375px detail remained uncropped and the full-size asset returned HTTP 200."
     },
     "eleven-labs": {
       "sha256": "db7c65066d8758811d77c11601b906c86035d5e2fedc96c4949e699fcf61a184",
@@ -2535,6 +2592,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "jaipur-robotics": {
+      "sha256": "c1b5b0d14b052054b250075673da536234e853fcd0fd0fe8c7b2cf3a8d72e065",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://jaipurrobotics.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-tab-2-run-venturedex-daily-20260911T044600Z",
+      "reviewed_at": "2026-09-11T05:18:45.143Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "After accepting the consent overlay, the native 1280x720 homepage hero showed the Jaipur Robotics logo, complete Waste-to-Energy automation headline, plant imagery and Techstars support mark; the small persistent consent handle did not cover the subject; 320px card and 375px detail retained the full frame and the full-size asset returned HTTP 200."
     },
     "jedify": {
       "sha256": "9287609b9d71a5c75280526563e1a02370f9fd2cd6083d2f95cbadaa5e5bad4f",
@@ -3622,6 +3698,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "outline": {
+      "sha256": "4a0cdfbd32e7193d2858e36274c9310259df95e11f5a6def95ef07703a920909",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.outlineapp.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-tab-2-run-venturedex-daily-20260911T044600Z",
+      "reviewed_at": "2026-09-11T05:18:45.291Z",
+      "reviewer": "codex-task-01a084ae-b988-7952-a1ea-a6ebda5480cc",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Native 1280x720 product hero shows Outline branding, complete AI operating system for Financial Planning headline, FP&A explanation and demo CTA; 320px contain card and 375px natural-ratio detail retained the entire composition and the full-size asset returned HTTP 200."
     },
     "outmarket": {
       "sha256": "686a9ddcae12e50f034fe84840d47d73fee47a1928a69d61a9e20245b58ca965",

@@ -169,11 +169,11 @@
     {
       "slug": "easy-aerial",
       "company_url": "https://www.easyaerial.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $20M financing and an inspectable tethered and autonomous drone systems. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Human-authorized early review completed on September 11: the $20M Series B, current product paths, startup record, investor resolution, official brand assets, hash-bound native screenshot and bounded publication capacity all cleared.",
       "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
         "https://www.easyaerial.com/",
@@ -184,6 +184,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and tethered and autonomous drone systems; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-11",
+          "outcome": "accepted",
+          "note": "Early processing was explicitly authorized; current product URLs, funding, startup content, investors, brand assets and screenshot review cleared the publication gates."
         }
       ],
       "original": {
@@ -278,11 +283,11 @@
     {
       "slug": "conveo",
       "company_url": "https://conveo.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $50M Series A round and an inspectable AI-moderated video research platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Human-authorized early review completed on September 11: the $50M Series A, end-to-end research workflow, startup record, investor resolution, official brand assets, hash-bound native screenshot and bounded publication capacity all cleared.",
       "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
         "https://conveo.ai/",
@@ -295,6 +300,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and AI-moderated video research platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-11",
+          "outcome": "accepted",
+          "note": "Early processing was explicitly authorized; funding, product workflow, startup content, investors, brand assets and screenshot review cleared the publication gates."
         }
       ],
       "original": {
@@ -1361,11 +1371,11 @@
     {
       "slug": "jaipur-robotics",
       "company_url": "https://www.jaipurrobotics.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 4.3M Seed round and an inspectable computer-vision operating system for waste plants. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Human-authorized early review completed on September 11: the EUR 4.3M Seed round, waste-plant computer-vision workflow, startup record, both co-leads, official brand assets, hash-bound native screenshot and bounded publication capacity all cleared.",
       "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
         "https://www.jaipurrobotics.com/",
@@ -1376,6 +1386,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and computer-vision operating system for waste plants; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-11",
+          "outcome": "accepted",
+          "note": "Early processing was explicitly authorized; funding, plant workflow, startup content, both co-leads, brand assets and screenshot review cleared the publication gates."
         }
       ],
       "original": {
@@ -1985,21 +2000,28 @@
     {
       "slug": "outline",
       "company_url": "https://www.outlineapp.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $3M Seed round and an inspectable AI-native financial planning and analysis system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Human-authorized early review completed on September 11: the verified $3M financing is conservatively recorded as stage unspecified because source labels conflict, while the FP&A workflow, startup record, investor resolution, official brand assets, hash-bound native screenshot and bounded publication capacity all cleared.",
       "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
         "https://www.outlineapp.ai/",
-        "https://seedtable.com/companies/outline-fpa/funding-rounds/seed-2026-09"
+        "https://www.outlineapp.ai/manifesto",
+        "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
+        "https://www.foundersfuture.com/portefeuille/outline"
       ],
       "attempts": [
         {
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and AI-native financial planning and analysis system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-11",
+          "outcome": "accepted",
+          "note": "Early processing was explicitly authorized; the $3M amount and lead are verified, the conflicting stage labels are retained as Unspecified, and all remaining publication gates cleared."
         }
       ],
       "evaluation": {
@@ -2012,8 +2034,8 @@
             "note": "The official site describes financial-model ingestion, variance analysis and recurring planning workflows for finance teams."
           },
           {
-            "url": "https://seedtable.com/companies/outline-fpa/funding-rounds/seed-2026-09",
-            "note": "The funding record establishes the current Seed signal and company identity for the product review."
+            "url": "https://www.outlineapp.ai/manifesto",
+            "note": "The manifesto describes a versioned financial system of record and finance-specific product primitives rather than a generic assistant surface."
           }
         ],
         "taste": {
@@ -2049,11 +2071,11 @@
     {
       "slug": "brainchild-bio",
       "company_url": "https://brainchildbio.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $116M Series A round and an inspectable brain-tumor cellular-therapy company. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Human-authorized early review completed on September 11: the $116M Series A, named CNS cell-therapy programs, peer-reviewed Phase 1 evidence, startup record, investor resolution, official brand assets, hash-bound native screenshot and bounded publication capacity all cleared.",
       "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
         "https://brainchildbio.com/",
@@ -2066,6 +2088,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and brain-tumor cellular-therapy company; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-11",
+          "outcome": "accepted",
+          "note": "Early processing was explicitly authorized; financing, independent clinical evidence, startup content, investors, brand assets and screenshot review cleared the publication gates."
         }
       ],
       "evaluation": {

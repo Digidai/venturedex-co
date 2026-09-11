@@ -2179,6 +2179,41 @@
       "local_path": "/logos/companies/antioch.svg",
       "source_page": "https://antioch.com/",
       "source_url": "https://antioch.com/favicon.svg"
+    },
+    "brainchild-bio": {
+      "name": "BrainChild Bio",
+      "shape": "icon",
+      "local_path": "/logos/companies/brainchild-bio.png",
+      "source_page": "https://brainchildbio.com/",
+      "source_url": "https://brainchildbio.com/wp-content/uploads/2025/04/cropped-apple-touch-icon@1024x-192x192.png"
+    },
+    "conveo": {
+      "name": "Conveo",
+      "shape": "icon",
+      "local_path": "/logos/companies/conveo.png",
+      "source_page": "https://conveo.ai/",
+      "source_url": "https://framerusercontent.com/images/CgeHz7y9kMWYMJ74ezRizal5vvM.png"
+    },
+    "easy-aerial": {
+      "name": "Easy Aerial",
+      "shape": "icon",
+      "local_path": "/logos/companies/easy-aerial.ico",
+      "source_page": "https://www.easyaerial.com/",
+      "source_url": "https://www.easyaerial.com/favicon.ico?favicon.2vob68tjqpejf.ico"
+    },
+    "jaipur-robotics": {
+      "name": "Jaipur Robotics",
+      "shape": "icon",
+      "local_path": "/logos/companies/jaipur-robotics.png",
+      "source_page": "https://jaipurrobotics.com/",
+      "source_url": "https://jaipurrobotics.com/wp-content/uploads/2025/04/cropped-JAIPUR_ROBOTICS_favicon-192x192.webp"
+    },
+    "outline": {
+      "name": "Outline",
+      "shape": "icon",
+      "local_path": "/logos/companies/outline.png",
+      "source_page": "https://www.outlineapp.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a4518b194cf0c033fed0655/6a4e5f28152e9cf49171e344_Favicon-Outline.png"
     }
   },
   "investors": {
@@ -4099,6 +4134,62 @@
       "local_path": "/logos/investors/buenavista-equity-partners.png",
       "source_page": "https://www.buenavistaequity.com/",
       "source_url": "https://www.buenavistaequity.com/wp-content/uploads/2024/10/cropped-favicon-new-192x192.png"
+    },
+    "seattle-childrens": {
+      "name": "Seattle Children's",
+      "shape": "icon",
+      "local_path": "/logos/investors/seattle-childrens.png",
+      "source_page": "https://www.seattlechildrens.org/",
+      "source_url": "https://www.seattlechildrens.org/apple-touch-icon-180x180.png"
+    },
+    "wrf-capital": {
+      "name": "WRF Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/wrf-capital.png",
+      "source_page": "https://www.wrfseattle.org/",
+      "source_url": "https://www.wrfseattle.org/wp-content/themes/wrf/images/favicon/apple-touch-icon.png"
+    },
+    "visionaries-club": {
+      "name": "Visionaries Club",
+      "shape": "icon",
+      "local_path": "/logos/investors/visionaries-club.svg",
+      "source_page": "https://www.visionaries.vc/",
+      "source_url": "https://www.visionaries.vc/favicon-new.svg"
+    },
+    "equitypitcher-ventures": {
+      "name": "EquityPitcher Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/equitypitcher-ventures.png",
+      "source_page": "https://equitypitcher.com/",
+      "source_url": "https://equitypitcher.com/brand/favicon/favicon-96x96.png"
+    },
+    "high-tech-grunderfonds": {
+      "name": "High-Tech Gründerfonds",
+      "shape": "icon",
+      "local_path": "/logos/investors/high-tech-grunderfonds.png",
+      "source_page": "https://www.htgf.de/",
+      "source_url": "https://www.htgf.de/wp-content/uploads/2025/02/Favicon-150x150.png"
+    },
+    "founders-future": {
+      "name": "Founders Future",
+      "shape": "icon",
+      "local_path": "/logos/investors/founders-future.png",
+      "source_page": "https://www.foundersfuture.com/en",
+      "source_url": "https://cdn.prod.website-files.com/675b0f49e8a9aae0e5259468/688720478caca7dbcfd5af4b_webclip.png"
+    },
+    "100in": {
+      "name": "100in",
+      "shape": "icon",
+      "local_path": "/logos/investors/100in.png",
+      "source_page": "https://www.100in.vc/",
+      "source_url": "https://framerusercontent.com/images/rMzLsJ6u0gHoKn60pvnZNAbkzkU.png"
+    },
+    "newschool": {
+      "name": "Newschool",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/newschool.svg",
+      "source_page": "https://newschool.vc/",
+      "source_url": "https://newschool.vc/new-school-logo.svg"
     }
   }
 }

@@ -1,0 +1,57 @@
+{
+  "slug": "outline",
+  "domain": "www.outlineapp.ai",
+  "url": "https://www.outlineapp.ai/",
+  "product_name": "Outline",
+  "summary": "AI-native FP&A workspace for budgeting, forecasting, variance analysis and scenario modeling.",
+  "editor_note": "Rather than placing a chat window over spreadsheets, the product connects data collection, budgeting, forecasts, variance analysis and scenario iteration inside a versioned FP&A workspace. Financing coverage reports 10 paying design partners, a more concrete signal than a waitlist but not evidence of durable retention. The company is very young, and public proof of integration depth, control testing and long-term use remains limited.",
+  "editor_rating": 4,
+  "why_featured": "An operating layer for FP&A",
+  "product_type": "Fintech",
+  "hq_location": "Paris, France",
+  "region": "Europe",
+  "tags": "financial planning,FP&A,finance automation,AI agents,forecasting",
+  "investors": "Founders Future, 100in, Newschool",
+  "links": {
+    "product": "https://www.outlineapp.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "Founders Future",
+      "date": "2026-09-08",
+      "source_url": "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
+      "source_name": "Journal du Net"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-11",
+    "sources": [
+      {"id": "official_site", "label": "Outline official product site", "url": "https://www.outlineapp.ai/", "type": "official"},
+      {"id": "manifesto", "label": "Outline product manifesto", "url": "https://www.outlineapp.ai/manifesto", "type": "product"},
+      {"id": "funding_1", "label": "Journal du Net financing report", "url": "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/", "type": "funding"},
+      {"id": "investor_portfolio", "label": "Founders Future Outline portfolio profile", "url": "https://www.foundersfuture.com/portefeuille/outline", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The official product site connects data collection, budgeting, forecasting, financial modeling, variance analysis and recurring reporting in a single FP&A workflow.", "source_ids": ["official_site"]},
+      {"claim": "Outline describes a versioned system of record and finance-specific product primitives intended to preserve auditability beyond a general-purpose assistant.", "source_ids": ["manifesto", "official_site"]},
+      {"claim": "The financing coverage reports ten paying design partners, but public evidence for integration depth, control testing and long-term retention remains limited.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "CFOs and finance teams at mid-market companies that have outgrown spreadsheet-only planning.",
+      "category": "Financial planning and analysis software",
+      "differentiation": "Finance-specific agents operate inside a versioned planning system that joins recurring models, analyses and business data.",
+      "why_now": "The first institutional financing supports product development and initial commercial expansion in Europe and the United States."
+    },
+    "risks": [
+      {"claim": "The early product still needs public evidence for connector reliability, permissioning, model controls, auditability under change and durable customer adoption.", "basis": "VentureDex assessment based on Outline's official product materials and current financing coverage."}
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The financing is verified at $3 million with Founders Future identified as lead, but the retained original report calls it the company's first raise without stating a canonical round name. Other reports conflict between Seed and Pre-Seed, so VentureDex records Unspecified rather than guessing while retaining the independently inspectable FP&A workflow.",
+      "source_ids": ["official_site", "manifesto", "funding_1"]
+    }
+  }
+}

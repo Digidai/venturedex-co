@@ -1,0 +1,55 @@
+{
+  "slug": "conveo",
+  "domain": "conveo.ai",
+  "url": "https://conveo.ai/",
+  "product_name": "Conveo",
+  "summary": "AI-moderated video research and a continuous consumer-insight workspace for enterprise teams.",
+  "editor_note": "Unlike cheaper interview transcription, the product connects study design, recruitment, AI-moderated video interviews, synthesis and reusable evidence. StoryLines keeps recurring topics running so teams can query a growing research base; Conveo says more than 70% of final insights arise during AI follow-ups. That compounding workflow is the real bet. The metric is company-reported, while validity still depends on sampling, moderation and analysis.",
+  "editor_rating": 4,
+  "why_featured": "Qualitative research that compounds",
+  "product_type": "SaaS",
+  "founded_year": 2024,
+  "hq_location": "New York City, New York",
+  "region": "US",
+  "tags": "market research,consumer insights,video interviews,AI agents,enterprise software",
+  "investors": "DST Global, Balderton Capital, Visionaries Club, 6 Degrees Capital, Y Combinator",
+  "links": {
+    "product": "https://conveo.ai/product",
+    "careers": "https://careers.conveo.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$50M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-02",
+      "source_url": "https://conveo.ai/mediakit/series-a",
+      "source_name": "Conveo"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-11",
+    "sources": [
+      {"id": "official_site", "label": "Conveo official site", "url": "https://conveo.ai/", "type": "official"},
+      {"id": "product", "label": "Conveo product workflow", "url": "https://conveo.ai/product", "type": "product"},
+      {"id": "funding_1", "label": "Conveo Series A announcement", "url": "https://conveo.ai/mediakit/series-a", "type": "funding"},
+      {"id": "engineering", "label": "Conveo engineering overview", "url": "https://engineering.conveo.ai/engineering-at-conveo", "type": "product"}
+    ],
+    "product_evidence": [
+      {"claim": "The product surface connects study setup, participant recruitment, AI-moderated video interviews, analysis and research deliverables in one workflow.", "source_ids": ["product"]},
+      {"claim": "The Series A announcement describes StoryLines as continuous research on recurring topics, with a shared record that teams can query in natural language.", "source_ids": ["funding_1"]},
+      {"claim": "Conveo says the platform supports multimodal analysis of speech, tone, expression and on-screen context; VentureDex did not independently reproduce those analyses.", "source_ids": ["funding_1", "engineering"]}
+    ],
+    "market_context": {
+      "primary_user": "Consumer-insight, product, marketing and strategy teams at large brands.",
+      "category": "AI-moderated qualitative research",
+      "differentiation": "Recurring video research accumulates into a searchable consumer-context layer instead of ending as disconnected study files.",
+      "why_now": "The financing supports United States expansion and the shift from individual studies toward an enterprise-wide research system."
+    },
+    "risks": [
+      {"claim": "Research validity depends on sampling, moderation and synthesis quality, while published adoption and speed metrics are company-reported rather than independently audited.", "basis": "VentureDex assessment based on Conveo's product and Series A materials."}
+    ]
+  }
+}

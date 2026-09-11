@@ -11921,6 +11921,331 @@
           "source_type": "regulated_disclosure"
         }
       ]
+    },
+    "seattle-childrens": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "Seattle Children's combines pediatric care with a research institute and therapeutics programs, and supports commercialization of selected work originating in its research organization.",
+        "source_ids": ["about", "research"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Pediatric academic medical center and research organization",
+          "source_ids": ["about"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Pediatric healthcare", "Cancer and immunotherapy research", "Translational medicine"],
+          "source_ids": ["about", "research"]
+        },
+        {
+          "key": "approach",
+          "value": "Combines clinical care, research and therapeutics programs to translate pediatric discoveries into treatments.",
+          "source_ids": ["about", "research"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "Seattle Children's official overview",
+          "url": "https://www.seattlechildrens.org/about/",
+          "checked_at": "2026-09-11"
+        },
+        {
+          "id": "research",
+          "label": "Seattle Children's research centers and programs",
+          "url": "https://www.seattlechildrens.org/research/centers-programs/",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "wrf-capital": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "WRF Capital is Washington Research Foundation's early-stage investment vehicle for Washington-based companies, with a particular focus on technologies commercialized from nonprofit research institutions.",
+        "source_ids": ["investments"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Early-stage investment vehicle",
+          "source_ids": ["investments"]
+        },
+        {
+          "key": "stages",
+          "value": ["Early stage", "Follow-on financing"],
+          "source_ids": ["investments"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Life sciences", "Information technology", "Physical sciences"],
+          "source_ids": ["investments"]
+        },
+        {
+          "key": "geographies",
+          "value": ["Washington state"],
+          "source_ids": ["investments"]
+        },
+        {
+          "key": "approach",
+          "value": "Often invests first and syndicates with angels and venture firms as technologies move from research institutions toward the market.",
+          "source_ids": ["investments"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "investments",
+          "label": "WRF Capital startup investment strategy",
+          "url": "https://www.wrfseattle.org/startup-investments/",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "visionaries-club": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "Visionaries is a European venture firm investing from seed through early growth and connecting founders with technology operators and industrial business families.",
+        "source_ids": ["official", "approach"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": ["official"]
+        },
+        {
+          "key": "stages",
+          "value": ["Seed", "Early growth"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "geographies",
+          "value": ["Europe"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "support",
+          "value": ["Technology-operator network", "Industrial business-family network"],
+          "source_ids": ["official", "approach"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Visionaries official firm site",
+          "url": "https://www.visionaries.vc/",
+          "checked_at": "2026-09-11"
+        },
+        {
+          "id": "approach",
+          "label": "Visionaries investment approach",
+          "url": "https://www.visionaries.vc/editorial/from-shared-origins-to-compounding-ambition",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "equitypitcher-ventures": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "EquityPitcher is a Swiss venture capital firm that backs technology companies across stages and uses its industry network to support B2B startups.",
+        "source_ids": ["official", "history"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": ["official", "history"]
+        },
+        {
+          "key": "founded",
+          "value": "2016",
+          "source_ids": ["history"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Technology", "B2B software", "Deep technology"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "support",
+          "value": ["Industry network", "Commercial introductions"],
+          "source_ids": ["official"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "EquityPitcher official overview",
+          "url": "https://equitypitcher.com/",
+          "checked_at": "2026-09-11"
+        },
+        {
+          "id": "history",
+          "label": "EquityPitcher ten-year history",
+          "url": "https://www.equitypitcher.com/stories/10-years-equitypitcher-ventures",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "high-tech-grunderfonds": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "High-Tech Gründerfonds is a German public-private multi-stage venture platform investing in technology founders from pre-seed through growth.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Public-private venture capital platform",
+          "source_ids": ["official"]
+        },
+        {
+          "key": "stages",
+          "value": ["Pre-Seed", "Seed", "Growth"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Digital technology", "Industrial, climate and deep technology", "Life sciences and chemistry"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "geographies",
+          "value": ["Germany", "Europe"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "support",
+          "value": ["Co-investor network", "Technology expertise", "Follow-on financing"],
+          "source_ids": ["official"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "HTGF official investment platform overview",
+          "url": "https://www.htgf.de/",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "founders-future": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "Founders Future is a transatlantic investment firm backing AI-first and frontier-technology companies from pre-seed through growth.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": ["official"]
+        },
+        {
+          "key": "stages",
+          "value": ["Pre-Seed", "Seed", "Growth"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Artificial intelligence", "Data and infrastructure", "Health", "Energy and industry"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "geographies",
+          "value": ["Europe", "United States"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "approach",
+          "value": "Combines operator experience, internal decision tools and a Paris-to-San Francisco network.",
+          "source_ids": ["official"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Founders Future official overview",
+          "url": "https://www.foundersfuture.com/en",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "100in": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "100in is a founder-backed early investor focused on writing initial checks to pre-seed technology companies.",
+        "source_ids": ["official", "team"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Pre-seed investor",
+          "source_ids": ["official"]
+        },
+        {
+          "key": "stages",
+          "value": ["Pre-Seed"],
+          "source_ids": ["official", "team"]
+        },
+        {
+          "key": "approach",
+          "value": "Targets one hundred technology startups with an initial EUR 100,000 investment and support from former founders.",
+          "source_ids": ["official", "team"]
+        },
+        {
+          "key": "support",
+          "value": ["Founder network", "Early company-building experience"],
+          "source_ids": ["team"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "100in official investment overview",
+          "url": "https://www.100in.vc/",
+          "checked_at": "2026-09-11"
+        },
+        {
+          "id": "team",
+          "label": "100in team and approach",
+          "url": "https://www.100in.vc/team",
+          "checked_at": "2026-09-11"
+        }
+      ]
+    },
+    "newschool": {
+      "reviewed_at": "2026-09-11",
+      "summary": {
+        "value": "Newschool is a solo-GP venture fund investing at pre-seed and seed in technology products for established industries.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Solo-GP venture capital fund",
+          "source_ids": ["official"]
+        },
+        {
+          "key": "stages",
+          "value": ["Pre-Seed", "Seed"],
+          "source_ids": ["official"]
+        },
+        {
+          "key": "sectors",
+          "value": ["Technology for established industries"],
+          "source_ids": ["official"]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Newschool official investment overview",
+          "url": "https://newschool.vc/",
+          "checked_at": "2026-09-11"
+        }
+      ]
     }
   },
   "attempts": {}

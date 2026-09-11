@@ -1,0 +1,53 @@
+{
+  "slug": "easy-aerial",
+  "domain": "www.easyaerial.com",
+  "url": "https://www.easyaerial.com/",
+  "product_name": "Easy Aerial",
+  "summary": "Tethered and autonomous drone-in-a-box systems for persistent defense and inspection missions.",
+  "editor_note": "This is not just a drone airframe: the enclosure, tether, encrypted command link and remote operations are sold as one deployable system. Easy Mobile operates from vehicles and vessels, while Easy Site supports tethered or free-flight inspection. Published specifications make the integration inspectable, but certification, payload and endurance remain vendor claims, and defense use adds procurement, safety and governance risk.",
+  "editor_rating": 4,
+  "why_featured": "Persistent aerial systems in the field",
+  "product_type": "Other",
+  "hq_location": "Brooklyn, New York",
+  "region": "US",
+  "tags": "drones,aerospace,defense,autonomous systems,inspection",
+  "investors": "Insight Partners, Entrée Capital",
+  "links": {
+    "product": "https://www.easyaerial.com/mobile"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "currency": "USD",
+      "stage": "Series B",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-01",
+      "source_url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-11",
+    "sources": [
+      {"id": "official_site", "label": "Easy Aerial official site", "url": "https://www.easyaerial.com/", "type": "official"},
+      {"id": "mobile", "label": "Easy Mobile specifications", "url": "https://www.easyaerial.com/mobile", "type": "product"},
+      {"id": "inspection", "label": "Easy Site inspection workflow", "url": "https://www.easyaerial.com/inspection", "type": "product"},
+      {"id": "funding_1", "label": "Easy Aerial Series B report", "url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Easy Mobile publishes dimensions, weight, power, payload, flight-height and vehicle-or-vessel operating limits for its tethered deployment system.", "source_ids": ["mobile"]},
+      {"claim": "The Easy Site page describes autonomous remote takeoff and landing, tethered and free-flight configurations, and inspection missions across multiple charging stations.", "source_ids": ["inspection"]},
+      {"claim": "The company reports Blue UAS listing, NDAA compliance and quality certifications; these are official vendor claims and were not re-certified by VentureDex.", "source_ids": ["official_site"]}
+    ],
+    "market_context": {
+      "primary_user": "Defense, public-safety and industrial operators needing persistent airborne sensing with remote deployment.",
+      "category": "Autonomous aerial systems",
+      "differentiation": "A complete drone-in-a-box and tether system designed for persistent operation from fixed sites, vehicles and vessels.",
+      "why_now": "The Series B supports additional production capacity, global operations and continued development of autonomous aerial systems."
+    },
+    "risks": [
+      {"claim": "Field performance, regulatory permission and safe use vary by mission; defense deployments also carry material procurement, civil-liberties and geopolitical risk.", "basis": "VentureDex assessment based on official system specifications and Axios reporting."}
+    ]
+  }
+}

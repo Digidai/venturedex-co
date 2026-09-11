@@ -2037,5 +2037,74 @@
     "short_name": "Buenavista",
     "website": "https://www.buenavistaequity.com/",
     "description": "Independent Spanish private-capital manager active in private equity, venture capital, and infrastructure."
+  },
+  "seattle-childrens": {
+    "name": "Seattle Children's",
+    "slug": "seattle-childrens",
+    "short_name": "Seattle Children's",
+    "website": "https://www.seattlechildrens.org/",
+    "description": "Pediatric academic medical center and research organization that also backs commercialization of therapies developed through its research programs."
+  },
+  "wrf-capital": {
+    "name": "WRF Capital",
+    "slug": "wrf-capital",
+    "short_name": "WRF Capital",
+    "website": "https://www.wrfseattle.org/",
+    "description": "Washington Research Foundation's early-stage investment vehicle for Washington-based technology companies and research spinouts."
+  },
+  "visionaries-club": {
+    "name": "Visionaries Club",
+    "slug": "visionaries-club",
+    "short_name": "Visionaries",
+    "website": "https://www.visionaries.vc/",
+    "description": "European venture firm investing from seed through early growth, with an operator and industrial-family network.",
+    "aliases": [
+      "Visionaries"
+    ]
+  },
+  "equitypitcher-ventures": {
+    "name": "EquityPitcher Ventures",
+    "slug": "equitypitcher-ventures",
+    "short_name": "EquityPitcher",
+    "website": "https://equitypitcher.com/",
+    "description": "Swiss venture capital firm backing technology companies and connecting B2B startups with an industry network.",
+    "aliases": [
+      "EquityPitcher Ventures and High-Tech Gründerfonds"
+    ]
+  },
+  "high-tech-grunderfonds": {
+    "name": "High-Tech Gründerfonds",
+    "slug": "high-tech-grunderfonds",
+    "short_name": "HTGF",
+    "website": "https://www.htgf.de/",
+    "description": "German public-private multi-stage venture platform investing in technology companies from pre-seed through growth.",
+    "aliases": [
+      "HTGF"
+    ]
+  },
+  "founders-future": {
+    "name": "Founders Future",
+    "slug": "founders-future",
+    "short_name": "Founders Future",
+    "website": "https://www.foundersfuture.com/en",
+    "description": "Transatlantic investment firm backing AI-first and frontier-technology founders from pre-seed through growth."
+  },
+  "100in": {
+    "name": "100in",
+    "slug": "100in",
+    "short_name": "100in",
+    "website": "https://www.100in.vc/",
+    "description": "Founder-backed pre-seed investor making early investments in technology startups."
+  },
+  "newschool": {
+    "name": "Newschool",
+    "slug": "newschool",
+    "short_name": "Newschool",
+    "website": "https://newschool.vc/",
+    "description": "Solo-GP venture fund investing at pre-seed and seed in technology for established industries.",
+    "aliases": [
+      "NewSchool",
+      "NewSchool.vc"
+    ]
   }
 }
