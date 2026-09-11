@@ -29,6 +29,10 @@ Human-directed addition, 2026-09-09. This extends investor content maintenance; 
 
 ## Failure boundaries
 
+- Source-bound funding participation can be recorded in `content/investor-participations.json` after checking the exact funding source. Each edge binds a published company's round date/stage/source URL, canonical investor slug, role and `verified_at`. This is additive discovery data; it does not change `lead_investor`, round totals, startup acceptance or profile freshness.
+- Use `lead` only for an explicit lead, `participant` for an explicitly designated participant, and `role_unspecified` when the investment is confirmed but the lead/participant distinction is not given. Never infer a lead from name ordering. Unknown identities or unclear roles must not be guessed to fill an institution page.
+- New edges are validated during the application build and tests. Existing company CSV names do not automatically become round-level participation evidence. The initial September 11 addition covers four Conveo participants only; it is not a historical portfolio backfill. The announcement's `DST Global Partners` is not automatically mapped to the `DST Global` firm without identity evidence.
+
 - Check existing identity/brand evidence when matching a fresh profile; only repeat website research if the naming or brand is materially different. A cached reviewed profile does not excuse an identity mismatch.
 - A funding source with no designated lead uses the existing `lead_investor: "undisclosed"` convention. It is not a new hard rejection condition. An unknown amount uses `amount: "undisclosed"`; do not replace a disclosed non-USD amount with `undisclosed` to hide a schema incompatibility.
 - Do not change the frozen rejection block or mark a candidate accepted because investor enrichment succeeded.

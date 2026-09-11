@@ -16,6 +16,8 @@ The September 11 discussion approved the research recommendations except separat
 
 No screenshot bytes/review records, startup membership, funding amounts, lead fields, newsletter schedule, curation state or external automation configuration will change. Investor participation evidence is additive and separately validated. Initially cover the directly verified Conveo announcement; do not claim full historical participation backfill. No fresh institutional profile is re-researched merely because an association was added.
 
+Browser verification found an existing identity mismatch: Conveo's announcement names DST Global Partners, while the company record linked DST Global. Correct this one display name to the source wording, leave it unlinked, and record an authored update timestamp without changing publication time or inventing a new institutional profile.
+
 ## Verification
 
 Unit tests cover query round-trips, text and facet composition, unrelated-region rejection, deterministic ranking, and evidence/identity/deduplication failures. Static contracts cover screenshot-only rendering and synchronized investor consumers. Full repository gates remain unchanged. Browser checks cover desktop, 375/390/414 phone widths, dark mode, menu, search, clear, back, related cards and investor links. Recheck the deployed pages after the normal exact-SHA release.
