@@ -53,14 +53,15 @@ test("checked-in Conveo participation binds to published source evidence without
   });
   const activity = buildInvestorActivity(readers.getContentNewsEligibleFundingRounds(),
     read("investor-participations.json"), new Set(readers.getContentInvestors().map(investor => investor.slug)),
-    resolveInvestorSlugByName, "2026-09-11");
+    resolveInvestorSlugByName);
+  const isConveoRound = (row: FundingRound) => row.company_slug === "conveo" && row.date === "2026-09-02" && row.stage === "Series A";
   for (const slug of ["balderton-capital", "visionaries-club", "6-degrees-capital", "yc"]) {
-    const rows = activity.get(slug)!.filter(row => row.company_slug === "conveo");
+    const rows = activity.get(slug)!.filter(isConveoRound);
     assert.equal(rows.length, 1);
     assert.equal(rows[0].investor_role, "role_unspecified");
     assert.equal(rows[0].source_url, "https://conveo.ai/mediakit/series-a");
   }
-  assert.equal(activity.get("dst-global")?.some(row => row.company_slug === "conveo") ?? false, false);
-  assert.match(readers.getContentStartupBySlug("conveo")!.investors!, /^DST Global Partners,/);
-  assert.equal(resolveInvestorSlugByName("DST Global Partners"), null);
+  assert.equal(activity.get("dst-global")?.some(isConveoRound) ?? false, false);
+  assert.ok(readers.getContentStartupBySlug("conveo")!.investors!.split(",").map(name => name.trim()).includes("DST Global Partners"));
+  assert.notEqual(resolveInvestorSlugByName("DST Global Partners"), "dst-global");
 });
