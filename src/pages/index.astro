@@ -21,18 +21,29 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
 ---
 
 <Base title="Startup Research, Funding & Investor Intelligence" description={description} schema={schema}>
-  <FundingTicker rounds={rounds} />
   <div class="container discovery-home">
     <header class="home-hero">
-      <p class="eyebrow">Independent startup research</p>
-      <h1>Find the companies.<br /><em>Follow the evidence.</em></h1>
-      <p class="hero-copy">Explore what startups build, who funds them, and what the sources actually say. Start with a market, compare products, or browse all {startups.length} company profiles.</p>
-      <div class="hero-actions">
-        <a class="primary-link" href="/directory">Browse all startups <span aria-hidden="true">→</span></a>
-        <a href="/news">Latest funding rounds</a>
-        <a href="/research">Research methodology</a>
-      </div>
+      <h1>Startups worth a <em>closer look.</em></h1>
+      <p class="hero-copy">Explore products, funding, and the sources behind {startups.length} company profiles.</p>
+      <form class="discovery-search" action="/directory" method="get" role="search">
+        <label class="visually-hidden" for="home-query">Search companies and products</label>
+        <input id="home-query" type="search" name="q" placeholder="Search companies, products, or markets" maxlength="160" />
+        <button type="submit">Search <span aria-hidden="true">→</span></button>
+      </form>
+      <nav class="topic-shortcuts" aria-label="Explore by market">
+        <a class="all-companies" href="/directory">All companies</a>
+        {topics.map((topic) => <a href={topic.path}>{topic.title.replace(/ Startups$/, "")}</a>)}
+      </nav>
     </header>
+
+    <section class="home-section latest-section" aria-labelledby="latest-heading">
+      <div class="section-heading">
+        <h2 id="latest-heading">Recently added</h2>
+        <a href="/directory?sort=newest">Browse all {startups.length} →</a>
+      </div>
+      <div class="card-grid">{latest.map((startup, position) => <SiteCard startup={startup} priority={position < 3} />)}</div>
+      <a class="browse-more" href="/directory?sort=newest">Continue exploring all companies <span aria-hidden="true">→</span></a>
+    </section>
 
     <section class="home-section" aria-labelledby="markets-heading">
       <div class="section-heading">
@@ -50,12 +61,13 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
       </div>
     </section>
 
-    <section class="home-section" aria-labelledby="latest-heading">
+    <section class="home-section funding-section" aria-labelledby="funding-heading">
       <div class="section-heading">
-        <div><p class="eyebrow">Recently added to VentureDex</p><h2 id="latest-heading">New research profiles</h2></div>
-        <a href="/directory?sort=newest">Browse all {startups.length} companies →</a>
+        <h2 id="funding-heading">Latest funding</h2>
+        <a href="/news">All funding rounds →</a>
       </div>
-      <div class="card-grid">{latest.map((startup) => <SiteCard startup={startup} />)}</div>
+      <FundingTicker rounds={rounds} />
+      <p class="research-note">Independent research, with original sources and open questions. <a href="/research">How we research companies →</a></p>
     </section>
 
     <section class="follow-research" aria-labelledby="follow-heading">
@@ -81,22 +93,35 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
   // Keep previously shared homepage filter links useful after moving the full
   // catalog. Normal home visits and campaign parameters stay on the homepage.
   const parameters = new URLSearchParams(location.search);
-  if (["type", "stage", "region", "sort"].some((key) => parameters.has(key))) {
+  if (["q", "type", "stage", "region", "sort"].some((key) => parameters.has(key))) {
     location.replace(`/directory${location.search}${location.hash}`);
   }
 </script>
 
 <style>
-  .discovery-home { padding-block: var(--space-12) var(--space-16); }
-  .home-hero { max-width: 820px; padding-bottom: var(--space-12); }
+  .discovery-home { padding-block: var(--space-4) var(--space-16); }
+  .home-hero { padding-bottom: var(--space-4); }
   .eyebrow { color: var(--color-accent); font-family: var(--font-mono); font-size: .68rem; letter-spacing: .07em; text-transform: uppercase; margin-bottom: var(--space-3); }
-  .home-hero h1 { font-size: clamp(2.3rem, 5.5vw, 4.1rem); line-height: 1.1; letter-spacing: -.035em; }
-  .home-hero em { font-weight: 400; color: var(--color-accent); }
-  .hero-copy { max-width: 680px; margin-top: var(--space-5); color: var(--color-text-secondary); line-height: 1.75; }
+  .home-hero h1 { font-size: clamp(1.85rem, 3.6vw, 2.5rem); line-height: 1.15; letter-spacing: -.03em; }
+  .home-hero em { font-weight: 400; color: var(--color-accent); white-space: nowrap; }
+  .hero-copy { margin-top: var(--space-1); color: var(--color-text-secondary); line-height: 1.5; font-size: .9rem; }
+  .discovery-search { display: flex; max-width: 660px; margin-top: var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg-card); }
+  .discovery-search:focus-within { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .discovery-search input { flex: 1; min-width: 0; border: 0; background: transparent; padding: 12px 14px; color: var(--color-text); font: inherit; font-size: .85rem; outline: none; }
+  .discovery-search button { border: 0; border-left: 1px solid var(--color-border); background: transparent; padding: 10px 16px; color: var(--color-text); font: inherit; font-size: .8rem; font-weight: 600; cursor: pointer; }
+  .topic-shortcuts { display: flex; gap: var(--space-2); overflow-x: auto; padding: 3px 1px 5px; margin-top: var(--space-2); scrollbar-width: thin; }
+  .topic-shortcuts a { white-space: nowrap; padding: 5px 10px; border: 1px solid var(--color-border); border-radius: var(--radius); font-size: .72rem; color: var(--color-text-secondary); text-decoration: none; }
+  .topic-shortcuts a:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .topic-shortcuts .all-companies { color: var(--color-text); background: var(--color-bg-card); }
   .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-5); margin-top: var(--space-6); }
   .hero-actions a, .section-heading > a, aside a { font-size: .82rem; font-weight: 600; text-underline-offset: 4px; }
   .primary-link { padding: var(--space-3) var(--space-5); background: var(--color-text); color: var(--color-bg); border-radius: var(--radius); text-decoration: none; }
   .home-section { border-top: 1px solid var(--color-border); padding-top: var(--space-8); margin-bottom: var(--space-12); }
+  .latest-section { border-top: 0; padding-top: 0; }
+  .latest-section .section-heading { align-items: center; margin-bottom: var(--space-4); }
+  .latest-section .section-heading h2 { font-family: var(--font-body); font-size: .85rem; font-weight: 600; letter-spacing: normal; }
+  .browse-more { display: block; text-align: center; padding: var(--space-4); margin-top: var(--space-6); border: 1px solid var(--color-border); border-radius: var(--radius); font-size: .85rem; font-weight: 600; color: var(--color-text); }
+  .research-note { margin-top: var(--space-4); font-size: .8rem; color: var(--color-text-secondary); line-height: 1.6; }
   .section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--space-4); margin-bottom: var(--space-6); }
   .section-heading h2, .follow-research h2 { font-size: clamp(1.35rem, 3vw, 1.9rem); letter-spacing: -.02em; }
   .topic-grid, .card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
@@ -111,7 +136,14 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
   aside a { display: inline-block; margin-top: var(--space-4); }
   @media (max-width: 900px) { .topic-grid, .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   @media (max-width: 640px) {
-    .discovery-home { padding-top: var(--space-8); }
+    .discovery-home { padding-top: var(--space-4); }
+    .home-hero { padding-bottom: var(--space-3); }
+    .home-hero h1 { max-width: 340px; }
+    .hero-copy { font-size: .82rem; }
+    .discovery-search { margin-top: var(--space-3); }
+    .discovery-search input { font-size: 16px; padding-inline: 10px; }
+    .discovery-search button { padding-inline: 12px; }
+    .latest-section .section-heading > a { font-size: .75rem; }
     .topic-grid, .card-grid, .follow-research { grid-template-columns: minmax(0, 1fr); }
     .hero-actions { gap: var(--space-4); }
   }

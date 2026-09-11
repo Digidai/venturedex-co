@@ -3,11 +3,11 @@ export const prerender = true;
 
 import BrandLogo from "../../components/BrandLogo.astro";
 import Base from "../../layouts/Base.astro";
-import { getInvestorBrandAsset, resolveInvestorSlugByName } from "../../lib/brand-assets";
-import { getContentInvestors, getContentNewsEligibleFundingRounds } from "../../lib/content";
+import { getInvestorBrandAsset } from "../../lib/brand-assets";
+import { getContentInvestors } from "../../lib/content";
+import { getInvestorActivity } from "../../lib/investor-activity-content";
 import {
   evaluateInvestorIndexEligibility,
-  groupFundingRoundsByInvestorSlug,
 } from "../../lib/investor-indexing";
 import {
   buildJsonLdGraph,
@@ -25,8 +25,7 @@ interface InvestorIndexRow extends Investor {
 }
 
 const allInvestors = getContentInvestors();
-const rounds = getContentNewsEligibleFundingRounds();
-const roundsByInvestor = groupFundingRoundsByInvestorSlug(rounds, resolveInvestorSlugByName);
+const roundsByInvestor = getInvestorActivity();
 
 const investors: InvestorIndexRow[] = allInvestors
   .flatMap((investor) => {

@@ -148,7 +148,9 @@ export function selectChangedUrls(files: string[], current: JsonReader, previous
     } else if (file.startsWith("src/pages/collections/")) {
       paths.add("/collections");
       for (const row of changedEntries(current("content/collections.json"), [])) paths.add(`/collections/${row.slug}`);
-    } else if (file === "content/investors.json" || file.startsWith("src/pages/investors/")) {
+    } else if (file === "content/investors.json" || file === "content/investor-participations.json"
+        || file === "src/lib/investor-participation.ts" || file === "src/lib/investor-activity-content.ts"
+        || file.startsWith("src/pages/investors/")) {
       paths.add("/investors");
       paths.add("/directory");
       limitations.add("Investor catalog changes notify the investor hub; eligibility-filtered detail pages are not batch-submitted.");

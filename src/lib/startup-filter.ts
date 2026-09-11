@@ -1,8 +1,8 @@
 /**
- * Pure client-side filter/sort logic for the prerendered homepage grid.
+ * Pure client-side filter/sort logic for the prerendered directory grid.
  *
  * Extracted from the page script so the semantics can be unit-tested without a
- * DOM. The homepage script reads each card's data-* attributes into a
+ * DOM. The directory script reads each card's data-* attributes into a
  * FilterableCard and uses these helpers to decide visibility and order; tests
  * exercise the same functions against plain objects.
  *
@@ -17,6 +17,7 @@ export const SORT_OPTIONS = ["featured", "newest", "name-az"] as const;
 export type SortValue = (typeof SORT_OPTIONS)[number];
 
 export interface StartupFilterState {
+  q?: string;
   type: string;
   stage: string;
   region: string;
@@ -24,6 +25,7 @@ export interface StartupFilterState {
 }
 
 export interface FilterableCard {
+  searchText?: string;
   name: string;
   type: string | null;
   stage: string | null;
@@ -38,7 +40,9 @@ export function normalizeSort(value: string | null | undefined): SortValue {
 
 /** Parse a query string / URLSearchParams into a normalized filter state. */
 export function readFilterState(params: URLSearchParams): StartupFilterState {
+  const q = (params.get("q") ?? "").trim().replace(/\s+/g, " ").slice(0, 160);
   return {
+    ...(q ? { q } : {}),
     type: (params.get("type") ?? "").trim(),
     stage: (params.get("stage") ?? "").trim(),
     region: (params.get("region") ?? "").trim(),
@@ -49,6 +53,7 @@ export function readFilterState(params: URLSearchParams): StartupFilterState {
 /** Serialize a filter state to a clean query string (omits defaults). */
 export function filterStateToQuery(state: StartupFilterState): string {
   const params = new URLSearchParams();
+  if (state.q?.trim()) params.set("q", state.q.trim().replace(/\s+/g, " ").slice(0, 160));
   if (state.type) params.set("type", state.type);
   if (state.stage) params.set("stage", state.stage);
   if (state.region) params.set("region", state.region);
@@ -57,12 +62,15 @@ export function filterStateToQuery(state: StartupFilterState): string {
 }
 
 export function cardMatchesFilters(card: FilterableCard, state: StartupFilterState): boolean {
+  const text = `${card.name} ${card.searchText ?? ""}`.normalize("NFKC").toLowerCase();
+  const terms = (state.q ?? "").normalize("NFKC").toLowerCase().trim().split(/\s+/).filter(Boolean);
   const stageMatches =
     !state.stage ||
     card.stage === state.stage ||
     normalizeFundingStage(card.stage) === state.stage ||
     (state.stage === "Series D+" && /^Series [D-Z]$/.test(normalizeFundingStage(card.stage) ?? ""));
   return (
+    terms.every((term) => text.includes(term)) &&
     (!state.type || card.type === state.type) &&
     stageMatches &&
     (!state.region || card.region === state.region)
@@ -71,7 +79,7 @@ export function cardMatchesFilters(card: FilterableCard, state: StartupFilterSta
 
 /** Number of active facets (featured-sort doesn't count), for the filter badge. */
 export function activeFacetCount(state: StartupFilterState): number {
-  return [state.type, state.stage, state.region, state.sort !== "featured" ? state.sort : ""].filter(
+  return [state.q?.trim(), state.type, state.stage, state.region, state.sort !== "featured" ? state.sort : ""].filter(
     Boolean
   ).length;
 }

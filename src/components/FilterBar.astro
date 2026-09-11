@@ -37,6 +37,13 @@ const activeCount = [
 ---
 
 <div class="filter-bar">
+  <form method="GET" action="/directory" class="filter-form">
+  <div class="search-toolbar">
+    <div class="directory-search">
+      <label class="visually-hidden" for="filter-query">Search companies and products</label>
+      <input id="filter-query" name="q" type="search" maxlength="160" placeholder="Search companies, products, or markets" />
+      <button type="submit">Search</button>
+    </div>
   <button
     class="filter-toggle"
     type="button"
@@ -52,9 +59,9 @@ const activeCount = [
       <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
+  </div>
 
   <div class="filter-panel" id="filter-panel" hidden>
-    <form method="GET" action="/directory" class="filter-form">
       <div class="filter-fields">
         <div class="filter-group">
           <label for="filter-type">Product Type</label>
@@ -100,8 +107,8 @@ const activeCount = [
         <button type="submit" class="filter-apply">Apply</button>
         <button type="button" class="filter-clear" hidden>Clear filters</button>
       </div>
-    </form>
   </div>
+  </form>
 </div>
 
 <script>
@@ -116,7 +123,7 @@ const activeCount = [
     });
 
     // Auto-expand if filters are active in the URL (e.g. a shared filtered link).
-    // The actual filtering is applied by the page-level script (index.astro).
+    // The actual filtering is applied by the page-level script (directory.astro).
     const params = new URLSearchParams(window.location.search);
     const hasActive = params.get('type') || params.get('stage') || params.get('region')
       || (params.get('sort') && params.get('sort') !== 'featured');
@@ -129,8 +136,15 @@ const activeCount = [
 
 <style>
   .filter-bar {
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
   }
+  .search-toolbar { display: flex; align-items: stretch; gap: var(--space-3); }
+  .directory-search { display: flex; flex: 1; min-width: 0; max-width: 660px; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); }
+  .directory-search:focus-within { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  .directory-search input { width: 100%; min-width: 0; border: 0; background: transparent; color: var(--color-text); padding: 12px; font: inherit; font-size: 16px; outline: none; }
+  .directory-search button { background: transparent; border: 0; border-left: 1px solid var(--color-border); color: var(--color-text); padding: 10px 12px; font: inherit; font-size: .8rem; cursor: pointer; }
+  .filter-count[hidden], .filter-panel[hidden] { display: none; }
+  @media (max-width: 420px) { .directory-search button { display: none; } .search-toolbar { gap: var(--space-2); } }
 
   .filter-toggle {
     display: inline-flex;
@@ -168,7 +182,7 @@ const activeCount = [
     min-width: 18px;
     height: 18px;
     padding: 0 5px;
-    background: var(--color-accent);
+    background: var(--color-accent-solid);
     color: #fff;
     font-size: 0.7rem;
     font-weight: 700;

@@ -12,10 +12,11 @@ interface Props {
   size?: "default" | "large";
   priority?: boolean;
   // When provided, emits data-* on the card root so a page-level script can
-  // filter/sort cards client-side (used by the prerendered homepage). Carries
+  // filter/sort cards client-side (used by the prerendered directory). Carries
   // the fields not present on StartupCard (published_at, is_featured).
   index?: {
     name: string;
+    searchText?: string;
     type: string | null;
     stage: string | null;
     region: string | null;
@@ -39,6 +40,7 @@ const metaLine = [startup.product_type, fundingStageDisplayLabel(startup.funding
   data-slug={startup.slug}
   data-card={index ? "" : undefined}
   data-name={index ? index.name.toLowerCase() : undefined}
+  data-search={index?.searchText?.toLowerCase()}
   data-type={index?.type ?? undefined}
   data-stage={index?.stage ?? undefined}
   data-region={index?.region ?? undefined}
@@ -154,9 +156,10 @@ const metaLine = [startup.product_type, fundingStageDisplayLabel(startup.funding
     font-size: 0.8rem;
     color: var(--color-text-secondary);
     line-height: 1.4;
+    min-height: 2.8em;
     margin-bottom: var(--space-2);
     display: -webkit-box;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

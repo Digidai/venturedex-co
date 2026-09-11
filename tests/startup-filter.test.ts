@@ -112,3 +112,16 @@ test("orderVisibleCards: filter + sort compose", () => {
   const out = orderVisibleCards(cards, state({ region: "US", sort: "newest" }));
   assert.deepEqual(out.map((c) => c.name), ["Exa", "balerion", "Cursor"]);
 });
+
+test("keyword search round-trips and ANDs terms with facets", () => {
+  const query = readFilterState(new URLSearchParams("q=video+research&type=SaaS"));
+  assert.equal(query.q, "video research");
+  assert.equal(filterStateToQuery(query), "q=video+research&type=SaaS");
+  const card = { ...cards[0], name: "Conveo", type: "SaaS", searchText: "conveo.ai AI-moderated video interviews and consumer research" };
+  assert.ok(cardMatchesFilters(card, query));
+  assert.ok(cardMatchesFilters(card, state({ q: "CONVEO.AI" })));
+  assert.ok(!cardMatchesFilters(card, state({ q: "video research", type: "DevTools" })));
+  assert.ok(!cardMatchesFilters(card, state({ q: "video quantum" })));
+  assert.equal(activeFacetCount(state({ q: "Conveo" })), 1);
+  assert.equal(readFilterState(new URLSearchParams("q=%20%20" )).q, undefined);
+});

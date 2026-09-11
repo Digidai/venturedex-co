@@ -1,0 +1,42 @@
+[
+  {
+    "company_slug": "conveo",
+    "investor_slug": "balderton-capital",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "role_unspecified",
+    "source_url": "https://conveo.ai/mediakit/series-a",
+    "source_name": "Conveo Series A announcement",
+    "verified_at": "2026-09-11"
+  },
+  {
+    "company_slug": "conveo",
+    "investor_slug": "visionaries-club",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "role_unspecified",
+    "source_url": "https://conveo.ai/mediakit/series-a",
+    "source_name": "Conveo Series A announcement",
+    "verified_at": "2026-09-11"
+  },
+  {
+    "company_slug": "conveo",
+    "investor_slug": "6-degrees-capital",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "role_unspecified",
+    "source_url": "https://conveo.ai/mediakit/series-a",
+    "source_name": "Conveo Series A announcement",
+    "verified_at": "2026-09-11"
+  },
+  {
+    "company_slug": "conveo",
+    "investor_slug": "yc",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "role_unspecified",
+    "source_url": "https://conveo.ai/mediakit/series-a",
+    "source_name": "Conveo Series A announcement",
+    "verified_at": "2026-09-11"
+  }
+]

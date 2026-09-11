@@ -1,7 +1,7 @@
 export const prerender = true;
 
 import type { APIRoute } from "astro";
-import { resolveInvestorSlugByName } from "../lib/brand-assets";
+import { getInvestorActivity } from "../lib/investor-activity-content";
 import {
   getContentCollectionBySlug,
   getContentCollections,
@@ -11,7 +11,6 @@ import {
 } from "../lib/content";
 import {
   evaluateInvestorIndexEligibility,
-  groupFundingRoundsByInvestorSlug,
 } from "../lib/investor-indexing";
 import { DEFAULT_SITE_URL, absoluteUrl, escapeXml, getSiteUrl, latestSitemapLastmod, sitemapLastmodDate } from "../lib/seo";
 import { getTopicPages } from "../lib/topic-pages";
@@ -129,14 +128,14 @@ export function getSitemapUrls(): SitemapUrl[] {
 
   // Mirror the investor hub and detail robots policy: sitemap only profiles
   // with at least one complete, source-linked portfolio company.
-  const roundsByInvestor = groupFundingRoundsByInvestorSlug(rounds, resolveInvestorSlugByName);
+  const roundsByInvestor = getInvestorActivity();
   const investors: InvestorSitemapRow[] = allInvestors
     .flatMap((investor) => {
       const investorRounds = roundsByInvestor.get(investor.slug) ?? [];
       if (!evaluateInvestorIndexEligibility(investorRounds).indexable) return [];
       return [{
         slug: investor.slug,
-        lastmod: latestSitemapLastmod(investorRounds.map((round) => round.date)),
+        lastmod: latestSitemapLastmod(investorRounds.flatMap((round) => [round.date, round.evidence_checked_at])),
       }];
     })
     .sort((a, b) => a.slug.localeCompare(b.slug));

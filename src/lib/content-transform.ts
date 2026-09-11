@@ -1,6 +1,7 @@
 import type { Collection, FundingRound, Investor, Startup } from "./types";
 import { resolveInvestorSlugByName } from "./brand-assets";
 import { fundingAmountLabel, type FundingInstrument } from "./funding-terms";
+import { rankRelatedStartups } from "./related-startups";
 
 /**
  * Pure content transform — the single source of the content -> Startup/Funding/
@@ -338,23 +339,9 @@ export function createContentReaders(inputs: ContentInputs): ContentReaders {
       });
   }
 
-  /**
-   * Mirror db.ts getRelatedStartups: published, id != self,
-   * (product_type == OR region ==), ORDER BY published_at DESC, LIMIT.
-   */
+  /** Prerendered discovery requires product relevance, never region-only filler. */
   function getContentRelatedStartups(startup: Startup, limit = 4): Startup[] {
-    return getContentStartups()
-      .filter(
-        (candidate) =>
-          candidate.id !== startup.id &&
-          // Mirror SQL `product_type = ? OR region = ?`: NULL never equals NULL,
-          // so a null facet must not match another null one.
-          ((startup.product_type !== null &&
-            candidate.product_type === startup.product_type) ||
-            (startup.region !== null && candidate.region === startup.region))
-      )
-      .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? ""))
-      .slice(0, limit);
+    return rankRelatedStartups(startup, getContentStartups(), limit);
   }
 
   /**
