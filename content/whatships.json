@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "fc3a652d06fa524c828b1d77d8ad5c68003ac49d",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/fc3a652d06fa524c828b1d77d8ad5c68003ac49d",
-    "commit_at": "2026-09-10T12:04:02.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/fc3a652d06fa524c828b1d77d8ad5c68003ac49d/src/data/videos.json",
-    "raw_sha256": "20729a28b7d2ab1be75239610c444bcab30eb62b3edd3ea998f0c22f7af1dedc"
+    "commit": "5af451851563f224cfb150feb9f16ceeeff09707",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/5af451851563f224cfb150feb9f16ceeeff09707",
+    "commit_at": "2026-09-11T12:44:19.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/5af451851563f224cfb150feb9f16ceeeff09707/src/data/videos.json",
+    "raw_sha256": "33474a7a224e57f95f9592993c772b8f311f7c0bfc17cae4975e5009de8c364d"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,89 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-09T15:50:31.000Z",
-  "item_count": 2008,
+  "source_published_through": "2026-09-10T16:21:11.000Z",
+  "item_count": 2012,
   "items": [
+    {
+      "id": "plv-gumball",
+      "tweet_id": "2098084379474251777",
+      "slug": "gumball",
+      "title": "Gumball — a proactive agent in your private cloud",
+      "product": "Gumball",
+      "company": "Gumball",
+      "category": "ai",
+      "tags": [
+        "gumball",
+        "agents",
+        "enterprise"
+      ],
+      "published_at": "2026-09-10T16:21:11.000Z",
+      "duration_seconds": 46,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098083628395970563/vid/avc1/1920x1080/y_H1v5HcF4u5jXeh.mp4",
+      "original_post_url": "https://x.com/MaxBrodeurUrbas/status/2098084379474251777",
+      "last_changed_at": "2026-09-11T12:44:19.000Z"
+    },
+    {
+      "id": "plv-merge-universal-context",
+      "tweet_id": "2098071741687902645",
+      "slug": "merge-universal-context",
+      "title": "Merge Universal Context — cheaper, more accurate AI",
+      "product": "Merge Universal Context Layer",
+      "company": "Merge",
+      "category": "ai",
+      "tags": [
+        "merge",
+        "context",
+        "enterprise"
+      ],
+      "published_at": "2026-09-10T15:30:58.000Z",
+      "duration_seconds": 84,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098071216942624776/vid/avc1/1920x1080/wOjl8wocG_9IivWc.mp4",
+      "original_post_url": "https://x.com/shensi/status/2098071741687902645",
+      "last_changed_at": "2026-09-11T12:44:19.000Z"
+    },
+    {
+      "id": "plv-iphone-duo",
+      "tweet_id": "2097751929925624173",
+      "slug": "iphone-duo",
+      "title": "iPhone Duo — official trailer",
+      "product": "iPhone Duo",
+      "company": "Apple",
+      "category": "hardware",
+      "tags": [
+        "apple",
+        "iphone",
+        "duo"
+      ],
+      "published_at": "2026-09-09T18:20:09.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097751839144038400/vid/avc1/2070x1180/EM9WSdlcTiuiHSeZ.mp4",
+      "original_post_url": "https://x.com/TheAppleDesign/status/2097751929925624173",
+      "last_changed_at": "2026-09-11T12:44:19.000Z"
+    },
+    {
+      "id": "plv-dock",
+      "tweet_id": "2097717670225600915",
+      "slug": "dock",
+      "title": "Dock — AI tools that actually get used",
+      "product": "Dock",
+      "company": "Dock",
+      "category": "productivity",
+      "tags": [
+        "dock",
+        "ai",
+        "work"
+      ],
+      "published_at": "2026-09-09T16:04:00.000Z",
+      "duration_seconds": 60,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097716873450356736/vid/avc1/1920x1080/JMivoRuykj5nk8YT.mp4",
+      "original_post_url": "https://x.com/mikemolinet/status/2097717670225600915",
+      "last_changed_at": "2026-09-11T12:44:19.000Z"
+    },
     {
       "id": "plv-suno-v6",
       "tweet_id": "2097714273942163823",
