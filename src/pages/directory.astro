@@ -4,11 +4,9 @@ export const prerender = true;
 import Base from "../layouts/Base.astro";
 import SiteCard from "../components/SiteCard.astro";
 import FilterBar from "../components/FilterBar.astro";
-import FundingTicker from "../components/FundingTicker.astro";
 import {
   getContentInvestors,
   getContentStartups,
-  getContentNewsEligibleFundingRounds,
 } from "../lib/content";
 import { buildEvidenceIndex } from "../lib/evidence-index";
 import { homeJsonLd } from "../lib/seo";
@@ -22,7 +20,6 @@ const startups = getContentStartups().sort((a, b) => {
   if (b.is_featured !== a.is_featured) return b.is_featured - a.is_featured;
   return (b.published_at ?? "").localeCompare(a.published_at ?? "");
 });
-const rounds = getContentNewsEligibleFundingRounds().slice(0, 32);
 
 const startupCount = startups.length;
 const evidenceIndex = buildEvidenceIndex({
@@ -39,8 +36,6 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
 ---
 
 <Base title="Startup Directory: Products, Funding & Investors" description={description} schema={schema}>
-  <FundingTicker rounds={rounds} />
-
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-text">
@@ -53,27 +48,13 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
     </div>
   </section>
 
-  <section class="research-route" aria-labelledby="research-route-title">
-    <div class="container research-route-inner">
-      <p class="research-kicker">Public research ledger</p>
-      <div>
-        <h2 id="research-route-title">
-          {evidenceIndex.counts.startups} profiles. {evidenceIndex.counts.sourceRecords} linked sources.
-          <em>One citable index.</em>
-        </h2>
-        <p>Inspect the methodology, evidence coverage, source mix, funding-stage distribution, and machine-readable data behind VentureDex.</p>
-      </div>
-      <a href="/research">Open the Evidence Index <span aria-hidden="true">&rarr;</span></a>
-    </div>
-  </section>
-
   <section class="explore">
     <div class="container">
       <FilterBar />
 
       {startups.length > 0 ? (
         <>
-          <p class="result-count" data-result-count>{startupCount} {countLabel}</p>
+          <p class="result-count" data-result-count aria-live="polite" aria-atomic="true">{startupCount} {countLabel}</p>
           <div class="card-grid" data-card-grid data-total={startupCount}>
             <h2 class="visually-hidden">Startup profiles</h2>
             {startups.map((startup, position) => (
@@ -82,6 +63,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
                 priority={position < 3}
                 index={{
                   name: startup.product_name,
+                  searchText: [startup.domain, startup.summary, startup.tags].filter(Boolean).join(" "),
                   type: startup.product_type,
                   stage: startup.funding_stage,
                   region: startup.region,
@@ -105,6 +87,10 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
       )}
     </div>
   </section>
+  <aside class="container research-link">
+    {evidenceIndex.counts.startups} profiles · {evidenceIndex.counts.sourceRecords} linked sources.
+    <a href="/research">Explore the evidence and research methodology →</a>
+  </aside>
 </Base>
 
 <script>
@@ -141,6 +127,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
         entries = qa<HTMLElement>("[data-card]", grid).map((el) => ({
           el,
           name: el.dataset.name ?? "",
+          searchText: el.dataset.search ?? "",
           type: el.dataset.type ?? null,
           stage: el.dataset.stage ?? null,
           region: el.dataset.region ?? null,
@@ -151,6 +138,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
     }
 
     const typeSel = q<HTMLSelectElement>("#filter-type");
+    const queryInput = q<HTMLInputElement>("#filter-query");
     const stageSel = q<HTMLSelectElement>("#filter-stage");
     const regionSel = q<HTMLSelectElement>("#filter-region");
     const sortSel = q<HTMLSelectElement>("#filter-sort");
@@ -163,6 +151,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
 
     function readState(): StartupFilterState {
       return {
+        q: (queryInput?.value ?? "").trim().replace(/\s+/g, " ").slice(0, 160),
         type: (typeSel?.value ?? "").trim(),
         stage: (stageSel?.value ?? "").trim(),
         region: (regionSel?.value ?? "").trim(),
@@ -199,6 +188,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
     }
 
     function reset() {
+      if (queryInput) queryInput.value = "";
       if (typeSel) typeSel.value = "";
       if (stageSel) stageSel.value = "";
       if (regionSel) regionSel.value = "";
@@ -208,6 +198,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
 
     function hydrateFromUrl() {
       const state = readFilterState(new URLSearchParams(location.search));
+      if (queryInput) queryInput.value = state.q ?? "";
       if (typeSel) typeSel.value = state.type;
       if (stageSel) stageSel.value = state.stage;
       if (regionSel) regionSel.value = state.region;
@@ -215,6 +206,7 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
     }
 
     [typeSel, stageSel, regionSel, sortSel].forEach((el) => el?.addEventListener("change", () => apply()));
+    queryInput?.addEventListener("input", () => apply());
     form?.addEventListener("submit", (e) => {
       e.preventDefault();
       apply();
@@ -228,25 +220,19 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
       reset();
     });
 
-    const initialParams = new URLSearchParams(location.search);
-    const hasActiveParams = Boolean(
-      initialParams.get("type") ||
-      initialParams.get("stage") ||
-      initialParams.get("region") ||
-      (initialParams.get("sort") && initialParams.get("sort") !== "featured")
-    );
-    if (hasActiveParams) {
+    function restoreState() {
       hydrateFromUrl();
       apply(false);
     }
+    restoreState();
+    window.addEventListener("popstate", restoreState);
+    window.addEventListener("pageshow", restoreState);
   }
 </script>
 
 <style>
   .hero {
-    padding: var(--space-8) 0;
-    text-align: center;
-    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-6) 0 var(--space-2);
   }
 
   .hero h1 {
@@ -257,62 +243,15 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
   .hero-sub {
     color: var(--color-text-secondary);
     font-size: 0.9rem;
-    max-width: 500px;
-    margin: 0 auto;
+    max-width: 700px;
     line-height: 1.5;
   }
 
   .explore {
-    padding: var(--space-8) 0 var(--space-16);
+    padding: var(--space-4) 0 var(--space-8);
   }
-
-  .research-route {
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg-card);
-  }
-
-  .research-route-inner {
-    display: grid;
-    grid-template-columns: 160px minmax(0, 1fr) auto;
-    gap: clamp(24px, 4vw, 64px);
-    align-items: center;
-    padding-block: var(--space-6);
-  }
-
-  .research-kicker {
-    font-family: var(--font-mono);
-    font-size: .68rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-  }
-
-  .research-route h2 {
-    font-size: clamp(1.2rem, 2.4vw, 1.8rem);
-    letter-spacing: -.025em;
-  }
-
-  .research-route h2 em {
-    color: var(--color-accent);
-    font-weight: 400;
-  }
-
-  .research-route div > p:last-child {
-    margin-top: var(--space-1);
-    color: var(--color-text-secondary);
-    font-size: .78rem;
-  }
-
-  .research-route a {
-    display: inline-flex;
-    gap: var(--space-2);
-    align-items: center;
-    color: var(--color-text);
-    font-size: .78rem;
-    font-weight: 650;
-    white-space: nowrap;
-    text-underline-offset: 4px;
-  }
+  .research-link { color: var(--color-text-secondary); font-size: .8rem; line-height: 1.7; }
+  .research-link a { margin-left: var(--space-2); }
 
   .result-count {
     font-size: 0.8rem;
@@ -383,10 +322,5 @@ const schema = homeJsonLd(startups, Astro.site?.toString(), "/directory");
       grid-template-columns: 1fr;
     }
 
-    .research-route-inner {
-      grid-template-columns: 1fr;
-      gap: var(--space-3);
-      padding-block: var(--space-5);
-    }
   }
 </style>
