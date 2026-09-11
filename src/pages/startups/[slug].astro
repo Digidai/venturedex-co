@@ -9,16 +9,14 @@ import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
   resolveInvestorByName,
-  resolveInvestorSlugByName,
 } from "../../lib/brand-assets";
 import {
   getContentFundingRoundsForStartup,
-  getContentNewsEligibleFundingRounds,
   getContentRelatedStartups,
   getContentStartupBySlug,
   getContentStartups,
 } from "../../lib/content";
-import { getIndexableInvestorSlugs } from "../../lib/investor-indexing";
+import { getInvestorActivity, getLinkedInvestorSlugs } from "../../lib/investor-activity-content";
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "../../lib/json";
 import { normalizeExternalUrl, startupJsonLd, truncateText } from "../../lib/seo";
 import { getTopicPagesForStartup } from "../../lib/topic-pages";
@@ -68,17 +66,16 @@ const subscribeUrl = `/subscribe?source=${encodeURIComponent(`startup:${startup.
 const tags = startup.tags
   ? startup.tags.split(",").map((s) => s.trim()).filter(Boolean)
   : [];
-const indexableInvestorSlugs = getIndexableInvestorSlugs(
-  getContentNewsEligibleFundingRounds(),
-  resolveInvestorSlugByName
-);
+// All investor discovery surfaces use the same source-bound participation map.
+const investorActivity = getInvestorActivity();
+const indexableInvestorSlugs = getLinkedInvestorSlugs();
 
 const investorEntries = investors.map((name) => {
   const investor = resolveInvestorByName(name);
   return {
     name,
     slug: investor?.slug ?? null,
-    linkable: investor ? indexableInvestorSlugs.has(investor.slug) : false,
+    linkable: investor ? indexableInvestorSlugs.has(investor.slug) && investorActivity.has(investor.slug) : false,
     logo: investor ? getInvestorBrandAsset(investor.slug) : null,
   };
 });

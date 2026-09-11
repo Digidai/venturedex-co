@@ -4,11 +4,14 @@ export const prerender = true;
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
 import InvestorProfile from "../../components/InvestorProfile.astro";
+import SiteCard from "../../components/SiteCard.astro";
+import { getInvestorActivity } from "../../lib/investor-activity-content";
+import { INVESTOR_ROLE_LABELS } from "../../lib/investor-participation";
 import {
   getCompanyBrandAsset,
   getInvestorBrandAsset,
 } from "../../lib/brand-assets";
-import { getContentInvestorBySlug, getContentInvestors } from "../../lib/content";
+import { getContentInvestorBySlug, getContentInvestors, getContentStartupBySlug } from "../../lib/content";
 import { evaluateInvestorIndexEligibility } from "../../lib/investor-indexing";
 import { getInvestorProfile } from "../../lib/investor-profile-content";
 import { fundingAmountLabel, fundingStageLabel } from "../../lib/funding-terms";
@@ -19,7 +22,10 @@ export function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const { investor, rounds } = getContentInvestorBySlug(slug!)!;
+const { investor } = getContentInvestorBySlug(slug!)!;
+const rounds = getInvestorActivity().get(investor.slug) ?? [];
+const companies = [...new Set(rounds.map(round => round.company_slug))]
+  .flatMap(slug => { const company = slug ? getContentStartupBySlug(slug) : null; return company ? [company] : []; });
 const eligibility = evaluateInvestorIndexEligibility(rounds);
 const profile = getInvestorProfile(investor.slug);
 const roundDates = rounds.map((round) => round.date).filter(Boolean).sort();
@@ -80,7 +86,7 @@ function displayHostname(value: string): string {
 
     <section class="portfolio">
       <h2>Tracked funding activity</h2>
-      <p class="coverage-note">A partial view of VentureDex-covered rounds linked through reported lead-investor names, including historical aliases. Not the firm's complete portfolio. Amounts are company round totals, not this investor's contribution.</p>
+      <p class="coverage-note">A partial view of source-linked funding rounds. Roles distinguish reported leads, confirmed participants, and investments with no lead role stated. Historical aliases may appear. Not the firm's complete portfolio. Amounts are company round totals, not this investor's contribution.</p>
       {rounds.length > 0 && (
         <dl class="activity-stats">
           <div><dt>Companies</dt><dd>{eligibility.distinctCompanyCount}</dd></div>
@@ -98,6 +104,7 @@ function displayHostname(value: string): string {
                 <th>Company</th>
                 <th>Company round</th>
                 <th>Date</th>
+                <th>Investor role</th>
                 <th>Source</th>
               </tr>
             </thead>
@@ -126,6 +133,9 @@ function displayHostname(value: string): string {
                       {new Date(r.date + "T00:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
                     </td>
                     <td class="cell-source">
+                      {INVESTOR_ROLE_LABELS[r.investor_role]}
+                    </td>
+                    <td class="cell-source">
                       <a href={r.source_url!} target="_blank" rel="noopener noreferrer" class="source-link">
                         {r.source_name || "Press"} ↗
                       </a>
@@ -137,13 +147,24 @@ function displayHostname(value: string): string {
           </table>
         </div>
       ) : (
-        <p class="empty">No lead-investor rounds tracked yet. This does not mean the firm has no investments.</p>
+        <p class="empty">No source-linked funding activity tracked yet. This does not mean the firm has no investments.</p>
       )}
     </section>
+    {companies.length > 0 && (
+      <section class="portfolio-companies" aria-labelledby="companies-heading">
+        <h2 id="companies-heading">Explore tracked companies</h2>
+        <p class="coverage-note">Companies covered by VentureDex, not a complete portfolio or investment recommendation.</p>
+        <div class="portfolio-grid">{companies.map(company => <SiteCard startup={company} />)}</div>
+      </section>
+    )}
   </div>
 </Base>
 
 <style>
+  .portfolio-companies { margin-top: var(--space-8); }
+  .portfolio-companies h2 { font-size: 1.1rem; margin-bottom: var(--space-3); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-5); }
+  @media (max-width: 640px) { .portfolio-grid { grid-template-columns: minmax(0, 1fr); } }
   .investor-page {
     max-width: 900px;
     padding: var(--space-12) var(--space-6) var(--space-16);
