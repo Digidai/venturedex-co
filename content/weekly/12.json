@@ -1,0 +1,420 @@
+{
+  "issue_number": 12,
+  "title": "TODO: Weekly research for 2026-08-10 to 2026-08-16",
+  "week_start": "2026-08-10",
+  "week_end": "2026-08-16",
+  "published_at": null,
+  "status": "draft",
+  "editorial_intro": "TODO: Write 2-3 sentences that explain the issue's theme and why these companies belong together.",
+  "research_summary": "TODO: Summarize the source boundary. State which records, official pages, and primary links were reviewed.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "TODO: Theme title",
+      "summary": "TODO: Explain the shared product or market pattern without inventing unsupported claims."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "worldscape",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/worldscape.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Worldscape official site",
+          "source": "content/startups/worldscape.json research.sources.official_site",
+          "url": "https://worldscape.ai/"
+        },
+        {
+          "label": "Worldscape platform overview",
+          "source": "content/startups/worldscape.json research.sources.official_platform",
+          "url": "https://worldscape.ai/platform"
+        },
+        {
+          "label": "Worldscape developer and SDK overview",
+          "source": "content/startups/worldscape.json research.sources.official_developers",
+          "url": "https://worldscape.ai/developers"
+        },
+        {
+          "label": "Worldscape developer quick start",
+          "source": "content/startups/worldscape.json research.sources.official_quickstart",
+          "url": "https://worldscape.ai/developers/quick-start"
+        },
+        {
+          "label": "Pulse 2.0 seed-extension report",
+          "source": "content/startups/worldscape.json research.sources.funding_1",
+          "url": "https://pulse2.com/worldscape-raises-10-million-seed-extension-to-advance-ai-native-mission-engineering/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Worldscape publicly exposes a platform, SDK preview, developer quick start, documentation, marketplace, pricing, and security surfaces for building applications on its data fabric.",
+          "url": "https://worldscape.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The site describes concrete workflows spanning supplier and schedule visibility, data-center digital twins, telecom disruption planning, and mission-course simulation.",
+          "url": "https://worldscape.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Worldscape homepage",
+          "url": "https://worldscape.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Pulse 2.0",
+          "url": "https://pulse2.com/worldscape-raises-10-million-seed-extension-to-advance-ai-native-mission-engineering/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The platform may remain dependent on high-touch mission engineering if customers cannot independently build, validate, and reuse simulations through the SDK.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "agent-energy",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/agent-energy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "AGent Energy official site",
+          "source": "content/startups/agent-energy.json research.sources.official_site",
+          "url": "https://www.agentenergy.com/"
+        },
+        {
+          "label": "AGent Energy how-it-works page",
+          "source": "content/startups/agent-energy.json research.sources.official_workflow",
+          "url": "https://www.agentenergy.com/how-it-works"
+        },
+        {
+          "label": "AGent Energy platform login",
+          "source": "content/startups/agent-energy.json research.sources.official_platform",
+          "url": "https://platform.agentenergy.com/"
+        },
+        {
+          "label": "Axios seed funding report",
+          "source": "content/startups/agent-energy.json research.sources.funding_1",
+          "url": "https://www.axios.com/2026/08/13/agent-energy-seed-funding-grid-backup"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "AGent installs hardware and software at no upfront cost, monitors onsite generators, and remotely dispatches them during grid emergencies.",
+          "url": "https://www.agentenergy.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Its public platform login and dashboard imagery expose continuous fleet visibility and real-time generator diagnostics rather than only a project brochure.",
+          "url": "https://www.agentenergy.com/"
+        },
+        {
+          "label": "Official product site",
+          "source": "AGent Energy homepage",
+          "url": "https://www.agentenergy.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios",
+          "url": "https://www.axios.com/2026/08/13/agent-energy-seed-funding-grid-backup"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: Unit economics may weaken if grid-program payments do not cover field hardware, maintenance, fuel, and emissions constraints at scale.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "remepy",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/remepy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Remepy official site",
+          "source": "content/startups/remepy.json research.sources.official_site",
+          "url": "https://www.remepy.com/"
+        },
+        {
+          "label": "Remepy hybrid drugs product page",
+          "source": "content/startups/remepy.json research.sources.official_hybrid_drugs",
+          "url": "https://www.remepy.com/hybrid-drugs"
+        },
+        {
+          "label": "Remepy Hybridopa product page",
+          "source": "content/startups/remepy.json research.sources.official_parkinsons",
+          "url": "https://www.remepy.com/parkinsons-disease"
+        },
+        {
+          "label": "Remepy Phase IIa results announcement",
+          "source": "content/startups/remepy.json research.sources.official_trial",
+          "url": "https://www.remepy.com/news/remepy-reports-strong-clinical-phase-iia-results-for-hybridopa-tm-a-first-in-class-hybrid-drug-for-parkinsons-disease"
+        },
+        {
+          "label": "Axios Series A report",
+          "source": "content/startups/remepy.json research.sources.funding_1",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-71fbbf4b-e5f7-4b9a-9d0c-cac71a4187e1"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Hybridopa combines immediate-release levodopa/carbidopa with DopApp, an adaptive mobile protocol targeting motor, speech, cognitive, and behavioral function.",
+          "url": "https://www.remepy.com/hybrid-drugs"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Remepy reports a completed Phase IIa study and labels Hybridopa investigational, with a larger Phase 3 program planned for the second half of 2026.",
+          "url": "https://www.remepy.com/news/remepy-reports-strong-clinical-phase-iia-results-for-hybridopa-tm-a-first-in-class-hybrid-drug-for-parkinsons-disease"
+        },
+        {
+          "label": "Official product site",
+          "source": "Remepy homepage",
+          "url": "https://www.remepy.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Axios",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-71fbbf4b-e5f7-4b9a-9d0c-cac71a4187e1"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The combined treatment may fail to reproduce its reported Phase IIa benefit or clear the required regulatory pathway in Phase 3.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "form-energy",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/form-energy.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Form Energy official site",
+          "source": "content/startups/form-energy.json research.sources.official_site",
+          "url": "https://formenergy.com/"
+        },
+        {
+          "label": "Form Energy battery technology page",
+          "source": "content/startups/form-energy.json research.sources.official_battery",
+          "url": "https://formenergy.com/technology/battery-technology/"
+        },
+        {
+          "label": "Formware grid modeling software page",
+          "source": "content/startups/form-energy.json research.sources.official_formware",
+          "url": "https://formenergy.com/technology/grid-modeling-software/"
+        },
+        {
+          "label": "Form Energy Series G announcement",
+          "source": "content/startups/form-energy.json research.sources.funding_1",
+          "url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Form Energy's first commercial iron-air battery system is designed to store and discharge energy for up to 100 hours using iron, water, and air.",
+          "url": "https://formenergy.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Formware is presented as a technology-neutral resource-adequacy, investment, and operations model that optimizes multi-year hourly grid portfolios.",
+          "url": "https://formenergy.com/technology/grid-modeling-software/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Form Energy homepage",
+          "url": "https://formenergy.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Form Energy",
+          "url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: Factory yield, installed system cost, and field reliability may not sustain the modeled advantage as commercial deployments expand.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "coderabbit",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/coderabbit.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "CodeRabbit official site",
+          "source": "content/startups/coderabbit.json research.sources.official_site",
+          "url": "https://www.coderabbit.ai/"
+        },
+        {
+          "label": "CodeRabbit documentation",
+          "source": "content/startups/coderabbit.json research.sources.official_docs",
+          "url": "https://docs.coderabbit.ai/"
+        },
+        {
+          "label": "FinSMEs Series C report",
+          "source": "content/startups/coderabbit.json research.sources.funding_1",
+          "url": "https://www.finsmes.com/2026/08/coderabbit-raises-143m-in-series-c-funding.html"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "CodeRabbit triages pull requests by scoring, ranking, and routing them before reviewers spend time on the full change set.",
+          "url": "https://www.coderabbit.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Its Change Stack view relates layered diffs to repository architecture and blast radius, while review feedback can loop back to coding agents.",
+          "url": "https://www.coderabbit.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "CodeRabbit homepage",
+          "url": "https://www.coderabbit.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "FinSMEs",
+          "url": "https://www.finsmes.com/2026/08/coderabbit-raises-143m-in-series-c-funding.html"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: Teams can measure whether higher review volume reduces escaped defects without increasing low-value findings or reviewer override rates.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "blacksmith",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/blacksmith.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Blacksmith official site",
+          "source": "content/startups/blacksmith.json research.sources.official_site",
+          "url": "https://www.blacksmith.sh/"
+        },
+        {
+          "label": "Blacksmith product documentation",
+          "source": "content/startups/blacksmith.json research.sources.official_docs",
+          "url": "https://docs.blacksmith.sh/introduction/why-blacksmith"
+        },
+        {
+          "label": "TechCrunch Series B report",
+          "source": "content/startups/blacksmith.json research.sources.funding_1",
+          "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Teams can move GitHub Actions jobs to Blacksmith-managed runners by changing the workflow runs-on label.",
+          "url": "https://www.blacksmith.sh/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Blacksmith combines managed microVM runners with colocated dependency and Docker-layer caching plus searchable CI logs.",
+          "url": "https://www.blacksmith.sh/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Blacksmith homepage",
+          "url": "https://www.blacksmith.sh/"
+        },
+        {
+          "label": "Funding source",
+          "source": "TechCrunch",
+          "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: The advertised speedups can be tested across cache-cold, network-bound, ARM, and monorepo workloads before broad migration.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    },
+    {
+      "slug": "yuno",
+      "why_this_week": "TODO: Explain why this company belongs in this week's theme using the structured research and verified evidence below.",
+      "product_evaluation": "TODO: Write an objective product assessment from research.product_evidence, market_context, official sources, and any new primary-source checks. Separate observed product facts from editorial judgment, and do not add private metrics.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/yuno.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Yuno official site",
+          "source": "content/startups/yuno.json research.sources.official_site",
+          "url": "https://www.y.uno/en"
+        },
+        {
+          "label": "Yuno smart routing product page",
+          "source": "content/startups/yuno.json research.sources.official_routing",
+          "url": "https://www.y.uno/en/product/smart-routing"
+        },
+        {
+          "label": "Yuno dashboard demo",
+          "source": "content/startups/yuno.json research.sources.official_demo",
+          "url": "https://dashboard-demo.y.uno/"
+        },
+        {
+          "label": "Yuno developer documentation",
+          "source": "content/startups/yuno.json research.sources.official_docs",
+          "url": "https://docs.y.uno/"
+        },
+        {
+          "label": "PYMNTS Series B report",
+          "source": "content/startups/yuno.json research.sources.funding_1",
+          "url": "https://www.pymnts.com/news/b2b-payments/2026/yuno-raises-45-million-to-drive-global-payments-push/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "Yuno exposes more than 1,000 payment methods and hundreds of processor integrations through a single API, with public integration listings and developer documentation.",
+          "url": "https://www.y.uno/en"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface combines smart routing and retries with risk rules, subscriptions, reconciliation, analytics, and a public dashboard demo rather than presenting only a payment gateway landing page.",
+          "url": "https://www.y.uno/en"
+        },
+        {
+          "label": "Official product site",
+          "source": "Yuno homepage",
+          "url": "https://www.y.uno/en"
+        },
+        {
+          "label": "Funding source",
+          "source": "PYMNTS",
+          "url": "https://www.pymnts.com/news/b2b-payments/2026/yuno-raises-45-million-to-drive-global-payments-push/"
+        }
+      ],
+      "risks": [
+        "Research risk candidate: Adding an orchestration layer may not improve net authorization or operating cost for merchants whose processor mix is already optimized.",
+        "TODO: State the most important weekly evidence gap or product risk without guessing."
+      ],
+      "verdict": "TODO: One source-bound conclusion that a reader can evaluate from the evidence above."
+    }
+  ]
+}
