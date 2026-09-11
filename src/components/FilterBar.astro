@@ -71,7 +71,7 @@ const activeCount = [
           <select id="filter-stage" name="stage">
             <option value="">All stages</option>
             {FUNDING_STAGES.map((s) => (
-              <option value={s} selected={currentStage === s}>{s}</option>
+              <option value={s} selected={currentStage === s}>{s === "Unspecified" ? "Stage undisclosed" : s}</option>
             ))}
           </select>
         </div>

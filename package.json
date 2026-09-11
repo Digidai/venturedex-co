@@ -13,6 +13,7 @@
     "curation:plan": "python3 scripts/curation.py plan",
     "curation:lookup": "python3 scripts/curation.py lookup",
     "investors:validate": "tsx scripts/investor-research.ts validate",
+    "investors:audit-sources": "node scripts/audit-investor-sources.mjs",
     "investors:plan": "tsx scripts/investor-research.ts plan",
     "screenshots:validate": "node scripts/screenshot-quality.mjs validate",
     "preview": "astro preview",

@@ -28,7 +28,7 @@ function manifest() {
 const manifestErrors = (data: unknown, startups: string[] = [], reviews?: string[]) => probe("c.validate_manifest(p['data'], set(p['startups']), date(2026,9,9), set(p['reviews']))", { data, startups, reviews: reviews ?? (data as ReturnType<typeof manifest>).candidates.map(c => c.slug) }) as string[];
 
 test("funding stage normalization agrees across Python and TypeScript, without inventing stages", () => {
-  const values = ["Pre-Seed", "pre seed", "Pre-Series A", "pre series a", "Seed+", "Series A+", "Series B extension", "Series Z", "Growth", "Series AA", "Series", ""];
+  const values = ["Unspecified", "unspecified", "Pre-Seed", "pre seed", "Pre-Series A", "pre series a", "Seed+", "Series A+", "Series B extension", "Series Z", "Growth", "Series AA", "Series", ""];
   assert.deepEqual(probe("[f.normalize_funding_stage(v) for v in p]", values), values.map(normalizeFundingStage));
 });
 test("native currency, extensions, mixed rounds and undisclosed leads are valid", () => {
@@ -42,6 +42,7 @@ test("invalid currencies, invented stage mappings, zero amounts and invalid date
   for (const change of [{ amount: "EUR 10M" }, { currency: "EUR" }, { amount: "XYZ 10M", currency: "XYZ" }, { amount: "$0M" }, { amount: `$${"9".repeat(500)}M` }, { stage_raw: "Series A+" }, { stage: "Growth" }, { instrument: "venture debt or equity maybe" }, { date: "2026-02-30" }, { date: "2999-01-01" }]) {
     assert.ok(probe("f.validate_funding_terms(p)", { ...base, ...change }).length, JSON.stringify(change));
   }
+  assert.ok(probe("f.validate_funding_terms(p)", { ...base, stage: "Unspecified", stage_raw: "Unspecified" }).length);
 });
 test("source amounts remain native and mixed financing is not presented as equity", () => {
   const round = { amount: "EUR 10M", currency: "EUR", stage: "Series A", stage_raw: "Series A+", instrument: "mixed", lead_investor: "undisclosed" } as FundingRound;
@@ -49,6 +50,8 @@ test("source amounts remain native and mixed financing is not presented as equit
   assert.equal(fundingStageLabel(round), "Series A+");
   assert.equal(fundingSummary(round), "EUR 10M (mixed financing) Series A+; lead investor undisclosed");
   assert.equal(fundingAmountLabel({ amount: "undisclosed", instrument: "debt" }), "Undisclosed amount (debt)");
+  assert.equal(fundingStageLabel({ stage: "Unspecified", stage_raw: null }), "Stage undisclosed");
+  assert.equal(fundingSummary({ ...round, stage: "Unspecified", stage_raw: null }), "EUR 10M (mixed financing) Stage undisclosed; lead investor undisclosed");
   const structured = JSON.stringify(newsJsonLd([{ ...round, id: "test", date: "2026-09-08", company_name: "Fixture", company_slug: "fixture", source_url: "https://example.com/", source_name: "Official" }]));
   assert.doesNotMatch(structured, /"name":"undisclosed"|led by undisclosed/);
 });
@@ -67,7 +70,26 @@ test("old decisions require exact hash and identity; frozen legacy history stays
   assert.ok(errors(review(), originals).some(e => e.includes("exact original hash")));
   assert.deepEqual(errors({ ...review(), original: { ledger: "rejected.jsonl", sha256: "a".repeat(64) } }, originals), []);
   assert.ok(errors({ ...review(), original: { ledger: "rejected.jsonl", sha256: "b".repeat(64) } }, originals).some(e => e.includes("hash mismatch")));
-  assert.ok(errors({ ...review(), company_url: "https://different.com/", original: { ledger: "rejected.jsonl", sha256: "a".repeat(64) } }, originals).some(e => e.includes("identity differs")));
+  assert.ok(errors({ ...review(), company_url: "https://different.com/", original: { ledger: "rejected.jsonl", sha256: "a".repeat(64) } }, originals).some(e => e.includes("structured identity_correction")));
+});
+
+test("a frozen identity can only be corrected with explicit old/new evidence", () => {
+  const originals = { example: [{ slug: "example", company_url: "https://wrong.example.com/" }, "a".repeat(64)] };
+  const corrected = {
+    ...review(),
+    company_url: "https://example.com/",
+    original: { ledger: "rejected.jsonl", sha256: "a".repeat(64) },
+    identity_correction: {
+      previous_company_url: "https://wrong.example.com/",
+      reason: "The frozen URL belongs to a different company; official naming and product pages establish the corrected entity and canonical homepage.",
+      evidence_urls: ["https://wrong.example.com/", "https://example.com/"],
+    },
+  };
+  assert.deepEqual(errors(corrected, originals), []);
+  assert.ok(errors({ ...corrected, identity_correction: undefined }, originals).some(e => e.includes("structured identity_correction")));
+  const wrongEvidence = structuredClone(corrected);
+  wrongEvidence.identity_correction.evidence_urls = ["https://wrong.example.com/", "https://evidence.example.com/"];
+  assert.ok(errors(wrongEvidence, originals).some(e => e.includes("including company_url")));
 });
 test("qualification requires two evidence observations and two explicit taste passes", () => {
   const row = { ...review(), state: "qualified_pending", reason_code: "publication_capacity", evaluation: evaluation() };

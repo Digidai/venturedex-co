@@ -31,7 +31,8 @@ REASONS = {
 }
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 HASH = re.compile(r"^[a-f0-9]{64}$")
-REVIEW_FIELDS = {"slug", "company_url", "state", "reason_code", "reason", "reviewed_at", "next_review_at", "priority", "sources", "original", "attempts", "evaluation"}
+REVIEW_FIELDS = {"slug", "company_url", "state", "reason_code", "reason", "reviewed_at", "next_review_at", "priority", "sources", "original", "identity_correction", "attempts", "evaluation"}
+IDENTITY_CORRECTION_FIELDS = {"previous_company_url", "reason", "evidence_urls"}
 
 
 def calendar(value):
@@ -113,7 +114,7 @@ def validate_review(row, originals, startup_slugs, today):
     if not isinstance(row, dict):
         return ["review must be an object"]
     errors = []
-    required = REVIEW_FIELDS - {"original", "evaluation"}
+    required = REVIEW_FIELDS - {"original", "identity_correction", "evaluation"}
     if set(row) - REVIEW_FIELDS or required - set(row):
         errors.append("review has unknown or missing fields")
     slug = row.get("slug")
@@ -146,15 +147,35 @@ def validate_review(row, originals, startup_slugs, today):
     elif len(sources) != len(set(sources)):
         errors.append("duplicate review sources")
     original = row.get("original")
+    correction = row.get("identity_correction")
     if original is not None:
         if not isinstance(original, dict) or set(original) != {"ledger", "sha256"} or original.get("ledger") != "rejected.jsonl" or not HASH.fullmatch(str(original.get("sha256", ""))):
             errors.append("invalid original rejection reference")
         elif slug not in originals or original["sha256"] != originals[slug][1]:
             errors.append("original rejection hash mismatch or missing slug")
-        elif row.get("company_url") != originals[slug][0].get("company_url", row.get("company_url")):
-            errors.append("original company identity differs; resolve identity before overriding")
+        else:
+            previous_url = originals[slug][0].get("company_url", row.get("company_url"))
+            changed_identity = row.get("company_url") != previous_url
+            if changed_identity:
+                if not isinstance(correction, dict) or set(correction) != IDENTITY_CORRECTION_FIELDS:
+                    errors.append("changed original identity requires a structured identity_correction")
+                else:
+                    evidence_urls = correction.get("evidence_urls")
+                    if correction.get("previous_company_url") != previous_url:
+                        errors.append("identity_correction.previous_company_url must match frozen history")
+                    if not nonempty(correction.get("reason"), 60, 800):
+                        errors.append("identity_correction.reason must explain the verified entity mismatch")
+                    if (not isinstance(evidence_urls, list) or len(evidence_urls) < 2
+                            or any(not public_url(url) for url in evidence_urls)
+                            or len(evidence_urls) != len(set(evidence_urls))
+                            or row.get("company_url") not in evidence_urls):
+                        errors.append("identity_correction needs unique old/new public evidence URLs including company_url")
+            elif correction is not None:
+                errors.append("identity_correction is only allowed when frozen identity changes")
     elif slug in originals:
         errors.append("a prior rejection requires its exact original hash")
+    elif correction is not None:
+        errors.append("identity_correction requires a frozen original rejection reference")
     attempts = row.get("attempts")
     if not isinstance(attempts, list) or len(attempts) > 30:
         errors.append("attempts must be a bounded history")
@@ -290,7 +311,15 @@ def main():
         parser.error("--today must be a real YYYY-MM-DD date")
     reviews = load_reviews(today=today)
     if args.command == "validate":
-        result = {"valid": True, "reviews": len(reviews), "pending": sum(row["state"] in PENDING for row in reviews), "rejection_quota": None}
+        result = {
+            "valid": True,
+            "reviews": len(reviews),
+            "pending": sum(row["state"] in PENDING for row in reviews),
+            "research_incomplete": sum(row["state"] in {"evidence_pending", "access_blocked", "schema_deferred"} for row in reviews),
+            "qualified_queue": sum(row["state"] == "qualified_pending" for row in reviews),
+            "publication_blocked": sum(row["state"] == "publication_blocked" for row in reviews),
+            "rejection_quota": None,
+        }
     elif args.command == "plan":
         result = review_plan(reviews, today, args.limit)
     else:

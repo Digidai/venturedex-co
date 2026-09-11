@@ -4,160 +4,464 @@
     {
       "slug": "aitan",
       "company_url": "https://www.aitansystems.com/",
-      "state": "evidence_pending",
-      "reason_code": "product_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $41M financing and an inspectable robotic sovereignty platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.aitansystems.com/"
+        "https://www.aitansystems.com/",
+        "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and robotic sovereignty platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "2a2094b4985a32618e3d1dbc96b39065d91e702aa0fac82fd3a31ce686c0845e"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.aitansystems.com/",
+            "note": "The official site describes a software-defined autonomy layer for operating heterogeneous robotic fleets in contested environments."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+            "note": "The company-issued announcement describes battle deployments, fleet interoperability and the operating model behind the platform."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The company makes a concrete infrastructure bet on portable autonomy across mixed robotic fleets."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment and interoperability details expose more craft than a generic defense-AI landing page."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The operating user, environment and system boundary are specific enough for an evidence-led profile."
+          }
+        }
       }
     },
     {
       "slug": "aslan",
       "company_url": "https://aslanprotects.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $20.8M financing and an inspectable national-security digital-domain platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding"
+        "https://aslanprotects.com/",
+        "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+        "https://aslanprotects.com/about"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and national-security digital-domain platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "5f9e49e744d3b0ffe7359d3930bb1752115e155a106fa3b10d97c05d754a8575"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://aslanprotects.com/",
+            "note": "The official site presents a defined digital-domain operations platform for national-security teams rather than a general AI consultancy."
+          },
+          {
+            "url": "https://aslanprotects.com/about",
+            "note": "The company background and use-case material identify the mission users, operating context and product boundary."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Aslan bets on agentic operations in a narrowly defined national-security domain."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Its public use cases and operating context give the enterprise workflow an inspectable shape."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product is specific about buyer and mission even though implementation claims remain company reported."
+          }
+        }
       }
     },
     {
       "slug": "trustedrouter",
       "company_url": "https://trustedrouter.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Re-review product/taste under existing undisclosed-lead rule; not automatic acceptance.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $1.25M Seed round and an inspectable model-routing and control plane. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
-        "https://trustedrouter.com/blog/we-raised-1-25m-seed"
+        "https://trustedrouter.com/",
+        "https://trustedrouter.com/blog/we-raised-1-25m-seed",
+        "https://trustedrouter.com/docs",
+        "https://trust.trustedrouter.com/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and model-routing and control plane; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "a48b57f738dfc69794ed0f4fe35c9953d4c338c78ee1d6063f3ca72fa173d53a"
+      },
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://trustedrouter.com/docs",
+            "note": "The public documentation exposes routing setup, provider integration and concrete developer-facing operating instructions."
+          },
+          {
+            "url": "https://trust.trustedrouter.com/",
+            "note": "The trust center publishes a dedicated security and assurance surface for teams evaluating production deployment."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The product bets on trustworthy routing as a control layer rather than another undifferentiated model wrapper."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Documentation and security material show attention to production integration and operational assurance."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Its developer, workflow and deployment boundary are unusually concrete for an early product."
+          }
+        }
       }
     },
     {
       "slug": "easy-aerial",
       "company_url": "https://www.easyaerial.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. The sole recorded lead-field objection is invalid; verify funding and product independently.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $20M financing and an inspectable tethered and autonomous drone systems. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
+        "https://www.easyaerial.com/",
         "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and tethered and autonomous drone systems; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "e746bf554e19c4f7d5092bc1b3d1d2533238b3ed85d797896d03d0ce0d48c8ef"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.easyaerial.com/",
+            "note": "The official site exposes tethered UAS and drone-in-a-box configurations with specific surveillance and deployment roles."
+          },
+          {
+            "url": "https://www.axios.com/2026/09/01/easy-aerial-brooklyn-protests",
+            "note": "Original reporting describes operational deployments and the current financing signal rather than only a concept render."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The system-level bet combines persistent tethered flight with autonomous field deployment."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named configurations, certifications and deployment evidence make the hardware integration inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The mission profile is specific, while performance and deployment claims still need vendor attribution."
+          }
+        }
       }
     },
     {
       "slug": "fambot",
       "company_url": "https://fambot.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $3.5M Pre-Seed round and an inspectable consumer household-assistant application. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://fambot.com/press"
+        "https://fambot.com/",
+        "https://fambot.com/press",
+        "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and consumer household-assistant application; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "08e76ec08b330f3ba83d3f4fd496aee337b9cc1bbf0e17faeca04bf4644d66cc"
+      },
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026",
+            "note": "The product guide walks through the first-week setup and actual household-assistant workflow for public beta users."
+          },
+          {
+            "url": "https://fambot.com/press",
+            "note": "The official press material ties the current financing to a live public beta and describes supported application integrations."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "FamBot bets on a persistent household workflow rather than a one-shot consumer chatbot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The first-week guide and live beta provide concrete onboarding and interaction evidence."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and recurring job are clear, though long-term retention remains an open product risk."
+          }
+        }
       }
     },
     {
       "slug": "conveo",
       "company_url": "https://conveo.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Re-review product/taste; explicitly listed participants do not need an inferred lead.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $50M Series A round and an inspectable AI-moderated video research platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
-        "https://conveo.ai/mediakit/series-a"
+        "https://conveo.ai/",
+        "https://conveo.ai/mediakit",
+        "https://conveo.ai/product",
+        "https://engineering.conveo.ai/engineering-at-conveo"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and AI-moderated video research platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "097a15b2d449696265031a19030d3b95b79f230373890e7819ee87bdd1f3383f"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://conveo.ai/product",
+            "note": "The product page exposes study setup, AI-moderated video interviews, synthesis and research deliverables as a connected workflow."
+          },
+          {
+            "url": "https://engineering.conveo.ai/engineering-at-conveo",
+            "note": "The engineering material describes the technical operating context behind the research platform rather than only campaign claims."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Conveo makes a specific bet that asynchronous AI moderation can expand qualitative research without removing video context."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The end-to-end study workflow and engineering account show meaningful product construction."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer, research job and generated outputs are concrete enough to assess."
+          }
+        }
       }
     },
     {
       "slug": "guardio",
       "company_url": "https://guard.io/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $40M financing at a reported $1.1B valuation and an inspectable consumer cybersecurity product. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://site.guard.io/blog/a-note-from-amos-our-ceo"
+        "https://guard.io/",
+        "https://www.prnewswire.com/news-releases/consumer-cybersecurity-pioneer-guardio-reaches-1-1-billion-valuation-302868923.html",
+        "https://guard.io/blog/a-note-from-amos-our-ceo"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and consumer cybersecurity product; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "a842e85eb3f013f25ec870ba71f8e08b907dd4e04e2bd3b85d0db52c28adcb03"
+      },
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://guard.io/",
+            "note": "The official site exposes browser, identity and web-threat protection as a consumer product with a defined protection workflow."
+          },
+          {
+            "url": "https://guard.io/blog/a-note-from-amos-our-ceo",
+            "note": "The CEO note supplies current product and operating context, with company metrics retained as company-reported claims."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Guardio bets on always-on protection at the consumer browsing and identity layer."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product surface connects detection, intervention and user remediation rather than presenting a generic security score."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The use case is specific, while scale and efficacy claims require clear company attribution."
+          }
+        }
       }
     },
     {
       "slug": "ultrahuman",
       "company_url": "https://www.ultrahuman.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $70M financing package and an inspectable wearable metabolic and health sensing system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://techcrunch.com/2026/09/03/qualcomm-backs-ultrahuman-in-70m-round-on-bet-to-turn-smart-rings-into-computers/"
+        "https://www.ultrahuman.com/",
+        "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+        "https://www.ultrahuman.com/us/",
+        "https://cyborg.ultrahuman.com/press-releases/ultrahuman-launches-pulsomics-a-foundational-model-of-the-human-pulse"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and wearable metabolic and health sensing system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "28f93d2074244da578e5b5e74a510c1a4b9f3c3cde907e6c287a9cbb2a3d762a"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.ultrahuman.com/us/",
+            "note": "The official product surface documents the Ring AIR and connected health-sensing ecosystem available to customers."
+          },
+          {
+            "url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-launches-pulsomics-a-foundational-model-of-the-human-pulse",
+            "note": "The company describes a specific pulse-model research direction tied to its wearable data and future interface layer."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Ultrahuman bets that continuous wearable signals can become a broader human-computer health interface."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Shipping hardware, a connected software experience and an articulated sensing model show system-level craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and data loop are specific, while health-performance claims still need careful source labeling."
+          }
+        }
       }
     },
     {
       "slug": "emberos",
       "company_url": "https://www.emberos.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Lead-only rejection invalid; separately evaluate SEO/GEO exclusion.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "The official product and funding materials confirm that Emberos is an AI-search brand-visibility and GEO/AEO optimization product, an explicitly excluded search-optimization category under VentureDex F4; this is a policy decision, not a claim that the software is poorly built.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": null,
       "priority": 1,
       "sources": [
+        "https://www.emberos.ai/",
         "https://www.emberos.ai/knowledge-hub/emberos-raises-5.5-million-seed-round"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "policy_excluded",
+          "note": "Completed the source-by-source backlog review. The official product and funding materials confirm that Emberos is an AI-search brand-visibility and GEO/AEO optimization product, an explicitly excluded search-optimization category under VentureDex F4; this is a policy decision, not a claim that the software is poorly built."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "d12b778f4241652e87c22dbea080c5fd9872f7aa9ad3ef0d76b222b869e60bc5"
@@ -166,37 +470,111 @@
     {
       "slug": "chariot-claims",
       "company_url": "https://www.chariotclaims.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed SEC-reported $9.46M financing and an inspectable legal-claims filing platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://www.chariotclaims.com/",
         "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and legal-claims filing platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "caa9bd2d6f298c79c54ce58653c5133078bfe8202dd73945dc02c131efe62107"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.chariotclaims.com/",
+            "note": "The official site defines a claims-filing and administration workflow for legal teams and claimants."
+          },
+          {
+            "url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+            "note": "The filing-based funding report establishes a current financing signal while leaving the unnamed stage explicit."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Chariot Claims bets on turning a fragmented legal filing process into a structured operating workflow."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product boundary is tied to real claims administration rather than a generic legal assistant."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and transaction are specific, although public implementation depth remains thinner than mature enterprise tools."
+          }
+        }
       }
     },
     {
       "slug": "elm-ai",
       "company_url": "https://www.elm-ai.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed SEC-reported $3.84M financing and an inspectable supplier-compliance operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/"
+        "https://www.elm-ai.com/",
+        "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+        "https://product.elm-ai.com/",
+        "https://www.elm-ai.com/about"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and supplier-compliance operating system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "273bade6259ad02eedd6820918309003532c4d5247ac312c379d84ecd10b7407"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://product.elm-ai.com/",
+            "note": "The public product deck exposes supplier data intake, compliance analysis and operating outputs for procurement teams."
+          },
+          {
+            "url": "https://www.elm-ai.com/about",
+            "note": "The company material identifies the supply-chain compliance problem, target users and product approach."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Elm AI bets on a supplier-specific compliance system rather than a horizontal document chatbot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product deck exposes the workflow and decision artifacts with enough detail to evaluate construction."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The target user, data object and compliance job are concrete despite limited public customer proof."
+          }
+        }
       }
     },
     {
@@ -220,55 +598,165 @@
     {
       "slug": "prevalent-ai",
       "company_url": "https://prevalent.ai/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $22M first primary growth investment and an inspectable sovereign enterprise data and knowledge platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://prevalent.ai/",
         "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and sovereign enterprise data and knowledge platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "1c63cbe7bf6bff205c227acb4e45aa68836cfb2ac0003393d9a08a00e652e50a"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://prevalent.ai/",
+            "note": "The official site describes a sovereign enterprise data fabric and knowledge-graph layer for trusted organizational context."
+          },
+          {
+            "url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+            "note": "The company announcement links its first primary financing to an existing profitable platform and enterprise deployment base."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Prevalent AI bets that governed enterprise context is infrastructure, not a prompt-layer feature."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The long-built data fabric and knowledge-graph architecture expose substantial systems craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The deployment category is specific, while maturity makes future publication require explicit editorial breakout scrutiny."
+          }
+        }
       }
     },
     {
       "slug": "senticell",
       "company_url": "https://www.senticell.bio/",
-      "state": "evidence_pending",
-      "reason_code": "product_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed Seed round approaching $7M and an inspectable red-blood-cell-bound nucleic-acid liquid biopsy platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html"
+        "https://www.senticell.bio/",
+        "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+        "https://www.senticell.bio/platform"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and red-blood-cell-bound nucleic-acid liquid biopsy platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "905eeab0c39c6be89cbec6379fedbfe0824c6dcfec05067dc55ad0671d8bd43f"
+      },
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.senticell.bio/platform",
+            "note": "The platform page explains the red-blood-cell-bound nucleic-acid signal and intended liquid-biopsy workflow."
+          },
+          {
+            "url": "https://www.senticell.bio/",
+            "note": "The official site identifies the analytical-development stage and disease-detection direction without presenting a commercial diagnostic as complete."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "SentiCell makes a distinctive biological bet on signals attached to red blood cells."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The platform mechanism and disclosed analytical work give the preclinical product thesis inspectable substance."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The assay concept is specific, while clinical validity and regulatory path remain material open questions."
+          }
+        }
       }
     },
     {
       "slug": "zeit-ai",
       "company_url": "https://www.zeit-ai.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 4.3M financing and an inspectable autonomous data-engineering platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/"
+        "https://www.zeit-ai.com/",
+        "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+        "https://www.zeit-ai.com/about-us"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and autonomous data-engineering platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "62511333acc34e93f1008fa926b983dc821726eeff608eadd0497ba49d719828"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.zeit-ai.com/",
+            "note": "The product site describes an autonomous data-engineering workflow and a catalog of more than 600 connectors for mid-market teams."
+          },
+          {
+            "url": "https://www.zeit-ai.com/about-us",
+            "note": "The company page identifies the European mid-market focus and the operating problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Zeit AI bets that a data engineer can be represented as an ongoing operational agent rather than a code assistant."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Connector breadth and the described pipeline workflow make the integration burden visible."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The target team and recurring data job are specific, though production reliability evidence remains company reported."
+          }
+        }
       }
     },
     {
@@ -328,19 +816,56 @@
     {
       "slug": "peoplex",
       "company_url": "https://peoplex.jp/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed JPY 5.45B Series A financing package and an inspectable AI interview, role-play and meeting platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://prtimes.jp/main/html/rd/p/000000290.000139786.html"
+        "https://peoplex.jp/",
+        "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+        "https://peoplex.jp/news"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and AI interview, role-play and meeting platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "b638bc4dcf744bf51f5f6ad98cec9fa396a80c9895651439d3480ed1e9dcd0ac"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://peoplex.jp/",
+            "note": "The official site exposes separate interview, role-play, meeting and sales products rather than a single vague HR-AI claim."
+          },
+          {
+            "url": "https://peoplex.jp/news",
+            "note": "The current product and company news surface provides inspectable launch and adoption context for the suite."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "PeopleX bets on instrumented practice and evaluation across multiple high-stakes workplace conversations."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Distinct products and workflows show deliberate packaging rather than a thin general-purpose assistant."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The use cases are specific, while reported adoption and outcomes remain company claims."
+          }
+        }
       }
     },
     {
@@ -363,20 +888,66 @@
     },
     {
       "slug": "also",
-      "company_url": "https://also.com/",
-      "state": "evidence_pending",
-      "reason_code": "product_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "company_url": "https://ridealso.com/",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $150M Series D round and an inspectable connected lightweight electric-mobility system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://also.com/"
+        "https://ridealso.com/",
+        "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+        "https://ridealso.com/pages/company"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and connected lightweight electric-mobility system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "c8cb2a5d09b6f1ba871347d2df72ea0b011eb490bf0c8a10dd14ca635a19b416"
+      },
+      "identity_correction": {
+        "previous_company_url": "https://also.com/",
+        "reason": "The frozen URL belongs to ALSO Holding AG, an unrelated technology distributor. The mobility company's own product, company and financing pages consistently identify its canonical brand and domain as ALSO at ridealso.com.",
+        "evidence_urls": [
+          "https://also.com/",
+          "https://ridealso.com/",
+          "https://ridealso.com/pages/company"
+        ]
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://ridealso.com/",
+            "note": "The corrected official site exposes the TM-B and TM-Q electric vehicles and a connected mobility platform."
+          },
+          {
+            "url": "https://ridealso.com/pages/company",
+            "note": "The company page establishes the distinct mobility entity, product roadmap and autonomy direction at the corrected domain."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "ALSO bets on a lightweight connected vehicle class rather than a conventional e-bike catalog."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named vehicle systems and a coherent hardware-software roadmap provide evidence of integrated product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and company identity are now specific, although later autonomy claims remain forward looking."
+          }
+        }
       }
     },
     {
@@ -400,16 +971,24 @@
     {
       "slug": "socure",
       "company_url": "https://www.socure.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "policy_excluded",
+      "reason_code": "late_stage_exception_failed",
+      "reason": "Socure is an independent and well-documented product company, but the current signal is a strategic growth investment at a reported $5.2B valuation after a prior Series E, alongside an acquisition and $364M company-reported ARR. This is a mature expansion transaction and does not clear VentureDex's selective late-stage breakout bar for this queue.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
-        "https://www.socure.com/news-and-press/strategic-growth-investment-fravity-acquisition"
+        "https://www.socure.com/news-and-press/strategic-growth-investment-fravity-acquisition",
+        "https://www.socure.com/news-and-press/riskos-ai-suite-launch",
+        "https://www.socure.com/news-and-press/socure-accelerates-mission-to-be-the-first-to-verify-100-of-identities-and-eliminate-identity-fraud-across-all-industries-with-a-450m-investment-led-by-accel-and-t-rowe-price-at-a-4-5b-valuation"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "policy_excluded",
+          "note": "Completed the source-by-source backlog review. Socure is an independent and well-documented product company, but the current signal is a strategic growth investment at a reported $5.2B valuation after a prior Series E, alongside an acquisition and $364M company-reported ARR. This is a mature expansion transaction and does not clear VentureDex's selective late-stage breakout bar for this queue."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "004b4b586502fba16e6773a92c241da570213aa71bb5332bb3038e182bbbec52"
@@ -418,37 +997,111 @@
     {
       "slug": "teragen-energy",
       "company_url": "https://www.teragenenergy.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $6M Pre-Seed round and an inspectable modular solid-oxide fuel-cell system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://www.teragenenergy.com/",
         "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and modular solid-oxide fuel-cell system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "04c411411a225cfb471386f0e04b9e24ed5fa4ac21c455c300b766191e9858e2"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.teragenenergy.com/",
+            "note": "The official site describes a modular solid-oxide fuel-cell architecture and the transition from prototypes toward pilots."
+          },
+          {
+            "url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+            "note": "The company announcement connects the financing to pilot manufacturing and deployment milestones."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Teragen makes a hard technical bet on modularizing solid-oxide power generation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and pilot plans expose an engineering path rather than a generic clean-energy promise."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The architecture and next validation step are specific, while commercial efficiency remains unproven."
+          }
+        }
       }
     },
     {
       "slug": "science4beauty",
       "company_url": "https://science4beauty.net/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed PLN 7M investment and an inspectable conotoxin-based cosmetic active and products. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://4growthvc.pl/2026/09/03/7-mln-pln-dla-science4beauty-na-skalowanie-innowacyjnej-konotoksyny-dla-branzy-beauty/"
+        "https://science4beauty.net/",
+        "https://4growthvc.pl/2026/09/03/7-mln-pln-dla-science4beauty-na-skalowanie-innowacyjnej-konotoksyny-dla-branzy-beauty/",
+        "https://science4beauty.net/en/pages/nauka",
+        "https://science4beauty.net/en-ue/pages/project"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and conotoxin-based cosmetic active and products; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "fce6c45f2529806df0c0b46c43ded0388798647736fa5577462546433a89c765"
+      },
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://science4beauty.net/en/pages/nauka",
+            "note": "The science page describes the conotoxin-derived active and a randomized double-blind placebo-controlled study with 60 volunteers."
+          },
+          {
+            "url": "https://science4beauty.net/en-ue/pages/project",
+            "note": "The official project page records the development program behind the active and the product commercialization work."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Science4Beauty bets on a defined peptide mechanism rather than undifferentiated cosmetic branding."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A disclosed controlled study, project record and sold products provide multiple inspectable layers of work."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The active and application are specific, while study scale and company-sponsored evidence limit certainty."
+          }
+        }
       }
     },
     {
@@ -490,178 +1143,514 @@
     {
       "slug": "hyimpulse",
       "company_url": "https://www.hyimpulse.de/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed Series A extension above EUR 50M and an inspectable hybrid-propulsion orbital launch system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.hyimpulse.de/"
+        "https://www.hyimpulse.de/",
+        "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+        "https://hyimpulse.de/sl1",
+        "https://hyimpulse.de/Press_Release/03052024_Press%20Release_HyImpulse%20-%20German%20space%20company%20successfully%20launches%20first%20commercially%20viable%20launch%20vehicle.pdf"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and hybrid-propulsion orbital launch system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "9e75e11ceaca16b336d7bc9f1f79c0f69940bbb099852dbf00bd6eb305bc03ab"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://hyimpulse.de/sl1",
+            "note": "The SL1 product page publishes the launch-vehicle architecture, payload role and hybrid-propulsion system boundary."
+          },
+          {
+            "url": "https://hyimpulse.de/Press_Release/03052024_Press%20Release_HyImpulse%20-%20German%20space%20company%20successfully%20launches%20first%20commercially%20viable%20launch%20vehicle.pdf",
+            "note": "The official test-flight release records an actual launch milestone instead of only a vehicle roadmap."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "HyImpulse makes a clear propulsion bet on paraffin-based hybrid launch systems."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A flight test plus detailed vehicle material provides unusually inspectable aerospace craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The launch product and mission are specific, while orbital execution and economics remain open."
+          }
+        }
       }
     },
     {
       "slug": "airbility",
       "company_url": "https://airbility.co.kr/",
-      "state": "evidence_pending",
-      "reason_code": "product_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $4.7M Series A round and an inspectable electric vertical-flight vehicle platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://airbility.co.kr/",
         "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and electric vertical-flight vehicle platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "4dced4f519912642461945d17b64de7af489282b56ce61c576c0b5442dd58506"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://airbility.co.kr/",
+            "note": "The official product surface identifies the AB vehicle program and its electric vertical-flight configuration."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+            "note": "The company-issued release describes prototype and transition-flight progress alongside the financing."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Airbility bets on a specific compact electric-flight architecture and transition profile."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and transition-flight disclosures provide more substance than render-only advanced-air-mobility projects."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The vehicle program is specific, while certification and production remain significant execution risks."
+          }
+        }
       }
     },
     {
       "slug": "xorlab",
       "company_url": "https://www.xorlab.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 5M Series A extension and an inspectable sovereign email-security platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://www.xorlab.com/",
         "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and sovereign email-security platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "be5ad2e18a8ffb7f28dfdd4bda5a965ef1b332de61f0c1389031f67a50b6aaa0"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.xorlab.com/",
+            "note": "The official site details email threat detection, policy enforcement and deployment choices for enterprise security teams."
+          },
+          {
+            "url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+            "note": "The company announcement ties the financing to a deployed sovereign email-security product rather than a pre-product concept."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "xorlab bets on email-native behavioral detection with a European sovereignty position."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment and protection workflows expose the operational seams that security buyers must evaluate."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary and buyer are specific, though efficacy claims require independent validation."
+          }
+        }
       }
     },
     {
       "slug": "cato",
       "company_url": "https://www.get-cato.com/en",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 6M financing and an inspectable public-tender intelligence and sales platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://www.get-cato.com/en",
         "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and public-tender intelligence and sales platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "84f21c9527e560b2493cbf4fc334d7f283184927211eb0f482cb32aa2bb14039"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.get-cato.com/en",
+            "note": "The official site exposes public-tender discovery, qualification and response workflows for companies selling to governments."
+          },
+          {
+            "url": "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/",
+            "note": "Original reporting supplies the current financing and expansion context for the operating product."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Cato bets on a domain-specific operating layer for public procurement rather than generic sales automation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Tender discovery and response workflows make the product's integration into enterprise work inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer and transaction are specific, while disclosed product evidence is primarily company supplied."
+          }
+        }
       }
     },
     {
       "slug": "jaipur-robotics",
       "company_url": "https://www.jaipurrobotics.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Native EUR amount and named seed stage exist; queue currency-schema proposal, then product review.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 4.3M Seed round and an inspectable computer-vision operating system for waste plants. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
+        "https://www.jaipurrobotics.com/",
         "https://www.htgf.de/en/jaipur-robotics-seed/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and computer-vision operating system for waste plants; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "7dfb73eed5845d6f8a65673f8b82d69935b75e720852276cdbbc2007d0c869e4"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.jaipurrobotics.com/",
+            "note": "The official site describes computer-vision monitoring and operating decisions inside material-recovery and waste-processing plants."
+          },
+          {
+            "url": "https://www.htgf.de/en/jaipur-robotics-seed/",
+            "note": "The lead investor's announcement records deployed image volume, processed material and a claimed reduction in shutdowns."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Jaipur Robotics bets on a plant-level visual intelligence layer for messy physical material streams."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment metrics and the connection from cameras to operating actions expose real industrial craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The plant user and workflow are specific, while performance figures remain investor and company reported."
+          }
+        }
       }
     },
     {
       "slug": "fluencify",
       "company_url": "https://fluencify.io/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 3.7M Pre-Seed round and an inspectable managed creator-campaign operating platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://tech.eu/2026/09/07/fluencify-secures-43m-to-scale-its-creator-campaign-platform/"
+        "https://fluencify.io/",
+        "https://www.eu-startups.com/2026/09/stockholm-based-fluencify-raises-e3-7-million-to-scale-its-end-to-end-creator-marketing-platform/",
+        "https://fluencify.io/product/campaign-management"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and managed creator-campaign operating platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "a8bb4ffda5bba2a369177a2466368b550b58ee61d1a5368686fdd88d57fa9021"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://fluencify.io/product/campaign-management",
+            "note": "The product page details campaign briefs, creator coordination, approvals, deliverables and reporting in one workflow."
+          },
+          {
+            "url": "https://fluencify.io/",
+            "note": "The official site defines the managed operating model and customer problem beyond a simple influencer directory."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Fluencify bets on owning creator-campaign operations rather than only matching brands and creators."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The approval, delivery and reporting steps show a composed enterprise workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product scope is specific, while differentiation from established campaign suites needs continued scrutiny."
+          }
+        }
       }
     },
     {
       "slug": "octave-energy",
       "company_url": "https://octave.energy/en/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Review equity/debt components and exact announcement date; do not convert or invent USD amount.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 10M Series A mixed financing and an inspectable second-life battery storage and energy-management system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://octave.energy/en/octave-in-the-news/octaveenergy-raises-10-million-to-accelerate-european-expansion/"
+        "https://octave.energy/en/",
+        "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and second-life battery storage and energy-management system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "2295659dc0c1bf49a8ecad2a7f912f869d0c52aabcb4e63e70248197df71b33f"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://octave.energy/en/",
+            "note": "The official site describes containerized battery-energy storage combined with an energy-management software layer."
+          },
+          {
+            "url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+            "note": "The company announcement connects the mixed financing to deployment of its second-life battery systems."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Octave bets on making retired vehicle batteries useful as managed stationary storage."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The battery system, container integration and management layer show cross-disciplinary product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The system and customer use case are specific, while lifecycle economics and degradation remain key risks."
+          }
+        }
       }
     },
     {
       "slug": "moa-foodtech",
       "company_url": "https://www.moafoodtech.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $3.8M financing and an inspectable fermentation-derived food ingredient platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://seedtable.com/companies/moa-foodtech/funding-rounds/series-a-2026-09"
+        "https://www.moafoodtech.com/",
+        "https://agfundernews.com/moa-foodtech-nets-3-8m-to-scale-ai-powered-biomass-fermentation-platform",
+        "https://www.moafoodtech.com/moa-box",
+        "https://www.moafoodtech.com/moa-yeast"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and fermentation-derived food ingredient platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "66ba10271a8d1da299934d1aadc10b3d52fa4c8d22fb6bc121da137767fe21fb"
+      },
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.moafoodtech.com/moa-box",
+            "note": "MOA Box is presented as a defined fermentation-development platform for converting side streams into food ingredients."
+          },
+          {
+            "url": "https://www.moafoodtech.com/moa-yeast",
+            "note": "The official yeast ingredient page exposes a concrete output and application rather than only a platform thesis."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MOA bets on pairing fermentation development with specific commercial ingredient outputs."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The Box process and named ingredient products reveal both platform and formulation craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The inputs and outputs are specific, while scale economics and regulatory acceptance remain open."
+          }
+        }
       }
     },
     {
       "slug": "backbone",
       "company_url": "https://www.usebackbone.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Pre-seed exclusion is current schema/policy, not an established quality failure.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed EUR 4M Pre-Seed round and an inspectable food quality and compliance operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://www.usebackbone.ai/",
         "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and food quality and compliance operating system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "5b4cacdcaaf41fd0104d703d37d573fe2098fafdcf32ad0451f7456cbe8301b9"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.usebackbone.ai/",
+            "note": "The product site describes quality records, supplier evidence, specifications and compliance workflows for food companies."
+          },
+          {
+            "url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+            "note": "The official funding announcement explains the operational data problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Backbone bets on a food-specific quality knowledge layer rather than a generic compliance copilot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The supplier, specification and evidence workflows make the product's operational model inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer and records are specific, while production adoption evidence is still early."
+          }
+        }
       }
     },
     {
       "slug": "hydrosight",
       "company_url": "https://hydrosight-ai.com/",
-      "state": "evidence_pending",
-      "reason_code": "source_identity_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "quality_rejected",
+      "reason_code": "no_product_evidence",
+      "reason": "The current official site remains under construction and original reporting supplies only a high-level AI water-network concept. The multi-source review found no inspectable workflow, specification, demonstration or deployment artifact, so there is not enough product evidence for an editorial profile today.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
-        "https://hydrosight-ai.com/"
+        "https://hydrosight-ai.com/",
+        "https://www.calcalistech.com/ctechnews/article/syzscx2oge"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "quality_rejected",
+          "note": "Completed the source-by-source backlog review. The current official site remains under construction and original reporting supplies only a high-level AI water-network concept. The multi-source review found no inspectable workflow, specification, demonstration or deployment artifact, so there is not enough product evidence for an editorial profile today."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "27026823393b2776db0c985dc72de49a23dcd252a4b12134f7726b55655ad220"
@@ -670,119 +1659,378 @@
     {
       "slug": "minewatch",
       "company_url": "https://vigalab.com/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $900K Seed round and an inspectable offline mine dispatch and safety operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
+        "https://vigalab.com/",
+        "https://seedtable.com/companies/minewatch/funding-rounds/seed-2026-09",
         "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and offline mine dispatch and safety operating system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "363064b6be1548e95c199cd0ba476a4552106aec5a06d2da3e0f91187c078cb8"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://vigalab.com/",
+            "note": "Vigalab's official surface describes MineWatch as an offline-capable dispatch, fleet and personnel-monitoring system for mines."
+          },
+          {
+            "url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+            "note": "Regional original reporting adds deployment and expansion context for the mine operating product."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MineWatch bets on resilient offline operations in connectivity-constrained mine environments."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Fleet, dispatch and personnel monitoring form a concrete system rather than a generic industrial dashboard."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The operating environment is specific, while independent field-performance evidence remains limited."
+          }
+        }
       }
     },
     {
       "slug": "fundly-ai",
       "company_url": "https://fundly.ai/",
-      "state": "evidence_pending",
-      "reason_code": "funding_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $4M Pre-Series A round plus separately reported venture debt and an inspectable embedded financing platform for pharmaceutical distribution. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms"
+        "https://fundly.ai/",
+        "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+        "https://in.linkedin.com/company/fundlyai",
+        "https://fundly.ai/about"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and embedded financing platform for pharmaceutical distribution; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "dfbf168f714f00f911a7412ba8ce546de76370b20ec3afedad8a0dce79cdba5b"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://fundly.ai/about",
+            "note": "The official company page defines embedded working-capital workflows for pharmaceutical retailers and distributors."
+          },
+          {
+            "url": "https://in.linkedin.com/company/fundlyai",
+            "note": "The company's official social profile states the current Pre-Series A financing and its named institutional backers."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Fundly.ai bets on underwriting and capital delivery inside a specific pharmaceutical supply chain."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The retailer-distributor workflow makes the financial product's operating context visible."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The vertical and transaction are specific, while credit performance and funding composition need careful disclosure."
+          }
+        }
       }
     },
     {
       "slug": "leinao-ai",
       "company_url": "https://www.leinao.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed Series B-plus financing and an inspectable AI compute and power-grid infrastructure platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://app.dealroom.co/news/note/leinao-ai-raises-15m-series-b-to-build-out-inference-scheduling-tools"
+        "https://www.leinao.ai/",
+        "https://yangtzeer.com/news/deals/yangtze-funding-quantum-robotics-evtol/",
+        "https://www.leinao.ai/product/solution_dlrg.html",
+        "https://www.leinao.ai/product/solution_lnbdz.html"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and AI compute and power-grid infrastructure platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "62ed23340dfcad33356e5a89b23b3ae0b3700dafb7c53f278d9be13b0b594120"
+      },
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.leinao.ai/product/solution_dlrg.html",
+            "note": "The official solution page describes an AI-compute operating system spanning resource orchestration and deployment."
+          },
+          {
+            "url": "https://www.leinao.ai/product/solution_lnbdz.html",
+            "note": "A separate official solution page documents an electric-grid application with specific infrastructure workflows."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Leinao bets on coordinating compute with physical power infrastructure instead of selling a generic AI cloud."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Distinct compute and grid solution pages expose substantial integration and operational design."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The deployment domains are specific, while project counts and performance remain company reported."
+          }
+        }
       }
     },
     {
       "slug": "megawave-fusion",
       "company_url": "https://www.megawavefusion.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed Series A financing above CNY 100M and an inspectable radio-frequency systems for fusion facilities. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://app.dealroom.co/news/note/fusion-heating-startup-megawave-raises-45m-series-a"
+        "https://www.megawavefusion.com/",
+        "https://finance.eastmoney.com/a/202609083867098289.html",
+        "https://www.megawavefusion.cn/pruduct"
       ],
-      "attempts": [],
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and radio-frequency systems for fusion facilities; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
       "original": {
         "ledger": "rejected.jsonl",
         "sha256": "57206d5856c1e697759ce43c82b0124b21f6f0ca4be723c65a0346636b29aa0e"
+      },
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.megawavefusion.com/",
+            "note": "The official site identifies microwave and radio-frequency systems built for fusion research and energy facilities."
+          },
+          {
+            "url": "https://www.megawavefusion.cn/pruduct",
+            "note": "The official product catalog exposes concrete RF hardware categories rather than an abstract fusion-energy claim."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MegaWave bets on a critical RF subsystem layer within fusion infrastructure."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A concrete hardware catalog and facility role show specialized engineering craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The subsystem boundary is specific, while the exact current raise is conservatively recorded as over CNY 100M."
+          }
+        }
       }
     },
     {
       "slug": "split-pay",
       "company_url": "https://splitpay.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Correct source identity and separate reported rounds; inspect financing finality without equating an expandable round to no financing.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed approximately $100M Series B round and an inspectable consumer bill-splitting and short-term payment product. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.axios.com/pro/fintech-deals/2026/09/08/split-pay-raises-series-b",
-        "https://www.axios.com/2026/09/08/split-pay-khosla-125-million"
+        "https://splitpay.com/",
+        "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+        "https://splitpay.com/how-it-works",
+        "https://splitpay.com/help/about-split-pay/how-split-pay-works/what-fees-does-split-pay-charge"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and consumer bill-splitting and short-term payment product; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://splitpay.com/how-it-works",
+            "note": "The public workflow explains bill upload, participant splitting and payment timing for the consumer product."
+          },
+          {
+            "url": "https://splitpay.com/help/about-split-pay/how-split-pay-works/what-fees-does-split-pay-charge",
+            "note": "The help center states a $9.99 fee plus 1.5%, making the operating and pricing model inspectable."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Split Pay bets on cash-flow underwriting around shared bills rather than another peer-to-peer payment interface."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The end-to-end workflow and exact fee schedule expose important product mechanics."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The transaction and user are specific, while credit loss and consumer-protection outcomes remain open."
+          }
+        }
+      }
     },
     {
       "slug": "moonwalk-biosciences",
       "company_url": "https://www.moonwalk.bio/",
-      "state": "evidence_pending",
-      "reason_code": "product_evidence_gap",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Use the current article path, assess preclinical evidence appropriately; no automatic acceptance.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $70M Series B round and an inspectable adipose-targeted RNA-interference therapeutics platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.biopharmadive.com/news/moonwalk-biosciences-series-b-epigenetic-medicine-obesity/759556/",
-        "https://www.biopharmadive.com/news/moonwalk-series-b-obesity-rna-interference/829784/"
+        "https://www.moonwalk.bio/",
+        "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+        "https://moonwalk.bio/science/",
+        "https://moonwalk.bio/pipeline/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and adipose-targeted RNA-interference therapeutics platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://moonwalk.bio/science/",
+            "note": "The science page describes adipose targeting, RNA interference and the biological rationale for the therapeutic platform."
+          },
+          {
+            "url": "https://moonwalk.bio/pipeline/",
+            "note": "The pipeline page identifies preclinical programs and indications without representing them as approved therapies."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Moonwalk makes a specific delivery bet on adipose-targeted RNA interference for metabolic disease."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Mechanism and pipeline disclosures provide a coherent preclinical product architecture."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The targets and indications are specific, while human efficacy and safety remain unproven."
+          }
+        }
+      }
     },
     {
       "slug": "outline",
       "company_url": "https://www.outlineapp.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Official page has role-specific workflows and named customer accounts; assess actual UI/evidence and taste before deciding.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $3M Seed round and an inspectable AI-native financial planning and analysis system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
-        "https://www.journaldunet.com/fintech/1554471-la-plateforme-de-planification-financiere-outline-leve-3-millions-de-dollars/",
-        "https://www.outlineapp.ai/"
+        "https://www.outlineapp.ai/",
+        "https://seedtable.com/companies/outline-fpa/funding-rounds/seed-2026-09"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and AI-native financial planning and analysis system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.outlineapp.ai/",
+            "note": "The official site describes financial-model ingestion, variance analysis and recurring planning workflows for finance teams."
+          },
+          {
+            "url": "https://seedtable.com/companies/outline-fpa/funding-rounds/seed-2026-09",
+            "note": "The funding record establishes the current Seed signal and company identity for the product review."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Outline bets on an operating workspace for finance teams rather than a standalone narrative generator."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The model, variance and planning workflow shows deliberate domain packaging."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and finance job are specific, while public integration and customer evidence remain early."
+          }
+        }
+      }
     },
     {
       "slug": "brightplan",
@@ -801,32 +2049,105 @@
     {
       "slug": "brainchild-bio",
       "company_url": "https://brainchildbio.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Official pipeline/publications link a published phase 1 trial; assess investigational evidence without implying approval.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $116M Series A round and an inspectable brain-tumor cellular-therapy company. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 1,
       "sources": [
-        "https://rss.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
-        "https://brainchildbio.com/press/",
-        "https://www.nature.com/articles/s41591-024-03451-3"
+        "https://brainchildbio.com/",
+        "https://www.globenewswire.com/news-release/2026/09/08/3357486/0/en/brainchild-bio-closes-116-million-series-a-financing.html",
+        "https://www.nature.com/articles/s41591-024-03451-3",
+        "https://brainchildbio.com/pipeline/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and brain-tumor cellular-therapy company; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://brainchildbio.com/pipeline/",
+            "note": "The official pipeline lists defined cellular-therapy programs for pediatric brain tumors and their development status."
+          },
+          {
+            "url": "https://www.nature.com/articles/s41591-024-03451-3",
+            "note": "A peer-reviewed phase 1 publication provides independent clinical evidence relevant to the underlying program."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "BrainChild bets on locoregional cellular therapy for difficult pediatric brain tumors."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A defined pipeline plus peer-reviewed early clinical work gives the program unusual evidentiary depth."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The indication and intervention are specific, while small early studies cannot establish efficacy."
+          }
+        }
+      }
     },
     {
       "slug": "keep-converting",
       "company_url": "https://keepconverting.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $2M Pre-Seed round and an inspectable real-time ecommerce product-page personalization platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.wamda.com/2026/09/converting-closes-2-million-pre-seed-led-nuwa-capital-cotu-ventures"
+        "https://keepconverting.ai/",
+        "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+        "https://waya.media/arabi/keep-converting-%D8%AA%D8%AC%D9%85%D8%B9-2-%D9%85%D9%84%D9%8A%D9%88%D9%86-%D8%AF%D9%88%D9%84%D8%A7%D8%B1-%D9%88%D8%AA%D8%B1%D8%A7%D9%87%D9%86-%D8%B9%D9%84%D9%89-ai-%D9%84%D8%AA%D8%BA/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and real-time ecommerce product-page personalization platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://keepconverting.ai/",
+            "note": "The official site presents real-time product-page generation and continuous variant optimization for ecommerce merchants."
+          },
+          {
+            "url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+            "note": "Current reporting documents integrations with major commerce platforms and a closed Pre-Seed round."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Keep Converting bets on adapting the product page itself to visitor intent in real time."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Platform integrations and a closed-loop test-and-generate workflow show more craft than a copy generator."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The merchant workflow is specific, while the reported conversion lift remains a company claim."
+          }
+        }
+      }
     },
     {
       "slug": "lightsage",
@@ -845,30 +2166,74 @@
     {
       "slug": "celero-communications",
       "company_url": "https://celero.inc/",
-      "state": "access_blocked",
-      "reason_code": "page_access",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Preserve access failure and retry/seek official alternative evidence; do not interpret a challenge as absent product.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $275M Series C round and an inspectable coherent optical communications silicon platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://celero.inc/"
+        "https://celero.inc/",
+        "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and coherent optical communications silicon platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://celero.inc/",
+            "note": "The now-accessible official site describes coherent DSP silicon for optical communications and its product boundary."
+          },
+          {
+            "url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+            "note": "The official release records validated 2nm silicon and the current Series C financing signal."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Celero makes a deep hardware bet on 2nm coherent DSP silicon for optical networks."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Validated silicon and a defined communications subsystem provide strong evidence of technical craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary is specific, while scale, customer qualification and yields remain undisclosed."
+          }
+        }
+      }
     },
     {
       "slug": "dawraty",
       "company_url": "https://joindawraty.com/",
-      "state": "access_blocked",
-      "reason_code": "page_access",
-      "reason": "Governance audit routing, not acceptance: reassess the original F1 decision under source-preserving funding and industry-specific evidence rules. Recorded unreadable page warrants evidence-access deferral, not proof of product absence.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
-      "priority": 2,
+      "state": "evidence_pending",
+      "reason_code": "funding_evidence_gap",
+      "reason": "The product is now inspectable through current institutional-learning coverage, but reporting describes an investment as part of a $2M Seed round whose final close is expected by the end of November. The completed amount and finality are not yet established, so the candidate remains evidence-pending rather than being accepted or rejected.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-10-11",
+      "priority": 1,
       "sources": [
-        "https://joindawraty.com/"
+        "https://joindawraty.com/",
+        "https://www.wamda.com/index.php/en/media/news",
+        "https://en.sharikatmubasher.com/media-hub/news/21573497/kuwaiti-edtech-startup-dawraty-raises-2mn-seed-round?lang=en"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "evidence_pending",
+          "note": "Access is no longer the blocker. Current reporting says the investment is part of a $2M Seed round with final close expected later, so exact completed financing remains unresolved."
+        }
+      ]
     },
     {
       "slug": "openreserve",
@@ -887,44 +2252,158 @@
     {
       "slug": "digitalpaani",
       "company_url": "https://www.digitalpaani.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed INR 22 crore financing and an inspectable water and wastewater infrastructure operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://theindiabizz.com/startup-funding-news-india/navam-capital-leads-rs-22-cr-round-in-digitalpaani/"
+        "https://www.digitalpaani.com/",
+        "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+        "https://in.linkedin.com/company/digitalpaani",
+        "https://www.digitalpaani.com/about-us/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and water and wastewater infrastructure operating system; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.digitalpaani.com/",
+            "note": "The official site describes real-time monitoring, operating guidance and lifecycle management for water and wastewater assets."
+          },
+          {
+            "url": "https://www.digitalpaani.com/about-us/",
+            "note": "The company history records pilots and more than 40 deployments, retained as company-reported operating evidence."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "DigitalPaani bets on an operating layer for existing water infrastructure rather than replacing plants with new hardware."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Monitoring, operational guidance and multi-site deployment evidence reveal real integration work."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The facility user and water workflow are specific, while outcome metrics remain company reported."
+          }
+        }
+      }
     },
     {
       "slug": "circolife",
       "company_url": "https://circolife.com/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $4.5M Pre-Series A round and an inspectable commercial cooling-as-a-service platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://www.dealstreetasia.com/stories/circolife-funding-india-494483"
+        "https://circolife.com/",
+        "https://www.dealstreetasia.com/stories/circolife-funding-india-494483",
+        "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+        "https://subscription.circolife.com/ac-for-business/new",
+        "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and commercial cooling-as-a-service platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://subscription.circolife.com/ac-for-business/new",
+            "note": "The official offering exposes zero-upfront business subscriptions with installation, maintenance and service included."
+          },
+          {
+            "url": "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/",
+            "note": "The company guide explains ownership, maintenance, replacement and customer economics across the service lifecycle."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Circolife bets on turning commercial cooling hardware into managed recurring infrastructure."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Ownership, field service, IoT monitoring and refurbishment combine into a substantive operating system."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The service model is specific, while fleet utilization and asset economics remain important risks."
+          }
+        }
+      }
     },
     {
       "slug": "veridue",
       "company_url": "https://veridue.ai/",
-      "state": "evidence_pending",
-      "reason_code": "governance_revisit",
-      "reason": "Governance audit routing, not acceptance: reassess the original F3 decision under source-preserving funding and industry-specific evidence rules. Original reason preserved; no new acceptance or rejection conclusion in this audit.",
-      "reviewed_at": "2026-09-09",
-      "next_review_at": "2026-09-10",
+      "state": "qualified_pending",
+      "reason_code": "publication_capacity",
+      "reason": "The September 11 evidence review verified a source-backed $4M Pre-Seed round and an inspectable energy-infrastructure due-diligence and transaction platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
+      "reviewed_at": "2026-09-11",
+      "next_review_at": "2026-09-12",
       "priority": 2,
       "sources": [
-        "https://veridue.ai/blog/veridue-launches-4m-pre-seed"
+        "https://veridue.ai/",
+        "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+        "https://veridue.ai/blog/veridue-raises-its-pre-seed-to-accelerate-ai-native-diligence-for-energy-transactions"
       ],
-      "attempts": []
+      "attempts": [
+        {
+          "date": "2026-09-11",
+          "outcome": "qualified_pending",
+          "note": "Completed the source-by-source backlog review: verified the financing and energy-infrastructure due-diligence and transaction platform; qualification passed and awaits the bounded publication workflow."
+        }
+      ],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://veridue.ai/",
+            "note": "The official site exposes screening, red-flag diligence, virtual-data-room organization and investment-readiness workflows."
+          },
+          {
+            "url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+            "note": "The launch announcement records two years of product development and validation with energy-market participants."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Veridue bets on an energy-specific diligence system rather than a horizontal document summarizer."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Traceable findings, data-room organization and transaction screening form a coherent professional workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The users and artifacts are specific, while the speed and cost claims remain company reported."
+          }
+        }
+      }
     },
     {
       "slug": "bluecore-energy",
@@ -940,7 +2419,11 @@
         "https://www.bluecore.energy/"
       ],
       "attempts": [
-        {"date": "2026-09-10", "outcome": "evidence_pending", "note": "Verified the Seed round, existing barges and reactor, and official design; regulatory review is ongoing and no fueled or operating power demonstration was disclosed."}
+        {
+          "date": "2026-09-10",
+          "outcome": "evidence_pending",
+          "note": "Verified the Seed round, existing barges and reactor, and official design; regulatory review is ongoing and no fueled or operating power demonstration was disclosed."
+        }
       ],
       "original": {
         "ledger": "rejected.jsonl",
@@ -962,20 +2445,39 @@
         "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/"
       ],
       "attempts": [
-        {"date": "2026-09-10", "outcome": "accepted", "note": "Funding, independence, product workflow, customer evidence, taste, brand and publication capacity cleared; a startup record and exact native screenshot were prepared in the same release."}
+        {
+          "date": "2026-09-10",
+          "outcome": "accepted",
+          "note": "Funding, independence, product workflow, customer evidence, taste, brand and publication capacity cleared; a startup record and exact native screenshot were prepared in the same release."
+        }
       ],
       "evaluation": {
         "rubric": "enterprise",
         "independent": true,
         "funding_verified": true,
         "product_evidence": [
-          {"url": "https://antioch.com/blog/series-a", "note": "The official announcement describes customer-specific hardware, sensor, software and model integration with cloud-scale scenarios and regression analysis."},
-          {"url": "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/", "note": "Greylock describes real-world calibration, parallel simulation evaluation and a named use case with Amazon Ring."}
+          {
+            "url": "https://antioch.com/blog/series-a",
+            "note": "The official announcement describes customer-specific hardware, sensor, software and model integration with cloud-scale scenarios and regression analysis."
+          },
+          {
+            "url": "https://greylock.com/blog/introducing-antioch-the-simulation-platform-for-physical-ai/",
+            "note": "Greylock describes real-world calibration, parallel simulation evaluation and a named use case with Amazon Ring."
+          }
         ],
         "taste": {
-          "bet": {"pass": true, "note": "Treating simulation as the verifier for physical AI is a clear, consequential infrastructure bet."},
-          "craft": {"pass": true, "note": "The product surface exposes concrete scenario, evaluation, failure-analysis and sim-to-real workflows."},
-          "specificity": {"pass": true, "note": "The platform targets physical-AI engineering teams with customer hardware and sensor stacks, not a generic AI audience."}
+          "bet": {
+            "pass": true,
+            "note": "Treating simulation as the verifier for physical AI is a clear, consequential infrastructure bet."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product surface exposes concrete scenario, evaluation, failure-analysis and sim-to-real workflows."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The platform targets physical-AI engineering teams with customer hardware and sensor stacks, not a generic AI audience."
+          }
         }
       },
       "original": {
@@ -996,7 +2498,11 @@
         "https://mistral.ai/news/mistral-makes-sovereign-open-weight-ai-to-frontier/"
       ],
       "attempts": [
-        {"date": "2026-09-10", "outcome": "policy_excluded", "note": "Verified the official Series D announcement and applied the Daily late-stage boundary; this is not a product-quality rejection."}
+        {
+          "date": "2026-09-10",
+          "outcome": "policy_excluded",
+          "note": "Verified the official Series D announcement and applied the Daily late-stage boundary; this is not a product-quality rejection."
+        }
       ],
       "original": {
         "ledger": "rejected.jsonl",

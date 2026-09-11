@@ -22,6 +22,8 @@ def normalize_funding_stage(value):
         return "Pre-Series A"
     if re.fullmatch(r"seed(?:\+| extension)?", value, re.I):
         return "Seed"
+    if re.fullmatch(r"unspecified", value, re.I):
+        return "Unspecified"
     match = re.fullmatch(r"series ([a-z])(?:\+| extension)?", value, re.I)
     return f"Series {match.group(1).upper()}" if match else None
 
@@ -49,10 +51,12 @@ def validate_funding_terms(round_data):
     stage = round_data.get("stage")
     normalized = normalize_funding_stage(stage)
     if not normalized or normalized != stage:
-        errors.append("stage must be canonical Pre-Seed, Seed, Pre-Series A or named Series A-Z; preserve extensions in stage_raw")
+        errors.append("stage must be canonical Pre-Seed, Seed, Pre-Series A, named Series A-Z or Unspecified; preserve extensions in stage_raw")
     if "stage_raw" in round_data:
         raw = round_data["stage_raw"]
-        if not isinstance(raw, str) or raw != raw.strip() or len(raw) > 60 or normalize_funding_stage(raw) != stage:
+        if stage == "Unspecified":
+            errors.append("stage_raw is not allowed when the source does not name a stage")
+        elif not isinstance(raw, str) or raw != raw.strip() or len(raw) > 60 or normalize_funding_stage(raw) != stage:
             errors.append("stage_raw must be a source-stated named stage consistent with stage")
     instrument = round_data.get("instrument")
     if instrument is not None and (not isinstance(instrument, str) or instrument not in INSTRUMENTS):

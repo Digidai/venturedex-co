@@ -34,11 +34,18 @@ const refs = (ids: string[]) => ids.map((id) => ({
   </dl>
   <div class="profile-sources">
     <h3>Sources & official resources</h3>
-    <p>Summarized from the firm's own materials, checked on the date above. Mandates and programs may change; this is not a live availability or investment-performance assessment.</p>
+    <p>Summarized from primary materials: the firm's own pages and, where explicitly labeled, official portfolio-company announcements or regulated disclosures. Checked on the date above. Mandates and programs may change; this is not a live availability or investment-performance assessment.</p>
     <ol>
       {profile.sources.map((source) => (
         <li id={`investor-source-${source.id}`}>
           <a href={source.url} target="_blank" rel="noopener noreferrer">{source.label} ↗</a>
+          {source.source_type && source.source_type !== "official_firm" && (
+            <span class="source-type">{
+              source.source_type === "official_portfolio_company" ? "Official portfolio company"
+                : source.source_type === "official_related_entity" ? "Official related entity"
+                  : "Regulated disclosure"
+            }</span>
+          )}
         </li>
       ))}
     </ol>
@@ -64,6 +71,7 @@ const refs = (ids: string[]) => ids.map((id) => ({
   .profile-sources p { font-size: .75rem; line-height: 1.6; color: var(--color-text-secondary); margin: 0 0 var(--space-2); max-width: 680px; }
   ol { margin: 0; padding-left: 1.25rem; font-size: .8rem; line-height: 1.8; }
   li { scroll-margin-top: 6rem; }
+  .source-type { display: inline-block; margin-left: .45rem; color: var(--color-text-secondary); font-size: .68rem; }
   a:focus-visible { outline: 2px solid var(--color-editor-line); outline-offset: 3px; }
   @media (max-width: 600px) { .profile-facts { grid-template-columns: 1fr; } }
 </style>

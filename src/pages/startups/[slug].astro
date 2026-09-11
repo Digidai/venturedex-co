@@ -1,6 +1,6 @@
 ---
 export const prerender = true;
-import { fundingAmountLabel, fundingStageLabel, fundingSummary } from "../../lib/funding-terms";
+import { fundingAmountLabel, fundingStageDisplayLabel, fundingStageLabel, fundingSummary } from "../../lib/funding-terms";
 
 import Base from "../../layouts/Base.astro";
 import BrandLogo from "../../components/BrandLogo.astro";
@@ -344,7 +344,7 @@ function sourceLabel(source?: StartupResearchSource) {
         {startup.funding_stage && (
           <div class="meta-item">
             <dt>Stage</dt>
-            <dd>{startup.funding_stage}{startup.funding_display ? ` (${startup.funding_display})` : ""}</dd>
+            <dd>{fundingStageDisplayLabel(startup.funding_stage)}{startup.funding_display ? ` (${startup.funding_display})` : ""}</dd>
           </div>
         )}
         {startup.region && (

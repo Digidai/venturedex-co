@@ -25,12 +25,13 @@ function runValidatorProbe(expression: string, input: unknown = null): unknown {
   return JSON.parse(result.stdout);
 }
 
-test("content validator accepts named Series D+ rounds but not ambiguous stage labels", () => {
+test("content validator accepts source-stated named rounds and explicit unnamed rounds, not ambiguous labels", () => {
   const stages = runValidatorProbe(
     "{stage: validator.is_allowed_funding_stage(stage) for stage in payload}",
-    ["Seed", "Series C", "Series D", "Series L", "Growth", "Series AA", "Pre-Seed"],
+    ["Unspecified", "Seed", "Series C", "Series D", "Series L", "Growth", "Series AA", "Pre-Seed"],
   );
   assert.deepEqual(stages, {
+    Unspecified: true,
     Seed: true,
     "Series C": true,
     "Series D": true,
@@ -39,6 +40,37 @@ test("content validator accepts named Series D+ rounds but not ambiguous stage l
     "Series AA": false,
     "Pre-Seed": true,
   });
+});
+
+test("unnamed financing requires an evidence-bound assessment without inventing a stage", () => {
+  const valid = {
+    research: {
+      unnamed_round_assessment: {
+        reason:
+          "The financing source states no round name, while the official product and operating materials provide enough current evidence to assess the company without guessing a stage.",
+        source_ids: ["official", "funding", "product"],
+      },
+      sources: [
+        { id: "official", type: "official" },
+        { id: "funding", type: "funding" },
+        { id: "product", type: "product" },
+      ],
+      product_evidence: [
+        { claim: "First product claim", source_ids: ["official", "product"] },
+        { claim: "Second product claim", source_ids: ["product"] },
+      ],
+    },
+  };
+  assert.deepEqual(
+    runValidatorProbe("validator.validate_unnamed_round_assessment(payload, required=True)", valid),
+    [],
+  );
+  const missing = structuredClone(valid);
+  delete (missing.research as Record<string, unknown>).unnamed_round_assessment;
+  assert.deepEqual(
+    runValidatorProbe("validator.validate_unnamed_round_assessment(payload, required=True)", missing),
+    ["research.unnamed_round_assessment is required for funding with no source-stated stage"],
+  );
 });
 
 test("Series D+ breakout exception must bind official, funding, and product evidence", () => {
@@ -116,6 +148,22 @@ test("research normalization preserves a validated breakout exception", () => {
   });
   assert.deepEqual(normalized?.breakout_exception, {
     reason: "Evidence-bound late-stage exception",
+    source_ids: ["official", "funding", "product"],
+  });
+});
+
+test("research normalization preserves an unnamed-round assessment", () => {
+  const normalized = normalizeResearch({
+    verified_at: "2026-09-11",
+    sources: [],
+    product_evidence: [],
+    unnamed_round_assessment: {
+      reason: "Evidence-bound unnamed financing assessment",
+      source_ids: ["official", "funding", "product"],
+    },
+  });
+  assert.deepEqual(normalized?.unnamed_round_assessment, {
+    reason: "Evidence-bound unnamed financing assessment",
     source_ids: ["official", "funding", "product"],
   });
 });

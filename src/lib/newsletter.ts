@@ -1,6 +1,6 @@
 import { normalizeResearch, safeJsonParse } from "./json";
 import type { FundingRound, Startup, StartupResearch } from "./types";
-import { fundingSummary } from "./funding-terms";
+import { fundingStageDisplayLabel, fundingSummary } from "./funding-terms";
 import type { WeeklyIssueContent } from "./weekly";
 import { versionedScreenshotUrl } from "./screenshots";
 
@@ -2555,7 +2555,7 @@ function startupCardHtml(input: {
   const startupUrl = absoluteUrl(siteUrl, `/startups/${startup.slug}`);
   const fundingText = funding
     ? fundingSummary(funding)
-    : startup.funding_stage;
+    : fundingStageDisplayLabel(startup.funding_stage);
   const evidence = research?.product_evidence?.slice(0, 2) ?? [];
   const risks = research?.risks?.slice(0, 2) ?? [];
   const context = research?.market_context;
@@ -2739,7 +2739,7 @@ function emptyHtml(value: string) {
 }
 
 function metaLabel(startup: Startup) {
-  return [startup.product_type, startup.funding_stage, startup.region].filter(Boolean).join(" / ");
+  return [startup.product_type, fundingStageDisplayLabel(startup.funding_stage), startup.region].filter(Boolean).join(" / ");
 }
 
 function boolPreference(value: unknown, fallback: boolean) {

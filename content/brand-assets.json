@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-05",
+  "verified_at": "2026-09-11",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2333,9 +2333,9 @@
     "blackpeak-capital": {
       "name": "BlackPeak Capital",
       "shape": "icon",
-      "local_path": "/logos/investors/blackpeak-capital.png",
-      "source_page": "https://esg.blackpeak-capital.com",
-      "source_url": "https://esg.blackpeak-capital.com"
+      "local_path": "/logos/investors/blackpeak-capital.svg",
+      "source_page": "https://www.blackpeak-capital.com/",
+      "source_url": "https://www.blackpeak-capital.com/images/favicons/apple-icon-180x180.png"
     },
     "amd-ventures": {
       "name": "AMD Ventures",
@@ -2567,6 +2567,14 @@
       "local_path": "/logos/investors/veredas-partners.webp",
       "source_page": "https://veredaspartners.com",
       "source_url": "https://veredaspartners.com/veredas-logo-2.png"
+    },
+    "vdm-capital": {
+      "name": "Vieira de Matos - VDM Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/vdm-capital.svg",
+      "source_page": "https://www.vdmcapital.pt/",
+      "source_url": "https://dfd8611f2e.clvaw-cdnwnd.com/958658243f4d3ff9ed67ffd3d645f12b/200000000-e6330e6332/VDM.png?ph=dfd8611f2e",
+      "note": "Exact legal-entity identity is anchored to the official VDM Capital site and Hope Care's official financing announcement; no broader mandate is inferred from the brand."
     },
     "forestay-capital": {
       "name": "Forestay Capital",
@@ -2905,7 +2913,7 @@
       "name": "Z3Partners",
       "shape": "wordmark",
       "local_path": "/logos/investors/z3partners.svg",
-      "source_page": "https://www.z3partners.com/",
+      "source_page": "https://z3partnersglobal.com/",
       "source_url": "https://z3partnersglobal.com/img/new/home/log.svg"
     },
     "define-ventures": {
@@ -2972,8 +2980,8 @@
       "name": "Norwest",
       "shape": "icon",
       "local_path": "/logos/investors/norwest.ico",
-      "source_page": "https://www.nvp.com/",
-      "source_url": "https://www.nvp.com/favicon.ico"
+      "source_page": "https://www.norwest.com/",
+      "source_url": "https://www.norwest.com/favicon.ico"
     },
     "jump-capital": {
       "name": "Jump Capital",
@@ -3107,11 +3115,9 @@
     "camber-partners": {
       "name": "Camber Partners",
       "shape": "icon",
-      "local_path": "/logos/investors/camber-partners.png",
-      "source_page": "https://www.camberpartners.com/",
-      "source_url": "https://camberpartners.com/wp-content/uploads/2018/10/Screen-Shot-2018-10-09-at-4.13.05-PM.png",
-      "allow_unreachable_source": true,
-      "note": "Official WordPress logo source returned HTTP 202 from GitHub runners during release validation; keep local official capture and downgrade runner reachability drift to a warning."
+      "local_path": "/logos/investors/camber-partners.svg",
+      "source_page": "https://www.camber.io/",
+      "source_url": "https://www.camber.io/favicon.ico"
     },
     "ballistic-ventures": {
       "name": "Ballistic Ventures",
@@ -3156,10 +3162,10 @@
       "source_url": "https://finestructure.vc/wp-content/themes/custom/f-prime-wp-theme/static/img/favicons/favicon192x192.png"
     },
     "ai2-incubator": {
-      "name": "AI2 Incubator",
+      "name": "AI House",
       "shape": "icon",
       "local_path": "/logos/investors/ai2-incubator.png",
-      "source_page": "https://www.ai2incubator.com/",
+      "source_page": "https://aihouse.vc/",
       "source_url": "https://framerusercontent.com/images/oUEFzIrX5wvUBPyadPdE0l2aE.png"
     },
     "atomico": {
@@ -3209,10 +3215,10 @@
     },
     "b-capital": {
       "name": "B Capital",
-      "shape": "wordmark",
-      "local_path": "/logos/investors/b-capital.png",
-      "source_page": "https://www.bcapital.com",
-      "source_url": "https://www.bcapital.com/wp-content/themes/bcapital-theme/assets/images/logo.png"
+      "shape": "icon",
+      "local_path": "/logos/investors/b-capital.svg",
+      "source_page": "https://b.capital/",
+      "source_url": "https://b.capital/wp-content/uploads/2023/10/cropped-BCapital_Logo_XL-192x192.png"
     },
     "goldman-sachs-alternatives": {
       "name": "Goldman Sachs Alternatives",
@@ -3452,7 +3458,7 @@
       "name": "ABB",
       "shape": "icon",
       "local_path": "/logos/investors/abb.png",
-      "source_page": "https://global.abb/",
+      "source_page": "https://www.abb.com/global/en/company/ventures",
       "source_url": "https://global.abb/etc.clientlibs/abb/group/clientlibs/clientlib-base/resources/favicon-web.png"
     },
     "chingona-ventures": {
@@ -3510,7 +3516,7 @@
       "name": "Rsquared Investment",
       "shape": "icon",
       "local_path": "/logos/investors/rsquared-investment.png",
-      "source_page": "https://bossjob.com/",
+      "source_page": "https://bossjob.us/en-us",
       "source_url": "https://bossjob.com/favicon.ico",
       "note": "Rsquared Investment Pte. Ltd. is the Singapore company behind Bossjob; this is its only verified public brand surface and is not affiliated with similarly named U.S. firms."
     },

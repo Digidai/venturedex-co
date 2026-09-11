@@ -25,6 +25,7 @@ export interface InvestorSource {
   label: string;
   url: string;
   checked_at: string;
+  source_type?: "official_firm" | "official_related_entity" | "official_portfolio_company" | "regulated_disclosure";
 }
 export interface InvestorProfile {
   reviewed_at: string;
@@ -118,19 +119,35 @@ export function validateInvestorProfiles(
     const ids = new Set<string>();
     const urls = new Set<string>();
     if (!sources.length) fail(slug, "at least one substantive official source required");
+    let canonicalOfficialSources = 0;
     for (const source of sources) {
       if (!record(source)) { fail(slug, "invalid source"); continue; }
+      for (const key of Object.keys(source)) {
+        if (!["id", "label", "url", "checked_at", "source_type"].includes(key)) fail(slug, "unknown source field");
+      }
       if (!plainText(source.id, 60) || !/^[a-z][a-z0-9_-]*$/.test(source.id) || ids.has(source.id)) {
         fail(slug, "invalid or duplicate source id");
       } else ids.add(source.id);
       if (!plainText(source.label, 160)) fail(slug, "source label required");
-      if (!isPublicHttpsUrl(source.url) || !officialHost(source.url, directory[slug].website)) {
-        fail(slug, "source must use the canonical official HTTPS host");
-      } else if (urls.has(source.url)) fail(slug, "duplicate source URL");
-      else urls.add(source.url);
+      const sourceType = source.source_type ?? "official_firm";
+      if (!["official_firm", "official_related_entity", "official_portfolio_company", "regulated_disclosure"].includes(String(sourceType))) {
+        fail(slug, "unknown source_type");
+      }
+      if (!isPublicHttpsUrl(source.url)) {
+        fail(slug, "source must use a public HTTPS URL");
+      } else if (sourceType === "official_firm" && !officialHost(source.url, directory[slug].website)) {
+        fail(slug, "official_firm source must use the canonical official HTTPS host");
+      } else {
+        if (sourceType === "official_firm") canonicalOfficialSources += 1;
+        if (urls.has(source.url)) fail(slug, "duplicate source URL");
+        else urls.add(source.url);
+      }
       if (!isDate(source.checked_at) || source.checked_at > today || source.checked_at !== profile.reviewed_at) {
         fail(slug, "each source must be checked on reviewed_at; failed attempts cannot refresh a profile");
       }
+    }
+    if (sources.length && canonicalOfficialSources === 0) {
+      fail(slug, "cross-domain primary evidence must be anchored by a canonical official_firm source");
     }
     const checkRefs = (field: Record<string, unknown>, path: string) => {
       if (!Array.isArray(field.source_ids) || !field.source_ids.length

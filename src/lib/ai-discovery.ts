@@ -1,4 +1,5 @@
 import { normalizeLinks, normalizeResearch, safeJsonParse } from "./json";
+import { fundingStageDisplayLabel, fundingStageLabel } from "./funding-terms";
 import {
   DEFAULT_SITE_URL,
   SITE_DESCRIPTION,
@@ -379,7 +380,7 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
       startup.official_url ? `- Official URL: ${startup.official_url}` : null,
       `- Domain: ${escapeMarkdown(startup.domain)}`,
       startup.product_type ? `- Type: ${escapeMarkdown(startup.product_type)}` : null,
-      startup.funding_stage ? `- Stage: ${escapeMarkdown(startup.funding_stage)}` : null,
+      startup.funding_stage ? `- Stage: ${escapeMarkdown(fundingStageDisplayLabel(startup.funding_stage) ?? startup.funding_stage)}` : null,
       startup.funding_display ? `- Funding display: ${escapeMarkdown(startup.funding_display)}` : null,
       startup.region ? `- Region: ${escapeMarkdown(startup.region)}` : null,
       startup.published_at ? `- Published on VentureDex: ${startup.published_at}` : null,
@@ -574,7 +575,7 @@ function stripEmpty<T extends Record<string, unknown>>(value: T): T {
 function formatFunding(funding: NonNullable<AiDiscoveryStartup["latest_funding"]>): string {
   return [
     funding.amount,
-    funding.stage_raw ?? funding.stage,
+    fundingStageLabel(funding),
     funding.currency ? `currency: ${funding.currency}` : null,
     funding.instrument ? `instrument: ${funding.instrument}` : null,
     funding.date,

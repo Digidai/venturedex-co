@@ -45,4 +45,4 @@ npm run investors:validate
 ./scripts/manage.sh validate
 ```
 
-The initial September 9 migration contains seven researched firms and 247 explicitly pending legacy firms. This is an initial, source-checked set, not a claim that the entire directory has been researched.
+The human-authorized September 11 backlog completion contains 265 researched firm profiles and zero legacy profile exemptions. The migration is deterministic and source-bound: it does not claim independent verification of firm-authored mandates, and future refreshes still follow the 90-day/material-change policy above.

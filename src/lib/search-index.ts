@@ -1,4 +1,5 @@
 import type { Startup } from "./types";
+import { fundingStageDisplayLabel } from "./funding-terms";
 
 /**
  * Pure, testable search scoring for the prerendered /search page.
@@ -88,7 +89,7 @@ export function buildSearchEntries(startups: Startup[]): SearchEntry[] {
     type: startup.product_type ?? "",
     tags: startup.tags ?? "",
     summary: startup.summary ?? "",
-    stage: startup.funding_stage ?? "",
+    stage: fundingStageDisplayLabel(startup.funding_stage) ?? "",
     region: startup.region ?? "",
     whyFeatured: startup.why_featured ?? "",
   }));

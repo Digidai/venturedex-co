@@ -1906,7 +1906,7 @@ cmd_add() {
   echo
   echo "Funding:"
   funding_amount="$(prompt_required "Amount (e.g. \$20M or undisclosed)")"
-  funding_stage="$(prompt_required "Stage (Pre-Seed / Seed / Pre-Series A / named Series A-Z; preserve extensions in stage_raw; D+ requires research.breakout_exception)")"
+  funding_stage="$(prompt_required "Stage (Unspecified / Pre-Seed / Seed / Pre-Series A / named Series A-Z; Unspecified requires research.unnamed_round_assessment; D+ requires research.breakout_exception)")"
   lead_investor="$(prompt_required "Lead investor")"
   funding_date="$(prompt_required "Funding date (YYYY-MM-DD)")"
   source_url="$(prompt_required "Source article URL")"

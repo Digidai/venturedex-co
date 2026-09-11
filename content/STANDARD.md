@@ -77,7 +77,9 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 }
 ```
 
-`source_ids` 至少三个且不能重复，必须引用 `research.sources` 中的官方来源和融资来源，并覆盖至少两条 `research.product_evidence`。这个字段只记录例外理由和证据绑定；它不替代 F2 独立公司核验、F3 人工判断、完整 research、品牌或发布门禁。`Growth`、`Late Stage`、`Series AA` 等模糊或非具名轮次仍不进入 schema。
+`source_ids` 至少三个且不能重复，必须引用 `research.sources` 中的官方来源和融资来源，并覆盖至少两条 `research.product_evidence`。这个字段只记录例外理由和证据绑定；它不替代 F2 独立公司核验、F3 人工判断、完整 research、品牌或发布门禁。
+
+来源已确认融资、但没有给出轮次名称时，使用 `funding[].stage: "Unspecified"`，页面显示为 “Stage undisclosed”，不得猜成 Seed、Growth 或其他轮次。此时必须增加同样强度的 `research.unnamed_round_assessment`（80-500 字符 reason、至少三个唯一 source_ids、含 official 与 funding、并绑定至少两条产品证据）。`stage_raw` 不得与 `Unspecified` 同时出现。`Growth`、`Late Stage`、`Series AA` 等模糊标签仍不进入 schema。
 
 新决策首先记到 `content/curation-reviews.json`。只有确证质量否决或政策排除才可另写 v2 历史记录到 `content/rejected.jsonl`；访问、证据、格式或发布阻塞不写拒绝行：
 ```jsonl
@@ -129,7 +131,7 @@ Stage 1: 发现 ──→ Stage 2: 初筛 ──→ Stage 3: 深度评估 ──
 | 字段 | 来源要求 | 如果找不到 |
 |------|---------|-----------|
 | 融资金额 | 原文明确提到的数字 | 保留必填 amount 键，值写 "undisclosed" |
-| 融资轮次 | 原文明确标注，按 funding-terms.md 保留原词并标准化 | 未具名先 evidence_pending，不猜测或永久拒绝 |
+| 融资轮次 | 原文明确标注，按 funding-terms.md 保留原词并标准化 | 已确认融资但未具名写 `Unspecified` 并补齐证据绑定；不能确认融资本身才 evidence_pending |
 | Lead investor | 原文明示的 lead/co-lead；不能把首个提及的参投方推断为领投 | 保留必填 lead_investor 键，值写 "undisclosed" |
 | 日期 | 文章发布日期 | 必须有 |
 | 来源 URL | 文章 URL | 必须有，没有来源不收录 |
