@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "acf45fec03292284ef74e2e7ecfddffd72dd4933",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/acf45fec03292284ef74e2e7ecfddffd72dd4933",
-    "commit_at": "2026-09-12T12:58:21.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/acf45fec03292284ef74e2e7ecfddffd72dd4933/src/data/videos.json",
-    "raw_sha256": "529b76f911f7ce641fff211b383dfb847ca47655519048db04157e043100ee59"
+    "commit": "ecde479e933d2ff2900cc2031146e8fbe3bb4b7b",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/ecde479e933d2ff2900cc2031146e8fbe3bb4b7b",
+    "commit_at": "2026-09-12T15:55:34.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/ecde479e933d2ff2900cc2031146e8fbe3bb4b7b/src/data/videos.json",
+    "raw_sha256": "a4b025abb9b6a103bf1b06b1f824c8e3467ee40a5ad1cab80f5eaabe51f98d70"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,29 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-11T22:06:31.000Z",
-  "item_count": 2039,
+  "source_published_through": "2026-09-11T22:26:39.000Z",
+  "item_count": 2046,
   "items": [
+    {
+      "id": "plv-nuno-ai",
+      "tweet_id": "2098538740495134762",
+      "slug": "nuno-ai",
+      "title": "Nuno AI — social media agent for every platform",
+      "product": "Nuno AI",
+      "company": "Nuno AI",
+      "category": "ai",
+      "tags": [
+        "nuno",
+        "social",
+        "agent"
+      ],
+      "published_at": "2026-09-11T22:26:39.000Z",
+      "duration_seconds": 54,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098538702758981632/vid/avc1/1920x1080/CTBKO7SHuGnC4LQQ.mp4",
+      "original_post_url": "https://x.com/GetNunoAi/status/2098538740495134762",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
+    },
     {
       "id": "plv-chatgpt-pets",
       "tweet_id": "2098533675050672134",
@@ -205,6 +225,26 @@
       "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
+      "id": "plv-boski",
+      "tweet_id": "2098438725940224208",
+      "slug": "boski",
+      "title": "Boski — a personal agent that works 24/7",
+      "product": "Boski",
+      "company": "Boski",
+      "category": "ai",
+      "tags": [
+        "boski",
+        "agent",
+        "personal"
+      ],
+      "published_at": "2026-09-11T15:49:14.000Z",
+      "duration_seconds": 46,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098438609628168192/vid/avc1/1920x1080/4_8YAg7By8tf0al7.mp4",
+      "original_post_url": "https://x.com/wojkuli/status/2098438725940224208",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
+    },
+    {
       "id": "plv-ego-changelog",
       "tweet_id": "2098437702681329688",
       "slug": "ego-changelog",
@@ -325,6 +365,26 @@
       "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
+      "id": "plv-cursor-projects",
+      "tweet_id": "2098162488013455784",
+      "slug": "cursor-projects",
+      "title": "Cursor Projects — one thread for all your work",
+      "product": "Cursor Projects",
+      "company": "Cursor",
+      "category": "developer-tools",
+      "tags": [
+        "cursor",
+        "projects",
+        "agents"
+      ],
+      "published_at": "2026-09-10T21:31:33.000Z",
+      "duration_seconds": 94,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098151257902809092/vid/avc1/1920x1080/GWFN05NST0f39cB3.mp4",
+      "original_post_url": "https://x.com/cursor_ai/status/2098162488013455784",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
+    },
+    {
       "id": "plv-devin-voice",
       "tweet_id": "2098142686486356185",
       "slug": "devin-voice",
@@ -363,6 +423,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2098115158157709312/vid/avc1/1920x1080/P5dLtrC-BnV995bL.mp4",
       "original_post_url": "https://x.com/rivet_dev/status/2098133154901135756",
       "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-chatgpt-financial-services",
+      "tweet_id": "2098118191029624911",
+      "slug": "chatgpt-financial-services",
+      "title": "ChatGPT for Financial Services",
+      "product": "ChatGPT for Financial Services",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "chatgpt",
+        "finance",
+        "openai"
+      ],
+      "published_at": "2026-09-10T18:35:32.000Z",
+      "duration_seconds": 81,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098111416284897280/vid/avc1/1920x1080/9ozTNPyavdJ3UWzK.mp4",
+      "original_post_url": "https://x.com/OpenAI/status/2098118191029624911",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
     },
     {
       "id": "plv-persimmon",
@@ -423,6 +503,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2098086689730379776/vid/avc1/1920x1080/ioj1OWNWU70eix0z.mp4",
       "original_post_url": "https://x.com/MahyadGhassemi/status/2098086756054933755",
       "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-phoenix-4-5",
+      "tweet_id": "2098085616663863427",
+      "slug": "phoenix-4-5",
+      "title": "Phoenix-4.5 — real-time human rendering",
+      "product": "Phoenix-4.5",
+      "company": "Tavus",
+      "category": "ai",
+      "tags": [
+        "tavus",
+        "phoenix",
+        "rendering"
+      ],
+      "published_at": "2026-09-10T16:26:06.000Z",
+      "duration_seconds": 317,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098084767661277184/vid/avc1/1920x1080/A0uAHulihVpPNrtK.mp4",
+      "original_post_url": "https://x.com/tavus/status/2098085616663863427",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
     },
     {
       "id": "plv-gumball",
@@ -503,6 +603,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2098003616988807168/vid/avc1/1920x1080/chwXghT_rU4TyP9F.mp4",
       "original_post_url": "https://x.com/treg_ai/status/2098003722966270352",
       "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
+      "id": "plv-one-toolbar",
+      "tweet_id": "2097838259762340028",
+      "slug": "one-toolbar",
+      "title": "One — a toolbar to talk with your agents",
+      "product": "One",
+      "company": "kyzo",
+      "category": "developer-tools",
+      "tags": [
+        "one",
+        "agents",
+        "toolbar"
+      ],
+      "published_at": "2026-09-10T00:03:11.000Z",
+      "duration_seconds": 53,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097835555874811904/vid/avc1/1772x1080/MllSODcsvfVUUmYy.mp4",
+      "original_post_url": "https://x.com/ky__zo/status/2097838259762340028",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
     },
     {
       "id": "plv-higgsfield-astra-animate",
@@ -623,6 +743,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097607342334656512/vid/avc1/1920x1080/VbKE506vIEUnW1n-.mp4",
       "original_post_url": "https://x.com/davidhaz/status/2097609187526062436",
       "last_changed_at": "2026-09-10T12:04:02.000Z"
+    },
+    {
+      "id": "plv-chatgpt-small-business",
+      "tweet_id": "2097523484629090408",
+      "slug": "chatgpt-small-business",
+      "title": "ChatGPT — 16 plugins for small business",
+      "product": "ChatGPT Small Business",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "chatgpt",
+        "plugins",
+        "openai"
+      ],
+      "published_at": "2026-09-09T03:12:23.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097523257851441152/vid/avc1/1920x1080/bXZVaco6ww-dqb1i.mp4",
+      "original_post_url": "https://x.com/OpenAI/status/2097523484629090408",
+      "last_changed_at": "2026-09-12T15:55:34.000Z"
     },
     {
       "id": "plv-lapis-one",
