@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "5af451851563f224cfb150feb9f16ceeeff09707",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/5af451851563f224cfb150feb9f16ceeeff09707",
-    "commit_at": "2026-09-11T12:44:19.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/5af451851563f224cfb150feb9f16ceeeff09707/src/data/videos.json",
-    "raw_sha256": "33474a7a224e57f95f9592993c772b8f311f7c0bfc17cae4975e5009de8c364d"
+    "commit": "27705469141859a93d9c12d4011a1218fecd3d3c",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/27705469141859a93d9c12d4011a1218fecd3d3c",
+    "commit_at": "2026-09-12T09:37:09.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/27705469141859a93d9c12d4011a1218fecd3d3c/src/data/videos.json",
+    "raw_sha256": "1f9c6103d2246b3d8299dcc96998eb445c412fc2d675eb3028cf61db62b0ecb6"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,249 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-10T16:21:11.000Z",
-  "item_count": 2012,
+  "source_published_through": "2026-09-11T20:09:21.000Z",
+  "item_count": 2028,
   "items": [
+    {
+      "id": "plv-qwen3-8-27b-cerebras",
+      "tweet_id": "2098504189773041852",
+      "slug": "qwen3-8-27b-cerebras",
+      "title": "Qwen3.8-27B — live at Cerebras speed",
+      "product": "Qwen3.8-27B",
+      "company": "Cerebras",
+      "category": "ai",
+      "tags": [
+        "qwen",
+        "cerebras",
+        "ai"
+      ],
+      "published_at": "2026-09-11T20:09:21.000Z",
+      "duration_seconds": 48,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098503990883336195/vid/avc1/1916x1080/P5AB19m-xuKuSoWx.mp4",
+      "original_post_url": "https://x.com/cerebras/status/2098504189773041852",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-h3-max-camera-controls",
+      "tweet_id": "2098497550709854647",
+      "slug": "h3-max-camera-controls",
+      "title": "H3 Max Camera Controls — fastest 3D video",
+      "product": "H3 Max Camera Controls",
+      "company": "fal",
+      "category": "ai",
+      "tags": [
+        "fal",
+        "h3-max",
+        "3d"
+      ],
+      "published_at": "2026-09-11T19:42:58.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2098497465158668293/pu/vid/avc1/1280x720/ftx_--MiA42-PBgd.mp4?tag=12",
+      "original_post_url": "https://x.com/fal/status/2098497550709854647",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-deepseek-v4-1-flash-modal",
+      "tweet_id": "2098482627007414675",
+      "slug": "deepseek-v4-1-flash-modal",
+      "title": "DeepSeek v4.1-Flash — now on Modal",
+      "product": "DeepSeek v4.1-Flash",
+      "company": "Modal",
+      "category": "ai",
+      "tags": [
+        "deepseek",
+        "modal",
+        "ai"
+      ],
+      "published_at": "2026-09-11T18:43:40.000Z",
+      "duration_seconds": 4,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098482234902941696/vid/avc1/1280x720/sNTVL-tY9XWp7Kzc.mp4",
+      "original_post_url": "https://x.com/modal/status/2098482627007414675",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-paww",
+      "tweet_id": "2098482444987167060",
+      "slug": "paww",
+      "title": "Paww — the all-in-one app for dogs",
+      "product": "Paww",
+      "company": "Paww",
+      "category": "consumer",
+      "tags": [
+        "paww",
+        "dogs",
+        "app"
+      ],
+      "published_at": "2026-09-11T18:42:57.000Z",
+      "duration_seconds": 40,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098482377102397440/vid/avc1/1920x1080/JK7Hm9xHzeTQkZHP.mp4",
+      "original_post_url": "https://x.com/subramanya/status/2098482444987167060",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-gpu-time",
+      "tweet_id": "2098472160029463006",
+      "slug": "gpu-time",
+      "title": "gpu-time — convert GPU time in the browser",
+      "product": "gpu-time",
+      "company": "Arik Chakma",
+      "category": "developer-tools",
+      "tags": [
+        "gpu-time",
+        "webgpu",
+        "devtools"
+      ],
+      "published_at": "2026-09-11T18:02:05.000Z",
+      "duration_seconds": 91,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098471498835193856/vid/avc1/1920x1080/OyTSN_HRbcpEklc8.mp4",
+      "original_post_url": "https://x.com/imarikchakma/status/2098472160029463006",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-alfera",
+      "tweet_id": "2098456611022839813",
+      "slug": "alfera",
+      "title": "Alfera — an AI coworker for your whole company",
+      "product": "Alfera",
+      "company": "Alfera",
+      "category": "ai",
+      "tags": [
+        "alfera",
+        "agents",
+        "work"
+      ],
+      "published_at": "2026-09-11T17:00:18.000Z",
+      "duration_seconds": 130,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098456529280348160/vid/avc1/1920x1080/WPNOLlnlb_Kg8ypQ.mp4",
+      "original_post_url": "https://x.com/olivieropinotti/status/2098456611022839813",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-higgsfield-motion-design",
+      "tweet_id": "2098409362041753708",
+      "slug": "higgsfield-motion-design",
+      "title": "Higgsfield — motion design in After Effects",
+      "product": "Higgsfield AI Motion Designer",
+      "company": "Higgsfield",
+      "category": "design",
+      "tags": [
+        "higgsfield",
+        "after-effects",
+        "motion"
+      ],
+      "published_at": "2026-09-11T13:52:33.000Z",
+      "duration_seconds": 82,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098407971227398144/vid/avc1/1920x1080/jFycYXjVGgAwzmzi.mp4",
+      "original_post_url": "https://x.com/higgsfield/status/2098409362041753708",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-minimax-design-astra",
+      "tweet_id": "2098408580852641795",
+      "slug": "minimax-design-astra",
+      "title": "MiniMax Design — GPT-6 Astra is now live",
+      "product": "MiniMax Design",
+      "company": "MiniMax",
+      "category": "design",
+      "tags": [
+        "minimax",
+        "design",
+        "astra"
+      ],
+      "published_at": "2026-09-11T13:49:26.000Z",
+      "duration_seconds": 83,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098406677360132096/vid/avc1/2560x1440/TWut6LICjoTCznK4.mp4",
+      "original_post_url": "https://x.com/Hailuo_AI/status/2098408580852641795",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-freebeat-lyrics",
+      "tweet_id": "2098318574590800098",
+      "slug": "freebeat-lyrics",
+      "title": "Freebeat — lyrics that move with the music",
+      "product": "Freebeat Lyrics Video",
+      "company": "Freebeat",
+      "category": "consumer",
+      "tags": [
+        "freebeat",
+        "lyrics",
+        "video"
+      ],
+      "published_at": "2026-09-11T07:51:47.000Z",
+      "duration_seconds": 42,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098317475813490688/vid/avc1/1920x1080/N0Pde_tQLnzSUqlz.mp4",
+      "original_post_url": "https://x.com/freebeat_ai/status/2098318574590800098",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-rivet-mcp",
+      "tweet_id": "2098133154901135756",
+      "slug": "rivet-mcp",
+      "title": "Rivet MCP — build and manage agents",
+      "product": "Rivet MCP",
+      "company": "Rivet",
+      "category": "developer-tools",
+      "tags": [
+        "rivet",
+        "mcp",
+        "agents"
+      ],
+      "published_at": "2026-09-10T19:35:00.000Z",
+      "duration_seconds": 18,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098115158157709312/vid/avc1/1920x1080/P5dLtrC-BnV995bL.mp4",
+      "original_post_url": "https://x.com/rivet_dev/status/2098133154901135756",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-persimmon",
+      "tweet_id": "2098115046438215791",
+      "slug": "persimmon",
+      "title": "Persimmon — a model that simulates people",
+      "product": "Persimmon",
+      "company": "humans&",
+      "category": "ai",
+      "tags": [
+        "persimmon",
+        "humans",
+        "ai"
+      ],
+      "published_at": "2026-09-10T18:23:02.000Z",
+      "duration_seconds": 42,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098085104996499456/vid/avc1/1920x1080/y8ZyxA9DxMZvU7JB.mp4",
+      "original_post_url": "https://x.com/humansand/status/2098115046438215791",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-okibi",
+      "tweet_id": "2098086756054933755",
+      "slug": "okibi",
+      "title": "Okibi — turn your product into a CLI for agents",
+      "product": "Okibi",
+      "company": "Okibi",
+      "category": "ai",
+      "tags": [
+        "okibi",
+        "agents",
+        "cli"
+      ],
+      "published_at": "2026-09-10T16:30:37.000Z",
+      "duration_seconds": 121,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098086689730379776/vid/avc1/1920x1080/ioj1OWNWU70eix0z.mp4",
+      "original_post_url": "https://x.com/MahyadGhassemi/status/2098086756054933755",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
     {
       "id": "plv-gumball",
       "tweet_id": "2098084379474251777",
@@ -63,6 +303,46 @@
       "video_url": "https://video.twimg.com/amplify_video/2098071216942624776/vid/avc1/1920x1080/wOjl8wocG_9IivWc.mp4",
       "original_post_url": "https://x.com/shensi/status/2098071741687902645",
       "last_changed_at": "2026-09-11T12:44:19.000Z"
+    },
+    {
+      "id": "plv-ramp-design",
+      "tweet_id": "2098067763457659186",
+      "slug": "ramp-design",
+      "title": "Ramp Design — meet the designers",
+      "product": "Ramp Design",
+      "company": "Ramp",
+      "category": "design",
+      "tags": [
+        "ramp",
+        "design",
+        "studio"
+      ],
+      "published_at": "2026-09-10T15:15:09.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098065264785174531/vid/avc1/1920x1080/0nobTFND9gjx9MvR.mp4",
+      "original_post_url": "https://x.com/RikinPatel13/status/2098067763457659186",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-higgsfield-astra-animate",
+      "tweet_id": "2097832465624887774",
+      "slug": "higgsfield-astra-animate",
+      "title": "Higgsfield — animate with GPT-6 Astra",
+      "product": "Higgsfield Astra Animate",
+      "company": "Higgsfield",
+      "category": "design",
+      "tags": [
+        "higgsfield",
+        "astra",
+        "animation"
+      ],
+      "published_at": "2026-09-09T23:40:10.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097831175557681152/vid/avc1/1080x1440/q6dGQBcSOem1gwpV.mp4",
+      "original_post_url": "https://x.com/higgsfield/status/2097832465624887774",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
       "id": "plv-iphone-duo",
@@ -183,6 +463,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097479510593839104/vid/avc1/1920x1080/rBS4fqqFcpR9birE.mp4",
       "original_post_url": "https://x.com/nullbytes00/status/2097479777468985758",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-buzzkit",
+      "tweet_id": "2097477196130529296",
+      "slug": "buzzkit",
+      "title": "BuzzKit — open-source notification layer",
+      "product": "BuzzKit",
+      "company": "BuzzKit",
+      "category": "developer-tools",
+      "tags": [
+        "buzzkit",
+        "notifications",
+        "oss"
+      ],
+      "published_at": "2026-09-09T00:08:27.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097476791984152576/vid/avc1/1710x1080/eK1a8N_TaURXUVzp.mp4",
+      "original_post_url": "https://x.com/chroxify/status/2097477196130529296",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
       "id": "plv-cube-type",
@@ -363,6 +663,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097329530843353088/vid/avc1/1920x1080/2xtnF7P__nrHsGCU.mp4",
       "original_post_url": "https://x.com/tldraw/status/2097330001334989060",
       "last_changed_at": "2026-09-10T12:04:02.000Z"
+    },
+    {
+      "id": "plv-cutroom-studio",
+      "tweet_id": "2097289257786450084",
+      "slug": "cutroom-studio",
+      "title": "Cutroom Studio — AI studio for launch videos",
+      "product": "Cutroom Studio",
+      "company": "Cutroom",
+      "category": "design",
+      "tags": [
+        "cutroom",
+        "launch",
+        "video"
+      ],
+      "published_at": "2026-09-08T11:41:39.000Z",
+      "duration_seconds": 46,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097289153448980480/vid/avc1/1920x1080/fZTQPcJWiQnjkT3n.mp4",
+      "original_post_url": "https://x.com/karankendre/status/2097289257786450084",
+      "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
       "id": "plv-trancy-air",
