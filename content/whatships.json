@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "27705469141859a93d9c12d4011a1218fecd3d3c",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/27705469141859a93d9c12d4011a1218fecd3d3c",
-    "commit_at": "2026-09-12T09:37:09.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/27705469141859a93d9c12d4011a1218fecd3d3c/src/data/videos.json",
-    "raw_sha256": "1f9c6103d2246b3d8299dcc96998eb445c412fc2d675eb3028cf61db62b0ecb6"
+    "commit": "acf45fec03292284ef74e2e7ecfddffd72dd4933",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/acf45fec03292284ef74e2e7ecfddffd72dd4933",
+    "commit_at": "2026-09-12T12:58:21.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/acf45fec03292284ef74e2e7ecfddffd72dd4933/src/data/videos.json",
+    "raw_sha256": "529b76f911f7ce641fff211b383dfb847ca47655519048db04157e043100ee59"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,29 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-11T20:09:21.000Z",
-  "item_count": 2028,
+  "source_published_through": "2026-09-11T22:06:31.000Z",
+  "item_count": 2039,
   "items": [
+    {
+      "id": "plv-chatgpt-pets",
+      "tweet_id": "2098533675050672134",
+      "slug": "chatgpt-pets",
+      "title": "ChatGPT Pets — start a new chat from your pet",
+      "product": "ChatGPT Pets",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "chatgpt",
+        "pets",
+        "openai"
+      ],
+      "published_at": "2026-09-11T22:06:31.000Z",
+      "duration_seconds": 10,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098532225167851527/vid/avc1/1124x662/Lk0gQEBoRBp3SlYN.mp4",
+      "original_post_url": "https://x.com/ChatGPT/status/2098533675050672134",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
     {
       "id": "plv-qwen3-8-27b-cerebras",
       "tweet_id": "2098504189773041852",
@@ -105,6 +125,26 @@
       "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
+      "id": "plv-freellm",
+      "tweet_id": "2098474861257498863",
+      "slug": "freellm",
+      "title": "freeLLM — a directory of free AI models",
+      "product": "freeLLM",
+      "company": "freeLLM",
+      "category": "developer-tools",
+      "tags": [
+        "freellm",
+        "models",
+        "directory"
+      ],
+      "published_at": "2026-09-11T18:12:49.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098474674019590148/vid/avc1/1926x1080/Kc3O9WvxYLmtg5qI.mp4",
+      "original_post_url": "https://x.com/0x_kaize/status/2098474861257498863",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
       "id": "plv-gpu-time",
       "tweet_id": "2098472160029463006",
       "slug": "gpu-time",
@@ -143,6 +183,46 @@
       "video_url": "https://video.twimg.com/amplify_video/2098456529280348160/vid/avc1/1920x1080/WPNOLlnlb_Kg8ypQ.mp4",
       "original_post_url": "https://x.com/olivieropinotti/status/2098456611022839813",
       "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-dockset",
+      "tweet_id": "2098441638552965505",
+      "slug": "dockset",
+      "title": "Dockset 0.2 — custom docks for your Mac",
+      "product": "Dockset",
+      "company": "Dockset",
+      "category": "productivity",
+      "tags": [
+        "dockset",
+        "macos",
+        "dock"
+      ],
+      "published_at": "2026-09-11T16:00:48.000Z",
+      "duration_seconds": 40,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098441578503098376/vid/avc1/2236x1440/wMME55z9aMMQQECI.mp4",
+      "original_post_url": "https://x.com/benjaminakar/status/2098441638552965505",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
+      "id": "plv-ego-changelog",
+      "tweet_id": "2098437702681329688",
+      "slug": "ego-changelog",
+      "title": "ego changelog — every update gets a reveal",
+      "product": "ego changelog",
+      "company": "ego",
+      "category": "design",
+      "tags": [
+        "ego",
+        "changelog",
+        "design"
+      ],
+      "published_at": "2026-09-11T15:45:10.000Z",
+      "duration_seconds": 14,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098437665435893762/vid/avc1/1652x1080/2TxGEcJTjqQubqIN.mp4?tag=16",
+      "original_post_url": "https://x.com/ego_agent/status/2098437702681329688",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
       "id": "plv-higgsfield-motion-design",
@@ -205,6 +285,66 @@
       "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
+      "id": "plv-chewei-site",
+      "tweet_id": "2098276399723221354",
+      "slug": "chewei-site",
+      "title": "Che Wei Lee — a TweetDeck-style personal site",
+      "product": "Che Wei Lee",
+      "company": "Che Wei Lee",
+      "category": "design",
+      "tags": [
+        "portfolio",
+        "cms",
+        "payload"
+      ],
+      "published_at": "2026-09-11T05:04:12.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098273829940514816/vid/avc1/960x720/KGyd949NG-zTPZhy.mp4?tag=14",
+      "original_post_url": "https://x.com/cheweileee/status/2098276399723221354",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
+      "id": "plv-rive-cli",
+      "tweet_id": "2098199118518907145",
+      "slug": "rive-cli",
+      "title": "Rive CLI — build Rive files with your agent",
+      "product": "Rive CLI",
+      "company": "Rive",
+      "category": "developer-tools",
+      "tags": [
+        "rive",
+        "cli",
+        "agents"
+      ],
+      "published_at": "2026-09-10T23:57:07.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098163307706511360/vid/avc1/1920x1080/PyHRaYDX99pQplXf.mp4",
+      "original_post_url": "https://x.com/rive_app/status/2098199118518907145",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
+      "id": "plv-devin-voice",
+      "tweet_id": "2098142686486356185",
+      "slug": "devin-voice",
+      "title": "Devin Voice — you say it, Devin ships it",
+      "product": "Devin Voice",
+      "company": "Cognition",
+      "category": "ai",
+      "tags": [
+        "devin",
+        "voice",
+        "cognition"
+      ],
+      "published_at": "2026-09-10T20:12:52.000Z",
+      "duration_seconds": 51,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098141310645616640/vid/avc1/1920x1080/4ANTnV2tukJHMCdR.mp4",
+      "original_post_url": "https://x.com/cognition/status/2098142686486356185",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
       "id": "plv-rivet-mcp",
       "tweet_id": "2098133154901135756",
       "slug": "rivet-mcp",
@@ -243,6 +383,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2098085104996499456/vid/avc1/1920x1080/y8ZyxA9DxMZvU7JB.mp4",
       "original_post_url": "https://x.com/humansand/status/2098115046438215791",
       "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-cosmos-summer",
+      "tweet_id": "2098095907992490342",
+      "slug": "cosmos-summer",
+      "title": "Cosmos — shop your taste, now on iPad",
+      "product": "Cosmos",
+      "company": "Cosmos",
+      "category": "consumer",
+      "tags": [
+        "cosmos",
+        "ipad",
+        "android"
+      ],
+      "published_at": "2026-09-10T17:06:59.000Z",
+      "duration_seconds": 54,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098095722336059392/vid/avc1/1080x1080/8UKwl3Z3b6aCAtNi.mp4",
+      "original_post_url": "https://x.com/thecosmos/status/2098095907992490342",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
       "id": "plv-okibi",
@@ -325,6 +485,26 @@
       "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
+      "id": "plv-enrich-arena",
+      "tweet_id": "2098003722966270352",
+      "slug": "enrich-arena",
+      "title": "Enrich Arena — 60+ vendors compete for your leads",
+      "product": "Enrich Arena",
+      "company": "Treg",
+      "category": "productivity",
+      "tags": [
+        "treg",
+        "enrich",
+        "leads"
+      ],
+      "published_at": "2026-09-10T11:00:41.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098003616988807168/vid/avc1/1920x1080/chwXghT_rU4TyP9F.mp4",
+      "original_post_url": "https://x.com/treg_ai/status/2098003722966270352",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
       "id": "plv-higgsfield-astra-animate",
       "tweet_id": "2097832465624887774",
       "slug": "higgsfield-astra-animate",
@@ -343,6 +523,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097831175557681152/vid/avc1/1080x1440/q6dGQBcSOem1gwpV.mp4",
       "original_post_url": "https://x.com/higgsfield/status/2097832465624887774",
       "last_changed_at": "2026-09-12T09:37:09.000Z"
+    },
+    {
+      "id": "plv-fomo-mfa",
+      "tweet_id": "2097770600966090895",
+      "slug": "fomo-mfa",
+      "title": "fomo — passkeys, authenticator, and Face ID",
+      "product": "fomo MFA",
+      "company": "fomo",
+      "category": "consumer",
+      "tags": [
+        "fomo",
+        "auth",
+        "passkeys"
+      ],
+      "published_at": "2026-09-09T19:34:20.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097757173149204488/vid/avc1/1080x1350/PCDX4is4cldtZKvg.mp4",
+      "original_post_url": "https://x.com/fomo/status/2097770600966090895",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
       "id": "plv-iphone-duo",
@@ -663,6 +863,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097329530843353088/vid/avc1/1920x1080/2xtnF7P__nrHsGCU.mp4",
       "original_post_url": "https://x.com/tldraw/status/2097330001334989060",
       "last_changed_at": "2026-09-10T12:04:02.000Z"
+    },
+    {
+      "id": "plv-imagio",
+      "tweet_id": "2097317088142741704",
+      "slug": "imagio",
+      "title": "Imagio — Framer sites that are not just a screenshot",
+      "product": "Imagio",
+      "company": "Imagio",
+      "category": "design",
+      "tags": [
+        "imagio",
+        "framer",
+        "design"
+      ],
+      "published_at": "2026-09-08T13:32:14.000Z",
+      "duration_seconds": 55,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097313423382204417/vid/avc1/1440x1080/tfhACBnfiu9MFeKz.mp4",
+      "original_post_url": "https://x.com/tanvir_ui/status/2097317088142741704",
+      "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
       "id": "plv-cutroom-studio",
