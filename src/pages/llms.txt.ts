@@ -27,6 +27,7 @@ The changes feed contains the latest 50 recorded publication or distinct update 
 ${[
     link("Explore startups", "/"),
     link("Complete filterable startup directory", "/directory"),
+    link("Startup categories by industry, funding stage, and region", "/categories"),
     link("Startup topic maps", "/topics"),
     link("Collections", "/collections"),
     link("Startup investors", "/investors"),

@@ -142,6 +142,10 @@ export function selectChangedUrls(files: string[], current: JsonReader, previous
       paths.add("/research");
       paths.add("/directory");
       limitations.add("Launch catalog changes notify hubs only; the existing WhatShips workflow owns exact changed launch submissions.");
+    } else if (file.startsWith("src/pages/categories/") || file === "src/lib/category-pages.ts") {
+      paths.add("/categories");
+      paths.add("/directory");
+      limitations.add("Category changes notify the hub; nonempty detail cohorts are discoverable through HTML links and the sitemap.");
     } else if (file.startsWith("src/pages/topics/") || file === "src/lib/topic-pages.ts") {
       paths.add("/topics");
       for (const row of changedEntries(current("content/topic-pages.json"), [])) paths.add(`/topics/${row.slug}`);

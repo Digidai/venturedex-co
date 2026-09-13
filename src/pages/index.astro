@@ -21,6 +21,7 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
 ---
 
 <Base title="Startup Research, Funding & Investor Intelligence" description={description} schema={schema}>
+  <FundingTicker rounds={rounds} />
   <div class="container discovery-home">
     <header class="home-hero">
       <h1>Startups worth a <em>closer look.</em></h1>
@@ -61,15 +62,6 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
       </div>
     </section>
 
-    <section class="home-section funding-section" aria-labelledby="funding-heading">
-      <div class="section-heading">
-        <h2 id="funding-heading">Latest funding</h2>
-        <a href="/news">All funding rounds →</a>
-      </div>
-      <FundingTicker rounds={rounds} />
-      <p class="research-note">Independent research, with original sources and open questions. <a href="/research">How we research companies →</a></p>
-    </section>
-
     <section class="follow-research" aria-labelledby="follow-heading">
       <div>
         <p class="eyebrow">Keep your research current</p>
@@ -84,6 +76,7 @@ const schema = homeJsonLd(latest, Astro.site?.toString());
         <h3>Research with an AI assistant?</h3>
         <p>Retrieve one company at a time, with source references and research dates.</p>
         <a href="/llms.txt">Agent reading guide →</a>
+        <p class="research-note"><a href="/research">How we research companies →</a></p>
       </aside>
     </section>
   </div>

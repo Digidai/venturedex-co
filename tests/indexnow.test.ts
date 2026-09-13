@@ -126,6 +126,7 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
 
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/directory"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/categories"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/2"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/12"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections"));

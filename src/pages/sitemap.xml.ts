@@ -20,6 +20,7 @@ import { whatShipsSnapshot } from "../lib/whatships";
 import { versionedScreenshotUrl } from "../lib/screenshots";
 import { paginateFundingRounds, fundingPagePath } from "../lib/funding-pagination";
 import { getResearchBriefs, researchBriefPath } from "../lib/research-briefs";
+import { buildCategoryPages, CATEGORY_CONTENT_UPDATED } from "../lib/category-pages";
 
 export interface SitemapUrl {
   loc: string;
@@ -61,6 +62,7 @@ export function getSitemapUrls(): SitemapUrl[] {
   const latestWeeklyIssue = weeklyIssues[0] ?? null;
   const allStartups = getContentStartups();
   const topics = getTopicPages(allStartups, weeklyIssues);
+  const categories = buildCategoryPages(allStartups);
   const briefs = getResearchBriefs(new Set(allStartups.map((startup) => startup.slug)));
   const rounds = getContentNewsEligibleFundingRounds();
   const latestStartupLastmod = latestSitemapLastmod(allStartups.map((startup) => startup.updated_at || startup.published_at));
@@ -72,6 +74,7 @@ export function getSitemapUrls(): SitemapUrl[] {
   let urls: SitemapUrl[] = [
     { loc: "/", lastmod: latestStartupLastmod, priority: "1.0" },
     { loc: "/directory", lastmod: latestStartupLastmod, priority: "0.8" },
+    { loc: "/categories", lastmod: latestSitemapLastmod([CATEGORY_CONTENT_UPDATED, latestStartupLastmod]), priority: "0.8" },
     { loc: "/investors", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/news", lastmod: latestFundingLastmod, priority: "0.8" },
     { loc: "/weekly", lastmod: latestWeeklyIssue?.published_at ?? latestWeeklyIssue?.week_end, priority: "0.8" },
@@ -87,6 +90,7 @@ export function getSitemapUrls(): SitemapUrl[] {
     { loc: "/llms-full.txt", lastmod: latestDiscoveryLastmod, priority: "0.5" },
     { loc: "/ai-index.json", lastmod: latestDiscoveryLastmod, priority: "0.5" },
   ].concat(
+    categories.map(category => ({loc: category.path, lastmod: category.lastmod, priority: "0.7"})),
     weeklyIssues.map((issue) => ({
       loc: `/weekly/${issue.issue_number}`,
       lastmod: issue.published_at ?? issue.week_end,

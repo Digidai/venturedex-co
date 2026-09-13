@@ -14,6 +14,7 @@ import {
   truncateText,
 } from "./seo";
 import type { TopicPage } from "./topic-pages";
+import { buildCategoryPages } from "./category-pages";
 import type { Collection, FundingRound, Startup, StartupResearch } from "./types";
 import type { WeeklyIssueContent } from "./weekly";
 import { getPublicLaunchTags, type WhatShipsItem } from "./whatships";
@@ -99,6 +100,7 @@ export interface AiDiscoveryIndex {
     startups: number;
     weekly_issues: number;
     topics: number;
+    categories: number;
     collections: number;
     launches: number;
   };
@@ -107,12 +109,14 @@ export interface AiDiscoveryIndex {
     startups: string;
     weekly: string;
     topics: string;
+    categories: string;
     collections: string;
     investors: string;
     news: string;
     launches: string;
   };
   startups: AiDiscoveryStartup[];
+  categories: Array<{title: string; url: string; dimension: string; startup_count: number; membership_rule: string}>;
   weekly_issues: Array<{
     issue_number: number;
     title: string;
@@ -155,6 +159,7 @@ export function buildAiDiscoveryIndex(input: {
 }): AiDiscoveryIndex {
   const siteUrl = getSiteUrl(input.siteUrl ?? DEFAULT_SITE_URL);
   const fundingBySlug = fundingRoundsByStartup(input.fundingRounds);
+  const categories = buildCategoryPages(input.startups);
   const startups = input.startups
     .slice()
     .sort((a, b) => (b.published_at ?? "").localeCompare(a.published_at ?? "") || a.product_name.localeCompare(b.product_name))
@@ -202,6 +207,7 @@ export function buildAiDiscoveryIndex(input: {
       startups: input.startups.length,
       weekly_issues: input.weeklyIssues.length,
       topics: input.topics.length,
+      categories: categories.length,
       collections: input.collections.length,
       launches: input.launches.length,
     },
@@ -214,12 +220,14 @@ export function buildAiDiscoveryIndex(input: {
       startups: absoluteUrl("/", siteUrl),
       weekly: absoluteUrl("/weekly", siteUrl),
       topics: absoluteUrl("/topics", siteUrl),
+      categories: absoluteUrl("/categories", siteUrl),
       collections: absoluteUrl("/collections", siteUrl),
       investors: absoluteUrl("/investors", siteUrl),
       news: absoluteUrl("/news", siteUrl),
       launches: absoluteUrl("/launches", siteUrl),
     },
     startups,
+    categories: categories.map(category => ({title: category.title, url: absoluteUrl(category.path, siteUrl), dimension: category.dimension, startup_count: category.startups.length, membership_rule: category.scope})),
     weekly_issues: input.weeklyIssues
       .slice()
       .sort((a, b) => b.issue_number - a.issue_number)
@@ -307,6 +315,7 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
     `- Startup profiles: ${index.counts.startups}`,
     `- Weekly issues: ${index.counts.weekly_issues}`,
     `- Topic maps: ${index.counts.topics}`,
+    `- Category views: ${index.counts.categories}`,
     `- Collections: ${index.counts.collections}`,
     `- Launch pages: ${index.counts.launches}`,
     "",
@@ -325,7 +334,11 @@ export function renderLlmsFullText(index: AiDiscoveryIndex): string {
     );
   }
 
-  lines.push("## Topic Maps", "");
+  lines.push("## Category Views", "", "These are overlapping research cohorts, not market-size estimates. Membership uses published profiles and their recorded product category, latest funding stage, or region.", "");
+  for (const category of index.categories) {
+    lines.push(`- [${escapeMarkdown(category.title)}](${category.url}) — ${category.startup_count} profiles. ${escapeMarkdown(category.membership_rule)}`);
+  }
+  lines.push("", "## Topic Maps", "");
   for (const topic of index.topics) {
     lines.push(
       `### ${escapeMarkdown(topic.title)}`,

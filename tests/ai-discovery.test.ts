@@ -180,6 +180,10 @@ test("buildAiDiscoveryIndex exposes canonical AI discovery surfaces", () => {
   assert.equal(index.site.discovery.ai_index_json, `${SITE_URL}/ai-index.json`);
   assert.equal(index.site.discovery.launches_json, `${SITE_URL}/launches.json`);
   assert.equal(index.counts.startups, 1);
+  assert.equal(index.routes.categories, `${SITE_URL}/categories`);
+  assert.ok(index.categories.length > 0);
+  assert.equal(index.counts.categories, index.categories.length);
+  assert.ok(index.categories.every(category => category.startup_count > 0 && !category.url.includes("?")));
   assert.equal(index.startups[0]?.url, `${SITE_URL}/startups/example-ai`);
   assert.equal(index.startups[0]?.official_url, "https://example.ai/");
   assert.equal(index.counts.launches, 1);
