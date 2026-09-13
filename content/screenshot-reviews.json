@@ -110,6 +110,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "airbility": {
+      "sha256": "a949cea3fd3c051ffd4ad27b3cb68a9c462cf540d11b015c6842e45d8a164f07",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://airbility.co.kr/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch27",
+      "reviewed_at": "2026-09-13T06:08:43.659Z",
+      "reviewer": "codex-root-visual-review-epoch27",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Airbility hero is fully loaded at native 1280x720: the complete aircraft, Airbility wordmark and product navigation remain visible in the production card, full detail route and 390px narrow layout; no overlay or capture defect obscures the subject."
+    },
     "airbound": {
       "sha256": "790160581d7aaaa3ca98cd25cee9db4d6823025bc880aa5cebe92b9ef88c2e60",
       "width": 1280,
@@ -3883,6 +3902,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "piston": {
+      "sha256": "27129b5c1267feda8c2cc33beeadcbf4c727b480ae94a2298042dccec8b13413",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.piston.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch27",
+      "reviewed_at": "2026-09-13T06:08:43.522Z",
+      "reviewer": "codex-root-visual-review-epoch27",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Piston hero is fully loaded at native 1280x720: the cardless fueling promise, phone map and live authorization panel remain recognizable in the production card, full detail route and 390px narrow layout; no consent banner, modal or partial-loading state obstructs the product."
+    },
     "pit": {
       "sha256": "9696412d73adb2e4f32f88b703ef64bcedc3b723e7849daf7d062b9b96ef8297",
       "width": 1440,
@@ -5405,6 +5443,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "vecna-robotics": {
+      "sha256": "4ab55cd64de0a1b6de96ed45f868699456fb198b328b568ae06205986be91fa1",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.vecnarobotics.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch27",
+      "reviewed_at": "2026-09-13T06:08:43.794Z",
+      "reviewer": "codex-root-visual-review-epoch27",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Official Vecna Robotics warehouse hero is fully loaded at native 1280x720: the AMR, warehouse setting and fixed-automation headline remain recognizable in the production card, full detail route and 390px narrow layout; the small chat control is non-obstructive and no consent or promo overlay covers the product."
     },
     "vector": {
       "sha256": "f0e3659fbb9756070c97a360009e553c71f29f899aadf92773a39a7efed821f6",

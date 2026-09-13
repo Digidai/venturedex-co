@@ -2,13 +2,252 @@
   "schema_version": 1,
   "reviews": [
     {
+      "slug": "vecna-robotics",
+      "company_url": "https://www.vecnarobotics.com/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The September 13 review verified a source-backed $31M financing and an inspectable warehouse-robotics platform spanning CaseFlow, AMRs and Pivotal orchestration. Product evidence and all three taste dimensions pass; the five associated investor profiles, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": [
+        "https://www.vecnarobotics.com/",
+        "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Verified the financing and live product surfaces; qualification passed and the company entered the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed all associated investor profiles, official brand assets, source-linked company research and production-route screenshot review."
+        }
+      ],
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.vecnarobotics.com/",
+            "note": "The official site exposes named AMRs, dock-to-dock CaseFlow workflows, Pivotal orchestration and remote-monitoring capabilities."
+          },
+          {
+            "url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+            "note": "The company-issued announcement ties the financing to production deployments and flexible warehouse automation demand."
+          }
+        ],
+        "taste": {
+          "bet": { "pass": true, "note": "Vecna bets on heterogeneous robot orchestration as the operating layer for warehouse movement." },
+          "craft": { "pass": true, "note": "Named vehicles, workflows and remote-operations surfaces demonstrate deployment craft." },
+          "specificity": { "pass": true, "note": "The dock-to-dock workflow and warehouse operators are concrete and inspectable." }
+        }
+      }
+    },
+    {
+      "slug": "piston",
+      "company_url": "https://www.piston.com/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The September 13 review verified a source-backed $15M Series A and an inspectable cardless fleet-fueling payment network. Product evidence and all three taste dimensions pass; all associated investor profiles, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": [
+        "https://www.piston.com/",
+        "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Verified the Series A and the live driver, vehicle and policy verification workflow; qualification passed and entered publication preparation."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed all associated investor profiles, official brand assets, source-linked company research and production-route screenshot review."
+        }
+      ],
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.piston.com/",
+            "note": "The official product surface shows a four-step cardless fueling flow with pre-pump driver, vehicle and policy checks."
+          },
+          {
+            "url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633",
+            "note": "The company announcement identifies the Series A and describes the payment network used by fleets and fuel merchants."
+          }
+        ],
+        "taste": {
+          "bet": { "pass": true, "note": "Piston bets that fleet fuel payments should be identity- and policy-aware before the pump is authorized." },
+          "craft": { "pass": true, "note": "The workflow combines driver verification, vehicle context, spend rules and merchant settlement." },
+          "specificity": { "pass": true, "note": "The users, transaction boundary and fraud-control sequence are unusually explicit." }
+        }
+      }
+    },
+    {
+      "slug": "arlequin-ai",
+      "company_url": "https://arlq.ai/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "The September 13 review verified a source-backed EUR 28M Series A and an inspectable topological-neural-network platform for heterogeneous data. Product evidence and all three taste dimensions pass, but seven newly associated investor identities and profiles were not completed in this bounded run, so qualification is retained while publication remains blocked.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-20",
+      "priority": 1,
+      "sources": [
+        "https://arlq.ai/",
+        "https://arlq.ai/news/arlequin-ai-series-a-topological-neural-networks"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Verified the Series A and TNN platform; qualification passed, while the newly associated investor identity and profile scope remains incomplete."
+        }
+      ],
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          { "url": "https://arlq.ai/", "note": "The official site describes a topological architecture for heterogeneous data, traceable results and operational deployment." },
+          { "url": "https://arlq.ai/news/arlequin-ai-series-a-topological-neural-networks", "note": "The official announcement verifies the Series A and explains the platform's topological-neural-network basis." }
+        ],
+        "taste": {
+          "bet": { "pass": true, "note": "Arlequin makes a differentiated architecture bet on topology rather than scale alone." },
+          "craft": { "pass": true, "note": "The platform emphasizes heterogeneous inputs and traceable outputs, not a generic chat interface." },
+          "specificity": { "pass": true, "note": "The technical thesis is specific, although public implementation detail remains selective." }
+        }
+      }
+    },
+    {
+      "slug": "hvr-energy",
+      "company_url": "https://hvrenergy.com/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "The September 13 review verified a source-backed EUR 20M Series A and an inspectable modular hydrogen-refueling network with named 350-bar and 700-bar systems. Product evidence and all three taste dimensions pass, but Langur Holding's current canonical site exposes no substantive firm information and its previously indexed portfolio page now returns 404, so a source-backed investor profile cannot yet be completed.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-20",
+      "priority": 1,
+      "sources": [
+        "https://hvrenergy.com/",
+        "https://hvrenergy.com/actualidad/hvr-energy-serie-a-20-millones/"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Verified the Series A, station map and named refueling systems; qualification passed, but current official evidence is insufficient for Langur Holding's required investor profile."
+        }
+      ],
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          { "url": "https://hvrenergy.com/", "note": "The official site exposes the INICIA and ACTIVA refueling systems, pressure configurations and an operating-station map." },
+          { "url": "https://hvrenergy.com/actualidad/hvr-energy-serie-a-20-millones/", "note": "The company announcement verifies the Series A and identifies the capital sources and network-expansion plan." }
+        ],
+        "taste": {
+          "bet": { "pass": true, "note": "HVR bets on modular roadside infrastructure to make hydrogen distribution deployable in smaller steps." },
+          "craft": { "pass": true, "note": "Named pressure systems and visible stations provide hardware and operating evidence." },
+          "specificity": { "pass": true, "note": "The equipment, pressure levels and deployment geography are concrete." }
+        }
+      }
+    },
+    {
+      "slug": "furo",
+      "company_url": "https://www.furoenergy.com/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "The September 13 review verified a source-backed $4M financing and an inspectable battery planning, live-control and trading workflow. Product evidence and all three taste dimensions pass, but Sandberg Bernthal Venture Partners' current canonical site exposes only a name and logo, which is insufficient to create the required source-backed investor profile without fabricating firm details.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": [
+        "https://www.furoenergy.com/",
+        "https://www.furoenergy.com/en/blog/furo-funding"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Verified the financing and planning, control and trading workflow; qualification passed, but current official evidence is insufficient for Sandberg Bernthal Venture Partners' required investor profile."
+        }
+      ],
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          { "url": "https://www.furoenergy.com/", "note": "The official product surface shows planning, live control and market-trading workflows for battery assets, including a working app entry point." },
+          { "url": "https://www.furoenergy.com/en/blog/furo-funding", "note": "The company announcement verifies the $4M financing and describes its operating focus." }
+        ],
+        "taste": {
+          "bet": { "pass": true, "note": "Furo treats batteries as continuously optimized market assets rather than static storage projects." },
+          "craft": { "pass": true, "note": "The public workflow connects forecasts, controls and trading with visible product interfaces." },
+          "specificity": { "pass": true, "note": "The user journey and optimization jobs are clear enough to distinguish the product." }
+        }
+      }
+    },
+    {
+      "slug": "cloverleaf-bio",
+      "company_url": "https://cloverleafbio.com/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "The September 13 review verified the $33M Seed financing, but the current company site exposes only a high-level therapeutic thesis and the release remains company-authored preclinical evidence. More inspectable program or external validation evidence is needed before qualification.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": [
+        "https://cloverleafbio.com/",
+        "https://www.globenewswire.com/news-release/2026/09/08/3357463/0/en/cloverleaf-bio-raises-33-million-seed-financing-to-advance-novel-rna-based-cancer-therapeutics.html"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "evidence_pending",
+          "note": "Funding is verified; retained for a later review because the live product surface is too sparse for an independent product judgment."
+        }
+      ]
+    },
+    {
+      "slug": "galaxia",
+      "company_url": "https://gx.space/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "The September 13 review verified a CAD 4.5M unnamed financing and public VSaS, MissionOne and orbital-compute product descriptions, but did not find enough inspectable flight or deployment evidence to independently validate the hardware platform for qualification.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": [
+        "https://gx.space/",
+        "https://gx.space/news-press-releases/galaxia-closes-funding-round-to-support-accelerated-growth"
+      ],
+      "attempts": [
+        {
+          "date": "2026-09-13",
+          "outcome": "evidence_pending",
+          "note": "Financing and product identity are verified; retained for stronger independent flight or deployment evidence."
+        }
+      ]
+    },
+    {
       "slug": "aitan",
       "company_url": "https://www.aitansystems.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $41M financing and an inspectable robotic sovereignty platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "The September 13 re-review verified the $41M financing and live Talon, Watchtower, Convoy, command-and-control and autonomy-kit product surfaces. Qualification remains valid, but the bounded content pass did not complete the newly required investor identities and profiles, so publication remains blocked without a quality downgrade.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-14",
       "priority": 2,
       "sources": [
         "https://www.aitansystems.com/",
@@ -19,6 +258,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and robotic sovereignty platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Re-verified the live product portfolio and financing; the company entered today's bounded publication workflow."
         }
       ],
       "original": {
@@ -113,11 +357,11 @@
     {
       "slug": "trustedrouter",
       "company_url": "https://trustedrouter.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $1.25M Seed round and an inspectable model-routing and control plane. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "The September 13 re-review verified the $1.25M Seed round and live routing, trust, documentation, status and open-source surfaces. Qualification remains valid, but the unusually broad named individual-investor set was not fully resolved into the canonical investor directory during this bounded pass, so publication remains blocked without a quality downgrade.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-14",
       "priority": 1,
       "sources": [
         "https://trustedrouter.com/",
@@ -130,6 +374,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and model-routing and control plane; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Re-verified the developer, trust and operations surfaces; the company entered today's bounded publication workflow."
         }
       ],
       "original": {
@@ -1209,11 +1458,11 @@
     {
       "slug": "airbility",
       "company_url": "https://airbility.co.kr/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $4.7M Series A round and an inspectable electric vertical-flight vehicle platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The September 13 re-review verified the $4.7M Series A and a materially updated live product portfolio centered on Mothership, Capture, Interceptor, Cargo and shared command-and-control systems. Product evidence and all three taste dimensions pass; all associated investor profiles, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://airbility.co.kr/",
@@ -1224,6 +1473,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and electric vertical-flight vehicle platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Re-verified the financing and updated defense-focused product portfolio; the company entered today's bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed all associated investor profiles, official brand assets, source-linked company research and production-route screenshot review."
         }
       ],
       "original": {
@@ -1237,7 +1496,7 @@
         "product_evidence": [
           {
             "url": "https://airbility.co.kr/",
-            "note": "The official product surface identifies the AB vehicle program and its electric vertical-flight configuration."
+          "note": "The current official product surface identifies Mothership, Capture, Interceptor and Cargo systems plus shared command-and-control capabilities."
           },
           {
             "url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
@@ -1247,15 +1506,15 @@
         "taste": {
           "bet": {
             "pass": true,
-            "note": "Airbility bets on a specific compact electric-flight architecture and transition profile."
+          "note": "Airbility bets on a coordinated aerial-defense stack spanning detection, capture, interception and logistics."
           },
           "craft": {
             "pass": true,
-            "note": "Prototype and transition-flight disclosures provide more substance than render-only advanced-air-mobility projects."
+          "note": "Named airframes and shared-autonomy controls provide a more inspectable system boundary than a generic drone platform."
           },
           "specificity": {
             "pass": true,
-            "note": "The vehicle program is specific, while certification and production remain significant execution risks."
+          "note": "The mission roles, product names and command-and-control boundary are specific, while deployment remains an execution risk."
           }
         }
       }

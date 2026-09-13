@@ -2,6 +2,164 @@
   "schema_version": 1,
   "legacy_unresearched": [],
   "profiles": {
+    "unless": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Industrial investment platform providing flexible capital and operating expertise to scale proven industrial innovations.",
+        "source_ids": ["about"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Industrial investment platform", "source_ids": ["about"] },
+        { "key": "sectors", "value": ["Manufacturing", "Energy", "Transportation", "Supply chains"], "source_ids": ["about"] },
+        { "key": "approach", "value": "Uses flexible fund structures, industrial domain expertise and operating networks to accelerate adoption", "source_ids": ["about"] },
+        { "key": "offices", "value": ["Boulder, Colorado"], "source_ids": ["about"] }
+      ],
+      "sources": [
+        { "id": "about", "label": "Unless official about page", "url": "https://www.unless.co/about", "checked_at": "2026-09-13" }
+      ]
+    },
+    "drive-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Columbus-based venture capital firm investing in market-defining companies across the North American interior.",
+        "source_ids": ["story", "portfolio"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["story"] },
+        { "key": "founded", "value": "2012", "source_ids": ["story"] },
+        { "key": "stages", "value": "Stage agnostic", "source_ids": ["portfolio"] },
+        { "key": "offices", "value": ["Columbus, Ohio"], "source_ids": ["story"] },
+        { "key": "geographies", "value": "North American interior", "source_ids": ["story"] }
+      ],
+      "sources": [
+        { "id": "story", "label": "Drive Capital official story", "url": "https://drivecapital.com/our-story", "checked_at": "2026-09-13" },
+        { "id": "portfolio", "label": "Drive Capital official portfolio", "url": "https://www.drivecapital.com/portfolio", "checked_at": "2026-09-13" }
+      ]
+    },
+    "tiger-global": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Investment firm whose private-equity business backs innovative companies from early through late stage alongside a separate public-equity business.",
+        "source_ids": ["strategy"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Investment management", "source_ids": ["strategy"] },
+        { "key": "stages", "value": "Early through late stage for private companies", "source_ids": ["strategy"] },
+        { "key": "geographies", "value": "More than 30 countries", "source_ids": ["strategy"] },
+        { "key": "offices", "value": ["New York, New York"], "source_ids": ["strategy"] }
+      ],
+      "sources": [
+        { "id": "strategy", "label": "Tiger Global official strategy", "url": "https://www.tigerglobal.com/ourstrategy", "checked_at": "2026-09-13" }
+      ]
+    },
+    "highland-capital-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Entrepreneur-focused investment firm reporting a 39-year operating history and $7 billion in assets under management.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Investment firm", "source_ids": ["official"] },
+        { "key": "approach", "value": "Putting the entrepreneur first", "source_ids": ["official"] }
+      ],
+      "sources": [
+        { "id": "official", "label": "Highland Capital Partners official overview", "url": "https://www.hcp.com/", "checked_at": "2026-09-13" }
+      ]
+    },
+    "tectonic-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage venture capital firm investing initial capital and providing long-term mentoring, operating support and market access.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["official"] },
+        { "key": "stages", "value": "Initial capital from the first spark of an idea", "source_ids": ["official"] },
+        { "key": "approach", "value": "Pairs capital with mentoring, resources, follow-on support and market access", "source_ids": ["official"] },
+        { "key": "sectors", "value": ["Enterprise technology", "Applied artificial intelligence", "Robotics"], "source_ids": ["official"] }
+      ],
+      "sources": [
+        { "id": "official", "label": "Tectonic Ventures official overview", "url": "https://www.tectonicventures.com/", "checked_at": "2026-09-13" }
+      ]
+    },
+    "fpv-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Venture capital firm supporting mission-driven founders from the beginning of company building.",
+        "source_ids": ["about"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["about"] },
+        { "key": "approach", "value": "Founder service and long-term support for mission-driven companies", "source_ids": ["about"] }
+      ],
+      "sources": [
+        { "id": "about", "label": "FPV Ventures official about page", "url": "https://fpvventures.com/about/", "checked_at": "2026-09-13" }
+      ]
+    },
+    "industrial-bank-of-korea": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "South Korean bank providing financial products and business financing, including venture lending.",
+        "source_ids": ["official", "annual_report"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Bank and strategic investor", "source_ids": ["official", "annual_report"] },
+        { "key": "geographies", "value": ["South Korea"], "source_ids": ["official"] },
+        { "key": "approach", "value": "Banking services and venture lending for companies", "source_ids": ["official", "annual_report"] }
+      ],
+      "sources": [
+        { "id": "official", "label": "Industrial Bank of Korea official global site", "url": "https://global.ibk.co.kr/en/", "checked_at": "2026-09-13" },
+        { "id": "annual_report", "label": "Industrial Bank of Korea 2025 annual report", "url": "https://global.ibk.co.kr/en/investor/IRBook", "checked_at": "2026-09-13" }
+      ]
+    },
+    "pear-vc": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage venture capital firm investing at pre-seed and seed and providing hands-on founder support.",
+        "source_ids": ["story"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["story"] },
+        { "key": "stages", "value": ["Pre-Seed", "Seed"], "source_ids": ["story"] },
+        { "key": "founded", "value": "2013", "source_ids": ["story"] },
+        { "key": "offices", "value": ["San Francisco, California", "Menlo Park, California"], "source_ids": ["story"] }
+      ],
+      "sources": [
+        { "id": "story", "label": "Pear VC official story", "url": "https://pear.vc/our-story/", "checked_at": "2026-09-13" }
+      ]
+    },
+    "sazze-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Venture capital firm connecting founders and markets across East Asia and North America.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["official"] },
+        { "key": "founded", "value": "2018", "source_ids": ["official"] },
+        { "key": "geographies", "value": ["East Asia", "North America"], "source_ids": ["official"] },
+        { "key": "approach", "value": "Mentorship and cross-border support for globally ambitious founders", "source_ids": ["official"] }
+      ],
+      "sources": [
+        { "id": "official", "label": "Sazze Partners official overview", "url": "https://www.sazze.vc/", "checked_at": "2026-09-13" }
+      ]
+    },
+    "stonebridge-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "South Korean venture capital firm investing across technology and other innovation sectors.",
+        "source_ids": ["portfolio", "group"]
+      },
+      "facts": [
+        { "key": "firm_type", "value": "Venture capital", "source_ids": ["group"] },
+        { "key": "sectors", "value": ["Artificial intelligence", "Semiconductors", "Robotics", "Biotechnology"], "source_ids": ["portfolio"] },
+        { "key": "offices", "value": ["Seoul, South Korea"], "source_ids": ["group"] }
+      ],
+      "sources": [
+        { "id": "portfolio", "label": "Stonebridge Ventures official portfolio", "url": "https://www.stonebridgeventures.vc/", "checked_at": "2026-09-13" },
+        { "id": "group", "label": "Stonebridge Group official overview", "url": "https://www.stonebridge.co.kr/en/", "checked_at": "2026-09-13", "source_type": "official_related_entity" }
+      ]
+    },
     "776": {
       "reviewed_at": "2026-09-11",
       "summary": {

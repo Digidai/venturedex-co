@@ -38,5 +38,115 @@
     "source_url": "https://conveo.ai/mediakit/series-a",
     "source_name": "Conveo Series A announcement",
     "verified_at": "2026-09-11"
+  },
+  {
+    "company_slug": "piston",
+    "investor_slug": "fpv-ventures",
+    "round_date": "2026-09-10",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633",
+    "source_name": "Piston via ACCESS Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "piston",
+    "investor_slug": "spark",
+    "round_date": "2026-09-10",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633",
+    "source_name": "Piston via ACCESS Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "piston",
+    "investor_slug": "pear-vc",
+    "round_date": "2026-09-10",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633",
+    "source_name": "Piston via ACCESS Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "airbility",
+    "investor_slug": "sazze-partners",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+    "source_name": "Airbility via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "airbility",
+    "investor_slug": "stonebridge-ventures",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+    "source_name": "Airbility via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "airbility",
+    "investor_slug": "industrial-bank-of-korea",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+    "source_name": "Airbility via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "vecna-robotics",
+    "investor_slug": "unless",
+    "round_date": "2026-09-10",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+    "source_name": "Vecna Robotics via GlobeNewswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "vecna-robotics",
+    "investor_slug": "drive-capital",
+    "round_date": "2026-09-10",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+    "source_name": "Vecna Robotics via GlobeNewswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "vecna-robotics",
+    "investor_slug": "tiger-global",
+    "round_date": "2026-09-10",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+    "source_name": "Vecna Robotics via GlobeNewswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "vecna-robotics",
+    "investor_slug": "highland-capital-partners",
+    "round_date": "2026-09-10",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+    "source_name": "Vecna Robotics via GlobeNewswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "vecna-robotics",
+    "investor_slug": "tectonic-ventures",
+    "round_date": "2026-09-10",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+    "source_name": "Vecna Robotics via GlobeNewswire",
+    "verified_at": "2026-09-13"
   }
 ]

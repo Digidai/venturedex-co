@@ -1,0 +1,54 @@
+{
+  "slug": "airbility",
+  "domain": "airbility.co.kr",
+  "url": "https://airbility.co.kr/",
+  "product_name": "Airbility",
+  "summary": "Electric aircraft and counter-drone systems spanning capture, interception, cargo and control.",
+  "editor_note": "Rather than selling one airframe, the company is assembling a coordinated counter-drone stack: a mothership, net capture, compact and launcher-based interceptors, autonomy and external sensing are designed to work together. Three prototype transition-flight demonstrations make the engineering thesis inspectable. Several systems are still scheduled through 2027, so production, export approvals, mission reliability and customer deployment remain the decisive tests.",
+  "editor_rating": 4,
+  "why_featured": "Coordinated electric counter-drone stack",
+  "product_type": "Other",
+  "founded_year": 2023,
+  "hq_location": "South Korea",
+  "region": "China / Asia",
+  "tags": "electric aviation,eVTOL,counter-UAS,autonomous aircraft,defense technology",
+  "investors": "Sazze Partners, Stonebridge Ventures, Industrial Bank of Korea",
+  "links": {
+    "product": "https://airbility.co.kr/products/",
+    "careers": "https://airbility.ninehire.site/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.7M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "Sazze Partners",
+      "date": "2026-09-02",
+      "source_url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
+      "source_name": "Airbility via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {"id": "official_site", "label": "Airbility official product site", "url": "https://airbility.co.kr/", "type": "official"},
+      {"id": "products", "label": "Airbility product portfolio", "url": "https://airbility.co.kr/products/", "type": "product"},
+      {"id": "funding_1", "label": "Airbility Series A announcement", "url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The official portfolio presents Mothership, Capture, Interceptor and Cargo systems with shared command-and-control and autonomy capabilities.", "source_ids": ["official_site", "products"]},
+      {"claim": "The financing announcement names the AB-U10, AB-U60, AB-U2 and AB-U4L, and reports transition-flight demonstrations across three prototypes completed in December 2025.", "source_ids": ["funding_1"]},
+      {"claim": "The first counter-UAS systems remain on staged commercialization timelines through 2027 rather than being evidenced as broadly deployed products.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Military, public-safety and infrastructure operators evaluating counter-drone and autonomous aerial systems.",
+      "category": "Electric aviation and counter-UAS systems",
+      "differentiation": "Multiple high-speed electric airframes are designed as one detection, interception and assessment system instead of isolated drones.",
+      "why_now": "The Series A supports commercialization, manufacturing capacity and international deployment after prototype transition-flight demonstrations."
+    },
+    "risks": [
+      {"claim": "Most of the portfolio is early or scheduled; production yield, mission reliability, procurement cycles, export controls and deployment economics remain unproven at scale.", "basis": "VentureDex assessment based on Airbility's official product surface and financing announcement."}
+    ]
+  }
+}

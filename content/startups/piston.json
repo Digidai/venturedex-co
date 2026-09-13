@@ -1,0 +1,54 @@
+{
+  "slug": "piston",
+  "domain": "www.piston.com",
+  "url": "https://www.piston.com/",
+  "product_name": "Piston",
+  "summary": "Cardless network authorizing fleet fuel purchases with driver, vehicle, pump and policy context.",
+  "editor_note": "Unlike a fuel card that exposes misuse after purchase, the network checks driver identity, device, vehicle, location, telematics and fleet policy before unlocking a pump. Its merchant connection and operator dashboard make the workflow more than a mobile-card replacement. Piston reports coverage at more than 2,000 stations in 48 states, but those figures are company-supplied; network density, merchant economics and fraud performance still need independent proof.",
+  "editor_rating": 4,
+  "why_featured": "Fuel authorization before the pump",
+  "product_type": "Fintech",
+  "hq_location": "Cupertino, California",
+  "region": "US",
+  "tags": "fleet payments,cardless fueling,commercial fleets,fraud prevention,logistics",
+  "investors": "FPV Ventures, Spark Capital, Pear VC",
+  "links": {
+    "product": "https://www.piston.com/platform/cardless-fueling",
+    "careers": "https://boards.greenhouse.io/pistontechnologies"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "FPV Ventures",
+      "date": "2026-09-10",
+      "source_url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633",
+      "source_name": "Piston via ACCESS Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {"id": "official_site", "label": "Piston official product site", "url": "https://www.piston.com/", "type": "official"},
+      {"id": "cardless", "label": "Piston cardless fueling workflow", "url": "https://www.piston.com/platform/cardless-fueling", "type": "product"},
+      {"id": "network", "label": "Piston network and transaction model", "url": "https://www.piston.com/why-piston", "type": "product"},
+      {"id": "funding_1", "label": "Piston Series A announcement", "url": "https://www.accessnewswire.com/newsroom/en/banking-and-financial-services/piston-raises-15-million-to-scale-the-infrastructure-layer-for-logis-1218633", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Drivers select a station and pump in the mobile app; Piston then checks identity, location, vehicle, telematics and fleet rules before the pump unlocks.", "source_ids": ["official_site", "cardless"]},
+      {"claim": "The network connects fleet controls with merchant locations and records transactions, exceptions and rebates in the operator dashboard.", "source_ids": ["network", "official_site"]},
+      {"claim": "The company reports deployment at more than 2,000 stations across 48 states, but this remains a company-supplied operating metric rather than independent adoption evidence.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Commercial-fleet operators managing driver fuel spend, plus fuel merchants serving those fleets.",
+      "category": "Commercial fleet payment infrastructure",
+      "differentiation": "A direct, cardless network evaluates driver, vehicle, pump and policy context before authorizing a fuel purchase.",
+      "why_now": "The Series A funds national network expansion and product development after the company reported rapid payment-volume and merchant growth."
+    },
+    "risks": [
+      {"claim": "Coverage, point-of-sale integration reliability, merchant incentives and fraud reduction must hold as the network expands; current growth and retention figures are company-reported.", "basis": "VentureDex assessment based on Piston's official product surfaces and financing announcement."}
+    ]
+  }
+}

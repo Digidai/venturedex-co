@@ -1,0 +1,58 @@
+{
+  "slug": "vecna-robotics",
+  "domain": "www.vecnarobotics.com",
+  "url": "https://www.vecnarobotics.com/",
+  "product_name": "Vecna Robotics",
+  "summary": "Autonomous warehouse robots and software for case picking, pallet movement and material transport.",
+  "editor_note": "Rather than automating one vehicle, the system combines autonomous forklifts, tuggers and co-bot pallet jacks with Pivotal software that coordinates robots, workers and warehouse demand. CaseFlow makes the architecture tangible in a complete case-picking workflow. Named deployments and support operations add evidence, but throughput and uptime figures remain company or customer-reported; integration effort, fleet economics and performance across varied facilities are still open tests.",
+  "editor_rating": 4,
+  "why_featured": "Mixed-fleet warehouse orchestration",
+  "product_type": "Other",
+  "hq_location": "Waltham, Massachusetts",
+  "region": "US",
+  "tags": "warehouse robotics,autonomous mobile robots,orchestration,case picking,industrial automation",
+  "investors": "Unless, Drive Capital, Tiger Global, Highland Capital Partners, Tectonic Ventures",
+  "links": {
+    "product": "https://www.vecnarobotics.com/solutions/caseflow/",
+    "careers": "https://www.vecnarobotics.com/company/careers/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$31M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "Unless",
+      "date": "2026-09-10",
+      "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
+      "source_name": "Vecna Robotics via GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {"id": "official_site", "label": "Vecna Robotics official site", "url": "https://www.vecnarobotics.com/", "type": "official"},
+      {"id": "caseflow", "label": "Vecna Robotics CaseFlow", "url": "https://www.vecnarobotics.com/solutions/caseflow/", "type": "product"},
+      {"id": "pivotal", "label": "Vecna Robotics Pivotal software suite", "url": "https://www.vecnarobotics.com/the-vecna-system/pivotal-software-suite/", "type": "product"},
+      {"id": "funding_1", "label": "Vecna Robotics $31 million funding announcement", "url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "Vecna's fleet includes autonomous forklifts, tuggers and co-bot pallet jacks coordinated by the Pivotal software architecture.", "source_ids": ["official_site", "pivotal"]},
+      {"claim": "CaseFlow integrates with warehouse systems, dynamically allocates work across robots and people, and exposes real-time telemetry and historical analytics.", "source_ids": ["caseflow", "pivotal"]},
+      {"claim": "The financing announcement ties the new capital to deployment capacity and additional pallet, storage and dock workflows, but performance metrics remain company or customer-reported.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Warehouse, distribution-center and manufacturing operators automating case and pallet movement.",
+      "category": "Warehouse robotics and fleet orchestration",
+      "differentiation": "A common software architecture coordinates mixed autonomous vehicles, workers and warehouse demand across complete workflows.",
+      "why_now": "The new financing supports deployment teams and additional workflow capabilities as demand for flexible automation grows."
+    },
+    "risks": [
+      {"claim": "Warehouse integrations, site variability, hardware service requirements and fleet utilization can materially change deployment economics; published performance figures are not universal guarantees.", "basis": "VentureDex assessment based on Vecna Robotics' official product pages and financing announcement."}
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The company announcement verifies a $31 million financing led by Unless but does not state a canonical round name. VentureDex records Unspecified rather than inferring a stage, while retaining independent product evidence for CaseFlow, Pivotal orchestration and the deployed AMR fleet.",
+      "source_ids": ["official_site", "caseflow", "pivotal", "funding_1"]
+    }
+  }
+}

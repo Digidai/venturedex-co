@@ -1,4 +1,74 @@
 {
+  "unless": {
+    "name": "Unless",
+    "slug": "unless",
+    "short_name": "Unless",
+    "website": "https://www.unless.co/",
+    "description": "Industrial investment platform providing flexible capital and operating expertise to scale proven industrial innovations."
+  },
+  "drive-capital": {
+    "name": "Drive Capital",
+    "slug": "drive-capital",
+    "short_name": "Drive",
+    "website": "https://drivecapital.com/",
+    "description": "Columbus-based venture capital firm investing in market-defining companies across the North American interior."
+  },
+  "tiger-global": {
+    "name": "Tiger Global",
+    "slug": "tiger-global",
+    "short_name": "Tiger Global",
+    "website": "https://www.tigerglobal.com/",
+    "description": "Investment firm whose private-equity business backs innovative companies from early through late stage."
+  },
+  "highland-capital-partners": {
+    "name": "Highland Capital Partners",
+    "slug": "highland-capital-partners",
+    "short_name": "Highland",
+    "website": "https://www.hcp.com/",
+    "description": "Entrepreneur-focused investment firm with a multi-decade venture track record."
+  },
+  "tectonic-ventures": {
+    "name": "Tectonic Ventures",
+    "slug": "tectonic-ventures",
+    "short_name": "Tectonic",
+    "website": "https://www.tectonicventures.com/",
+    "description": "Early-stage venture capital firm investing initial capital and providing long-term mentoring and market access."
+  },
+  "fpv-ventures": {
+    "name": "FPV Ventures",
+    "slug": "fpv-ventures",
+    "short_name": "FPV",
+    "website": "https://fpvventures.com",
+    "description": "Venture capital firm supporting mission-driven founders from the beginning of company building."
+  },
+  "industrial-bank-of-korea": {
+    "name": "Industrial Bank of Korea",
+    "slug": "industrial-bank-of-korea",
+    "short_name": "IBK",
+    "website": "https://global.ibk.co.kr/en/",
+    "description": "South Korean bank providing financial products and business financing, including venture lending."
+  },
+  "pear-vc": {
+    "name": "Pear VC",
+    "slug": "pear-vc",
+    "short_name": "Pear",
+    "website": "https://pear.vc",
+    "description": "Early-stage venture capital firm investing at pre-seed and seed and providing hands-on founder support."
+  },
+  "sazze-partners": {
+    "name": "Sazze Partners",
+    "slug": "sazze-partners",
+    "short_name": "Sazze",
+    "website": "https://www.sazze.vc",
+    "description": "Venture capital firm connecting founders and markets across East Asia and North America."
+  },
+  "stonebridge-ventures": {
+    "name": "Stonebridge Ventures",
+    "slug": "stonebridge-ventures",
+    "short_name": "Stonebridge",
+    "website": "https://www.stonebridgeventures.vc",
+    "description": "South Korean venture capital firm investing across technology and other innovation sectors."
+  },
   "776": {
     "name": "Seven Seven Six",
     "slug": "776",

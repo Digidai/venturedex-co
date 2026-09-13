@@ -1,6 +1,28 @@
 {
-  "verified_at": "2026-09-11",
+  "verified_at": "2026-09-13",
   "companies": {
+    "piston": {
+      "name": "Piston",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/piston.webp",
+      "source_page": "https://www.piston.com/",
+      "source_url": "https://www.piston.com/_next/image?url=%2Fassets%2Fimages%2Flogo.png&w=256&q=75"
+    },
+    "airbility": {
+      "name": "Airbility",
+      "shape": "icon",
+      "local_path": "/logos/companies/airbility.jpg",
+      "source_page": "https://airbility.co.kr/",
+      "source_url": "https://airbility.co.kr/wp-content/uploads/2025/04/cropped-Untitled-2-192x192.jpg"
+    },
+    "vecna-robotics": {
+      "name": "Vecna Robotics",
+      "shape": "wordmark",
+      "tile_background": "dark",
+      "local_path": "/logos/companies/vecna-robotics.svg",
+      "source_page": "https://www.vecnarobotics.com/",
+      "source_url": "https://www.vecnarobotics.com/wp-content/uploads/2023/02/Vecna-2023_Primary-Logo-White_2C-1.svg"
+    },
     "8090": {
       "name": "8090",
       "shape": "icon",
@@ -2217,6 +2239,78 @@
     }
   },
   "investors": {
+    "unless": {
+      "name": "Unless",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/unless.svg",
+      "source_page": "https://www.unless.co/about",
+      "source_url": "https://cdn.prod.website-files.com/65f4c9e9cf5b26be285186f5/65f4c9e9cf5b26be28518715_Unless.svg"
+    },
+    "drive-capital": {
+      "name": "Drive Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/drive-capital.png",
+      "source_page": "https://drivecapital.com/our-story",
+      "source_url": "https://drivecapital.com/apple-touch-icon.png"
+    },
+    "tiger-global": {
+      "name": "Tiger Global",
+      "shape": "wordmark",
+      "tile_background": "dark",
+      "local_path": "/logos/investors/tiger-global.png",
+      "source_page": "https://www.tigerglobal.com/ourstrategy",
+      "source_url": "https://www.tigerglobal.com/Templates/TigerGlobal/media/logo.png"
+    },
+    "highland-capital-partners": {
+      "name": "Highland Capital Partners",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/highland-capital-partners.webp",
+      "source_page": "https://www.hcp.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/614523b01b07682a1efde96a/1631978427177-T5WR2Z1QCIK7XBGNVWV3/Highland.png?format=1500w"
+    },
+    "tectonic-ventures": {
+      "name": "Tectonic Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/tectonic-ventures.svg",
+      "source_page": "https://www.tectonicventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/6481baa8b4e61d7cb8a9f0a0/649026ca03db594661ace8f6_Favicon256_Blue.svg"
+    },
+    "fpv-ventures": {
+      "name": "FPV Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/fpv-ventures.png",
+      "source_page": "https://fpvventures.com/about/",
+      "source_url": "https://fpvventures.com/wp-content/uploads/2022/06/logo-400.png"
+    },
+    "industrial-bank-of-korea": {
+      "name": "Industrial Bank of Korea",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/industrial-bank-of-korea.png",
+      "source_page": "https://global.ibk.co.kr/en/",
+      "source_url": "https://global.ibk.co.kr/global/images/pc/common/logo_ibk.png"
+    },
+    "pear-vc": {
+      "name": "Pear VC",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/pear-vc.svg",
+      "source_page": "https://pear.vc/our-story/",
+      "source_url": "https://pear.vc/wp-content/uploads/2025/01/pear-logo-footer.svg"
+    },
+    "sazze-partners": {
+      "name": "Sazze Partners",
+      "shape": "wordmark",
+      "tile_background": "dark",
+      "local_path": "/logos/investors/sazze-partners.png",
+      "source_page": "https://www.sazze.vc/",
+      "source_url": "https://static.wixstatic.com/media/757470_7683d417b3334f53beb0a7cb8af16dd5~mv2.png/v1/fill/w_476,h_120,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/sazze_logo_white.png"
+    },
+    "stonebridge-ventures": {
+      "name": "Stonebridge Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/stonebridge-ventures.svg",
+      "source_page": "https://www.stonebridgeventures.vc/",
+      "source_url": "https://www.stonebridgeventures.vc/"
+    },
     "776": {
       "name": "Seven Seven Six",
       "shape": "icon",
