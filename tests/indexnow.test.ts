@@ -84,6 +84,7 @@ test("collectUrls supports hub pages without stripping homepage slash", () => {
 
   assert.ok(urls.includes("https://venturedex.co/"));
   assert.ok(urls.includes("https://venturedex.co/directory"));
+  assert.ok(urls.includes("https://venturedex.co/categories"));
   assert.ok(urls.includes("https://venturedex.co/topics"));
   assert.ok(urls.includes("https://venturedex.co/collections"));
   assert.ok(urls.includes("https://venturedex.co/research"));
@@ -120,6 +121,8 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
     "https://venturedex.co/news/page/02",
     "https://venturedex.co/news/page/2?sort=oldest",
     "https://venturedex.co/directory?page=2",
+    "https://venturedex.co/categories/city/london",
+    "https://venturedex.co/categories/stage/seed?sort=newest",
   ]) {
     assert.throws(() => validateUrl(invalid), /IndexNow/);
   }
@@ -127,6 +130,7 @@ test("validateUrl rejects non-canonical IndexNow targets", () => {
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/directory"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/categories"));
+  assert.doesNotThrow(() => validateUrl("https://venturedex.co/categories/stage/seed"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/2"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/news/page/12"));
   assert.doesNotThrow(() => validateUrl("https://venturedex.co/collections"));

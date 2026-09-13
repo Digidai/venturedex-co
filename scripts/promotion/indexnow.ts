@@ -233,6 +233,7 @@ export function collectUrls(options: Options): string[] {
     urls.push(
       `${INDEXNOW_HOST_URL}/`,
       `${INDEXNOW_HOST_URL}/directory`,
+      `${INDEXNOW_HOST_URL}/categories`,
       `${INDEXNOW_HOST_URL}/topics`,
       `${INDEXNOW_HOST_URL}/collections`,
       `${INDEXNOW_HOST_URL}/weekly`,
@@ -290,7 +291,8 @@ export function validateUrl(url: string): void {
   const hubPaths = new Set(["/", "/directory", "/categories", "/topics", "/collections", "/weekly", "/investors", "/news", "/launches", "/research"]);
   const aiSurfacePaths = new Set(["/llms.txt", "/llms-full.txt", "/ai-index.json", "/launches.json"]);
   const contentPath = /^\/(startups\/[a-z0-9][a-z0-9-]*|weekly\/[0-9]+|topics\/[a-z0-9][a-z0-9-]*|collections\/[a-z0-9][a-z0-9-]*|investors\/[a-z0-9][a-z0-9-]*|launches\/[a-z0-9][a-z0-9-]*|research\/[a-z0-9][a-z0-9-]*|news\/page\/(?:[2-9]|[1-9][0-9]+))$/;
-  if (!hubPaths.has(parsed.pathname) && !aiSurfacePaths.has(parsed.pathname) && !contentPath.test(parsed.pathname)) {
+  const categoryPath = /^\/categories\/(industry|stage|region)\/[a-z0-9][a-z0-9-]*$/;
+  if (!hubPaths.has(parsed.pathname) && !aiSurfacePaths.has(parsed.pathname) && !contentPath.test(parsed.pathname) && !categoryPath.test(parsed.pathname)) {
     throw new Error(`IndexNow target path is outside the canonical content set: ${url}`);
   }
 }
