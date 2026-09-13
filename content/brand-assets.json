@@ -4247,7 +4247,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/wrf-capital.png",
       "source_page": "https://www.wrfseattle.org/",
-      "source_url": "https://www.wrfseattle.org/wp-content/themes/wrf/images/favicon/apple-touch-icon.png"
+      "source_url": "https://www.wrfseattle.org/wp-content/themes/wrf/images/favicon/apple-touch-icon.png",
+      "allow_unreachable_source": true,
+      "note": "The official WRF homepage and same-origin icon returned HTTP 200 during the 2026-09-13 verification, while the GitHub runner intermittently received HTTP 202 for both. Preserve the existing nonempty local official icon and treat that reachability drift as non-blocking."
     },
     "visionaries-club": {
       "name": "Visionaries Club",
