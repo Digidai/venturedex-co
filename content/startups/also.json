@@ -1,0 +1,96 @@
+{
+  "slug": "also",
+  "domain": "ridealso.com",
+  "url": "https://ridealso.com/",
+  "product_name": "ALSO",
+  "summary": "Connected lightweight electric vehicles spanning personal and commercial mobility.",
+  "editor_note": "Rather than extending a conventional e-bike catalog, the company is building named TM-B and TM-Q vehicle systems with a shared connected software direction. The $150M Series D supports shipping and commercialization, but autonomy remains forward looking and the corrected canonical company domain is ridealso.com.",
+  "editor_rating": 4,
+  "why_featured": "A connected lightweight vehicle system",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2023,
+  "hq_location": "Palo Alto, California",
+  "region": "US",
+  "tags": "electric mobility,connected vehicles,e-bike,commercial mobility",
+  "investors": "Prysm Capital, Eclipse, Greenoaks",
+  "links": {
+    "product": "https://ridealso.com/",
+    "resources": "https://ridealso.com/pages/company"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$150M",
+      "currency": "USD",
+      "stage": "Series D",
+      "lead_investor": "Prysm Capital",
+      "date": "2026-08-19",
+      "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+      "source_name": "ALSO"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "ALSO official site",
+        "url": "https://ridealso.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "ALSO product evidence 1",
+        "url": "https://ridealso.com/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "ALSO product evidence 2",
+        "url": "https://ridealso.com/pages/company",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "ALSO financing source",
+        "url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The corrected official site exposes the TM-B and TM-Q electric vehicles and a connected mobility platform.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The company page establishes the distinct mobility entity, product roadmap and autonomy direction at the corrected domain.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating connected lightweight electric-mobility system.",
+      "category": "Electric mobility",
+      "differentiation": "ALSO bets on a lightweight connected vehicle class rather than a conventional e-bike catalog.",
+      "why_now": "ALSO reported the current financing on 2026-08-19."
+    },
+    "risks": [
+      {
+        "claim": "The products and company identity are now specific, although later autonomy claims remain forward looking.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "breakout_exception": {
+      "reason": "The Series D is included selectively because the company exposes named shipping vehicle systems and an integrated hardware-software roadmap, not merely a mature-company financing event. Commercial scale and autonomy claims remain explicitly bounded.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}

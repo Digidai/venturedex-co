@@ -1,0 +1,86 @@
+{
+  "slug": "moonwalk-biosciences",
+  "domain": "www.moonwalk.bio",
+  "url": "https://www.moonwalk.bio/",
+  "product_name": "Moonwalk Biosciences",
+  "summary": "Adipose-targeted RNA interference programs for obesity and cardiometabolic disease.",
+  "editor_note": "Rather than following appetite-focused incretin mechanisms, the preclinical platform targets adipose tissue with RNA interference and identifies MW101 as its lead program. The $70M Series B funds clinic entry planned for late 2027; human safety and efficacy have not yet been established.",
+  "editor_rating": 4,
+  "why_featured": "Adipose-targeted RNAi platform",
+  "product_type": "HealthTech",
+  "hq_location": "South San Francisco, California",
+  "region": "US",
+  "tags": "biotechnology,RNA interference,obesity,cardiometabolic disease",
+  "investors": "Alpha Wave Global, Khosla Ventures",
+  "links": {
+    "product": "https://moonwalk.bio/science/",
+    "resources": "https://moonwalk.bio/pipeline/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$70M",
+      "currency": "USD",
+      "stage": "Series B",
+      "lead_investor": "Alpha Wave Global",
+      "date": "2026-09-08",
+      "source_url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+      "source_name": "Moonwalk Biosciences"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Moonwalk Biosciences official site",
+        "url": "https://www.moonwalk.bio/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Moonwalk Biosciences product evidence 1",
+        "url": "https://moonwalk.bio/science/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Moonwalk Biosciences product evidence 2",
+        "url": "https://moonwalk.bio/pipeline/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Moonwalk Biosciences financing source",
+        "url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The science page describes adipose targeting, RNA interference and the biological rationale for the therapeutic platform.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The pipeline page identifies preclinical programs and indications without representing them as approved therapies.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating adipose-targeted RNA-interference therapeutics platform.",
+      "category": "RNA therapeutics",
+      "differentiation": "Moonwalk makes a specific delivery bet on adipose-targeted RNA interference for metabolic disease.",
+      "why_now": "Moonwalk Biosciences reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The targets and indications are specific, while human efficacy and safety remain unproven.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

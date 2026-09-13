@@ -1,0 +1,96 @@
+{
+  "slug": "digitalpaani",
+  "domain": "www.digitalpaani.com",
+  "url": "https://www.digitalpaani.com/",
+  "product_name": "DigitalPaani",
+  "summary": "Operating software for monitoring and improving water and wastewater infrastructure.",
+  "editor_note": "Rather than replacing treatment plants with new hardware, the platform adds real-time monitoring, operating guidance and lifecycle management to existing assets. The INR 220M financing has no source-stated canonical stage, while deployment counts and water-outcome metrics remain company reported.",
+  "editor_rating": 4,
+  "why_featured": "Operating layer for water assets",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2020,
+  "hq_location": "Gurugram, India",
+  "region": "China / Asia",
+  "tags": "water technology,wastewater,industrial software,climate technology",
+  "investors": "Navam Capital, 3one4 Capital",
+  "links": {
+    "product": "https://www.digitalpaani.com/",
+    "resources": "https://www.digitalpaani.com/about-us/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "INR 220M",
+      "currency": "INR",
+      "stage": "Unspecified",
+      "lead_investor": "Navam Capital",
+      "date": "2026-09-08",
+      "source_url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+      "source_name": "Inc42"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "DigitalPaani official site",
+        "url": "https://www.digitalpaani.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "DigitalPaani product evidence 1",
+        "url": "https://www.digitalpaani.com/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "DigitalPaani product evidence 2",
+        "url": "https://www.digitalpaani.com/about-us/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "DigitalPaani financing source",
+        "url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes real-time monitoring, operating guidance and lifecycle management for water and wastewater assets.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The company history records pilots and more than 40 deployments, retained as company-reported operating evidence.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating water and wastewater infrastructure operating system.",
+      "category": "Water infrastructure software",
+      "differentiation": "DigitalPaani bets on an operating layer for existing water infrastructure rather than replacing plants with new hardware.",
+      "why_now": "Inc42 reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The facility user and water workflow are specific, while outcome metrics remain company reported.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies INR 220M but does not state a canonical round stage. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}

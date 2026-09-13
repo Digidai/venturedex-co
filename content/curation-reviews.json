@@ -365,11 +365,11 @@
     {
       "slug": "aslan",
       "company_url": "https://aslanprotects.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $20.8M financing and an inspectable national-security digital-domain platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://aslanprotects.com/",
@@ -381,6 +381,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and national-security digital-domain platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -540,11 +545,11 @@
     {
       "slug": "fambot",
       "company_url": "https://fambot.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $3.5M Pre-Seed round and an inspectable consumer household-assistant application. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://fambot.com/",
@@ -556,6 +561,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and consumer household-assistant application; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -656,11 +666,11 @@
     {
       "slug": "guardio",
       "company_url": "https://guard.io/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $40M financing at a reported $1.1B valuation and an inspectable consumer cybersecurity product. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://guard.io/",
@@ -672,6 +682,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and consumer cybersecurity product; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -711,11 +726,11 @@
     {
       "slug": "ultrahuman",
       "company_url": "https://www.ultrahuman.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $70M financing package and an inspectable wearable metabolic and health sensing system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.ultrahuman.com/",
@@ -728,6 +743,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and wearable metabolic and health sensing system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -940,11 +960,11 @@
     {
       "slug": "prevalent-ai",
       "company_url": "https://prevalent.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $22M first primary growth investment and an inspectable sovereign enterprise data and knowledge platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://prevalent.ai/",
@@ -955,6 +975,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and sovereign enterprise data and knowledge platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1059,11 +1084,11 @@
     {
       "slug": "zeit-ai",
       "company_url": "https://www.zeit-ai.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 4.3M financing and an inspectable autonomous data-engineering platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.zeit-ai.com/",
@@ -1075,6 +1100,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and autonomous data-engineering platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1168,11 +1198,11 @@
     {
       "slug": "peoplex",
       "company_url": "https://peoplex.jp/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed JPY 5.45B Series A financing package and an inspectable AI interview, role-play and meeting platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://peoplex.jp/",
@@ -1184,6 +1214,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and AI interview, role-play and meeting platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1241,11 +1276,11 @@
     {
       "slug": "also",
       "company_url": "https://ridealso.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $150M Series D round and an inspectable connected lightweight electric-mobility system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://ridealso.com/",
@@ -1257,6 +1292,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and connected lightweight electric-mobility system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1349,11 +1389,11 @@
     {
       "slug": "teragen-energy",
       "company_url": "https://www.teragenenergy.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $6M Pre-Seed round and an inspectable modular solid-oxide fuel-cell system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.teragenenergy.com/",
@@ -1364,6 +1404,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and modular solid-oxide fuel-cell system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1505,11 +1550,11 @@
     {
       "slug": "hyimpulse",
       "company_url": "https://www.hyimpulse.de/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed Series A extension above EUR 50M and an inspectable hybrid-propulsion orbital launch system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.hyimpulse.de/",
@@ -1522,6 +1567,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and hybrid-propulsion orbital launch system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1625,11 +1675,11 @@
     {
       "slug": "xorlab",
       "company_url": "https://www.xorlab.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 5M Series A extension and an inspectable sovereign email-security platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.xorlab.com/",
@@ -1640,6 +1690,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and sovereign email-security platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1679,11 +1734,11 @@
     {
       "slug": "cato",
       "company_url": "https://www.get-cato.com/en",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 6M financing and an inspectable public-tender intelligence and sales platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.get-cato.com/en",
@@ -1694,6 +1749,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and public-tender intelligence and sales platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1792,11 +1852,11 @@
     {
       "slug": "fluencify",
       "company_url": "https://fluencify.io/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 3.7M Pre-Seed round and an inspectable managed creator-campaign operating platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://fluencify.io/",
@@ -1808,6 +1868,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and managed creator-campaign operating platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1847,11 +1912,11 @@
     {
       "slug": "octave-energy",
       "company_url": "https://octave.energy/en/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 10M Series A mixed financing and an inspectable second-life battery storage and energy-management system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://octave.energy/en/",
@@ -1862,6 +1927,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and second-life battery storage and energy-management system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1901,11 +1971,11 @@
     {
       "slug": "moa-foodtech",
       "company_url": "https://www.moafoodtech.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $3.8M financing and an inspectable fermentation-derived food ingredient platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.moafoodtech.com/",
@@ -1918,6 +1988,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and fermentation-derived food ingredient platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -1957,11 +2032,11 @@
     {
       "slug": "backbone",
       "company_url": "https://www.usebackbone.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed EUR 4M Pre-Seed round and an inspectable food quality and compliance operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.usebackbone.ai/",
@@ -1972,6 +2047,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and food quality and compliance operating system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -2101,11 +2181,11 @@
     {
       "slug": "fundly-ai",
       "company_url": "https://fundly.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $4M Pre-Series A round plus separately reported venture debt and an inspectable embedded financing platform for pharmaceutical distribution. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://fundly.ai/",
@@ -2118,6 +2198,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and embedded financing platform for pharmaceutical distribution; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -2157,11 +2242,11 @@
     {
       "slug": "leinao-ai",
       "company_url": "https://www.leinao.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed Series B-plus financing and an inspectable AI compute and power-grid infrastructure platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "publication_blocked",
+      "reason_code": "screenshot_review",
+      "reason": "The qualification remains valid, but the official website currently serves a maintenance page over an expired TLS certificate. A truthful product screenshot and live official-product verification cannot be completed, so publication is blocked rather than substituting unrelated imagery.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": "2026-09-14",
       "priority": 2,
       "sources": [
         "https://www.leinao.ai/",
@@ -2174,6 +2259,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and AI compute and power-grid infrastructure platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Rechecked immediately outside the Daily cadence. The official site returned a maintenance page and an expired TLS certificate, so official-product screenshot and source-health gates could not be completed."
         }
       ],
       "original": {
@@ -2213,11 +2303,11 @@
     {
       "slug": "megawave-fusion",
       "company_url": "https://www.megawavefusion.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed Series A financing above CNY 100M and an inspectable radio-frequency systems for fusion facilities. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.megawavefusion.com/",
@@ -2229,6 +2319,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and radio-frequency systems for fusion facilities; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "original": {
@@ -2268,11 +2363,11 @@
     {
       "slug": "split-pay",
       "company_url": "https://splitpay.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed approximately $100M Series B round and an inspectable consumer bill-splitting and short-term payment product. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://splitpay.com/",
@@ -2285,6 +2380,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and consumer bill-splitting and short-term payment product; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2320,11 +2420,11 @@
     {
       "slug": "moonwalk-biosciences",
       "company_url": "https://www.moonwalk.bio/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $70M Series B round and an inspectable adipose-targeted RNA-interference therapeutics platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.moonwalk.bio/",
@@ -2337,6 +2437,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and adipose-targeted RNA-interference therapeutics platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2500,11 +2605,11 @@
     {
       "slug": "keep-converting",
       "company_url": "https://keepconverting.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $2M Pre-Seed round and an inspectable real-time ecommerce product-page personalization platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://keepconverting.ai/",
@@ -2516,6 +2621,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and real-time ecommerce product-page personalization platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2565,11 +2675,11 @@
     {
       "slug": "celero-communications",
       "company_url": "https://celero.inc/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $275M Series C round and an inspectable coherent optical communications silicon platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://celero.inc/",
@@ -2580,6 +2690,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and coherent optical communications silicon platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2651,11 +2766,11 @@
     {
       "slug": "digitalpaani",
       "company_url": "https://www.digitalpaani.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed INR 22 crore financing and an inspectable water and wastewater infrastructure operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.digitalpaani.com/",
@@ -2668,6 +2783,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and water and wastewater infrastructure operating system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2703,11 +2823,11 @@
     {
       "slug": "circolife",
       "company_url": "https://circolife.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $4.5M Pre-Series A round and an inspectable commercial cooling-as-a-service platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://circolife.com/",
@@ -2721,6 +2841,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and commercial cooling-as-a-service platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {
@@ -2756,11 +2881,11 @@
     {
       "slug": "veridue",
       "company_url": "https://veridue.ai/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $4M Pre-Seed round and an inspectable energy-infrastructure due-diligence and transaction platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, official-screenshot and release-preparation gates are complete for immediate publication outside the scheduled Daily cadence.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://veridue.ai/",
@@ -2772,6 +2897,11 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and energy-infrastructure due-diligence and transaction platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Published from the previously qualified overflow after completing the full startup, investor, visual and release preparation workflow."
         }
       ],
       "evaluation": {

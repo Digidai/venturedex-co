@@ -218,5 +218,495 @@
     "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
     "source_name": "SentiCell via PR Newswire",
     "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "aslan",
+    "investor_slug": "khosla-ventures",
+    "round_date": "2026-09-01",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+    "source_name": "Axios",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "aslan",
+    "investor_slug": "xyz-venture-capital",
+    "round_date": "2026-09-01",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+    "source_name": "Axios",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "aslan",
+    "investor_slug": "2048-ventures",
+    "round_date": "2026-09-01",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+    "source_name": "Axios",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "fambot",
+    "investor_slug": "nextview-ventures",
+    "round_date": "2026-09-03",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://fambot.com/press",
+    "source_name": "FamBot",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "fambot",
+    "investor_slug": "baukunst",
+    "round_date": "2026-09-03",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://fambot.com/press",
+    "source_name": "FamBot",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "guardio",
+    "investor_slug": "vintage-investment-partners",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://www.prnewswire.com/news-releases/consumer-cybersecurity-pioneer-guardio-reaches-1-1-billion-valuation-302868923.html",
+    "source_name": "Guardio via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "ultrahuman",
+    "investor_slug": "alpha-wave-global",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+    "source_name": "Ultrahuman",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "ultrahuman",
+    "investor_slug": "qualcomm-ventures",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+    "source_name": "Ultrahuman",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "ultrahuman",
+    "investor_slug": "nexus-venture-partners",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+    "source_name": "Ultrahuman",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "prevalent-ai",
+    "investor_slug": "integrity-growth-partners",
+    "round_date": "2026-08-19",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+    "source_name": "Prevalent AI",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "zeit-ai",
+    "investor_slug": "yc",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+    "source_name": "EU-Startups",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "zeit-ai",
+    "investor_slug": "sequoia",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+    "source_name": "EU-Startups",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "peoplex",
+    "investor_slug": "world-innovation-lab",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "role_unspecified",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+    "source_name": "PeopleX via PR Times",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "also",
+    "investor_slug": "prysm-capital",
+    "round_date": "2026-08-19",
+    "round_stage": "Series D",
+    "role": "lead",
+    "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+    "source_name": "ALSO",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "also",
+    "investor_slug": "eclipse",
+    "round_date": "2026-08-19",
+    "round_stage": "Series D",
+    "role": "participant",
+    "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+    "source_name": "ALSO",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "also",
+    "investor_slug": "greenoaks",
+    "round_date": "2026-08-19",
+    "round_stage": "Series D",
+    "role": "participant",
+    "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+    "source_name": "ALSO",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "teragen-energy",
+    "investor_slug": "breakthrough-energy-ventures",
+    "round_date": "2026-08-26",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+    "source_name": "Teragen Energy",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "teragen-energy",
+    "investor_slug": "energy-capital-ventures",
+    "round_date": "2026-08-26",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+    "source_name": "Teragen Energy",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "hyimpulse",
+    "investor_slug": "join-capital",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+    "source_name": "Pulsar Consulting",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "hyimpulse",
+    "investor_slug": "ace-capital-partners",
+    "round_date": "2026-09-02",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+    "source_name": "Pulsar Consulting",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "xorlab",
+    "investor_slug": "spicehaus-partners",
+    "round_date": "2026-09-01",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+    "source_name": "xorlab",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "xorlab",
+    "investor_slug": "equitypitcher-ventures",
+    "round_date": "2026-09-01",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+    "source_name": "xorlab",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "cato",
+    "investor_slug": "keen-venture-partners",
+    "round_date": "2026-09-07",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.keenventurepartners.com/posts/why-we-invested-in-cato",
+    "source_name": "Keen Venture Partners",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "fluencify",
+    "investor_slug": "byfounders",
+    "round_date": "2026-09-07",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.eu-startups.com/2026/09/stockholm-based-fluencify-raises-e3-7-million-to-scale-its-end-to-end-creator-marketing-platform/",
+    "source_name": "EU-Startups",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "octave-energy",
+    "investor_slug": "spdg-growth",
+    "round_date": "2026-09-03",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+    "source_name": "Octave Energy",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "moa-foodtech",
+    "investor_slug": "eic-fund",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://agfundernews.com/moa-foodtech-nets-3-8m-to-scale-ai-powered-biomass-fermentation-platform",
+    "source_name": "AgFunderNews",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "backbone",
+    "investor_slug": "pitchdrive",
+    "round_date": "2026-09-02",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+    "source_name": "Backbone",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "backbone",
+    "investor_slug": "100in",
+    "round_date": "2026-09-02",
+    "round_stage": "Pre-Seed",
+    "role": "participant",
+    "source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+    "source_name": "Backbone",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "fundly-ai",
+    "investor_slug": "accel",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Series A",
+    "role": "lead",
+    "source_url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+    "source_name": "The Economic Times",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "fundly-ai",
+    "investor_slug": "multiply-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Series A",
+    "role": "lead",
+    "source_url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+    "source_name": "The Economic Times",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "megawave-fusion",
+    "investor_slug": "crrc-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://finance.eastmoney.com/a/202609083867098289.html",
+    "source_name": "Eastmoney",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "megawave-fusion",
+    "investor_slug": "changjiang-growth-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://finance.eastmoney.com/a/202609083867098289.html",
+    "source_name": "Eastmoney",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "split-pay",
+    "investor_slug": "khosla-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Series B",
+    "role": "lead",
+    "source_url": "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+    "source_name": "Axios",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "split-pay",
+    "investor_slug": "thrive",
+    "round_date": "2026-09-08",
+    "round_stage": "Series B",
+    "role": "participant",
+    "source_url": "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+    "source_name": "Axios",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "moonwalk-biosciences",
+    "investor_slug": "alpha-wave-global",
+    "round_date": "2026-09-08",
+    "round_stage": "Series B",
+    "role": "lead",
+    "source_url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+    "source_name": "Moonwalk Biosciences",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "moonwalk-biosciences",
+    "investor_slug": "khosla-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Series B",
+    "role": "participant",
+    "source_url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+    "source_name": "Moonwalk Biosciences",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "keep-converting",
+    "investor_slug": "nuwa-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+    "source_name": "The SaaS News",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "keep-converting",
+    "investor_slug": "cotu-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+    "source_name": "The SaaS News",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "celero-communications",
+    "investor_slug": "atreides-management",
+    "round_date": "2026-09-08",
+    "round_stage": "Series C",
+    "role": "lead",
+    "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+    "source_name": "Celero Communications",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "celero-communications",
+    "investor_slug": "valor-equity-partners",
+    "round_date": "2026-09-08",
+    "round_stage": "Series C",
+    "role": "lead",
+    "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+    "source_name": "Celero Communications",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "celero-communications",
+    "investor_slug": "capitalg",
+    "round_date": "2026-09-08",
+    "round_stage": "Series C",
+    "role": "lead",
+    "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+    "source_name": "Celero Communications",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "celero-communications",
+    "investor_slug": "sutter-hill-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Series C",
+    "role": "participant",
+    "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+    "source_name": "Celero Communications",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "celero-communications",
+    "investor_slug": "maverick-silicon",
+    "round_date": "2026-09-08",
+    "round_stage": "Series C",
+    "role": "participant",
+    "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+    "source_name": "Celero Communications",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "digitalpaani",
+    "investor_slug": "navam-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+    "source_name": "Inc42",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "digitalpaani",
+    "investor_slug": "3one4-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+    "source_name": "Inc42",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "circolife",
+    "investor_slug": "sky-impact-capital",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Series A",
+    "role": "role_unspecified",
+    "source_url": "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+    "source_name": "Inc42",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "veridue",
+    "investor_slug": "episode-1-ventures",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+    "source_name": "Veridue",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "veridue",
+    "investor_slug": "high-tech-grunderfonds",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Seed",
+    "role": "participant",
+    "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+    "source_name": "Veridue",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "veridue",
+    "investor_slug": "pi-labs",
+    "round_date": "2026-09-08",
+    "round_stage": "Pre-Seed",
+    "role": "participant",
+    "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+    "source_name": "Veridue",
+    "verified_at": "2026-09-13"
   }
 ]

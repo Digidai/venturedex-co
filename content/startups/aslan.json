@@ -1,0 +1,96 @@
+{
+  "slug": "aslan",
+  "domain": "aslanprotects.com",
+  "url": "https://aslanprotects.com/",
+  "product_name": "Aslan",
+  "summary": "Agentic digital-domain operations software for national-security teams.",
+  "editor_note": "Rather than offering a general AI assistant, the platform is scoped to digital-domain operations for national-security teams, with mission context and operator workflows visible on its public site. The $20.8M round is verified, but the source does not name a canonical stage, and deployment claims remain company reported.",
+  "editor_rating": 4,
+  "why_featured": "Mission-specific agentic operations",
+  "product_type": "AI / ML",
+  "founded_year": 2024,
+  "hq_location": "Washington, DC",
+  "region": "US",
+  "tags": "defense technology,agentic AI,national security,operations software",
+  "investors": "Khosla Ventures, XYZ Venture Capital, 2048 Ventures",
+  "links": {
+    "product": "https://aslanprotects.com/",
+    "resources": "https://aslanprotects.com/about"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20.8M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-09-01",
+      "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Aslan official site",
+        "url": "https://aslanprotects.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Aslan product evidence 1",
+        "url": "https://aslanprotects.com/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Aslan product evidence 2",
+        "url": "https://aslanprotects.com/about",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Aslan financing source",
+        "url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents a defined digital-domain operations platform for national-security teams rather than a general AI consultancy.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The company background and use-case material identify the mission users, operating context and product boundary.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating national-security digital-domain platform.",
+      "category": "National-security software",
+      "differentiation": "Aslan bets on agentic operations in a narrowly defined national-security domain.",
+      "why_now": "Axios reported the current financing on 2026-09-01."
+    },
+    "risks": [
+      {
+        "claim": "The product is specific about buyer and mission even though implementation claims remain company reported.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies $20.8M but does not state a canonical round stage. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}

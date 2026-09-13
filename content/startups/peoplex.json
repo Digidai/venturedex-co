@@ -1,0 +1,88 @@
+{
+  "slug": "peoplex",
+  "domain": "peoplex.jp",
+  "url": "https://peoplex.jp/",
+  "product_name": "PeopleX",
+  "summary": "AI interview, role-play, meeting and sales-practice products for workplace teams.",
+  "editor_note": "Unlike a single generic HR assistant, the suite separates interview, role-play, meeting and sales workflows into distinct products. The JPY 5.45B Series A combines equity and debt, so the headline is not presented as pure venture equity; reported adoption and performance figures remain company supplied.",
+  "editor_rating": 4,
+  "why_featured": "Workplace conversation practice",
+  "product_type": "AI / ML",
+  "founded_year": 2024,
+  "hq_location": "Tokyo, Japan",
+  "region": "China / Asia",
+  "tags": "HR technology,AI interviews,role play,sales enablement",
+  "investors": "World Innovation Lab",
+  "links": {
+    "product": "https://peoplex.jp/",
+    "resources": "https://peoplex.jp/news"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "JPY 5.45B",
+      "currency": "JPY",
+      "stage": "Series A",
+      "instrument": "mixed",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-02",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+      "source_name": "PeopleX via PR Times"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "PeopleX official site",
+        "url": "https://peoplex.jp/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "PeopleX product evidence 1",
+        "url": "https://peoplex.jp/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "PeopleX product evidence 2",
+        "url": "https://peoplex.jp/news",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "PeopleX financing source",
+        "url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes separate interview, role-play, meeting and sales products rather than a single vague HR-AI claim.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The current product and company news surface provides inspectable launch and adoption context for the suite.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating AI interview, role-play and meeting platform.",
+      "category": "Workplace learning software",
+      "differentiation": "PeopleX bets on instrumented practice and evaluation across multiple high-stakes workplace conversations.",
+      "why_now": "PeopleX via PR Times reported the current financing on 2026-09-02."
+    },
+    "risks": [
+      {
+        "claim": "The use cases are specific, while reported adoption and outcomes remain company claims.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

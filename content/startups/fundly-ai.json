@@ -1,0 +1,88 @@
+{
+  "slug": "fundly-ai",
+  "domain": "fundly.ai",
+  "url": "https://fundly.ai/",
+  "product_name": "Fundly.ai",
+  "summary": "Embedded working-capital platform for pharmaceutical retailers and distributors.",
+  "editor_note": "Unlike horizontal small-business lending, the product embeds underwriting and capital delivery into a defined pharmaceutical distribution chain. The $4M Pre-Series A is recorded separately from a reported $0.9M debt facility; credit performance and the financing mix still require continued scrutiny.",
+  "editor_rating": 4,
+  "why_featured": "Financing inside pharma distribution",
+  "product_type": "Fintech",
+  "founded_year": 2021,
+  "hq_location": "Mumbai, India",
+  "region": "China / Asia",
+  "tags": "embedded finance,pharmaceutical distribution,working capital,fintech",
+  "investors": "Accel, Multiply Ventures",
+  "links": {
+    "product": "https://fundly.ai/about",
+    "resources": "https://in.linkedin.com/company/fundlyai"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4M",
+      "currency": "USD",
+      "stage": "Pre-Series A",
+      "instrument": "equity",
+      "lead_investor": "Accel",
+      "date": "2026-09-08",
+      "source_url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+      "source_name": "The Economic Times"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Fundly.ai official site",
+        "url": "https://fundly.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Fundly.ai product evidence 1",
+        "url": "https://fundly.ai/about",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Fundly.ai product evidence 2",
+        "url": "https://in.linkedin.com/company/fundlyai",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fundly.ai financing source",
+        "url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official company page defines embedded working-capital workflows for pharmaceutical retailers and distributors.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The company's official social profile states the current Pre-Series A financing and its named institutional backers.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating embedded financing platform for pharmaceutical distribution.",
+      "category": "Embedded pharmaceutical finance",
+      "differentiation": "Fundly.ai bets on underwriting and capital delivery inside a specific pharmaceutical supply chain.",
+      "why_now": "The Economic Times reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The vertical and transaction are specific, while credit performance and funding composition need careful disclosure.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

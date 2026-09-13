@@ -1,0 +1,82 @@
+{
+  "slug": "octave-energy",
+  "domain": "octave.energy",
+  "url": "https://octave.energy/en/",
+  "product_name": "Octave Energy",
+  "summary": "Second-life battery storage paired with energy-management software for businesses.",
+  "editor_note": "Rather than discarding retired vehicle batteries, the system repackages them into containerized stationary storage managed by an energy software layer. The EUR 10M Series A combines equity and debt, so the amount is presented as mixed financing; degradation and lifecycle economics remain key risks.",
+  "editor_rating": 4,
+  "why_featured": "Second-life batteries as managed storage",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2020,
+  "hq_location": "Brussels, Belgium",
+  "region": "Europe",
+  "tags": "battery storage,second-life batteries,energy management,climate technology",
+  "investors": "SPDG Growth",
+  "links": {
+    "product": "https://octave.energy/en/",
+    "resources": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 10M",
+      "currency": "EUR",
+      "stage": "Series A",
+      "instrument": "mixed",
+      "lead_investor": "SPDG Growth",
+      "date": "2026-09-03",
+      "source_url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+      "source_name": "Octave Energy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Octave Energy official site",
+        "url": "https://octave.energy/en/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Octave Energy product evidence 1",
+        "url": "https://octave.energy/en/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Octave Energy financing source",
+        "url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes containerized battery-energy storage combined with an energy-management software layer.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Octave Energy's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating second-life battery storage and energy-management system.",
+      "category": "Battery energy storage",
+      "differentiation": "Octave bets on making retired vehicle batteries useful as managed stationary storage.",
+      "why_now": "Octave Energy reported the current financing on 2026-09-03."
+    },
+    "risks": [
+      {
+        "claim": "The system and customer use case are specific, while lifecycle economics and degradation remain key risks.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

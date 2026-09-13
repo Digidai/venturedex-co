@@ -1,6 +1,13 @@
 {
   "verified_at": "2026-09-13",
   "companies": {
+    "8090": {
+      "name": "8090",
+      "shape": "icon",
+      "local_path": "/logos/companies/8090.svg",
+      "source_page": "https://www.8090.ai/",
+      "source_url": "https://www.8090.ai/icon-1jdwle.svg?icon.0f_-dy8xxf.vn.svg?dpl=dpl_7GunrEHtCsKo6FLpgmwPpEBfAMgX"
+    },
     "piston": {
       "name": "Piston",
       "shape": "wordmark",
@@ -22,13 +29,6 @@
       "local_path": "/logos/companies/vecna-robotics.svg",
       "source_page": "https://www.vecnarobotics.com/",
       "source_url": "https://www.vecnarobotics.com/wp-content/uploads/2023/02/Vecna-2023_Primary-Logo-White_2C-1.svg"
-    },
-    "8090": {
-      "name": "8090",
-      "shape": "icon",
-      "local_path": "/logos/companies/8090.svg",
-      "source_page": "https://www.8090.ai/",
-      "source_url": "https://www.8090.ai/icon-1jdwle.svg?icon.0f_-dy8xxf.vn.svg?dpl=dpl_7GunrEHtCsKo6FLpgmwPpEBfAMgX"
     },
     "cal-com": {
       "name": "Cal.com",
@@ -2271,9 +2271,191 @@
       "local_path": "/logos/companies/senticell.png",
       "source_page": "https://www.senticell.bio/",
       "source_url": "https://static.wixstatic.com/media/478adf_b0b4f4c7832b4b3490f06d63d89251ac%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/478adf_b0b4f4c7832b4b3490f06d63d89251ac%7Emv2.png"
+    },
+    "aslan": {
+      "name": "Aslan",
+      "shape": "icon",
+      "local_path": "/logos/companies/aslan.png",
+      "source_page": "https://aslanprotects.com/",
+      "source_url": "https://framerusercontent.com/images/h0QCnGucPuhZl5KV92U7lxcreo.png"
+    },
+    "fambot": {
+      "name": "FamBot",
+      "shape": "icon",
+      "local_path": "/logos/companies/fambot.png",
+      "source_page": "https://fambot.com/",
+      "source_url": "https://fambot.com/apple-touch-icon.png"
+    },
+    "guardio": {
+      "name": "Guardio",
+      "shape": "icon",
+      "local_path": "/logos/companies/guardio.png",
+      "source_page": "https://guard.io/",
+      "source_url": "https://cdn.prod.website-files.com/660aad6ed4b43a5ebeb55a52/6865da90a073aedfa1bb5ab5_677d25b0d8926e3bec507eb8_favicon%20256.png"
+    },
+    "ultrahuman": {
+      "name": "Ultrahuman",
+      "shape": "icon",
+      "local_path": "/logos/companies/ultrahuman.png",
+      "source_page": "https://www.ultrahuman.com/",
+      "source_url": "https://www.ultrahuman.com/apple-touch-icon.png"
+    },
+    "prevalent-ai": {
+      "name": "Prevalent AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/prevalent-ai.png",
+      "source_page": "https://prevalent.ai/",
+      "source_url": "https://prevalent.ai/favicons/apple-touch-icon.png"
+    },
+    "zeit-ai": {
+      "name": "Zeit AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/zeit-ai.png",
+      "source_page": "https://www.zeit-ai.com/",
+      "source_url": "https://cdn.prod.website-files.com/6902359088cc8683c4db0171/6924ae93aa31375ce2914304_zeitai-favicon-256px.png"
+    },
+    "peoplex": {
+      "name": "PeopleX",
+      "shape": "icon",
+      "local_path": "/logos/companies/peoplex.png",
+      "source_page": "https://peoplex.jp/",
+      "source_url": "https://peoplex.jp/wp-content/themes/peoplex/assets/common/img/logo_peoplex_color_ver2.webp"
+    },
+    "also": {
+      "name": "ALSO",
+      "shape": "icon",
+      "local_path": "/logos/companies/also.png",
+      "source_page": "https://ridealso.com/",
+      "source_url": "https://ridealso.com/"
+    },
+    "teragen-energy": {
+      "name": "Teragen Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/teragen-energy.png",
+      "source_page": "https://www.teragenenergy.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/68c4e83bf70715049df46828/916a20e6-d225-4f46-9167-0536030fe472/favicon.ico"
+    },
+    "hyimpulse": {
+      "name": "HyImpulse",
+      "shape": "icon",
+      "local_path": "/logos/companies/hyimpulse.png",
+      "source_page": "https://www.hyimpulse.de/",
+      "source_url": "https://cdn.prod.website-files.com/68d9eca8cb056cd80ecb9ba3/68d9eca8cb056cd80ecb9ce2_Favicon.jpg"
+    },
+    "xorlab": {
+      "name": "xorlab",
+      "shape": "icon",
+      "local_path": "/logos/companies/xorlab.png",
+      "source_page": "https://www.xorlab.com/",
+      "source_url": "https://www.xorlab.com/hubfs/favicon.png"
+    },
+    "cato": {
+      "name": "Cato",
+      "shape": "icon",
+      "local_path": "/logos/companies/cato.png",
+      "source_page": "https://www.get-cato.com/en",
+      "source_url": "https://www.get-cato.com/favicon.svg"
+    },
+    "fluencify": {
+      "name": "Fluencify",
+      "shape": "icon",
+      "local_path": "/logos/companies/fluencify.png",
+      "source_page": "https://fluencify.io/",
+      "source_url": "https://fluencify.io/webclip.jpg"
+    },
+    "octave-energy": {
+      "name": "Octave Energy",
+      "shape": "icon",
+      "local_path": "/logos/companies/octave-energy.png",
+      "source_page": "https://octave.energy/en/",
+      "source_url": "https://octave-energy-website.s3.eu-west-1.amazonaws.com/static/img/apple-touch-icon.png"
+    },
+    "moa-foodtech": {
+      "name": "MOA Foodtech",
+      "shape": "icon",
+      "local_path": "/logos/companies/moa-foodtech.png",
+      "source_page": "https://www.moafoodtech.com/",
+      "source_url": "https://cdn.prod.website-files.com/67e040d541517bce727dc17e/688f412d56238a41af75459c_Frame%20996.png"
+    },
+    "backbone": {
+      "name": "Backbone",
+      "shape": "icon",
+      "local_path": "/logos/companies/backbone.png",
+      "source_page": "https://www.usebackbone.ai/",
+      "source_url": "https://framerusercontent.com/images/mRp0FGPO9pT8RfFCeFsbgVCBZJw.png"
+    },
+    "fundly-ai": {
+      "name": "Fundly.ai",
+      "shape": "icon",
+      "local_path": "/logos/companies/fundly-ai.png",
+      "source_page": "https://fundly.ai/",
+      "source_url": "https://fundly.ai/assets/img/favicon.png"
+    },
+    "split-pay": {
+      "name": "Split Pay",
+      "shape": "icon",
+      "local_path": "/logos/companies/split-pay.png",
+      "source_page": "https://splitpay.com/",
+      "source_url": "https://splitpay.com/_next/static/media/apple-touch-icon.2yahmvckdm2h_.png"
+    },
+    "moonwalk-biosciences": {
+      "name": "Moonwalk Biosciences",
+      "shape": "icon",
+      "local_path": "/logos/companies/moonwalk-biosciences.png",
+      "source_page": "https://www.moonwalk.bio/",
+      "source_url": "https://moonwalk.bio/wp-content/uploads/2023/12/icon.svg"
+    },
+    "keep-converting": {
+      "name": "Keep Converting",
+      "shape": "icon",
+      "local_path": "/logos/companies/keep-converting.png",
+      "source_page": "https://keepconverting.ai/",
+      "source_url": "https://keepconverting.ai/images/kc-icon.png"
+    },
+    "digitalpaani": {
+      "name": "DigitalPaani",
+      "shape": "icon",
+      "local_path": "/logos/companies/digitalpaani.png",
+      "source_page": "https://www.digitalpaani.com/",
+      "source_url": "https://www.digitalpaani.com/wp-content/uploads/2023/08/Digital-Paani-300x300.png"
+    },
+    "circolife": {
+      "name": "Circolife",
+      "shape": "icon",
+      "local_path": "/logos/companies/circolife.png",
+      "source_page": "https://circolife.com/",
+      "source_url": "https://circolife.com/wp-content/uploads/2026/04/cropped-favicon-180x180.png"
+    },
+    "veridue": {
+      "name": "Veridue",
+      "shape": "icon",
+      "local_path": "/logos/companies/veridue.png",
+      "source_page": "https://veridue.ai/",
+      "source_url": "https://cdn.prod.website-files.com/6a71b88ce1b428a0624e0f5d/6a7fb92c2ac30f8359942a7f_webclip.png"
+    },
+    "megawave-fusion": {
+      "name": "MegaWave Fusion",
+      "shape": "icon",
+      "local_path": "/logos/companies/megawave-fusion.png",
+      "source_page": "https://www.megawavefusion.com/",
+      "source_url": "https://www.megawavefusion.com/media_library/image_20260425131631YBQU.png"
+    },
+    "celero-communications": {
+      "name": "Celero Communications",
+      "shape": "icon",
+      "local_path": "/logos/companies/celero-communications.png",
+      "source_page": "https://celero.inc/",
+      "source_url": "https://celero.inc/wp-content/uploads/2025/11/logo.svg"
     }
   },
   "investors": {
+    "776": {
+      "name": "Seven Seven Six",
+      "shape": "icon",
+      "local_path": "/logos/investors/776.svg",
+      "source_page": "https://sevensevensix.com",
+      "source_url": "https://sevensevensix.com/logo.svg"
+    },
     "unless": {
       "name": "Unless",
       "shape": "wordmark",
@@ -2345,13 +2527,6 @@
       "local_path": "/logos/investors/stonebridge-ventures.svg",
       "source_page": "https://www.stonebridgeventures.vc/",
       "source_url": "https://www.stonebridgeventures.vc/"
-    },
-    "776": {
-      "name": "Seven Seven Six",
-      "shape": "icon",
-      "local_path": "/logos/investors/776.svg",
-      "source_page": "https://sevensevensix.com",
-      "source_url": "https://sevensevensix.com/logo.svg"
     },
     "a16z": {
       "name": "Andreessen Horowitz",
@@ -3464,10 +3639,10 @@
       "name": "Marathon Management Partners",
       "shape": "icon",
       "local_path": "/logos/investors/marathon-management-partners.png",
-      "source_page": "https://www.marathonmp.com/",
-      "source_url": "https://img1.wsimg.com/isteam/ip/020bd5a7-d418-4b9d-8fe9-b912d21b7bed/favicon/e6aa9fe8-3451-41e5-a183-33f4b043b0ed/972a8b9a-803a-45da-aeed-594e91499f38.png/:/rs=w:180,h:180,m",
+      "source_page": "https://marathonmp.com/",
+      "source_url": "https://img1.wsimg.com/isteam/ip/020bd5a7-d418-4b9d-8fe9-b912d21b7bed/favicon/e6aa9fe8-3451-41e5-a183-33f4b043b0ed/972a8b9a-803a-45da-aeed-594e91499f38.png/:/rs=w:120,h:120,m",
       "allow_unreachable_source": true,
-      "note": "Official homepage links this GoDaddy-hosted favicon, but the asset probe returns HTTP 204; local logo was fetched from the official asset URL."
+      "note": "Official live-site favicon verified in browser; the GoDaddy CDN intermittently returns HTTP 204 to automated validation."
     },
     "gv": {
       "name": "GV",
@@ -3718,11 +3893,10 @@
     },
     "chemistry": {
       "name": "Chemistry",
-      "shape": "wordmark",
+      "shape": "icon",
       "local_path": "/logos/investors/chemistry.png",
       "source_page": "https://www.chemistry.vc/",
-      "source_url": "https://cdn.prod.website-files.com/6717ae652c13a07892c7857d/6717ae652c13a07892c78614_chemistry_logo_white%20(1).png",
-      "tile_background": "dark"
+      "source_url": "https://cdn.prod.website-files.com/66e1661badaebb2f264fce96/670531ccce041b579ba67336_Favicon.png"
     },
     "burda-principal-investments": {
       "name": "Burda Principal Investments",
@@ -4128,22 +4302,6 @@
       "source_page": "https://www.s32.com/",
       "source_url": "https://cdn.prod.website-files.com/6a03653681ac1f8c65eae17b/6a11d37adf85c993b69d2ab6_s32%20logo.png"
     },
-    "marathon-management-partners": {
-      "name": "Marathon Management Partners",
-      "shape": "icon",
-      "local_path": "/logos/investors/marathon-management-partners.png",
-      "source_page": "https://marathonmp.com/",
-      "source_url": "https://img1.wsimg.com/isteam/ip/020bd5a7-d418-4b9d-8fe9-b912d21b7bed/favicon/e6aa9fe8-3451-41e5-a183-33f4b043b0ed/972a8b9a-803a-45da-aeed-594e91499f38.png/:/rs=w:120,h:120,m",
-      "allow_unreachable_source": true,
-      "note": "Official live-site favicon verified in browser; the GoDaddy CDN intermittently returns HTTP 204 to automated validation."
-    },
-    "chemistry": {
-      "name": "Chemistry",
-      "shape": "icon",
-      "local_path": "/logos/investors/chemistry.png",
-      "source_page": "https://www.chemistry.vc/",
-      "source_url": "https://cdn.prod.website-files.com/66e1661badaebb2f264fce96/670531ccce041b579ba67336_Favicon.png"
-    },
     "matrix": {
       "name": "Matrix",
       "shape": "icon",
@@ -4376,6 +4534,204 @@
       "local_path": "/logos/investors/evoce-capital.svg",
       "source_page": "https://www.evocecapital.com/",
       "source_url": "https://cdn.prod.website-files.com/660eb9c19e421d64ce0883ef/661e54a18fc8a61ceeb7205b_Webclip.svg"
+    },
+    "xyz-venture-capital": {
+      "name": "XYZ Venture Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/xyz-venture-capital.png",
+      "source_page": "https://www.xyz.vc/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5f3b1e890e220740514c27af/1608043871947-TV965ZM7DNF5QGZCCV4V/favicon.ico?format=100w"
+    },
+    "nextview-ventures": {
+      "name": "NextView Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/nextview-ventures.png",
+      "source_page": "https://nextview.vc/",
+      "source_url": "https://nextview.vc/wp-content/uploads/2024/09/cropped-nv-favicon-texture-180x180.png"
+    },
+    "baukunst": {
+      "name": "Baukunst",
+      "shape": "icon",
+      "local_path": "/logos/investors/baukunst.png",
+      "source_page": "https://baukunst.co/",
+      "source_url": "https://cdn.sanity.io/images/k55gw5z9/production/c34e3e9f6a95f659342bc56682f32d85a22abfde-512x512.png?w=192&amp;h=192"
+    },
+    "vintage-investment-partners": {
+      "name": "Vintage Investment Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/vintage-investment-partners.png",
+      "source_page": "https://vintage-ip.com/",
+      "source_url": "https://vintage-ip.com/wp-content/uploads/2022/10/favicon-32x32-1.png"
+    },
+    "qualcomm-ventures": {
+      "name": "Qualcomm Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/qualcomm-ventures.png",
+      "source_page": "https://www.qualcommventures.com/",
+      "source_url": "https://www.qualcommventures.com/wp-content/themes/berg-theme-child/assets/images/favicon/apple-icon-57x57.png"
+    },
+    "alpha-wave-global": {
+      "name": "Alpha Wave Global",
+      "shape": "icon",
+      "local_path": "/logos/investors/alpha-wave-global.png",
+      "source_page": "https://alphawaveglobal.com/",
+      "source_url": "https://cdn.prod.website-files.com/69d941048de462ae52b4e113/69fd39790e9889939b987624_icon1_Favicon.png"
+    },
+    "integrity-growth-partners": {
+      "name": "Integrity Growth Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/integrity-growth-partners.png",
+      "source_page": "https://www.integritygp.com/",
+      "source_url": "https://morphic-images.s3.us-east-2.amazonaws.com/478/IGP_favicon_8327f1ce87.png"
+    },
+    "world-innovation-lab": {
+      "name": "World Innovation Lab",
+      "shape": "icon",
+      "local_path": "/logos/investors/world-innovation-lab.png",
+      "source_page": "https://wilab.com/",
+      "source_url": "https://wilab.com/static/media/wil_logo-dots.8380b8cb.svg"
+    },
+    "breakthrough-energy-ventures": {
+      "name": "Breakthrough Energy Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/breakthrough-energy-ventures.png",
+      "source_page": "https://www.breakthroughenergy.org/programs",
+      "source_url": "https://www.breakthroughenergy.org/apple-touch-icon.png"
+    },
+    "energy-capital-ventures": {
+      "name": "Energy Capital Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/energy-capital-ventures.png",
+      "source_page": "https://www.energycapitalventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/60e71c98ffb53a7c1911b6a0/618ed1c3e0e99e320441a282_Untitled%20design%20(51).png"
+    },
+    "join-capital": {
+      "name": "JOIN Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/join-capital.png",
+      "source_page": "https://www.join.capital/",
+      "source_url": "https://www.join.capital/wp-content/themes/join/img/favicon.svg"
+    },
+    "ace-capital-partners": {
+      "name": "Ace Capital Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/ace-capital-partners.png",
+      "source_page": "https://ace-capitalpartners.com/",
+      "source_url": "https://img1.wsimg.com/isteam/ip/76af540f-943e-46a2-977f-61aea3857e92/1.png/:/rs=w:57,h:57,m",
+      "allow_unreachable_source": true,
+      "note": "The official GoDaddy-hosted logo returned a nonempty HTTP 200 response to GET during this review, while HEAD returned HTTP 204; retain the exact official asset and treat that method-specific response as non-blocking."
+    },
+    "spicehaus-partners": {
+      "name": "Spicehaus Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/spicehaus-partners.png",
+      "source_page": "https://www.spicehaus.com/",
+      "source_url": "https://www.spicehaus.com/apple-touch-icon.png"
+    },
+    "keen-venture-partners": {
+      "name": "Keen Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/keen-venture-partners.png",
+      "source_page": "https://www.keenventurepartners.com/",
+      "source_url": "https://cdn.prod.website-files.com/67c6c9ea8292f601af7145c5/67c84829fbac94b8fd9effc3_favicon-256x256.png"
+    },
+    "byfounders": {
+      "name": "byFounders",
+      "shape": "icon",
+      "local_path": "/logos/investors/byfounders.png",
+      "source_page": "https://www.byfounders.vc/",
+      "source_url": "https://cdn.prod.website-files.com/65b25063965878dfa16c7d4f/65b25063965878dfa16c7df2_webclip.png"
+    },
+    "spdg-growth": {
+      "name": "SPDG Growth",
+      "shape": "icon",
+      "local_path": "/logos/investors/spdg-growth.png",
+      "source_page": "https://www.spdg.be/",
+      "source_url": "https://www.spdg.be/app/themes/sdpg/src/images/apple-touch-icon.png"
+    },
+    "eic-fund": {
+      "name": "EIC Fund",
+      "shape": "icon",
+      "local_path": "/logos/investors/eic-fund.png",
+      "source_page": "https://eic.ec.europa.eu/eic-fund_en",
+      "source_url": "https://eic.ec.europa.eu/themes/contrib/oe_theme/images/favicons/ec/favicon.png"
+    },
+    "multiply-ventures": {
+      "name": "Multiply Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/multiply-ventures.png",
+      "source_page": "https://www.multiplyventures.com/",
+      "source_url": "https://www.multiplyventures.com/images/logo/mv-logo.svg"
+    },
+    "changjiang-growth-capital": {
+      "name": "Changjiang Growth Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/changjiang-growth-capital.png",
+      "source_page": "https://www.cjsccapital.com/",
+      "source_url": "https://www.cjsccapital.com/cjcz/images/favicon.png"
+    },
+    "nuwa-capital": {
+      "name": "Nuwa Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/nuwa-capital.png",
+      "source_page": "https://www.nuwacapital.io/",
+      "source_url": "https://cdn.prod.website-files.com/61d93414b1f71cdc05363676/624ed9a0a200637b8f6f05f0_256.png"
+    },
+    "cotu-ventures": {
+      "name": "COTU Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/cotu-ventures.png",
+      "source_page": "https://www.cotu.vc/",
+      "source_url": "https://static.wixstatic.com/media/80312b_730f656eba0d409aa733a0a0bfd0f1c3%7Emv2.png/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/80312b_730f656eba0d409aa733a0a0bfd0f1c3%7Emv2.png"
+    },
+    "atreides-management": {
+      "name": "Atreides Management",
+      "shape": "icon",
+      "local_path": "/logos/investors/atreides-management.png",
+      "source_page": "https://atreidesmgmt.com/",
+      "source_url": "https://atreidesmgmt.com/wp-content/uploads/2019/04/favicon.png"
+    },
+    "valor-equity-partners": {
+      "name": "Valor Equity Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/valor-equity-partners.png",
+      "source_page": "https://www.valorep.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/5bbd0e6fe666693fac5b7c04/1550603343609-A1T5K2OPM7Y5F06MSPH5/favicon.ico"
+    },
+    "navam-capital": {
+      "name": "Navam Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/navam-capital.png",
+      "source_page": "https://www.navamcapital.com/",
+      "source_url": "https://cdn.prod.website-files.com/66ec0e15bb51214ee3d9a6e9/66f277218fbaaecfa6c7fd37_img_webclip-navam-light.webp"
+    },
+    "sky-impact-capital": {
+      "name": "Sky Impact Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/sky-impact-capital.png",
+      "source_page": "https://www.skyimpact.com/",
+      "source_url": "https://static.wixstatic.com/media/1bce5b_2eada5b63ea0409b875d590bd20c2e75%7Emv2.png/v1/fill/w_180%2Ch_180%2Clg_1%2Cusm_0.66_1.00_0.01/1bce5b_2eada5b63ea0409b875d590bd20c2e75%7Emv2.png"
+    },
+    "episode-1-ventures": {
+      "name": "Episode 1 Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/episode-1-ventures.png",
+      "source_page": "https://www.episode1.com/",
+      "source_url": "https://cdn.prod.website-files.com/651a7bbe9f88c9da705ab398/6542a553045f4b988fba4444_episode1-icon.png"
+    },
+    "pi-labs": {
+      "name": "Pi Labs",
+      "shape": "icon",
+      "local_path": "/logos/investors/pi-labs.png",
+      "source_page": "https://pilabs.vc/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/63234408ae7fc91c7d8a1464/8784c23a-5964-4e49-90d7-9b4dd32362ac/favicon.ico?format=100w"
+    },
+    "crrc-capital": {
+      "name": "CRRC Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/crrc-capital.png",
+      "source_page": "https://www.crrcgc.cc/cytz/",
+      "source_url": "https://www.crrcgc.cc/cytz/imageDir/siteLogo.png"
     }
   }
 }

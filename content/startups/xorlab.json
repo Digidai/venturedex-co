@@ -1,0 +1,82 @@
+{
+  "slug": "xorlab",
+  "domain": "www.xorlab.com",
+  "url": "https://www.xorlab.com/",
+  "product_name": "xorlab",
+  "summary": "Sovereign email-security platform for threat detection, policy and response workflows.",
+  "editor_note": "Rather than offering a generic security dashboard, the product operates inside email protection with defined detection, policy and deployment choices. The EUR 5M Series A+ round supports European expansion; efficacy and comparative threat-blocking performance still require independent validation.",
+  "editor_rating": 4,
+  "why_featured": "Email-native sovereign security",
+  "product_type": "SaaS",
+  "founded_year": 2015,
+  "hq_location": "Zurich, Switzerland",
+  "region": "Europe",
+  "tags": "email security,cybersecurity,threat detection,sovereign software",
+  "investors": "Spicehaus Partners, EquityPitcher Ventures",
+  "links": {
+    "product": "https://www.xorlab.com/",
+    "resources": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 5M",
+      "currency": "EUR",
+      "stage": "Series A",
+      "stage_raw": "Series A+",
+      "lead_investor": "Spicehaus Partners",
+      "date": "2026-09-01",
+      "source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+      "source_name": "xorlab"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "xorlab official site",
+        "url": "https://www.xorlab.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "xorlab product evidence 1",
+        "url": "https://www.xorlab.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "xorlab financing source",
+        "url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site details email threat detection, policy enforcement and deployment choices for enterprise security teams.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "xorlab's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating sovereign email-security platform.",
+      "category": "Email security",
+      "differentiation": "xorlab bets on email-native behavioral detection with a European sovereignty position.",
+      "why_now": "xorlab reported the current financing on 2026-09-01."
+    },
+    "risks": [
+      {
+        "claim": "The product boundary and buyer are specific, though efficacy claims require independent validation.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "guardio",
+  "domain": "guard.io",
+  "url": "https://guard.io/",
+  "product_name": "Guardio",
+  "summary": "Consumer protection across browsers, identity exposure and malicious web activity.",
+  "editor_note": "Rather than presenting a static security score, the product combines browser-level detection, identity monitoring and guided remediation for individual users. The $40M financing and $1.1B valuation are company-announced; efficacy, scale and threat-prevention metrics should therefore remain attributed rather than treated as independently proven.",
+  "editor_rating": 4,
+  "why_featured": "Consumer security at browsing time",
+  "product_type": "SaaS",
+  "founded_year": 2018,
+  "hq_location": "Tel Aviv, Israel",
+  "region": "Global / Remote",
+  "tags": "cybersecurity,browser security,identity protection,consumer software",
+  "investors": "Vintage Investment Partners",
+  "links": {
+    "product": "https://guard.io/",
+    "resources": "https://guard.io/blog/a-note-from-amos-our-ceo"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://www.prnewswire.com/news-releases/consumer-cybersecurity-pioneer-guardio-reaches-1-1-billion-valuation-302868923.html",
+      "source_name": "Guardio via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Guardio official site",
+        "url": "https://guard.io/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Guardio product evidence 1",
+        "url": "https://guard.io/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Guardio product evidence 2",
+        "url": "https://guard.io/blog/a-note-from-amos-our-ceo",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Guardio financing source",
+        "url": "https://www.prnewswire.com/news-releases/consumer-cybersecurity-pioneer-guardio-reaches-1-1-billion-valuation-302868923.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes browser, identity and web-threat protection as a consumer product with a defined protection workflow.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The CEO note supplies current product and operating context, with company metrics retained as company-reported claims.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating consumer cybersecurity product.",
+      "category": "Consumer cybersecurity",
+      "differentiation": "Guardio bets on always-on protection at the consumer browsing and identity layer.",
+      "why_now": "Guardio via PR Newswire reported the current financing on 2026-09-03."
+    },
+    "risks": [
+      {
+        "claim": "The use case is specific, while scale and efficacy claims require clear company attribution.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies $40M but does not state a canonical round stage or a lead investor. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}

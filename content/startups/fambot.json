@@ -1,0 +1,80 @@
+{
+  "slug": "fambot",
+  "domain": "fambot.com",
+  "url": "https://fambot.com/",
+  "product_name": "FamBot",
+  "summary": "Persistent household assistant that turns family messages and tasks into coordinated action.",
+  "editor_note": "Unlike a one-shot family chatbot, the public beta is designed to keep household tasks, messages and schedules moving across recurring workflows. A first-week guide makes onboarding inspectable, while the $3.5M Pre-Seed round funds an early product whose long-term retention and integration reliability are still unproven.",
+  "editor_rating": 4,
+  "why_featured": "A persistent family operations layer",
+  "product_type": "SaaS",
+  "hq_location": "United States",
+  "region": "US",
+  "tags": "consumer software,household assistant,AI,productivity",
+  "investors": "NextView Ventures, Baukunst",
+  "links": {
+    "product": "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026",
+    "resources": "https://fambot.com/press"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.5M",
+      "currency": "USD",
+      "stage": "Pre-Seed",
+      "lead_investor": "NextView Ventures",
+      "date": "2026-09-03",
+      "source_url": "https://fambot.com/press",
+      "source_name": "FamBot"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "FamBot official site",
+        "url": "https://fambot.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "FamBot product evidence 1",
+        "url": "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "FamBot financing source",
+        "url": "https://fambot.com/press",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product guide walks through the first-week setup and actual household-assistant workflow for public beta users.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "FamBot's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating consumer household-assistant application.",
+      "category": "Consumer household software",
+      "differentiation": "FamBot bets on a persistent household workflow rather than a one-shot consumer chatbot.",
+      "why_now": "FamBot reported the current financing on 2026-09-03."
+    },
+    "risks": [
+      {
+        "claim": "The user and recurring job are clear, though long-term retention remains an open product risk.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

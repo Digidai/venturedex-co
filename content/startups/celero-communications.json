@@ -1,0 +1,80 @@
+{
+  "slug": "celero-communications",
+  "domain": "celero.inc",
+  "url": "https://celero.inc/",
+  "product_name": "Celero Communications",
+  "summary": "Coherent optical-communications DSP silicon validated on a 2nm process.",
+  "editor_note": "Unlike an early semiconductor concept, the company reports validated 2nm coherent DSP silicon for optical communications and a defined subsystem boundary. The $275M Series C funds commercialization and scale, while customer qualification, manufacturing yield and production economics remain undisclosed.",
+  "editor_rating": 4,
+  "why_featured": "2nm silicon for optical networks",
+  "product_type": "Other",
+  "hq_location": "United States",
+  "region": "US",
+  "tags": "semiconductors,optical communications,DSP,2nm silicon",
+  "investors": "Atreides Management, Valor Equity Partners, CapitalG, Sutter Hill Ventures, Maverick Silicon",
+  "links": {
+    "product": "https://celero.inc/",
+    "resources": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$275M",
+      "currency": "USD",
+      "stage": "Series C",
+      "lead_investor": "Atreides Management",
+      "date": "2026-09-08",
+      "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+      "source_name": "Celero Communications"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Celero Communications official site",
+        "url": "https://celero.inc/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Celero Communications product evidence 1",
+        "url": "https://celero.inc/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Celero Communications financing source",
+        "url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The now-accessible official site describes coherent DSP silicon for optical communications and its product boundary.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Celero Communications's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating coherent optical communications silicon platform.",
+      "category": "Optical communications silicon",
+      "differentiation": "Celero makes a deep hardware bet on 2nm coherent DSP silicon for optical networks.",
+      "why_now": "Celero Communications reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The product boundary is specific, while scale, customer qualification and yields remain undisclosed.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

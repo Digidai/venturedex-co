@@ -1,0 +1,86 @@
+{
+  "slug": "fluencify",
+  "domain": "fluencify.io",
+  "url": "https://fluencify.io/",
+  "product_name": "Fluencify",
+  "summary": "Creator-campaign operations spanning briefs, approvals, delivery and reporting.",
+  "editor_note": "Rather than acting only as a creator directory, the product connects campaign briefs, coordination, approvals, deliverables and reporting in one managed workflow. The EUR 3.7M Pre-Seed round backs an early platform whose differentiation and durable workflow adoption still need validation.",
+  "editor_rating": 4,
+  "why_featured": "Creator campaigns, one workflow",
+  "product_type": "SaaS",
+  "hq_location": "Stockholm, Sweden",
+  "region": "Europe",
+  "tags": "creator marketing,campaign management,brand software,workflow",
+  "investors": "byFounders",
+  "links": {
+    "product": "https://fluencify.io/product/campaign-management",
+    "resources": "https://fluencify.io/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 3.7M",
+      "currency": "EUR",
+      "stage": "Pre-Seed",
+      "lead_investor": "byFounders",
+      "date": "2026-09-07",
+      "source_url": "https://www.eu-startups.com/2026/09/stockholm-based-fluencify-raises-e3-7-million-to-scale-its-end-to-end-creator-marketing-platform/",
+      "source_name": "EU-Startups"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Fluencify official site",
+        "url": "https://fluencify.io/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Fluencify product evidence 1",
+        "url": "https://fluencify.io/product/campaign-management",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Fluencify product evidence 2",
+        "url": "https://fluencify.io/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Fluencify financing source",
+        "url": "https://www.eu-startups.com/2026/09/stockholm-based-fluencify-raises-e3-7-million-to-scale-its-end-to-end-creator-marketing-platform/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product page details campaign briefs, creator coordination, approvals, deliverables and reporting in one workflow.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The official site defines the managed operating model and customer problem beyond a simple influencer directory.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating managed creator-campaign operating platform.",
+      "category": "Creator marketing software",
+      "differentiation": "Fluencify bets on owning creator-campaign operations rather than only matching brands and creators.",
+      "why_now": "EU-Startups reported the current financing on 2026-09-07."
+    },
+    "risks": [
+      {
+        "claim": "The product scope is specific, while differentiation from established campaign suites needs continued scrutiny.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

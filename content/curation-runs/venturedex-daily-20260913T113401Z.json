@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260913T113401Z",
+  "locked_at": "2026-09-13",
+  "pool_sha256": "c6e2b1229d26f89ef131ae03a090dbb11cf42192fdc520b3b4929468244d39bf",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Official product and financing evidence for immediate qualified backlog batch 2",
+      "outcome": "Rechecked the previously qualified company evidence and retained exact source-stated funding terms."
+    },
+    {
+      "type": "investor",
+      "query": "Official investor identities and current profile evidence for immediate backlog batch 2",
+      "outcome": "Resolved named lead and selected participating institutions to sourced directory profiles without refreshing already-fresh profiles."
+    },
+    {
+      "type": "original_media",
+      "query": "Independent and original financing coverage for immediate backlog batch 2",
+      "outcome": "Preserved independent, regional and industry reporting where company announcements did not independently establish the round."
+    },
+    {
+      "type": "regional_media",
+      "query": "Regional-language and native-currency checks for immediate backlog batch 2",
+      "outcome": "Kept native currencies, source-stated stages and undisclosed fields without inferred conversions or labels."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "zeit-ai",
+      "company_url": "https://www.zeit-ai.com/",
+      "source_url": "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-03",
+      "region": "Europe",
+      "industry": "Data engineering software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.zeit-ai.com/",
+            "note": "The product site describes an autonomous data-engineering workflow and a catalog of more than 600 connectors for mid-market teams."
+          },
+          {
+            "url": "https://www.zeit-ai.com/about-us",
+            "note": "The company page identifies the European mid-market focus and the operating problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Zeit AI bets that a data engineer can be represented as an ongoing operational agent rather than a code assistant."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Connector breadth and the described pipeline workflow make the integration burden visible."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The target team and recurring data job are specific, though production reliability evidence remains company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "peoplex",
+      "company_url": "https://peoplex.jp/",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "China / Asia",
+      "industry": "Workplace learning software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://peoplex.jp/",
+            "note": "The official site exposes separate interview, role-play, meeting and sales products rather than a single vague HR-AI claim."
+          },
+          {
+            "url": "https://peoplex.jp/news",
+            "note": "The current product and company news surface provides inspectable launch and adoption context for the suite."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "PeopleX bets on instrumented practice and evaluation across multiple high-stakes workplace conversations."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Distinct products and workflows show deliberate packaging rather than a thin general-purpose assistant."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The use cases are specific, while reported adoption and outcomes remain company claims."
+          }
+        }
+      }
+    },
+    {
+      "slug": "also",
+      "company_url": "https://ridealso.com/",
+      "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+      "source_type": "company",
+      "announced_at": "2026-08-19",
+      "region": "US",
+      "industry": "Electric mobility",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://ridealso.com/",
+            "note": "The corrected official site exposes the TM-B and TM-Q electric vehicles and a connected mobility platform."
+          },
+          {
+            "url": "https://ridealso.com/pages/company",
+            "note": "The company page establishes the distinct mobility entity, product roadmap and autonomy direction at the corrected domain."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "ALSO bets on a lightweight connected vehicle class rather than a conventional e-bike catalog."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named vehicle systems and a coherent hardware-software roadmap provide evidence of integrated product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and company identity are now specific, although later autonomy claims remain forward looking."
+          }
+        }
+      }
+    },
+    {
+      "slug": "teragen-energy",
+      "company_url": "https://www.teragenenergy.com/",
+      "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+      "source_type": "company",
+      "announced_at": "2026-08-26",
+      "region": "US",
+      "industry": "Solid-oxide fuel cells",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.teragenenergy.com/",
+            "note": "The official site describes a modular solid-oxide fuel-cell architecture and the transition from prototypes toward pilots."
+          },
+          {
+            "url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+            "note": "The company announcement connects the financing to pilot manufacturing and deployment milestones."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Teragen makes a hard technical bet on modularizing solid-oxide power generation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and pilot plans expose an engineering path rather than a generic clean-energy promise."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The architecture and next validation step are specific, while commercial efficiency remains unproven."
+          }
+        }
+      }
+    },
+    {
+      "slug": "hyimpulse",
+      "company_url": "https://www.hyimpulse.de/",
+      "source_url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "Europe",
+      "industry": "Space launch systems",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://hyimpulse.de/sl1",
+            "note": "The SL1 product page publishes the launch-vehicle architecture, payload role and hybrid-propulsion system boundary."
+          },
+          {
+            "url": "https://hyimpulse.de/Press_Release/03052024_Press%20Release_HyImpulse%20-%20German%20space%20company%20successfully%20launches%20first%20commercially%20viable%20launch%20vehicle.pdf",
+            "note": "The official test-flight release records an actual launch milestone instead of only a vehicle roadmap."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "HyImpulse makes a clear propulsion bet on paraffin-based hybrid launch systems."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A flight test plus detailed vehicle material provides unusually inspectable aerospace craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The launch product and mission are specific, while orbital execution and economics remain open."
+          }
+        }
+      }
+    },
+    {
+      "slug": "xorlab",
+      "company_url": "https://www.xorlab.com/",
+      "source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+      "source_type": "company",
+      "announced_at": "2026-09-01",
+      "region": "Europe",
+      "industry": "Email security",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.xorlab.com/",
+            "note": "The official site details email threat detection, policy enforcement and deployment choices for enterprise security teams."
+          },
+          {
+            "url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+            "note": "The company announcement ties the financing to a deployed sovereign email-security product rather than a pre-product concept."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "xorlab bets on email-native behavioral detection with a European sovereignty position."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment and protection workflows expose the operational seams that security buyers must evaluate."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary and buyer are specific, though efficacy claims require independent validation."
+          }
+        }
+      }
+    },
+    {
+      "slug": "cato",
+      "company_url": "https://www.get-cato.com/en",
+      "source_url": "https://www.keenventurepartners.com/posts/why-we-invested-in-cato",
+      "source_type": "investor",
+      "announced_at": "2026-09-07",
+      "region": "Europe",
+      "industry": "Public-sector sales software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.get-cato.com/en",
+            "note": "The official site exposes public-tender discovery, qualification and response workflows for companies selling to governments."
+          },
+          {
+            "url": "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/",
+            "note": "Original reporting supplies the current financing and expansion context for the operating product."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Cato bets on a domain-specific operating layer for public procurement rather than generic sales automation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Tender discovery and response workflows make the product's integration into enterprise work inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer and transaction are specific, while disclosed product evidence is primarily company supplied."
+          }
+        }
+      }
+    },
+    {
+      "slug": "fluencify",
+      "company_url": "https://fluencify.io/",
+      "source_url": "https://www.eu-startups.com/2026/09/stockholm-based-fluencify-raises-e3-7-million-to-scale-its-end-to-end-creator-marketing-platform/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-07",
+      "region": "Europe",
+      "industry": "Creator marketing software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://fluencify.io/product/campaign-management",
+            "note": "The product page details campaign briefs, creator coordination, approvals, deliverables and reporting in one workflow."
+          },
+          {
+            "url": "https://fluencify.io/",
+            "note": "The official site defines the managed operating model and customer problem beyond a simple influencer directory."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Fluencify bets on owning creator-campaign operations rather than only matching brands and creators."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The approval, delivery and reporting steps show a composed enterprise workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product scope is specific, while differentiation from established campaign suites needs continued scrutiny."
+          }
+        }
+      }
+    },
+    {
+      "slug": "octave-energy",
+      "company_url": "https://octave.energy/en/",
+      "source_url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+      "source_type": "company",
+      "announced_at": "2026-09-03",
+      "region": "Europe",
+      "industry": "Battery energy storage",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://octave.energy/en/",
+            "note": "The official site describes containerized battery-energy storage combined with an energy-management software layer."
+          },
+          {
+            "url": "https://octave.energy/fr/octave-dans-les-medias/we-just-raised-10m-in-series-a/",
+            "note": "The company announcement connects the mixed financing to deployment of its second-life battery systems."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Octave bets on making retired vehicle batteries useful as managed stationary storage."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The battery system, container integration and management layer show cross-disciplinary product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The system and customer use case are specific, while lifecycle economics and degradation remain key risks."
+          }
+        }
+      }
+    },
+    {
+      "slug": "moa-foodtech",
+      "company_url": "https://www.moafoodtech.com/",
+      "source_url": "https://agfundernews.com/moa-foodtech-nets-3-8m-to-scale-ai-powered-biomass-fermentation-platform",
+      "source_type": "industry_media",
+      "announced_at": "2026-09-03",
+      "region": "Europe",
+      "industry": "Food biotechnology",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.moafoodtech.com/moa-box",
+            "note": "MOA Box is presented as a defined fermentation-development platform for converting side streams into food ingredients."
+          },
+          {
+            "url": "https://www.moafoodtech.com/moa-yeast",
+            "note": "The official yeast ingredient page exposes a concrete output and application rather than only a platform thesis."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MOA bets on pairing fermentation development with specific commercial ingredient outputs."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The Box process and named ingredient products reveal both platform and formulation craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The inputs and outputs are specific, while scale economics and regulatory acceptance remain open."
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "teragen-energy",
+  "domain": "www.teragenenergy.com",
+  "url": "https://www.teragenenergy.com/",
+  "product_name": "Teragen Energy",
+  "summary": "Modular solid-oxide fuel-cell systems moving from prototypes toward pilot deployment.",
+  "editor_note": "Rather than treating fuel cells as a laboratory thesis, the company describes a modular architecture and an explicit path from prototypes to pilot manufacturing. The $6M Pre-Seed round funds that validation step; commercial efficiency, durability and deployment economics have not yet been demonstrated at scale.",
+  "editor_rating": 4,
+  "why_featured": "Modularizing solid-oxide power",
+  "product_type": "Climate / Sustainability",
+  "hq_location": "United States",
+  "region": "US",
+  "tags": "fuel cells,energy hardware,solid oxide,distributed power",
+  "investors": "Breakthrough Energy Ventures, Energy Capital Ventures",
+  "links": {
+    "product": "https://www.teragenenergy.com/",
+    "resources": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$6M",
+      "currency": "USD",
+      "stage": "Pre-Seed",
+      "lead_investor": "Breakthrough Energy Ventures",
+      "date": "2026-08-26",
+      "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+      "source_name": "Teragen Energy"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Teragen Energy official site",
+        "url": "https://www.teragenenergy.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Teragen Energy product evidence 1",
+        "url": "https://www.teragenenergy.com/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Teragen Energy financing source",
+        "url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a modular solid-oxide fuel-cell architecture and the transition from prototypes toward pilots.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Teragen Energy's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating modular solid-oxide fuel-cell system.",
+      "category": "Solid-oxide fuel cells",
+      "differentiation": "Teragen makes a hard technical bet on modularizing solid-oxide power generation.",
+      "why_now": "Teragen Energy reported the current financing on 2026-08-26."
+    },
+    "risks": [
+      {
+        "claim": "The architecture and next validation step are specific, while commercial efficiency remains unproven.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "slug": "split-pay",
+  "domain": "splitpay.com",
+  "url": "https://splitpay.com/",
+  "product_name": "Split Pay",
+  "summary": "Shared-bill splitting with short-term payment scheduling and disclosed consumer fees.",
+  "editor_note": "Unlike a peer-to-peer payment interface, the product uploads a bill, divides responsibility and schedules short-term repayment around shared expenses. Axios reports the Series B at approximately $100M within a $125M combined raise; the exact fee schedule is visible, while credit loss and consumer outcomes remain open.",
+  "editor_rating": 4,
+  "why_featured": "Underwriting for shared bills",
+  "product_type": "Fintech",
+  "hq_location": "United States",
+  "region": "US",
+  "tags": "consumer fintech,bill splitting,short-term credit,payments",
+  "investors": "Khosla Ventures, Thrive Capital",
+  "links": {
+    "product": "https://splitpay.com/how-it-works",
+    "resources": "https://splitpay.com/help/about-split-pay/how-split-pay-works/what-fees-does-split-pay-charge"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$100M",
+      "currency": "USD",
+      "stage": "Series B",
+      "lead_investor": "Khosla Ventures",
+      "date": "2026-09-08",
+      "source_url": "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+      "source_name": "Axios"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Split Pay official site",
+        "url": "https://splitpay.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Split Pay product evidence 1",
+        "url": "https://splitpay.com/how-it-works",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Split Pay product evidence 2",
+        "url": "https://splitpay.com/help/about-split-pay/how-split-pay-works/what-fees-does-split-pay-charge",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Split Pay financing source",
+        "url": "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The public workflow explains bill upload, participant splitting and payment timing for the consumer product.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The help center states a $9.99 fee plus 1.5%, making the operating and pricing model inspectable.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating consumer bill-splitting and short-term payment product.",
+      "category": "Consumer payments",
+      "differentiation": "Split Pay bets on cash-flow underwriting around shared bills rather than another peer-to-peer payment interface.",
+      "why_now": "Axios reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The transaction and user are specific, while credit loss and consumer-protection outcomes remain open.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

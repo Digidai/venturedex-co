@@ -1,0 +1,86 @@
+{
+  "slug": "megawave-fusion",
+  "domain": "www.megawavefusion.com",
+  "url": "https://www.megawavefusion.com/",
+  "product_name": "MegaWave Fusion",
+  "summary": "Microwave and radio-frequency subsystems for fusion research and energy facilities.",
+  "editor_note": "Rather than claiming to build an entire fusion plant, the company focuses on a critical radio-frequency subsystem layer and publishes a concrete hardware catalog. The Series A is conservatively recorded as CNY 100M+ because the original report says only more than one hundred million yuan, not a precise total.",
+  "editor_rating": 4,
+  "why_featured": "RF infrastructure for fusion",
+  "product_type": "Other",
+  "hq_location": "China",
+  "region": "China / Asia",
+  "tags": "fusion energy,radio frequency,microwave systems,deep technology",
+  "investors": "CRRC Transformation and Upgrading Fund, Changjiang Growth Capital",
+  "links": {
+    "product": "https://www.megawavefusion.com/",
+    "resources": "https://www.megawavefusion.cn/pruduct"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "CNY 100M+",
+      "currency": "CNY",
+      "stage": "Series A",
+      "lead_investor": "CRRC Transformation and Upgrading Fund",
+      "date": "2026-09-08",
+      "source_url": "https://finance.eastmoney.com/a/202609083867098289.html",
+      "source_name": "Eastmoney"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "MegaWave Fusion official site",
+        "url": "https://www.megawavefusion.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "MegaWave Fusion product evidence 1",
+        "url": "https://www.megawavefusion.com/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "MegaWave Fusion product evidence 2",
+        "url": "https://www.megawavefusion.cn/pruduct",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "MegaWave Fusion financing source",
+        "url": "https://finance.eastmoney.com/a/202609083867098289.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site identifies microwave and radio-frequency systems built for fusion research and energy facilities.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official product catalog exposes concrete RF hardware categories rather than an abstract fusion-energy claim.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating radio-frequency systems for fusion facilities.",
+      "category": "Fusion radio-frequency systems",
+      "differentiation": "MegaWave bets on a critical RF subsystem layer within fusion infrastructure.",
+      "why_now": "Eastmoney reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The subsystem boundary is specific, while the exact current raise is conservatively recorded as over CNY 100M.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

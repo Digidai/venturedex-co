@@ -12900,6 +12900,1223 @@
           "checked_at": "2026-09-13"
         }
       ]
+    },
+    "ace-capital-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Global Series A and B investor focused on civilian and military aerospace and defence technology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Series A and Series B",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Aerospace",
+            "Defence"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Ace Capital Partners official overview",
+          "url": "https://ace-capitalpartners.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "alpha-wave-global": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Alternative asset manager investing across private equity, private credit and related strategies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth equity",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Life sciences",
+            "Consumer"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Alpha Wave Global official overview",
+          "url": "https://alphawaveglobal.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "atreides-management": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Crossover investment manager taking a long-term view of technology and consumer companies across public and private markets.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Crossover",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Consumer"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Atreides Management official overview",
+          "url": "https://atreidesmgmt.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "baukunst": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Pre-seed venture fund and creative-technology collective investing at the frontiers of technology and design.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Pre-Seed",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Design"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Baukunst official overview",
+          "url": "https://baukunst.co/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "breakthrough-energy-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Climate-focused venture investor backing technologies with the potential to reduce greenhouse-gas emissions at scale.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Venture",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Agriculture",
+            "Buildings",
+            "Electricity",
+            "Manufacturing",
+            "Transportation"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Breakthrough Energy Ventures official overview",
+          "url": "https://www.breakthroughenergy.org/programs",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "byfounders": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Community-powered early-stage investor supporting ambitious founders across the Nordic and Baltic region.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Nordics",
+            "Baltics"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "byFounders official overview",
+          "url": "https://www.byfounders.vc/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "changjiang-growth-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Private-equity investment subsidiary of Changjiang Securities supporting technology and growth companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Private equity",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Growth companies"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Changjiang Growth Capital official overview",
+          "url": "https://www.cjsccapital.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "cotu-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage investor providing first checks to technology founders across the Middle East and North Africa.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "First check",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Middle East",
+            "North Africa"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "COTU Ventures official overview",
+          "url": "https://www.cotu.vc/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "crrc-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "CRRC-linked industrial investment platform supporting strategic and emerging technology sectors.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Industrial investment",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Advanced manufacturing",
+            "Clean energy",
+            "Strategic technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "CRRC Capital official overview",
+          "url": "https://www.crrcgc.cc/cytz/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "eic-fund": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "European Innovation Council venture investment arm supporting European deep-technology companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Venture and growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "European deep technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "EIC Fund official overview",
+          "url": "https://eic.ec.europa.eu/eic-fund_en",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "energy-capital-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage venture fund focused on innovation across the natural-gas and energy value chain.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Energy",
+            "Natural gas value chain"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Energy Capital Ventures official overview",
+          "url": "https://www.energycapitalventures.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "episode-1-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "UK venture firm helping pre-seed and seed B2B software companies reach Series A.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Pre-Seed and Seed",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "B2B software"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Episode 1 Ventures official overview",
+          "url": "https://www.episode1.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "integrity-growth-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Growth investor partnering with bootstrapped software and technology-enabled services companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Software",
+            "Technology-enabled services"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Integrity Growth Partners official overview",
+          "url": "https://www.integritygp.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "join-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "European early-stage deep-tech investor focused on strategic industrial, defence, space and computing systems.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Deep tech",
+            "Defence",
+            "Space",
+            "Advanced computing"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "JOIN Capital official overview",
+          "url": "https://www.join.capital/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "keen-venture-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "European venture firm backing early-stage technology companies, including software for SMEs and defence.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed to Series B",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "European SME technology",
+            "Defence"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Keen Venture Partners official overview",
+          "url": "https://www.keenventurepartners.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "multiply-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "India-focused early-stage venture fund investing across consumer, consumer technology and fintech.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Consumer",
+            "Consumer technology",
+            "Fintech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Multiply Ventures official overview",
+          "url": "https://www.multiplyventures.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "navam-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Seed and early-stage investor focused on frontier technology and science-driven innovation in India.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed and early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Frontier technology",
+            "Science-driven innovation"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Navam Capital official overview",
+          "url": "https://www.navamcapital.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "nextview-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Hands-on seed investor working with founders across North America.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "North America"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "NextView Ventures official overview",
+          "url": "https://nextview.vc/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "nuwa-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Venture investment platform backing technology companies across the Middle East and nearby growth markets.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed to Series B",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "MENA technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Nuwa Capital official overview",
+          "url": "https://www.nuwacapital.io/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "pi-labs": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage investor and accelerator backing technology for a digital and sustainable built world.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Pre-Seed to Series A",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Built environment",
+            "Sustainability"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Pi Labs official overview",
+          "url": "https://pilabs.vc/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "qualcomm-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Corporate venture investor backing technology companies across mobile, AI, automotive and connected systems.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Venture",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "AI",
+            "Mobile",
+            "Automotive",
+            "Connected systems"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Qualcomm Ventures official overview",
+          "url": "https://www.qualcommventures.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "sky-impact-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Operationally engaged investment firm focused on healthcare, education and consumer businesses.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Healthcare",
+            "Education",
+            "Consumer"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Sky Impact Capital official overview",
+          "url": "https://www.skyimpact.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "spdg-growth": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Post-venture growth strategy of the Perier-D'Ieteren family holding company.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Post-venture growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Energy transition",
+            "Circular economy",
+            "Mobility",
+            "Infrastructure"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "SPDG Growth official overview",
+          "url": "https://www.spdg.be/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "spicehaus-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Swiss seed-stage venture firm backing B2B technology companies from first revenue through international expansion.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed and early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Swiss B2B technology",
+            "Deep tech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Spicehaus Partners official overview",
+          "url": "https://www.spicehaus.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "valor-equity-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Operational growth investor partnering with technology, industrial and consumer companies across development stages.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Manufacturing",
+            "Infrastructure",
+            "Consumer"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Valor Equity Partners official overview",
+          "url": "https://www.valorep.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "vintage-investment-partners": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Global venture firm combining fund, secondary and growth investment strategies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth and secondary",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States",
+            "Europe",
+            "Israel"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Vintage Investment Partners official overview",
+          "url": "https://vintage-ip.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "world-innovation-lab": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "US-Japan venture platform supporting technology companies and cross-border growth.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Venture",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States",
+            "Japan"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "World Innovation Lab official overview",
+          "url": "https://wilab.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "xyz-venture-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Early-stage venture firm investing across public-sector, enterprise, fintech and technology-overlooked markets.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Public sector",
+            "Enterprise",
+            "Fintech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "XYZ Venture Capital official overview",
+          "url": "https://www.xyz.vc/",
+          "checked_at": "2026-09-13"
+        }
+      ]
     }
   },
   "attempts": {}

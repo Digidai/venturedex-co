@@ -1,0 +1,87 @@
+{
+  "slug": "cato",
+  "domain": "www.get-cato.com",
+  "url": "https://www.get-cato.com/en",
+  "product_name": "Cato",
+  "summary": "Tender intelligence and response workflow for companies selling to public-sector buyers.",
+  "editor_note": "Unlike horizontal sales automation, the platform is organized around public-tender discovery, qualification and response work. Keen's EUR 6M Seed announcement identifies a live operating product and the lead investor; public evidence is still largely company and investor supplied, so outcome claims remain provisional.",
+  "editor_rating": 4,
+  "why_featured": "A workflow for public-sector sales",
+  "product_type": "AI / ML",
+  "founded_year": 2025,
+  "hq_location": "Milan, Italy",
+  "region": "Europe",
+  "tags": "public procurement,tender intelligence,sales software,AI",
+  "investors": "Keen Venture Partners",
+  "links": {
+    "product": "https://www.get-cato.com/en",
+    "resources": "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 6M",
+      "currency": "EUR",
+      "stage": "Seed",
+      "lead_investor": "Keen Venture Partners",
+      "date": "2026-09-07",
+      "source_url": "https://www.keenventurepartners.com/posts/why-we-invested-in-cato",
+      "source_name": "Keen Venture Partners"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Cato official site",
+        "url": "https://www.get-cato.com/en",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Cato product evidence 1",
+        "url": "https://www.get-cato.com/en",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Cato product evidence 2",
+        "url": "https://tech.eu/2026/09/07/cato-raises-eur6m-to-expand-its-ai-platform-for-public-sector-sales/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Cato financing source",
+        "url": "https://www.keenventurepartners.com/posts/why-we-invested-in-cato",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes public-tender discovery, qualification and response workflows for companies selling to governments.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Original reporting supplies the current financing and expansion context for the operating product.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating public-tender intelligence and sales platform.",
+      "category": "Public-sector sales software",
+      "differentiation": "Cato bets on a domain-specific operating layer for public procurement rather than generic sales automation.",
+      "why_now": "Keen Venture Partners reported the current financing on 2026-09-07."
+    },
+    "risks": [
+      {
+        "claim": "The buyer and transaction are specific, while disclosed product evidence is primarily company supplied.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

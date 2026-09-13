@@ -1,0 +1,80 @@
+{
+  "slug": "backbone",
+  "domain": "www.usebackbone.ai",
+  "url": "https://www.usebackbone.ai/",
+  "product_name": "Backbone",
+  "summary": "Food quality and compliance workspace for specifications, suppliers and evidence.",
+  "editor_note": "Rather than placing a generic copilot over disconnected documents, the product centers food-specific quality records, supplier evidence, specifications and compliance workflows. The EUR 4M Pre-Seed round supports an early system; production adoption, audit performance and integration depth remain to be proven.",
+  "editor_rating": 4,
+  "why_featured": "A food-specific quality knowledge layer",
+  "product_type": "SaaS",
+  "hq_location": "Amsterdam, Netherlands",
+  "region": "Europe",
+  "tags": "food software,quality management,compliance,supplier data",
+  "investors": "Pitchdrive, 100in",
+  "links": {
+    "product": "https://www.usebackbone.ai/",
+    "resources": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 4M",
+      "currency": "EUR",
+      "stage": "Pre-Seed",
+      "lead_investor": "Pitchdrive",
+      "date": "2026-09-02",
+      "source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+      "source_name": "Backbone"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Backbone official site",
+        "url": "https://www.usebackbone.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Backbone product evidence 1",
+        "url": "https://www.usebackbone.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Backbone financing source",
+        "url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product site describes quality records, supplier evidence, specifications and compliance workflows for food companies.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Backbone's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating food quality and compliance operating system.",
+      "category": "Food quality software",
+      "differentiation": "Backbone bets on a food-specific quality knowledge layer rather than a generic compliance copilot.",
+      "why_now": "Backbone reported the current financing on 2026-09-02."
+    },
+    "risks": [
+      {
+        "claim": "The buyer and records are specific, while production adoption evidence is still early.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

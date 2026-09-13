@@ -1,0 +1,86 @@
+{
+  "slug": "circolife",
+  "domain": "circolife.com",
+  "url": "https://circolife.com/",
+  "product_name": "Circolife",
+  "summary": "Commercial air-conditioning subscriptions with installation, service and IoT monitoring.",
+  "editor_note": "Rather than selling air conditioners through financing, the service keeps ownership and bundles installation, maintenance, monitoring and replacement into a recurring commercial subscription. The $4.5M Pre-Series A names an individual anchor but no institutional lead; fleet utilization and asset economics remain key risks.",
+  "editor_rating": 4,
+  "why_featured": "Cooling as managed infrastructure",
+  "product_type": "Climate / Sustainability",
+  "hq_location": "Mumbai, India",
+  "region": "China / Asia",
+  "tags": "cooling as a service,air conditioning,IoT,circular economy",
+  "investors": "Sky Impact Capital",
+  "links": {
+    "product": "https://subscription.circolife.com/ac-for-business/new",
+    "resources": "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4.5M",
+      "currency": "USD",
+      "stage": "Pre-Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-08",
+      "source_url": "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+      "source_name": "Inc42"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Circolife official site",
+        "url": "https://circolife.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Circolife product evidence 1",
+        "url": "https://subscription.circolife.com/ac-for-business/new",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Circolife product evidence 2",
+        "url": "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Circolife financing source",
+        "url": "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official offering exposes zero-upfront business subscriptions with installation, maintenance and service included.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The company guide explains ownership, maintenance, replacement and customer economics across the service lifecycle.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating commercial cooling-as-a-service platform.",
+      "category": "Cooling as a service",
+      "differentiation": "Circolife bets on turning commercial cooling hardware into managed recurring infrastructure.",
+      "why_now": "Inc42 reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The service model is specific, while fleet utilization and asset economics remain important risks.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

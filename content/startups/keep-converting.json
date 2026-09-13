@@ -1,0 +1,80 @@
+{
+  "slug": "keep-converting",
+  "domain": "keepconverting.ai",
+  "url": "https://keepconverting.ai/",
+  "product_name": "Keep Converting",
+  "summary": "Real-time ecommerce product-page generation and continuous variant optimization.",
+  "editor_note": "Rather than stopping at AI copy generation, the platform adapts product pages to visitor intent and continuously tests variants through commerce integrations. The $2M Pre-Seed round supports an early product; the reported conversion lift is a company claim and durable merchant outcomes remain unverified.",
+  "editor_rating": 4,
+  "why_featured": "Product pages that adapt and learn",
+  "product_type": "E-commerce",
+  "hq_location": "Dubai, United Arab Emirates",
+  "region": "Global / Remote",
+  "tags": "ecommerce,personalization,conversion optimization,AI",
+  "investors": "Nuwa Capital, COTU Ventures",
+  "links": {
+    "product": "https://keepconverting.ai/",
+    "resources": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$2M",
+      "currency": "USD",
+      "stage": "Pre-Seed",
+      "lead_investor": "Nuwa Capital",
+      "date": "2026-09-08",
+      "source_url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+      "source_name": "The SaaS News"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Keep Converting official site",
+        "url": "https://keepconverting.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Keep Converting product evidence 1",
+        "url": "https://keepconverting.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Keep Converting financing source",
+        "url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site presents real-time product-page generation and continuous variant optimization for ecommerce merchants.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Keep Converting's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating real-time ecommerce product-page personalization platform.",
+      "category": "Ecommerce personalization",
+      "differentiation": "Keep Converting bets on adapting the product page itself to visitor intent in real time.",
+      "why_now": "The SaaS News reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The merchant workflow is specific, while the reported conversion lift remains a company claim.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

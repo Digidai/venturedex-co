@@ -1,0 +1,324 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260913T113404Z",
+  "locked_at": "2026-09-13",
+  "pool_sha256": "c4cc4531788a5bb2aa56fa74c2146d10d7935241939e74d865ef6680cf528da0",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Official product and financing evidence for immediate qualified backlog batch 5",
+      "outcome": "Rechecked the previously qualified company evidence and retained exact source-stated funding terms."
+    },
+    {
+      "type": "investor",
+      "query": "Official investor identities and current profile evidence for immediate backlog batch 5",
+      "outcome": "Resolved named lead and selected participating institutions to sourced directory profiles without refreshing already-fresh profiles."
+    },
+    {
+      "type": "original_media",
+      "query": "Independent and original financing coverage for immediate backlog batch 5",
+      "outcome": "Preserved independent, regional and industry reporting where company announcements did not independently establish the round."
+    },
+    {
+      "type": "regional_media",
+      "query": "Regional-language and native-currency checks for immediate backlog batch 5",
+      "outcome": "Kept native currencies, source-stated stages and undisclosed fields without inferred conversions or labels."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "moonwalk-biosciences",
+      "company_url": "https://www.moonwalk.bio/",
+      "source_url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "RNA therapeutics",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://moonwalk.bio/science/",
+            "note": "The science page describes adipose targeting, RNA interference and the biological rationale for the therapeutic platform."
+          },
+          {
+            "url": "https://moonwalk.bio/pipeline/",
+            "note": "The pipeline page identifies preclinical programs and indications without representing them as approved therapies."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Moonwalk makes a specific delivery bet on adipose-targeted RNA interference for metabolic disease."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Mechanism and pipeline disclosures provide a coherent preclinical product architecture."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The targets and indications are specific, while human efficacy and safety remain unproven."
+          }
+        }
+      }
+    },
+    {
+      "slug": "keep-converting",
+      "company_url": "https://keepconverting.ai/",
+      "source_url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+      "source_type": "industry_media",
+      "announced_at": "2026-09-08",
+      "region": "Global / Remote",
+      "industry": "Ecommerce personalization",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://keepconverting.ai/",
+            "note": "The official site presents real-time product-page generation and continuous variant optimization for ecommerce merchants."
+          },
+          {
+            "url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+            "note": "Current reporting documents integrations with major commerce platforms and a closed Pre-Seed round."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Keep Converting bets on adapting the product page itself to visitor intent in real time."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Platform integrations and a closed-loop test-and-generate workflow show more craft than a copy generator."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The merchant workflow is specific, while the reported conversion lift remains a company claim."
+          }
+        }
+      }
+    },
+    {
+      "slug": "celero-communications",
+      "company_url": "https://celero.inc/",
+      "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "Optical communications silicon",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://celero.inc/",
+            "note": "The now-accessible official site describes coherent DSP silicon for optical communications and its product boundary."
+          },
+          {
+            "url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+            "note": "The official release records validated 2nm silicon and the current Series C financing signal."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Celero makes a deep hardware bet on 2nm coherent DSP silicon for optical networks."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Validated silicon and a defined communications subsystem provide strong evidence of technical craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary is specific, while scale, customer qualification and yields remain undisclosed."
+          }
+        }
+      }
+    },
+    {
+      "slug": "digitalpaani",
+      "company_url": "https://www.digitalpaani.com/",
+      "source_url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Water infrastructure software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.digitalpaani.com/",
+            "note": "The official site describes real-time monitoring, operating guidance and lifecycle management for water and wastewater assets."
+          },
+          {
+            "url": "https://www.digitalpaani.com/about-us/",
+            "note": "The company history records pilots and more than 40 deployments, retained as company-reported operating evidence."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "DigitalPaani bets on an operating layer for existing water infrastructure rather than replacing plants with new hardware."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Monitoring, operational guidance and multi-site deployment evidence reveal real integration work."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The facility user and water workflow are specific, while outcome metrics remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "circolife",
+      "company_url": "https://circolife.com/",
+      "source_url": "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Cooling as a service",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://subscription.circolife.com/ac-for-business/new",
+            "note": "The official offering exposes zero-upfront business subscriptions with installation, maintenance and service included."
+          },
+          {
+            "url": "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/",
+            "note": "The company guide explains ownership, maintenance, replacement and customer economics across the service lifecycle."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Circolife bets on turning commercial cooling hardware into managed recurring infrastructure."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Ownership, field service, IoT monitoring and refurbishment combine into a substantive operating system."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The service model is specific, while fleet utilization and asset economics remain important risks."
+          }
+        }
+      }
+    },
+    {
+      "slug": "veridue",
+      "company_url": "https://veridue.ai/",
+      "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "Europe",
+      "industry": "Energy transaction software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://veridue.ai/",
+            "note": "The official site exposes screening, red-flag diligence, virtual-data-room organization and investment-readiness workflows."
+          },
+          {
+            "url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+            "note": "The launch announcement records two years of product development and validation with energy-market participants."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Veridue bets on an energy-specific diligence system rather than a horizontal document summarizer."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Traceable findings, data-room organization and transaction screening form a coherent professional workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The users and artifacts are specific, while the speed and cost claims remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "emberos",
+      "company_url": "https://www.emberos.ai/",
+      "source_url": "https://www.emberos.ai/",
+      "source_type": "company",
+      "announced_at": null,
+      "region": "Global / Remote",
+      "industry": "Previously completed terminal review",
+      "state": "policy_excluded",
+      "reason": "The official product and funding materials confirm that Emberos is an AI-search brand-visibility and GEO/AEO optimization product, an explicitly excluded search-optimization category under VentureDex F4; this is a policy decision, not a claim that the software is poorly built.",
+      "discovery_mode": "revisit"
+    },
+    {
+      "slug": "ai-score",
+      "company_url": "https://aiscore.ai/",
+      "source_url": "https://tech.eu/2026/09/04/uk-startup-ai-score-raises-54m-to-scale-its-enterprise-ai-governance-platform/",
+      "source_type": "company",
+      "announced_at": null,
+      "region": "Global / Remote",
+      "industry": "Previously completed terminal review",
+      "state": "quality_rejected",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: AI Score presents a broad AI-governance control plane and a book-a-demo sales path, but its public surface does not expose enough concrete workflow or craft to distinguish the product from an already crowded governance category.",
+      "discovery_mode": "revisit"
+    },
+    {
+      "slug": "runable",
+      "company_url": "https://runable.com/",
+      "source_url": "https://runable.com/blogs/runable-grow",
+      "source_type": "company",
+      "announced_at": null,
+      "region": "Global / Remote",
+      "industry": "Previously completed terminal review",
+      "state": "quality_rejected",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: Runable exposes a working business-agent product, but its broad all-in-one scope does not reveal a sharp tradeoff or a specific workflow that distinguishes it from the crowded general-purpose agent category.",
+      "discovery_mode": "revisit"
+    },
+    {
+      "slug": "hiddenlayer",
+      "company_url": "https://www.hiddenlayer.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/hiddenlayer-raises-100m-series-b-to-advance-trustworthy-ai-302867783.html",
+      "source_type": "company",
+      "announced_at": null,
+      "region": "Global / Remote",
+      "industry": "Previously completed terminal review",
+      "state": "quality_rejected",
+      "reason": "Original taste decision retained from the audit snapshot, not a new product review: HiddenLayer presents a broad enterprise AI-security platform, but the public surface does not expose a distinct operator workflow or product craft that separates it from an increasingly crowded platform category.",
+      "discovery_mode": "revisit"
+    }
+  ]
+}

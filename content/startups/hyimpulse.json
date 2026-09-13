@@ -1,0 +1,89 @@
+{
+  "slug": "hyimpulse",
+  "domain": "www.hyimpulse.de",
+  "url": "https://www.hyimpulse.de/",
+  "product_name": "HyImpulse",
+  "summary": "Orbital launch vehicles built around paraffin-based hybrid rocket propulsion.",
+  "editor_note": "Unlike render-only launch programs, the company publishes an SL1 vehicle architecture and an official test-flight record for its hybrid propulsion approach. The EUR 50M+ Series A extension funds the orbital path, while full orbital execution, cadence and unit economics remain material risks.",
+  "editor_rating": 4,
+  "why_featured": "Flight-tested hybrid launch architecture",
+  "product_type": "Other",
+  "founded_year": 2018,
+  "hq_location": "Neuenstadt am Kocher, Germany",
+  "region": "Europe",
+  "tags": "space technology,launch vehicles,hybrid propulsion,aerospace",
+  "investors": "JOIN Capital, Ace Capital Partners",
+  "links": {
+    "product": "https://hyimpulse.de/sl1",
+    "resources": "https://hyimpulse.de/Press_Release/03052024_Press%20Release_HyImpulse%20-%20German%20space%20company%20successfully%20launches%20first%20commercially%20viable%20launch%20vehicle.pdf"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 50M+",
+      "currency": "EUR",
+      "stage": "Series A",
+      "stage_raw": "Series A Extension",
+      "instrument": "equity",
+      "lead_investor": "JOIN Capital",
+      "date": "2026-09-02",
+      "source_url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+      "source_name": "Pulsar Consulting"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "HyImpulse official site",
+        "url": "https://www.hyimpulse.de/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "HyImpulse product evidence 1",
+        "url": "https://hyimpulse.de/sl1",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "HyImpulse product evidence 2",
+        "url": "https://hyimpulse.de/sr75",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "HyImpulse financing source",
+        "url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The SL1 product page publishes the launch-vehicle architecture, payload role and hybrid-propulsion system boundary.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The official test-flight release records an actual launch milestone instead of only a vehicle roadmap.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating hybrid-propulsion orbital launch system.",
+      "category": "Space launch systems",
+      "differentiation": "HyImpulse makes a clear propulsion bet on paraffin-based hybrid launch systems.",
+      "why_now": "Pulsar Consulting reported the current financing on 2026-09-02."
+    },
+    "risks": [
+      {
+        "claim": "The launch product and mission are specific, while orbital execution and economics remain open.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

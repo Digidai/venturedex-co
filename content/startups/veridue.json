@@ -1,0 +1,80 @@
+{
+  "slug": "veridue",
+  "domain": "veridue.ai",
+  "url": "https://veridue.ai/",
+  "product_name": "Veridue",
+  "summary": "Energy-transaction diligence software for screening, red flags and data-room work.",
+  "editor_note": "Unlike a horizontal document summarizer, the platform is scoped to energy transactions and connects screening, traceable red flags, virtual-data-room organization and investment readiness. The $4M Pre-Seed round follows two years of company-reported validation; speed and cost claims remain unverified.",
+  "editor_rating": 4,
+  "why_featured": "Energy-specific transaction diligence",
+  "product_type": "AI / ML",
+  "hq_location": "London, United Kingdom",
+  "region": "Europe",
+  "tags": "energy software,due diligence,transaction workflow,AI",
+  "investors": "Episode 1 Ventures, High-Tech Gründerfonds, Pi Labs",
+  "links": {
+    "product": "https://veridue.ai/",
+    "resources": "https://veridue.ai/blog/veridue-launches-4m-pre-seed"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$4M",
+      "currency": "USD",
+      "stage": "Pre-Seed",
+      "lead_investor": "Episode 1 Ventures",
+      "date": "2026-09-08",
+      "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+      "source_name": "Veridue"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Veridue official site",
+        "url": "https://veridue.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Veridue product evidence 1",
+        "url": "https://veridue.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Veridue financing source",
+        "url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site exposes screening, red-flag diligence, virtual-data-room organization and investment-readiness workflows.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Veridue's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating energy-infrastructure due-diligence and transaction platform.",
+      "category": "Energy transaction software",
+      "differentiation": "Veridue bets on an energy-specific diligence system rather than a horizontal document summarizer.",
+      "why_now": "Veridue reported the current financing on 2026-09-08."
+    },
+    "risks": [
+      {
+        "claim": "The users and artifacts are specific, while the speed and cost claims remain company reported.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ]
+  }
+}

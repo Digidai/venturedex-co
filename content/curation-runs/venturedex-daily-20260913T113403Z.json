@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260913T113403Z",
+  "locked_at": "2026-09-13",
+  "pool_sha256": "f6c747915f56f7169f96e737ee694dd9f487c3ba66caf8b69fae667e3419c1a6",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Official product and financing evidence for immediate qualified backlog batch 4",
+      "outcome": "Rechecked the previously qualified company evidence and retained exact source-stated funding terms."
+    },
+    {
+      "type": "investor",
+      "query": "Official investor identities and current profile evidence for immediate backlog batch 4",
+      "outcome": "Resolved named lead and selected participating institutions to sourced directory profiles without refreshing already-fresh profiles."
+    },
+    {
+      "type": "original_media",
+      "query": "Independent and original financing coverage for immediate backlog batch 4",
+      "outcome": "Preserved independent, regional and industry reporting where company announcements did not independently establish the round."
+    },
+    {
+      "type": "regional_media",
+      "query": "Regional-language and native-currency checks for immediate backlog batch 4",
+      "outcome": "Kept native currencies, source-stated stages and undisclosed fields without inferred conversions or labels."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "backbone",
+      "company_url": "https://www.usebackbone.ai/",
+      "source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "Europe",
+      "industry": "Food quality software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.usebackbone.ai/",
+            "note": "The product site describes quality records, supplier evidence, specifications and compliance workflows for food companies."
+          },
+          {
+            "url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+            "note": "The official funding announcement explains the operational data problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Backbone bets on a food-specific quality knowledge layer rather than a generic compliance copilot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The supplier, specification and evidence workflows make the product's operational model inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer and records are specific, while production adoption evidence is still early."
+          }
+        }
+      }
+    },
+    {
+      "slug": "fundly-ai",
+      "company_url": "https://fundly.ai/",
+      "source_url": "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Embedded pharmaceutical finance",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://fundly.ai/about",
+            "note": "The official company page defines embedded working-capital workflows for pharmaceutical retailers and distributors."
+          },
+          {
+            "url": "https://in.linkedin.com/company/fundlyai",
+            "note": "The company's official social profile states the current Pre-Series A financing and its named institutional backers."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Fundly.ai bets on underwriting and capital delivery inside a specific pharmaceutical supply chain."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The retailer-distributor workflow makes the financial product's operating context visible."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The vertical and transaction are specific, while credit performance and funding composition need careful disclosure."
+          }
+        }
+      }
+    },
+    {
+      "slug": "leinao-ai",
+      "company_url": "https://www.leinao.ai/",
+      "source_url": "https://yangtzeer.com/news/deals/yangtze-funding-quantum-robotics-evtol/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-07",
+      "region": "China / Asia",
+      "industry": "AI and power infrastructure",
+      "state": "publication_blocked",
+      "reason": "Qualification remains valid, but the official site currently exposes only a maintenance page over an expired TLS certificate; truthful official-product screenshot and live-source gates cannot pass.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.leinao.ai/product/solution_dlrg.html",
+            "note": "The official solution page describes an AI-compute operating system spanning resource orchestration and deployment."
+          },
+          {
+            "url": "https://www.leinao.ai/product/solution_lnbdz.html",
+            "note": "A separate official solution page documents an electric-grid application with specific infrastructure workflows."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Leinao bets on coordinating compute with physical power infrastructure instead of selling a generic AI cloud."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Distinct compute and grid solution pages expose substantial integration and operational design."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The deployment domains are specific, while project counts and performance remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "megawave-fusion",
+      "company_url": "https://www.megawavefusion.com/",
+      "source_url": "https://finance.eastmoney.com/a/202609083867098289.html",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Fusion radio-frequency systems",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.megawavefusion.com/",
+            "note": "The official site identifies microwave and radio-frequency systems built for fusion research and energy facilities."
+          },
+          {
+            "url": "https://www.megawavefusion.cn/pruduct",
+            "note": "The official product catalog exposes concrete RF hardware categories rather than an abstract fusion-energy claim."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MegaWave bets on a critical RF subsystem layer within fusion infrastructure."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A concrete hardware catalog and facility role show specialized engineering craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The subsystem boundary is specific, while the exact current raise is conservatively recorded as over CNY 100M."
+          }
+        }
+      }
+    },
+    {
+      "slug": "split-pay",
+      "company_url": "https://splitpay.com/",
+      "source_url": "https://www.axios.com/2026/09/08/split-pay-khosla-125-million",
+      "source_type": "original_media",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "Consumer payments",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://splitpay.com/how-it-works",
+            "note": "The public workflow explains bill upload, participant splitting and payment timing for the consumer product."
+          },
+          {
+            "url": "https://splitpay.com/help/about-split-pay/how-split-pay-works/what-fees-does-split-pay-charge",
+            "note": "The help center states a $9.99 fee plus 1.5%, making the operating and pricing model inspectable."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Split Pay bets on cash-flow underwriting around shared bills rather than another peer-to-peer payment interface."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The end-to-end workflow and exact fee schedule expose important product mechanics."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The transaction and user are specific, while credit loss and consumer-protection outcomes remain open."
+          }
+        }
+      }
+    },
+    {
+      "slug": "moonwalk-biosciences",
+      "company_url": "https://www.moonwalk.bio/",
+      "source_url": "https://moonwalk.bio/news/moonwalk-biosciences-announces-70-million-series-b-financing-to-advance-adipose-targeted-rnai-therapies-for-obesity-and-cardiometabolic-diseases/",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "RNA therapeutics",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://moonwalk.bio/science/",
+            "note": "The science page describes adipose targeting, RNA interference and the biological rationale for the therapeutic platform."
+          },
+          {
+            "url": "https://moonwalk.bio/pipeline/",
+            "note": "The pipeline page identifies preclinical programs and indications without representing them as approved therapies."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Moonwalk makes a specific delivery bet on adipose-targeted RNA interference for metabolic disease."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Mechanism and pipeline disclosures provide a coherent preclinical product architecture."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The targets and indications are specific, while human efficacy and safety remain unproven."
+          }
+        }
+      }
+    },
+    {
+      "slug": "keep-converting",
+      "company_url": "https://keepconverting.ai/",
+      "source_url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+      "source_type": "industry_media",
+      "announced_at": "2026-09-08",
+      "region": "Global / Remote",
+      "industry": "Ecommerce personalization",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://keepconverting.ai/",
+            "note": "The official site presents real-time product-page generation and continuous variant optimization for ecommerce merchants."
+          },
+          {
+            "url": "https://www.thesaasnews.com/news/keep-converting-raises-2m-pre-seed/",
+            "note": "Current reporting documents integrations with major commerce platforms and a closed Pre-Seed round."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Keep Converting bets on adapting the product page itself to visitor intent in real time."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Platform integrations and a closed-loop test-and-generate workflow show more craft than a copy generator."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The merchant workflow is specific, while the reported conversion lift remains a company claim."
+          }
+        }
+      }
+    },
+    {
+      "slug": "celero-communications",
+      "company_url": "https://celero.inc/",
+      "source_url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "US",
+      "industry": "Optical communications silicon",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://celero.inc/",
+            "note": "The now-accessible official site describes coherent DSP silicon for optical communications and its product boundary."
+          },
+          {
+            "url": "https://celero.inc/celero-communications-raises-275-million-series-c-following-validation-of-industrys-first-2nm-coherent-dsp-silicon/",
+            "note": "The official release records validated 2nm silicon and the current Series C financing signal."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Celero makes a deep hardware bet on 2nm coherent DSP silicon for optical networks."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Validated silicon and a defined communications subsystem provide strong evidence of technical craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary is specific, while scale, customer qualification and yields remain undisclosed."
+          }
+        }
+      }
+    },
+    {
+      "slug": "digitalpaani",
+      "company_url": "https://www.digitalpaani.com/",
+      "source_url": "https://inc42.com/buzz/digitalpaani-bags-%E2%82%B922-cr-to-expand-water-management-platform/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Water infrastructure software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.digitalpaani.com/",
+            "note": "The official site describes real-time monitoring, operating guidance and lifecycle management for water and wastewater assets."
+          },
+          {
+            "url": "https://www.digitalpaani.com/about-us/",
+            "note": "The company history records pilots and more than 40 deployments, retained as company-reported operating evidence."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "DigitalPaani bets on an operating layer for existing water infrastructure rather than replacing plants with new hardware."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Monitoring, operational guidance and multi-site deployment evidence reveal real integration work."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The facility user and water workflow are specific, while outcome metrics remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "circolife",
+      "company_url": "https://circolife.com/",
+      "source_url": "https://inc42.com/buzz/circolife-raises-4-5-mn-to-scale-subscription-based-air-conditioning/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-08",
+      "region": "China / Asia",
+      "industry": "Cooling as a service",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://subscription.circolife.com/ac-for-business/new",
+            "note": "The official offering exposes zero-upfront business subscriptions with installation, maintenance and service included."
+          },
+          {
+            "url": "https://circolife.com/blog/ac_subscription_vs_amc_vs_buying_on_emi/",
+            "note": "The company guide explains ownership, maintenance, replacement and customer economics across the service lifecycle."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Circolife bets on turning commercial cooling hardware into managed recurring infrastructure."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Ownership, field service, IoT monitoring and refurbishment combine into a substantive operating system."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The service model is specific, while fleet utilization and asset economics remain important risks."
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "slug": "prevalent-ai",
+  "domain": "prevalent.ai",
+  "url": "https://prevalent.ai/",
+  "product_name": "Prevalent AI",
+  "summary": "Sovereign enterprise data fabric and knowledge graph for governed AI context.",
+  "editor_note": "Rather than adding another prompt layer, the platform focuses on the governed data fabric and knowledge graph underneath enterprise AI systems. Its $22M first primary growth investment follows a company-reported profitable, bootstrapped history; deployment depth and customer outcomes still need independent verification.",
+  "editor_rating": 4,
+  "why_featured": "Governed context beneath enterprise AI",
+  "product_type": "AI / ML",
+  "founded_year": 2017,
+  "hq_location": "London, United Kingdom",
+  "region": "Europe",
+  "tags": "enterprise AI,data fabric,knowledge graph,data governance",
+  "investors": "Integrity Growth Partners",
+  "links": {
+    "product": "https://prevalent.ai/",
+    "resources": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$22M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-08-19",
+      "source_url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+      "source_name": "Prevalent AI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Prevalent AI official site",
+        "url": "https://prevalent.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Prevalent AI product evidence 1",
+        "url": "https://prevalent.ai/",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Prevalent AI financing source",
+        "url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official site describes a sovereign enterprise data fabric and knowledge-graph layer for trusted organizational context.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Prevalent AI's financing source also describes the product boundary and the operating milestone financed by the round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating sovereign enterprise data and knowledge platform.",
+      "category": "Enterprise data infrastructure",
+      "differentiation": "Prevalent AI bets that governed enterprise context is infrastructure, not a prompt-layer feature.",
+      "why_now": "Prevalent AI reported the current financing on 2026-08-19."
+    },
+    "risks": [
+      {
+        "claim": "The deployment category is specific, while maturity makes future publication require explicit editorial breakout scrutiny.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies $22M but does not state a canonical round stage or a lead investor. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "funding_1"
+      ]
+    }
+  }
+}

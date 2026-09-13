@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260913T113400Z",
+  "locked_at": "2026-09-13",
+  "pool_sha256": "493dd74ee70527b26311b17229e6c11418a8c8e26613a035847446a2561ec160",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Official product and financing evidence for immediate qualified backlog batch 1",
+      "outcome": "Rechecked the previously qualified company evidence and retained exact source-stated funding terms."
+    },
+    {
+      "type": "investor",
+      "query": "Official investor identities and current profile evidence for immediate backlog batch 1",
+      "outcome": "Resolved named lead and selected participating institutions to sourced directory profiles without refreshing already-fresh profiles."
+    },
+    {
+      "type": "original_media",
+      "query": "Independent and original financing coverage for immediate backlog batch 1",
+      "outcome": "Preserved independent, regional and industry reporting where company announcements did not independently establish the round."
+    },
+    {
+      "type": "regional_media",
+      "query": "Regional-language and native-currency checks for immediate backlog batch 1",
+      "outcome": "Kept native currencies, source-stated stages and undisclosed fields without inferred conversions or labels."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "aslan",
+      "company_url": "https://aslanprotects.com/",
+      "source_url": "https://www.axios.com/2026/09/01/aslan-agentic-ai-national-security-funding",
+      "source_type": "original_media",
+      "announced_at": "2026-09-01",
+      "region": "US",
+      "industry": "National-security software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://aslanprotects.com/",
+            "note": "The official site presents a defined digital-domain operations platform for national-security teams rather than a general AI consultancy."
+          },
+          {
+            "url": "https://aslanprotects.com/about",
+            "note": "The company background and use-case material identify the mission users, operating context and product boundary."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Aslan bets on agentic operations in a narrowly defined national-security domain."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Its public use cases and operating context give the enterprise workflow an inspectable shape."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product is specific about buyer and mission even though implementation claims remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "fambot",
+      "company_url": "https://fambot.com/",
+      "source_url": "https://fambot.com/press",
+      "source_type": "company",
+      "announced_at": "2026-09-03",
+      "region": "US",
+      "industry": "Consumer household software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026",
+            "note": "The product guide walks through the first-week setup and actual household-assistant workflow for public beta users."
+          },
+          {
+            "url": "https://fambot.com/press",
+            "note": "The official press material ties the current financing to a live public beta and describes supported application integrations."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "FamBot bets on a persistent household workflow rather than a one-shot consumer chatbot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The first-week guide and live beta provide concrete onboarding and interaction evidence."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and recurring job are clear, though long-term retention remains an open product risk."
+          }
+        }
+      }
+    },
+    {
+      "slug": "guardio",
+      "company_url": "https://guard.io/",
+      "source_url": "https://www.prnewswire.com/news-releases/consumer-cybersecurity-pioneer-guardio-reaches-1-1-billion-valuation-302868923.html",
+      "source_type": "company",
+      "announced_at": "2026-09-03",
+      "region": "Global / Remote",
+      "industry": "Consumer cybersecurity",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://guard.io/",
+            "note": "The official site exposes browser, identity and web-threat protection as a consumer product with a defined protection workflow."
+          },
+          {
+            "url": "https://guard.io/blog/a-note-from-amos-our-ceo",
+            "note": "The CEO note supplies current product and operating context, with company metrics retained as company-reported claims."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Guardio bets on always-on protection at the consumer browsing and identity layer."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product surface connects detection, intervention and user remediation rather than presenting a generic security score."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The use case is specific, while scale and efficacy claims require clear company attribution."
+          }
+        }
+      }
+    },
+    {
+      "slug": "ultrahuman",
+      "company_url": "https://www.ultrahuman.com/",
+      "source_url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+      "source_type": "company",
+      "announced_at": "2026-09-03",
+      "region": "China / Asia",
+      "industry": "Wearable health technology",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.ultrahuman.com/us/",
+            "note": "The official product surface documents the Ring AIR and connected health-sensing ecosystem available to customers."
+          },
+          {
+            "url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-launches-pulsomics-a-foundational-model-of-the-human-pulse",
+            "note": "The company describes a specific pulse-model research direction tied to its wearable data and future interface layer."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Ultrahuman bets that continuous wearable signals can become a broader human-computer health interface."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Shipping hardware, a connected software experience and an articulated sensing model show system-level craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and data loop are specific, while health-performance claims still need careful source labeling."
+          }
+        }
+      }
+    },
+    {
+      "slug": "prevalent-ai",
+      "company_url": "https://prevalent.ai/",
+      "source_url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+      "source_type": "company",
+      "announced_at": "2026-08-19",
+      "region": "Europe",
+      "industry": "Enterprise data infrastructure",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://prevalent.ai/",
+            "note": "The official site describes a sovereign enterprise data fabric and knowledge-graph layer for trusted organizational context."
+          },
+          {
+            "url": "https://prevalent.ai/resources/prevalent-ai-raises-growth-investment-as-demand-for-ai-powered-trusted-enterprise-context-accelerates/",
+            "note": "The company announcement links its first primary financing to an existing profitable platform and enterprise deployment base."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Prevalent AI bets that governed enterprise context is infrastructure, not a prompt-layer feature."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The long-built data fabric and knowledge-graph architecture expose substantial systems craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The deployment category is specific, while maturity makes future publication require explicit editorial breakout scrutiny."
+          }
+        }
+      }
+    },
+    {
+      "slug": "zeit-ai",
+      "company_url": "https://www.zeit-ai.com/",
+      "source_url": "https://www.eu-startups.com/2026/09/yc-backed-zeit-ai-raises-e5-million-to-build-europes-autonomous-data-engineer/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-03",
+      "region": "Europe",
+      "industry": "Data engineering software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.zeit-ai.com/",
+            "note": "The product site describes an autonomous data-engineering workflow and a catalog of more than 600 connectors for mid-market teams."
+          },
+          {
+            "url": "https://www.zeit-ai.com/about-us",
+            "note": "The company page identifies the European mid-market focus and the operating problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Zeit AI bets that a data engineer can be represented as an ongoing operational agent rather than a code assistant."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Connector breadth and the described pipeline workflow make the integration burden visible."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The target team and recurring data job are specific, though production reliability evidence remains company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "peoplex",
+      "company_url": "https://peoplex.jp/",
+      "source_url": "https://prtimes.jp/main/html/rd/p/000000290.000139786.html",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "China / Asia",
+      "industry": "Workplace learning software",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://peoplex.jp/",
+            "note": "The official site exposes separate interview, role-play, meeting and sales products rather than a single vague HR-AI claim."
+          },
+          {
+            "url": "https://peoplex.jp/news",
+            "note": "The current product and company news surface provides inspectable launch and adoption context for the suite."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "PeopleX bets on instrumented practice and evaluation across multiple high-stakes workplace conversations."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Distinct products and workflows show deliberate packaging rather than a thin general-purpose assistant."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The use cases are specific, while reported adoption and outcomes remain company claims."
+          }
+        }
+      }
+    },
+    {
+      "slug": "also",
+      "company_url": "https://ridealso.com/",
+      "source_url": "https://ridealso.com/blogs/all/also-announces-150-million-series-d-financing",
+      "source_type": "company",
+      "announced_at": "2026-08-19",
+      "region": "US",
+      "industry": "Electric mobility",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://ridealso.com/",
+            "note": "The corrected official site exposes the TM-B and TM-Q electric vehicles and a connected mobility platform."
+          },
+          {
+            "url": "https://ridealso.com/pages/company",
+            "note": "The company page establishes the distinct mobility entity, product roadmap and autonomy direction at the corrected domain."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "ALSO bets on a lightweight connected vehicle class rather than a conventional e-bike catalog."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named vehicle systems and a coherent hardware-software roadmap provide evidence of integrated product craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The products and company identity are now specific, although later autonomy claims remain forward looking."
+          }
+        }
+      }
+    },
+    {
+      "slug": "teragen-energy",
+      "company_url": "https://www.teragenenergy.com/",
+      "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+      "source_type": "company",
+      "announced_at": "2026-08-26",
+      "region": "US",
+      "industry": "Solid-oxide fuel cells",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.teragenenergy.com/",
+            "note": "The official site describes a modular solid-oxide fuel-cell architecture and the transition from prototypes toward pilots."
+          },
+          {
+            "url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+            "note": "The company announcement connects the financing to pilot manufacturing and deployment milestones."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Teragen makes a hard technical bet on modularizing solid-oxide power generation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and pilot plans expose an engineering path rather than a generic clean-energy promise."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The architecture and next validation step are specific, while commercial efficiency remains unproven."
+          }
+        }
+      }
+    },
+    {
+      "slug": "hyimpulse",
+      "company_url": "https://www.hyimpulse.de/",
+      "source_url": "https://www.pulsar-consulting.com/de/news/hyimpulse-series-a-extension",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "Europe",
+      "industry": "Space launch systems",
+      "state": "qualified_pending",
+      "reason": "Qualification remains valid; this fixed pool preserves the candidate for the immediately following bounded publication batch.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://hyimpulse.de/sl1",
+            "note": "The SL1 product page publishes the launch-vehicle architecture, payload role and hybrid-propulsion system boundary."
+          },
+          {
+            "url": "https://hyimpulse.de/Press_Release/03052024_Press%20Release_HyImpulse%20-%20German%20space%20company%20successfully%20launches%20first%20commercially%20viable%20launch%20vehicle.pdf",
+            "note": "The official test-flight release records an actual launch milestone instead of only a vehicle roadmap."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "HyImpulse makes a clear propulsion bet on paraffin-based hybrid launch systems."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A flight test plus detailed vehicle material provides unusually inspectable aerospace craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The launch product and mission are specific, while orbital execution and economics remain open."
+          }
+        }
+      }
+    }
+  ]
+}

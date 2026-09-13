@@ -220,6 +220,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "also": {
+      "sha256": "f808430aeaf69607d3a0870f2f3a14c8de363fa599073ccc649ab461c6708a9b",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://ridealso.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:06.940Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "alta": {
       "sha256": "7eb40e9ff599bcb1a42c9e1f2708e641f8adaff325ab630dab273aa0c2a4bb83",
       "width": 3024,
@@ -439,6 +458,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "aslan": {
+      "sha256": "fa0ed773cd68e43e32ca0c207511bd4629749aa9748e3eeca9e1b3e94464c38b",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://aslanprotects.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:02.016Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "attention": {
       "sha256": "bc2d6bb18b45293b79fe855be409957baef3560f0543f23a2ee8108f6bd3e1c0",
       "width": 1440,
@@ -492,6 +530,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "backbone": {
+      "sha256": "bfdb7c74077343d1aa8f8363ebd9c56b60b7222f248468ebcd605bf4d9cd7cea",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.usebackbone.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:12.039Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "balerion": {
       "sha256": "fd0715ca55b99d3f3190648a042e781d3bf359fbaaa8ecb0acfa7fe1ce0c35fb",
@@ -966,6 +1023,44 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "cato": {
+      "sha256": "bea01c7917157440bf77bced23f0c5cee4abb070bf00ebcc1017e4c593aeae80",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.get-cato.com/en",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:09.558Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
+    "celero-communications": {
+      "sha256": "bec2221cb3d38ffb9c899cd488b60a715247fbe15d454ba21d87ca0eb6ff356a",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://celero.inc/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:16.051Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "certo": {
       "sha256": "391e0637864329160ec3dc81815e4faafcf84e1543af2cb30262c501a6e6c7c7",
       "width": 1440,
@@ -1038,6 +1133,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "circolife": {
+      "sha256": "e2375d01a7b31384fbfbcb83380370492c03bf0b7601ab1fc3b858a669ccb722",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://circolife.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:17.352Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "ciridae": {
       "sha256": "6142188fe989d8351b7e0dfac8a6af49f94b9be85b4d156f66da1195013590cb",
@@ -1533,6 +1647,25 @@
       },
       "notes": "Source and final match. Complete identity-and-fraud infrastructure headline, explanatory paragraph, brand, backing strip and start/docs actions are readable. Lower illustrative product section naturally continues outside the viewport. Closed chat launcher stays in the right margin; no consent wall or partial hero load is visible. Card observation: The complete infrastructure-for-identity-and-fraud headline is clearly readable; lower illustration continuation and a closed chat launcher do not hide primary content. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "digitalpaani": {
+      "sha256": "dc4f651a40ac9da846b230b5a7c496e7032219290c06ceff6c09a1daf2b1c9f3",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.digitalpaani.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:16.718Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "dili": {
       "sha256": "b304a175d1810949ff78a28e1dcb3142b44bf64bb512580677ea317fa86ee5e9",
       "width": 1440,
@@ -1881,6 +2014,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "fambot": {
+      "sha256": "2c816b723c1c6fc332d841c8ac76a7ff8e1ac4f48a6df2c5a0d4244a2d3c1b54",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://fambot.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:02.776Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "fazeshift": {
       "sha256": "e9122d161a2fe6ba2b308904fc16ba3c64d2cfb1f5990445ef65fdb3ace3f06f",
       "width": 1440,
@@ -2027,6 +2179,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "fluencify": {
+      "sha256": "616471d609cd89a59f94f8d1c7eb86b139dc2d57971ae5613630794b73255cb5",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://fluencify.io/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:10.141Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "form-energy": {
       "sha256": "770c32945dbadac6e7d64e1955254969f183c38e9c24a13509aa5c2930ecc363",
       "width": 1440,
@@ -2080,6 +2251,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "fundly-ai": {
+      "sha256": "ea5c2bf3fdcd5e83c85be173f212201dc8c3c04e276e920bbb747ec1408538e4",
+      "width": 1430,
+      "height": 804,
+      "source_url": "https://fundly.ai/about",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:12.648Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "geordie-ai": {
       "sha256": "f598d239f42da01a6c922603fa49e656df798174fd80115a42d350376a6d9853",
@@ -2357,6 +2547,25 @@
       },
       "notes": "Loaded product section clearly shows all-electric vehicle interior diagram, meaningful power/software/modular-interior labels and readable explanatory headline. Source PNG and final WebP preserve the same framing without added padding. Sticky navigation clips only the adjacent trust-section label; bottom edge clips only the next press-logo strip. Closed chat launcher does not obstruct the product diagram or headline. Card observation: The complete electric-interior product statement is compact but readable, and the exploded vehicle/interior illustration remains identifiable; decorative surrounding strips do not block it. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "guardio": {
+      "sha256": "560123060d73ac5f36ae78f6f868ad05ce4f7312f4041914f4bec6339bd73283",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://guard.io/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:03.671Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "h3-zoom": {
       "sha256": "7905db6a6f6e2c8d157d45f564aed5d5e7c6d6f3fecce8d1e2737259600c44f4",
       "width": 1280,
@@ -2558,6 +2767,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "hyimpulse": {
+      "sha256": "80c4f5babd440ec16793fca2daa888e6e6247460d832dc3b84e00667ae421a8c",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.hyimpulse.de/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:08.273Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "infinity": {
       "sha256": "beff3653815239bec678cceb7b3d9e56d39bc73e8eaf12cd7075cabde4405391",
@@ -2777,6 +3005,25 @@
         "detail": true
       },
       "notes": "Source and final match. Complete large life-sciences infrastructure headline, supporting line, demo/video actions and navigation are visible on the loaded page. Colorful lower media is rendered rather than a blank placeholder; it continues below the intact hero. No modal or clipped primary wording is visible. Numeric site claims are depicted, not independently endorsed. Card observation: The complete Agentic Infrastructure for Life Sciences headline is readable and high contrast; loaded media begins below the intact hero. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "keep-converting": {
+      "sha256": "7bf05bd80e22211fe613603b93cd658436a52356c2d2fb8740e1a4489c976051",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://keepconverting.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:15.405Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "kin-health": {
       "sha256": "baa1a8769cd909e9a46517bc9ba6c73f8ec784daff3e3ba19d45f6e5304e55d1",
@@ -3211,6 +3458,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "megawave-fusion": {
+      "sha256": "9264fe0ff44d7babe57def53f3e0280669fda28d8cd027a7adc7a4be50a609e0",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.megawavefusion.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:13.274Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "meticulous": {
       "sha256": "cbc30f01d211a54e8b0bb55a1bd63f5efb31d68b57346cd74b02cd8b3ac39521",
       "width": 1440,
@@ -3302,6 +3568,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "moa-foodtech": {
+      "sha256": "8b8ffcf1ae82c841622ffab90b62c4830a4213cca678365f1e9781b25153c74a",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.moafoodtech.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:11.442Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "modal": {
       "sha256": "7180946f22b059969cd0d3b56726da274bceb98f4c2da8d46246648ef39c40a4",
       "width": 1440,
@@ -3374,6 +3659,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "moonwalk-biosciences": {
+      "sha256": "b54a967479ae167b26302b8d787e22fab41c75955e942db3c32c6d2770bb2f72",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://moonwalk.bio/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:14.553Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "mydecisive": {
       "sha256": "942d87895632fbb03a57d57a3cebae00383bff2d673b01b85bff21e250bde58e",
@@ -3610,6 +3914,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "octave-energy": {
+      "sha256": "b08b1821d6b483f9a0b542707af56e265831c492675392a217d55f75dcd97042",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://octave.energy/en/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:10.778Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "offroad": {
       "sha256": "388d612f4897e32255f9599e4b5d16bb1558e7e85a58abb7fcb81d9620982b20",
@@ -3904,6 +4227,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "peoplex": {
+      "sha256": "5c0772c5daed0557a873e45ad201e0dadf43e2f64b7d375bd52f7376d5c45328",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://peoplex.jp/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:06.253Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "perplexity": {
       "sha256": "6ead9d6f128335c9b43ab0fe54fb6b27cbf3b3417d1d4508d1d976c6414ac597",
       "width": 1280,
@@ -4140,6 +4482,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "prevalent-ai": {
+      "sha256": "712c03957007057a35b22763d282bbb52f26343a59130bbc09949c95fbaa0048",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://prevalent.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:04.885Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "prime-intellect": {
       "sha256": "b8543fd89f5ff48efefa7e4c70f3dc9ac710005285386b752bcb9493004627e7",
@@ -5032,6 +5393,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "split-pay": {
+      "sha256": "8d46513a980060db74c0e3fd6004d5a3af79e654b58799adda0595e7fd8c072d",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://splitpay.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:13.936Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "stilta": {
       "sha256": "524c0df4213a4f6212653f7f83a70ad98926ea8492d9f2d0564d8197523ba26d",
       "width": 1440,
@@ -5212,6 +5592,25 @@
         "detail": true
       },
       "notes": "Source and final match. Complete AI decisioning headline, onboarding/underwriting/claims description, demo action, ratings strip and full navigation are readable on the loaded page. The next illustration begins below the hero and naturally continues beyond the viewport. Small closed privacy launcher does not obscure primary content; no loading or consent panel. Card observation: The complete decisions-at-scale-with-AI headline is large and readable; the small privacy launcher stays outside the intact hero. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "teragen-energy": {
+      "sha256": "75b6d4e5447f4a16277ca6ad3a8980930639856dcd81b485fe81d2911d0b0c72",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.teragenenergy.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:07.612Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "terminal": {
       "sha256": "5c4b2070f627f3cf7bf84814de6dbd8602a253bbab206dfa03e71bafb132b431",
@@ -5449,6 +5848,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "ultrahuman": {
+      "sha256": "bd988519bbbf6d20aeb3ec8233f93a26069d1e409c02ebd7206debed64fea1c2",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.ultrahuman.com/us/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:04.296Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "uncover": {
       "sha256": "ed57326786764faddd92dc58dcc6cc59e75e478b50c4bfeb243acbf69ead729f",
       "width": 1440,
@@ -5611,6 +6029,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "veridue": {
+      "sha256": "2ba64640119d6b5329faa11683a87b4f7719e10a08f7f6cafab41122b9d82990",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://veridue.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:18.006Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "verse": {
       "sha256": "892e0728d9fa4a64107c9add10e5b9bf5b3be877798f28822aff33a2b4de0553",
@@ -5831,6 +6268,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "xorlab": {
+      "sha256": "7883bf2b4cb3e303d66402082fdd46b049714886bebb2f99371e79d4ee91e0f0",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.xorlab.com/en/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:08.860Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
     "yuno": {
       "sha256": "5770e8052b526bf808502d2522e680806e2a2fcfe478900abf28cc4d7faa71bf",
       "width": 1280,
@@ -5849,6 +6305,25 @@
         "detail": true
       },
       "notes": "Source and final match. The full blue branded hero, complete large payments headline, explanatory line, navigation and both actions fit inside the viewport. High-contrast lettering remains sharp; no consent or marketing panel obscures content. Card observation: The complete large payments-and-financial-services headline is readable on the blue product panel; actions and primary wording fit without cropping or obstruction. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "zeit-ai": {
+      "sha256": "49ee1f173cb0e8c436041d7d82714547c87ca89f8a4821440b02d9c695c94fb8",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.zeit-ai.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T12:14:05.492Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
     "zerodrift": {
       "sha256": "4477e4069d85437ff99c980d443e2fa427154035e1aaa19b4c335e5989cf8511",

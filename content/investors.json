@@ -1,4 +1,11 @@
 {
+  "776": {
+    "name": "Seven Seven Six",
+    "slug": "776",
+    "short_name": "776",
+    "website": "https://sevensevensix.com",
+    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
+  },
   "unless": {
     "name": "Unless",
     "slug": "unless",
@@ -68,13 +75,6 @@
     "short_name": "Stonebridge",
     "website": "https://www.stonebridgeventures.vc",
     "description": "South Korean venture capital firm investing across technology and other innovation sectors."
-  },
-  "776": {
-    "name": "Seven Seven Six",
-    "slug": "776",
-    "short_name": "776",
-    "website": "https://sevensevensix.com",
-    "description": "Venture capital firm founded by Alexis Ohanian. Backs founders reimagining communities, commerce, and culture."
   },
   "a16z": {
     "name": "Andreessen Horowitz",
@@ -1288,8 +1288,11 @@
     "name": "Marathon Management Partners",
     "slug": "marathon-management-partners",
     "short_name": "Marathon",
-    "website": "https://www.marathonmp.com/",
-    "description": "Investment firm partnering with founders building category-defining companies."
+    "website": "https://marathonmp.com/",
+    "description": "Investment firm with offices in New York, Menlo Park, and Los Angeles that partners with category-defining founders.",
+    "aliases": [
+      "Marathon and Chemistry"
+    ]
   },
   "gv": {
     "name": "GV",
@@ -1545,7 +1548,7 @@
     "slug": "chemistry",
     "short_name": "Chemistry",
     "website": "https://www.chemistry.vc/",
-    "description": "Early-stage venture firm leading concentrated Seed and Series A investments in software companies."
+    "description": "Early-stage venture firm investing in software companies from the first check through Series B."
   },
   "burda-principal-investments": {
     "name": "Burda Principal Investments",
@@ -1959,23 +1962,6 @@
     "website": "https://www.s32.com/",
     "description": "High-conviction venture firm investing in AI, infrastructure, cybersecurity, enterprise software, and computational biology."
   },
-  "marathon-management-partners": {
-    "name": "Marathon Management Partners",
-    "slug": "marathon-management-partners",
-    "short_name": "Marathon",
-    "website": "https://marathonmp.com/",
-    "description": "Investment firm with offices in New York, Menlo Park, and Los Angeles that partners with category-defining founders.",
-    "aliases": [
-      "Marathon and Chemistry"
-    ]
-  },
-  "chemistry": {
-    "name": "Chemistry",
-    "slug": "chemistry",
-    "short_name": "Chemistry",
-    "website": "https://www.chemistry.vc/",
-    "description": "Early-stage venture firm investing in software companies from the first check through Series B."
-  },
   "matrix": {
     "name": "Matrix",
     "slug": "matrix",
@@ -2229,5 +2215,204 @@
     "short_name": "Evoce",
     "website": "https://www.evocecapital.com/",
     "description": "US seed-to-Series A venture firm investing across sectors and helping founders navigate regulated markets."
+  },
+  "xyz-venture-capital": {
+    "name": "XYZ Venture Capital",
+    "slug": "xyz-venture-capital",
+    "short_name": "XYZ",
+    "website": "https://www.xyz.vc/",
+    "description": "Early-stage venture firm investing across public-sector, enterprise, fintech and technology-overlooked markets."
+  },
+  "nextview-ventures": {
+    "name": "NextView Ventures",
+    "slug": "nextview-ventures",
+    "short_name": "NextView",
+    "website": "https://nextview.vc/",
+    "description": "Hands-on seed investor working with founders across North America."
+  },
+  "baukunst": {
+    "name": "Baukunst",
+    "slug": "baukunst",
+    "short_name": "Baukunst",
+    "website": "https://baukunst.co/",
+    "description": "Pre-seed venture fund and creative-technology collective investing at the frontiers of technology and design."
+  },
+  "vintage-investment-partners": {
+    "name": "Vintage Investment Partners",
+    "slug": "vintage-investment-partners",
+    "short_name": "Vintage",
+    "website": "https://vintage-ip.com/",
+    "description": "Global venture firm combining fund, secondary and growth investment strategies."
+  },
+  "qualcomm-ventures": {
+    "name": "Qualcomm Ventures",
+    "slug": "qualcomm-ventures",
+    "short_name": "Qualcomm Ventures",
+    "website": "https://www.qualcommventures.com/",
+    "description": "Corporate venture investor backing technology companies across mobile, AI, automotive and connected systems."
+  },
+  "alpha-wave-global": {
+    "name": "Alpha Wave Global",
+    "slug": "alpha-wave-global",
+    "short_name": "Alpha Wave",
+    "website": "https://alphawaveglobal.com/",
+    "description": "Alternative asset manager investing across private equity, private credit and related strategies."
+  },
+  "integrity-growth-partners": {
+    "name": "Integrity Growth Partners",
+    "slug": "integrity-growth-partners",
+    "short_name": "IGP",
+    "website": "https://www.integritygp.com/",
+    "description": "Growth investor partnering with bootstrapped software and technology-enabled services companies."
+  },
+  "world-innovation-lab": {
+    "name": "World Innovation Lab",
+    "slug": "world-innovation-lab",
+    "short_name": "WiL",
+    "website": "https://wilab.com/",
+    "description": "US-Japan venture platform supporting technology companies and cross-border growth."
+  },
+  "breakthrough-energy-ventures": {
+    "name": "Breakthrough Energy Ventures",
+    "slug": "breakthrough-energy-ventures",
+    "short_name": "BEV",
+    "website": "https://www.breakthroughenergy.org/programs",
+    "description": "Climate-focused venture investor backing technologies with the potential to reduce greenhouse-gas emissions at scale."
+  },
+  "energy-capital-ventures": {
+    "name": "Energy Capital Ventures",
+    "slug": "energy-capital-ventures",
+    "short_name": "ECV",
+    "website": "https://www.energycapitalventures.com/",
+    "description": "Early-stage venture fund focused on innovation across the natural-gas and energy value chain."
+  },
+  "join-capital": {
+    "name": "JOIN Capital",
+    "slug": "join-capital",
+    "short_name": "JOIN",
+    "website": "https://www.join.capital/",
+    "description": "European early-stage deep-tech investor focused on strategic industrial, defence, space and computing systems."
+  },
+  "ace-capital-partners": {
+    "name": "Ace Capital Partners",
+    "slug": "ace-capital-partners",
+    "short_name": "Ace",
+    "website": "https://ace-capitalpartners.com/",
+    "description": "Global Series A and B investor focused on civilian and military aerospace and defence technology."
+  },
+  "spicehaus-partners": {
+    "name": "Spicehaus Partners",
+    "slug": "spicehaus-partners",
+    "short_name": "Spicehaus",
+    "website": "https://www.spicehaus.com/",
+    "description": "Swiss seed-stage venture firm backing B2B technology companies from first revenue through international expansion."
+  },
+  "keen-venture-partners": {
+    "name": "Keen Venture Partners",
+    "slug": "keen-venture-partners",
+    "short_name": "Keen",
+    "website": "https://www.keenventurepartners.com/",
+    "description": "European venture firm backing early-stage technology companies, including software for SMEs and defence."
+  },
+  "byfounders": {
+    "name": "byFounders",
+    "slug": "byfounders",
+    "short_name": "byFounders",
+    "website": "https://www.byfounders.vc/",
+    "description": "Community-powered early-stage investor supporting ambitious founders across the Nordic and Baltic region."
+  },
+  "spdg-growth": {
+    "name": "SPDG Growth",
+    "slug": "spdg-growth",
+    "short_name": "SPDG",
+    "website": "https://www.spdg.be/",
+    "description": "Post-venture growth strategy of the Perier-D'Ieteren family holding company."
+  },
+  "eic-fund": {
+    "name": "EIC Fund",
+    "slug": "eic-fund",
+    "short_name": "EIC Fund",
+    "website": "https://eic.ec.europa.eu/eic-fund_en",
+    "description": "European Innovation Council venture investment arm supporting European deep-technology companies."
+  },
+  "multiply-ventures": {
+    "name": "Multiply Ventures",
+    "slug": "multiply-ventures",
+    "short_name": "Multiply",
+    "website": "https://www.multiplyventures.com/",
+    "description": "India-focused early-stage venture fund investing across consumer, consumer technology and fintech."
+  },
+  "crrc-capital": {
+    "name": "CRRC Capital",
+    "slug": "crrc-capital",
+    "short_name": "CRRC Capital",
+    "website": "https://www.crrcgc.cc/cytz/",
+    "description": "CRRC-linked industrial investment platform supporting strategic and emerging technology sectors.",
+    "aliases": [
+      "CRRC Transformation and Upgrading Fund"
+    ]
+  },
+  "changjiang-growth-capital": {
+    "name": "Changjiang Growth Capital",
+    "slug": "changjiang-growth-capital",
+    "short_name": "Changjiang Capital",
+    "website": "https://www.cjsccapital.com/",
+    "description": "Private-equity investment subsidiary of Changjiang Securities supporting technology and growth companies."
+  },
+  "nuwa-capital": {
+    "name": "Nuwa Capital",
+    "slug": "nuwa-capital",
+    "short_name": "Nuwa",
+    "website": "https://www.nuwacapital.io/",
+    "description": "Venture investment platform backing technology companies across the Middle East and nearby growth markets."
+  },
+  "cotu-ventures": {
+    "name": "COTU Ventures",
+    "slug": "cotu-ventures",
+    "short_name": "COTU",
+    "website": "https://www.cotu.vc/",
+    "description": "Early-stage investor providing first checks to technology founders across the Middle East and North Africa."
+  },
+  "atreides-management": {
+    "name": "Atreides Management",
+    "slug": "atreides-management",
+    "short_name": "Atreides",
+    "website": "https://atreidesmgmt.com/",
+    "description": "Crossover investment manager taking a long-term view of technology and consumer companies across public and private markets."
+  },
+  "valor-equity-partners": {
+    "name": "Valor Equity Partners",
+    "slug": "valor-equity-partners",
+    "short_name": "Valor",
+    "website": "https://www.valorep.com/",
+    "description": "Operational growth investor partnering with technology, industrial and consumer companies across development stages."
+  },
+  "navam-capital": {
+    "name": "Navam Capital",
+    "slug": "navam-capital",
+    "short_name": "Navam",
+    "website": "https://www.navamcapital.com/",
+    "description": "Seed and early-stage investor focused on frontier technology and science-driven innovation in India."
+  },
+  "sky-impact-capital": {
+    "name": "Sky Impact Capital",
+    "slug": "sky-impact-capital",
+    "short_name": "Sky Impact",
+    "website": "https://www.skyimpact.com/",
+    "description": "Operationally engaged investment firm focused on healthcare, education and consumer businesses."
+  },
+  "episode-1-ventures": {
+    "name": "Episode 1 Ventures",
+    "slug": "episode-1-ventures",
+    "short_name": "Episode 1",
+    "website": "https://www.episode1.com/",
+    "description": "UK venture firm helping pre-seed and seed B2B software companies reach Series A."
+  },
+  "pi-labs": {
+    "name": "Pi Labs",
+    "slug": "pi-labs",
+    "short_name": "Pi Labs",
+    "website": "https://pilabs.vc/",
+    "description": "Early-stage investor and accelerator backing technology for a digital and sustainable built world."
   }
 }

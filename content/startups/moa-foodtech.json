@@ -1,0 +1,96 @@
+{
+  "slug": "moa-foodtech",
+  "domain": "www.moafoodtech.com",
+  "url": "https://www.moafoodtech.com/",
+  "product_name": "MOA Foodtech",
+  "summary": "Biomass-fermentation platform that converts side streams into food ingredients.",
+  "editor_note": "Rather than offering only a fermentation research service, the company pairs its MOA Box development process with named ingredient outputs such as MOA Yeast. The EUR 3.3M round has no source-stated canonical stage or lead; scale economics, formulation performance and regulatory acceptance remain open.",
+  "editor_rating": 4,
+  "why_featured": "Fermentation platform and ingredients",
+  "product_type": "Climate / Sustainability",
+  "founded_year": 2020,
+  "hq_location": "Navarra, Spain",
+  "region": "Europe",
+  "tags": "food technology,fermentation,ingredients,circular economy",
+  "investors": "EIC Fund",
+  "links": {
+    "product": "https://www.moafoodtech.com/moa-box",
+    "resources": "https://www.moafoodtech.com/moa-yeast"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "EUR 3.3M",
+      "currency": "EUR",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://agfundernews.com/moa-foodtech-nets-3-8m-to-scale-ai-powered-biomass-fermentation-platform",
+      "source_name": "AgFunderNews"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "MOA Foodtech official site",
+        "url": "https://www.moafoodtech.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "MOA Foodtech product evidence 1",
+        "url": "https://www.moafoodtech.com/moa-box",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "MOA Foodtech product evidence 2",
+        "url": "https://www.moafoodtech.com/moa-yeast",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "MOA Foodtech financing source",
+        "url": "https://agfundernews.com/moa-foodtech-nets-3-8m-to-scale-ai-powered-biomass-fermentation-platform",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "MOA Box is presented as a defined fermentation-development platform for converting side streams into food ingredients.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The official yeast ingredient page exposes a concrete output and application rather than only a platform thesis.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating fermentation-derived food ingredient platform.",
+      "category": "Food biotechnology",
+      "differentiation": "MOA bets on pairing fermentation development with specific commercial ingredient outputs.",
+      "why_now": "AgFunderNews reported the current financing on 2026-09-03."
+    },
+    "risks": [
+      {
+        "claim": "The inputs and outputs are specific, while scale economics and regulatory acceptance remain open.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies EUR 3.3M but does not state a canonical round stage or a lead investor. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}

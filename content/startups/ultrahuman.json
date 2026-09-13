@@ -1,0 +1,97 @@
+{
+  "slug": "ultrahuman",
+  "domain": "www.ultrahuman.com",
+  "url": "https://www.ultrahuman.com/",
+  "product_name": "Ultrahuman",
+  "summary": "Ring-based health sensing with connected metabolic, sleep and recovery software.",
+  "editor_note": "Unlike a software-only wellness dashboard, the system joins shipping Ring AIR hardware, continuous signals and a connected health application. The $70M package includes $65M of primary equity and $5M of debt according to independent reporting; health-performance claims still require careful attribution and clinical scrutiny.",
+  "editor_rating": 4,
+  "why_featured": "A hardware-software health loop",
+  "product_type": "HealthTech",
+  "founded_year": 2019,
+  "hq_location": "Bengaluru, India",
+  "region": "China / Asia",
+  "tags": "wearables,health sensing,smart ring,metabolic health",
+  "investors": "Alpha Wave Global, Qualcomm Ventures, Nexus Venture Partners",
+  "links": {
+    "product": "https://www.ultrahuman.com/us/",
+    "resources": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-launches-pulsomics-a-foundational-model-of-the-human-pulse"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$70M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "instrument": "mixed",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+      "source_name": "Ultrahuman"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Ultrahuman official site",
+        "url": "https://www.ultrahuman.com/",
+        "type": "official"
+      },
+      {
+        "id": "product_1",
+        "label": "Ultrahuman product evidence 1",
+        "url": "https://www.ultrahuman.com/us/",
+        "type": "product"
+      },
+      {
+        "id": "product_2",
+        "label": "Ultrahuman product evidence 2",
+        "url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-launches-pulsomics-a-foundational-model-of-the-human-pulse",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "Ultrahuman financing source",
+        "url": "https://cyborg.ultrahuman.com/press-releases/ultrahuman-raises-70-million-to-build-the-next-generation-of-human-computer-interface-for-health",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product surface documents the Ring AIR and connected health-sensing ecosystem available to customers.",
+        "source_ids": [
+          "product_1"
+        ]
+      },
+      {
+        "claim": "The company describes a specific pulse-model research direction tied to its wearable data and future interface layer.",
+        "source_ids": [
+          "product_2"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Teams or individuals evaluating and operating wearable metabolic and health sensing system.",
+      "category": "Wearable health technology",
+      "differentiation": "Ultrahuman bets that continuous wearable signals can become a broader human-computer health interface.",
+      "why_now": "Ultrahuman reported the current financing on 2026-09-03."
+    },
+    "risks": [
+      {
+        "claim": "The products and data loop are specific, while health-performance claims still need careful source labeling.",
+        "basis": "VentureDex assessment based on the cited official product and financing evidence."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The cited financing source verifies $70M but does not state a canonical round stage or a lead investor. VentureDex records the stage as Unspecified rather than inferring one while retaining the source-backed product evidence.",
+      "source_ids": [
+        "official_site",
+        "product_1",
+        "product_2",
+        "funding_1"
+      ]
+    }
+  }
+}
