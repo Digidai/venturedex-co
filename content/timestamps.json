@@ -1281,5 +1281,25 @@
   "vecna-robotics": {
     "published_at": "2026-09-13 05:56:02",
     "first_seen_at": "2026-09-13 05:56:02"
+  },
+  "chariot-claims": {
+    "published_at": "2026-09-13 10:16:00",
+    "first_seen_at": "2026-09-13 10:16:00"
+  },
+  "elm-ai": {
+    "published_at": "2026-09-13 10:16:00",
+    "first_seen_at": "2026-09-13 10:16:00"
+  },
+  "minewatch": {
+    "published_at": "2026-09-13 10:16:00",
+    "first_seen_at": "2026-09-13 10:16:00"
+  },
+  "science4beauty": {
+    "published_at": "2026-09-13 10:16:00",
+    "first_seen_at": "2026-09-13 10:16:00"
+  },
+  "senticell": {
+    "published_at": "2026-09-13 10:16:00",
+    "first_seen_at": "2026-09-13 10:16:00"
   }
 }

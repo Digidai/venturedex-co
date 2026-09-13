@@ -2236,6 +2236,41 @@
       "local_path": "/logos/companies/outline.png",
       "source_page": "https://www.outlineapp.ai/",
       "source_url": "https://cdn.prod.website-files.com/6a4518b194cf0c033fed0655/6a4e5f28152e9cf49171e344_Favicon-Outline.png"
+    },
+    "chariot-claims": {
+      "name": "Chariot Claims",
+      "shape": "icon",
+      "local_path": "/logos/companies/chariot-claims.png",
+      "source_page": "https://www.chariotclaims.com/",
+      "source_url": "https://framerusercontent.com/images/mL8C812MDh2bhIDJIld86MPGjw.png"
+    },
+    "elm-ai": {
+      "name": "Elm AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/elm-ai.png",
+      "source_page": "https://www.elm-ai.com/",
+      "source_url": "https://www.elm-ai.com/icon.png?icon.0dd5jbo2yugyp.png"
+    },
+    "minewatch": {
+      "name": "MineWatch",
+      "shape": "icon",
+      "local_path": "/logos/companies/minewatch.png",
+      "source_page": "https://vigalab.com/",
+      "source_url": "https://vigalab.com/wp-content/uploads/2023/12/vigalab-icono.webp"
+    },
+    "science4beauty": {
+      "name": "Science4Beauty",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/science4beauty.png",
+      "source_page": "https://science4beauty.net/",
+      "source_url": "https://science4beauty.net/cdn/shop/files/weblogo.png?v=1706623176"
+    },
+    "senticell": {
+      "name": "SentiCell",
+      "shape": "icon",
+      "local_path": "/logos/companies/senticell.png",
+      "source_page": "https://www.senticell.bio/",
+      "source_url": "https://static.wixstatic.com/media/478adf_b0b4f4c7832b4b3490f06d63d89251ac%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/478adf_b0b4f4c7832b4b3490f06d63d89251ac%7Emv2.png"
     }
   },
   "investors": {
@@ -4292,6 +4327,55 @@
       "local_path": "/logos/investors/newschool.svg",
       "source_page": "https://newschool.vc/",
       "source_url": "https://newschool.vc/new-school-logo.svg"
+    },
+    "alza-mining-tech": {
+      "name": "Alza Mining Tech",
+      "shape": "icon",
+      "local_path": "/logos/investors/alza-mining-tech.png",
+      "source_page": "https://alzagroup.cl/en/agf-ingles/",
+      "source_url": "https://alzagroup.cl/wp-content/uploads/2026/03/cropped-logo_small_square-192x192.png"
+    },
+    "4growth-vc": {
+      "name": "4growth VC",
+      "shape": "icon",
+      "local_path": "/logos/investors/4growth-vc.png",
+      "source_page": "https://4growthvc.pl/en/home-en/",
+      "source_url": "https://4growthvc.pl/wp-content/uploads/2021/07/favicon.png"
+    },
+    "hard2beat": {
+      "name": "Hard2beat",
+      "shape": "icon",
+      "local_path": "/logos/investors/hard2beat.jpg",
+      "source_page": "https://hard2beat.vc/",
+      "source_url": "https://hard2beat.vc/wp-content/uploads/2025/07/cropped-hard2beat_logo-256x256.jpg"
+    },
+    "theventurecity": {
+      "name": "TheVentureCity",
+      "shape": "icon",
+      "local_path": "/logos/investors/theventurecity.png",
+      "source_page": "https://www.theventure.city/",
+      "source_url": "https://cdn.prod.website-files.com/636fcce84b52443ed5e8c7b1/63da6a3b9e0ef0b64ce6a09b_tvc-webclip.png"
+    },
+    "capital-factory": {
+      "name": "Capital Factory",
+      "shape": "icon",
+      "local_path": "/logos/investors/capital-factory.svg",
+      "source_page": "https://capitalfactory.com/",
+      "source_url": "https://capitalfactory.com/icon.svg?icon.23sph1hwvr9x5.svg"
+    },
+    "scalpel-ventures": {
+      "name": "Scalpel Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/scalpel-ventures.png",
+      "source_page": "https://scalpelventures.com/",
+      "source_url": "https://scalpelventures.com/wp-content/uploads/2025/03/Logo-Icon.png"
+    },
+    "evoce-capital": {
+      "name": "Evoce Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/evoce-capital.svg",
+      "source_page": "https://www.evocecapital.com/",
+      "source_url": "https://cdn.prod.website-files.com/660eb9c19e421d64ce0883ef/661e54a18fc8a61ceeb7205b_Webclip.svg"
     }
   }
 }

@@ -1,0 +1,445 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260913T095139Z",
+  "locked_at": "2026-09-13",
+  "pool_sha256": "16f0e70892f466421ff42d41300d756a45d9febb6f50ff3e488c2b99bcb52f95",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "Official product and funding pages for the ten qualified backlog candidates",
+      "outcome": "Verified product boundaries and current financing claims without admitting new candidates to the locked pool."
+    },
+    {
+      "type": "original_media",
+      "query": "Filing-based New York financing coverage for Chariot Claims and Elm AI",
+      "outcome": "Verified reported proceeds and investor counts while preserving the source omission of canonical round stages and investor names."
+    },
+    {
+      "type": "regional_media",
+      "query": "Chilean original reporting for MineWatch operations and Alza financing",
+      "outcome": "Verified the $900,000 financing and underground deployment context without importing a secondary Seed label."
+    },
+    {
+      "type": "investor",
+      "query": "Lead-investor announcements for Science4Beauty and its product evidence",
+      "outcome": "Verified the native PLN 7 million amount, named participants and the absence of a canonical round stage."
+    },
+    {
+      "type": "research",
+      "query": "Official study and platform evidence for Science4Beauty and SentiCell",
+      "outcome": "Separated company-published and ongoing clinical evidence from independent validation and did not infer regulatory clearance."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "chariot-claims",
+      "company_url": "https://www.chariotclaims.com/",
+      "source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "source_type": "original_media",
+      "announced_at": "2026-09-03",
+      "region": "US",
+      "industry": "Legal claims software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.chariotclaims.com/",
+            "note": "The official site defines a claims-filing and administration workflow for legal teams and claimants."
+          },
+          {
+            "url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+            "note": "The filing-based funding report establishes a current financing signal while leaving the unnamed stage explicit."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Chariot Claims bets on turning a fragmented legal filing process into a structured operating workflow."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product boundary is tied to real claims administration rather than a generic legal assistant."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and transaction are specific, although public implementation depth remains thinner than mature enterprise tools."
+          }
+        }
+      }
+    },
+    {
+      "slug": "elm-ai",
+      "company_url": "https://www.elm-ai.com/",
+      "source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "source_type": "original_media",
+      "announced_at": "2026-09-03",
+      "region": "US",
+      "industry": "Supply-chain compliance",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://product.elm-ai.com/",
+            "note": "The public product deck exposes supplier data intake, compliance analysis and operating outputs for procurement teams."
+          },
+          {
+            "url": "https://www.elm-ai.com/about",
+            "note": "The company material identifies the supply-chain compliance problem, target users and product approach."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Elm AI bets on a supplier-specific compliance system rather than a horizontal document chatbot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The product deck exposes the workflow and decision artifacts with enough detail to evaluate construction."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The target user, data object and compliance job are concrete despite limited public customer proof."
+          }
+        }
+      }
+    },
+    {
+      "slug": "minewatch",
+      "company_url": "https://vigalab.com/",
+      "source_url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-03",
+      "region": "Latin America",
+      "industry": "Mining operations software",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://vigalab.com/",
+            "note": "Vigalab's official surface describes MineWatch as an offline-capable dispatch, fleet and personnel-monitoring system for mines."
+          },
+          {
+            "url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+            "note": "Regional original reporting adds deployment and expansion context for the mine operating product."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "MineWatch bets on resilient offline operations in connectivity-constrained mine environments."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Fleet, dispatch and personnel monitoring form a concrete system rather than a generic industrial dashboard."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The operating environment is specific, while independent field-performance evidence remains limited."
+          }
+        }
+      }
+    },
+    {
+      "slug": "science4beauty",
+      "company_url": "https://science4beauty.net/",
+      "source_url": "https://4growthvc.pl/en/2026/09/03/polish-biotech-science4beauty-raises-eur-1-6m-to-scale-innovative-conotoxin-platform-for-the-beauty-industry/",
+      "source_type": "investor",
+      "announced_at": "2026-09-03",
+      "region": "Europe",
+      "industry": "Cosmetic biotechnology",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://science4beauty.net/en/pages/nauka",
+            "note": "The science page describes the conotoxin-derived active and a randomized double-blind placebo-controlled study with 60 volunteers."
+          },
+          {
+            "url": "https://science4beauty.net/en-ue/pages/project",
+            "note": "The official project page records the development program behind the active and the product commercialization work."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Science4Beauty bets on a defined peptide mechanism rather than undifferentiated cosmetic branding."
+          },
+          "craft": {
+            "pass": true,
+            "note": "A disclosed controlled study, project record and sold products provide multiple inspectable layers of work."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The active and application are specific, while study scale and company-sponsored evidence limit certainty."
+          }
+        }
+      }
+    },
+    {
+      "slug": "senticell",
+      "company_url": "https://www.senticell.bio/",
+      "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+      "source_type": "company",
+      "announced_at": "2026-09-01",
+      "region": "US",
+      "industry": "Liquid-biopsy diagnostics",
+      "state": "accepted",
+      "reason": "All source, product, investor, asset, screenshot and release preparation gates are complete.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.senticell.bio/platform",
+            "note": "The platform page explains the red-blood-cell-bound nucleic-acid signal and intended liquid-biopsy workflow."
+          },
+          {
+            "url": "https://www.senticell.bio/",
+            "note": "The official site identifies the analytical-development stage and disease-detection direction without presenting a commercial diagnostic as complete."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "SentiCell makes a distinctive biological bet on signals attached to red blood cells."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The platform mechanism and disclosed analytical work give the preclinical product thesis inspectable substance."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The assay concept is specific, while clinical validity and regulatory path remain material open questions."
+          }
+        }
+      }
+    },
+    {
+      "slug": "teragen-energy",
+      "company_url": "https://www.teragenenergy.com/",
+      "source_url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+      "source_type": "company",
+      "announced_at": "2026-08-26",
+      "region": "US",
+      "industry": "Solid-oxide fuel cells",
+      "state": "qualified_pending",
+      "reason": "The evidence review remains qualified, but this fixed pool has reached its five-company publication capacity and preserves the overflow for the next immediate run.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.teragenenergy.com/",
+            "note": "The official site describes a modular solid-oxide fuel-cell architecture and the transition from prototypes toward pilots."
+          },
+          {
+            "url": "https://www.teragenenergy.com/news/teragen-energy-raises-oversubscribed-pre-seed-round",
+            "note": "The company announcement connects the financing to pilot manufacturing and deployment milestones."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Teragen makes a hard technical bet on modularizing solid-oxide power generation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Prototype and pilot plans expose an engineering path rather than a generic clean-energy promise."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The architecture and next validation step are specific, while commercial efficiency remains unproven."
+          }
+        }
+      }
+    },
+    {
+      "slug": "veridue",
+      "company_url": "https://veridue.ai/",
+      "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+      "source_type": "company",
+      "announced_at": "2026-09-08",
+      "region": "Europe",
+      "industry": "Energy transaction software",
+      "state": "qualified_pending",
+      "reason": "The evidence review remains qualified, but this fixed pool has reached its five-company publication capacity and preserves the overflow for the next immediate run.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://veridue.ai/",
+            "note": "The official site exposes screening, red-flag diligence, virtual-data-room organization and investment-readiness workflows."
+          },
+          {
+            "url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
+            "note": "The launch announcement records two years of product development and validation with energy-market participants."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Veridue bets on an energy-specific diligence system rather than a horizontal document summarizer."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Traceable findings, data-room organization and transaction screening form a coherent professional workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The users and artifacts are specific, while the speed and cost claims remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "xorlab",
+      "company_url": "https://www.xorlab.com/",
+      "source_url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+      "source_type": "company",
+      "announced_at": "2026-09-01",
+      "region": "Europe",
+      "industry": "Email security",
+      "state": "qualified_pending",
+      "reason": "The evidence review remains qualified, but this fixed pool has reached its five-company publication capacity and preserves the overflow for the next immediate run.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.xorlab.com/",
+            "note": "The official site details email threat detection, policy enforcement and deployment choices for enterprise security teams."
+          },
+          {
+            "url": "https://www.xorlab.com/en/blog/xorlab-raises-eur-5-million-to-build-europes-leading-sovereign-email-security-platform",
+            "note": "The company announcement ties the financing to a deployed sovereign email-security product rather than a pre-product concept."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "xorlab bets on email-native behavioral detection with a European sovereignty position."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Deployment and protection workflows expose the operational seams that security buyers must evaluate."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The product boundary and buyer are specific, though efficacy claims require independent validation."
+          }
+        }
+      }
+    },
+    {
+      "slug": "fambot",
+      "company_url": "https://fambot.com/",
+      "source_url": "https://fambot.com/press",
+      "source_type": "company",
+      "announced_at": "2026-09-03",
+      "region": "US",
+      "industry": "Consumer household software",
+      "state": "qualified_pending",
+      "reason": "The evidence review remains qualified, but this fixed pool has reached its five-company publication capacity and preserves the overflow for the next immediate run.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://landing.fambot.com/post/what-to-expect-in-your-first-week-with-fambot-2026",
+            "note": "The product guide walks through the first-week setup and actual household-assistant workflow for public beta users."
+          },
+          {
+            "url": "https://fambot.com/press",
+            "note": "The official press material ties the current financing to a live public beta and describes supported application integrations."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "FamBot bets on a persistent household workflow rather than a one-shot consumer chatbot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The first-week guide and live beta provide concrete onboarding and interaction evidence."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user and recurring job are clear, though long-term retention remains an open product risk."
+          }
+        }
+      }
+    },
+    {
+      "slug": "backbone",
+      "company_url": "https://www.usebackbone.ai/",
+      "source_url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "Europe",
+      "industry": "Food quality software",
+      "state": "qualified_pending",
+      "reason": "The evidence review remains qualified, but this fixed pool has reached its five-company publication capacity and preserves the overflow for the next immediate run.",
+      "discovery_mode": "revisit",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.usebackbone.ai/",
+            "note": "The product site describes quality records, supplier evidence, specifications and compliance workflows for food companies."
+          },
+          {
+            "url": "https://www.usebackbone.ai/resources/backbone-raises-%E2%82%AC4m-to-build-the-quality-brain-for-the-food-industry",
+            "note": "The official funding announcement explains the operational data problem the product is designed to own."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Backbone bets on a food-specific quality knowledge layer rather than a generic compliance copilot."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The supplier, specification and evidence workflows make the product's operational model inspectable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The buyer and records are specific, while production adoption evidence is still early."
+          }
+        }
+      }
+    }
+  ]
+}

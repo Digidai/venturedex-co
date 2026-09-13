@@ -148,5 +148,75 @@
     "source_url": "https://www.globenewswire.com/news-release/2026/09/10/3359343/0/en/vecna-robotics-raises-31-million-to-meet-demand-for-flexible-dock-to-dock-automation.html",
     "source_name": "Vecna Robotics via GlobeNewswire",
     "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "minewatch",
+    "investor_slug": "alza-mining-tech",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "role_unspecified",
+    "source_url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+    "source_name": "Diario Financiero",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "science4beauty",
+    "investor_slug": "4growth-vc",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://4growthvc.pl/en/2026/09/03/polish-biotech-science4beauty-raises-eur-1-6m-to-scale-innovative-conotoxin-platform-for-the-beauty-industry/",
+    "source_name": "4growth VC",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "science4beauty",
+    "investor_slug": "hard2beat",
+    "round_date": "2026-09-03",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://4growthvc.pl/en/2026/09/03/polish-biotech-science4beauty-raises-eur-1-6m-to-scale-innovative-conotoxin-platform-for-the-beauty-industry/",
+    "source_name": "4growth VC",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "senticell",
+    "investor_slug": "theventurecity",
+    "round_date": "2026-09-01",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+    "source_name": "SentiCell via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "senticell",
+    "investor_slug": "capital-factory",
+    "round_date": "2026-09-01",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+    "source_name": "SentiCell via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "senticell",
+    "investor_slug": "scalpel-ventures",
+    "round_date": "2026-09-01",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+    "source_name": "SentiCell via PR Newswire",
+    "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "senticell",
+    "investor_slug": "evoce-capital",
+    "round_date": "2026-09-01",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+    "source_name": "SentiCell via PR Newswire",
+    "verified_at": "2026-09-13"
   }
 ]

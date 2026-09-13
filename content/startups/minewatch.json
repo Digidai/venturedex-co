@@ -1,0 +1,92 @@
+{
+  "slug": "minewatch",
+  "domain": "vigalab.com",
+  "url": "https://vigalab.com/",
+  "product_name": "MineWatch",
+  "summary": "Offline-capable dispatch, fleet and personnel tracking for underground mining operations.",
+  "editor_note": "Rather than assuming reliable mine connectivity, MineWatch keeps dispatch, equipment and personnel visibility working in underground environments and synchronizes when a connection is available. The operating scope is specific: fleet location, assignments, production and safety status. Deployment and expansion examples are company- and media-reported, so field performance still needs independent validation.",
+  "editor_rating": 4,
+  "why_featured": "Mine operations built to work offline",
+  "product_type": "SaaS",
+  "founded_year": 2022,
+  "hq_location": "Santiago, Chile",
+  "region": "Latin America",
+  "tags": "mining,dispatch,fleet management,offline software,worker safety",
+  "investors": "Alza Mining Tech",
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$900K",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+      "source_name": "Diario Financiero"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Vigalab and MineWatch official site",
+        "url": "https://vigalab.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Diario Financiero MineWatch financing report",
+        "url": "https://www.df.cl/df-lab/innovacion-y-startups/startup-chilena-minewatch-levanta-capital-con-alza-para-llegar-a-las-faenas",
+        "type": "funding"
+      },
+      {
+        "id": "funding_2",
+        "label": "Seedtable MineWatch funding record",
+        "url": "https://seedtable.com/companies/minewatch/funding-rounds/seed-2026-09",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product surface describes dispatch, fleet and personnel monitoring for mines, with operation designed to continue without mine-wide internet.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "Regional original reporting describes underground deployments and expansion plans for Peru and Mexico rather than a laboratory-only prototype.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The product joins location, assignments and operational status in a real-time mine view that can synchronize across intermittent connectivity.",
+        "source_ids": [
+          "official_site",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Dispatchers, supervisors and safety teams at underground mines.",
+      "category": "Mining operations software",
+      "differentiation": "An offline-capable operating layer designed for underground connectivity constraints.",
+      "why_now": "The financing supports deployments beyond Chile into underground operations in Peru and Mexico."
+    },
+    "risks": [
+      {
+        "claim": "Deployment counts and operating improvements are not independently benchmarked, and mine conditions can materially affect performance.",
+        "basis": "VentureDex assessment based on Vigalab material and regional reporting."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "Diario Financiero verifies $900,000 of financing from Alza Mining Tech but does not state a canonical stage or call Alza the lead. VentureDex records Unspecified and keeps the investor role unstated rather than importing the Seed label from a secondary database.",
+      "source_ids": [
+        "official_site",
+        "funding_1",
+        "funding_2"
+      ]
+    }
+  }
+}

@@ -41,9 +41,18 @@
           }
         ],
         "taste": {
-          "bet": { "pass": true, "note": "Vecna bets on heterogeneous robot orchestration as the operating layer for warehouse movement." },
-          "craft": { "pass": true, "note": "Named vehicles, workflows and remote-operations surfaces demonstrate deployment craft." },
-          "specificity": { "pass": true, "note": "The dock-to-dock workflow and warehouse operators are concrete and inspectable." }
+          "bet": {
+            "pass": true,
+            "note": "Vecna bets on heterogeneous robot orchestration as the operating layer for warehouse movement."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named vehicles, workflows and remote-operations surfaces demonstrate deployment craft."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The dock-to-dock workflow and warehouse operators are concrete and inspectable."
+          }
         }
       }
     },
@@ -87,9 +96,18 @@
           }
         ],
         "taste": {
-          "bet": { "pass": true, "note": "Piston bets that fleet fuel payments should be identity- and policy-aware before the pump is authorized." },
-          "craft": { "pass": true, "note": "The workflow combines driver verification, vehicle context, spend rules and merchant settlement." },
-          "specificity": { "pass": true, "note": "The users, transaction boundary and fraud-control sequence are unusually explicit." }
+          "bet": {
+            "pass": true,
+            "note": "Piston bets that fleet fuel payments should be identity- and policy-aware before the pump is authorized."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The workflow combines driver verification, vehicle context, spend rules and merchant settlement."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The users, transaction boundary and fraud-control sequence are unusually explicit."
+          }
         }
       }
     },
@@ -118,13 +136,28 @@
         "independent": true,
         "funding_verified": true,
         "product_evidence": [
-          { "url": "https://arlq.ai/", "note": "The official site describes a topological architecture for heterogeneous data, traceable results and operational deployment." },
-          { "url": "https://arlq.ai/news/arlequin-ai-series-a-topological-neural-networks", "note": "The official announcement verifies the Series A and explains the platform's topological-neural-network basis." }
+          {
+            "url": "https://arlq.ai/",
+            "note": "The official site describes a topological architecture for heterogeneous data, traceable results and operational deployment."
+          },
+          {
+            "url": "https://arlq.ai/news/arlequin-ai-series-a-topological-neural-networks",
+            "note": "The official announcement verifies the Series A and explains the platform's topological-neural-network basis."
+          }
         ],
         "taste": {
-          "bet": { "pass": true, "note": "Arlequin makes a differentiated architecture bet on topology rather than scale alone." },
-          "craft": { "pass": true, "note": "The platform emphasizes heterogeneous inputs and traceable outputs, not a generic chat interface." },
-          "specificity": { "pass": true, "note": "The technical thesis is specific, although public implementation detail remains selective." }
+          "bet": {
+            "pass": true,
+            "note": "Arlequin makes a differentiated architecture bet on topology rather than scale alone."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The platform emphasizes heterogeneous inputs and traceable outputs, not a generic chat interface."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The technical thesis is specific, although public implementation detail remains selective."
+          }
         }
       }
     },
@@ -153,13 +186,28 @@
         "independent": true,
         "funding_verified": true,
         "product_evidence": [
-          { "url": "https://hvrenergy.com/", "note": "The official site exposes the INICIA and ACTIVA refueling systems, pressure configurations and an operating-station map." },
-          { "url": "https://hvrenergy.com/actualidad/hvr-energy-serie-a-20-millones/", "note": "The company announcement verifies the Series A and identifies the capital sources and network-expansion plan." }
+          {
+            "url": "https://hvrenergy.com/",
+            "note": "The official site exposes the INICIA and ACTIVA refueling systems, pressure configurations and an operating-station map."
+          },
+          {
+            "url": "https://hvrenergy.com/actualidad/hvr-energy-serie-a-20-millones/",
+            "note": "The company announcement verifies the Series A and identifies the capital sources and network-expansion plan."
+          }
         ],
         "taste": {
-          "bet": { "pass": true, "note": "HVR bets on modular roadside infrastructure to make hydrogen distribution deployable in smaller steps." },
-          "craft": { "pass": true, "note": "Named pressure systems and visible stations provide hardware and operating evidence." },
-          "specificity": { "pass": true, "note": "The equipment, pressure levels and deployment geography are concrete." }
+          "bet": {
+            "pass": true,
+            "note": "HVR bets on modular roadside infrastructure to make hydrogen distribution deployable in smaller steps."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Named pressure systems and visible stations provide hardware and operating evidence."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The equipment, pressure levels and deployment geography are concrete."
+          }
         }
       }
     },
@@ -188,13 +236,28 @@
         "independent": true,
         "funding_verified": true,
         "product_evidence": [
-          { "url": "https://www.furoenergy.com/", "note": "The official product surface shows planning, live control and market-trading workflows for battery assets, including a working app entry point." },
-          { "url": "https://www.furoenergy.com/en/blog/furo-funding", "note": "The company announcement verifies the $4M financing and describes its operating focus." }
+          {
+            "url": "https://www.furoenergy.com/",
+            "note": "The official product surface shows planning, live control and market-trading workflows for battery assets, including a working app entry point."
+          },
+          {
+            "url": "https://www.furoenergy.com/en/blog/furo-funding",
+            "note": "The company announcement verifies the $4M financing and describes its operating focus."
+          }
         ],
         "taste": {
-          "bet": { "pass": true, "note": "Furo treats batteries as continuously optimized market assets rather than static storage projects." },
-          "craft": { "pass": true, "note": "The public workflow connects forecasts, controls and trading with visible product interfaces." },
-          "specificity": { "pass": true, "note": "The user journey and optimization jobs are clear enough to distinguish the product." }
+          "bet": {
+            "pass": true,
+            "note": "Furo treats batteries as continuously optimized market assets rather than static storage projects."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The public workflow connects forecasts, controls and trading with visible product interfaces."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The user journey and optimization jobs are clear enough to distinguish the product."
+          }
         }
       }
     },
@@ -729,11 +792,11 @@
     {
       "slug": "chariot-claims",
       "company_url": "https://www.chariotclaims.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed SEC-reported $9.46M financing and an inspectable legal-claims filing platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The qualified company now has source-bound startup and funding research, current investor records where applicable, official brand assets, an independently reviewed official-site screenshot and completed release gates.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.chariotclaims.com/",
@@ -744,6 +807,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and legal-claims filing platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Prepared structured company, funding, investor and brand records; official-site screenshot review and release verification remain."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed startup, funding, investor, official-asset, screenshot and release preparation gates for publication."
         }
       ],
       "original": {
@@ -783,11 +856,11 @@
     {
       "slug": "elm-ai",
       "company_url": "https://www.elm-ai.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed SEC-reported $3.84M financing and an inspectable supplier-compliance operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The qualified company now has source-bound startup and funding research, current investor records where applicable, official brand assets, an independently reviewed official-site screenshot and completed release gates.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.elm-ai.com/",
@@ -800,6 +873,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and supplier-compliance operating system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Prepared structured company, funding, investor and brand records; official-site screenshot review and release verification remain."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed startup, funding, investor, official-asset, screenshot and release preparation gates for publication."
         }
       ],
       "original": {
@@ -911,11 +994,11 @@
     {
       "slug": "senticell",
       "company_url": "https://www.senticell.bio/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed Seed round approaching $7M and an inspectable red-blood-cell-bound nucleic-acid liquid biopsy platform. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The qualified company now has source-bound startup and funding research, current investor records where applicable, official brand assets, an independently reviewed official-site screenshot and completed release gates.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.senticell.bio/",
@@ -927,6 +1010,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and red-blood-cell-bound nucleic-acid liquid biopsy platform; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Prepared structured company, funding, investor and brand records; official-site screenshot review and release verification remain."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed startup, funding, investor, official-asset, screenshot and release preparation gates for publication."
         }
       ],
       "original": {
@@ -1310,11 +1403,11 @@
     {
       "slug": "science4beauty",
       "company_url": "https://science4beauty.net/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed PLN 7M investment and an inspectable conotoxin-based cosmetic active and products. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The qualified company now has source-bound startup and funding research, current investor records where applicable, official brand assets, an independently reviewed official-site screenshot and completed release gates.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://science4beauty.net/",
@@ -1327,6 +1420,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and conotoxin-based cosmetic active and products; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Prepared structured company, funding, investor and brand records; official-site screenshot review and release verification remain."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed startup, funding, investor, official-asset, screenshot and release preparation gates for publication."
         }
       ],
       "original": {
@@ -1496,7 +1599,7 @@
         "product_evidence": [
           {
             "url": "https://airbility.co.kr/",
-          "note": "The current official product surface identifies Mothership, Capture, Interceptor and Cargo systems plus shared command-and-control capabilities."
+            "note": "The current official product surface identifies Mothership, Capture, Interceptor and Cargo systems plus shared command-and-control capabilities."
           },
           {
             "url": "https://www.prnewswire.com/news-releases/airbility-secures-krw-6-5-billion-series-a-led-by-sazze-partners-bringing-total-funding-to-usd-7-6-million-302867009.html",
@@ -1506,15 +1609,15 @@
         "taste": {
           "bet": {
             "pass": true,
-          "note": "Airbility bets on a coordinated aerial-defense stack spanning detection, capture, interception and logistics."
+            "note": "Airbility bets on a coordinated aerial-defense stack spanning detection, capture, interception and logistics."
           },
           "craft": {
             "pass": true,
-          "note": "Named airframes and shared-autonomy controls provide a more inspectable system boundary than a generic drone platform."
+            "note": "Named airframes and shared-autonomy controls provide a more inspectable system boundary than a generic drone platform."
           },
           "specificity": {
             "pass": true,
-          "note": "The mission roles, product names and command-and-control boundary are specific, while deployment remains an execution risk."
+            "note": "The mission roles, product names and command-and-control boundary are specific, while deployment remains an execution risk."
           }
         }
       }
@@ -1933,11 +2036,11 @@
     {
       "slug": "minewatch",
       "company_url": "https://vigalab.com/",
-      "state": "qualified_pending",
-      "reason_code": "publication_capacity",
-      "reason": "The September 11 evidence review verified a source-backed $900K Seed round and an inspectable offline mine dispatch and safety operating system. Product evidence and at least two taste dimensions pass; the company is qualified for the bounded publication queue, not silently accepted without startup, investor, screenshot and release gates.",
-      "reviewed_at": "2026-09-11",
-      "next_review_at": "2026-09-12",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The qualified company now has source-bound startup and funding research, current investor records where applicable, official brand assets, an independently reviewed official-site screenshot and completed release gates.",
+      "reviewed_at": "2026-09-13",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://vigalab.com/",
@@ -1949,6 +2052,16 @@
           "date": "2026-09-11",
           "outcome": "qualified_pending",
           "note": "Completed the source-by-source backlog review: verified the financing and offline mine dispatch and safety operating system; qualification passed and awaits the bounded publication workflow."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "publication_blocked",
+          "note": "Prepared structured company, funding, investor and brand records; official-site screenshot review and release verification remain."
+        },
+        {
+          "date": "2026-09-13",
+          "outcome": "accepted",
+          "note": "Completed startup, funding, investor, official-asset, screenshot and release preparation gates for publication."
         }
       ],
       "original": {

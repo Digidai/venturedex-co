@@ -1,0 +1,103 @@
+{
+  "slug": "chariot-claims",
+  "domain": "www.chariotclaims.com",
+  "url": "https://www.chariotclaims.com/",
+  "product_name": "Chariot Claims",
+  "summary": "Claim discovery and filing workflow that matches eligible people with vetted attorneys.",
+  "editor_note": "Rather than asking people to interpret mass-tort eligibility and paperwork alone, the service uses a guided questionnaire, matches qualifying claimants with vetted lawyers and keeps case updates in one account. There is no upfront fee, but the company is not a law firm, outcomes are not guaranteed and its FAQ says a claim may take 6–18 months or longer.",
+  "editor_rating": 4,
+  "why_featured": "A guided path through legal claims",
+  "product_type": "Marketplace",
+  "founded_year": 2022,
+  "hq_location": "Brooklyn, New York",
+  "region": "US",
+  "tags": "legal technology,claims,mass torts,consumer marketplace,case tracking",
+  "investors": "undisclosed",
+  "links": {
+    "product": "https://www.chariotclaims.com/faq",
+    "resources": "https://www.chariotclaims.com/aboutus"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$9.46M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "source_name": "AlleyWatch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Chariot Claims official site",
+        "url": "https://www.chariotclaims.com/",
+        "type": "official"
+      },
+      {
+        "id": "faq",
+        "label": "Chariot Claims frequently asked questions",
+        "url": "https://www.chariotclaims.com/faq",
+        "type": "product"
+      },
+      {
+        "id": "about",
+        "label": "Chariot Claims about page",
+        "url": "https://www.chariotclaims.com/aboutus",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "AlleyWatch filing-based funding report",
+        "url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official workflow starts with a claim-specific questionnaire and routes eligible people to vetted attorneys rather than offering legal advice itself.",
+        "source_ids": [
+          "official_site",
+          "faq"
+        ]
+      },
+      {
+        "claim": "The FAQ states that there is no upfront fee, payment is contingent on a successful claim, and case progress remains visible through the account.",
+        "source_ids": [
+          "faq"
+        ]
+      },
+      {
+        "claim": "The company identifies mass-tort claimants as the customer group and distinguishes its administrative service from the law firms handling cases.",
+        "source_ids": [
+          "about",
+          "official_site"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "People assessing eligibility for a mass-tort claim and the attorneys who ultimately represent them.",
+      "category": "Consumer legal-claims marketplace",
+      "differentiation": "A claim-specific intake, attorney matching and status workflow rather than an open-ended legal chatbot.",
+      "why_now": "The financing follows a filing-based raise as the company expands its consumer claims operation."
+    },
+    "risks": [
+      {
+        "claim": "Eligibility, recovery and timing depend on the facts and legal process; the company provides no outcome guarantee and is not a law firm.",
+        "basis": "VentureDex assessment based on the official FAQ and company role disclosures."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The filing-based report verifies $9.46 million raised from 11 investors but does not state a canonical round name or identify a lead. VentureDex records Unspecified and undisclosed rather than inferring either field while retaining the independently inspectable claim workflow.",
+      "source_ids": [
+        "official_site",
+        "faq",
+        "funding_1"
+      ]
+    }
+  }
+}

@@ -1002,6 +1002,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "chariot-claims": {
+      "sha256": "1938398810e9d1f3764950e9f504f65c27d4c0a72843d1a29420c8b47ad959a1",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.chariotclaims.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T10:39:16.879Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Loaded official homepage at 1280x720; headline, claim-discovery workflow, CTA, metrics and navigation are visible without overlay. Final WebP, newest-grid card and detail page preserve the full frame and remain legible."
+    },
     "cinder": {
       "sha256": "2b76ea2ff2dd75191725ce513c54cf60e6687872a01f025facbf4d54e6439dda",
       "width": 1440,
@@ -1623,6 +1642,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "elm-ai": {
+      "sha256": "fe065f6351eb7c67530f9c0216e7bc7658f9a58930a91a9ed236e020b99942fa",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.elm-ai.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T10:39:17.119Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Loaded official homepage at a 1280x720 clipped viewport; Elm AI headline, supplier workflow panel, proof logos and next-section context are visible without overlay. Final WebP, newest-grid card and detail page use contain geometry without cropping."
     },
     "emergent": {
       "sha256": "143f1376095c45373f66bc2f45483a45a78fb8520b7a2a2630a246c30f4b5b60",
@@ -3227,6 +3265,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "minewatch": {
+      "sha256": "968795f19d4a2c9ccdff8624f90b12f4b5abd70bec0a1d5dbd840cf713d559fd",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://vigalab.com/wp-content/uploads/2024/06/vigalab-minewatch.mp4",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T10:39:17.361Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "The official vigalab.com homepage remained behind its own loading layer, so the capture uses the same-domain hero video asset referenced by that homepage. The underground haul-truck frame is fully loaded, unobstructed and distinctive; final WebP, card and detail page retain the full image."
+    },
     "mitti-labs": {
       "sha256": "49de0f7acc67fa756c96590b49da7b9600d4444620c10920019f39010d02cd01",
       "width": 1440,
@@ -4684,6 +4741,25 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "science4beauty": {
+      "sha256": "b116db10a9bb4a8aa6b5024700e3a929241fcae1853f155188e780fda271dba8",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://science4beauty.net/en-ue",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T10:39:17.600Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Loaded official English storefront homepage at 1280x720; brand navigation, Miorelaxant Magic product, model and CTA are visible without consent or modal obstruction. Final WebP, newest-grid card and detail page preserve the full composition."
+    },
     "scispot": {
       "sha256": "7200dae0975e0b7d7a46571ef145e65ea2cc9b6abb3ada9357fc421488b52cff",
       "width": 1440,
@@ -4810,6 +4886,25 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "senticell": {
+      "sha256": "5c76ceb5e22712ceef557605e71f36b79604170a9d8dc19a703c8a977b440680",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.senticell.bio/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-iab-capture-epoch28",
+      "reviewed_at": "2026-09-13T10:39:17.842Z",
+      "reviewer": "codex-root-visual-review-epoch28",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Loaded official homepage at 1280x720; SentiCell branding, red-blood-cell hero, liquid-biopsy headline, explanatory copy and CTA are visible without overlay. Final WebP, newest-grid card and detail page are clear and uncropped."
     },
     "shapes": {
       "sha256": "08cb1036caa31cf9a001149919fb9fbc1adccc9587a5c5ab98c7065f8c545266",

@@ -2176,5 +2176,58 @@
       "NewSchool",
       "NewSchool.vc"
     ]
+  },
+  "alza-mining-tech": {
+    "name": "Alza Mining Tech",
+    "slug": "alza-mining-tech",
+    "short_name": "Alza Mining Tech",
+    "website": "https://alzagroup.cl/en/agf-ingles/",
+    "description": "Latin American mining-technology fund providing capital, strategy and market-entry support to operating startups."
+  },
+  "4growth-vc": {
+    "name": "4growth VC",
+    "slug": "4growth-vc",
+    "short_name": "4growth",
+    "website": "https://4growthvc.pl/en/home-en/",
+    "description": "Polish venture firm backing late-Seed and pre-Series A companies with launched products and early revenue."
+  },
+  "hard2beat": {
+    "name": "Hard2beat",
+    "slug": "hard2beat",
+    "short_name": "Hard2beat",
+    "website": "https://hard2beat.vc/",
+    "description": "Polish early-stage fund investing in software-driven and hardware-enabled deep-technology companies."
+  },
+  "theventurecity": {
+    "name": "TheVentureCity",
+    "slug": "theventurecity",
+    "short_name": "TheVentureCity",
+    "website": "https://www.theventure.city/",
+    "description": "Global venture firm investing in product-led technology companies across the United States, Europe and Latin America.",
+    "aliases": [
+      "The Venture City",
+      "The Venture City, Capital Factory, Scalpel Ventures and Evoce Capital"
+    ]
+  },
+  "capital-factory": {
+    "name": "Capital Factory",
+    "slug": "capital-factory",
+    "short_name": "Capital Factory",
+    "website": "https://capitalfactory.com/",
+    "description": "Texas early-stage investment and founder network backing technology companies from seed through later venture rounds."
+  },
+  "scalpel-ventures": {
+    "name": "Scalpel Ventures",
+    "slug": "scalpel-ventures",
+    "short_name": "Scalpel",
+    "website": "https://scalpelventures.com/",
+    "description": "Early-stage healthcare investor focused on musculoskeletal and adjacent medical technologies."
+  },
+  "evoce-capital": {
+    "name": "Evoce Capital",
+    "slug": "evoce-capital",
+    "short_name": "Evoce",
+    "website": "https://www.evocecapital.com/",
+    "description": "US seed-to-Series A venture firm investing across sectors and helping founders navigate regulated markets."
   }
 }

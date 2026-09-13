@@ -1,0 +1,102 @@
+{
+  "slug": "science4beauty",
+  "domain": "science4beauty.net",
+  "url": "https://science4beauty.net/",
+  "product_name": "Science4Beauty",
+  "summary": "Conotoxin-derived cosmetic active developed into clinically tested skin-care products.",
+  "editor_note": "Instead of relying only on cosmetic positioning, the company centers its products on a defined conotoxin-derived peptide and publishes a 60-person, six-month randomized double-blind placebo-controlled study. That is useful evidence of craft, but the study appears on a company surface rather than an independent journal, so efficacy and generalizability should remain qualified.",
+  "editor_rating": 4,
+  "why_featured": "A defined peptide behind the products",
+  "product_type": "Other",
+  "founded_year": 2020,
+  "hq_location": "Warsaw, Poland",
+  "region": "Europe",
+  "tags": "biotechnology,cosmetics,peptides,skin care,clinical study",
+  "investors": "4growth VC, Hard2beat",
+  "links": {
+    "product": "https://science4beauty.net/en/pages/nauka",
+    "resources": "https://science4beauty.net/en-ue/pages/project"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "PLN 7M",
+      "currency": "PLN",
+      "stage": "Unspecified",
+      "lead_investor": "4growth VC",
+      "date": "2026-09-03",
+      "source_url": "https://4growthvc.pl/en/2026/09/03/polish-biotech-science4beauty-raises-eur-1-6m-to-scale-innovative-conotoxin-platform-for-the-beauty-industry/",
+      "source_name": "4growth VC"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Science4Beauty official shop and product site",
+        "url": "https://science4beauty.net/",
+        "type": "official"
+      },
+      {
+        "id": "science",
+        "label": "Science4Beauty science page",
+        "url": "https://science4beauty.net/en/pages/nauka",
+        "type": "product"
+      },
+      {
+        "id": "project",
+        "label": "Science4Beauty development project",
+        "url": "https://science4beauty.net/en-ue/pages/project",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "4growth VC Science4Beauty investment announcement",
+        "url": "https://4growthvc.pl/en/2026/09/03/polish-biotech-science4beauty-raises-eur-1-6m-to-scale-innovative-conotoxin-platform-for-the-beauty-industry/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The company science page identifies a conotoxin-derived active and reports a randomized double-blind placebo-controlled six-month study with 60 volunteers.",
+        "source_ids": [
+          "science"
+        ]
+      },
+      {
+        "claim": "The public shop and development project connect the active to sold skin-care products and a funded commercialization program.",
+        "source_ids": [
+          "official_site",
+          "project"
+        ]
+      },
+      {
+        "claim": "The investor announcement identifies 4growth VC as lead and Hard2beat as a participant in a PLN 7 million investment round.",
+        "source_ids": [
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Consumers buying evidence-led anti-aging skin-care products and beauty brands evaluating peptide actives.",
+      "category": "Cosmetic biotechnology",
+      "differentiation": "A defined conotoxin-derived peptide platform linked to finished products and a disclosed controlled study.",
+      "why_now": "The investment funds international commercialization and continued development of the active platform."
+    },
+    "risks": [
+      {
+        "claim": "The controlled study is described by the company rather than an independent publication, and 60 participants limit generalizability.",
+        "basis": "VentureDex assessment based on the company science page and investor announcement."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The investor announcement verifies a PLN 7 million investment led by 4growth VC with Hard2beat participating, but it does not state a canonical round name. VentureDex records Unspecified rather than inferring Seed while retaining product, study and commercialization evidence.",
+      "source_ids": [
+        "official_site",
+        "science",
+        "funding_1"
+      ]
+    }
+  }
+}

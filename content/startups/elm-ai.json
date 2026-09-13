@@ -1,0 +1,103 @@
+{
+  "slug": "elm-ai",
+  "domain": "www.elm-ai.com",
+  "url": "https://www.elm-ai.com/",
+  "product_name": "Elm AI",
+  "summary": "Supplier-compliance agents that turn fragmented procurement evidence into auditable workflows.",
+  "editor_note": "Unlike a horizontal document chatbot, the product organizes supplier certificates, questionnaires, purchase orders, SKUs and spend into reviewable compliance workflows. Its control tower connects with systems including SAP and Oracle while people keep decision authority. Reach across 10,000 factories in 50+ countries is company-reported, and deployment still includes consulting work.",
+  "editor_rating": 4,
+  "why_featured": "Agents built around supplier evidence",
+  "product_type": "SaaS",
+  "founded_year": 2023,
+  "hq_location": "New York, New York",
+  "region": "US",
+  "tags": "supply chains,compliance,procurement,workflow agents,supplier data",
+  "investors": "undisclosed",
+  "links": {
+    "product": "https://product.elm-ai.com/",
+    "careers": "https://www.elm-ai.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.84M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-03",
+      "source_url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+      "source_name": "AlleyWatch"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Elm AI official site",
+        "url": "https://www.elm-ai.com/",
+        "type": "official"
+      },
+      {
+        "id": "product",
+        "label": "Elm AI product overview",
+        "url": "https://product.elm-ai.com/",
+        "type": "product"
+      },
+      {
+        "id": "about",
+        "label": "Elm AI company overview",
+        "url": "https://www.elm-ai.com/about",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "AlleyWatch filing-based funding report",
+        "url": "https://alleywatch.com/2026/09/the-alleywatch-startup-daily-funding-report-9-3-2026/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The public product deck shows agents processing audit reports, certificates, questionnaires, purchase orders, SKUs and spend into supplier-compliance outputs.",
+        "source_ids": [
+          "product"
+        ]
+      },
+      {
+        "claim": "The official site describes a control-tower layer with SAP, Oracle, Power BI, Tableau, Sedex and EcoVadis connections plus an open API.",
+        "source_ids": [
+          "official_site",
+          "about"
+        ]
+      },
+      {
+        "claim": "The company says users review and decide on agent outputs, and presents implementation consulting alongside the software product.",
+        "source_ids": [
+          "official_site",
+          "product"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Procurement, sustainability and compliance teams managing supplier evidence.",
+      "category": "Supply-chain compliance software",
+      "differentiation": "Supplier-specific agents tied to enterprise records and human review rather than general document generation.",
+      "why_now": "Procurement teams face expanding reporting obligations while supplier evidence remains fragmented across systems."
+    },
+    "risks": [
+      {
+        "claim": "Factory and country coverage figures are company-reported, and the public material does not independently quantify accuracy or deployment effort.",
+        "basis": "VentureDex assessment from the company site, product deck and funding report."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The filing-based report verifies $3.84 million raised from five investors but does not state a canonical round name or identify a lead. VentureDex records Unspecified and undisclosed rather than guessing while retaining the official product deck and supplier-compliance workflow evidence.",
+      "source_ids": [
+        "official_site",
+        "product",
+        "funding_1"
+      ]
+    }
+  }
+}

@@ -12404,6 +12404,502 @@
           "checked_at": "2026-09-11"
         }
       ]
+    },
+    "alza-mining-tech": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Alza Mining Tech is a Latin American mining-technology fund combining investment with strategy and market-entry support.",
+        "source_ids": [
+          "official",
+          "mining"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Mining-technology investment fund",
+          "source_ids": [
+            "official",
+            "mining"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Mining technology",
+            "Industrial technology"
+          ],
+          "source_ids": [
+            "mining"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Latin America"
+          ],
+          "source_ids": [
+            "mining"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Strategic guidance",
+            "Business development",
+            "Market entry"
+          ],
+          "source_ids": [
+            "mining"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Alza Group fund management overview",
+          "url": "https://alzagroup.cl/en/agf-ingles/",
+          "checked_at": "2026-09-13"
+        },
+        {
+          "id": "mining",
+          "label": "Alza Mining Tech fund approach",
+          "url": "https://alzagroup.cl/en/challenges-and-opportunities-in-current-mining-the-role-of-the-alza-mining-tech-fund-2/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "4growth-vc": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "4growth VC is a Polish venture firm backing companies at late Seed and pre-Series A after product launch and early revenue.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Late Seed",
+            "Pre-Series A",
+            "Growth"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Fintech",
+            "Insurtech",
+            "Medtech",
+            "Technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Poland",
+            "Central and Eastern Europe"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Targets companies with a launched product, early paying customers and global expansion potential.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "4growth VC official investment overview",
+          "url": "https://4growthvc.pl/en/home-en/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "hard2beat": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Hard2beat is a Polish pre-seed and seed fund investing in software-driven and hardware-enabled deep technology.",
+        "source_ids": [
+          "official",
+          "faq"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed"
+          ],
+          "source_ids": [
+            "faq"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Deep technology",
+            "Software",
+            "Hardware-enabled technology"
+          ],
+          "source_ids": [
+            "official",
+            "faq"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Poland",
+            "Polish founder or operating nexus"
+          ],
+          "source_ids": [
+            "faq"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Fundraising",
+            "Strategy",
+            "Recruiting",
+            "Commercial introductions"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Hard2beat official investment overview",
+          "url": "https://hard2beat.vc/",
+          "checked_at": "2026-09-13"
+        },
+        {
+          "id": "faq",
+          "label": "Hard2beat investment FAQ",
+          "url": "https://hard2beat.vc/faq/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "theventurecity": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "TheVentureCity is a global venture firm investing in product-led technology companies across the United States, Europe and Latin America.",
+        "source_ids": [
+          "official",
+          "invest"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2017",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Series A"
+          ],
+          "source_ids": [
+            "invest"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Software",
+            "Data",
+            "Artificial intelligence",
+            "Product-led technology"
+          ],
+          "source_ids": [
+            "invest"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States",
+            "Europe",
+            "Latin America"
+          ],
+          "source_ids": [
+            "invest"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Product and data support",
+            "Fundraising",
+            "Talent network"
+          ],
+          "source_ids": [
+            "invest"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "TheVentureCity official overview",
+          "url": "https://www.theventure.city/",
+          "checked_at": "2026-09-13"
+        },
+        {
+          "id": "invest",
+          "label": "TheVentureCity investment approach",
+          "url": "https://www.theventure.city/how-we-invest",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "capital-factory": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Capital Factory is a Texas early-stage investment and founder network supporting technology companies with capital, customers and talent.",
+        "source_ids": [
+          "official",
+          "funding"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture fund and founder network",
+          "source_ids": [
+            "official",
+            "funding"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2009",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Series A",
+            "Series B",
+            "Series C"
+          ],
+          "source_ids": [
+            "funding"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology",
+            "Frontier technology",
+            "Defense"
+          ],
+          "source_ids": [
+            "funding"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Texas",
+            "United States"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Customer introductions",
+            "Talent",
+            "Mentors",
+            "Workspace"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Capital Factory official overview",
+          "url": "https://capitalfactory.com/about",
+          "checked_at": "2026-09-13"
+        },
+        {
+          "id": "funding",
+          "label": "Capital Factory funding overview",
+          "url": "https://capitalfactory.com/funding/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "scalpel-ventures": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Scalpel Ventures is an early-stage healthcare investor focused on musculoskeletal and adjacent medical technologies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Healthcare venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Musculoskeletal health",
+            "Medical technology",
+            "Healthcare"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Commercial strategy",
+            "Clinical network",
+            "Company building"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Scalpel Ventures official overview",
+          "url": "https://scalpelventures.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
+    },
+    "evoce-capital": {
+      "reviewed_at": "2026-09-13",
+      "summary": {
+        "value": "Evoce Capital is a US seed-to-Series A venture firm investing across sectors and supporting founders in regulated markets.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Series A"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Industry-agnostic investing with initial checks from $150,000 to $2 million and attention to regulated businesses.",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Fundraising",
+            "Regulatory navigation",
+            "Commercial network"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Evoce Capital official investment overview",
+          "url": "https://www.evocecapital.com/",
+          "checked_at": "2026-09-13"
+        }
+      ]
     }
   },
   "attempts": {}

@@ -1,0 +1,87 @@
+{
+  "slug": "senticell",
+  "domain": "www.senticell.bio",
+  "url": "https://www.senticell.bio/",
+  "product_name": "SentiCell",
+  "summary": "Liquid-biopsy platform analyzing disease signals bound to red blood cells.",
+  "editor_note": "Unlike plasma-only liquid biopsy, the platform isolates DNA and RNA associated with red blood cells, a signal reservoir licensed from the University of Pennsylvania. Two prospective studies covering about 300 patients are underway, so the mechanism is inspectable but clinical validity is not settled. Intended oncology, infection and autoimmune uses remain investigational rather than marketed diagnostics.",
+  "editor_rating": 5,
+  "why_featured": "Liquid biopsy beyond plasma signals",
+  "product_type": "HealthTech",
+  "hq_location": "Philadelphia, Pennsylvania",
+  "region": "US",
+  "tags": "liquid biopsy,diagnostics,oncology,red blood cells,biotechnology",
+  "investors": "The Venture City, Capital Factory, Scalpel Ventures, Evoce Capital",
+  "links": {
+    "product": "https://www.senticell.bio/platform"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "currency": "USD",
+      "stage": "Seed",
+      "lead_investor": "The Venture City, Capital Factory, Scalpel Ventures and Evoce Capital",
+      "date": "2026-09-01",
+      "source_url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+      "source_name": "SentiCell via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-13",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "SentiCell official site",
+        "url": "https://www.senticell.bio/",
+        "type": "official"
+      },
+      {
+        "id": "platform",
+        "label": "SentiCell platform overview",
+        "url": "https://www.senticell.bio/platform",
+        "type": "product"
+      },
+      {
+        "id": "funding_1",
+        "label": "SentiCell Seed financing announcement",
+        "url": "https://www.prnewswire.com/news-releases/senticell-closes-oversubscribed-seed-round-to-advance-rbc-based-liquid-biopsy-platform-302865820.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The platform page explains isolation and analysis of red-blood-cell-bound DNA and RNA as a signal source distinct from cell-free plasma assays.",
+        "source_ids": [
+          "platform"
+        ]
+      },
+      {
+        "claim": "The financing announcement reports two prospective Penn Medicine studies enrolling about 300 patients and distinguishes ongoing research from completed clinical validation.",
+        "source_ids": [
+          "funding_1"
+        ]
+      },
+      {
+        "claim": "The official material positions oncology first, with infection and autoimmune applications as intended extensions rather than approved commercial tests.",
+        "source_ids": [
+          "official_site",
+          "platform",
+          "funding_1"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Clinical researchers and diagnostic developers working on hard-to-detect oncology and infectious-disease signals.",
+      "category": "Liquid-biopsy diagnostics",
+      "differentiation": "Analysis of nucleic acids retained on red blood cells rather than relying only on circulating plasma signals.",
+      "why_now": "The Seed round funds prospective clinical studies intended to test the platform's sensitivity and tissue concordance."
+    },
+    "risks": [
+      {
+        "claim": "The platform remains investigational; prospective studies are ongoing and no clinical validity, regulatory clearance or patient outcome has been established.",
+        "basis": "VentureDex assessment based on the official platform and company-issued financing announcement."
+      }
+    ]
+  }
+}
