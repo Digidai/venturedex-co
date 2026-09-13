@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "ecde479e933d2ff2900cc2031146e8fbe3bb4b7b",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/ecde479e933d2ff2900cc2031146e8fbe3bb4b7b",
-    "commit_at": "2026-09-12T15:55:34.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/ecde479e933d2ff2900cc2031146e8fbe3bb4b7b/src/data/videos.json",
-    "raw_sha256": "a4b025abb9b6a103bf1b06b1f824c8e3467ee40a5ad1cab80f5eaabe51f98d70"
+    "commit": "cc0438b57ac9c1de3c2a5e964300aaeef7fd2015",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/cc0438b57ac9c1de3c2a5e964300aaeef7fd2015",
+    "commit_at": "2026-09-13T18:35:30.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/cc0438b57ac9c1de3c2a5e964300aaeef7fd2015/src/data/videos.json",
+    "raw_sha256": "28269b941dff15523acc2e870abbcff94d9a183a75660a6cc3ffb1f2e1baf7af"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,189 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-11T22:26:39.000Z",
-  "item_count": 2046,
+  "source_published_through": "2026-09-12T19:20:03.000Z",
+  "item_count": 2059,
   "items": [
+    {
+      "id": "plv-supermemory-console",
+      "tweet_id": "2098854167670616328",
+      "slug": "supermemory-console",
+      "title": "supermemory console — revamped design",
+      "product": "supermemory console",
+      "company": "supermemory",
+      "category": "ai",
+      "tags": [
+        "supermemory",
+        "console",
+        "memory"
+      ],
+      "published_at": "2026-09-12T19:20:03.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098854133453434880/vid/avc1/1920x1080/l8PCtJdN8-vndmvg.mp4?tag=16",
+      "original_post_url": "https://x.com/supermemory/status/2098854167670616328",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-higgsfield-astra-cursor",
+      "tweet_id": "2098824969124004135",
+      "slug": "higgsfield-astra-cursor",
+      "title": "Higgsfield — Cursor for motion designers",
+      "product": "Higgsfield ChatGPT Plugin",
+      "company": "Higgsfield",
+      "category": "design",
+      "tags": [
+        "higgsfield",
+        "astra",
+        "motion"
+      ],
+      "published_at": "2026-09-12T17:24:01.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098824709995642880/vid/avc1/1080x1080/3IkblATHvJtuAHFP.mp4",
+      "original_post_url": "https://x.com/higgsfield_ai/status/2098824969124004135",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-shipper-web-to-app",
+      "tweet_id": "2098822916481909072",
+      "slug": "shipper-web-to-app",
+      "title": "Shipper — turn any website into a mobile app",
+      "product": "Shipper Web to App",
+      "company": "Shipper",
+      "category": "ai",
+      "tags": [
+        "shipper",
+        "astra",
+        "mobile"
+      ],
+      "published_at": "2026-09-12T17:15:52.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098822882965192704/vid/avc1/1920x1080/balYniRS6p8lwx7D.mp4?tag=16",
+      "original_post_url": "https://x.com/shipper_now/status/2098822916481909072",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-locus-pro-vercel",
+      "tweet_id": "2098818930567479684",
+      "slug": "locus-pro-vercel",
+      "title": "Locus Pro — live as a plugin on Vercel EVE",
+      "product": "Locus Pro",
+      "company": "Locus",
+      "category": "developer-tools",
+      "tags": [
+        "locus",
+        "vercel",
+        "eve"
+      ],
+      "published_at": "2026-09-12T17:00:01.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098569214768402432/vid/avc1/1920x1080/I5B0BcuCdqvifg2M.mp4",
+      "original_post_url": "https://x.com/coledermo/status/2098818930567479684",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-agnost-guardrails",
+      "tweet_id": "2098771636929658899",
+      "slug": "agnost-guardrails",
+      "title": "Agnost — catch agent screwups in production",
+      "product": "Agnost",
+      "company": "Agnost",
+      "category": "ai",
+      "tags": [
+        "agnost",
+        "agents",
+        "evals"
+      ],
+      "published_at": "2026-09-12T13:52:06.000Z",
+      "duration_seconds": 43,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098768461694644225/vid/avc1/1920x1080/pz7tdwqBtmMovhVx.mp4",
+      "original_post_url": "https://x.com/StackDhruv/status/2098771636929658899",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-capx-casa",
+      "tweet_id": "2098758531059188031",
+      "slug": "capx-casa",
+      "title": "Capx Casa — control plane for agent-run companies",
+      "product": "Capx Casa",
+      "company": "Capx",
+      "category": "ai",
+      "tags": [
+        "capx",
+        "casa",
+        "agents"
+      ],
+      "published_at": "2026-09-12T13:00:01.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098746657185906688/vid/avc1/1920x1080/O3y9TGDn9cfNbOOZ.mp4",
+      "original_post_url": "https://x.com/0xCapx/status/2098758531059188031",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-launchreel",
+      "tweet_id": "2098748105285853190",
+      "slug": "launchreel",
+      "title": "Launchreel — product launch videos in minutes",
+      "product": "Launchreel",
+      "company": "Launchreel",
+      "category": "design",
+      "tags": [
+        "launchreel",
+        "video",
+        "launch"
+      ],
+      "published_at": "2026-09-12T12:18:35.000Z",
+      "duration_seconds": 85,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098747747046477824/vid/avc1/1920x1080/2eCHhv5dbaX6eDqI.mp4",
+      "original_post_url": "https://x.com/TTrimoreau/status/2098748105285853190",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-sparedisk",
+      "tweet_id": "2098720288775311626",
+      "slug": "sparedisk",
+      "title": "SpareDisk — a fast, private Diskbuddy alternative",
+      "product": "SpareDisk",
+      "company": "SpareDisk",
+      "category": "productivity",
+      "tags": [
+        "sparedisk",
+        "macos",
+        "disk"
+      ],
+      "published_at": "2026-09-12T10:28:03.000Z",
+      "duration_seconds": 102,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098717786696753153/vid/avc1/1552x1080/LwUtRqFoRIBdBysb.mp4",
+      "original_post_url": "https://x.com/0xdevrel/status/2098720288775311626",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-unity-claude-code",
+      "tweet_id": "2098588656554381796",
+      "slug": "unity-claude-code",
+      "title": "Unity — Claude Code plugin with 29 native skills",
+      "product": "Unity Claude Code Plugin",
+      "company": "Unity",
+      "category": "developer-tools",
+      "tags": [
+        "unity",
+        "claude",
+        "plugin"
+      ],
+      "published_at": "2026-09-12T01:45:00.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098538384516112384/vid/avc1/1280x720/OoF63n5EGN2FkkF6.mp4",
+      "original_post_url": "https://x.com/RoundtableSpace/status/2098588656554381796",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
     {
       "id": "plv-nuno-ai",
       "tweet_id": "2098538740495134762",
@@ -365,6 +545,26 @@
       "last_changed_at": "2026-09-12T12:58:21.000Z"
     },
     {
+      "id": "plv-h3-max-reference-to-video",
+      "tweet_id": "2098197431267586389",
+      "slug": "h3-max-reference-to-video",
+      "title": "H3 Max Reference-to-Video — now on fal",
+      "product": "H3 Max Reference-to-Video",
+      "company": "fal",
+      "category": "ai",
+      "tags": [
+        "fal",
+        "h3-max",
+        "video"
+      ],
+      "published_at": "2026-09-10T23:50:24.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2098197369099530242/pu/vid/avc1/1280x720/SzHpcL4fG97BDOwv.mp4?tag=12",
+      "original_post_url": "https://x.com/fal/status/2098197431267586389",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
       "id": "plv-cursor-projects",
       "tweet_id": "2098162488013455784",
       "slug": "cursor-projects",
@@ -645,6 +845,26 @@
       "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
+      "id": "plv-vesence",
+      "tweet_id": "2097794847524495402",
+      "slug": "vesence",
+      "title": "Vesence — Unix-like desktop for humans and agents",
+      "product": "Vesence",
+      "company": "Vesence",
+      "category": "ai",
+      "tags": [
+        "vesence",
+        "agents",
+        "desktop"
+      ],
+      "published_at": "2026-09-09T21:10:41.000Z",
+      "duration_seconds": 22,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097793992679444480/vid/avc1/1920x1080/oHQ1K6SvWGZzNSMK.mp4",
+      "original_post_url": "https://x.com/HenrikTaro/status/2097794847524495402",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
       "id": "plv-fomo-mfa",
       "tweet_id": "2097770600966090895",
       "slug": "fomo-mfa",
@@ -705,6 +925,26 @@
       "last_changed_at": "2026-09-11T12:44:19.000Z"
     },
     {
+      "id": "plv-tldraw-undo",
+      "tweet_id": "2097715528575909947",
+      "slug": "tldraw-undo",
+      "title": "tldraw — page switches get their own undo",
+      "product": "tldraw",
+      "company": "tldraw",
+      "category": "design",
+      "tags": [
+        "tldraw",
+        "canvas",
+        "undo"
+      ],
+      "published_at": "2026-09-09T15:55:30.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097707078291009536/vid/avc1/2240x1260/3C0PD2TbW8kYkple.mp4",
+      "original_post_url": "https://x.com/tldraw/status/2097715528575909947",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
       "id": "plv-suno-v6",
       "tweet_id": "2097714273942163823",
       "slug": "suno-v6",
@@ -723,6 +963,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097713845657911296/vid/avc1/1080x1920/0cBDgry6kRV9aEMK.mp4",
       "original_post_url": "https://x.com/suno/status/2097714273942163823",
       "last_changed_at": "2026-09-10T11:09:30.000Z"
+    },
+    {
+      "id": "plv-supabase-gemini",
+      "tweet_id": "2097701910463631605",
+      "slug": "supabase-gemini",
+      "title": "Supabase — connector in Gemini Enterprise",
+      "product": "Supabase Gemini Connector",
+      "company": "Supabase",
+      "category": "developer-tools",
+      "tags": [
+        "supabase",
+        "gemini",
+        "enterprise"
+      ],
+      "published_at": "2026-09-09T15:01:23.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2097701863663472640/pu/vid/avc1/1280x720/lwpLuMwU7Z3zXUg1.mp4?tag=12",
+      "original_post_url": "https://x.com/supabase/status/2097701910463631605",
+      "last_changed_at": "2026-09-13T18:35:30.000Z"
     },
     {
       "id": "plv-openshaders",
