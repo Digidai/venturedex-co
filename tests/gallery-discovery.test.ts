@@ -55,6 +55,8 @@ test("ticker has an explicit pause and excludes animated copies from keyboard an
   assert.match(ticker, /tabindex=\{duplicate \? -1/);
   assert.match(ticker, /prefers-reduced-motion: reduce/);
   assert.match(ticker, /focus-within/);
+  assert.match(ticker, /addEventListener\("focusout"/);
+  assert.match(ticker, /viewport.scrollLeft = 0/);
 });
 
 test("category search restores history, gives an empty state, and cannot expand server-bound membership", () => {

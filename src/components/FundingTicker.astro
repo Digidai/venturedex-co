@@ -38,9 +38,16 @@ const items = Astro.props.rounds.filter(round => round.company_slug && (round.am
 <script>
   for (const ticker of document.querySelectorAll<HTMLElement>("[data-funding-ticker]")) {
     const button = ticker.querySelector<HTMLButtonElement>(".ticker-toggle");
+    const viewport = ticker.querySelector<HTMLElement>(".ticker-viewport");
     if (!button) continue;
     ticker.dataset.ready = "true";
     button.hidden = false;
+    viewport?.addEventListener("focusout", (event) => {
+      if (event.relatedTarget instanceof Node && viewport.contains(event.relatedTarget)) return;
+      // Keyboard browsing scrolls the static first copy. Reset that offset before
+      // motion resumes, or animation eventually runs past the visible content.
+      if (!matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) viewport.scrollLeft = 0;
+    });
     button.addEventListener("click", () => {
       const paused = ticker.dataset.paused !== "true";
       ticker.dataset.paused = String(paused);
