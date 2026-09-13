@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import MicrosoftClarity from "../components/MicrosoftClarity.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
+import SiteFooter from "../components/SiteFooter.astro";
 import {
   DEFAULT_SITE_URL,
   SITE_NAME,
@@ -76,6 +77,7 @@ const schemaJson = schemaItems.map((item) => JSON.stringify(item).split("<").joi
 // SSR pages alike. Renders nothing when unset (local dev / not configured), so
 // it never beacons during development or before a token exists.
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+const currentSection = (path: string) => Astro.url.pathname === path || Astro.url.pathname.startsWith(`${path}/`) || (path === "/directory" && Astro.url.pathname.startsWith("/categories")) ? "page" : undefined;
 ---
 
 <!doctype html>
@@ -162,19 +164,13 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         <a href="/" class="logo">VentureDex</a>
         <nav aria-label="Main navigation">
           <div class="nav-tabs">
-            <a href="/directory" class="nav-tab">Directory</a>
-            <a href="/investors" class="nav-tab">Investors</a>
-            <a href="/news" class="nav-tab">News</a>
-            <details class="nav-more">
-              <summary class="nav-tab">More</summary>
-              <div class="nav-dropdown">
-                <a href="/topics">Research topics</a>
-                <a href="/collections">Collections</a>
-                <a href="/weekly">Weekly digest</a>
-                <a href="/launches">Product launches</a>
-                <a href="/research">Research methodology</a>
-              </div>
-            </details>
+            <a href="/directory" class="nav-tab" aria-current={currentSection("/directory")}>Directory</a>
+            <a href="/collections" class="nav-tab" aria-current={currentSection("/collections")}>Collections</a>
+            <a href="/topics" class="nav-tab" aria-current={currentSection("/topics")}>Topics</a>
+            <a href="/weekly" class="nav-tab" aria-current={currentSection("/weekly")}>Weekly</a>
+            <a href="/launches" class="nav-tab" aria-current={currentSection("/launches")}>Launches</a>
+            <a href="/investors" class="nav-tab" aria-current={currentSection("/investors")}>Investors</a>
+            <a href="/news" class="nav-tab" aria-current={currentSection("/news")}>News</a>
           </div>
         </nav>
         <div class="header-actions">
@@ -182,6 +178,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
             <summary>Menu</summary>
             <nav class="nav-dropdown" aria-label="Mobile navigation">
               <a href="/directory">Directory</a>
+              <a href="/categories">Browse categories</a>
               <a href="/investors">Investors</a>
               <a href="/news">Funding news</a>
               <a href="/topics">Research topics</a>
@@ -205,33 +202,18 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <p class="footer-brand">VentureDex</p>
-        <p class="footer-tagline">A curated gallery of startups worth watching.</p>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="/about">About</a>
-          <a href="/topics">Topics</a>
-          <a href="/launches">Launches</a>
-          <a href="/editorial-policy">Editorial Policy</a>
-          <a href="/research">Research</a>
-          <a href="/sponsor">Sponsor</a>
-          <a href="/subscribe">Subscribe</a>
-          <a href="/feed.xml">RSS</a>
-        </nav>
-        <p class="footer-credit">
-          Crafted by <a href="https://genedai.md" target="_blank" rel="noopener noreferrer">Gene Dai</a>
-        </p>
-      </div>
-    </footer>
+    <SiteFooter />
 
     <script>
-      const menus = document.querySelectorAll<HTMLDetailsElement>(".nav-more, .mobile-menu");
+      const menus = document.querySelectorAll<HTMLDetailsElement>(".mobile-menu");
       for (const menu of menus) {
         menu.addEventListener("keydown", (event) => {
           if (event.key !== "Escape") return;
           menu.open = false;
           menu.querySelector("summary")?.focus();
+        });
+        document.addEventListener("focusin", (event) => {
+          if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
         });
         document.addEventListener("click", (event) => {
           if (event.target instanceof Node && !menu.contains(event.target)) menu.open = false;
@@ -246,6 +228,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
       }
 
       .header-inner {
+        position: relative;
         display: grid;
         grid-template-columns: auto minmax(0, 1fr) auto;
         align-items: center;
@@ -275,11 +258,10 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         border-radius: 8px;
         overflow: visible;
       }
-      .nav-more, .mobile-menu { position: relative; }
-      .nav-more > summary { cursor: pointer; border-right: 0; }
+      .mobile-menu { position: static; }
       .mobile-menu { display: none; }
-      .mobile-menu > summary { cursor: pointer; font-size: .8rem; padding: 10px 8px; color: var(--color-text); }
-      .nav-dropdown { position: absolute; right: 0; top: calc(100% + 10px); z-index: 30; min-width: 220px; padding: var(--space-2); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); box-shadow: 0 12px 30px rgb(0 0 0 / .09); }
+      .mobile-menu > summary { cursor: pointer; white-space: nowrap; font-size: .8rem; padding: 10px 8px; color: var(--color-text); }
+      .nav-dropdown { position: absolute; right: var(--space-4); top: calc(100% + 10px); z-index: 30; min-width: 220px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 96px); overflow-y: auto; padding: var(--space-2); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); box-shadow: 0 12px 30px rgb(0 0 0 / .09); }
       .nav-dropdown a { display: block; padding: 12px; color: var(--color-text); font-size: .85rem; text-decoration: none; border-radius: var(--radius); }
       .nav-dropdown a:hover, .nav-dropdown a:focus-visible { background: var(--color-badge-bg); }
 
@@ -297,7 +279,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         border-right: none;
       }
 
-      .nav-tab:hover {
+      .nav-tab:hover, .nav-tab[aria-current="page"] {
         background: var(--color-badge-bg);
         color: var(--color-text);
         text-decoration: none;
@@ -343,55 +325,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         text-decoration: none;
       }
 
-      .site-footer {
-        border-top: 1px solid var(--color-border);
-        padding: var(--space-12) 0;
-        margin-top: var(--space-16);
-      }
-
-      .footer-inner {
-        text-align: center;
-      }
-
-      .footer-brand {
-        font-family: var(--font-heading);
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: var(--space-2);
-      }
-
-      .footer-tagline {
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-        margin-bottom: var(--space-6);
-      }
-
-      .footer-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: var(--space-6);
-      }
-
-      .footer-links a {
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-      }
-
-      .footer-credit {
-        margin-top: var(--space-6);
-        font-size: 0.8125rem;
-        color: var(--color-text-secondary);
-      }
-
-      .footer-credit a {
-        color: var(--color-text);
-        font-weight: 500;
-        text-decoration: underline;
-        text-underline-offset: 2px;
-      }
-
-      @media (max-width: 960px) {
+      @media (max-width: 1000px) {
         .header-inner {
           grid-template-columns: 1fr auto;
           gap: var(--space-3);
@@ -452,6 +386,12 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
         .header-cta {
           padding-inline: var(--space-3);
         }
+      }
+      @media (max-width: 360px) {
+        .header-inner { padding-inline: var(--space-4); gap: var(--space-1); }
+        .logo { font-size: 1.125rem; }
+        .mobile-menu > summary { padding-inline: var(--space-1); }
+        .header-cta { padding-inline: 10px; }
       }
     </style>
   </body>

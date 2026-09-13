@@ -2460,8 +2460,10 @@
       "name": "Bessemer Venture Partners",
       "shape": "wordmark",
       "local_path": "/logos/investors/bessemer-venture-partners.svg",
-      "source_page": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg?raw=1",
-      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg?raw=1"
+      "source_page": "https://www.bvp.com/",
+      "source_url": "https://www.bvp.com/assets/uploads/2023/08/copy-bessemer-logo.svg?raw=1",
+      "allow_unreachable_source": true,
+      "note": "2026-09-13 source-health check: the official Bessemer homepage returns 200, but the previously downloaded WordPress-era SVG URL now returns 404. Preserve the existing local official logo and its historical download URL unchanged; this is not a fresh asset download or a new whole-manifest review."
     },
     "basis-set-ventures": {
       "name": "Basis Set Ventures",
@@ -3350,7 +3352,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/boldstart-ventures.png",
       "source_page": "https://boldstart.vc/",
-      "source_url": "https://boldstart.vc/wp-content/uploads/2021/06/cropped-boldstart-favicon-180x180.png"
+      "source_url": "https://boldstart.vc/wp-content/uploads/2021/06/cropped-boldstart-favicon-180x180.png",
+      "allow_unreachable_source": true,
+      "note": "2026-09-13 source-health check: boldstart.vc returns 200 and now uses /uploads/new_boldstart-logo-dark.png; the historical WordPress favicon URL returns 404. Preserve the existing local official icon and historical download URL unchanged rather than claiming the new wordmark is the source of the cached icon."
     },
     "nava-ventures": {
       "name": "Nava Ventures",
@@ -3816,8 +3820,10 @@
       "name": "Dragonfly",
       "shape": "icon",
       "local_path": "/logos/investors/dragonfly.ico",
-      "source_page": "https://www.dragonfly.xyz/",
-      "source_url": "https://www.dragonfly.xyz/favicon.ico"
+      "source_page": "https://dragonfly.com/",
+      "source_url": "https://www.dragonfly.xyz/favicon.ico",
+      "allow_unreachable_source": true,
+      "note": "2026-09-13: dragonfly.xyz redirects to dragonfly.com, whose official page explicitly announces the domain migration. The old www host and favicon return 404. Preserve the existing local official icon and its historical download URL unchanged; the migrated homepage is not evidence of a newly downloaded icon."
     },
     "hyde-park-venture-partners": {
       "name": "Hyde Park Venture Partners",

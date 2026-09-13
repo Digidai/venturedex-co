@@ -21,8 +21,8 @@
       "stage": "Seed",
       "lead_investor": "BasharSoft Group",
       "date": "2026-06-30",
-      "source_url": "https://www.wamda.com/2026/06/egypt-brainsmingle-raises-400000-seed-basharsoft-group",
-      "source_name": "Wamda"
+      "source_url": "https://arabfinance.com/en/news/newdetails/basharsoft-group-backs-brainsmingle-seed-investment",
+      "source_name": "Arab Finance"
     }
   ],
   "research": {
@@ -48,8 +48,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Wamda seed funding coverage",
-        "url": "https://www.wamda.com/2026/06/egypt-brainsmingle-raises-400000-seed-basharsoft-group",
+        "label": "Arab Finance seed funding coverage",
+        "url": "https://arabfinance.com/en/news/newdetails/basharsoft-group-backs-brainsmingle-seed-investment",
         "type": "funding"
       }
     ],
@@ -68,7 +68,7 @@
         ]
       },
       {
-        "claim": "Wamda reports BrainsMingle bundles live video sessions, calendar booking, payment processing, community engagement, and private branded hubs.",
+        "claim": "Arab Finance reports BrainsMingle bundles live video sessions, bookings, payment processing, community engagement, and private branded hubs.",
         "source_ids": [
           "funding_1"
         ]
@@ -83,7 +83,7 @@
     "risks": [
       {
         "claim": "The falsifiable risk is whether BrainsMingle can keep room quality and matching liquidity high as it moves from events into repeat enterprise use.",
-        "basis": "VentureDex assessment from live product pages and Wamda funding coverage."
+        "basis": "VentureDex assessment from product pages and funding coverage. Arab Finance replaced unavailable Wamda on 2026-09-13; this source repair does not refresh the product review."
       }
     ]
   }

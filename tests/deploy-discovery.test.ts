@@ -59,6 +59,12 @@ test("launch and shared templates do not trigger corpus-wide submission", () => 
   assert.match(shared.limitations[0], /bounded set/);
 });
 
+test("category templates notify the category hub without pretending to enumerate every cohort", () => {
+  const selected = selectChangedUrls(["src/pages/categories/[dimension]/[slug].astro", "src/lib/category-pages.ts"], reader({}), reader({}));
+  assert.deepEqual(selected.urls, [ORIGIN + "/categories", ORIGIN + "/directory"]);
+  assert.match(selected.limitations.join(" "), /sitemap/);
+});
+
 test("removed startup updates hubs, and oversized exact change sets fail closed", () => {
   const removal = selectChangedUrls(["content/startups/new-startup.json"], reader({}), reader(files));
   assert.deepEqual(removal.urls, [ORIGIN + "/", ORIGIN + "/directory", ORIGIN + "/news", ORIGIN + "/research"]);

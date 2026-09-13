@@ -1,0 +1,43 @@
+---
+export const prerender = true;
+import Base from "../../../layouts/Base.astro";
+import CategoryBrowser from "../../../components/CategoryBrowser.astro";
+import { getContentStartups } from "../../../lib/content";
+import { buildCategoryPages, categoryBreakdown, categoryEvidence, CATEGORY_DIMENSIONS, type CategoryPage } from "../../../lib/category-pages";
+import { buildJsonLdGraph, webPageNode, breadcrumbList, itemListNode } from "../../../lib/seo";
+import "../../../styles/categories.css";
+export function getStaticPaths() {
+  return buildCategoryPages(getContentStartups()).map(category => ({params:{dimension:category.dimension,slug:category.slug},props:{category}}));
+}
+interface Props { category: CategoryPage; }
+const { category } = Astro.props;
+const group = CATEGORY_DIMENSIONS.find(d => d.key === category.dimension)!;
+const related = buildCategoryPages(getContentStartups()).filter(c => c.dimension === category.dimension && c.path !== category.path);
+const evidence = category.startups.map(startup => ({startup, ...categoryEvidence(startup)}));
+const sourceCount = new Set(evidence.flatMap(e => e.sources.map(s => s.url))).size;
+const reviewed = evidence.map(e => e.reviewedAt).filter((d): d is string => !!d).sort();
+const latestReview = reviewed.at(-1);
+const samples = evidence.filter(e => e.sources.length > 0).slice(0, 6);
+const breakdownField = category.dimension === "industry" ? "funding_stage" : "product_type";
+const breakdown = categoryBreakdown(category.startups, breakdownField);
+const description = `Explore ${category.startups.length} ${category.label} company profiles with product context, research dates, original sources, and official website screenshots. ${category.intro}`;
+const schema = buildJsonLdGraph([
+  webPageNode({path:category.path,title:category.title,description,type:"CollectionPage",siteUrl:Astro.site?.toString()}),
+  breadcrumbList([{name:"Home",path:"/"},{name:"Categories",path:"/categories"},{name:category.title,path:category.path}],Astro.site?.toString()),
+  itemListNode(category.startups.map(s => ({name:s.product_name,path:`/startups/${s.slug}`,description:s.summary})),Astro.site?.toString()),
+]);
+---
+<Base title={category.title} description={description} canonicalPath={category.path} schema={schema}>
+  <div class="container category-page">
+    <nav class="category-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href={`/categories#${category.dimension}`}>{group.label}</a><span aria-hidden="true">/</span><span aria-current="page">{category.label}</span></nav>
+    <header class="category-hero"><p class="category-eyebrow">{group.label} · {category.startups.length} published {category.startups.length === 1 ? "profile" : "profiles"}</p><h1>{category.title}</h1><p>{category.intro}</p></header>
+    <div class="category-facts"><span>{sourceCount} linked research sources</span>{latestReview && <span>Latest profile review: <time datetime={latestReview}>{latestReview}</time></span>}<a href="#scope">Coverage & sources ↓</a></div>
+    <CategoryBrowser category={category} />
+    <section class="category-section category-context" id="scope" aria-labelledby="scope-heading">
+      <div><h2 id="scope-heading">What this view includes</h2><p>{category.scope}</p><p>This is VentureDex's research coverage, not a complete market census or an endorsement. Source counts are unique linked URLs, not independent confirmations. Review dates describe recorded research checks, not guaranteed current facts.</p><h3>A question to take into your research</h3><p>{category.question}</p><a href="/research">Read our methodology →</a></div>
+      <div><h2>{breakdownField === "funding_stage" ? "Recorded funding stages" : "Product categories in this view"}</h2><ul class="category-breakdown">{breakdown.map(b => <li><span>{b.label === "Unspecified" ? "Stage undisclosed" : b.label}</span><span>{b.count}</span></li>)}</ul></div>
+    </section>
+    {samples.length > 0 && <section class="category-section" aria-labelledby="sources-heading"><h2 id="sources-heading">Start with the evidence</h2><p class="section-description">Research references from the most recently added profiles in this view. Open a profile for the complete source ledger and claim-by-claim context.</p><div class="category-evidence">{samples.map(e => <article><h3><a href={`/startups/${e.startup.slug}`}>{e.startup.product_name}</a></h3><p>{e.reviewedAt ? <>Reviewed <time datetime={e.reviewedAt}>{e.reviewedAt}</time></> : "Review date not recorded"} · {e.sources.length} sources</p><ul>{e.sources.slice(0, 3).map(s => <li><a href={s.url} target="_blank" rel="noopener noreferrer">{s.label} <span aria-label="opens in a new tab">↗</span></a></li>)}</ul></article>)}</div></section>}
+    {related.length > 0 && <nav class="category-section" aria-label={`Explore more ${group.label.toLowerCase()}`}><h2>Explore more {group.label.toLowerCase()}</h2><div class="category-shortcuts">{related.map(c => <a href={c.path}>{c.label} <span class="category-count">{c.startups.length}</span></a>)}<a href="/categories">All categories →</a></div></nav>}
+  </div>
+</Base>

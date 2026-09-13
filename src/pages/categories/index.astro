@@ -1,0 +1,27 @@
+---
+export const prerender = true;
+import Base from "../../layouts/Base.astro";
+import { getContentStartups } from "../../lib/content";
+import { buildCategoryPages, CATEGORY_DIMENSIONS } from "../../lib/category-pages";
+import { buildJsonLdGraph, webPageNode, breadcrumbList, itemListNode } from "../../lib/seo";
+import "../../styles/categories.css";
+const categories = buildCategoryPages(getContentStartups());
+const description = "Explore startup research by industry, latest recorded funding stage, and region. Each category includes company profiles, research dates, and original sources.";
+const schema = buildJsonLdGraph([
+  webPageNode({path:"/categories", title:"Browse startup categories", description, type:"CollectionPage", siteUrl:Astro.site?.toString()}),
+  breadcrumbList([{name:"Home",path:"/"},{name:"Categories",path:"/categories"}], Astro.site?.toString()),
+  itemListNode(categories.map(c => ({name:c.title,path:c.path,description:c.intro})), Astro.site?.toString()),
+]);
+---
+<Base title="Browse Startup Categories: Industries, Stages & Regions" description={description} schema={schema}>
+  <div class="container category-page">
+    <nav class="category-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Categories</span></nav>
+    <header class="category-hero"><p class="category-eyebrow">Explore the directory</p><h1>A different way into the research.</h1><p>Start with an industry, a funding stage, or a region. Each view brings together published company profiles, original website screenshots, and the sources behind our research.</p></header>
+    <nav class="category-shortcuts" aria-label="Category groups">{CATEGORY_DIMENSIONS.map(d => <a href={`#${d.key}`}>{d.label}</a>)}<a href="/topics">Research topics →</a><a href="/investors">Investors →</a></nav>
+    {CATEGORY_DIMENSIONS.map(d => <section class="category-section" id={d.key} aria-labelledby={`${d.key}-heading`}>
+      <h2 id={`${d.key}-heading`}>{d.label}</h2><p class="section-description">{d.description}</p>
+      <div class="category-links">{categories.filter(c => c.dimension === d.key).map(c => <a href={c.path}><span>{c.label}</span><span class="category-count">{c.startups.length} {c.startups.length === 1 ? "company" : "companies"} <span aria-hidden="true">→</span></span></a>)}</div>
+    </section>)}
+    <aside class="category-note"><h2>Different views, not different standards.</h2><p>Categories reflect recorded fields in our published directory. Companies may appear in more than one view, and a small cohort reflects our coverage—not market size. Empty categories are omitted; no city, country, or work-policy claims are inferred.</p><a href="/research">How we research and select companies →</a><a href="/directory">Search and combine filters →</a></aside>
+  </div>
+</Base>

@@ -3,127 +3,94 @@ import BrandLogo from "./BrandLogo.astro";
 import { getCompanyBrandAsset } from "../lib/brand-assets";
 import type { FundingRound } from "../lib/types";
 import { fundingAmountLabel, fundingStageLabel } from "../lib/funding-terms";
-
-interface Props {
-  rounds: FundingRound[];
-}
-
-const { rounds } = Astro.props;
-const TICKER_ITEM_LIMIT = 16;
-
-const items = rounds
-  .filter((round) => round.company_slug && (round.amount || round.stage))
-  .slice(0, TICKER_ITEM_LIMIT)
-  .map((round) => ({
-    name: round.company_name,
-    slug: round.company_slug!,
-    logo: getCompanyBrandAsset(round.company_slug),
-    amount: round.amount ? fundingAmountLabel(round) : null,
-    stage: fundingStageLabel(round),
-    date: new Date(`${round.date}T00:00:00`).toLocaleDateString("en-US", {
-      month: "short",
-      day: "numeric",
-    }),
-  }));
-
-const tickerItems = [...items, ...items];
+interface Props { rounds: FundingRound[]; }
+const items = Astro.props.rounds.filter(round => round.company_slug && (round.amount || round.stage)).slice(0, 16).map(round => ({
+  name: round.company_name, slug: round.company_slug!, logo: getCompanyBrandAsset(round.company_slug),
+  amount: round.amount ? fundingAmountLabel(round) : null, stage: fundingStageLabel(round),
+  date: new Date(`${round.date}T00:00:00Z`).toLocaleDateString("en-US", {month:"short", day:"numeric", timeZone:"UTC"}),
+}));
 ---
-
 {items.length > 0 && (
-  <div class="ticker-wrapper" aria-label="Recent funding news">
-    <div class="ticker-track">
-      {tickerItems.map((item) => (
-        <a href={`/startups/${item.slug}`} class="ticker-item">
-          <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
-          <span class="ticker-name">{item.name}</span>
-          {item.amount && <span class="ticker-amount">{item.amount}</span>}
-          {item.stage && <span class="ticker-stage">{item.stage}</span>}
-          <span class="ticker-date">{item.date}</span>
-        </a>
-      ))}
+  <section class="funding-strip" aria-label="Recent funding news" data-funding-ticker>
+    <div class="container ticker-inner">
+      <a class="ticker-label" href="/news">Latest funding <span aria-hidden="true">↗</span></a>
+      <div class="ticker-viewport">
+        <div class="ticker-track">
+          {[false, true].map(duplicate => (
+            <div class:list={["ticker-group", {"ticker-copy": duplicate}]} aria-hidden={duplicate ? "true" : undefined}>
+              {items.map(item => (
+                <a href={`/startups/${item.slug}`} class="ticker-item" tabindex={duplicate ? -1 : undefined}>
+                  <BrandLogo asset={item.logo} name={item.name} size={16} class="ticker-logo" />
+                  <span class="ticker-name">{item.name}</span>
+                  {item.amount && <span class="ticker-amount">{item.amount}</span>}
+                  {item.stage && <span class="ticker-stage">{item.stage}</span>}
+                  <span class="ticker-date">{item.date}</span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+      <button class="ticker-toggle" type="button" hidden aria-pressed="false" aria-label="Pause funding ticker">Pause</button>
     </div>
-  </div>
+  </section>
 )}
-
+<script>
+  for (const ticker of document.querySelectorAll<HTMLElement>("[data-funding-ticker]")) {
+    const button = ticker.querySelector<HTMLButtonElement>(".ticker-toggle");
+    const viewport = ticker.querySelector<HTMLElement>(".ticker-viewport");
+    if (!button) continue;
+    ticker.dataset.ready = "true";
+    button.hidden = false;
+    viewport?.addEventListener("focusout", (event) => {
+      if (event.relatedTarget instanceof Node && viewport.contains(event.relatedTarget)) return;
+      // Keyboard browsing scrolls the static first copy. Reset that offset before
+      // motion resumes, or animation eventually runs past the visible content.
+      if (!matchMedia("(prefers-reduced-motion: reduce), (pointer: coarse)").matches) viewport.scrollLeft = 0;
+    });
+    button.addEventListener("click", () => {
+      const paused = ticker.dataset.paused !== "true";
+      ticker.dataset.paused = String(paused);
+      button.setAttribute("aria-pressed", String(paused));
+      button.setAttribute("aria-label", `${paused ? "Resume" : "Pause"} funding ticker`);
+      button.textContent = paused ? "Resume" : "Pause";
+    });
+  }
+</script>
 <style>
-  .ticker-wrapper {
-    overflow: hidden;
-    border-bottom: 1px solid var(--color-border);
-    background: var(--color-bg-card);
+  .funding-strip { border-bottom: 1px solid var(--color-border); background: var(--color-bg-card); }
+  .ticker-inner { display: flex; align-items: center; min-height: 44px; gap: var(--space-4); }
+  .ticker-label { flex: 0 0 auto; font-size: .7rem; font-weight: 600; text-decoration: none; color: var(--color-text-secondary); }
+  .ticker-label:hover { color: var(--color-accent); }
+  .ticker-label span { color: var(--color-accent); }
+  .ticker-viewport { flex: 1; min-width: 0; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .ticker-viewport::-webkit-scrollbar { display: none; }
+  .ticker-track { display: flex; width: max-content; }
+  .ticker-group { display: flex; align-items: center; gap: var(--space-6); padding-right: var(--space-6); flex: 0 0 auto; }
+  .ticker-copy { display: none; }
+  [data-ready="true"] .ticker-viewport { overflow-x: hidden; }
+  [data-ready="true"] .ticker-copy { display: flex; }
+  [data-ready="true"] .ticker-track { animation: ticker-scroll 180s linear infinite; }
+  [data-paused="true"] .ticker-track, .ticker-viewport:hover .ticker-track { animation-play-state: paused; }
+  /* Keyboard navigation uses one static, horizontally scrollable set of links. */
+  .ticker-viewport:focus-within { overflow-x: auto; }
+  .ticker-viewport:focus-within .ticker-track { animation: none; }
+  .ticker-viewport:focus-within .ticker-copy { display: none; }
+  @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .ticker-item { display: flex; align-items: center; gap: var(--space-2); flex: 0 0 auto; white-space: nowrap; text-decoration: none; color: var(--color-text); font-size: .75rem; min-height: 44px; }
+  .ticker-item:focus-visible { outline-offset: -2px; }
+  .ticker-item:hover { color: var(--color-accent); }
+  .ticker-name { font-weight: 600; }
+  .ticker-amount { color: var(--color-accent); font-weight: 500; }
+  .ticker-stage, .ticker-date { color: var(--color-text-secondary); }
+  .ticker-date { font-size: .7rem; }
+  .ticker-toggle { flex: 0 0 auto; min-height: 44px; min-width: 48px; padding: 0 var(--space-2); border: 0; border-left: 1px solid var(--color-border); color: var(--color-text-secondary); background: transparent; font: inherit; font-size: .7rem; cursor: pointer; }
+  .ticker-toggle:hover { color: var(--color-text); }
+  .ticker-toggle[hidden] { display: none; }
+  @media (prefers-reduced-motion: reduce), (pointer: coarse) {
+    [data-ready="true"] .ticker-track { animation: none; }
+    [data-ready="true"] .ticker-copy, .ticker-toggle { display: none; }
+    [data-ready="true"] .ticker-viewport { overflow-x: auto; }
   }
-
-  .ticker-track {
-    display: flex;
-    gap: var(--space-4);
-    padding: var(--space-3) var(--space-6);
-    animation: ticker-scroll 180s linear infinite;
-    will-change: transform;
-    width: max-content;
-  }
-
-  .ticker-track:hover {
-    animation-play-state: paused;
-  }
-
-  @keyframes ticker-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .ticker-item {
-    display: flex;
-    align-items: center;
-    gap: var(--space-2);
-    flex: 0 0 auto;
-    white-space: nowrap;
-    text-decoration: none;
-    color: var(--color-text);
-    font-size: 0.75rem;
-    transition: color 0.15s;
-  }
-
-  .ticker-item:hover {
-    color: var(--color-accent);
-    text-decoration: none;
-  }
-
-  .ticker-logo {
-    opacity: 0.95;
-  }
-
-  .ticker-name {
-    font-weight: 600;
-  }
-
-  .ticker-amount {
-    color: var(--color-accent);
-    font-weight: 500;
-  }
-
-  .ticker-stage,
-  .ticker-date {
-    color: var(--color-text-secondary);
-  }
-
-  .ticker-date {
-    font-size: 0.7rem;
-  }
-
-  @media (max-width: 640px) {
-    .ticker-track {
-      padding-inline: var(--space-4);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-wrapper {
-      overflow-x: auto;
-      overscroll-behavior-x: contain;
-    }
-
-    .ticker-track {
-      animation: none;
-      width: max-content;
-    }
-  }
+  @media (max-width: 640px) { .ticker-inner { gap: var(--space-3); } .ticker-label { font-size: .65rem; } }
 </style>

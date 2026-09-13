@@ -1,0 +1,91 @@
+---
+import { getContentStartups, getContentInvestors } from "../lib/content";
+import { buildCategoryPages } from "../lib/category-pages";
+import { getInvestorActivity, getLinkedInvestorSlugs } from "../lib/investor-activity-content";
+import { getTopicPages } from "../lib/topic-pages";
+
+const startups = getContentStartups();
+const categories = buildCategoryPages(startups);
+const topics = getTopicPages(startups, []);
+const activity = getInvestorActivity();
+const eligibleInvestors = getLinkedInvestorSlugs();
+const investors = getContentInvestors().filter(i => eligibleInvestors.has(i.slug))
+  .sort((a, b) => (activity.get(b.slug)?.length ?? 0) - (activity.get(a.slug)?.length ?? 0) || a.slug.localeCompare(b.slug)).slice(0, 10);
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-heading">
+      <div><p class="footer-eyebrow">Keep exploring</p><h2>Find your next starting point.</h2></div>
+      <a href="/categories">Explore all categories <span aria-hidden="true">→</span></a>
+    </div>
+    <nav class="footer-directory" aria-label="Explore the research directory">
+      <div class="footer-column">
+        <h3>Industries</h3>
+        <ul>{categories.filter(c => c.dimension === "industry").map(c => <li><a href={c.path}>{c.label}</a></li>)}</ul>
+        <a class="footer-all" href="/categories#industry">All industries →</a>
+      </div>
+      <div class="footer-column">
+        <h3>Funding stages</h3>
+        <ul>{categories.filter(c => c.dimension === "stage").map(c => <li><a href={c.path}>{c.label}</a></li>)}</ul>
+        <h3 class="second-heading">Regions</h3>
+        <ul>{categories.filter(c => c.dimension === "region").map(c => <li><a href={c.path}>{c.label}</a></li>)}</ul>
+      </div>
+      <div class="footer-column">
+        <h3>Investors in our research</h3>
+        <ul>{investors.map(i => <li><a href={`/investors/${i.slug}`}>{i.name}</a></li>)}</ul>
+        <a class="footer-all" href="/investors">All investors →</a>
+      </div>
+      <div class="footer-column">
+        <h3>Research topics</h3>
+        <ul>{topics.map(t => <li><a href={t.path}>{t.title.replace(/ Startups$/, "")}</a></li>)}</ul>
+        <a class="footer-all" href="/topics">All research topics →</a>
+        <a class="footer-all" href="/collections">Curated collections →</a>
+      </div>
+      <div class="footer-column">
+        <h3>From VentureDex</h3>
+        <ul>
+          <li><a href="/directory">All companies</a></li>
+          <li><a href="/news">Funding news</a></li>
+          <li><a href="/weekly">Weekly digest</a></li>
+          <li><a href="/launches">Product launches</a></li>
+          <li><a href="/research">Research methodology</a></li>
+          <li><a href="/editorial-policy">Editorial policy</a></li>
+          <li><a href="/llms.txt">AI reading guide</a></li>
+          <li><a href="/subscribe">Subscribe</a></li>
+          <li><a href="/feed.xml">RSS feed</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="footer-bottom">
+      <div><a class="footer-brand" href="/">VentureDex</a><p>Independent startup research. Original sources. Open questions.</p></div>
+      <div class="footer-meta"><a href="/about">About</a><a href="/sponsor">Sponsor</a><span>Crafted by <a href="https://genedai.md" target="_blank" rel="noopener noreferrer">Gene Dai</a></span></div>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer { border-top: 1px solid var(--color-border); padding: var(--space-12) 0 var(--space-8); margin-top: var(--space-12); }
+  .footer-heading { display: flex; justify-content: space-between; align-items: end; gap: var(--space-5); margin-bottom: var(--space-8); }
+  .footer-eyebrow { color: var(--color-text-secondary); font-size: .75rem; margin-bottom: var(--space-2); }
+  .footer-heading h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); letter-spacing: -.02em; }
+  .footer-heading > a { font-size: .82rem; white-space: nowrap; }
+  .footer-directory { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-6); }
+  .footer-column { min-width: 0; }
+  h3 { color: var(--color-text-secondary); font-family: var(--font-body); font-size: .78rem; font-weight: 500; margin-bottom: var(--space-3); }
+  .second-heading { margin-top: var(--space-6); }
+  ul { list-style: none; margin: 0; padding: 0; }
+  .footer-column a { display: block; width: fit-content; max-width: 100%; padding: 7px 0; font-size: .84rem; line-height: 1.5; color: var(--color-text); text-decoration: none; overflow-wrap: anywhere; }
+  .footer-column a:hover { color: var(--color-accent); text-decoration: underline; text-underline-offset: 4px; }
+  .footer-column .footer-all { color: var(--color-accent); margin-top: var(--space-2); font-size: .78rem; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: end; gap: var(--space-6); margin-top: var(--space-10); padding-top: var(--space-6); border-top: 1px solid var(--color-border); }
+  .footer-brand { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: var(--color-text); text-decoration: none; }
+  .footer-bottom p { margin-top: var(--space-2); color: var(--color-text-secondary); font-size: .75rem; line-height: 1.6; }
+  .footer-meta { display: flex; gap: var(--space-4); flex-wrap: wrap; font-size: .75rem; color: var(--color-text-secondary); }
+  .footer-meta a { color: inherit; padding-block: 8px; }
+  @media (max-width: 1000px) { .footer-directory { grid-template-columns: repeat(3, minmax(0, 1fr)); row-gap: var(--space-8); } }
+  @media (max-width: 640px) {
+    .footer-heading, .footer-bottom { align-items: start; flex-direction: column; }
+    .footer-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-5); }
+    .footer-column a { padding-block: 11px; }
+    .footer-meta { row-gap: var(--space-3); }
+  }
+</style>

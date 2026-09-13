@@ -1,0 +1,93 @@
+---
+import SiteCard from "./SiteCard.astro";
+import type { CategoryPage } from "../lib/category-pages";
+interface Props { category: CategoryPage; }
+const { category } = Astro.props;
+const field = {industry:"type", stage:"stage", region:"region"}[category.dimension];
+const fullDirectory = `/directory?${new URLSearchParams({[field]:category.value})}`;
+---
+<section class="category-browser" data-category-browser aria-labelledby="companies-heading">
+  <div class="browser-heading"><h2 id="companies-heading">Companies to explore</h2><p class="browser-count" role="status" aria-live="polite" aria-atomic="true">{category.startups.length} companies</p></div>
+  <form class="browser-controls" action={category.path} method="get" role="search" hidden>
+    <div class="browser-search"><label class="visually-hidden" for="category-query">Search within {category.label}</label><input id="category-query" name="q" type="search" maxlength="160" placeholder={`Search these ${category.startups.length} companies`} /><button type="submit">Search</button></div>
+    <div class="browser-sort"><label for="category-sort">Sort</label><select name="sort" id="category-sort"><option value="newest">Recently added</option><option value="name-az">Name A–Z</option></select></div>
+    <button class="browser-clear" type="button" data-category-clear hidden>Reset view</button>
+  </form>
+  <noscript><p>All companies are shown below. Enable JavaScript to search within this category.</p></noscript>
+  <div class="category-grid">
+    {category.startups.map((startup, position) => <SiteCard startup={startup} priority={position < 3} index={{name:startup.product_name, searchText:[startup.summary, startup.tags, startup.domain].filter(Boolean).join(" "), type:startup.product_type, stage:startup.funding_stage, region:startup.region, published:startup.published_at, featured:!!startup.is_featured}} />)}
+  </div>
+  <div class="browser-empty" hidden><h3>No companies match this search.</h3><p>Try a broader product term, clear the search, or explore the full directory.</p><button type="button" data-category-clear>Clear search</button><a href="/directory">Search all companies →</a></div>
+  <p class="browser-directory"><a href={fullDirectory}>Combine with more filters in the directory →</a></p>
+</section>
+<script>
+  import { orderVisibleCards, readFilterState } from "../lib/startup-filter";
+  for (const root of document.querySelectorAll<HTMLElement>("[data-category-browser]")) {
+    const form = root.querySelector<HTMLFormElement>("form")!;
+    const query = root.querySelector<HTMLInputElement>("input[name=q]")!;
+    // Workers' DOM-lite globals collide with browser HTMLSelectElement types.
+    const sort = root.querySelector("select[name=sort]") as unknown as HTMLSelectElement;
+    const grid = root.querySelector<HTMLElement>(".category-grid")!;
+    const count = root.querySelector<HTMLElement>(".browser-count")!;
+    const empty = root.querySelector<HTMLElement>(".browser-empty")!;
+    const clear = form.querySelector<HTMLButtonElement>("[data-category-clear]")!;
+    const cards = [...grid.querySelectorAll<HTMLElement>("[data-card]")].map(el => ({el, name:el.dataset.name ?? "", searchText:el.dataset.search, type:el.dataset.type ?? null, stage:el.dataset.stage ?? null, region:el.dataset.region ?? null, published:el.dataset.published ?? null}));
+    const apply = (updateUrl: boolean) => {
+      // The server fixes membership. URL parameters cannot widen the cohort.
+      const params = new URLSearchParams({q:query.value, sort:sort.value});
+      const state = readFilterState(params);
+      const visible = orderVisibleCards(cards, state);
+      const members = new Set(visible);
+      for (const card of cards) card.el.hidden = !members.has(card);
+      for (const card of visible) grid.appendChild(card.el);
+      count.textContent = visible.length === cards.length ? `${cards.length} ${cards.length === 1 ? "company" : "companies"}` : `${visible.length} of ${cards.length} companies`;
+      empty.hidden = visible.length > 0;
+      clear.hidden = !state.q && state.sort === "newest";
+      if (updateUrl) {
+        const url = new URL(location.href);
+        for (const key of ["q", "sort", "type", "stage", "region"]) url.searchParams.delete(key);
+        if (state.q) url.searchParams.set("q", state.q);
+        if (state.sort === "name-az") url.searchParams.set("sort", state.sort);
+        history.replaceState(history.state, "", `${url.pathname}${url.search}${url.hash}`);
+      }
+    };
+    const restore = () => {
+      const params = new URLSearchParams(location.search);
+      query.value = readFilterState(params).q ?? "";
+      sort.value = params.get("sort") === "name-az" ? "name-az" : "newest";
+      apply(false);
+    };
+    query.addEventListener("input", () => apply(true));
+    sort.addEventListener("change", () => apply(true));
+    form.addEventListener("submit", event => {event.preventDefault(); apply(true);});
+    for (const button of root.querySelectorAll<HTMLButtonElement>("[data-category-clear]")) button.addEventListener("click", () => {
+      query.value = ""; sort.value = "newest"; apply(true); query.focus();
+    });
+    window.addEventListener("popstate", restore);
+    window.addEventListener("pageshow", restore);
+    form.hidden = false;
+    restore();
+  }
+</script>
+<style>
+  .category-browser { margin-top: var(--space-8); }
+  .browser-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-4); }
+  h2 { font-size: 1.15rem; }
+  .browser-count { color: var(--color-text-secondary); font-size: .8rem; }
+  .browser-controls { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-5); }
+  .browser-controls[hidden], .browser-empty[hidden], [data-category-clear][hidden], .category-grid :global([data-card][hidden]) { display: none; }
+  .browser-search { display: flex; flex: 1; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg-card); }
+  .browser-search:focus-within { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+  input { flex: 1; min-width: 0; width: 100%; padding: 12px; border: 0; background: transparent; color: var(--color-text); font: inherit; font-size: .85rem; outline: none; }
+  button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg-card); color: var(--color-text); font: inherit; font-size: .8rem; cursor: pointer; }
+  .browser-search button { border: 0; border-left: 1px solid var(--color-border); border-radius: 0; background: transparent; }
+  .browser-sort { display: flex; align-items: center; gap: var(--space-2); font-size: .8rem; }
+  select { min-height: 44px; max-width: 100%; padding: 10px; color: var(--color-text); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius); font: inherit; }
+  .category-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--space-6); }
+  .browser-empty { padding: var(--space-8); border: 1px dashed var(--color-border); border-radius: var(--radius); }
+  .browser-empty p { color: var(--color-text-secondary); font-size: .85rem; margin-block: var(--space-3) var(--space-5); }
+  .browser-empty a { display: inline-block; margin-left: var(--space-4); font-size: .85rem; }
+  .browser-directory { margin-top: var(--space-5); font-size: .8rem; }
+  @media (max-width: 900px) { .category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .category-grid { grid-template-columns: minmax(0, 1fr); } .browser-controls { flex-wrap: wrap; } .browser-search { flex-basis: 100%; } input { font-size: 16px; } .browser-empty { padding: var(--space-5); } .browser-empty a { margin: var(--space-3) 0 0; display: block; } }
+</style>
