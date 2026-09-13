@@ -4491,7 +4491,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/alza-mining-tech.png",
       "source_page": "https://alzagroup.cl/en/agf-ingles/",
-      "source_url": "https://alzagroup.cl/wp-content/uploads/2026/03/cropped-logo_small_square-192x192.png"
+      "source_url": "https://alzagroup.cl/wp-content/uploads/2026/03/cropped-logo_small_square-192x192.png",
+      "allow_unreachable_source": true,
+      "note": "The official Alza page and same-origin logo returned HTTP 200 to local HEAD and GET probes on 2026-09-13, while GitHub Actions received HTTP 202 for both; retain the verified official asset and treat this runner-specific origin response as non-blocking."
     },
     "4growth-vc": {
       "name": "4growth VC",
