@@ -874,6 +874,25 @@ print(payload[0]["results"][0]["startup_count"])
 ' <<<"$parsed"
 }
 
+remote_funding_round_count() {
+  local output parsed
+  if ! output="$(
+    cd "$REPO_ROOT" && npx wrangler d1 execute "$DB_NAME" --remote --command \
+      "SELECT COUNT(*) AS funding_round_count FROM funding_rounds;" 2>&1
+  )"; then
+    printf '%s\n' "$output" >&2
+    return 1
+  fi
+  parsed="$(printf '%s\n' "$output" | extract_wranger_json)"
+  python3 -c '
+import json
+import sys
+
+payload = json.loads(sys.stdin.read())
+print(payload[0]["results"][0]["funding_round_count"])
+' <<<"$parsed"
+}
+
 remote_manual_startup_slugs() {
   local output parsed
   if ! output="$(
@@ -1743,14 +1762,20 @@ cmd_deploy_public() {
 
 cmd_smoke() {
   local url="${1:?Usage: manage.sh smoke <url>}"
-  local startup_count
+  local startup_count funding_round_count
 
   require_token
   if ! startup_count="$(remote_startup_count)"; then
     echo "ERROR: Could not read the remote startup count for live smoke." >&2
     return 2
   fi
-  python3 "$SCRIPT_DIR/smoke-live.py" "$url" --expected-startups "$startup_count"
+  if ! funding_round_count="$(remote_funding_round_count)"; then
+    echo "ERROR: Could not read the remote funding-round count for live smoke." >&2
+    return 2
+  fi
+  python3 "$SCRIPT_DIR/smoke-live.py" "$url" \
+    --expected-startups "$startup_count" \
+    --expected-funding-rounds "$funding_round_count"
 }
 
 smoke_with_retry() {

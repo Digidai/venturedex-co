@@ -1412,6 +1412,20 @@ test("release workflow deploys only a successfully validated SHA", () => {
     manager.indexOf("cmd_release()"),
     manager.indexOf("\ncmd_add()")
   );
+  const smoke = manager.slice(
+    manager.indexOf("cmd_smoke()"),
+    manager.indexOf("\nsmoke_with_retry()")
+  );
+  assert.match(
+    manager,
+    /remote_funding_round_count\(\)[\s\S]*COUNT\(\*\) AS funding_round_count FROM funding_rounds/,
+    "live smoke must read the independent funding-round total from remote D1"
+  );
+  assert.match(
+    smoke,
+    /--expected-startups "\$startup_count"[\s\S]*--expected-funding-rounds "\$funding_round_count"/,
+    "live smoke must not assume one funding round per published startup"
+  );
   assert.ok(
     release.indexOf("assert_release_source_clean") <
       release.indexOf("prepare_release_artifacts"),
