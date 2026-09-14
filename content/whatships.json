@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "cc0438b57ac9c1de3c2a5e964300aaeef7fd2015",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/cc0438b57ac9c1de3c2a5e964300aaeef7fd2015",
-    "commit_at": "2026-09-13T18:35:30.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/cc0438b57ac9c1de3c2a5e964300aaeef7fd2015/src/data/videos.json",
-    "raw_sha256": "28269b941dff15523acc2e870abbcff94d9a183a75660a6cc3ffb1f2e1baf7af"
+    "commit": "9c0fdf4d562ff1739d1de000fc6432b03a854c70",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/9c0fdf4d562ff1739d1de000fc6432b03a854c70",
+    "commit_at": "2026-09-14T07:25:24.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/9c0fdf4d562ff1739d1de000fc6432b03a854c70/src/data/videos.json",
+    "raw_sha256": "beb52381ded9939470948d2c58e1a9757c6e7dad526163b387f57c22b7bd7e95"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,69 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-12T19:20:03.000Z",
-  "item_count": 2059,
+  "source_published_through": "2026-09-13T17:23:23.000Z",
+  "item_count": 2063,
   "items": [
+    {
+      "id": "plv-webagent",
+      "tweet_id": "2099187195345330561",
+      "slug": "webagent",
+      "title": "Webagent — public-facing agents from your website",
+      "product": "Webagent",
+      "company": "AgentNet",
+      "category": "ai",
+      "tags": [
+        "webagent",
+        "agents",
+        "oss"
+      ],
+      "published_at": "2026-09-13T17:23:23.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099187163762135040/vid/avc1/1920x1080/IV-fOijXOdJCx5Gx.mp4",
+      "original_post_url": "https://x.com/TheAgentNet/status/2099187195345330561",
+      "last_changed_at": "2026-09-14T07:25:24.000Z"
+    },
+    {
+      "id": "plv-nabil-record-of-why",
+      "tweet_id": "2098879082456875474",
+      "slug": "nabil-record-of-why",
+      "title": "Nabil — the record of why for AI founders",
+      "product": "record of why",
+      "company": "Nabil",
+      "category": "other",
+      "tags": [
+        "nabil",
+        "founders",
+        "ai"
+      ],
+      "published_at": "2026-09-12T20:59:03.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098879041080340480/vid/avc1/1080x1080/Es9b5W64LsjOfzPo.mp4",
+      "original_post_url": "https://x.com/0nabilbk/status/2098879082456875474",
+      "last_changed_at": "2026-09-14T07:25:24.000Z"
+    },
+    {
+      "id": "plv-synara-docs",
+      "tweet_id": "2098862877687914680",
+      "slug": "synara-docs",
+      "title": "Synara Docs — every agent workflow in one place",
+      "product": "Synara Docs",
+      "company": "Synara",
+      "category": "developer-tools",
+      "tags": [
+        "synara",
+        "docs",
+        "agents"
+      ],
+      "published_at": "2026-09-12T19:54:39.000Z",
+      "duration_seconds": 14,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098862845383319554/vid/avc1/1920x1080/SBdu03gbit2NmMii.mp4",
+      "original_post_url": "https://x.com/trySynara/status/2098862877687914680",
+      "last_changed_at": "2026-09-14T07:25:24.000Z"
+    },
     {
       "id": "plv-supermemory-console",
       "tweet_id": "2098854167670616328",
@@ -103,6 +163,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2098569214768402432/vid/avc1/1920x1080/I5B0BcuCdqvifg2M.mp4",
       "original_post_url": "https://x.com/coledermo/status/2098818930567479684",
       "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-svg-charts",
+      "tweet_id": "2098784334383915025",
+      "slug": "svg-charts",
+      "title": "SVG Charts — animated React charts from the CLI",
+      "product": "SVG Charts",
+      "company": "Spectrum UI",
+      "category": "developer-tools",
+      "tags": [
+        "svg-charts",
+        "react",
+        "spectrum"
+      ],
+      "published_at": "2026-09-12T14:42:33.000Z",
+      "duration_seconds": 72,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098784211994087425/vid/avc1/1662x1080/IZH4Y00_Kd6s8lZa.mp4",
+      "original_post_url": "https://x.com/arihantCodes/status/2098784334383915025",
+      "last_changed_at": "2026-09-14T07:25:24.000Z"
     },
     {
       "id": "plv-agnost-guardrails",
