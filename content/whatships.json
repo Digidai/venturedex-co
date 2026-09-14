@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "9c0fdf4d562ff1739d1de000fc6432b03a854c70",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/9c0fdf4d562ff1739d1de000fc6432b03a854c70",
-    "commit_at": "2026-09-14T07:25:24.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/9c0fdf4d562ff1739d1de000fc6432b03a854c70/src/data/videos.json",
-    "raw_sha256": "beb52381ded9939470948d2c58e1a9757c6e7dad526163b387f57c22b7bd7e95"
+    "commit": "4b1191f0d2614683b79b576bbd352512acaf6bc2",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/4b1191f0d2614683b79b576bbd352512acaf6bc2",
+    "commit_at": "2026-09-14T18:20:12.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/4b1191f0d2614683b79b576bbd352512acaf6bc2/src/data/videos.json",
+    "raw_sha256": "2ccc8631b42bea1ffd5819bd5f8592fd9c5586f7f1d8441c31ccce0db2cf6476"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -22,7 +22,7 @@
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
   "source_published_through": "2026-09-13T17:23:23.000Z",
-  "item_count": 2063,
+  "item_count": 2105,
   "items": [
     {
       "id": "plv-webagent",
@@ -1205,6 +1205,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-hermes-omarchy",
+      "tweet_id": "2097403926072987986",
+      "slug": "hermes-omarchy",
+      "title": "Hermes — first-class support in Omarchy",
+      "product": "Hermes",
+      "company": "Nous Research",
+      "category": "developer-tools",
+      "tags": [
+        "hermes",
+        "nous",
+        "omarchy",
+        "linux"
+      ],
+      "published_at": "2026-09-08T19:17:18.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097403443455336448/vid/avc1/2880x2880/ApK11--hYxNUYFy7.mp4",
+      "original_post_url": "https://x.com/NousResearch/status/2097403926072987986",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-muse",
       "tweet_id": "2097399178376671666",
       "slug": "muse",
@@ -1343,6 +1364,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2097329530843353088/vid/avc1/1920x1080/2xtnF7P__nrHsGCU.mp4",
       "original_post_url": "https://x.com/tldraw/status/2097330001334989060",
       "last_changed_at": "2026-09-10T12:04:02.000Z"
+    },
+    {
+      "id": "plv-plasma-platinum-lounge",
+      "tweet_id": "2097324655505740095",
+      "slug": "plasma-platinum-lounge",
+      "title": "Plasma Platinum — unlimited airport lounge access",
+      "product": "Plasma Platinum",
+      "company": "Plasma",
+      "category": "consumer",
+      "tags": [
+        "plasma",
+        "payments",
+        "travel",
+        "fintech"
+      ],
+      "published_at": "2026-09-08T14:02:18.000Z",
+      "duration_seconds": 22,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097323300938489856/vid/avc1/1920x1080/njzNOBjBOc7xmpiK.mp4",
+      "original_post_url": "https://x.com/Plasma/status/2097324655505740095",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-imagio",
@@ -1906,6 +1948,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-gpt-6-astra-teaser",
+      "tweet_id": "2095597502368284748",
+      "slug": "gpt-6-astra-teaser",
+      "title": "GPT-6 Astra — a new star enters the Chat",
+      "product": "GPT-6 Astra",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "openai",
+        "gpt-6",
+        "astra",
+        "teaser"
+      ],
+      "published_at": "2026-09-03T19:39:13.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095596547639779328/vid/avc1/1920x1080/MyZ5_RYdrKbP-VVE.mp4",
+      "original_post_url": "https://x.com/ChatGPT/status/2095597502368284748",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-gpt-6-astra",
       "tweet_id": "2095595741528125780",
       "slug": "gpt-6-astra",
@@ -1964,6 +2027,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2095590391114276864/vid/avc1/1920x1080/5NR4Q1QwJBZn8waF.mp4",
       "original_post_url": "https://x.com/preshdkumar/status/2095590612837818397",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-tesla-future-austin",
+      "tweet_id": "2095588745936298039",
+      "slug": "tesla-future-austin",
+      "title": "Tesla — the future has arrived in Austin",
+      "product": "Tesla",
+      "company": "Tesla",
+      "category": "hardware",
+      "tags": [
+        "tesla",
+        "austin",
+        "robotaxi"
+      ],
+      "published_at": "2026-09-03T19:04:25.000Z",
+      "duration_seconds": 51,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095588472174288896/vid/avc1/1920x1080/29ZAPDs3AXbylpWF.mp4",
+      "original_post_url": "https://x.com/Tesla/status/2095588745936298039",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-docs7",
@@ -2126,6 +2209,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-gta-vi-dualsense-limited-edition",
+      "tweet_id": "2095509265800683885",
+      "slug": "gta-vi-dualsense-limited-edition",
+      "title": "GTA VI Limited-Edition DualSense controllers",
+      "product": "DualSense",
+      "company": "Sony Interactive Entertainment",
+      "category": "hardware",
+      "tags": [
+        "playstation",
+        "dualsense",
+        "gta",
+        "controller"
+      ],
+      "published_at": "2026-09-03T13:48:36.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095508858420490243/vid/avc1/1920x1080/cPFq0mrJWeHSIcJu.mp4",
+      "original_post_url": "https://x.com/PlayStation/status/2095509265800683885",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-unifi-ecs",
       "tweet_id": "2095505445956034616",
       "slug": "unifi-ecs",
@@ -2165,6 +2269,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2095483820934041600/vid/avc1/1920x1080/SXJf8yUuVvIpqXxB.mp4",
       "original_post_url": "https://x.com/higgsfield/status/2095484820474486832",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-buffer-hiring",
+      "tweet_id": "2095465071459663946",
+      "slug": "buffer-hiring",
+      "title": "Buffer — we're hiring",
+      "product": "Buffer",
+      "company": "Buffer",
+      "category": "other",
+      "tags": [
+        "buffer",
+        "hiring",
+        "culture"
+      ],
+      "published_at": "2026-09-03T10:52:59.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2095465032465186820/pu/vid/avc1/1280x720/3OSrE-ZOEpri72WH.mp4?tag=12",
+      "original_post_url": "https://x.com/buffer/status/2095465071459663946",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-squad",
@@ -2348,6 +2472,25 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-tesla-product-update-film",
+      "tweet_id": "2095156489912746319",
+      "slug": "tesla-product-update-film",
+      "title": "Tesla — product update film",
+      "product": "Tesla",
+      "company": "Tesla",
+      "category": "hardware",
+      "tags": [
+        "tesla",
+        "film"
+      ],
+      "published_at": "2026-09-02T14:26:47.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095156392063815680/vid/avc1/1920x1080/EwoVqGwUvsekqO7E.mp4",
+      "original_post_url": "https://x.com/Tesla/status/2095156489912746319",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-unifi-whole-home-wifi",
       "tweet_id": "2095153222990401894",
       "slug": "unifi-whole-home-wifi",
@@ -2389,6 +2532,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-base-creator-grant-program",
+      "tweet_id": "2095078810450346263",
+      "slug": "base-creator-grant-program",
+      "title": "Base — Creator Grant Program, up to $4,000",
+      "product": "Base",
+      "company": "Coinbase",
+      "category": "other",
+      "tags": [
+        "base",
+        "grants",
+        "creators",
+        "crypto"
+      ],
+      "published_at": "2026-09-02T09:18:07.000Z",
+      "duration_seconds": 7,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095076197017276416/vid/avc1/1080x1080/WXdvWNGuAiQRGWA-.mp4",
+      "original_post_url": "https://x.com/base/status/2095078810450346263",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-android-drop-find-hub",
       "tweet_id": "2094914713620492750",
       "slug": "android-drop-find-hub",
@@ -2407,6 +2571,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2094914492710658048/vid/avc1/1920x1080/odfB8KSEe5j3uEow.mp4",
       "original_post_url": "https://x.com/Google/status/2094914713620492750",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-robinhood-referral-circle",
+      "tweet_id": "2094907524377882732",
+      "slug": "robinhood-referral-circle",
+      "title": "Robinhood — investing is better with friends",
+      "product": "Robinhood",
+      "company": "Robinhood",
+      "category": "consumer",
+      "tags": [
+        "robinhood",
+        "referral",
+        "fintech"
+      ],
+      "published_at": "2026-09-01T21:57:29.000Z",
+      "duration_seconds": 43,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094902758075670528/vid/avc1/1080x1440/E6sYRJIXvH7XbkKe.mp4",
+      "original_post_url": "https://x.com/RobinhoodApp/status/2094907524377882732",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-fomo-clan-invites",
@@ -2628,6 +2812,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-figma-publish-to-community",
+      "tweet_id": "2094835173691179022",
+      "slug": "figma-publish-to-community",
+      "title": "Figma — publish shaders and plugins to Community",
+      "product": "Figma Community",
+      "company": "Figma",
+      "category": "design",
+      "tags": [
+        "figma",
+        "community",
+        "plugins",
+        "shaders"
+      ],
+      "published_at": "2026-09-01T17:10:00.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094833532111867904/vid/avc1/1920x1080/q8TMruGv1MuPy07G.mp4",
+      "original_post_url": "https://x.com/figma/status/2094835173691179022",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-google-pics",
       "tweet_id": "2094818432973725961",
       "slug": "google-pics",
@@ -2768,6 +2973,47 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-dyson-ai-toothbrush",
+      "tweet_id": "2094761595217850387",
+      "slug": "dyson-ai-toothbrush",
+      "title": "Dyson's AI toothbrush with a macro lens camera",
+      "product": "Dyson AI toothbrush",
+      "company": "Dyson",
+      "category": "hardware",
+      "tags": [
+        "dyson",
+        "hardware",
+        "camera",
+        "consumer-devices"
+      ],
+      "published_at": "2026-09-01T12:17:37.000Z",
+      "duration_seconds": 65,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094761457007157248/vid/avc1/1920x1080/pHUmSnC5LzHkAN4X.mp4",
+      "original_post_url": "https://x.com/IterIntellectus/status/2094761595217850387",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
+      "id": "plv-bnb-chain-six-years",
+      "tweet_id": "2094757311080444274",
+      "slug": "bnb-chain-six-years",
+      "title": "BNB Chain — six years on chain",
+      "product": "BNB Chain",
+      "company": "BNB Chain",
+      "category": "other",
+      "tags": [
+        "bnb",
+        "crypto",
+        "anniversary"
+      ],
+      "published_at": "2026-09-01T12:00:36.000Z",
+      "duration_seconds": 54,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094756811496984576/vid/avc1/1920x1080/I11J_AoyWTtwgWG5.mp4",
+      "original_post_url": "https://x.com/BNBCHAIN/status/2094757311080444274",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-youware-agent-workspace",
       "tweet_id": "2094755443122077856",
       "slug": "youware-agent-workspace",
@@ -2806,6 +3052,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2094658428409204737/vid/avc1/1920x1080/o30dURhYRlwMoLDS.mp4",
       "original_post_url": "https://x.com/jasonzhou1993/status/2094740336895840605",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-binance-stock-options",
+      "tweet_id": "2094711868606886199",
+      "slug": "binance-stock-options",
+      "title": "Binance Stock Options — US stocks and ETFs",
+      "product": "Binance Stock Options",
+      "company": "Binance",
+      "category": "consumer",
+      "tags": [
+        "binance",
+        "stocks",
+        "options",
+        "trading"
+      ],
+      "published_at": "2026-09-01T09:00:01.000Z",
+      "duration_seconds": 43,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094711169584185344/vid/avc1/1924x1076/04vVkGeLt4rZ1Oyl.mp4",
+      "original_post_url": "https://x.com/binance/status/2094711868606886199",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-studyfetch-calendar",
@@ -2906,6 +3173,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2094554901846118400/vid/avc1/1280x720/Mdgqjb3U1b3Wnoz3.mp4?tag=14",
       "original_post_url": "https://x.com/aitderham10/status/2094555262170358251",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-robinhood-something-new-growing",
+      "tweet_id": "2094550218918207643",
+      "slug": "robinhood-something-new-growing",
+      "title": "Robinhood — something new is growing",
+      "product": "Robinhood",
+      "company": "Robinhood",
+      "category": "consumer",
+      "tags": [
+        "robinhood",
+        "teaser",
+        "fintech"
+      ],
+      "published_at": "2026-08-31T22:17:41.000Z",
+      "duration_seconds": 7,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094548414587379712/vid/avc1/1080x1440/MAUeJHogKaX0O9pB.mp4",
+      "original_post_url": "https://x.com/RobinhoodApp/status/2094550218918207643",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-monoshot",
@@ -3126,6 +3413,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2094350448954093568/vid/avc1/1080x1920/BPac-1_-hJRdV2bp.mp4",
       "original_post_url": "https://x.com/fotor_com/status/2094351395327488272",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-hyperliquid-perps-listing",
+      "tweet_id": "2094272869731832151",
+      "slug": "hyperliquid-perps-listing",
+      "title": "Hyperliquid — new perps listing, 3x leverage",
+      "product": "Hyperliquid",
+      "company": "Hyperliquid",
+      "category": "other",
+      "tags": [
+        "hyperliquid",
+        "perps",
+        "defi"
+      ],
+      "published_at": "2026-08-31T03:55:36.000Z",
+      "duration_seconds": 18,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2094272669457985536/vid/avc1/1920x1080/9Xdht8pHlsA_x2JR.mp4",
+      "original_post_url": "https://x.com/HyperliquidX/status/2094272869731832151",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-denar-markets",
@@ -3388,6 +3695,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-outcome-first-markets",
+      "tweet_id": "2093618947396411581",
+      "slug": "outcome-first-markets",
+      "title": "Outcome — first markets, $1M in rewards",
+      "product": "Outcome",
+      "company": "Outcome",
+      "category": "other",
+      "tags": [
+        "outcome",
+        "prediction-markets",
+        "launch"
+      ],
+      "published_at": "2026-08-29T08:37:09.000Z",
+      "duration_seconds": 52,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093618880904105984/vid/avc1/1920x1080/p4GUSdOErauYILQ_.mp4",
+      "original_post_url": "https://x.com/Outcomexyz/status/2093618947396411581",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-databricks-glm-5-3",
       "tweet_id": "2093491572083949972",
       "slug": "databricks-glm-5-3",
@@ -3588,6 +3915,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-figma-shader-town-tour",
+      "tweet_id": "2093444120853524867",
+      "slug": "figma-shader-town-tour",
+      "title": "Figma — Shader Town comes to NY and SF",
+      "product": "Figma",
+      "company": "Figma",
+      "category": "design",
+      "tags": [
+        "figma",
+        "shaders",
+        "events"
+      ],
+      "published_at": "2026-08-28T21:02:27.000Z",
+      "duration_seconds": 66,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093443246307618816/vid/avc1/1920x1080/GtX7_5f9Mu1l4LA_.mp4",
+      "original_post_url": "https://x.com/figma/status/2093444120853524867",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-beui-pro-illustrations",
       "tweet_id": "2093442534022185425",
       "slug": "beui-pro-illustrations",
@@ -3646,6 +3993,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2093427580523495424/vid/avc1/2688x1512/_jtYf7DkcrzPnHTA.mp4",
       "original_post_url": "https://x.com/caydengineer/status/2093427830571114843",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-grok-bot-shopping",
+      "tweet_id": "2093419921007108385",
+      "slug": "grok-bot-shopping",
+      "title": "Grok Bot can now buy things on the internet",
+      "product": "Grok Bot",
+      "company": "xAI",
+      "category": "ai",
+      "tags": [
+        "grok",
+        "shopping",
+        "agents",
+        "payments"
+      ],
+      "published_at": "2026-08-28T19:26:17.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093419690362314753/vid/avc1/1920x1080/q1yKDldQ8Ba5gHp8.mp4",
+      "original_post_url": "https://x.com/bot/status/2093419921007108385",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-404-3js-game-generator",
@@ -3948,6 +4316,47 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-a16z-machine-age-fund",
+      "tweet_id": "2093330303242965464",
+      "slug": "a16z-machine-age-fund",
+      "title": "a16z — $1.1B for the Machine Age",
+      "product": "a16z",
+      "company": "Andreessen Horowitz",
+      "category": "other",
+      "tags": [
+        "a16z",
+        "venture",
+        "fund"
+      ],
+      "published_at": "2026-08-28T13:30:11.000Z",
+      "duration_seconds": 60,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093327852288815104/vid/avc1/1920x1080/Q3h6oFkDwI_IlYNz.mp4",
+      "original_post_url": "https://x.com/a16z/status/2093330303242965464",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
+      "id": "plv-circle-chelsea-fc",
+      "tweet_id": "2093292761415889289",
+      "slug": "circle-chelsea-fc",
+      "title": "Circle × Chelsea FC — USDC goes global football",
+      "product": "USDC",
+      "company": "Circle",
+      "category": "other",
+      "tags": [
+        "circle",
+        "usdc",
+        "chelsea",
+        "partnership"
+      ],
+      "published_at": "2026-08-28T11:01:00.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093281976237318144/vid/avc1/1920x1080/YvXLvgiNFXhyvR0z.mp4",
+      "original_post_url": "https://x.com/circle/status/2093292761415889289",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-robocurve",
       "tweet_id": "2093086738218725720",
       "slug": "robocurve",
@@ -4048,6 +4457,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-tesla-pet-mode",
+      "tweet_id": "2093066264315130038",
+      "slug": "tesla-pet-mode",
+      "title": "Tesla Pet Mode keeps your dog chillin'",
+      "product": "Tesla",
+      "company": "Tesla",
+      "category": "hardware",
+      "tags": [
+        "tesla",
+        "pet-mode",
+        "features"
+      ],
+      "published_at": "2026-08-27T20:00:59.000Z",
+      "duration_seconds": 10,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093065561437790208/vid/avc1/1920x1080/EVQ2Ov4l41t-NNJH.mp4",
+      "original_post_url": "https://x.com/Tesla/status/2093066264315130038",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-databricks-glm-5-3-flash",
       "tweet_id": "2093064663718097395",
       "slug": "databricks-glm-5-3-flash",
@@ -4106,6 +4535,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2093063153265332224/vid/avc1/1186x720/SigaPGpPJG55IFNR.mp4?tag=14",
       "original_post_url": "https://x.com/xhluca/status/2093063177541910535",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-claude-team-plan-scientists",
+      "tweet_id": "2093059087298601113",
+      "slug": "claude-team-plan-scientists",
+      "title": "Claude Team plan for scientists — free seats",
+      "product": "Claude",
+      "company": "Anthropic",
+      "category": "ai",
+      "tags": [
+        "claude",
+        "anthropic",
+        "science",
+        "research"
+      ],
+      "published_at": "2026-08-27T19:32:28.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093049007329116160/vid/avc1/1920x1080/wc3ydNXGJ6q3zxCb.mp4",
+      "original_post_url": "https://x.com/claudeai/status/2093059087298601113",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-x402aff",
@@ -4346,6 +4796,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2093011893380395008/vid/avc1/2400x1350/iCUcCKaFwiT4Lfwq.mp4",
       "original_post_url": "https://x.com/induction_labs/status/2093015104434631065",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-playstation-gaming-monitor",
+      "tweet_id": "2093013168897552897",
+      "slug": "playstation-gaming-monitor",
+      "title": "PlayStation 27-inch QHD gaming monitor",
+      "product": "PlayStation Gaming Monitor",
+      "company": "Sony Interactive Entertainment",
+      "category": "hardware",
+      "tags": [
+        "playstation",
+        "monitor",
+        "gaming",
+        "hardware"
+      ],
+      "published_at": "2026-08-27T16:30:00.000Z",
+      "duration_seconds": 41,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092960281764786176/vid/avc1/1920x1080/ZxOnAtOYNnCLll6W.mp4",
+      "original_post_url": "https://x.com/PlayStation/status/2093013168897552897",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-opensea-perplexity-computer",
@@ -4908,6 +5379,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-grok-linear-triggers",
+      "tweet_id": "2092699558220644789",
+      "slug": "grok-linear-triggers",
+      "title": "Grok — Linear triggers now available",
+      "product": "Grok",
+      "company": "xAI",
+      "category": "productivity",
+      "tags": [
+        "grok",
+        "linear",
+        "integrations",
+        "automation"
+      ],
+      "published_at": "2026-08-26T19:43:49.000Z",
+      "duration_seconds": 10,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092699186315886592/vid/avc1/2400x1260/b0fWkXWtXbv5j19o.mp4",
+      "original_post_url": "https://x.com/grok/status/2092699558220644789",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-framer-chromatic",
       "tweet_id": "2092675489676796018",
       "slug": "framer-chromatic",
@@ -5068,6 +5560,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-apple-event-september-2026",
+      "tweet_id": "2092645294832054275",
+      "slug": "apple-event-september-2026",
+      "title": "Apple Event — September 9 invitation",
+      "product": "Apple Event",
+      "company": "Apple",
+      "category": "consumer",
+      "tags": [
+        "apple",
+        "event",
+        "invite"
+      ],
+      "published_at": "2026-08-26T16:08:12.000Z",
+      "duration_seconds": 6,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092644503589195776/vid/avc1/1080x1080/ZrRjwlkV42ZN4NX0.mp4",
+      "original_post_url": "https://x.com/gregjoz/status/2092645294832054275",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-aave-mobile",
       "tweet_id": "2092643144139424046",
       "slug": "aave-mobile",
@@ -5128,6 +5640,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-asha-digital-game-entitlements",
+      "tweet_id": "2092621209955635606",
+      "slug": "asha-digital-game-entitlements",
+      "title": "ASHA — digital entitlements for physical games",
+      "product": "ASHA",
+      "company": "ASHA",
+      "category": "consumer",
+      "tags": [
+        "asha",
+        "xbox",
+        "gaming",
+        "physical-media"
+      ],
+      "published_at": "2026-08-26T14:32:30.000Z",
+      "duration_seconds": 23,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092617401783529472/vid/avc1/1920x1080/ZrLqTuuDcuaAc59D.mp4",
+      "original_post_url": "https://x.com/asha_shar/status/2092621209955635606",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-gemini-3d-chat",
       "tweet_id": "2092620237908631795",
       "slug": "gemini-3d-chat",
@@ -5166,6 +5699,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2092618926215794688/vid/avc1/1920x1080/evPz0apOK0FHIslk.mp4",
       "original_post_url": "https://x.com/aradotso/status/2092618962798571750",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-apple-tv-12-12-12",
+      "tweet_id": "2092614562751156395",
+      "slug": "apple-tv-12-12-12",
+      "title": "Apple TV+ — 12 12 12 premieres November 13",
+      "product": "12 12 12",
+      "company": "Apple",
+      "category": "consumer",
+      "tags": [
+        "apple",
+        "apple-tv",
+        "trailer",
+        "streaming"
+      ],
+      "published_at": "2026-08-26T14:06:05.000Z",
+      "duration_seconds": 23,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092599774625357824/vid/avc1/1920x1080/ihIfkMKA0m9qfv3_.mp4",
+      "original_post_url": "https://x.com/AppleTV/status/2092614562751156395",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-fal-recraft-v4-styles",
@@ -5327,6 +5881,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2092387633942900737/vid/avc1/1516x1080/KQjRzuHDLflA8UZh.mp4",
       "original_post_url": "https://x.com/acedatacloud/status/2092388319724478787",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-lenny-spacexai-grok-bot",
+      "tweet_id": "2092386630397255796",
+      "slug": "lenny-spacexai-grok-bot",
+      "title": "Lenny's × SpaceXAI — a free month of Grok Bot",
+      "product": "Lenny's Newsletter",
+      "company": "Lenny's Newsletter",
+      "category": "other",
+      "tags": [
+        "lenny",
+        "grok",
+        "partnership",
+        "newsletter"
+      ],
+      "published_at": "2026-08-25T23:00:22.000Z",
+      "duration_seconds": 13,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2092386089407574016/vid/avc1/1200x630/15CFDFg2MhUs_RGW.mp4",
+      "original_post_url": "https://x.com/lennysan/status/2092386630397255796",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-mousse",
@@ -6324,6 +6899,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-deel-ice-cream-teaser",
+      "tweet_id": "2091907853078364428",
+      "slug": "deel-ice-cream-teaser",
+      "title": "Deel — yes, this is real",
+      "product": "Deel",
+      "company": "Deel",
+      "category": "other",
+      "tags": [
+        "deel",
+        "teaser",
+        "campaign"
+      ],
+      "published_at": "2026-08-24T15:17:52.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2091907802964930563/vid/avc1/1920x1080/yUZf7fDgCnXYlj5A.mp4",
+      "original_post_url": "https://x.com/deel/status/2091907853078364428",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-nuphy-air75-v3",
       "tweet_id": "2091878142281646429",
       "slug": "nuphy-air75-v3",
@@ -7190,6 +7785,27 @@
       "last_changed_at": "2026-08-22T04:53:33.000Z"
     },
     {
+      "id": "plv-grok-bot-wider-availability",
+      "tweet_id": "2090852881373311369",
+      "slug": "grok-bot-wider-availability",
+      "title": "Grok Bot — now available to more subscribers",
+      "product": "Grok Bot",
+      "company": "xAI",
+      "category": "ai",
+      "tags": [
+        "grok",
+        "xai",
+        "agents",
+        "subscription"
+      ],
+      "published_at": "2026-08-21T17:25:47.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090852806257422336/vid/avc1/1920x1080/9sy3WyzjUKr5Zl6j.mp4",
+      "original_post_url": "https://x.com/bot/status/2090852881373311369",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-oasis-desktop",
       "tweet_id": "2090837930931601799",
       "slug": "oasis-desktop",
@@ -7928,6 +8544,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2090379868488011776/vid/avc1/1920x1080/sHNyYPKpbWBiJDWV.mp4",
       "original_post_url": "https://x.com/binance/status/2090380033013764166",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-saylor-8-billion-to-serve",
+      "tweet_id": "2090354214568333559",
+      "slug": "saylor-8-billion-to-serve",
+      "title": "Michael Saylor — 8 ₿illion to serve",
+      "product": "Strategy",
+      "company": "Strategy",
+      "category": "other",
+      "tags": [
+        "bitcoin",
+        "strategy",
+        "saylor"
+      ],
+      "published_at": "2026-08-20T08:24:16.000Z",
+      "duration_seconds": 27,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2090211391193931776/vid/avc1/1440x1080/_t_3btUKG3xzw832.mp4",
+      "original_post_url": "https://x.com/saylor/status/2090354214568333559",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-mesurer-0-0-11",
@@ -9897,6 +10533,26 @@
       "original_post_url": "https://x.com/Replit/status/2087947287620366787"
     },
     {
+      "id": "plv-instagram-brand-system",
+      "tweet_id": "2087945405212282980",
+      "slug": "instagram-brand-system",
+      "title": "The new Instagram brand system",
+      "product": "Instagram",
+      "company": "Instagram",
+      "category": "design",
+      "tags": [
+        "instagram",
+        "branding",
+        "identity"
+      ],
+      "published_at": "2026-08-13T16:52:31.000Z",
+      "duration_seconds": 62,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2087945321020108801/vid/avc1/1280x720/w_A5Xg-vY5hqeXuf.mp4",
+      "original_post_url": "https://x.com/avstorm/status/2087945405212282980",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-disc-2087944862272459214",
       "tweet_id": "2087944862272459214",
       "slug": "figma-skills",
@@ -10838,6 +11494,26 @@
       "original_post_url": "https://x.com/yoheinakajima/status/2086578009382023469"
     },
     {
+      "id": "plv-base-3-years",
+      "tweet_id": "2086467540084281752",
+      "slug": "base-3-years",
+      "title": "Base — 3 years, almost $5B in TVL",
+      "product": "Base",
+      "company": "Coinbase",
+      "category": "other",
+      "tags": [
+        "base",
+        "crypto",
+        "anniversary"
+      ],
+      "published_at": "2026-08-09T15:00:00.000Z",
+      "duration_seconds": 7,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2085770150507057152/vid/avc1/1080x1350/fet9zt6yqPf-D_D8.mp4",
+      "original_post_url": "https://x.com/base/status/2086467540084281752",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-disc-2086215846104572104",
       "tweet_id": "2086215846104572104",
       "slug": "swarms-auto-agent-builder-2104",
@@ -11252,6 +11928,27 @@
       "original_post_url": "https://x.com/MetaMask/status/2085365793441685614"
     },
     {
+      "id": "plv-tesla-terafab",
+      "tweet_id": "2085365278276284803",
+      "slug": "tesla-terafab",
+      "title": "Tesla Terafab — chips for Tesla and SpaceX",
+      "product": "Terafab",
+      "company": "Tesla",
+      "category": "hardware",
+      "tags": [
+        "tesla",
+        "terafab",
+        "semiconductor",
+        "manufacturing"
+      ],
+      "published_at": "2026-08-06T14:00:01.000Z",
+      "duration_seconds": 53,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2085252679815839744/vid/avc1/1920x1080/JKPEKJHc3K3RfhtV.mp4",
+      "original_post_url": "https://x.com/Tesla/status/2085365278276284803",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-capcut-seedance-25",
       "tweet_id": "2085355533943357650",
       "slug": "capcut-seedance-25",
@@ -11271,6 +11968,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2085355422006075393/vid/avc1/1920x1080/WS1cv7k1QAtC5Ynk.mp4",
       "original_post_url": "https://x.com/capcutapp/status/2085355533943357650",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-gta-vi-extended-look-netflix",
+      "tweet_id": "2085335127287030232",
+      "slug": "gta-vi-extended-look-netflix",
+      "title": "GTA VI: An Extended Look premieres on Netflix",
+      "product": "Grand Theft Auto VI",
+      "company": "Rockstar Games",
+      "category": "consumer",
+      "tags": [
+        "gta",
+        "rockstar",
+        "netflix",
+        "gaming"
+      ],
+      "published_at": "2026-08-06T12:00:12.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2085323578380095488/vid/avc1/1080x1080/mQTI271-I_05TYk1.mp4",
+      "original_post_url": "https://x.com/RockstarGames/status/2085335127287030232",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-olexdsgn-animation-sketches",
@@ -12146,6 +12864,46 @@
       "original_post_url": "https://x.com/grx_xce/status/2084361692792934488"
     },
     {
+      "id": "plv-palantir-own-the-means-of-production",
+      "tweet_id": "2084355536732967201",
+      "slug": "palantir-own-the-means-of-production",
+      "title": "Palantir — own the means of production",
+      "product": "Palantir",
+      "company": "Palantir Technologies",
+      "category": "other",
+      "tags": [
+        "palantir",
+        "brand-film",
+        "enterprise"
+      ],
+      "published_at": "2026-08-03T19:07:40.000Z",
+      "duration_seconds": null,
+      "featured": false,
+      "video_url": "https://video.twimg.com/tweet_video/HO0dI5kW4AA-_CG.mp4",
+      "original_post_url": "https://x.com/PalantirTech/status/2084355536732967201",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
+      "id": "plv-openai-math-open-problems",
+      "tweet_id": "2084352161404920316",
+      "slug": "openai-math-open-problems",
+      "title": "OpenAI — new results on open math problems",
+      "product": "GPT-5.6",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "openai",
+        "research",
+        "mathematics"
+      ],
+      "published_at": "2026-08-03T18:54:15.000Z",
+      "duration_seconds": 32,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2084344857267683328/vid/avc1/1920x1080/1N2BjaqqjoKUIqAw.mp4",
+      "original_post_url": "https://x.com/OpenAI/status/2084352161404920316",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-heinen-physical-intelligence",
       "tweet_id": "2084340379361448390",
       "slug": "heinen-physical-intelligence",
@@ -12223,6 +12981,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2084323770064625664/vid/avc1/1440x1440/jTd04YGEt5WNflMa.mp4",
       "original_post_url": "https://x.com/NousResearch/status/2084325600643445095"
+    },
+    {
+      "id": "plv-figma-nested-folders",
+      "tweet_id": "2084316409996452192",
+      "slug": "figma-nested-folders",
+      "title": "Figma — nested folders, coming soon",
+      "product": "Figma",
+      "company": "Figma",
+      "category": "design",
+      "tags": [
+        "figma",
+        "folders",
+        "sneak-peek"
+      ],
+      "published_at": "2026-08-03T16:32:11.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2084307208305876992/vid/avc1/1920x1080/3pDOuYCv4iqWKc-R.mp4",
+      "original_post_url": "https://x.com/zoink/status/2084316409996452192",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-ssashy",
@@ -13059,6 +13837,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2082855724443389952/vid/avc1/1920x1080/qe8TS6NqAOdhbI0R.mp4",
       "original_post_url": "https://x.com/linear/status/2082856036977803595"
+    },
+    {
+      "id": "plv-ethereum-mainnet-11",
+      "tweet_id": "2082850621296673042",
+      "slug": "ethereum-mainnet-11",
+      "title": "Ethereum Mainnet turns 11",
+      "product": "Ethereum",
+      "company": "Ethereum Foundation",
+      "category": "other",
+      "tags": [
+        "ethereum",
+        "crypto",
+        "anniversary"
+      ],
+      "published_at": "2026-07-30T15:27:40.000Z",
+      "duration_seconds": 69,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2082850427385589761/vid/avc1/1920x1080/6Yvs1O2xT_ol338i.mp4",
+      "original_post_url": "https://x.com/ethereum/status/2082850621296673042",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-p-image-ideogram",
@@ -15939,6 +16737,26 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-anthropic-global-workspace-research",
+      "tweet_id": "2074185348142280912",
+      "slug": "anthropic-global-workspace-research",
+      "title": "Anthropic — a global workspace in language models",
+      "product": "Claude",
+      "company": "Anthropic",
+      "category": "ai",
+      "tags": [
+        "anthropic",
+        "research",
+        "interpretability"
+      ],
+      "published_at": "2026-07-06T17:34:58.000Z",
+      "duration_seconds": 327,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2074179111296081920/vid/avc1/1920x1080/n68fb-yruqqAKAfS.mp4",
+      "original_post_url": "https://x.com/AnthropicAI/status/2074185348142280912",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
+    },
+    {
       "id": "plv-neuramill",
       "tweet_id": "2073451521560236390",
       "slug": "neuramill",
@@ -17659,6 +18477,27 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2066942582207438848/vid/avc1/3840x2160/-4g2VjV4-5aSLGrA.mp4",
       "original_post_url": "https://x.com/ExaAILabs/status/2066946215250690228"
+    },
+    {
+      "id": "plv-framer-3",
+      "tweet_id": "2066939366568804508",
+      "slug": "framer-3",
+      "title": "Framer 3.0 — Agents, Branching, Community",
+      "product": "Framer",
+      "company": "Framer",
+      "category": "design",
+      "tags": [
+        "framer",
+        "design",
+        "agents",
+        "release"
+      ],
+      "published_at": "2026-06-16T17:42:01.000Z",
+      "duration_seconds": 75,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2066939268514426880/vid/avc1/1280x720/y75bLn4hRZ9Jo4W3.mp4?tag=14",
+      "original_post_url": "https://x.com/framer/status/2066939366568804508",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-bland-ai",
@@ -22702,6 +23541,27 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2057914866422185984/vid/avc1/1280x720/jbGCuxaGCvCif2f1.mp4",
       "original_post_url": "https://x.com/jlongster/status/2057915791450812748"
+    },
+    {
+      "id": "plv-cursor-sdk-composer-2-5",
+      "tweet_id": "2057913121558413770",
+      "slug": "cursor-sdk-composer-2-5",
+      "title": "Cursor SDK — build agents with Composer 2.5",
+      "product": "Cursor SDK",
+      "company": "Anysphere",
+      "category": "developer-tools",
+      "tags": [
+        "cursor",
+        "sdk",
+        "composer",
+        "agents"
+      ],
+      "published_at": "2026-05-22T19:54:57.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2057900439547592704/vid/avc1/1920x1080/2maqL_l4sBQhSQqO.mp4",
+      "original_post_url": "https://x.com/cursor_ai/status/2057913121558413770",
+      "last_changed_at": "2026-09-14T18:20:12.000Z"
     },
     {
       "id": "plv-synphony-launch",
