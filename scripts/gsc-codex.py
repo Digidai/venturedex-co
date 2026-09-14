@@ -241,10 +241,17 @@ def eligibility(rows, artifacts, url):
 
 def targets(args, rows):
     values = list(args.url or [])
+    automatic = bool(args.latest_daily or args.daily_date or args.latest_weekly or args.weekly_issue or args.retry_pending)
+    if values and automatic:
+        fail("Use either explicit URLs or automatic selectors, not both")
+    if not values and not automatic:
+        fail("Select exact URLs or a published-content/backlog selector")
     if args.latest_daily or args.daily_date:
+        if args.daily_date and dt.date.fromisoformat(args.daily_date).isoformat() != args.daily_date:
+            fail("daily-date must be YYYY-MM-DD")
         times = json.loads((ROOT / "content/timestamps.json").read_text())
         entries = {slug: value["published_at"][:10] for slug, value in times.items() if isinstance(value, dict) and "published_at" in value and (ROOT / "content/startups" / f"{slug}.json").is_file()}
-        date = args.daily_date or max(entries.values())
+        date = args.daily_date or max(entries.values(), default=None)
         values += [f"https://venturedex.co/startups/{slug}" for slug, published in entries.items() if published == date]
     if args.latest_weekly or args.weekly_issue:
         issues = [json.loads(path.read_text()) for path in (ROOT / "content/weekly").glob("[0-9]*.json")]
@@ -256,11 +263,13 @@ def targets(args, rows):
     if args.retry_pending:
         values += [row["url"] for row in rows if latest(rows, row["url"])["status"] == "retry_pending"]
     values = sorted(set(canonical(value) for value in values))
-    if not values or not 1 <= args.max_urls <= 10 or len(values) > args.max_urls:
-        fail("Select 1–10 exact targets; the cap never silently truncates")
+    if not 1 <= args.max_urls <= 10 or args.offset < 0:
+        fail("Plan page size must be 1–10 and offset must be nonnegative")
+    if not automatic and (len(values) > args.max_urls or args.offset):
+        fail("Explicit targets must fit one page; no explicit target is silently omitted")
     if args.expect_url and values != [canonical(args.expect_url)]:
         fail("Expected URL does not match the sole target")
-    return values
+    return values, automatic
 
 
 def validate_evidence(proof, expected_url, states, allow_stale=False):
@@ -337,8 +346,16 @@ def run(args):
         if args.artifact_dir.exists():
             exact_parent(args.artifact_dir / "placeholder")
         rows = rows_from(read_regular(args.history)) if args.history.exists() else []
-        selected = targets(args, rows)
-        return {"backend": "codex-iab", "read_only": True, "targets": [{"url": url, "status": eligibility(rows, args.artifact_dir, url)} for url in selected], "next": "Use CUA native iab; observe exact inspection; begin before ONE click; finish from fresh confirmation. See docs/automation/gsc-codex-browser.md"}
+        values, automatic = targets(args, rows)
+        # Auto plans are queue pages, not a publication limit. Preserve every
+        # status, but omit already-requested auto targets so the queue advances.
+        # Explicit URLs retain their status even when already requested.
+        statuses = [{"url": url, "status": eligibility(rows, args.artifact_dir, url)} for url in values]
+        skipped = sum(item["status"] == "already_requested" for item in statuses) if automatic else 0
+        pending = [item for item in statuses if item["status"] != "already_requested"] if automatic else statuses
+        selected = pending[args.offset:args.offset + args.max_urls]
+        end = args.offset + len(selected)
+        return {"backend": "codex-iab", "read_only": True, "total_targets": len(values), "already_requested_skipped": skipped, "pending_count": len(pending), "offset": args.offset, "remaining_after_page": max(0, len(pending) - end), "next_offset": end if end < len(pending) else None, "targets": selected, "next": "Queue snapshot only. Replan offset 0 after successful requests; use next_offset only to inspect an unchanged queue. Only ready targets may begin. Use CUA native iab and one durable intent per click. See docs/automation/gsc-codex-browser.md"}
     if args.command == "defer":
         url = canonical(args.url)
         reason = defer_reason(args.reason)
@@ -421,6 +438,7 @@ def main():
             sub.add_argument("--weekly-issue", type=int)
             sub.add_argument("--expect-url")
             sub.add_argument("--max-urls", type=int, default=10)
+            sub.add_argument("--offset", type=int, default=0, help="read-only page offset for automatic selectors; replan from zero after mutations")
         elif command == "defer":
             sub.add_argument("--url", required=True)
             sub.add_argument("--reason", required=True)

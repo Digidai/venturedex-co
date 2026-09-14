@@ -1,6 +1,6 @@
 # VentureDex Learning Log
 
-Append one entry per daily automation run. Do not rewrite old entries.
+Append material lessons, policy changes and corrections; write routine final run receipts to automation memory. Do not rewrite old entries. The current protocol is `venturedex-feedback-loop.md`, not a historical score or policy claim below.
 
 ## Entry Template
 
@@ -25,7 +25,7 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - pushed_branch: n/a
 - ci_deploy: not_checked|pass|fail|n/a
 - failure_tags: [none]
-- reward: 0
+- reward: n/a (retired 2026-09-14; report quality, release, follow-up and cost separately)
 - dominant_failure_mode: none
 - proposed_change: none
 - decision: none
@@ -5423,3 +5423,18 @@ Append one entry per daily automation run. Do not rewrite old entries.
 - decision: publish the seven-pick issue, preserve every vendor claim boundary, leave Newsletter to the normal delayed Cron, and retain GSC as unresolved rather than misreporting requested or indexed.
 - affected_file: `content/weekly/14.json`, this append-only learning log, external run evidence, the central GSC ledger/artifacts, automation memory, and guarded worktree registration.
 - affected_section: exact-origin preflight, issue allocation, source-bound Weekly analysis, full release gate, exact-SHA deployment, live verification, IndexNow boundary, GSC transaction safety, passive Newsletter handling, and guarded closeout.
+
+### 2026-09-14 17:50 CST — Human-authorized throughput policy repair and closeout correction
+
+- scope: user explicitly requested assessment and optimization of the one-cycle/five-publication boundary and similar unreasonable rules. This is policy/code maintenance, not another discovery or publication run.
+- correction_of: the earlier 2026-09-14 16:01 CST Daily closeout audit and its 17:01 CST automation-memory counterpart. The original user message at 2026-09-13 09:49:40 UTC explicitly said “把剩余的全部都处理完，不要等 daily”; the seven-batch catch-up was human-authorized. Withdraw the claim that publishing 30 profiles itself breached governance.
+- corrected_accounting: seven manifests contain 70 historical observations of 40 unique companies. Current effective states for that task are accepted 30, quality_rejected 4, policy_excluded 5, publication_blocked 1, and zero in the other four states. The earlier 26 qualified_pending count added obsolete repeated snapshots; current global qualified_pending is zero. No historical manifest, review, image or rejection row was rewritten.
+- release_evidence: rechecked successful exact-SHA Deploy 34757859867 for content 1de99733b839570ca3c55b18c7acb5898020b4a1 and Validate 34824533094 / Deploy 34825141483 for 59f4352cc931e8c42812d441f0e5fdee3b30d48b. The new read-only helper proves all 139 task-changed paths from base e914ea22fc5c8442c2e15eeced50ea33aed5a761 through content 1de99733 remain unchanged in deployed successor 59f4352. It intentionally refuses byte-equivalence for log-only 088745f6 because the successor appended Weekly evidence to that same file (30 additions, zero deletions); do not present that refusal as a content-release failure.
+- changes: removed hard intake/publication/review/history ceilings; retained immutable scoped batches, complete unique accounting and actual-budget stops. Added transparent GSC queue paging, truthful screenshot second-pass mode, research-only bootstrap, strict successor Git coverage proof, and unique current-state summary. Split core publication from indexing/mail/transport follow-ups, removed self-perpetuating receipt-only deployment and arbitrary reward penalties, and aligned governing docs plus planned saved prompts.
+- quality_boundaries: original financing/product research, official assets, all six exact-hash screenshot checks, source dates, active-owner CAS, non-force Git, exact actual-release validation, serialized deployment, remote-data guards, click-once GSC and delayed/idempotent newsletter remain. A second-pass operator is not independent; the ledger must say so.
+- verification: initial focused suite passed 59/59; expanded focused ops/summary checks passed. Final full local gate passed on the integrated 2fb5012 base: zero dependency vulnerabilities, 347/347 startups, 2,120 URL checks, 637/637 tests, zero Astro diagnostics across 181 files, 347 screenshots, 318 researched investors, production build and 3,151-link navigation verification. The 169 existing editorial/source warnings were retained, not hidden. Final commit/CI/deploy/config readback receipts belong in automation memory, not a second docs-only release.
+- gsc_newsletter: this task made no GSC click, defer, request or newsletter mutation. Prior 30 Daily never-clicked targets remain external follow-up; the global retry queue contains other tasks and must not be confused with this batch.
+- reward: n/a (retired). The earlier -6 is preserved as historical text, not a valid current quality score.
+- decision: applied under explicit human authority; prior failed governance/accounting conclusions superseded by the evidence above. Correct terminal routing only through normal lease/CAS after durable correction and cleanup verification.
+- affected_files: content standards/task book, curation/GSC/bootstrap/screenshot helpers and tests, release-coverage helper/tests, Daily/Weekly shared automation protocols and prompts.
+- audit: docs/research/2026-09-14-automation-policy-review.md; operational contract: docs/automation/throughput-and-completion.md.

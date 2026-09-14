@@ -65,14 +65,19 @@ export function reviewErrors(review, image, startup, baseline) {
   if (!['codex-iab', 'historical-reviewed'].includes(review.capture_method)) errors.push('invalid capture_method');
   if (review.capture_method === 'historical-reviewed' && (!startup?.slug || !baseline?.assets
     || !own(baseline.assets, startup.slug) || baseline.assets[startup.slug] !== image.sha256)) {
-    errors.push('historical-reviewed is restricted to the frozen original slug and SHA-256; changed/new captures require codex-iab independent review');
+    errors.push('historical-reviewed is restricted to the frozen original slug and SHA-256; changed/new captures require codex-iab final review');
   }
   if (review.capture_method === 'codex-iab') {
     if (image.width / image.height > 2.1) errors.push('native capture aspect ratio must not exceed 2.1; recapture a readable desktop viewport');
     if (typeof review.capture_operator !== 'string' || review.capture_operator.trim().length < 3 || review.capture_operator.length > 200 || /[\u0000-\u001f\u007f]/.test(review.capture_operator)) {
-      errors.push('native capture_operator required for independent review');
-    } else if (review.capture_operator.trim().toLowerCase() === String(review.reviewer).trim().toLowerCase()) {
-      errors.push('native capture_operator and final reviewer must be different');
+      errors.push('native capture_operator required for final review');
+    } else {
+      const sameOperator = review.capture_operator.trim().toLowerCase() === String(review.reviewer).trim().toLowerCase();
+      const mode = review.review_mode ?? 'independent';
+      if (!['independent', 'second-pass'].includes(mode)) errors.push('review_mode must be independent or second-pass');
+      if (sameOperator && mode !== 'second-pass') errors.push('same operator must explicitly attest second-pass review, never claim independent review');
+      if (!sameOperator && mode === 'second-pass') errors.push('second-pass review must retain the actual capture operator identity');
+      if (mode === 'second-pass' && (typeof review.notes !== 'string' || review.notes.trim().length < 60)) errors.push('second-pass notes must describe observed final-asset and rendering evidence in at least 60 characters');
     }
   }
   if (typeof review.reviewed_at !== 'string' || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{3})?Z$/.test(review.reviewed_at)
@@ -147,7 +152,7 @@ export async function validateCatalog(root = ROOT) {
 
 function approveOptions(args) {
   const values = {};
-  const accepted = new Set(['--sha256', '--source-url', '--capture-method', '--capture-operator', '--reviewer', '--notes', ...CHECKS.map(key => `--${key}`)]);
+  const accepted = new Set(['--sha256', '--source-url', '--capture-method', '--capture-operator', '--review-mode', '--reviewer', '--notes', ...CHECKS.map(key => `--${key}`)]);
   while (args.length) {
     const key = args.shift();
     if (!accepted.has(key) || own(values, key)) throw new Error(`Unknown or duplicate option: ${key}`);
@@ -174,6 +179,7 @@ export async function approve(slug, args, root = ROOT) {
     sha256: image.sha256, width: image.width, height: image.height,
     source_url: values['--source-url'], capture_method: values['--capture-method'],
     ...(values['--capture-operator'] ? { capture_operator: values['--capture-operator'] } : {}),
+    ...(values['--review-mode'] ? { review_mode: values['--review-mode'] } : {}),
     reviewed_at: new Date().toISOString(), reviewer: values['--reviewer'],
     checks: Object.fromEntries(CHECKS.map(key => [key, values[`--${key}`]])), notes: values['--notes'],
   };
@@ -221,8 +227,8 @@ async function main() {
     const review = await approve(slug, args);
     console.log(`Approved reviewer attestation for ${slug} at SHA-256 ${review.sha256}. Any changed pixels invalidate this record.`);
   } else if (command === '--help' || command === '-h') {
-    console.log('Offline screenshot gate: validate | inspect <slug> | approve <slug> --sha256 HASH --source-url URL --capture-method codex-iab|historical-reviewed --capture-operator CAPTURER --reviewer REVIEWER --notes "specific observed evidence" --loaded --unobstructed --legible --framing --card --detail');
-    console.log('Native captures require different capture-operator and reviewer attestations. Historical captures may omit capture-operator only when the exact slug and SHA-256 match the frozen original baseline. Changed/new images cannot claim historical status. These are review records, not authenticated identities or automatic proof of visual quality/browser provenance.');
+    console.log('Offline screenshot gate: validate | inspect <slug> | approve <slug> --sha256 HASH --source-url URL --capture-method codex-iab|historical-reviewed --capture-operator CAPTURER --review-mode independent|second-pass --reviewer REVIEWER --notes "specific observed evidence" --loaded --unobstructed --legible --framing --card --detail');
+    console.log('Prefer genuine independent review; a single operator must explicitly record second-pass review after inspecting the final asset and renderings. Historical captures may omit capture-operator only for the exact frozen slug and SHA-256. These records do not authenticate identities or automatically prove visual quality/browser provenance.');
   } else throw new Error('Use --help. Unknown commands/options fail closed.');
 }
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Read-only, evidence-bound decision validation and bounded review planning.
+"""Read-only, evidence-bound decisions and resumable review-batch planning.
 
 This tool never searches, changes a decision, publishes content or writes state.
 The original rejection ledger remains an audit source, not a rejection quota.
@@ -23,7 +23,7 @@ REASONS = {
     "evidence_pending": {"governance_revisit", "funding_evidence_gap", "product_evidence_gap", "source_identity_gap", "identity_ambiguous"},
     "access_blocked": {"page_access"},
     "schema_deferred": {"unrepresentable_source_terms"},
-    "qualified_pending": {"publication_capacity"},
+    "qualified_pending": {"publication_capacity", "run_budget", "scheduled_release"},
     "publication_blocked": {"screenshot_review", "release_gate", "investor_research"},
     "quality_rejected": {"taste_failed", "no_product_evidence"},
     "policy_excluded": {"not_independent", "excluded_category", "outside_discovery_window", "late_stage_exception_failed"},
@@ -177,8 +177,8 @@ def validate_review(row, originals, startup_slugs, today):
     elif correction is not None:
         errors.append("identity_correction requires a frozen original rejection reference")
     attempts = row.get("attempts")
-    if not isinstance(attempts, list) or len(attempts) > 30:
-        errors.append("attempts must be a bounded history")
+    if not isinstance(attempts, list):
+        errors.append("attempts must be an ordered history; never discard prior evidence")
     else:
         previous = None
         for attempt in attempts:
@@ -202,18 +202,21 @@ def validate_review(row, originals, startup_slugs, today):
 
 def validate_manifest(data, startup_slugs, today=None, review_slugs=None):
     errors = []
-    if not isinstance(data, dict) or set(data) != {"schema_version", "run_id", "locked_at", "pool_sha256", "source_coverage", "candidates"} or data.get("schema_version") != 1:
+    required_fields = {"schema_version", "run_id", "locked_at", "pool_sha256", "source_coverage", "candidates"}
+    if not isinstance(data, dict) or required_fields - set(data) or set(data) - required_fields - {"task_run_id"} or data.get("schema_version") != 1:
         return ["invalid fixed-pool manifest fields/version"]
     if not re.fullmatch(r"venturedex-daily-\d{8}T\d{6}Z", str(data.get("run_id", ""))):
         errors.append("invalid run_id")
+    if "task_run_id" in data and not re.fullmatch(r"venturedex-daily-\d{8}T\d{6}Z", str(data["task_run_id"])):
+        errors.append("invalid task_run_id; batches must link to their durable task")
     today = today or date.today()
     locked = calendar(data.get("locked_at"))
     if not locked or locked > today:
         errors.append("invalid locked_at")
     candidates = data.get("candidates")
-    if not isinstance(candidates, list) or not 10 <= len(candidates) <= 20:
-        return errors + ["fixed pool must contain 10-20 unique candidates including carry-over reviews"]
-    identities, slugs, accepted = [], set(), 0
+    if not isinstance(candidates, list):
+        return errors + ["fixed pool candidates must be a list; no intake or publication quota applies"]
+    identities, slugs = [], set()
     for candidate in candidates:
         required = {"slug", "company_url", "source_url", "source_type", "announced_at", "region", "industry", "state", "reason", "discovery_mode"}
         if not isinstance(candidate, dict) or required - set(candidate) or set(candidate) - required - {"evaluation"}:
@@ -245,27 +248,21 @@ def validate_manifest(data, startup_slugs, today=None, review_slugs=None):
         if not nonempty(candidate["region"]) or not nonempty(candidate["industry"]):
             errors.append(f"{slug}: record source coverage; use undisclosed rather than guessing")
         if candidate["state"] == "accepted":
-            accepted += 1
             if slug not in startup_slugs:
                 errors.append(f"{slug}: accepted candidate has no startup record")
         identities.append({key: candidate[key] for key in ["slug", "company_url", "source_url"]})
     expected = digest(json.dumps(identities, sort_keys=True, separators=(",", ":"), ensure_ascii=False))
     if data.get("pool_sha256") != expected:
         errors.append("fixed-pool identity hash mismatch")
-    if accepted > 5:
-        errors.append("at most five accepted additions per fixed pool; preserve qualified overflow")
     coverage = data.get("source_coverage")
-    if not isinstance(coverage, list) or len(coverage) < 3:
-        errors.append("record at least three complementary source-family search attempts, including no-results")
+    if not isinstance(coverage, list):
+        errors.append("source_coverage must record actual search attempts")
     else:
-        types = set()
         for item in coverage:
             if not isinstance(item, dict) or set(item) != {"type", "query", "outcome"} or not member(item["type"], SOURCE_TYPES) or not nonempty(item["query"], 5) or not nonempty(item["outcome"], 10):
                 errors.append("invalid source coverage attempt")
-            else:
-                types.add(item["type"])
-        if len(types - {"discovery"}) < 3:
-            errors.append("aggregator-only discovery is not complementary source coverage")
+        if not coverage and (not candidates or any(isinstance(item, dict) and item.get("discovery_mode") == "fresh" for item in candidates)):
+            errors.append("fresh discovery or an empty-search outcome requires actual source coverage, including no-results")
     return errors
 
 
@@ -291,20 +288,38 @@ def load_reviews(root=ROOT, today=None):
     return data["reviews"]
 
 
-def review_plan(reviews, today, limit=3):
-    if type(limit) is not int or not 1 <= limit <= 5:
-        raise ValueError("review limit must be 1-5; reviews share the fixed pool and five-addition ceiling")
+def review_plan(reviews, today, limit=10):
+    if limit is not None and (type(limit) is not int or limit < 1):
+        raise ValueError("review limit must be positive, or use --all for a full read-only snapshot")
     due = [row for row in reviews if row["state"] in PENDING and calendar(row["next_review_at"]) <= today]
     due.sort(key=lambda row: (row["priority"], row["next_review_at"], row["slug"]))
-    return {"as_of": today.isoformat(), "due_count": len(due), "selected": due[:limit], "remaining_due": max(0, len(due) - limit), "authorization": "Re-review only inside the next fixed pool; not automatic acceptance, discovery or publishing."}
+    selected = due if limit is None else due[:limit]
+    return {"as_of": today.isoformat(), "due_count": len(due), "oldest_due_date": min((row["next_review_at"] for row in due), default=None), "selected": selected, "remaining_due": len(due) - len(selected), "authorization": "Read-only review batch, not automatic acceptance, discovery or publishing. Continue within the task scope and remaining budget."}
+
+
+def task_summary(manifests, reviews):
+    """Current effective dispositions, not the sum of historical observations."""
+    effective, observations = {}, 0
+    for manifest in sorted(manifests, key=lambda item: (item["locked_at"], item["run_id"])):
+        for candidate in manifest["candidates"]:
+            observations += 1
+            effective[candidate["slug"]] = candidate["state"]
+    for review in reviews:
+        if review["slug"] in effective:
+            effective[review["slug"]] = review["state"]
+    counts = {state: sum(value == state for value in effective.values()) for state in sorted(STATES)}
+    return {"read_only": True, "basis": "current validated overlay over dated historical batch snapshots", "manifest_count": len(manifests), "candidate_observations": observations, "unique_candidates": len(effective), "repeated_observations": observations - len(effective), "decision_states": counts, "accepted_slugs": sorted(slug for slug, state in effective.items() if state == "accepted")}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["validate", "plan", "lookup"])
+    parser.add_argument("command", choices=["validate", "plan", "lookup", "summary"])
     parser.add_argument("--today", default=date.today().isoformat())
-    parser.add_argument("--limit", type=int, default=3)
+    selection = parser.add_mutually_exclusive_group()
+    selection.add_argument("--limit", type=int, default=10)
+    selection.add_argument("--all", action="store_true", help="include every due review; read-only, never auto-publish")
     parser.add_argument("--slug")
+    parser.add_argument("--run-id", action="append", help="exact manifest run ID; repeat for a historical multi-batch task summary")
     args = parser.parse_args()
     today = calendar(args.today)
     if not today:
@@ -321,7 +336,12 @@ def main():
             "rejection_quota": None,
         }
     elif args.command == "plan":
-        result = review_plan(reviews, today, args.limit)
+        result = review_plan(reviews, today, None if args.all else args.limit)
+    elif args.command == "summary":
+        if not args.run_id or any(not re.fullmatch(r"venturedex-daily-\d{8}T\d{6}Z", value) for value in args.run_id):
+            parser.error("summary requires exact --run-id values for the selected batch manifests")
+        manifests = [json.loads((ROOT / "content/curation-runs" / f"{value}.json").read_text()) for value in sorted(set(args.run_id))]
+        result = {"as_of": today.isoformat(), **task_summary(manifests, reviews)}
     else:
         if not args.slug or not SLUG.fullmatch(args.slug):
             parser.error("lookup requires a canonical --slug")

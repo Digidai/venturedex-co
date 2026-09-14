@@ -4,13 +4,15 @@ This file is the operational contract for the daily Codex curation run.
 
 ## Precedence
 
-Editorial authority comes from:
+The latest explicit human task instruction sets scope above scheduled defaults; it does not waive evidence or safety gates. Editorial authority comes from:
 
 1. `content/STANDARD.md`
 2. `content/CODEX_TASK.md`
 3. this file
 
 If this file conflicts with the first two, this file is wrong.
+
+Use [throughput and completion](throughput-and-completion.md) for finite multi-batch scope, measured budgets, successor-release evidence and separate publication/indexing/operations outcomes.
 
 ## Immutable Guards
 
@@ -32,14 +34,14 @@ Automation must never rewrite this section.
 - Before creating a new worktree or starting discovery, inspect the durable run-state file at `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered VentureDex Daily worktrees, active processes, and recent `origin/main` commits. If exactly one interrupted run is recoverable, resume that run at its last evidenced phase and do not start a second curation cycle. If ownership is ambiguous, stop and report every exact path instead of guessing.
 - Create or enter a detached Daily worktree at the exact current `origin/main` SHA, record it as `RUN_WORKTREE`, and keep the main checkout read-only even when it is dirty, ahead, or behind.
 - Before bootstrap or discovery, run `python3 scripts/automation-run-state.py acquire --run-id "$RUN_ID"` in the selected worktree and retain the returned lease epoch and checkpoint revision. `CODEX_THREAD_ID` is the normal owner identity and only its one-way fingerprint is persisted. Do not use a run id, PID, or invented shared value as an owner fallback. An active different-owner lease is a hard blocker. A stale lease may be taken over only for the same run id, with its exact expected epoch, after the six-hour stale threshold and read-only evidence show that no matching actor is still mutating the recorded worktree.
-- Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` inside that detached worktree before discovery. Bootstrap failure is a hard stop; do not continue with a rejected-only or no-op fallback.
-- If fetch, worktree creation, pull, rebase, or conflict resolution fails, stop.
+- Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` in the selected worktree before publishing work. If only production credentials, Actions or npm availability blocks it, `./scripts/bootstrap-automation.sh venturedex-daily-curator --research-only` can establish the local research preflight. Record research-only mode and the publish blocker; source/decision work may continue within the frozen scope, but full bootstrap and release gates must pass before publishing. Never fabricate a rejection/no-op to hide a broken dependency. Ownership, invalid repository or content-integrity failures still stop work.
+- If fetch or worktree creation fails, stop affected work. A non-fast-forward push requires inspecting new commits; a clean rebase in the owned worktree is allowed with revalidation. Conflicts or ambiguous ownership must not be guessed through.
 - If unrelated dirty files exist in the selected Daily worktree at run start, stop. Unrelated dirtiness in the main checkout must be preserved and reported, not cleaned or ported automatically.
 - Never force-push.
 
 ### Content Safety
 
-- Run `npm run curation:plan` and select at most three due reviews, then fill one fixed pool of 10-20 unique companies using funding announcements from the last 30 days. Reviews and fresh candidates share this bound. Search at least three complementary non-aggregator source families, recording queries and no-results; avoid language/currency/US-media-only selection. Follow `curation-decisions.md`, save the identity-hashed pool before evaluation, and never expand it to manufacture negative decisions.
+- Run `npm run curation:plan` (`--all` for the full due snapshot), freeze the task scope, and process unique candidates in identity-hashed batches. Batch size 10–20 and three complementary source families are guidance, not gates. No minimum candidate count, publication cap or three-review cutoff applies. Fresh discovery uses the last 30 days; catch-up needs no filler discovery. Record actual queries/no-results and avoid language/currency/US-media-only selection. Follow `curation-decisions.md` and never expand scope to manufacture counts.
 - Respect all F1-F4 filters from `content/CODEX_TASK.md`.
 - Respect the taste standard in `content/STANDARD.md`.
 - Treat F1 as product evaluability, not mandatory no-login self-serve access; for ToB, API, infrastructure, regulated, medical, or defense products, public docs, SDKs, API references, demos, real UI screenshots, benchmarks, pricing/usage pages, and customer workflows can satisfy product evidence.
@@ -54,9 +56,9 @@ Automation must never rewrite this section.
 - Do not use Google favicon, third-party logo APIs, or aggregator assets.
 - If the official site, official ATS page, or clearly official company jobs page exposes a Careers/Jobs/Open Roles entry, record it as `links.careers`. Do not scrape job lists, role counts, locations, salaries, or hiring claims into startup records.
 - Consult the validated review overlay before the historical rejection ledger. Revisit only on a documented funding/product/company/governance trigger or a due pending review, within the same fixed pool. Preserve historical rows and hashes; append actual attempts, not inferred research. Access failures, missing evidence, format limitations and publication blocks are separate pending states. Industry-appropriate product evidence, not landing-page polish or self-serve access, determines craft.
-- Accept every startup that clears the bar in this run, up to 5 additions.
-- No rejection-count, rejection-ratio or acceptance-rate target applies. Keep every qualified overflow as `qualified_pending`; retain publication blockers as `publication_blocked`, never relabel them as low quality.
-- Treat the 5-addition cap as a ceiling, not a quota.
+- Accept every selected startup that clears the bar and fits the real remaining execution budget, across as many linked batches as needed.
+- No rejection-count, rejection-ratio or acceptance-rate target applies. Only actual resource or scheduled-release constraints justify `qualified_pending`; retain dependency blockers as `publication_blocked`, never relabel them as low quality.
+- A batch boundary is a checkpoint, not an automatic stop; a single active lease still prevents concurrent writers.
 - A clean no-op run is valid.
 
 ### File Scope
@@ -71,7 +73,7 @@ Allowed persistent content changes:
 - `content/screenshot-reviews.json`
 - `content/rejected.jsonl` (confirmed negative decisions only; preserve existing rows)
 - `content/curation-reviews.json` (run-scoped decisions and due reviews)
-- `content/curation-runs/{run_id}.json` (the single fixed-pool manifest)
+- `content/curation-runs/{run_id}.json` (each immutable batch manifest, linked by `task_run_id`)
 - `public/logos/companies/{slug}.*`
 - `public/logos/investors/{slug}.*`
 - `public/screenshots/{slug}.webp`
@@ -83,7 +85,7 @@ Allowed persistent automation-doc changes, but only under feedback-loop gates:
 
 ### Validation and Publish Gates
 
-Before commit and push, all must pass:
+Before a final content/code commit and push, all must pass on its actual inputs:
 
 - `./scripts/check-github-actions.sh`
 - `./scripts/manage.sh validate`
@@ -92,6 +94,8 @@ Before commit and push, all must pass:
 `./scripts/manage.sh validate` is the current full local gate. It runs the high-severity dependency audit, content validation, deterministic D1 seed generation, newsletter/unit tests, Astro sync, TypeScript checking, and the Astro build. Ordinary validation writes its seed to a run-owned temporary directory so interruption cannot dirty or overwrite tracked `d1/generated-seed.sql`; the release path explicitly regenerates and locks the tracked seed. A normal validation run that changes the tracked seed is therefore a blocker to investigate, not expected cleanup work.
 
 If screenshot generation fails, do not keep a half-complete startup addition.
+
+Use focused checks while editing and one final complete gate per final input state. A receipt-only external memory update does not invalidate checks or require a docs-only production release. For concurrency supersession, keep exact-release validation and use `verify-release-coverage.py` plus successful successor CI/deploy/live evidence as specified in `throughput-and-completion.md`; never label a canceled ancestor job successful.
 
 ### Error Investigation Loop
 
@@ -141,9 +145,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 6. Inspect `$CODEX_HOME/automations/venturedex-daily-curator/run-state.md`, registered Daily worktrees, active processes, recent commits, and the central GSC ledger. Resume one recoverable interrupted run before considering a new cycle; stop on ambiguous ownership.
 7. Sync the Git refs with `origin/main` without modifying the main checkout.
 8. Create or enter a detached worktree at exact `origin/main`, record `RUN_WORKTREE`, and verify that selected worktree is clean. Acquire or renew the run lease for the exact `RUN_ID`, then atomically write the `preflight` checkpoint with the returned epoch/revision. Stop on an active-owner conflict; stale takeover must preserve the run id and pass the evidence rules above.
-9. Run `./scripts/bootstrap-automation.sh venturedex-daily-curator` in `RUN_WORKTREE`. Stop immediately on failure and persist the exact blocker; discovery must not begin.
-10. Select at most three due reviews with `curation:plan`, then discover enough recent-funding companies for one pool of 10-20 unique candidates. Record at least three complementary source-family attempts.
-11. Deduplicate against startups and `curation:lookup` (validated overlay before legacy/v2 history). Save `content/curation-runs/{run_id}.json` with fixed identities and pool hash before screening. A resumed run uses its existing pool, not a new cycle.
+9. Run the full bootstrap, or explicitly use the research-only preflight when only publishing dependencies are unavailable. Persist mode and exact dependency blocker; research-only never satisfies publication gates.
+10. Select the finite due-review/fresh-discovery scope (or human-requested backlog), record actual coverage and available execution budget, and reserve closeout time. Do not fill an arbitrary candidate minimum.
+11. Deduplicate against startups, `curation:lookup` and earlier task batches. Save each batch manifest with immutable identities/hash and `task_run_id` before screening. Resume the first unfinished batch instead of restarting discovery. Continue subsequent linked batches within scope/resources; carry their complete dispositions into the durable receipt.
 12. Run F1-F4 screening and record explicit outcomes in the manifest and review overlay. Pending evidence/access/schema/qualification/publication is not rejection. Append a v2 historical row only for a confirmed quality or policy negative decision. Preserve any prior row and bind the overlay to its exact hash.
 13. Evaluate the product through direct trial when available, or through public product evidence for gated ToB/API/infrastructure products, using task-owned Codex in-app browser tabs through the CUA browser tool when browser interaction is needed.
 14. Write structured `research` for every accepted startup:
@@ -158,9 +162,9 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 16. Verify funding facts against the source article, including the exact lead-investor naming used in the article.
 17. Cross-validate the lead investor against any existing directory entry and the official investor website; then verify company and investor logos against official sources, add any missing investor directory entry to `content/investors.json`, and update `content/brand-assets.json`. Follow `docs/automation/investor-research.md` for all named participants and leads: plan the deduplicated associated scope, skip profiles reviewed less than 90 days ago, research missing/stale/materially changed profiles, and record failed attempts without refreshing verified dates. New investors need a sourced profile; do not expand the legacy exemption. No disclosed lead means `undisclosed`, not an invented name or a new F3 failure.
 18. Add or confirm a `content/timestamps.json` entry for every newly accepted slug before validation. Use UTC `YYYY-MM-DD HH:MM:SS` for both `published_at` and `first_seen_at` unless a live D1 export gives a more exact value.
-19. Add every startup that clears the bar in this run, up to 5 additions; never force-fill the cap. Persist the `content_prepared` checkpoint before the full gate.
+19. Add every selected startup that clears all gates and fits actual remaining resources; record genuine unfinished reasons. Persist `content_prepared` before the full gate.
 20. If any required step fails, enter the Error Investigation Loop before stopping or deferring.
-21. Capture a stable desktop product viewport through the run-owned Codex in-app browser tab (at least 1280x720, default zoom; no full-page image). Visually review the source and import with `./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed`. This creates an UNREVIEWED final WebP without upscaling, crop, or padding. Follow `docs/automation/screenshot-quality.md`: an independent reviewer checks the final asset, card, and detail rendering, then explicitly records all six checks with `screenshot-quality.mjs approve` bound to the inspected SHA-256. Commit `content/screenshot-reviews.json` together with the image. Missing/stale approval blocks both validation and build; `--reviewed` alone is never publication approval. Static asset publication does not use R2 upload.
+21. Capture a stable desktop product viewport through the run-owned Codex in-app browser tab (at least 1280x720, default zoom; no full-page image). Inspect the source and import with `./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed`. This creates an UNREVIEWED final WebP without upscaling, crop, or padding. Follow `screenshot-quality.md`: inspect the final asset, actual card/detail and narrow layout, then explicitly record all six checks bound to its SHA-256. Prefer genuine independent review; a single operator must separately perform and explicitly record `second-pass`, retaining the same identity. Never invent another reviewer. Commit the review ledger with the image; missing/stale approval blocks validation/build. Import success alone is not approval, and publication does not use R2.
 22. Run the GitHub Actions preflight and the full local validation gate, then persist `local_gates_passed`.
 23. Perform the review passes.
 24. Apply a heuristic update only if the feedback-loop gate permits it.
@@ -183,11 +187,13 @@ If screenshot generation fails, do not keep a half-complete startup addition.
    If authentication/browser access blocks before `begin`, or quota stops the batch, preserve each remaining never-clicked exact URL with `python3 scripts/gsc-codex.py defer --url URL --reason "observed blocker; target never clicked"`. This writes only a guarded `retry_pending` row, without browser actions, live checks, or click authorization. Use a non-sensitive single-line reason of at most 500 characters. Property-wide quota cooldown permits deferring the remaining unclicked targets, but never use `defer` on the clicked quota target or to reset requested, pending, unknown, orphan-intent, or legacy-reconciliation states.
 
    An unresolved durable click intent or `post_request_confirmation_unknown` is not retryable through that backlog, even if the CUA handle or response stream disappears. If an immutable receipt exists but its ledger append was interrupted, `python3 scripts/gsc-codex.py recover --attempt ID` validates and replays only that original receipt without browser actions or new evidence; its observation may be older than five minutes. The same attempt must still own `request_click_pending`, or already have the matching terminal row for a no-op recovery. Unknown receipts remain unknown and never authorize another click. An original pending attempt without a receipt may finish from a valid fresh same-tab/same-route result; terminal unknowns cannot be upgraded from a new observation. See [Codex GSC browser protocol](gsc-codex-browser.md). Never invoke the old browser submitter as a recovery fallback.
-28. Append the learning-log entry and update automation memory from the final evidence. Keep content and docs commits separate and persist the resulting docs SHA when one is pushed.
+28. Write the final per-run receipt and time to automation memory. Append a versioned learning entry only for a material lesson or correction; include known evidence before the scoped commit, then keep final SHA/CI/live receipts externally. Do not create a docs-only deploy merely to report a prior deploy.
 29. Open an inbox item summarizing the full run, including any transport interruption and the exact recovery phase.
 30. Close only the Codex in-app browser tabs created by this run; leave user tabs and all other browser processes untouched. After commit/push, deploy/GSC evidence, learning log, automation memory, and inbox evidence are durable, persist an `active` `closeout` checkpoint, switch back to the main checkout, and run guarded cleanup for exact `RUN_WORKTREE`. Only after the path is absent and unregistered may the same owner atomically checkpoint `complete` and release the lease with the exact epoch/revision. Because the run worktree is then gone, load the helper from the exact pushed Git SHA rather than from the stale main checkout; first verify that blob exists and fail closed if it cannot be executed. Never mark complete before cleanup or leave an authority-file mismatch unreported.
 
-   A failed run whose only remaining repository change is `docs/automation/venturedex-learning-log.md` uses a separate terminal-evidence closeout. First checkpoint `blocked/closeout` and release the exact lease; persist automation memory and inbox evidence; then prove no exact matching process remains. From the main checkout, dry-run `bash scripts/archive-automation-worktree-evidence.sh --path "$RUN_WORKTREE"`, retain its printed HEAD/status digest, and execute with both exact CAS values. Verify the resulting external bundle and manifest before invoking `cleanup-automation-worktrees.sh` without `--force-dirty`. Keep the historical checkpoint terminal `blocked`; do not reacquire merely to relabel an unsuccessful run complete. If any other path is dirty, the lease is active, authority does not own the exact path, or the archive/helper CAS changes, preserve the worktree and report the exact blocker.
+   A failed run whose only remaining repository change is `docs/automation/venturedex-learning-log.md` uses a separate terminal-evidence closeout. First checkpoint `blocked/closeout` and release the exact lease; persist automation memory and inbox evidence; then prove no exact matching process remains. From the main checkout, dry-run `bash scripts/archive-automation-worktree-evidence.sh --path "$RUN_WORKTREE"`, retain its printed HEAD/status digest, and execute with both exact CAS values. Verify the resulting external bundle and manifest before ordinary non-force cleanup. Do not relabel truly unfinished work complete. If a prior classification is disproved by verified human authority/release evidence, append a correction before any normal lease/CAS terminal update. If any other path is dirty, the lease is active, authority does not own the exact path, or helper CAS changes, preserve the worktree and report the exact blocker.
+
+   Complete with follow-up is valid when core curation/publication and safe cleanup are verified but GSC is durably pending or the newsletter is awaiting its normal delay. Report those separate outcomes explicitly. Missing successful live evidence or an actual content mismatch still blocks core completion. See `throughput-and-completion.md`.
 
 ## Review Passes
 
@@ -205,7 +211,7 @@ If screenshot generation fails, do not keep a half-complete startup addition.
 
 If only decision/review/manifest content changed and no company was published:
 
-`content: update rejected candidates`
+`content: update curation decisions`
 
 If one new startup was added:
 
@@ -217,7 +223,7 @@ Body:
 - `Rating: {N}/5`
 - `Bet: {one-sentence bet}`
 
-If two to five new startups were added:
+If multiple new startups were added:
 
 `content: add curated startups`
 
@@ -273,15 +279,15 @@ Automation may revise this section only when `docs/automation/venturedex-feedbac
 
 - Treat a justified no-op run as better than a weak addition.
 - Prefer an evidence-specific decision over any unsupported positive or negative conclusion.
-- Keep the locked 10-20-company pool and five-addition ceiling regardless of the observed acceptance rate; qualified overflow stays pending.
+- Keep each batch's identities and complete outcomes fixed while continuing within the task's finite scope and actual available resources; do not defer qualified items just because a count was reached.
 - Preflight local build dependencies before deep discovery work; if `./scripts/manage.sh validate` or its `npm run build` substep cannot resolve Astro in this detached automation worktree, restore `node_modules` first and only then continue.
-- Treat the mandatory bootstrap as the only pre-discovery environment gate. If credentials, GitHub Actions, dependencies, or another bootstrap check fail, stop immediately and persist the blocker; do not continue into discovery, rejected-only, or no-op work.
+- Match preflight dependencies to the phase: the explicit research-only bootstrap needs no credentials/npm/Actions. Full bootstrap and final release gates remain required before publishing; a publish dependency failure is not evidence of poor candidates.
 - When a run fails, prefer root-cause research plus one narrow evidence-backed iteration over broad speculative changes.
 - Before browser-based product trials, create a task-owned Codex in-app browser tab through the CUA browser tool and verify that the target page is readable. No daemon or CDP preflight is required. A browser-tool or page-access failure is a blocker to record, not permission to attach to a separate browser or mutate its lifecycle.
 - For TechCrunch WordPress API parsing, first extract date, title, excerpt, and link with simple `jq` fields; avoid shell-embedded entity rewrites for apostrophes or smart quotes unless a separate safe normalization step is required.
 - Keep the handles of Codex tabs created by this run and close only those tabs. After an interruption, verify ownership from current tool state before closing anything; do not reuse stale handles, infer ownership from a matching title, or close user tabs.
 - Retry screenshots only when the product itself is clearly valid and the failure is operational.
-- The screenshot importer never opens a browser. Capture through the Codex in-app browser, dismiss visible consent/chat overlays with normal UI actions, and visually review the source before passing `--from-codex /absolute/path/capture.png --reviewed`. Do not delete DOM layers or hide real product UI. The importer preserves ratio with no enlargement/padding; an independent final review must be recorded against the exact hash.
+- The screenshot importer never opens a browser. Capture through the Codex in-app browser, dismiss visible consent/chat overlays with normal UI actions, and inspect the source before passing `--from-codex /absolute/path/capture.png --reviewed`. Do not delete DOM layers or hide real product UI. Preserve ratio without enlargement/padding; record genuine independent or explicit second-pass final review against the exact hash.
 - Treat screenshot success as provisional until all six visual checks pass: if blank, mostly empty, stuck on animation/loading, illegible, or obscured by consent, recapture the nearest meaningful product section. A clear product section is allowed without the homepage hero. Do not confuse actual product UI with popups, and do not set unchecked approval flags to unblock publication.
 - For official investor brand assets on WordPress-hosted sites, prefer the site's declared favicon/apple-touch icon or another direct static asset from the same official host over a homepage/SVG wordmark when reachability has already failed or looks brittle; keep `source_page` and `source_url` on the official host so validator host matching still holds.
 - When immediate post-deploy smoke sees remote D1 or collection-index counts from the new release but stale root, news, or collection-detail counts, classify it as a propagation hypothesis rather than a deploy failure: first rerun independent smoke on both `workers.dev` and the custom domain, and only after both pass rerun the failed Deploy job at most once to restore green observable release evidence.

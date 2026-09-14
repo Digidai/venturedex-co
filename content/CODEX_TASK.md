@@ -8,7 +8,7 @@
 
 你的品味标准：偏爱做了明确赌注的产品，偏爱有工艺感的产品，偏爱解决具体问题的产品。对"正确但无趣"的产品没有兴趣。
 
-**核心边界：每轮固定 10-20 个唯一候选（含最多 3 个到期复审），最多发布 5 个。不设拒绝数、比例或收录数目标。**
+**核心边界：任务范围有限、每批身份锁定、每个项目逐项过门禁；不设候选最低数、发布最高数或拒绝配额。一次任务可连续处理多批，人工“全部处理完”的范围优先于定时默认值。** 预算、恢复和完成判定见 `docs/automation/throughput-and-completion.md`。
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### Step 1: 搜索融资新闻
 
-先运行 `npm run curation:plan` 选最多 3 个到期复审，再搜索近 30 天融资新闻补足同一固定池。按 `docs/automation/curation-decisions.md` 记录至少三类互补来源的查询与结果；覆盖公司/投资机构公告、原创、地区、行业或研究来源，不限英语或美元。聚合器只提供线索。下列仅为部分查询示例，不是来源白名单：
+先运行 `npm run curation:plan` 查看到期复审，可用 `--limit N` 或 `--all` 查看更大队列；按当前任务选择有限范围，再搜索近 30 天融资新闻。专项清理积压不必补新候选。按 `docs/automation/curation-decisions.md` 记录真实查询与结果；建议覆盖三类互补来源，不限英语或美元。聚合器只提供线索。10–20 是建议批大小而非门禁，少于十个也可完成。下列仅为部分查询示例，不是来源白名单：
 
 ```
 搜索查询:
@@ -278,7 +278,7 @@ N6: 去掉产品名，这段话本身值得读吗？
 ./scripts/screenshot.sh {slug} {url} --from-codex /absolute/path/capture.png --reviewed
 ```
 
-该命令只生成本地待验收 `public/screenshots/{slug}.webp`：保留比例、只向下缩放、不补白或放大，不启动其他浏览器、不上传 R2。采用至少 1280x720 的桌面视口，不能导入全页长图。然后按 `content/STANDARD.md` 4.6 / `docs/automation/screenshot-quality.md`，让独立复核者检查最终图片、卡片和详情展示，使用 `screenshot-quality.mjs approve` 将六项检查绑定最终 SHA-256；捕获操作者不能自批。审批清单 `content/screenshot-reviews.json` 和图片必须一起提交。`--reviewed` 不是最终审批，图片改动后旧审批失效。
+该命令只生成本地待验收 `public/screenshots/{slug}.webp`：保留比例、只向下缩放、不补白或放大，不启动其他浏览器、不上传 R2。采用至少 1280x720 的桌面视口，不能导入全页长图。然后按 `content/STANDARD.md` 4.6 / `docs/automation/screenshot-quality.md` 复核最终图片、卡片和详情展示，将六项检查绑定最终 SHA-256。优先真实独立复核；同一操作者必须另做二次复核、显式使用 `--review-mode second-pass` 并保留相同真实身份与具体证据。审批清单和图片必须一起提交。`--reviewed` 不是最终审批，图片改动后旧审批失效。
 
 ### Step 5: 验证和提交
 
@@ -289,7 +289,7 @@ git diff --check
 
 # 如果报错，修复后重试
 
-# 提交（单个新增用单项目 commit；2-5 个新增可在逐项通过门禁后批量 commit）
+# 提交（单个新增用单项目 commit；多个新增可在逐项通过门禁后批量 commit）
 git add content/startups/{slug}.json content/timestamps.json content/investors.json content/investor-profiles.json content/brand-assets.json content/screenshot-reviews.json public/logos/companies/ public/logos/investors/ public/screenshots/{slug}.webp content/rejected.jsonl content/curation-reviews.json content/curation-runs/{run_id}.json
 git commit -m "content: add {Product Name}
 
@@ -297,7 +297,7 @@ Funding: {amount} {stage} from {lead} ({source_name})
 Rating: {N}/5
 Bet: {一句话：这个产品做了什么赌注}"
 
-# 本次运行有 2-5 个新增时，可改用：
+# 本次运行有多个新增时，可改用：
 # git commit -m "content: add curated startups
 #
 # Count: {N} startups
@@ -387,7 +387,7 @@ python3 scripts/gsc-codex.py plan --latest-weekly
 2. 不收录没有 source_url 的融资
 3. 不收录自己没评估过的产品；不能直接试用的 ToB/API/基础设施产品必须有公开产品证据
 4. 不用禁用词列表里的任何词
-5. 每次最多收录 5 个
+5. 每个收录独立过门禁；不按数量停在第五个，不因批量提交省略评估
 6. 只允许内容资产范围内的修改：`content/startups/`、`content/weekly/`、`content/timestamps.json`、`content/investors.json`、`content/investor-profiles.json`、`content/brand-assets.json`、`content/screenshot-reviews.json`、`content/rejected.jsonl`、`content/curation-reviews.json`、`content/curation-runs/`、`public/screenshots/`、`public/logos/`
 7. 不重复收录（先查 content/startups/，再通过 curation:lookup 查有效复审及旧拒绝）
 8. 每个新增 startup 必须补齐 `research`；产品证据至少两条，且每条都引用已登记 source；融资事实只写在 `funding` 和 Funding source，不要伪装成产品证据。具名 Series D+ 还必须写证据绑定的 `research.breakout_exception`；`Unspecified` 轮次必须写 `research.unnamed_round_assessment`

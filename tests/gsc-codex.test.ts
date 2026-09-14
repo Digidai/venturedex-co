@@ -155,6 +155,54 @@ test("Codex GSC plan skips requested URLs and rejects post-click uncertainty", (
   }
 });
 
+test("Codex GSC plans a thirty-URL backlog in transparent read-only pages", () => {
+  const f = fixture();
+  try {
+    const urls = Array.from({ length: 30 }, (_, i) => `https://venturedex.co/startups/queue-${String(i).padStart(2, "0")}`);
+    const ledger = header + urls.map(url => `2026-08-01 12:00:00\tretry_pending\t${url}\tdeferred before any click\n`).join("");
+    writeFileSync(f.history, ledger);
+    const first = invoke(f, "plan", ["--retry-pending"]);
+    assert.equal(first.status, 0, first.stderr);
+    const page = JSON.parse(first.stdout);
+    assert.equal(page.total_targets, 30);
+    assert.equal(page.pending_count, 30);
+    assert.equal(page.remaining_after_page, 20);
+    assert.equal(page.next_offset, 10);
+    assert.deepEqual(page.targets.map((item: { url: string }) => item.url), urls.slice(0, 10));
+    const last = invoke(f, "plan", ["--retry-pending", "--offset", "20"]);
+    assert.equal(last.status, 0, last.stderr);
+    assert.equal(JSON.parse(last.stdout).next_offset, null);
+    assert.deepEqual(JSON.parse(last.stdout).targets.map((item: { url: string }) => item.url), urls.slice(20));
+    assert.equal(readFileSync(f.history, "utf8"), ledger);
+    assert.equal(existsSync(f.artifacts), false);
+    assert.equal(existsSync(`${f.history}.lock`), false);
+    const advanced = ledger + urls.slice(0, 10).map(url => `2026-08-02 12:00:00\trequested\t${url}\tfixture receipt\n`).join("");
+    writeFileSync(f.history, advanced);
+    const next = invoke(f, "plan", ["--retry-pending"]);
+    assert.equal(JSON.parse(next.stdout).total_targets, 20);
+    assert.deepEqual(JSON.parse(next.stdout).targets.map((item: { url: string }) => item.url), urls.slice(10, 20));
+    const explicit = invoke(f, "plan", urls.slice(0, 11).flatMap(url => ["--url", url]));
+    assert.equal(explicit.status, 2);
+    assert.match(explicit.stderr, /no explicit target is silently omitted/);
+    assert.equal(invoke(f, "plan", ["--retry-pending", "--offset", "-1"]).status, 2);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
+test("Codex GSC automatic selection handles an empty queue and never hides explicit expectations", () => {
+  const f = fixture();
+  try {
+    const empty = invoke(f, "plan", ["--retry-pending"]);
+    assert.equal(empty.status, 0, empty.stderr);
+    assert.deepEqual(JSON.parse(empty.stdout).targets, []);
+    assert.equal(JSON.parse(empty.stdout).total_targets, 0);
+    assert.equal(invoke(f, "plan", ["--retry-pending", "--expect-url", target]).status, 2);
+    assert.equal(invoke(f, "plan", ["--retry-pending", "--url", target]).status, 2);
+    assert.equal(invoke(f, "plan", ["--daily-date", "2026-02-30"]).status, 2);
+    assert.equal(invoke(f, "plan").status, 2);
+    assert.deepEqual(readdirSync(f.root), []);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
 test("Codex GSC begin persists intent and ledger before authorizing exactly one click", () => {
   const f = fixture();
   try {

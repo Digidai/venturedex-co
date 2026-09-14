@@ -20,8 +20,8 @@ function probe(expression: string, payload: unknown) {
 const review = () => ({ slug: "example", company_url: "https://example.com/", state: "evidence_pending", reason_code: "funding_evidence_gap", reason: "The source does not yet confirm the named round; retain for evidence review.", reviewed_at: "2026-09-09", next_review_at: "2026-09-10", priority: 2, sources: ["https://example.com/news"], attempts: [] });
 const evaluation = () => ({ rubric: "hardware", independent: true, funding_verified: true, product_evidence: [{ url: "https://example.com/specs", note: "The official specification documents the actual operating envelope." }, { url: "https://example.com/pilot", note: "The field demonstration shows the integration and operating workflow." }], taste: { bet: { pass: true, note: "A specific architecture trades maximum speed for reliable field endurance." }, craft: { pass: true, note: "The physical integration and test protocol provide inspectable craft evidence." }, specificity: { pass: false, note: "The first paying use case remains insufficiently specific in public materials." } } });
 const errors = (row: unknown, originals: unknown = {}, startups: string[] = []) => probe("c.validate_review(p['row'], p['originals'], set(p['startups']), date(2026,9,9))", { row, originals, startups }) as string[];
-function manifest() {
-  const candidates = Array.from({ length: 10 }, (_, i) => ({ slug: `company-${i}`, company_url: `https://company-${i}.com/`, source_url: `https://company-${i}.com/news`, source_type: "company", announced_at: "2026-09-08", region: "undisclosed", industry: "hardware", state: "evidence_pending", reason: "Product evidence is pending a documented follow-up review.", discovery_mode: "fresh" }));
+function manifest(count = 10) {
+  const candidates = Array.from({ length: count }, (_, i) => ({ slug: `company-${i}`, company_url: `https://company-${i}.com/`, source_url: `https://company-${i}.com/news`, source_type: "company", announced_at: "2026-09-08", region: "undisclosed", industry: "hardware", state: "evidence_pending", reason: "Product evidence is pending a documented follow-up review.", discovery_mode: "fresh" }));
   const identities = candidates.map(({ slug, company_url, source_url }) => ({ company_url, slug, source_url }));
   return { schema_version: 1, run_id: "venturedex-daily-20260909T054150Z", locked_at: "2026-09-09", pool_sha256: createHash("sha256").update(JSON.stringify(identities)).digest("hex"), source_coverage: ["company", "regional_media", "industry_media"].map(type => ({ type, query: `${type} funding announcements`, outcome: "Checked original sources; recorded candidate evidence." })), candidates };
 }
@@ -106,35 +106,75 @@ test("acceptance needs a real startup; pending cannot silently coexist with publ
   assert.deepEqual(errors(row, {}, ["example"]), []);
   assert.ok(errors(review(), {}, ["example"]).some(e => e.includes("unresolved")));
 });
-test("planner is deterministic, read-only and bounded by the shared pool", () => {
+test("planner is deterministic, read-only and exposes backlog without a publication cap", () => {
   const rows = [review(), { ...review(), slug: "priority", priority: 1 }, { ...review(), slug: "later", next_review_at: "2026-09-12" }];
   const plan = probe("c.review_plan(p, date(2026,9,10), 1)", rows);
   assert.equal(plan.due_count, 2);
   assert.equal(plan.selected[0].slug, "priority");
   assert.equal(plan.remaining_due, 1);
+  assert.equal(plan.oldest_due_date, "2026-09-10");
   assert.match(plan.authorization, /not automatic acceptance/);
+  const backlog = Array.from({ length: 35 }, (_, i) => ({ ...review(), slug: `pending-${i}` }));
+  assert.equal(probe("c.review_plan(p, date(2026,9,10), 25)", backlog).selected.length, 25);
+  assert.equal(probe("c.review_plan(p, date(2026,9,10), None)", backlog).remaining_due, 0);
+  assert.equal(probe("c.review_plan(p, date(2026,9,10))", []).oldest_due_date, null);
+  for (const limit of [0, -1, true, 1.5]) {
+    const result = spawnSync("python3", ["-c", `import sys;sys.path.insert(0,'scripts');import curation as c;from datetime import date;c.review_plan([], date.today(), ${limit === true ? "True" : limit})`], { cwd: root, encoding: "utf8" });
+    assert.notEqual(result.status, 0);
+    assert.match(result.stderr, /review limit must be positive/);
+  }
 });
-test("fixed pools need 10-20 unique identities and complementary source attempts, never a rejection quota", () => {
-  assert.deepEqual(manifestErrors(manifest()), []);
-  const short = manifest(); short.candidates.pop();
-  assert.ok(manifestErrors(short).some(e => e.includes("10-20")));
+test("fixed batches preserve identity and real search evidence without arbitrary intake minimums", () => {
+  for (const count of [0, 1, 9, 10, 20, 30]) assert.deepEqual(manifestErrors(manifest(count)), []);
   const changed = manifest(); changed.candidates[0].company_url = "https://changed.com/";
   assert.ok(manifestErrors(changed).some(e => e.includes("hash mismatch")));
-  const narrow = manifest(); narrow.source_coverage.forEach(s => s.type = "discovery");
-  assert.ok(manifestErrors(narrow).some(e => e.includes("complementary")));
+  const duplicate = manifest(); duplicate.candidates[1] = duplicate.candidates[0];
+  assert.ok(manifestErrors(duplicate).some(e => e.includes("duplicate candidate")));
+  const narrow = manifest(1); narrow.source_coverage = narrow.source_coverage.slice(0, 1);
+  assert.deepEqual(manifestErrors(narrow), []);
+  narrow.source_coverage = [];
+  assert.ok(manifestErrors(narrow).some(e => e.includes("actual source coverage")));
+  narrow.candidates[0].discovery_mode = "revisit";
+  assert.deepEqual(manifestErrors(narrow), []);
+  const empty = manifest(0); empty.source_coverage = [];
+  assert.ok(manifestErrors(empty).some(e => e.includes("actual source coverage")));
+  assert.ok(manifestErrors({ ...manifest(), task_run_id: "invented" }).some(e => e.includes("task_run_id")));
+  assert.deepEqual(manifestErrors({ ...manifest(), task_run_id: "venturedex-daily-20260909T054150Z" }), []);
 });
-test("five accepted and two qualified overflow are valid with zero forced rejections", () => {
-  const data = manifest();
-  for (let i = 0; i < 7; i++) Object.assign(data.candidates[i], { state: i < 5 ? "accepted" : "qualified_pending", evaluation: evaluation() });
-  assert.deepEqual(manifestErrors(data, data.candidates.slice(0, 5).map(c => c.slug)), []);
-  data.candidates[5].state = "accepted";
-  assert.ok(manifestErrors(data, data.candidates.slice(0, 6).map(c => c.slug)).some(e => e.includes("at most five")));
+test("all thirty qualified candidates may pass; no minimum rejection or maximum acceptance quota", () => {
+  const data = manifest(30);
+  for (const candidate of data.candidates) Object.assign(candidate, { state: "accepted", evaluation: evaluation() });
+  const published = data.candidates.map(c => c.slug);
+  assert.deepEqual(manifestErrors(data, published), []);
+  assert.ok(manifestErrors(data, published.slice(1)).some(e => e.includes("no startup record")));
+  Object.assign(data.candidates[0], { evaluation: undefined });
+  assert.ok(manifestErrors(data, published).some(e => e.includes("evaluation")));
+});
+test("actual review histories survive thirty attempts and budget deferral is explicit", () => {
+  const row = { ...review(), state: "qualified_pending", reason_code: "run_budget", evaluation: evaluation(), attempts: Array.from({ length: 31 }, () => ({ date: "2026-09-08", outcome: "evidence_pending", note: "A recorded evidence check retains its exact observed uncertainty." })) };
+  assert.deepEqual(errors(row), []);
+  assert.ok(errors({ ...row, attempts: {} }).some(e => e.includes("ordered history")));
 });
 test("fresh qualified candidates need a dated in-window source; revisits need durable records", () => {
   const data = manifest(); Object.assign(data.candidates[0], { state: "qualified_pending", evaluation: evaluation(), announced_at: "2026-01-01" });
   assert.ok(manifestErrors(data).some(e => e.includes("30-day")));
   data.candidates[0].discovery_mode = "revisit";
   assert.ok(manifestErrors(data, [], []).some(e => e.includes("durable review")));
+});
+test("multi-batch reporting counts unique current decisions rather than repeated pending observations", () => {
+  const first = manifest(10);
+  const second = { ...manifest(15), run_id: "venturedex-daily-20260909T064150Z" };
+  for (const candidate of first.candidates) candidate.state = "qualified_pending";
+  for (const candidate of second.candidates) candidate.state = "accepted";
+  const result = probe("c.task_summary(p['manifests'], p['reviews'])", { manifests: [second, first], reviews: [{ ...review(), slug: "company-14", state: "publication_blocked" }] });
+  assert.equal(result.manifest_count, 2);
+  assert.equal(result.candidate_observations, 25);
+  assert.equal(result.unique_candidates, 15);
+  assert.equal(result.repeated_observations, 10);
+  assert.equal(result.decision_states.accepted, 14);
+  assert.equal(result.decision_states.qualified_pending, 0);
+  assert.equal(result.decision_states.publication_blocked, 1);
+  assert.equal(Object.values(result.decision_states).reduce((sum: number, count) => sum + Number(count), 0), 15);
 });
 test("the full review overlay validates without editing the rejection ledger", () => {
   const before = readFileSync(`${root}/content/rejected.jsonl`);

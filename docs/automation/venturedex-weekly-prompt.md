@@ -1,0 +1,27 @@
+先只刷新 origin 远端 refs，从准确 origin/main（必要时 git show）读取最新治理文档；在该 SHA 的隔离 worktree 执行。保留用户主 checkout，不用落后的本地文档覆盖新政策。
+
+阅读 `docs/automation/README.md`，然后按照其中定义的 Weekly research digest 可信顺序阅读并执行一次周刊运行。至少先阅读 `content/STANDARD.md`、`content/CODEX_TASK.md`、`docs/automation/venturedex-weekly-runbook.md`、`docs/automation/throughput-and-completion.md`、`docs/automation/venturedex-learning-log.md`（模板和最近 10 条，旧记录不覆盖新政策）、`.github/workflows/weekly-draft.yml` 和 `docs/newsletter.md`，再开始操作。
+
+在开始周刊草稿或研究前，必须先执行 `./scripts/bootstrap-automation.sh venturedex-weekly-curator`。这个 bootstrap 会在 detached worktree 中恢复 repo-local `.env`、校验 Cloudflare token、确认 GitHub Actions 可用，并在缺少依赖时恢复 `node_modules`。若只有发布凭据、Actions 或 npm 依赖不可用，可显式执行 `./scripts/bootstrap-automation.sh venturedex-weekly-curator --research-only` 预检后继续本期公开资料研究；记录 publish blocker，发布前仍需完整 bootstrap 与 release gates。仓库、内容完整性或所有权失败不能降级继续。
+
+当前代码架构是 JSON-first 和 Astro 7/Cloudflare adapter 14：`content/*.json` 通过 `src/lib/content-transform.ts` prerender 站点页面，`scripts/build-db.sh` 生成 D1 seed 供 newsletter/runtime 路径使用，`tests/content-parity.test.ts` 防止两条转换链路漂移。Weekly 只能创建或更新 `content/weekly/*.json`，必须使用已经发布的 startup 记录及其结构化 `research`，不得新增 startup、logo、screenshot、schema 或部署代码。
+
+产品核验、网页核验、登录态、截图和 GSC 统一使用 Codex 内置浏览器（CUA，browser: iab）。先阅读 docs/automation/gsc-codex-browser.md。只操作本次创建的标签页，每个动作基于新读取的可见页面；结束只关闭自己的标签，不操作用户标签或其他浏览器进程。禁止依赖或退回 bb-browser、Comet/Chrome CDP 或共享 daemon；Codex 浏览器不可用时记录具体 blocker。
+
+最新明确人工任务决定范围，定时默认不否定人工授权的补办，但不免除质量与安全。默认仅处理一个既定周刊窗口以避免重复 issue；目标是为上一完整 Monday-Sunday 周期生成或完善 `content/weekly/{N}.json`。如果本周周刊已经是 `status: published`，不要重复发布；只做验证、记录和收件箱汇报。如果只有 draft，则基于证据补全研究内容；如果没有 issue，则先运行 `python3 scripts/weekly.py draft --write` 生成 source-bound 草稿。
+
+周刊必须不仅罗列公司卡片。草稿可以保留 TODO，但 published issue 不能包含 TODO。每个 published pick 必须有 `why_this_week`、`product_evaluation`、`evidence`、`risks` 和 `verdict`。评价必须准确、客观、可追溯：优先使用 VentureDex 已发布 startup 记录里的 `research.sources`、`research.product_evidence`、`research.market_context`、`research.risks`，再用官网公开产品证据、链接融资/主源资料和通过 Codex 内置浏览器实际核验到的页面事实补充。不写未验证的用户数、收入、留存、市场份额、客户迁移、可靠性、benchmark 或产品效果；证据不足时保持 draft 或记录 deferred，不要猜测补齐。
+
+如运行过程中出现任何错误、失败门禁、异常状态或与文档不一致的情况，不要立刻结束。先进入深度研究和迭代流程：定位失败的具体步骤、命令、文件、日志和最近相关学习日志；阅读相关脚本、校验器、runbook 条款与主源资料，必要时再查询官方/一手外部资料；给出明确 root cause 和 blocker 分类。然后只在允许范围内做窄改动或流程调整，重跑失败步骤及其下游门禁，基于新证据继续迭代，直到通过或确认被不可变守卫、外部依赖或权限限制阻塞。不要做盲目重试；如果无法继续，必须记录 root cause、已尝试的迭代、deferred 变更和下一步建议。
+
+发布前必须通过 `./scripts/check-github-actions.sh`、`python3 scripts/weekly.py validate`、`./scripts/manage.sh validate`、`git diff --check`，并用 Codex 内置浏览器验证本地或线上 `/weekly` 与本期 `/weekly/{N}` 渲染。`./scripts/manage.sh validate` 是完整本地 gate，包含 content validation、D1 seed、newsletter/unit tests、Astro sync、TypeScript checking 和 Astro build；单独的 `./scripts/validate.sh`、`./scripts/build-db.sh`、`npm run build` 只用于定位失败步骤。`d1/generated-seed.sql`、`.astro/`、`.playwright-cli/`、`scripts/__pycache__/` 等验证/缓存输出不得进入 Weekly 提交。
+
+不要手动触发 Weekly newsletter；Weekly 邮件由 Cloudflare Cron 在 issue published 后的默认 24 小时延迟窗口处理，发送状态以 D1 的 `newsletter_sends` / `newsletter_deliveries` 为准。部署和 live smoke 通过后，运行 python3 scripts/gsc-codex.py plan --latest-weekly，只读确认目标是本期 /weekly/{N}。按照 docs/automation/gsc-codex-browser.md，在 Codex 内置浏览器检查 exact URL，先 begin --url URL --evidence FILE 持久化 intent，成功返回后 60 秒内只点一次 Request indexing，再依据新观察 finish --attempt ID --evidence FILE。中央 $CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv 是权威 ledger。requested URL 跳过；仅明确 URL-bound 成功可记 requested，不等于已索引。配额停止整个批次；任何待确认点击、孤立 intent 或 post_request_confirmation_unknown 不得重新点击、force 或普通 retry。未完成 URL 保留 blocker，不能把 GSC 写成完成，不运行旧 shell mutation。每次运行后在本 automation memory 写 final receipt 和当前时间；版本化学习日志仅追加重要新教训、政策变化或纠错。已知证据随本次提交保存，最终 SHA/CI/live receipt 外置；不为记录成功再做一次 docs-only commit、全量验证和部署。只能在用户明确要求的范围或 Weekly runbook 允许范围内修改文件；若所需策略变更超出范围，则记录为 deferred，而非重写治理文本。仅当 runbook 允许且所有本地门禁通过时，才提交并推送到 `origin/main`。运行结束前，若本次在 detached automation worktree 中执行，必须先确认 commit/push、部署/GSC 证据、learning log、automation memory 和收件箱/closeout 都已持久化；然后记录 `RUN_WORKTREE`，切回 `/Users/dai/Developer/CursorProjects/venturedex.co`，运行 `bash scripts/cleanup-automation-worktrees.sh --execute --path "$RUN_WORKTREE"`。如果 worktree 仍有脏文件或未保存证据，不要强删，必须报告 exact path、dirty files 和 blocker。始终打开一条收件箱条目，总结周刊 issue、内容变更、证据边界、验证结果、提交/推送/部署状态、GSC 提交状态、newsletter 延迟边界、worktree cleanup 状态，以及任何已应用或推迟的流程变更。
+
+如任何必需的 Markdown 文件缺失或不一致，请停止并报告，切勿猜测。
+
+Blocked Weekly draft 不得长期遗留为 dirty worktree。Learning log、Weekly automation memory 和 inbox closeout 持久化后，先证明 exact path 无匹配进程；再 dry-run scripts/archive-automation-worktree-evidence.sh，并用返回的 exact HEAD 与 status SHA-256 执行。只允许 learning log 加最多一个 numeric content/weekly/N.json；外部 Git bundle/manifest 验证成功且 worktree clean 后，才用普通 cleanup helper、不得 --force-dirty。任何额外路径、活跃进程、不可达 HEAD、未注册 worktree 或 CAS 漂移都 fail closed。
+
+GSC 在 begin 之前因登录/浏览器不可用而阻塞，或配额发生后仍有从未点击的余项时，按原计划的 exact URL 逐个使用 python3 scripts/gsc-codex.py defer --url URL --reason REDACTED_SINGLE_LINE 保存 retry_pending；不得用于任何已开始、已点击、已 requested 或 unknown 目标。已有不可变结果回执落盘而 ledger 未完成时，仅使用 recover --attempt ID 零浏览器恢复，不能再次点击。
+
+按 docs/automation/throughput-and-completion.md 分开记录网站发布、GSC、Newsletter 和运维；网站已验证且跟进持久化时可完成并注明索引待办，不声称 requested/indexed。当前人工若明确要求完成 GSC，该专项目标仍未完成。保留 unknown 的不重点击保护和原有邮件延迟。CI 祖先被取消时，scripts/verify-release-coverage.py 只证明指定任务路径在已部署后继未变；另查该后继精确 SHA 的成功 Validate/Deploy/live，不能只认更新的绿灯。网络探测警告不等于内容断言错误；无充分 live 成功证据仍阻塞。最终输入完成后跑一轮完整 gate，变更输入重验，不因补日志反复部署。停用旧 reward 加减分，分别记录质量和实测成本。

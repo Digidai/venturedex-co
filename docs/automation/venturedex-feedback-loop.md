@@ -1,14 +1,14 @@
 # VentureDex Feedback Loop
 
-This file defines the reward-guided iteration loop for the daily automation.
+This file defines the evidence-guided iteration loop for the daily automation. Throughput and completion follow [the shared contract](throughput-and-completion.md).
 
 ## Accuracy Note
 
-This is not a full reinforcement-learning system. It is a reward-guided closed loop:
+This is not a reinforcement-learning system. It is an auditable improvement loop:
 
 - state: recent runs, outcomes, failures, accepted heuristics
 - action: choose or refine search, evaluation, writing, and operational heuristics
-- reward: score the run outcome
+- measurement: record quality, dispositions, release, follow-ups and actual execution cost separately
 - update: change only narrow heuristic sections when evidence is strong enough
 
 That framing is deliberate. It keeps the system interpretable and auditable.
@@ -24,7 +24,7 @@ These limits apply to scheduled automation self-edits. They do not block explici
 - Never relax factual verification rules automatically.
 - Never relax local validation or build gates automatically.
 - Never widen allowed file scope automatically.
-- Never increase the per-run addition cap automatically.
+- Never expand the finite task scope or user-specified resource budget automatically. There is no fixed per-run addition cap.
 
 ## State
 
@@ -41,12 +41,11 @@ For each run, look at:
 Allowed automatic actions:
 
 - reorder search-source priority
-- tighten or clarify ranking heuristics
-- tighten or clarify rejection wording guidance
-- tighten or clarify `editor_note` writing heuristics
-- tighten or clarify failure-investigation order and rerun sequencing
-- tighten screenshot retry rules
-- tighten commit criteria or review wording
+- clarify ranking and evidence-specific decision wording
+- improve `editor_note` writing heuristics
+- simplify failure-investigation order and redundant reruns when evidence supports it
+- calibrate screenshot retry sequencing without removing review checks
+- clarify commit/review wording without weakening release or quality gates
 
 Disallowed automatic actions:
 
@@ -93,21 +92,18 @@ Use stable tags in the learning log so repeated issues can be detected without g
 
 Use the narrowest stable tag above. Put provider names, command output, URL lists, and one-off error strings in the evidence text instead of inventing a new tag for every incident. Historical entries are append-only and are not rewritten merely because their older tags predate this vocabulary.
 
-## Reward Model
+## Outcome Measurements (replaces the reward sum)
 
-Score each run with a simple additive reward:
+Do not compute the retired additive reward. Preserve historical scores without treating them as comparable to new runs. Use `reward: n/a (retired 2026-09-14)` in legacy-shaped entries.
 
-- `+2` one fixed, completely accounted pool with complementary source attempts and source-specific decisions, regardless of accepted/rejected counts
-- `+2` all applicable content, independent screenshot, local, release and live checks pass, or a clean no-op truthfully records why publication was not needed
-- `+1` a scheduled re-review adds new evidence and resolves an old uncertainty or corrects an error, regardless of whether the outcome is positive or negative
-- `+1` pending items have justified future review dates and truthful attempt histories, with no same-day blind retry
-- `0` neutral run with no major learning and no regressions
-- `-1` operational friction that required retry but did not threaten content quality
-- `-2` local validation or build failure during the run, even if fixed later
-- `-3` wrong file scope, broken staging, or push blocked by a preventable process mistake
-- `-5` any factual error or bad content that is pushed and later needs correction or rollback
+- Curation: unique selected candidates, all eight dispositions, actual re-reviews/corrections, due backlog and oldest due date; counts are observations, not incentives.
+- Quality: per-item evidence/review completion, pre-push defects caught and post-publish corrections. A test finding a defect before push is not a quality penalty.
+- Release: final checked inputs, content SHA, successful exact release SHA, successor coverage when needed, and actual live assertions.
+- Follow-ups: GSC requested/retry/unknown, IndexNow receipt and newsletter delay/delivery separately; no claim of actual indexing without evidence.
+- Cost: elapsed time, gate durations and evidence-backed retries when measured; report unavailable values as unknown.
+- Safety/operations: scope/lease preservation, transport warnings, durable receipts and cleanup state.
 
-If multiple events happen, add them.
+The previous sum penalized caught defects and harmless retries, mixed external availability with editorial quality, and rewarded arbitrary batch compliance. None is a reliable quality metric.
 
 ## Update Gate
 
@@ -116,9 +112,9 @@ Automation may update `Adaptive Heuristics` sections only when all of the follow
 1. the proposed change is narrow and textual, not structural
 2. the change affects only allowed automation docs and only an explicitly marked auto-edit region
 3. the same issue appeared in at least 2 of the last 3 runs, or the current run produced a high-confidence root cause with direct evidence
-4. the change tightens, clarifies, or deprioritizes behavior; it must not weaken a hard guard
+4. the change improves precision or removes evidenced redundancy; it must not weaken a hard guard or expand task scope
 5. the current learning-log entry records the evidence and the exact section changed
-6. the five review passes still succeed after the doc update
+6. all applicable review passes still succeed after the doc update
 
 If any condition fails, record the proposal in the learning log as `deferred` or `rejected`, but do not rewrite the docs.
 
@@ -127,7 +123,7 @@ If any condition fails, record the proposal in the learning log as `deferred` or
 When a human explicitly asks Codex to change automation policy, Codex may edit automation docs outside auto-edit regions if all of the following are true:
 
 1. the request is clearly governance-directed rather than a normal daily run
-2. the change does not conflict with `content/STANDARD.md` or `content/CODEX_TASK.md`
+2. any affected `content/STANDARD.md` and `content/CODEX_TASK.md` clauses are reviewed and updated coherently within the explicit request, not treated as unchangeable scheduled defaults
 3. every affected automation doc is updated in the same pass so the control plane stays internally consistent
 4. the current learning-log entry records the reason, changed files, and resulting policy
 5. the review covers throughput math, commit behavior, and mutation boundaries when any intake-cap or scope rule changes
@@ -171,9 +167,11 @@ For an unsuccessful terminal `blocked/closeout` run, an append-only learning-log
 
 If the blocker remains after evidence-backed iterations, record the root cause, attempted fixes, stable `failure_tags`, and any deferred policy change instead of summarizing it as a generic error.
 
+Apply `throughput-and-completion.md` when determining whether a blocker is core work or a separate external follow-up. An incorrectly blocked classification may be corrected only after an append-only evidence correction and normal lease/CAS checks; preserving history does not require preserving a disproved conclusion.
+
 ## Learning-Log Protocol
 
-Every run must append one entry to `docs/automation/venturedex-learning-log.md`.
+Every run must write a durable receipt plus current time to its automation memory. Append a versioned `docs/automation/venturedex-learning-log.md` entry only for a material new lesson, policy change or correction. Include known evidence in the scoped commit; write final SHA/CI/live receipts externally. A successful publication must not cause a new docs-only commit/full gate/deploy merely to record its success.
 
 Each entry must include:
 
@@ -186,7 +184,7 @@ Each entry must include:
 - rejection ratio only as a descriptive diagnostic with its denominator; never a target or reward
 - validation/build/push outcome
 - stable `failure_tags`
-- reward
+- separate quality, release, follow-up and cost outcomes (`reward: n/a` in the legacy template)
 - dominant failure mode, if any
 - proposed heuristic change
 - decision: `none`, `deferred`, `applied`, or `rejected`
@@ -196,7 +194,7 @@ Each entry must include:
 
 ## Review for Heuristic Changes
 
-If a heuristic change is being applied, run these checks in addition to the normal five-pass review:
+If a heuristic change is being applied, run these checks in addition to the applicable normal review passes:
 
 1. Is the wording more precise than before?
 2. Does it reduce false positives, false negatives, or avoidable retries?
@@ -211,9 +209,9 @@ If any answer is no, do not apply the heuristic change.
 If a human-directed governance change is being applied, run these checks:
 
 1. Does the new wording distinguish human overrides from automation self-edits?
-2. Do the fixed-pool and five-addition ceilings remain coherent without incentives to manufacture rejections or acceptances?
+2. Is task scope finite and recoverable without numeric intake/publication quotas or incentives to manufacture decisions?
 3. Do commit rules still describe both single-addition and multi-addition runs?
 4. Is the learning-log trail sufficient for a future automation run to understand why the policy changed?
-5. Is the resulting policy stricter or clearer about quality, even if throughput increased?
+5. Are individual quality gates and external-action safety explicit, with the efficiency/independence tradeoffs honestly recorded?
 
 If any answer is no, revise the docs before committing.

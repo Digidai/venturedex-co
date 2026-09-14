@@ -210,6 +210,30 @@ test('approve requires explicit flags and the hash the reviewer inspected; --rev
   } finally { rmSync(f.root, { recursive: true, force: true }); }
 });
 
+test('a truthful second-pass review retains every final-image gate without inventing another reviewer', async () => {
+  const f = await fixture();
+  try {
+    const sameOperator = f.approveArgs().map(value => value === 'test-schema-reviewer' ? 'test-capture-operator' : value);
+    assert.notEqual(f.run(...sameOperator).status, 0);
+    for (const args of [
+      [...sameOperator, '--review-mode', 'independent'],
+      [...sameOperator, '--review-mode', 'skip'],
+      [...f.approveArgs(), '--review-mode', 'second-pass'],
+      [...sameOperator.filter(value => value !== '--card'), '--review-mode', 'second-pass'],
+      [...sameOperator.map(value => value === f.hash() ? '0'.repeat(64) : value), '--review-mode', 'second-pass'],
+    ]) assert.notEqual(f.run(...args).status, 0);
+    const result = f.run(...sameOperator, '--review-mode', 'second-pass');
+    assert.equal(result.status, 0, result.stderr);
+    const saved = JSON.parse(readFileSync(f.manifest, 'utf8')).reviews.example;
+    assert.equal(saved.review_mode, 'second-pass');
+    assert.equal(saved.reviewer, saved.capture_operator);
+    assert.equal(saved.sha256, f.hash());
+    assert.equal(f.run('validate').status, 0);
+    f.writeManifest({ ...saved, notes: 'Reviewed image.' });
+    assert.match(f.run('validate').stderr, /second-pass notes/);
+  } finally { rmSync(f.root, { recursive: true, force: true }); }
+});
+
 test('orphan assets, orphan reviews, malformed manifests and symlinks do not bypass validation', async () => {
   const f = await fixture();
   try {

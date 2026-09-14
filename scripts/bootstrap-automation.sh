@@ -13,6 +13,20 @@ PACKAGE_LOCK_SHA256=""
 export REPO_ROOT
 export VENTUREDEX_AUTOMATION_ID="$AUTOMATION_ID"
 
+# Research needs a valid local repository, not production credentials, an npm
+# install, or Actions availability. This preflight cannot authorize publication.
+if [ "${2:-}" = "--research-only" ] && [ "$#" -eq 2 ]; then
+  command -v git >/dev/null
+  command -v python3 >/dev/null
+  git -C "$REPO_ROOT" rev-parse --is-inside-work-tree >/dev/null
+  PYTHONDONTWRITEBYTECODE=1 python3 "$SCRIPT_DIR/curation.py" validate
+  echo "bootstrap: research-only; full publication bootstrap and release gates still required"
+  exit 0
+elif [ "$#" -gt 1 ]; then
+  echo "Usage: bootstrap-automation.sh [automation-id [--research-only]]" >&2
+  exit 2
+fi
+
 bootstrap_lock_cleanup() {
   local recorded_pid=""
 

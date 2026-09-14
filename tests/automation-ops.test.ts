@@ -177,6 +177,25 @@ function expectedBootstrapMarker(fixture: ReturnType<typeof createBootstrapFixtu
   return `sha256:${digest}\n`;
 }
 
+test("research-only bootstrap does not load credentials, install packages or contact production", () => {
+  const fixture = createBootstrapFixture();
+  try {
+    cpSync(path.join(repoRoot, "scripts", "curation.py"), path.join(fixture.root, "scripts", "curation.py"));
+    mkdirSync(path.join(fixture.root, "content", "startups"), { recursive: true });
+    writeFileSync(path.join(fixture.root, "content", "curation-reviews.json"), JSON.stringify({ schema_version: 1, reviews: [] }));
+    writeFileSync(path.join(fixture.root, "content", "rejected.jsonl"), "");
+    writeFileSync(path.join(fixture.root, "scripts", "load-local-env.sh"), "exit 99\n");
+    const result = spawnSync("bash", [path.join(fixture.root, "scripts", "bootstrap-automation.sh"), "venturedex-daily-curator", "--research-only"], { cwd: fixture.root, env: bootstrapFixtureEnv(fixture, "fail"), encoding: "utf8" });
+    assert.equal(result.status, 0, result.stderr);
+    assert.match(result.stdout, /research-only; full publication bootstrap and release gates still required/);
+    for (const file of [fixture.lock, fixture.npmLog, fixture.githubMarker, fixture.successMarker]) assert.equal(existsSync(file), false);
+    writeFileSync(path.join(fixture.root, "content", "curation-reviews.json"), "{}");
+    const invalid = spawnSync("bash", [path.join(fixture.root, "scripts", "bootstrap-automation.sh"), "venturedex-daily-curator", "--research-only"], { cwd: fixture.root, env: bootstrapFixtureEnv(fixture, "fail"), encoding: "utf8" });
+    assert.notEqual(invalid.status, 0);
+    assert.doesNotMatch(invalid.stdout, /bootstrap: research-only/);
+  } finally { rmSync(fixture.root, { recursive: true, force: true }); }
+});
+
 test("bootstrap serializes npm recovery per worktree with owner PID diagnostics", async () => {
   const fixture = createBootstrapFixture();
   const env = bootstrapFixtureEnv(fixture, "hold");

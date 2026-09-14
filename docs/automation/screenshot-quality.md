@@ -9,9 +9,9 @@ The Codex in-app browser is the only capture runtime. The importer is offline an
 3. Inspect the returned native screenshot. Reject blank/error/loading screens, animation residue, obstructed text, unreadable/tiny subjects, and badly cut framing. A meaningful product section is valid; a homepage hero is not compulsory. Compare a second candidate when the first is doubtful.
 4. Save native bytes, without alteration, to an absolute task-owned path. Inspect the actual file header before choosing the extension: Codex may return JPEG bytes, so do not assume PNG. Import with `scripts/screenshot.sh SLUG URL --from-codex ABS --reviewed`. The importer decodes actual headers, not filename extensions. Import success is provisional. Conversion never upscales, crops, or adds padding.
 
-## Independent final review
+## Final review and truthful provenance
 
-The capture operator and final reviewer must differ. Inspect final WebP at readable size and its presentation in the shared card frame and natural-ratio detail view, including a narrow layout. The card itself already labels the company; a missing logo inside a useful product section is not an automatic failure. Low-level metrics can reject near-uniform/corrupt files but cannot establish visual quality.
+Prefer a genuine independent reviewer. If only the capture operator is available, that operator must perform a separate final review and explicitly record `--review-mode second-pass` with the same actual identity and detailed observed notes (at least 60 characters). This is not independent review; do not disguise it by inventing another name. The default/legacy mode is `independent`, which still rejects matching identities. Inspect final WebP at readable size and its actual shared-card/natural-ratio detail presentation, including a narrow layout. The card already labels the company; a missing logo inside a useful product section is not an automatic failure. Low-level metrics can reject near-uniform/corrupt files but cannot establish visual quality.
 
 | Check | Required observation |
 | --- | --- |
@@ -34,7 +34,9 @@ node scripts/screenshot-quality.mjs approve SLUG \
 
 This records a reviewer attestation; it does not perform the review or authenticate people. `--reviewed` alone cannot approve. Do not invent a second reviewer or mark unchecked boxes. Verified official cross-domain redirects require a specific `Official source: hostname` note, not an arbitrary unrelated URL.
 
-The versioned `content/screenshot-reviews.json` accompanies the exact image. Any byte change invalidates approval. A failed review needs a better capture, not an override. Historical images retained after real visual inspection use `historical-reviewed` provenance; this label must not be used to bypass independent review for new captures.
+For a single-operator second pass, use the same real value for `--capture-operator` and `--reviewer`, add `--review-mode second-pass`, and describe the final asset plus desktop/narrow card/detail observations in `--notes`. All six checks, source, dimensions and exact hash remain mandatory. Complex or doubtful images should still receive a genuine second reviewer or stay blocked; do not self-approve an unresolved defect. Do not spawn a subagent solely to satisfy a different-name rule unless the task authorizes delegation.
+
+The versioned `content/screenshot-reviews.json` accompanies the exact image. Any byte change invalidates approval. A failed review needs a better capture, not an override. Historical images retained after real visual inspection use `historical-reviewed` provenance; this label must not be used to bypass final review for new captures.
 
 Historical provenance additionally requires an exact slug/SHA-256 match in `content/screenshot-history-baseline.json`, frozen at migration commit `e404ec73a8bb66209726ea559ffda8d3b93bb516`. Changed or new images cannot claim this label. The baseline is a governance artifact, not part of the Daily writable-content scope; do not append new captures to it.
 

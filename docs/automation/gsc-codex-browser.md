@@ -6,7 +6,7 @@ Do not use `bb-browser`, Comet/Chrome CDP, a shell-launched browser, or a shared
 
 ## 1. Plan after verified publication
 
-First require the exact content release to pass CI, deployment, and live smoke. Select one relevant URL set:
+First require successful CI, deployment and live smoke for the exact release that contains the content; follow [successor coverage and completion](throughput-and-completion.md) if an ancestor CI was superseded. Select one relevant URL set:
 
 ```bash
 python3 scripts/gsc-codex.py plan --latest-daily
@@ -17,7 +17,11 @@ python3 scripts/gsc-codex.py plan --url https://venturedex.co/startups/example
 
 These are alternatives, not four commands to run for every cycle. `plan` is read-only: it does not create a browser, click, or append a submission row. Process only targets whose returned status is `ready`. `already_requested` is a skip, not permission to request again. Other statuses identify blockers.
 
-Only exact canonical `https://venturedex.co/startups/{slug}` and `https://venturedex.co/weekly/{positive-number}` URLs are allowed. `--daily-date YYYY-MM-DD`, `--weekly-issue N`, and repeated `--url URL` select explicit targets. `--expect-url URL` additionally requires exactly that single URL. A plan accepts at most `--max-urls` targets (default 10; allowed 1–10) and fails instead of silently truncating a larger set. Narrow an oversized backlog with explicit exact URLs; do not restart discovery or expand the run to fill a batch.
+Only exact canonical `https://venturedex.co/startups/{slug}` and `https://venturedex.co/weekly/{positive-number}` URLs are allowed. `--daily-date YYYY-MM-DD`, `--weekly-issue N`, and repeated `--url URL` select targets. `--expect-url URL` requires exactly that single URL before paging. Explicit URL lists must fit one page and are never silently omitted.
+
+Automatic date/latest/backlog selectors return deterministic pages using `--max-urls` (default 10, allowed 1–10) and `--offset` (default 0), with `total_targets`, `pending_count`, `already_requested_skipped`, `remaining_after_page` and `next_offset`. Ten is a UI/action planning page size, not Google's guaranteed quota or a Daily publication limit. Auto plans omit already-requested targets and can return a valid empty queue. After successful requests, replan from **offset 0** because the queue shrinks; use `next_offset` only to inspect an unchanged queue. Do not skip unknown/blocked states or manufacture clicks to advance a page. Stop on actual quota/auth/target uncertainty and keep all deferred targets durable.
+
+Indexing follow-up failure does not undo verified website publication. Queue exact never-clicked URLs and report “published; indexing pending” when core work is complete. An explicit user goal to finish GSC requests remains unfinished until its own evidence exists. `requested` still does not prove actual indexing.
 
 The authoritative ledger is `$CODEX_HOME/automations/venturedex-daily-curator/gsc_submission_history.tsv`; the durable evidence directory is `$CODEX_HOME/automations/venturedex-daily-curator/gsc-artifacts/`. The ignored repo-local ledger is legacy evidence only. Do not hand-edit either ledger or remove old unresolved artifacts to make a target eligible. Non-default `--history` and `--artifact-dir` are for isolated tests or explicitly reviewed recovery, not a way around production guards.
 

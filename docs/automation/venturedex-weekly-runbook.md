@@ -2,6 +2,8 @@
 
 This file defines the weekly research digest workflow. It is separate from the daily curation run.
 
+Shared release/completion policy follows [throughput and completion](throughput-and-completion.md): an exact successfully deployed successor can cover a task only with verified Git coverage and successful CI/Deploy/live evidence; indexing/mail follow-ups are separate from website publication. Write final receipts to automation memory, not a new docs-only deployment. Weekly cadence and newsletter delays are unchanged.
+
 ## Precedence
 
 Editorial authority comes from:
@@ -63,7 +65,7 @@ Automation must never rewrite this section.
    git diff --check
    ```
 
-8. Restore `d1/generated-seed.sql` and generated cache artifacts if validation changed them locally.
+8. Ordinary validation must not change tracked `d1/generated-seed.sql` (it uses a run-owned temporary seed). Unexpected tracked changes require diagnosis; never blindly restore potentially user-owned data. Preserve ownership of generated artifacts.
 9. Verify `/weekly` and `/weekly/{N}` in task-owned Codex in-app browser tabs before publish.
 10. Commit with:
 
@@ -90,5 +92,5 @@ Automation must never rewrite this section.
 2. Scope: no new startup, logo, screenshot, schema, or deployment change is mixed into a weekly content PR unless explicitly requested by a human.
 3. Objectivity: the issue states evidence gaps instead of guessing.
 4. Theme: the 5-7 picks share a real product or market pattern.
-5. Release: local gates pass, generated verification outputs are restored, browser verification confirms `/weekly` and the issue page render the research fields, deploy/live smoke passes, and the weekly detail URL has a Search Console submission row or a recorded blocker.
+5. Release: local gates pass without unexpected tracked mutations, browser verification confirms `/weekly` and the issue page render research fields, deploy/live smoke passes, and the weekly detail URL has a Search Console submission row or a separately recorded follow-up blocker.
 6. Newsletter readiness: the issue has stable published copy, because the Weekly email will reuse `editorial_intro`, `research_summary`, themes, and pick evaluations.
