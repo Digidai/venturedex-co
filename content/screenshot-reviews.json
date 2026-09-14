@@ -3386,6 +3386,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "loops": {
+      "sha256": "fa6e1350c7618d4ed7bc5a5bd217567bd6a79d80af95a53a55891291ff767075",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://loops.so/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-14T12:42:09.816Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final 1280x720 WebP shows the loaded Loops hero and populated workflow editor after an extended wait, with no booking overlay and a legible headline. Desktop detail preserves the full image; desktop and 390px directory cards keep natural 16:9 framing without crop; the 390px detail remains complete and readable."
+    },
     "mage": {
       "sha256": "3c798e1a68d44a6eed0109efe4ae4fc3e0a6e8a385d0bb9ebb43c132b19a8704",
       "width": 3024,

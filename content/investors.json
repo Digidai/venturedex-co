@@ -2435,5 +2435,69 @@
     "short_name": "Pi Labs",
     "website": "https://pilabs.vc/",
     "description": "Early-stage investor and accelerator backing technology for a digital and sustainable built world."
+  },
+  "craft-ventures": {
+    "name": "Craft Ventures",
+    "slug": "craft-ventures",
+    "short_name": "Craft",
+    "website": "https://www.craftventures.com/",
+    "description": "Operator-led venture firm backing B2B software companies from early stage through growth."
+  },
+  "alt-capital": {
+    "name": "Alt Capital",
+    "slug": "alt-capital",
+    "short_name": "Alt",
+    "website": "https://www.altcap.com/",
+    "description": "Early-stage venture firm investing $1M-$10M from inception through Series A.",
+    "aliases": [
+      "Altman Capital"
+    ]
+  },
+  "sv-angel": {
+    "name": "SV Angel",
+    "slug": "sv-angel",
+    "short_name": "SV Angel",
+    "website": "https://svangel.com/",
+    "description": "Venture firm supporting technology founders at seed and growth through long-term advice and network access."
+  },
+  "liquid-2": {
+    "name": "Liquid 2",
+    "slug": "liquid-2",
+    "short_name": "Liquid 2",
+    "website": "https://www.liquid2.vc/",
+    "description": "Technology venture firm investing at pre-seed and seed and from Series B through its growth fund.",
+    "aliases": [
+      "Liquid2",
+      "Liquid2 Ventures",
+      "Liquid 2 Ventures"
+    ]
+  },
+  "soma-capital": {
+    "name": "Soma Capital",
+    "slug": "soma-capital",
+    "short_name": "Soma",
+    "website": "https://somacap.com/",
+    "description": "Seed-stage venture capital firm investing across technology and connecting founders through its portfolio network."
+  },
+  "boxgroup": {
+    "name": "BoxGroup",
+    "slug": "boxgroup",
+    "short_name": "BoxGroup",
+    "website": "https://www.boxgroup.com/",
+    "description": "Early-stage venture firm investing from pre-seed through Series A, typically up to $1M.",
+    "aliases": [
+      "Box Group"
+    ]
+  },
+  "twenty-two-ventures": {
+    "name": "Twenty Two Ventures",
+    "slug": "twenty-two-ventures",
+    "short_name": "Twenty Two",
+    "website": "https://twentytwo.vc/",
+    "description": "Early-stage venture firm backing SaaS, fintech, open-source, marketplace and developer-tools founders.",
+    "aliases": [
+      "Twenty-Two Ventures",
+      "TwentyTwo Ventures"
+    ]
   }
 }

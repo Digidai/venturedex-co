@@ -14264,6 +14264,423 @@
           "checked_at": "2026-09-13"
         }
       ]
+    },
+    "craft-ventures": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Operator-led venture capital firm investing in B2B software from early stage through growth and pairing capital with company-building support.",
+        "source_ids": [
+          "official",
+          "funds"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official",
+            "funds"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage",
+            "Growth"
+          ],
+          "source_ids": [
+            "funds"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "B2B software"
+          ],
+          "source_ids": [
+            "funds"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Former founders and operators provide operating playbooks while keeping the investor relationship low-maintenance for founders",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": [
+            "Executive customer briefings",
+            "Senior talent",
+            "Legal and finance",
+            "Government relations",
+            "Marketing and communications"
+          ],
+          "source_ids": [
+            "funds"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "San Francisco, California",
+            "New York, New York"
+          ],
+          "source_ids": [
+            "funds"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Craft Ventures official overview",
+          "url": "https://www.craftventures.com/",
+          "checked_at": "2026-09-14"
+        },
+        {
+          "id": "funds",
+          "label": "Craft Ventures official fund and strategy announcement",
+          "url": "https://www.craftventures.com/articles/announcing-1-3-billion-for-craft-ventures-iv-and-growth-ii",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "alt-capital": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Early-stage venture firm making concentrated, generalist investments of $1M-$10M from inception through Series A.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Early-stage venture firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Inception through Series A",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Generalist, concentrated portfolio with stated investment sizes of $1M-$10M",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Alt Capital official overview",
+          "url": "https://www.altcap.com/",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "sv-angel": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Founder-focused venture firm investing at seed and growth and using its long-running technology network for advice and introductions.",
+        "source_ids": [
+          "approach"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "approach"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Growth"
+          ],
+          "source_ids": [
+            "approach"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Long-term founder support informed by technology investing experience and pattern recognition",
+          "source_ids": [
+            "approach"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Advice and fast introductions across founders, industry leaders, regulators, and domain experts",
+          "source_ids": [
+            "approach"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "approach",
+          "label": "SV Angel official investment approach",
+          "url": "https://svangel.com/about/approach",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "liquid-2": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Founder-focused technology venture firm with an early-stage fund for pre-seed and seed and a growth fund beginning at Series B.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed",
+            "Series B and later"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "All technology sectors",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Median early-stage checks of $250K-$500K and typical Series B-or-later checks of $2M-$5M",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Capital, operator guidance, strategic connections, customer introductions, hiring, and fundraising support",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "San Francisco, California"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Liquid 2 official overview and FAQ",
+          "url": "https://www.liquid2.vc/",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "soma-capital": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Seed-stage technology venture firm that connects founders with customers and decision-makers through a large portfolio network.",
+        "source_ids": [
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Technology"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Portfolio and decision-maker network intended to help founders reach customers",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "Soma Capital official about page",
+          "url": "https://somacap.com/about",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "boxgroup": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Early-stage venture firm seeking to be a founder's first investor, investing from pre-seed through Series A and reserving capital to follow on.",
+        "source_ids": [
+          "about"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed",
+            "Series A"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "Global",
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "New York, New York",
+            "San Francisco, California"
+          ],
+          "source_ids": [
+            "about"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Invests up to $1M alongside other investors and reserves capital for follow-on participation",
+          "source_ids": [
+            "about"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "about",
+          "label": "BoxGroup official investment approach",
+          "url": "https://www.boxgroup.com/about",
+          "checked_at": "2026-09-14"
+        }
+      ]
+    },
+    "twenty-two-ventures": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Early-stage venture firm backing founders across SaaS, fintech, open source, marketplaces, and developer tools, including companies before public launch.",
+        "source_ids": [
+          "official",
+          "team"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2018",
+          "source_ids": [
+            "team"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage, including pre-launch",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "SaaS",
+            "Fintech",
+            "Open source",
+            "Marketplaces",
+            "Developer tools"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Smaller checks and fast decisions for unusually ambitious early-stage founders",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Twenty Two Ventures official overview",
+          "url": "https://twentytwo.vc/",
+          "checked_at": "2026-09-14"
+        },
+        {
+          "id": "team",
+          "label": "Twenty Two Ventures official team page",
+          "url": "https://twentytwo.vc/our-team",
+          "checked_at": "2026-09-14"
+        }
+      ]
     }
   },
   "attempts": {}

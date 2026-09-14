@@ -1,0 +1,152 @@
+{
+  "slug": "loops",
+  "domain": "loops.so",
+  "url": "https://loops.so/",
+  "product_name": "Loops",
+  "summary": "Email platform unifying marketing, lifecycle, and transactional messages for software companies.",
+  "editor_note": "The sharper bet is one contact model, visual system, and automation layer for every lifecycle message rather than a product-email ESP beside a marketing suite. The product shows branching workflows, goal conversions, themes, APIs, SDKs, and agent controls; paid plans start at $49 monthly. Revision-safe agent writes and dashboard review preserve a useful human boundary. The open question is whether this breadth can grow without recreating the bloat Loops is replacing.",
+  "editor_rating": 4,
+  "why_featured": "$3.2M for one lifecycle email stack",
+  "product_type": "SaaS",
+  "founded_year": 2022,
+  "team_size": "5-10",
+  "hq_location": "Washington, DC",
+  "region": "US",
+  "tags": "email,lifecycle marketing,transactional email,automation,ai agents,developer tools",
+  "investors": "Craft Ventures, Alt Capital, SV Angel, Liquid 2, Soma Capital, BoxGroup, Twenty Two Ventures, Y Combinator",
+  "links": {
+    "product": "https://loops.so/agents",
+    "pricing": "https://loops.so/pricing",
+    "docs": "https://loops.so/docs",
+    "press": "https://loops.so/updates/loops-launches-today",
+    "careers": "https://loops.so/careers",
+    "github": "https://github.com/loops-so",
+    "twitter": "https://twitter.com/loops",
+    "linkedin": "https://www.linkedin.com/company/sendwithloops/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$3.2M",
+      "stage": "Unspecified",
+      "lead_investor": "Craft Ventures",
+      "date": "2022-04-28",
+      "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+      "source_name": "Technical.ly"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-14",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Loops official product site",
+        "url": "https://loops.so/",
+        "type": "official"
+      },
+      {
+        "id": "official_agents",
+        "label": "Loops official agent interface overview",
+        "url": "https://loops.so/agents",
+        "type": "product"
+      },
+      {
+        "id": "official_pricing",
+        "label": "Loops official pricing",
+        "url": "https://loops.so/pricing",
+        "type": "product"
+      },
+      {
+        "id": "official_changelog",
+        "label": "Loops Workflows API and agent-safety update",
+        "url": "https://loops.so/changelog/workflows-api-claude-connector",
+        "type": "product"
+      },
+      {
+        "id": "official_funding",
+        "label": "Loops public launch and funding announcement",
+        "url": "https://loops.so/updates/loops-launches-today",
+        "type": "funding"
+      },
+      {
+        "id": "funding_report",
+        "label": "Technical.ly original Loops financing report",
+        "url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+        "type": "funding"
+      },
+      {
+        "id": "yc_profile",
+        "label": "Y Combinator Loops company profile",
+        "url": "https://www.ycombinator.com/companies/loops",
+        "type": "editorial"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official homepage combines marketing, product, and transactional lifecycle email with branching workflows, shared themes, dynamic segments, goal conversion reporting, APIs, SDKs, and sender-reputation controls.",
+        "source_ids": [
+          "official_site"
+        ]
+      },
+      {
+        "claim": "The official agent surface exposes MCP, skills, a CLI, SDKs, and APIs for contacts, events, campaigns, transactional messages, email content, and workflows; campaigns are drafted through the API and reviewed and sent from the dashboard.",
+        "source_ids": [
+          "official_agents"
+        ]
+      },
+      {
+        "claim": "The pricing page includes every feature on a free plan for up to 1,000 contacts and 4,000 rolling 30-day sends, while the first paid contact tier starts at $49 per month with unlimited sends.",
+        "source_ids": [
+          "official_pricing"
+        ]
+      },
+      {
+        "claim": "The August 2026 product update adds a Workflows API, an official Claude connector, conditional sections, and revision-bound writes that reject stale workflow updates instead of overwriting newer work.",
+        "source_ids": [
+          "official_changelog"
+        ]
+      },
+      {
+        "claim": "The company launch announcement describes a no-code email automation product designed for both developers and non-developers, alongside the disclosed $3.2M financing.",
+        "source_ids": [
+          "official_funding"
+        ]
+      },
+      {
+        "claim": "Y Combinator lists Loops as an active Winter 2022 company founded in 2022, with a team of 10 in Washington, DC, building email sending for software companies.",
+        "source_ids": [
+          "yc_profile"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Product, marketing, and engineering teams at software companies that currently split lifecycle email across several tools.",
+      "category": "Customer lifecycle email",
+      "differentiation": "Loops puts campaigns, behavior-triggered workflows, and transactional delivery on one contact model and visual system, then exposes controlled creation and maintenance through agent-ready APIs.",
+      "why_now": "Its 2026 workflow and agent interfaces move the product beyond a lighter email editor toward a shared lifecycle control plane while retaining draft, review, and revision checks around higher-risk changes."
+    },
+    "risks": [
+      {
+        "claim": "Agent access expands the operational blast radius of incorrect contact, content, workflow, or send actions even when stale workflow writes are rejected.",
+        "basis": "The agent page exposes writes across contacts, events, content, workflows, campaigns, and transactional email; the changelog only documents stale-write protection for workflows."
+      },
+      {
+        "claim": "Adding campaigns, transactional delivery, visual systems, analytics, workflows, integrations, and agent controls could eventually recreate the complexity the product is positioned to remove.",
+        "basis": "VentureDex editorial assessment based on the breadth visible across the official homepage, agent surface, and product changelog."
+      },
+      {
+        "claim": "The financing is verified, but calling it Seed would turn a third-party database convention into a source claim that neither the company announcement nor the original dated report makes.",
+        "basis": "Both financing sources name the $3.2M amount and Craft Ventures as lead without assigning a round stage."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "Loops and the original dated report both confirm the $3.2M financing and Craft Ventures lead, but neither names the round. VentureDex therefore preserves it as Unspecified rather than inferring Seed from database labels; company and product identity are cross-checked against the official site and Y Combinator profile.",
+      "source_ids": [
+        "official_site",
+        "official_funding",
+        "funding_report",
+        "yc_profile"
+      ]
+    }
+  }
+}

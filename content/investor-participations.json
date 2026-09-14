@@ -718,5 +718,75 @@
     "source_url": "https://tech.einnews.com/pr_news/898939076/openjobs-ai-raises-a-multi-million-dollar-seed-round-to-build-the-first-agent-first-recruiting-platform",
     "source_name": "OpenJobs AI announcement via EIN Presswire",
     "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "craft-ventures",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "lead",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "alt-capital",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "sv-angel",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "liquid-2",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "soma-capital",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "boxgroup",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "loops",
+    "investor_slug": "twenty-two-ventures",
+    "round_date": "2022-04-28",
+    "round_stage": "Unspecified",
+    "role": "participant",
+    "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
+    "source_name": "Technical.ly",
+    "verified_at": "2026-09-14"
   }
 ]

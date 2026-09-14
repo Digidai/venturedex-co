@@ -2446,6 +2446,13 @@
       "local_path": "/logos/companies/celero-communications.png",
       "source_page": "https://celero.inc/",
       "source_url": "https://celero.inc/wp-content/uploads/2025/11/logo.svg"
+    },
+    "loops": {
+      "name": "Loops",
+      "shape": "icon",
+      "local_path": "/logos/companies/loops.png",
+      "source_page": "https://loops.so/",
+      "source_url": "https://framerusercontent.com/images/vqkUynWM9t1cVWKFlqiYLmA1w.png"
     }
   },
   "investors": {
@@ -4753,6 +4760,55 @@
       "local_path": "/logos/investors/crrc-capital.png",
       "source_page": "https://www.crrcgc.cc/cytz/",
       "source_url": "https://www.crrcgc.cc/cytz/imageDir/siteLogo.png"
+    },
+    "craft-ventures": {
+      "name": "Craft Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/craft-ventures.svg",
+      "source_page": "https://www.craftventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/65db1cb0beab54c3069093fb/65db1cb0beab54c306909433_logo.svg"
+    },
+    "alt-capital": {
+      "name": "Alt Capital",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/alt-capital.svg",
+      "source_page": "https://www.altcap.com/",
+      "source_url": "https://cdn.prod.website-files.com/675404deb3623638b58e7b89/67540972a37f028565f5ced7_logo.svg"
+    },
+    "sv-angel": {
+      "name": "SV Angel",
+      "shape": "icon",
+      "local_path": "/logos/investors/sv-angel.png",
+      "source_page": "https://svangel.com/",
+      "source_url": "https://svangel.com/favicon/favicon-32x32.png"
+    },
+    "liquid-2": {
+      "name": "Liquid 2",
+      "shape": "icon",
+      "local_path": "/logos/investors/liquid-2.svg",
+      "source_page": "https://www.liquid2.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6659bc596954a42bf0d09183/6659bde7894839cb247ebc15_Favicon.svg"
+    },
+    "soma-capital": {
+      "name": "Soma Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/soma-capital.png",
+      "source_page": "https://somacap.com/",
+      "source_url": "https://somacap.com/soma.png"
+    },
+    "boxgroup": {
+      "name": "BoxGroup",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/boxgroup.svg",
+      "source_page": "https://www.boxgroup.com/",
+      "source_url": "https://cdn.prod.website-files.com/6192daf245a75c749df20a99/61d60e95f499ea74d80e50c6_box-group_logo.svg"
+    },
+    "twenty-two-ventures": {
+      "name": "Twenty Two Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/twenty-two-ventures.webp",
+      "source_page": "https://twentytwo.vc/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/64c0a46d36825539e9fa0d9d/be6d4ba5-7df7-4a30-b11e-569fbc44beb0/favicon.ico?format=100w"
     }
   }
 }
