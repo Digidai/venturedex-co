@@ -2769,14 +2769,14 @@
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
     "hyimpulse": {
-      "sha256": "80c4f5babd440ec16793fca2daa888e6e6247460d832dc3b84e00667ae421a8c",
+      "sha256": "0d70eb16bd53a8fd03fa16aeedd64fa22d5224c248c43b9df19b87e0525722c6",
       "width": 1280,
       "height": 720,
       "source_url": "https://www.hyimpulse.de/",
       "capture_method": "codex-iab",
-      "capture_operator": "codex-iab-capture-epoch28",
-      "reviewed_at": "2026-09-13T12:14:08.273Z",
-      "reviewer": "codex-root-visual-review-epoch28",
+      "capture_operator": "codex-iab-capture-20260914-hyimpulse",
+      "reviewed_at": "2026-09-14T09:26:40.584Z",
+      "reviewer": "codex-root-visual-review-20260914-hyimpulse",
       "checks": {
         "loaded": true,
         "unobstructed": true,
@@ -2785,7 +2785,7 @@
         "card": true,
         "detail": true
       },
-      "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+      "notes": "Waited 12 seconds after load; reviewed the final WebP plus 320px and 360px shared-CSS cards and isolated detail rendering: the complete Space, Within Your Reach hero, HyImpulse identity, launch CTA, and Earth visual are loaded, unobstructed, legible, and correctly framed."
     },
     "infinity": {
       "sha256": "beff3653815239bec678cceb7b3d9e56d39bc73e8eaf12cd7075cabde4405391",
