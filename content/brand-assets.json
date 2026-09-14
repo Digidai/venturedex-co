@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-13",
+  "verified_at": "2026-09-14",
   "companies": {
     "8090": {
       "name": "8090",
@@ -3862,6 +3862,25 @@
       "source_page": "https://bossjob.us/en-us",
       "source_url": "https://bossjob.com/favicon.ico",
       "note": "Rsquared Investment Pte. Ltd. is the Singapore company behind Bossjob; this is its only verified public brand surface and is not affiliated with similarly named U.S. firms."
+    },
+    "longriver-investments": {
+      "name": "LongRiver Investments",
+      "shape": "icon",
+      "crop": "left",
+      "local_path": "/logos/investors/longriver-investments.svg",
+      "source_page": "https://lr-investments.com/",
+      "source_url": "https://lr-investments.com/file/upload/2026-03/25/202603251410427248.svg",
+      "note": "Square placements display the standalone emblem from the left side of LongRiver's official SVG wordmark; the checked-in source asset itself remains unchanged."
+    },
+    "fengshion-capital": {
+      "name": "Fengshion Capital",
+      "shape": "icon",
+      "crop": "left-tight",
+      "local_path": "/logos/investors/fengshion-capital.jpg",
+      "source_page": "https://www.linkedin.com/company/fengshion-capital",
+      "source_url": "http://www.fengshion.com/uploads/2018/05/20180529164949212.jpg",
+      "allow_unreachable_source": true,
+      "note": "The maintained LinkedIn company page identifies fengshion.com as the firm's website. That official domain remains HTTP-only, so the local wordmark is preserved from the official domain while the directory links to the safer HTTPS company profile; square placements display its left-side emblem."
     },
     "pathlight": {
       "name": "Pathlight",

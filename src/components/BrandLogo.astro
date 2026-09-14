@@ -33,6 +33,7 @@ const style = `--brand-size:${size}px;`;
   class:list={[
     "brand-mark",
     `brand-mark--${shape}`,
+    asset?.crop ? `brand-mark--crop-${asset.crop}` : null,
     `brand-mark--bg-${tileBackground}`,
     asset ? "brand-mark--asset" : "brand-mark--fallback",
     className,
@@ -293,6 +294,19 @@ const style = `--brand-size:${size}px;`;
   .brand-mark--wordmark .brand-logo {
     width: 86%;
     height: 54%;
+  }
+
+  .brand-mark--crop-left .brand-logo,
+  .brand-mark--crop-left-tight .brand-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+
+  .brand-mark--crop-left-tight .brand-logo {
+    transform: scale(1.16);
+    transform-origin: left center;
   }
 
   .brand-fallback {

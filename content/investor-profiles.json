@@ -9797,12 +9797,13 @@
       ]
     },
     "rsquared-investment": {
-      "reviewed_at": "2026-09-11",
+      "reviewed_at": "2026-09-14",
       "summary": {
-        "value": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed round.",
+        "value": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed+ round.",
         "source_ids": [
           "official",
-          "portfolio"
+          "portfolio",
+          "seed_plus_release"
         ]
       },
       "facts": [
@@ -9817,11 +9818,10 @@
         {
           "key": "stages",
           "value": [
-            "Seed"
+            "Seed+"
           ],
           "source_ids": [
-            "official",
-            "portfolio"
+            "seed_plus_release"
           ]
         },
         {
@@ -9830,7 +9830,6 @@
             "Artificial intelligence"
           ],
           "source_ids": [
-            "official",
             "portfolio"
           ]
         }
@@ -9840,13 +9839,161 @@
           "id": "official",
           "label": "Bossjob official operating-company site",
           "url": "https://bossjob.us/en-us",
-          "checked_at": "2026-09-11"
+          "checked_at": "2026-09-14"
         },
         {
           "id": "portfolio",
-          "label": "Metix AI: Rsquared Investment identity and Seed lead",
+          "label": "Metix AI: Rsquared Investment identity and latest-round lead",
           "url": "https://metix.ai/blog/metix-ai-raises-5-5m",
-          "checked_at": "2026-09-11",
+          "checked_at": "2026-09-14",
+          "source_type": "official_portfolio_company"
+        },
+        {
+          "id": "seed_plus_release",
+          "label": "Metix AI: $3M Seed+ round announcement via TechNode",
+          "url": "https://cn.technode.com/post/techcrunch_event/metix-ai/",
+          "checked_at": "2026-09-14",
+          "source_type": "official_portfolio_company"
+        }
+      ]
+    },
+    "longriver-investments": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Global venture capital firm focused on healthcare and deep technology, supporting companies from early-stage growth through IPO readiness.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Seed",
+            "Early-stage growth",
+            "IPO readiness"
+          ],
+          "source_ids": [
+            "official",
+            "portfolio"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Healthcare",
+            "Deep technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Global"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Hands-on support in strategy, financing, partnerships, and global expansion",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "LongRiver Investments official overview",
+          "url": "https://lr-investments.com/",
+          "checked_at": "2026-09-14"
+        },
+        {
+          "id": "portfolio",
+          "label": "Metix AI: LongRiver-led Seed round",
+          "url": "https://metix.ai/blog/metix-ai-raises-5-5m",
+          "checked_at": "2026-09-14",
+          "source_type": "official_portfolio_company"
+        }
+      ]
+    },
+    "fengshion-capital": {
+      "reviewed_at": "2026-09-14",
+      "summary": {
+        "value": "Beijing-based private equity and venture capital firm focused on early- and growth-stage consumer, brand, and technology-enabled companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Private equity and venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2015",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage",
+            "Growth"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Consumer products",
+            "Fashion brands",
+            "Technology enablement"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "Beijing"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Fengshion Capital official LinkedIn profile",
+          "url": "https://www.linkedin.com/company/fengshion-capital",
+          "checked_at": "2026-09-14"
+        },
+        {
+          "id": "portfolio",
+          "label": "Metix AI: Fengshion participation in the Seed round",
+          "url": "https://metix.ai/blog/metix-ai-raises-5-5m",
+          "checked_at": "2026-09-14",
           "source_type": "official_portfolio_company"
         }
       ]

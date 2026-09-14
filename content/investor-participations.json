@@ -708,5 +708,15 @@
     "source_url": "https://veridue.ai/blog/veridue-launches-4m-pre-seed",
     "source_name": "Veridue",
     "verified_at": "2026-09-13"
+  },
+  {
+    "company_slug": "metix",
+    "investor_slug": "fengshion-capital",
+    "round_date": "2026-03-12",
+    "round_stage": "Seed",
+    "role": "participant",
+    "source_url": "https://tech.einnews.com/pr_news/898939076/openjobs-ai-raises-a-multi-million-dollar-seed-round-to-build-the-first-agent-first-recruiting-platform",
+    "source_name": "OpenJobs AI announcement via EIN Presswire",
+    "verified_at": "2026-09-14"
   }
 ]

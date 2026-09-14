@@ -3,15 +3,15 @@
   "domain": "metix.ai",
   "url": "https://metix.ai/",
   "product_name": "Metix AI",
-  "summary": "AI-native hiring platform combining agent-run recruiting with expert delivery.",
-  "editor_note": "The sharper bet is to sell completed recruiting work, not another ATS seat. Metix pairs 4 workflow stages—sourcing, outreach, screening, and scheduling—with expert shortlist review, then exposes a demo and outcome-based pricing. Unlike sourcing copilots that hand recruiters another queue, it is accountable for interview-ready candidates. The open question is whether the human layer can shrink as volume grows or each customer stays service-heavy.",
+  "summary": "AI-native hiring platform that turns a role brief into sourced, engaged, interview-ready candidates.",
+  "editor_note": "The sharper bet is to sell completed recruiting work, not another ATS seat. Metix pairs agent-run briefing, search, engagement, and scheduling across a stated 860M+ profiles with delivery-lead quality review and outcome-based pricing. Unlike sourcing copilots that hand recruiters another queue, it is accountable for interview-ready candidates. The open question is whether the human layer can shrink as volume grows or each customer stays service-heavy.",
   "editor_rating": 4,
-  "why_featured": "$3M Seed for outcome-priced recruiting",
+  "why_featured": "$3M Seed+ after a $2.5M Seed",
   "product_type": "AI / ML",
   "hq_location": "San Francisco",
   "region": "US",
   "tags": "recruiting,ai agents,talent acquisition,outcome pricing,human-in-the-loop",
-  "investors": "Rsquared Investment",
+  "investors": "Rsquared Investment, LongRiver Investments, Fengshion Capital",
   "links": {
     "product": "https://metix.ai/demo",
     "pricing": "https://metix.ai/pricing",
@@ -26,19 +26,34 @@
     {
       "amount": "$3M",
       "stage": "Seed",
+      "stage_raw": "Seed+",
       "lead_investor": "Rsquared Investment",
-      "date": "2026-07-13",
-      "source_url": "https://app.dealroom.co/news/note/metix-ai-raises-3m-seed-for-autonomous-recruiting-agent-mira",
-      "source_name": "Dealroom.co"
+      "date": "2026-07-06",
+      "source_url": "https://cn.technode.com/post/techcrunch_event/metix-ai/",
+      "source_name": "Metix AI announcement via TechNode"
+    },
+    {
+      "amount": "$2.5M",
+      "stage": "Seed",
+      "lead_investor": "LongRiver Investments",
+      "date": "2026-03-12",
+      "source_url": "https://tech.einnews.com/pr_news/898939076/openjobs-ai-raises-a-multi-million-dollar-seed-round-to-build-the-first-agent-first-recruiting-platform",
+      "source_name": "OpenJobs AI announcement via EIN Presswire"
     }
   ],
   "research": {
-    "verified_at": "2026-07-25",
+    "verified_at": "2026-09-14",
     "sources": [
       {
         "id": "official_site",
         "label": "Metix AI official site",
         "url": "https://metix.ai/",
+        "type": "official"
+      },
+      {
+        "id": "official_about",
+        "label": "Metix AI company and product overview",
+        "url": "https://metix.ai/about",
         "type": "official"
       },
       {
@@ -66,9 +81,15 @@
         "type": "funding"
       },
       {
-        "id": "funding_1",
-        "label": "Dealroom Metix AI Seed coverage",
-        "url": "https://app.dealroom.co/news/note/metix-ai-raises-3m-seed-for-autonomous-recruiting-agent-mira",
+        "id": "seed_plus_announcement",
+        "label": "Metix AI $3M Seed+ announcement via TechNode",
+        "url": "https://cn.technode.com/post/techcrunch_event/metix-ai/",
+        "type": "funding"
+      },
+      {
+        "id": "seed_announcement",
+        "label": "OpenJobs AI Seed announcement via EIN Presswire",
+        "url": "https://tech.einnews.com/pr_news/898939076/openjobs-ai-raises-a-multi-million-dollar-seed-round-to-build-the-first-agent-first-recruiting-platform",
         "type": "funding"
       }
     ],
@@ -86,15 +107,15 @@
         ]
       },
       {
-        "claim": "The official funding announcement describes sourcing, outreach, screening, and scheduling across a global talent network, followed by delivery-team review before the shortlist reaches the customer.",
+        "claim": "The official company overview says Mira turns a role brief into search, engagement, and booked interviews across a stated 860M+ profiles, with customer approval before outreach and delivery-lead quality review.",
         "source_ids": [
-          "official_funding"
+          "official_about"
         ]
       },
       {
-        "claim": "Dealroom reports that Mira manages the hiring flow from drafting job descriptions through candidate interaction using a vertical language model and agent layer.",
+        "claim": "The funding announcement describes sourcing, outreach, screening, and scheduling across a global talent network, followed by delivery-team review before the shortlist reaches the customer.",
         "source_ids": [
-          "funding_1"
+          "official_funding"
         ]
       }
     ],
@@ -102,7 +123,7 @@
       "primary_user": "Founders without internal recruiting capacity and talent-acquisition teams overloaded by sourcing.",
       "category": "AI-native recruiting operations",
       "differentiation": "Metix combines agent-run sourcing, outreach, screening, and scheduling with human shortlist review, then charges for interview-ready candidates instead of software access or recruiter hours.",
-      "why_now": "The latest $3M Seed round funds deeper automation and North American expansion as vertical AI agents move from workflow assistance toward accountable outcome delivery."
+      "why_now": "The latest $3M Seed+ follows a $2.5M Seed within six months, funding deeper automation and North American expansion as vertical AI agents move from workflow assistance toward accountable outcome delivery."
     },
     "risks": [
       {
@@ -111,7 +132,7 @@
       },
       {
         "claim": "The $5.5M headline is cumulative across two rounds, so treating it as the latest round would overstate this financing event.",
-        "basis": "The official announcement separates an earlier $2.5M seed from the latest $3M round; Dealroom labels the current event a $3M Seed."
+        "basis": "The official announcement separates an earlier $2.5M Seed from the latest $3M round; the July 6 release identifies that latest round as Seed+."
       }
     ]
   }

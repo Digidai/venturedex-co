@@ -1507,9 +1507,30 @@
     "slug": "rsquared-investment",
     "short_name": "Rsquared",
     "website": "https://bossjob.us/en-us",
-    "description": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed round.",
+    "description": "Singapore company behind recruiting platform Bossjob and lead investor in Metix AI's 2026 Seed+ round.",
     "aliases": [
       "Rsquared Investment Pte. Ltd."
+    ]
+  },
+  "longriver-investments": {
+    "name": "LongRiver Investments",
+    "slug": "longriver-investments",
+    "short_name": "LongRiver",
+    "website": "https://lr-investments.com/",
+    "description": "Global venture capital firm focused on healthcare and deep technology, with hands-on support from early-stage growth through IPO readiness.",
+    "aliases": [
+      "LongRiver",
+      "LongRiver 江远投资"
+    ]
+  },
+  "fengshion-capital": {
+    "name": "Fengshion Capital",
+    "slug": "fengshion-capital",
+    "short_name": "Fengshion",
+    "website": "https://www.linkedin.com/company/fengshion-capital",
+    "description": "Beijing-based private equity and venture capital firm investing in early- and growth-stage consumer, brand, and technology-enabled companies.",
+    "aliases": [
+      "峰尚资本"
     ]
   },
   "pathlight": {

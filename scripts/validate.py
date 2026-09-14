@@ -210,6 +210,7 @@ CURL_RETRY_COUNT = "1"
 CURL_RETRY_DELAY_SECONDS = "1"
 CURL_PROCESS_TIMEOUT_SECONDS = 24
 ALLOWED_BRAND_SHAPES = {"icon", "wordmark"}
+ALLOWED_BRAND_CROPS = {"left", "left-tight"}
 ALLOWED_RESEARCH_SOURCE_TYPES = {
     "official",
     "funding",
@@ -1657,6 +1658,7 @@ def validate_brand_asset_record(
 
     name = str(asset.get("name", "")).strip()
     shape = str(asset.get("shape", "")).strip()
+    crop = str(asset.get("crop", "")).strip()
     local_path = str(asset.get("local_path", "")).strip()
     source_page = str(asset.get("source_page", "")).strip()
     source_url = str(asset.get("source_url", "")).strip()
@@ -1671,6 +1673,8 @@ def validate_brand_asset_record(
 
     if shape not in ALLOWED_BRAND_SHAPES:
         errors.append(f"{prefix} shape '{shape}' must be one of {sorted(ALLOWED_BRAND_SHAPES)}")
+    if crop and crop not in ALLOWED_BRAND_CROPS:
+        errors.append(f"{prefix} crop '{crop}' must be one of {sorted(ALLOWED_BRAND_CROPS)}")
 
     if not local_path.startswith(expected_prefix):
         errors.append(f"{prefix} local_path must start with '{expected_prefix}'")

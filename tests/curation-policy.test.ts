@@ -48,12 +48,29 @@ test("source amounts remain native and mixed financing is not presented as equit
   const round = { amount: "EUR 10M", currency: "EUR", stage: "Series A", stage_raw: "Series A+", instrument: "mixed", lead_investor: "undisclosed" } as FundingRound;
   assert.equal(fundingAmountLabel(round), "EUR 10M (mixed financing)");
   assert.equal(fundingStageLabel(round), "Series A+");
+  assert.equal(fundingStageLabel({ stage: "Seed", stage_raw: "Seed+" }), "Seed+");
+  assert.equal(normalizeFundingStage("Seed+"), "Seed");
   assert.equal(fundingSummary(round), "EUR 10M (mixed financing) Series A+; lead investor undisclosed");
   assert.equal(fundingAmountLabel({ amount: "undisclosed", instrument: "debt" }), "Undisclosed amount (debt)");
   assert.equal(fundingStageLabel({ stage: "Unspecified", stage_raw: null }), "Stage undisclosed");
   assert.equal(fundingSummary({ ...round, stage: "Unspecified", stage_raw: null }), "EUR 10M (mixed financing) Stage undisclosed; lead investor undisclosed");
   const structured = JSON.stringify(newsJsonLd([{ ...round, id: "test", date: "2026-09-08", company_name: "Fixture", company_slug: "fixture", source_url: "https://example.com/", source_name: "Official" }]));
   assert.doesNotMatch(structured, /"name":"undisclosed"|led by undisclosed/);
+});
+test("Metix keeps Seed and Seed+ distinct in presentation while sharing the Seed filter taxonomy", () => {
+  const metix = JSON.parse(readFileSync(join(root, "content/startups/metix.json"), "utf8"));
+  assert.deepEqual(metix.funding.map((round: FundingRound) => [round.amount, round.stage, round.stage_raw ?? null]), [
+    ["$3M", "Seed", "Seed+"],
+    ["$2.5M", "Seed", null],
+  ]);
+  assert.deepEqual(metix.funding.map((round: FundingRound) => fundingStageLabel(round)), ["Seed+", "Seed"]);
+  assert.ok(metix.funding[0].date > metix.funding[1].date);
+
+  const page = readFileSync(join(root, "src/pages/startups/[slug].astro"), "utf8");
+  assert.match(page, /fundingRounds\.length > 1/);
+  assert.match(page, /fundingStageLabel\(round\)/);
+  assert.match(page, /round\.source_url/);
+  assert.match(page, /detailFundingStage = latestFunding[\s\S]*fundingStageLabel\(latestFunding\)/);
 });
 test("evidence gaps are valid pending decisions, with bounded non-same-day retries", () => {
   assert.deepEqual(errors(review()), []);

@@ -2,11 +2,13 @@ import brandAssetsJson from "../../content/brand-assets.json";
 import investorsJson from "../../content/investors.json";
 
 export type BrandShape = "icon" | "wordmark";
+export type BrandCrop = "left" | "left-tight";
 export type BrandTileBackground = "light" | "dark";
 
 export interface BrandAsset {
   name: string;
   shape: BrandShape;
+  crop?: BrandCrop;
   local_path: string;
   source_page: string;
   source_url: string;

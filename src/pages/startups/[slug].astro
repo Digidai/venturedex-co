@@ -108,6 +108,9 @@ const externalLinks = [
 const researchSources = research?.sources ?? [];
 const sourceById = new Map(researchSources.map((source) => [source.id, source]));
 const latestFunding = fundingRounds[0] ?? null;
+const detailFundingStage = latestFunding
+  ? fundingStageLabel(latestFunding)
+  : fundingStageDisplayLabel(startup.funding_stage);
 
 const sourceTrail = [
   websiteUrl ? { id: "official_site", label: "Official site", url: websiteUrl, type: "official" } : null,
@@ -259,6 +262,42 @@ function sourceLabel(source?: StartupResearchSource) {
       </section>
     )}
 
+    {fundingRounds.length > 1 && (
+      <section class="funding-history" aria-labelledby="funding-history-heading">
+        <div class="section-heading funding-history-heading">
+          <h2 id="funding-history-heading">Funding history</h2>
+          <span>{fundingRounds.length} source-linked rounds</span>
+        </div>
+        <ol class="funding-timeline">
+          {fundingRounds.map((round, index) => (
+            <li class:list={["funding-round", { "is-latest": index === 0 }]}>
+              <span class="round-marker" aria-hidden="true"></span>
+              <div class="round-content">
+                <div class="round-heading">
+                  <div>
+                    <span class="round-kicker">{index === 0 ? "Latest round" : "Earlier round"}</span>
+                    <h3>
+                      <strong>{fundingAmountLabel(round)}</strong>
+                      <span>{fundingStageLabel(round)}</span>
+                    </h3>
+                  </div>
+                  <time datetime={round.date}>{formatDate(round.date)}</time>
+                </div>
+                {round.lead_investor && (
+                  <p class="round-lead">Led by {round.lead_investor}</p>
+                )}
+                {round.source_url && (
+                  <a href={round.source_url} target="_blank" rel="noopener noreferrer">
+                    {round.source_name ?? "Source"} &nearr;
+                  </a>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+    )}
+
     {research?.product_evidence?.length ? (
       <section class="evidence-section" aria-label="Product evidence">
         <h2>Product evidence</h2>
@@ -341,7 +380,7 @@ function sourceLabel(source?: StartupResearchSource) {
         {startup.funding_stage && (
           <div class="meta-item">
             <dt>Stage</dt>
-            <dd>{fundingStageDisplayLabel(startup.funding_stage)}{startup.funding_display ? ` (${startup.funding_display})` : ""}</dd>
+            <dd>{detailFundingStage}{startup.funding_display ? ` (${startup.funding_display})` : ""}</dd>
           </div>
         )}
         {startup.region && (
@@ -672,6 +711,7 @@ function sourceLabel(source?: StartupResearchSource) {
   }
 
   .funding-section,
+  .funding-history,
   .evidence-section,
   .market-section,
   .risk-section,
@@ -691,6 +731,7 @@ function sourceLabel(source?: StartupResearchSource) {
   }
 
   .funding-section h2,
+  .funding-history h2,
   .evidence-section h2,
   .market-section h2,
   .risk-section h2,
@@ -713,6 +754,112 @@ function sourceLabel(source?: StartupResearchSource) {
     color: var(--color-text-secondary);
     line-height: 1.6;
     margin: 0;
+  }
+
+  .funding-history-heading > span {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+  }
+
+  .funding-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .funding-round {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: var(--space-3);
+    position: relative;
+  }
+
+  .funding-round:not(:last-child)::before {
+    background: var(--color-border);
+    content: "";
+    left: 5px;
+    position: absolute;
+    top: 18px;
+    bottom: -2px;
+    width: 1px;
+  }
+
+  .round-marker {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-text-secondary);
+    border-radius: 50%;
+    height: 11px;
+    margin-top: 5px;
+    position: relative;
+    width: 11px;
+    z-index: 1;
+  }
+
+  .funding-round.is-latest .round-marker {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-accent) 12%, transparent);
+  }
+
+  .round-content {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-4) 0 var(--space-5);
+  }
+
+  .funding-round:first-child .round-content {
+    border-top-color: color-mix(in srgb, var(--color-accent) 28%, var(--color-border));
+  }
+
+  .round-heading {
+    align-items: flex-start;
+    display: flex;
+    gap: var(--space-4);
+    justify-content: space-between;
+  }
+
+  .round-kicker {
+    color: var(--color-text-secondary);
+    display: block;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: var(--space-1);
+    text-transform: uppercase;
+  }
+
+  .round-heading h3 {
+    align-items: baseline;
+    display: flex;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    gap: var(--space-2);
+    margin: 0;
+  }
+
+  .round-heading h3 span {
+    color: var(--color-accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .round-heading time,
+  .round-lead,
+  .round-content > a {
+    color: var(--color-text-secondary);
+    font-size: 0.78rem;
+  }
+
+  .round-heading time {
+    white-space: nowrap;
+  }
+
+  .round-lead {
+    margin: var(--space-2) 0 0;
+  }
+
+  .round-content > a {
+    display: inline-block;
+    margin-top: var(--space-2);
   }
 
   .evidence-list,
@@ -1170,6 +1317,7 @@ function sourceLabel(source?: StartupResearchSource) {
     }
 
     .section-heading,
+    .round-heading,
     .source-link {
       align-items: flex-start;
       flex-direction: column;
