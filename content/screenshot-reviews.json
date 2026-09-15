@@ -166,6 +166,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "aitan": {
+      "sha256": "5ce1a3fa71866104c54bdee886cd00b5481ad251c6fc1df4f3ead9db0cbeaacb",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://aitansystems.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-15T06:02:42.770Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final WebP visually inspected; desktop and 390x844 card/detail previews loaded with unobstructed, legible, representative framing."
+    },
     "alcatraz": {
       "sha256": "192b4f480f5d7c2a1a09c5f27e39fa65346a18ee374ed2d4a7b5843d3aac5e5e",
       "width": 1440,

@@ -14681,6 +14681,67 @@
           "checked_at": "2026-09-14"
         }
       ]
+    },
+    "deep33": {
+      "reviewed_at": "2026-09-15",
+      "summary": {
+        "value": "Deep-tech venture fund backing founders working on the compute, energy and automation constraints around the AI economy.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Seed", "Series A", "Series B"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Quantum", "Advanced energy", "AI infrastructure", "Robotics and autonomous manufacturing"], "source_ids": ["official"]},
+        {"key": "offices", "value": ["New York City", "Tel Aviv", "Los Angeles"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Deep33 official overview", "url": "https://www.deep33.com/", "checked_at": "2026-09-15"}
+      ]
+    },
+    "gokul-rajaram": {
+      "reviewed_at": "2026-09-15",
+      "summary": {
+        "value": "Individual early-stage technology investor who works with founders on product, growth, people, culture and capital decisions.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Individual investor", "source_ids": ["official"]},
+        {"key": "stages", "value": "Early stage", "source_ids": ["official"]},
+        {"key": "support", "value": ["Product and growth problem solving", "On-demand founder counsel", "Operator introductions"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Gokul Rajaram official investing overview", "url": "https://www.gokulrajaram.com/", "checked_at": "2026-09-15"}
+      ]
+    },
+    "benjamin-ling": {
+      "reviewed_at": "2026-09-15",
+      "summary": {
+        "value": "Founder and general partner of Bling Capital who also invests personally in early-stage technology companies.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Individual investor and venture capital partner", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Consumer", "Internet", "Mobile", "Marketplaces", "SaaS", "Consumer health"], "source_ids": ["official"]},
+        {"key": "entity_scope", "value": "Benjamin Ling is represented as the individual investor named in the Aitan financing source, distinct from Bling Capital as a firm.", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Bling Capital official Ben Ling profile", "url": "https://www.blingcap.com/team/ben-ling", "checked_at": "2026-09-15"}
+      ]
+    },
+    "kevin-weil": {
+      "reviewed_at": "2026-09-15",
+      "summary": {
+        "value": "Operator in residence at Scribble Ventures who contributes product, design, data and operating support to portfolio companies.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Individual investor and operator", "source_ids": ["official"]},
+        {"key": "support", "value": ["Product", "Design", "Data", "Operating strategy"], "source_ids": ["official"]},
+        {"key": "entity_scope", "value": "Kevin Weil is represented as the individual investor named in the Aitan financing source, distinct from Scribble Ventures as a firm.", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Scribble Ventures official Kevin Weil profile", "url": "https://www.scribble.vc/kevin-weil", "checked_at": "2026-09-15"}
+      ]
     }
   },
   "attempts": {}

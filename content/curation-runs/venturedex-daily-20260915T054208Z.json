@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260915T054208Z",
+  "task_run_id": "venturedex-daily-20260915T054208Z",
+  "locked_at": "2026-09-15",
+  "pool_sha256": "8521a935672673b120fc140689491844ac0c416a2a8a661feb2860b2d9347d45",
+  "source_coverage": [
+    {
+      "type": "company",
+      "query": "September 15 2026 startup raises seed funding official announcement",
+      "outcome": "The search surfaced current company and wire announcements; this run retained the three already-due reviews as the fixed priority batch and did not add filler candidates."
+    },
+    {
+      "type": "original_media",
+      "query": "September 2026 startup funding Series A official announcement company",
+      "outcome": "The search found recent reports including Lightfield and already-reviewed companies; Lightfield remained outside this fixed due-review batch for a later discovery cycle."
+    },
+    {
+      "type": "regional_media",
+      "query": "September 2026 startup funding Europe Asia regional media startup",
+      "outcome": "The search surfaced regional funding indexes and reports but no additional company was added before the due-review scope was frozen."
+    },
+    {
+      "type": "industry_media",
+      "query": "September 2026 startup funding robotics biotech climate developer tools",
+      "outcome": "The search surfaced sector leads including Bluecore Energy and BrainChild Bio, both already present in the effective curation state."
+    }
+  ],
+  "candidates": [
+    {
+      "slug": "trustedrouter",
+      "company_url": "https://trustedrouter.com/",
+      "source_url": "https://trustedrouter.com/blog/we-raised-1-25m-seed",
+      "source_type": "company",
+      "announced_at": "2026-08-31",
+      "region": "US",
+      "industry": "AI infrastructure",
+      "discovery_mode": "revisit",
+      "state": "publication_blocked",
+      "reason": "The current official product and funding surfaces remain live and qualification remains valid; publication is still blocked while the full explicitly named investor set is resolved into the canonical sourced directory.",
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://trustedrouter.com/",
+            "note": "The live product exposes one OpenAI-compatible API, explicit privacy routes, provider failover, public latency evidence and open-source SDKs."
+          },
+          {
+            "url": "https://trust.trustedrouter.com/",
+            "note": "The trust surface publishes attestation and assurance evidence for production teams evaluating the gateway."
+          }
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "The product bets on verifiable privacy and routing policy as the control layer across model providers."},
+          "craft": {"pass": true, "note": "The current API, migration, trust, status and open-source surfaces expose concrete operating detail."},
+          "specificity": {"pass": true, "note": "The developer workflow and deployment boundary are specific, while usage claims remain company reported."}
+        }
+      }
+    },
+    {
+      "slug": "aitan",
+      "company_url": "https://www.aitansystems.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+      "source_type": "company",
+      "announced_at": "2026-09-02",
+      "region": "US",
+      "industry": "Defense robotics",
+      "discovery_mode": "revisit",
+      "state": "accepted",
+      "reason": "The live product and financing evidence, every explicitly named investor profile, official brand assets, native screenshot and desktop and narrow-screen local previews passed the publication gates.",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.aitansystems.com/",
+            "note": "The live catalogue describes three mission systems plus a vendor-agnostic command layer, autonomy kits and an AI SDK."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+            "note": "The company-issued announcement names the $41M financing, co-leads and product deployment claims while leaving the round stage unnamed."
+          }
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Aitan bets on portable autonomy and orchestration across heterogeneous robotic fleets rather than one proprietary vehicle."},
+          "craft": {"pass": true, "note": "Named mission systems and explicit C2, autonomy-kit and SDK layers make the operating architecture inspectable."},
+          "specificity": {"pass": true, "note": "The military operator, contested environment and system boundary are specific; performance remains company reported."}
+        }
+      }
+    },
+    {
+      "slug": "leinao-ai",
+      "company_url": "https://www.leinao.ai/",
+      "source_url": "https://yangtzeer.com/news/deals/yangtze-funding-quantum-robotics-evtol/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-07",
+      "region": "China / Asia",
+      "industry": "AI and power infrastructure",
+      "discovery_mode": "revisit",
+      "state": "publication_blocked",
+      "reason": "The official website still fails browser access with an expired TLS certificate, so live product verification and a truthful native product screenshot remain blocked without bypassing the browser safety interstitial.",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.leinao.ai/product/solution_dlrg.html",
+            "note": "The previously verified solution page describes resource orchestration and deployment for AI compute infrastructure."
+          },
+          {
+            "url": "https://www.leinao.ai/product/solution_lnbdz.html",
+            "note": "A separate previously verified solution page describes electric-grid integration rather than a generic AI cloud."
+          }
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Leinao bets on coordinating compute with physical power infrastructure instead of selling generic cloud capacity."},
+          "craft": {"pass": true, "note": "The prior compute and grid solution evidence shows substantial integration, but current live verification is unavailable."},
+          "specificity": {"pass": true, "note": "The deployment domains are specific, while scale and performance claims remain company reported."}
+        }
+      }
+    }
+  ]
+}

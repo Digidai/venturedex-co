@@ -1,0 +1,79 @@
+{
+  "slug": "aitan",
+  "domain": "www.aitansystems.com",
+  "url": "https://www.aitansystems.com/",
+  "product_name": "Aitan",
+  "summary": "Edge-AI command, autonomy and robotic weapon systems for allied militaries.",
+  "editor_note": "The sharper bet is not another drone but a sovereign control layer for mixed robotic forces. Talon, Watchtower and Convoy pair mission-specific vehicles with a vendor-agnostic C2 platform, autonomy kits and an AI SDK. That is more inspectable than a generic defense-AI pitch, though the 500,000 combat-hour and deployment claims remain company reported, and independent performance evidence is limited.",
+  "editor_rating": 4,
+  "why_featured": "Sovereign control for mixed robot fleets",
+  "product_type": "Other",
+  "region": "US",
+  "tags": "defense technology,robotics,edge AI,command and control,autonomy",
+  "investors": "Deep33, Dell Technologies Capital, Gokul Rajaram, Benjamin Ling, Kevin Weil",
+  "links": {
+    "product": "https://www.aitansystems.com/",
+    "careers": "https://www.comeet.com/jobs/aitan/FA.006"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$41M",
+      "currency": "USD",
+      "stage": "Unspecified",
+      "lead_investor": "Deep33 and Dell Technologies Capital",
+      "date": "2026-09-02",
+      "source_url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+      "source_name": "Aitan via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-15",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Aitan official product site",
+        "url": "https://www.aitansystems.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding_1",
+        "label": "Aitan financing announcement",
+        "url": "https://www.prnewswire.com/news-releases/aitan-emerges-from-stealth-defines-new-defense-category-of-robotic-sovereignty-as-a-service--closes-41-million-funding-round-to-scale-its-battle-proven-technology-globally-302867620.html",
+        "type": "funding"
+      },
+      {
+        "id": "careers",
+        "label": "Aitan official careers listing",
+        "url": "https://www.comeet.com/jobs/aitan/FA.006",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The live site presents Talon, Watchtower and Convoy mission systems alongside a vendor-agnostic Universal C2 platform, autonomy kits and an AI SDK.",
+        "source_ids": ["official_site"]
+      },
+      {
+        "claim": "The company announcement says the systems have operated since 2023 and reports more than 500,000 combat hours; these are retained as company claims rather than independent performance proof.",
+        "source_ids": ["funding_1"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Allied military and national-security organizations coordinating heterogeneous robotic systems in contested environments.",
+      "category": "Defense robotics and command software",
+      "differentiation": "The company combines mission-specific robotic systems with a portable command, autonomy and model-deployment layer rather than locking operators to one vehicle.",
+      "why_now": "The current $41M financing supports product development and international expansion after the company emerged from stealth."
+    },
+    "risks": [
+      {
+        "claim": "Combat-hour, deployment and mission-effectiveness claims are company reported; independent performance, procurement durability, export controls and interoperability at allied scale remain open questions.",
+        "basis": "VentureDex assessment based on Aitan's live product site and company-issued financing announcement."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The company release verifies a $41M financing co-led by Deep33 and Dell Technologies Capital but does not state a canonical round stage. VentureDex records Unspecified rather than inferring Seed or Series A while retaining the source-backed product and deployment evidence.",
+      "source_ids": ["official_site", "funding_1", "careers"]
+    }
+  }
+}

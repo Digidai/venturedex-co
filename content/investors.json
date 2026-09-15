@@ -2499,5 +2499,39 @@
       "Twenty-Two Ventures",
       "TwentyTwo Ventures"
     ]
+  },
+  "deep33": {
+    "name": "Deep33",
+    "slug": "deep33",
+    "short_name": "Deep33",
+    "website": "https://www.deep33.com/",
+    "description": "Deep-tech venture fund investing from Seed through Series B across compute, energy, quantum and autonomous manufacturing.",
+    "aliases": [
+      "Deep33 and Dell Technologies Capital"
+    ]
+  },
+  "gokul-rajaram": {
+    "name": "Gokul Rajaram",
+    "slug": "gokul-rajaram",
+    "short_name": "Gokul Rajaram",
+    "website": "https://www.gokulrajaram.com/",
+    "description": "Individual early-stage technology investor and operating adviser to founders."
+  },
+  "benjamin-ling": {
+    "name": "Benjamin Ling",
+    "slug": "benjamin-ling",
+    "short_name": "Ben Ling",
+    "website": "https://www.blingcap.com/team/ben-ling",
+    "description": "Founder of Bling Capital and active angel investor in early-stage technology companies.",
+    "aliases": [
+      "Ben Ling"
+    ]
+  },
+  "kevin-weil": {
+    "name": "Kevin Weil",
+    "slug": "kevin-weil",
+    "short_name": "Kevin Weil",
+    "website": "https://www.scribble.vc/kevin-weil",
+    "description": "Operator in residence at Scribble Ventures and an active product-focused contributor to its portfolio."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-14",
+  "verified_at": "2026-09-15",
   "companies": {
     "8090": {
       "name": "8090",
@@ -21,6 +21,14 @@
       "local_path": "/logos/companies/airbility.jpg",
       "source_page": "https://airbility.co.kr/",
       "source_url": "https://airbility.co.kr/wp-content/uploads/2025/04/cropped-Untitled-2-192x192.jpg"
+    },
+    "aitan": {
+      "name": "Aitan",
+      "shape": "wordmark",
+      "tile_background": "dark",
+      "local_path": "/logos/companies/aitan.png",
+      "source_page": "https://www.aitansystems.com/",
+      "source_url": "https://aitansystems.com/manus-storage/aitan-logo-white-transparent_953f7849.png"
     },
     "vecna-robotics": {
       "name": "Vecna Robotics",
@@ -4809,6 +4817,34 @@
       "local_path": "/logos/investors/twenty-two-ventures.webp",
       "source_page": "https://twentytwo.vc/",
       "source_url": "https://images.squarespace-cdn.com/content/v1/64c0a46d36825539e9fa0d9d/be6d4ba5-7df7-4a30-b11e-569fbc44beb0/favicon.ico?format=100w"
+    },
+    "deep33": {
+      "name": "Deep33",
+      "shape": "icon",
+      "local_path": "/logos/investors/deep33.svg",
+      "source_page": "https://www.deep33.com/",
+      "source_url": "https://www.deep33.com/favicon.svg"
+    },
+    "gokul-rajaram": {
+      "name": "Gokul Rajaram",
+      "shape": "icon",
+      "local_path": "/logos/investors/gokul-rajaram.png",
+      "source_page": "https://www.gokulrajaram.com/",
+      "source_url": "https://lh3.googleusercontent.com/sitesv/AG8ngQWE1gYuq9WtTiRQlZw-_ZisUTtl8sHrRR2OLGvnJnFwHlBHY6nApyQFkoPcHsRISEF4dbc0FSVWAG0YtdTl8GmUvxu8cW0RxG56exbU7zScyFyUUOMg51ZREax441pQcNOKPUXZqpZ2URAbDNt026zgPnSZ4g2hU7FPBe2VECHVqS-G4Og3USEY7GtJVgc=w16383"
+    },
+    "benjamin-ling": {
+      "name": "Benjamin Ling",
+      "shape": "icon",
+      "local_path": "/logos/investors/benjamin-ling.webp",
+      "source_page": "https://www.blingcap.com/team/ben-ling",
+      "source_url": "https://www.blingcap.com/_next/image?url=%2Fimages%2Fteam%2Fben-headshot-new.jpeg&w=1920&q=75"
+    },
+    "kevin-weil": {
+      "name": "Kevin Weil",
+      "shape": "icon",
+      "local_path": "/logos/investors/kevin-weil.png",
+      "source_page": "https://www.scribble.vc/kevin-weil",
+      "source_url": "https://static.wixstatic.com/media/80bee5_49860163d6ba4a45a07fb9902f500b6e~mv2.png/v1/fill/w_360,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Kevin.png"
     }
   }
 }

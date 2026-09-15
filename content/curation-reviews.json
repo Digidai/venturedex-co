@@ -306,11 +306,11 @@
     {
       "slug": "aitan",
       "company_url": "https://www.aitansystems.com/",
-      "state": "publication_blocked",
-      "reason_code": "investor_research",
-      "reason": "The September 13 re-review verified the $41M financing and live Talon, Watchtower, Convoy, command-and-control and autonomy-kit product surfaces. Qualification remains valid, but the bounded content pass did not complete the newly required investor identities and profiles, so publication remains blocked without a quality downgrade.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-14",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "All source, product, investor, brand-asset, native-screenshot and local desktop and narrow-screen preview gates are complete for publication.",
+      "reviewed_at": "2026-09-15",
+      "next_review_at": null,
       "priority": 2,
       "sources": [
         "https://www.aitansystems.com/",
@@ -326,6 +326,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Re-verified the live product portfolio and financing; the company entered today's bounded publication workflow."
+        },
+        {
+          "date": "2026-09-15",
+          "outcome": "accepted",
+          "note": "Resolved every named investor into the sourced directory, captured and approved the official product screenshot, and passed desktop and narrow-screen card and detail review."
         }
       ],
       "original": {
@@ -427,9 +432,9 @@
       "company_url": "https://trustedrouter.com/",
       "state": "publication_blocked",
       "reason_code": "investor_research",
-      "reason": "The September 13 re-review verified the $1.25M Seed round and live routing, trust, documentation, status and open-source surfaces. Qualification remains valid, but the unusually broad named individual-investor set was not fully resolved into the canonical investor directory during this bounded pass, so publication remains blocked without a quality downgrade.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-14",
+      "reason": "The September 15 re-review verified the current routing, privacy, trust, documentation, status and open-source surfaces. Qualification remains valid, but the official financing announcement still names a broad individual-investor set that is not fully resolved into the canonical sourced directory, so publication remains blocked without a quality downgrade.",
+      "reviewed_at": "2026-09-15",
+      "next_review_at": "2026-09-22",
       "priority": 1,
       "sources": [
         "https://trustedrouter.com/",
@@ -447,6 +452,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Re-verified the developer, trust and operations surfaces; the company entered today's bounded publication workflow."
+        },
+        {
+          "date": "2026-09-15",
+          "outcome": "publication_blocked",
+          "note": "Re-verified the live product and trust surfaces and confirmed that complete sourced resolution of the broad named individual-investor set remains the exact publication dependency."
         }
       ],
       "original": {
@@ -2244,9 +2254,9 @@
       "company_url": "https://www.leinao.ai/",
       "state": "publication_blocked",
       "reason_code": "screenshot_review",
-      "reason": "The qualification remains valid, but the official website currently serves a maintenance page over an expired TLS certificate. A truthful product screenshot and live official-product verification cannot be completed, so publication is blocked rather than substituting unrelated imagery.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-14",
+      "reason": "The qualification remains valid, but on September 15 the official website failed in Codex IAB before content with an expired TLS certificate. A truthful native product screenshot and current live official-product verification cannot be completed without bypassing the browser safety interstitial, so publication remains blocked.",
+      "reviewed_at": "2026-09-15",
+      "next_review_at": "2026-09-22",
       "priority": 2,
       "sources": [
         "https://www.leinao.ai/",
@@ -2264,6 +2274,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Rechecked immediately outside the Daily cadence. The official site returned a maintenance page and an expired TLS certificate, so official-product screenshot and source-health gates could not be completed."
+        },
+        {
+          "date": "2026-09-15",
+          "outcome": "publication_blocked",
+          "note": "Codex IAB returned ERR_CERT_DATE_INVALID before the official site loaded; no interstitial bypass or substitute image was used, so the native screenshot gate remains blocked."
         }
       ],
       "original": {
