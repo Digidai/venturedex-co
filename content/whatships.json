@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "4b1191f0d2614683b79b576bbd352512acaf6bc2",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/4b1191f0d2614683b79b576bbd352512acaf6bc2",
-    "commit_at": "2026-09-14T18:20:12.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/4b1191f0d2614683b79b576bbd352512acaf6bc2/src/data/videos.json",
-    "raw_sha256": "2ccc8631b42bea1ffd5819bd5f8592fd9c5586f7f1d8441c31ccce0db2cf6476"
+    "commit": "f577f0bcdf0dbad6b793b85607358e58e3ae2f48",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/f577f0bcdf0dbad6b793b85607358e58e3ae2f48",
+    "commit_at": "2026-09-15T16:08:33.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/f577f0bcdf0dbad6b793b85607358e58e3ae2f48/src/data/videos.json",
+    "raw_sha256": "582ece358994fe47bed7497342266992ac42ccbca72cb482d30accd8057509c9"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,229 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-13T17:23:23.000Z",
-  "item_count": 2105,
+  "source_published_through": "2026-09-15T00:24:19.000Z",
+  "item_count": 2123,
   "items": [
+    {
+      "id": "plv-corespeed",
+      "tweet_id": "2099655515706208393",
+      "slug": "corespeed",
+      "title": "CoreSpeed — one MCP endpoint for your agents",
+      "product": "CoreSpeed",
+      "company": "CoreSpeed",
+      "category": "ai",
+      "tags": [
+        "corespeed",
+        "mcp",
+        "agents"
+      ],
+      "published_at": "2026-09-15T00:24:19.000Z",
+      "duration_seconds": 74,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099651291173834752/vid/avc1/1920x1080/FNcnK_5GpuoNZ9mR.mp4",
+      "original_post_url": "https://x.com/CoreSpeedHQ/status/2099655515706208393",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-minirouter-presets",
+      "tweet_id": "2099649224438583600",
+      "slug": "minirouter-presets",
+      "title": "Minirouter Presets — save a prompt, call it forever",
+      "product": "Minirouter Presets",
+      "company": "Minirouter",
+      "category": "developer-tools",
+      "tags": [
+        "minirouter",
+        "presets",
+        "agents"
+      ],
+      "published_at": "2026-09-14T23:59:19.000Z",
+      "duration_seconds": 8,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099647909251682304/vid/avc1/1080x1080/aAIhkt-zCpJJB9NZ.mp4",
+      "original_post_url": "https://x.com/iamzhe/status/2099649224438583600",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-cluster-gtm",
+      "tweet_id": "2099593260016476172",
+      "slug": "cluster-gtm",
+      "title": "Cluster — GTM infrastructure for your agents",
+      "product": "Cluster",
+      "company": "Cluster",
+      "category": "ai",
+      "tags": [
+        "cluster",
+        "gtm",
+        "agents"
+      ],
+      "published_at": "2026-09-14T20:16:56.000Z",
+      "duration_seconds": 91,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099592082209841154/vid/avc1/1920x1080/g6XiAgqMk8I0Zfox.mp4",
+      "original_post_url": "https://x.com/CostaLaveron/status/2099593260016476172",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-elevenlabs-mcp-creative",
+      "tweet_id": "2099556991563714747",
+      "slug": "elevenlabs-mcp-creative",
+      "title": "ElevenLabs MCP — creative tools in your coding agent",
+      "product": "ElevenLabs MCP",
+      "company": "ElevenLabs",
+      "category": "ai",
+      "tags": [
+        "elevenlabs",
+        "mcp",
+        "agents"
+      ],
+      "published_at": "2026-09-14T17:52:49.000Z",
+      "duration_seconds": 100,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099556546870980608/vid/avc1/1920x1080/pD1MsT8baPhCq_mX.mp4",
+      "original_post_url": "https://x.com/ElevenLabsDevs/status/2099556991563714747",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-inspo-mcp",
+      "tweet_id": "2099547343112564921",
+      "slug": "inspo-mcp",
+      "title": "Inspo — design inspiration MCP for coding agents",
+      "product": "Inspo",
+      "company": "Inspo",
+      "category": "design",
+      "tags": [
+        "inspo",
+        "mcp",
+        "design"
+      ],
+      "published_at": "2026-09-14T17:14:28.000Z",
+      "duration_seconds": 21,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099545469663723520/vid/avc1/1920x1080/-upNBWJ8WbCn0loE.mp4",
+      "original_post_url": "https://x.com/nutlope/status/2099547343112564921",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-elevenlabs-mcp-media",
+      "tweet_id": "2099547227223908568",
+      "slug": "elevenlabs-mcp-media",
+      "title": "ElevenLabs MCP — voice, music, image, and video",
+      "product": "ElevenLabs MCP",
+      "company": "ElevenLabs",
+      "category": "ai",
+      "tags": [
+        "elevenlabs",
+        "mcp",
+        "media"
+      ],
+      "published_at": "2026-09-14T17:14:01.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099544474661597185/vid/avc1/1920x1080/WeCDSpZ_5WNkjbew.mp4",
+      "original_post_url": "https://x.com/ElevenLabs/status/2099547227223908568",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-motion-mcp-codex",
+      "tweet_id": "2099542179697902025",
+      "slug": "motion-mcp-codex",
+      "title": "Motion MCP — Codex can now make launch videos",
+      "product": "Motion MCP for Codex",
+      "company": "Motion",
+      "category": "design",
+      "tags": [
+        "motion",
+        "mcp",
+        "codex"
+      ],
+      "published_at": "2026-09-14T16:53:57.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099530435193602048/vid/avc1/1920x1080/sePYBotLk0_al6MX.mp4",
+      "original_post_url": "https://x.com/motion_so/status/2099542179697902025",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-linear-loops-update",
+      "tweet_id": "2099541754051530805",
+      "slug": "linear-loops-update",
+      "title": "Linear Loops — trigger from projects and cycles",
+      "product": "Linear Loops",
+      "company": "Linear",
+      "category": "productivity",
+      "tags": [
+        "linear",
+        "loops",
+        "agents"
+      ],
+      "published_at": "2026-09-14T16:52:16.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099536549826183168/vid/avc1/1920x1080/yAkuyjOZoCMDPNv0.mp4",
+      "original_post_url": "https://x.com/linear/status/2099541754051530805",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-cline-desktop",
+      "tweet_id": "2099536235350086029",
+      "slug": "cline-desktop",
+      "title": "Cline Desktop — native app for open-weight models",
+      "product": "Cline Desktop",
+      "company": "Cline",
+      "category": "developer-tools",
+      "tags": [
+        "cline",
+        "desktop",
+        "models"
+      ],
+      "published_at": "2026-09-14T16:30:20.000Z",
+      "duration_seconds": 33,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099535365963141120/vid/avc1/1920x1080/Py5jMEHPaSy2k874.mp4",
+      "original_post_url": "https://x.com/cline/status/2099536235350086029",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-sf-interface-numbers",
+      "tweet_id": "2099503814453719438",
+      "slug": "sf-interface-numbers",
+      "title": "SF Interface Numbers — numbers that move as they should",
+      "product": "SF Interface Numbers",
+      "company": "The San Francisco Interface",
+      "category": "design",
+      "tags": [
+        "sf-interface",
+        "numbers",
+        "react"
+      ],
+      "published_at": "2026-09-14T14:21:30.000Z",
+      "duration_seconds": 9,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099503789162262528/vid/avc1/1920x1080/FpG42lk6Cey60BsY.mp4",
+      "original_post_url": "https://x.com/wherescz/status/2099503814453719438",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-obsidian-ui",
+      "tweet_id": "2099477338107134172",
+      "slug": "obsidian-ui",
+      "title": "ObsidianUI — React and Tailwind components",
+      "product": "ObsidianUI",
+      "company": "ObsidianUI",
+      "category": "design",
+      "tags": [
+        "obsidian-ui",
+        "react",
+        "tailwind"
+      ],
+      "published_at": "2026-09-14T12:36:18.000Z",
+      "duration_seconds": 122,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099471461488717824/vid/avc1/1280x614/laCDgx9wnn2Gvshy.mp4",
+      "original_post_url": "https://x.com/athrix_codes/status/2099477338107134172",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
     {
       "id": "plv-webagent",
       "tweet_id": "2099187195345330561",
@@ -865,6 +1085,26 @@
       "last_changed_at": "2026-09-12T09:37:09.000Z"
     },
     {
+      "id": "plv-achx-studio",
+      "tweet_id": "2098063108816372219",
+      "slug": "achx-studio",
+      "title": "AchX Studio — launch videos for next unicorns",
+      "product": "AchX Studio",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "launch"
+      ],
+      "published_at": "2026-09-10T14:56:39.000Z",
+      "duration_seconds": 68,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2098061875942727680/vid/avc1/1280x720/RAjyXEOlNN2gOFiW.mp4",
+      "original_post_url": "https://x.com/laxachx/status/2098063108816372219",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
       "id": "plv-enrich-arena",
       "tweet_id": "2098003722966270352",
       "slug": "enrich-arena",
@@ -1405,6 +1645,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097313423382204417/vid/avc1/1440x1080/tfhACBnfiu9MFeKz.mp4",
       "original_post_url": "https://x.com/tanvir_ui/status/2097317088142741704",
       "last_changed_at": "2026-09-12T12:58:21.000Z"
+    },
+    {
+      "id": "plv-achx-projects",
+      "tweet_id": "2097308518869241938",
+      "slug": "achx-projects",
+      "title": "AchX — a few projects from the studio",
+      "product": "AchX",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "reel"
+      ],
+      "published_at": "2026-09-08T12:58:11.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097308331736240128/vid/avc1/1920x1080/DBhnDhUpjArD6xdT.mp4",
+      "original_post_url": "https://x.com/laxachx/status/2097308518869241938",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
       "id": "plv-cutroom-studio",
@@ -3693,6 +3953,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2093668646262366208/vid/avc1/1672x1080/krxflCxtvp5ojUxk.mp4",
       "original_post_url": "https://x.com/Kappaemme1926/status/2093669996497084796",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-offline",
+      "tweet_id": "2093662730595205378",
+      "slug": "offline",
+      "title": "Offline — conversations that don't happen on a screen",
+      "product": "Offline",
+      "company": "Offline",
+      "category": "consumer",
+      "tags": [
+        "offline",
+        "community",
+        "founders"
+      ],
+      "published_at": "2026-08-29T11:31:08.000Z",
+      "duration_seconds": 65,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2093662530581499904/vid/avc1/1280x720/Ru_p5DeE1POfRCyJ.mp4",
+      "original_post_url": "https://x.com/beofflinee/status/2093662730595205378",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
       "id": "plv-outcome-first-markets",
@@ -7409,6 +7689,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2091223010640347136/vid/avc1/478x850/kmceovWW-IFzJTpL.mp4",
       "original_post_url": "https://x.com/0xSeyr/status/2091223060963586206",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-achx-recent",
+      "tweet_id": "2091221804966941132",
+      "slug": "achx-recent",
+      "title": "AchX — a recent film from the studio",
+      "product": "AchX",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "launch"
+      ],
+      "published_at": "2026-08-22T17:51:45.000Z",
+      "duration_seconds": 82,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2089992221424836608/vid/avc1/1280x720/3J695rEsUIUUv7Vj.mp4",
+      "original_post_url": "https://x.com/laxachx/status/2091221804966941132",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
       "id": "plv-phonon",
@@ -12684,6 +12984,26 @@
       "original_post_url": "https://x.com/arjmahesh/status/2084649458491613247"
     },
     {
+      "id": "plv-achx-launch-film",
+      "tweet_id": "2084638709643919656",
+      "slug": "achx-launch-film",
+      "title": "AchX — a launch video from the studio",
+      "product": "AchX",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "launch"
+      ],
+      "published_at": "2026-08-04T13:52:53.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2084638650185420800/vid/avc1/1280x720/NhTmJxaF9PJfiPnx.mp4",
+      "original_post_url": "https://x.com/AchxStudio/status/2084638709643919656",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
       "id": "plv-cmf-clip-pro",
       "tweet_id": "2084625402635370588",
       "slug": "cmf-clip-pro",
@@ -13182,6 +13502,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2084217499135234049/vid/avc1/1492x1080/ofygeo-IamWRo2wB.mp4",
       "original_post_url": "https://x.com/mona_biasia/status/2084217575412826219"
+    },
+    {
+      "id": "plv-achx-homepage-8s",
+      "tweet_id": "2084168706314346568",
+      "slug": "achx-homepage-8s",
+      "title": "AchX — your homepage has 8 seconds",
+      "product": "AchX",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "launch"
+      ],
+      "published_at": "2026-08-03T06:45:16.000Z",
+      "duration_seconds": 45,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2084168596608180224/vid/avc1/1920x1080/AI0omRT6COxgfOs3.mp4",
+      "original_post_url": "https://x.com/AchxStudio/status/2084168706314346568",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
       "id": "plv-minimax-h3-comfyui",
@@ -19730,6 +20070,26 @@
       "featured": false,
       "video_url": "https://video.twimg.com/amplify_video/2063289985344606208/vid/avc1/2918x1466/84RB-UvW-jvp_XFL.mp4",
       "original_post_url": "https://x.com/burkisoy/status/2063291563174670546"
+    },
+    {
+      "id": "plv-achx-2",
+      "tweet_id": "2063290114558873807",
+      "slug": "achx-2",
+      "title": "AchX 2.0 — from video studio to launch partner",
+      "product": "AchX 2.0",
+      "company": "AchX",
+      "category": "motion",
+      "tags": [
+        "achx",
+        "studio",
+        "launch"
+      ],
+      "published_at": "2026-06-06T16:01:12.000Z",
+      "duration_seconds": 64,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2063288078639448064/vid/avc1/1920x1080/O7JV60PG4Vkbp_GX.mp4",
+      "original_post_url": "https://x.com/laxachx/status/2063290114558873807",
+      "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
       "id": "plv-snappy-v2-launches-with-realtime-voice-control",
