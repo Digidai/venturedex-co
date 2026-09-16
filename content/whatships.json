@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "f577f0bcdf0dbad6b793b85607358e58e3ae2f48",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/f577f0bcdf0dbad6b793b85607358e58e3ae2f48",
-    "commit_at": "2026-09-15T16:08:33.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/f577f0bcdf0dbad6b793b85607358e58e3ae2f48/src/data/videos.json",
-    "raw_sha256": "582ece358994fe47bed7497342266992ac42ccbca72cb482d30accd8057509c9"
+    "commit": "59f46d5395f40a047fee4ca04311fb9f990fb2df",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/59f46d5395f40a047fee4ca04311fb9f990fb2df",
+    "commit_at": "2026-09-16T04:41:02.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/59f46d5395f40a047fee4ca04311fb9f990fb2df/src/data/videos.json",
+    "raw_sha256": "e5ef9f963da295ca9aaa1dba21dbdd573c03432f860fafc4151f8f7e5681acf2"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,189 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-15T00:24:19.000Z",
-  "item_count": 2123,
+  "source_published_through": "2026-09-15T23:41:28.000Z",
+  "item_count": 2133,
   "items": [
+    {
+      "id": "plv-monid-astra-cold-calling",
+      "tweet_id": "2100007120158834944",
+      "slug": "monid-astra-cold-calling",
+      "title": "Monid Astra — GPT-6 cold calling in one afternoon",
+      "product": "Monid Astra",
+      "company": "Monid",
+      "category": "ai",
+      "tags": [
+        "monid",
+        "astra",
+        "sales"
+      ],
+      "published_at": "2026-09-15T23:41:28.000Z",
+      "duration_seconds": 36,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100007017985486848/vid/avc1/1920x1080/Py1iPz2ZWnPN3-Hr.mp4",
+      "original_post_url": "https://x.com/MonidHQ/status/2100007120158834944",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-framer-first-site",
+      "tweet_id": "2099935530091753606",
+      "slug": "framer-first-site",
+      "title": "Framer Agent — prompt, build, and publish a site",
+      "product": "Framer Agent",
+      "company": "Framer",
+      "category": "design",
+      "tags": [
+        "framer",
+        "agent",
+        "website"
+      ],
+      "published_at": "2026-09-15T18:56:59.000Z",
+      "duration_seconds": 356,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099860872118120449/vid/avc1/2560x1440/DJuEqassRTPJ_KTg.mp4",
+      "original_post_url": "https://x.com/framer/status/2099935530091753606",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-brand-api",
+      "tweet_id": "2099909818727453117",
+      "slug": "brand-api",
+      "title": "Brand API — design capabilities for your agents",
+      "product": "Brand API",
+      "company": "Taste Labs",
+      "category": "design",
+      "tags": [
+        "brand",
+        "agents",
+        "design"
+      ],
+      "published_at": "2026-09-15T17:14:49.000Z",
+      "duration_seconds": 86,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099906668285034496/vid/avc1/1920x1080/RIRiiQT84n7IyuuN.mp4",
+      "original_post_url": "https://x.com/thaiscbranco_/status/2099909818727453117",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-gemini-3-8-live",
+      "tweet_id": "2099908000924193124",
+      "slug": "gemini-3-8-live",
+      "title": "Gemini 3.8 Live — Google's most advanced audio models",
+      "product": "Gemini 3.8 Live",
+      "company": "Google",
+      "category": "ai",
+      "tags": [
+        "gemini",
+        "google",
+        "audio"
+      ],
+      "published_at": "2026-09-15T17:07:36.000Z",
+      "duration_seconds": 77,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099907494130728960/vid/avc1/1920x1080/wpb9tWQENQo1_pMm.mp4",
+      "original_post_url": "https://x.com/GoogleAI/status/2099908000924193124",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-mem0-gateway",
+      "tweet_id": "2099898611337474354",
+      "slug": "mem0-gateway",
+      "title": "mem0 Gateway — one key, only the tools you grant",
+      "product": "mem0 Gateway",
+      "company": "mem0",
+      "category": "developer-tools",
+      "tags": [
+        "mem0",
+        "gateway",
+        "mcp"
+      ],
+      "published_at": "2026-09-15T16:30:17.000Z",
+      "duration_seconds": 92,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099898232126255106/vid/avc1/1920x1080/z6guKSG9rPaDjQbO.mp4",
+      "original_post_url": "https://x.com/mem0ai/status/2099898611337474354",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-ai-autocomplete",
+      "tweet_id": "2099897698006737261",
+      "slug": "ai-autocomplete",
+      "title": "AI Autocomplete — filter Shopify search as you type",
+      "product": "AI Autocomplete",
+      "company": "AI Autocomplete",
+      "category": "consumer",
+      "tags": [
+        "shopify",
+        "search",
+        "autocomplete"
+      ],
+      "published_at": "2026-09-15T16:26:40.000Z",
+      "duration_seconds": 45,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099897247005880323/vid/avc1/1920x1080/BqA2g6Sih_7462VA.mp4",
+      "original_post_url": "https://x.com/bradkowalk/status/2099897698006737261",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-bg0",
+      "tweet_id": "2099882468166029434",
+      "slug": "bg0",
+      "title": "bg0 — local WebGPU background removal",
+      "product": "bg0",
+      "company": "bg0",
+      "category": "design",
+      "tags": [
+        "bg0",
+        "webgpu",
+        "open-source"
+      ],
+      "published_at": "2026-09-15T15:26:08.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099882434913501184/vid/avc1/1786x1080/uM8ceBWYJvLHcRcl.mp4",
+      "original_post_url": "https://x.com/leodev/status/2099882468166029434",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-elevenagents-dom",
+      "tweet_id": "2099877066732675207",
+      "slug": "elevenagents-dom",
+      "title": "ElevenAgents — Dom, an AI SDR that qualifies leads",
+      "product": "ElevenAgents",
+      "company": "ElevenLabs",
+      "category": "ai",
+      "tags": [
+        "elevenlabs",
+        "agents",
+        "sdr"
+      ],
+      "published_at": "2026-09-15T15:04:41.000Z",
+      "duration_seconds": 64,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099876274323722240/vid/avc1/1920x1080/Il_guJG8JE7T0w4W.mp4",
+      "original_post_url": "https://x.com/ElevenLabs/status/2099877066732675207",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-noupload",
+      "tweet_id": "2099800862508060900",
+      "slug": "noupload",
+      "title": "NoUpload — edit any media locally in the browser",
+      "product": "NoUpload",
+      "company": "NoUpload",
+      "category": "design",
+      "tags": [
+        "noupload",
+        "browser",
+        "open-source"
+      ],
+      "published_at": "2026-09-15T10:01:52.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099797356862734336/vid/avc1/1280x720/qE_yfDlymYdofbYY.mp4",
+      "original_post_url": "https://x.com/rohitdevx/status/2099800862508060900",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
     {
       "id": "plv-corespeed",
       "tweet_id": "2099655515706208393",
@@ -63,6 +243,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099647909251682304/vid/avc1/1080x1080/aAIhkt-zCpJJB9NZ.mp4",
       "original_post_url": "https://x.com/iamzhe/status/2099649224438583600",
       "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-superhuman-go-agents",
+      "tweet_id": "2099604196399968702",
+      "slug": "superhuman-go-agents",
+      "title": "Superhuman Go — agents at your cursor in every app",
+      "product": "Superhuman Go",
+      "company": "Superhuman",
+      "category": "productivity",
+      "tags": [
+        "superhuman",
+        "go",
+        "agents"
+      ],
+      "published_at": "2026-09-14T21:00:23.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099604133204389888/vid/avc1/1080x1080/k_A0xaxae4xh72UW.mp4",
+      "original_post_url": "https://x.com/Superhuman/status/2099604196399968702",
+      "last_changed_at": "2026-09-16T04:41:02.000Z"
     },
     {
       "id": "plv-cluster-gtm",
