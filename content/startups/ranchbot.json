@@ -26,24 +26,24 @@
     }
   ],
   "research": {
-    "verified_at": "2026-08-15",
+    "verified_at": "2026-09-16",
     "sources": [
       {
         "id": "official_site",
-        "label": "Ranchbot official site",
-        "url": "https://ranch-bot.com/",
+        "label": "Ranchbot official help center",
+        "url": "https://intercom.help/ranchbot/en/",
         "type": "official"
       },
       {
         "id": "official_products",
-        "label": "Ranchbot product catalog",
-        "url": "https://ranch-bot.com/products/",
+        "label": "Ranchbot water-level monitor documentation",
+        "url": "https://intercom.help/ranchbot/en/collections/3203974-water-level-monitor",
         "type": "product"
       },
       {
         "id": "official_pump",
-        "label": "Ranchbot pump control page",
-        "url": "https://ranch-bot.com/pump-control/",
+        "label": "Ranchbot pump control documentation",
+        "url": "https://intercom.help/ranchbot/en/articles/7989619-pump-control-frequently-asked-questions",
         "type": "product"
       },
       {
@@ -61,7 +61,7 @@
     ],
     "product_evidence": [
       {
-        "claim": "Ranchbot sells distinct field devices for tank and trough levels, rainfall, flow and pressure, weather, and remote pump control, with public installation and support material.",
+        "claim": "Ranchbot's official documentation covers water levels, troughs, rainfall, weather, flow and pressure, and remote pump control with public installation and support material.",
         "source_ids": [
           "official_site",
           "official_products",
@@ -69,10 +69,11 @@
         ]
       },
       {
-        "claim": "Its public platform entry and product workflows show remote readings, alerts, and control tied to deployed hardware rather than a generic farm analytics promise.",
+        "claim": "Its official platform entry and pump-control documentation show remote readings, alerts, and control tied to deployed hardware rather than a generic farm analytics promise.",
         "source_ids": [
           "official_site",
-          "official_app"
+          "official_app",
+          "official_pump"
         ]
       }
     ],
