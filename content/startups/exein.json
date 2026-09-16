@@ -1,0 +1,99 @@
+{
+  "slug": "exein",
+  "domain": "www.exein.io",
+  "url": "https://www.exein.io/",
+  "product_name": "Exein",
+  "summary": "Kernel-native runtime protection and fleet visibility for connected devices and physical AI.",
+  "editor_note": "The distinctive boundary is the device kernel rather than a perimeter dashboard. Runtime rules inspect filesystem, network and syscall behavior, while fleet views make embedded incidents operationally visible. The $270M financing supports that installed protection layer. A planned foundation model is a separate future promise; today's product must still balance blocking accuracy with reliability on constrained hardware.",
+  "editor_rating": 4,
+  "why_featured": "$270M for embedded runtime security",
+  "product_type": "DevTools",
+  "region": "Europe",
+  "tags": "cybersecurity,embedded systems,iot,physical ai",
+  "investors": "Headline, Sofina, Goldman Sachs, EIB Group, KfW Capital, T.Capital, Balderton Capital, HV Capital, Intrepid Growth Partners, 33N Ventures, Lakestar, Supernova Invest, Blue Cloud Ventures, Geodesic Capital",
+  "links": {
+    "product": "https://www.exein.io/",
+    "careers": "https://www.exein.io/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$270M",
+      "stage": "Unspecified",
+      "lead_investor": "Headline",
+      "date": "2026-09-15",
+      "source_url": "https://www.exein.io/blog/exein-raises-270m-at-1-7bn-valuation-to-build-the-security-layer-for-physical-ai",
+      "source_name": "Exein"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Exein official product",
+        "url": "https://www.exein.io/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "Exein funding announcement",
+        "url": "https://www.exein.io/blog/exein-raises-270m-at-1-7bn-valuation-to-build-the-security-layer-for-physical-ai",
+        "type": "funding"
+      },
+      {
+        "id": "runtime",
+        "label": "Exein Runtime",
+        "url": "https://www.exein.io/platform/exein-runtime",
+        "type": "product"
+      },
+      {
+        "id": "photon",
+        "label": "Exein Photon",
+        "url": "https://photon.exein.io/",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Exein Runtime describes kernel-native protection for file-system, network and syscall behavior, paired with fleet visibility and security workflows.",
+        "source_ids": [
+          "runtime"
+        ]
+      },
+      {
+        "claim": "Photon describes preemptive kernel-level blocking instead of relying only on alerts after execution.",
+        "source_ids": [
+          "photon"
+        ]
+      },
+      {
+        "claim": "The announcement separates the current embedded-security platform from an agentic architecture planned for late 2026 and a foundation model planned for early 2027.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Embedded-device manufacturers and security teams managing connected fleets.",
+      "category": "Embedded runtime cybersecurity",
+      "differentiation": "Pairs device-kernel enforcement with fleet operations instead of relying exclusively on external network monitoring.",
+      "why_now": "Financing scales a current security platform as connected hardware takes on more autonomous workloads."
+    },
+    "risks": [
+      {
+        "claim": "Kernel intervention can impose reliability and false-positive costs on constrained devices.",
+        "basis": "Editorial assessment of the enforcement boundary shown in Runtime and Photon; company performance claims are not independent tests."
+      }
+    ],
+    "unnamed_round_assessment": {
+      "reason": "The official announcement discloses $270M of equity financing without assigning a named round. VentureDex retains Unspecified rather than inferring a Series label. The independent company's current product is evidenced separately by Runtime and Photon; the expanded revolving credit facility is excluded from the equity amount.",
+      "source_ids": [
+        "official",
+        "funding",
+        "runtime",
+        "photon"
+      ]
+    }
+  }
+}

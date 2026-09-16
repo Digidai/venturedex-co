@@ -1,0 +1,78 @@
+{
+  "slug": "expertise-ai",
+  "domain": "www.expertise.ai",
+  "url": "https://www.expertise.ai/",
+  "product_name": "Expertise AI",
+  "summary": "Managed sales and support agents with CRM handoffs, knowledge-gap analysis, and deployment support.",
+  "editor_note": "The practical bet is deployment work rather than another self-serve chatbot builder. Agents connect knowledge, CRM and booking handoffs, while the knowledge-gap view groups weak answers into documentation fixes. Forward-deployed support and private deployment options address operational constraints. The open question is whether hands-on deployments can scale without becoming a bespoke services business.",
+  "editor_rating": 4,
+  "why_featured": "CA$3.2M Seed for deployed AI agents",
+  "product_type": "AI / ML",
+  "region": "Global / Remote",
+  "tags": "ai agents,customer support,sales,enterprise",
+  "investors": "UpHonest Capital, Amino Capital, Welight Capital, UpScaleX, AltaIR Capital",
+  "links": {
+    "product": "https://www.expertise.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "CAD 3.2M",
+      "currency": "CAD",
+      "stage": "Seed",
+      "lead_investor": "UpHonest Capital",
+      "date": "2026-09-15",
+      "source_url": "https://www.newswire.ca/news-releases/expertise-ai-raises-ca-3-2-million-to-close-the-ai-adoption-gap-in-traditional-industries-847307616.html",
+      "source_name": "Expertise AI via Canada Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Expertise AI official product",
+        "url": "https://www.expertise.ai/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "Expertise AI via Canada Newswire funding announcement",
+        "url": "https://www.newswire.ca/news-releases/expertise-ai-raises-ca-3-2-million-to-close-the-ai-adoption-gap-in-traditional-industries-847307616.html",
+        "type": "funding"
+      },
+      {
+        "id": "knowledge",
+        "label": "Knowledge-gap workflow",
+        "url": "https://www.expertise.ai/live/knowledge-gap",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product connects agents to knowledge, CRM, booking and human escalation with forward-deployed implementation support and private VPS options.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "The knowledge-gap workflow flags low-confidence or incomplete answers, groups recurring themes and uses resolution data to prioritize documentation fixes.",
+        "source_ids": [
+          "knowledge"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Traditional-industry sales and support teams needing deployment assistance.",
+      "category": "Managed enterprise AI agents",
+      "differentiation": "Combines knowledge feedback with implementation support rather than treating installation as adoption.",
+      "why_now": "Canadian-dollar Seed financing supports an inspectable deployment and maintenance workflow."
+    },
+    "risks": [
+      {
+        "claim": "Hands-on delivery may constrain margins and repeatability.",
+        "basis": "Editorial assessment of the forward-deployed model; public customer outcomes are company reported."
+      }
+    ]
+  }
+}

@@ -1409,5 +1409,33 @@
   "aitan": {
     "published_at": "2026-09-15 05:54:14",
     "first_seen_at": "2026-09-15 05:54:14"
+  },
+  "aiuc": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "zero": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "expertise-ai": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "reemerge": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "nix-biosensors": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "regcell": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
+  },
+  "exein": {
+    "published_at": "2026-09-16 09:23:42",
+    "first_seen_at": "2026-09-16 09:23:42"
   }
 }

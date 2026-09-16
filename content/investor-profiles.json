@@ -14742,6 +14742,2275 @@
       "sources": [
         {"id": "official", "label": "Scribble Ventures official Kevin Weil profile", "url": "https://www.scribble.vc/kevin-weil", "checked_at": "2026-09-15"}
       ]
+    },
+    "first-harmonic": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Early-stage investment firm pairing capital with a go-to-market program for founders.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Go-to-market program for founders",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "First Harmonic official overview",
+          "url": "https://www.firstharmonic.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "terrain": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Early-stage investment firm concentrating on a small number of technology companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Focused support for a small number of technology projects",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Terrain official overview",
+          "url": "https://www.terrain.com/investments",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "primary-venture-partners": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Seed-stage venture firm pairing specialized investing with an operating team supporting founders.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Specialized operating support for portfolio founders",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Primary Venture Partners official overview",
+          "url": "https://www.primary.vc/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "inception-fund": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture investment firm backing technical founders building AI companies from zero to one.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Artificial intelligence",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Early founder support with flexibility on leading rounds and board participation",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Inception Fund official overview",
+          "url": "https://inceptionfund.vc/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "defiant": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture capital firm investing in late-seed and Series A B2B software and fintech companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Late Seed",
+            "Series A"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "B2B software",
+            "Fintech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Defiant official overview",
+          "url": "https://defiant.vc/portfolio",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "uphonest-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture investment firm supporting founders through capital, incubation and a scout network.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Founder incubation and scout network",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": "Palo Alto, California",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "UpHonest Capital official overview",
+          "url": "https://www.uphonestcapital.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "amino-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Palo Alto venture capital firm backing founders from pre-seed through Series B.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed",
+            "Series A",
+            "Series B"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": "Palo Alto, California",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Amino Capital official overview",
+          "url": "https://www.aminocapital.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "welight-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture capital firm focused on Series A and B investments across enterprise and consumer technology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Series A",
+            "Series B"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2015",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Enterprise services",
+            "Consumer technology",
+            "Education",
+            "Finance"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Welight Capital official overview",
+          "url": "https://welightcapital.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "upscalex": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Pre-seed and seed fund co-building AI companies with product, go-to-market and fundraising support.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Artificial intelligence",
+            "Agentic commerce"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Product, go-to-market, product-market fit and fundraising",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "UpScaleX official overview",
+          "url": "https://www.upscalex.ai/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "altair-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "International venture capital firm investing from early to growth stage in software and technology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early to growth stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States",
+            "Europe",
+            "Israel"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Artificial intelligence",
+            "Future of work",
+            "Fintech",
+            "Digital health"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "AltaIR Capital official overview",
+          "url": "https://altair.vc/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "usvp": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Early-stage venture firm supporting information-technology and healthcare companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Information technology",
+            "Healthcare"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Company strategy, team building, product development and business development",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "U.S. Venture Partners official overview",
+          "url": "https://www.usvp.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "sante-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Private healthcare venture strategy backing biotechnology, medical technology and health technology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Biotechnology",
+            "Medical technology",
+            "Health technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Santé Ventures is the private-company venture strategy, distinct from Santé Capital's public-market strategy.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Santé Ventures official overview",
+          "url": "https://sante.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "415-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Specialist medical-technology venture investor supporting clinical and commercial development.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Medical technology",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Europe",
+            "Israel",
+            "North America"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Clinical development, regulation, reimbursement and commercialization",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "415 Capital official overview",
+          "url": "https://415capital.com/about/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "oxford-science-enterprises": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Independent investment company and venture builder partnering with Oxford research-led businesses.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment company and venture builder",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Deep technology",
+            "Life sciences",
+            "Health technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Patient capital and company-building support for research commercialization",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Oxford Science Enterprises official overview",
+          "url": "https://www.oxfordscienceenterprises.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "iag-capital-partners": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture capital firm leading Seed through Series D rounds with teams in the US and UK.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed through Series D",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "offices",
+          "value": [
+            "Charleston, South Carolina",
+            "New York",
+            "London"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "IAG Capital Partners official overview",
+          "url": "https://www.iagcapitalpartners.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "dendrion-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Investment firm providing evergreen capital for innovative medical-technology opportunities.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Medical technology",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Evergreen capital",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Dendrion Ventures official overview",
+          "url": "https://dendrionventures.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "the-vertical-group": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture capital firm focused on medical technology and biotechnology, independent since 1988.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Medical technology",
+            "Biotechnology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Partners have operated as founders, early investors and executives in medical-technology companies",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "The Vertical Group official overview",
+          "url": "https://www.vertical-group.com/who-we-are.html",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "shorewind-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Technology investment firm backing companies addressing large technical and societal challenges.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Technology investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Supports founders tackling substantial technical problems rather than narrowly scoped corporate needs",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Shorewind Capital official overview",
+          "url": "https://www.shorewindcapital.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "great-oaks-venture-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Generalist venture capital firm backing US companies at pre-seed, seed and Series A.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Pre-Seed",
+            "Seed",
+            "Series A"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "United States",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Software",
+            "Healthcare",
+            "Financial services",
+            "Marketplaces",
+            "Enterprise"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Great Oaks Venture Capital official overview",
+          "url": "https://www.greatoaksvc.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "oregon-sports-angels": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Member-based angel network backing US sports-product and technology companies with early adoption.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Angel investor network",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Sports products",
+            "Sports technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "United States",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Mentoring, industry introductions and access to individual member investors",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Oregon Sports Angels official overview",
+          "url": "https://oregonsportsangels.org/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "white-road-investments": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Investment firm backing mission-driven consumer brands focused on health and sustainability.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Consumer products",
+            "Health and sustainability"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Operations, sales, marketing, finance and industry relationships",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "White Road Investments official overview",
+          "url": "https://whiteroadinvestments.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "playground-global": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Early-stage deep-tech venture firm backing technical founders in compute, automation, energy and biology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Earliest stages of company formation",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Next-generation computing",
+            "Automation",
+            "Energy transition",
+            "Engineered biology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Playground Global official overview",
+          "url": "https://www.playground.vc/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "global-brain": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Independent venture capital firm combining hands-on startup support with corporate open innovation.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Hands-on startup support and open innovation with large corporations",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Flagship venture funds, corporate venture funds and partner co-investment projects",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Global Brain official overview",
+          "url": "https://globalbrains.com/en",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "mitsui-chemicals": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Strategic corporate investor operating the 321 FORCE venture fund with Global Brain.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Corporate strategic investor",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Medical and healthcare",
+            "Agriculture and food",
+            "Mobility",
+            "Electronics",
+            "Sustainability",
+            "Digital services"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Corporate venture investment through 321 FORCE, operated with Global Brain",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Mitsui Chemicals official overview",
+          "url": "https://jp.mitsuichemicals.com/en/special/cvc_general/index.htm",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "lg-technology-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture investment firm backing early- and growth-stage companies with access to LG Group resources.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Corporate venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": [
+            "Early stage",
+            "Growth stage"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Artificial intelligence",
+            "Biotechnology",
+            "Cleantech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Access to knowledge and opportunities across LG Group's global network",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "LG Technology Ventures official overview",
+          "url": "https://www.lgtechventures.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "alumni-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Community-oriented venture capital firm providing individual investors access to venture opportunities.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2014",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Community-based venture investing designed for individual accredited investors",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Alumni Ventures official overview",
+          "url": "https://www.av.vc/about",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "medical-incubator-japan": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Healthcare investment company backing therapeutics, medical devices, digital health and medical AI.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Healthcare investment company",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Pharmaceuticals",
+            "Regenerative medicine",
+            "Gene therapy",
+            "Medical devices",
+            "Digital health"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Healthcare evaluation and hands-on commercialization support",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Medical Incubator Japan official overview",
+          "url": "https://medicalincubatorjapan.com/en/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "fast-track-initiative": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Healthcare venture capital firm connecting science-backed startups with Japanese life-science networks.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2004",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Healthcare and life sciences",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Connections to Japanese healthcare partners and global innovation networks",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Fast Track Initiative official overview",
+          "url": "https://us.fasttrackinitiative.com/about-us/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "utec": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Science and technology venture firm working with researchers and founders, particularly at seed stage.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Primarily Seed",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Commercializes science and technology through research networks, management teams and global market development",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "The University of Tokyo Edge Capital Partners official overview",
+          "url": "https://www.ut-ec.co.jp/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "osaka-university-venture-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "University venture investor supporting commercialization of academic research and technology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "University venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Commercialization of university research through startup creation and venture investment",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Osaka University Venture Capital official overview",
+          "url": "https://www.ouvc.co.jp/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "kyoto-icap": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Kyoto University-owned investment company building and supporting research-led deep-tech startups.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "University venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2014",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Research-led deep technology",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Company creation, management support, corporate collaboration and international expansion",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Kyoto iCAP official overview",
+          "url": "https://www.kyoto-unicap.co.jp/company/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "headline": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Global venture capital platform with regional early-stage teams and a global growth strategy.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed and Series A through regional funds; Series B and beyond through the growth fund",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "United States",
+            "Europe",
+            "Brazil",
+            "Asia"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "The platform operates distinct regional and growth funds; this profile does not infer which legal fund participated in a financing.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Headline official overview",
+          "url": "https://headline.com/about/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "sofina": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Listed investment company providing patient capital and supportive advice to entrepreneurs and families.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment company",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Europe",
+            "Asia",
+            "United States"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Long-term patient capital supported by an entrepreneurial family reference shareholder",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Sofina official overview",
+          "url": "https://www.sofinagroup.com/en/about-sofina",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "goldman-sachs": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Financial institution with investment banking, markets, asset management and wealth management businesses.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Financial institution",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Investment banking and markets",
+            "Asset and wealth management"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Represents the Goldman Sachs brand named in the financing source; no specific Alternatives fund or investment vehicle is inferred.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Goldman Sachs official overview",
+          "url": "https://www.goldmansachs.com/what-we-do/our-businesses",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "eib-group": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "European public-finance group supporting innovation through the European Investment Bank and European Investment Fund.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Public development finance group",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Comprises the European Investment Bank and European Investment Fund; the cited ETCI initiative channels growth capital through a fund-of-funds structure.",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "European technology growth financing through initiatives including ETCI",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "EIB Group official overview",
+          "url": "https://www.eib.org/en/events/european-tech-champions-initiative",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "kfw-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "KfW subsidiary investing in German and European venture capital and venture debt funds.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Institutional venture investor",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": [
+            "Germany",
+            "Europe"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Strengthens venture-fund capital to improve financing access for technology-oriented growth companies",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "KfW Capital is a wholly owned KfW subsidiary, distinct from KfW's separately reported lending activities.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "KfW Capital official overview",
+          "url": "https://www.kfw-capital.de/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "t-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Deutsche Telekom's strategic investment arm pairing capital with market access, expertise and partnerships.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Corporate strategic investor",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Invests through Ventures and Tech Fund strategies",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Market access, expertise and partnerships through Deutsche Telekom",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "T.Capital official overview",
+          "url": "https://www.t.capital/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "hv-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "European venture firm backing founders from Seed and Series A through growth-stage financing.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Seed and Series A through Venture; Series B and beyond through Growth",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "Europe",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Consumer",
+            "Enterprise software",
+            "Fintech",
+            "Deep technology",
+            "Artificial intelligence"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "HV Capital official overview",
+          "url": "https://hvcapital.com/approach",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "intrepid-growth-partners": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Investment firm backing AI founders building companies that transform whole systems and industries.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": "Artificial intelligence",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "AI expertise, institutional investment experience and a global network",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Intrepid Growth Partners official overview",
+          "url": "https://www.intrepidgp.com/insights/why-we-created-intrepid-growth-partners",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "33n-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "European venture capital firm investing globally in cybersecurity, artificial intelligence and defense.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Cybersecurity",
+            "Artificial intelligence",
+            "Defense"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "Global",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Operator, security-leader and AI networks supporting customers, channels and technical talent",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "33N Ventures official overview",
+          "url": "https://33n.vc/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "lakestar": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Technology investment platform combining institutional venture funds with long-term founder support.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2012",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Patient, founder-focused investment supporting portfolio growth and European technological resilience",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Lakestar official overview",
+          "url": "https://www.lakestar.com/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "supernova-invest": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Independent deep-tech investment manager focused mainly on Europe across industry, health, digital and cleantech.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture investment manager",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "geographies",
+          "value": "Europe",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Industrial technologies",
+            "Healthcare",
+            "Digital technology",
+            "Cleantech"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "founded",
+          "value": "2017",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Supernova Invest official overview",
+          "url": "https://supernovainvest.com/about/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "blue-cloud-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Growth venture firm backing enterprise SaaS, open-source and infrastructure software companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Growth venture capital",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Growth stage, with selected early-stage investments",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Enterprise SaaS",
+            "Open-source software",
+            "Infrastructure software"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Strategy, recruiting, customer introductions and international expansion",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Blue Cloud Ventures official overview",
+          "url": "https://www.bluecloudventures.com/about/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "geodesic-capital": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Venture investment firm helping technology founders enter Japan and build US-Japan business connections.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Japanese market entry and relationships connecting Silicon Valley and Japan",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Includes an Alliance Fund dedicated to early-stage deep tech, national security and space companies",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Geodesic Capital official overview",
+          "url": "https://geodesiccap.com/about/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "greens-ventures": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Early-stage investor supporting ambitious founders building category-defining technology companies.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Venture investment firm",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "stages",
+          "value": "Early stage",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Supports ambitious founders building category-defining technology companies",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Greens Ventures official overview",
+          "url": "https://greens.ventures/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "fabian-hedin": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Technology operator and individual investor best known as co-founder and chief technology officer of Lovable.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Individual investor and technology operator",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Co-founder and chief technology officer of Lovable",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Fabian Hedin is represented as the individual investor named in the Zero financing source, distinct from Lovable as a company.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Fabian Hedin official overview",
+          "url": "https://lovable.dev/th/blog/lovable-welcomes-molnett",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "ilkka-paananen": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Technology operator and individual investor who advises Lifeline Ventures and serves as chief executive of Supercell.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Individual investor and technology operator",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "support",
+          "value": "Adviser to Lifeline Ventures",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Chief executive of Supercell and former president at Digital Chocolate",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Ilkka Paananen is represented as the individual investor named in the Zero financing source, distinct from Lifeline Ventures and Supercell.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Ilkka Paananen official overview",
+          "url": "https://www.lifelineventures.com/contact-our-team/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "peter-sarlin": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Technology founder and individual investor supporting ambitious AI founders through the PostScriptum founder's office.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Individual investor and founder's-office operator",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Artificial intelligence",
+            "Technology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Founder and chair of PostScriptum; co-founded Silo AI",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Peter Sarlin is represented as the individual investor named in the Zero financing source, distinct from PostScriptum and Silo AI.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Peter Sarlin official overview",
+          "url": "https://sarlin.ai/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "anne-wojcicki": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Healthcare founder and individual investor focused on genetics, biomedical research and patient-centered health innovation.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Individual investor and healthcare founder",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Genetics",
+            "Biomedical research",
+            "Healthcare"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Founder and chief executive of the 23andMe Research Institute",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Anne Wojcicki is represented as the individual investor named in the Nix Biosensors financing source, distinct from the 23andMe Research Institute.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Anne Wojcicki official overview",
+          "url": "https://www.23andme.org/about/governance/",
+          "checked_at": "2026-09-16"
+        }
+      ]
+    },
+    "len-blavatnik": {
+      "reviewed_at": "2026-09-16",
+      "summary": {
+        "value": "Founder of Access Industries and an individual investor across strategic equity, media, real estate and biotechnology.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      "facts": [
+        {
+          "key": "firm_type",
+          "value": "Individual investor and investment-firm founder",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "sectors",
+          "value": [
+            "Strategic equity",
+            "Media and entertainment",
+            "Real estate",
+            "Biotechnology"
+          ],
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "approach",
+          "value": "Founder and chair of Access Industries",
+          "source_ids": [
+            "official"
+          ]
+        },
+        {
+          "key": "entity_scope",
+          "value": "Len Blavatnik is represented as the individual investor named in the Nix Biosensors financing source, distinct from Access Industries as a firm.",
+          "source_ids": [
+            "official"
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "id": "official",
+          "label": "Len Blavatnik official overview",
+          "url": "https://www.accessindustries.com/our-people/len-blavatnik/",
+          "checked_at": "2026-09-16"
+        }
+      ]
     }
   },
   "attempts": {}

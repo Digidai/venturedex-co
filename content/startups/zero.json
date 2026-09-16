@@ -1,0 +1,78 @@
+{
+  "slug": "zero",
+  "domain": "zero.inc",
+  "url": "https://zero.inc/",
+  "product_name": "Zero",
+  "summary": "AI-native CRM linking prospecting, sales, customer health, and commercial agents in one record.",
+  "editor_note": "The stronger idea is shared customer context rather than a chatbot bolted onto a CRM. Prospect, Close and Grow connect pipeline work with usage, billing and conversations, while agents maintain records and prepare follow-ups. A 14-day trial makes the workflow inspectable. The hard part is keeping autonomous upkeep trustworthy when billing, support and sales disagree about the same customer.",
+  "editor_rating": 4,
+  "why_featured": "$10.3M Seed for a context-first CRM",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "crm,sales,customer success,ai agents",
+  "investors": "Primary Venture Partners, Inception Fund, Defiant, Greens Ventures, Fabian Hedin, Ilkka Paananen, Peter Sarlin",
+  "links": {
+    "product": "https://zero.inc/",
+    "careers": "https://zero.inc/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10.3M",
+      "stage": "Seed",
+      "lead_investor": "Primary Venture Partners",
+      "date": "2026-09-15",
+      "source_url": "https://zero.inc/blog/zero-raises-seed-round",
+      "source_name": "Zero"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Zero official product",
+        "url": "https://zero.inc/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "Zero funding announcement",
+        "url": "https://zero.inc/blog/zero-raises-seed-round",
+        "type": "funding"
+      },
+      {
+        "id": "grow",
+        "label": "Customer growth workflow",
+        "url": "https://zero.inc/product/grow",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The product exposes Prospect, Close, Grow and Scale workflows, in-record calling, agent-assisted updates and a 14-day trial.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "Grow joins product usage, billing and conversations to surface customer health and changes before renewal discussions.",
+        "source_ids": [
+          "grow"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Sales and customer-success teams working across disconnected systems.",
+      "category": "AI-native CRM",
+      "differentiation": "A shared customer context connects prospecting, deals and retention with agent-assisted maintenance.",
+      "why_now": "The Seed round supports inspectable commercial workflows with integrated agent actions."
+    },
+    "risks": [
+      {
+        "claim": "Conflicting source data can make automated record changes and follow-ups unreliable.",
+        "basis": "Editorial assessment of joining usage, billing and conversations while delegating maintenance to agents."
+      }
+    ]
+  }
+}

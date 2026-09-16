@@ -1,0 +1,83 @@
+{
+  "slug": "nix-biosensors",
+  "domain": "nixbiosensors.com",
+  "url": "https://nixbiosensors.com/",
+  "product_name": "Nix Biosensors",
+  "summary": "Sweat biosensor and team software measuring fluid and electrolyte loss during exercise.",
+  "editor_note": "Measuring sweat loss is a more useful starting point than prescribing one hydration rule for everyone. The shipping patch links fluid and electrolyte data to individual and team apps, making hardware part of a coaching workflow. Its $10M Series A also funds sensor-free Nix Health. That licensing ambition remains in development and should not be confused with capabilities already delivered by the biosensor.",
+  "editor_rating": 4,
+  "why_featured": "$10M Series A for measured hydration",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "biosensors,wearables,sports,hydration",
+  "investors": "Shorewind Capital, Great Oaks Venture Capital, Oregon Sports Angels, White Road Investments, Anne Wojcicki, Len Blavatnik",
+  "links": {
+    "product": "https://nixbiosensors.com/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$10M",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-15",
+      "source_url": "https://www.endurancesportswire.com/nix-biosensors-closes-series-a-to-bring-hydration-data-to-consumer-health-platforms/",
+      "source_name": "Nix Biosensors via Endurance Sportswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Nix Biosensors official product",
+        "url": "https://nixbiosensors.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "Nix Biosensors via Endurance Sportswire funding announcement",
+        "url": "https://www.endurancesportswire.com/nix-biosensors-closes-series-a-to-bring-hydration-data-to-consumer-health-platforms/",
+        "type": "funding"
+      },
+      {
+        "id": "pro",
+        "label": "Nix Pro group app",
+        "url": "https://nixbiosensors.com/pages/nix-pro-group-app",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The orderable sweat biosensor measures fluid and electrolyte loss and relays hydration data to a phone or compatible watch.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "The Nix Pro group app lets team staff monitor multiple athletes, extending individual measurements into a shared coaching workflow.",
+        "source_ids": [
+          "pro"
+        ]
+      },
+      {
+        "claim": "Sensor-free Nix Health is described as under development for consumer-health platforms, not a shipping replacement for the patch.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Athletes, coaches and performance staff managing individualized hydration.",
+      "category": "Wearable hydration measurement",
+      "differentiation": "Measures individual sweat losses and supports team monitoring instead of relying only on population-level intake rules.",
+      "why_now": "Financing expands an existing hardware workflow and funds a separate future sensor-free product."
+    },
+    "risks": [
+      {
+        "claim": "The sensor-free expansion requires validation separate from evidence for the current patch.",
+        "basis": "The announcement describes Nix Health as in development; shipping hardware does not validate its future algorithm."
+      }
+    ]
+  }
+}

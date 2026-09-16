@@ -1,0 +1,72 @@
+{
+  "slug": "aiuc",
+  "domain": "aiuc.com",
+  "url": "https://aiuc.com/",
+  "product_name": "AIUC",
+  "summary": "Standards, technical audits, and insurance for companies deploying frontier AI agents.",
+  "editor_note": "The useful bet is to make AI assurance an operating discipline rather than another security dashboard. AIUC joins a published standard, quarterly updates, auditor-led evaluations and insurance; its announcement describes 5,000 business-specific risk and attack combinations. That gives buyers a concrete assessment boundary. Certification still cannot guarantee safe behavior in every production workflow.",
+  "editor_rating": 4,
+  "why_featured": "$40M Series A for AI assurance",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "ai agents,security,insurance,enterprise",
+  "investors": "Ribbit Capital, First Harmonic, Terrain",
+  "links": {
+    "product": "https://aiuc.com/",
+    "careers": "https://aiuc.com/team"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$40M",
+      "stage": "Series A",
+      "lead_investor": "Ribbit Capital",
+      "date": "2026-09-15",
+      "source_url": "https://aiuc.com/updates/series-a-announcement",
+      "source_name": "AIUC"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "AIUC official product",
+        "url": "https://aiuc.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "AIUC funding announcement",
+        "url": "https://aiuc.com/updates/series-a-announcement",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The official product combines the AIUC-1 agent standard, technical audits and insurance, with quarterly standard updates.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "The announcement describes auditor-led testing of 5,000 business-specific risk and attack combinations including hallucinations, jailbreaks and data leakage.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Enterprise security and risk teams deploying AI agents.",
+      "category": "AI assurance",
+      "differentiation": "Joins an explicit standard, technical assessment and insurance rather than standalone monitoring.",
+      "why_now": "Fresh financing accompanies a concrete audit offering as enterprises operationalize agent risk."
+    },
+    "risks": [
+      {
+        "claim": "An audit is bounded evidence, not a guarantee of future agent safety.",
+        "basis": "Tests address specified risks and standards are updated quarterly; systems and deployment context can change between assessments."
+      }
+    ]
+  }
+}

@@ -186,6 +186,26 @@
       },
       "notes": "Final WebP visually inspected; desktop and 390x844 card/detail previews loaded with unobstructed, legible, representative framing."
     },
+    "aiuc": {
+      "sha256": "21cac01d5e79e076ff946d82f90ed0cf83f2f3f6d4ee03c344b561280a5750be",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://aiuc.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:32.968Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 product hero; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
+    },
     "alcatraz": {
       "sha256": "192b4f480f5d7c2a1a09c5f27e39fa65346a18ee374ed2d4a7b5843d3aac5e5e",
       "width": 1440,
@@ -2033,6 +2053,46 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "exein": {
+      "sha256": "102888d3aec0bd99c81f932bde6b483306f84c313669c71c04d66fee2c07b0ff",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.exein.io/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.932Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 embedded-security product hero; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
+    },
+    "expertise-ai": {
+      "sha256": "95b09da57628b8e9b41b454c6501810cc2bd553cce85d5cb556316e2835be9ea",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.expertise.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.284Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 enterprise-agent hero after cookie rejection; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
     },
     "fambot": {
       "sha256": "2c816b723c1c6fc332d841c8ac76a7ff8e1ac4f48a6df2c5a0d4244a2d3c1b54",
@@ -3901,6 +3961,26 @@
       },
       "notes": "Source and final match. Complete large full-stack-cloud-for-coding-agents headline, supporting environment description, agent logos and both actions are readable with brand and navigation. The dark patterned background and populated lower product workspace are loaded; lower content naturally continues beyond the viewport, without obstructing or clipping the primary hero. Card observation: The complete full-stack-cloud-for-coding-agents headline remains large and readable, with populated application panels beneath; no blocking overlay is present. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "nix-biosensors": {
+      "sha256": "eb59676756338d97e24b4c36e2fca848b5ff5e8fcdfe56bd8f04310811fe6b37",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://nixbiosensors.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.589Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 orderable biosensor hero after cookie dismissal; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
+    },
     "norm-ai": {
       "sha256": "b1e73f20095da5e13d8e71f98f4789a03801235bdca0ee8d5ef1fad12cceff81",
       "width": 1440,
@@ -4758,6 +4838,46 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "reemerge": {
+      "sha256": "b9ef38c8b288928f75ca4c9da0a505792da4d82dba8a5ca7a3d91ce685d73ab6",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.reemergeinc.com/#technology",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.436Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 technology section showing the clinical approach; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
+    },
+    "regcell": {
+      "sha256": "4d485c4f02743c752f74c0c427188f6061fc9b8614124f11f85bd019592bd334",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://regcellbio.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.759Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 official autoimmune-therapy hero; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
     },
     "regent-craft": {
       "sha256": "10dc68860ed2ef2e6dcd23e3ebc54c6de96faf225c1b3439286e5e764e6ce554",
@@ -6364,6 +6484,26 @@
         "detail": true
       },
       "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
+    },
+    "zero": {
+      "sha256": "1b78e704b6ba921bfc4afafc5c26a47fc0df748204eed317ae5e4783b0c16e59",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://zero.inc/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-16T09:36:33.133Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Clean native 1280x720 CRM hero after cookie dismissal; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
     },
     "zerodrift": {
       "sha256": "4477e4069d85437ff99c980d443e2fa427154035e1aaa19b4c335e5989cf8511",

@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-15",
+  "verified_at": "2026-09-16",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2461,6 +2461,55 @@
       "local_path": "/logos/companies/loops.png",
       "source_page": "https://loops.so/",
       "source_url": "https://framerusercontent.com/images/vqkUynWM9t1cVWKFlqiYLmA1w.png"
+    },
+    "aiuc": {
+      "name": "AIUC",
+      "shape": "icon",
+      "local_path": "/logos/companies/aiuc.png",
+      "source_page": "https://aiuc.com/",
+      "source_url": "https://framerusercontent.com/images/rKCgaIkq2vwPTVncRltsST1gk.png"
+    },
+    "zero": {
+      "name": "Zero",
+      "shape": "icon",
+      "local_path": "/logos/companies/zero.png",
+      "source_page": "https://zero.inc/",
+      "source_url": "https://zero.inc/icon?aa431d5b0a71b391"
+    },
+    "expertise-ai": {
+      "name": "Expertise AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/expertise-ai.png",
+      "source_page": "https://www.expertise.ai/",
+      "source_url": "https://www.expertise.ai/favicon.png"
+    },
+    "reemerge": {
+      "name": "ReEmerge",
+      "shape": "icon",
+      "local_path": "/logos/companies/reemerge.png",
+      "source_page": "https://www.reemergeinc.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a99ae3c3e94b858286907f6/6aa17d66aa58adc55b32c44a_favicon-dots-512%402x.png"
+    },
+    "nix-biosensors": {
+      "name": "Nix Biosensors",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/nix-biosensors.jpg",
+      "source_page": "https://nixbiosensors.com/",
+      "source_url": "https://nixbiosensors.com/cdn/shop/files/NIX_Horizontal-3c-Dark.jpg?v=1649122277&width=400"
+    },
+    "regcell": {
+      "name": "RegCell",
+      "shape": "icon",
+      "local_path": "/logos/companies/regcell.png",
+      "source_page": "https://regcellbio.com/",
+      "source_url": "https://regcellbio.com/wp-content/uploads/2025/03/favicon-200x200.png"
+    },
+    "exein": {
+      "name": "Exein",
+      "shape": "icon",
+      "local_path": "/logos/companies/exein.png",
+      "source_page": "https://www.exein.io/",
+      "source_url": "https://cdn.prod.website-files.com/685fce904fe880c8d21eee20/6a637c43101d6c29035ffed1_exein_favicon.png"
     }
   },
   "investors": {
@@ -4847,6 +4896,358 @@
       "local_path": "/logos/investors/kevin-weil.png",
       "source_page": "https://www.scribble.vc/kevin-weil",
       "source_url": "https://static.wixstatic.com/media/80bee5_49860163d6ba4a45a07fb9902f500b6e~mv2.png/v1/fill/w_360,h_500,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Kevin.png"
+    },
+    "first-harmonic": {
+      "name": "First Harmonic",
+      "shape": "icon",
+      "local_path": "/logos/investors/first-harmonic.svg",
+      "source_page": "https://www.firstharmonic.com/",
+      "source_url": "https://www.firstharmonic.com/favicon.svg"
+    },
+    "terrain": {
+      "name": "Terrain",
+      "shape": "icon",
+      "local_path": "/logos/investors/terrain.webp",
+      "source_page": "https://www.terrain.com/investments",
+      "source_url": "https://terrain.com/favicon.webp"
+    },
+    "primary-venture-partners": {
+      "name": "Primary Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/primary-venture-partners.jpg",
+      "source_page": "https://www.primary.vc/",
+      "source_url": "https://cdn.prod.website-files.com/6977781bbe36a48562c93d44/6977781bbe36a48562c93da9_favicon.jpg"
+    },
+    "inception-fund": {
+      "name": "Inception Fund",
+      "shape": "icon",
+      "local_path": "/logos/investors/inception-fund.webp",
+      "source_page": "https://inceptionfund.vc/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/677c0651b045b356f05f2098/b6557448-59d5-4340-94bf-a2cdec08912d/favicon.ico?format=100w"
+    },
+    "defiant": {
+      "name": "Defiant",
+      "shape": "icon",
+      "local_path": "/logos/investors/defiant.svg",
+      "source_page": "https://defiant.vc/portfolio",
+      "source_url": "https://defiant.vc/favicon/icon512.svg"
+    },
+    "uphonest-capital": {
+      "name": "UpHonest Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/uphonest-capital.png",
+      "source_page": "https://www.uphonestcapital.com/",
+      "source_url": "https://cdn.prod.website-files.com/62f4c9f44efd72ffca7ee296/649a42808b7df34256f951c5_Favicon%40256.png"
+    },
+    "amino-capital": {
+      "name": "Amino Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/amino-capital.png",
+      "source_page": "https://www.aminocapital.com/",
+      "source_url": "https://www.aminocapital.com/amino-mark.png"
+    },
+    "welight-capital": {
+      "name": "Welight Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/welight-capital.png",
+      "source_page": "https://welightcapital.com/",
+      "source_url": "https://welightcapital.com/apple-touch-icon.png"
+    },
+    "upscalex": {
+      "name": "UpScaleX",
+      "shape": "icon",
+      "local_path": "/logos/investors/upscalex.png",
+      "source_page": "https://www.upscalex.ai/",
+      "source_url": "https://www.upscalex.ai/upscalex-logo.png"
+    },
+    "altair-capital": {
+      "name": "AltaIR Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/altair-capital.png",
+      "source_page": "https://altair.vc/",
+      "source_url": "https://static.tildacdn.net/tild3831-6439-4933-b532-643663666333/favicon_152-152.png"
+    },
+    "usvp": {
+      "name": "U.S. Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/usvp.png",
+      "source_page": "https://www.usvp.com/",
+      "source_url": "https://www.usvp.com/wp-content/uploads/2017/02/Screen-Shot-2018-03-14-at-6.53.56-PM.png"
+    },
+    "sante-ventures": {
+      "name": "Santé Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/sante-ventures.png",
+      "source_page": "https://sante.com/",
+      "source_url": "https://sante.com/wp-content/uploads/2020/04/cropped-cropped-Sante_FavIcon-192x192.png"
+    },
+    "415-capital": {
+      "name": "415 Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/415-capital.jpg",
+      "source_page": "https://415capital.com/about/",
+      "source_url": "https://415capital.com/wp-content/uploads/2022/12/cropped-415C_Favicon_512px-192x192.jpg"
+    },
+    "oxford-science-enterprises": {
+      "name": "Oxford Science Enterprises",
+      "shape": "icon",
+      "local_path": "/logos/investors/oxford-science-enterprises.ico",
+      "source_page": "https://www.oxfordscienceenterprises.com/",
+      "source_url": "https://www.oxfordscienceenterprises.com/favicon.ico"
+    },
+    "iag-capital-partners": {
+      "name": "IAG Capital Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/iag-capital-partners.webp",
+      "source_page": "https://www.iagcapitalpartners.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/66eb00a12dbf60002c4a552e/2fcdf74e-eb1a-4406-867f-91d5f6cd3a5c/favicon.ico?format=2500w"
+    },
+    "dendrion-ventures": {
+      "name": "Dendrion Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/dendrion-ventures.jpg",
+      "source_page": "https://dendrionventures.com/",
+      "source_url": "https://img1.wsimg.com/isteam/ip/6b1a9a9a-e011-42ad-a6d1-a7a8acf65ead/logo-dendrion-ventures-75304e.png/:/rs=w:180,h:180,m",
+      "allow_unreachable_source": true,
+      "note": "The official homepage links this same-origin GoDaddy image and a browser GET returns the logo, but the CDN's malformed HTTP/2 HEAD response is reported as HTTP 204 by the validator."
+    },
+    "the-vertical-group": {
+      "name": "The Vertical Group",
+      "shape": "icon",
+      "local_path": "/logos/investors/the-vertical-group.ico",
+      "source_page": "https://www.vertical-group.com/who-we-are.html",
+      "source_url": "https://www.vertical-group.com/files/theme/icon.ico"
+    },
+    "shorewind-capital": {
+      "name": "Shorewind Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/shorewind-capital.webp",
+      "source_page": "https://www.shorewindcapital.com/",
+      "source_url": "https://images.squarespace-cdn.com/content/v1/64d13671215c3748b0b106aa/fd78a6d9-6e49-40b0-b07d-6e3ad8701767/favicon.ico?format=100w"
+    },
+    "great-oaks-venture-capital": {
+      "name": "Great Oaks Venture Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/great-oaks-venture-capital.png",
+      "source_page": "https://www.greatoaksvc.com/",
+      "source_url": "https://cdn.prod.website-files.com/63fa3fafedbf49061dad15c3/63fa3fafedbf4983fbad1618_Ico256.png"
+    },
+    "oregon-sports-angels": {
+      "name": "Oregon Sports Angels",
+      "shape": "icon",
+      "local_path": "/logos/investors/oregon-sports-angels.png",
+      "source_page": "https://oregonsportsangels.org/",
+      "source_url": "https://oregonsportsangels.org/wp-content/uploads/2018/06/OSA-logo-dark-retina.png"
+    },
+    "white-road-investments": {
+      "name": "White Road Investments",
+      "shape": "icon",
+      "local_path": "/logos/investors/white-road-investments.png",
+      "source_page": "https://whiteroadinvestments.com/",
+      "source_url": "https://whiteroadinvestments.com/wp-content/uploads/2017/02/cropped-white-road-favicon-300x300.png"
+    },
+    "playground-global": {
+      "name": "Playground Global",
+      "shape": "icon",
+      "local_path": "/logos/investors/playground-global.png",
+      "source_page": "https://www.playground.vc/",
+      "source_url": "https://cdn.prod.website-files.com/67a0cf547fd16e142c2fba80/67dcf8905f5f3f17dd626c4b_pg-webclip.png"
+    },
+    "global-brain": {
+      "name": "Global Brain",
+      "shape": "icon",
+      "local_path": "/logos/investors/global-brain.svg",
+      "source_page": "https://globalbrains.com/en",
+      "source_url": "https://globalbrains.com/favicon.svg"
+    },
+    "mitsui-chemicals": {
+      "name": "Mitsui Chemicals",
+      "shape": "icon",
+      "local_path": "/logos/investors/mitsui-chemicals.png",
+      "source_page": "https://jp.mitsuichemicals.com/en/special/cvc_general/index.htm",
+      "source_url": "https://jp.mitsuichemicals.com/etc/clientlibs/mitsuichemicals/mci-favicon/resources/icon-192x192.png"
+    },
+    "lg-technology-ventures": {
+      "name": "LG Technology Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/lg-technology-ventures.png",
+      "source_page": "https://www.lgtechventures.com/",
+      "source_url": "https://www.lgtechventures.com/apple-touch-icon.png"
+    },
+    "alumni-ventures": {
+      "name": "Alumni Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/alumni-ventures.png",
+      "source_page": "https://www.av.vc/about",
+      "source_url": "https://www.av.vc/apple-touch-icon.png"
+    },
+    "medical-incubator-japan": {
+      "name": "Medical Incubator Japan",
+      "shape": "icon",
+      "local_path": "/logos/investors/medical-incubator-japan.png",
+      "source_page": "https://medicalincubatorjapan.com/en/",
+      "source_url": "https://medicalincubatorjapan.com/en/wp/wp-content/themes/mij/img/common/logo.png"
+    },
+    "fast-track-initiative": {
+      "name": "Fast Track Initiative",
+      "shape": "icon",
+      "local_path": "/logos/investors/fast-track-initiative.png",
+      "source_page": "https://us.fasttrackinitiative.com/about-us/",
+      "source_url": "https://us.fasttrackinitiative.com/wp-content/uploads/2022/07/cropped-512x512-transparent-FTI-Favicon-192x192.png"
+    },
+    "utec": {
+      "name": "The University of Tokyo Edge Capital Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/utec.png",
+      "source_page": "https://www.ut-ec.co.jp/",
+      "source_url": "https://www.ut-ec.co.jp/common/img/apple-touch-icon.png"
+    },
+    "osaka-university-venture-capital": {
+      "name": "Osaka University Venture Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/osaka-university-venture-capital.svg",
+      "source_page": "https://www.ouvc.co.jp/",
+      "source_url": "https://www.ouvc.co.jp/hubfs/favicon.svg"
+    },
+    "kyoto-icap": {
+      "name": "Kyoto iCAP",
+      "shape": "icon",
+      "local_path": "/logos/investors/kyoto-icap.png",
+      "source_page": "https://www.kyoto-unicap.co.jp/company/",
+      "source_url": "https://www.kyoto-unicap.co.jp/cms/wp-content/themes/kyoto-unicap2023/icon/favicon.png"
+    },
+    "headline": {
+      "name": "Headline",
+      "shape": "icon",
+      "local_path": "/logos/investors/headline.png",
+      "source_page": "https://headline.com/about/",
+      "source_url": "https://headline.com/icons/icon-192x192.png?v=b3d6e26611a1a9620c7832a226b25049"
+    },
+    "sofina": {
+      "name": "Sofina",
+      "shape": "icon",
+      "local_path": "/logos/investors/sofina.svg",
+      "source_page": "https://www.sofinagroup.com/en/about-sofina",
+      "source_url": "https://www.sofinagroup.com/~/media/Images/S/Sofina-Corp/logo/logo-sofina.svg"
+    },
+    "goldman-sachs": {
+      "name": "Goldman Sachs",
+      "shape": "icon",
+      "local_path": "/logos/investors/goldman-sachs.png",
+      "source_page": "https://www.goldmansachs.com/what-we-do/our-businesses",
+      "source_url": "https://cdn.gs.com/images/goldman-sachs/v2/gs-favicon-180.png"
+    },
+    "eib-group": {
+      "name": "EIB Group",
+      "shape": "icon",
+      "local_path": "/logos/investors/eib-group.png",
+      "source_page": "https://www.eib.org/en/events/european-tech-champions-initiative",
+      "source_url": "https://www.eib.org/img/icons/favicons/android-chrome-192x192.png?v=0.1"
+    },
+    "kfw-capital": {
+      "name": "KfW Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/kfw-capital.png",
+      "source_page": "https://www.kfw-capital.de/",
+      "source_url": "https://www.kfw-capital.de/Bilder-und-Grafiken/CAPITAL-Logos/KfW-Capital-RGB-PNG-192x192.png"
+    },
+    "t-capital": {
+      "name": "T.Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/t-capital.png",
+      "source_page": "https://www.t.capital/",
+      "source_url": "https://www.t.capital/_assets/091896366d860f867beee81747b787a7/Favicons/apple-touch-icon-152x152.png"
+    },
+    "hv-capital": {
+      "name": "HV Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/hv-capital.png",
+      "source_page": "https://hvcapital.com/approach",
+      "source_url": "https://hvcapital.com/favicon/apple-touch-icon.png"
+    },
+    "intrepid-growth-partners": {
+      "name": "Intrepid Growth Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/intrepid-growth-partners.png",
+      "source_page": "https://www.intrepidgp.com/insights/why-we-created-intrepid-growth-partners",
+      "source_url": "https://cdn.prod.website-files.com/6a392a7b4427669cf710f875/6a3d05f13a8e6057432fb38a_Group%2031.png"
+    },
+    "33n-ventures": {
+      "name": "33N Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/33n-ventures.png",
+      "source_page": "https://33n.vc/",
+      "source_url": "https://framerusercontent.com/images/k5mNzmugDJwrTsy6R5wbbsXln38.png"
+    },
+    "lakestar": {
+      "name": "Lakestar",
+      "shape": "icon",
+      "local_path": "/logos/investors/lakestar.png",
+      "source_page": "https://www.lakestar.com/",
+      "source_url": "https://www.lakestar.com/wp-content/uploads/2026/07/LS_Logo_Favicon-L-on-natural.png"
+    },
+    "supernova-invest": {
+      "name": "Supernova Invest",
+      "shape": "icon",
+      "local_path": "/logos/investors/supernova-invest.png",
+      "source_page": "https://supernovainvest.com/about/",
+      "source_url": "https://supernovainvest.com/wp-content/uploads/2022/07/cropped-rond-supernova-192x192.png"
+    },
+    "blue-cloud-ventures": {
+      "name": "Blue Cloud Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/blue-cloud-ventures.png",
+      "source_page": "https://www.bluecloudventures.com/about/",
+      "source_url": "https://www.bluecloudventures.com/favicon-192.png"
+    },
+    "geodesic-capital": {
+      "name": "Geodesic Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/geodesic-capital.png",
+      "source_page": "https://geodesiccap.com/about/",
+      "source_url": "https://geodesiccap.com/wp-content/uploads/2023/03/cropped-favicon-192x192.png"
+    },
+    "greens-ventures": {
+      "name": "Greens Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/greens-ventures.png",
+      "source_page": "https://greens.ventures/",
+      "source_url": "https://www.greens.ventures/img/favicon-32x32.png"
+    },
+    "fabian-hedin": {
+      "name": "Fabian Hedin",
+      "shape": "icon",
+      "local_path": "/logos/investors/fabian-hedin.png",
+      "source_page": "https://lovable.dev/th/blog/lovable-welcomes-molnett",
+      "source_url": "https://lovable.dev/favicon.ico"
+    },
+    "ilkka-paananen": {
+      "name": "Ilkka Paananen",
+      "shape": "icon",
+      "local_path": "/logos/investors/ilkka-paananen.jpg",
+      "source_page": "https://www.lifelineventures.com/contact-our-team/",
+      "source_url": "https://www.lifelineventures.com/app/uploads/2023/09/ilkka_paananen2-1024x683.jpg"
+    },
+    "peter-sarlin": {
+      "name": "Peter Sarlin",
+      "shape": "icon",
+      "local_path": "/logos/investors/peter-sarlin.png",
+      "source_page": "https://sarlin.ai/",
+      "source_url": "https://sarlin.ai/wp-content/uploads/2026/04/68f7607769d32c134a2282fc_sarlinai-hero-3.png"
+    },
+    "anne-wojcicki": {
+      "name": "Anne Wojcicki",
+      "shape": "icon",
+      "local_path": "/logos/investors/anne-wojcicki.jpg",
+      "source_page": "https://www.23andme.org/about/governance/",
+      "source_url": "https://www.23andme.org/images/governance/anne.jpg"
+    },
+    "len-blavatnik": {
+      "name": "Len Blavatnik",
+      "shape": "icon",
+      "local_path": "/logos/investors/len-blavatnik.jpg",
+      "source_page": "https://www.accessindustries.com/our-people/len-blavatnik/",
+      "source_url": "https://www.accessindustries.com/wp-content/uploads/Len-2-488x585.jpg"
     }
   }
 }

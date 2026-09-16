@@ -1,0 +1,77 @@
+{
+  "slug": "regcell",
+  "domain": "regcellbio.com",
+  "url": "https://regcellbio.com/",
+  "product_name": "RegCell",
+  "summary": "Epigenetic reprogramming of T cells into antigen-specific regulatory cells for immune tolerance.",
+  "editor_note": "Reprogramming pathogenic T cells is a sharper proposition than suppressing the whole immune system. The platform aims to create stable, antigen-specific regulatory cells without gene engineering, supported by published preclinical work. The financing separates $44M of Series A equity from roughly $22M of grants. Human safety, manufacturing consistency and lasting immune tolerance remain the decisive tests.",
+  "editor_rating": 3,
+  "why_featured": "$44M Series A for immune tolerance",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "biotechnology,cell therapy,immunology,autoimmune disease",
+  "investors": "Playground Global, Global Brain, Mitsui Chemicals, LG Technology Ventures, Alumni Ventures, Medical Incubator Japan, Fast Track Initiative, The University of Tokyo Edge Capital Partners, Osaka University Venture Capital, Kyoto iCAP",
+  "links": {
+    "product": "https://regcellbio.com/"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$44M",
+      "stage": "Series A",
+      "lead_investor": "Playground Global",
+      "date": "2026-09-15",
+      "source_url": "https://www.businesswire.com/news/home/20260915919580/en/",
+      "source_name": "RegCell via Business Wire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "RegCell official product",
+        "url": "https://regcellbio.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "RegCell via Business Wire funding announcement",
+        "url": "https://www.businesswire.com/news/home/20260915919580/en/",
+        "type": "funding"
+      },
+      {
+        "id": "papers",
+        "label": "RegCell preclinical publications",
+        "url": "https://regcellbio.com/regcell-announces-two-peer-reviewed-publications-supporting-its-robust-scientific-foundation-on-antigen-specific-tolerance-to-treat-autoimmune-diseases/",
+        "type": "product"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The platform describes epigenetic conversion of pathogenic T cells into stable antigen-specific regulatory T cells without genetic engineering.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "The publication announcement describes preclinical mouse inflammatory-disease models and human patient-derived cells, not human clinical efficacy.",
+        "source_ids": [
+          "papers"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Cell-therapy researchers pursuing antigen-specific treatments for autoimmune disease.",
+      "category": "Regulatory T-cell therapy",
+      "differentiation": "Uses epigenetic reprogramming and antigen specificity instead of generalized immunosuppression or gene engineering.",
+      "why_now": "Equity and separately identified grants support clinical translation of a published preclinical platform."
+    },
+    "risks": [
+      {
+        "claim": "Preclinical immune control may not become safe and durable human benefit.",
+        "basis": "Inspected evidence describes animal models and patient-derived cells; clinical development remains ahead."
+      }
+    ]
+  }
+}

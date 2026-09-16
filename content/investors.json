@@ -2533,5 +2533,382 @@
     "short_name": "Kevin Weil",
     "website": "https://www.scribble.vc/kevin-weil",
     "description": "Operator in residence at Scribble Ventures and an active product-focused contributor to its portfolio."
+  },
+  "first-harmonic": {
+    "name": "First Harmonic",
+    "slug": "first-harmonic",
+    "short_name": "First Harmonic",
+    "website": "https://www.firstharmonic.com/",
+    "description": "Early-stage investment firm pairing capital with a go-to-market program for founders."
+  },
+  "terrain": {
+    "name": "Terrain",
+    "slug": "terrain",
+    "short_name": "Terrain",
+    "website": "https://www.terrain.com/investments",
+    "description": "Early-stage investment firm concentrating on a small number of technology companies."
+  },
+  "primary-venture-partners": {
+    "name": "Primary Venture Partners",
+    "slug": "primary-venture-partners",
+    "short_name": "Primary Venture Partners",
+    "website": "https://www.primary.vc/",
+    "description": "Seed-stage venture firm pairing specialized investing with an operating team supporting founders."
+  },
+  "inception-fund": {
+    "name": "Inception Fund",
+    "slug": "inception-fund",
+    "short_name": "Inception Fund",
+    "website": "https://inceptionfund.vc/",
+    "description": "Venture investment firm backing technical founders building AI companies from zero to one."
+  },
+  "defiant": {
+    "name": "Defiant",
+    "slug": "defiant",
+    "short_name": "Defiant",
+    "website": "https://defiant.vc/portfolio",
+    "description": "Venture capital firm investing in late-seed and Series A B2B software and fintech companies."
+  },
+  "uphonest-capital": {
+    "name": "UpHonest Capital",
+    "slug": "uphonest-capital",
+    "short_name": "UpHonest Capital",
+    "website": "https://www.uphonestcapital.com/",
+    "description": "Venture investment firm supporting founders through capital, incubation and a scout network."
+  },
+  "amino-capital": {
+    "name": "Amino Capital",
+    "slug": "amino-capital",
+    "short_name": "Amino Capital",
+    "website": "https://www.aminocapital.com/",
+    "description": "Palo Alto venture capital firm backing founders from pre-seed through Series B."
+  },
+  "welight-capital": {
+    "name": "Welight Capital",
+    "slug": "welight-capital",
+    "short_name": "Welight Capital",
+    "website": "https://welightcapital.com/",
+    "description": "Venture capital firm focused on Series A and B investments across enterprise and consumer technology."
+  },
+  "upscalex": {
+    "name": "UpScaleX",
+    "slug": "upscalex",
+    "short_name": "UpScaleX",
+    "website": "https://www.upscalex.ai/",
+    "description": "Pre-seed and seed fund co-building AI companies with product, go-to-market and fundraising support."
+  },
+  "altair-capital": {
+    "name": "AltaIR Capital",
+    "slug": "altair-capital",
+    "short_name": "AltaIR Capital",
+    "website": "https://altair.vc/",
+    "description": "International venture capital firm investing from early to growth stage in software and technology."
+  },
+  "usvp": {
+    "name": "U.S. Venture Partners",
+    "slug": "usvp",
+    "short_name": "U.S. Venture Partners",
+    "website": "https://www.usvp.com/",
+    "description": "Early-stage venture firm supporting information-technology and healthcare companies.",
+    "aliases": [
+      "USVP",
+      "U.S. Venture Partners and Santé Ventures"
+    ]
+  },
+  "sante-ventures": {
+    "name": "Santé Ventures",
+    "slug": "sante-ventures",
+    "short_name": "Santé Ventures",
+    "website": "https://sante.com/",
+    "description": "Private healthcare venture strategy backing biotechnology, medical technology and health technology.",
+    "aliases": [
+      "Santé",
+      "Sante Ventures"
+    ]
+  },
+  "415-capital": {
+    "name": "415 Capital",
+    "slug": "415-capital",
+    "short_name": "415 Capital",
+    "website": "https://415capital.com/about/",
+    "description": "Specialist medical-technology venture investor supporting clinical and commercial development."
+  },
+  "oxford-science-enterprises": {
+    "name": "Oxford Science Enterprises",
+    "slug": "oxford-science-enterprises",
+    "short_name": "Oxford Science Enterprises",
+    "website": "https://www.oxfordscienceenterprises.com/",
+    "description": "Independent investment company and venture builder partnering with Oxford research-led businesses."
+  },
+  "iag-capital-partners": {
+    "name": "IAG Capital Partners",
+    "slug": "iag-capital-partners",
+    "short_name": "IAG Capital Partners",
+    "website": "https://www.iagcapitalpartners.com/",
+    "description": "Venture capital firm leading Seed through Series D rounds with teams in the US and UK."
+  },
+  "dendrion-ventures": {
+    "name": "Dendrion Ventures",
+    "slug": "dendrion-ventures",
+    "short_name": "Dendrion Ventures",
+    "website": "https://dendrionventures.com/",
+    "description": "Investment firm providing evergreen capital for innovative medical-technology opportunities."
+  },
+  "the-vertical-group": {
+    "name": "The Vertical Group",
+    "slug": "the-vertical-group",
+    "short_name": "The Vertical Group",
+    "website": "https://www.vertical-group.com/who-we-are.html",
+    "description": "Venture capital firm focused on medical technology and biotechnology, independent since 1988."
+  },
+  "shorewind-capital": {
+    "name": "Shorewind Capital",
+    "slug": "shorewind-capital",
+    "short_name": "Shorewind Capital",
+    "website": "https://www.shorewindcapital.com/",
+    "description": "Technology investment firm backing companies addressing large technical and societal challenges."
+  },
+  "great-oaks-venture-capital": {
+    "name": "Great Oaks Venture Capital",
+    "slug": "great-oaks-venture-capital",
+    "short_name": "Great Oaks Venture Capital",
+    "website": "https://www.greatoaksvc.com/",
+    "description": "Generalist venture capital firm backing US companies at pre-seed, seed and Series A."
+  },
+  "oregon-sports-angels": {
+    "name": "Oregon Sports Angels",
+    "slug": "oregon-sports-angels",
+    "short_name": "Oregon Sports Angels",
+    "website": "https://oregonsportsangels.org/",
+    "description": "Member-based angel network backing US sports-product and technology companies with early adoption."
+  },
+  "white-road-investments": {
+    "name": "White Road Investments",
+    "slug": "white-road-investments",
+    "short_name": "White Road Investments",
+    "website": "https://whiteroadinvestments.com/",
+    "description": "Investment firm backing mission-driven consumer brands focused on health and sustainability."
+  },
+  "playground-global": {
+    "name": "Playground Global",
+    "slug": "playground-global",
+    "short_name": "Playground Global",
+    "website": "https://www.playground.vc/",
+    "description": "Early-stage deep-tech venture firm backing technical founders in compute, automation, energy and biology."
+  },
+  "global-brain": {
+    "name": "Global Brain",
+    "slug": "global-brain",
+    "short_name": "Global Brain",
+    "website": "https://globalbrains.com/en",
+    "description": "Independent venture capital firm combining hands-on startup support with corporate open innovation."
+  },
+  "mitsui-chemicals": {
+    "name": "Mitsui Chemicals",
+    "slug": "mitsui-chemicals",
+    "short_name": "Mitsui Chemicals",
+    "website": "https://jp.mitsuichemicals.com/en/special/cvc_general/index.htm",
+    "description": "Strategic corporate investor operating the 321 FORCE venture fund with Global Brain."
+  },
+  "lg-technology-ventures": {
+    "name": "LG Technology Ventures",
+    "slug": "lg-technology-ventures",
+    "short_name": "LG Technology Ventures",
+    "website": "https://www.lgtechventures.com/",
+    "description": "Venture investment firm backing early- and growth-stage companies with access to LG Group resources."
+  },
+  "alumni-ventures": {
+    "name": "Alumni Ventures",
+    "slug": "alumni-ventures",
+    "short_name": "Alumni Ventures",
+    "website": "https://www.av.vc/about",
+    "description": "Community-oriented venture capital firm providing individual investors access to venture opportunities."
+  },
+  "medical-incubator-japan": {
+    "name": "Medical Incubator Japan",
+    "slug": "medical-incubator-japan",
+    "short_name": "Medical Incubator Japan",
+    "website": "https://medicalincubatorjapan.com/en/",
+    "description": "Healthcare investment company backing therapeutics, medical devices, digital health and medical AI."
+  },
+  "fast-track-initiative": {
+    "name": "Fast Track Initiative",
+    "slug": "fast-track-initiative",
+    "short_name": "Fast Track Initiative",
+    "website": "https://us.fasttrackinitiative.com/about-us/",
+    "description": "Healthcare venture capital firm connecting science-backed startups with Japanese life-science networks.",
+    "aliases": [
+      "FTI"
+    ]
+  },
+  "utec": {
+    "name": "The University of Tokyo Edge Capital Partners",
+    "slug": "utec",
+    "short_name": "The University of Tokyo Edge Capital Partners",
+    "website": "https://www.ut-ec.co.jp/",
+    "description": "Science and technology venture firm working with researchers and founders, particularly at seed stage.",
+    "aliases": [
+      "UTEC"
+    ]
+  },
+  "osaka-university-venture-capital": {
+    "name": "Osaka University Venture Capital",
+    "slug": "osaka-university-venture-capital",
+    "short_name": "Osaka University Venture Capital",
+    "website": "https://www.ouvc.co.jp/",
+    "description": "University venture investor supporting commercialization of academic research and technology.",
+    "aliases": [
+      "OUVC"
+    ]
+  },
+  "kyoto-icap": {
+    "name": "Kyoto iCAP",
+    "slug": "kyoto-icap",
+    "short_name": "Kyoto iCAP",
+    "website": "https://www.kyoto-unicap.co.jp/company/",
+    "description": "Kyoto University-owned investment company building and supporting research-led deep-tech startups.",
+    "aliases": [
+      "Kyoto University Innovation Capital",
+      "KYOTO-iCAP"
+    ]
+  },
+  "headline": {
+    "name": "Headline",
+    "slug": "headline",
+    "short_name": "Headline",
+    "website": "https://headline.com/about/",
+    "description": "Global venture capital platform with regional early-stage teams and a global growth strategy."
+  },
+  "sofina": {
+    "name": "Sofina",
+    "slug": "sofina",
+    "short_name": "Sofina",
+    "website": "https://www.sofinagroup.com/en/about-sofina",
+    "description": "Listed investment company providing patient capital and supportive advice to entrepreneurs and families."
+  },
+  "goldman-sachs": {
+    "name": "Goldman Sachs",
+    "slug": "goldman-sachs",
+    "short_name": "Goldman Sachs",
+    "website": "https://www.goldmansachs.com/what-we-do/our-businesses",
+    "description": "Financial institution with investment banking, markets, asset management and wealth management businesses."
+  },
+  "eib-group": {
+    "name": "EIB Group",
+    "slug": "eib-group",
+    "short_name": "EIB Group",
+    "website": "https://www.eib.org/en/events/european-tech-champions-initiative",
+    "description": "European public-finance group supporting innovation through the European Investment Bank and European Investment Fund.",
+    "aliases": [
+      "European Investment Bank Group"
+    ]
+  },
+  "kfw-capital": {
+    "name": "KfW Capital",
+    "slug": "kfw-capital",
+    "short_name": "KfW Capital",
+    "website": "https://www.kfw-capital.de/",
+    "description": "KfW subsidiary investing in German and European venture capital and venture debt funds."
+  },
+  "t-capital": {
+    "name": "T.Capital",
+    "slug": "t-capital",
+    "short_name": "T.Capital",
+    "website": "https://www.t.capital/",
+    "description": "Deutsche Telekom's strategic investment arm pairing capital with market access, expertise and partnerships."
+  },
+  "hv-capital": {
+    "name": "HV Capital",
+    "slug": "hv-capital",
+    "short_name": "HV Capital",
+    "website": "https://hvcapital.com/approach",
+    "description": "European venture firm backing founders from Seed and Series A through growth-stage financing.",
+    "aliases": [
+      "HV"
+    ]
+  },
+  "intrepid-growth-partners": {
+    "name": "Intrepid Growth Partners",
+    "slug": "intrepid-growth-partners",
+    "short_name": "Intrepid Growth Partners",
+    "website": "https://www.intrepidgp.com/insights/why-we-created-intrepid-growth-partners",
+    "description": "Investment firm backing AI founders building companies that transform whole systems and industries."
+  },
+  "33n-ventures": {
+    "name": "33N Ventures",
+    "slug": "33n-ventures",
+    "short_name": "33N Ventures",
+    "website": "https://33n.vc/",
+    "description": "European venture capital firm investing globally in cybersecurity, artificial intelligence and defense."
+  },
+  "lakestar": {
+    "name": "Lakestar",
+    "slug": "lakestar",
+    "short_name": "Lakestar",
+    "website": "https://www.lakestar.com/",
+    "description": "Technology investment platform combining institutional venture funds with long-term founder support."
+  },
+  "supernova-invest": {
+    "name": "Supernova Invest",
+    "slug": "supernova-invest",
+    "short_name": "Supernova Invest",
+    "website": "https://supernovainvest.com/about/",
+    "description": "Independent deep-tech investment manager focused mainly on Europe across industry, health, digital and cleantech."
+  },
+  "blue-cloud-ventures": {
+    "name": "Blue Cloud Ventures",
+    "slug": "blue-cloud-ventures",
+    "short_name": "Blue Cloud Ventures",
+    "website": "https://www.bluecloudventures.com/about/",
+    "description": "Growth venture firm backing enterprise SaaS, open-source and infrastructure software companies."
+  },
+  "geodesic-capital": {
+    "name": "Geodesic Capital",
+    "slug": "geodesic-capital",
+    "short_name": "Geodesic Capital",
+    "website": "https://geodesiccap.com/about/",
+    "description": "Venture investment firm helping technology founders enter Japan and build US-Japan business connections."
+  },
+  "greens-ventures": {
+    "name": "Greens Ventures",
+    "slug": "greens-ventures",
+    "short_name": "Greens Ventures",
+    "website": "https://greens.ventures/",
+    "description": "Early-stage investor supporting ambitious founders building category-defining technology companies."
+  },
+  "fabian-hedin": {
+    "name": "Fabian Hedin",
+    "slug": "fabian-hedin",
+    "short_name": "Fabian Hedin",
+    "website": "https://lovable.dev/th/blog/lovable-welcomes-molnett",
+    "description": "Technology operator and individual investor best known as co-founder and chief technology officer of Lovable."
+  },
+  "ilkka-paananen": {
+    "name": "Ilkka Paananen",
+    "slug": "ilkka-paananen",
+    "short_name": "Ilkka Paananen",
+    "website": "https://www.lifelineventures.com/contact-our-team/",
+    "description": "Technology operator and individual investor who advises Lifeline Ventures and serves as chief executive of Supercell."
+  },
+  "peter-sarlin": {
+    "name": "Peter Sarlin",
+    "slug": "peter-sarlin",
+    "short_name": "Peter Sarlin",
+    "website": "https://sarlin.ai/",
+    "description": "Technology founder and individual investor supporting ambitious AI founders through the PostScriptum founder's office."
+  },
+  "anne-wojcicki": {
+    "name": "Anne Wojcicki",
+    "slug": "anne-wojcicki",
+    "short_name": "Anne Wojcicki",
+    "website": "https://www.23andme.org/about/governance/",
+    "description": "Healthcare founder and individual investor focused on genetics, biomedical research and patient-centered health innovation."
+  },
+  "len-blavatnik": {
+    "name": "Len Blavatnik",
+    "slug": "len-blavatnik",
+    "short_name": "Len Blavatnik",
+    "website": "https://www.accessindustries.com/our-people/len-blavatnik/",
+    "description": "Founder of Access Industries and an individual investor across strategic equity, media, real estate and biotechnology."
   }
 }

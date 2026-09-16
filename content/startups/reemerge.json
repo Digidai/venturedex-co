@@ -1,0 +1,71 @@
+{
+  "slug": "reemerge",
+  "domain": "www.reemergeinc.com",
+  "url": "https://www.reemergeinc.com/",
+  "product_name": "ReEmerge",
+  "summary": "Investigational central-thalamus neuromodulation for cognitive impairment after brain injury.",
+  "editor_note": "The interesting choice is to reactivate viable circuits rather than treat chronic brain injury as a fixed loss. Central-thalamus stimulation gives the program a specific target and an early clinical foundation. The $37M Series A funds further development, not proof of efficacy. The device remains investigational, and controlled studies must establish durable benefit and acceptable surgical risk.",
+  "editor_rating": 3,
+  "why_featured": "$37M Series A for brain-injury recovery",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "neurotechnology,medical devices,brain injury,clinical research",
+  "investors": "U.S. Venture Partners, Santé Ventures, Oxford Science Enterprises, 415 Capital, IAG Capital Partners, The Vertical Group, Dendrion Ventures",
+  "links": {
+    "product": "https://www.reemergeinc.com/"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$37M",
+      "stage": "Series A",
+      "lead_investor": "U.S. Venture Partners and Santé Ventures",
+      "date": "2026-09-15",
+      "source_url": "https://www.prnewswire.com/news-releases/reemerge-inc-exits-stealth-with-oversubscribed-37m-series-a-to-challenge-the-limitations-of-chronic-cognitive-impairment-caused-by-brain-injuries-302878952.html",
+      "source_name": "ReEmerge via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-16",
+    "sources": [
+      {
+        "id": "official",
+        "label": "ReEmerge official product",
+        "url": "https://www.reemergeinc.com/",
+        "type": "official"
+      },
+      {
+        "id": "funding",
+        "label": "ReEmerge via PR Newswire funding announcement",
+        "url": "https://www.prnewswire.com/news-releases/reemerge-inc-exits-stealth-with-oversubscribed-37m-series-a-to-challenge-the-limitations-of-chronic-cognitive-impairment-caused-by-brain-injuries-302878952.html",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The technology targets underactive but viable neural circuits through central-thalamus stimulation for chronic traumatic brain injury.",
+        "source_ids": [
+          "official"
+        ]
+      },
+      {
+        "claim": "The company describes an early clinical foundation and a planned study of up to 40 patients; its system remains investigational and not commercially approved.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Clinical researchers and specialists treating chronic cognitive impairment after traumatic brain injury.",
+      "category": "Investigational neuromodulation",
+      "differentiation": "Targets the central thalamus to recruit surviving networks rather than offering general cognitive training.",
+      "why_now": "Series A financing supports a defined device program toward larger clinical studies."
+    },
+    "risks": [
+      {
+        "claim": "Early evidence does not establish broad or durable efficacy, safety or regulatory approval.",
+        "basis": "The device is explicitly investigational; the larger planned study is prospective rather than completed."
+      }
+    ]
+  }
+}
