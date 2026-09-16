@@ -317,10 +317,10 @@ const qualified = {
     rubric: "enterprise",
     label: "embedded financing platform for pharmaceutical distribution",
     funding: "a source-backed $4M Pre-Series A round plus separately reported venture debt",
-    sources: ["https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms", "https://in.linkedin.com/company/fundlyai"],
+    sources: ["https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms", "https://fundly.ai/terms"],
     evidence: [
       ["https://fundly.ai/about", "The official company page defines embedded working-capital workflows for pharmaceutical retailers and distributors."],
-      ["https://in.linkedin.com/company/fundlyai", "The company's official social profile states the current Pre-Series A financing and its named institutional backers."],
+      ["https://fundly.ai/terms", "The official terms identify Ardour Analytics as the technology platform and lending service provider while regulated lenders retain credit decisions."],
     ],
     taste: ["Fundly.ai bets on underwriting and capital delivery inside a specific pharmaceutical supply chain.", "The retailer-distributor workflow makes the financial product's operating context visible.", "The vertical and transaction are specific, while credit performance and funding composition need careful disclosure."],
   },

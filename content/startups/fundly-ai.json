@@ -15,7 +15,7 @@
   "investors": "Accel, Multiply Ventures",
   "links": {
     "product": "https://fundly.ai/about",
-    "resources": "https://in.linkedin.com/company/fundlyai"
+    "resources": "https://fundly.ai/terms"
   },
   "is_featured": true,
   "funding": [
@@ -31,7 +31,7 @@
     }
   ],
   "research": {
-    "verified_at": "2026-09-13",
+    "verified_at": "2026-09-16",
     "sources": [
       {
         "id": "official_site",
@@ -48,7 +48,7 @@
       {
         "id": "product_2",
         "label": "Fundly.ai product evidence 2",
-        "url": "https://in.linkedin.com/company/fundlyai",
+        "url": "https://fundly.ai/terms",
         "type": "product"
       },
       {
@@ -66,7 +66,7 @@
         ]
       },
       {
-        "claim": "The company's official social profile states the current Pre-Series A financing and its named institutional backers.",
+        "claim": "The official terms identify Ardour Analytics as the technology platform and lending service provider while regulated lenders retain credit decisions.",
         "source_ids": [
           "product_2"
         ]
