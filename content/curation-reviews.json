@@ -3052,6 +3052,182 @@
         "ledger": "rejected.jsonl",
         "sha256": "5955084741d355035075a7f4815d2230fa3ceb86baeaa4612efd68f500924261"
       }
+    },
+    {
+      "slug": "euclyd",
+      "company_url": "https://euclyd.ai/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "The official page exposes detailed architecture and projected system specifications, but the reviewed evidence describes an advanced-design roadmap and company performance claims rather than an available product or completed system demonstration.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-30",
+      "priority": 2,
+      "sources": ["https://euclyd.ai/", "https://www.euclyd.ai/press-release"],
+      "attempts": [{"date": "2026-09-16", "outcome": "evidence_pending", "note": "The live page exposed architecture and projected specifications, but no available product or completed system demonstration beyond company claims."}]
+    },
+    {
+      "slug": "aiuc",
+      "company_url": "https://aiuc.com/",
+      "state": "publication_blocked",
+      "reason_code": "screenshot_review",
+      "reason": "AIUC clears the funding, independence, product-evidence and taste review, but the Codex in-app browser became unavailable before a native screenshot and hash-bound final review could be completed.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-17",
+      "priority": 2,
+      "sources": ["https://aiuc.com/", "https://aiuc.com/updates/series-a-announcement"],
+      "attempts": [{"date": "2026-09-16", "outcome": "publication_blocked", "note": "The live standard and audit workflow cleared product review, but the browser failed before native capture and final screenshot checks."}],
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://aiuc.com/", "note": "The live site exposes the AIUC-1 agent standard, quarterly updates, certification workflow, audits and insurance positioning."},
+          {"url": "https://aiuc.com/updates/series-a-announcement", "note": "The official announcement describes 5,000 business-specific risk and attack combinations plus an auditor-led assessment process."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "AIUC bets that standards, technical evaluations and insurance can become shared confidence infrastructure for agent deployment."},
+          "craft": {"pass": true, "note": "The visible standard, quarterly recertification and named audit evidence form a specific operating system rather than a generic security pitch."},
+          "specificity": {"pass": true, "note": "The buyer, certification boundary and tested risk classes are concrete, while adoption claims remain company reported."}
+        }
+      }
+    },
+    {
+      "slug": "zero",
+      "company_url": "https://zero.inc/",
+      "state": "publication_blocked",
+      "reason_code": "screenshot_review",
+      "reason": "Zero clears the funding, independence, product-evidence and taste review, but the Codex in-app browser became unavailable before a native screenshot and hash-bound final review could be completed.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-17",
+      "priority": 2,
+      "sources": ["https://zero.inc/", "https://zero.inc/blog/zero-raises-seed-round"],
+      "attempts": [{"date": "2026-09-16", "outcome": "publication_blocked", "note": "The live CRM workflows cleared product review, but the browser failed before native capture and final screenshot checks."}],
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://zero.inc/", "note": "The live product surface exposes Prospect, Close, Grow and Scale workflows plus a 14-day trial and in-record calling."},
+          {"url": "https://zero.inc/product/grow", "note": "The customer workflow joins product usage, billing and conversations so teams can see account changes before renewal discussions."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Zero bets on replacing manual CRM upkeep with a context-rich commercial operating system rather than adding another assistant to legacy records."},
+          "craft": {"pass": true, "note": "The inspected surface shows concrete prospecting, deal, customer-health, calling and agent workflows with coherent record context."},
+          "specificity": {"pass": true, "note": "The sales and customer-success roles, data sources and next-step problems are specific instead of generic productivity claims."}
+        }
+      }
+    },
+    {
+      "slug": "nuance-labs",
+      "company_url": "https://www.nuancelabs.ai/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "The official site and announcement explain a single full-duplex audiovisual architecture, but the first public research preview remains future-dated and no usable model, recorded demonstration or independently inspectable output was available.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-30",
+      "priority": 2,
+      "sources": ["https://www.nuancelabs.ai/", "https://www.nuancelabs.ai/nuance-labs-series-a-release"],
+      "attempts": [{"date": "2026-09-16", "outcome": "evidence_pending", "note": "The live page showed the architecture and waitlist, while the announcement says the first public research preview will open later in 2026."}]
+    },
+    {
+      "slug": "expertise-ai",
+      "company_url": "https://expertise.ai/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "The task-owned Codex browser timed out on the official product page and then lost browser request-header policy availability; product evaluation could not be completed without switching to a prohibited fallback browser.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-18",
+      "priority": 2,
+      "sources": ["https://expertise.ai/", "https://www.newswire.ca/news-releases/expertise-ai-raises-ca-3-2-million-to-close-the-ai-adoption-gap-in-traditional-industries-847307616.html"],
+      "attempts": [{"date": "2026-09-16", "outcome": "access_blocked", "note": "The official product navigation timed out and the task-owned browser then became unavailable before a readable product state was observed."}]
+    },
+    {
+      "slug": "reemerge",
+      "company_url": "https://reemergeinc.com/",
+      "state": "publication_blocked",
+      "reason_code": "screenshot_review",
+      "reason": "ReEmerge clears the funding, independence, clinical-product evidence and taste review, but the Codex in-app browser became unavailable before a native screenshot and hash-bound final review could be completed.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-17",
+      "priority": 2,
+      "sources": ["https://reemergeinc.com/", "https://www.nature.com/articles/s41591-023-02638-4", "https://www.prnewswire.com/news-releases/reemerge-inc-exits-stealth-with-oversubscribed-37m-series-a-to-challenge-the-limitations-of-chronic-cognitive-impairment-caused-by-brain-injuries-302878979.html"],
+      "attempts": [{"date": "2026-09-16", "outcome": "publication_blocked", "note": "The clinical target, linked study and investigational boundary cleared review, but the browser failed before native capture and final screenshot checks."}],
+      "evaluation": {
+        "rubric": "biotech",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://reemergeinc.com/", "note": "The live site describes investigational CNRT targeting underactive central-thalamic networks and clearly labels the device as not commercially approved."},
+          {"url": "https://www.nature.com/articles/s41591-023-02638-4", "note": "The company links the peer-reviewed Phase 1 randomized feasibility study underlying the therapy and separates it from the planned multicenter study."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "ReEmerge bets on restoring function in viable neural circuits rather than limiting chronic TBI care to compensatory rehabilitation."},
+          "craft": {"pass": true, "note": "The therapy target, linked feasibility study, investigational boundary and planned clinical path provide concrete medical-product evidence."},
+          "specificity": {"pass": true, "note": "The indication, affected neural network, patient population and evidence boundary are explicit, while efficacy remains investigational."}
+        }
+      }
+    },
+    {
+      "slug": "nix-biosensors",
+      "company_url": "https://nixbiosensors.com/",
+      "state": "publication_blocked",
+      "reason_code": "screenshot_review",
+      "reason": "Nix Biosensors clears the funding, independence, hardware-product evidence and taste review, but the Codex in-app browser became unavailable before a native screenshot and hash-bound final review could be completed.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-17",
+      "priority": 2,
+      "sources": ["https://nixbiosensors.com/", "https://nixbiosensors.com/pages/nix-pro-group-app", "https://nixbiosensors.com/pages/press-page"],
+      "attempts": [{"date": "2026-09-16", "outcome": "publication_blocked", "note": "The orderable sensor and Solo and Pro workflows cleared review, but the browser failed before native capture and final screenshot checks."}],
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://nixbiosensors.com/", "note": "The live storefront exposes an orderable sweat biosensor that measures fluid and electrolyte loss and sends real-time guidance to connected devices."},
+          {"url": "https://nixbiosensors.com/pages/nix-pro-group-app", "note": "The official Nix Pro page describes simultaneous group monitoring for coaches, safety managers and supervisors with individual hydration status."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Nix bets that sweat loss should be measured directly during activity instead of inferred from population averages or post-session estimates."},
+          "craft": {"pass": true, "note": "The physical patch, continuous measurement, personal history and distinct Solo and Pro interfaces show a complete hardware-software workflow."},
+          "specificity": {"pass": true, "note": "Athletes, service members and labor supervisors receive a concrete fluid and electrolyte decision rather than a generic wellness score."}
+        }
+      }
+    },
+    {
+      "slug": "regcell",
+      "company_url": "https://regcellbio.com/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "The Codex in-app browser lost request-header policy availability before the official clinical-product page could be inspected; the financing source alone is insufficient for product evaluation and no fallback browser was used.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-18",
+      "priority": 2,
+      "sources": ["https://regcellbio.com/", "https://www.businesswire.com/news/home/20260915919580/en/"],
+      "attempts": [{"date": "2026-09-16", "outcome": "access_blocked", "note": "The task-owned browser became unavailable before the official clinical-product surface could be inspected; no alternate browser was used."}]
+    },
+    {
+      "slug": "exein",
+      "company_url": "https://www.exein.io/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "The Codex in-app browser lost request-header policy availability before the official embedded-security product could be inspected; the financing announcement alone is insufficient for full product review and no fallback browser was used.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": "2026-09-18",
+      "priority": 2,
+      "sources": ["https://www.exein.io/", "https://www.exein.io/blog/exein-raises-270m-at-1-7bn-valuation-to-build-the-security-layer-for-physical-ai"],
+      "attempts": [{"date": "2026-09-16", "outcome": "access_blocked", "note": "The task-owned browser became unavailable before the official embedded-security surface could be inspected; no alternate browser was used."}]
+    },
+    {
+      "slug": "profound",
+      "company_url": "https://www.tryprofound.com/",
+      "state": "policy_excluded",
+      "reason_code": "excluded_category",
+      "reason": "TechCrunch and the company identity describe Profound as generative-engine and answer-engine optimization software that helps brands appear in AI search results, an explicitly excluded SEO category under F4; this is not a product-quality judgment.",
+      "reviewed_at": "2026-09-16",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": ["https://www.tryprofound.com/", "https://techcrunch.com/2026/09/15/aeo-startup-profound-hits-unicorn-valuation-raises-180m-series-d-7-months-after-last-round/"],
+      "attempts": [{"date": "2026-09-16", "outcome": "policy_excluded", "note": "The fresh report identifies the company as AEO and GEO software for influencing brand visibility in AI search, which falls under F4."}]
     }
   ]
 }
