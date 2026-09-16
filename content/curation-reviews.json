@@ -2200,7 +2200,7 @@
       "sources": [
         "https://fundly.ai/",
         "https://m.economictimes.com/tech/funding/b2b-startup-fundly-ai-raises-4-million-led-by-accel-multiply/amp_articleshow/133890712.cms",
-        "https://in.linkedin.com/company/fundlyai",
+        "https://fundly.ai/terms",
         "https://fundly.ai/about"
       ],
       "attempts": [
@@ -2229,8 +2229,8 @@
             "note": "The official company page defines embedded working-capital workflows for pharmaceutical retailers and distributors."
           },
           {
-            "url": "https://in.linkedin.com/company/fundlyai",
-            "note": "The company's official social profile states the current Pre-Series A financing and its named institutional backers."
+            "url": "https://fundly.ai/terms",
+            "note": "The official terms identify Ardour Analytics as the technology platform and lending service provider while regulated lenders retain credit decisions."
           }
         ],
         "taste": {
