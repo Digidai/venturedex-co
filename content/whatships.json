@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "59f46d5395f40a047fee4ca04311fb9f990fb2df",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/59f46d5395f40a047fee4ca04311fb9f990fb2df",
-    "commit_at": "2026-09-16T04:41:02.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/59f46d5395f40a047fee4ca04311fb9f990fb2df/src/data/videos.json",
-    "raw_sha256": "e5ef9f963da295ca9aaa1dba21dbdd573c03432f860fafc4151f8f7e5681acf2"
+    "commit": "53b025efa682604fb9903d5ed1aec11fd64b4140",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/53b025efa682604fb9903d5ed1aec11fd64b4140",
+    "commit_at": "2026-09-16T05:30:38.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/53b025efa682604fb9903d5ed1aec11fd64b4140/src/data/videos.json",
+    "raw_sha256": "1440c6b2b7b15fed39e377514d59754cabb1998b93a81887a52fe7c48361ad5d"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -22,7 +22,7 @@
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
   "source_published_through": "2026-09-15T23:41:28.000Z",
-  "item_count": 2133,
+  "item_count": 2137,
   "items": [
     {
       "id": "plv-monid-astra-cold-calling",
@@ -143,6 +143,46 @@
       "video_url": "https://video.twimg.com/amplify_video/2099897247005880323/vid/avc1/1920x1080/BqA2g6Sih_7462VA.mp4",
       "original_post_url": "https://x.com/bradkowalk/status/2099897698006737261",
       "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-wonder-grok-bot",
+      "tweet_id": "2099896411823219063",
+      "slug": "wonder-grok-bot",
+      "title": "Wonder — official Grok Bot plugin on a live canvas",
+      "product": "Wonder",
+      "company": "Wonder",
+      "category": "design",
+      "tags": [
+        "wonder",
+        "grok",
+        "bot"
+      ],
+      "published_at": "2026-09-15T16:21:33.000Z",
+      "duration_seconds": 38,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099888121689124865/vid/avc1/1440x1080/0McCUwINtnow1Dwn.mp4",
+      "original_post_url": "https://x.com/usewonder/status/2099896411823219063",
+      "last_changed_at": "2026-09-16T05:30:38.000Z"
+    },
+    {
+      "id": "plv-kobra",
+      "tweet_id": "2099884604010242064",
+      "slug": "kobra",
+      "title": "Kobra — 80+ motion components for shadcn/ui",
+      "product": "Kobra",
+      "company": "Kobra",
+      "category": "design",
+      "tags": [
+        "kobra",
+        "motion",
+        "shadcn"
+      ],
+      "published_at": "2026-09-15T15:34:38.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099884409306468352/vid/avc1/1920x1080/aCXIU_--J7hh2Eqd.mp4",
+      "original_post_url": "https://x.com/haaarshsingh/status/2099884604010242064",
+      "last_changed_at": "2026-09-16T05:30:38.000Z"
     },
     {
       "id": "plv-bg0",
@@ -345,6 +385,26 @@
       "last_changed_at": "2026-09-15T16:08:33.000Z"
     },
     {
+      "id": "plv-hypit",
+      "tweet_id": "2099545996766388304",
+      "slug": "hypit",
+      "title": "Hypit — clone any viral video with AI agents",
+      "product": "Hypit",
+      "company": "Hypit",
+      "category": "ai",
+      "tags": [
+        "hypit",
+        "agents",
+        "video"
+      ],
+      "published_at": "2026-09-14T17:09:07.000Z",
+      "duration_seconds": 63,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099545643836743680/vid/avc1/1920x1080/9P9tVSA9QbAg5hrb.mp4",
+      "original_post_url": "https://x.com/cccyd_qwq/status/2099545996766388304",
+      "last_changed_at": "2026-09-16T05:30:38.000Z"
+    },
+    {
       "id": "plv-motion-mcp-codex",
       "tweet_id": "2099542179697902025",
       "slug": "motion-mcp-codex",
@@ -423,6 +483,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099503789162262528/vid/avc1/1920x1080/FpG42lk6Cey60BsY.mp4",
       "original_post_url": "https://x.com/wherescz/status/2099503814453719438",
       "last_changed_at": "2026-09-15T16:08:33.000Z"
+    },
+    {
+      "id": "plv-appzapper-3000",
+      "tweet_id": "2099496751677792353",
+      "slug": "appzapper-3000",
+      "title": "AppZapper 3000 — now on the Mac App Store",
+      "product": "AppZapper 3000",
+      "company": "AppZapper",
+      "category": "productivity",
+      "tags": [
+        "appzapper",
+        "mac",
+        "uninstaller"
+      ],
+      "published_at": "2026-09-14T13:53:27.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099496616650842112/vid/avc1/1152x720/8UTcoXCDa_UGsnIn.mp4",
+      "original_post_url": "https://x.com/austinsarner/status/2099496751677792353",
+      "last_changed_at": "2026-09-16T05:30:38.000Z"
     },
     {
       "id": "plv-obsidian-ui",
