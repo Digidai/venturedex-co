@@ -3641,7 +3641,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/firstmark.png",
       "source_page": "https://firstmark.com/",
-      "source_url": "https://firstmark.com/app/themes/sage/resources/images/favicons/apple-touch-icon.png"
+      "source_url": "https://firstmark.com/app/themes/sage/resources/images/favicons/apple-touch-icon.png",
+      "allow_unreachable_source": true,
+      "note": "The official FirstMark homepage intermittently returns Cloudflare HTTP 5xx responses to automated validation; keep the existing nonempty same-origin official icon and downgrade reachability drift to a warning."
     },
     "salesforce-ventures": {
       "name": "Salesforce Ventures",

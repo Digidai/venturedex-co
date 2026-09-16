@@ -288,7 +288,10 @@ test("bootstrap reruns npm ci when the package-lock hash changes", () => {
 });
 
 test("bootstrap failure or timeout cannot bless an early Astro link", () => {
-  for (const [mode, expectedStatus] of [["timeout", 124], ["fail", 74]] as const) {
+  for (const [mode, timeoutSeconds, expectedStatus] of [
+    ["timeout", "1", 124],
+    ["fail", "10", 74],
+  ] as const) {
     const fixture = createBootstrapFixture();
     try {
       // Model a partially linked install before the failed recovery starts.
@@ -302,7 +305,7 @@ test("bootstrap failure or timeout cannot bless an early Astro link", () => {
         [path.join(fixture.root, "scripts", "bootstrap-automation.sh")],
         {
           cwd: fixture.root,
-          env: bootstrapFixtureEnv(fixture, mode, "1"),
+          env: bootstrapFixtureEnv(fixture, mode, timeoutSeconds),
           encoding: "utf8",
           timeout: 15_000,
         },
