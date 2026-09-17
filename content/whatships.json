@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5",
-    "commit_at": "2026-09-17T07:00:46.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5/src/data/videos.json",
-    "raw_sha256": "e2397859c2cf147108e4f3431607a7fc90d91e0f4ed5fe56b98915c9db778568"
+    "commit": "166465a67d0073988ea02689381c8f2796c3e20c",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/166465a67d0073988ea02689381c8f2796c3e20c",
+    "commit_at": "2026-09-17T14:42:50.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/166465a67d0073988ea02689381c8f2796c3e20c/src/data/videos.json",
+    "raw_sha256": "809188b8ddbf9018a2bce1bfb00f71d6de82c6776aa48fd56f739948f49f37f3"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,29 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-16T18:45:56.000Z",
-  "item_count": 2149,
+  "source_published_through": "2026-09-17T13:00:00.000Z",
+  "item_count": 2153,
   "items": [
+    {
+      "id": "plv-pencil-canvas",
+      "tweet_id": "2100570466692071493",
+      "slug": "pencil-canvas",
+      "title": "Pencil — an agentic canvas for building bold ideas",
+      "product": "Pencil",
+      "company": "Pencil",
+      "category": "design",
+      "tags": [
+        "pencil",
+        "canvas",
+        "agent"
+      ],
+      "published_at": "2026-09-17T13:00:00.000Z",
+      "duration_seconds": 33,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100455730704994304/vid/avc1/1920x1080/xfNJakco7fMKKWv1.mp4",
+      "original_post_url": "https://x.com/tomkrcha/status/2100570466692071493",
+      "last_changed_at": "2026-09-17T14:42:50.000Z"
+    },
     {
       "id": "plv-arrow-2",
       "tweet_id": "2100295136261349802",
@@ -63,6 +83,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100288434103357440/vid/avc1/1920x1080/DdYhn9f-Wf6hERpV.mp4",
       "original_post_url": "https://x.com/tlxue/status/2100288496170574284",
       "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-railway-sandboxes",
+      "tweet_id": "2100267285373989020",
+      "slug": "railway-sandboxes",
+      "title": "Railway Sandboxes — thousands of VMs next to your infra",
+      "product": "Railway Sandboxes",
+      "company": "Railway",
+      "category": "developer-tools",
+      "tags": [
+        "railway",
+        "sandboxes",
+        "vms"
+      ],
+      "published_at": "2026-09-16T16:55:16.000Z",
+      "duration_seconds": 40,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100267221423415296/vid/avc1/1920x1080/wXMCkKhHWMW_Ag_E.mp4",
+      "original_post_url": "https://x.com/Railway/status/2100267285373989020",
+      "last_changed_at": "2026-09-17T14:42:50.000Z"
     },
     {
       "id": "plv-launchvideo",
@@ -143,6 +183,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100254736763019264/vid/avc1/1920x1080/Fg2Up7FUeMvjEUuq.mp4",
       "original_post_url": "https://x.com/claudeai/status/2100258492590207079",
       "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-claude-cowork-chat",
+      "tweet_id": "2100258490740539730",
+      "slug": "claude-cowork-chat",
+      "title": "Claude — Cowork and chat merge into one Claude",
+      "product": "Claude",
+      "company": "Anthropic",
+      "category": "ai",
+      "tags": [
+        "claude",
+        "cowork",
+        "chat"
+      ],
+      "published_at": "2026-09-16T16:20:19.000Z",
+      "duration_seconds": 71,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100254508953608194/vid/avc1/1920x1080/WgQeb5ahCdfWyas3.mp4",
+      "original_post_url": "https://x.com/claudeai/status/2100258490740539730",
+      "last_changed_at": "2026-09-17T14:42:50.000Z"
     },
     {
       "id": "plv-screenkite-2",
@@ -323,6 +383,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099907494130728960/vid/avc1/1920x1080/wpb9tWQENQo1_pMm.mp4",
       "original_post_url": "https://x.com/GoogleAI/status/2099908000924193124",
       "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-odyssey-3",
+      "tweet_id": "2099900067356586276",
+      "slug": "odyssey-3",
+      "title": "Odyssey-3 — a world model for robots, cars, and games",
+      "product": "Odyssey-3",
+      "company": "Odyssey",
+      "category": "ai",
+      "tags": [
+        "odyssey",
+        "world-model",
+        "robots"
+      ],
+      "published_at": "2026-09-15T16:36:04.000Z",
+      "duration_seconds": 97,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099897328866115585/vid/avc1/1920x1080/ou18tLX_N6gGpHEc.mp4",
+      "original_post_url": "https://x.com/odysseyml/status/2099900067356586276",
+      "last_changed_at": "2026-09-17T14:42:50.000Z"
     },
     {
       "id": "plv-mem0-gateway",
