@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "53b025efa682604fb9903d5ed1aec11fd64b4140",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/53b025efa682604fb9903d5ed1aec11fd64b4140",
-    "commit_at": "2026-09-16T05:30:38.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/53b025efa682604fb9903d5ed1aec11fd64b4140/src/data/videos.json",
-    "raw_sha256": "1440c6b2b7b15fed39e377514d59754cabb1998b93a81887a52fe7c48361ad5d"
+    "commit": "d853b0964ec99dafa8219d9a93ef69775cd7728b",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/d853b0964ec99dafa8219d9a93ef69775cd7728b",
+    "commit_at": "2026-09-16T21:32:52.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/d853b0964ec99dafa8219d9a93ef69775cd7728b/src/data/videos.json",
+    "raw_sha256": "eddeb592461406f6d0d1caa319c09ddb54b27c7f1b305bf745cd67e53487b3fa"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,89 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-15T23:41:28.000Z",
-  "item_count": 2137,
+  "source_published_through": "2026-09-16T18:45:56.000Z",
+  "item_count": 2143,
   "items": [
+    {
+      "id": "plv-arrow-2",
+      "tweet_id": "2100295136261349802",
+      "slug": "arrow-2",
+      "title": "Arrow 2 — faster, more precise vector graphics",
+      "product": "Arrow 2",
+      "company": "QuiverAI",
+      "category": "design",
+      "tags": [
+        "arrow",
+        "quiver",
+        "vector"
+      ],
+      "published_at": "2026-09-16T18:45:56.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2100295069764919296/pu/vid/avc1/1280x720/AqN3yPJDeqSWxpJo.mp4",
+      "original_post_url": "https://x.com/QuiverAI/status/2100295136261349802",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-rene",
+      "tweet_id": "2100288496170574284",
+      "slug": "rene",
+      "title": "Rene — a multiplayer iMessage agent you text",
+      "product": "Rene",
+      "company": "Rene",
+      "category": "ai",
+      "tags": [
+        "rene",
+        "imessage",
+        "agent"
+      ],
+      "published_at": "2026-09-16T18:19:33.000Z",
+      "duration_seconds": 55,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100288434103357440/vid/avc1/1920x1080/DdYhn9f-Wf6hERpV.mp4",
+      "original_post_url": "https://x.com/tlxue/status/2100288496170574284",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-claude-docs-slides",
+      "tweet_id": "2100258492590207079",
+      "slug": "claude-docs-slides",
+      "title": "Claude — decks, docs, and designs in chat",
+      "product": "Claude Docs, Slides, and Design",
+      "company": "Anthropic",
+      "category": "ai",
+      "tags": [
+        "claude",
+        "docs",
+        "slides"
+      ],
+      "published_at": "2026-09-16T16:20:20.000Z",
+      "duration_seconds": 95,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100254736763019264/vid/avc1/1920x1080/Fg2Up7FUeMvjEUuq.mp4",
+      "original_post_url": "https://x.com/claudeai/status/2100258492590207079",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-command-code-desktop",
+      "tweet_id": "2100248865673031826",
+      "slug": "command-code-desktop",
+      "title": "Command Code — desktop app for Mac, Linux, Windows",
+      "product": "Command Code Desktop",
+      "company": "Command Code",
+      "category": "developer-tools",
+      "tags": [
+        "command-code",
+        "desktop",
+        "agents"
+      ],
+      "published_at": "2026-09-16T15:42:04.000Z",
+      "duration_seconds": 46,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100248525271683072/vid/avc1/1920x1080/mLKPsvVA0nCkCYxY.mp4",
+      "original_post_url": "https://x.com/CommandCodeAI/status/2100248865673031826",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
     {
       "id": "plv-monid-astra-cold-calling",
       "tweet_id": "2100007120158834944",
@@ -63,6 +143,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099860872118120449/vid/avc1/2560x1440/DJuEqassRTPJ_KTg.mp4",
       "original_post_url": "https://x.com/framer/status/2099935530091753606",
       "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-jev",
+      "tweet_id": "2099925682726002904",
+      "slug": "jev",
+      "title": "Jev — a new frontier model trained with RLCD",
+      "product": "Jev",
+      "company": "TypeSafe",
+      "category": "ai",
+      "tags": [
+        "jev",
+        "rlcd",
+        "model"
+      ],
+      "published_at": "2026-09-15T18:17:52.000Z",
+      "duration_seconds": 176,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099925575637057536/vid/avc1/1920x1080/cy2CDedAjnEfjJZk.mp4",
+      "original_post_url": "https://x.com/CompleteSkeptic/status/2099925682726002904",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
     },
     {
       "id": "plv-brand-api",
@@ -163,6 +263,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099888121689124865/vid/avc1/1440x1080/0McCUwINtnow1Dwn.mp4",
       "original_post_url": "https://x.com/usewonder/status/2099896411823219063",
       "last_changed_at": "2026-09-16T05:30:38.000Z"
+    },
+    {
+      "id": "plv-devin-mac",
+      "tweet_id": "2099887193804112190",
+      "slug": "devin-mac",
+      "title": "Devin — now builds and tests on its own Mac",
+      "product": "Devin",
+      "company": "Cognition",
+      "category": "developer-tools",
+      "tags": [
+        "devin",
+        "cognition",
+        "mac"
+      ],
+      "published_at": "2026-09-15T15:44:55.000Z",
+      "duration_seconds": 46,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099884855018278912/vid/avc1/1920x1318/SqY7Zsr9LyBvO4m0.mp4",
+      "original_post_url": "https://x.com/cognition/status/2099887193804112190",
+      "last_changed_at": "2026-09-16T21:32:52.000Z"
     },
     {
       "id": "plv-kobra",
