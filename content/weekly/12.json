@@ -1,0 +1,268 @@
+{
+  "issue_number": 12,
+  "title": "The Product Starts After the Recommendation",
+  "week_start": "2026-08-10",
+  "week_end": "2026-08-16",
+  "published_at": "2026-08-17",
+  "status": "published",
+  "editorial_intro": "The strongest products this week do not stop at producing an answer. They connect a decision to the operating surface that must carry it: a simulation, generator fleet, treatment protocol, battery system, pull request, CI runner, or payment route. That shift makes the product easier to inspect—and the risks harder to hide—because value depends on what happens after the recommendation.",
+  "research_summary": "This issue reviews seven VentureDex records published from August 13 through August 15, their structured research sources, linked funding reports, and current official product surfaces rechecked in the Codex in-app browser on September 17, 2026. Product claims are limited to exposed workflows and clearly attributed vendor descriptions. We did not independently verify revenue, user counts, clinical outcomes, uptime, reliability, authorization lift, CI speedups, simulation accuracy, or unit economics.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "From prediction to operation",
+      "summary": "Worldscape, AGent Energy, and Form Energy connect modeling or coordination software to simulations, generator dispatch, and physical storage systems."
+    },
+    {
+      "title": "Validation becomes the product",
+      "summary": "Remepy, CodeRabbit, and Blacksmith make the proving step visible through regulated treatment, code review, and CI execution rather than treating validation as an afterthought."
+    },
+    {
+      "title": "Orchestration under real constraints",
+      "summary": "Yuno turns payment routing, retries, monitoring, and provider choice into a programmable operating layer whose value must be measured after fees and migration costs."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "worldscape",
+      "why_this_week": "Worldscape belongs in this issue because it packages the gap between model output and operational choice as a developer-facing surface: live data, simulation, and an SDK sit inside the same platform.",
+      "product_evaluation": "The published VentureDex record and current official homepage expose a platform overview, SDK preview, developer quick start, marketplace, pricing, security, and concrete logistics, data-center, telecom, and mission-planning workflows. That is more inspectable than a consultancy-only simulation pitch, but the public evidence still describes capabilities and examples rather than independent simulation accuracy or customer time-to-production.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/worldscape.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "Worldscape official site",
+          "source": "Current platform, SDK, marketplace, and workflow surface rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://worldscape.ai/"
+        },
+        {
+          "label": "Worldscape developer overview",
+          "source": "SDK and developer surface linked by the startup record",
+          "url": "https://worldscape.ai/developers"
+        },
+        {
+          "label": "Worldscape developer quick start",
+          "source": "Quick-start route linked by the startup record",
+          "url": "https://worldscape.ai/developers/quick-start"
+        },
+        {
+          "label": "Pulse 2.0 funding report",
+          "source": "Linked seed-extension source",
+          "url": "https://pulse2.com/worldscape-raises-10-million-seed-extension-to-advance-ai-native-mission-engineering/"
+        }
+      ],
+      "risks": [
+        "The platform may remain dependent on high-touch mission engineering if customers cannot independently build, validate, and reuse simulations through the SDK.",
+        "The reviewed public sources do not provide independent simulation-accuracy benchmarks, time-to-production data, or evidence that the example workflows are repeatable across customers."
+      ],
+      "verdict": "Worldscape is an inspectable decision-infrastructure bet, not yet proof that reusable simulations can replace project-heavy delivery."
+    },
+    {
+      "slug": "agent-energy",
+      "why_this_week": "AGent Energy makes a recommendation operational by connecting remote monitoring and dispatch software to backup generators that normally sit idle.",
+      "product_evaluation": "The current official workflow page describes AGent as a monetization and remote-management platform for commercial, industrial, and institutional backup generators. The published record adds inspectable platform-login and dashboard surfaces plus the hardware-and-software dispatch model; it does not establish field reliability, dispatch frequency, or facility economics independently.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/agent-energy.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "AGent Energy official site",
+          "source": "Official product surface linked by the startup record",
+          "url": "https://www.agentenergy.com/"
+        },
+        {
+          "label": "AGent Energy workflow",
+          "source": "Current remote-management workflow page rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.agentenergy.com/how-it-works"
+        },
+        {
+          "label": "AGent Energy platform",
+          "source": "Public platform login linked by the startup record",
+          "url": "https://platform.agentenergy.com/"
+        },
+        {
+          "label": "AGent Energy financing announcement",
+          "source": "Company announcement distributed by PR Newswire and rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.prnewswire.com/news-releases/agent-energy-closes-series-seed-to-unlock-200-gw-of-behind-the-meter-generation-across-commercial-industrial-and-institutional-sectors-302851086.html"
+        }
+      ],
+      "risks": [
+        "Unit economics may weaken if grid-program payments do not cover field hardware, maintenance, fuel, and emissions constraints at scale.",
+        "The reviewed public sources do not disclose verified dispatch frequency, generator availability, maintenance outcomes, or program-level economics; displayed earnings figures remain vendor claims."
+      ],
+      "verdict": "AGent turns backup power into an operating product; the unresolved question is whether grid-program economics survive field operations at scale."
+    },
+    {
+      "slug": "remepy",
+      "why_this_week": "Remepy belongs because it treats software as part of the prescribed intervention, not as a wellness companion added after the medicine.",
+      "product_evaluation": "The current official Hybrid Drugs page says the company integrates traditional medication with digital interventions. The published record ties Hybridopa to levodopa/carbidopa and an adaptive app protocol, while Remepy's own trial announcement reports Phase IIa results, labels the treatment investigational, and describes a planned Phase 3 program; those clinical statements are company-reported, not independent confirmation.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/remepy.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "Remepy hybrid drugs page",
+          "source": "Current drug-plus-digital product description rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.remepy.com/hybrid-drugs"
+        },
+        {
+          "label": "Remepy Hybridopa page",
+          "source": "Official Parkinson's product route linked by the startup record",
+          "url": "https://www.remepy.com/parkinsons-disease"
+        },
+        {
+          "label": "Remepy Phase IIa announcement",
+          "source": "Company-reported trial status and investigational boundary",
+          "url": "https://www.remepy.com/news/remepy-reports-strong-clinical-phase-iia-results-for-hybridopa-tm-a-first-in-class-hybrid-drug-for-parkinsons-disease"
+        },
+        {
+          "label": "Axios funding report",
+          "source": "Linked Series A source",
+          "url": "https://www.axios.com/newsletters/axios-pro-rata-71fbbf4b-e5f7-4b9a-9d0c-cac71a4187e1"
+        }
+      ],
+      "risks": [
+        "The combined treatment may fail to reproduce the company-reported Phase IIa benefit or clear the required regulatory pathway in a larger trial.",
+        "Hybridopa remains investigational, and the reviewed sources do not provide completed Phase 3 evidence, regulatory approval, or independent outcome replication."
+      ],
+      "verdict": "Remepy's product thesis is unusually concrete, but it remains a clinical and regulatory hypothesis until larger trials confirm it."
+    },
+    {
+      "slug": "form-energy",
+      "why_this_week": "Form Energy joins this issue because its planning software is paired with the physical system that must absorb and discharge power through prolonged grid stress.",
+      "product_evaluation": "The published record and official technology routes describe an iron-air battery designed for up to 100 hours of storage and Formware as a technology-neutral grid-planning model. The public surface makes the software-plus-hardware thesis visible, but the duration, manufacturing, and deployment claims remain vendor descriptions without independent fleet-level reliability or installed-cost evidence.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/form-energy.json summary, editor_note, funding, breakout exception, and structured research"
+        },
+        {
+          "label": "Form Energy battery technology",
+          "source": "Official battery route and product sections rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://formenergy.com/technology/battery-technology/"
+        },
+        {
+          "label": "Formware grid modeling",
+          "source": "Official grid-modeling route linked by the startup record",
+          "url": "https://formenergy.com/technology/grid-modeling-software/"
+        },
+        {
+          "label": "Form Energy Series G announcement",
+          "source": "Official linked financing source",
+          "url": "https://formenergy.com/form-energy-secures-750m-in-series-g-financing/"
+        }
+      ],
+      "risks": [
+        "Factory yield, installed system cost, and field reliability may not sustain the modeled advantage as commercial deployments expand.",
+        "The reviewed public sources do not provide independent fleet-level reliability, installed-cost, or manufacturing-yield data."
+      ],
+      "verdict": "Form Energy makes multi-day storage an evaluable software-and-hardware system, while commercial-scale reliability and cost remain the decisive proof."
+    },
+    {
+      "slug": "coderabbit",
+      "why_this_week": "CodeRabbit belongs because more generated code shifts the scarce resource from writing changes to deciding which changes deserve attention and can safely merge.",
+      "product_evaluation": "The current official site and documentation expose PR triage, Change Stack, security review, pre-merge checks, and post-merge actions as one change-management surface. Those workflows make the review mechanism inspectable, but adoption statements and product claims do not independently establish fewer escaped defects or lower reviewer burden.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/coderabbit.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "CodeRabbit official site",
+          "source": "Current triage and review surface rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.coderabbit.ai/"
+        },
+        {
+          "label": "CodeRabbit documentation",
+          "source": "Current platform, Triage, Change Stack, and security documentation rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://docs.coderabbit.ai/"
+        },
+        {
+          "label": "FinSMEs funding report",
+          "source": "Linked Series C source",
+          "url": "https://www.finsmes.com/2026/08/coderabbit-raises-143m-in-series-c-funding.html"
+        }
+      ],
+      "risks": [
+        "Teams need to measure whether broader automated review reduces escaped defects without increasing low-value findings, reviewer overrides, or merge delay.",
+        "The reviewed public sources describe workflow breadth and adoption but do not publish independent defect-outcome comparisons."
+      ],
+      "verdict": "CodeRabbit is building a control surface for change volume; proof rests on defect outcomes, not review volume."
+    },
+    {
+      "slug": "blacksmith",
+      "why_this_week": "Blacksmith belongs because code-generation throughput is only useful if the validation system can execute the resulting test and build load without becoming the queue.",
+      "product_evaluation": "The published record describes a runs-on label migration to managed microVM runners, colocated caches, and searchable CI logs. Current Blacksmith documentation still presents the runner product as a drop-in GitHub Actions path, making migration mechanics visible; advertised speed gains remain vendor claims whose relevance depends on workload shape and cache reuse.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/blacksmith.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "Blacksmith official site",
+          "source": "Official runner product surface linked by the startup record",
+          "url": "https://www.blacksmith.sh/"
+        },
+        {
+          "label": "Blacksmith documentation",
+          "source": "Current GitHub Actions runner overview rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://docs.blacksmith.sh/introduction/why-blacksmith"
+        },
+        {
+          "label": "TechCrunch funding report",
+          "source": "Linked Series B source",
+          "url": "https://techcrunch.com/2026/08/12/blacksmiths-valuation-jumps-10x-to-550m-as-ai-coding-fuels-software-validation/"
+        }
+      ],
+      "risks": [
+        "The advertised speedups need testing across cache-cold, network-bound, ARM, and monorepo workloads before broad migration.",
+        "The reviewed sources do not provide an independent cross-workload comparison, and the value of colocated caching depends on each repository's job mix and reuse pattern."
+      ],
+      "verdict": "Blacksmith offers a low-friction way to buy back CI time, but each team must prove the gain on its own workloads."
+    },
+    {
+      "slug": "yuno",
+      "why_this_week": "Yuno closes the loop between payment policy and transaction execution by combining routing rules, retries, monitoring, and provider choice in one operating layer.",
+      "product_evaluation": "The current Smart Routing page exposes provider selection, fallback, retries, A/B controls, conditions, and monitoring, while the published record adds a single API, developer documentation, and a public dashboard demo. The surface is inspectable, but displayed authorization and recovery figures remain vendor claims and do not establish merchant-level lift after fees, migration, and another dependency in the payment path.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/yuno.json summary, editor_note, funding, and structured research"
+        },
+        {
+          "label": "Yuno smart routing",
+          "source": "Current routing, fallback, monitoring, and control surface rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.y.uno/en/product/smart-routing"
+        },
+        {
+          "label": "Yuno developer documentation",
+          "source": "Official integration documentation linked by the startup record",
+          "url": "https://docs.y.uno/"
+        },
+        {
+          "label": "Yuno dashboard demo",
+          "source": "Public demo route linked by the startup record",
+          "url": "https://dashboard-demo.y.uno/"
+        },
+        {
+          "label": "Yuno Series B announcement",
+          "source": "Company announcement distributed by GlobeNewswire and rechecked in the Codex in-app browser on 2026-09-17",
+          "url": "https://www.globenewswire.com/news-release/2026/08/12/3343819/0/en/yuno-raises-45-million-series-b-to-scale-the-ai-native-operating-system-of-global-payments-and-financial-services.html"
+        }
+      ],
+      "risks": [
+        "Adding an orchestration layer may not improve net authorization or operating cost for merchants whose processor mix is already optimized.",
+        "The reviewed sources do not provide independently comparable merchant-level lift after platform fees, migration costs, and the added operational dependency."
+      ],
+      "verdict": "Yuno makes payment routing inspectable and programmable; value depends on merchant-level lift after total platform costs."
+    }
+  ]
+}
