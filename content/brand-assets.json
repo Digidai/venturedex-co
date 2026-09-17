@@ -5007,7 +5007,9 @@
       "shape": "icon",
       "local_path": "/logos/investors/sante-ventures.png",
       "source_page": "https://sante.com/",
-      "source_url": "https://sante.com/wp-content/uploads/2020/04/cropped-cropped-Sante_FavIcon-192x192.png"
+      "source_url": "https://sante.com/wp-content/uploads/2020/04/cropped-cropped-Sante_FavIcon-192x192.png",
+      "allow_unreachable_source": true,
+      "note": "The official homepage and same-origin favicon are already verified, but the GitHub runner returned HTTP 202 for the homepage during Validate 35191961684; preserve the existing nonempty local official icon and downgrade that transport drift to a warning."
     },
     "415-capital": {
       "name": "415 Capital",
@@ -5269,7 +5271,8 @@
       "local_path": "/logos/investors/anne-wojcicki.jpg",
       "source_page": "https://www.23andme.org/about/governance/",
       "source_url": "https://www.23andme.org/images/governance/anne.jpg",
-      "allow_unreachable_source": true
+      "allow_unreachable_source": true,
+      "note": "The previously verified official governance portrait URL now returns HTTP 404; preserve the existing nonempty local official image and treat current source reachability as non-blocking drift."
     },
     "len-blavatnik": {
       "name": "Len Blavatnik",
