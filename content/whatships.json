@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "d853b0964ec99dafa8219d9a93ef69775cd7728b",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/d853b0964ec99dafa8219d9a93ef69775cd7728b",
-    "commit_at": "2026-09-16T21:32:52.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/d853b0964ec99dafa8219d9a93ef69775cd7728b/src/data/videos.json",
-    "raw_sha256": "eddeb592461406f6d0d1caa319c09ddb54b27c7f1b305bf745cd67e53487b3fa"
+    "commit": "7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5",
+    "commit_at": "2026-09-17T07:00:46.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/7a4aad4fe0e2f24f4d19672a5e78dbb380d7a5f5/src/data/videos.json",
+    "raw_sha256": "e2397859c2cf147108e4f3431607a7fc90d91e0f4ed5fe56b98915c9db778568"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -22,7 +22,7 @@
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
   "source_published_through": "2026-09-16T18:45:56.000Z",
-  "item_count": 2143,
+  "item_count": 2149,
   "items": [
     {
       "id": "plv-arrow-2",
@@ -65,6 +65,66 @@
       "last_changed_at": "2026-09-16T21:32:52.000Z"
     },
     {
+      "id": "plv-launchvideo",
+      "tweet_id": "2100267179212235125",
+      "slug": "launchvideo",
+      "title": "Launchvideo — tasteful product videos in your codebase",
+      "product": "Launchvideo",
+      "company": "Launchvideo",
+      "category": "design",
+      "tags": [
+        "launchvideo",
+        "agents",
+        "video"
+      ],
+      "published_at": "2026-09-16T16:54:51.000Z",
+      "duration_seconds": 16,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100265149550776321/vid/avc1/1600x1200/NbS1Ue1_yEIDuBGx.mp4",
+      "original_post_url": "https://x.com/flornkm/status/2100267179212235125",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
+    },
+    {
+      "id": "plv-elevenlabs-reception",
+      "tweet_id": "2100262886916358361",
+      "slug": "elevenlabs-reception",
+      "title": "Reception — an AI receptionist for small businesses",
+      "product": "Reception",
+      "company": "ElevenLabs",
+      "category": "ai",
+      "tags": [
+        "elevenlabs",
+        "reception",
+        "agents"
+      ],
+      "published_at": "2026-09-16T16:37:47.000Z",
+      "duration_seconds": 33,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100262475572682753/vid/avc1/1920x1080/j6-xXf9Jeof5hdmu.mp4",
+      "original_post_url": "https://x.com/ElevenLabs/status/2100262886916358361",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
+    },
+    {
+      "id": "plv-ihermes",
+      "tweet_id": "2100260309336535218",
+      "slug": "ihermes",
+      "title": "iHermes — a personal AI assistant in iMessage",
+      "product": "iHermes",
+      "company": "iHermes",
+      "category": "ai",
+      "tags": [
+        "ihermes",
+        "imessage",
+        "agent"
+      ],
+      "published_at": "2026-09-16T16:27:33.000Z",
+      "duration_seconds": 27,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100260149948817408/vid/avc1/1920x1080/GGC7INzzvJLMHoX_.mp4",
+      "original_post_url": "https://x.com/dankrieg/status/2100260309336535218",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
+    },
+    {
       "id": "plv-claude-docs-slides",
       "tweet_id": "2100258492590207079",
       "slug": "claude-docs-slides",
@@ -85,6 +145,46 @@
       "last_changed_at": "2026-09-16T21:32:52.000Z"
     },
     {
+      "id": "plv-screenkite-2",
+      "tweet_id": "2100257676076986421",
+      "slug": "screenkite-2",
+      "title": "ScreenKite 2.0 — native recording and a pro editor",
+      "product": "ScreenKite 2.0",
+      "company": "ScreenKite",
+      "category": "design",
+      "tags": [
+        "screenkite",
+        "recording",
+        "editor"
+      ],
+      "published_at": "2026-09-16T16:17:05.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100257601170944000/vid/avc1/1920x1080/Lb4X9aMSJGqU-9nJ.mp4",
+      "original_post_url": "https://x.com/screenkite_com/status/2100257676076986421",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
+    },
+    {
+      "id": "plv-mercury-books",
+      "tweet_id": "2100256806413140181",
+      "slug": "mercury-books",
+      "title": "Mercury Books — AI accounting as transactions happen",
+      "product": "Mercury Books",
+      "company": "Mercury",
+      "category": "productivity",
+      "tags": [
+        "mercury",
+        "books",
+        "accounting"
+      ],
+      "published_at": "2026-09-16T16:13:38.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100256362634907648/vid/avc1/1920x1080/QibZv0RmCmCbfIxM.mp4",
+      "original_post_url": "https://x.com/immad/status/2100256806413140181",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
+    },
+    {
       "id": "plv-command-code-desktop",
       "tweet_id": "2100248865673031826",
       "slug": "command-code-desktop",
@@ -103,6 +203,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100248525271683072/vid/avc1/1920x1080/mLKPsvVA0nCkCYxY.mp4",
       "original_post_url": "https://x.com/CommandCodeAI/status/2100248865673031826",
       "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-notchowl",
+      "tweet_id": "2100231718230008263",
+      "slug": "notchowl",
+      "title": "NotchOwl — a productivity workspace in the Mac notch",
+      "product": "NotchOwl",
+      "company": "NotchOwl",
+      "category": "productivity",
+      "tags": [
+        "notchowl",
+        "mac",
+        "notch"
+      ],
+      "published_at": "2026-09-16T14:33:56.000Z",
+      "duration_seconds": 25,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100230236986302464/vid/avc1/1808x1080/oqrinQrANOsa7cF3.mp4",
+      "original_post_url": "https://x.com/AdityaShips/status/2100231718230008263",
+      "last_changed_at": "2026-09-17T07:00:46.000Z"
     },
     {
       "id": "plv-monid-astra-cold-calling",
