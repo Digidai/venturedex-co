@@ -15,7 +15,6 @@
   "links": {
     "product": "https://metix.ai/demo",
     "pricing": "https://metix.ai/pricing",
-    "careers": "https://metix.ai/careers",
     "press": "https://metix.ai/blog/metix-ai-raises-5-5m",
     "github": "https://github.com/OpenJobsAI",
     "twitter": "https://x.com/metix_ai",
@@ -67,12 +66,6 @@
         "label": "Metix AI pricing",
         "url": "https://metix.ai/pricing",
         "type": "product"
-      },
-      {
-        "id": "official_careers",
-        "label": "Metix AI careers",
-        "url": "https://metix.ai/careers",
-        "type": "official"
       },
       {
         "id": "official_funding",
