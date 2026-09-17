@@ -17011,6 +17011,111 @@
           "checked_at": "2026-09-16"
         }
       ]
+    },
+    "fuse-vc": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Early-stage venture firm pairing founder-first investing with an operator and executive limited-partner network.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Early stage"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Uses a network of operators, executives and founders to support portfolio companies with strategy, recruiting and commercial connections.", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "FUSE official overview", "url": "https://fuse.vc/", "checked_at": "2026-09-17"}
+      ]
+    },
+    "point72-ventures": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Thematic venture investor backing technology companies from seed through pre-IPO across selected domains.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Seed", "Growth", "Pre-IPO"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Artificial intelligence", "Consumer", "Defense technology"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Point72 Ventures official overview", "url": "https://p72.vc/", "checked_at": "2026-09-17"}
+      ]
+    },
+    "xora": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Temasek-backed investor forming long-term partnerships with AI and deep-tech founders in essential industries.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["AI infrastructure", "Applied AI", "Industrials"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Provides capital and long-term support using the network of anchor limited partner Temasek.", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Xora official overview", "url": "https://xora.vc/", "checked_at": "2026-09-17"}
+      ]
+    },
+    "mayfield": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Early-stage venture firm emphasizing inception investing and long-term founder support, with a current focus on AI.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Inception", "Early stage"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Artificial intelligence"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Mayfield official overview", "url": "https://www.mayfield.com/", "checked_at": "2026-09-17"}
+      ]
+    },
+    "forbion": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Global venture capital firm investing in biotechnology for human health and sustainable planetary-health solutions.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Biotechnology", "Human health", "Planetary health"], "source_ids": ["official"]},
+        {"key": "stages", "value": ["Company formation", "Venture", "Growth"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Forbion official overview", "url": "https://forbion.com/", "checked_at": "2026-09-17"}
+      ]
+    },
+    "tpg-life-sciences-innovations": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "TPG healthcare investment strategy supporting innovative pharmaceuticals, diagnostics, devices and enabling technologies.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Private equity and growth investment strategy", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Pharmaceuticals", "Diagnostics", "Medical devices", "Healthcare technology"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Invests thematically across TPG strategies in healthcare products, services and technology that seek better patient outcomes.", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "TPG official healthcare approach", "url": "https://www.tpg.com/approach/healthcare", "checked_at": "2026-09-17"}
+      ]
+    },
+    "sectoral-asset-management": {
+      "reviewed_at": "2026-09-17",
+      "summary": {
+        "value": "Employee-owned healthcare investment manager operating public and private equity strategies, including late-stage venture capital.",
+        "source_ids": ["official"]
+      },
+      "facts": [
+        {"key": "firm_type", "value": "Healthcare investment manager", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Pharmaceuticals", "Medical technology", "Healthcare"], "source_ids": ["official"]},
+        {"key": "stages", "value": ["Late-stage venture", "Public equity"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Sectoral Asset Management official overview", "url": "https://www.sectoral.com/", "checked_at": "2026-09-17"}
+      ]
     }
   },
   "attempts": {}

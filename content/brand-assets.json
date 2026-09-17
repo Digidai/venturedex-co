@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-16",
+  "verified_at": "2026-09-17",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2510,6 +2510,34 @@
       "local_path": "/logos/companies/exein.png",
       "source_page": "https://www.exein.io/",
       "source_url": "https://cdn.prod.website-files.com/685fce904fe880c8d21eee20/6a637c43101d6c29035ffed1_exein_favicon.png"
+    },
+    "envive-ai": {
+      "name": "Envive AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/envive-ai.png",
+      "source_page": "https://www.envive.ai/",
+      "source_url": "https://cdn.prod.website-files.com/67dadc139f0e5df2146cf156/68304dfeb99d7569429f9ff9_Envive_Favicon%20webclip.png"
+    },
+    "pave-finance": {
+      "name": "Pave Finance",
+      "shape": "icon",
+      "local_path": "/logos/companies/pave-finance.png",
+      "source_page": "https://www.pavefinance.com/",
+      "source_url": "https://cdn.prod.website-files.com/6a94cf5d43475685d55b8e5c/6aa2731c849e8027350dbca6_Pave%20Logo.png"
+    },
+    "hang-ten-systems": {
+      "name": "Hang Ten Systems",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/hang-ten-systems.png",
+      "source_page": "https://hangten.ai/",
+      "source_url": "https://hangten.ai/Hang_Ten_Logo_Transparent.png"
+    },
+    "sling-therapeutics": {
+      "name": "Sling Therapeutics",
+      "shape": "icon",
+      "local_path": "/logos/companies/sling-therapeutics.png",
+      "source_page": "https://slingtx.com/",
+      "source_url": "https://slingtx.com/wp-content/uploads/2021/11/cropped-favicon2_1-192x192.png"
     }
   },
   "investors": {
@@ -5240,7 +5268,8 @@
       "shape": "icon",
       "local_path": "/logos/investors/anne-wojcicki.jpg",
       "source_page": "https://www.23andme.org/about/governance/",
-      "source_url": "https://www.23andme.org/images/governance/anne.jpg"
+      "source_url": "https://www.23andme.org/images/governance/anne.jpg",
+      "allow_unreachable_source": true
     },
     "len-blavatnik": {
       "name": "Len Blavatnik",
@@ -5248,6 +5277,55 @@
       "local_path": "/logos/investors/len-blavatnik.jpg",
       "source_page": "https://www.accessindustries.com/our-people/len-blavatnik/",
       "source_url": "https://www.accessindustries.com/wp-content/uploads/Len-2-488x585.jpg"
+    },
+    "fuse-vc": {
+      "name": "FUSE",
+      "shape": "icon",
+      "local_path": "/logos/investors/fuse-vc.png",
+      "source_page": "https://fuse.vc/",
+      "source_url": "https://fuse.vc/apple-touch-icon.png"
+    },
+    "point72-ventures": {
+      "name": "Point72 Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/point72-ventures.png",
+      "source_page": "https://p72.vc/",
+      "source_url": "https://p72.vc/wp-content/uploads/sites/3/2025/09/point72-ventures-favicon-300x300.png"
+    },
+    "xora": {
+      "name": "Xora",
+      "shape": "icon",
+      "local_path": "/logos/investors/xora.png",
+      "source_page": "https://xora.vc/",
+      "source_url": "https://xora.vc/favicons/favicon-32x32.png"
+    },
+    "mayfield": {
+      "name": "Mayfield",
+      "shape": "icon",
+      "local_path": "/logos/investors/mayfield.png",
+      "source_page": "https://www.mayfield.com/",
+      "source_url": "https://www.mayfield.com/wp-content/uploads/2024/12/mayfield-m-favicon-300x300.png"
+    },
+    "forbion": {
+      "name": "Forbion",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/forbion.svg",
+      "source_page": "https://forbion.com/",
+      "source_url": "https://forbion.com/assets/images/logo.svg"
+    },
+    "tpg-life-sciences-innovations": {
+      "name": "TPG Life Sciences Innovations",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/tpg-life-sciences-innovations.svg",
+      "source_page": "https://www.tpg.com/approach/healthcare",
+      "source_url": "https://www.tpg.com/_next/static/media/tpg.c68dc7c1.svg"
+    },
+    "sectoral-asset-management": {
+      "name": "Sectoral Asset Management",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/sectoral-asset-management.png",
+      "source_page": "https://www.sectoral.com/",
+      "source_url": "https://www.sectoral.com/img/logo.png"
     }
   }
 }

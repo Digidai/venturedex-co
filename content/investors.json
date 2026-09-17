@@ -2910,5 +2910,60 @@
     "short_name": "Len Blavatnik",
     "website": "https://www.accessindustries.com/our-people/len-blavatnik/",
     "description": "Founder of Access Industries and an individual investor across strategic equity, media, real estate and biotechnology."
+  },
+  "fuse-vc": {
+    "name": "FUSE",
+    "slug": "fuse-vc",
+    "short_name": "FUSE",
+    "website": "https://fuse.vc/",
+    "description": "Early-stage venture firm pairing founder-first investing with an operator and executive limited-partner network.",
+    "aliases": [
+      "Fuse VC"
+    ]
+  },
+  "point72-ventures": {
+    "name": "Point72 Ventures",
+    "slug": "point72-ventures",
+    "short_name": "Point72 Ventures",
+    "website": "https://p72.vc/",
+    "description": "Thematic venture investor backing technology companies from seed through pre-IPO across selected domains."
+  },
+  "xora": {
+    "name": "Xora",
+    "slug": "xora",
+    "short_name": "Xora",
+    "website": "https://xora.vc/",
+    "description": "Temasek-backed investor forming long-term partnerships with AI and deep-tech founders in essential industries.",
+    "aliases": [
+      "Xora Innovation"
+    ]
+  },
+  "mayfield": {
+    "name": "Mayfield",
+    "slug": "mayfield",
+    "short_name": "Mayfield",
+    "website": "https://www.mayfield.com/",
+    "description": "Early-stage venture firm that emphasizes inception investing and long-term founder support, with a current focus on AI."
+  },
+  "forbion": {
+    "name": "Forbion",
+    "slug": "forbion",
+    "short_name": "Forbion",
+    "website": "https://forbion.com/",
+    "description": "Global venture capital firm investing in biotechnology for human health and sustainable planetary-health solutions."
+  },
+  "tpg-life-sciences-innovations": {
+    "name": "TPG Life Sciences Innovations",
+    "slug": "tpg-life-sciences-innovations",
+    "short_name": "TPG LSI",
+    "website": "https://www.tpg.com/approach/healthcare",
+    "description": "TPG healthcare investment strategy supporting innovative pharmaceuticals, diagnostics, devices and enabling technologies."
+  },
+  "sectoral-asset-management": {
+    "name": "Sectoral Asset Management",
+    "slug": "sectoral-asset-management",
+    "short_name": "Sectoral",
+    "website": "https://www.sectoral.com/",
+    "description": "Employee-owned healthcare investment manager operating public and private equity strategies, including late-stage venture capital."
   }
 }

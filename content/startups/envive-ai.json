@@ -1,0 +1,79 @@
+{
+  "slug": "envive-ai",
+  "domain": "www.envive.ai",
+  "url": "https://www.envive.ai/",
+  "product_name": "Envive AI",
+  "summary": "Adaptive commerce agents that learn from shopper behavior across the customer journey.",
+  "editor_note": "The sharper idea is not another storefront chatbot; it is a reinforcement loop shared across browse, conversion and retention. Envive gives each brand an adaptive commerce layer, adds evaluation and brand-safety controls, and supports real operating handoffs. The public evidence still comes from the company, so durable lift across customers and categories remains the test.",
+  "editor_rating": 4,
+  "why_featured": "$15M Series A for commerce agents",
+  "product_type": "E-commerce",
+  "region": "US",
+  "tags": "ai agents,e-commerce,personalization,shopify",
+  "investors": "Fuse VC, Point72 Ventures, AI House",
+  "links": {
+    "product": "https://www.envive.ai/",
+    "careers": "https://www.envive.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "Fuse VC",
+      "date": "2026-09-16",
+      "source_url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era",
+      "source_name": "Envive AI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-17",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Envive AI official product",
+        "url": "https://www.envive.ai/",
+        "type": "official"
+      },
+      {
+        "id": "product",
+        "label": "Envive AI product overview",
+        "url": "https://www.envive.ai/product",
+        "type": "product"
+      },
+      {
+        "id": "funding",
+        "label": "Envive AI Series A announcement",
+        "url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The live product positions an adaptive storefront for Shopify that continuously uses shopper context to change commerce interactions rather than serving a fixed scripted flow.",
+        "source_ids": [
+          "official",
+          "product"
+        ]
+      },
+      {
+        "claim": "The official announcement describes cooperative agents sharing context across awareness, browse, consideration and post-purchase, with reinforcement learning and brand-alignment controls.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "E-commerce teams operating Shopify storefronts and customer journeys.",
+      "category": "Agentic commerce",
+      "differentiation": "Coordinates brand-specific agents around a shared behavioral learning loop instead of deploying isolated support widgets.",
+      "why_now": "The Series A accompanies a concrete adaptive-storefront product as retailers prepare for AI-mediated shopping behavior."
+    },
+    "risks": [
+      {
+        "claim": "Company-reported conversion outcomes may not generalize across brands or traffic mixes.",
+        "basis": "The inspected product and financing pages describe customers and performance direction, but do not publish an independently audited cross-customer benchmark."
+      }
+    ]
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "pave-finance",
+  "domain": "www.pavefinance.com",
+  "url": "https://www.pavefinance.com/",
+  "product_name": "Pave Finance",
+  "summary": "Portfolio infrastructure for wealth firms spanning optimization, tax, rebalancing, and APIs.",
+  "editor_note": "Pave's useful bet is a single optimization engine instead of a stack of disconnected indexing, tax and transition tools. The public capability surface is unusually specific about account constraints, custodian coverage, strategy testing and an institutional API. The financing announcement names no institutional lead, and performance or scale claims remain company reported.",
+  "editor_rating": 4,
+  "why_featured": "$15M Series A for portfolio software",
+  "product_type": "Fintech",
+  "region": "US",
+  "tags": "wealth management,portfolio optimization,direct indexing,api",
+  "investors": "undisclosed",
+  "links": {
+    "product": "https://www.pavefinance.com/",
+    "careers": "https://www.pavefinance.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$15M",
+      "stage": "Series A",
+      "lead_investor": "undisclosed",
+      "date": "2026-09-14",
+      "source_url": "https://www.pavefinance.com/newsletter/series-a",
+      "source_name": "Pave Finance"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-17",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Pave Finance official product",
+        "url": "https://www.pavefinance.com/",
+        "type": "official"
+      },
+      {
+        "id": "capabilities",
+        "label": "Pave Finance capabilities",
+        "url": "https://www.pavefinance.com/capabilities",
+        "type": "product"
+      },
+      {
+        "id": "funding",
+        "label": "Pave Finance Series A announcement",
+        "url": "https://www.pavefinance.com/newsletter/series-a",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Pave exposes one engine for portfolio optimization, direct indexing, tax management, rebalancing and transition management at account level.",
+        "source_ids": [
+          "official",
+          "capabilities"
+        ]
+      },
+      {
+        "claim": "The capabilities page describes strategy testing across more than 26,000 assets, 30 benchmarks and 150 metrics, plus an API-backed institutional backend.",
+        "source_ids": [
+          "capabilities"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Registered investment advisers, wealth managers and investment offices.",
+      "category": "Portfolio management infrastructure",
+      "differentiation": "Unifies portfolio construction, taxes, transitions and embedded APIs around one account-level optimizer.",
+      "why_now": "The Series A supports team expansion while the company reports growing adoption among wealth-management firms."
+    },
+    "risks": [
+      {
+        "claim": "Assets, accounts and performance claims are company reported and do not establish investment outcomes.",
+        "basis": "The announcement and product pages provide operating metrics and regulatory disclosures, but no independent performance validation."
+      }
+    ]
+  }
+}

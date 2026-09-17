@@ -1946,6 +1946,26 @@
       },
       "notes": "Source and final match. Complete, bright Protect work as it happens headline and readable supporting text establish the security product over a deliberately dark patterned background. Ent branding and demo action remain visible; no loading or consent layer. Dark background is not a blank capture. Card observation: The complete Protect work as it happens headline is readable against the intentional dark product background; no loading state or consent dialog covers it. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "envive-ai": {
+      "sha256": "6b80ea55ba082c1023d64870c9d7c24fa558255cbdb0c440bb277b2804ef440c",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.envive.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-17T06:34:34.272Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final WebP clearly shows Envive's Shopify commerce hero; desktop and 390px card/detail previews preserve the full heading, product image, and unobstructed 16:9 framing."
+    },
     "enzo-health": {
       "sha256": "bb20de3f5bd8cc2f1fd13dccbf1b5a29379f3971503e26c2df17caf5bb53d39f",
       "width": 1440,
@@ -2682,6 +2702,26 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "hang-ten-systems": {
+      "sha256": "7d08344d77bd87edfa57518b6f5ed31a9817c97a08fc13940f32cbf24005a180",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://hangten.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-17T06:34:35.456Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final WebP clearly shows Hang Ten's enterprise software proposition and M context; desktop and 390px card/detail previews retain the full subject without clipping or obstruction."
     },
     "happyrobot": {
       "sha256": "e31ae8901171939b20997961c7c1e096208b835ff2b5de453e577aad362ccec7",
@@ -4347,6 +4387,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "pave-finance": {
+      "sha256": "22a083773835588279ea7987421afd7f41461f7e6104c8d3e7fe334a1ebe6158",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.pavefinance.com/capabilities",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-17T06:34:34.691Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final WebP clearly shows Pave's one-engine capabilities page; desktop and 390px card/detail previews retain readable portfolio copy, full framing, and no overlay."
+    },
     "peoplex": {
       "sha256": "5c0772c5daed0557a873e45ad201e0dadf43e2f64b7d375bd52f7376d5c45328",
       "width": 1280,
@@ -5498,6 +5558,26 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "sling-therapeutics": {
+      "sha256": "dd43594cc3f07977509eb7e6c1c1a614fd12c92688acd0a3eff96ec9b41fd2e6",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://slingtx.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-root",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-17T06:34:35.957Z",
+      "reviewer": "codex-root",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Final WebP clearly shows Sling's thyroid eye disease treatment hero; desktop and 390px card/detail previews preserve the headline, visual subject, and natural ratio without overlays."
     },
     "socket": {
       "sha256": "e4a127505b53b9aad485e82a2528ddf45b8da5523aaaab60ce084edf2cab266c",

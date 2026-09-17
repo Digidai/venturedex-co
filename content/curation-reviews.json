@@ -3485,6 +3485,238 @@
       "priority": 2,
       "sources": ["https://www.tryprofound.com/", "https://techcrunch.com/2026/09/15/aeo-startup-profound-hits-unicorn-valuation-raises-180m-series-d-7-months-after-last-round/"],
       "attempts": [{"date": "2026-09-16", "outcome": "policy_excluded", "note": "The fresh report identifies the company as AEO and GEO software for influencing brand visibility in AI search, which falls under F4."}]
+    },
+    {
+      "slug": "envive-ai",
+      "company_url": "https://www.envive.ai/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, current product evidence, taste, investor enrichment, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": ["https://www.envive.ai/", "https://www.envive.ai/product", "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era"],
+      "attempts": [{"date": "2026-09-17", "outcome": "accepted", "note": "The adaptive storefront, cooperative agent loop, funding, investors, brands and visual publication assets passed review."}],
+      "evaluation": {
+        "rubric": "software", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.envive.ai/", "note": "The live site exposes an adaptive Shopify storefront that changes interactions using shopper context."},
+          {"url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era", "note": "The announcement describes cooperative agents, reinforcement learning, brand alignment and cross-funnel context sharing."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Envive bets that commerce agents should continuously learn from real shopper behavior rather than follow fixed scripts."},
+          "craft": {"pass": true, "note": "Shared context, evaluation controls and coordinated agents define an inspectable operating loop."},
+          "specificity": {"pass": true, "note": "The Shopify buyer, storefront surface and conversion workflow are concrete rather than a generic agent claim."}
+        }
+      }
+    },
+    {
+      "slug": "ayble-health",
+      "company_url": "https://ayblehealth.com/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Product, funding and taste evidence cleared, but the seven-investor associated scope could not be completed without displacing release, deploy and closeout work.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": ["https://www.ayblehealth.com/", "https://www.prnewswire.com/news-releases/ayble-health-raises-16m-series-a-to-expand-the-nations-most-clinically-validated-virtual-digestive-health-clinic-302880020.html"],
+      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The care product and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "evaluation": {
+        "rubric": "software", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.ayblehealth.com/", "note": "The live clinic presents coordinated GI care from clinicians, dietitians, pharmacists, coaches and care coordinators."},
+          {"url": "https://www.prnewswire.com/news-releases/ayble-health-raises-16m-series-a-to-expand-the-nations-most-clinically-validated-virtual-digestive-health-clinic-302880020.html", "note": "The release describes multidisciplinary care, AI-assisted personalization and expansion into autoimmune conditions."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Ayble bets that chronic GI care works better as an ongoing multidisciplinary clinic than disconnected point solutions."},
+          "craft": {"pass": true, "note": "Symptom tracking, diagnostics, clinician access and coaching form a coherent care workflow."},
+          "specificity": {"pass": true, "note": "The care roles, conditions and patient onboarding path are visible and concrete."}
+        }
+      }
+    },
+    {
+      "slug": "expanse-compute",
+      "company_url": "https://expansecompute.com/",
+      "state": "access_blocked",
+      "reason_code": "page_access",
+      "reason": "The frozen company URL returned a browser connection failure, while the funding source identifies expanse.sh as the official domain; the immutable pool identity cannot be silently rewritten.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 1,
+      "sources": ["https://expansecompute.com/", "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html"],
+      "attempts": [{"date": "2026-09-17", "outcome": "access_blocked", "note": "The frozen URL failed in the task browser, and the source revealed a different official domain after the pool identity was locked."}]
+    },
+    {
+      "slug": "rune",
+      "company_url": "https://rune.energy/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Product, funding and taste evidence cleared, but the seven-investor associated scope could not be completed within the remaining release and closeout budget.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": ["https://rune.energy/", "https://www.businesswire.com/news/home/20260916606335/en/"],
+      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The solar-site compute system and financing passed; associated investor research remains the explicit publication work."}],
+      "evaluation": {
+        "rubric": "hardware", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://rune.energy/", "note": "The live site shows the RELIC modular compute system deployed directly at solar plants using native 1500V DC."},
+          {"url": "https://www.businesswire.com/news/home/20260916606335/en/", "note": "The company-supplied funding announcement identifies a $40M Series A for the solar-site compute platform."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Rune bets that latent solar capacity can host modular compute without conventional data-center construction."},
+          "craft": {"pass": true, "note": "Native plant-bus power, mass-manufactured modules and forklift deployment define a specific physical system."},
+          "specificity": {"pass": true, "note": "The power architecture, deployment method and GPU operating range are explicit."}
+        }
+      }
+    },
+    {
+      "slug": "sling-therapeutics",
+      "company_url": "https://slingtx.com/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, current pipeline evidence, taste, investor enrichment, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": ["https://slingtx.com/", "https://slingtx.com/pipeline/", "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/"],
+      "attempts": [{"date": "2026-09-17", "outcome": "accepted", "note": "The Phase 3 product, financing, investor profiles, brands and final visual publication assets passed review."}],
+      "evaluation": {
+        "rubric": "biotech", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://slingtx.com/pipeline/", "note": "The pipeline identifies linsitinib as an oral IGF-1R inhibitor in Phase 3 development for thyroid eye disease."},
+          {"url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/", "note": "The official release confirms the ORBIT pivotal-trial start, Fast Track designation and the $123M Series C."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Sling bets that a validated TED target can be delivered as a convenient oral small molecule."},
+          "craft": {"pass": true, "note": "The mechanism, late-stage program and pivotal-trial path are clearly bounded."},
+          "specificity": {"pass": true, "note": "The molecule, target, disease, trial stage and regulatory status are explicit."}
+        }
+      }
+    },
+    {
+      "slug": "pave-finance",
+      "company_url": "https://www.pavefinance.com/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, product evidence, taste, truthful undisclosed-investor handling, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": ["https://www.pavefinance.com/", "https://www.pavefinance.com/capabilities", "https://www.pavefinance.com/newsletter/series-a"],
+      "attempts": [{"date": "2026-09-17", "outcome": "accepted", "note": "The portfolio engine, exact financing, official brand asset and final visual publication checks passed review."}],
+      "evaluation": {
+        "rubric": "software", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.pavefinance.com/", "note": "The live product presents personalized portfolio management for wealth firms across accounts and custodians."},
+          {"url": "https://www.pavefinance.com/capabilities", "note": "The capabilities page details optimization, direct indexing, tax management, transitions, strategy testing and an API backend."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Pave bets that one optimization engine should power every account workflow instead of a fragmented tool stack."},
+          "craft": {"pass": true, "note": "Account constraints, tax-aware rebalancing, transition workflows and APIs form a coherent platform."},
+          "specificity": {"pass": true, "note": "RIAs, custodians, benchmarks, metrics and named workflow modules are inspectable."}
+        }
+      }
+    },
+    {
+      "slug": "mundo",
+      "company_url": "https://mundoai.world/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "Product, funding and taste evidence cleared, but the announced Next Frontier participant identity did not resolve cleanly to a current official firm without ambiguity.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 1,
+      "sources": ["https://mundoai.world/", "https://mundoai.world/research/perception-is-the-next-frontier", "https://www.gpv.com/news/our-investment-in-mundo"],
+      "attempts": [{"date": "2026-09-17", "outcome": "publication_blocked", "note": "The product and $20M Series A passed, but a named participant's current official identity remained ambiguous."}],
+      "evaluation": {
+        "rubric": "other", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://mundoai.world/", "note": "The live site offers data, evaluations and applied research across audio, video and emerging modalities."},
+          {"url": "https://mundoai.world/research/perception-is-the-next-frontier", "note": "The official announcement describes datasets and evaluations used to train and measure multimodal perceptual intelligence."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Mundo bets that perceptual intelligence needs purpose-built real-world sensory data rather than more text alone."},
+          "craft": {"pass": true, "note": "The data-plus-evaluation feedback loop defines a concrete research delivery model."},
+          "specificity": {"pass": true, "note": "Audio, video, emerging modalities and frontier-lab buyers are stated explicitly."}
+        }
+      }
+    },
+    {
+      "slug": "hang-ten-systems",
+      "company_url": "https://hangten.ai/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The Hobie product surface resolves the prior evidence gap; funding, taste, investors, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": ["https://hangten.ai/", "https://hangten.ai/#platform", "https://hangten.ai/press-seed-ii"],
+      "original": {"ledger": "rejected.jsonl", "sha256": "23840da74642bf0389ac15fd65c3457bbe02f7ce3ff11bdfc026f326dd30b4b1"},
+      "attempts": [
+        {"date": "2026-06-25", "outcome": "quality_rejected", "note": "The initial surface described services without enough inspectable product evidence."},
+        {"date": "2026-09-17", "outcome": "accepted", "note": "The new Hobie platform exposes five concrete layers, and the later financing plus publication assets passed review."}
+      ],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://hangten.ai/", "note": "The live site exposes the Hobie platform as five layers spanning context, generation, semantics, governance and feedback."},
+          {"url": "https://hangten.ai/press-seed-ii", "note": "The official release describes agentic code generation, reusable skills and active advisory and development engagements."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Hang Ten bets that enterprise AI implementation needs a new delivery system, not only another coding assistant."},
+          "craft": {"pass": true, "note": "Five named platform layers connect enterprise context, delivery controls and feedback."},
+          "specificity": {"pass": true, "note": "The company names workloads, delivery model and platform components instead of relying on generic transformation language."}
+        }
+      }
+    },
+    {
+      "slug": "footprint",
+      "company_url": "https://onefootprint.com/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Product, funding and taste evidence cleared, but the nine-investor associated scope could not be completed without displacing release, deploy and closeout work.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": ["https://onefootprint.com/", "https://onefootprint.com/learn/series-b"],
+      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The compliance product and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://onefootprint.com/", "note": "The live product positions Percy as an auditable agentic system for regulated financial-crime investigations."},
+          {"url": "https://onefootprint.com/learn/series-b", "note": "The official announcement details Percy, Trust Fabric, source-grounded investigations and human-approved organizational memory."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Footprint bets that compliance systems need compounding governed memory, not isolated case automation."},
+          "craft": {"pass": true, "note": "Provenance, human approval and cross-workflow memory define concrete controls."},
+          "specificity": {"pass": true, "note": "KYC, KYB, AML, sanctions and monitoring workflows are explicitly named."}
+        }
+      }
+    },
+    {
+      "slug": "veridion",
+      "company_url": "https://veridion.com/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Product, funding and taste evidence cleared, but the six-investor associated scope could not be completed within the remaining release and closeout budget.",
+      "reviewed_at": "2026-09-17",
+      "next_review_at": "2026-09-20",
+      "priority": 2,
+      "sources": ["https://veridion.com/", "https://www.businesswire.com/news/home/20260916207241/en/"],
+      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The live company graph and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://veridion.com/", "note": "The live product exposes a continuously refreshed company graph with human and API interfaces."},
+          {"url": "https://www.businesswire.com/news/home/20260916207241/en/", "note": "The company-supplied release describes billions of signals, more than 100 customer organizations and a $20M Series A."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Veridion bets that company intelligence should behave like a live graph rather than a periodically shipped database."},
+          "craft": {"pass": true, "note": "Acquire, extract, resolve and refresh stages expose a coherent data-production system."},
+          "specificity": {"pass": true, "note": "Coverage, attributes, entity resolution, APIs and buyer workflows are visible."}
+        }
+      }
     }
   ]
 }

@@ -1,0 +1,79 @@
+{
+  "slug": "hang-ten-systems",
+  "domain": "hangten.ai",
+  "url": "https://hangten.ai/",
+  "product_name": "Hang Ten Systems",
+  "summary": "AI-native enterprise delivery combining advisory work, reusable skills, and the Hobie platform.",
+  "editor_note": "Hang Ten has moved beyond the vague services surface that failed its June review. Hobie now exposes a five-layer operating model for enterprise context, code generation, semantics, controls and feedback, while the company pairs it with delivery teams. That specificity earns a revisit, though the blended software-and-services model still needs to prove repeatability beyond large bespoke engagements.",
+  "editor_rating": 4,
+  "why_featured": "$53M Seed for enterprise AI delivery",
+  "product_type": "AI / ML",
+  "region": "US",
+  "tags": "enterprise ai,software delivery,agentic coding,consulting",
+  "investors": "Xora, Mayfield, Aramco Ventures",
+  "links": {
+    "product": "https://hangten.ai/",
+    "careers": "https://hangten.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$53M",
+      "stage": "Seed",
+      "lead_investor": "Xora",
+      "date": "2026-09-16",
+      "source_url": "https://hangten.ai/press-seed-ii",
+      "source_name": "Hang Ten Systems"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-17",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Hang Ten Systems official product",
+        "url": "https://hangten.ai/",
+        "type": "official"
+      },
+      {
+        "id": "platform",
+        "label": "Hang Ten Systems Hobie platform",
+        "url": "https://hangten.ai/#platform",
+        "type": "product"
+      },
+      {
+        "id": "funding",
+        "label": "Hang Ten Systems second Seed announcement",
+        "url": "https://hangten.ai/press-seed-ii",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The live platform surface breaks Hobie into Shoreline, Shaper, Lens, Reef and Beacon layers for enterprise context, generation, semantics, governance and feedback.",
+        "source_ids": [
+          "official",
+          "platform"
+        ]
+      },
+      {
+        "claim": "The financing announcement describes an AI-native delivery model using agentic code generation, a reusable skills library and domain expertise across software, finance, migrations and HR.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Large enterprises modernizing or building business-critical software.",
+      "category": "Enterprise AI software delivery",
+      "differentiation": "Combines an inspectable delivery platform with advisory and implementation teams rather than selling a standalone coding assistant.",
+      "why_now": "A second Seed round five weeks after launch accompanies named enterprise engagements and a substantially expanded product surface."
+    },
+    "risks": [
+      {
+        "claim": "Services-heavy delivery may limit software margins and make outcomes engagement-specific.",
+        "basis": "The official announcement explicitly combines advisory, transformation and applied-AI services with the Hobie platform."
+      }
+    ]
+  }
+}

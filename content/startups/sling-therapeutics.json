@@ -1,0 +1,78 @@
+{
+  "slug": "sling-therapeutics",
+  "domain": "slingtx.com",
+  "url": "https://slingtx.com/",
+  "product_name": "Sling Therapeutics",
+  "summary": "Late-stage development of linsitinib, an oral IGF-1R inhibitor for thyroid eye disease.",
+  "editor_note": "The product bet is concrete: move a validated thyroid-eye-disease target from infusions to an oral small molecule. Sling has started the global Phase 3 ORBIT trial and received Fast Track designation, while its public pipeline distinguishes trial evidence from future commercial claims. Clinical efficacy, safety and regulatory review still decide whether convenience becomes a real treatment advantage.",
+  "editor_rating": 3,
+  "why_featured": "$123M Series C for an oral TED therapy",
+  "product_type": "HealthTech",
+  "region": "US",
+  "tags": "biotechnology,thyroid eye disease,clinical trials,small molecule",
+  "investors": "Forbion, TPG Life Sciences Innovations, Sectoral Asset Management",
+  "links": {
+    "product": "https://slingtx.com/"
+  },
+  "is_featured": false,
+  "funding": [
+    {
+      "amount": "$123M",
+      "stage": "Series C",
+      "lead_investor": "Forbion",
+      "date": "2026-09-16",
+      "source_url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
+      "source_name": "Sling Therapeutics"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-17",
+    "sources": [
+      {
+        "id": "official",
+        "label": "Sling Therapeutics official product",
+        "url": "https://slingtx.com/",
+        "type": "official"
+      },
+      {
+        "id": "pipeline",
+        "label": "Sling Therapeutics pipeline",
+        "url": "https://slingtx.com/pipeline/",
+        "type": "product"
+      },
+      {
+        "id": "funding",
+        "label": "Sling Therapeutics Series C announcement",
+        "url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
+        "type": "funding"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "The pipeline page identifies linsitinib as an oral small-molecule IGF-1R inhibitor in Phase 3 development for thyroid eye disease.",
+        "source_ids": [
+          "official",
+          "pipeline"
+        ]
+      },
+      {
+        "claim": "The official financing announcement says the global Phase 3 ORBIT pivotal trial has begun and that the FDA granted Fast Track designation.",
+        "source_ids": [
+          "funding"
+        ]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Clinicians and patients managing moderate-to-severe active thyroid eye disease.",
+      "category": "Clinical-stage biotechnology",
+      "differentiation": "Pursues a late-stage oral therapy against the same validated target addressed by currently infused or injected treatments.",
+      "why_now": "The Series C finances a newly commenced global pivotal trial for a differentiated oral route."
+    },
+    "risks": [
+      {
+        "claim": "Late-stage trial results and regulatory review may not confirm the efficacy, safety or convenience advantage suggested by earlier studies.",
+        "basis": "The inspected evidence reports Phase 2b/3 findings and a Phase 3 start; approval and commercial outcomes remain future events."
+      }
+    ]
+  }
+}

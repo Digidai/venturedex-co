@@ -788,5 +788,75 @@
     "source_url": "https://technical.ly/startups/email-tech-startup-loops-raised-3-2m-in-early-stage-funding/",
     "source_name": "Technical.ly",
     "verified_at": "2026-09-14"
+  },
+  {
+    "company_slug": "envive-ai",
+    "investor_slug": "fuse-vc",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era",
+    "source_name": "Envive AI",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "hang-ten-systems",
+    "investor_slug": "xora",
+    "round_date": "2026-09-16",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://hangten.ai/press-seed-ii",
+    "source_name": "Hang Ten Systems",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "hang-ten-systems",
+    "investor_slug": "mayfield",
+    "round_date": "2026-09-16",
+    "round_stage": "Seed",
+    "role": "participant",
+    "source_url": "https://hangten.ai/press-seed-ii",
+    "source_name": "Hang Ten Systems",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "hang-ten-systems",
+    "investor_slug": "aramco-ventures",
+    "round_date": "2026-09-16",
+    "round_stage": "Seed",
+    "role": "participant",
+    "source_url": "https://hangten.ai/press-seed-ii",
+    "source_name": "Hang Ten Systems",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "sling-therapeutics",
+    "investor_slug": "forbion",
+    "round_date": "2026-09-16",
+    "round_stage": "Series C",
+    "role": "lead",
+    "source_url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
+    "source_name": "Sling Therapeutics",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "sling-therapeutics",
+    "investor_slug": "tpg-life-sciences-innovations",
+    "round_date": "2026-09-16",
+    "round_stage": "Series C",
+    "role": "participant",
+    "source_url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
+    "source_name": "Sling Therapeutics",
+    "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "sling-therapeutics",
+    "investor_slug": "sectoral-asset-management",
+    "round_date": "2026-09-16",
+    "round_stage": "Series C",
+    "role": "participant",
+    "source_url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
+    "source_name": "Sling Therapeutics",
+    "verified_at": "2026-09-17"
   }
 ]
