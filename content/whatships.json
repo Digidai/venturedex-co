@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "166465a67d0073988ea02689381c8f2796c3e20c",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/166465a67d0073988ea02689381c8f2796c3e20c",
-    "commit_at": "2026-09-17T14:42:50.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/166465a67d0073988ea02689381c8f2796c3e20c/src/data/videos.json",
-    "raw_sha256": "809188b8ddbf9018a2bce1bfb00f71d6de82c6776aa48fd56f739948f49f37f3"
+    "commit": "bc0adf96660ab8d3367f66ed63bd2f62c6e368f9",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/bc0adf96660ab8d3367f66ed63bd2f62c6e368f9",
+    "commit_at": "2026-09-18T11:20:10.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/bc0adf96660ab8d3367f66ed63bd2f62c6e368f9/src/data/videos.json",
+    "raw_sha256": "00dea69b2c93c4d7efa611aec3033993746401d8bc5851004534dff3105bcfb0"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,109 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-17T13:00:00.000Z",
-  "item_count": 2153,
+  "source_published_through": "2026-09-17T20:20:07.000Z",
+  "item_count": 2159,
   "items": [
+    {
+      "id": "plv-bend-2",
+      "tweet_id": "2100681226143092875",
+      "slug": "bend-2",
+      "title": "Bend 2 — a language that proof-checks AI code",
+      "product": "Bend 2",
+      "company": "Bend",
+      "category": "developer-tools",
+      "tags": [
+        "bend",
+        "proof",
+        "gpu"
+      ],
+      "published_at": "2026-09-17T20:20:07.000Z",
+      "duration_seconds": 260,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100655705858416640/vid/avc1/1920x1080/zLOfPc-u4o1TKhI4.mp4",
+      "original_post_url": "https://x.com/VictorTaelin/status/2100681226143092875",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-astra-for-law",
+      "tweet_id": "2100679992720142459",
+      "slug": "astra-for-law",
+      "title": "Astra for Law — GPT-6 Astra for legal practice",
+      "product": "Astra for Law",
+      "company": "OpenAI",
+      "category": "ai",
+      "tags": [
+        "openai",
+        "astra",
+        "law"
+      ],
+      "published_at": "2026-09-17T20:15:13.000Z",
+      "duration_seconds": 78,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100676124544290816/vid/avc1/1920x1080/IccqGABbN0W6bezt.mp4",
+      "original_post_url": "https://x.com/OpenAI/status/2100679992720142459",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-craft",
+      "tweet_id": "2100659957267870001",
+      "slug": "craft",
+      "title": "Craft — design engineering concepts, open source",
+      "product": "Craft",
+      "company": "Craft",
+      "category": "design",
+      "tags": [
+        "craft",
+        "design",
+        "open-source"
+      ],
+      "published_at": "2026-09-17T18:55:36.000Z",
+      "duration_seconds": 14,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100659366978277376/vid/avc1/1920x1080/kJnSnwdWuT3uFX1p.mp4",
+      "original_post_url": "https://x.com/heyimgustavo/status/2100659957267870001",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-grok-bot-talk",
+      "tweet_id": "2100659463569170779",
+      "slug": "grok-bot-talk",
+      "title": "Grok Bot — it can talk now",
+      "product": "Grok Bot",
+      "company": "xAI",
+      "category": "ai",
+      "tags": [
+        "grok",
+        "bot",
+        "voice"
+      ],
+      "published_at": "2026-09-17T18:53:39.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100659428618129408/vid/avc1/1920x1080/msKvVOFcrKahzVVg.mp4",
+      "original_post_url": "https://x.com/bot/status/2100659463569170779",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-jina-ocr-v1",
+      "tweet_id": "2100617174985638364",
+      "slug": "jina-ocr-v1",
+      "title": "jina-ocr-v1 — visual documents to clean markdown",
+      "product": "jina-ocr-v1",
+      "company": "Jina AI",
+      "category": "ai",
+      "tags": [
+        "jina",
+        "ocr",
+        "markdown"
+      ],
+      "published_at": "2026-09-17T16:05:36.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100615252752920576/vid/avc1/1348x720/mBGrJKRMLRbGBVB0.mp4",
+      "original_post_url": "https://x.com/JinaAI_/status/2100617174985638364",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
     {
       "id": "plv-pencil-canvas",
       "tweet_id": "2100570466692071493",
@@ -1903,6 +2003,26 @@
       "video_url": "https://video.twimg.com/ext_tw_video/2097701863663472640/pu/vid/avc1/1280x720/lwpLuMwU7Z3zXUg1.mp4?tag=12",
       "original_post_url": "https://x.com/supabase/status/2097701910463631605",
       "last_changed_at": "2026-09-13T18:35:30.000Z"
+    },
+    {
+      "id": "plv-kimi-work-remote",
+      "tweet_id": "2097636366544937067",
+      "slug": "kimi-work-remote",
+      "title": "Kimi Work — remote control from your phone",
+      "product": "Kimi Work",
+      "company": "Moonshot AI",
+      "category": "ai",
+      "tags": [
+        "kimi",
+        "work",
+        "remote"
+      ],
+      "published_at": "2026-09-09T10:40:56.000Z",
+      "duration_seconds": 38,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097636131768791040/vid/avc1/1920x1080/mDl-hDQ1Y0SdmG42.mp4",
+      "original_post_url": "https://x.com/Kimi_Moonshot/status/2097636366544937067",
+      "last_changed_at": "2026-09-18T11:20:10.000Z"
     },
     {
       "id": "plv-openshaders",
