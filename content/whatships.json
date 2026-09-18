@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "bc0adf96660ab8d3367f66ed63bd2f62c6e368f9",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/bc0adf96660ab8d3367f66ed63bd2f62c6e368f9",
-    "commit_at": "2026-09-18T11:20:10.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/bc0adf96660ab8d3367f66ed63bd2f62c6e368f9/src/data/videos.json",
-    "raw_sha256": "00dea69b2c93c4d7efa611aec3033993746401d8bc5851004534dff3105bcfb0"
+    "commit": "36d833f36a1948c385de62155876a09b628bb79c",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/36d833f36a1948c385de62155876a09b628bb79c",
+    "commit_at": "2026-09-18T14:33:55.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/36d833f36a1948c385de62155876a09b628bb79c/src/data/videos.json",
+    "raw_sha256": "585c760dd90b121e428757af837cd6aac21bbe9d57b16c52cc34d1da25891b1a"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,29 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-17T20:20:07.000Z",
-  "item_count": 2159,
+  "source_published_through": "2026-09-18T07:00:00.000Z",
+  "item_count": 2162,
   "items": [
+    {
+      "id": "plv-powermove",
+      "tweet_id": "2100842256727175329",
+      "slug": "powermove",
+      "title": "Powermove — a video editor you can reshape with agents",
+      "product": "Powermove",
+      "company": "Powermove",
+      "category": "design",
+      "tags": [
+        "powermove",
+        "editor",
+        "agents"
+      ],
+      "published_at": "2026-09-18T07:00:00.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100796982776287232/vid/avc1/1920x1080/cKBCpkrekohd14Og.mp4",
+      "original_post_url": "https://x.com/zellzoi_design/status/2100842256727175329",
+      "last_changed_at": "2026-09-18T14:33:55.000Z"
+    },
     {
       "id": "plv-bend-2",
       "tweet_id": "2100681226143092875",
@@ -123,6 +143,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100615252752920576/vid/avc1/1348x720/mBGrJKRMLRbGBVB0.mp4",
       "original_post_url": "https://x.com/JinaAI_/status/2100617174985638364",
       "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-aave-v3",
+      "tweet_id": "2100594160222765511",
+      "slug": "aave-v3",
+      "title": "Aave V3 — a brand new look",
+      "product": "Aave V3",
+      "company": "Aave",
+      "category": "consumer",
+      "tags": [
+        "aave",
+        "defi",
+        "v3"
+      ],
+      "published_at": "2026-09-17T14:34:09.000Z",
+      "duration_seconds": 22,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100592058725486593/vid/avc1/1920x1080/2NwgIj33BcnMwq8I.mp4",
+      "original_post_url": "https://x.com/aave/status/2100594160222765511",
+      "last_changed_at": "2026-09-18T14:33:55.000Z"
     },
     {
       "id": "plv-pencil-canvas",
@@ -563,6 +603,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099888121689124865/vid/avc1/1440x1080/0McCUwINtnow1Dwn.mp4",
       "original_post_url": "https://x.com/usewonder/status/2099896411823219063",
       "last_changed_at": "2026-09-16T05:30:38.000Z"
+    },
+    {
+      "id": "plv-cap-v0-6-launch",
+      "tweet_id": "2099888955818656212",
+      "slug": "cap-v0-6-launch",
+      "title": "Cap v0.6 — open source screen recording and sharing",
+      "product": "Cap",
+      "company": "Cap",
+      "category": "productivity",
+      "tags": [
+        "cap",
+        "recording",
+        "open-source"
+      ],
+      "published_at": "2026-09-15T15:51:55.000Z",
+      "duration_seconds": 72,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099887174606782465/vid/avc1/1920x1080/ZMvI_a5ibQ8sp802.mp4",
+      "original_post_url": "https://x.com/cap/status/2099888955818656212",
+      "last_changed_at": "2026-09-18T14:33:55.000Z"
     },
     {
       "id": "plv-devin-mac",
