@@ -5453,3 +5453,20 @@ Append material lessons, policy changes and corrections; write routine final run
 - decision: publish only the four fully gated profiles, preserve the five bounded follow-ups and one immutable-identity blocker, and complete the exact-SHA release before claiming publication.
 - affected_file: the frozen manifest and curation overlay, four startup profiles, timestamps, investor directory/profile/participation records, brand and screenshot ledgers, company/investor assets, four screenshots and this learning log.
 - affected_section: immutable discovery, evidence-bound dispositions, frozen-history overlay, investor identity, screenshot review, full local gates and release handoff.
+
+### 2026-09-20 14:01 CST — Didit source correction unblocks resumed four-profile release
+
+- run_id: `venturedex-daily-20260918T065355Z`; resumed the same immutable six-company pool without new discovery, product research, screenshot capture, or browser submission actions.
+- candidate_count: 6 unique candidates with current effective states: 4 accepted (`resolve-ai`, `raindrop`, `lightfield`, `acoubatt`) and 2 `publication_blocked` (`ark`, `notes-fm`) on associated-investor research. The eight-state counts are evidence_pending 0, access_blocked 0, schema_deferred 0, qualified_pending 0, publication_blocked 2, quality_rejected 0, policy_excluded 0, accepted 4.
+- source_coverage: retained company, investor, original-media and product-documentation evidence from the frozen batch; no fresh discovery was added. The global read-only planner reports 11 due reviews with oldest due date `2026-09-20`, outside this resumed release scope.
+- review_corrections: n/a for this batch; re_reviews_completed: 0. The material correction is historical source maintenance for already-published Didit, not a change to a curation disposition.
+- source_correction: Didit's former official blog URL now returns HTTP 404 even though the live Didit blog still links to it. The replacement is Didit's original press release distributed by PR Newswire, which returns HTTP 200 and explicitly states an additional $6M announced on May 26, 2026, bringing total Seed financing to $7.5M. The record preserves `$7.5M`, `Seed`, and `undisclosed` lead, updates the date to `2026-05-26`, and binds both funding and research to the same live announcement.
+- validation: focused content validation passed 364/364 startup records, 2,350 external URLs, 364 screenshot assets and zero errors; the final complete gate remains pending after this correction and learning entry.
+- release: pending exact staging, commits, push, exact-SHA Validate/Deploy, Worker/D1 checks and live smoke. No production, IndexNow, GSC or newsletter action has occurred in this continuation yet.
+- failure_tags: [source_incomplete].
+- reward: n/a (retired 2026-09-14; report quality, release, follow-up and cost separately).
+- dominant_failure_mode: a stale historical funding URL blocked an otherwise valid release; replacing it with an equivalent live original announcement repairs evidence without weakening source-health validation.
+- proposed_change: none. Existing fail-closed source validation and human-authorized historical maintenance boundaries behaved as intended.
+- decision: apply the narrow Didit source/date correction and continue the exact resumed release after the full gate passes.
+- affected_file: `content/startups/didit.json`, this append-only learning log, the preserved six-company manifest and four prepared startup publication assets.
+- affected_section: historical funding evidence correction and resumed release handoff.
