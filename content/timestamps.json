@@ -1453,5 +1453,21 @@
   "sling-therapeutics": {
     "published_at": "2026-09-17 06:13:09",
     "first_seen_at": "2026-09-17 06:13:09"
+  },
+  "resolve-ai": {
+    "published_at": "2026-09-20 04:30:01",
+    "first_seen_at": "2026-09-20 04:30:01"
+  },
+  "raindrop": {
+    "published_at": "2026-09-20 04:30:01",
+    "first_seen_at": "2026-09-20 04:30:01"
+  },
+  "lightfield": {
+    "published_at": "2026-09-20 04:30:01",
+    "first_seen_at": "2026-09-20 04:30:01"
+  },
+  "acoubatt": {
+    "published_at": "2026-09-20 04:30:01",
+    "first_seen_at": "2026-09-20 04:30:01"
   }
 }

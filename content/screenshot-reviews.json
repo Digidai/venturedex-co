@@ -37,6 +37,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "acoubatt": {
+      "sha256": "6079f5d0564e42f01f3d17373998a9804bf57329e036d06178bf29b7e27aa8a2",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://acoubatt.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-20T04:34:20.973Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the final WebP, the 1280px VentureDex detail hero, its homepage card, and the 390px narrow detail: AcouBatt's battery illustration, sensing headline, and institutional marks stay loaded, legible, uncropped, and unobstructed."
+    },
     "act-security": {
       "sha256": "7f5250a822821cbac0eb6844f5519d6fe5f50297c082e81dc77ad3a303aebf0b",
       "width": 1280,
@@ -3416,6 +3436,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "lightfield": {
+      "sha256": "635f25f8ed6b24390ad6764d74cc07c98c49cb1efd4d4a126d345f8468c088fd",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://lightfield.app/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-20T04:34:20.758Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the final WebP, the 1280px VentureDex detail hero, its homepage card, and the 390px narrow detail: Lightfield's CRM interface, headline, and funding badge remain loaded, readable, uncropped, and unobstructed."
+    },
     "lighttable": {
       "sha256": "44fef0ae77eab3f9a2bb8e00d999e72b3b00036646945ff4b83482eea63dc5a8",
       "width": 1440,
@@ -4881,6 +4921,26 @@
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
     },
+    "raindrop": {
+      "sha256": "ac219bc8881c75a45e9d9b0877583fa5c1befa3cc7f9b976a5d905428d4a57f9",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.raindrop.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-20T04:34:20.556Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the final WebP, the 1280px VentureDex detail hero, its homepage card, and the 390px narrow detail: Raindrop's agent-reliability headline and customer row remain loaded, legible, uncropped, and unobstructed."
+    },
     "ranchbot": {
       "sha256": "7a7cb7659ef35da4abff81fa916df13400ae7023acb20a1257ad7cb85240ed3f",
       "width": 1440,
@@ -5029,6 +5089,26 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "resolve-ai": {
+      "sha256": "298c3cd3140361c38028f12d1b85f41519901285c2630c2e1dc4b20ab28e585c",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://resolve.ai/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-20T04:34:20.355Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the final WebP, the 1280px VentureDex detail hero, its homepage card, and the 390px narrow detail: the Resolve AI product headline, customer logos, and page framing stay loaded, readable, uncropped, and unobstructed."
     },
     "respond-io": {
       "sha256": "e9caa9a495f0e4e0b0076d5ed8f5027caa82aaaecbdf2c54d81ca55c999a6bb4",

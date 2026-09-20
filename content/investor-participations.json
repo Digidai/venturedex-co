@@ -858,5 +858,155 @@
     "source_url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/",
     "source_name": "Sling Therapeutics",
     "verified_at": "2026-09-17"
+  },
+  {
+    "company_slug": "resolve-ai",
+    "investor_slug": "lightspeed",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://resolve.ai/blog/series-a-funding",
+    "source_name": "Resolve AI",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "resolve-ai",
+    "investor_slug": "greylock",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://resolve.ai/blog/series-a-funding",
+    "source_name": "Resolve AI",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "resolve-ai",
+    "investor_slug": "unusual-ventures",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://resolve.ai/blog/series-a-funding",
+    "source_name": "Resolve AI",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "resolve-ai",
+    "investor_slug": "artisanal-ventures",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://resolve.ai/blog/series-a-funding",
+    "source_name": "Resolve AI",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "resolve-ai",
+    "investor_slug": "a-star-capital",
+    "round_date": "2026-09-16",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://resolve.ai/blog/series-a-funding",
+    "source_name": "Resolve AI",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "raindrop",
+    "investor_slug": "crv",
+    "round_date": "2026-09-17",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.raindrop.ai/blog/series-a/",
+    "source_name": "Raindrop",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "a16z",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "maverick-capital",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "coatue",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "audacious-ventures",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "alumni-ventures",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "greylock",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "lightfield",
+    "investor_slug": "lightspeed",
+    "round_date": "2026-09-09",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+    "source_name": "Lightfield via PR Newswire",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "acoubatt",
+    "investor_slug": "creator-fund",
+    "round_date": "2026-09-16",
+    "round_stage": "Pre-Seed",
+    "role": "lead",
+    "source_url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology",
+    "source_name": "UCL Ventures",
+    "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "acoubatt",
+    "investor_slug": "ada-ventures",
+    "round_date": "2026-09-16",
+    "round_stage": "Pre-Seed",
+    "role": "participant",
+    "source_url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology",
+    "source_name": "UCL Ventures",
+    "verified_at": "2026-09-20"
   }
 ]

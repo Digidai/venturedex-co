@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-17",
+  "verified_at": "2026-09-20",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2538,6 +2538,34 @@
       "local_path": "/logos/companies/sling-therapeutics.png",
       "source_page": "https://slingtx.com/",
       "source_url": "https://slingtx.com/wp-content/uploads/2021/11/cropped-favicon2_1-192x192.png"
+    },
+    "resolve-ai": {
+      "name": "Resolve AI",
+      "shape": "icon",
+      "local_path": "/logos/companies/resolve-ai.png",
+      "source_page": "https://resolve.ai/",
+      "source_url": "https://resolve.ai/icon.png?3684e1ccd734fe78"
+    },
+    "raindrop": {
+      "name": "Raindrop",
+      "shape": "icon",
+      "local_path": "/logos/companies/raindrop.svg",
+      "source_page": "https://www.raindrop.ai/",
+      "source_url": "https://www.raindrop.ai/icon0.svg"
+    },
+    "lightfield": {
+      "name": "Lightfield",
+      "shape": "icon",
+      "local_path": "/logos/companies/lightfield.png",
+      "source_page": "https://lightfield.app/",
+      "source_url": "https://cdn.sanity.io/images/3ccg9tet/production/06c39c0d99c42e90b57fccf4975907af19118ea5-320x320.png"
+    },
+    "acoubatt": {
+      "name": "AcouBatt",
+      "shape": "icon",
+      "local_path": "/logos/companies/acoubatt.svg",
+      "source_page": "https://acoubatt.ai/",
+      "source_url": "https://acoubatt.ai/favicon.svg"
     }
   },
   "investors": {
@@ -5329,6 +5357,62 @@
       "local_path": "/logos/investors/sectoral-asset-management.png",
       "source_page": "https://www.sectoral.com/",
       "source_url": "https://www.sectoral.com/img/logo.png"
+    },
+    "a-star-capital": {
+      "name": "A*",
+      "shape": "icon",
+      "local_path": "/logos/investors/a-star-capital.svg",
+      "source_page": "https://www.a-star.co/",
+      "source_url": "https://www.a-star.co/favicon.svg"
+    },
+    "artisanal-ventures": {
+      "name": "Artisanal Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/artisanal-ventures.png",
+      "source_page": "https://artisanalv.com/",
+      "source_url": "https://artisanalv.com/wp-content/uploads/2024/02/AV_Favicon.png"
+    },
+    "unusual-ventures": {
+      "name": "Unusual Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/unusual-ventures.png",
+      "source_page": "https://www.unusual.vc/",
+      "source_url": "https://www.unusual.vc/wp-content/uploads/2025/08/unusual-logo.png"
+    },
+    "coatue": {
+      "name": "Coatue",
+      "shape": "icon",
+      "local_path": "/logos/investors/coatue.jpg",
+      "source_page": "https://www.coatue.com/",
+      "source_url": "https://www.coatue.com/favicon.jpg"
+    },
+    "audacious-ventures": {
+      "name": "Audacious Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/audacious.svg",
+      "source_page": "https://www.audacious.co/",
+      "source_url": "https://cdn.sanity.io/images/jytj5ayv/production/dbf1ee22ebb0d7e376c349e6564454c0c1103f98-180x180.svg"
+    },
+    "maverick-capital": {
+      "name": "Maverick Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/maverick-capital.png",
+      "source_page": "https://www.maverickcapital.com/",
+      "source_url": "https://www.maverickcapital.com/favicon.png"
+    },
+    "creator-fund": {
+      "name": "Creator Fund",
+      "shape": "icon",
+      "local_path": "/logos/investors/creator-fund.png",
+      "source_page": "https://thecreatorfund.com/our-vision/our-scope/",
+      "source_url": "https://thecreatorfund.com/wp-content/uploads/2023/02/cropped-qwebsite-favicon-1-192x192.png"
+    },
+    "ada-ventures": {
+      "name": "Ada Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/ada-ventures.png",
+      "source_page": "https://www.adaventures.com/",
+      "source_url": "https://cdn.prod.website-files.com/66c4a2417b27d476937f0b0c/677e5fececff055d67d628bd_Ada-webclip-2.png"
     }
   }
 }

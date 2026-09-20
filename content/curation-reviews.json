@@ -3717,6 +3717,164 @@
           "specificity": {"pass": true, "note": "Coverage, attributes, entity resolution, APIs and buyer workflows are visible."}
         }
       }
+    },
+    {
+      "slug": "ark",
+      "company_url": "https://www.ark.inc/en/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "Product, funding and taste evidence passed, but eleven named associated institutions remain unresolved in the investor directory, so publication is blocked without misrepresenting the financing network.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": "2026-09-27",
+      "priority": 2,
+      "sources": ["https://www.ark.inc/en/", "https://www.ark.inc/en/product/", "https://www.ark.inc/en/news/ark-series-a-funding/"],
+      "attempts": [
+        {"date": "2026-09-20", "outcome": "publication_blocked", "note": "The product and financing passed; the identity planner still reports eleven unresolved associated institutions after targeted official-source checks."}
+      ],
+      "evaluation": {
+        "rubric": "hardware", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.ark.inc/en/product/", "note": "The official product page specifies the MATRIX modular recirculating aquaculture tanks, filtration unit, installation footprint and operating functions."},
+          {"url": "https://www.ark.inc/en/news/ark-series-a-funding/", "note": "The official financing announcement links the Series A to deployment of ARK's modular systems and STARBOARD remote operating software."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "ARK bets that land-based aquaculture can be packaged as repeatable modular equipment instead of a bespoke facility project."},
+          "craft": {"pass": true, "note": "Tanks, filtration, sensors, feeding and STARBOARD monitoring form a concrete physical and software system."},
+          "specificity": {"pass": true, "note": "Dimensions, footprint, tank layout, monitored variables and operating workflows are all explicit."}
+        }
+      }
+    },
+    {
+      "slug": "resolve-ai",
+      "company_url": "https://resolve.ai/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The later financing triggered a complete re-review; funding, current product evidence, taste, associated investors, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": ["https://resolve.ai/", "https://resolve.ai/security", "https://resolve.ai/blog/series-a-funding"],
+      "original": {"ledger": "rejected.jsonl", "sha256": "0deb2711e3153ba7880dcdaed85c364aad6564a99bd35268a5bee0e3ff4edf37"},
+      "attempts": [
+        {"date": "2026-07-25", "outcome": "quality_rejected", "note": "The original run ranked Resolve below another operational-agent candidate under the then-used relative selection approach."},
+        {"date": "2026-09-20", "outcome": "accepted", "note": "The new financing triggered an independent re-review, and current product, investors, brand and visual publication gates passed without a quota comparison."}
+      ],
+      "evaluation": {
+        "rubric": "developer", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://resolve.ai/", "note": "The live product shows production agents investigating incidents through operational integrations, APIs, MCP and reusable skills."},
+          {"url": "https://resolve.ai/security", "note": "The security surface documents enterprise controls around the agents' access to production systems and operational data."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Resolve bets that production operations can be delegated to agents that reason across live infrastructure context."},
+          "craft": {"pass": true, "note": "Integrations, skills, APIs, incident traces and security controls expose an inspectable operating boundary."},
+          "specificity": {"pass": true, "note": "The site names incident investigation, root-cause analysis, production systems and concrete tool surfaces."}
+        }
+      }
+    },
+    {
+      "slug": "raindrop",
+      "company_url": "https://www.raindrop.ai/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, agent-reliability product evidence, taste, CRV enrichment, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": ["https://www.raindrop.ai/", "https://www.raindrop.ai/blog/series-a/", "https://www.raindrop.ai/careers"],
+      "attempts": [
+        {"date": "2026-09-20", "outcome": "accepted", "note": "The tracing, silent-failure detection and simulation workflow plus funding, investor, brand and visual gates passed."}
+      ],
+      "evaluation": {
+        "rubric": "developer", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.raindrop.ai/", "note": "The live product connects run tracing, unsupervised failure detection, triage, experiments, MCP access and a local workshop."},
+          {"url": "https://www.raindrop.ai/blog/series-a/", "note": "The Series A announcement describes simulations that replay production traffic and test agent changes before release."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Raindrop bets that agent reliability needs discovery of silent failures, not only predefined evaluations."},
+          "craft": {"pass": true, "note": "Tracing, clustering, investigation, replay and simulation form a coherent reliability loop."},
+          "specificity": {"pass": true, "note": "Production traces, anomalous behavior, traffic replay and pre-release changes are concrete workflow elements."}
+        }
+      }
+    },
+    {
+      "slug": "lightfield",
+      "company_url": "https://lightfield.app/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, agent-native CRM evidence, taste, seven associated investors, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": ["https://lightfield.app/", "https://docs.lightfield.app/", "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html"],
+      "attempts": [
+        {"date": "2026-09-20", "outcome": "accepted", "note": "The customer-context graph, agent harness, financing, investor profiles, brands and visual publication assets passed review."}
+      ],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://lightfield.app/", "note": "The live product captures calls, email, calendar and Slack interactions into customer context used by people and agents."},
+          {"url": "https://docs.lightfield.app/", "note": "The documentation exposes an agent-oriented product surface rather than only a marketing claim."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Lightfield bets that CRM should be a temporal context graph operated by agents instead of manually maintained fields."},
+          "craft": {"pass": true, "note": "A sandbox, SDK, continuous evaluations and API, MCP and CLI access make the agent harness inspectable."},
+          "specificity": {"pass": true, "note": "Named communication sources, customer records and sales workflows make the product boundary concrete."}
+        }
+      }
+    },
+    {
+      "slug": "notes-fm",
+      "company_url": "https://notes.fm/",
+      "state": "publication_blocked",
+      "reason_code": "investor_research",
+      "reason": "Product, funding and taste evidence passed, but eight named associated organizations remain unresolved in the investor directory, so publication is blocked without inventing firm identities.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": "2026-09-27",
+      "priority": 2,
+      "sources": ["https://notes.fm/", "https://notes.fm/platforms/", "https://www.prnewswire.com/news-releases/notesfm-raises-5-million-to-unify-royalties-publishing-and-distribution-for-independent-artists-302882145.html"],
+      "attempts": [
+        {"date": "2026-09-20", "outcome": "publication_blocked", "note": "The product and financing passed; the identity planner still reports eight unresolved associated organizations after targeted official-source checks."}
+      ],
+      "evaluation": {
+        "rubric": "software", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://notes.fm/", "note": "The live site combines release distribution, credit verification, publishing administration and royalty review for independent artists."},
+          {"url": "https://www.prnewswire.com/news-releases/notesfm-raises-5-million-to-unify-royalties-publishing-and-distribution-for-independent-artists-302882145.html", "note": "The company-supplied release describes a flat subscription, Stripe partnership and integrated royalty and financial workflows."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Notes.fm bets that independent artists need one catalog-to-cash workflow rather than disconnected rights and payout systems."},
+          "craft": {"pass": true, "note": "Distribution, publishing administration, credit checks and royalty review create a coherent operating loop."},
+          "specificity": {"pass": true, "note": "Artist users, supported platforms, royalty flows and subscription economics are described concretely."}
+        }
+      }
+    },
+    {
+      "slug": "acoubatt",
+      "company_url": "https://acoubatt.ai/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, battery-diagnostics evidence, taste, associated investor enrichment, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-20",
+      "next_review_at": null,
+      "priority": 1,
+      "sources": ["https://acoubatt.ai/", "https://acoubatt.ai/technology/", "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology"],
+      "attempts": [
+        {"date": "2026-09-20", "outcome": "accepted", "note": "The acoustic measurement stack, funding, investor profiles, official brands and visual publication assets passed review."}
+      ],
+      "evaluation": {
+        "rubric": "hardware", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://acoubatt.ai/technology/", "note": "The official technology page presents external acoustic-emission sensors, acquisition hardware and synchronized analysis for battery cells."},
+          {"url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology", "note": "UCL Ventures describes formation-stage monitoring, early defect detection and the verified pre-seed financing."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "AcouBatt bets that passive acoustic emissions reveal internal battery changes without destructive inspection."},
+          "craft": {"pass": true, "note": "Sensors, acquisition hardware, electrochemical synchronization and AI analysis form a coherent measurement stack."},
+          "specificity": {"pass": true, "note": "Cell formation, defects, chemistries and manufacturing use cases are named rather than abstract."}
+        }
+      }
     }
   ]
 }

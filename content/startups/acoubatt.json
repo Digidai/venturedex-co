@@ -1,0 +1,50 @@
+{
+  "slug": "acoubatt",
+  "domain": "acoubatt.ai",
+  "url": "https://acoubatt.ai/",
+  "product_name": "AcouBatt",
+  "summary": "Acoustic-emission sensors and AI analysis for real-time insight into battery cells.",
+  "editor_note": "The bet is physically specific: listen to acoustic emissions from a cell without opening it rather than relying only on conventional electrical tests, then synchronize them with electrochemical data and classify signals during formation, R&D and operation. External sensors, acquisition hardware and analysis software form a coherent measurement stack. The proposed manufacturing-time benefit is still a company claim, and deployment economics across cell formats remain to be proven.",
+  "editor_rating": 5,
+  "why_featured": "£1.1M Pre-Seed for battery diagnostics",
+  "product_type": "Climate / Sustainability",
+  "region": "Europe",
+  "tags": "batteries,acoustic sensing,manufacturing,AI diagnostics,hardware",
+  "investors": "Creator Fund, Ada Ventures",
+  "links": {
+    "product": "https://acoubatt.ai/"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "GBP 1.1M",
+      "currency": "GBP",
+      "stage": "Pre-Seed",
+      "lead_investor": "Creator Fund",
+      "date": "2026-09-16",
+      "source_url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology",
+      "source_name": "UCL Ventures"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-20",
+    "sources": [
+      {"id": "official_site", "label": "AcouBatt official product site", "url": "https://acoubatt.ai/", "type": "official"},
+      {"id": "technology", "label": "AcouBatt technology overview", "url": "https://acoubatt.ai/technology/", "type": "product"},
+      {"id": "funding_1", "label": "UCL Ventures AcouBatt financing report", "url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology", "type": "funding"}
+    ],
+    "product_evidence": [
+      {"claim": "The official site presents external acoustic-emission sensors, data-acquisition hardware and AI analysis that synchronize signals with electrochemical measurements in real time.", "source_ids": ["official_site", "technology"]},
+      {"claim": "UCL Ventures describes formation-stage monitoring for early defect detection and a potential reduction in conservative formation-time buffers, while attributing the technology to UCL battery-acoustics research.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Battery cell developers, manufacturers and energy-storage operators.",
+      "category": "Battery diagnostics hardware",
+      "differentiation": "Uses passive acoustic emissions to observe physical and chemical changes inside cells without destructive inspection.",
+      "why_now": "The pre-seed round supports pilots as battery manufacturers seek faster formation, earlier defect detection and lower scrap."
+    },
+    "risks": [
+      {"claim": "The claimed formation-time improvement is not independently validated, and sensor calibration, signal interpretation and deployment economics may vary across chemistries and form factors.", "basis": "VentureDex assessment based on AcouBatt and UCL Ventures materials."}
+    ]
+  }
+}

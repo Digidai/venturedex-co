@@ -2965,5 +2965,63 @@
     "short_name": "Sectoral",
     "website": "https://www.sectoral.com/",
     "description": "Employee-owned healthcare investment manager operating public and private equity strategies, including late-stage venture capital."
+  },
+  "a-star-capital": {
+    "name": "A*",
+    "slug": "a-star-capital",
+    "short_name": "A*",
+    "website": "https://www.a-star.co/",
+    "description": "Early-stage venture capital firm emphasizing conviction-led, founder-centric partnerships from idea toward IPO.",
+    "aliases": ["A* Capital"]
+  },
+  "artisanal-ventures": {
+    "name": "Artisanal Ventures",
+    "slug": "artisanal-ventures",
+    "short_name": "Artisanal",
+    "website": "https://artisanalv.com/",
+    "description": "Venture investor pairing its network and talent partnership with hands-on support for company building."
+  },
+  "unusual-ventures": {
+    "name": "Unusual Ventures",
+    "slug": "unusual-ventures",
+    "short_name": "Unusual",
+    "website": "https://www.unusual.vc/",
+    "description": "Early-stage venture capital firm supporting enterprise founders through product-market fit and company building."
+  },
+  "coatue": {
+    "name": "Coatue",
+    "slug": "coatue",
+    "short_name": "Coatue",
+    "website": "https://www.coatue.com/",
+    "description": "Technology-focused investment manager operating venture, growth, tactical, private and public-market strategies."
+  },
+  "audacious-ventures": {
+    "name": "Audacious Ventures",
+    "slug": "audacious-ventures",
+    "short_name": "Audacious",
+    "website": "https://www.audacious.co/",
+    "description": "Venture capital firm backing ambitious founders and helping with team building, go-to-market systems and follow-on capital.",
+    "aliases": ["Audacious"]
+  },
+  "maverick-capital": {
+    "name": "Maverick Capital",
+    "slug": "maverick-capital",
+    "short_name": "Maverick",
+    "website": "https://www.maverickcapital.com/",
+    "description": "Registered investment adviser whose Maverick Ventures strategy invests from seed through early stage across technology, consumer and healthcare."
+  },
+  "creator-fund": {
+    "name": "Creator Fund",
+    "slug": "creator-fund",
+    "short_name": "Creator Fund",
+    "website": "https://thecreatorfund.com/",
+    "description": "Pre-seed and seed venture capital fund backing scientific founders across European universities."
+  },
+  "ada-ventures": {
+    "name": "Ada Ventures",
+    "slug": "ada-ventures",
+    "short_name": "Ada",
+    "website": "https://www.adaventures.com/",
+    "description": "Inclusive pre-seed venture capital firm backing European founders in climate equity, economic empowerment and healthy ageing."
   }
 }

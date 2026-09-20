@@ -1,0 +1,52 @@
+{
+  "slug": "lightfield",
+  "domain": "lightfield.app",
+  "url": "https://lightfield.app/",
+  "product_name": "Lightfield",
+  "summary": "Agent-native CRM that builds a living customer context graph from every interaction.",
+  "editor_note": "The stronger idea is structural: customer calls, email, calendar and Slack become a temporal context graph rather than another set of manually maintained CRM fields, so both people and agents can operate from it. A deterministic sandbox, SDK, continuous evals and open API/MCP/CLI surface make the agent boundary unusually inspectable for a CRM. Adoption and performance figures remain company reported, and the security of consolidating so much customer context deserves continued scrutiny.",
+  "editor_rating": 5,
+  "why_featured": "$47M Series A for agent-native CRM",
+  "product_type": "SaaS",
+  "region": "US",
+  "tags": "CRM,AI agents,sales automation,customer data,MCP",
+  "investors": "Andreessen Horowitz, Maverick Capital, Coatue, Audacious, Alumni Ventures, Greylock, Lightspeed Venture Partners",
+  "links": {
+    "product": "https://lightfield.app/",
+    "careers": "https://jobs.ashbyhq.com/Lightfield"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$47M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "Andreessen Horowitz",
+      "date": "2026-09-09",
+      "source_url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html",
+      "source_name": "Lightfield via PR Newswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-20",
+    "sources": [
+      {"id": "official_site", "label": "Lightfield official product site", "url": "https://lightfield.app/", "type": "official"},
+      {"id": "docs", "label": "Lightfield product documentation", "url": "https://docs.lightfield.app/", "type": "product"},
+      {"id": "funding_1", "label": "Lightfield Series A announcement", "url": "https://www.prnewswire.com/news-releases/lightfield-raises-47-million-series-a-to-build-the-crm-for-companies-that-run-on-agents-302874024.html", "type": "funding"},
+      {"id": "careers", "label": "Lightfield careers", "url": "https://jobs.ashbyhq.com/Lightfield", "type": "official"}
+    ],
+    "product_evidence": [
+      {"claim": "The live product captures calls, email, calendar and Slack interactions into a shared customer record that agents use for prospecting, follow-up and deal work.", "source_ids": ["official_site"]},
+      {"claim": "The financing announcement describes a temporal business world model, deterministic code sandbox, standardized SDK, continuous evaluations and API, MCP and CLI access.", "source_ids": ["funding_1", "docs"]}
+    ],
+    "market_context": {
+      "primary_user": "Sales and go-to-market teams that want agents to operate from current customer context.",
+      "category": "Agent-native CRM",
+      "differentiation": "Builds a temporal context graph from communication streams and pairs it with an explicit agent harness rather than layering assistants over manually maintained CRM fields.",
+      "why_now": "The Series A follows the company's first year of adoption as agent workflows increase demand for machine-readable customer context."
+    },
+    "risks": [
+      {"claim": "Company-reported signups do not establish durable active usage, and centralizing broad customer communications raises permissions, data-governance and evaluation demands.", "basis": "VentureDex assessment based on Lightfield's official site, docs and company-supplied financing announcement."}
+    ]
+  }
+}

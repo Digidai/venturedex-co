@@ -17116,6 +17116,91 @@
       "sources": [
         {"id": "official", "label": "Sectoral Asset Management official overview", "url": "https://www.sectoral.com/", "checked_at": "2026-09-17"}
       ]
+    },
+    "a-star-capital": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Early-stage venture capital firm emphasizing conviction-led, founder-centric partnerships from idea toward IPO.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Early stage"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Invests with conviction and works with founders through long-term partnerships.", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "A* official overview", "url": "https://www.a-star.co/", "checked_at": "2026-09-20"}]
+    },
+    "artisanal-ventures": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Venture investor combining its network, limited-partner community and talent partnership to help founders build companies.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "approach", "value": "Pairs founder support with access to Artisanal Talent and a strategic limited-partner network.", "source_ids": ["official"]},
+        {"key": "support", "value": "Company building and executive talent support", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Artisanal Ventures official overview", "url": "https://artisanalv.com/", "checked_at": "2026-09-20"}]
+    },
+    "unusual-ventures": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Early-stage venture capital firm supporting enterprise founders through product-market fit and company building.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Early stage"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Provides a product-market-fit method and hands-on company-building resources for enterprise founders.", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Unusual Ventures official overview", "url": "https://www.unusual.vc/", "checked_at": "2026-09-20"}]
+    },
+    "coatue": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Technology-focused investment manager operating venture, growth, tactical, private and public-market strategies.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Investment manager", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Venture", "Growth", "Late stage", "Public markets"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Technology", "Innovation"], "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Coatue official overview", "url": "https://www.coatue.com/", "checked_at": "2026-09-20"}]
+    },
+    "audacious-ventures": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Venture capital firm backing ambitious founders and helping with team building, go-to-market systems and follow-on capital.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "approach", "value": "Selects exceptional teams pursuing large markets and concentrates support on a small set of company-building levers.", "source_ids": ["official"]},
+        {"key": "support", "value": "Recruiting, repeatable go-to-market development and follow-on capital", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Audacious Ventures official overview", "url": "https://www.audacious.co/", "checked_at": "2026-09-20"}]
+    },
+    "maverick-capital": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Registered investment adviser whose Maverick Ventures strategy invests from seed through early stage across technology, consumer and healthcare.", "source_ids": ["official_firm", "ventures"]},
+      "facts": [
+        {"key": "firm_type", "value": "Registered investment adviser and venture investor", "source_ids": ["official_firm", "ventures"]},
+        {"key": "stages", "value": ["Seed", "Early stage"], "source_ids": ["ventures"]},
+        {"key": "sectors", "value": ["Artificial intelligence", "Enterprise", "Consumer", "Healthcare"], "source_ids": ["ventures"]}
+      ],
+      "sources": [
+        {"id": "official_firm", "label": "Maverick Capital official investor site", "url": "https://investor.maverickcapital.com/", "checked_at": "2026-09-20"},
+        {"id": "ventures", "label": "Maverick Ventures official portfolio", "url": "https://www.maverickcapital.com/venturesportfolio", "checked_at": "2026-09-20"}
+      ]
+    },
+    "creator-fund": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Pre-seed and seed venture capital fund backing scientific founders across European universities.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Pre-seed", "Seed"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Artificial intelligence", "Deep technology", "Biotechnology"], "source_ids": ["official"]},
+        {"key": "geographies", "value": "Europe", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Creator Fund official investment scope", "url": "https://thecreatorfund.com/our-vision/our-scope/", "checked_at": "2026-09-20"}]
+    },
+    "ada-ventures": {
+      "reviewed_at": "2026-09-20",
+      "summary": {"value": "Inclusive pre-seed venture capital firm backing European founders in climate equity, economic empowerment and healthy ageing.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Pre-seed"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Climate equity", "Economic empowerment", "Healthy ageing"], "source_ids": ["official"]},
+        {"key": "geographies", "value": "United Kingdom and Northern Europe companies with a UK link", "source_ids": ["official"]}
+      ],
+      "sources": [{"id": "official", "label": "Ada Ventures official overview", "url": "https://www.adaventures.com/", "checked_at": "2026-09-20"}]
     }
   },
   "attempts": {}

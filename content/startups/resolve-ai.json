@@ -1,0 +1,52 @@
+{
+  "slug": "resolve-ai",
+  "domain": "resolve.ai",
+  "url": "https://resolve.ai/",
+  "product_name": "Resolve AI",
+  "summary": "AI agents for investigating incidents and operating production software systems.",
+  "editor_note": "Resolve is unusually concrete about the boundary between an agent and production infrastructure: it traces incidents across flags, queries and resource behavior, works through existing operational tools, and exposes integrations, skills, APIs and security controls. The public examples and customer claims are company-selected, so repeatable resolution quality and safe autonomy across unfamiliar systems remain the real tests.",
+  "editor_rating": 5,
+  "why_featured": "$125M Series A for production agents",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "AI agents,incident response,observability,developer infrastructure,SRE",
+  "investors": "Lightspeed Venture Partners, Greylock, Unusual Ventures, Artisanal Ventures, A* Capital",
+  "links": {
+    "product": "https://resolve.ai/",
+    "careers": "https://resolve.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$125M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "Lightspeed Venture Partners",
+      "date": "2026-09-16",
+      "source_url": "https://resolve.ai/blog/series-a-funding",
+      "source_name": "Resolve AI"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-20",
+    "sources": [
+      {"id": "official_site", "label": "Resolve AI official product site", "url": "https://resolve.ai/", "type": "official"},
+      {"id": "security", "label": "Resolve AI security overview", "url": "https://resolve.ai/security", "type": "product"},
+      {"id": "funding_1", "label": "Resolve AI Series A announcement", "url": "https://resolve.ai/blog/series-a-funding", "type": "funding"},
+      {"id": "careers", "label": "Resolve AI careers", "url": "https://resolve.ai/careers", "type": "official"}
+    ],
+    "product_evidence": [
+      {"claim": "The live site presents agents that investigate incidents and operational tasks through integrations, APIs, MCP and reusable skills rather than a generic support chatbot.", "source_ids": ["official_site"]},
+      {"claim": "The product surface shows a concrete root-cause path connecting a feature flag, database activity and CPU behavior, while the security page documents enterprise controls around production access.", "source_ids": ["official_site", "security"]}
+    ],
+    "market_context": {
+      "primary_user": "Engineering, SRE and platform teams responsible for production reliability.",
+      "category": "AI production operations",
+      "differentiation": "Agents reason across operational context and execute through existing tooling with explicit integration and security surfaces.",
+      "why_now": "The Series A follows enterprise adoption as software teams experiment with delegating more incident investigation and operational work to agents."
+    },
+    "risks": [
+      {"claim": "Company-selected examples do not establish how reliably the agents handle novel incidents or unsafe action boundaries across heterogeneous production environments.", "basis": "VentureDex assessment based on Resolve AI's official product, security and financing materials."}
+    ]
+  }
+}

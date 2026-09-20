@@ -1,0 +1,50 @@
+{
+  "slug": "raindrop",
+  "domain": "www.raindrop.ai",
+  "url": "https://www.raindrop.ai/",
+  "product_name": "Raindrop",
+  "summary": "Reliability platform for tracing, detecting and preventing silent failures in AI agents.",
+  "editor_note": "The product treats agent reliability as a continuous loop rather than a fixed evaluation suite: trace production runs, cluster silent failures, investigate causes, replay real traffic and simulate changes before release. The newly announced simulations product makes the preventive side more specific than conventional predefined evals. Early-access availability and company-reported adoption still leave broad cross-agent performance to prove.",
+  "editor_rating": 5,
+  "why_featured": "Series A for agent reliability",
+  "product_type": "DevTools",
+  "region": "US",
+  "tags": "AI agents,observability,evaluation,simulation,developer tools",
+  "investors": "CRV",
+  "links": {
+    "product": "https://www.raindrop.ai/",
+    "careers": "https://www.raindrop.ai/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "undisclosed",
+      "stage": "Series A",
+      "lead_investor": "CRV",
+      "date": "2026-09-17",
+      "source_url": "https://www.raindrop.ai/blog/series-a/",
+      "source_name": "Raindrop"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-20",
+    "sources": [
+      {"id": "official_site", "label": "Raindrop official product site", "url": "https://www.raindrop.ai/", "type": "official"},
+      {"id": "funding_1", "label": "Raindrop Series A announcement", "url": "https://www.raindrop.ai/blog/series-a/", "type": "funding"},
+      {"id": "careers", "label": "Raindrop careers", "url": "https://www.raindrop.ai/careers", "type": "official"}
+    ],
+    "product_evidence": [
+      {"claim": "The live product connects run tracing, unsupervised issue detection, triage, experiments, MCP access and an open-source local workshop in one agent-reliability workflow.", "source_ids": ["official_site"]},
+      {"claim": "The Series A announcement describes simulations that replay production traffic and test cases against proposed agent changes, then apply anomaly detection before release.", "source_ids": ["funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Engineering teams shipping AI agents into production.",
+      "category": "AI agent reliability",
+      "differentiation": "Combines production detection with harness-agnostic simulations intended to expose unanticipated behavior changes before deployment.",
+      "why_now": "The Series A accompanies an expansion from post-deployment issue detection into preventive simulations for production agent teams."
+    },
+    "risks": [
+      {"claim": "Simulations remain in early access, and the company has not published independently audited coverage or failure-detection rates across diverse agent architectures.", "basis": "VentureDex assessment based on Raindrop's official product site and Series A announcement."}
+    ]
+  }
+}
