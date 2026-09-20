@@ -24,9 +24,9 @@
       "amount": "$7.5M",
       "stage": "Seed",
       "lead_investor": "undisclosed",
-      "date": "2026-05-27",
-      "source_url": "https://didit.me/blog/didit-7-5m-seed-infrastructure-identity-fraud/",
-      "source_name": "Didit"
+      "date": "2026-05-26",
+      "source_url": "https://www.prnewswire.com/news-releases/didit-closes-7-5m-seed-round-to-build-identity-infrastructure-for-the-ai-era-302782036.html",
+      "source_name": "Didit via PR Newswire"
     }
   ],
   "research": {
@@ -58,8 +58,8 @@
       },
       {
         "id": "funding_1",
-        "label": "Didit seed announcement",
-        "url": "https://didit.me/blog/didit-7-5m-seed-infrastructure-identity-fraud/",
+        "label": "Didit seed announcement via PR Newswire",
+        "url": "https://www.prnewswire.com/news-releases/didit-closes-7-5m-seed-round-to-build-identity-infrastructure-for-the-ai-era-302782036.html",
         "type": "funding"
       }
     ],
@@ -88,7 +88,7 @@
       "primary_user": "Developers, risk teams, compliance operators, and fintech product teams building identity and fraud workflows.",
       "category": "Fintech",
       "differentiation": "Agent- and API-native breadth across identity, fraud, KYC, KYB, AML, and wallet screening instead of a narrow verification module.",
-      "why_now": "The May 27, 2026 seed announcement funds Didit after it opened public docs, pricing, sandbox access, and MCP integration paths."
+      "why_now": "The May 26, 2026 seed announcement funds Didit after it opened public docs, pricing, sandbox access, and MCP integration paths."
     },
     "risks": [
       {
