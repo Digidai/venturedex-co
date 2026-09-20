@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "36d833f36a1948c385de62155876a09b628bb79c",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/36d833f36a1948c385de62155876a09b628bb79c",
-    "commit_at": "2026-09-18T14:33:55.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/36d833f36a1948c385de62155876a09b628bb79c/src/data/videos.json",
-    "raw_sha256": "585c760dd90b121e428757af837cd6aac21bbe9d57b16c52cc34d1da25891b1a"
+    "commit": "2cdfa8e97d987616e8d02132e114bc094ec54179",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/2cdfa8e97d987616e8d02132e114bc094ec54179",
+    "commit_at": "2026-09-20T11:26:11.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/2cdfa8e97d987616e8d02132e114bc094ec54179/src/data/videos.json",
+    "raw_sha256": "df4d2aa360977b9f450f649893b8c1043c97ff46cc6c45b80617220d2d916e2e"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,69 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-18T07:00:00.000Z",
-  "item_count": 2162,
+  "source_published_through": "2026-09-18T18:24:21.000Z",
+  "item_count": 2167,
   "items": [
+    {
+      "id": "plv-grok-bot-voice-notes",
+      "tweet_id": "2101014478255247544",
+      "slug": "grok-bot-voice-notes",
+      "title": "Grok Bot — it can send you voice notes",
+      "product": "Grok Bot",
+      "company": "xAI",
+      "category": "ai",
+      "tags": [
+        "grok",
+        "bot",
+        "voice"
+      ],
+      "published_at": "2026-09-18T18:24:21.000Z",
+      "duration_seconds": 19,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101002741590159360/vid/avc1/1920x1080/KDwPhFEZcWFgpzRu.mp4",
+      "original_post_url": "https://x.com/bot/status/2101014478255247544",
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
+    },
+    {
+      "id": "plv-glyph",
+      "tweet_id": "2100980802091708818",
+      "slug": "glyph",
+      "title": "Glyph — a GPU typography engine for the web",
+      "product": "Glyph",
+      "company": "Poimandres",
+      "category": "design",
+      "tags": [
+        "glyph",
+        "typography",
+        "gpu"
+      ],
+      "published_at": "2026-09-18T16:10:32.000Z",
+      "duration_seconds": 15,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100980653206511616/vid/avc1/1950x1404/xCB0nvQiAr6qYNCG.mp4",
+      "original_post_url": "https://x.com/pmndrs/status/2100980802091708818",
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
+    },
+    {
+      "id": "plv-compositor",
+      "tweet_id": "2100946395972976843",
+      "slug": "compositor",
+      "title": "Compositor — a free Photoshop-like image editor",
+      "product": "Compositor",
+      "company": "Compositor",
+      "category": "design",
+      "tags": [
+        "compositor",
+        "editor",
+        "open-source"
+      ],
+      "published_at": "2026-09-18T13:53:49.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100944886430400512/vid/avc1/1668x1080/f0pQWVKBi0j_0o8K.mp4",
+      "original_post_url": "https://x.com/robbietilton/status/2100946395972976843",
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
+    },
     {
       "id": "plv-powermove",
       "tweet_id": "2100842256727175329",
@@ -43,6 +103,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100796982776287232/vid/avc1/1920x1080/cKBCpkrekohd14Og.mp4",
       "original_post_url": "https://x.com/zellzoi_design/status/2100842256727175329",
       "last_changed_at": "2026-09-18T14:33:55.000Z"
+    },
+    {
+      "id": "plv-monid-free-search",
+      "tweet_id": "2100705843453079718",
+      "slug": "monid-free-search",
+      "title": "Monid — free webpage search and fetch for agents",
+      "product": "Monid",
+      "company": "Monid",
+      "category": "ai",
+      "tags": [
+        "monid",
+        "search",
+        "agents"
+      ],
+      "published_at": "2026-09-17T21:57:56.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100705814793383936/vid/avc1/1920x1080/1exFwLqe7JCZH704.mp4",
+      "original_post_url": "https://x.com/MonidHQ/status/2100705843453079718",
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
     },
     {
       "id": "plv-bend-2",
@@ -2505,6 +2585,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2097109772382433280/vid/avc1/1516x1080/l-qjAm8aqBlEO4tH.mp4",
       "original_post_url": "https://x.com/Yappologistic/status/2097109814048694420",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-kool-brushez",
+      "tweet_id": "2097092079838998542",
+      "slug": "kool-brushez",
+      "title": "kool-brushez — new subway, figure, and gunpla brushes",
+      "product": "kool-brushez",
+      "company": "kool-brushez",
+      "category": "design",
+      "tags": [
+        "kool-brushez",
+        "brushes",
+        "drawing"
+      ],
+      "published_at": "2026-09-07T22:38:08.000Z",
+      "duration_seconds": 17,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2097091996145901568/vid/avc1/1440x1080/fOZ5RXepEOpmajqz.mp4",
+      "original_post_url": "https://x.com/blak3shao/status/2097092079838998542",
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
     },
     {
       "id": "plv-flip-workflows",
@@ -16009,7 +16109,7 @@
       "featured": true,
       "video_url": "https://video.twimg.com/amplify_video/2080882875235454976/vid/avc1/1920x1080/E85_RCssXImFiNTt.mp4",
       "original_post_url": "https://x.com/legionsdev/status/2080986434333270096",
-      "source_category": "devtools"
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
     },
     {
       "id": "plv-runway-agent-workflows",
@@ -16223,7 +16323,7 @@
       "featured": true,
       "video_url": "https://video.twimg.com/amplify_video/2080222371911233536/vid/avc1/1920x1080/gK08tZJnixLE-7KL.mp4",
       "original_post_url": "https://x.com/davidhdev/status/2080224101432447094",
-      "source_category": "devtools"
+      "last_changed_at": "2026-09-20T11:26:11.000Z"
     },
     {
       "id": "plv-atoms",
