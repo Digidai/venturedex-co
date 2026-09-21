@@ -3023,5 +3023,26 @@
     "short_name": "Ada",
     "website": "https://www.adaventures.com/",
     "description": "Inclusive pre-seed venture capital firm backing European founders in climate equity, economic empowerment and healthy ageing."
+  },
+  "crane-venture-partners": {
+    "name": "Crane Venture Partners",
+    "slug": "crane-venture-partners",
+    "short_name": "Crane",
+    "website": "https://crane.vc/",
+    "description": "Early-stage venture capital firm backing foundational technology companies from inception through seed with global reach and hands-on support."
+  },
+  "pxn-ventures": {
+    "name": "PXN Ventures",
+    "slug": "pxn-ventures",
+    "short_name": "PXN",
+    "website": "https://www.pxnventures.co.uk/",
+    "description": "Northern UK venture investor combining capital and operational support for founders from pre-seed through Series B and beyond."
+  },
+  "the-westly-group": {
+    "name": "The Westly Group",
+    "slug": "the-westly-group",
+    "short_name": "Westly",
+    "website": "https://westlygroup.com/",
+    "description": "Venture capital firm backing AI-native software and hardware across energy, reindustrialization, robotics, mobility and cybersecurity."
   }
 }

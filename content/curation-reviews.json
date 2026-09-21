@@ -117,8 +117,8 @@
       "state": "publication_blocked",
       "reason_code": "investor_research",
       "reason": "The September 13 review verified a source-backed EUR 28M Series A and an inspectable topological-neural-network platform for heterogeneous data. Product evidence and all three taste dimensions pass, but seven newly associated investor identities and profiles were not completed in this bounded run, so qualification is retained while publication remains blocked.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-28",
       "priority": 1,
       "sources": [
         "https://arlq.ai/",
@@ -129,6 +129,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Verified the Series A and TNN platform; qualification passed, while the newly associated investor identity and profile scope remains incomplete."
+        },
+        {
+          "date": "2026-09-21",
+          "outcome": "publication_blocked",
+          "note": "Rechecked the official financing announcement and seven named associated investors; the source-backed investor profile and brand scope remains incomplete, so publication stays blocked without inventing identities."
         }
       ],
       "evaluation": {
@@ -167,8 +172,8 @@
       "state": "publication_blocked",
       "reason_code": "investor_research",
       "reason": "The September 13 review verified a source-backed EUR 20M Series A and an inspectable modular hydrogen-refueling network with named 350-bar and 700-bar systems. Product evidence and all three taste dimensions pass, but Langur Holding's current canonical site exposes no substantive firm information and its previously indexed portfolio page now returns 404, so a source-backed investor profile cannot yet be completed.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-28",
       "priority": 1,
       "sources": [
         "https://hvrenergy.com/",
@@ -179,6 +184,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Verified the Series A, station map and named refueling systems; qualification passed, but current official evidence is insufficient for Langur Holding's required investor profile."
+        },
+        {
+          "date": "2026-09-21",
+          "outcome": "publication_blocked",
+          "note": "Rechecked the HVR announcement and searched for a substantive current Langur Holding source; no official profile evidence sufficient for a sourced investor record was found."
         }
       ],
       "evaluation": {
@@ -217,8 +227,8 @@
       "state": "publication_blocked",
       "reason_code": "investor_research",
       "reason": "The September 13 review verified a source-backed $4M financing and an inspectable battery planning, live-control and trading workflow. Product evidence and all three taste dimensions pass, but Sandberg Bernthal Venture Partners' current canonical site exposes only a name and logo, which is insufficient to create the required source-backed investor profile without fabricating firm details.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-28",
       "priority": 2,
       "sources": [
         "https://www.furoenergy.com/",
@@ -229,6 +239,11 @@
           "date": "2026-09-13",
           "outcome": "publication_blocked",
           "note": "Verified the financing and planning, control and trading workflow; qualification passed, but current official evidence is insufficient for Sandberg Bernthal Venture Partners' required investor profile."
+        },
+        {
+          "date": "2026-09-21",
+          "outcome": "publication_blocked",
+          "note": "Rechecked the financing participants and Sandberg Bernthal Venture Partners' public presence; the official surface still lacks substantive facts for a source-backed investor profile."
         }
       ],
       "evaluation": {
@@ -267,8 +282,8 @@
       "state": "evidence_pending",
       "reason_code": "product_evidence_gap",
       "reason": "The September 13 review verified the $33M Seed financing, but the current company site exposes only a high-level therapeutic thesis and the release remains company-authored preclinical evidence. More inspectable program or external validation evidence is needed before qualification.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-28",
       "priority": 2,
       "sources": [
         "https://cloverleafbio.com/",
@@ -279,6 +294,11 @@
           "date": "2026-09-13",
           "outcome": "evidence_pending",
           "note": "Funding is verified; retained for a later review because the live product surface is too sparse for an independent product judgment."
+        },
+        {
+          "date": "2026-09-21",
+          "outcome": "evidence_pending",
+          "note": "Rechecked the current official site and financing release; they still expose a high-level preclinical thesis without stronger inspectable program or independent validation evidence."
         }
       ]
     },
@@ -288,8 +308,8 @@
       "state": "evidence_pending",
       "reason_code": "product_evidence_gap",
       "reason": "The September 13 review verified a CAD 4.5M unnamed financing and public VSaS, MissionOne and orbital-compute product descriptions, but did not find enough inspectable flight or deployment evidence to independently validate the hardware platform for qualification.",
-      "reviewed_at": "2026-09-13",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-28",
       "priority": 2,
       "sources": [
         "https://gx.space/",
@@ -300,6 +320,11 @@
           "date": "2026-09-13",
           "outcome": "evidence_pending",
           "note": "Financing and product identity are verified; retained for stronger independent flight or deployment evidence."
+        },
+        {
+          "date": "2026-09-21",
+          "outcome": "evidence_pending",
+          "note": "Current Onyx material remains forward-looking, and the previously indexed Citadel page now returns 404; no stronger inspectable flight or deployment evidence was found."
         }
       ]
     },
@@ -3516,11 +3541,14 @@
       "state": "qualified_pending",
       "reason_code": "run_budget",
       "reason": "Product, funding and taste evidence cleared, but the seven-investor associated scope could not be completed without displacing release, deploy and closeout work.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
       "priority": 2,
       "sources": ["https://www.ayblehealth.com/", "https://www.prnewswire.com/news-releases/ayble-health-raises-16m-series-a-to-expand-the-nations-most-clinically-validated-virtual-digestive-health-clinic-302880020.html"],
-      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The care product and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "qualified_pending", "note": "The care product and financing passed; associated investor profiles and brands remain the explicit publication work."},
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Qualification remains valid; the seven-investor profile, brand and screenshot scope is retained after the run's remaining budget was reserved for final validation, deployment and truthful closeout."}
+      ],
       "evaluation": {
         "rubric": "software", "independent": true, "funding_verified": true,
         "product_evidence": [
@@ -3536,15 +3564,30 @@
     },
     {
       "slug": "expanse-compute",
-      "company_url": "https://expansecompute.com/",
-      "state": "access_blocked",
-      "reason_code": "page_access",
-      "reason": "The frozen company URL returned a browser connection failure, while the funding source identifies expanse.sh as the official domain; the immutable pool identity cannot be silently rewritten.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "company_url": "https://expanse.sh/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The official financing source resolved the dead frozen domain to expanse.sh; funding, predictive-compute product evidence, taste, both associated investors, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": null,
       "priority": 1,
-      "sources": ["https://expansecompute.com/", "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html"],
-      "attempts": [{"date": "2026-09-17", "outcome": "access_blocked", "note": "The frozen URL failed in the task browser, and the source revealed a different official domain after the pool identity was locked."}]
+      "sources": ["https://expansecompute.com/", "https://expanse.sh/", "https://expanse.sh/product", "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html"],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "access_blocked", "note": "The frozen URL failed in the task browser, and the source revealed a different official domain after the pool identity was locked."},
+        {"date": "2026-09-21", "outcome": "accepted", "note": "The funding release and current official product site established the domain correction; product, investor, brand and exact-hash visual publication gates then passed."}
+      ],
+      "evaluation": {
+        "rubric": "developer", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://expanse.sh/", "note": "The live product shows pre-execution GPU, memory, runtime and completion recommendations tied to a concrete Analyse workflow."},
+          {"url": "https://expanse.sh/product", "note": "The product page documents SLURM, Kubernetes and Nomad integration plus Analyse and Diagnose workflows inside customer-controlled infrastructure."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Expanse bets compute allocation can become a prediction problem before execution rather than a monitoring problem after waste occurs."},
+          "craft": {"pass": true, "note": "Confidence-bounded recommendations, observed execution evidence and scheduler integration form an inspectable feedback loop."},
+          "specificity": {"pass": true, "note": "GPU count, memory, runtime, failure risk and supported schedulers define a concrete product boundary."}
+        }
+      }
     },
     {
       "slug": "rune",
@@ -3552,11 +3595,14 @@
       "state": "qualified_pending",
       "reason_code": "run_budget",
       "reason": "Product, funding and taste evidence cleared, but the seven-investor associated scope could not be completed within the remaining release and closeout budget.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
       "priority": 2,
       "sources": ["https://rune.energy/", "https://www.businesswire.com/news/home/20260916606335/en/"],
-      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The solar-site compute system and financing passed; associated investor research remains the explicit publication work."}],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "qualified_pending", "note": "The solar-site compute system and financing passed; associated investor research remains the explicit publication work."},
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Qualification remains valid; the seven-investor profile, brand and screenshot scope is retained after the run's remaining budget was reserved for final validation, deployment and truthful closeout."}
+      ],
       "evaluation": {
         "rubric": "hardware", "independent": true, "funding_verified": true,
         "product_evidence": [
@@ -3621,14 +3667,17 @@
     {
       "slug": "mundo",
       "company_url": "https://mundoai.world/",
-      "state": "publication_blocked",
-      "reason_code": "investor_research",
-      "reason": "Product, funding and taste evidence cleared, but the announced Next Frontier participant identity did not resolve cleanly to a current official firm without ambiguity.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Augment Ventures' portfolio note resolves the announced participant as Next Frontier Capital; product, funding and taste still pass, while remaining investor profiles, brands and visual publication work are preserved for the next bounded release window.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
       "priority": 1,
-      "sources": ["https://mundoai.world/", "https://mundoai.world/research/perception-is-the-next-frontier", "https://www.gpv.com/news/our-investment-in-mundo"],
-      "attempts": [{"date": "2026-09-17", "outcome": "publication_blocked", "note": "The product and $20M Series A passed, but a named participant's current official identity remained ambiguous."}],
+      "sources": ["https://mundoai.world/", "https://mundoai.world/research/perception-is-the-next-frontier", "https://www.gpv.com/news/our-investment-in-mundo", "https://www.augmentventures.com/augment-ventures-september-2026/"],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "publication_blocked", "note": "The product and $20M Series A passed, but a named participant's current official identity remained ambiguous."},
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Augment Ventures identifies the participant as Next Frontier Capital; publication is deferred only for remaining investor, brand and screenshot work after two complete releases consumed the reserved closeout budget."}
+      ],
       "evaluation": {
         "rubric": "other", "independent": true, "funding_verified": true,
         "product_evidence": [
@@ -3676,11 +3725,14 @@
       "state": "qualified_pending",
       "reason_code": "run_budget",
       "reason": "Product, funding and taste evidence cleared, but the nine-investor associated scope could not be completed without displacing release, deploy and closeout work.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
       "priority": 2,
       "sources": ["https://onefootprint.com/", "https://onefootprint.com/learn/series-b"],
-      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The compliance product and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "qualified_pending", "note": "The compliance product and financing passed; associated investor profiles and brands remain the explicit publication work."},
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Qualification remains valid; the nine-investor profile, brand and screenshot scope is retained after the run's remaining budget was reserved for final validation, deployment and truthful closeout."}
+      ],
       "evaluation": {
         "rubric": "enterprise", "independent": true, "funding_verified": true,
         "product_evidence": [
@@ -3700,11 +3752,14 @@
       "state": "qualified_pending",
       "reason_code": "run_budget",
       "reason": "Product, funding and taste evidence cleared, but the six-investor associated scope could not be completed within the remaining release and closeout budget.",
-      "reviewed_at": "2026-09-17",
-      "next_review_at": "2026-09-20",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
       "priority": 2,
       "sources": ["https://veridion.com/", "https://www.businesswire.com/news/home/20260916207241/en/"],
-      "attempts": [{"date": "2026-09-17", "outcome": "qualified_pending", "note": "The live company graph and financing passed; associated investor profiles and brands remain the explicit publication work."}],
+      "attempts": [
+        {"date": "2026-09-17", "outcome": "qualified_pending", "note": "The live company graph and financing passed; associated investor profiles and brands remain the explicit publication work."},
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Qualification remains valid; the six-investor profile, brand and screenshot scope is retained after the run's remaining budget was reserved for final validation, deployment and truthful closeout."}
+      ],
       "evaluation": {
         "rubric": "enterprise", "independent": true, "funding_verified": true,
         "product_evidence": [
@@ -3873,6 +3928,110 @@
           "bet": {"pass": true, "note": "AcouBatt bets that passive acoustic emissions reveal internal battery changes without destructive inspection."},
           "craft": {"pass": true, "note": "Sensors, acquisition hardware, electrochemical synchronization and AI analysis form a coherent measurement stack."},
           "specificity": {"pass": true, "note": "Cell formation, defects, chemistries and manufacturing use cases are named rather than abstract."}
+        }
+      }
+    },
+    {
+      "slug": "eve-security",
+      "company_url": "https://eve.security/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Funding, independence, runtime agent-security product evidence and taste pass; four new associated investor profiles, brands and the visual publication workflow remain for a later bounded release window.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
+      "priority": 2,
+      "sources": [
+        "https://eve.security/",
+        "https://www.prnewswire.com/news-releases/eve-security-extends-seed-round-to-7-5-million-as-rogue-ai-agents-turn-runtime-security-into-an-enterprise-imperative-302878598.html"
+      ],
+      "attempts": [
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "The agent inventory, runtime policy controls, audit trail and financing passed; four new investor profiles plus brand and screenshot publication work remain after the run reserved time for release verification."}
+      ],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://eve.security/", "note": "The live site exposes discovery, governance and runtime enforcement across agents, MCP servers and APIs, including allow, block, modify and interrogate controls."},
+          {"url": "https://www.prnewswire.com/news-releases/eve-security-extends-seed-round-to-7-5-million-as-rogue-ai-agents-turn-runtime-security-into-an-enterprise-imperative-302878598.html", "note": "The company-supplied announcement verifies the new financing and describes the EveGuard runtime security platform."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Eve bets AI-agent security requires runtime control over actions, not only inventory or pre-deployment scanning."},
+          "craft": {"pass": true, "note": "Discovery, policy enforcement, interrogation, audit trails and named integrations form an inspectable control loop."},
+          "specificity": {"pass": true, "note": "Agents, MCP servers, APIs and concrete allow, block and modify actions make the boundary explicit."}
+        }
+      }
+    },
+    {
+      "slug": "decimal-ai",
+      "company_url": "https://www.decimal.app/",
+      "state": "qualified_pending",
+      "reason_code": "run_budget",
+      "reason": "Funding, independence, customer-engineering product evidence and taste pass; four new associated investor profiles, brands and the visual publication workflow remain for a later bounded release window.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
+      "priority": 2,
+      "sources": [
+        "https://www.decimal.app/",
+        "https://www.prnewswire.com/news-releases/decimal-ai-announces-4-million-seed-round-to-bring-customer-engineering-to-software-companies-302879089.html"
+      ],
+      "attempts": [
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "The evidence-cited investigation workflow, read-only default, enterprise controls and financing passed; four investor profiles plus brand and screenshot publication work remain after release time was reserved."}
+      ],
+      "evaluation": {
+        "rubric": "developer", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.decimal.app/", "note": "The live product investigates customer issues across code, logs, configuration and production data and returns answers with citations and evidence."},
+          {"url": "https://www.prnewswire.com/news-releases/decimal-ai-announces-4-million-seed-round-to-bring-customer-engineering-to-software-companies-302879089.html", "note": "The company-supplied release verifies the Seed round and describes the customer-engineering workflow."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Decimal bets technical support can investigate the same operational evidence as a customer engineer instead of escalating every complex issue."},
+          "craft": {"pass": true, "note": "Read-only access, cited evidence, integrations, SSO, RBAC and audit logs expose concrete controls."},
+          "specificity": {"pass": true, "note": "Code, logs, configuration, production data and support investigations define a precise workflow."}
+        }
+      }
+    },
+    {
+      "slug": "ravel",
+      "company_url": "https://www.ravelfuture.com/",
+      "state": "evidence_pending",
+      "reason_code": "product_evidence_gap",
+      "reason": "The fresh financing and official textile-recycling surface are locked for full product, funding and taste verification before any publication decision.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": "2026-09-22",
+      "priority": 2,
+      "sources": [
+        "https://www.ravelfuture.com/",
+        "https://www.prnewswire.com/news-releases/ravel-raises-8-2m-oversubscribed-seed-round-to-scale-purification-recycling-for-blended-textiles-302881246.html"
+      ],
+      "attempts": [
+        {"date": "2026-09-21", "outcome": "evidence_pending", "note": "Funding is verified, but the live official page is visually sparse and provides no inspectable pilot, equipment or operating evidence beyond the purification-recycling claim."}
+      ]
+    },
+    {
+      "slug": "magentic",
+      "company_url": "https://www.magentic.com/",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "Funding, independence, industrial-procurement product evidence, taste, all three associated investors, official brand assets and SHA-bound screenshot review are complete.",
+      "reviewed_at": "2026-09-21",
+      "next_review_at": null,
+      "priority": 2,
+      "sources": [
+        "https://www.magentic.com/",
+        "https://www.magentic.com/stories/magentic-raises-18m"
+      ],
+      "attempts": [
+        {"date": "2026-09-21", "outcome": "accepted", "note": "The procurement operating loop, financing, fresh or newly researched investor profiles, official brands and exact-hash visual publication assets passed review."}
+      ],
+      "evaluation": {
+        "rubric": "enterprise", "independent": true, "funding_verified": true,
+        "product_evidence": [
+          {"url": "https://www.magentic.com/", "note": "The live product exposes value hunting, purchasing controls and recovery workflows across contracts, ERP data, invoices, email and spreadsheets."},
+          {"url": "https://www.magentic.com/stories/magentic-raises-18m", "note": "The official announcement verifies the Series A and describes multi-agent procurement work executed inside manufacturer systems."}
+        ],
+        "taste": {
+          "bet": {"pass": true, "note": "Magentic bets industrial procurement can be delegated as end-to-end operating work rather than surfaced in another analytics dashboard."},
+          "craft": {"pass": true, "note": "Before-, during- and after-purchase workflows plus existing-system integration create a coherent operating loop."},
+          "specificity": {"pass": true, "note": "Contracts, suppliers, purchase orders, invoices, rebates and named enterprise systems make the product boundary concrete."}
         }
       }
     }

@@ -2114,6 +2114,26 @@
       },
       "notes": "Clean native 1280x720 embedded-security product hero; desktop and 390px card/detail renderings are loaded, legible, unobstructed, and correctly framed."
     },
+    "expanse-compute": {
+      "sha256": "bde761a0a20f9dcf97eec9e219f51a8e219601d5c9ff397f44eb76d197395bd7",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://expanse.sh/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-21T06:02:54.974Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the exact final WebP plus the actual 1280px homepage card, detail hero, and 390px narrow card/detail. The Expanse headline and resource-recommendation console remain loaded, readable, fully contained, and unobstructed."
+    },
     "expertise-ai": {
       "sha256": "95b09da57628b8e9b41b454c6501810cc2bd553cce85d5cb556316e2835be9ea",
       "width": 1280,
@@ -3583,6 +3603,26 @@
         "detail": true
       },
       "notes": "Reviewed full contact-sheet tile: identifiable product, readable main content, no blocking capture defect. Card observation: Visually inspected at the actual 320px simulated card width: a readable main heading or identifiable product subject remains visible, with no added object-fit crop or blocking overlay. Body microcopy need not be legible in this thumbnail. Agent visual review, not human review. Card: individual 320px simulation; 360px same contain geometry. Detail: full-image review plus all-asset natural-aspect geometry. Representative native Codex isolated 320/360/detail shared-CSS examples verified; not all 299 production routes browsed."
+    },
+    "magentic": {
+      "sha256": "5e8460b9ede119feabb9ea3ed7dd6913b75314df153396efb77465eaf24505e8",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://www.magentic.com/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-curator",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-21T06:02:55.121Z",
+      "reviewer": "codex-daily-curator",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second pass inspected the exact final WebP plus the actual 1280px homepage card, detail hero, and 390px narrow card/detail. Magentic's digital-worker headline, people, and funding panel remain loaded, readable, fully contained, and unobstructed."
     },
     "magnitude": {
       "sha256": "2d32175905dfe87508555490da07a76be788e1410f136a9da4f97aeb13b75125",

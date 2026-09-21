@@ -1,0 +1,52 @@
+{
+  "slug": "magentic",
+  "domain": "www.magentic.com",
+  "url": "https://www.magentic.com/",
+  "product_name": "Magentic",
+  "summary": "AI digital workers that execute procurement and supply-chain workflows for manufacturers.",
+  "editor_note": "The stronger idea is procurement automation as an operating role rather than another dashboard: agents read contracts, invoices, email, ERP records and spreadsheets, then carry work from analysis through supplier action. The before-, during- and after-purchase loop covers value hunting, purchasing controls and recovery. Savings remain company reported, while permissions and human oversight inside critical systems are the central risk.",
+  "editor_rating": 5,
+  "why_featured": "$18M Series A for industrial AI workers",
+  "product_type": "SaaS",
+  "region": "Europe",
+  "tags": "AI agents,procurement,supply chain,manufacturing,enterprise software",
+  "investors": "Felicis Ventures, Sequoia Capital, The Westly Group",
+  "links": {
+    "product": "https://www.magentic.com/capabilities",
+    "careers": "https://www.magentic.com/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$18M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "Felicis Ventures",
+      "date": "2026-09-17",
+      "source_url": "https://www.magentic.com/stories/magentic-raises-18m",
+      "source_name": "Magentic"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-21",
+    "sources": [
+      {"id": "official_site", "label": "Magentic official site", "url": "https://www.magentic.com/", "type": "official"},
+      {"id": "capabilities", "label": "Magentic capabilities", "url": "https://www.magentic.com/capabilities", "type": "product"},
+      {"id": "funding_1", "label": "Magentic Series A announcement", "url": "https://www.magentic.com/stories/magentic-raises-18m", "type": "funding"},
+      {"id": "careers", "label": "Magentic careers", "url": "https://www.magentic.com/careers", "type": "official"}
+    ],
+    "product_evidence": [
+      {"claim": "Magentic's agents run procurement jobs across category analysis, purchasing controls, contract compliance and value recovery.", "source_ids": ["official_site", "capabilities"]},
+      {"claim": "The agents connect contracts, ERP data, invoices, email and spreadsheets, and can prepare supplier actions while people retain control.", "source_ids": ["official_site", "funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Procurement and supply-chain teams at large manufacturers.",
+      "category": "Agentic procurement operations",
+      "differentiation": "Runs end-to-end procurement work inside existing systems instead of presenting a separate analytics dashboard.",
+      "why_now": "Rising manufacturing demand and fragmented legacy procurement data increase the value of agents that can reason across existing systems."
+    },
+    "risks": [
+      {"claim": "Company-reported savings and adoption do not establish performance across customers, and write access across procurement systems requires careful permissions, auditability and human oversight.", "basis": "VentureDex assessment based on Magentic's official product and financing materials."}
+    ]
+  }
+}

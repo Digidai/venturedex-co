@@ -1,0 +1,51 @@
+{
+  "slug": "expanse-compute",
+  "domain": "expanse.sh",
+  "url": "https://expanse.sh/",
+  "product_name": "Expanse",
+  "summary": "Compute-intelligence software that predicts AI and HPC workload requirements before execution.",
+  "editor_note": "The sharp idea is temporal: instead of explaining GPU waste after a job runs, Expanse predicts GPU, CPU, memory, runtime and completion risk before resources are committed. It installs inside customer-controlled SLURM, Kubernetes or Nomad environments and keeps recommendations tied to observed execution evidence. The published efficiency figures are company reported, so broader independent validation remains the key risk.",
+  "editor_rating": 5,
+  "why_featured": "$5.3M seed for predictive compute sizing",
+  "product_type": "SaaS",
+  "region": "Global / Remote",
+  "tags": "AI infrastructure,GPU optimization,HPC,developer tools,cloud computing",
+  "investors": "Crane Venture Partners, PXN Ventures",
+  "links": {
+    "product": "https://expanse.sh/product"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$5.3M",
+      "currency": "USD",
+      "stage": "Seed",
+      "lead_investor": "Crane Venture Partners",
+      "date": "2026-09-16",
+      "source_url": "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html",
+      "source_name": "Expanse via GlobeNewswire"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-21",
+    "sources": [
+      {"id": "official_site", "label": "Expanse official site", "url": "https://expanse.sh/", "type": "official"},
+      {"id": "product", "label": "Expanse product detail", "url": "https://expanse.sh/product", "type": "product"},
+      {"id": "funding_1", "label": "Expanse seed announcement", "url": "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html", "type": "funding"},
+      {"id": "company", "label": "Expanse company overview", "url": "https://expanse.sh/company", "type": "official"}
+    ],
+    "product_evidence": [
+      {"claim": "Expanse Analyse predicts GPU allocation, memory use, runtime and failure risk before an AI or HPC job enters the queue.", "source_ids": ["official_site", "product"]},
+      {"claim": "The platform integrates with SLURM, Kubernetes and Nomad and keeps code, logs, telemetry and job data inside customer-controlled infrastructure.", "source_ids": ["product", "funding_1"]}
+    ],
+    "market_context": {
+      "primary_user": "Infrastructure and research-computing teams operating shared GPU or HPC clusters.",
+      "category": "Predictive compute optimization",
+      "differentiation": "Makes evidence-bound resource and completion predictions before execution, rather than limiting analysis to post-run monitoring.",
+      "why_now": "Constrained GPU capacity makes workload right-sizing more valuable than simply procuring additional hardware."
+    },
+    "risks": [
+      {"claim": "Reported waste reduction and prediction accuracy are company supplied and may not generalize across workloads, schedulers or customer environments.", "basis": "VentureDex assessment of Expanse's official product pages and financing announcement."}
+    ]
+  }
+}

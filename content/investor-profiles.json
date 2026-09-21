@@ -17201,6 +17201,47 @@
         {"key": "geographies", "value": "United Kingdom and Northern Europe companies with a UK link", "source_ids": ["official"]}
       ],
       "sources": [{"id": "official", "label": "Ada Ventures official overview", "url": "https://www.adaventures.com/", "checked_at": "2026-09-20"}]
+    },
+    "crane-venture-partners": {
+      "reviewed_at": "2026-09-21",
+      "summary": {"value": "Early-stage venture capital firm backing foundational technology companies from inception through seed with global reach and hands-on support.", "source_ids": ["official", "story"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Inception", "Pre-seed", "Seed"], "source_ids": ["official", "story"]},
+        {"key": "sectors", "value": ["AI infrastructure", "Semiconductors", "Developer tools", "Enterprise systems", "Hard technology"], "source_ids": ["story"]},
+        {"key": "geographies", "value": "Europe, North America, APAC and India", "source_ids": ["story"]},
+        {"key": "support", "value": "Strategic guidance, go-to-market expertise, founder networks and operator-led company-building support", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Crane Venture Partners official overview", "url": "https://crane.vc/", "checked_at": "2026-09-21"},
+        {"id": "story", "label": "Crane Venture Partners official firm story", "url": "https://crane.vc/our-story/", "checked_at": "2026-09-21"}
+      ]
+    },
+    "pxn-ventures": {
+      "reviewed_at": "2026-09-21",
+      "summary": {"value": "Northern UK venture investor combining capital and operational support for founders from pre-seed through Series B and beyond.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Pre-seed", "Seed", "Series A", "Series B and later"], "source_ids": ["official"]},
+        {"key": "geographies", "value": "Northern United Kingdom with global ambitions", "source_ids": ["official"]},
+        {"key": "support", "value": "Capital paired with sector expertise and operational capability", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "PXN Ventures official overview", "url": "https://www.pxnventures.co.uk/", "checked_at": "2026-09-21"}
+      ]
+    },
+    "the-westly-group": {
+      "reviewed_at": "2026-09-21",
+      "summary": {"value": "Venture capital firm backing AI-native software and hardware across industries that build, power and move the physical world.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "founded", "value": "2007", "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Energy", "Artificial intelligence", "Reindustrialization and robotics", "Mobility", "Cybersecurity"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Backs AI-native software and hardware companies transforming physical-world industries", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "The Westly Group official overview", "url": "https://westlygroup.com/", "checked_at": "2026-09-21"}
+      ]
     }
   },
   "attempts": {}

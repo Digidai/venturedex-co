@@ -1008,5 +1008,55 @@
     "source_url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology",
     "source_name": "UCL Ventures",
     "verified_at": "2026-09-20"
+  },
+  {
+    "company_slug": "expanse-compute",
+    "investor_slug": "crane-venture-partners",
+    "round_date": "2026-09-16",
+    "round_stage": "Seed",
+    "role": "lead",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html",
+    "source_name": "Expanse via GlobeNewswire",
+    "verified_at": "2026-09-21"
+  },
+  {
+    "company_slug": "expanse-compute",
+    "investor_slug": "pxn-ventures",
+    "round_date": "2026-09-16",
+    "round_stage": "Seed",
+    "role": "participant",
+    "source_url": "https://www.globenewswire.com/news-release/2026/09/16/3363199/0/en/expanse-raises-5-3-million-to-eliminate-guesswork-from-ai-computing.html",
+    "source_name": "Expanse via GlobeNewswire",
+    "verified_at": "2026-09-21"
+  },
+  {
+    "company_slug": "magentic",
+    "investor_slug": "felicis",
+    "round_date": "2026-09-17",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://www.magentic.com/stories/magentic-raises-18m",
+    "source_name": "Magentic",
+    "verified_at": "2026-09-21"
+  },
+  {
+    "company_slug": "magentic",
+    "investor_slug": "sequoia",
+    "round_date": "2026-09-17",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.magentic.com/stories/magentic-raises-18m",
+    "source_name": "Magentic",
+    "verified_at": "2026-09-21"
+  },
+  {
+    "company_slug": "magentic",
+    "investor_slug": "the-westly-group",
+    "round_date": "2026-09-17",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://www.magentic.com/stories/magentic-raises-18m",
+    "source_name": "Magentic",
+    "verified_at": "2026-09-21"
   }
 ]

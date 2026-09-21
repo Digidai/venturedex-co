@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-20",
+  "verified_at": "2026-09-21",
   "companies": {
     "8090": {
       "name": "8090",
@@ -2566,6 +2566,20 @@
       "local_path": "/logos/companies/acoubatt.svg",
       "source_page": "https://acoubatt.ai/",
       "source_url": "https://acoubatt.ai/favicon.svg"
+    },
+    "expanse-compute": {
+      "name": "Expanse",
+      "shape": "icon",
+      "local_path": "/logos/companies/expanse-compute.png",
+      "source_page": "https://expanse.sh/",
+      "source_url": "https://expanse.sh/_app/immutable/assets/expanse-wheel.CLXGAWfo.png"
+    },
+    "magentic": {
+      "name": "Magentic",
+      "shape": "icon",
+      "local_path": "/logos/companies/magentic.png",
+      "source_page": "https://www.magentic.com/",
+      "source_url": "https://framerusercontent.com/images/8KyYhfKf3KJ7WAFEioNBouTrnY.png"
     }
   },
   "investors": {
@@ -5413,6 +5427,27 @@
       "local_path": "/logos/investors/ada-ventures.png",
       "source_page": "https://www.adaventures.com/",
       "source_url": "https://cdn.prod.website-files.com/66c4a2417b27d476937f0b0c/677e5fececff055d67d628bd_Ada-webclip-2.png"
+    },
+    "crane-venture-partners": {
+      "name": "Crane Venture Partners",
+      "shape": "icon",
+      "local_path": "/logos/investors/crane-venture-partners.svg",
+      "source_page": "https://crane.vc/",
+      "source_url": "https://crane.vc/favicon.svg"
+    },
+    "pxn-ventures": {
+      "name": "PXN Ventures",
+      "shape": "wordmark",
+      "local_path": "/logos/investors/pxn-ventures.svg",
+      "source_page": "https://www.pxnventures.co.uk/",
+      "source_url": "https://praetura-pxnventures-production.s3.eu-west-2.amazonaws.com/wp-content/uploads/2025/11/19052240/PXN-Ventures-Logo.svg"
+    },
+    "the-westly-group": {
+      "name": "The Westly Group",
+      "shape": "icon",
+      "local_path": "/logos/investors/the-westly-group.png",
+      "source_page": "https://westlygroup.com/",
+      "source_url": "https://westlygroup.com/wp-content/uploads/2021/10/TWG_Solo-Logo_Original.png"
     }
   }
 }
