@@ -1,0 +1,385 @@
+{
+  "issue_number": 15,
+  "title": "The Hard Part Is Closing the Loop",
+  "week_start": "2026-09-14",
+  "week_end": "2026-09-20",
+  "published_at": "2026-09-21",
+  "status": "published",
+  "editorial_intro": "A useful signal is not yet a product. This week's companies are building the rest of the loop: they connect evidence to a decision, carry that decision into a workflow, and expose what should be checked next. The pattern spans software operations, battery manufacturing, commerce, enterprise delivery, customer work and clinical development, but the editorial test is the same: does the system make the next action more inspectable?",
+  "research_summary": "We reviewed all seven published VentureDex records, their structured research blocks, official product surfaces and linked financing or primary-source pages in the Codex in-app browser. Product workflows and disclosed financing are treated as observable facts; customer outcomes, productivity gains, reliability, conversion lift, manufacturing improvements, clinical efficacy and future regulatory results remain vendor-reported or unverified unless explicitly bounded below.",
+  "evaluation_method": [
+    "Use only published VentureDex records, official product surfaces, and linked source URLs.",
+    "Separate observed product evidence from editorial judgment.",
+    "State missing evidence explicitly instead of filling gaps with market assumptions."
+  ],
+  "themes": [
+    {
+      "title": "Observe, decide, act, verify",
+      "summary": "These products move beyond displaying information. They join a domain-specific signal to an operational decision and a follow-up step, while leaving very different evidence gaps around automation quality, deployment economics, repeatability and clinical validation."
+    }
+  ],
+  "picks": [
+    {
+      "slug": "raindrop",
+      "why_this_week": "Raindrop's September 17 Series A announcement introduced Simulations, extending its production-detection workflow into pre-release testing. That move makes the feedback loop itself—not another trace viewer—the relevant product bet this week.",
+      "product_evaluation": "Raindrop connects tracing, unsupervised issue detection, investigation, experiments and verification around agent runs. Its newly announced Simulations replay production traffic and existing test cases against proposed changes, then apply anomaly detection before release. This is an unusually coherent reliability loop, but Simulations was still in early access when reviewed and the company has not published independent cross-architecture coverage or detection results.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/raindrop.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Raindrop official product site",
+          "source": "content/startups/raindrop.json research.sources.official_site",
+          "url": "https://www.raindrop.ai/"
+        },
+        {
+          "label": "Raindrop Series A announcement",
+          "source": "content/startups/raindrop.json research.sources.funding_1",
+          "url": "https://www.raindrop.ai/blog/series-a/"
+        },
+        {
+          "label": "Raindrop careers",
+          "source": "content/startups/raindrop.json research.sources.careers",
+          "url": "https://www.raindrop.ai/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The live product connects run tracing, unsupervised issue detection, triage, experiments, MCP access and an open-source local workshop in one agent-reliability workflow.",
+          "url": "https://www.raindrop.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The Series A announcement describes simulations that replay production traffic and test cases against proposed agent changes, then apply anomaly detection before release.",
+          "url": "https://www.raindrop.ai/blog/series-a/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Raindrop homepage",
+          "url": "https://www.raindrop.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Raindrop",
+          "url": "https://www.raindrop.ai/blog/series-a/"
+        }
+      ],
+      "risks": [
+        "Simulations remain in early access, and the company has not published independently audited coverage or failure-detection rates across diverse agent architectures.",
+        "The homepage's customer and outcome examples are company-selected evidence, so they do not establish general reliability across agent stacks."
+      ],
+      "verdict": "Raindrop is strongest when judged as a detect-to-simulate workflow; the open question is how broadly that loop catches failures the team did not anticipate."
+    },
+    {
+      "slug": "resolve-ai",
+      "why_this_week": "Resolve AI's September 16 Series A puts a large financing signal behind a specific claim: production agents should not stop at summarizing an incident, but should connect evidence across systems and help carry remediation forward.",
+      "product_evaluation": "The live product is concrete about the operational surface: incident investigation, recurring-issue analysis, background tasks, custom agents and integrations across existing production tools. Its security page also documents single-tenant deployment, customer-managed keys, SSO, RBAC, APIs, webhooks and MCP. Those interfaces make the proposed control boundary inspectable; the site's autonomy, MTTR and staffing improvements remain company-reported rather than independently verified here.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/resolve-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Resolve AI official product site",
+          "source": "content/startups/resolve-ai.json research.sources.official_site",
+          "url": "https://resolve.ai/"
+        },
+        {
+          "label": "Resolve AI security overview",
+          "source": "content/startups/resolve-ai.json research.sources.security",
+          "url": "https://resolve.ai/security"
+        },
+        {
+          "label": "Resolve AI Series A announcement",
+          "source": "content/startups/resolve-ai.json research.sources.funding_1",
+          "url": "https://resolve.ai/blog/series-a-funding"
+        },
+        {
+          "label": "Resolve AI careers",
+          "source": "content/startups/resolve-ai.json research.sources.careers",
+          "url": "https://resolve.ai/careers"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The live site presents agents that investigate incidents and operational tasks through integrations, APIs, MCP and reusable skills rather than a generic support chatbot.",
+          "url": "https://resolve.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The product surface shows a concrete root-cause path connecting a feature flag, database activity and CPU behavior, while the security page documents enterprise controls around production access.",
+          "url": "https://resolve.ai/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Resolve AI homepage",
+          "url": "https://resolve.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Resolve AI",
+          "url": "https://resolve.ai/blog/series-a-funding"
+        }
+      ],
+      "risks": [
+        "Company-selected examples do not establish how reliably the agents handle novel incidents or unsafe action boundaries across heterogeneous production environments.",
+        "The current site makes broad autonomous-resolution claims, but the reviewed public material does not expose a cross-customer benchmark or independent failure analysis."
+      ],
+      "verdict": "Resolve AI has an inspectable path from telemetry to operational action; its decisive test is whether the safety and reasoning boundary holds on unfamiliar incidents."
+    },
+    {
+      "slug": "acoubatt",
+      "why_this_week": "AcouBatt's September 16 pre-seed round brings the week's feedback-loop theme into physical manufacturing: an external sensor listens to cell activity, synchronizes it with existing measurements and points engineers toward the cells or process intervals worth investigating.",
+      "product_evaluation": "The product combines passive acoustic-emission sensors, acquisition hardware and AI classification with electrochemical data on a shared timeline. That stack is specific enough to evaluate and is designed to inform formation and quality decisions without opening the cell. AcouBatt explicitly labels its site visuals as illustrative, while UCL Ventures attributes the proposed formation-time improvement to the company; neither is independent performance validation.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/acoubatt.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "AcouBatt official product site",
+          "source": "content/startups/acoubatt.json research.sources.official_site",
+          "url": "https://acoubatt.ai/"
+        },
+        {
+          "label": "AcouBatt technology overview",
+          "source": "content/startups/acoubatt.json research.sources.technology",
+          "url": "https://acoubatt.ai/technology/"
+        },
+        {
+          "label": "UCL Ventures AcouBatt financing report",
+          "source": "content/startups/acoubatt.json research.sources.funding_1",
+          "url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The official site presents external acoustic-emission sensors, data-acquisition hardware and AI analysis that synchronize signals with electrochemical measurements in real time.",
+          "url": "https://acoubatt.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "UCL Ventures describes formation-stage monitoring for early defect detection and a potential reduction in conservative formation-time buffers, while attributing the technology to UCL battery-acoustics research.",
+          "url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology"
+        },
+        {
+          "label": "Official product site",
+          "source": "AcouBatt homepage",
+          "url": "https://acoubatt.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "UCL Ventures",
+          "url": "https://www.uclventures.com/spinout-portfolio-news/2026/acoubatt-raises-ps11m-battery-listening-technology"
+        }
+      ],
+      "risks": [
+        "The claimed formation-time improvement is not independently validated, and sensor calibration, signal interpretation and deployment economics may vary across chemistries and form factors.",
+        "The official visuals explain the workflow but are not measured cell data, so public evidence does not yet show false-positive rates or production-scale performance."
+      ],
+      "verdict": "AcouBatt turns a previously hidden physical signal into a manufacturing decision aid; the commercial case still depends on measured performance across real production lines."
+    },
+    {
+      "slug": "hang-ten-systems",
+      "why_this_week": "Hang Ten's September 16 second Seed announcement follows a much more inspectable product surface than the company exposed during its earlier review. Hobie's five layers now show how context, semantics, queries, governance and feedback are intended to fit together inside enterprise delivery.",
+      "product_evaluation": "Hobie separates the workflow into Shoreline, Shaper, Lens, Reef and Beacon: a user surface, agent-building loop, versioned business model, in-place querying and audit controls. This makes the software component legible, including read-only queries and fail-closed access. Hang Ten still sells advisory and forward-deployed delivery alongside the platform, so repeatability and software economics cannot be inferred from the public workflow or company performance claims.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/hang-ten-systems.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Hang Ten Systems official product",
+          "source": "content/startups/hang-ten-systems.json research.sources.official",
+          "url": "https://hangten.ai/"
+        },
+        {
+          "label": "Hang Ten Systems Hobie platform",
+          "source": "content/startups/hang-ten-systems.json research.sources.platform",
+          "url": "https://hangten.ai/#platform"
+        },
+        {
+          "label": "Hang Ten Systems second Seed announcement",
+          "source": "content/startups/hang-ten-systems.json research.sources.funding",
+          "url": "https://hangten.ai/press-seed-ii"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The live platform surface breaks Hobie into Shoreline, Shaper, Lens, Reef and Beacon layers for enterprise context, generation, semantics, governance and feedback.",
+          "url": "https://hangten.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The financing announcement describes an AI-native delivery model using agentic code generation, a reusable skills library and domain expertise across software, finance, migrations and HR.",
+          "url": "https://hangten.ai/press-seed-ii"
+        },
+        {
+          "label": "Official product site",
+          "source": "Hang Ten Systems homepage",
+          "url": "https://hangten.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Hang Ten Systems",
+          "url": "https://hangten.ai/press-seed-ii"
+        }
+      ],
+      "risks": [
+        "Services-heavy delivery may limit software margins and make outcomes engagement-specific.",
+        "The site's 10x value and delivery-speed statements are company claims; the reviewed pages do not provide independent, comparable program results."
+      ],
+      "verdict": "Hobie gives Hang Ten a credible product spine, but the business must still show that its closed-loop platform travels beyond bespoke enterprise engagements."
+    },
+    {
+      "slug": "envive-ai",
+      "why_this_week": "Envive AI's September 16 Series A arrives as its product surface separates the commerce loop into sales, search and measurement. Shopper questions become context, agents adapt the experience, and the Hub is intended to show what happened next.",
+      "product_evaluation": "Envive exposes a Shopify-oriented adaptive storefront, Sales and Search agents, plus a Hub for measurement. The pages also describe per-brand models, brand-alignment evaluations and reinforcement signals shared across agents. That is more specific than a generic storefront chatbot, but every conversion, revenue, compliance and growth figure visible on the reviewed pages is vendor- or customer-story evidence and is not treated as an independent result.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/envive-ai.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Envive AI official product",
+          "source": "content/startups/envive-ai.json research.sources.official",
+          "url": "https://www.envive.ai/"
+        },
+        {
+          "label": "Envive AI product overview",
+          "source": "content/startups/envive-ai.json research.sources.product",
+          "url": "https://www.envive.ai/product"
+        },
+        {
+          "label": "Envive AI Series A announcement",
+          "source": "content/startups/envive-ai.json research.sources.funding",
+          "url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The live product positions an adaptive storefront for Shopify that continuously uses shopper context to change commerce interactions rather than serving a fixed scripted flow.",
+          "url": "https://www.envive.ai/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official announcement describes cooperative agents sharing context across awareness, browse, consideration and post-purchase, with reinforcement learning and brand-alignment controls.",
+          "url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era"
+        },
+        {
+          "label": "Official product site",
+          "source": "Envive AI homepage",
+          "url": "https://www.envive.ai/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Envive AI",
+          "url": "https://www.envive.ai/post/envive-ai-raises-15m-series-a-to-power-self-improving-agents-for-the-agentic-commerce-era"
+        }
+      ],
+      "risks": [
+        "Company-reported conversion outcomes may not generalize across brands or traffic mixes.",
+        "Public pages explain the evaluation categories but do not publish an independent cross-brand benchmark for accuracy, safety or causal revenue lift."
+      ],
+      "verdict": "Envive's product bet is a shared learning loop across commerce surfaces; the evidence gap is whether its measured gains remain durable outside selected customer cases."
+    },
+    {
+      "slug": "sling-therapeutics",
+      "why_this_week": "Sling Therapeutics' September 16 Series C funds the Phase 3 ORBIT trial, making clinical verification—not launch rhetoric—the next loop that matters. The company is testing whether an oral IGF-1R inhibitor can offer a different treatment route for thyroid eye disease.",
+      "product_evaluation": "The official pipeline identifies linsitinib as an oral small-molecule IGF-1R inhibitor in Phase 3 development, and the financing announcement states that ORBIT has begun and that the FDA granted Fast Track designation. Those are concrete development milestones. Phase 2b/3 efficacy and safety descriptions on the same company pages remain sponsor-reported, while Phase 3 results, approval and real-world convenience are future outcomes.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/sling-therapeutics.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Sling Therapeutics official product",
+          "source": "content/startups/sling-therapeutics.json research.sources.official",
+          "url": "https://slingtx.com/"
+        },
+        {
+          "label": "Sling Therapeutics pipeline",
+          "source": "content/startups/sling-therapeutics.json research.sources.pipeline",
+          "url": "https://slingtx.com/pipeline/"
+        },
+        {
+          "label": "Sling Therapeutics Series C announcement",
+          "source": "content/startups/sling-therapeutics.json research.sources.funding",
+          "url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The pipeline page identifies linsitinib as an oral small-molecule IGF-1R inhibitor in Phase 3 development for thyroid eye disease.",
+          "url": "https://slingtx.com/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "The official financing announcement says the global Phase 3 ORBIT pivotal trial has begun and that the FDA granted Fast Track designation.",
+          "url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/"
+        },
+        {
+          "label": "Official product site",
+          "source": "Sling Therapeutics homepage",
+          "url": "https://slingtx.com/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Sling Therapeutics",
+          "url": "https://slingtx.com/2026/09/16/sling-therapeutics-announces-123-million-series-c-financing-to-advance-phase-3-development-of-its-oral-small-molecule-igf-1r-inhibitor-for-thyroid-eye-disease/"
+        }
+      ],
+      "risks": [
+        "Late-stage trial results and regulatory review may not confirm the efficacy, safety or convenience advantage suggested by earlier studies.",
+        "Fast Track designation changes the review pathway, not the evidentiary standard or the probability of approval."
+      ],
+      "verdict": "Sling has a clear route-of-administration bet and a live pivotal test; the product case remains contingent on that trial and regulatory review."
+    },
+    {
+      "slug": "zero",
+      "why_this_week": "Zero's September 15 Seed round accompanies public access to a CRM that tries to keep prospecting, sales and customer success on one record. It belongs here because the product uses the same context to recommend the next commercial action rather than ending at data capture.",
+      "product_evaluation": "Zero exposes Prospect, Close, Grow and Scale workflows, in-record calling and agent-assisted upkeep. The Grow surface joins product usage, billing, support issues and conversations so a team can investigate a renewal or account change from one record. The workflow is inspectable through a public 14-day trial, but automated recommendations still depend on reconciling sources that may disagree, and the reviewed pages do not establish independent accuracy or retention outcomes.",
+      "evidence": [
+        {
+          "label": "VentureDex product record",
+          "source": "content/startups/zero.json summary, editor_note, funding, and research fields"
+        },
+        {
+          "label": "Zero official product",
+          "source": "content/startups/zero.json research.sources.official",
+          "url": "https://zero.inc/"
+        },
+        {
+          "label": "Zero funding announcement",
+          "source": "content/startups/zero.json research.sources.funding",
+          "url": "https://zero.inc/blog/zero-raises-seed-round"
+        },
+        {
+          "label": "Customer growth workflow",
+          "source": "content/startups/zero.json research.sources.grow",
+          "url": "https://zero.inc/product/grow"
+        },
+        {
+          "label": "Structured product evidence 1",
+          "source": "The product exposes Prospect, Close, Grow and Scale workflows, in-record calling, agent-assisted updates and a 14-day trial.",
+          "url": "https://zero.inc/"
+        },
+        {
+          "label": "Structured product evidence 2",
+          "source": "Grow joins product usage, billing and conversations to surface customer health and changes before renewal discussions.",
+          "url": "https://zero.inc/product/grow"
+        },
+        {
+          "label": "Official product site",
+          "source": "Zero homepage",
+          "url": "https://zero.inc/"
+        },
+        {
+          "label": "Funding source",
+          "source": "Zero",
+          "url": "https://zero.inc/blog/zero-raises-seed-round"
+        }
+      ],
+      "risks": [
+        "Conflicting source data can make automated record changes and follow-ups unreliable.",
+        "Customer stories and productivity claims are company-selected; they do not establish general accuracy, retention lift or administrative savings."
+      ],
+      "verdict": "Zero makes shared customer context operational across the revenue lifecycle; trust will depend on how visibly it resolves contradictory records before agents act."
+    }
+  ]
+}
