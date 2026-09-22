@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "2cdfa8e97d987616e8d02132e114bc094ec54179",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/2cdfa8e97d987616e8d02132e114bc094ec54179",
-    "commit_at": "2026-09-20T11:26:11.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/2cdfa8e97d987616e8d02132e114bc094ec54179/src/data/videos.json",
-    "raw_sha256": "df4d2aa360977b9f450f649893b8c1043c97ff46cc6c45b80617220d2d916e2e"
+    "commit": "e024f2e5d96b0d2ecd3eb78f23fd505a594f636d",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/e024f2e5d96b0d2ecd3eb78f23fd505a594f636d",
+    "commit_at": "2026-09-22T13:58:50.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/e024f2e5d96b0d2ecd3eb78f23fd505a594f636d/src/data/videos.json",
+    "raw_sha256": "ebd5caa05ca5d8ee57d5d07b0c9bd6b66ca473f2c4702f7b03b42915e8f6d363"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,69 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-18T18:24:21.000Z",
-  "item_count": 2167,
+  "source_published_through": "2026-09-19T00:07:09.000Z",
+  "item_count": 2190,
   "items": [
+    {
+      "id": "plv-inco-splash",
+      "tweet_id": "2101100749623341513",
+      "slug": "inco-splash",
+      "title": "Inco Splash — open-source inference on Apple silicon",
+      "product": "Inco Splash",
+      "company": "Inco",
+      "category": "developer-tools",
+      "tags": [
+        "inco",
+        "inference",
+        "apple"
+      ],
+      "published_at": "2026-09-19T00:07:09.000Z",
+      "duration_seconds": 26,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101100710301761536/vid/avc1/1920x1080/h4j9WYZuA3mTCGzT.mp4",
+      "original_post_url": "https://x.com/inco_ai/status/2101100749623341513",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-commons",
+      "tweet_id": "2101022072525013220",
+      "slug": "commons",
+      "title": "Commons — people and AI agents run orgs together",
+      "product": "Commons",
+      "company": "Commons",
+      "category": "ai",
+      "tags": [
+        "commons",
+        "agents",
+        "orgs"
+      ],
+      "published_at": "2026-09-18T18:54:31.000Z",
+      "duration_seconds": 75,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101022043303194624/vid/avc1/1920x1080/ryXYbAmr-MFhuu0u.mp4",
+      "original_post_url": "https://x.com/NicolaeRusan/status/2101022072525013220",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-sherpa-fiction",
+      "tweet_id": "2101019876269973593",
+      "slug": "sherpa-fiction",
+      "title": "Sherpa — the most advanced fiction writing AI",
+      "product": "Sherpa",
+      "company": "Sherpa",
+      "category": "ai",
+      "tags": [
+        "sherpa",
+        "writing",
+        "fiction"
+      ],
+      "published_at": "2026-09-18T18:45:48.000Z",
+      "duration_seconds": 207,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101019709311528960/vid/avc1/1920x1080/GD881uVBOHK12aJ5.mp4",
+      "original_post_url": "https://x.com/RohanNayak2/status/2101019876269973593",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
     {
       "id": "plv-grok-bot-voice-notes",
       "tweet_id": "2101014478255247544",
@@ -65,6 +125,46 @@
       "last_changed_at": "2026-09-20T11:26:11.000Z"
     },
     {
+      "id": "plv-agentsky",
+      "tweet_id": "2100967557314547943",
+      "slug": "agentsky",
+      "title": "Agentsky — an agent market in the browser",
+      "product": "Agentsky",
+      "company": "Agentsky",
+      "category": "ai",
+      "tags": [
+        "agentsky",
+        "agents",
+        "market"
+      ],
+      "published_at": "2026-09-18T15:17:54.000Z",
+      "duration_seconds": 78,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100960067696877568/vid/avc1/1920x1080/YYZ6SAx0F2ADOJXY.mp4",
+      "original_post_url": "https://x.com/quxiaoyin/status/2100967557314547943",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-agentcloak",
+      "tweet_id": "2100960005289807961",
+      "slug": "agentcloak",
+      "title": "AgentCloak — use any AI without sharing real data",
+      "product": "AgentCloak",
+      "company": "AgentCloak",
+      "category": "ai",
+      "tags": [
+        "agentcloak",
+        "privacy",
+        "ai"
+      ],
+      "published_at": "2026-09-18T14:47:53.000Z",
+      "duration_seconds": 118,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100957439264980992/vid/avc1/1920x1080/cH0uiq0TXMMUSZ_b.mp4",
+      "original_post_url": "https://x.com/peteryared/status/2100960005289807961",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
       "id": "plv-compositor",
       "tweet_id": "2100946395972976843",
       "slug": "compositor",
@@ -103,6 +203,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2100796982776287232/vid/avc1/1920x1080/cKBCpkrekohd14Og.mp4",
       "original_post_url": "https://x.com/zellzoi_design/status/2100842256727175329",
       "last_changed_at": "2026-09-18T14:33:55.000Z"
+    },
+    {
+      "id": "plv-tastecode",
+      "tweet_id": "2100842256630534283",
+      "slug": "tastecode",
+      "title": "TasteCode — a desktop app for coding agents",
+      "product": "TasteCode",
+      "company": "TasteSkill",
+      "category": "design",
+      "tags": [
+        "tastecode",
+        "agents",
+        "design"
+      ],
+      "published_at": "2026-09-18T07:00:00.000Z",
+      "duration_seconds": 44,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100761811473604608/vid/avc1/1662x1024/lT2eWiZA2urzdexq.mp4",
+      "original_post_url": "https://x.com/LexnLin/status/2100842256630534283",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
     },
     {
       "id": "plv-monid-free-search",
@@ -165,6 +285,66 @@
       "last_changed_at": "2026-09-18T11:20:10.000Z"
     },
     {
+      "id": "plv-nebula",
+      "tweet_id": "2100676280496845270",
+      "slug": "nebula",
+      "title": "Nebula — agents and humans in channels together",
+      "product": "Nebula",
+      "company": "Nebula",
+      "category": "ai",
+      "tags": [
+        "nebula",
+        "agents",
+        "channels"
+      ],
+      "published_at": "2026-09-17T20:00:28.000Z",
+      "duration_seconds": 86,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100676208945963008/vid/avc1/1920x1080/jTbAhTsSYmhzhSdz.mp4",
+      "original_post_url": "https://x.com/NebulaAI/status/2100676280496845270",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-memorable",
+      "tweet_id": "2100668011673731441",
+      "slug": "memorable",
+      "title": "Memorable — procedural memory for AI agents",
+      "product": "Memorable",
+      "company": "Memorable",
+      "category": "ai",
+      "tags": [
+        "memorable",
+        "memory",
+        "agents"
+      ],
+      "published_at": "2026-09-17T19:27:37.000Z",
+      "duration_seconds": 55,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100667796837257217/vid/avc1/1280x720/yFzx2X7s4n-5KVIS.mp4",
+      "original_post_url": "https://x.com/advaiytsane/status/2100668011673731441",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-opencompany",
+      "tweet_id": "2100664161571324393",
+      "slug": "opencompany",
+      "title": "OpenCompany — an agent hive mind on your laptop",
+      "product": "OpenCompany",
+      "company": "OpenCompany",
+      "category": "ai",
+      "tags": [
+        "opencompany",
+        "agents",
+        "orgs"
+      ],
+      "published_at": "2026-09-17T19:12:19.000Z",
+      "duration_seconds": 102,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100664054767640576/vid/avc1/1920x1080/uybXoVN_-GOLJTC1.mp4",
+      "original_post_url": "https://x.com/senamakel/status/2100664161571324393",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
       "id": "plv-craft",
       "tweet_id": "2100659957267870001",
       "slug": "craft",
@@ -205,6 +385,66 @@
       "last_changed_at": "2026-09-18T11:20:10.000Z"
     },
     {
+      "id": "plv-figma-weave-node",
+      "tweet_id": "2100624143188394161",
+      "slug": "figma-weave-node",
+      "title": "Figma node — connect frames into Weave workflows",
+      "product": "Figma Weave",
+      "company": "Figma",
+      "category": "design",
+      "tags": [
+        "figma",
+        "weave",
+        "workflows"
+      ],
+      "published_at": "2026-09-17T16:33:18.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100621915249668097/vid/avc1/1920x1080/g5g6g0xFGN9xQ9z0.mp4",
+      "original_post_url": "https://x.com/figma/status/2100624143188394161",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-notion-skills-api",
+      "tweet_id": "2100619682718118397",
+      "slug": "notion-skills-api",
+      "title": "Notion Skills API — skills for ChatGPT and Claude",
+      "product": "Notion Skills API",
+      "company": "Notion",
+      "category": "productivity",
+      "tags": [
+        "notion",
+        "skills",
+        "api"
+      ],
+      "published_at": "2026-09-17T16:15:34.000Z",
+      "duration_seconds": 24,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100619013600718848/vid/avc1/1920x1080/lKyNvbyO8l0ZOJ5N.mp4",
+      "original_post_url": "https://x.com/NotionHQ/status/2100619682718118397",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-perplexity-computer-effort",
+      "tweet_id": "2100617849677176992",
+      "slug": "perplexity-computer-effort",
+      "title": "Computer — effort controls in the model selector",
+      "product": "Perplexity Computer",
+      "company": "Perplexity",
+      "category": "ai",
+      "tags": [
+        "perplexity",
+        "computer",
+        "effort"
+      ],
+      "published_at": "2026-09-17T16:08:17.000Z",
+      "duration_seconds": 11,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100617824649789442/vid/avc1/1920x1080/upjV_3EBnyUnZVl5.mp4",
+      "original_post_url": "https://x.com/perplexity_ai/status/2100617849677176992",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
       "id": "plv-jina-ocr-v1",
       "tweet_id": "2100617174985638364",
       "slug": "jina-ocr-v1",
@@ -223,6 +463,106 @@
       "video_url": "https://video.twimg.com/amplify_video/2100615252752920576/vid/avc1/1348x720/mBGrJKRMLRbGBVB0.mp4",
       "original_post_url": "https://x.com/JinaAI_/status/2100617174985638364",
       "last_changed_at": "2026-09-18T11:20:10.000Z"
+    },
+    {
+      "id": "plv-mio-shared",
+      "tweet_id": "2100617131201052996",
+      "slug": "mio-shared",
+      "title": "Mio — a shared AI employee for the whole team",
+      "product": "Mio",
+      "company": "Mio",
+      "category": "ai",
+      "tags": [
+        "mio",
+        "employee",
+        "agents"
+      ],
+      "published_at": "2026-09-17T16:05:26.000Z",
+      "duration_seconds": 51,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100615855230824448/vid/avc1/1920x1080/HNgAaaRA83Y89HiO.mp4",
+      "original_post_url": "https://x.com/arthaud_/status/2100617131201052996",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-nautilo",
+      "tweet_id": "2100604658079191175",
+      "slug": "nautilo",
+      "title": "Nautilo — an open org harness for everyone",
+      "product": "Nautilo",
+      "company": "Nautilo",
+      "category": "ai",
+      "tags": [
+        "nautilo",
+        "agents",
+        "open-source"
+      ],
+      "published_at": "2026-09-17T15:15:52.000Z",
+      "duration_seconds": 88,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100598367084539904/vid/avc1/1920x1080/YCDZHG3qchZDoL8t.mp4",
+      "original_post_url": "https://x.com/Dan_Jeffries1/status/2100604658079191175",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-lightreel-marketing-mcp",
+      "tweet_id": "2100600825307423095",
+      "slug": "lightreel-marketing-mcp",
+      "title": "Lightreel — Claude Marketing MCP for social ads",
+      "product": "Lightreel",
+      "company": "Lightreel",
+      "category": "ai",
+      "tags": [
+        "lightreel",
+        "claude",
+        "mcp"
+      ],
+      "published_at": "2026-09-17T15:00:38.000Z",
+      "duration_seconds": 22,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100600792021405696/vid/avc1/1920x1080/EOBpZ3rfOIrhgSmm.mp4",
+      "original_post_url": "https://x.com/lightreelai/status/2100600825307423095",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-addys-ai",
+      "tweet_id": "2100596393765147010",
+      "slug": "addys-ai",
+      "title": "Addys AI — turns meetings into done action items",
+      "product": "Addys AI",
+      "company": "Addys AI",
+      "category": "productivity",
+      "tags": [
+        "addys",
+        "meetings",
+        "agents"
+      ],
+      "published_at": "2026-09-17T14:43:02.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100596276471513088/vid/avc1/1920x1080/x-Z99dPdWc8QvmwW.mp4",
+      "original_post_url": "https://x.com/tryaddys/status/2100596393765147010",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-runntime",
+      "tweet_id": "2100595872971047075",
+      "slug": "runntime",
+      "title": "ruNNtime — neural nets in the browser on TypeGPU",
+      "product": "ruNNtime",
+      "company": "ruNNtime",
+      "category": "developer-tools",
+      "tags": [
+        "runntime",
+        "typegpu",
+        "browser"
+      ],
+      "published_at": "2026-09-17T14:40:57.000Z",
+      "duration_seconds": 8,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100595809607696384/vid/avc1/1332x720/SPCyU5MTk4loyJ8k.mp4",
+      "original_post_url": "https://x.com/_jakubchmura/status/2100595872971047075",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
     },
     {
       "id": "plv-aave-v3",
@@ -303,6 +643,66 @@
       "video_url": "https://video.twimg.com/amplify_video/2100288434103357440/vid/avc1/1920x1080/DdYhn9f-Wf6hERpV.mp4",
       "original_post_url": "https://x.com/tlxue/status/2100288496170574284",
       "last_changed_at": "2026-09-16T21:32:52.000Z"
+    },
+    {
+      "id": "plv-headless-amplitude",
+      "tweet_id": "2100284471102840886",
+      "slug": "headless-amplitude",
+      "title": "Headless Amplitude — agents as first-class users",
+      "product": "Headless Amplitude",
+      "company": "Amplitude",
+      "category": "developer-tools",
+      "tags": [
+        "amplitude",
+        "mcp",
+        "agents"
+      ],
+      "published_at": "2026-09-16T18:03:33.000Z",
+      "duration_seconds": 74,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100281013037580288/vid/avc1/1920x1080/bd3AacciS0xA4WWV.mp4",
+      "original_post_url": "https://x.com/spenserskates/status/2100284471102840886",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-motion-mcp-chatgpt",
+      "tweet_id": "2100280160234721660",
+      "slug": "motion-mcp-chatgpt",
+      "title": "Motion MCP — ChatGPT can now create motion designs",
+      "product": "Motion MCP",
+      "company": "Motion",
+      "category": "design",
+      "tags": [
+        "motion",
+        "mcp",
+        "chatgpt"
+      ],
+      "published_at": "2026-09-16T17:46:26.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100279057514364928/vid/avc1/1920x1080/sq2qagdWY62HPF2p.mp4",
+      "original_post_url": "https://x.com/motion_so/status/2100280160234721660",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
+      "id": "plv-ascii-magic-v2",
+      "tweet_id": "2100274944903193003",
+      "slug": "ascii-magic-v2",
+      "title": "ASCII Magic v2 — 100+ styles, shaders, and presets",
+      "product": "ASCII Magic v2",
+      "company": "ASCII Magic",
+      "category": "design",
+      "tags": [
+        "ascii-magic",
+        "shaders",
+        "presets"
+      ],
+      "published_at": "2026-09-16T17:25:42.000Z",
+      "duration_seconds": 59,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2100271279312076800/vid/avc1/1920x1080/74S8dAluTE45Qmz0.mp4",
+      "original_post_url": "https://x.com/kail_designs/status/2100274944903193003",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
     },
     {
       "id": "plv-railway-sandboxes",
@@ -565,6 +965,26 @@
       "last_changed_at": "2026-09-16T21:32:52.000Z"
     },
     {
+      "id": "plv-rowboat",
+      "tweet_id": "2099918163916054891",
+      "slug": "rowboat",
+      "title": "Rowboat — a multiplayer personal assistant for work",
+      "product": "Rowboat",
+      "company": "Rowboat",
+      "category": "productivity",
+      "tags": [
+        "rowboat",
+        "assistant",
+        "multiplayer"
+      ],
+      "published_at": "2026-09-15T17:47:59.000Z",
+      "duration_seconds": 47,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099807723798093824/vid/avc1/1920x1080/ZJHp1yxUCOw1rEYL.mp4",
+      "original_post_url": "https://x.com/segmenta/status/2099918163916054891",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
       "id": "plv-brand-api",
       "tweet_id": "2099909818727453117",
       "slug": "brand-api",
@@ -785,6 +1205,26 @@
       "last_changed_at": "2026-09-16T04:41:02.000Z"
     },
     {
+      "id": "plv-legacy-mode",
+      "tweet_id": "2099866747201335545",
+      "slug": "legacy-mode",
+      "title": "Legacy Mode — open-source switch from Ledger",
+      "product": "Legacy Mode",
+      "company": "Foundation",
+      "category": "hardware",
+      "tags": [
+        "legacy-mode",
+        "foundation",
+        "ledger"
+      ],
+      "published_at": "2026-09-15T14:23:40.000Z",
+      "duration_seconds": 91,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099866564744859648/vid/avc1/1920x1080/v7qpH2HUT-UjiNPP.mp4",
+      "original_post_url": "https://x.com/zherbert/status/2099866747201335545",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
+    },
+    {
       "id": "plv-noupload",
       "tweet_id": "2099800862508060900",
       "slug": "noupload",
@@ -803,6 +1243,26 @@
       "video_url": "https://video.twimg.com/amplify_video/2099797356862734336/vid/avc1/1280x720/qE_yfDlymYdofbYY.mp4",
       "original_post_url": "https://x.com/rohitdevx/status/2099800862508060900",
       "last_changed_at": "2026-09-16T04:41:02.000Z"
+    },
+    {
+      "id": "plv-browsergateway",
+      "tweet_id": "2099766797876527171",
+      "slug": "browsergateway",
+      "title": "BrowserGateway — the open router for cloud browsers",
+      "product": "BrowserGateway",
+      "company": "BrowserGateway",
+      "category": "developer-tools",
+      "tags": [
+        "browsergateway",
+        "browser",
+        "mcp"
+      ],
+      "published_at": "2026-09-15T07:46:31.000Z",
+      "duration_seconds": 38,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2099766728838295553/vid/avc1/1280x720/dDAKfbElnjorT5oG.mp4",
+      "original_post_url": "https://x.com/BrowserGateway/status/2099766797876527171",
+      "last_changed_at": "2026-09-22T13:58:50.000Z"
     },
     {
       "id": "plv-corespeed",
