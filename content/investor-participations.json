@@ -1058,5 +1058,45 @@
     "source_url": "https://www.magentic.com/stories/magentic-raises-18m",
     "source_name": "Magentic",
     "verified_at": "2026-09-21"
+  },
+  {
+    "company_slug": "mundo",
+    "investor_slug": "greatpoint-ventures",
+    "round_date": "2026-09-03",
+    "round_stage": "Series A",
+    "role": "lead",
+    "source_url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+    "source_name": "Vancouver Tech Journal",
+    "verified_at": "2026-09-22"
+  },
+  {
+    "company_slug": "mundo",
+    "investor_slug": "yc",
+    "round_date": "2026-09-03",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+    "source_name": "Vancouver Tech Journal",
+    "verified_at": "2026-09-22"
+  },
+  {
+    "company_slug": "mundo",
+    "investor_slug": "next-frontier-capital",
+    "round_date": "2026-09-03",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+    "source_name": "Vancouver Tech Journal",
+    "verified_at": "2026-09-22"
+  },
+  {
+    "company_slug": "mundo",
+    "investor_slug": "e12-ventures",
+    "round_date": "2026-09-03",
+    "round_stage": "Series A",
+    "role": "participant",
+    "source_url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+    "source_name": "Vancouver Tech Journal",
+    "verified_at": "2026-09-22"
   }
 ]

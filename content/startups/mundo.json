@@ -1,0 +1,93 @@
+{
+  "slug": "mundo",
+  "domain": "mundoai.world",
+  "url": "https://mundoai.world/",
+  "product_name": "Mundo",
+  "summary": "Data supply chains and evaluations for audio, video and emerging AI modalities.",
+  "editor_note": "The sharper bet is a programmable supply chain for perceptual data, not another annotation marketplace: Mundo coordinates real-world organizations, domain experts and quality controls to produce multilingual audio, video and emerging-modality datasets. Named customers and exclusivity are investor-reported, while rights, consent and repeatable quality across distributed suppliers remain the central risks.",
+  "editor_rating": 5,
+  "why_featured": "$20M Series A for perceptual AI data",
+  "product_type": "AI / ML",
+  "region": "Global / Remote",
+  "tags": "multimodal AI,training data,evaluations,audio data,video data",
+  "investors": "GreatPoint Ventures, Y Combinator, Next Frontier Capital, E12 Ventures",
+  "links": {
+    "product": "https://mundoai.world/#products",
+    "careers": "https://mundoai.world/careers"
+  },
+  "is_featured": true,
+  "funding": [
+    {
+      "amount": "$20M",
+      "currency": "USD",
+      "stage": "Series A",
+      "lead_investor": "GreatPoint Ventures",
+      "date": "2026-09-03",
+      "source_url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+      "source_name": "Vancouver Tech Journal"
+    }
+  ],
+  "research": {
+    "verified_at": "2026-09-22",
+    "sources": [
+      {
+        "id": "official_site",
+        "label": "Mundo official site",
+        "url": "https://mundoai.world/",
+        "type": "official"
+      },
+      {
+        "id": "official_announcement",
+        "label": "Mundo financing announcement",
+        "url": "https://mundoai.world/research/perception-is-the-next-frontier",
+        "type": "funding"
+      },
+      {
+        "id": "funding_1",
+        "label": "Vancouver Tech Journal Series A report",
+        "url": "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai",
+        "type": "funding"
+      },
+      {
+        "id": "investor_thesis",
+        "label": "GreatPoint Ventures investment thesis",
+        "url": "https://www.gpv.com/news/our-investment-in-mundo",
+        "type": "official"
+      },
+      {
+        "id": "identity_resolution",
+        "label": "Augment Ventures September portfolio note",
+        "url": "https://www.augmentventures.com/augment-ventures-september-2026/",
+        "type": "funding"
+      },
+      {
+        "id": "careers",
+        "label": "Mundo careers",
+        "url": "https://mundoai.world/careers",
+        "type": "official"
+      }
+    ],
+    "product_evidence": [
+      {
+        "claim": "Mundo supplies data and evaluations across audio, video and emerging modalities for teams building perceptual AI systems.",
+        "source_ids": ["official_site", "official_announcement"]
+      },
+      {
+        "claim": "The company coordinates real-world organizations into data supply nodes and iterates those supply chains as model requirements change.",
+        "source_ids": ["investor_thesis"]
+      }
+    ],
+    "market_context": {
+      "primary_user": "Frontier AI labs and research teams building multimodal models.",
+      "category": "Multimodal training-data infrastructure",
+      "differentiation": "Builds repeatable data supply chains from real-world organizations instead of relying only on scraped web data or one-off freelancer collection.",
+      "why_now": "Speech, video and embodied systems need fresh domain-specific sensory data and evaluations that open-web text cannot provide."
+    },
+    "risks": [
+      {
+        "claim": "Customer names, supplier exclusivity and demand are investor-reported; scaling rights, consent and consistent quality across distributed suppliers remains unproven publicly.",
+        "basis": "VentureDex assessment based on Mundo and GreatPoint Ventures materials."
+      }
+    ]
+  }
+}

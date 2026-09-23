@@ -1,5 +1,5 @@
 {
-  "verified_at": "2026-09-21",
+  "verified_at": "2026-09-22",
   "companies": {
     "8090": {
       "name": "8090",
@@ -1961,7 +1961,8 @@
       "shape": "icon",
       "local_path": "/logos/companies/rwx.svg",
       "source_page": "https://www.rwx.com/",
-      "source_url": "https://www.rwx.com/build/_assets/favicon-VAQTUSDD.svg"
+      "source_url": "https://www.rwx.com/",
+      "note": "RWX replaced the retired standalone favicon URL with the same SVG mark embedded directly in its official homepage on 2026-09-23; the local SVG preserves that current official mark."
     },
     "throne-science": {
       "name": "Throne Science",
@@ -2580,6 +2581,13 @@
       "local_path": "/logos/companies/magentic.png",
       "source_page": "https://www.magentic.com/",
       "source_url": "https://framerusercontent.com/images/8KyYhfKf3KJ7WAFEioNBouTrnY.png"
+    },
+    "mundo": {
+      "name": "Mundo",
+      "shape": "wordmark",
+      "local_path": "/logos/companies/mundo.svg",
+      "source_page": "https://mundoai.world/",
+      "source_url": "https://mundoai.world/logo.svg"
     }
   },
   "investors": {
@@ -3843,7 +3851,9 @@
       "shape": "wordmark",
       "local_path": "/logos/investors/basharsoft-group.png",
       "source_page": "https://basharsoft.com",
-      "source_url": "https://basharsoft.com/wp-content/uploads/2019/12/logo.png"
+      "source_url": "https://basharsoft.com/wp-content/uploads/2019/12/logo.png",
+      "allow_unreachable_source": true,
+      "note": "The official BasharSoft homepage returned reproducible HTTP 500 responses on 2026-09-23 while its same-origin official logo remained reachable with HTTP 200; the verified local PNG and canonical official URLs are retained."
     },
     "distributed-ventures": {
       "name": "Distributed Ventures",
@@ -5448,6 +5458,27 @@
       "local_path": "/logos/investors/the-westly-group.png",
       "source_page": "https://westlygroup.com/",
       "source_url": "https://westlygroup.com/wp-content/uploads/2021/10/TWG_Solo-Logo_Original.png"
+    },
+    "greatpoint-ventures": {
+      "name": "GreatPoint Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/greatpoint-ventures.png",
+      "source_page": "https://www.gpv.com/",
+      "source_url": "https://cdn.prod.website-files.com/5f47f7cbcfdea5128198120c/5f5a5988ab6ff9b2ceb98d08_G.png"
+    },
+    "next-frontier-capital": {
+      "name": "Next Frontier Capital",
+      "shape": "icon",
+      "local_path": "/logos/investors/next-frontier-capital.png",
+      "source_page": "https://nextfrontiercapital.com/",
+      "source_url": "https://framerusercontent.com/images/tImXow69hBYMVV6FV2diG3Vec0M.png"
+    },
+    "e12-ventures": {
+      "name": "E12 Ventures",
+      "shape": "icon",
+      "local_path": "/logos/investors/e12-ventures.png",
+      "source_page": "https://www.e12.ventures/",
+      "source_url": "https://cdn.prod.website-files.com/64ed894b391f62cf3866c0ec/65007f4bcb754a5d46ae23f5_Favicon%20(1).png"
     }
   }
 }

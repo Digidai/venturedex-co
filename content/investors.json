@@ -3044,5 +3044,27 @@
     "short_name": "Westly",
     "website": "https://westlygroup.com/",
     "description": "Venture capital firm backing AI-native software and hardware across energy, reindustrialization, robotics, mobility and cybersecurity."
+  },
+  "greatpoint-ventures": {
+    "name": "GreatPoint Ventures",
+    "slug": "greatpoint-ventures",
+    "short_name": "GreatPoint",
+    "website": "https://www.gpv.com/",
+    "description": "Venture capital firm founded by entrepreneurs and company builders, pairing investment with recruiting, customer access and company-building support."
+  },
+  "next-frontier-capital": {
+    "name": "Next Frontier Capital",
+    "slug": "next-frontier-capital",
+    "short_name": "NFC",
+    "website": "https://nextfrontiercapital.com/",
+    "description": "Early-stage venture capital firm investing from Seed through Series A in enterprise intelligence, critical infrastructure, financial systems and national security.",
+    "aliases": ["Next Frontier Ventures"]
+  },
+  "e12-ventures": {
+    "name": "E12 Ventures",
+    "slug": "e12-ventures",
+    "short_name": "E12",
+    "website": "https://www.e12.ventures/",
+    "description": "Early-stage venture firm investing in applied AI, deep learning, IoT and robotics across industrial sectors."
   }
 }

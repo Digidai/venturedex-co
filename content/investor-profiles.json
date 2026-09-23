@@ -17242,6 +17242,46 @@
       "sources": [
         {"id": "official", "label": "The Westly Group official overview", "url": "https://westlygroup.com/", "checked_at": "2026-09-21"}
       ]
+    },
+    "greatpoint-ventures": {
+      "reviewed_at": "2026-09-22",
+      "summary": {"value": "Venture capital firm founded by entrepreneurs and company builders, with an operator-led model for helping portfolio teams recruit, win customers and raise capital.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "approach", "value": "Founded by entrepreneurs and company builders to provide hands-on investor and board support", "source_ids": ["official"]},
+        {"key": "support", "value": ["Customer introductions", "Executive recruiting", "Fundraising support"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "GreatPoint Ventures official overview", "url": "https://www.gpv.com/", "checked_at": "2026-09-22"}
+      ]
+    },
+    "next-frontier-capital": {
+      "reviewed_at": "2026-09-22",
+      "summary": {"value": "Early-stage venture capital firm investing $2 million to $5 million from Seed through Series A across four named technology sectors.", "source_ids": ["official", "pitch"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Seed", "Series A"], "source_ids": ["pitch"]},
+        {"key": "approach", "value": "Makes $2M-$5M investments and seeks double-digit ownership with active board involvement", "source_ids": ["pitch"]},
+        {"key": "sectors", "value": ["Enterprise intelligence", "Critical infrastructure", "Financial systems", "National security"], "source_ids": ["official", "pitch"]},
+        {"key": "offices", "value": ["Bozeman, Montana", "Boulder, Colorado", "Park City, Utah"], "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "Next Frontier Capital official overview", "url": "https://nextfrontiercapital.com/", "checked_at": "2026-09-22"},
+        {"id": "pitch", "label": "Next Frontier Capital investment criteria", "url": "https://nextfrontiercapital.com/pitch-us", "checked_at": "2026-09-22"}
+      ]
+    },
+    "e12-ventures": {
+      "reviewed_at": "2026-09-22",
+      "summary": {"value": "Early-stage venture firm combining seed-investment and later-stage operating experience to back applied emerging technologies in global industries.", "source_ids": ["official"]},
+      "facts": [
+        {"key": "firm_type", "value": "Venture capital", "source_ids": ["official"]},
+        {"key": "stages", "value": ["Early stage"], "source_ids": ["official"]},
+        {"key": "sectors", "value": ["Artificial intelligence", "Deep learning", "Internet of Things", "Robotics", "Climate technology", "Agricultural technology", "Food technology", "Health technology", "Financial technology", "Logistics and supply chain"], "source_ids": ["official"]},
+        {"key": "approach", "value": "Works with founders on strategy and operational execution", "source_ids": ["official"]}
+      ],
+      "sources": [
+        {"id": "official", "label": "E12 Ventures official overview", "url": "https://www.e12.ventures/", "checked_at": "2026-09-22"}
+      ]
     }
   },
   "attempts": {}

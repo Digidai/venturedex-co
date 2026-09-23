@@ -3667,16 +3667,18 @@
     {
       "slug": "mundo",
       "company_url": "https://mundoai.world/",
-      "state": "qualified_pending",
-      "reason_code": "run_budget",
-      "reason": "Augment Ventures' portfolio note resolves the announced participant as Next Frontier Capital; product, funding and taste still pass, while remaining investor profiles, brands and visual publication work are preserved for the next bounded release window.",
-      "reviewed_at": "2026-09-21",
-      "next_review_at": "2026-09-22",
+      "state": "accepted",
+      "reason_code": "all_gates_passed",
+      "reason": "The $20M Series A, live product evidence and all three taste dimensions pass; the named investor set, official brand assets and exact-hash screenshot review are complete. A task-owned Codex IAB preview verified the final WebP on the actual desktop and 390px card/detail routes, including the working full-size link.",
+      "reviewed_at": "2026-09-23",
+      "next_review_at": null,
       "priority": 1,
-      "sources": ["https://mundoai.world/", "https://mundoai.world/research/perception-is-the-next-frontier", "https://www.gpv.com/news/our-investment-in-mundo", "https://www.augmentventures.com/augment-ventures-september-2026/"],
+      "sources": ["https://mundoai.world/", "https://vantechjournal.com/p/mundo-raises-20-million-series-a-to-advance-perceptual-intelligence-for-ai", "https://mundoai.world/research/perception-is-the-next-frontier", "https://www.gpv.com/news/our-investment-in-mundo", "https://www.augmentventures.com/augment-ventures-september-2026/"],
       "attempts": [
         {"date": "2026-09-17", "outcome": "publication_blocked", "note": "The product and $20M Series A passed, but a named participant's current official identity remained ambiguous."},
-        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Augment Ventures identifies the participant as Next Frontier Capital; publication is deferred only for remaining investor, brand and screenshot work after two complete releases consumed the reserved closeout budget."}
+        {"date": "2026-09-21", "outcome": "qualified_pending", "note": "Augment Ventures identifies the participant as Next Frontier Capital; publication is deferred only for remaining investor, brand and screenshot work after two complete releases consumed the reserved closeout budget."},
+        {"date": "2026-09-23", "outcome": "publication_blocked", "note": "Investor and brand work is complete and the official source plus final WebP pass direct visual inspection, but task-owned Codex IAB returned ERR_BLOCKED_BY_CLIENT for loopback and DNS-bound local routes, preventing truthful actual card, detail and narrow-screen review; offline gallery geometry was not treated as approval."},
+        {"date": "2026-09-23", "outcome": "accepted", "note": "A task-owned HTTP/2 preview route enabled real Codex IAB review of the exact final WebP on desktop and 390px card/detail layouts; all six screenshot checks, the full-size asset link, investor records and official assets passed."}
       ],
       "evaluation": {
         "rubric": "other", "independent": true, "funding_verified": true,

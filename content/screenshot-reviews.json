@@ -3899,6 +3899,26 @@
       },
       "notes": "Reviewed final WebP and local card/detail rendering at desktop viewport: identifiable official product, loaded, unobstructed, legible, and correctly framed."
     },
+    "mundo": {
+      "sha256": "a0ae05d18bb38ea26010f2f57956df5081c8e0f6947c8429ba3d59beaa978752",
+      "width": 1280,
+      "height": 720,
+      "source_url": "https://mundoai.world/",
+      "capture_method": "codex-iab",
+      "capture_operator": "codex-daily-fix-20260923",
+      "review_mode": "second-pass",
+      "reviewed_at": "2026-09-23T08:45:50.853Z",
+      "reviewer": "codex-daily-fix-20260923",
+      "checks": {
+        "loaded": true,
+        "unobstructed": true,
+        "legible": true,
+        "framing": true,
+        "card": true,
+        "detail": true
+      },
+      "notes": "Second-pass review of the exact final WebP: the official Mundo perceptual-intelligence hero is fully loaded, unobstructed and legible; desktop and 390px card/detail renders preserve the complete 16:9 subject without crop or max-height clipping, and the full-size 1280x720 asset link opens correctly. The 24 million total-funding banner is consistent with the 20 million Series A plus prior 4 million seed reported by the funding source."
+    },
     "mydecisive": {
       "sha256": "942d87895632fbb03a57d57a3cebae00383bff2d673b01b85bff21e250bde58e",
       "width": 3024,

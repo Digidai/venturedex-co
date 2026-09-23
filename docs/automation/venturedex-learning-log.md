@@ -5470,3 +5470,13 @@ Append material lessons, policy changes and corrections; write routine final run
 - decision: apply the narrow Didit source/date correction and continue the exact resumed release after the full gate passes.
 - affected_file: `content/startups/didit.json`, this append-only learning log, the preserved six-company manifest and four prepared startup publication assets.
 - affected_section: historical funding evidence correction and resumed release handoff.
+
+### 2026-09-23 16:45 CST — Real IAB preview corrected Mundo's visual gate
+
+- run_id: `venturedex-daily-20260922T054433Z`; this continuation resumed the same frozen ten-candidate pool and added no discovery candidates.
+- correction: the earlier Mundo result truthfully remained `publication_blocked` after loopback and DNS-bound local preview routes returned `ERR_BLOCKED_BY_CLIENT`. A task-owned Quick Tunnel using HTTP/2 subsequently exposed the local Wrangler preview to the same Codex IAB without touching a user browser or weakening the screenshot gate.
+- visual_finding: actual desktop and 390px card/detail review caught the Mundo company brand entry in the investor namespace, which had caused a text fallback. Moving the unchanged official asset into the company namespace restored the real wordmark; offline geometry checks would not have found this integration defect.
+- screenshot: the exact 1280x720 WebP at SHA-256 `a0ae05d18bb38ea26010f2f57956df5081c8e0f6947c8429ba3d59beaa978752` is loaded, unobstructed, legible and fully framed. Its actual card uses a complete 16:9 contain frame, its detail view preserves the natural aspect ratio without max-height clipping, and the full-size link opens the same asset. The single operator recorded a truthful `second-pass` review rather than inventing independence.
+- evidence_boundary: Mundo's official banner says 24 million in total funding; the round source reports a 20 million Series A plus a previously unannounced 4 million seed. The profile continues to label the latest round as the 20 million Series A.
+- decision: preserve the original blocked attempt, append the corrective accepted attempt, and treat real rendered-page review as necessary even when the source image and offline dimensions already pass.
+- affected_files: Mundo's frozen manifest disposition and review overlay, company brand namespace, exact-hash screenshot review ledger, plus this append-only learning entry.

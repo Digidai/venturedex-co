@@ -1,0 +1,391 @@
+{
+  "schema_version": 1,
+  "run_id": "venturedex-daily-20260922T054433Z",
+  "task_run_id": "venturedex-daily-20260922T054433Z",
+  "locked_at": "2026-09-22",
+  "pool_sha256": "9c02c39fd7f36f149f063e539ef327f4710f8417b37215113435ccc8f6b2bc21",
+  "source_coverage": [],
+  "candidates": [
+    {
+      "slug": "mundo",
+      "company_url": "https://mundoai.world/",
+      "source_url": "https://www.gpv.com/news/our-investment-in-mundo",
+      "source_type": "investor",
+      "announced_at": "2026-08-24",
+      "region": "undisclosed",
+      "industry": "AI data infrastructure",
+      "discovery_mode": "revisit",
+      "state": "accepted",
+      "reason": "The funding round, product evidence, named investor set and official assets are complete. A task-owned Codex IAB preview verified the exact final WebP on desktop and 390px card/detail routes, including a working full-size link, so all publication gates pass.",
+      "evaluation": {
+        "rubric": "other",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://mundoai.world/",
+            "note": "The live site offers data, evaluations and applied research across audio, video and emerging modalities."
+          },
+          {
+            "url": "https://mundoai.world/research/perception-is-the-next-frontier",
+            "note": "The official announcement describes datasets and evaluations used to train and measure multimodal perceptual intelligence."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Mundo bets that perceptual intelligence needs purpose-built real-world sensory data rather than more text alone."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The data-plus-evaluation feedback loop defines a concrete research delivery model."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Audio, video, emerging modalities and frontier-lab buyers are stated explicitly."
+          }
+        }
+      }
+    },
+    {
+      "slug": "trustedrouter",
+      "company_url": "https://trustedrouter.com/",
+      "source_url": "https://trustedrouter.com/blog/we-raised-1-25m-seed",
+      "source_type": "company",
+      "announced_at": "2026-08-31",
+      "region": "US",
+      "industry": "AI infrastructure",
+      "discovery_mode": "revisit",
+      "state": "publication_blocked",
+      "reason": "The current official product and funding surfaces remain live and qualification remains valid; publication is still blocked while the full explicitly named investor set is resolved into the canonical sourced directory.",
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://trustedrouter.com/",
+            "note": "The live product exposes one OpenAI-compatible API, explicit privacy routes, provider failover, public latency evidence and open-source SDKs."
+          },
+          {
+            "url": "https://trust.trustedrouter.com/",
+            "note": "The trust surface publishes attestation and assurance evidence for production teams evaluating the gateway."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "The product bets on verifiable privacy and routing policy as the control layer across model providers."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The current API, migration, trust, status and open-source surfaces expose concrete operating detail."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The developer workflow and deployment boundary are specific, while usage claims remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "ayble-health",
+      "company_url": "https://ayblehealth.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/ayble-health-raises-16m-series-a-to-expand-the-nations-most-clinically-validated-virtual-digestive-health-clinic-302880020.html",
+      "source_type": "company",
+      "announced_at": "2026-09-16",
+      "region": "US",
+      "industry": "digital health",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Product, funding and taste pass; the seven-investor profile, brand and screenshot scope is retained after the remaining run budget was reserved for final release verification.",
+      "evaluation": {
+        "rubric": "software",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.ayblehealth.com/",
+            "note": "The live clinic presents coordinated GI care from clinicians, dietitians, pharmacists, coaches and care coordinators."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/ayble-health-raises-16m-series-a-to-expand-the-nations-most-clinically-validated-virtual-digestive-health-clinic-302880020.html",
+            "note": "The company-supplied release describes multidisciplinary care, AI-assisted personalization and expansion into autoimmune conditions."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Ayble bets that chronic GI care works better as an ongoing multidisciplinary clinic than disconnected point solutions."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Symptom tracking, diagnostics, clinician access and coaching form a coherent care workflow."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The care roles, conditions and patient onboarding path are visible and concrete."
+          }
+        }
+      }
+    },
+    {
+      "slug": "decimal-ai",
+      "company_url": "https://www.decimal.app/",
+      "source_url": "https://www.prnewswire.com/news-releases/decimal-ai-announces-4-million-seed-round-to-bring-customer-engineering-to-software-companies-302879089.html",
+      "source_type": "company",
+      "announced_at": "2026-09-15",
+      "region": "US",
+      "industry": "customer support software",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Funding, customer-engineering evidence and taste pass; four new investor profiles, brands and the visual publication workflow remain for a later bounded release window.",
+      "evaluation": {
+        "rubric": "developer",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.decimal.app/",
+            "note": "The live product investigates customer issues across code, logs, configuration and production data with cited evidence."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/decimal-ai-announces-4-million-seed-round-to-bring-customer-engineering-to-software-companies-302879089.html",
+            "note": "The company-supplied release verifies the Seed round and customer-engineering workflow."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Decimal bets technical support can investigate operational evidence instead of escalating every complex issue."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Read-only access, citations, integrations, SSO, RBAC and audit logs expose controls."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Code, logs, configuration, production data and support investigations define a precise workflow."
+          }
+        }
+      }
+    },
+    {
+      "slug": "eve-security",
+      "company_url": "https://eve.security/",
+      "source_url": "https://www.prnewswire.com/news-releases/eve-security-extends-seed-round-to-7-5-million-as-rogue-ai-agents-turn-runtime-security-into-an-enterprise-imperative-302878598.html",
+      "source_type": "company",
+      "announced_at": "2026-09-15",
+      "region": "US",
+      "industry": "AI security",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Funding, runtime agent-security evidence and taste pass; four new investor profiles, brands and the visual publication workflow remain for a later bounded release window.",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://eve.security/",
+            "note": "The live site exposes discovery, governance and runtime enforcement across agents, MCP servers and APIs."
+          },
+          {
+            "url": "https://www.prnewswire.com/news-releases/eve-security-extends-seed-round-to-7-5-million-as-rogue-ai-agents-turn-runtime-security-into-an-enterprise-imperative-302878598.html",
+            "note": "The company-supplied announcement verifies the financing and EveGuard runtime security platform."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Eve bets agent security requires runtime action control rather than only inventory or scanning."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Discovery, enforcement, interrogation, audit trails and integrations form an inspectable loop."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Agents, MCP servers, APIs and allow, block and modify actions are explicit."
+          }
+        }
+      }
+    },
+    {
+      "slug": "footprint",
+      "company_url": "https://onefootprint.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/footprint-raises-25-million-series-b-to-scale-percy-the-ai-operating-system-for-risk--compliance-302880661.html",
+      "source_type": "company",
+      "announced_at": "2026-09-16",
+      "region": "US",
+      "industry": "fintech compliance",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Product, funding and taste pass; the nine-investor profile, brand and screenshot scope is retained after the remaining run budget was reserved for final release verification.",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://onefootprint.com/",
+            "note": "The live product positions Percy as an auditable agentic system for regulated financial-crime investigations."
+          },
+          {
+            "url": "https://onefootprint.com/learn/series-b",
+            "note": "The official announcement details Percy, Trust Fabric, source-grounded investigations and human-approved organizational memory."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Footprint bets that compliance systems need compounding governed memory, not isolated case automation."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Provenance, human approval and cross-workflow memory define concrete controls."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "KYC, KYB, AML, sanctions and monitoring workflows are explicitly named."
+          }
+        }
+      }
+    },
+    {
+      "slug": "leinao-ai",
+      "company_url": "https://www.leinao.ai/",
+      "source_url": "https://yangtzeer.com/news/deals/yangtze-funding-quantum-robotics-evtol/",
+      "source_type": "regional_media",
+      "announced_at": "2026-09-07",
+      "region": "China / Asia",
+      "industry": "AI and power infrastructure",
+      "discovery_mode": "revisit",
+      "state": "publication_blocked",
+      "reason": "The official website still fails browser access with an expired TLS certificate, so live product verification and a truthful native product screenshot remain blocked without bypassing the browser safety interstitial.",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://www.leinao.ai/product/solution_dlrg.html",
+            "note": "The previously verified solution page describes resource orchestration and deployment for AI compute infrastructure."
+          },
+          {
+            "url": "https://www.leinao.ai/product/solution_lnbdz.html",
+            "note": "A separate previously verified solution page describes electric-grid integration rather than a generic AI cloud."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Leinao bets on coordinating compute with physical power infrastructure instead of selling generic cloud capacity."
+          },
+          "craft": {
+            "pass": true,
+            "note": "The prior compute and grid solution evidence shows substantial integration, but current live verification is unavailable."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The deployment domains are specific, while scale and performance claims remain company reported."
+          }
+        }
+      }
+    },
+    {
+      "slug": "ravel",
+      "company_url": "https://www.ravelfuture.com/",
+      "source_url": "https://www.prnewswire.com/news-releases/ravel-raises-8-2m-oversubscribed-seed-round-to-scale-purification-recycling-for-blended-textiles-302881246.html",
+      "source_type": "company",
+      "announced_at": "2026-09-17",
+      "region": "US",
+      "industry": "textile recycling",
+      "discovery_mode": "revisit",
+      "state": "evidence_pending",
+      "reason": "Funding is verified, but the visually sparse official surface lacks inspectable pilot, equipment or operating evidence beyond the purification-recycling claim."
+    },
+    {
+      "slug": "rune",
+      "company_url": "https://rune.energy/",
+      "source_url": "https://www.businesswire.com/news/home/20260916606335/en/",
+      "source_type": "company",
+      "announced_at": "2026-09-16",
+      "region": "US",
+      "industry": "energy infrastructure",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Product, funding and taste pass; the seven-investor profile, brand and screenshot scope is retained after the remaining run budget was reserved for final release verification.",
+      "evaluation": {
+        "rubric": "hardware",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://rune.energy/",
+            "note": "The live site shows the RELIC modular compute system deployed directly at solar plants using native 1500V DC."
+          },
+          {
+            "url": "https://www.businesswire.com/news/home/20260916606335/en/",
+            "note": "The company-supplied funding announcement identifies a $40M Series A for the solar-site compute platform."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Rune bets that latent solar capacity can host modular compute without conventional data-center construction."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Native plant-bus power, mass-manufactured modules and forklift deployment define a specific physical system."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "The power architecture, deployment method and GPU operating range are explicit."
+          }
+        }
+      }
+    },
+    {
+      "slug": "veridion",
+      "company_url": "https://veridion.com/",
+      "source_url": "https://www.businesswire.com/news/home/20260916207241/en/",
+      "source_type": "company",
+      "announced_at": "2026-09-16",
+      "region": "Europe",
+      "industry": "business intelligence",
+      "discovery_mode": "revisit",
+      "state": "qualified_pending",
+      "reason": "Product, funding and taste pass; the six-investor profile, brand and screenshot scope is retained after the remaining run budget was reserved for final release verification.",
+      "evaluation": {
+        "rubric": "enterprise",
+        "independent": true,
+        "funding_verified": true,
+        "product_evidence": [
+          {
+            "url": "https://veridion.com/",
+            "note": "The live product exposes a continuously refreshed company graph with human and API interfaces."
+          },
+          {
+            "url": "https://www.businesswire.com/news/home/20260916207241/en/",
+            "note": "The company-supplied release describes billions of signals, more than 100 customer organizations and a $20M Series A."
+          }
+        ],
+        "taste": {
+          "bet": {
+            "pass": true,
+            "note": "Veridion bets that company intelligence should behave like a live graph rather than a periodically shipped database."
+          },
+          "craft": {
+            "pass": true,
+            "note": "Acquire, extract, resolve and refresh stages expose a coherent data-production system."
+          },
+          "specificity": {
+            "pass": true,
+            "note": "Coverage, attributes, entity resolution, APIs and buyer workflows are visible."
+          }
+        }
+      }
+    }
+  ]
+}
