@@ -8,11 +8,11 @@
     "homepage_url": "https://whatships.com/",
     "repository_url": "https://github.com/dingyi/whatships.com",
     "data_path": "src/data/videos.json",
-    "commit": "16fb1437925f095fc1caae40c5cfad3069848e0f",
-    "commit_url": "https://github.com/dingyi/whatships.com/commit/16fb1437925f095fc1caae40c5cfad3069848e0f",
-    "commit_at": "2026-09-23T01:26:48.000Z",
-    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/16fb1437925f095fc1caae40c5cfad3069848e0f/src/data/videos.json",
-    "raw_sha256": "b8918fc0a1cd7686999dd81ab1f66d5c4f2bef2c5b342f3bb87a7d62fe976b06"
+    "commit": "44139fddbb33a4a88991b4c49d0199decbf3fa59",
+    "commit_url": "https://github.com/dingyi/whatships.com/commit/44139fddbb33a4a88991b4c49d0199decbf3fa59",
+    "commit_at": "2026-09-23T15:48:25.000Z",
+    "raw_data_url": "https://raw.githubusercontent.com/dingyi/whatships.com/44139fddbb33a4a88991b4c49d0199decbf3fa59/src/data/videos.json",
+    "raw_sha256": "cac19f0bc65a6002d46c729fd74b3f4175b36ddcec25b8b9e116e78b8d634bf3"
   },
   "content_policy": {
     "mode": "original-video-index",
@@ -21,9 +21,349 @@
     "descriptions_mirrored": false,
     "attribution": "Original videos, posts, product names, and trademarks remain with their respective publishers and owners."
   },
-  "source_published_through": "2026-09-19T00:07:09.000Z",
-  "item_count": 2190,
+  "source_published_through": "2026-09-22T17:41:13.000Z",
+  "item_count": 2212,
   "items": [
+    {
+      "id": "plv-quiver-2",
+      "tweet_id": "2102453174993068241",
+      "slug": "quiver-2",
+      "title": "Quiver 2.0 — faster, cleaner SVG generation in Paper",
+      "product": "Quiver 2.0",
+      "company": "Paper",
+      "category": "design",
+      "tags": [
+        "quiver",
+        "paper",
+        "svg"
+      ],
+      "published_at": "2026-09-22T17:41:13.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102451911018622976/vid/avc1/1080x1080/p986fpW6uxw37bvG.mp4",
+      "original_post_url": "https://x.com/stephenhaney/status/2102453174993068241",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-x-numbers",
+      "tweet_id": "2102442240354165057",
+      "slug": "x-numbers",
+      "title": "X Numbers — share a number so anyone can reach you",
+      "product": "X Numbers",
+      "company": "X",
+      "category": "consumer",
+      "tags": [
+        "x",
+        "chat",
+        "numbers"
+      ],
+      "published_at": "2026-09-22T16:57:46.000Z",
+      "duration_seconds": 31,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102442131520733184/vid/avc1/1920x1080/fDxu-T-W4oJszC7b.mp4",
+      "original_post_url": "https://x.com/chat/status/2102442240354165057",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-claude-opus-5-5",
+      "tweet_id": "2102435511222890900",
+      "slug": "claude-opus-5-5",
+      "title": "Claude Opus 5.5 — first model in the Claude 5.5 family",
+      "product": "Claude Opus 5.5",
+      "company": "Anthropic",
+      "category": "ai",
+      "tags": [
+        "claude",
+        "opus",
+        "anthropic"
+      ],
+      "published_at": "2026-09-22T16:31:01.000Z",
+      "duration_seconds": 20,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102432417352929280/vid/avc1/1920x1080/yilx3O9YWu7w9vaX.mp4",
+      "original_post_url": "https://x.com/claudeai/status/2102435511222890900",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-umbrelos-2-launch",
+      "tweet_id": "2102430946603810900",
+      "slug": "umbrelos-2-launch",
+      "title": "umbrelOS 2.0 — a small computer that becomes your cloud",
+      "product": "umbrelOS 2.0",
+      "company": "Umbrel",
+      "category": "hardware",
+      "tags": [
+        "umbrel",
+        "home-cloud",
+        "os"
+      ],
+      "published_at": "2026-09-22T16:12:53.000Z",
+      "duration_seconds": 656,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102430272604258304/vid/avc1/1280x720/N0v9a1h5Vua9jrP2.mp4",
+      "original_post_url": "https://x.com/umbrel/status/2102430946603810900",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-bot-avatars",
+      "tweet_id": "2102430722531393605",
+      "slug": "bot-avatars",
+      "title": "Bot avatars — 18 animated 3D bots, zero dependencies",
+      "product": "Bot avatars",
+      "company": "libraries.dev",
+      "category": "design",
+      "tags": [
+        "bots",
+        "avatars",
+        "react"
+      ],
+      "published_at": "2026-09-22T16:12:00.000Z",
+      "duration_seconds": 27,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102428302036045824/vid/avc1/1700x1280/nbPAT0koQz3GuKXM.mp4",
+      "original_post_url": "https://x.com/Jakubantalik/status/2102430722531393605",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-tesseract",
+      "tweet_id": "2102429594804429138",
+      "slug": "tesseract",
+      "title": "Tesseract — a video suite for your AI agent",
+      "product": "Tesseract",
+      "company": "Mirage",
+      "category": "design",
+      "tags": [
+        "tesseract",
+        "mirage",
+        "video"
+      ],
+      "published_at": "2026-09-22T16:07:31.000Z",
+      "duration_seconds": 32,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102421066496835584/vid/avc1/1920x1080/eDOE4c-tgeQ46GJx.mp4",
+      "original_post_url": "https://x.com/trymirage/status/2102429594804429138",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-alexandria",
+      "tweet_id": "2102426246235775068",
+      "slug": "alexandria",
+      "title": "Alexandria — a knowledge library for superintelligence",
+      "product": "Alexandria",
+      "company": "Firecrawl",
+      "category": "ai",
+      "tags": [
+        "alexandria",
+        "firecrawl",
+        "agents"
+      ],
+      "published_at": "2026-09-22T15:54:12.000Z",
+      "duration_seconds": 83,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2102426137498370048/pu/vid/avc1/1280x720/y_Y6_ow0HVaPmQb4.mp4",
+      "original_post_url": "https://x.com/firecrawl/status/2102426246235775068",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-framer-skills",
+      "tweet_id": "2102408056856609042",
+      "slug": "framer-skills",
+      "title": "Framer Skills — teach the agent how you work",
+      "product": "Framer Skills",
+      "company": "Framer",
+      "category": "design",
+      "tags": [
+        "framer",
+        "skills",
+        "agent"
+      ],
+      "published_at": "2026-09-22T14:41:56.000Z",
+      "duration_seconds": 30,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102407986182606849/vid/avc1/1920x1080/3nJNj__VvJCScriE.mp4",
+      "original_post_url": "https://x.com/framer/status/2102408056856609042",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-runway-diffuse",
+      "tweet_id": "2102404968850301030",
+      "slug": "runway-diffuse",
+      "title": "DIFFUSE — hire AI-native talent for agencies",
+      "product": "DIFFUSE",
+      "company": "Runway",
+      "category": "other",
+      "tags": [
+        "runway",
+        "diffuse",
+        "talent"
+      ],
+      "published_at": "2026-09-22T14:29:40.000Z",
+      "duration_seconds": 56,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102403948778762240/vid/avc1/1920x1080/wERyvM3Gt-OhUg8Q.mp4",
+      "original_post_url": "https://x.com/runwayml/status/2102404968850301030",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-openmuse",
+      "tweet_id": "2102400431519592581",
+      "slug": "openmuse",
+      "title": "OpenMuse — a self-hostable assistant for any harness",
+      "product": "OpenMuse",
+      "company": "OpenMuse",
+      "category": "ai",
+      "tags": [
+        "openmuse",
+        "assistant",
+        "open-source"
+      ],
+      "published_at": "2026-09-22T14:11:38.000Z",
+      "duration_seconds": 66,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102400393657597953/vid/avc1/1920x1080/sxG3PvUdC42RO_0a.mp4",
+      "original_post_url": "https://x.com/ataiiam/status/2102400431519592581",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-worker-previews",
+      "tweet_id": "2102392544718196868",
+      "slug": "worker-previews",
+      "title": "Worker Previews — production-like env for every change",
+      "product": "Worker Previews",
+      "company": "Worker Previews",
+      "category": "developer-tools",
+      "tags": [
+        "workers",
+        "previews",
+        "agents"
+      ],
+      "published_at": "2026-09-22T13:40:17.000Z",
+      "duration_seconds": 49,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102392339180273664/vid/avc1/1920x1080/VBBQ0UXeUTY2rKdw.mp4",
+      "original_post_url": "https://x.com/yomnashousha/status/2102392544718196868",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-mirasim",
+      "tweet_id": "2102241081232687172",
+      "slug": "mirasim",
+      "title": "Mirasim — every model and harness, same session",
+      "product": "Mirasim",
+      "company": "Mirasim",
+      "category": "developer-tools",
+      "tags": [
+        "mirasim",
+        "agents",
+        "harness"
+      ],
+      "published_at": "2026-09-22T03:38:26.000Z",
+      "duration_seconds": 72,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102235608706060288/vid/avc1/1920x1080/nXoneJ6UPlFi2CBs.mp4",
+      "original_post_url": "https://x.com/Mirasim_ADE/status/2102241081232687172",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-muse-for-marketing",
+      "tweet_id": "2102158706041659578",
+      "slug": "muse-for-marketing",
+      "title": "Muse for Marketing — ads, SEO, and site tools in Muse",
+      "product": "Muse for Marketing",
+      "company": "Muse",
+      "category": "ai",
+      "tags": [
+        "muse",
+        "marketing",
+        "ads"
+      ],
+      "published_at": "2026-09-21T22:11:06.000Z",
+      "duration_seconds": 29,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102156903635628032/vid/avc1/1920x1080/GoR8AAh3ojH3KHMS.mp4",
+      "original_post_url": "https://x.com/irabukht/status/2102158706041659578",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-runway-responsive-video",
+      "tweet_id": "2102035097436455021",
+      "slug": "runway-responsive-video",
+      "title": "Runway Labs — responsive generative video interfaces",
+      "product": "Runway Labs",
+      "company": "Runway",
+      "category": "motion",
+      "tags": [
+        "runway",
+        "video",
+        "responsive"
+      ],
+      "published_at": "2026-09-21T13:59:55.000Z",
+      "duration_seconds": 12,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102030490916274176/vid/avc1/1920x1080/B4WEsNhLsFgK9ss5.mp4",
+      "original_post_url": "https://x.com/runwayml_labs/status/2102035097436455021",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-cube-motion",
+      "tweet_id": "2102014506192851303",
+      "slug": "cube-motion",
+      "title": "Cube Motion — an SVG animation library, drawn in JS",
+      "product": "Cube Motion",
+      "company": "Cube Motion",
+      "category": "design",
+      "tags": [
+        "cube-motion",
+        "svg",
+        "animation"
+      ],
+      "published_at": "2026-09-21T12:38:06.000Z",
+      "duration_seconds": 35,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2102013677163442177/vid/avc1/1920x1080/LP7o3PXt1dB_h8q8.mp4",
+      "original_post_url": "https://x.com/dwhitedesign/status/2102014506192851303",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-dramagic",
+      "tweet_id": "2101893220288663884",
+      "slug": "dramagic",
+      "title": "Dramagic — AIGC platform for short dramas",
+      "product": "Dramagic",
+      "company": "BytePlus",
+      "category": "ai",
+      "tags": [
+        "dramagic",
+        "byteplus",
+        "video"
+      ],
+      "published_at": "2026-09-21T04:36:09.000Z",
+      "duration_seconds": 93,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101893056941510656/vid/avc1/1920x1080/yzU7UFsl5bmA72nC.mp4",
+      "original_post_url": "https://x.com/BytePlusGlobal/status/2101893220288663884",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-onlight",
+      "tweet_id": "2101286767131513088",
+      "slug": "onlight",
+      "title": "Onlight — control Philips Hue from the Mac menu bar",
+      "product": "Onlight",
+      "company": "Onlight",
+      "category": "productivity",
+      "tags": [
+        "onlight",
+        "hue",
+        "macos"
+      ],
+      "published_at": "2026-09-19T12:26:19.000Z",
+      "duration_seconds": 28,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2101286683849408512/vid/avc1/1550x1080/Rsh2muntGnpQH45s.mp4",
+      "original_post_url": "https://x.com/jamesm/status/2101286767131513088",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
     {
       "id": "plv-inco-splash",
       "tweet_id": "2101100749623341513",
@@ -3447,6 +3787,69 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-sgl-datasets",
+      "tweet_id": "2095963260407152884",
+      "slug": "sgl-datasets",
+      "title": "Datasets — generate LLM training data on demand",
+      "product": "Datasets",
+      "company": "Singularity Layer",
+      "category": "ai",
+      "tags": [
+        "singularity-layer",
+        "datasets",
+        "llm",
+        "training-data"
+      ],
+      "published_at": "2026-09-04T19:52:37.000Z",
+      "duration_seconds": 41,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095963188818849797/vid/avc1/1920x1080/2jeQH7526vHMhsN_.mp4",
+      "original_post_url": "https://x.com/BNNBags/status/2095963260407152884",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-3d-shot-composer-reference",
+      "tweet_id": "2095962368048279801",
+      "slug": "3d-shot-composer-reference",
+      "title": "3D Shot Composer — free shot refs for AI filmmakers",
+      "product": "3D Shot Composer Reference",
+      "company": "Anu Anuja",
+      "category": "motion",
+      "tags": [
+        "3d",
+        "shot-composer",
+        "ai-film",
+        "reference"
+      ],
+      "published_at": "2026-09-04T19:49:04.000Z",
+      "duration_seconds": 132,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095960847994789888/vid/avc1/1920x1080/gU6-x449BS2OWWiS.mp4",
+      "original_post_url": "https://x.com/Anujatk14/status/2095962368048279801",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
+      "id": "plv-moonpay-paybox-agents",
+      "tweet_id": "2095928258646642952",
+      "slug": "moonpay-paybox-agents",
+      "title": "PayBox — let your AI agents spend money",
+      "product": "PayBox",
+      "company": "MoonPay",
+      "category": "consumer",
+      "tags": [
+        "paybox",
+        "moonpay",
+        "agents",
+        "payments"
+      ],
+      "published_at": "2026-09-04T17:33:31.000Z",
+      "duration_seconds": 37,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095927515881906176/vid/avc1/1920x1080/vGKPAuw8y72AFSo-.mp4",
+      "original_post_url": "https://x.com/moonpay/status/2095928258646642952",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
       "id": "plv-hi-new",
       "tweet_id": "2095889712770699678",
       "slug": "hi-new",
@@ -3709,6 +4112,27 @@
       "last_changed_at": "2026-09-09T03:05:04.000Z"
     },
     {
+      "id": "plv-capcut-spectrum",
+      "tweet_id": "2095531141105340890",
+      "slug": "capcut-spectrum",
+      "title": "Spectrum — a film about humanity's drive to create",
+      "product": "Spectrum",
+      "company": "ARQ Studios",
+      "category": "motion",
+      "tags": [
+        "spectrum",
+        "capcut",
+        "arq",
+        "ai-film"
+      ],
+      "published_at": "2026-09-03T15:15:31.000Z",
+      "duration_seconds": 170,
+      "featured": false,
+      "video_url": "https://video.twimg.com/amplify_video/2095530621422686208/vid/avc1/1920x1080/gk6igaQF0LpDLGVX.mp4",
+      "original_post_url": "https://x.com/starks_arq/status/2095531141105340890",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
+    },
+    {
       "id": "plv-krea-creative-agents",
       "tweet_id": "2095530595405475863",
       "slug": "krea-creative-agents",
@@ -3767,6 +4191,27 @@
       "video_url": "https://video.twimg.com/amplify_video/2095529321528262656/vid/avc1/1080x1080/XHdnDkhq4ourzB4A.mp4",
       "original_post_url": "https://x.com/Google/status/2095529763280466295",
       "last_changed_at": "2026-09-09T03:05:04.000Z"
+    },
+    {
+      "id": "plv-elise-apollo",
+      "tweet_id": "2095527420283559951",
+      "slug": "elise-apollo",
+      "title": "Apollo — one agent for property management",
+      "product": "Apollo",
+      "company": "EliseAI",
+      "category": "ai",
+      "tags": [
+        "apollo",
+        "eliseai",
+        "agent",
+        "property-management"
+      ],
+      "published_at": "2026-09-03T15:00:44.000Z",
+      "duration_seconds": 113,
+      "featured": false,
+      "video_url": "https://video.twimg.com/ext_tw_video/2095527381549174786/pu/vid/avc1/1280x720/Nl6TmLTwx8-8rpKO.mp4?tag=12",
+      "original_post_url": "https://x.com/elise_ai/status/2095527420283559951",
+      "last_changed_at": "2026-09-23T15:48:25.000Z"
     },
     {
       "id": "plv-helena",
